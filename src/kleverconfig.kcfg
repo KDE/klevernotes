@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+-->
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+    http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+    <kcfgfile name="KleverNoterc" />
+    <group name="General">
+        <entry name="path" type="Path">
+            <label>Path to the ./KleverNotes folder</label>
+            <default>None</default>
+        </entry>
+    </group>
+</kcfg>

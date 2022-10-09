@@ -1,0 +1,10 @@
+#   SPDX-License-Identifier: GPL-2.0-or-later
+#   SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+
+File=kleverconfig.kcfg
+ClassName=KleverConfig
+Mutators=true
+DefaultValueGetters=true
+GenerateProperties=true
+ParentInConstructor=true
+Singleton=true

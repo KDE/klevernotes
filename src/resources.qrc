@@ -1,0 +1,18 @@
+<!--
+    SPDX-License-Identifier: CC0-1.0
+    SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+-->
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">contents/ui/main.qml</file>
+        <file alias="About.qml">contents/ui/About.qml</file>
+        <file alias="example.html">contents/ui/texteditor/example.html</file>
+        <file alias="ToolBar.qml">contents/ui/texteditor/ToolBar.qml</file>
+        <file alias="TextDisplay.qml">contents/ui/texteditor/TextDisplay.qml</file>
+        <file alias="Editor.qml">contents/ui/texteditor/Editor.qml</file>
+        <file alias="Sidebar.qml">contents/ui/Sidebar.qml</file>
+        <file alias="ExpandableItem.qml">contents/ui/listview/ExpandableItem.qml</file>
+        <file alias="List.qml">contents/ui/listview/List.qml</file>
+        <file alias="test.js">contents/logic/test.js</file>
+        </qresource>
+</RCC>
