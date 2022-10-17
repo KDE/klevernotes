@@ -15,6 +15,6 @@ public:
     explicit View(QObject *parent = nullptr);
 
 public slots:
-    QJsonObject hierarchy(QString path);
+    QJsonObject hierarchy(QString path, int lvl);
     void print(QString path);
 };

@@ -34,6 +34,9 @@ Kirigami.OverlayDrawer {
         id: column
         // FIXME: Dirty workaround for 385992
         implicitWidth: Kirigami.Units.gridUnit * 14
+        // spacing:0
+
+
         Kirigami.AbstractApplicationHeader {
             topPadding: Kirigami.Units.smallSpacing;
             bottomPadding: Kirigami.Units.smallSpacing;
@@ -44,17 +47,92 @@ Kirigami.OverlayDrawer {
                 level: 1
                 text: i18n("Notes")
             }
+            Layout.alignment:Qt.AlignTop
         }
 
-        Controls.Button{
-            text:"click"
-            onClicked: {
-                const storageContent = View.hierarchy(KleverUtility.getPath(Config.path))["content"]
+        ExpandableItem{
+            id:test
+            Layout.alignment:Qt.AlignTop
+            height: 600
+            model: View.hierarchy(KleverUtility.getPath(Config.path),-1).content
+/*
+            [{
+                'name': 'Cash',
+                'value':'$4418.28',
+                'lvl': '0',
+                'content': [
+                    {
+                        'name': 'Float',
+                        'value': '$338.72',
+                        'lvl': '1'
+                    },
+                    {
+                        'name': 'Cash Sales',
+                        'value': '$4059.56',
+                        'lvl': '1'
+                    },
+                    {
+                        'name': 'In/Out',
+                        'value': '-$50.00',
+                        'lvl': '1',
+                        'content': [
+                            {
+                                'name': 'coffee/creamer',
+                                'value': '-$40.00',
+                                'lvl': '2'
+                            },
+                            {
+                                'name': 'staples & paper',
+                                'value': '-$10.00',
+                                'lvl': '2'
+                            }
 
-                Ouep.sortCategory(machin["content"])
-                p1model.append({score: "truc"})
-            }
+                        ]
+                    }
+
+                ]
+            },{
+                'name': 'Cash',
+                'value':'$4418.28',
+                'lvl': '0',
+                'content': [
+                    {
+                        'name': 'Float',
+                        'value': '$338.72',
+                        'lvl': '1'
+                    },
+                    {
+                        'name': 'Cash Sales',
+                        'value': '$4059.56',
+                        'lvl': '1'
+                    },
+                    {
+                        'name': 'In/Out',
+                        'value': '-$50.00',
+                        'lvl': '1',
+                        'content': [
+                            {
+                                'name': 'coffee/creamer',
+                                'value': '-$40.00',
+                                'lvl': '2'
+                            },
+                            {
+                                'name': 'staples & paper',
+                                'value': '-$10.00',
+                                'lvl': '2'
+                            }
+
+                        ]
+                    }
+
+                ]
+            }]*/
+
+
+            // Component.onCompleted: {console.log(View.print(KleverUtility.getPath(Config.path))); console.log(model[0])}
+
         }
+        /*
         Controls.ScrollView {
             id: scrollView
             Controls.ScrollBar.vertical.policy: Controls.ScrollBar.AsNeeded
@@ -111,7 +189,7 @@ Kirigami.OverlayDrawer {
             }
 
             //List{}
-/*
+
             component PlaceHeading : Kirigami.Heading {
                 topPadding: Kirigami.Units.largeSpacing
                 leftPadding: Kirigami.Units.largeSpacing
@@ -158,8 +236,8 @@ Kirigami.OverlayDrawer {
 
                     scrollView.previouslySelectedAction = item;
                 }
-            }*/
-/*
+            }
+
             ColumnLayout {
                 spacing: 1
                 width: scrollView.width
@@ -236,20 +314,21 @@ Kirigami.OverlayDrawer {
                 }
             }*/
         }
+
         Controls.ToolSeparator {
             Layout.topMargin: -1;
             Layout.fillWidth: true
+            // Layout.alignment:Qt.AlignTop
             orientation: Qt.Horizontal
-            visible: scrollView.contentHeight > scrollView.height
+            // visible: scrollView.contentHeight > scrollView.height
         }
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
             onClicked: applicationWindow().openSettingsPage()
             icon: "settings-configure"
+            Layout.alignment:Qt.AlignTop
         }
-    }
-
 }
 
 

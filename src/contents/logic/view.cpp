@@ -10,6 +10,8 @@
 #include <QMap>
 #include <QJsonObject>
 #include <QStringList>
+#include <QJsonArray>
+#include <QList>
 
 View::View(QObject *parent)
     : QObject(parent)
@@ -19,43 +21,51 @@ View::View(QObject *parent)
 
 void View::print(QString path)
 {
-    QJsonObject truc = hierarchy(path);
+    QJsonObject truc = hierarchy(path,0);
     qDebug() << truc;
 }
 
-QJsonObject View::hierarchy(QString path)
+QJsonObject View::hierarchy(QString path, int lvl)
 {
     QJsonObject final = QJsonObject();
     QFileInfo testingFile(path);
     final["name"] = QJsonValue(testingFile.fileName());
+    if (final["name"] == ".BaseCategory") final["name"] = QJsonValue("Notes");
     final["path"] = QJsonValue(testingFile.filePath());
-    final["isFile"] = QJsonValue(testingFile.isFile());
+    final["lvl"] = QJsonValue(lvl);
 
-    QJsonObject content;
+    QJsonArray content;
 
     if (testingFile.isDir())
     {
         QDir dir(path);
 
         QFileInfoList fileList = dir.entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask);
-        foreach(QFileInfo file, fileList){
+
+        foreach(const QFileInfo & file, fileList){
             QString nextPath = file.filePath();
             QString name = file.fileName();
+            if (file.suffix() == "html" && final["isNote"].toBool() != true)
+            {
+                final["isNote"] = QJsonValue(true);
+            }
 
             if (name == ".directory") continue;
 
-            QJsonObject entryInfo = hierarchy(nextPath);
+            QJsonObject entryInfo = hierarchy(nextPath,lvl+1);
             if (name == ".BaseGroup")
             {
-                QJsonObject groupContent = entryInfo["content"].toObject();
+                QJsonArray groupContent = entryInfo["content"].toArray();
 
-                QJsonObject::const_iterator i;
-                for (i = groupContent.constBegin(); i != groupContent.constEnd(); ++i)
-                    content[i.key()] = i.value();
+                foreach (const QJsonValue & value, groupContent) {
+                    QJsonObject object = value.toObject() ;
+                    object["lvl"] = QJsonValue(object["lvl"].toInt()-1);
+                    content.append(QJsonValue(object));
+                }
             }
             else
             {
-                content[name] = entryInfo;
+                content.append(QJsonValue(entryInfo));
             }
         }
     }
