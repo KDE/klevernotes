@@ -6,13 +6,11 @@
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="About.qml">contents/ui/About.qml</file>
-        <file alias="example.html">contents/ui/texteditor/example.html</file>
-        <file alias="ToolBar.qml">contents/ui/texteditor/ToolBar.qml</file>
-        <file alias="TextDisplay.qml">contents/ui/texteditor/TextDisplay.qml</file>
-        <file alias="Editor.qml">contents/ui/texteditor/Editor.qml</file>
-        <file alias="Sidebar.qml">contents/ui/Sidebar.qml</file>
-        <file alias="ExpandableItem.qml">contents/ui/listview/ExpandableItem.qml</file>
-        <file alias="List.qml">contents/ui/listview/List.qml</file>
-        <file alias="test.js">contents/logic/test.js</file>
+        <file alias="baseDoc.html">contents/ui/textEditor/baseDoc.html</file>
+        <file alias="ToolBar.qml">contents/ui/textEditor/ToolBar.qml</file>
+        <file alias="TextDisplay.qml">contents/ui/textEditor/TextDisplay.qml</file>
+        <file alias="Editor.qml">contents/ui/textEditor/Editor.qml</file>
+        <file alias="Sidebar.qml">contents/ui/sideBar/Sidebar.qml</file>
+        <file alias="TreeView.qml">contents/ui/sideBar/TreeView.qml</file>
         </qresource>
 </RCC>
