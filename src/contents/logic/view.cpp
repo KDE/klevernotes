@@ -34,6 +34,21 @@ QJsonObject View::hierarchy(QString path, int lvl)
     final["path"] = QJsonValue(testingFile.filePath());
     final["lvl"] = QJsonValue(lvl);
 
+    switch (lvl) {
+        case 0:
+            final["useCase"] = QJsonValue("Category");
+            break;
+        case 1:
+            final["useCase"] = QJsonValue("Group");
+            break;
+        case 2:
+            final["useCase"] = QJsonValue("Note");
+            break;
+        default:
+            final["useCase"] = QJsonValue("Root");
+            break;
+    }
+
     QJsonArray content;
 
     if (testingFile.isDir())
@@ -45,10 +60,6 @@ QJsonObject View::hierarchy(QString path, int lvl)
         foreach(const QFileInfo & file, fileList){
             QString nextPath = file.filePath();
             QString name = file.fileName();
-            if (file.suffix() == "html" && final["isNote"].toBool() != true)
-            {
-                final["isNote"] = QJsonValue(true);
-            }
 
             if (name == ".directory") continue;
 
@@ -70,6 +81,6 @@ QJsonObject View::hierarchy(QString path, int lvl)
         }
     }
     final["content"] = QJsonValue(content);
-    // qDebug() << final;
+
     return final;
 }

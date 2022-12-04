@@ -7,7 +7,9 @@ import QtQuick.Dialogs 1.1
 import org.qtproject.example 1.0
 
 Item {
+    id:root
     readonly property var document:document
+    property string path: "qrc:/example.html"
 
     TextArea {
         Accessible.name: "document"
@@ -32,7 +34,7 @@ Item {
         selectionStart: textArea.selectionStart
         selectionEnd: textArea.selectionEnd
         textColor: toolbar.colorDialog.color
-        Component.onCompleted: document.fileUrl = "qrc:/example.html"
+        Component.onCompleted: document.fileUrl = root.path
         onFontSizeChanged: {
             toolbar.fontSizeSpinBox.valueGuard = false
             toolbar.fontSizeSpinBox.value = document.fontSize

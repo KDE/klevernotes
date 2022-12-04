@@ -7,6 +7,7 @@ Rectangle {
     width: parent.width
     color: Kirigami.Theme.backgroundColor
     property alias model: columnRepeater.model
+    property QtObject currentlySelected
     Column{
         width: parent.width
         Repeater {
@@ -28,16 +29,6 @@ Rectangle {
                     height: childrenRect.height
                     property bool expanded: false
 
-                    MouseArea {
-                        anchors.fill: parent
-                        id:controlRoot
-                        hoverEnabled: true
-                        property bool hovered : false
-                        onEntered: hovered = true
-                        onExited: hovered = false
-                        onClicked: if(!modelData.isNote) infoRow.expanded = !infoRow.expanded
-                        enabled: true
-                    }
 
                     Rectangle{
                         Kirigami.Icon {
@@ -47,11 +38,20 @@ Rectangle {
                             height: text_display.height
                             source: infoRow.expanded ? "go-down-symbolic" : "go-next-symbolic"
                             isMask: true
-                            color: controlRoot.hovered
-                                    ? Kirigami.Theme.activeTextColor
-                                    : Kirigami.Theme.textColor
+                            color: !(root.currentlySelected === parent)
+                                     ?(controlRoot.hovered)
+                                        ? Kirigami.Theme.highlightColor
+                                        : Kirigami.Theme.textColor
+                                     : Kirigami.Theme.textColor
+
+                                    // ? Kirigami.Theme.textColor
+                                    // :
+                                    // ? Kirigami.Theme.activeTextColor
+                                    // : controlRoot.hovered
+                                    //     ? Kirigami.Theme.activeTextColor
+                                    //     : Kirigami.Theme.textColor
                             Behavior on color { ColorAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
-                            visible: !modelData.isNote ? true : false
+                            visible: modelData.useCase != "Note"
                         }
 
                         Text {
@@ -60,22 +60,40 @@ Rectangle {
                             font.pointSize: 12
                             visible: parent.visible
 
-                            color: !controlRoot.hovered
-                                    ? Kirigami.Theme.textColor
-                                    : carot.visible
-                                        ? Kirigami.Theme.activeTextColor
+                            color: !(root.currentlySelected === parent)
+                                     ?(controlRoot.hovered)
+                                        ? Kirigami.Theme.highlightColor
                                         : Kirigami.Theme.textColor
+                                     : Kirigami.Theme.textColor
+
                             text: modelData.name
                         }
                         width:root.width
                         height:childrenRect.height
-                        color: !controlRoot.hovered
-                                ? "transparent"
-                                : carot.visible
-                                    ? "transparent"
-                                    : Kirigami.Theme.activeTextColor
+                        color: (root.currentlySelected === this)
+                                ? Kirigami.Theme.highlightColor
+                                : "transparent"
 
+                        MouseArea {
+                            anchors.fill: parent
+                            id:controlRoot
+                            hoverEnabled: true
+                            property bool hovered : false
+                            onEntered: hovered = true
+                            onExited: hovered = false
+                            onClicked: {
+                                if(modelData.useCase != "Note")infoRow.expanded =!infoRow.expanded;
+
+                                root.currentlySelected = parent
+
+                            }
+
+                            enabled: true
+                        }
                     }
+
+
+
                 }
 
                 ListView {

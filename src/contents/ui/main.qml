@@ -183,4 +183,6 @@ Please choose a location for your future Klever Note storage or select an existi
         }
 
     }
+
+    footer: BottomToolBar{}
 }

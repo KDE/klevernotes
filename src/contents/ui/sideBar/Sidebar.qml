@@ -19,7 +19,7 @@ Kirigami.OverlayDrawer {
     handleVisible: modal && pageStack.layers.depth < 2
 
     // Autohiding behavior
-    modal: !root.wideScreen
+    modal: !applicationWindow().wideScreen
     onEnabledChanged: drawerOpen = enabled && !modal
     onModalChanged: drawerOpen = !modal && pageStack.layers.depth < 2
 
@@ -33,7 +33,6 @@ Kirigami.OverlayDrawer {
         id: column
         // FIXME: Dirty workaround for 385992
         implicitWidth: Kirigami.Units.gridUnit * 14
-        // spacing:0
 
 
         Kirigami.AbstractApplicationHeader {
@@ -50,7 +49,6 @@ Kirigami.OverlayDrawer {
         }
 
         TreeView{
-            id:test
             Layout.alignment:Qt.AlignTop
             height: 600
             model: View.hierarchy(KleverUtility.getPath(Config.path),-1).content
@@ -60,13 +58,14 @@ Kirigami.OverlayDrawer {
             Layout.topMargin: -1;
             Layout.fillWidth: true
             orientation: Qt.Horizontal
+            Layout.alignment:Qt.AlignBottom
         }
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
             onClicked: applicationWindow().openSettingsPage()
             icon: "settings-configure"
-            Layout.alignment:Qt.AlignTop
+            Layout.alignment:Qt.AlignBottom
         }
     }
 }
