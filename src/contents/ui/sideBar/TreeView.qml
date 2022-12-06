@@ -1,14 +1,14 @@
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
+import QtQuick.Controls 2.15 as Controls
+import QtQuick.Layouts 1.3
 
-
-Rectangle {
+Controls.ScrollView {
     id:root
     width: parent.width
-    color: Kirigami.Theme.backgroundColor
     property alias model: columnRepeater.model
     property QtObject currentlySelected
-    Column{
+    ColumnLayout{
         width: parent.width
         Repeater {
             id: columnRepeater
@@ -21,7 +21,7 @@ Rectangle {
             Column {
                 id:column
                 width: parent.width
-
+                Layout.alignment:Qt.AlignTop
                 Item {
                     id: infoRow
 
@@ -44,13 +44,12 @@ Rectangle {
                                         : Kirigami.Theme.textColor
                                      : Kirigami.Theme.textColor
 
-                                    // ? Kirigami.Theme.textColor
-                                    // :
-                                    // ? Kirigami.Theme.activeTextColor
-                                    // : controlRoot.hovered
-                                    //     ? Kirigami.Theme.activeTextColor
-                                    //     : Kirigami.Theme.textColor
-                            Behavior on color { ColorAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
+                            Behavior on color {
+                                ColorAnimation {
+                                    duration: Kirigami.Units.shortDuration;
+                                    easing.type: Easing.InOutQuad
+                                }
+                            }
                             visible: modelData.useCase != "Note"
                         }
 
@@ -83,11 +82,8 @@ Rectangle {
                             onExited: hovered = false
                             onClicked: {
                                 if(modelData.useCase != "Note")infoRow.expanded =!infoRow.expanded;
-
-                                root.currentlySelected = parent
-
+                                    root.currentlySelected = parent
                             }
-
                             enabled: true
                         }
                     }

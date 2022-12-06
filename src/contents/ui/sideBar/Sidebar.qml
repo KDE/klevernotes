@@ -48,9 +48,11 @@ Kirigami.OverlayDrawer {
             Layout.alignment:Qt.AlignTop
         }
 
+
         TreeView{
+            id: ui
+            Layout.fillHeight: true
             Layout.alignment:Qt.AlignTop
-            height: 600
             model: View.hierarchy(KleverUtility.getPath(Config.path),-1).content
         }
 
@@ -63,10 +65,17 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
-            onClicked: applicationWindow().openSettingsPage()
+            onClicked: applicationWindow().switchToPage('settings')
             icon: "settings-configure"
             Layout.alignment:Qt.AlignBottom
         }
+
+        Kirigami.BasicListItem {
+                text: i18n("About Klever")
+                icon: "help-about"
+                onClicked: applicationWindow().switchToPage('about')
+        }
+
     }
 }
 

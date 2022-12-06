@@ -27,6 +27,14 @@ Kirigami.ApplicationWindow {
     onXChanged: saveWindowGeometryTimer.restart()
     onYChanged: saveWindowGeometryTimer.restart()
 
+    function switchToPage(page){
+        const pages = {
+            'about':'qrc:About.qml',
+            'settings':''
+            }
+        pageStack.layers.push(pages[page])
+    }
+
     FolderDialog{
         id:folderDialog
         folder:StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
@@ -63,13 +71,13 @@ Kirigami.ApplicationWindow {
 
         onFolderChanged: {
             var folderPath = textPromptDialog.folder
-            if (userChoice == "Storage created at "){
+            if (userChoice === "Storage created at "){
                 folderPath = textPromptDialog.folder.concat("/.KleverNotes")
             }
 
             var pathEnd = folderPath.substring(folderPath.length,folderPath.length-13)
 
-            if (pathEnd != "/.KleverNotes"){
+            if (pathEnd !== "/.KleverNotes"){
                 textPromptDialog.close();
                 var subtitle = i18n(
 "It looks like the selected folder is not a Klever Notes storage.
@@ -100,7 +108,7 @@ Choose a location to your future Klever Note storage or select an existing one."
     function checkForStorage(subtitle){
         var actualPath = Config.path
 
-        if (actualPath == "None"){
+        if (actualPath === "None"){
             textPromptDialog.subtitle = subtitle
             textPromptDialog.open()
         }
@@ -126,48 +134,7 @@ Please choose a location for your future Klever Note storage or select an existi
         onTriggered: App.saveWindowGeometry(root)
     }
 
-    globalDrawer: Sidebar{
-        // active: !Kirigami.Settings.isMobile || QQC2.ApplicationWindow.window.width > wideScreenWidth;
-    }
-
-
-
-/*
-    globalDrawer: Kirigami.GlobalDrawer {
-        title: i18n("Klever")
-        titleIcon: "applications-graphics"
-        isMenu: true
-        actions: [
-            Kirigami.Action {
-                id: fileOpenAction
-                icon.name: "document-open"
-                text: "Open"
-                onTriggered: {
-                    fileDialog.selectExisting = true
-                    fileDialog.open()
-                }
-            },
-            Kirigami.Action {
-                id: fileSaveAsAction
-                icon.name: "document-save"
-                text: "Save As…"
-                onTriggered: {
-                    fileDialog.selectExisting = false
-                    fileDialog.open()
-                }
-            },
-            Kirigami.Action {
-                text: i18n("About Klever")
-                icon.name: "help-about"
-                onTriggered: pageStack.layers.push('qrc:About.qml')
-            },
-            Kirigami.Action {
-                text: i18n("Quit")
-                icon.name: "application-exit"
-                onTriggered: Qt.quit()
-            }
-        ]
-    }*/
+    globalDrawer: Sidebar{}
 
     pageStack.initialPage: page
 
