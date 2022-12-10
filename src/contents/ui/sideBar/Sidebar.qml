@@ -48,11 +48,18 @@ Kirigami.OverlayDrawer {
             Layout.alignment:Qt.AlignTop
         }
 
+        ActionBar{
+            id: action
+            Layout.fillWidth: true
+            Layout.alignment:Qt.AlignTop
+            treeView: treeview
+        }
 
         TreeView{
-            id: ui
+            id: treeview
             Layout.fillHeight: true
             Layout.alignment:Qt.AlignTop
+
             model: View.hierarchy(KleverUtility.getPath(Config.path),-1).content
         }
 

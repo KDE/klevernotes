@@ -7,7 +7,11 @@ import QtGraphicalEffects 1.12
 Kirigami.NavigationTabBar {
     id: tool
     visible: !applicationWindow().wideScreen
-
+/*
+    MainPage{
+        id:test
+    }
+    Component.onCompleted: console.log(applicationWindow().pageStack.currentItem == test)*/
     actions: [
         Kirigami.Action {
             iconName: "clock"

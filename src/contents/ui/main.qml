@@ -136,20 +136,13 @@ Please choose a location for your future Klever Note storage or select an existi
 
     globalDrawer: Sidebar{}
 
+    MainPage{
+        id:page
+        Layout.fillWidth: true
+    }
+
     pageStack.initialPage: page
 
-    Kirigami.Page {
-        id: page
-
-        Layout.fillWidth: true
-
-        title: i18n("Main Page")
-
-        Editor{
-            id:editor
-        }
-
-    }
 
     footer: BottomToolBar{}
 }

@@ -8,7 +8,7 @@ import org.kde.kirigami 2.19 as Kirigami
 
 ColumnLayout{
     anchors.fill:parent
-    ToolBar{
+    TextToolBar{
         id:toolbar
         document:display.document
         Layout.fillWidth:true
