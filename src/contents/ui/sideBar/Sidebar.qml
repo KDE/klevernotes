@@ -12,14 +12,15 @@ import org.kde.kirigami 2.5 as Kirigami
 import org.kde.Klever 1.0
 
 
+
 Kirigami.OverlayDrawer {
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
     handleOpenIcon.source: null
-    handleVisible: modal && pageStack.layers.depth < 2
+    handleVisible: applicationWindow().isMainPage() && modal && pageStack.layers.depth < 2
 
     // Autohiding behavior
-    modal: !applicationWindow().wideScreen
+    modal: !applicationWindow().isMainPage() || !root.wideScreen
     onEnabledChanged: drawerOpen = enabled && !modal
     onModalChanged: drawerOpen = !modal && pageStack.layers.depth < 2
 
@@ -72,7 +73,7 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
-            onClicked: applicationWindow().switchToPage('settings')
+            // onClicked: applicationWindow().switchToPage('settings')
             icon: "settings-configure"
             Layout.alignment:Qt.AlignBottom
         }
@@ -80,7 +81,7 @@ Kirigami.OverlayDrawer {
         Kirigami.BasicListItem {
                 text: i18n("About Klever")
                 icon: "help-about"
-                onClicked: applicationWindow().switchToPage('about')
+                onClicked: applicationWindow().switchToPage('About')
         }
 
     }

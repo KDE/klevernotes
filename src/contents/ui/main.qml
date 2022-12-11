@@ -11,6 +11,7 @@ import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
 import org.qtproject.example 1.0
+import "qrc:/contents/ui/sideBar"
 
 Kirigami.ApplicationWindow {
     id: root
@@ -27,12 +28,41 @@ Kirigami.ApplicationWindow {
     onXChanged: saveWindowGeometryTimer.restart()
     onYChanged: saveWindowGeometryTimer.restart()
 
-    function switchToPage(page){
-        const pages = {
-            'about':'qrc:About.qml',
-            'settings':''
-            }
-        pageStack.layers.push(pages[page])
+    pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
+
+    Kirigami.PagePool {
+        id: pagePool
+    }
+
+    function getPage(name) {
+        switch (name) {
+            case "Main": return pagePool.loadPage("qrc:contents/ui/pages/MainPage.qml");
+            // case "Settings": return pagePool.loadPage("qrc:/qml/settings/SettingsPage.qml");
+            case "About": return pagePool.loadPage("qrc:contents/ui/pages/AboutPage.qml");
+        }
+    }
+
+    function switchToPage(pageName) {
+        const page = getPage(pageName)
+
+        pageStack.push(page);
+    }
+
+    function isMainPage(){
+        return pageStack.currentItem == getPage("Main")
+    }
+
+    Component.onCompleted: {
+        App.restoreWindowGeometry(root)
+        // initial page and nav type
+        switchToPage('Main')
+
+        var subtitle = i18n(
+"It looks like this is your first time using this app!
+
+Please choose a location for your future Klever Note storage or select an existing one.")
+        root.checkForStorage(subtitle)
+        // StorageHandler.callMe(subtitle)
     }
 
     FolderDialog{
@@ -114,15 +144,6 @@ Choose a location to your future Klever Note storage or select an existing one."
         }
     }
 
-    Component.onCompleted: {
-        App.restoreWindowGeometry(root)
-        var subtitle = i18n(
-"It looks like this is your first time using this app!
-
-Please choose a location for your future Klever Note storage or select an existing one.")
-        root.checkForStorage(subtitle)
-        // StorageHandler.callMe(subtitle)
-    }
 
     // This timer allows to batch update the window size change to reduce
     // the io load and also work around the fact that x/y/width/height are
@@ -135,14 +156,4 @@ Please choose a location for your future Klever Note storage or select an existi
     }
 
     globalDrawer: Sidebar{}
-
-    MainPage{
-        id:page
-        Layout.fillWidth: true
-    }
-
-    pageStack.initialPage: page
-
-
-    footer: BottomToolBar{}
 }
