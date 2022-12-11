@@ -4,14 +4,13 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
-import QtQuick.Dialogs 1.3
-import Qt.labs.platform 1.1
-
 import org.kde.kirigami 2.19 as Kirigami
 
-import org.kde.Klever 1.0
 import org.qtproject.example 1.0
 import "qrc:/contents/ui/sideBar"
+import "qrc:/contents/ui/dialogs"
+
+import org.kde.Klever 1.0
 
 Kirigami.ApplicationWindow {
     id: root
@@ -34,6 +33,8 @@ Kirigami.ApplicationWindow {
         id: pagePool
     }
 
+    globalDrawer: Sidebar{}
+
     function getPage(name) {
         switch (name) {
             case "Main": return pagePool.loadPage("qrc:contents/ui/pages/MainPage.qml");
@@ -52,95 +53,18 @@ Kirigami.ApplicationWindow {
         return pageStack.currentItem == getPage("Main")
     }
 
-    Component.onCompleted: {
-        App.restoreWindowGeometry(root)
-        // initial page and nav type
-        switchToPage('Main')
-
-        var subtitle = i18n(
-"It looks like this is your first time using this app!
-
-Please choose a location for your future Klever Note storage or select an existing one.")
-        root.checkForStorage(subtitle)
-        // StorageHandler.callMe(subtitle)
-    }
-
-    FolderDialog{
-        id:folderDialog
-        folder:StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
-        options: FolderDialog.ShowDirsOnly
-        onAccepted: {
-            textPromptDialog.folder = currentFolder
-        }
-    }
-
-    Kirigami.PromptDialog {
-        id: textPromptDialog
-        title: "Klever Notes Storage"
-
-
-        property string folder
-        property string userChoice
-        standardButtons: Kirigami.Dialog.None
-        customFooterActions: [
-            Kirigami.Action {
-                text: i18n("Existing storage")
-                onTriggered: {
-                    textPromptDialog.userChoice = "Existing storage chosen at "
-                    folderDialog.open()
-                }
-            },
-            Kirigami.Action {
-                text: i18n("Create storage")
-                onTriggered: {
-                    textPromptDialog.userChoice = "Storage created at "
-                    folderDialog.open()
-                }
-            }
-        ]
-
-        onFolderChanged: {
-            var folderPath = textPromptDialog.folder
-            if (userChoice === "Storage created at "){
-                folderPath = textPromptDialog.folder.concat("/.KleverNotes")
-            }
-
-            var pathEnd = folderPath.substring(folderPath.length,folderPath.length-13)
-
-            if (pathEnd !== "/.KleverNotes"){
-                textPromptDialog.close();
-                var subtitle = i18n(
-"It looks like the selected folder is not a Klever Notes storage.
-
-Please choose a location for your future Klever Note storage or select an existing one.")
-                root.checkForStorage(subtitle)
-            }
-            else{
-                StorageHandler.makeStorage(folderPath)
-                Config.path = folderPath
-
-                var fullNotification = textPromptDialog.userChoice+KleverUtility.getPath(folderPath)
-
-                showPassiveNotification(fullNotification);
-                textPromptDialog.close();
-            }
-        }
-
-        onRejected:{
-            var subtitle = i18n(
-"This step is mandatory, please don't skip it.
-
-Choose a location to your future Klever Note storage or select an existing one.")
-            root.checkForStorage(subtitle)
-        }
-    }
-
     function checkForStorage(subtitle){
         var actualPath = Config.path
 
         if (actualPath === "None"){
-            textPromptDialog.subtitle = subtitle
-            textPromptDialog.open()
+            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+
+            if (component.status == Component.Ready) {
+                var dialog = component.createObject(root);
+
+                if (subtitle !=="") dialog.subtitle = subtitle
+                dialog.open()
+            }
         }
     }
 
@@ -155,5 +79,9 @@ Choose a location to your future Klever Note storage or select an existing one."
         onTriggered: App.saveWindowGeometry(root)
     }
 
-    globalDrawer: Sidebar{}
+    Component.onCompleted: {
+        App.restoreWindowGeometry(root)
+        switchToPage('Main')
+        checkForStorage("")
+    }
 }
