@@ -13,6 +13,11 @@ KleverUtility::KleverUtility(QObject *parent)
 
 }
 
+QString KleverUtility::getName(QString path)
+{
+    return QDir(path).dirName();
+}
+
 QString KleverUtility::getPath(QUrl url)
 {
     return url.toLocalFile();

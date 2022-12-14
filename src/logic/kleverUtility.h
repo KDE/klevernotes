@@ -13,6 +13,7 @@ public:
     explicit KleverUtility(QObject *parent = nullptr);
 
 public slots:
+    QString getName(QString path);
     QString getPath(QUrl url);
     bool exist(QString path);
     void create(QUrl url);

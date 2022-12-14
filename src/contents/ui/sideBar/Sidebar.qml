@@ -61,7 +61,7 @@ Kirigami.OverlayDrawer {
             Layout.fillHeight: true
             Layout.alignment:Qt.AlignTop
 
-            model: View.hierarchy(KleverUtility.getPath(Config.path),-1).content
+            model: View.hierarchy(KleverUtility.getPath(Config.storagePath),-1).content
         }
 
         Controls.ToolSeparator {

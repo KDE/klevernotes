@@ -54,7 +54,7 @@ Kirigami.ApplicationWindow {
     }
 
     function checkForStorage(subtitle){
-        var actualPath = Config.path
+        var actualPath = Config.storagePath
 
         if (actualPath === "None"){
             let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")

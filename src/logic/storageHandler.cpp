@@ -63,3 +63,9 @@ void StorageHandler::makeStorage(QUrl storageUrl)
     QString storagePath = util.getPath(storageUrl);
     makeCategory(storagePath,categoryName);
 }
+
+bool StorageHandler::rename(QString oldPath, QString newPath)
+{
+    QDir dir;
+    return dir.rename(oldPath,newPath);
+}

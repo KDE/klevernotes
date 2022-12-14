@@ -22,5 +22,6 @@
 
         <file>contents/ui/dialogs/StorageDialog.qml</file>
         <file>contents/ui/dialogs/FolderChooserDialog.qml</file>
+        <file>contents/ui/dialogs/RenameErrorDialog.qml</file>
     </qresource>
 </RCC>

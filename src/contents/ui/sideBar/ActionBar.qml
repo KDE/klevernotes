@@ -21,7 +21,7 @@ ToolBar {
         onTriggered: {
             // console.log()
             // treeView.currentlySelected.useCase
-            console.log("Create Cat",Config.path)}
+            console.log("Create Cat",Config.storagePath)}
     }
     Kirigami.Action {
         id: createGroupAction
@@ -75,16 +75,18 @@ ToolBar {
         id: rename
         icon.name: "edit-rename"
         onTriggered: {
-            const mouseArea= treeView.currentlySelected.mouseArea
-            mouseArea.enabled = !mouseArea.enabled
+            treeView.itemEdtiting = !treeView.itemEdtiting
 
             const textDisplay = treeView.currentlySelected.textDisplay
 
-            textDisplay.readOnly = !textDisplay.readOnly
-            console.log(mouseArea.enabled,textDisplay.readOnly)
-            // console.log("rename",treeView.currentlySelected.name)
-            // treeView.currentlySelected.name = "GOTRENAMED"
-            // console.log("rename",treeView.currentlySelected.name)
+            // textDisplay.focus = false
+            // textDisplay.readOnly = !textDisplay.readOnly
+            if (!textDisplay.readOnly){
+                textDisplay.forceActiveFocus()
+                textDisplay.autoScroll = !textDisplay.autoScroll
+                textDisplay.cursorPosition = 0
+                textDisplay.selectAll()
+            }
         }
     }
 

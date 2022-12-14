@@ -30,7 +30,6 @@ QJsonObject View::hierarchy(QString path, int lvl)
     QJsonObject final = QJsonObject();
     QFileInfo testingFile(path);
     final["name"] = QJsonValue(testingFile.fileName());
-    if (final["name"] == ".BaseCategory") final["name"] = QJsonValue("Notes");
     final["path"] = QJsonValue(testingFile.filePath());
     final["lvl"] = QJsonValue(lvl);
 

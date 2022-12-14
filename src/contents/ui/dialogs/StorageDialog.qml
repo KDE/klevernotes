@@ -1,8 +1,8 @@
-import QtQuick 2.15
-import org.kde.kirigami 2.19 as Kirigami
-
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+
+import QtQuick 2.15
+import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
 
@@ -58,7 +58,7 @@ Kirigami.PromptDialog {
         }
         else{
             StorageHandler.makeStorage(folderPath)
-            Config.path = folderPath
+            Config.storagePath = folderPath
 
             var fullNotification = textPromptDialog.userChoice+KleverUtility.getPath(folderPath)
 

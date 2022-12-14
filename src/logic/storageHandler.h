@@ -19,4 +19,6 @@ public slots:
     void makeCategory(QString storagePath, QString categoryName);
     void makeGroup(QString categoryPath, QString groupName);
     void makeNote(QString groupPath, QString noteName);
+
+    bool rename(QString oldPath, QString newPath);
 };

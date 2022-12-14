@@ -50,7 +50,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     auto config = KleverConfig::self();
-    QObject::connect(config, &KleverConfig::pathChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::storagePathChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
     AboutType about;

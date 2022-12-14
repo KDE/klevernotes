@@ -9,9 +9,25 @@
     http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
     <kcfgfile name="KleverNoterc" />
     <group name="General">
-        <entry name="path" type="Path">
+        <entry name="storagePath" type="Path">
             <label>Path to the ./KleverNotes folder</label>
             <default>None</default>
+        </entry>
+        <entry name="categoryDisplayName" type="String">
+            <label>The default name shown in place of "./BaseCategory"</label>
+            <default>Notes</default>
+        </entry>
+        <entry name="defaultCategoryName" type="String">
+            <label>The default name for a new Category</label>
+            <default>New Category</default>
+        </entry>
+                <entry name="defaultGroupName" type="String">
+            <label>The default name for a new Group</label>
+            <default>New Group</default>
+        </entry>
+        <entry name="defaultNoteName" type="String">
+            <label>The default name for a new Note</label>
+            <default>New Note</default>
         </entry>
     </group>
 </kcfg>

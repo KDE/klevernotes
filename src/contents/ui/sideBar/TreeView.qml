@@ -5,10 +5,11 @@ import QtQuick.Layouts 1.3
 import org.kde.Klever 1.0
 
 Controls.ScrollView {
-    id: root
+    id: tree
     width: parent.width
     property alias model: columnRepeater.model;
     property QtObject currentlySelected: column.children[0];
+    property bool itemEdtiting : false
 
     Column{
         id: column
@@ -35,21 +36,20 @@ Controls.ScrollView {
                 property string parentPath: {
                     // This chain of parent let's us acces the upper infoRow holding the current one (if it exist)
                     const parPath = parentRow.path
-                    return (parPath != undefined) ? parPath : Config.path
+                    return (parPath != undefined) ? parPath : KleverUtility.getPath(Config.storagePath)
                 }
-
-                property string name: textDisplay.text
-
+                property string name : modelData.name
                 readonly property string path: parentPath+"/"+name
+
                 readonly property string useCase: modelData.useCase
 
                 readonly property QtObject mouseArea: controlRoot
                 readonly property QtObject textDisplay: textDisplay
                 Rectangle{
-                    width: root.width
+                    width: tree.width
                     height: textDisplay.height
 
-                    color: (root.currentlySelected === infoRow)
+                    color: (tree.currentlySelected === infoRow && !tree.itemEdtiting)
                                 ? Kirigami.Theme.highlightColor
                                 : "transparent"
 
@@ -60,7 +60,7 @@ Controls.ScrollView {
                         height: textDisplay.height
                         source: infoRow.expanded ? "go-down-symbolic" : "go-next-symbolic"
                         isMask: true
-                        color: !(root.currentlySelected === infoRow)
+                        color: !(tree.currentlySelected === infoRow)
                                 ?(controlRoot.hovered)
                                     ? Kirigami.Theme.highlightColor
                                     : Kirigami.Theme.textColor
@@ -75,20 +75,91 @@ Controls.ScrollView {
                         visible: infoRow.useCase != "Note"
                     }
 
-                    TextEdit {
+
+                    Controls.TextField {
                         id: textDisplay
                         x: carot.x + 20
+                        width: parent.width-x
                         font.pointSize: 12
                         visible: parent.visible
 
-                        color: !(root.currentlySelected === infoRow)
+                        property string oldText
+
+                        autoScroll:false
+
+                        color: !(tree.currentlySelected === infoRow)
                                 ?(controlRoot.hovered)
                                     ? Kirigami.Theme.highlightColor
                                     : Kirigami.Theme.textColor
                                 : Kirigami.Theme.textColor
 
-                        text: modelData.name
-                        readOnly: true
+                        text: (infoRow.name == ".BaseCategory")
+                                    ? Config.categoryDisplayName
+                                    : infoRow.name
+
+
+                        readOnly:(!tree.itemEdtiting && (tree.currentlySelected === infoRow))
+                        enabled: (tree.currentlySelected === infoRow) || !tree.itemEdtiting
+
+                        background: Rectangle {
+                            width: parent.width - parent.x
+
+                            color: "transparent"
+                            border.color: (tree.itemEdtiting && tree.currentlySelected === infoRow)
+                                                ? Kirigami.Theme.focusColor
+                                                : "transparent"
+                        }
+
+                        Keys.onEscapePressed: {tree.itemEdtiting = false; text = oldText ; oldText = ""}
+
+                        function checkRename(newPath){
+                            let can = true
+                            let info = ""
+                            if (KleverUtility.exist(newPath)) {can = false ; info = 'exist'}
+
+                            if (textDisplay.text === Config.categoryDisplayName) {can = false ; info = 'exist'}
+
+                            if (infoRow.name === ".BaseCategory") info = 'base'
+
+                            return {'can':can,'info':info}
+                        }
+
+                        function handleRename(){
+                            const newPath = parentPath+"/"+textDisplay.text
+                            const result = checkRename(newPath)
+
+                            if (!result.can) {
+
+                                let component = Qt.createComponent("qrc:/contents/ui/dialogs/RenameErrorDialog.qml")
+
+                                if (component.status == Component.Ready) {
+                                    var dialog = component.createObject(root);
+
+                                    dialog.textDisplay = textDisplay
+                                    dialog.useCase = infoRow.useCase
+                                    dialog.open()
+                                }
+                                return
+                            }
+
+                            if (result.info === "base") {
+                                Config.categoryDisplayName = textDisplay.text
+                            }
+                            else{
+                                StorageHandler.rename(infoRow.path,newPath)
+                                infoRow.name = textDisplay.text
+                            }
+
+                            tree.itemEdtiting = false
+                        }
+
+                        Keys.onReturnPressed: handleRename()
+                        Keys.onEnterPressed: handleRename()
+
+                        onReadOnlyChanged: {
+                            const oldName = text
+                            oldText = oldName
+                        }
 
                         onTextChanged: {
                             text = text.replace(/(\r\n|\n|\r)/gm, "");
@@ -105,9 +176,9 @@ Controls.ScrollView {
                         onExited: hovered = false
                         onClicked: {
                             if(modelData.useCase != "Note")infoRow.expanded =!infoRow.expanded;
-                                root.currentlySelected = infoRow
+                                tree.currentlySelected = infoRow
                         }
-                        enabled: true
+                        enabled: !tree.itemEdtiting
                     }
                 }
 
