@@ -14,6 +14,7 @@ import org.kde.Klever 1.0
 
 
 Kirigami.OverlayDrawer {
+    id:drawer
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
     handleOpenIcon.source: null
@@ -29,6 +30,8 @@ Kirigami.OverlayDrawer {
     topPadding: 0
     bottomPadding: 0
 
+
+    property alias treeModel : treeview.model
     // Place
     contentItem: ColumnLayout {
         id: column
@@ -60,7 +63,6 @@ Kirigami.OverlayDrawer {
             id: treeview
             Layout.fillHeight: true
             Layout.alignment:Qt.AlignTop
-            model: View.hierarchy(Config.storagePath,-1)
         }
 
         Controls.ToolSeparator {
@@ -84,6 +86,31 @@ Kirigami.OverlayDrawer {
         }
 
     }
+
+
+    function checkForStorage(subtitle){
+        var actualPath = Config.storagePath
+
+        if (actualPath === "None"){
+            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+
+            if (component.status == Component.Ready) {
+                var dialog = component.createObject(drawer);
+
+                if (subtitle) dialog.subtitle = subtitle
+
+                dialog.drawer = drawer
+                dialog.open()
+                return
+            }
+        }
+        console.log("hey",Config.storagePath)
+        treeview.model = View.hierarchy(Config.storagePath,-1)
+    }
+
+     Component.onCompleted: {
+        checkForStorage()
+     }
 }
 
 

@@ -53,22 +53,6 @@ Kirigami.ApplicationWindow {
         return pageStack.currentItem == getPage("Main")
     }
 
-    function checkForStorage(subtitle){
-        var actualPath = Config.storagePath
-
-        if (actualPath === "None"){
-            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
-
-            if (component.status == Component.Ready) {
-                var dialog = component.createObject(root);
-
-                if (subtitle !=="") dialog.subtitle = subtitle
-                dialog.open()
-            }
-        }
-    }
-
-
     // This timer allows to batch update the window size change to reduce
     // the io load and also work around the fact that x/y/width/height are
     // changed when loading the page and overwrite the saved geometry from
@@ -82,6 +66,5 @@ Kirigami.ApplicationWindow {
     Component.onCompleted: {
         App.restoreWindowGeometry(root)
         switchToPage('Main')
-        checkForStorage("")
     }
 }

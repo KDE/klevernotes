@@ -27,5 +27,5 @@ Controls.ScrollView {
         }
     }
 
-    Component.onCompleted: subEntryColumn.addRows(model)
+    onModelChanged: subEntryColumn.addRows(model)
 }

@@ -14,6 +14,7 @@ Kirigami.PromptDialog {
 
     property string folder
     property string userChoice
+    property QtObject drawer
     standardButtons: Kirigami.Dialog.NoButton
 
     function getFolder() {
@@ -55,7 +56,7 @@ Kirigami.PromptDialog {
         if (pathEnd !== "/.KleverNotes"){
             textPromptDialog.close();
             const subtitle = i18n("It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
-            root.checkForStorage(subtitle)
+            drawer.checkForStorage(subtitle)
             return
         }
         Config.storagePath = folderPath
@@ -64,10 +65,12 @@ Kirigami.PromptDialog {
 
         showPassiveNotification(fullNotification);
         textPromptDialog.close();
+
+        drawer.treeModel = View.hierarchy(Config.storagePath,-1)
     }
 
     onRejected:{
         const subtitle = i18n("This step is mandatory, please don't skip it.\n\nChoose a location to your future KleverNotes storage or select an existing one.")
-        root.checkForStorage(subtitle)
+        drawer.checkForStorage(subtitle)
     }
 }
