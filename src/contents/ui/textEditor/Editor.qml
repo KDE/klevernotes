@@ -7,7 +7,17 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
 ColumnLayout{
+    property alias title: header.text
+    property alias path: display.path
     anchors.fill:parent
+
+    Kirigami.Heading {
+        id:header
+        Layout.fillWidth: true
+        wrapMode: Text.WordWrap
+        type: Kirigami.Heading.Secondary
+    }
+
     TextToolBar{
         id:toolbar
         document:display.document
@@ -20,6 +30,4 @@ ColumnLayout{
         Layout.fillWidth:true
         Layout.fillHeight:true
     }
-
-
 }

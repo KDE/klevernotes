@@ -12,81 +12,180 @@ ToolBar {
     id: mainToolBar
 
     property QtObject treeView;
+    readonly property QtObject infoRow : treeView.currentlySelected
 
+    function getName(useCase,shownName,realName,parentPath,callingAction,newItem){
+        let component = Qt.createComponent("qrc:/contents/ui/dialogs/NamingDialog.qml")
+        if (component.status == Component.Ready) {
+            var dialog = component.createObject(root);
+
+            dialog.useCase = useCase
+            dialog.shownName = shownName
+            dialog.realName = realName
+            dialog.parentPath = parentPath
+            dialog.callingAction = callingAction
+            dialog.newItem = newItem
+            dialog.open()
+            dialog.nameField.selectAll()
+            dialog.nameField.forceActiveFocus()
+        }
+    }
+
+    function makeRow(subEntryColumn,useCase,creatingPath,name,forcedLvl){
+        const newPath = creatingPath+"/"+name
+        console.log(useCase,creatingPath)
+        let lvl
+        switch(useCase) {
+            case "Category":
+                StorageHandler.makeCategory(creatingPath,name)
+                lvl = 0
+                break
+            case "Group":
+                StorageHandler.makeGroup(creatingPath,name)
+                lvl = 1
+                break
+            case "Note":
+                StorageHandler.makeNote(creatingPath,name)
+                lvl = 2
+                break
+        }
+        const newRowData = View.hierarchy(newPath,lvl)
+        subEntryColumn.addRow(newRowData,forcedLvl,true)
+    }
 
     Kirigami.Action {
         id: createCategoryAction
         icon.name: "journal-new"
         // shortcut: "ctrl+l"
+        property bool isActive : false
+        property string name
+        onNameChanged: {
+            if (isActive) {
+                makeRow(treeView.subEntryColumn,"Category",Config.storagePath,name)
+                isActive = false
+                name = ""
+            }
+        }
+
         onTriggered: {
-            // console.log()
-            // treeView.currentlySelected.useCase
-            console.log("Create Cat",Config.storagePath)}
+            isActive = true
+            const objectName = Config.defaultCategoryName
+            mainToolBar.getName("Category",objectName,objectName,Config.storagePath,createCategoryAction,true)
+        }
     }
     Kirigami.Action {
         id: createGroupAction
         icon.name: "folder-new"
-        onTriggered: {
-            let categoryPath;
 
-            const useCase = treeView.currentlySelected.useCase
-            switch(useCase) {
+        property bool isActive : false
+        property string categoryPath
+        property QtObject subEntryColumn
+        property string name
+        onNameChanged: {
+            if (isActive) {
+                makeRow(subEntryColumn,"Group",categoryPath,name)
+                isActive = false
+                name = ""
+            }
+        }
+
+        onTriggered: {
+            console.log("HEY")
+            isActive = true
+            const parentRow = infoRow.parentRow
+
+            switch(infoRow.useCase) {
                 case "Category":
-                    categoryPath = treeView.currentlySelected.path
+                    categoryPath = infoRow.path
+                    subEntryColumn = infoRow.subEntryColumn
                     break;
                 case "Group":
-                    categoryPath = treeView.currentlySelected.parentRow.path
+                    categoryPath = infoRow.parentPath
+                    subEntryColumn = parentRow.subEntryColumn
                     break;
                 case "Note":
-                    const parentRow = treeView.currentlySelected.parentRow
                     // A note can be inside a group or a category
-                    categoryPath = (parentRow.useCase == "Group") ? parentRow.parentRow.path : parentRow.path
+                    if (parentRow.useCase == "Group"){
+                        categoryPath = parentRow.parentPath
+                        subEntryColumn = parentRow.parentRow.subEntryColumn
+                    }
+                    else {
+                        categoryPath = parentRow.path
+                        subEntryColumn = parentRow.subEntryColumn
+                    }
                     break;
             }
-            console.log("create group",categoryPath)
+
+            const objectName = Config.defaultGroupName
+            mainToolBar.getName("Group",objectName,objectName,categoryPath,createGroupAction,true)
         }
     }
 
     Kirigami.Action {
         id: createNoteAction
         icon.name: "document-new"
-        onTriggered: {
-            let groupPath;
 
-            const useCase = treeView.currentlySelected.useCase
-            switch(useCase) {
+        property bool isActive : false
+        property string groupPath
+        property QtObject subEntryColumn
+        property string name
+        property int forcedLvl
+        onNameChanged: {
+            if (isActive) {
+                makeRow(subEntryColumn,"Note",groupPath,name,forcedLvl)
+                isActive = false
+                name = ""
+                forcedLvl = undifined
+            }
+        }
+
+        onTriggered: {
+            isActive = true
+            switch(infoRow.useCase) {
                 case "Category":
-                    groupPath = treeView.currentlySelected.path+"/.BaseGroup"
+                    groupPath = infoRow.path+"/.BaseGroup"
+                    subEntryColumn = infoRow.subEntryColumn
+                    forcedLvl = 1
                     break;
                 case "Group":
-                    groupPath = treeView.currentlySelected.path
+                    groupPath = infoRow.path
+                    subEntryColumn = infoRow.subEntryColumn
                     break;
                 case "Note":
-                    const parentRow = treeView.currentlySelected.parentRow
-                    // A note can be inside a group or a category
-                    groupPath = (parentRow.useCase == "Group") ? parentRow.path : parentRow.path+"/.BaseGroup"
+                    groupPath = infoRow.parentPath
+                    subEntryColumn = infoRow.parentRow.subEntryColumn
                     break;
             }
-            console.log("create note",groupPath)
+
+            const objectName = Config.defaultNoteName
+            mainToolBar.getName("Note",objectName,objectName,groupPath,createNoteAction,true)
         }
     }
 
     Kirigami.Action{
-        id: rename
+        id: renameAction
         icon.name: "edit-rename"
-        onTriggered: {
-            treeView.itemEdtiting = !treeView.itemEdtiting
 
-            const textDisplay = treeView.currentlySelected.textDisplay
-
-            // textDisplay.focus = false
-            // textDisplay.readOnly = !textDisplay.readOnly
-            if (!textDisplay.readOnly){
-                textDisplay.forceActiveFocus()
-                textDisplay.autoScroll = !textDisplay.autoScroll
-                textDisplay.cursorPosition = 0
-                textDisplay.selectAll()
+        property bool isActive : false
+        property string name : infoRow.textDisplay.text
+        onNameChanged: {
+            if (isActive) {
+                infoRow.displayedName = name
+                if (infoRow.name == ".BaseCategory") {
+                    Config.categoryDisplayName = name
+                }
+                else {
+                    const oldPath = infoRow.path
+                    const newPath = infoRow.parentPath+"/"+name
+                    StorageHandler.rename(oldPath,newPath)
+                }
+                isActive = false
             }
+        }
+
+        onTriggered: {
+            isActive = true
+            mainToolBar.getName(infoRow.useCase,name,infoRow.name,infoRow.parentPath,renameAction,false)
         }
     }
 
@@ -95,37 +194,30 @@ ToolBar {
         anchors.fill: parent
         spacing: 0
 
-
         ToolButton {
             action: createCategoryAction
-            ToolTip.delay: 1000
-            ToolTip.timeout: 5000
+            ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new category")
         }
         ToolButton {
             action: createGroupAction
-            ToolTip.delay: 1000
-            ToolTip.timeout: 5000
+            ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new group")
         }
         ToolButton {
             action: createNoteAction
-            ToolTip.delay: 1000
-            ToolTip.timeout: 5000
+            ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new note")
         }
         ToolButton {
-            action: rename
-            ToolTip.delay: 1000
-            ToolTip.timeout: 5000
+            action: renameAction
+            ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Rename")
         }
-
-        Item { Layout.fillWidth: true
-        }
+        Item { Layout.fillWidth: true}
     }
 }

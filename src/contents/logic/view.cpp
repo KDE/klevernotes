@@ -12,6 +12,7 @@
 #include <QStringList>
 #include <QJsonArray>
 #include <QList>
+#include "kleverconfig.h"
 
 View::View(QObject *parent)
     : QObject(parent)
@@ -30,6 +31,11 @@ QJsonObject View::hierarchy(QString path, int lvl)
     QJsonObject final = QJsonObject();
     QFileInfo testingFile(path);
     final["name"] = QJsonValue(testingFile.fileName());
+
+    final["displayedName"] = (final["name"] == ".BaseCategory")
+        ? QJsonValue(KleverConfig::categoryDisplayName())
+        : QJsonValue(final["name"]);
+
     final["path"] = QJsonValue(testingFile.filePath());
     final["lvl"] = QJsonValue(lvl);
 
@@ -62,23 +68,32 @@ QJsonObject View::hierarchy(QString path, int lvl)
 
             if (name == ".directory") continue;
 
-            QJsonObject entryInfo = hierarchy(nextPath,lvl+1);
-            if (name == ".BaseGroup")
-            {
-                QJsonArray groupContent = entryInfo["content"].toArray();
+            if (lvl+1 < 3) {
+                QJsonObject entryInfo = hierarchy(nextPath,lvl+1);
+                // A switch could have been nice here but you can't do that with string ;'(
+                if (name == ".BaseGroup")
+                {
+                    QJsonArray groupContent = entryInfo["content"].toArray();
 
-                foreach (const QJsonValue & value, groupContent) {
-                    QJsonObject object = value.toObject() ;
-                    object["lvl"] = QJsonValue(object["lvl"].toInt()-1);
-                    content.append(QJsonValue(object));
+                    for (int i = groupContent.size(); i--> 0;)
+                    {
+                        QJsonObject object = groupContent[i].toObject() ;
+                        object["lvl"] = QJsonValue(object["lvl"].toInt()-1);
+                        content.insert(0,QJsonValue(object));
+                    }
                 }
-            }
-            else
-            {
-                content.append(QJsonValue(entryInfo));
+                else if (name == ".BaseCategory")
+                {
+                    content.insert(0,QJsonValue(entryInfo));
+                }
+                else
+                {
+                    content.append(QJsonValue(entryInfo));
+                }
             }
         }
     }
+
     final["content"] = QJsonValue(content);
 
     return final;

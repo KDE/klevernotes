@@ -10,11 +10,11 @@ Kirigami.PromptDialog {
     id: textPromptDialog
     title: "Klever Notes Storage"
 
-    subtitle:i18n("It looks like this is your first time using this app!\n\nPlease choose a location for your future Klever Note storage or select an existing one.")
+    subtitle:i18n("It looks like this is your first time using this app!\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
 
     property string folder
     property string userChoice
-    standardButtons: Kirigami.Dialog.None
+    standardButtons: Kirigami.Dialog.NoButton
 
     function getFolder() {
         let component = Qt.createComponent("qrc:/contents/ui/dialogs/FolderChooserDialog.qml")
@@ -44,31 +44,30 @@ Kirigami.PromptDialog {
     ]
 
     onFolderChanged: {
-        var folderPath = textPromptDialog.folder
+        let folderPath = KleverUtility.getPath(textPromptDialog.folder)
         if (userChoice === "Storage created at "){
-            folderPath = textPromptDialog.folder.concat("/.KleverNotes")
+            folderPath = folderPath.concat("/.KleverNotes")
+            StorageHandler.makeStorage(folderPath)
         }
 
         var pathEnd = folderPath.substring(folderPath.length,folderPath.length-13)
 
         if (pathEnd !== "/.KleverNotes"){
             textPromptDialog.close();
-            var subtitle = i18n("It looks like the selected folder is not a Klever Notes storage.\n\nPlease choose a location for your future Klever Note storage or select an existing one.")
+            const subtitle = i18n("It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
             root.checkForStorage(subtitle)
+            return
         }
-        else{
-            StorageHandler.makeStorage(folderPath)
-            Config.storagePath = folderPath
+        Config.storagePath = folderPath
 
-            var fullNotification = textPromptDialog.userChoice+KleverUtility.getPath(folderPath)
+        const fullNotification = textPromptDialog.userChoice+folderPath
 
-            showPassiveNotification(fullNotification);
-            textPromptDialog.close();
-        }
+        showPassiveNotification(fullNotification);
+        textPromptDialog.close();
     }
 
     onRejected:{
-        var subtitle = i18n("This step is mandatory, please don't skip it.\n\nChoose a location to your future Klever Note storage or select an existing one.")
+        const subtitle = i18n("This step is mandatory, please don't skip it.\n\nChoose a location to your future KleverNotes storage or select an existing one.")
         root.checkForStorage(subtitle)
     }
 }

@@ -9,7 +9,7 @@ import org.qtproject.example 1.0
 Item {
     id:root
     readonly property var document:document
-    property string path: "qrc:/example.html"
+    property string path
 
     TextArea {
         Accessible.name: "document"
@@ -20,7 +20,6 @@ Item {
         persistentSelection: true
         text: document.text
         textFormat: Qt.RichText
-        Component.onCompleted: forceActiveFocus()
     }
 
     MessageDialog {

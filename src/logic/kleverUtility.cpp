@@ -28,11 +28,10 @@ bool KleverUtility::exist(QString url)
     return QDir().exists(url);
 }
 
-void KleverUtility::create(QUrl url)
+void KleverUtility::create(QString path)
 {
     QDir dir;
 
-    QString path = getPath(url);
     if (!exist(path))
     {
         dir.mkpath(path);

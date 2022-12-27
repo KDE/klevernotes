@@ -19,9 +19,12 @@
         <file>contents/ui/sideBar/Sidebar.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
         <file>contents/ui/sideBar/ActionBar.qml</file>
+        <file>contents/ui/sideBar/Expandable.qml</file>
+        <file>contents/ui/sideBar/SubEntryColumn.qml</file>
 
         <file>contents/ui/dialogs/StorageDialog.qml</file>
         <file>contents/ui/dialogs/FolderChooserDialog.qml</file>
         <file>contents/ui/dialogs/RenameErrorDialog.qml</file>
-    </qresource>
+        <file>contents/ui/dialogs/NamingDialog.qml</file>
+        </qresource>
 </RCC>

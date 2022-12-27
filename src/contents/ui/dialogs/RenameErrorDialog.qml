@@ -9,10 +9,9 @@ Kirigami.PromptDialog {
     id: textPromptDialog
     title: "Klever Notes Storage"
 
-    property QtObject textDisplay
     property string useCase
-
+    property QtObject nameField
     subtitle:i18n("This "+useCase+" already exist.\nPlease choose another name for it.")
 
-    onRejected: textDisplay.selectAll()
+    onRejected: nameField.selectAll()
 }

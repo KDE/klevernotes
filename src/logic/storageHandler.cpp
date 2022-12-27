@@ -22,46 +22,27 @@ void StorageHandler::makeNote(QString groupPath, QString noteName)
     QFile todo(notePath+"/todo.html");
     QFile docu(notePath+"/docu.html");
 
-    if (!noteDir.exists(notePath))
-    {
-        noteDir.mkpath(notePath);
-
-        note.open(QIODevice::ReadWrite);
-        todo.open(QIODevice::ReadWrite);
-        docu.open(QIODevice::ReadWrite);
-    }
+    util.create(notePath);
+    note.open(QIODevice::ReadWrite);
+    todo.open(QIODevice::ReadWrite);
+    docu.open(QIODevice::ReadWrite);
 }
 
 void StorageHandler::makeGroup(QString categoryPath, QString groupName)
 {
-    QDir group;
-    QString groupPath = categoryPath.append(groupName);
-    if (!group.exists(categoryPath))
-    {
-        group.mkpath(groupPath);
-    }
-    QString noteName = "TEST";
-    makeNote(groupPath,noteName);
+    QString groupPath = categoryPath.append("/"+groupName);
+    util.create(groupPath);
 }
 
 void StorageHandler::makeCategory(QString storagePath, QString categoryName)
 {
-    QDir category;
-    QString categoryPath = storagePath.append(categoryName);
-    if (!category.exists(categoryPath))
-    {
-        category.mkpath(storagePath);
-    }
-    QString groupName = "/.BaseGroup";
-    makeGroup(categoryPath,groupName);
+    QString categoryPath = storagePath.append("/"+categoryName);
+    makeGroup(categoryPath,".BaseGroup");
 }
 
-void StorageHandler::makeStorage(QUrl storageUrl)
+void StorageHandler::makeStorage(QString storagePath)
 {
-    util.create(storageUrl);
-    QString categoryName = "/.BaseCategory";
-    QString storagePath = util.getPath(storageUrl);
-    makeCategory(storagePath,categoryName);
+    makeCategory(storagePath,"/.BaseCategory");
 }
 
 bool StorageHandler::rename(QString oldPath, QString newPath)

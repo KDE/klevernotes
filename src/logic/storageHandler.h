@@ -15,7 +15,7 @@ public:
     explicit StorageHandler(QObject *parent = nullptr);
 
 public slots:
-    void makeStorage(QUrl storageUrl);
+    void makeStorage(QString storagePath);
     void makeCategory(QString storagePath, QString categoryName);
     void makeGroup(QString categoryPath, QString groupName);
     void makeNote(QString groupPath, QString noteName);

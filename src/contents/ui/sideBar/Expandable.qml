@@ -1,0 +1,111 @@
+import QtQuick 2.15
+import org.kde.kirigami 2.19 as Kirigami
+import QtQuick.Controls 2.15 as Controls
+import QtQuick.Layouts 1.3
+import org.kde.Klever 1.0
+
+Column {
+    id: infoRow
+
+    width: parent.width
+    height: childrenRect.height
+
+    property QtObject parentRow
+    // Not super clean but this make it easier to handle rename
+    property string parentPath: {
+        // The parentRow possible the subEntryColumn, so we need to acces is parent
+        const parPath = parentRow.path
+
+        // The path is undifined if the parentRow is the treeview
+        return (parPath != undefined)
+                    ? (useCase === "Note" && parentRow.useCase === "Category")
+                        ? parPath+"/.BaseGroup"
+                        : parPath
+                    : Config.storagePath
+    }
+    property alias displayedName: textDisplay.text
+    property string name
+    readonly property string path: parentPath+"/"+name
+
+    property bool expanded
+    // (infoRow.useCase === "Category")
+    property string useCase
+    property int lvl
+
+    readonly property QtObject mouseArea: controlRoot
+    readonly property QtObject textDisplay: textDisplay
+    readonly property QtObject subEntryColumn: subEntryColumn
+    Rectangle{
+        id:visualRow
+        width: infoRow.width
+        height: textDisplay.height
+        visible: true
+
+        color: (tree.currentlySelected === infoRow)
+                    ? Kirigami.Theme.highlightColor
+                    : "transparent"
+
+        Kirigami.Icon {
+            id: carot
+            x: 20 * infoRow.lvl
+            width: Kirigami.Units.iconSizes.small
+            height: textDisplay.height
+            source: infoRow.expanded ? "go-down-symbolic" : "go-next-symbolic"
+            isMask: true
+            color: !(tree.currentlySelected === infoRow)
+                    ?(controlRoot.hovered)
+                        ? Kirigami.Theme.highlightColor
+                        : Kirigami.Theme.textColor
+                    : Kirigami.Theme.textColor
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: Kirigami.Units.shortDuration;
+                    easing.type: Easing.InOutQuad
+                }
+            }
+            visible: infoRow.useCase != "Note"
+        }
+
+
+        Text {
+            id: textDisplay
+            x: carot.x + 20
+            height: 25
+            width: infoRow.width-x
+            font.pointSize: 12
+
+            color: !(tree.currentlySelected === infoRow)
+                    ?(controlRoot.hovered)
+                        ? Kirigami.Theme.highlightColor
+                        : Kirigami.Theme.textColor
+                    : Kirigami.Theme.textColor
+        }
+
+        MouseArea {
+            id: controlRoot
+            anchors.fill: parent
+
+            hoverEnabled: true
+            property bool hovered : false
+            onEntered: hovered = true
+            onExited: hovered = false
+            onClicked: {
+                if (infoRow.useCase != "Note") infoRow.expanded = !infoRow.expanded;
+                tree.currentlySelected = infoRow
+                visualRow.forceActiveFocus()
+            }
+            enabled: true
+        }
+
+        Keys.onPressed: console.log("hey")
+    }
+
+
+    SubEntryColumn {
+        id: subEntryColumn
+        visible: opacity > 0
+        opacity: infoRow.expanded ? 1 : 0
+        delimiter: 0
+    }
+}
