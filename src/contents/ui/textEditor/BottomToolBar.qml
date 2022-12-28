@@ -1,8 +1,16 @@
+
+/*
+ * BASED ON :
+ * https://invent.kde.org/plasma-mobile/kclock/-/blob/master/src/kclock/qml/components/BottomToolbar.qml
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020-2021 Devin Lin <espidev@gmail.com>
+ *
+ */
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.1
 import org.kde.kirigami 2.19 as Kirigami
-import QtGraphicalEffects 1.12
 
 Kirigami.NavigationTabBar {
     id: tool

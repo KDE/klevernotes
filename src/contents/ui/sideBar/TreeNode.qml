@@ -1,7 +1,15 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+
+/*
+ * BASED ON :
+ * https://gist.github.com/anonymous/85b53283c66395f98302
+ */
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.3
+
 import org.kde.Klever 1.0
 
 Column {
@@ -10,7 +18,8 @@ Column {
     width: parent.width
     height: childrenRect.height
 
-    property QtObject parentRow
+    property alias displayedName: textDisplay.text
+
     // Not super clean but this make it easier to handle rename
     property string parentPath: {
         // The parentRow possible the subEntryColumn, so we need to acces is parent
@@ -23,15 +32,13 @@ Column {
                         : parPath
                     : Config.storagePath
     }
-    property alias displayedName: textDisplay.text
+    property QtObject parentRow
     property string name
-    readonly property string path: parentPath+"/"+name
-
     property bool expanded
-    // (infoRow.useCase === "Category")
     property string useCase
     property int lvl
 
+    readonly property string path: parentPath+"/"+name
     readonly property QtObject mouseArea: controlRoot
     readonly property QtObject textDisplay: textDisplay
     readonly property QtObject subEntryColumn: subEntryColumn
@@ -80,6 +87,8 @@ Column {
                         ? Kirigami.Theme.highlightColor
                         : Kirigami.Theme.textColor
                     : Kirigami.Theme.textColor
+
+            elide: Text.ElideRight
         }
 
         MouseArea {
@@ -97,7 +106,7 @@ Column {
             }
             enabled: true
         }
-
+//         For futur keyboard nav
         Keys.onPressed: console.log("hey")
     }
 

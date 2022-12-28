@@ -3,8 +3,46 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 import QtQuick.Dialogs 1.1
 import org.qtproject.example 1.0
+/*
+Item{
+    id:holder
+    readonly property var document:document
+    property string path
+
+    GridLayout{
+        anchors.fill : parent
+        columns: (parent.width > 600) ? 2 : 1
+        rows : (columns > 1) ? 1 : 2
+        TextArea{
+            // Accessible.name: "document"
+            id: textArea
+
+            persistentSelection: true
+            // text: document.text
+
+            Layout.preferredHeight: (parent.columns === 2) ? parent.height : parent.height/2
+            Layout.preferredWidth: (parent.columns === 2) ? parent.width/2 : parent.width
+
+            wrapMode: TextEdit.WrapAnywhere
+        }
+
+        TextArea{
+            // Accessible.name: "document"
+            id: viewArea
+
+            text: textArea.text
+            textFormat: Qt.MarkdownText
+            Layout.preferredHeight: (parent.columns === 2) ? parent.height : parent.height/2
+            Layout.preferredWidth: (parent.columns === 2) ? parent.width/2 : parent.width
+            readOnly: true
+            wrapMode: TextEdit.WrapAnywhere
+        }
+    }
+}
+*/
 
 Item {
     id:root

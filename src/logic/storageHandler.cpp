@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <QDir>
 #include <QString>
-#include <QUrl>
 #include "kleverUtility.h"
 
 StorageHandler::StorageHandler(QObject *parent)

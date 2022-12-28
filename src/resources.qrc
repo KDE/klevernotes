@@ -19,7 +19,7 @@
         <file>contents/ui/sideBar/Sidebar.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
         <file>contents/ui/sideBar/ActionBar.qml</file>
-        <file>contents/ui/sideBar/Expandable.qml</file>
+        <file>contents/ui/sideBar/TreeNode.qml</file>
         <file>contents/ui/sideBar/SubEntryColumn.qml</file>
 
         <file>contents/ui/dialogs/StorageDialog.qml</file>

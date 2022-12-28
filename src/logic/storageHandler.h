@@ -3,7 +3,6 @@
 #pragma once
 
 #include <QObject>
-#include <QUrl>
 #include "kleverUtility.h"
 
 class StorageHandler : public QObject

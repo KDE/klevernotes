@@ -1,8 +1,11 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+
 /*
- * SPDX-FileCopyrightText: (C) 2017 Atul Sharma <atulsharma406@gmail.com>
- *
- * SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
- */
+ * BASED ON :
+ * https://invent.kde.org/graphics/koko/-/blob/master/src/qml/Sidebar.qml
+ * 2017 Atul Sharma <atulsharma406@gmail.com>
+*/
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.3
@@ -82,7 +85,7 @@ Kirigami.OverlayDrawer {
         Kirigami.BasicListItem {
                 text: i18n("About Klever")
                 icon: "help-about"
-                onClicked: applicationWindow().switchToPage('About')
+                onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
         }
 
     }
@@ -104,7 +107,6 @@ Kirigami.OverlayDrawer {
                 return
             }
         }
-        console.log("hey",Config.storagePath)
         treeview.model = View.hierarchy(Config.storagePath,-1)
     }
 

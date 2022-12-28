@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 
@@ -52,7 +55,7 @@ Column{
     function addRow(data,forcedLvl,reorder){
         subEntryColumn.entries.push(data.displayedName)
 
-        let component = Qt.createComponent("qrc:/contents/ui/sideBar/Expandable.qml")
+        let component = Qt.createComponent("qrc:/contents/ui/sideBar/TreeNode.qml")
         if (component.status == Component.Ready) {
             let row = component.createObject(subEntryColumn)
             row.parentRow = subEntryColumn.parent
