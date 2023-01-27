@@ -1,86 +1,96 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+// This is based on https://github.com/CrazyCxl/markdown-editor
+// SPDX-License-Identifier: GPL-3.0
+
+
+import QtQuick 2.2
+import QtQuick.Controls 2.2
+import QtWebChannel 1.0
+import QtWebEngine 1.6
 import QtQuick.Layouts 1.15
-import QtQuick.Dialogs 1.1
-import org.qtproject.example 1.0
-/*
-Item{
-    id:holder
-    readonly property var document:document
-    property string path
+import org.kde.kirigami 2.19 as Kirigami
 
-    GridLayout{
-        anchors.fill : parent
-        columns: (parent.width > 600) ? 2 : 1
-        rows : (columns > 1) ? 1 : 2
-        TextArea{
-            // Accessible.name: "document"
-            id: textArea
+import qtMdEditor 1.0 as QtMdEditor
+import org.kde.Klever 1.0
 
-            persistentSelection: true
-            // text: document.text
+RowLayout {
+    id: frame
+    spacing:0
 
-            Layout.preferredHeight: (parent.columns === 2) ? parent.height : parent.height/2
-            Layout.preferredWidth: (parent.columns === 2) ? parent.width/2 : parent.width
+    property alias text: editorLink.text
 
-            wrapMode: TextEdit.WrapAnywhere
+    Kirigami.Card{
+        id:background
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+
+        WebEngineView{
+            id:web_view
+            width: background.width - 4
+            height:background.height - 4
+            x: 2
+            y: 2
+            url: "qrc:/index.html"
+            settings.showScrollBars:false
+            focus: true
+            webChannel:WebChannel{
+                registeredObjects:[editorLink,cssLink]
+            }
+
+            QtMdEditor.QmlLinker{
+                id:editorLink
+                WebChannel.id:"linkToEditor"
+            }
+
+            QtMdEditor.QmlLinker{
+                id:cssLink
+                css: {"key":"value"}
+                WebChannel.id:"linkToCss"
+            }
+
+            onLoadProgressChanged: if (loadProgress === 100) {
+                const css = {
+                    '--body-color':`${Kirigami.Theme.backgroundColor}`,
+                    '--font': `${Kirigami.Theme.defaultFont}`,
+                    '--textColor': `${Kirigami.Theme.textColor}`,
+                    '--titleColor': `${Kirigami.Theme.disabledTextColor}`,
+                    '--linkColor': `${Kirigami.Theme.linkColor}`,
+                    '--visitedLinkColor': `${Kirigami.Theme.visitedLinkColor}`,
+                    '--codeColor': `${Kirigami.Theme.alternateBackgroundColor}`,
+                };
+                cssLink.css = css
+            }
         }
 
-        TextArea{
-            // Accessible.name: "document"
-            id: viewArea
+        MouseArea{
+            anchors.fill:web_view
+            enabled:true
 
-            text: textArea.text
-            textFormat: Qt.MarkdownText
-            Layout.preferredHeight: (parent.columns === 2) ? parent.height : parent.height/2
-            Layout.preferredWidth: (parent.columns === 2) ? parent.width/2 : parent.width
-            readOnly: true
-            wrapMode: TextEdit.WrapAnywhere
+            onWheel:{
+                (wheel.angleDelta.y > 0)
+                    ? vbar.decrease()
+                    : vbar.increase()
+            }
         }
     }
-}
-*/
 
-Item {
-    id:root
-    readonly property var document:document
-    property string path
-
-    TextArea {
-        Accessible.name: "document"
-        id: textArea
-        anchors.fill:parent
-
-        baseUrl: "qrc:/"
-        persistentSelection: true
-        text: document.text
-        textFormat: Qt.RichText
-    }
-
-    MessageDialog {
-        id: errorDialog
-    }
-
-    DocumentHandler {
-        id: document
-        target: textArea
-        cursorPosition: textArea.cursorPosition
-        selectionStart: textArea.selectionStart
-        selectionEnd: textArea.selectionEnd
-        textColor: toolbar.colorDialog.color
-        Component.onCompleted: document.fileUrl = root.path
-        onFontSizeChanged: {
-            toolbar.fontSizeSpinBox.valueGuard = false
-            toolbar.fontSizeSpinBox.value = document.fontSize
-            toolbar.fontSizeSpinBox.valueGuard = true
+    ScrollBar {
+        id: vbar
+        hoverEnabled: true
+        active: hovered || pressed
+        orientation: Qt.Vertical
+        size: background.height / web_view.contentsSize.height
+        stepSize: 0.03
+        snapMode: ScrollBar.SnapOnRelease
+        onPositionChanged:  {
+            let scrollY = web_view.contentsSize.height*vbar.position + 5
+            web_view.runJavaScript("window.scrollTo(0,"+scrollY+")")
         }
 
-        onError: {
-            errorDialog.text = message
-            errorDialog.visible = true
-        }
+        Layout.row:0
+        Layout.column:1
+        Layout.fillHeight: true
     }
 }

@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 /*
- * BASED ON :
+ * LOOSELY BASED ON :
  * https://gist.github.com/anonymous/85b53283c66395f98302
  */
 import QtQuick 2.15
@@ -107,7 +107,7 @@ Column {
             enabled: true
         }
 //         For futur keyboard nav
-        Keys.onPressed: console.log("hey")
+        // Keys.onPressed: console.log("hey")
     }
 
 

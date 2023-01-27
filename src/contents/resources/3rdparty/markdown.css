@@ -1,0 +1,64 @@
+:root {
+  --body-color: ;
+  --font: ;
+  --textColor: ;
+  --titleColor: ;
+  --linkColor: ;
+  --visitedLinkColor: ;
+  --codeColor: ;
+}
+
+body{
+  color: var(--textColor);
+  background-color: var(--body-color);
+
+  font-size: 16px;
+  word-wrap: break-word;
+}
+h1, h2, h3, h4 {
+    color: var(--titleColor);
+    font-weight: 400;
+}
+a {
+    color: var(--linkColor);
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:visited {
+    color: var(--visitedLinkColor);
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+
+code {
+    background: var(--codeColor);
+}
+
+blockquote {
+    border-left:.3em solid var(--titleColor);
+    color: var(--titleColor);
+    padding-left: 5px;
+    margin-left:0;
+    font-style: italic;
+}
+
+hr {
+    width: 98%;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: var(--titleColor);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}

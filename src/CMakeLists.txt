@@ -7,9 +7,11 @@ add_executable(klever
     app.cpp
 
     logic/documentHandler.cpp
-    logic/storageHandler.cpp
     logic/kleverUtility.cpp
+    logic/storageHandler.cpp
 
+    contents/logic/mdHandler.cpp
+    contents/logic/qmlLinker.cpp
     contents/logic/view.cpp
 
     resources.qrc)
@@ -24,7 +26,10 @@ target_link_libraries(klever
     KF5::I18n
     KF5::CoreAddons
     KF5::ConfigCore
-    KF5::ConfigGui)
+    KF5::ConfigGui
+    Qt::WebChannel
+    Qt::WebEngine
+    Qt::WebEngineWidgets)
 
 if (ANDROID)
     kirigami_package_breeze_icons(ICONS
@@ -34,8 +39,6 @@ if (ANDROID)
         applications-graphics
     )
 endif()
-
-# add_subdirectory(contents/logic)
 
 kconfig_add_kcfg_files(klever GENERATE_MOC kleverconfig.kcfgc)
 install(TARGETS klever ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

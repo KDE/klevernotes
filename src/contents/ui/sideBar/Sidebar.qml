@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 /*
- * BASED ON :
+ * LOOSELY BASED ON :
  * https://invent.kde.org/graphics/koko/-/blob/master/src/qml/Sidebar.qml
  * 2017 Atul Sharma <atulsharma406@gmail.com>
 */
@@ -10,8 +10,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.15 as Controls
-
 import org.kde.kirigami 2.5 as Kirigami
+
 import org.kde.Klever 1.0
 
 

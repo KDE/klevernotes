@@ -15,16 +15,21 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "logic/storageHandler.h"
 #include "logic/documentHandler.h"
+#include "logic/storageHandler.h"
 #include "logic/kleverUtility.h"
+#include "contents/logic/mdHandler.h"
+#include "contents/logic/qmlLinker.h"
 #include "contents/logic/view.h"
 #include "kleverconfig.h"
+#include <QtWebEngine/QtWebEngine>
+
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
+    QtWebEngine::initialize();
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setApplicationName(QStringLiteral("Klever"));
 
@@ -52,6 +57,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     auto config = KleverConfig::self();
     QObject::connect(config, &KleverConfig::storagePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
+
+    qmlRegisterType<QmlLinker>("qtMdEditor", 1, 0, "QmlLinker");
+
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
     AboutType about;
@@ -66,10 +74,16 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KleverUtility kleverUtility;
     qmlRegisterSingletonInstance<KleverUtility>("org.kde.Klever", 1, 0, "KleverUtility", &kleverUtility);
 
+    DocumentHandler documentHandler;
+    qmlRegisterSingletonInstance<DocumentHandler>("org.kde.Klever", 1, 0, "DocumentHandler", &documentHandler);
+
+    MDHandler mdHandler;
+    qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);
+
     View view;
     qmlRegisterSingletonInstance<View>("org.kde.Klever", 1, 0, "View", &view);
 
-    qmlRegisterType<DocumentHandler>("org.qtproject.example", 1, 0, "DocumentHandler");
+    // qmlRegisterType<OldDocumentHandler>("org.qtproject.example", 1, 0, "OldDocumentHandler");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));

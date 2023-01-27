@@ -91,7 +91,6 @@ ToolBar {
         }
 
         onTriggered: {
-            console.log("HEY")
             isActive = true
             const parentRow = infoRow.parentRow
 

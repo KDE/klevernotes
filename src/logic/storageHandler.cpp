@@ -23,8 +23,11 @@ void StorageHandler::makeNote(QString groupPath, QString noteName)
 
     util.create(notePath);
     note.open(QIODevice::ReadWrite);
+    note.close();
     todo.open(QIODevice::ReadWrite);
+    todo.close();
     docu.open(QIODevice::ReadWrite);
+    docu.close();
 }
 
 void StorageHandler::makeGroup(QString categoryPath, QString groupName)
