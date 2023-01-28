@@ -23,6 +23,7 @@ ColumnLayout{
         textArea: editor.textArea
 
         Layout.fillWidth:true
+        Layout.preferredHeight: childrenRect.height
     }
 
     // This item can be seen as useless but it prevent a weird bug with the height not being adjusted

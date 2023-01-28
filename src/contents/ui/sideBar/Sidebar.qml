@@ -2,9 +2,10 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 /*
- * LOOSELY BASED ON :
+ * BASED ON :
  * https://invent.kde.org/graphics/koko/-/blob/master/src/qml/Sidebar.qml
  * 2017 Atul Sharma <atulsharma406@gmail.com>
+ * SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 import QtQuick 2.15
@@ -18,6 +19,7 @@ import org.kde.Klever 1.0
 
 Kirigami.OverlayDrawer {
     id:drawer
+
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
     handleOpenIcon.source: null
@@ -27,6 +29,8 @@ Kirigami.OverlayDrawer {
     modal: !applicationWindow().isMainPage() || !root.wideScreen
     onEnabledChanged: drawerOpen = enabled && !modal
     onModalChanged: drawerOpen = !modal && pageStack.layers.depth < 2
+    // Prevent it to being close while in wideScreen
+    closePolicy: Controls.Popup.CloseOnReleaseOutside
 
     leftPadding: 0
     rightPadding: 0
@@ -35,7 +39,7 @@ Kirigami.OverlayDrawer {
 
 
     property alias treeModel : treeview.model
-    // Place
+
     contentItem: ColumnLayout {
         id: column
         // FIXME: Dirty workaround for 385992

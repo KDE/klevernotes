@@ -43,7 +43,7 @@ QStringList MDHandler::getPositionLineInfo(QJsonArray lines, int position)
     return info;
 }
 
-QJsonObject MDHandler::getInstructions(QString selectedText,QStringList charsList)
+QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsList, bool checkLineEnd)
 {
     QJsonObject final = QJsonObject();
 
@@ -52,7 +52,7 @@ QJsonObject MDHandler::getInstructions(QString selectedText,QStringList charsLis
     final["lines"] = selectedLines;
 
     QJsonArray instructions;
-    bool allBold = false;
+    bool applyToAll = false;
     foreach(const QJsonValue & lineRef, selectedLines){
         QString line = lineRef.toString();
         instructions.append("remove");
@@ -62,17 +62,19 @@ QJsonObject MDHandler::getInstructions(QString selectedText,QStringList charsLis
         }
         bool skip = false;
         foreach(const QString & chars, charsList){
-            if (line.startsWith(chars) && line.endsWith(chars)){
+            if (line.startsWith(chars)){
                 skip = true;
+                if (checkLineEnd && !line.endsWith(chars))
+                    skip = false;
                 break;
             }
         }
         if (skip) continue;
-        allBold = true;
+        applyToAll = true;
         instructions[instructions.size()-1] = "apply";
     }
 
-    if (allBold){
+    if (applyToAll){
         for(int i=0; i < instructions.count(); ++i ){
             if (instructions[i] == "remove"){
                 instructions[i] = "none";

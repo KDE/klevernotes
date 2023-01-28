@@ -22,7 +22,7 @@ Column {
 
     // Not super clean but this make it easier to handle rename
     property string parentPath: {
-        // The parentRow possible the subEntryColumn, so we need to acces is parent
+        // The parentRow is possibly the subEntryColumn, so we need to acces is parent
         const parPath = parentRow.path
 
         // The path is undifined if the parentRow is the treeview

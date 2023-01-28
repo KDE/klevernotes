@@ -18,7 +18,7 @@ Kirigami.Page {
             if (editorLoader.status === Loader.Null) editorLoader.active = true;
 
             editorLoader.item.title = currentlySelected.displayedName
-            editorLoader.item.path = currentlySelected.path+"/note.html"
+            editorLoader.item.path = currentlySelected.path+"/note.md"
         }
     }
 

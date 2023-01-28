@@ -24,8 +24,16 @@ function getLineIndex(text,cursorPosition){
 
 function getCursorLine(text,cursorPosition){
     const lines = getLines(text)
-    console.log(lines)
+
     const lineIndex = getCursorLineIndex(lines,cursorPosition)
 
     return lines[lineIndex]
+}
+
+function getLineStart(text) {
+    return text.lastIndexOf('\n')+1
+}
+
+function getLineEnd(text) {
+    return text.indexOf('\n')-1
 }

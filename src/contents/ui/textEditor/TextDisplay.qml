@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 // This is based on https://github.com/CrazyCxl/markdown-editor
 // SPDX-License-Identifier: GPL-3.0
