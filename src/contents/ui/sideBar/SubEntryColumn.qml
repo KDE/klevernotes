@@ -62,8 +62,9 @@ Column{
             row.name = data.name
             row.displayedName = data.displayedName
             row.useCase = data.useCase
-            row.lvl = (forcedLvl) ? forcedLvl : data.lvl
+            row.lvl = (!forcedLvl || forcedLvl === Infinity) ? data.lvl : forcedLvl
             row.expanded = tree.currentlySelected.path.includes(row.path)
+            console.log(row.lvl)
 
             // This property will be usefull to reorder the category while keeping notes on top when we add an elem
             if (row.useCase === "Note" && subEntryColumn.parent.useCase === "Category" && !reorder) subEntryColumn.delimiter += 1

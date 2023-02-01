@@ -135,7 +135,7 @@ ToolBar {
                 makeRow(subEntryColumn,"Note",groupPath,name,forcedLvl)
                 isActive = false
                 name = ""
-                forcedLvl = undifined
+                forcedLvl = Infinity
             }
         }
 
