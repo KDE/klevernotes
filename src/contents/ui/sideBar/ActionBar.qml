@@ -34,7 +34,6 @@ ToolBar {
 
     function makeRow(subEntryColumn,useCase,creatingPath,name,forcedLvl){
         const newPath = creatingPath+"/"+name
-        console.log(useCase,creatingPath)
         let lvl
         switch(useCase) {
             case "Category":
