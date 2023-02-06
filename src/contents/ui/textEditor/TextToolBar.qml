@@ -30,6 +30,8 @@ Kirigami.Card{
             let end = selectionEnd
             let applied = false
 
+            console.log(info.lines)
+
             for (var i = lines.length-1 ; i >= 0; i--){
                 const line = lines[i]
                 const instruction = instructions[i]
@@ -142,6 +144,16 @@ Kirigami.Card{
                 id: strikethroughAction
                 icon.name: "format-text-strikethrough"
                 onTriggered: mainToolBar.handleAction(textArea.selectionStart,textArea.selectionEnd,["~~"],true)
+            },
+            Kirigami.Action {
+                id: codeBlockAction
+                icon.name: "format-text-code"
+                onTriggered: mainToolBar.handleAction(textArea.selectionStart,textArea.selectionEnd,["\n```\n"],true)
+            },
+            Kirigami.Action {
+                id: quotekAction
+                icon.name: "format-text-blockquote"
+                onTriggered: mainToolBar.handleAction(textArea.selectionStart,textArea.selectionEnd,["> "],false)
             }
         ]
     }
