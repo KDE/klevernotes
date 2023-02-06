@@ -49,14 +49,16 @@ QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsLi
 
 
     QJsonArray selectedLines = getLines(selectedText);
+    // if (selectedLines.isEmpty()) {selectedLines.append("");};
     final["lines"] = selectedLines;
+
 
     QJsonArray instructions;
     bool applyToAll = false;
     foreach(const QJsonValue & lineRef, selectedLines){
         QString line = lineRef.toString();
         instructions.append("remove");
-        if (line.isEmpty()){
+        if (line.isEmpty() && selectedLines.size() > 1){
             instructions[instructions.size()-1] = "none";
             continue;
         }
@@ -82,7 +84,6 @@ QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsLi
         }
     }
     final["instructions"] = instructions;
-
 
     return final;
 }

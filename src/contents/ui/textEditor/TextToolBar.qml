@@ -57,6 +57,7 @@ Kirigami.Card{
         }
 
         function handleAction(selectionStart,selectionEnd,specialChars,multiPlaceApply) {
+            console.log(selectionStart,selectionEnd)
             const selectedText = textArea.getText(selectionStart,selectionEnd)
             const info = MDHandler.getInstructions(selectedText,specialChars,multiPlaceApply)
 
@@ -73,6 +74,7 @@ Kirigami.Card{
             let endIndex = endingText.indexOf('\n')-1
             const endBlockIndex = (endIndex < 0) ? textArea.text.length : textArea.selectionEnd+endingText
 
+            console.log(startBlockIndex,endBlockIndex)
             return [startBlockIndex,endBlockIndex]
         }
 
