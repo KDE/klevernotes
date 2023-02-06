@@ -24,6 +24,7 @@ QString DocumentHandler::readNote(QString path)
         while (!stream.atEnd()){
             line.append(stream.readLine()+"\n");
         }
+        line.remove(line.length()-1, 2);
     }
     file.close();
     return line;
@@ -32,7 +33,7 @@ QString DocumentHandler::readNote(QString path)
 void DocumentHandler::writeNote(QString note, QString path)
 {
     QFile file(path);
-    if (file.open(QIODevice::ReadWrite)) {
+    if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << note << Qt::endl;
     }

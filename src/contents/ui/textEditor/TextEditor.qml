@@ -10,15 +10,38 @@ ScrollView {
     id: view
 
     property string path
-    onPathChanged: textArea.text = DocumentHandler.readNote(path)
     property string text: textArea.text
-
+    property bool modified : false
     readonly property TextArea textArea: textArea
+
+    onPathChanged: {
+        textArea.tempBuff = true ;
+        textArea.text = DocumentHandler.readNote(path) ;
+        modified = false ;
+        textArea.tempBuff = false
+        noteSaverTimer.restart()
+    }
 
     TextArea{
         id: textArea
         persistentSelection: true
 
         wrapMode: TextEdit.WrapAnywhere
+
+        property bool tempBuff
+        onTextChanged : if (!tempBuff) modified = true
+    }
+
+    Timer {
+        id: noteSaverTimer
+        interval: 10000
+        onTriggered: saveNote(textArea.text, view.path)
+    }
+
+    function saveNote (text, path) {
+        if (modified) {
+            DocumentHandler.writeNote(text, path)
+            modified = false
+        }
     }
 }

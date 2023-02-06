@@ -17,8 +17,14 @@ Kirigami.Page {
         if (currentlySelected.useCase === "Note") {
             if (editorLoader.status === Loader.Null) editorLoader.active = true;
 
-            editorLoader.item.title = currentlySelected.displayedName
-            editorLoader.item.path = currentlySelected.path+"/note.md"
+            const editorView = editorLoader.item
+            const editor = editorView.editor
+            const oldPath = editorView.path
+            const text = editor.textArea.text
+            editor.saveNote(text, oldPath)
+
+            editorView.title = currentlySelected.displayedName
+            editorView.path = currentlySelected.path+"/note.md"
         }
     }
 
@@ -32,9 +38,7 @@ Kirigami.Page {
 
     Component {
         id: editorHolder
-        EditorView{
-            id:editor
-        }
+        EditorView{}
     }
 
     Text{

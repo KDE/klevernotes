@@ -19,7 +19,8 @@ RowLayout {
     id: frame
     spacing:0
 
-    property alias text: editorLink.text
+    property string text
+    onTextChanged: if(web_view.loadProgress === 100) editorLink.text = text
 
     Kirigami.Card{
         id:background
@@ -61,6 +62,8 @@ RowLayout {
                     '--codeColor': `${Kirigami.Theme.alternateBackgroundColor}`,
                 };
                 cssLink.css = css
+                // Dirty workaround
+                editorLink.text = text
             }
         }
 
