@@ -12,12 +12,12 @@ Kirigami.Page {
     title: i18n("Main Page")
 
     property QtObject currentlySelected
+    property QtObject editorView : editorLoader.item
 
     onCurrentlySelectedChanged: {
         if (currentlySelected.useCase === "Note") {
             if (editorLoader.status === Loader.Null) editorLoader.active = true;
 
-            const editorView = editorLoader.item
             const editor = editorView.editor
             const oldPath = editorView.path
             const text = editor.textArea.text

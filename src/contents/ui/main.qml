@@ -19,7 +19,11 @@ Kirigami.ApplicationWindow {
     minimumWidth: Kirigami.Units.gridUnit * 20
     minimumHeight: Kirigami.Units.gridUnit * 20
 
-    onClosing: App.saveWindowGeometry(root)
+    onClosing: {
+        App.saveWindowGeometry(root) ;
+        const editor = pageStack.get(0).editorView.editor
+        editor.saveNote(editor.text, editor.path)
+    }
 
     onWidthChanged: saveWindowGeometryTimer.restart()
     onHeightChanged: saveWindowGeometryTimer.restart()
@@ -47,6 +51,8 @@ Kirigami.ApplicationWindow {
 
         pageStack.push(page);
     }
+
+    pageStack.onCurrentItemChanged: if (isMainPage() && pageStack.depth > 1) pageStack.pop(1)
 
     function isMainPage(){
         return pageStack.currentItem == getPage("Main")
