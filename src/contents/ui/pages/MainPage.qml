@@ -20,7 +20,7 @@ Kirigami.Page {
 
             const editor = editorView.editor
             const oldPath = editorView.path
-            const text = editor.textArea.text
+            const text = editor.text
             editor.saveNote(text, oldPath)
 
             editorView.title = currentlySelected.displayedName
@@ -47,5 +47,5 @@ Kirigami.Page {
         text: "En attente d'un truc"
     }
 
-    footer: BottomToolBar{}
+    // footer: BottomToolBar{}
 }

@@ -4,12 +4,11 @@
 -->
 <RCC>
     <qresource prefix="/">
-        <file alias="Checker.js">contents/logic/Checker.js</file>
-
         <file>contents/ui/main.qml</file>
 
         <file>contents/ui/pages/AboutPage.qml</file>
         <file>contents/ui/pages/MainPage.qml</file>
+        <file>contents/ui/pages/SettingsPage.qml</file>
 
         <file>contents/ui/textEditor/TextToolBar.qml</file>
         <file>contents/ui/textEditor/TextDisplay.qml</file>

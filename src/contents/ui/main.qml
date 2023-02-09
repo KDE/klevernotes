@@ -41,7 +41,7 @@ Kirigami.ApplicationWindow {
     function getPage(name) {
         switch (name) {
             case "Main": return pagePool.loadPage("qrc:contents/ui/pages/MainPage.qml");
-            // case "Settings": return pagePool.loadPage("qrc:/qml/settings/SettingsPage.qml");
+            case "Settings": return pagePool.loadPage("qrc:contents/ui/pages/SettingsPage.qml");
             case "About": return pagePool.loadPage("qrc:contents/ui/pages/AboutPage.qml");
         }
     }

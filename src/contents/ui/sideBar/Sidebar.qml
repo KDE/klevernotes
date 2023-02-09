@@ -81,7 +81,7 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
-            // onClicked: applicationWindow().switchToPage('settings')
+            onClicked: applicationWindow().switchToPage('Settings')
             icon: "settings-configure"
             Layout.alignment:Qt.AlignBottom
         }
