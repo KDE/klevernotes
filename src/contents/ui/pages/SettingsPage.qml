@@ -9,7 +9,27 @@ import org.kde.kirigami 2.19 as Kirigami
 import org.kde.Klever 1.0
 
 Kirigami.ScrollablePage {
+    id:settingsPage
     title: i18nc("@title:window", "Settings")
+
+    function checkForStorage(subtitle){
+        var actualPath = Config.storagePath
+
+        let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+
+        if (component.status == Component.Ready) {
+            var dialog = component.createObject(settingsPage);
+
+            if (subtitle) dialog.subtitle = i18n("Want to change your storage?\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
+
+            dialog.parentObject = settingsPage
+            dialog.drawer = applicationWindow().globalDrawer
+            dialog.open()
+            return
+        }
+
+        treeview.model = View.hierarchy(Config.storagePath,-1)
+    }
 
     Kirigami.FormLayout {
         Row {
@@ -19,7 +39,16 @@ Kirigami.ScrollablePage {
                 readOnly: true
             }
             Controls.Button{
-                icon.name: "document-open-folder"
+                icon.name: "folder-sync"
+                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                Controls.ToolTip.visible: hovered
+                Controls.ToolTip.text: i18n("Change the storage path")
+            }
+            Controls.Button{
+                icon.name: "folder-new"
+                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                Controls.ToolTip.visible: hovered
+                Controls.ToolTip.text: i18n("Create a new storage")
             }
         }
         Item {

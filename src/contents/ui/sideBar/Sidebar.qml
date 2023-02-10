@@ -38,7 +38,9 @@ Kirigami.OverlayDrawer {
     bottomPadding: 0
 
 
-    property alias treeModel : treeview.model
+    property alias treeModel: treeview.model
+    property bool storageExist: Config.storagePath !== "None"
+    onStorageExistChanged: if (storageExist) treeview.model = View.hierarchy(Config.storagePath,-1)
 
     contentItem: ColumnLayout {
         id: column
@@ -94,28 +96,32 @@ Kirigami.OverlayDrawer {
 
     }
 
+    function checkStorage(){
+        return (Config.storagePath === "None")
+    }
 
-    function checkForStorage(subtitle){
+    function handleStorage(subtitle){
         var actualPath = Config.storagePath
 
-        if (actualPath === "None"){
+        // if (actualPath === "None"){
             let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
 
             if (component.status == Component.Ready) {
-                var dialog = component.createObject(drawer);
-
+                var dialog = component.createObject(applicationWindow());
+/*
                 if (subtitle) dialog.subtitle = subtitle
 
-                dialog.drawer = drawer
+                dialog.parentObject = drawer
+                dialog.drawer = drawer*/
                 dialog.open()
-                return
             }
-        }
-        treeview.model = View.hierarchy(Config.storagePath,-1)
+        // }
+        // if (actualPath !== "None") dialog.close()
+        // treeview.model = View.hierarchy(Config.storagePath,-1)
     }
 
      Component.onCompleted: {
-        checkForStorage()
+        handleStorage()
      }
 }
 

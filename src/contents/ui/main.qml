@@ -7,7 +7,7 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
 import "qrc:/contents/ui/sideBar"
-import "qrc:/contents/ui/dialogs"
+
 
 import org.kde.Klever 1.0
 

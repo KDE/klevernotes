@@ -5,7 +5,7 @@ import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
-
+/*
 Kirigami.PromptDialog {
     id: textPromptDialog
     title: "Klever Notes Storage"
@@ -14,7 +14,9 @@ Kirigami.PromptDialog {
 
     property string folder
     property string userChoice
+    property QtObject parentObject
     property QtObject drawer
+    property bool initialSetup: true
     standardButtons: Kirigami.Dialog.NoButton
 
     function getFolder() {
@@ -56,7 +58,7 @@ Kirigami.PromptDialog {
         if (pathEnd !== "/.KleverNotes"){
             textPromptDialog.close();
             const subtitle = i18n("It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
-            drawer.checkForStorage(subtitle)
+            parentObject.handleStorage(subtitle)
             return
         }
         Config.storagePath = folderPath
@@ -66,11 +68,47 @@ Kirigami.PromptDialog {
         showPassiveNotification(fullNotification);
         textPromptDialog.close();
 
-        drawer.treeModel = View.hierarchy(Config.storagePath,-1)
+        // drawer.treeModel = View.hierarchy(Config.storagePath,-1)
     }
 
     onRejected:{
-        const subtitle = i18n("This step is mandatory, please don't skip it.\n\nChoose a location to your future KleverNotes storage or select an existing one.")
-        drawer.checkForStorage(subtitle)
+        if (initialSetup){
+            const subtitle = i18n("This step is mandatory, please don't skip it.\n\nChoose a location to your future KleverNotes storage or select an existing one.")
+            // parentObject.handleStorage(subtitle)
+        }
+    }
+    onClosed: if (Config.storagePath !== "None") drawer.treeModel = View.hierarchy(Config.storagePath,-1)
+}
+*/
+
+import QtQuick 2.11
+import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.2
+import org.kde.kirigami 2.12 as Kirigami
+
+
+Popup {
+    id: setupPopup
+
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
+    modal: true
+    focus: true
+    width: parent.width - Kirigami.Units.largeSpacing * 10
+    height: parent.height - Kirigami.Units.largeSpacing * 10
+    parent: Overlay.overlay
+    x: Math.round((parent.width - width) / 2)
+    y: Math.round((parent.height - height) / 2)
+    closePolicy: Popup.NoAutoClose
+    padding: Kirigami.Units.largeSpacing
+
+    background: Kirigami.ShadowedRectangle {
+        color: Kirigami.Theme.backgroundColor
+        radius: Kirigami.Units.largeSpacing
+        anchors.fill: parent
+
+        shadow.size: Kirigami.Units.largeSpacing
+        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
     }
 }
