@@ -24,16 +24,18 @@ ScrollView {
 
     TextArea{
         id: textArea
-        persistentSelection: true
 
+        persistentSelection: true
         wrapMode: TextEdit.WrapAnywhere
 
         property bool tempBuff
+
         onTextChanged : if (!tempBuff) modified = true
     }
 
     Timer {
         id: noteSaverTimer
+
         interval: 10000
         onTriggered: saveNote(textArea.text, view.path)
     }

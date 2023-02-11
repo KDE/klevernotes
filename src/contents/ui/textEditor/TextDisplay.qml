@@ -17,24 +17,29 @@ import org.kde.Klever 1.0
 
 RowLayout {
     id: frame
+
     spacing:0
 
     property string text
+
     onTextChanged: if(web_view.loadProgress === 100) editorLink.text = text
 
     Kirigami.Card{
         id:background
+
         Layout.fillWidth: true
         Layout.fillHeight: true
 
         WebEngineView{
             id:web_view
+
+            settings.showScrollBars:false
+
             width: background.width - 4
             height:background.height - 4
             x: 2
             y: 2
             url: "qrc:/index.html"
-            settings.showScrollBars:false
             focus: true
             webChannel:WebChannel{
                 registeredObjects:[editorLink,cssLink]
@@ -81,6 +86,7 @@ RowLayout {
 
     ScrollBar {
         id: vbar
+
         hoverEnabled: true
         active: hovered || pressed
         orientation: Qt.Vertical

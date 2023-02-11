@@ -6,8 +6,10 @@ import org.kde.kirigami 2.19 as Kirigami
 
 Column{
     id: subEntryColumn
+
     width: parent.width
     height: childrenRect.height * opacity
+
     property var entries: []
     property int delimiter: 1
 

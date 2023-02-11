@@ -10,13 +10,16 @@ import org.kde.Klever 1.0
 
 Controls.ScrollView {
     id: tree
+
     width: parent.width
+
     property var model
     property QtObject currentlySelected: subEntryColumn.children[0]
     readonly property QtObject subEntryColumn: subEntryColumn
 
     SubEntryColumn {
         id: subEntryColumn
+
         delimiter : 1
     }
 

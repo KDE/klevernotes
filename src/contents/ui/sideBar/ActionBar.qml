@@ -12,8 +12,8 @@ import org.kde.Klever 1.0
 ToolBar {
     id: mainToolBar
 
-    property QtObject treeView;
-    readonly property QtObject infoRow : treeView.currentlySelected
+    property QtObject treeView
+    readonly property QtObject infoRow: treeView.currentlySelected
 
     function getName(useCase,shownName,realName,parentPath,callingAction,newItem){
         let component = Qt.createComponent("qrc:/contents/ui/dialogs/NamingDialog.qml")
@@ -55,10 +55,12 @@ ToolBar {
 
     Kirigami.Action {
         id: createCategoryAction
+
         icon.name: "journal-new"
-        // shortcut: "ctrl+l"
+
         property bool isActive : false
         property string name
+
         onNameChanged: {
             if (isActive) {
                 makeRow(treeView.subEntryColumn,"Category",Config.storagePath,name)
@@ -75,12 +77,14 @@ ToolBar {
     }
     Kirigami.Action {
         id: createGroupAction
+
         icon.name: "folder-new"
 
         property bool isActive : false
         property string categoryPath
         property QtObject subEntryColumn
         property string name
+
         onNameChanged: {
             if (isActive) {
                 makeRow(subEntryColumn,"Group",categoryPath,name)
@@ -122,6 +126,7 @@ ToolBar {
 
     Kirigami.Action {
         id: createNoteAction
+
         icon.name: "document-new"
 
         property bool isActive : false
@@ -129,6 +134,7 @@ ToolBar {
         property QtObject subEntryColumn
         property string name
         property int forcedLvl
+
         onNameChanged: {
             if (isActive) {
                 makeRow(subEntryColumn,"Note",groupPath,name,forcedLvl)
@@ -163,10 +169,12 @@ ToolBar {
 
     Kirigami.Action{
         id: renameAction
+
         icon.name: "edit-rename"
 
         property bool isActive : false
         property string name : infoRow.textDisplay.text
+
         onNameChanged: {
             if (isActive) {
                 infoRow.displayedName = name
@@ -200,24 +208,28 @@ ToolBar {
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new category")
         }
+
         ToolButton {
             action: createGroupAction
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new group")
         }
+
         ToolButton {
             action: createNoteAction
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new note")
         }
+
         ToolButton {
             action: renameAction
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Rename")
         }
+
         Item { Layout.fillWidth: true}
     }
 }

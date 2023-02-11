@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
@@ -10,6 +10,7 @@ import org.kde.Klever 1.0
 
 Kirigami.ScrollablePage {
     id:settingsPage
+
     title: i18nc("@title:window", "Settings")
 
     function updateStorage() {
@@ -28,7 +29,6 @@ Kirigami.ScrollablePage {
      }
 
     Kirigami.FormLayout {
-
         Row {
             Kirigami.FormData.label: "Storage path:"
 
@@ -61,7 +61,6 @@ Kirigami.ScrollablePage {
             Kirigami.FormData.label: "New Note name:"
             text: Config.defaultNoteName
         }
-
     }
 }
 

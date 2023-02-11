@@ -37,9 +37,9 @@ Kirigami.OverlayDrawer {
     topPadding: 0
     bottomPadding: 0
 
-
     property alias treeModel: treeview.model
     property bool storageExist: Config.storagePath !== "None"
+
     onStorageExistChanged: if (storageExist) treeview.model = View.hierarchy(Config.storagePath,-1)
 
     contentItem: ColumnLayout {
@@ -65,6 +65,7 @@ Kirigami.OverlayDrawer {
 
         ActionBar{
             id: action
+
             treeView: treeview
 
             Layout.fillWidth: true
@@ -96,10 +97,10 @@ Kirigami.OverlayDrawer {
         }
 
         Kirigami.BasicListItem {
-                text: i18n("About Klever")
-                icon: "help-about"
+            text: i18n("About Klever")
+            icon: "help-about"
 
-                onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
+            onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
         }
 
     }

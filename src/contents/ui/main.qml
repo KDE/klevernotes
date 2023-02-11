@@ -6,10 +6,8 @@ import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
-import "qrc:/contents/ui/sideBar"
-
-
 import org.kde.Klever 1.0
+import "qrc:/contents/ui/sideBar"
 
 Kirigami.ApplicationWindow {
     id: root
@@ -32,9 +30,7 @@ Kirigami.ApplicationWindow {
 
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
 
-    Kirigami.PagePool {
-        id: pagePool
-    }
+    Kirigami.PagePool {id: pagePool}
 
     globalDrawer: Sidebar{}
 
@@ -64,6 +60,7 @@ Kirigami.ApplicationWindow {
     // the previous session.
     Timer {
         id: saveWindowGeometryTimer
+
         interval: 1000
         onTriggered: App.saveWindowGeometry(root)
     }

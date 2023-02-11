@@ -42,8 +42,10 @@ Column {
     readonly property QtObject mouseArea: controlRoot
     readonly property QtObject textDisplay: textDisplay
     readonly property QtObject subEntryColumn: subEntryColumn
+
     Rectangle{
         id:visualRow
+
         width: infoRow.width
         height: textDisplay.height
         visible: true
@@ -54,6 +56,7 @@ Column {
 
         Kirigami.Icon {
             id: carot
+
             x: 20 * infoRow.lvl
             width: Kirigami.Units.iconSizes.small
             height: textDisplay.height
@@ -77,6 +80,7 @@ Column {
 
         Text {
             id: textDisplay
+
             x: carot.x + 20
             height: 25
             width: infoRow.width-x
@@ -93,6 +97,7 @@ Column {
 
         MouseArea {
             id: controlRoot
+
             anchors.fill: parent
 
             hoverEnabled: true
@@ -113,6 +118,7 @@ Column {
 
     SubEntryColumn {
         id: subEntryColumn
+
         visible: opacity > 0
         opacity: infoRow.expanded ? 1 : 0
         delimiter: 0

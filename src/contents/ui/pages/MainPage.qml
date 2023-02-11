@@ -9,6 +9,7 @@ import "qrc:/contents/ui/textEditor"
 
 Kirigami.Page {
     id: page
+
     title: i18n("Main Page")
 
     property QtObject currentlySelected
@@ -30,6 +31,7 @@ Kirigami.Page {
 
     Loader{
         id: editorLoader
+
         sourceComponent: editorHolder
         active: false
         onLoaded: placeHolder.parent = null
@@ -38,12 +40,15 @@ Kirigami.Page {
 
     Component {
         id: editorHolder
+
         EditorView{}
     }
 
     Text{
-        anchors.fill: parent
         id: placeHolder
+
+        anchors.fill: parent
+
         text: "En attente d'un truc"
     }
 

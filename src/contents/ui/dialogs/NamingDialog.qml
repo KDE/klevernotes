@@ -9,6 +9,7 @@ import org.kde.Klever 1.0
 
 Kirigami.PromptDialog {
     id: textPromptDialog
+
     title: "Choose a name"
 
     property string useCase

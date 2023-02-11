@@ -9,6 +9,7 @@ import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.NavigationTabBar {
     id: tool
+
     visible: !applicationWindow().wideScreen
 
     actions: [

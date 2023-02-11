@@ -7,21 +7,23 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
 GridLayout{
-    property alias title: header.text
-    property alias path: editor.path
-    readonly property TextEditor editor : editor
-
     anchors.fill:parent
     rows: 4
     columns: 2
 
+    property alias title: header.text
+    property alias path: editor.path
+    readonly property TextEditor editor : editor
+
     Kirigami.Heading {
         id:header
+
+        wrapMode: Text.WordWrap
+        type: Kirigami.Heading.Secondary
+
         Layout.row: 0
         Layout.column: 0
         Layout.fillWidth: true
-        wrapMode: Text.WordWrap
-        type: Kirigami.Heading.Secondary
     }
 
     Row{
@@ -33,22 +35,28 @@ GridLayout{
 
         Controls.Button {
             id: editorToggler
+
             checkable: true
             icon.name: (checked) ? "text-flow-into-frame" :  "text-unflow"
             checked: true
+
             onCheckedChanged: if (!checked && !viewToggler.checked) checked = true
         }
+
         Controls.Button {
             id: viewToggler
+
             checkable: true
             icon.name: (checked) ? "quickview" : "view-hidden"
             checked: root.wideScreen
+
             onCheckedChanged: if (!checked && !editorToggler.checked) checked = true
         }
     }
 
     TextToolBar{
         id:toolbar
+
         textArea: editor.textArea
 
         Layout.fillWidth:true
@@ -65,6 +73,7 @@ GridLayout{
         Layout.row: 3
         Layout.column: 0
         Layout.columnSpan: 2
+
         GridLayout {
             anchors.fill:parent
 
@@ -73,7 +82,9 @@ GridLayout{
 
             TextEditor{
                 id: editor
+
                 visible: editorToggler.checked
+
                 Layout.fillWidth:true
                 Layout.fillHeight:true
                 Layout.preferredHeight: (parent.columns === 2) ? parent.height : parent.height/2
@@ -82,8 +93,10 @@ GridLayout{
 
             TextDisplay{
                 id: display
+
                 text: editor.text
                 visible: viewToggler.checked
+
                 Layout.fillWidth:true
                 Layout.fillHeight:true
                 Layout.preferredHeight: (parent.columns === 2) ? parent.height : parent.height/2

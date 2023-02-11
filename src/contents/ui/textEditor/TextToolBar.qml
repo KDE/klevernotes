@@ -10,6 +10,7 @@ import org.kde.Klever 1.0
 
 Kirigami.Card{
     id: toolbarHolder
+
     property QtObject textArea
 
     // This 'replicate' the DefaultCardBackground and just change the background color

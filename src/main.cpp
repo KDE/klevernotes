@@ -7,6 +7,7 @@
 #include <QQmlApplicationEngine>
 #include <QUrl>
 #include <QtQml>
+#include <QtWebEngine/QtWebEngine>
 
 #include "about.h"
 #include "app.h"
@@ -22,7 +23,6 @@
 #include "contents/logic/qmlLinker.h"
 #include "contents/logic/view.h"
 #include "kleverconfig.h"
-#include <QtWebEngine/QtWebEngine>
 
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -82,8 +82,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     View view;
     qmlRegisterSingletonInstance<View>("org.kde.Klever", 1, 0, "View", &view);
-
-    // qmlRegisterType<OldDocumentHandler>("org.qtproject.example", 1, 0, "OldDocumentHandler");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));
