@@ -2,10 +2,10 @@
 # SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 [Desktop Entry]
-Name=Klever
-Comment=Klever Kirigami Application
+Name=KleverNotes
+Comment=KleverNotes Kirigami Application
 Version=1.0
-Exec=klever
+Exec=klevernotes
 Icon=applications-development
 Type=Application
 Terminal=false

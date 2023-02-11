@@ -12,7 +12,7 @@ import "qrc:/contents/ui/sideBar"
 Kirigami.ApplicationWindow {
     id: root
 
-    title: i18n("Klever")
+    title: i18n("KleverNotes")
 
     minimumWidth: Kirigami.Units.gridUnit * 20
     minimumHeight: Kirigami.Units.gridUnit * 20

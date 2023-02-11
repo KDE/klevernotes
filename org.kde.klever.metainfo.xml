@@ -4,8 +4,8 @@
   SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
  -->
 <component type="desktop-application">
-  <id>org.kde.klever</id>
-  <name>Klever Kirigami Application</name>
+  <id>org.kde.klevernotes</id>
+  <name>KleverNotes Kirigami Application</name>
   <summary>A short summary describing what this software is about</summary>
   <metadata_license>A permissive license for this metadata, e.g. "FSFAP" + Update the SPDX tags above!</metadata_license>
   <project_license>The license of this software as SPDX string, e.g. "GPL-2.0-or-later"</project_license>

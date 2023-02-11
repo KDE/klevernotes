@@ -31,13 +31,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QtWebEngine::initialize();
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
-    QCoreApplication::setApplicationName(QStringLiteral("Klever"));
+    QCoreApplication::setApplicationName(QStringLiteral("KleverNotes"));
 
     KAboutData aboutData(
                          // The program name used internally.
-                         QStringLiteral("Klever"),
+                         QStringLiteral("KleverNotes"),
                          // A displayable program name string.
-                         i18nc("@title", "Klever"),
+                         i18nc("@title", "KleverNotes"),
                          // The program version string.
                          QStringLiteral(KLEVER_VERSION_STRING),
                          // Short description of what the app does.
@@ -45,11 +45,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                          // The license this code is released under.
                          KAboutLicense::GPL,
                          // Copyright Statement.
-                         i18n("(c) %{CURRENT_YEAR}"));
-    aboutData.addAuthor(i18nc("@info:credit", "%{AUTHOR}"),
-                        i18nc("@info:credit", "Author Role"),
-                        QStringLiteral("%{EMAIL}"),
-                        QStringLiteral("https://yourwebsite.com"));
+                         i18n("(c) 2022-2023"));
+    aboutData.addAuthor(i18nc("@info:credit", "Louis Schul"),
+                        // i18nc("@info:credit", "Author Role"),
+                        QStringLiteral("schul9louis@outlook.fr")
+                        // QStringLiteral("https://yourwebsite.com")
+                        );
     KAboutData::setApplicationData(aboutData);
 
     QQmlApplicationEngine engine;

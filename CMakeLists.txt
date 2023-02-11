@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(klever VERSION 0.1)
+project(klevernotes VERSION 0.1)
 
 include(FeatureSummary)
 
@@ -23,7 +23,7 @@ include(ECMPoQmTools)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX KLEVER
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/version-klever.h"
+    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/version-klevernotes.h"
 )
 
 find_package(Qt5 ${QT5_MIN_VERSION} REQUIRED COMPONENTS Core Gui Qml QuickControls2 Svg WebEngineWidgets WebEngine)

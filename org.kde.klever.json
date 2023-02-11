@@ -1,9 +1,9 @@
 {
-    "id": "org.kde.klever",
+    "id": "org.kde.klevernotes",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15",
     "sdk": "org.kde.Sdk",
-    "command": "klever",
+    "command": "klevernotes",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": [
@@ -18,7 +18,7 @@
 
     "modules": [
         {
-            "name": "klever",
+            "name": "klevernotes",
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]
