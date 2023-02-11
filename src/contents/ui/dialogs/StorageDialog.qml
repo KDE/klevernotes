@@ -117,8 +117,8 @@ Controls.Popup {
 
                 Controls.Button {
                     id: close
-                    text: i18n("Close")
-                    icon.name: "dialog-close"
+                    text: i18n("Cancel")
+                    icon.name: "dialog-cancel"
 
                     Layout.alignment: Qt.AlignRight
 
