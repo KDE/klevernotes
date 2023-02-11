@@ -53,75 +53,66 @@ Kirigami.OverlayDrawer {
             bottomPadding: Kirigami.Units.smallSpacing;
             leftPadding: Kirigami.Units.largeSpacing
             rightPadding: Kirigami.Units.largeSpacing
+
             Layout.fillWidth: true
+            Layout.alignment:Qt.AlignTop
+
             Kirigami.Heading {
                 level: 1
                 text: i18n("Notes")
             }
-            Layout.alignment:Qt.AlignTop
         }
 
         ActionBar{
             id: action
+            treeView: treeview
+
             Layout.fillWidth: true
             Layout.alignment:Qt.AlignTop
-            treeView: treeview
         }
 
         TreeView{
             id: treeview
+
             Layout.fillHeight: true
             Layout.alignment:Qt.AlignTop
         }
 
         Controls.ToolSeparator {
+            orientation: Qt.Horizontal
+
             Layout.topMargin: -1;
             Layout.fillWidth: true
-            orientation: Qt.Horizontal
             Layout.alignment:Qt.AlignBottom
         }
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
-            onClicked: applicationWindow().switchToPage('Settings')
             icon: "settings-configure"
+
             Layout.alignment:Qt.AlignBottom
+
+            onClicked: applicationWindow().switchToPage('Settings')
         }
 
         Kirigami.BasicListItem {
                 text: i18n("About Klever")
                 icon: "help-about"
+
                 onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
         }
 
     }
 
-    function checkStorage(){
-        return (Config.storagePath === "None")
-    }
-
-    function handleStorage(subtitle){
-        var actualPath = Config.storagePath
-
-        // if (actualPath === "None"){
+     Component.onCompleted: {
+        if (!storageExist){
             let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
 
             if (component.status == Component.Ready) {
                 var dialog = component.createObject(applicationWindow());
-/*
-                if (subtitle) dialog.subtitle = subtitle
-
-                dialog.parentObject = drawer
-                dialog.drawer = drawer*/
                 dialog.open()
             }
-        // }
-        // if (actualPath !== "None") dialog.close()
-        // treeview.model = View.hierarchy(Config.storagePath,-1)
-    }
-
-     Component.onCompleted: {
-        handleStorage()
+        }
      }
 }
 

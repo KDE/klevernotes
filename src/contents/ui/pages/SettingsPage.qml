@@ -12,57 +12,51 @@ Kirigami.ScrollablePage {
     id:settingsPage
     title: i18nc("@title:window", "Settings")
 
-    function checkForStorage(subtitle){
-        var actualPath = Config.storagePath
+    function updateStorage() {
+        if (!Config.storagePath !== "None"){
+            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
 
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+            if (component.status == Component.Ready) {
+                var dialog = component.createObject(applicationWindow());
 
-        if (component.status == Component.Ready) {
-            var dialog = component.createObject(settingsPage);
+                dialog.subtitle = i18n("Please choose a location for your future KleverNotes storage or select an existing one.\n")
+                dialog.firstSetup = false
 
-            if (subtitle) dialog.subtitle = i18n("Want to change your storage?\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
-
-            dialog.parentObject = settingsPage
-            dialog.drawer = applicationWindow().globalDrawer
-            dialog.open()
-            return
+                dialog.open()
+            }
         }
-
-        treeview.model = View.hierarchy(Config.storagePath,-1)
-    }
+     }
 
     Kirigami.FormLayout {
+
         Row {
             Kirigami.FormData.label: "Storage path:"
+
             Controls.TextField {
                 text: Config.storagePath
                 readOnly: true
             }
+
             Controls.Button{
-                icon.name: "folder-sync"
-                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
-                Controls.ToolTip.visible: hovered
-                Controls.ToolTip.text: i18n("Change the storage path")
-            }
-            Controls.Button{
-                icon.name: "folder-new"
-                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
-                Controls.ToolTip.visible: hovered
-                Controls.ToolTip.text: i18n("Create a new storage")
+                text: i18n("Change storage path")
+                onClicked: updateStorage()
             }
         }
+
         Item {
-            // Kirigami.FormData.label: "Section Title"
             Kirigami.FormData.isSection: true
         }
+
         Controls.TextField {
             Kirigami.FormData.label: "New Category name:"
             text: Config.defaultCategoryName
         }
+
         Controls.TextField {
             Kirigami.FormData.label: "New Group name:"
             text: Config.defaultGroupName
         }
+
         Controls.TextField {
             Kirigami.FormData.label: "New Note name:"
             text: Config.defaultNoteName
