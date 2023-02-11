@@ -47,6 +47,7 @@ Kirigami.PromptDialog {
 
     Controls.TextField {
         id:nameField
+
         text: shownName
 
         onSelectedTextChanged: nameField.forceActiveFocus()
@@ -55,6 +56,7 @@ Kirigami.PromptDialog {
     }
 
     standardButtons: Kirigami.Dialog.NoButton
+
     customFooterActions: [
         Kirigami.Action {
             id:applyAction
@@ -64,19 +66,17 @@ Kirigami.PromptDialog {
                 if (checkName()){
                     textPromptDialog.close()
                     callingAction.name = nameField.text
+                    return
                 }
-                else {
-                    throwError()
-                    nameField.selectAll()
-                }
+                throwError()
+                nameField.selectAll()
             }
         },
         Kirigami.Action {
             text: i18n("Cancel")
             iconName: "dialog-cancel"
-            onTriggered: {
-                textPromptDialog.close();
-            }
+
+            onTriggered: textPromptDialog.close()
         }
     ]
 }
