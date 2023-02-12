@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
+import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
@@ -44,12 +45,36 @@ Kirigami.Page {
         EditorView{}
     }
 
-    Text{
+    Kirigami.Card {
         id: placeHolder
-
         anchors.fill: parent
+        anchors.margins: Kirigami.Units.largeSpacing * 2
+        ColumnLayout {
+            anchors.fill: parent
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
 
-        text: "En attente d'un truc"
+            Text {
+                text: i18n("Welcome to KleverNotes!")
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                color: Kirigami.Theme.textColor
+                font.pointSize: 24
+
+                Layout.margins: Kirigami.Units.largeSpacing * 2
+                Layout.fillWidth: true
+            }
+            Text {
+                text: i18n("Create or select a note to start working !")
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                color: Kirigami.Theme.textColor
+                font.pointSize: 12
+
+                Layout.margins: Kirigami.Units.largeSpacing * 2
+                Layout.fillWidth: true
+            }
+        }
     }
 
     // footer: BottomToolBar{}
