@@ -20,12 +20,6 @@ View::View(QObject *parent)
 
 }
 
-void View::print(QString path)
-{
-    QJsonObject truc = hierarchy(path,0);
-    qDebug() << truc;
-}
-
 QJsonObject View::hierarchy(QString path, int lvl)
 {
     QJsonObject final = QJsonObject();

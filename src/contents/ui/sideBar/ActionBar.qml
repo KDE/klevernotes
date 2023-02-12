@@ -192,7 +192,6 @@ ToolBar {
 
         onTriggered: {
             isActive = true
-            console.log(name)
             mainToolBar.getName(infoRow.useCase,name,infoRow.name,infoRow.parentPath,renameAction,false)
         }
     }

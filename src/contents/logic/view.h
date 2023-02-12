@@ -16,5 +16,4 @@ public:
 
 public slots:
     QJsonObject hierarchy(QString path, int lvl);
-    void print(QString path);
 };
