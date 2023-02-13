@@ -21,8 +21,21 @@ RowLayout {
     spacing:0
 
     property string text
+    property var defaultCSS: {
+            '--body-color':`${Kirigami.Theme.backgroundColor}`,
+            '--font': `${Kirigami.Theme.defaultFont}`,
+            '--textColor': `${Kirigami.Theme.textColor}`,
+            '--titleColor': `${Kirigami.Theme.disabledTextColor}`,
+            '--linkColor': `${Kirigami.Theme.linkColor}`,
+            '--visitedLinkColor': `${Kirigami.Theme.visitedLinkColor}`,
+            '--codeColor': `${Kirigami.Theme.alternateBackgroundColor}`,
+        };
+    onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
 
     onTextChanged: if(web_view.loadProgress === 100) editorLink.text = text
+
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.inherit: false
 
     Kirigami.Card{
         id:background
@@ -57,16 +70,7 @@ RowLayout {
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
-                const css = {
-                    '--body-color':`${Kirigami.Theme.backgroundColor}`,
-                    '--font': `${Kirigami.Theme.defaultFont}`,
-                    '--textColor': `${Kirigami.Theme.textColor}`,
-                    '--titleColor': `${Kirigami.Theme.disabledTextColor}`,
-                    '--linkColor': `${Kirigami.Theme.linkColor}`,
-                    '--visitedLinkColor': `${Kirigami.Theme.visitedLinkColor}`,
-                    '--codeColor': `${Kirigami.Theme.alternateBackgroundColor}`,
-                };
-                cssLink.css = css
+                changeStyle()
                 // Dirty workaround
                 editorLink.text = text
             }
@@ -101,5 +105,9 @@ RowLayout {
         Layout.row:0
         Layout.column:1
         Layout.fillHeight: true
+    }
+
+    function changeStyle() {
+        cssLink.css = defaultCSS
     }
 }
