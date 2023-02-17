@@ -17,6 +17,7 @@
             <label>The default name shown in place of "./BaseCategory"</label>
             <default>Notes</default>
         </entry>
+
         <entry name="defaultCategoryName" type="String">
             <label>The default name for a new Category</label>
             <default>New Category</default>
@@ -28,6 +29,35 @@
         <entry name="defaultNoteName" type="String">
             <label>The default name for a new Note</label>
             <default>New Note</default>
+        </entry>
+
+        <entry name="viewBodyColor" type="String">
+            <label>The default text view body color (if note specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+        <entry name="viewFont" type="String">
+            <label>The default text view font (if note specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+        <entry name="viewTextColor" type="String">
+            <label>The default text view text color (if note specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+        <entry name="viewTitleColor" type="String">
+            <label>The default text view title color (if note specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+        <entry name="viewLinkColor" type="String">
+            <label>The default text view link color (if note specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+        <entry name="viewVisitedLinkColor" type="String">
+            <label>The default text view visited link color (if note specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+        <entry name="viewCodeColor" type="String">
+            <label>The default text view code color (if note specified default to system theme)</label>
+            <default>None</default>
         </entry>
     </group>
 </kcfg>

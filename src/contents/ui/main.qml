@@ -14,8 +14,8 @@ Kirigami.ApplicationWindow {
 
     title: i18n("KleverNotes")
 
-    minimumWidth: Kirigami.Units.gridUnit * 20
-    minimumHeight: Kirigami.Units.gridUnit * 20
+    minimumWidth: Kirigami.Units.gridUnit * 25
+    minimumHeight: Kirigami.Units.gridUnit * 30
 
     onClosing: {
         App.saveWindowGeometry(root) ;
@@ -67,6 +67,6 @@ Kirigami.ApplicationWindow {
 
     Component.onCompleted: {
         App.restoreWindowGeometry(root)
-        switchToPage('Main')
+        switchToPage('Settings')
     }
 }

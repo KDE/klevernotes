@@ -10,31 +10,32 @@
         <file>contents/ui/pages/MainPage.qml</file>
         <file>contents/ui/pages/SettingsPage.qml</file>
 
-        <file>contents/ui/textEditor/TextToolBar.qml</file>
+        <file>contents/ui/textEditor/BottomToolBar.qml</file>
+        <file>contents/ui/textEditor/EditorView.qml</file>
         <file>contents/ui/textEditor/TextDisplay.qml</file>
         <file>contents/ui/textEditor/TextEditor.qml</file>
-        <file>contents/ui/textEditor/EditorView.qml</file>
-        <file>contents/ui/textEditor/BottomToolBar.qml</file>
+        <file>contents/ui/textEditor/TextToolBar.qml</file>
 
-        <file>contents/ui/sideBar/Sidebar.qml</file>
-        <file>contents/ui/sideBar/TreeView.qml</file>
         <file>contents/ui/sideBar/ActionBar.qml</file>
-        <file>contents/ui/sideBar/TreeNode.qml</file>
+        <file>contents/ui/sideBar/Sidebar.qml</file>
         <file>contents/ui/sideBar/SubEntryColumn.qml</file>
+        <file>contents/ui/sideBar/TreeNode.qml</file>
+        <file>contents/ui/sideBar/TreeView.qml</file>
 
-        <file>contents/ui/dialogs/StorageDialog.qml</file>
         <file>contents/ui/dialogs/FolderChooserDialog.qml</file>
-        <file>contents/ui/dialogs/RenameErrorDialog.qml</file>
+        <file>contents/ui/dialogs/FontDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
+        <file>contents/ui/dialogs/RenameErrorDialog.qml</file>
+        <file>contents/ui/dialogs/StorageDialog.qml</file>
 
         <file>contents/ui/dialogs/colorDialog/ColorDialog.qml</file>
         <file>contents/ui/dialogs/colorDialog/ColorPicker.qml</file>
         <file>contents/ui/dialogs/colorDialog/HSPicker.qml</file>
         <file>contents/ui/dialogs/colorDialog/ValueSlider.qml</file>
 
-        <file alias="qwebchannel.js">contents/resources/qwebchannel.js</file>
         <file alias="index.html">contents/resources/index.html</file>
-        <file alias="markdown.css">contents/resources/3rdparty/markdown.css</file>
+        <file alias="qwebchannel.js">contents/resources/qwebchannel.js</file>
         <file alias="marked.js">contents/resources/3rdparty/marked.js</file>
+        <file alias="markdown.css">contents/resources/3rdparty/markdown.css</file>
         </qresource>
 </RCC>

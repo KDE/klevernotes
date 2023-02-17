@@ -1,5 +1,5 @@
 :root {
-  --body-color: ;
+  --bodyColor: ;
   --font: ;
   --textColor: ;
   --titleColor: ;
@@ -10,7 +10,7 @@
 
 body{
   color: var(--textColor);
-  background-color: var(--body-color);
+  background-color: var(--bodyColor);
 
   font-size: 16px;
   word-wrap: break-word;

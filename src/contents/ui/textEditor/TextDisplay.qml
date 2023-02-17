@@ -20,22 +20,23 @@ RowLayout {
 
     spacing:0
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.inherit: false
+
     property string text
     property var defaultCSS: {
-            '--body-color':`${Kirigami.Theme.backgroundColor}`,
-            '--font': `${Kirigami.Theme.defaultFont}`,
-            '--textColor': `${Kirigami.Theme.textColor}`,
-            '--titleColor': `${Kirigami.Theme.disabledTextColor}`,
-            '--linkColor': `${Kirigami.Theme.linkColor}`,
-            '--visitedLinkColor': `${Kirigami.Theme.visitedLinkColor}`,
-            '--codeColor': `${Kirigami.Theme.alternateBackgroundColor}`,
-        };
+        '--bodyColor': (Config.viewBodyColor !== "None") ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
+        '--font': (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont,
+        '--textColor': (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor,
+        '--titleColor': (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor,
+        '--linkColor': (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor,
+        '--visitedLinkColor': (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
+        '--codeColor': (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
+    }
+
     onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
 
     onTextChanged: if(web_view.loadProgress === 100) editorLink.text = text
-
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-    Kirigami.Theme.inherit: false
 
     Kirigami.Card{
         id:background
@@ -54,7 +55,7 @@ RowLayout {
             y: 2
             url: "qrc:/index.html"
             focus: true
-            webChannel:WebChannel{
+            webChannel: WebChannel{
                 registeredObjects:[editorLink,cssLink]
             }
 

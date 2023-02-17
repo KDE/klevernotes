@@ -58,6 +58,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     auto config = KleverConfig::self();
     QObject::connect(config, &KleverConfig::storagePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewBodyColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewTextColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewTitleColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewLinkColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewVisitedLinkColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewCodeColorChanged, config, &KleverConfig::save);
 
     qmlRegisterType<QmlLinker>("qtMdEditor", 1, 0, "QmlLinker");
 

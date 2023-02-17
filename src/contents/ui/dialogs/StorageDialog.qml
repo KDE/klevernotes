@@ -21,16 +21,12 @@ Controls.Popup {
     closePolicy: Controls.Popup.NoAutoClose
     padding: 0
 
-    background: Kirigami.ShadowedRectangle {
+    background: Rectangle {
         Kirigami.Theme.colorSet: Kirigami.Theme.View
         Kirigami.Theme.inherit: false
         color: Kirigami.Theme.backgroundColor
         radius: Kirigami.Units.smallSpacing
         anchors.fill: parent
-
-        shadow.size: Kirigami.Units.largeSpacing
-        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
     }
 
     property string subtitle: i18n("It looks like this is your first time using this app!\n\nPlease choose a location for your future KleverNotes storage or select an existing one.\n")
