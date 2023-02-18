@@ -26,11 +26,17 @@ Kirigami.Dialog {
     property string useCase
     property QtObject nameField
 
+    readonly property var useCaseTrad: {
+        "Category": i18n("category"),
+        "Group": i18n("group"),
+        "Note": i18n("note")
+    }
+
     Text {
         Kirigami.Theme.colorSet: Kirigami.Theme.Button
         Kirigami.Theme.inherit: false
         color: Kirigami.Theme.textColor
-        text: i18n("This "+useCase+" already exist.\nPlease choose another name for it.\n")
+        text: i18n("This "+useCaseTrad[useCase]+" already exist.\nPlease choose another name for it.\n")
     }
 
     onRejected: nameField.selectAll()

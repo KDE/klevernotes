@@ -31,5 +31,11 @@ Controls.ScrollView {
         }
     }
 
-    onModelChanged: subEntryColumn.addRows(model)
+    onModelChanged: {
+        for (var childIdx in subEntryColumn.children) {
+            subEntryColumn.children[childIdx].destroy();
+        }
+        subEntryColumn.addRows(model)
+
+    }
 }

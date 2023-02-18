@@ -37,7 +37,7 @@ Kirigami.OverlayDrawer {
     topPadding: 0
     bottomPadding: 0
 
-    property alias treeModel: treeview.model
+    // property alias treeModel: treeview.model
     property bool storageExist: Config.storagePath !== "None"
 
     onStorageExistChanged: if (storageExist) treeview.model = View.hierarchy(Config.storagePath,-1)

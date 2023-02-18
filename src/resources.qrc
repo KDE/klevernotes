@@ -22,6 +22,7 @@
         <file>contents/ui/sideBar/TreeNode.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
 
+        <file>contents/ui/dialogs/DeleteConfirmationDialog.qml</file>
         <file>contents/ui/dialogs/FolderChooserDialog.qml</file>
         <file>contents/ui/dialogs/FontDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>

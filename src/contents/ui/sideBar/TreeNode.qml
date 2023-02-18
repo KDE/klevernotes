@@ -12,6 +12,8 @@ import QtQuick.Layouts 1.3
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/dialogs"
+
 Column {
     id: infoRow
 
@@ -42,6 +44,18 @@ Column {
     readonly property QtObject mouseArea: controlRoot
     readonly property QtObject textDisplay: textDisplay
     readonly property QtObject subEntryColumn: subEntryColumn
+
+    DeleteConfirmationDialog {
+        id: deleteConfirmationDialog
+
+        useCase: tree.currentlySelected.useCase
+
+        onAccepted: {
+            const removed = StorageHandler.remove(tree.currentlySelected.path)
+            if (removed) treeview.model = View.hierarchy(Config.storagePath,-1)
+        }
+        onRejected: console.log("Rejected")
+    }
 
     Rectangle{
         id:visualRow
@@ -101,15 +115,32 @@ Column {
             anchors.fill: parent
 
             hoverEnabled: true
+            enabled: true
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+
             property bool hovered : false
+
             onEntered: hovered = true
             onExited: hovered = false
             onClicked: {
-                if (infoRow.useCase != "Note") infoRow.expanded = !infoRow.expanded;
+                if (infoRow.useCase !== "Note") infoRow.expanded = !infoRow.expanded;
                 tree.currentlySelected = infoRow
                 visualRow.forceActiveFocus()
+
+                if (mouse.button === Qt.RightButton &&
+                    infoRow.path !== Config.storagePath+"/.BaseCategory") contextMenu.popup()
             }
-            enabled: true
+
+            Controls.Menu {
+                id: contextMenu
+
+                Controls.MenuItem {
+                    icon.name: "user-trash-symbolic"
+                    text: i18n("Delete")
+
+                    onTriggered: deleteConfirmationDialog.open()
+                }
+            }
         }
 //         For futur keyboard nav
         // Keys.onPressed: console.log("hey")

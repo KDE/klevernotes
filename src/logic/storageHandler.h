@@ -20,4 +20,6 @@ public slots:
     void makeNote(QString groupPath, QString noteName);
 
     bool rename(QString oldPath, QString newPath);
+
+    bool remove(QString path);
 };

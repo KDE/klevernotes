@@ -49,3 +49,10 @@ bool StorageHandler::rename(QString oldPath, QString newPath)
     QDir dir;
     return dir.rename(oldPath,newPath);
 }
+
+bool StorageHandler::remove(QString path)
+{
+    QFile file(path);
+    return file.moveToTrash();
+}
+
