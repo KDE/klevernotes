@@ -57,6 +57,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     auto config = KleverConfig::self();
     QObject::connect(config, &KleverConfig::storagePathChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::defaultCategoryNameChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::defaultGroupNameChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::defaultNoteNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewBodyColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewTextColorChanged, config, &KleverConfig::save);

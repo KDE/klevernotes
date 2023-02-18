@@ -67,6 +67,6 @@ Kirigami.ApplicationWindow {
 
     Component.onCompleted: {
         App.restoreWindowGeometry(root)
-        switchToPage('Settings')
+        switchToPage('Main')
     }
 }

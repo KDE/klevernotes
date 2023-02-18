@@ -9,6 +9,8 @@ import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/dialogs"
+
 ToolBar {
     id: mainToolBar
 
@@ -16,20 +18,15 @@ ToolBar {
     readonly property QtObject infoRow: treeView.currentlySelected
 
     function getName(useCase,shownName,realName,parentPath,callingAction,newItem){
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/NamingDialog.qml")
-        if (component.status == Component.Ready) {
-            var dialog = component.createObject(root);
-
-            dialog.useCase = useCase
-            dialog.shownName = shownName
-            dialog.realName = realName
-            dialog.parentPath = parentPath
-            dialog.callingAction = callingAction
-            dialog.newItem = newItem
-            dialog.open()
-            dialog.nameField.selectAll()
-            dialog.nameField.forceActiveFocus()
-        }
+        namingDialog.useCase = useCase
+        namingDialog.shownName = shownName
+        namingDialog.realName = realName
+        namingDialog.parentPath = parentPath
+        namingDialog.callingAction = callingAction
+        namingDialog.newItem = newItem
+        namingDialog.open()
+        namingDialog.nameField.selectAll()
+        namingDialog.nameField.forceActiveFocus()
     }
 
     function makeRow(subEntryColumn,useCase,creatingPath,name,forcedLvl){
@@ -51,6 +48,12 @@ ToolBar {
         }
         const newRowData = View.hierarchy(newPath,lvl)
         subEntryColumn.addRow(newRowData,forcedLvl,true)
+    }
+
+    NamingDialog {
+        id: namingDialog
+
+        sideBarAction: true
     }
 
     Kirigami.Action {

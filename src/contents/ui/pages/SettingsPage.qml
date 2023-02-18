@@ -16,22 +16,15 @@ Kirigami.ScrollablePage {
 
     title: i18nc("@title:window", "Settings")
 
-    function updateFont() {
-        if (!Config.storagePath !== "None"){
-            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+    function updateName(shownName,callingAction){
+        namingDialog.shownName = shownName
+        namingDialog.callingAction = callingAction
+        namingDialog.open()
+        namingDialog.nameField.selectAll()
+        namingDialog.nameField.forceActiveFocus()
+    }
 
-            if (component.status == Component.Ready) {
-                var dialog = component.createObject(applicationWindow());
-
-                dialog.subtitle = i18n("Please choose a location for your future KleverNotes storage or select an existing one.\n")
-                dialog.firstSetup = false
-
-                dialog.open()
-            }
-        }
-     }
-
-     function updateColor(button, selectedColor) {
+    function updateColor(button, selectedColor) {
          switch(button.parent.name) {
             case "background":
                 Config.viewBodyColor = selectedColor
@@ -59,6 +52,16 @@ Kirigami.ScrollablePage {
 
         subtitle: i18n("Please choose a location for your future KleverNotes storage or select an existing one.\n")
         firstSetup: false
+    }
+
+    NamingDialog {
+        id: namingDialog
+
+        sideBarAction: false
+        useCase: ""
+        parentPath: ""
+        realName: shownName
+        newItem: false
     }
 
     ColorDialog {
@@ -103,18 +106,87 @@ Kirigami.ScrollablePage {
         }
 
         Controls.TextField {
+            id: newCategoryField
+
             Kirigami.FormData.label: i18n("New Category name:")
+
+            readOnly: true
             text: Config.defaultCategoryName
+
+            property bool isActive: false
+            property string name
+
+            onNameChanged: {
+                if (isActive) {
+                    Config.defaultCategoryName = name
+                    isActive = false
+                    name = ""
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    newCategoryField.isActive = true
+                    updateName(newCategoryField.text, newCategoryField)
+                }
+            }
         }
 
         Controls.TextField {
+            id: newGroupField
+
             Kirigami.FormData.label: i18n("New Group name:")
+
+            readOnly: true
             text: Config.defaultGroupName
+
+            property bool isActive: false
+            property string name
+
+            onNameChanged: {
+                if (isActive) {
+                    Config.defaultCategoryName = name
+                    isActive = false
+                    name = ""
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    newGroupField.isActive = true
+                    updateName(newGroupField.text, newGroupField)
+                }
+            }
         }
 
         Controls.TextField {
+            id: newNoteField
+
             Kirigami.FormData.label: i18n("New Note name:")
+
+            readOnly: true
             text: Config.defaultNoteName
+
+            property bool isActive: false
+            property string name
+
+            onNameChanged: {
+                if (isActive) {
+                    Config.defaultCategoryName = name
+                    isActive = false
+                    name = ""
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    newNoteField.isActive = newNoteField.true
+                    updateName(newNoteField.text, newNoteField)
+                }
+            }
         }
 
         Kirigami.Separator {

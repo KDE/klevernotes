@@ -17,6 +17,7 @@ Kirigami.PromptDialog {
     property string realName
     property string parentPath
     property bool newItem
+    property bool sideBarAction
     property QtObject callingAction
 
     readonly property QtObject nameField : nameField
@@ -37,8 +38,11 @@ Kirigami.PromptDialog {
         // The user just pressed apply without renaming the object
         if (nameField.text === shownName && !textPromptDialog.newItem) return true
 
-        const newPath = parentPath+"/"+nameField.text
-        const exist = KleverUtility.exist(newPath)
+        let exist = false
+        if (sideBarAction) {
+            const newPath = parentPath+"/"+nameField.text
+            exist = KleverUtility.exist(newPath)
+        }
 
         const isDisplay = (nameField.text === Config.categoryDisplayName)
 
