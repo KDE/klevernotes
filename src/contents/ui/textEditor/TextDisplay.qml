@@ -86,6 +86,11 @@ RowLayout {
                     ? vbar.decrease()
                     : vbar.increase()
             }
+
+            // Use to make some test
+
+             onClicked: web_view.runJavaScript("document.body.innerHTML",function(result) { console.log(result); });
+
         }
     }
 

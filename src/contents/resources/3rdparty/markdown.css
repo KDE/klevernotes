@@ -15,10 +15,12 @@ body{
   font-size: 16px;
   word-wrap: break-word;
 }
+
 h1, h2, h3, h4 {
     color: var(--titleColor);
     font-weight: 400;
 }
+
 a {
     color: var(--linkColor);
     margin: 0;
@@ -28,19 +30,27 @@ a {
 a:visited {
     color: var(--visitedLinkColor);
 }
-ul, ol {
-    padding: 0;
-    margin: 0;
+
+ol, ul {
+  padding: 10px;
 }
-li {
-    line-height: 24px;
+
+ol li, ul li {
+    margin: 5px;
 }
-li ul, li ul {
-    margin-left: 24px;
+
+pre {
+    background: var(--codeColor);
+    border: 1px solid var(--linkColor);
+    border-radius: 4px;
 }
 
 code {
     background: var(--codeColor);
+}
+
+pre code {
+    border-radius: 4px;
 }
 
 blockquote {
@@ -61,4 +71,13 @@ hr {
 img {
   max-width: 100%;
   max-height: 100%;
+}
+
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+table {
+    width: 100%
 }
