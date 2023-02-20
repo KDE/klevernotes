@@ -79,9 +79,6 @@ Kirigami.ScrollablePage {
     }
 
     Kirigami.FormLayout {
-        Kirigami.Theme.colorSet: Kirigami.Theme.View
-        Kirigami.Theme.inherit: false
-
         Kirigami.Separator {
             Kirigami.FormData.label: i18n("General")
             Kirigami.FormData.isSection: true
@@ -210,6 +207,9 @@ Kirigami.ScrollablePage {
                 width: Kirigami.Units.largeSpacing * 20
 
                 background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+
                     color: (Config.viewBodyColor !== "None") ? Config.viewBodyColor : Kirigami.Theme.backgroundColor
                     radius: Kirigami.Units.smallSpacing
                 }
@@ -243,6 +243,9 @@ Kirigami.ScrollablePage {
                 anchors.margins: Kirigami.Units.smallSpacing
 
                 background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+
                     implicitWidth: backgroundButton.width
                     implicitHeight: backgroundButton.height
                     color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
@@ -279,6 +282,9 @@ Kirigami.ScrollablePage {
 
 
                 background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+
                     implicitWidth: backgroundButton.width
                     implicitHeight: backgroundButton.height
                     color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
@@ -314,6 +320,9 @@ Kirigami.ScrollablePage {
                 anchors.margins: Kirigami.Units.smallSpacing
 
                 background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+
                     implicitWidth: backgroundButton.width
                     implicitHeight: backgroundButton.height
                     color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
@@ -349,6 +358,9 @@ Kirigami.ScrollablePage {
                 anchors.margins: Kirigami.Units.smallSpacing
 
                 background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+
                     implicitWidth: backgroundButton.width
                     implicitHeight: backgroundButton.height
                     color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
@@ -383,6 +395,9 @@ Kirigami.ScrollablePage {
                 anchors.margins: Kirigami.Units.smallSpacing
 
                 background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+
                     implicitWidth: backgroundButton.width
                     implicitHeight: backgroundButton.height
                     color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
@@ -407,6 +422,9 @@ Kirigami.ScrollablePage {
             id: fontDisplay
 
             Kirigami.FormData.label: i18n("Font:")
+
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
 
             readOnly: true
             text: (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont.family
