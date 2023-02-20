@@ -11,6 +11,7 @@ import QtWebChannel 1.0
 import QtWebEngine 1.6
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
+import Qt.labs.platform 1.1
 
 import qtMdEditor 1.0 as QtMdEditor
 import org.kde.Klever 1.0
@@ -56,7 +57,7 @@ RowLayout {
             url: "qrc:/index.html"
             focus: true
             webChannel: WebChannel{
-                registeredObjects:[editorLink,cssLink]
+                registeredObjects:[editorLink,cssLink,homePathPasser]
             }
 
             QtMdEditor.QmlLinker{
@@ -70,10 +71,16 @@ RowLayout {
                 WebChannel.id:"linkToCss"
             }
 
+            QtMdEditor.QmlLinker{
+                id:homePathPasser
+                WebChannel.id:"homePathPasser"
+            }
+
             onLoadProgressChanged: if (loadProgress === 100) {
                 changeStyle()
                 // Dirty workaround
                 editorLink.text = text
+                homePathPasser.path = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].substring("file://".length)
             }
         }
 

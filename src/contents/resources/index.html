@@ -12,9 +12,14 @@
   'use strict';
 
   const placeholder = document.getElementById('placeholder');
+  var homePath;
+
+  let updateHomePath = function(path) {
+      homePath = path;
+  }
 
   let updateText = function(text) {
-      placeholder.innerHTML = marked(text);
+      placeholder.innerHTML = marked(text,false,false,homePath);
   }
 
   let updateCss = function(css) {
@@ -32,6 +37,9 @@
 
       let linkToCss = channel.objects.linkToCss;
       linkToCss.cssChanged.connect(updateCss);
+
+      let homePathPasser = channel.objects.homePathPasser;
+      homePathPasser.pathChanged.connect(updateHomePath);
 
     }
   );

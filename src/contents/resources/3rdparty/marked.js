@@ -819,7 +819,13 @@ InlineLexer.prototype.outputLink = function(cap, link) {
   var href = link.href,
       title = link.title ? escape(link.title) : null;
 
-  return cap[0].charAt(0) !== '!'
+  // KLEVERNOTES ADDED THOSE LINES
+  // ======
+  if (href.startsWith("~")) href = globalHomePath + href.substring(1);
+  if (!(href.startsWith("http") || href.startsWith("//"))) href = "file:" + href;
+  // ======
+
+    return cap[0].charAt(0) !== '!'
     ? this.renderer.link(href, title, this.output(cap[1]))
     : this.renderer.image(href, title, escape(cap[1]));
 };
@@ -1359,7 +1365,9 @@ function splitCells(tableRow, count) {
  * Marked
  */
 
-function marked(src, opt, callback) {
+var globalHomePath;
+// KLEVERNOTES ADDED HOME PATH
+function marked(src, opt, callback, homePath) {
   // throw error in case of non string input
   if (typeof src === 'undefined' || src === null) {
     throw new Error('marked(): input parameter is undefined or null');
@@ -1440,6 +1448,8 @@ function marked(src, opt, callback) {
   }
   try {
     if (opt) opt = merge({}, marked.defaults, opt);
+    // KLEVERNOTES ADDED THIS LINE
+    if (homePath) globalHomePath = homePath;
     return Parser.parse(Lexer.lex(src, opt), opt);
   } catch (e) {
     e.message += '\nPlease report this to https://github.com/markedjs/marked.';
