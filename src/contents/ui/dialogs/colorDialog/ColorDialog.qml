@@ -14,7 +14,7 @@ Kirigami.Dialog {
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
-    property string selectedColor: picker.selectedColor
+    property alias selectedColor: picker.selectedColor
 
     ColorPicker{
         id:picker

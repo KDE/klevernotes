@@ -13,7 +13,14 @@ Rectangle {
     id: colorPicker
     color: "transparent"
 
-    property string selectedColor : "#ffffff"
+    property color selectedColor
+    property bool initital: false
+
+    onSelectedColorChanged: if (!visible) {
+        hsPicker.h = selectedColor.hslHue
+        hsPicker.s = selectedColor.hslSaturation
+        lightnessSlider.l = selectedColor.hslLightness
+    }
 
     ColumnLayout{
         anchors.fill:parent
@@ -30,18 +37,18 @@ Rectangle {
                 Layout.fillWidth:true
                 Layout.fillHeight:true
 
-                onSChanged: _hsva(h,s,valueSlider.v)
-                onHChanged: _hsva(h,s,valueSlider.v)
+                onSChanged: _hsla(h,s,lightnessSlider.v)
+                onHChanged: _hsla(h,s,lightnessSlider.v)
             }
 
-            // value picking slider
-            ValueSlider {
-                id: valueSlider
+            // lightness picking slider
+            LightnessSlider {
+                id: lightnessSlider
                 width: 12
                 Layout.rightMargin: 10
                 Layout.fillHeight:true
 
-                onVChanged: _hsva(hsPicker.h,hsPicker.s,v)
+                onLChanged: _hsla(hsPicker.h,hsPicker.s,l)
             }
         }
         Rectangle{
@@ -53,11 +60,11 @@ Rectangle {
         }
     }
 
-    //  creates color value from hue, saturation, brightness
-    function _hsva(h, s, b) {
-        var c = Qt.hsva(h, s, b,1)
+    //  creates color value from hue, saturation, lightness
+    function _hsla(h, s, l) {
+        var c = Qt.hsla(h, s, l, 1)
         select.color = c
 
-        selectedColor = c
+        if (visible) selectedColor = c
     }
 }

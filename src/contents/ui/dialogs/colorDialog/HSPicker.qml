@@ -7,11 +7,11 @@ Item {
     id: root
 
     property int cursorRadius : 10
-    property real h : 1
-    property real s : 0
+    property real h
+    property real s
 
     Rectangle {
-//      This way the middle of the cursor can trully be in a corner
+    // This way the middle of the cursor can trully be in a corner
         x : cursorRadius
         y : cursorRadius + parent.height - 2 * cursorRadius
         width: parent.height - 2 * cursorRadius
@@ -47,8 +47,8 @@ Item {
         color:"transparent"
         width: cursorRadius*2
         height: cursorRadius*2
-        x: bouderies.width
-        y: bouderies.height
+        x: root.h * bouderies.width
+        y: (root.s * bouderies.height * -1) + bouderies.height
 
         Rectangle{
             id:north
@@ -101,10 +101,6 @@ Item {
 
                 root.h = (pickerCursor.x/bouderies.width)
                 root.s = ((bouderies.height-pickerCursor.y)/bouderies.height)
-
-                // root.h = Math.round(xPercent*3.6)
-                // root.s = Math.round(yPercent)
-
             }
         }
         onPositionChanged: handleMouse(mouse)

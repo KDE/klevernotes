@@ -6,7 +6,7 @@ import QtQuick 2.11
 Item{
     id: lightSlider
     property int cursorHeight: 7
-    property real v : 1
+    property real l
     Rectangle {
         y: 10
         height: parent.height - 20
@@ -24,7 +24,7 @@ Item{
             Rectangle {
                 x: -2; y: -height*0.5
                 width: parent.width + 4; height: cursorHeight
-                border.color: (lightSlider.v > 50) ? "black" : "white"
+                border.color: (lightSlider.l > 50) ? "black" : "white"
                 border.width: 2
                 color: "transparent"
             }
@@ -38,8 +38,7 @@ Item{
                 if (mouse.buttons & Qt.LeftButton) {
                     pickerCursor.y = Math.max(0, Math.min(height, mouse.y))
 
-                    lightSlider.v = ((height-pickerCursor.y)/height)
-                    // console.log()
+                    lightSlider.l = ((height-pickerCursor.y)/height)
                 }
             }
             onPositionChanged: {

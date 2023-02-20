@@ -32,7 +32,7 @@
         <file>contents/ui/dialogs/colorDialog/ColorDialog.qml</file>
         <file>contents/ui/dialogs/colorDialog/ColorPicker.qml</file>
         <file>contents/ui/dialogs/colorDialog/HSPicker.qml</file>
-        <file>contents/ui/dialogs/colorDialog/ValueSlider.qml</file>
+        <file>contents/ui/dialogs/colorDialog/LightnessSlider.qml</file>
 
         <file alias="index.html">contents/resources/index.html</file>
         <file alias="qwebchannel.js">contents/resources/qwebchannel.js</file>

@@ -69,7 +69,9 @@ Kirigami.ScrollablePage {
 
         property QtObject caller
 
-        onAccepted: updateColor(caller, selectedColor)
+        selectedColor: caller.color
+
+        onAccepted: if (selectedColor != caller.color) updateColor(caller, selectedColor)
     }
 
     FontDialog{
@@ -200,17 +202,20 @@ Kirigami.ScrollablePage {
             Controls.Button {
                 id: backgroundButton
 
+                width: Kirigami.Units.largeSpacing * 20
+
                 anchors.bottom: resetBackground.bottom
                 anchors.top: resetBackground.top
                 anchors.margins: Kirigami.Units.smallSpacing
 
-                width: Kirigami.Units.largeSpacing * 20
+
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
+
+                property string color: (Config.viewBodyColor !== "None") ? Config.viewBodyColor : Kirigami.Theme.backgroundColor
 
                 background: Rectangle {
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
-
-                    color: (Config.viewBodyColor !== "None") ? Config.viewBodyColor : Kirigami.Theme.backgroundColor
+                    color: backgroundButton.color
                     radius: Kirigami.Units.smallSpacing
                 }
 
@@ -242,13 +247,13 @@ Kirigami.ScrollablePage {
                 anchors.top: resetText.top
                 anchors.margins: Kirigami.Units.smallSpacing
 
-                background: Rectangle {
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
 
-                    implicitWidth: backgroundButton.width
-                    implicitHeight: backgroundButton.height
-                    color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
+                property string color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
+
+                background: Rectangle {
+                    color: textButton.color
                     radius: Kirigami.Units.smallSpacing
                 }
 
@@ -280,14 +285,13 @@ Kirigami.ScrollablePage {
                 anchors.top: resetTitle.top
                 anchors.margins: Kirigami.Units.smallSpacing
 
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
+
+                property string color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
 
                 background: Rectangle {
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
-
-                    implicitWidth: backgroundButton.width
-                    implicitHeight: backgroundButton.height
-                    color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
+                    color: titleButton.color
                     radius: Kirigami.Units.smallSpacing
                 }
 
@@ -319,13 +323,13 @@ Kirigami.ScrollablePage {
                 anchors.top: resetLink.top
                 anchors.margins: Kirigami.Units.smallSpacing
 
-                background: Rectangle {
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
 
-                    implicitWidth: backgroundButton.width
-                    implicitHeight: backgroundButton.height
-                    color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
+                property string color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
+
+                background: Rectangle {
+                    color: linkButton.color
                     radius: Kirigami.Units.smallSpacing
                 }
 
@@ -357,13 +361,13 @@ Kirigami.ScrollablePage {
                 anchors.top: resetVisitiedLink.top
                 anchors.margins: Kirigami.Units.smallSpacing
 
-                background: Rectangle {
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
 
-                    implicitWidth: backgroundButton.width
-                    implicitHeight: backgroundButton.height
-                    color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
+                property string color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
+
+                background: Rectangle {
+                    color: visitedLinkButton.color
                     radius: Kirigami.Units.smallSpacing
                 }
                 onClicked: {
@@ -394,13 +398,13 @@ Kirigami.ScrollablePage {
                 anchors.top: resetCode.top
                 anchors.margins: Kirigami.Units.smallSpacing
 
-                background: Rectangle {
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
 
-                    implicitWidth: backgroundButton.width
-                    implicitHeight: backgroundButton.height
-                    color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
+                property string color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
+
+                background: Rectangle {
+                    color: codeButton.color
                     radius: Kirigami.Units.smallSpacing
                 }
 
