@@ -24,11 +24,11 @@
 
         <file>contents/ui/dialogs/DeleteConfirmationDialog.qml</file>
         <file>contents/ui/dialogs/FilePickerDialog.qml</file>
-        <file>contents/ui/dialogs/FolderChooserDialog.qml</file>
-        <file>contents/ui/dialogs/FontDialog.qml</file>
+        <file>contents/ui/dialogs/FolderPickerDialog.qml</file>
+        <file>contents/ui/dialogs/FontPickerDialog.qml</file>
         <file>contents/ui/dialogs/ImagePickerDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
-        <file>contents/ui/dialogs/RenameErrorDialog.qml</file>
+        <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
         <file>contents/ui/dialogs/URLDialog.qml</file>
 

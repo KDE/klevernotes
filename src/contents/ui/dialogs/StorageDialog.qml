@@ -125,7 +125,7 @@ Controls.Popup {
     }
 
     function getFolder() {
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/FolderChooserDialog.qml")
+        let component = Qt.createComponent("qrc:/contents/ui/dialogs/FolderPickerDialog.qml")
 
         if (component.status == Component.Ready) {
             var dialog = component.createObject(setupPopup);

@@ -24,7 +24,7 @@ Kirigami.PromptDialog {
 
 
     function throwError(){
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/RenameErrorDialog.qml")
+        let component = Qt.createComponent("qrc:/contents/ui/dialogs/NamingErrorDialog.qml")
 
         if (component.status == Component.Ready) {
             var dialog = component.createObject(textPromptDialog);
