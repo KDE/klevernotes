@@ -12,7 +12,7 @@ Kirigami.Dialog {
     preferredWidth: Kirigami.Units.gridUnit * 16
     preferredHeight : Kirigami.Units.gridUnit * 16
 
-    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+    standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
     property alias selectedColor: picker.selectedColor
 

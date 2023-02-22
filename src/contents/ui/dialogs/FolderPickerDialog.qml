@@ -3,11 +3,12 @@
 
 import QtQuick 2.15
 import Qt.labs.platform 1.1
+import QtQuick.Dialogs 1.3
 
 FolderDialog{
     id:folderDialog
 
-    folder:StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+    folder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
     options: FolderDialog.ShowDirsOnly
 
     property QtObject parent;

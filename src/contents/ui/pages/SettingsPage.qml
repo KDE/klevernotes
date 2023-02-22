@@ -71,13 +71,19 @@ Kirigami.ScrollablePage {
 
         selectedColor: caller.color
 
-        onAccepted: if (selectedColor != caller.color) updateColor(caller, selectedColor)
+        onApplied: {
+            if (selectedColor != caller.color) updateColor(caller, selectedColor)
+            colorPicker.close()
+        }
     }
 
     FontPickerDialog{
         id: fontDialog
 
-        onAccepted: Config.viewFont = checkedFamily
+        onApplied: {
+            Config.viewFont = checkedFamily
+            fontDialog.close()
+        }
     }
 
     Kirigami.FormLayout {

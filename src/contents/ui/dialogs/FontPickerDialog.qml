@@ -12,7 +12,7 @@ Kirigami.Dialog {
     property string currentFamily
     property string checkedFamily
 
-    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+    standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
     ListView {
         id: listView

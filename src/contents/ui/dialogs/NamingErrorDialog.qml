@@ -4,24 +4,15 @@
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 
-/*
 Kirigami.PromptDialog {
-    id: textPromptDialog
     title: "Klever Notes Storage"
 
-    property string useCase
-    property QtObject nameField
-    subtitle:i18n("This "+useCase+" already exist.\nPlease choose another name for it.")
+    // Dirty workaround to prevent weird height
+    height: header.height + footer.height + topPadding + bottomPadding + mainItem.height
 
-    onRejected: nameField.selectAll()
-}*/
-// Temporary use of simple Dialog instead of PromptDialog
-//since PromptDialog seems to have issues with settings correct height
-Kirigami.Dialog {
-    id: textPromptDialog
-
-    title: "Klever Notes Storage"
-    standardButtons: Kirigami.Dialog.Cancel
+    showCloseButton: false
+    closePolicy: Controls.Popup.NoAutoClose
+    standardButtons: Kirigami.Dialog.Ok
 
     property string useCase
     property QtObject nameField
@@ -32,12 +23,7 @@ Kirigami.Dialog {
         "Note": i18n("note")
     }
 
-    Text {
-        Kirigami.Theme.colorSet: Kirigami.Theme.Button
-        Kirigami.Theme.inherit: false
-        color: Kirigami.Theme.textColor
-        text: i18n("This "+useCaseTrad[useCase]+" already exist.\nPlease choose another name for it.\n")
-    }
+    subtitle: i18n("This "+useCaseTrad[useCase]+" already exist.\nPlease choose another name for it.\n")
 
-    onRejected: nameField.selectAll()
+    onAccepted: nameField.selectAll()
 }

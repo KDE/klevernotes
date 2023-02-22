@@ -57,31 +57,18 @@ Kirigami.PromptDialog {
 
         onSelectedTextChanged: nameField.forceActiveFocus()
 
-        Keys.onPressed: if ((event.key === Qt.Key_Return) || (event.key=== Qt.Key_Enter)) applyAction.trigger()
+        Keys.onPressed: if ((event.key === Qt.Key_Return) || (event.key=== Qt.Key_Enter)) textPromptDialog.applied()
     }
 
-    standardButtons: Kirigami.Dialog.NoButton
+    standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
-    customFooterActions: [
-        Kirigami.Action {
-            id:applyAction
-            text: i18n("Apply")
-            iconName: "dialog-ok"
-            onTriggered: {
-                if (checkName()){
-                    textPromptDialog.close()
-                    callingAction.name = nameField.text
-                    return
-                }
-                throwError()
-                nameField.selectAll()
-            }
-        },
-        Kirigami.Action {
-            text: i18n("Cancel")
-            iconName: "dialog-cancel"
-
-            onTriggered: textPromptDialog.close()
+    onApplied: {
+        if (checkName()){
+            textPromptDialog.close()
+            callingAction.name = nameField.text
+            return
         }
-    ]
+        throwError()
+        nameField.selectAll()
+    }
 }
