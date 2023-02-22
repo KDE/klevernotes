@@ -6,6 +6,8 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
+import "qrc:/contents/ui/dialogs"
+
 import org.kde.Klever 1.0
 
 Kirigami.Card{
@@ -20,6 +22,12 @@ Kirigami.Card{
         Kirigami.Theme.inherit: false
         color: Kirigami.Theme.backgroundColor
         radius: Kirigami.Units.smallSpacing
+    }
+
+    ImagePickerDialog {
+        id: imagePickerDialog
+
+        onAccepted: console.log(path)
     }
 
     Kirigami.ActionToolBar {
@@ -150,9 +158,14 @@ Kirigami.Card{
                 onTriggered: mainToolBar.handleAction(textArea.selectionStart,textArea.selectionEnd,["\n```\n"],true)
             },
             Kirigami.Action {
-                id: quotekAction
+                id: quoteAction
                 icon.name: "format-text-blockquote"
                 onTriggered: mainToolBar.handleAction(textArea.selectionStart,textArea.selectionEnd,["> "],false)
+            },
+            Kirigami.Action {
+                id: imageAction
+                icon.name: "insert-image"
+                onTriggered: imagePickerDialog.open()
             }
         ]
     }

@@ -15,13 +15,7 @@ Kirigami.Dialog {
     property bool localImageChoosen: false
     property string path
     onPathChanged: {
-        displayImage.visible = true
-
-        internetButton.height = Kirigami.Units.iconSizes.medium
-        internetButton.display = Controls.AbstractButton.TextBesideIcon
-        internetButton.icon.height = internetButton.height
-        localButton.icon.height = internetButton.height
-
+        // displayImage.visible = true
         displayImage.source = path
     }
 
@@ -52,13 +46,19 @@ Kirigami.Dialog {
 
                 icon.name: "internet-amarok"
                 icon.width: icon.height
-                icon.height: Kirigami.Units.iconSizes.huge * 2
+                icon.height: imageHolder.visible
+                    ? internetButton.height
+                    : Kirigami.Units.iconSizes.huge * 2
 
                 text: i18n("Web image")
 
-                display: Controls.AbstractButton.TextUnderIcon
+                display: imageHolder.visible
+                    ? Controls.AbstractButton.TextBesideIcon
+                    : Controls.AbstractButton.TextUnderIcon
                 width: Kirigami.Units.iconSizes.huge * 3
-                height: width
+                height: imageHolder.visible
+                    ? Kirigami.Units.iconSizes.medium
+                    : width
 
                 onClicked: {localImageChoosen = false ; getImagePath()}
             }
@@ -85,20 +85,41 @@ Kirigami.Dialog {
         }
 
         Kirigami.Separator{
-            visible: displayImage.visible
+            visible: imageHolder.visible
             width: internetButton.width * 2
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
 
-        Image {
-            id: displayImage
+        Item {
+            id: imageHolder
 
-            fillMode: Image.PreserveAspectFit
-            visible: false
+            visible: path != ""
+            height: Kirigami.Units.iconSizes.huge * 3
+            width: internetButton.width * 2
+            Image {
+                id: displayImage
 
-            sourceSize.height: Kirigami.Units.iconSizes.huge * 3
-            anchors.horizontalCenter: parent.horizontalCenter
+                source: path
+                fillMode: Image.PreserveAspectFit
+                visible: displayImage.status == Image.Ready
+
+                sourceSize.height: Kirigami.Units.iconSizes.huge * 3
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            Text {
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
+                color: Kirigami.Theme.textColor
+
+                text: i18n("It seems that the image you select doesn't exist or is not supported.")
+                wrapMode: Text.Wrap
+                visible: !displayImage.visible
+
+                anchors.fill: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
         }
 
         Kirigami.Separator{
@@ -136,5 +157,7 @@ Kirigami.Dialog {
     }
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+
+    onClosed: path = ""
 }
 
