@@ -5,6 +5,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
+import QtQuick.Dialogs 1.3
 
 import "qrc:/contents/ui/dialogs"
 
@@ -27,7 +28,18 @@ Kirigami.Card{
     ImagePickerDialog {
         id: imagePickerDialog
 
-        onAccepted: console.log(path)
+        onAccepted: if (imageLoaded) {
+            if (path.startsWith("file://")) path = path.substring("file://".length)
+            if (path.startsWith("/home/")) {
+                // Get the first "/" after the /home/username
+                path = path.substring("/home/".length)
+                const idx = path.indexOf("/")
+                path = "~" + path.substring(idx)
+            }
+
+            let imageString = `![${imageName}](${path})`
+            toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, imageString)
+        }
     }
 
     Kirigami.ActionToolBar {

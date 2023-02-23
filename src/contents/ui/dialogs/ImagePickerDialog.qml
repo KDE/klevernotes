@@ -14,6 +14,8 @@ Kirigami.Dialog {
 
     property bool localImageChoosen: false
     property string path
+    property alias imageName: nameTextField.text
+    readonly property bool imageLoaded: displayImage.visible
     onPathChanged: {
         // displayImage.visible = true
         displayImage.source = path
@@ -158,6 +160,6 @@ Kirigami.Dialog {
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
-    onClosed: path = ""
+    onClosed: {path = "" ; imageName = ""}
 }
 
