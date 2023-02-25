@@ -161,6 +161,7 @@ ToolBar {
                     break;
                 case "Note":
                     groupPath = infoRow.parentPath
+                    if (groupPath.endsWith("/.BaseGroup")) forcedLvl = 1
                     subEntryColumn = infoRow.parentRow.subEntryColumn
                     break;
             }
