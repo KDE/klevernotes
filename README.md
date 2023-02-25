@@ -18,10 +18,6 @@ A convergent markdown note taking application.
 2. Download or clone the repo
 3. Inside the directory run :
 
-```
-cmake -B build/ . && cmake --build build/
-```
-
 ```sh
 mkdir build
 cd build
@@ -30,4 +26,5 @@ cd build
 ```
 
 `/usr/bin/cmake` is the default path to cmake, replace it by yours if it's different.
+
 Same goes for `/usr/bin/ninja`.
