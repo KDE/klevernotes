@@ -11,7 +11,6 @@
 
 #include "about.h"
 #include "app.h"
-#include "version-klever.h"
 #include <KAboutData>
 #include <KLocalizedContext>
 #include <KLocalizedString>
@@ -39,7 +38,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                          // A displayable program name string.
                          i18nc("@title", "KleverNotes"),
                          // The program version string.
-                         QStringLiteral(KLEVER_VERSION_STRING),
+                         QStringLiteral("1.0"),
                          // Short description of what the app does.
                          i18n("Application Description"),
                          // The license this code is released under.

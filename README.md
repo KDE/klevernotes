@@ -21,3 +21,13 @@ A convergent markdown note taking application.
 ```
 cmake -B build/ . && cmake --build build/
 ```
+
+```sh
+mkdir build
+cd build
+/usr/bin/cmake -G Ninja ../
+/usr/bin/ninja
+```
+
+`/usr/bin/cmake` is the default path to cmake, replace it by yours if it's different.
+Same goes for `/usr/bin/ninja`.
