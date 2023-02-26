@@ -13,9 +13,9 @@ FileDialog {
     selectExisting: true
     selectMultiple: false
 
-    property QtObject par
+    property QtObject caller
 
     onAccepted: {
-        par.path = fileDialog.fileUrl
+        caller.path = fileDialog.fileUrl
     }
 }

@@ -24,6 +24,7 @@ RowLayout {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
+    property string path
     property string text
     property var defaultCSS: {
         '--bodyColor': (Config.viewBodyColor !== "None") ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
@@ -36,7 +37,7 @@ RowLayout {
     }
 
     onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
-
+    onPathChanged: if(web_view.loadProgress === 100) notePathPasser.notePath = path
     onTextChanged: if(web_view.loadProgress === 100) editorLink.text = text
 
     Kirigami.Card{
@@ -57,30 +58,39 @@ RowLayout {
             url: "qrc:/index.html"
             focus: true
             webChannel: WebChannel{
-                registeredObjects:[editorLink,cssLink,homePathPasser]
+                registeredObjects:[editorLink, cssLink, homePathPasser, notePathPasser]
             }
 
             QtMdEditor.QmlLinker{
-                id:editorLink
-                WebChannel.id:"linkToEditor"
+                id: editorLink
+                text: ""
+                WebChannel.id: "linkToEditor"
             }
 
             QtMdEditor.QmlLinker{
-                id:cssLink
+                id: cssLink
                 css: {"key":"value"}
-                WebChannel.id:"linkToCss"
+                WebChannel.id: "linkToCss"
             }
 
             QtMdEditor.QmlLinker{
-                id:homePathPasser
-                WebChannel.id:"homePathPasser"
+                id: homePathPasser
+                homePath: ""
+                WebChannel.id: "homePathPasser"
+            }
+
+            QtMdEditor.QmlLinker{
+                id: notePathPasser
+                notePath: ""
+                WebChannel.id: "notePathPasser"
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
                 changeStyle()
+                homePathPasser.homePath = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].substring("file://".length);
+                notePathPasser.notePath = frame.path
                 // Dirty workaround
-                editorLink.text = text
-                homePathPasser.path = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].substring("file://".length)
+                editorLink.text = text;
             }
         }
 

@@ -12,14 +12,27 @@
   'use strict';
 
   const placeholder = document.getElementById('placeholder');
-  var homePath;
 
+  var homePath;
   let updateHomePath = function(path) {
       homePath = path;
+      updateRender();
   }
 
+  var notePath;
+  let updateNotePath = function(path) {
+      notePath = path;
+      updateRender();
+  }
+
+  var mdText;
   let updateText = function(text) {
-      placeholder.innerHTML = marked(text,false,false,homePath);
+      mdText = text;
+      updateRender();
+  }
+
+  let updateRender = function() {
+      if (mdText && notePath && homePath) placeholder.innerHTML = marked(mdText,false,false,homePath,notePath);
   }
 
   let updateCss = function(css) {
@@ -39,8 +52,10 @@
       linkToCss.cssChanged.connect(updateCss);
 
       let homePathPasser = channel.objects.homePathPasser;
-      homePathPasser.pathChanged.connect(updateHomePath);
+      homePathPasser.homePathChanged.connect(updateHomePath);
 
+      let notePathPasser = channel.objects.notePathPasser;
+      notePathPasser.notePathChanged.connect(updateNotePath);
     }
   );
   </script>

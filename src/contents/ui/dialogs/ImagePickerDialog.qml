@@ -6,6 +6,9 @@ import QtQuick.Controls 2.3 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
+import "qrc:/contents/ui/dialogs"
+
+
 Kirigami.Dialog {
     id: imagePickerDialog
     title: i18n("Image selector")
@@ -16,21 +19,19 @@ Kirigami.Dialog {
     property string path
     property alias imageName: nameTextField.text
     readonly property bool imageLoaded: displayImage.visible
-    onPathChanged: {
-        // displayImage.visible = true
-        displayImage.source = path
+    readonly property bool storeImage: storeCheckbox.checked
+    onPathChanged: displayImage.source = path
+
+    FilePickerDialog {
+        id: filePickerDialog
+
+        caller: imagePickerDialog
     }
 
-    function getImagePath() {
-        let component = (localImageChoosen)
-            ? Qt.createComponent("qrc:/contents/ui/dialogs/FilePickerDialog.qml")
-            : Qt.createComponent("qrc:/contents/ui/dialogs/URLDialog.qml")
+    URLDialog {
+        id: urlDialog
 
-        if (component.status == Component.Ready) {
-            var dialog = component.createObject(imagePickerDialog);
-            dialog.par = imagePickerDialog
-            dialog.open()
-        }
+        caller: imagePickerDialog
     }
 
     Column {
@@ -62,7 +63,7 @@ Kirigami.Dialog {
                     ? Kirigami.Units.iconSizes.medium
                     : width
 
-                onClicked: {localImageChoosen = false ; getImagePath()}
+                onClicked: {localImageChoosen = false ; urlDialog.open()}
             }
 
             Kirigami.Separator{
@@ -82,7 +83,7 @@ Kirigami.Dialog {
                 width: internetButton.width
                 height: internetButton.height
 
-                onClicked: {localImageChoosen = true ; getImagePath()}
+                onClicked: {localImageChoosen = true ; filePickerDialog.open()}
             }
         }
 
@@ -149,6 +150,8 @@ Kirigami.Dialog {
         }
 
         Controls.CheckBox {
+            id: storeCheckbox
+
             checked: true
             text: i18n("Place this image inside the note folder")
             width: internetButton.width * 2

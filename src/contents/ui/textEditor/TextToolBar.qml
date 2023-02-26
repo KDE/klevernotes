@@ -29,15 +29,17 @@ Kirigami.Card{
         id: imagePickerDialog
 
         onAccepted: if (imageLoaded) {
-            if (path.startsWith("file://")) path = path.substring("file://".length)
+            console.log(storeImage)
+            let image
+            if (path.startsWith("file://")) image = path.substring("file://".length)
             if (path.startsWith("/home/")) {
                 // Get the first "/" after the /home/username
-                path = path.substring("/home/".length)
+                image = path.substring("/home/".length)
                 const idx = path.indexOf("/")
-                path = "~" + path.substring(idx)
+                image = "~" + path.substring(idx)
             }
 
-            let imageString = `![${imageName}](${path})`
+            let imageString = `![${imageName}](${image})`
             toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, imageString)
         }
     }

@@ -7,13 +7,15 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
 GridLayout{
+    id: holder
+
     anchors.fill:parent
     rows: 4
     columns: 2
 
     property alias title: header.text
-    property alias path: editor.path
     readonly property TextEditor editor : editor
+    property string path
 
     Kirigami.Heading {
         id:header
@@ -84,6 +86,7 @@ GridLayout{
                 id: editor
 
                 visible: editorToggler.checked
+                path: holder.path
 
                 Layout.fillWidth:true
                 Layout.fillHeight:true
@@ -96,6 +99,7 @@ GridLayout{
 
                 text: editor.text
                 visible: viewToggler.checked
+                path: holder.path.replace("note.md","")
 
                 Layout.fillWidth:true
                 Layout.fillHeight:true

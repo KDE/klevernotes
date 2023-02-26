@@ -10,7 +10,7 @@ Kirigami.PromptDialog {
 
     title: i18n("Choose an URL")
 
-    property QtObject par
+    property QtObject caller
 
     Controls.TextField {
         id: urlField
@@ -21,7 +21,7 @@ Kirigami.PromptDialog {
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
     onAccepted: {
-        par.path = urlField.text
+        caller.path = urlField.text
     }
 }
 
