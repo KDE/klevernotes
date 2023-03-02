@@ -5,23 +5,30 @@ import QtQuick 2.15
 import QtQuick.Controls 2.3 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
+import Qt.labs.platform 1.1
+
+import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/dialogs"
 
 
 Kirigami.Dialog {
     id: imagePickerDialog
+
     title: i18n("Image selector")
 
     height: header.height + footer.height + topPadding + bottomPadding + mainItem.height
 
-    property bool localImageChoosen: false
-    property string path
+    property string noteImagesStoringPath
+
+    property bool storedImagesExist: !KleverUtility.isEmptyDir(noteImagesStoringPath)
+    property string path: ""
     property alias imageName: nameTextField.text
+    property bool storedImageChoosen: false
 
     readonly property QtObject imageObject: displayImage
     readonly property bool imageLoaded: displayImage.visible
-    readonly property bool storeImage: storeCheckbox.checked //&& localImageChoosen
+    readonly property bool storeImage: storeCheckbox.checked && !storedImageChoosen
 
     onPathChanged: displayImage.source = path
 
@@ -45,6 +52,10 @@ Kirigami.Dialog {
 
         Layout.alignment: Qt.AlignTop
         Row {
+            id: buttonHolder
+
+            property int visibleChildrenCount: (storageButton.visible) ? 3 : 2
+
             spacing: Kirigami.Units.largeSpacing
 
             Controls.ToolButton {
@@ -54,19 +65,24 @@ Kirigami.Dialog {
                 icon.width: icon.height
                 icon.height: imageHolder.visible
                     ? internetButton.height
-                    : Kirigami.Units.iconSizes.huge * 2
+                    : Kirigami.Units.iconSizes.large * (5-buttonHolder.visibleChildrenCount)
 
                 text: i18n("Web image")
 
                 display: imageHolder.visible
                     ? Controls.AbstractButton.TextBesideIcon
                     : Controls.AbstractButton.TextUnderIcon
-                width: Kirigami.Units.iconSizes.huge * 3
+
+                width: Kirigami.Units.iconSizes.huge * (5-buttonHolder.visibleChildrenCount)
+
                 height: imageHolder.visible
                     ? Kirigami.Units.iconSizes.medium
                     : width
 
-                onClicked: {localImageChoosen = false ; urlDialog.open()}
+                onClicked: {
+                    storedImageChoosen = false
+                    urlDialog.open()
+                }
             }
 
             Kirigami.Separator{
@@ -86,13 +102,44 @@ Kirigami.Dialog {
                 width: internetButton.width
                 height: internetButton.height
 
-                onClicked: {localImageChoosen = true ; filePickerDialog.open()}
+                onClicked: {
+                    storedImageChoosen = false
+                    filePickerDialog.folder = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+                    filePickerDialog.open()
+                }
+            }
+
+            Kirigami.Separator{
+                height: internetButton.height
+                visible: imagePickerDialog.storedImagesExist
+            }
+
+            Controls.ToolButton {
+                id: storageButton
+
+                icon.name: "dblatex"
+                icon.width: icon.height
+                icon.height: internetButton.icon.height
+
+                text: i18n("Stored image")
+
+                display: internetButton.display
+                width: internetButton.width
+                height: internetButton.height
+
+                visible: imagePickerDialog.storedImagesExist
+
+                onClicked: {
+                    storedImageChoosen = true
+                    filePickerDialog.folder = "file://"+imagePickerDialog.noteImagesStoringPath
+                    filePickerDialog.open()
+                }
             }
         }
 
         Kirigami.Separator{
             visible: imageHolder.visible
-            width: internetButton.width * 2
+            width: internetButton.width * buttonHolder.visibleChildrenCount
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -102,7 +149,7 @@ Kirigami.Dialog {
 
             visible: path != ""
             height: Kirigami.Units.iconSizes.huge * 3
-            width: internetButton.width * 2
+            width: internetButton.width * buttonHolder.visibleChildrenCount
             Image {
                 id: displayImage
 
@@ -116,7 +163,6 @@ Kirigami.Dialog {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 onStatusChanged: if (status == Image.Ready){
-                    console.log(implicitWidth,implicitHeight)
                     // If the image is placed inside the note folder, we want it to be max 1024x1024
                     if (Math.max(implicitWidth,implicitHeight,1024) == 1024) {
                         idealWidth = implicitWidth
@@ -129,7 +175,6 @@ Kirigami.Dialog {
                         idealWidth = Math.round(implicitWidth/divider)
                         idealHeight = Math.round(implicitHeight/divider)
                     }
-                    console.log(idealWidth,idealHeight,implicitWidth,implicitHeight,"here")
                     height = Kirigami.Units.iconSizes.huge * 3
                 }
             }
@@ -149,12 +194,12 @@ Kirigami.Dialog {
         }
 
         Kirigami.Separator{
-            width: internetButton.width * 2
+            width: internetButton.width * buttonHolder.visibleChildrenCount
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         RowLayout {
-            width: internetButton.width * 2
+            width: internetButton.width * buttonHolder.visibleChildrenCount
             anchors.horizontalCenter: parent.horizontalCenter
 
             spacing: Kirigami.Units.smallSpacing
@@ -177,8 +222,8 @@ Kirigami.Dialog {
 
             checked: true
             text: i18n("Place this image inside the note folder")
-            width: internetButton.width * 2
-            visible: displayImage.visible //&& localImageChoosen
+            width: internetButton.width * buttonHolder.visibleChildrenCount
+            visible: displayImage.visible && !storedImageChoosen
 
             anchors.horizontalCenter: parent.horizontalCenter
         }

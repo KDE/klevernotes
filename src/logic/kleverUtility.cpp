@@ -46,7 +46,13 @@ QString KleverUtility::getImageStoragingPath(QString noteImagesStoringPath, QStr
     if (exists(imagePath)){
         return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration+1);
     }
-
-
+    qDebug() << imagePath+" C++";
     return imagePath;
 }
+
+bool KleverUtility::isEmptyDir(QString path)
+{
+    if (!exists(path)) return true;
+    return QDir(path).isEmpty();
+}
+

@@ -18,5 +18,6 @@ public slots:
     bool exists(QString path);
     void create(QString path);
     QString getImageStoragingPath(QString noteImagesStoringPath, QString wantedName, int iteration=0);
+    bool isEmptyDir(QString path);
 };
 

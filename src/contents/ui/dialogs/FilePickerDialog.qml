@@ -8,10 +8,11 @@ import org.kde.kirigami 2.19 as Kirigami
 
 FileDialog {
     id: fileDialog
+
     title: i18n("Image picker")
-    folder: shortcuts.home
     selectExisting: true
     selectMultiple: false
+    nameFilters: [ "Image files (*.jpeg *.jpg *.png)" ]
 
     property QtObject caller
 

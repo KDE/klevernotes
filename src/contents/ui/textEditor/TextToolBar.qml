@@ -7,9 +7,9 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Dialogs 1.3
 
-import "qrc:/contents/ui/dialogs"
-
 import org.kde.Klever 1.0
+
+import "qrc:/contents/ui/dialogs"
 
 Kirigami.Card{
     id: toolbarHolder
@@ -29,36 +29,44 @@ Kirigami.Card{
     ImagePickerDialog {
         id: imagePickerDialog
 
-        onAccepted: if (imageLoaded) {
-            let image = path
-            if (path.startsWith("file://")) image = path.substring("file://".length)
+        noteImagesStoringPath: toolbarHolder.notePath+"Images/"
 
-            if (storeImage){
-                const noteImagesStoringPath = toolbarHolder.notePath+"Images/"
+        onAccepted: if (imageLoaded) {
+            let modifiedPath = path
+
+            let useLocalImage = storedImageChoosen
+            if (storeImage && !storedImageChoosen){
                 let wantedImageName = imageName
                 if (imageName == ""){
                     const fileName = KleverUtility.getName(path)
                     wantedImageName = fileName.substring(0,fileName.lastIndexOf("."))
                 }
 
+                // We can't asign the result to modifiedPath and use it to saveToFile or it won't work !
                 const validPath = KleverUtility.getImageStoragingPath(noteImagesStoringPath, wantedImageName)
+                modifiedPath = validPath
 
                 imageObject.grabToImage(function(result) {
-                    result.saveToFile(validPath);
                 },Qt.size(imageObject.idealWidth,imageObject.idealHeight));
 
-                image = "./"+validPath.replace(toolbarHolder.notePath,"")
+                useLocalImage = true
+
+                storedImagesExist = true
             }
-            if (path.startsWith("/home/")) {
+
+            if (modifiedPath.startsWith("file://")) modifiedPath = modifiedPath.replace("file://","")
+
+            if (useLocalImage) modifiedPath = "./"+modifiedPath.replace(toolbarHolder.notePath,"")
+
+            if (modifiedPath.startsWith("/home/")) {
                 // Get the first "/" after the /home/username
-                image = path.substring("/home/".length)
-                const idx = path.indexOf("/")
-                image = "~" + path.substring(idx)
+                modifiedPath = modifiedPath.replace("/home/","")
+                const idx = modifiedPath.indexOf("/")
+                modifiedPath = "~" + modifiedPath.substring(idx)
             }
 
-            let imageString = `![${imageName}](${image})`
+            let imageString = `![${imageName}](${modifiedPath}) `
             toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, imageString)
-
         }
     }
 
