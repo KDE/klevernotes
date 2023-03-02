@@ -41,7 +41,7 @@ Kirigami.PromptDialog {
         let exist = false
         if (sideBarAction) {
             const newPath = parentPath+"/"+nameField.text
-            exist = KleverUtility.exist(newPath)
+            exist = KleverUtility.exists(newPath)
         }
 
         const isDisplay = (nameField.text === Config.categoryDisplayName)

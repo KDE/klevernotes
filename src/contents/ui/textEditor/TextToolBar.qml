@@ -15,6 +15,7 @@ Kirigami.Card{
     id: toolbarHolder
 
     property QtObject textArea
+    property string notePath
 
     // This 'replicate' the DefaultCardBackground and just change the background color
     //(https://api.kde.org/frameworks/kirigami/html/DefaultCardBackground_8qml_source.html)
@@ -29,9 +30,25 @@ Kirigami.Card{
         id: imagePickerDialog
 
         onAccepted: if (imageLoaded) {
-            console.log(storeImage)
-            let image
+            let image = path
             if (path.startsWith("file://")) image = path.substring("file://".length)
+
+            if (storeImage){
+                const noteImagesStoringPath = toolbarHolder.notePath+"Images/"
+                let wantedImageName = imageName
+                if (imageName == ""){
+                    const fileName = KleverUtility.getName(path)
+                    wantedImageName = fileName.substring(0,fileName.lastIndexOf("."))
+                }
+
+                const validPath = KleverUtility.getImageStoragingPath(noteImagesStoringPath, wantedImageName)
+
+                imageObject.grabToImage(function(result) {
+                    result.saveToFile(validPath);
+                },Qt.size(imageObject.idealWidth,imageObject.idealHeight));
+
+                image = "./"+validPath.replace(toolbarHolder.notePath,"")
+            }
             if (path.startsWith("/home/")) {
                 // Get the first "/" after the /home/username
                 image = path.substring("/home/".length)
@@ -41,6 +58,7 @@ Kirigami.Card{
 
             let imageString = `![${imageName}](${image})`
             toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, imageString)
+
         }
     }
 

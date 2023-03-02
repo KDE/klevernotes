@@ -60,6 +60,7 @@ GridLayout{
         id:toolbar
 
         textArea: editor.textArea
+        notePath: display.path
 
         Layout.fillWidth:true
         Layout.preferredHeight: childrenRect.height

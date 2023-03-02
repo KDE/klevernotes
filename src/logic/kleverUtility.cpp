@@ -23,17 +23,30 @@ QString KleverUtility::getPath(QUrl url)
     return url.toLocalFile();
 }
 
-bool KleverUtility::exist(QString url)
+bool KleverUtility::exists(QString url)
 {
-    return QDir().exists(url);
+    return QFile().exists(url);
 }
 
 void KleverUtility::create(QString path)
 {
-    QDir dir;
-
-    if (!exist(path))
-    {
-        dir.mkpath(path);
+    if (!exists(path)){
+        QDir().mkpath(path);
     }
+}
+
+QString KleverUtility::getImageStoragingPath(QString noteImagesStoringPath, QString wantedName, int iteration)
+{
+    create(noteImagesStoringPath);
+
+    QString imagePath = noteImagesStoringPath+wantedName;
+    if (iteration != 0) imagePath += "("+QString::number(iteration)+")";
+    imagePath += ".png";
+
+    if (exists(imagePath)){
+        return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration+1);
+    }
+
+
+    return imagePath;
 }

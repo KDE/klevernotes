@@ -18,8 +18,11 @@ Kirigami.Dialog {
     property bool localImageChoosen: false
     property string path
     property alias imageName: nameTextField.text
+
+    readonly property QtObject imageObject: displayImage
     readonly property bool imageLoaded: displayImage.visible
-    readonly property bool storeImage: storeCheckbox.checked
+    readonly property bool storeImage: storeCheckbox.checked //&& localImageChoosen
+
     onPathChanged: displayImage.source = path
 
     FilePickerDialog {
@@ -107,8 +110,28 @@ Kirigami.Dialog {
                 fillMode: Image.PreserveAspectFit
                 visible: displayImage.status == Image.Ready
 
-                sourceSize.height: Kirigami.Units.iconSizes.huge * 3
+                property int idealWidth
+                property int idealHeight
+
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                onStatusChanged: if (status == Image.Ready){
+                    console.log(implicitWidth,implicitHeight)
+                    // If the image is placed inside the note folder, we want it to be max 1024x1024
+                    if (Math.max(implicitWidth,implicitHeight,1024) == 1024) {
+                        idealWidth = implicitWidth
+                        idealHeight = implicitHeight
+                    } else {
+                        let divider = (implicitHeight > implicitWidth)
+                            ? implicitHeight/1024
+                            : implicitWidth/1024
+
+                        idealWidth = Math.round(implicitWidth/divider)
+                        idealHeight = Math.round(implicitHeight/divider)
+                    }
+                    console.log(idealWidth,idealHeight,implicitWidth,implicitHeight,"here")
+                    height = Kirigami.Units.iconSizes.huge * 3
+                }
             }
 
             Text {
@@ -155,7 +178,7 @@ Kirigami.Dialog {
             checked: true
             text: i18n("Place this image inside the note folder")
             width: internetButton.width * 2
-            visible: displayImage.visible && localImageChoosen
+            visible: displayImage.visible //&& localImageChoosen
 
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -163,6 +186,6 @@ Kirigami.Dialog {
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
-    onClosed: {path = "" ; imageName = ""}
+    onOpened: {path = "" ; imageName = ""; displayImage.height = undefined ;}
 }
 

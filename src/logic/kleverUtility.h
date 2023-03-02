@@ -15,7 +15,8 @@ public:
 public slots:
     QString getName(QString path);
     QString getPath(QUrl url);
-    bool exist(QString path);
+    bool exists(QString path);
     void create(QString path);
+    QString getImageStoragingPath(QString noteImagesStoringPath, QString wantedName, int iteration=0);
 };
 
