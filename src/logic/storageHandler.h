@@ -4,6 +4,8 @@
 
 #include <QObject>
 #include "kleverUtility.h"
+#include <KIO/CopyJob>
+#include <kio_version.h>
 
 class StorageHandler : public QObject
 {
@@ -13,6 +15,9 @@ class StorageHandler : public QObject
 public:
     explicit StorageHandler(QObject *parent = nullptr);
 
+signals:
+    void storageUpdated();
+
 public slots:
     void makeStorage(QString storagePath);
     void makeCategory(QString storagePath, QString categoryName);
@@ -21,5 +26,7 @@ public slots:
 
     bool rename(QString oldPath, QString newPath);
 
-    bool remove(QString path);
+    void remove(QString path);
+
+    void slotResult(KJob *job);
 };

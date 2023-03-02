@@ -15,13 +15,9 @@ Controls.ScrollView {
 
     property var model
     property QtObject currentlySelected: subEntryColumn.children[0]
+
     readonly property QtObject subEntryColumn: subEntryColumn
 
-    SubEntryColumn {
-        id: subEntryColumn
-
-        delimiter : 1
-    }
 
     onCurrentlySelectedChanged: {
         const mainWindow = applicationWindow()
@@ -36,6 +32,31 @@ Controls.ScrollView {
             subEntryColumn.children[childIdx].destroy();
         }
         subEntryColumn.addRows(model)
+    }
 
+    SubEntryColumn {
+        id: subEntryColumn
+
+        delimiter : 1
+    }
+
+    Connections {
+        target: StorageHandler
+        onStorageUpdated: {
+            const holder = currentlySelected.parent
+            const childrenList = holder.visibleChildren
+
+            let nextSelected
+            for (var childIdx = 0; childIdx < childrenList.length; childIdx++) {
+                if (currentlySelected == childrenList[childIdx]){
+                    if (childIdx-1 >= 0) nextSelected = childrenList[childIdx-1]
+                    else if (childIdx+1 != childrenList.length) nextSelected = childrenList[childIdx+1]
+                    else nextSelected = holder.parent
+                    break
+                }
+            }
+            currentlySelected.destroy()
+            currentlySelected = nextSelected
+        }
     }
 }

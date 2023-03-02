@@ -51,10 +51,8 @@ Column {
         useCase: tree.currentlySelected.useCase
 
         onAccepted: {
-            const removed = StorageHandler.remove(tree.currentlySelected.path)
-            if (removed) treeview.model = View.hierarchy(Config.storagePath,-1)
+            StorageHandler.remove(tree.currentlySelected.path)
         }
-        onRejected: console.log("Rejected")
     }
 
     Rectangle{

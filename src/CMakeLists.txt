@@ -15,7 +15,7 @@ add_executable(klever
     contents/logic/view.cpp
 
     resources.qrc)
-
+find_package(KF5KIO)
 target_link_libraries(klever
     Qt5::Core
     Qt5::Gui
@@ -27,6 +27,7 @@ target_link_libraries(klever
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::ConfigGui
+    KF5::KIOCore
     Qt::WebChannel
     Qt::WebEngine
     Qt::WebEngineWidgets)

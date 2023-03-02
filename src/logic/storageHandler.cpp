@@ -7,6 +7,7 @@
 #include <QString>
 #include "kleverUtility.h"
 
+
 StorageHandler::StorageHandler(QObject *parent)
     : QObject(parent)
 {
@@ -50,9 +51,17 @@ bool StorageHandler::rename(QString oldPath, QString newPath)
     return dir.rename(oldPath,newPath);
 }
 
-bool StorageHandler::remove(QString path)
+void StorageHandler::remove(QString path)
 {
-    QFile file(path);
-    return file.moveToTrash();
+    auto *job = KIO::trash(QUrl::fromLocalFile(path));
+    job->start();
+    connect(job, &KJob::result, this, &StorageHandler::slotResult);
+}
+
+void StorageHandler::slotResult(KJob* job)
+{
+    if (!job->error()) {
+        storageUpdated();
+    }
 }
 
