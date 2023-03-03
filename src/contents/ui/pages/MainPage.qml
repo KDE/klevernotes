@@ -27,7 +27,13 @@ Kirigami.Page {
 
             editorView.title = currentlySelected.displayedName
             editorView.path = currentlySelected.path+"/note.md"
+            editorView.visible = true
+            placeHolder.visible = false
+            return
         }
+
+        editorView.visible = false
+        placeHolder.visible = true
     }
 
     Loader{
@@ -35,7 +41,6 @@ Kirigami.Page {
 
         sourceComponent: editorHolder
         active: false
-        onLoaded: placeHolder.parent = null
         anchors.fill: parent
     }
 
@@ -47,6 +52,7 @@ Kirigami.Page {
 
     Kirigami.Card {
         id: placeHolder
+
         anchors.fill: parent
         anchors.margins: Kirigami.Units.largeSpacing * 2
         ColumnLayout {
