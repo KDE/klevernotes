@@ -96,7 +96,6 @@ QJsonObject View::getHierarchy(QString path, int lvl)
 void View::hierarchySupplier(QString path, int lvl)
 {
     QJsonObject hierarchy = getHierarchy(path, lvl);
-    qDebug() << "CPP HEYYYYYY";
     hierarchySent(hierarchy);
 }
 

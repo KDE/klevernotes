@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
-add_executable(klever
+add_executable(klevernotes
     main.cpp
     about.cpp
     app.cpp
@@ -15,8 +15,10 @@ add_executable(klever
     contents/logic/view.cpp
 
     resources.qrc)
+
 find_package(KF5KIO)
-target_link_libraries(klever
+
+target_link_libraries(klevernotes
     Qt5::Core
     Qt5::Gui
     Qt5::Qml
@@ -41,5 +43,5 @@ if (ANDROID)
     )
 endif()
 
-kconfig_add_kcfg_files(klever GENERATE_MOC kleverconfig.kcfgc)
-install(TARGETS klever ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+kconfig_add_kcfg_files(klevernotes GENERATE_MOC kleverconfig.kcfgc)
+install(TARGETS klevernotes ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

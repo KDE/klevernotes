@@ -83,8 +83,6 @@ Controls.ScrollView {
         }
     }
 
-    // Component.onCompleted: {
-        // console.log("test")
     onVisibleChanged: {
         const caller = tree
         tree.hierarchyAsker.push([caller])
