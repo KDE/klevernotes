@@ -30,6 +30,7 @@ ToolBar {
     }
 
     function makeRow(subEntryColumn,useCase,creatingPath,name,forcedLvl){
+        console.log(subEntryColumn)
         const newPath = creatingPath+"/"+name
         let lvl
         switch(useCase) {
@@ -49,9 +50,8 @@ ToolBar {
         const caller = subEntryColumn
 
         forcedLvl = (forcedLvl) ? forcedLvl : Infinity
-        const info = [forcedLvl, true]
 
-        treeView.hierarchyAsker.push([caller,info])
+        treeView.hierarchyAsker.push([caller,forcedLvl,true])
         View.hierarchySupplier(newPath,lvl)
     }
 
@@ -71,6 +71,7 @@ ToolBar {
 
         onNameChanged: {
             if (isActive) {
+                console.log(treeView.subEntryColumn)
                 makeRow(treeView.subEntryColumn,"Category",Config.storagePath,name)
                 isActive = false
                 name = ""

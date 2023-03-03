@@ -67,7 +67,6 @@ Controls.ScrollView {
 
         function onHierarchySent(hierarchy) {
             if (tree.hierarchyAsker.length != 0) {
-
                 const askerInfo = tree.hierarchyAsker.shift()
 
                 const caller = askerInfo[0]
@@ -75,17 +74,19 @@ Controls.ScrollView {
                     tree.subEntryColumn.addRows(hierarchy)
                     return
                 }
-                console.log(askerInfo)
-                const additionnalInfo = askerInfo[1]
 
-                caller.addRow(hierarchy,...additionnalInfo)
+                const forcedLvl = askerInfo[1]
+                const reorder = askerInfo[2]
+                caller.addRow(hierarchy,forcedLvl,askerInfo)
             }
         }
     }
 
     onVisibleChanged: {
-        const caller = tree
-        tree.hierarchyAsker.push([caller])
-        View.hierarchySupplier(Config.storagePath,-1)
+        if (visible){
+            const caller = tree
+            tree.hierarchyAsker.push([caller])
+            View.hierarchySupplier(Config.storagePath,-1)
+        }
     }
 }
