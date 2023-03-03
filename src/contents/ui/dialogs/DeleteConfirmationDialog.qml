@@ -12,6 +12,7 @@ Kirigami.PromptDialog {
         "Group": i18n("group"),
         "Note": i18n("note")
     }
+
     subtitle: "Are you sure you want to delete this "+useCaseTrad[useCase]+"?"
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 }

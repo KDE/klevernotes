@@ -12,7 +12,6 @@ import QtQuick.Layouts 1.3
 
 import org.kde.Klever 1.0
 
-import "qrc:/contents/ui/dialogs"
 
 Column {
     id: infoRow
@@ -44,16 +43,6 @@ Column {
     readonly property QtObject mouseArea: controlRoot
     readonly property QtObject textDisplay: textDisplay
     readonly property QtObject subEntryColumn: subEntryColumn
-
-    DeleteConfirmationDialog {
-        id: deleteConfirmationDialog
-
-        useCase: tree.currentlySelected.useCase
-
-        onAccepted: {
-            StorageHandler.remove(tree.currentlySelected.path)
-        }
-    }
 
     Rectangle{
         id:visualRow
@@ -137,7 +126,7 @@ Column {
                     icon.name: "user-trash-symbolic"
                     text: i18n("Delete")
 
-                    onTriggered: deleteConfirmationDialog.open()
+                    onTriggered: tree.deleteConfirmationDialog.open()
                 }
             }
         }

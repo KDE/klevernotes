@@ -8,6 +8,8 @@ import QtQuick.Layouts 1.3
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/dialogs"
+
 Controls.ScrollView {
     id: tree
 
@@ -18,7 +20,7 @@ Controls.ScrollView {
     property var hierarchyAsker: []
 
     readonly property QtObject subEntryColumn: subEntryColumn
-
+    readonly property QtObject deleteConfirmationDialog: deleteConfirmationDialog
 
     onCurrentlySelectedChanged: {
         const mainWindow = applicationWindow()
@@ -33,6 +35,16 @@ Controls.ScrollView {
             subEntryColumn.children[childIdx].destroy();
         }
         subEntryColumn.addRows(model)
+    }
+
+    DeleteConfirmationDialog {
+        id: deleteConfirmationDialog
+
+        useCase: tree.currentlySelected.useCase
+
+        onAccepted: {
+            StorageHandler.remove(tree.currentlySelected.path)
+        }
     }
 
     SubEntryColumn {
