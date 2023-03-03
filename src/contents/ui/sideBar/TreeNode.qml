@@ -121,12 +121,13 @@ Column {
             onEntered: hovered = true
             onExited: hovered = false
             onClicked: {
-                if (infoRow.useCase !== "Note") infoRow.expanded = !infoRow.expanded;
                 tree.currentlySelected = infoRow
                 visualRow.forceActiveFocus()
 
                 if (mouse.button === Qt.RightButton &&
                     infoRow.path !== Config.storagePath+"/.BaseCategory") contextMenu.popup()
+
+                else if (infoRow.useCase !== "Note") infoRow.expanded = !infoRow.expanded;
             }
 
             Controls.Menu {
