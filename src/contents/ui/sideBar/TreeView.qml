@@ -15,6 +15,7 @@ Controls.ScrollView {
 
     property var model
     property QtObject currentlySelected: subEntryColumn.children[0]
+    property var hierarchyAsker: []
 
     readonly property QtObject subEntryColumn: subEntryColumn
 
@@ -42,7 +43,8 @@ Controls.ScrollView {
 
     Connections {
         target: StorageHandler
-        onStorageUpdated: {
+
+        function onStorageUpdated() {
             const holder = currentlySelected.parent
             const childrenList = holder.visibleChildren
 
@@ -58,5 +60,34 @@ Controls.ScrollView {
             currentlySelected.destroy()
             currentlySelected = nextSelected
         }
+    }
+
+    Connections {
+        target: View
+
+        function onHierarchySent(hierarchy) {
+            if (tree.hierarchyAsker.length != 0) {
+
+                const askerInfo = tree.hierarchyAsker.shift()
+
+                const caller = askerInfo[0]
+                if (caller == tree) {
+                    tree.subEntryColumn.addRows(hierarchy)
+                    return
+                }
+                console.log(askerInfo)
+                const additionnalInfo = askerInfo[1]
+
+                caller.addRow(hierarchy,...additionnalInfo)
+            }
+        }
+    }
+
+    // Component.onCompleted: {
+        // console.log("test")
+    onVisibleChanged: {
+        const caller = tree
+        tree.hierarchyAsker.push([caller])
+        View.hierarchySupplier(Config.storagePath,-1)
     }
 }

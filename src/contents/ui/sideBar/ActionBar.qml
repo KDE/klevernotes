@@ -14,8 +14,17 @@ import "qrc:/contents/ui/dialogs"
 ToolBar {
     id: mainToolBar
 
-    property QtObject treeView
+    property QtObject treeView: undefined
     readonly property QtObject infoRow: treeView.currentlySelected
+
+    // property var newRowData
+    // property int newRowLvl
+    // property int newRowForcedLvl
+    // property QtObject newRowHolder
+    //
+    // onNewRowDataChanged: {
+    //     newRowHolder.addRow(newRowData,newRowForcedLvl,true)
+    // }
 
     function getName(useCase,shownName,realName,parentPath,callingAction,newItem){
         namingDialog.useCase = useCase
@@ -46,8 +55,21 @@ ToolBar {
                 lvl = 2
                 break
         }
-        const newRowData = View.hierarchy(newPath,lvl)
-        subEntryColumn.addRow(newRowData,forcedLvl,true)
+        // newRowLvl = lvl
+        // newRowHolder = subEntryColumn
+
+        const caller = subEntryColumn
+
+        forcedLvl = (forcedLvl) ? forcedLvl : Infinity
+        const info = [forcedLvl, true]
+
+        console.log(caller)
+        treeView.hierarchyAsker.push([caller,info])
+        View.hierarchySupplier(newPath,lvl)
+//         Make a hierarchySupplier -> function that ask the hierarchy and transmit it as a signal
+//         Pass caller to this
+//         On signal, check if caller correspond and handle
+        // newRowData = View.hierarchy(newPath,lvl)
     }
 
     NamingDialog {

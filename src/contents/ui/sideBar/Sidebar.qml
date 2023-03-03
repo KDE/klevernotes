@@ -37,10 +37,7 @@ Kirigami.OverlayDrawer {
     topPadding: 0
     bottomPadding: 0
 
-    // property alias treeModel: treeview.model
     property bool storageExist: Config.storagePath !== "None"
-
-    onStorageExistChanged: if (storageExist) treeview.model = View.hierarchy(Config.storagePath,-1)
 
     contentItem: ColumnLayout {
         id: column
@@ -75,9 +72,19 @@ Kirigami.OverlayDrawer {
         TreeView{
             id: treeview
 
+            visible: storageExist
+
             Layout.fillHeight: true
             Layout.alignment:Qt.AlignTop
         }
+
+        Item{
+            id: dummyPlaceHolder
+
+            Layout.fillHeight: !storageExist
+            Layout.alignment:Qt.AlignTop
+        }
+
 
         Controls.ToolSeparator {
             orientation: Qt.Horizontal

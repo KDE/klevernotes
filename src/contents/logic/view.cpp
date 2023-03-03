@@ -20,7 +20,7 @@ View::View(QObject *parent)
 
 }
 
-QJsonObject View::hierarchy(QString path, int lvl)
+QJsonObject View::getHierarchy(QString path, int lvl)
 {
     QJsonObject final = QJsonObject();
     QFileInfo testingFile(path);
@@ -63,7 +63,7 @@ QJsonObject View::hierarchy(QString path, int lvl)
             if (name == ".directory") continue;
 
             if (lvl+1 < 3) {
-                QJsonObject entryInfo = hierarchy(nextPath,lvl+1);
+                QJsonObject entryInfo = getHierarchy(nextPath,lvl+1);
                 // A switch could have been nice here but you can't do that with string ;'(
                 if (name == ".BaseGroup")
                 {
@@ -92,3 +92,11 @@ QJsonObject View::hierarchy(QString path, int lvl)
 
     return final;
 }
+
+void View::hierarchySupplier(QString path, int lvl)
+{
+    QJsonObject hierarchy = getHierarchy(path, lvl);
+    qDebug() << "CPP HEYYYYYY";
+    hierarchySent(hierarchy);
+}
+

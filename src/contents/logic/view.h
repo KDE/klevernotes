@@ -14,6 +14,10 @@ class View : public QObject
 public:
     explicit View(QObject *parent = nullptr);
 
+signals:
+    void hierarchySent(QJsonObject);
+
 public slots:
-    QJsonObject hierarchy(QString path, int lvl);
+    QJsonObject getHierarchy(QString path, int lvl);
+    void hierarchySupplier(QString path, int lvl);
 };
