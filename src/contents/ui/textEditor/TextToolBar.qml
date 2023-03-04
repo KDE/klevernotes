@@ -70,6 +70,29 @@ Kirigami.Card{
         }
     }
 
+    TableMakerDialog {
+        id: tableMakerDialog
+
+        onAccepted: {
+            const alignPattern = {"left":":------","center":"---:---","right":"------:"}
+            const cells = "|"+"       |".repeat(tableMakerDialog.columnCount)+"\n"
+            const headers = "|"+(i18n("Header")+"|").repeat(tableMakerDialog.columnCount)+"\n"
+
+            let columnsAlignments = "|"
+
+            for(var childIdx = 0; childIdx < tableMakerDialog.listView.count ; childIdx++) {
+                const columnAlignment = tableMakerDialog.listView.itemAtIndex(childIdx).children[0].data[0].checkedButton.align
+
+                columnsAlignments = columnsAlignments.concat(alignPattern[columnAlignment],"|")
+            }
+            columnsAlignments +="\n"
+
+            const result = "\n"+headers+columnsAlignments+cells.repeat(tableMakerDialog.rowCount-1)
+
+            toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, result)
+        }
+    }
+
     Kirigami.ActionToolBar {
         id: mainToolBar
 
@@ -206,6 +229,11 @@ Kirigami.Card{
                 id: imageAction
                 icon.name: "insert-image"
                 onTriggered: imagePickerDialog.open()
+            },
+            Kirigami.Action {
+                id: tableAction
+                icon.name: "insert-table"
+                onTriggered: tableMakerDialog.open()
             }
         ]
     }

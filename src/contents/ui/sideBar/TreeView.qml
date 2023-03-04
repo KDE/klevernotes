@@ -71,7 +71,6 @@ Controls.ScrollView {
         target: View
 
         function onHierarchySent(hierarchy) {
-            console.log("HEY")
             if (tree.hierarchyAsker.length != 0) {
                 const askerInfo = tree.hierarchyAsker.shift()
 
