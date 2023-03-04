@@ -15,7 +15,7 @@ Controls.ScrollView {
 
     width: parent.width
 
-    property var model
+    property bool init: false
     property QtObject currentlySelected: subEntryColumn.children[0]
     property var hierarchyAsker: []
 
@@ -28,13 +28,6 @@ Controls.ScrollView {
             const mainPage = mainWindow.pageStack.currentItem
             mainPage.currentlySelected = currentlySelected
         }
-    }
-
-    onModelChanged: {
-        for (var childIdx in subEntryColumn.children) {
-            subEntryColumn.children[childIdx].destroy();
-        }
-        subEntryColumn.addRows(model)
     }
 
     DeleteConfirmationDialog {
@@ -78,6 +71,7 @@ Controls.ScrollView {
         target: View
 
         function onHierarchySent(hierarchy) {
+            console.log("HEY")
             if (tree.hierarchyAsker.length != 0) {
                 const askerInfo = tree.hierarchyAsker.shift()
 
@@ -95,7 +89,8 @@ Controls.ScrollView {
     }
 
     onVisibleChanged: {
-        if (visible){
+        if (visible && !init) {
+            tree.init = true
             const caller = tree
             tree.hierarchyAsker.push([caller])
             View.hierarchySupplier(Config.storagePath,-1)
