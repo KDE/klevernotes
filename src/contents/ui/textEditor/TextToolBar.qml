@@ -47,6 +47,7 @@ Kirigami.Card{
                 modifiedPath = validPath
 
                 imageObject.grabToImage(function(result) {
+                    result.saveToFile(validPath)
                 },Qt.size(imageObject.idealWidth,imageObject.idealHeight));
 
                 useLocalImage = true
