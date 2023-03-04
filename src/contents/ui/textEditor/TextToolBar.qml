@@ -74,7 +74,7 @@ Kirigami.Card{
         id: tableMakerDialog
 
         onAccepted: {
-            const alignPattern = {"left":":------","center":"---:---","right":"------:"}
+            const alignPattern = {"left":":------","center":":------:","right":"------:"}
             const cells = "|"+"       |".repeat(tableMakerDialog.columnCount)+"\n"
             const headers = "|"+(i18n("Header")+"|").repeat(tableMakerDialog.columnCount)+"\n"
 
