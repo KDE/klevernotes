@@ -141,10 +141,8 @@ Kirigami.Card{
 
 
             const startBlockIndex = startingText.lastIndexOf('\n')+1
-            let endIndex = endingText.indexOf('\n')-1
-            const endBlockIndex = (endIndex < 0) ? textArea.text.length : textArea.selectionEnd+endingText
 
-            return [startBlockIndex,endBlockIndex]
+            return [startBlockIndex,textArea.selectionEnd]
         }
 
         actions: [
