@@ -13,7 +13,7 @@ Kirigami.PromptDialog {
     title: "Choose a name"
 
     property string useCase
-    property string shownName
+    property alias shownName: nameField.text
     property string realName
     property string parentPath
     property bool newItem

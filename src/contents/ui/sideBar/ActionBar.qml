@@ -30,7 +30,6 @@ ToolBar {
     }
 
     function makeRow(subEntryColumn,useCase,creatingPath,name,forcedLvl){
-        console.log(subEntryColumn)
         const newPath = creatingPath+"/"+name
         let lvl
         switch(useCase) {
@@ -173,6 +172,7 @@ ToolBar {
             }
 
             const objectName = Config.defaultNoteName
+            console.log(objectName)
             mainToolBar.getName("Note",objectName,objectName,groupPath,createNoteAction,true)
         }
     }
