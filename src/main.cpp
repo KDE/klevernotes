@@ -52,6 +52,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                         QStringLiteral("schul9louis@outlook.fr")
                         // QStringLiteral("https://yourwebsite.com")
                         );
+    aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
 
     QQmlApplicationEngine engine;
