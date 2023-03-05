@@ -62,6 +62,7 @@ Controls.ScrollView {
                     break
                 }
             }
+            if (currentlySelected.useCase === "Note") holder.delimiter -= 1
             currentlySelected.destroy()
             currentlySelected = nextSelected
         }

@@ -62,6 +62,8 @@ void StorageHandler::slotResult(KJob* job)
 {
     if (!job->error()) {
         storageUpdated();
+        return;
     }
+    qDebug() << job->errorString();
 }
 

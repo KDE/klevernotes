@@ -60,10 +60,10 @@ Column{
         let component = Qt.createComponent("qrc:/contents/ui/sideBar/TreeNode.qml")
         if (component.status == Component.Ready) {
             let row = component.createObject(subEntryColumn)
+            row.useCase = data.useCase
             row.parentRow = subEntryColumn.parent
             row.name = data.name
             row.displayedName = data.displayedName
-            row.useCase = data.useCase
             row.lvl = (!forcedLvl || forcedLvl === Infinity) ? data.lvl : forcedLvl
             row.expanded = tree.currentlySelected.path.includes(row.path)
 
