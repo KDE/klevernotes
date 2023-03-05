@@ -13,48 +13,25 @@ GridLayout{
     rows: 4
     columns: 2
 
-    property alias title: header.text
     readonly property TextEditor editor : editor
     property string path
 
-    Kirigami.Heading {
-        id:header
-
-        wrapMode: Text.WordWrap
-        type: Kirigami.Heading.Secondary
-
-        Layout.row: 0
-        Layout.column: 0
-        Layout.fillWidth: true
-    }
-
-    Row{
-        id: chipHolder
-
-        Layout.preferredHeight: childrenRect.height
-        Layout.row: 1
-        Layout.column: 1
-
-        Controls.Button {
+    property list<Kirigami.Action> actions: [
+        Kirigami.Action {
             id: editorToggler
-
             checkable: true
-            icon.name: (checked) ? "text-flow-into-frame" :  "text-unflow"
+            icon.name: checked ? "text-flow-into-frame" :  "text-unflow"
             checked: true
-
             onCheckedChanged: if (!checked && !viewToggler.checked) checked = true
-        }
-
-        Controls.Button {
+        },
+        Kirigami.Action {
             id: viewToggler
-
             checkable: true
-            icon.name: (checked) ? "quickview" : "view-hidden"
-            checked: root.wideScreen
-
+            icon.name: checked ? "quickview" : "view-hidden"
+            checked: applicationWindow().wideScreen
             onCheckedChanged: if (!checked && !editorToggler.checked) checked = true
         }
-    }
+    ]
 
     TextToolBar{
         id:toolbar
