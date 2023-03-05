@@ -16,24 +16,26 @@ import org.kde.Klever 1.0
 Column {
     id: infoRow
 
-    width: parent.width
     height: childrenRect.height
 
     property alias displayedName: textDisplay.text
 
     // Not super clean but this make it easier to handle rename
-    property string parentPath: {
+    property string parentPath
+    property QtObject parentRow
+    onParentRowChanged: {
+        width = parentRow.width
+
         // The parentRow is possibly the subEntryColumn, so we need to acces is parent
         const parPath = parentRow.path
 
         // The path is undifined if the parentRow is the treeview
-        return (parPath != undefined)
+        parentPath = (parPath != undefined)
                     ? (useCase === "Note" && parentRow.useCase === "Category")
                         ? parPath+"/.BaseGroup"
                         : parPath
                     : Config.storagePath
     }
-    property QtObject parentRow
     property string name
     property bool expanded
     property string useCase
