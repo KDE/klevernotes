@@ -31,6 +31,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setApplicationName(QStringLiteral("KleverNotes"));
 
+    KLocalizedString::setApplicationDomain("klevernotes");
+
     KAboutData aboutData(
                          // The program name used internally.
                          QStringLiteral("KleverNotes"),
