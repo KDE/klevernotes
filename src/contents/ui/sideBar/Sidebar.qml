@@ -44,29 +44,13 @@ Kirigami.OverlayDrawer {
         // FIXME: Dirty workaround for 385992
         implicitWidth: Kirigami.Units.gridUnit * 14
 
-
-        Kirigami.AbstractApplicationHeader {
-            topPadding: Kirigami.Units.smallSpacing;
-            bottomPadding: Kirigami.Units.smallSpacing;
-            leftPadding: Kirigami.Units.largeSpacing
-            rightPadding: Kirigami.Units.largeSpacing
-
-            Layout.fillWidth: true
-            Layout.alignment:Qt.AlignTop
-
-            Kirigami.Heading {
-                level: 1
-                text: i18n("Notes")
-            }
-        }
-
         ActionBar{
             id: action
 
             treeView: treeview
 
             Layout.fillWidth: true
-            Layout.alignment:Qt.AlignTop
+            Layout.preferredHeight: pageStack.globalToolBar.preferredHeight
         }
 
         TreeView{
