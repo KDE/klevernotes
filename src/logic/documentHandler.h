@@ -12,7 +12,6 @@ class DocumentHandler : public QObject
 public:
     explicit DocumentHandler(QObject *parent = nullptr);
 
-public slots:
-    QString readNote(QString path);
-    void writeNote(QString note, QString path);
+    Q_INVOKABLE QString readNote(const QString &path) const;
+    Q_INVOKABLE void writeNote(const QString &note, const QString &path);
 };

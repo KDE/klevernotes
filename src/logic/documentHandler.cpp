@@ -14,7 +14,7 @@ DocumentHandler::DocumentHandler(QObject* parent)
 
 }
 
-QString DocumentHandler::readNote(QString path)
+QString DocumentHandler::readNote(const QString &path) const
 {
     QFile file(path);
 
@@ -30,7 +30,7 @@ QString DocumentHandler::readNote(QString path)
     return line;
 }
 
-void DocumentHandler::writeNote(QString note, QString path)
+void DocumentHandler::writeNote(const QString &note, const QString &path)
 {
     QFile file(path);
     if (file.open(QIODevice::WriteOnly)) {

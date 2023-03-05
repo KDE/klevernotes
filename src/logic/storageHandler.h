@@ -26,7 +26,7 @@ public slots:
 
     bool rename(QString oldPath, QString newPath);
 
-    void remove(QString path);
+    void remove(const QString &path);
 
     void slotResult(KJob *job);
 };
