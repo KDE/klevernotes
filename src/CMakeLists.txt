@@ -3,7 +3,6 @@
 
 add_executable(klevernotes
     main.cpp
-    about.cpp
     app.cpp
 
     logic/documentHandler.cpp
