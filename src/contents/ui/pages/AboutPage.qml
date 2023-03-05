@@ -9,5 +9,5 @@ import org.kde.kirigami 2.19 as Kirigami
 import org.kde.Klever 1.0
 
 Kirigami.AboutPage {
-    aboutData: AboutType.aboutData
+    aboutData: About
 }

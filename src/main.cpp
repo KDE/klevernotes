@@ -9,7 +9,6 @@
 #include <QtQml>
 #include <QtWebEngine/QtWebEngine>
 
-#include "about.h"
 #include "app.h"
 #include <KAboutData>
 #include <KLocalizedContext>
@@ -71,8 +70,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
-    AboutType about;
-    qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "AboutType", &about);
+    qmlRegisterSingletonType("org.kde.Klever", 1, 0, "About", [](QQmlEngine *engine, QJSEngine *) -> QJSValue {
+        return engine->toScriptValue(KAboutData::applicationData());
+    });
 
     App application;
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "App", &application);
