@@ -51,7 +51,7 @@ bool StorageHandler::rename(QString oldPath, QString newPath)
     return dir.rename(oldPath,newPath);
 }
 
-void StorageHandler::remove(QString path)
+void StorageHandler::remove(const QString &path)
 {
     auto *job = KIO::trash(QUrl::fromLocalFile(path));
     job->start();
@@ -61,7 +61,7 @@ void StorageHandler::remove(QString path)
 void StorageHandler::slotResult(KJob* job)
 {
     if (!job->error()) {
-        storageUpdated();
+        emit storageUpdated();
         return;
     }
     qDebug() << job->errorString();
