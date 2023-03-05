@@ -11,11 +11,11 @@ import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/dialogs"
 
-Kirigami.Card{
+Kirigami.Card {
     id: toolbarHolder
 
-    property QtObject textArea
-    property string notePath
+    required property TextEditor textArea
+    required property string notePath
 
     // This 'replicate' the DefaultCardBackground and just change the background color
     //(https://api.kde.org/frameworks/kirigami/html/DefaultCardBackground_8qml_source.html)
@@ -29,7 +29,7 @@ Kirigami.Card{
     ImagePickerDialog {
         id: imagePickerDialog
 
-        noteImagesStoringPath: toolbarHolder.notePath+"Images/"
+        noteImagesStoringPath: toolbarHolder.notePath + "Images/"
 
         onAccepted: if (imageLoaded) {
             let modifiedPath = path

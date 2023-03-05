@@ -32,7 +32,9 @@
   }
 
   let updateRender = function() {
-      if (mdText && notePath && homePath) placeholder.innerHTML = marked(mdText,false,false,homePath,notePath);
+      if (mdText && notePath && homePath) {
+          placeholder.innerHTML = marked(mdText, false, false, homePath, notePath);
+      }
   }
 
   let updateCss = function(css) {
@@ -47,15 +49,18 @@
     function(channel) {
       let linkToEditor = channel.objects.linkToEditor;
       linkToEditor.textChanged.connect(updateText);
+      updateText(linkToEditor.text);
 
       let linkToCss = channel.objects.linkToCss;
       linkToCss.cssChanged.connect(updateCss);
 
       let homePathPasser = channel.objects.homePathPasser;
       homePathPasser.homePathChanged.connect(updateHomePath);
+      updateHomePath(homePathPasser.homePath);
 
       let notePathPasser = channel.objects.notePathPasser;
       notePathPasser.notePathChanged.connect(updateNotePath);
+      updateNotePath(notePathPasser.notePath);
     }
   );
   </script>

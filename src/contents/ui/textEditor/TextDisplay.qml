@@ -17,28 +17,27 @@ import qtMdEditor 1.0 as QtMdEditor
 import org.kde.Klever 1.0
 
 RowLayout {
-    id: frame
+    id: root
+
+    required property string path
+    required property string text
+
+    property var defaultCSS: {
+        '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
+        '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
+        '--textColor': Config.viewTextColor !== "None" ? Config.viewTextColor : Kirigami.Theme.textColor,
+        '--titleColor': Config.viewTitleColor !== "None" ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor,
+        '--linkColor': Config.viewLinkColor !== "None" ? Config.viewLinkColor : Kirigami.Theme.linkColor,
+        '--visitedLinkColor': Config.viewVisitedLinkColor !== "None" ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
+        '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
+    }
 
     spacing:0
 
+    onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
+
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
-
-    property string path
-    property string text
-    property var defaultCSS: {
-        '--bodyColor': (Config.viewBodyColor !== "None") ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
-        '--font': (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont,
-        '--textColor': (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor,
-        '--titleColor': (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor,
-        '--linkColor': (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor,
-        '--visitedLinkColor': (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
-        '--codeColor': (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
-    }
-
-    onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
-    onPathChanged: if(web_view.loadProgress === 100) notePathPasser.notePath = path
-    onTextChanged: if(web_view.loadProgress === 100) editorLink.text = text
 
     Kirigami.Card{
         id:background
@@ -49,6 +48,8 @@ RowLayout {
         WebEngineView{
             id:web_view
 
+            onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
+
             settings.showScrollBars:false
 
             width: background.width - 4
@@ -57,13 +58,18 @@ RowLayout {
             y: 2
             url: "qrc:/index.html"
             focus: true
+
             webChannel: WebChannel{
-                registeredObjects:[editorLink, cssLink, homePathPasser, notePathPasser]
+                registeredObjects: [editorLink, cssLink, homePathPasser, notePathPasser]
+            }
+
+            onLoadProgressChanged: if (loadProgress === 100) {
+                changeStyle()
             }
 
             QtMdEditor.QmlLinker{
                 id: editorLink
-                text: ""
+                text: root.text
                 WebChannel.id: "linkToEditor"
             }
 
@@ -75,22 +81,14 @@ RowLayout {
 
             QtMdEditor.QmlLinker{
                 id: homePathPasser
-                homePath: ""
+                homePath: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].substring("file://".length)
                 WebChannel.id: "homePathPasser"
             }
 
             QtMdEditor.QmlLinker{
                 id: notePathPasser
-                notePath: ""
+                notePath: root.path
                 WebChannel.id: "notePathPasser"
-            }
-
-            onLoadProgressChanged: if (loadProgress === 100) {
-                changeStyle()
-                homePathPasser.homePath = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].substring("file://".length);
-                notePathPasser.notePath = frame.path
-                // Dirty workaround
-                editorLink.text = text;
             }
         }
 
