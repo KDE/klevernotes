@@ -18,22 +18,21 @@ Kirigami.Page {
 
     title: hasNote ? currentlySelected.displayedName : i18n("Welcome")
 
-    actions.contextualActions: hasNote ? editorView.actions : []
+    actions.contextualActions: hasNote && editorView ? editorView.actions : []
 
     onCurrentlySelectedChanged: if (root.hasNote) {
         const editor = editorView.editor
         const oldPath = editorView.path
         const text = editor.text
         editor.saveNote(text, oldPath)
-
-        editorView.path = currentlySelected.path + "/note.md"
-        editorView.visible = true
     }
 
     Loader {
         id: editorLoader
 
-        sourceComponent: EditorView{}
+        sourceComponent: EditorView {
+            path: currentlySelected.path + "/note.md"
+        }
         active: root.hasNote
         anchors.fill: parent
     }
