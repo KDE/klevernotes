@@ -56,6 +56,8 @@ Controls.ScrollView {
             let nextSelected
             for (var childIdx = 0; childIdx < childrenList.length; childIdx++) {
                 if (currentlySelected == childrenList[childIdx]){
+                    holder.entries.splice(childIdx, 1)
+
                     if (childIdx-1 >= 0) nextSelected = childrenList[childIdx-1]
                     else if (childIdx+1 != childrenList.length) nextSelected = childrenList[childIdx+1]
                     else nextSelected = holder.parent
