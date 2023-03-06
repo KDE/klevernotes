@@ -10,20 +10,20 @@ import org.kde.kirigami 2.19 as Kirigami
 Kirigami.NavigationTabBar {
     id: tool
 
-    visible: !applicationWindow().wideScreen
+    property bool showNoteEditor: false
 
     actions: [
         Kirigami.Action {
-            iconName: "clock"
+            iconName: "document-edit"
             text: i18n("Note")
+            // checked: true
+            onTriggered: showNoteEditor = true
         },
         Kirigami.Action {
-            iconName: "player-time"
+            iconName: "dino-double-tick-symbolic"
             text: i18n("TODO")
-        },
-        Kirigami.Action {
-            iconName: "chronometer"
-            text: i18n("Documentation")
+
+            onTriggered: showNoteEditor = false
         }
     ]
 }

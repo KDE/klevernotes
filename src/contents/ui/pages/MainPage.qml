@@ -6,19 +6,26 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.19 as Kirigami
 
-import org.kde.Klever 1.0
 import "qrc:/contents/ui/textEditor"
+import "qrc:/contents/ui/todoEditor"
+
+import org.kde.Klever 1.0
 
 Kirigami.Page {
     id: root
 
     property QtObject currentlySelected
     property QtObject editorView: editorLoader.item
+    property QtObject todoView: todoLoader.item
     readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
 
     title: hasNote ? currentlySelected.displayedName : i18n("Welcome")
 
-    actions.contextualActions: hasNote && editorView ? editorView.actions : []
+    actions.contextualActions: hasNote
+                                ? editorView
+                                    ? editorView.actions
+                                    : todoView.actions
+                                : []
 
     onCurrentlySelectedChanged: if (root.hasNote) {
         const editor = editorView.editor
@@ -33,9 +40,18 @@ Kirigami.Page {
         sourceComponent: EditorView {
             path: currentlySelected.path + "/note.md"
         }
-        active: root.hasNote
+        active: root.hasNote && bottomToolBar.showNoteEditor
         anchors.fill: parent
     }
+
+    Loader {
+        id: todoLoader
+
+        sourceComponent: ToDoView {}
+        active: root.hasNote && !bottomToolBar.showNoteEditor
+        anchors.fill: parent
+    }
+
 
     Kirigami.Card {
         id: placeHolder
@@ -44,7 +60,7 @@ Kirigami.Page {
 
         anchors {
             fill: parent
-            margins: Kirigami.Units.largeSpacing * 2
+            // margins: Kirigami.Units.largeSpacing * 2
         }
 
         ColumnLayout {
@@ -74,5 +90,9 @@ Kirigami.Page {
         }
     }
 
-    // footer: BottomToolBar{}
+    footer: BottomToolBar{
+        id: bottomToolBar
+
+        visible: root.hasNote
+    }
 }
