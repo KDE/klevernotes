@@ -14,14 +14,14 @@ A convergent markdown note taking application.
 * Qt Quick Controls
 
 ## Installing
-1. Install the required packages, which you can find them [on this page](https://develop.kde.org/docs/use/kirigami/introduction-getting_started/)
+1. Install the required packages, which you can find [on this page](https://develop.kde.org/docs/getting-started/kirigami/introduction-getting_started/)
 2. Download or clone the repo
 3. Inside the directory run :
 
 ```sh
 mkdir build
 cd build
-/usr/bin/cmake -G Ninja ../
+/usr/bin/cmake  -Wno-dev -G Ninja ../
 /usr/bin/ninja
 ```
 
