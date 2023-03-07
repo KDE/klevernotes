@@ -6,6 +6,8 @@ import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
+import "qrc:/contents/ui/dialogs"
+
 ColumnLayout {
     id: root
 
@@ -17,13 +19,23 @@ ColumnLayout {
             text: i18n("Clear checked")
 
             onTriggered: console.log("test")
-/*
-            checkable: true
-            checked: true
-            onCheckedChanged: if (!checked && !viewToggler.checked) checked = true*/
         }
     ]
 
+    ToDoDialog {
+        id: todoDialog
+
+        onAccepted: {
+            if (name.length > 0) {
+                todoModel.append({
+                    name: name,
+                    description: description
+                })
+            }
+            name = ""
+            description = ""
+        }
+    }
 
     Kirigami.Card {
         Layout.fillWidth: true
@@ -36,33 +48,15 @@ ColumnLayout {
                 fill: parent
                 margins: Kirigami.Units.largeSpacing * 2
             }
-
+            clip: true
             model: todoModel
             delegate: todoDelegate
+
+            Controls.ScrollBar.vertical: Controls.ScrollBar {
+                active: true
+            }
         }
-        // ListView {
-        //     id: todoList
-        //
-        //     anchors {
-        //         fill: parent
-        //         margins: Kirigami.Units.largeSpacing * 4
-        //     }
-        //
-        //     // model: 100
-        //     // delegate: Rectangle {
-        //     //     width: parent.width
-        //     //     height: 30
-        //     //     color: "red"
-        //     //
-        //     //     Text {
-        //     //         text: modelData
-        //     //     }
-        //     // }
-        //
-        //     Controls.ScrollBar.vertical: Controls.ScrollBar {
-        //         active: true
-        //     }
-        // }
+
 
         ListModel {
             id: todoModel
@@ -166,10 +160,6 @@ ColumnLayout {
 
         Layout.fillWidth: true
 
-        onClicked: todoModel.append({
-                name: "Kirigami Action added card!",
-                description: "Congratulations, your Kirigami Action works!",// Congratulations, your Kirigami Action works!",// Congratulations, your Kirigami Action works! Congratulations, your Kirigami Action works! Congratulations, your Kirigami Action works!",
-                date: 1000
-            })
+        onClicked: todoDialog.open()
     }
 }
