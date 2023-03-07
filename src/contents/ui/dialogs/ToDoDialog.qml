@@ -47,8 +47,6 @@ Kirigami.PromptDialog {
 
                 placeholderText: i18n("Optional")
                 wrapMode: TextEdit.WrapAnywhere
-
-                anchors.fill: parent
             }
         }
     }

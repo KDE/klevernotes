@@ -66,6 +66,10 @@ ColumnLayout {
             id: todoDelegate
             Kirigami.AbstractCard {
                 id: card
+
+                property string todoTitle: name
+                property string todoDesc: description
+                property alias todoCheck: check.checked
                 contentItem: Item {
                     id: holder
                     implicitWidth: parent.width
@@ -91,12 +95,12 @@ ColumnLayout {
                                 Layout.rightMargin: Kirigami.Units.smallSpacing
                                 elide: Text.ElideRight
                                 level: 2
-                                text: name
+                                text: todoTitle
                             }
                             Kirigami.Separator {
                                 Layout.fillWidth: true
                                 Layout.rightMargin: Kirigami.Units.smallSpacing
-                                visible: description.length > 0
+                                visible: todoDesc.length > 0
                             }
 
                             ColumnLayout {
@@ -109,10 +113,9 @@ ColumnLayout {
                                 Controls.Label {
                                     id: descriptionLabel
 
-                                    text: description
+                                    text: todoDesc
                                     wrapMode: Text.WordWrap
                                     elide: Text.ElideRight
-                                    visible: description.length > 0
 
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
@@ -161,5 +164,20 @@ ColumnLayout {
         Layout.fillWidth: true
 
         onClicked: todoDialog.open()
+    }
+
+
+    Timer {
+        id: noteSaverTimer
+
+        interval: 5000
+        // running: true
+        // repeat: true
+        onTriggered: {
+            for(var childIdx = 0; childIdx < todoList.count ; childIdx++){
+                const child = todoList.itemAtIndex(childIdx)
+                console.log(child.todoTitle, child.todoDesc, child.todoCheck)
+            }
+        }
     }
 }

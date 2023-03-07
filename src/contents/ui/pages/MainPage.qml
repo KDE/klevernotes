@@ -93,6 +93,6 @@ Kirigami.Page {
     footer: BottomToolBar{
         id: bottomToolBar
 
-        visible: root.hasNote
+        visible: false//root.hasNote
     }
 }

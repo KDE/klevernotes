@@ -10,7 +10,7 @@ import org.kde.kirigami 2.19 as Kirigami
 Kirigami.NavigationTabBar {
     id: tool
 
-    property bool showNoteEditor: false
+    property bool showNoteEditor: true
 
     actions: [
         Kirigami.Action {
