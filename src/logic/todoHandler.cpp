@@ -37,12 +37,6 @@ void TodoHandler::writeTodos(const QJsonObject &todos, const QString &path)
         return;
     }
     qDebug() << "Error !!";
-    /*
-    QFile file(path);
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
-        stream << note << Qt::endl;
-    }
-    file.close();*/
+
 }
 

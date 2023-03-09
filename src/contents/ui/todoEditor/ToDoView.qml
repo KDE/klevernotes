@@ -20,11 +20,13 @@ ColumnLayout {
             icon.name: "edit-clear-history"
             text: i18n("Clear checked")
 
-            onTriggered: console.log("test")
+            onTriggered: clearTodos()
         }
     ]
     property string path
-    property bool buffer: false
+    property int alreadySavedCount: 0
+//     We use this because getting the item from the ListView is not always reliable
+    property var todosCards: []
 
     onPathChanged: setTodos()
 
@@ -47,7 +49,6 @@ ColumnLayout {
             }
             name = ""
             description = ""
-            // can't put it
             caller = null
         }
     }
@@ -85,7 +86,6 @@ ColumnLayout {
                 property string todoTitle: title
                 property string todoDesc: desc
                 property alias todoCheck: check.checked
-                onTodoCheckChanged: console.log(todoCheck)
                 contentItem: Item {
                     id: holder
                     implicitWidth: parent.width
@@ -175,7 +175,12 @@ ColumnLayout {
                                     ? delegateLayout.implicitHeight
                                     : Kirigami.Units.iconSizes.large
                 }
-                // Component.onCompleted: if (!root.buffer) saveTodos()
+                Component.onCompleted: {
+                    root.todosCards.push(card)
+                    root.alreadySavedCount == 0
+                        ? saveTodos()
+                        : root.alreadySavedCount -= 1
+                }
             }
         }
     }
@@ -207,24 +212,36 @@ ColumnLayout {
 
     function setTodos() {
         const todos = TodoHandler.readTodos(root.path).todos
-        root.buffer = true
+        root.alreadySavedCount = todos.length
         todos.forEach(todo => todoModel.append(todo))
-        root.buffer = false
     }
 
     function saveTodos() {
         let json = {"todos":[]}
 
-        for(var childIdx = 0; childIdx < todoList.count ; childIdx++){
-            const child = todoList.itemAtIndex(childIdx)
-            console.log(child)
-            const jsonObject = {
-                "title": child.todoTitle,
-                "desc": child.todoDesc,
-                "checked": child.todoCheck
-            }
-            json.todos.push(jsonObject)
-        }
+        root.todosCards.forEach(card => {
+            json.todos.push({
+                "title": card.todoTitle,
+                "desc": card.todoDesc,
+                "checked": card.todoCheck
+            })
+        })
+
         TodoHandler.writeTodos(json, root.path)
+    }
+
+    function clearTodos() {
+        let idxLists = []
+
+        for(var idx = 0 ; idx < root.todosCards.length ; idx++){
+            if (root.todosCards[idx].todoCheck) idxLists.unshift(idx)
+        }
+
+        idxLists.forEach(idx => {
+            todoModel.remove(idx,1)
+            root.todosCards.splice(idx,1)
+        })
+
+        saveTodos()
     }
 }

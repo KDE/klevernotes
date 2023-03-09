@@ -39,8 +39,9 @@ Kirigami.Page {
 
         sourceComponent: EditorView {
             path: currentlySelected.path + "/note.md"
+            visible: bottomToolBar.showNoteEditor
         }
-        active: root.hasNote && bottomToolBar.showNoteEditor
+        active: root.hasNote
         anchors.fill: parent
     }
 
@@ -49,8 +50,9 @@ Kirigami.Page {
 
         sourceComponent: ToDoView {
             path: currentlySelected.path + "/todo.json"
+            visible: !bottomToolBar.showNoteEditor
         }
-        active: root.hasNote && !bottomToolBar.showNoteEditor
+        active: root.hasNote
         anchors.fill: parent
     }
 
