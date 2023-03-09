@@ -47,7 +47,9 @@ Kirigami.Page {
     Loader {
         id: todoLoader
 
-        sourceComponent: ToDoView {}
+        sourceComponent: ToDoView {
+            path: currentlySelected.path + "/todo.json"
+        }
         active: root.hasNote && !bottomToolBar.showNoteEditor
         anchors.fill: parent
     }
@@ -58,10 +60,7 @@ Kirigami.Page {
 
         visible: !root.hasNote
 
-        anchors {
-            fill: parent
-            // margins: Kirigami.Units.largeSpacing * 2
-        }
+        anchors.fill: parent
 
         ColumnLayout {
             anchors.fill: parent
@@ -93,6 +92,6 @@ Kirigami.Page {
     footer: BottomToolBar{
         id: bottomToolBar
 
-        visible: false//root.hasNote
+        visible: root.hasNote
     }
 }

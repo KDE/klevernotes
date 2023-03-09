@@ -8,6 +8,7 @@ add_executable(klevernotes
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
     logic/storageHandler.cpp
+    logic/todoHandler.cpp
 
     contents/logic/mdHandler.cpp
     contents/logic/qmlLinker.cpp

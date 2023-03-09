@@ -6,6 +6,8 @@ import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 
+import org.kde.Klever 1.0
+
 import "qrc:/contents/ui/dialogs"
 
 ColumnLayout {
@@ -21,19 +23,32 @@ ColumnLayout {
             onTriggered: console.log("test")
         }
     ]
+    property string path
+    property bool buffer: false
+
+    onPathChanged: setTodos()
 
     ToDoDialog {
         id: todoDialog
 
         onAccepted: {
             if (name.length > 0) {
-                todoModel.append({
-                    name: name,
-                    description: description
-                })
+                if (!caller) {
+                    todoModel.append({
+                        title: name,
+                        desc: description.trim(),
+                        checked: false
+                    })
+                } else {
+                    caller.todoTitle = name
+                    caller.todoDesc = description
+                }
+
             }
             name = ""
             description = ""
+            // can't put it
+            caller = null
         }
     }
 
@@ -67,9 +82,10 @@ ColumnLayout {
             Kirigami.AbstractCard {
                 id: card
 
-                property string todoTitle: name
-                property string todoDesc: description
+                property string todoTitle: title
+                property string todoDesc: desc
                 property alias todoCheck: check.checked
+                onTodoCheckChanged: console.log(todoCheck)
                 contentItem: Item {
                     id: holder
                     implicitWidth: parent.width
@@ -83,6 +99,7 @@ ColumnLayout {
                         Controls.CheckBox {
                             id: check
 
+                            checked: checked
                             Layout.alignment: Qt.AlignVCenter
                         }
 
@@ -130,7 +147,13 @@ ColumnLayout {
                             icon.height: Kirigami.Units.iconSizes.small
 
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                            //onClicked: to be done... soon!
+
+                            onClicked: {
+                                todoDialog.caller = card
+                                todoDialog.name = todoTitle
+                                todoDialog.description = todoDesc
+                                todoDialog.open()
+                            }
                         }
                     }
 
@@ -152,6 +175,7 @@ ColumnLayout {
                                     ? delegateLayout.implicitHeight
                                     : Kirigami.Units.iconSizes.large
                 }
+                // Component.onCompleted: if (!root.buffer) saveTodos()
             }
         }
     }
@@ -166,7 +190,7 @@ ColumnLayout {
         onClicked: todoDialog.open()
     }
 
-
+/*
     Timer {
         id: noteSaverTimer
 
@@ -179,5 +203,28 @@ ColumnLayout {
                 console.log(child.todoTitle, child.todoDesc, child.todoCheck)
             }
         }
+    }*/
+
+    function setTodos() {
+        const todos = TodoHandler.readTodos(root.path).todos
+        root.buffer = true
+        todos.forEach(todo => todoModel.append(todo))
+        root.buffer = false
+    }
+
+    function saveTodos() {
+        let json = {"todos":[]}
+
+        for(var childIdx = 0; childIdx < todoList.count ; childIdx++){
+            const child = todoList.itemAtIndex(childIdx)
+            console.log(child)
+            const jsonObject = {
+                "title": child.todoTitle,
+                "desc": child.todoDesc,
+                "checked": child.todoCheck
+            }
+            json.todos.push(jsonObject)
+        }
+        TodoHandler.writeTodos(json, root.path)
     }
 }

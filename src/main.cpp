@@ -17,6 +17,7 @@
 #include "logic/documentHandler.h"
 #include "logic/storageHandler.h"
 #include "logic/kleverUtility.h"
+#include "logic/todoHandler.h"
 #include "contents/logic/mdHandler.h"
 #include "contents/logic/qmlLinker.h"
 #include "contents/logic/view.h"
@@ -81,6 +82,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     StorageHandler storageHandler;
     qmlRegisterSingletonInstance<StorageHandler>("org.kde.Klever", 1, 0, "StorageHandler", &storageHandler);
+
+    TodoHandler todoHandler;
+    qmlRegisterSingletonInstance<TodoHandler>("org.kde.Klever", 1, 0, "TodoHandler", &todoHandler);
 
     KleverUtility kleverUtility;
     qmlRegisterSingletonInstance<KleverUtility>("org.kde.Klever", 1, 0, "KleverUtility", &kleverUtility);

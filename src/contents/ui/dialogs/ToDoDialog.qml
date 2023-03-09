@@ -11,6 +11,7 @@ Kirigami.PromptDialog {
 
     title: i18n("Add Todo")
 
+    property QtObject caller
     property alias name: nameField.text
     property alias description: descriptionField.text
 

@@ -10,13 +10,13 @@ import org.kde.kirigami 2.19 as Kirigami
 Kirigami.NavigationTabBar {
     id: tool
 
-    property bool showNoteEditor: true
+    property bool showNoteEditor: false
 
     actions: [
         Kirigami.Action {
             iconName: "document-edit"
             text: i18n("Note")
-            // checked: true
+
             onTriggered: showNoteEditor = true
         },
         Kirigami.Action {
