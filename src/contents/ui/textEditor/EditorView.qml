@@ -38,11 +38,9 @@ GridLayout{
         textArea: root.editor
         notePath: root.path
 
-        Layout.fillWidth: true
         Layout.preferredHeight: childrenRect.height
-        Layout.row: applicationWindow().wideScreen ? 1 : 2
         Layout.column: 0
-        Layout.columnSpan: applicationWindow().wideScreen ? 1 : 2
+        Layout.columnSpan: 2
     }
 
     // This item can be seen as useless but it prevent a weird bug with the height not being adjusted
