@@ -2,10 +2,9 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
-#include <QObject>
 #include <QJsonArray>
 #include <QJsonObject>
-
+#include <QObject>
 
 class MDHandler : public QObject
 {

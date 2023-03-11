@@ -14,15 +14,14 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "logic/documentHandler.h"
-#include "logic/storageHandler.h"
-#include "logic/kleverUtility.h"
-#include "logic/todoHandler.h"
 #include "contents/logic/mdHandler.h"
 #include "contents/logic/qmlLinker.h"
 #include "contents/logic/view.h"
 #include "kleverconfig.h"
-
+#include "logic/documentHandler.h"
+#include "logic/kleverUtility.h"
+#include "logic/storageHandler.h"
+#include "logic/todoHandler.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -35,18 +34,18 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("klevernotes");
 
     KAboutData aboutData(
-                         // The program name used internally.
-                         QStringLiteral("KleverNotes"),
-                         // A displayable program name string.
-                         i18nc("@title", "KleverNotes"),
-                         // The program version string.
-                         QStringLiteral("1.0"),
-                         // Short description of what the app does.
-                         i18n("Application Description"),
-                         // The license this code is released under.
-                         KAboutLicense::GPL,
-                         // Copyright Statement.
-                         i18n("(c) 2022-2023"));
+        // The program name used internally.
+        QStringLiteral("KleverNotes"),
+        // A displayable program name string.
+        i18nc("@title", "KleverNotes"),
+        // The program version string.
+        QStringLiteral("1.0"),
+        // Short description of what the app does.
+        i18n("Application Description"),
+        // The license this code is released under.
+        KAboutLicense::GPL,
+        // Copyright Statement.
+        i18n("(c) 2022-2023"));
     aboutData.addAuthor(i18nc("@info:credit", "Louis Schul"),
                         // i18nc("@info:credit", "Author Role"),
                         QStringLiteral("schul9louis@outlook.fr")
