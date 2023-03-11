@@ -86,13 +86,13 @@ Kirigami.Dialog {
     onFolderChanged: {
         let folderPath = KleverUtility.getPath(setupPopup.folder)
         if (userChoice === "Storage created at "){
-            folderPath = folderPath.concat("/.KleverNotes")
+            folderPath = folderPath.concat("/klevernotes")
             StorageHandler.makeStorage(folderPath)
         }
 
-        var pathEnd = folderPath.substring(folderPath.length,folderPath.length-13)
+        var pathEnd = folderPath.substring(folderPath.length,folderPath.length-11)
 
-        if (pathEnd !== "/.KleverNotes"){
+        if (pathEnd.toLowerCase() !== "klevernotes"){
             subtitle = i18n("It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
             return
         }

@@ -8,7 +8,7 @@ import QtQuick.Dialogs 1.3
 FolderDialog{
     id:folderDialog
 
-    folder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+    folder: StandardPaths.standardLocations(StandardPaths.DocumentsLocation)[0]
     options: FolderDialog.ShowDirsOnly
 
     property QtObject parent;
