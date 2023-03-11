@@ -3,15 +3,13 @@
 
 #include "todoHandler.h"
 #include <QDebug>
-#include <QJsonDocument>
 #include <QFile>
+#include <QJsonDocument>
 #include <QString>
 
-
-TodoHandler::TodoHandler(QObject* parent)
+TodoHandler::TodoHandler(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 QJsonObject TodoHandler::readTodos(const QString &path) const
@@ -19,7 +17,7 @@ QJsonObject TodoHandler::readTodos(const QString &path) const
     QFile file(path);
 
     QJsonObject todos;
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         todos = QJsonDocument::fromJson(file.readAll()).object();
         file.close();
     }
@@ -31,12 +29,10 @@ void TodoHandler::writeTodos(const QJsonObject &todos, const QString &path)
     QJsonDocument doc = QJsonDocument(todos);
 
     QFile file(path);
-    if (file.open(QIODevice::WriteOnly)){
+    if (file.open(QIODevice::WriteOnly)) {
         file.write(doc.toJson());
         file.close();
         return;
     }
     qDebug() << "Error !!";
-
 }
-

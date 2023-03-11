@@ -20,4 +20,3 @@ public slots:
     QString getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration = 0);
     bool isEmptyDir(const QString &path);
 };
-

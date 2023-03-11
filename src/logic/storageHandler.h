@@ -2,9 +2,9 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
-#include <QObject>
 #include "kleverUtility.h"
 #include <KIO/CopyJob>
+#include <QObject>
 #include <kio_version.h>
 
 class StorageHandler : public QObject

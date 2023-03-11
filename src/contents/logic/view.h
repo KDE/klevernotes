@@ -2,8 +2,8 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
-#include <QObject>
 #include <QJsonObject>
+#include <QObject>
 #include <QString>
 #include <QVariant>
 
