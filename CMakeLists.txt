@@ -36,6 +36,8 @@ endif()
 
 add_subdirectory(src)
 
+ki18n_install(po)
+
 install(PROGRAMS org.kde.klever.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.klever.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
