@@ -54,6 +54,8 @@ Kirigami.PromptDialog {
         id:nameField
 
         text: shownName
+        leftPadding: Kirigami.Units.largeSpacing
+        rightPadding: Kirigami.Units.largeSpacing
 
         onSelectedTextChanged: nameField.forceActiveFocus()
 

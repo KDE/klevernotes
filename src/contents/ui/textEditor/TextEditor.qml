@@ -25,7 +25,7 @@ ScrollView {
         id: textArea
 
         persistentSelection: true
-        wrapMode: TextEdit.WrapAnywhere
+        wrapMode: TextEdit.Wrap
 
         property bool tempBuff
 
