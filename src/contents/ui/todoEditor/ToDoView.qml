@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
@@ -15,41 +15,42 @@ ColumnLayout {
 
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
-            id: clearTODOS
+            id: clearTodosAction
 
             icon.name: "edit-clear-history"
             text: i18n("Clear checked")
 
-            onTriggered: clearTodos()
+            onTriggered: clearCheckedTodos()
         }
     ]
     property string path
     property int alreadySavedCount: 0
-//     We use this because getting the item from the ListView is not always reliable
-    property var todosCards: []
 
-    onPathChanged: setTodos()
+    onPathChanged: {
+        todoModel.clear()
+        setTodos()
+    }
 
     ToDoDialog {
         id: todoDialog
 
         onAccepted: {
             if (name.length > 0) {
-                if (!caller) {
+                if (callerModelIndex < 0) {
                     todoModel.append({
-                        title: name,
-                        desc: description.trim(),
-                        checked: false
+                        "todoTitle": name,
+                        "todoDesc": description.trim(),
+                        "todoChecked": false
                     })
                 } else {
-                    caller.todoTitle = name
-                    caller.todoDesc = description
+                    todoModel.setProperty(callerModelIndex, "todoTitle", name)
+                    todoModel.setProperty(callerModelIndex, "todoDesc", description)
                 }
-
             }
+            saveTodos()
             name = ""
             description = ""
-            caller = null
+            callerModelIndex = -1
         }
     }
 
@@ -58,21 +59,13 @@ ColumnLayout {
         Layout.fillHeight: true
 
         Kirigami.CardsListView {
-            id: todoList
+            id: layout
 
-            anchors {
-                fill: parent
-                margins: Kirigami.Units.largeSpacing * 2
-            }
-            clip: true
+            anchors.fill: parent
+
             model: todoModel
             delegate: todoDelegate
-
-            Controls.ScrollBar.vertical: Controls.ScrollBar {
-                active: true
-            }
         }
-
 
         ListModel {
             id: todoModel
@@ -83,9 +76,8 @@ ColumnLayout {
             Kirigami.AbstractCard {
                 id: card
 
-                property string todoTitle: title
-                property string todoDesc: desc
-                property alias todoCheck: check.checked
+                width: parent.width
+
                 contentItem: Item {
                     id: holder
                     implicitWidth: parent.width
@@ -99,7 +91,11 @@ ColumnLayout {
                         Controls.CheckBox {
                             id: check
 
-                            checked: checked
+                            checked: todoChecked
+                            onCheckedChanged: {
+                                todoModel.setProperty(index, "todoChecked", checked)
+                                root.saveTodos()
+                            }
                             Layout.alignment: Qt.AlignVCenter
                         }
 
@@ -108,20 +104,25 @@ ColumnLayout {
                             Layout.fillHeight: true
 
                             Kirigami.Heading {
+                                id: displayTitle
+
+                                text: title
+                                level: 2
+                                elide: Text.ElideRight
+
                                 Layout.fillWidth: true
                                 Layout.rightMargin: Kirigami.Units.smallSpacing
-                                elide: Text.ElideRight
-                                level: 2
-                                text: todoTitle
                             }
                             Kirigami.Separator {
+                                visible: descriptionLabel.text.length > 0
+
                                 Layout.fillWidth: true
                                 Layout.rightMargin: Kirigami.Units.smallSpacing
-                                visible: todoDesc.length > 0
                             }
 
                             ColumnLayout {
                                 id: expendable
+
                                 Layout.fillWidth: true
                                 Layout.fillHeight: true
                                 Layout.margins: 0
@@ -130,7 +131,7 @@ ColumnLayout {
                                 Controls.Label {
                                     id: descriptionLabel
 
-                                    text: todoDesc
+                                    text: desc
                                     wrapMode: Text.WordWrap
                                     elide: Text.ElideRight
 
@@ -143,20 +144,20 @@ ColumnLayout {
 
                         Controls.Button {
                             id: editButton
+
                             icon.name: "document-edit"
                             icon.height: Kirigami.Units.iconSizes.small
 
                             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
 
                             onClicked: {
-                                todoDialog.caller = card
-                                todoDialog.name = todoTitle
-                                todoDialog.description = todoDesc
+                                todoDialog.callerModelIndex = index
+                                todoDialog.name = displayTitle.text
+                                todoDialog.description = descriptionLabel.text
                                 todoDialog.open()
                             }
                         }
                     }
-
                 }
 
                 footer: Controls.Button{
@@ -175,12 +176,6 @@ ColumnLayout {
                                     ? delegateLayout.implicitHeight
                                     : Kirigami.Units.iconSizes.large
                 }
-                Component.onCompleted: {
-                    root.todosCards.push(card)
-                    root.alreadySavedCount == 0
-                        ? saveTodos()
-                        : root.alreadySavedCount -= 1
-                }
             }
         }
     }
@@ -195,53 +190,30 @@ ColumnLayout {
         onClicked: todoDialog.open()
     }
 
-/*
-    Timer {
-        id: noteSaverTimer
-
-        interval: 5000
-        // running: true
-        // repeat: true
-        onTriggered: {
-            for(var childIdx = 0; childIdx < todoList.count ; childIdx++){
-                const child = todoList.itemAtIndex(childIdx)
-                console.log(child.todoTitle, child.todoDesc, child.todoCheck)
+    function clearCheckedTodos() {
+        for (var idx = todoModel.count-1 ; idx >= 0 ; idx--){
+            const model = todoModel.get(idx)
+            if (model.todoChecked) {
+                todoModel.remove(idx,1)
             }
         }
-    }*/
+        saveTodos()
+    }
 
     function setTodos() {
         const todos = TodoHandler.readTodos(root.path).todos
         root.alreadySavedCount = todos.length
+
         todos.forEach(todo => todoModel.append(todo))
     }
 
     function saveTodos() {
         let json = {"todos":[]}
 
-        root.todosCards.forEach(card => {
-            json.todos.push({
-                "title": card.todoTitle,
-                "desc": card.todoDesc,
-                "checked": card.todoCheck
-            })
-        })
-
-        TodoHandler.writeTodos(json, root.path)
-    }
-
-    function clearTodos() {
-        let idxLists = []
-
-        for(var idx = 0 ; idx < root.todosCards.length ; idx++){
-            if (root.todosCards[idx].todoCheck) idxLists.unshift(idx)
+        for (var idx = 0 ; idx < todoModel.count ; idx++){
+            const model = todoModel.get(idx)
+            json.todos.push(model)
         }
-
-        idxLists.forEach(idx => {
-            todoModel.remove(idx,1)
-            root.todosCards.splice(idx,1)
-        })
-
-        saveTodos()
+        TodoHandler.writeTodos(json, root.path)
     }
 }

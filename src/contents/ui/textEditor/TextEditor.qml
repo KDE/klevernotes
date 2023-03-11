@@ -19,7 +19,6 @@ ScrollView {
         textArea.text = DocumentHandler.readNote(path) ;
         modified = false ;
         textArea.tempBuff = false
-        noteSaverTimer.restart()
     }
 
     TextArea{

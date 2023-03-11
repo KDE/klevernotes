@@ -19,7 +19,8 @@ Kirigami.ApplicationWindow {
 
     onClosing: {
         App.saveWindowGeometry(root) ;
-        const editor = pageStack.get(0).editorView.editor
+        const mainPage = pageStack.get(0)
+        const editor = mainPage.editorView.editor
         editor.saveNote(editor.text, editor.path)
     }
 

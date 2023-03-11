@@ -22,7 +22,7 @@ Kirigami.Page {
     title: hasNote ? currentlySelected.displayedName : i18n("Welcome")
 
     actions.contextualActions: hasNote
-                                ? editorView
+                                ? editorView.visible
                                     ? editorView.actions
                                     : todoView.actions
                                 : []

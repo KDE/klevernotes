@@ -41,7 +41,6 @@
 
         <file>contents/ui/todoEditor/ToDoView.qml</file>
 
-
         <file alias="index.html">contents/resources/index.html</file>
         <file alias="qwebchannel.js">contents/resources/qwebchannel.js</file>
         <file alias="marked.js">contents/resources/3rdparty/marked.js</file>
