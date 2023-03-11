@@ -10,7 +10,6 @@
 KleverUtility::KleverUtility(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 QString KleverUtility::getName(const QString &path)
@@ -30,7 +29,7 @@ bool KleverUtility::exists(const QString &url)
 
 void KleverUtility::create(const QString &path)
 {
-    if (!exists(path)){
+    if (!exists(path)) {
         QDir().mkpath(path);
     }
 }
@@ -39,14 +38,15 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
 {
     create(noteImagesStoringPath);
 
-    QString imagePath = noteImagesStoringPath+wantedName;
-    if (iteration != 0) imagePath += "("+QString::number(iteration)+")";
+    QString imagePath = noteImagesStoringPath + wantedName;
+    if (iteration != 0)
+        imagePath += "(" + QString::number(iteration) + ")";
     imagePath += ".png";
 
-    if (exists(imagePath)){
-        return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration+1);
+    if (exists(imagePath)) {
+        return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration + 1);
     }
-    qDebug() << imagePath+" C++";
+    qDebug() << imagePath + " C++";
     return imagePath;
 }
 
@@ -54,4 +54,3 @@ bool KleverUtility::isEmptyDir(const QString &path)
 {
     return !exists(path) || QDir(path).isEmpty();
 }
-

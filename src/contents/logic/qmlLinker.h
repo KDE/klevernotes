@@ -27,7 +27,6 @@ private:
     QVariantMap changedCss;
     QString changedHomePath;
     QString changedNotePath;
-
 };
 
 #endif // QMLLINKER_H

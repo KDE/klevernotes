@@ -3,15 +3,13 @@
 
 #include "documentHandler.h"
 #include <QDebug>
-#include <QTextStream>
 #include <QFile>
 #include <QString>
+#include <QTextStream>
 
-
-DocumentHandler::DocumentHandler(QObject* parent)
+DocumentHandler::DocumentHandler(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 QString DocumentHandler::readNote(const QString &path) const
@@ -19,12 +17,12 @@ QString DocumentHandler::readNote(const QString &path) const
     QFile file(path);
 
     QString line;
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream stream(&file);
-        while (!stream.atEnd()){
-            line.append(stream.readLine()+"\n");
+        while (!stream.atEnd()) {
+            line.append(stream.readLine() + "\n");
         }
-        line.remove(line.length()-1, 2);
+        line.remove(line.length() - 1, 2);
     }
     file.close();
     return line;
