@@ -42,25 +42,32 @@ QStringList MDHandler::getPositionLineInfo(QJsonArray lines, int position)
     return info;
 }
 
-QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsList, bool checkLineEnd)
+QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsList, bool checkLineEnd, bool applyIncrement)
 {
     QJsonObject final = QJsonObject();
 
     QJsonArray selectedLines = getLines(selectedText);
-    // if (selectedLines.isEmpty()) {selectedLines.append("");};
+
     final["lines"] = selectedLines;
 
     QJsonArray instructions;
     bool applyToAll = false;
-    foreach (const QJsonValue &lineRef, selectedLines) {
-        QString line = lineRef.toString();
+
+    for (int lineIndex = 0; lineIndex < selectedLines.size(); lineIndex++) {
+        QString line = selectedLines.at(lineIndex).toString();
+
         instructions.append("remove");
         if (line.isEmpty() && selectedLines.size() > 1) {
             instructions[instructions.size() - 1] = "none";
             continue;
         }
+
         bool skip = false;
-        foreach (const QString &chars, charsList) {
+        for (int charsIndex = 0; charsIndex < charsList.size(); charsIndex++) {
+            QString chars = charsList.at(charsIndex);
+            if (applyIncrement)
+                chars = QString::number(lineIndex + 1) + chars;
+
             if (line.startsWith(chars)) {
                 skip = true;
                 if (checkLineEnd && !line.endsWith(chars))
@@ -68,6 +75,7 @@ QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsLi
                 break;
             }
         }
+
         if (skip)
             continue;
         applyToAll = true;
