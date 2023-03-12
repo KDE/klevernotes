@@ -1,5 +1,7 @@
-#ifndef QMLLINKER_H
-#define QMLLINKER_H
+// SPDX-FileCopyrightText 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+#pragma once
 
 #include <QObject>
 #include <QString>
@@ -28,5 +30,3 @@ private:
     QString changedHomePath;
     QString changedNotePath;
 };
-
-#endif // QMLLINKER_H

@@ -1,9 +1,6 @@
-// SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
-
-// This is based on https://github.com/CrazyCxl/markdown-editor
-// SPDX-License-Identifier: GPL-3.0
-
+// SPDX-FileCopyrightText: 2019 CrazyCxl <chenxiaolong0001@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 import QtQuick 2.2
 import QtQuick.Controls 2.2

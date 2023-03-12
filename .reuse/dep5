@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: KleverNotes
+Upstream-Contact: Louis Schul <schul9louis@gmail.com>
+Source: https://invent.kde.org/office/klevernotes
+
+Files: .flatpak-manifest.json
+Copyright: Louis Schul <schul9louis@gmail.com>
+License: GPL-2.0-or-later
