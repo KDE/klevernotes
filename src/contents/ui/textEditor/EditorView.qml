@@ -35,7 +35,7 @@ GridLayout{
     TextToolBar {
         id: toolbar
 
-        textArea: root.editor
+        editorTextArea: root.editor.textArea
         notePath: root.path
 
         Layout.preferredHeight: childrenRect.height

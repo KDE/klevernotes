@@ -14,7 +14,7 @@ import "qrc:/contents/ui/dialogs"
 Kirigami.Card {
     id: toolbarHolder
 
-    required property TextEditor textArea
+    required property TextArea editorTextArea
     required property string notePath
 
     // This 'replicate' the DefaultCardBackground and just change the background color
@@ -67,7 +67,7 @@ Kirigami.Card {
             }
 
             let imageString = `![${imageName}](${modifiedPath}) `
-            toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, imageString)
+            toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, imageString)
         }
     }
 
@@ -90,59 +90,67 @@ Kirigami.Card {
 
             const result = "\n"+headers+columnsAlignments+cells.repeat(tableMakerDialog.rowCount-1)
 
-            toolbarHolder.textArea.insert(toolbarHolder.textArea.cursorPosition, result)
+            toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, result)
         }
     }
 
     Kirigami.ActionToolBar {
         id: mainToolBar
 
-        function applyInstructions(selectionEnd,info,specialChars,multiPlaceApply){
+        function applyInstructions(selectionEnd,info,givenSpecialChars,multiPlaceApply,applyIncrement){
             const instructions = info.instructions
             const lines = info.lines
             let end = selectionEnd
             let applied = false
+            let specialChars = givenSpecialChars
 
             for (var i = lines.length-1 ; i >= 0; i--){
                 const line = lines[i]
                 const instruction = instructions[i]
 
                 const start = end-line.length
+
+                // Currently only used for ordered list
+                if (applyIncrement) {
+                    if (line.trim().length == 0) continue
+                    specialChars = (i+1).toString()+givenSpecialChars
+                }
+
                 switch(instruction) {
                 case "apply":
-                    if (multiPlaceApply) toolbarHolder.textArea.insert(end,specialChars)
-                    toolbarHolder.textArea.insert(start,specialChars)
+                    if (multiPlaceApply) toolbarHolder.editorTextArea.insert(end,specialChars)
+                    toolbarHolder.editorTextArea.insert(start,specialChars)
 
                     applied = true
                     break;
                 case "remove":
-                    if (multiPlaceApply) toolbarHolder.textArea.remove(end-specialChars.length,end)
-                    toolbarHolder.textArea.remove(start,start+specialChars.length)
+                    if (multiPlaceApply) toolbarHolder.editorTextArea.remove(end-specialChars.length,end)
+                    toolbarHolder.editorTextArea.remove(start,start+specialChars.length)
                     break;
                 default:
                     break
                 }
                 end = start-1
             }
-            if (applied) toolbarHolder.textArea.select(toolbarHolder.textArea.selectionStart-specialChars.length,toolbarHolder.textArea.selectionEnd)
+            if (applied) toolbarHolder.editorTextArea.select(toolbarHolder.editorTextArea.selectionStart-specialChars.length,toolbarHolder.editorTextArea.selectionEnd)
         }
 
-        function handleAction(selectionStart,selectionEnd,specialChars,multiPlaceApply) {
-            const selectedText = textArea.getText(selectionStart,selectionEnd)
-            const info = MDHandler.getInstructions(selectedText,specialChars,multiPlaceApply)
+        function handleAction(selectionStart,selectionEnd,specialChars,multiPlaceApply,applyIncrement) {
+            const selectedText = editorTextArea.getText(selectionStart,selectionEnd)
+            const info = MDHandler.getInstructions(selectedText,specialChars,multiPlaceApply,applyIncrement)
 
             const appliedSpecialChars = specialChars[0]
-            mainToolBar.applyInstructions(selectionEnd,info,appliedSpecialChars,multiPlaceApply)
+            mainToolBar.applyInstructions(selectionEnd,info,appliedSpecialChars,multiPlaceApply,applyIncrement)
         }
 
         function getLinesBlock(selectionStart,selectionEnd) {
-            const startingText = textArea.getText(0,textArea.selectionStart)
-            const endingText = textArea.getText(textArea.selectionEnd,textArea.text.length)
+            const startingText = editorTextArea.getText(0,editorTextArea.selectionStart)
+            const endingText = editorTextArea.getText(editorTextArea.selectionEnd,editorTextArea.text.length)
 
 
             const startBlockIndex = startingText.lastIndexOf('\n')+1
 
-            return [startBlockIndex,textArea.selectionEnd]
+            return [startBlockIndex,editorTextArea.selectionEnd]
         }
 
         actions: [
