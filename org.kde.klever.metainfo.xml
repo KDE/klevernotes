@@ -5,18 +5,14 @@
  -->
 <component type="desktop-application">
   <id>org.kde.klevernotes</id>
-  <name>KleverNotes Kirigami Application</name>
-  <summary>A short summary describing what this software is about</summary>
-  <metadata_license>A permissive license for this metadata, e.g. "FSFAP" + Update the SPDX tags above!</metadata_license>
-  <project_license>The license of this software as SPDX string, e.g. "GPL-2.0-or-later"</project_license>
-  <developer_name>The software vendor name, e.g. "ACME Corporation"</developer_name>
+  <name>KleverNotes</name>
+  <summary>KleverNotes is a note taking and management application</summary>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer_name>The KDE Community</developer_name>
   <description>
-    <p>Multiple paragraphs of long description, describing this software component.</p>
-    <p>You can also use ordered and unordered lists:</p>
-    <ul>
-      <li>Feature 1</li>
-      <li>Feature 2</li>
-    </ul>
-    <p>Keep in mind to XML-escape characters, and that this is not HTML markup.</p>
+    <p>KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
   </description>
+  <launchable type="desktop-id">org.kde.klever.desktop</launchable>
+  <content_rating type="oars-1.1"/>
 </component>
