@@ -14,14 +14,14 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "contents/logic/mdHandler.h"
-#include "contents/logic/qmlLinker.h"
-#include "contents/logic/view.h"
 #include "kleverconfig.h"
 #include "logic/documentHandler.h"
 #include "logic/kleverUtility.h"
+#include "logic/mdHandler.h"
+#include "logic/qmlLinker.h"
 #include "logic/storageHandler.h"
 #include "logic/todoHandler.h"
+#include "logic/view.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {

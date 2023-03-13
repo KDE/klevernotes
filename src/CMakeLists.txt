@@ -10,9 +10,9 @@ add_executable(klevernotes
     logic/storageHandler.cpp
     logic/todoHandler.cpp
 
-    contents/logic/mdHandler.cpp
-    contents/logic/qmlLinker.cpp
-    contents/logic/view.cpp
+    logic/mdHandler.cpp
+    logic/qmlLinker.cpp
+    logic/view.cpp
 
     resources.qrc)
 
