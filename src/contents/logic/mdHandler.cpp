@@ -42,7 +42,7 @@ QStringList MDHandler::getPositionLineInfo(QJsonArray lines, int position)
     return info;
 }
 
-QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsList, bool checkLineEnd, bool applyIncrement)
+QJsonObject MDHandler::getInstructions(const QString &selectedText, const QStringList &charsList, const bool checkLineEnd, const bool applyIncrement) const
 {
     QJsonObject final = QJsonObject();
 

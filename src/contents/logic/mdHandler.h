@@ -17,5 +17,5 @@ public slots:
     QJsonArray getLines(QString text);
     // Would love to use a pair here, but QML doesn't like it :/
     QStringList getPositionLineInfo(QJsonArray lines, int position);
-    QJsonObject getInstructions(QString selectedText, QStringList charsList, bool checkLineEnd, bool applyIncrement);
+    QJsonObject getInstructions(const QString &selectedText, const QStringList &charsList, const bool checkLineEnd, const bool applyIncrement) const;
 };
