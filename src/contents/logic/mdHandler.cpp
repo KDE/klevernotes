@@ -12,7 +12,7 @@ MDHandler::MDHandler(QObject *parent)
 {
 }
 
-QJsonArray MDHandler::getLines(QString text)
+QJsonArray MDHandler::getLines(const QString &text) const
 {
     return QJsonArray::fromStringList(text.split('\n'));
 }
