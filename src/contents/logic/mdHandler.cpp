@@ -54,7 +54,7 @@ QJsonObject MDHandler::getInstructions(QString selectedText, QStringList charsLi
     bool applyToAll = false;
 
     for (int lineIndex = 0; lineIndex < selectedLines.size(); lineIndex++) {
-        QString line = selectedLines.at(lineIndex).toString();
+        const QString line = selectedLines.at(lineIndex).toString();
 
         instructions.append("remove");
         if (line.isEmpty() && selectedLines.size() > 1) {

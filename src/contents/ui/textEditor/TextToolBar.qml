@@ -112,8 +112,8 @@ Kirigami.Card {
 
                 // Currently only used for ordered list
                 if (applyIncrement) {
-                    if (line.trim().length == 0) continue
-                    specialChars = (i+1).toString()+givenSpecialChars
+                    if (line.trim().length === 0) continue
+                    specialChars = (i + 1).toString() + givenSpecialChars
                 }
 
                 switch(instruction) {
