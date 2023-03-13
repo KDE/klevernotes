@@ -1,5 +1,5 @@
 {
-    "id": "org.kde.klevernotes",
+    "id": "org.kde.klever",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15-22.08",
     "sdk": "org.kde.Sdk",
