@@ -56,6 +56,11 @@ void StorageHandler::remove(const QString &path)
     connect(job, &KJob::result, this, &StorageHandler::slotResult);
 }
 
+void StorageHandler::destroy(const QString &path)
+{
+    QFile::remove(path);
+}
+
 void StorageHandler::slotResult(KJob *job)
 {
     if (!job->error()) {

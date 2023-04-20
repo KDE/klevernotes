@@ -11,6 +11,7 @@
         <file>contents/ui/dialogs/FolderPickerDialog.qml</file>
         <file>contents/ui/dialogs/FontPickerDialog.qml</file>
         <file>contents/ui/dialogs/ImagePickerDialog.qml</file>
+        <file>contents/ui/dialogs/LeavePaintingDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
@@ -25,7 +26,11 @@
 
         <file>contents/ui/pages/AboutPage.qml</file>
         <file>contents/ui/pages/MainPage.qml</file>
+        <file>contents/ui/pages/PaintingPage.qml</file>
         <file>contents/ui/pages/SettingsPage.qml</file>
+
+        <file>contents/ui/painting/ColorBar.qml</file>
+        <file>contents/ui/painting/ColorButton.qml</file>
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/Sidebar.qml</file>

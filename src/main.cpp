@@ -23,6 +23,13 @@
 #include "logic/todoHandler.h"
 #include "logic/view.h"
 
+#include "logic/painting/pressureequation.h"
+#include "logic/painting/sketchmodel.h"
+#include "logic/painting/sketchserializer.h"
+#include "logic/painting/sketchview.h"
+#include "logic/painting/strokeitem.h"
+#include "logic/painting/strokelistitem.h"
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -97,6 +104,25 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     View view;
     qmlRegisterSingletonInstance<View>("org.kde.Klever", 1, 0, "View", &view);
+
+    qRegisterMetaType<StrokeSample>();
+    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", "Use the createSample function on SketchViewHandler instead");
+
+    qRegisterMetaType<Stroke>();
+    qRegisterMetaType<Stroke::Type>();
+    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", "Use the createStroke function on SketchViewHandler instead");
+
+    qRegisterMetaType<Event>();
+    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "Event", "They are provided by the SketchViewHandler");
+
+    qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
+
+    qmlRegisterType<SketchViewHandler>("WashiPad", 1, 0, "SketchViewHandler");
+
+    qmlRegisterType<SketchModel>("WashiPad", 1, 0, "SketchModel");
+    qmlRegisterType<SketchSerializer>("WashiPad", 1, 0, "SketchSerializer");
+    qmlRegisterType<StrokeItem>("WashiPad", 1, 0, "StrokeItem");
+    qmlRegisterType<StrokeListItem>("WashiPad", 1, 0, "StrokeListItem");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));

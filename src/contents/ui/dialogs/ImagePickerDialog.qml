@@ -21,10 +21,12 @@ Kirigami.Dialog {
 
     property string noteImagesStoringPath
 
-    property bool storedImagesExist: !KleverUtility.isEmptyDir(noteImagesStoringPath)
+    property var paintClipRect
     property string path: ""
     property alias imageName: nameTextField.text
     property bool storedImageChoosen: false
+    property bool paintedImageChoosen: false
+    property bool storedImagesExist: !KleverUtility.isEmptyDir(noteImagesStoringPath)
 
     readonly property QtObject imageObject: displayImage
     readonly property bool imageLoaded: displayImage.visible
@@ -51,13 +53,8 @@ Kirigami.Dialog {
         spacing: Kirigami.Units.largeSpacing
 
         Layout.alignment: Qt.AlignTop
+
         Row {
-            id: buttonHolder
-
-            property int visibleChildrenCount: (storageButton.visible) ? 3 : 2
-
-            spacing: Kirigami.Units.largeSpacing
-
             Controls.ToolButton {
                 id: internetButton
 
@@ -65,7 +62,7 @@ Kirigami.Dialog {
                 icon.width: icon.height
                 icon.height: imageHolder.visible
                     ? internetButton.height
-                    : Kirigami.Units.iconSizes.large * (5-buttonHolder.visibleChildrenCount)
+                    : Kirigami.Units.iconSizes.large
 
                 text: i18n("Web image")
 
@@ -73,21 +70,21 @@ Kirigami.Dialog {
                     ? Controls.AbstractButton.TextBesideIcon
                     : Controls.AbstractButton.TextUnderIcon
 
-                width: Kirigami.Units.iconSizes.huge * (5-buttonHolder.visibleChildrenCount)
 
+                width: Kirigami.Units.iconSizes.huge * 2
                 height: imageHolder.visible
                     ? Kirigami.Units.iconSizes.medium
                     : width
 
                 onClicked: {
+                    imagePickerDialog.paintClipRect = undefined
+                    clearTmp()
                     storedImageChoosen = false
                     urlDialog.open()
                 }
+
             }
 
-            Kirigami.Separator{
-                height: internetButton.height
-            }
 
             Controls.ToolButton {
                 id: localButton
@@ -99,21 +96,43 @@ Kirigami.Dialog {
                 text: i18n("Local image")
 
                 display: internetButton.display
+
                 width: internetButton.width
                 height: internetButton.height
 
                 onClicked: {
+                    imagePickerDialog.paintClipRect = undefined
+                    clearTmp()
                     storedImageChoosen = false
                     filePickerDialog.folder = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
                     filePickerDialog.open()
                 }
             }
+        }
+        Row {
+            Controls.ToolButton {
+                id: paintingButton
 
-            Kirigami.Separator{
+                icon {
+                    name: "oilpaint"
+                    width: icon.height
+                    height: internetButton.icon.height
+                }
+
+                text: i18n("Paint an image")
+
+                display: internetButton.display
+
+                width: storageButton.visible ? internetButton.width : 2 * internetButton.width
                 height: internetButton.height
-                visible: imagePickerDialog.storedImagesExist
-            }
 
+                onClicked: {
+                    imagePickerDialog.paintClipRect = undefined
+                    clearTmp()
+                    imagePickerDialog.close()
+                    applicationWindow().switchToPage('Painting')
+                }
+            }
             Controls.ToolButton {
                 id: storageButton
 
@@ -124,12 +143,15 @@ Kirigami.Dialog {
                 text: i18n("Stored image")
 
                 display: internetButton.display
-                width: internetButton.width
-                height: internetButton.height
 
                 visible: imagePickerDialog.storedImagesExist
 
+                width: internetButton.width
+                height: internetButton.height
+
                 onClicked: {
+                    imagePickerDialog.paintClipRect = undefined
+                    clearTmp()
                     storedImageChoosen = true
                     filePickerDialog.folder = "file://"+imagePickerDialog.noteImagesStoringPath
                     filePickerDialog.open()
@@ -139,7 +161,7 @@ Kirigami.Dialog {
 
         Kirigami.Separator{
             visible: imageHolder.visible
-            width: internetButton.width * buttonHolder.visibleChildrenCount
+            width: internetButton.width * 2
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -149,16 +171,17 @@ Kirigami.Dialog {
 
             visible: path != ""
             height: Kirigami.Units.iconSizes.huge * 3
-            width: internetButton.width * buttonHolder.visibleChildrenCount
+            width: internetButton.width * 2
             Image {
                 id: displayImage
 
-                source: path
-                fillMode: Image.PreserveAspectFit
-                visible: displayImage.status == Image.Ready
-
                 property int idealWidth
                 property int idealHeight
+
+                source: path
+                visible: displayImage.status == Image.Ready
+                fillMode: Image.PreserveAspectFit
+                sourceClipRect: imagePickerDialog.paintClipRect
 
                 anchors.horizontalCenter: parent.horizontalCenter
 
@@ -194,12 +217,12 @@ Kirigami.Dialog {
         }
 
         Kirigami.Separator{
-            width: internetButton.width * buttonHolder.visibleChildrenCount
+            width: internetButton.width * 2
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         RowLayout {
-            width: internetButton.width * buttonHolder.visibleChildrenCount
+            width: internetButton.width * 2
             anchors.horizontalCenter: parent.horizontalCenter
 
             spacing: Kirigami.Units.smallSpacing
@@ -222,8 +245,8 @@ Kirigami.Dialog {
 
             checked: true
             text: i18n("Place this image inside the note folder")
-            width: internetButton.width * buttonHolder.visibleChildrenCount
-            visible: displayImage.visible && !storedImageChoosen
+            width: internetButton.width * 2
+            visible: displayImage.visible && !storedImageChoosen && !paintedImageChoosen
 
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -231,6 +254,19 @@ Kirigami.Dialog {
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
-    onOpened: {path = "" ; imageName = ""; displayImage.height = undefined ;}
+    onClosed: {
+        clearTmp()
+        path = ""
+        imageName = ""
+        storedImageChoosen = false
+        displayImage.height = undefined
+    }
+
+    function clearTmp() {
+        if (paintedImageChoosen) {
+            StorageHandler.destroy(KleverUtility.getPath(path))
+            paintedImageChoosen = false
+        }
+    }
 }
 

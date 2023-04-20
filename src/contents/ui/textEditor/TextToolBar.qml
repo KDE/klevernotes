@@ -17,6 +17,7 @@ Kirigami.Card {
     required property TextArea editorTextArea
     required property string notePath
 
+    readonly property QtObject imagePickerDialog: imagePickerDialog
     // This 'replicate' the DefaultCardBackground and just change the background color
     //(https://api.kde.org/frameworks/kirigami/html/DefaultCardBackground_8qml_source.html)
     background: Kirigami.ShadowedRectangle{
@@ -29,7 +30,7 @@ Kirigami.Card {
     ImagePickerDialog {
         id: imagePickerDialog
 
-        noteImagesStoringPath: toolbarHolder.notePath + "Images/"
+        noteImagesStoringPath: toolbarHolder.notePath.replace("note.md","") + "Images/"
 
         onAccepted: if (imageLoaded) {
             let modifiedPath = path
@@ -37,7 +38,11 @@ Kirigami.Card {
             let useLocalImage = storedImageChoosen
             if (storeImage && !storedImageChoosen){
                 let wantedImageName = imageName
-                if (imageName == ""){
+                let suggestedName = paintedImageChoosen ? "painting" : ""
+                if (imageName === "" && suggestedName !== "") {
+                    wantedImageName = suggestedName
+
+                } else {
                     const fileName = KleverUtility.getName(path)
                     wantedImageName = fileName.substring(0,fileName.lastIndexOf("."))
                 }
@@ -57,7 +62,7 @@ Kirigami.Card {
 
             if (modifiedPath.startsWith("file://")) modifiedPath = modifiedPath.replace("file://","")
 
-            if (useLocalImage) modifiedPath = "./"+modifiedPath.replace(toolbarHolder.notePath,"")
+            if (useLocalImage) modifiedPath = "./Images/"+modifiedPath.replace(noteImagesStoringPath,"")
 
             if (modifiedPath.startsWith("/home/")) {
                 // Get the first "/" after the /home/username

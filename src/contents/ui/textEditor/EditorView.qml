@@ -9,6 +9,7 @@ import org.kde.kirigami 2.19 as Kirigami
 GridLayout{
     id: root
 
+    readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
     readonly property TextEditor editor: editor
     required property string path
 

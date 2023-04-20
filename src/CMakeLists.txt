@@ -1,24 +1,14 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
-add_executable(klevernotes
-    main.cpp
-    app.cpp
+set(lib_SRCS
+    logic/painting/pressureequation.cpp
+    logic/painting/sketchmodel.cpp
+    logic/painting/stroke.cpp
+)
 
-    logic/documentHandler.cpp
-    logic/kleverUtility.cpp
-    logic/storageHandler.cpp
-    logic/todoHandler.cpp
-
-    logic/mdHandler.cpp
-    logic/qmlLinker.cpp
-    logic/view.cpp
-
-    resources.qrc)
-
-find_package(KF5KIO)
-
-target_link_libraries(klevernotes
+add_library(klevernoteslib STATIC ${lib_SRCS})
+target_link_libraries(klevernoteslib
     Qt5::Core
     Qt5::Gui
     Qt5::Qml
@@ -33,6 +23,33 @@ target_link_libraries(klevernotes
     Qt::WebChannel
     Qt::WebEngine
     Qt::WebEngineWidgets)
+
+set(exec_SRCS
+    main.cpp
+    app.cpp
+
+    logic/documentHandler.cpp
+    logic/kleverUtility.cpp
+    logic/storageHandler.cpp
+    logic/todoHandler.cpp
+
+    logic/mdHandler.cpp
+    logic/qmlLinker.cpp
+    logic/view.cpp
+
+    logic/painting/pointMaker.cpp
+    logic/painting/sketchserializer.cpp
+    logic/painting/sketchview.cpp
+    logic/painting/strokeitem.cpp
+    logic/painting/strokelistitem.cpp
+    logic/painting/strokepainter.cpp
+
+    resources.qrc)
+
+add_executable(klevernotes ${exec_SRCS})
+target_link_libraries(klevernotes klevernoteslib)
+
+find_package(KF5KIO)
 
 if (ANDROID)
     kirigami_package_breeze_icons(ICONS
