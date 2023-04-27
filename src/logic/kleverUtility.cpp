@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QString>
 #include <QUrl>
+#include <kio/global.h>
 
 KleverUtility::KleverUtility(QObject *parent)
     : QObject(parent)
@@ -27,11 +28,12 @@ bool KleverUtility::exists(const QString &url)
     return QFile().exists(url);
 }
 
-void KleverUtility::create(const QString &path)
+bool KleverUtility::create(const QString &path)
 {
     if (!exists(path)) {
-        QDir().mkpath(path);
+        return QDir().mkpath(path);
     }
+    return false;
 }
 
 QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration)
@@ -53,4 +55,23 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
 bool KleverUtility::isEmptyDir(const QString &path)
 {
     return !exists(path) || QDir(path).isEmpty();
+}
+
+QString KleverUtility::isProperPath(const QString &parentPath, const QString &name)
+{
+    if (name.startsWith("."))
+        return "dot";
+
+    QString properName = KIO::encodeFileName(name);
+
+    QString newPath = parentPath + "/" + properName;
+
+    return (exists(newPath)) ? "exist" : "";
+}
+
+QString KleverUtility::getParentPath(const QString &path)
+{
+    QDir dir(path);
+    dir.cdUp();
+    return dir.absolutePath();
 }

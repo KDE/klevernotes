@@ -4,6 +4,7 @@
 
 #include "kleverUtility.h"
 #include <KIO/CopyJob>
+#include <QModelIndex>
 #include <QObject>
 #include <kio_version.h>
 
@@ -16,18 +17,17 @@ public:
     explicit StorageHandler(QObject *parent = nullptr);
 
 signals:
-    void storageUpdated();
+    QModelIndex storageUpdated(QModelIndex model);
 
 public slots:
     void makeStorage(QString storagePath);
-    void makeCategory(QString storagePath, QString categoryName);
-    void makeGroup(QString categoryPath, QString groupName);
-    void makeNote(QString groupPath, QString noteName);
+    bool makeCategory(QString storagePath, QString categoryName);
+    bool makeGroup(QString categoryPath, QString groupName);
+    bool makeNote(QString groupPath, QString noteName);
 
     bool rename(QString oldPath, QString newPath);
 
-    void remove(const QString &path);
-    void destroy(const QString &path);
+    void remove(const QString &path, const QModelIndex rowIndex);
 
-    void slotResult(KJob *job);
+    void slotResult(KJob *job, const QModelIndex rowIndex);
 };

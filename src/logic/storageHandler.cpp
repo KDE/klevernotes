@@ -12,30 +12,33 @@ StorageHandler::StorageHandler(QObject *parent)
 {
 }
 
-void StorageHandler::makeNote(QString groupPath, QString noteName)
+bool StorageHandler::makeNote(QString groupPath, QString noteName)
 {
     QDir noteDir;
     QString notePath = groupPath.append("/" + noteName);
     QFile note(notePath + "/note.md");
     QFile todo(notePath + "/todo.json");
 
-    util.create(notePath);
-    note.open(QIODevice::ReadWrite);
-    note.close();
-    todo.open(QIODevice::ReadWrite);
-    todo.close();
+    bool noteCreated = util.create(notePath);
+    if (noteCreated) {
+        note.open(QIODevice::ReadWrite);
+        note.close();
+        todo.open(QIODevice::ReadWrite);
+        todo.close();
+    }
+    return noteCreated;
 }
 
-void StorageHandler::makeGroup(QString categoryPath, QString groupName)
+bool StorageHandler::makeGroup(QString categoryPath, QString groupName)
 {
     QString groupPath = categoryPath.append("/" + groupName);
-    util.create(groupPath);
+    return util.create(groupPath);
 }
 
-void StorageHandler::makeCategory(QString storagePath, QString categoryName)
+bool StorageHandler::makeCategory(QString storagePath, QString categoryName)
 {
     QString categoryPath = storagePath.append("/" + categoryName);
-    makeGroup(categoryPath, ".BaseGroup");
+    return makeGroup(categoryPath, ".BaseGroup");
 }
 
 void StorageHandler::makeStorage(QString storagePath)
@@ -49,22 +52,19 @@ bool StorageHandler::rename(QString oldPath, QString newPath)
     return dir.rename(oldPath, newPath);
 }
 
-void StorageHandler::remove(const QString &path)
+void StorageHandler::remove(const QString &path, const QModelIndex rowIndex)
 {
     auto *job = KIO::trash(QUrl::fromLocalFile(path));
     job->start();
-    connect(job, &KJob::result, this, &StorageHandler::slotResult);
+    connect(job, &KJob::result, this, [this, job, rowIndex] {
+        slotResult(job, rowIndex);
+    });
 }
 
-void StorageHandler::destroy(const QString &path)
-{
-    QFile::remove(path);
-}
-
-void StorageHandler::slotResult(KJob *job)
+void StorageHandler::slotResult(KJob *job, const QModelIndex rowIndex)
 {
     if (!job->error()) {
-        emit storageUpdated();
+        emit storageUpdated(rowIndex);
         return;
     }
     qDebug() << job->errorString();

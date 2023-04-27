@@ -16,7 +16,9 @@ public slots:
     QString getName(const QString &path);
     QString getPath(const QUrl &url);
     bool exists(const QString &path);
-    void create(const QString &path);
+    bool create(const QString &path);
     QString getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration = 0);
     bool isEmptyDir(const QString &path);
+    QString isProperPath(const QString &parentPath, const QString &name);
+    QString getParentPath(const QString &path);
 };
