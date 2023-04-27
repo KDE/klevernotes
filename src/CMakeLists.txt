@@ -44,6 +44,8 @@ set(exec_SRCS
     logic/painting/strokelistitem.cpp
     logic/painting/strokepainter.cpp
 
+    logic/treeView/treeModel.cpp
+
     resources.qrc)
 
 add_executable(klevernotes ${exec_SRCS})
