@@ -175,10 +175,9 @@ void MyTreeModel::renameRow(const QModelIndex &rowModelIndex, const QString &new
 void MyTreeModel::addRow(const QString &rowPath, const int rowLevel, const QModelIndex &parentModelIndex)
 {
     QStandardItem *newRow = getHierarchy(rowPath, rowLevel);
-    qDebug() << parentModelIndex.data(DisplayedName);
     if (newRow == nullptr)
         return;
-    qDebug() << "HEY";
+
     if (!parentModelIndex.isValid()) {
         this->appendRow(newRow);
         return this->reorder();

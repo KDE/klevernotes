@@ -48,7 +48,6 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
     if (exists(imagePath)) {
         return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration + 1);
     }
-    qDebug() << imagePath + " C++";
     return imagePath;
 }
 
