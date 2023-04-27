@@ -15,6 +15,7 @@ import org.kde.kirigami 2.5 as Kirigami
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/sideBar/treeView"
 
 
 Kirigami.OverlayDrawer {
@@ -38,6 +39,9 @@ Kirigami.OverlayDrawer {
     bottomPadding: 0
 
     property bool storageExist: Config.storagePath !== "None"
+    onStorageExistChanged: if (storageExist) treeview.model.makeModel(Config.storagePath)
+
+    // property alias currentRow: treeview.currentItem
 
     contentItem: ColumnLayout {
         id: column
@@ -45,7 +49,7 @@ Kirigami.OverlayDrawer {
         implicitWidth: Kirigami.Units.gridUnit * 14
 
         ActionBar{
-            id: action
+            id: actionBar
 
             treeView: treeview
 
@@ -53,13 +57,17 @@ Kirigami.OverlayDrawer {
             Layout.preferredHeight: pageStack.globalToolBar.preferredHeight
         }
 
-        TreeView{
+
+        TreeView {
             id: treeview
 
             visible: storageExist
+            model: MyTreeModel {}
+
+            actionBar: actionBar
 
             Layout.fillHeight: true
-            Layout.alignment:Qt.AlignTop
+            Layout.fillWidth: true
         }
 
         Item{
@@ -94,6 +102,13 @@ Kirigami.OverlayDrawer {
             onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
         }
 
+    }
+
+    ContextMenu {
+        id: contextMenu
+
+        actionBar: actionBar
+        treeView: treeview
     }
 
      Component.onCompleted: {

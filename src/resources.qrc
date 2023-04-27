@@ -34,9 +34,13 @@
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/Sidebar.qml</file>
-        <file>contents/ui/sideBar/SubEntryColumn.qml</file>
-        <file>contents/ui/sideBar/TreeNode.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
+        <file>contents/ui/sideBar/ContextMenu.qml</file>
+        <file>contents/ui/sideBar/treeView/AbstractTreeItem.qml</file>
+        <file>contents/ui/sideBar/treeView/BasicTreeItem.qml</file>
+        <file>contents/ui/sideBar/treeView/InternalTreeListView.qml</file>
+        <file>contents/ui/sideBar/treeView/TreeListView.qml</file>
+        <file>contents/ui/sideBar/treeView/TreeViewDecoration.qml</file>
 
         <file>contents/ui/textEditor/BottomToolBar.qml</file>
         <file>contents/ui/textEditor/EditorView.qml</file>
