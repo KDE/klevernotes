@@ -1,101 +1,100 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2023.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 00:49+0000\n"
-"PO-Revision-Date: 2023-04-26 11:17+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
-"Language: nl\n"
+"PO-Revision-Date: 2023-04-27 22:53+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.0\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
 msgid "Color Picker"
-msgstr "Kleurenkiezer"
+msgstr "Pobiralnik barve"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
 #, kde-format
 msgid "category"
-msgstr "categorie"
+msgstr "kategorija"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "group"
-msgstr "groep"
+msgstr "grupa"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:23
 #, kde-format
 msgid "note"
-msgstr "notitie"
+msgstr "opomba"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, kde-format
 msgid "Image picker"
-msgstr "Afbeeldingskiezer"
+msgstr "Pobiralnik slike"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
 msgid "Font selector"
-msgstr "Lettertypekiezer"
+msgstr "Izbirnik pisave"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
 #, kde-format
 msgid "Image selector"
-msgstr "Afbeeldingskiezer"
+msgstr "Izbirnik slike"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
 #, kde-format
 msgid "Web image"
-msgstr "Webafbeelding"
+msgstr "Spletna slika"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
 #, kde-format
 msgid "Local image"
-msgstr "Lokale afbeelding"
+msgstr "Lokalna slika"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
 #, kde-format
 msgid "Paint an image"
-msgstr "Teken een afbeelding"
+msgstr "Pobarvaj sliko"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
 #, kde-format
 msgid "Stored image"
-msgstr "Opgeslagen afbeelding"
+msgstr "Shranjena slika"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
 #, kde-format
 msgid "It seems that the image you select doesn't exist or is not supported."
-msgstr ""
-"Het lijkt erop dat de afbeelding die u selecteert niet bestaat of niet wordt "
-"ondersteund."
+msgstr "Kaže, da slika, ki ste jo izbrali ne obstaja ali ni podprta."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
 #, kde-format
 msgid "Image text: "
-msgstr "Afbeeldingstekst: "
+msgstr "Besedilo slike: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
 #, kde-format
 msgid "Place this image inside the note folder"
-msgstr "Deze afbeelding in de notitiemap plaatsen"
+msgstr "Postavi to sliko znotraj maše z opombami"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, kde-format
 msgid "KleverNotes painting"
-msgstr "Tekenen in KleverNotes"
+msgstr "Barvanje KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:18
 #, kde-format
@@ -103,13 +102,13 @@ msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
 msgstr ""
-"U staat op het punt uw tekening te verlaten zonder deze op te slaan!\n"
-"Wilt u het opslaan alvorens te verlaten?\n"
+"Nameravate zapustiti aplikacijo ne da bi shranili vašo risbo\n"
+"Ali jo želite shraniti pred odhodom?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:26
 #, kde-format
 msgid "This "
-msgstr "Dit "
+msgstr "To "
 
 #: contents/ui/dialogs/StorageDialog.qml:19
 #, kde-format
@@ -119,30 +118,30 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Het lijkt er op dat dit uw eerste keer is dat u deze toepassing gebruikt!\n"
+"Kot kaže, je to prvič, da uporabljate to aplikacijo\n"
 "\n"
-"Kies een locatie voor het opslaan van uw toekomstige KleverNotes of "
-"selecteer een bestaande."
+"Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
+"obstoječo."
 
 #: contents/ui/dialogs/StorageDialog.qml:42
 #, kde-format
 msgid "Existing storage"
-msgstr "Bestaande opslag"
+msgstr "Obstoječa hramba"
 
 #: contents/ui/dialogs/StorageDialog.qml:46
 #, kde-format
 msgid "Change the storage path"
-msgstr "Het opslagpad wijzigen"
+msgstr "Spremeni pot hrambe"
 
 #: contents/ui/dialogs/StorageDialog.qml:59
 #, kde-format
 msgid "Create storage"
-msgstr "Opslag aanmaken"
+msgstr "Ustvari hrambo"
 
 #: contents/ui/dialogs/StorageDialog.qml:63
 #, kde-format
 msgid "Create a new storage"
-msgstr "Een nieuwe opslag aanmaken"
+msgstr "Ustvari novo hrambo"
 
 #: contents/ui/dialogs/StorageDialog.qml:96
 #, kde-format
@@ -152,61 +151,61 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Het lijkt er op dat de geselecteerde map geen opslag is voor KleverNotes!\n"
+"Kot kaže izbrana mapa ni hramba KleverNotes\n"
 "\n"
-"Kies een locatie voor het opslaan van uw toekomstige KleverNotes of "
-"selecteer een bestaande."
+"Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
+"obstoječo."
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
 msgid "Select Number"
-msgstr "Aantal selecteren"
+msgstr "Izberite število"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
 #, kde-format
 msgid "Row"
-msgstr "Rij"
+msgstr "Vrstica"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:44
 #, kde-format
 msgid "Column"
-msgstr "Kolom"
+msgstr "Stolpec"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:205
 #, kde-format
 msgid "Align all:"
-msgstr "Alles uitlijnen:"
+msgstr "Poravnaj vse:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
 #, kde-format
 msgid "Add Todo"
-msgstr "Taak toevoegen"
+msgstr "Dodaj seznam opravil"
 
 #: contents/ui/dialogs/ToDoDialog.qml:20
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
-msgstr "Titel:"
+msgstr "Naslov:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
 #, kde-format
 msgid "Todo title (required)"
-msgstr "Titel van taak (vereist)"
+msgstr "Naslov opravila (zahtevano)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
 #, kde-format
 msgid "Description:"
-msgstr "Beschrijving:"
+msgstr "Opis:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
 #, kde-format
 msgid "Optional"
-msgstr "Optioneel"
+msgstr "Neobvezno"
 
 #: contents/ui/dialogs/URLDialog.qml:11
 #, kde-format
 msgid "Choose an URL"
-msgstr "Een URL kiezen"
+msgstr "Izberite URL"
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -216,43 +215,43 @@ msgstr "KleverNotes"
 #: contents/ui/pages/MainPage.qml:22
 #, kde-format
 msgid "Welcome"
-msgstr "Welkom"
+msgstr "Dobrodošli"
 
 #: contents/ui/pages/MainPage.qml:73
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Welkom bij KleverNotes!"
+msgstr "Dobrodošli v KleverNotes!"
 
 #: contents/ui/pages/MainPage.qml:83
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr "Een notitie aanmaken om te beginnen met werken !"
+msgstr "Ustvarite ali izberite opombo za začetek dela !"
 
 #: contents/ui/pages/PaintingPage.qml:28
 #, kde-format
 msgid "Paint!"
-msgstr "Tekenen!"
+msgstr "Pobarvaj!"
 
 #: contents/ui/pages/PaintingPage.qml:32
 #, kde-format
 msgid "Save"
-msgstr "Opslaan"
+msgstr "Shrani"
 
 #: contents/ui/pages/PaintingPage.qml:37
 #, kde-format
 msgid "Clear"
-msgstr "Wissen"
+msgstr "Očisti"
 
 #: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgid "Auto crop"
-msgstr "Automatisch bijsnijden"
+msgstr "Samodejno obreži"
 
 #: contents/ui/pages/SettingsPage.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Nastavitve"
 
 #: contents/ui/pages/SettingsPage.qml:53
 #, kde-format
@@ -260,144 +259,144 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
-"Kies een locatie voor het opslaan van uw toekomstige KleverNotes of "
-"selecteer een bestaande.\n"
+"Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
+"obstoječo.\n"
 
 #: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "General"
-msgstr "Algemeen"
+msgstr "Splošno"
 
 #: contents/ui/pages/SettingsPage.qml:96
 #, kde-format
 msgid "Storage path:"
-msgstr "Opslagpad:"
+msgstr "Pot hrambe:"
 
 #: contents/ui/pages/SettingsPage.qml:104
 #, kde-format
 msgid "Change storage path"
-msgstr "Opslagpad wijzigen"
+msgstr "Spremeni pot hrambe"
 
 #: contents/ui/pages/SettingsPage.qml:116
 #, kde-format
 msgid "New Category name:"
-msgstr "Nieuwe categorienaam:"
+msgstr "Novo ime kategorije:"
 
 #: contents/ui/pages/SettingsPage.qml:144
 #, kde-format
 msgid "New Group name:"
-msgstr "Nieuwe groepsnaam:"
+msgstr "Novo ime grupe:"
 
 #: contents/ui/pages/SettingsPage.qml:172
 #, kde-format
 msgid "New Note name:"
-msgstr "Nieuwe notitienaam:"
+msgstr "Novo ime opombe:"
 
 #: contents/ui/pages/SettingsPage.qml:198
 #, kde-format
 msgid "Note display"
-msgstr "Notitie tonen"
+msgstr "Prikaz opombe"
 
 #: contents/ui/pages/SettingsPage.qml:204
 #, kde-format
 msgid "Background color:"
-msgstr "Achtergrondkleur:"
+msgstr "Barva ozadja:"
 
 #: contents/ui/pages/SettingsPage.qml:243
 #, kde-format
 msgid "Text color:"
-msgstr "Tekstkleur:"
+msgstr "Barva besedila:"
 
 #: contents/ui/pages/SettingsPage.qml:281
 #, kde-format
 msgid "Title color:"
-msgstr "Kleuren van titel:"
+msgstr "Barva naslova:"
 
 #: contents/ui/pages/SettingsPage.qml:319
 #, kde-format
 msgid "Link color:"
-msgstr "Kleur van koppeling:"
+msgstr "Barva povezave:"
 
 #: contents/ui/pages/SettingsPage.qml:357
 #, kde-format
 msgid "Visited Link color:"
-msgstr "Kleur van bezochte koppeling:"
+msgstr "Barva obiskane povezave:"
 
 #: contents/ui/pages/SettingsPage.qml:394
 #, kde-format
 msgid "Code color:"
-msgstr "Kleur van code:"
+msgstr "Barva kode:"
 
 #: contents/ui/pages/SettingsPage.qml:434
 #, kde-format
 msgid "Font:"
-msgstr "Lettertype:"
+msgstr "Pisava:"
 
 #: contents/ui/sideBar/ActionBar.qml:218
 #, kde-format
 msgid "Create a new category"
-msgstr "Een nieuwe categorie aanmaken"
+msgstr "Ustvari novo kategorijo"
 
 #: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgid "Create a new group"
-msgstr "Een nieuwe groep aanmaken"
+msgstr "Ustvari novo grupo"
 
 #: contents/ui/sideBar/ActionBar.qml:232
 #, kde-format
 msgid "Create a new note"
-msgstr "Een nieuwe notitie maken"
+msgstr "Ustvari novo opombo"
 
 #: contents/ui/sideBar/ActionBar.qml:239
 #, kde-format
 msgid "Rename"
-msgstr "Hernoemen"
+msgstr "Preimenuj"
 
 #: contents/ui/sideBar/Sidebar.qml:82
 #, kde-format
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Nastavitve"
 
 #: contents/ui/sideBar/Sidebar.qml:91
 #, kde-format
 msgid "About Klever"
-msgstr "Info over Klever"
+msgstr "O programu Klever"
 
 #: contents/ui/sideBar/TreeNode.qml:129
 #, kde-format
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "Zbriši"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
 msgid "Note"
-msgstr "Notitie"
+msgstr "Opomba"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
 msgid "TODO"
-msgstr "TE DOEN"
+msgstr "SEZNAM OPRAVIL"
 
 #: contents/ui/textEditor/TextToolBar.qml:85
 #, kde-format
 msgid "Header"
-msgstr "Kop"
+msgstr "Glava"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
 #, kde-format
 msgid "Clear checked"
-msgstr "Wissen geactiveerd"
+msgstr "Očisti odkljukano"
 
 #: main.cpp:47
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr "KleveNotes"
 
 #: main.cpp:51
 #, kde-format
 msgid "Application Description"
-msgstr "Beschrijving van de toepassing"
+msgstr "Opis aplikacije"
 
 #: main.cpp:55
 #, kde-format
@@ -414,10 +413,10 @@ msgstr "Louis Schul"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - 2023"
+msgstr "Matjaž Jeran"
 
 #: main.cpp:61
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "freekdekruijf@kde.nl"
+msgstr "matjaz.jeran@amis.net"
