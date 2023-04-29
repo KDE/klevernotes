@@ -4,18 +4,22 @@
 [Desktop Entry]
 Name=KleverNotes
 Name[ca]=KleverNotes
+Name[ca@valencia]=KleverNotes
 Name[de]=KleverNotes
 Name[es]=KleverNotes
 Name[nl]=KleverNotes
+Name[pt]=KleverNotes
 Name[sl]=KleverNotes
 Name[tr]=Akıllı Notlar
 Name[uk]=KleverNotes
 Name[x-test]=xxKleverNotesxx
 Comment=KleverNotes Kirigami Application
 Comment[ca]=Aplicació de Kirigami KleverNotes
+Comment[ca@valencia]=Aplicació de Kirigami KleverNotes
 Comment[de]=KleverNotes - Kirigami-Anwendung
 Comment[es]=Aplicación Kirigami KleverNotes
 Comment[nl]=Kirigami-toepassing KleverNotes
+Comment[pt]=Aplicação do KleverNotes em Kirigami
 Comment[sl]=Kirigami aplikacija Klevernotes
 Comment[tr]=Akıllı Notlar Kirigami Uygulaması
 Comment[uk]=Програма на Kirigami KleverNotes
