@@ -46,6 +46,8 @@ set(exec_SRCS
 
     logic/treeView/treeModel.cpp
 
+    notelistmodel.cpp
+
     resources.qrc)
 
 add_executable(klevernotes ${exec_SRCS})

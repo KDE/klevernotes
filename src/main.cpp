@@ -30,6 +30,8 @@
 #include "logic/painting/strokeitem.h"
 #include "logic/painting/strokelistitem.h"
 
+#include "notelistmodel.h"
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -103,6 +105,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);
 
     qmlRegisterType<MyTreeModel>("org.kde.Klever", 1, 0, "MyTreeModel");
+    qmlRegisterType<NoteListModel>("org.kde.Klever", 1, 0, "NoteListModel");
 
     qRegisterMetaType<StrokeSample>();
     qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", "Use the createSample function on SketchViewHandler instead");

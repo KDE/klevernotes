@@ -17,17 +17,15 @@ public:
     explicit StorageHandler(QObject *parent = nullptr);
 
 signals:
-    QModelIndex storageUpdated(QModelIndex model);
+    QModelIndex storageUpdated(const QModelIndex &model);
 
 public slots:
-    void makeStorage(QString storagePath);
-    bool makeCategory(QString storagePath, QString categoryName);
-    bool makeGroup(QString categoryPath, QString groupName);
-    bool makeNote(QString groupPath, QString noteName);
+    void makeStorage(const QString &storagePath);
+    bool makeCategory(const QString &storagePath, const QString &categoryName);
+    bool makeGroup(const QString &categoryPath, const QString &groupName);
+    bool makeNote(const QString &groupPath, const QString &noteName);
 
-    bool rename(QString oldPath, QString newPath);
+    bool rename(const QString &oldPath, const QString &newPath);
 
     void remove(const QString &path, const QModelIndex rowIndex);
-
-    void slotResult(KJob *job, const QModelIndex rowIndex);
 };

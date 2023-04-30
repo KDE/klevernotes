@@ -8,9 +8,9 @@ import QtQuick.Layouts 1.3
 
 import org.kde.Klever 1.0
 
-import "qrc:/contents/ui/sideBar/treeView"
+import org.kde.kirigamiaddons.treeview 1.0 as TreeView
 
-TreeListView {
+TreeView.TreeListView {
     id: treeView
 
     readonly property QtObject deleteConfirmationDialog: deleteConfirmationDialog
@@ -24,7 +24,7 @@ TreeListView {
         }
     }
 
-    delegate: BasicTreeItem {
+    delegate: TreeView.BasicTreeItem {
         id: treeItem
 
         property int level: model.level

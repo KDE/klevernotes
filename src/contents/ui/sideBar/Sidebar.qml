@@ -12,11 +12,9 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.15 as Controls
 import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigamiaddons.treeview 1.0 as TreeView
 
 import org.kde.Klever 1.0
-
-import "qrc:/contents/ui/sideBar/treeView"
-
 
 Kirigami.OverlayDrawer {
     id:drawer
@@ -46,7 +44,8 @@ Kirigami.OverlayDrawer {
     contentItem: ColumnLayout {
         id: column
         // FIXME: Dirty workaround for 385992
-        implicitWidth: Kirigami.Units.gridUnit * 14
+        implicitWidth: Kirigami.Units.gridUnit * 25
+        width: Kirigami.Units.gridUnit * 25
 
         ActionBar{
             id: actionBar
@@ -57,26 +56,19 @@ Kirigami.OverlayDrawer {
             Layout.preferredHeight: pageStack.globalToolBar.preferredHeight
         }
 
-
-        TreeView {
+        TreeView.TreeListView {
             id: treeview
 
-            visible: storageExist
-            model: MyTreeModel {}
+            sourceModel: NoteListModel {}
 
-            actionBar: actionBar
+            delegate: TreeView.BasicTreeItem {
+                label: model.displayName
+                icon.name: model.iconName
+            }
 
-            Layout.fillHeight: true
             Layout.fillWidth: true
+            Layout.fillHeight: true
         }
-
-        Item{
-            id: dummyPlaceHolder
-
-            Layout.fillHeight: !storageExist
-            Layout.alignment:Qt.AlignTop
-        }
-
 
         Controls.ToolSeparator {
             orientation: Qt.Horizontal
@@ -101,7 +93,6 @@ Kirigami.OverlayDrawer {
 
             onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
         }
-
     }
 
     ContextMenu {
