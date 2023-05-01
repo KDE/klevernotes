@@ -1,100 +1,99 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
+# Vincenzo Reale <smart2128vr@gmail.com>, 2023.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 00:49+0000\n"
-"PO-Revision-Date: 2023-04-29 10:55+0200\n"
-"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
-"Language: pl\n"
+"PO-Revision-Date: 2023-04-27 18:14+0200\n"
+"Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
 msgid "Color Picker"
-msgstr "Wybierak barwy"
+msgstr "Selettore di colore"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
 #, kde-format
 msgid "category"
-msgstr "kategoria"
+msgstr "categoria"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "group"
-msgstr "grupa"
+msgstr "gruppo"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:23
 #, kde-format
 msgid "note"
-msgstr "notatka"
+msgstr "nota"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, kde-format
 msgid "Image picker"
-msgstr "Wybierak obrazu"
+msgstr "Selettore di immagini"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
 msgid "Font selector"
-msgstr "Wybór czcionki"
+msgstr "Selettore di caratteri"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
 #, kde-format
 msgid "Image selector"
-msgstr "Wybierak obrazu"
+msgstr "Selettore di immagini"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
 #, kde-format
 msgid "Web image"
-msgstr "Obraz sieciowy"
+msgstr "Immagine web"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
 #, kde-format
 msgid "Local image"
-msgstr "Obraz miejscowy"
+msgstr "Immagine locale"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
 #, kde-format
 msgid "Paint an image"
-msgstr "Namaluj obraz"
+msgstr "Disegna un'immagine"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
 #, kde-format
 msgid "Stored image"
-msgstr "Zapisany obraz"
+msgstr "Immagine archiviata"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
 #, kde-format
 msgid "It seems that the image you select doesn't exist or is not supported."
-msgstr "Zaznaczony obraz nie istnieje lub jest nieobsługiwany."
+msgstr "Sembra che l'immagine selezionata non esista o non sia supportata."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
 #, kde-format
 msgid "Image text: "
-msgstr "Tekst obrazu: "
+msgstr "Testo delle immagini: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
 #, kde-format
 msgid "Place this image inside the note folder"
-msgstr "Umieść obraz wewnątrz katalogu notatek"
+msgstr "Posiziona questa immagine all'interno della cartella delle note"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, kde-format
 msgid "KleverNotes painting"
-msgstr "Malowanie KleverNotes"
+msgstr "Disegni di KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:18
 #, kde-format
@@ -102,13 +101,13 @@ msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
 msgstr ""
-"Nastąpi wyjście bez zapisania rysunku!\n"
-"Zapisać go przed wyjściem?\n"
+"Stai per uscire senza salvare il tuo disegno!\n"
+"Vuoi salvarlo prima di uscire?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:26
 #, kde-format
 msgid "This "
-msgstr "ten"
+msgstr "Questo"
 
 #: contents/ui/dialogs/StorageDialog.qml:19
 #, kde-format
@@ -118,29 +117,30 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"To pierwsze uruchomienie aplikacji!\n"
+"Sembra che questa sia la prima volta che usi questa applicazione!\n"
 "\n"
-"Wybierz miejsce dla przyszłej pamięci KleverNotes lub wybierz już istniejące."
+"Scegli una posizione per la tua futura archiviazione di KleverNotes o "
+"selezionane una esistente."
 
 #: contents/ui/dialogs/StorageDialog.qml:42
 #, kde-format
 msgid "Existing storage"
-msgstr "Istniejącą pamięć"
+msgstr "Archiviazione esistente"
 
 #: contents/ui/dialogs/StorageDialog.qml:46
 #, kde-format
 msgid "Change the storage path"
-msgstr "Zmień ścieżkę pamięci"
+msgstr "Cambia il percorso di archiviazione"
 
 #: contents/ui/dialogs/StorageDialog.qml:59
 #, kde-format
 msgid "Create storage"
-msgstr "Utwórz pamięć"
+msgstr "Creare archiviazione"
 
 #: contents/ui/dialogs/StorageDialog.qml:63
 #, kde-format
 msgid "Create a new storage"
-msgstr "Utwórz nową pamięć"
+msgstr "Crea una nuova archiviazione"
 
 #: contents/ui/dialogs/StorageDialog.qml:96
 #, kde-format
@@ -150,60 +150,61 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Wygląda na to, że wybrany katalog nie przechowuje pamięci KleverNotes.\n"
+"Sembra che la cartella selezionata non sia un archiviazione di KleverNotes.\n"
 "\n"
-"Wybierz miejsce dla przyszłej pamięci KleverNotes lub wybierz już istniejące."
+"Scegli una posizione per la tua futura archiviazione di KleverNotes o "
+"selezionane una esistente."
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
 msgid "Select Number"
-msgstr "Wybierz liczbę"
+msgstr "Seleziona numero"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
 #, kde-format
 msgid "Row"
-msgstr "Wiersz"
+msgstr "Riga"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:44
 #, kde-format
 msgid "Column"
-msgstr "Kolumna"
+msgstr "Colonna"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:205
 #, kde-format
 msgid "Align all:"
-msgstr "Wyrównaj wszystkie:"
+msgstr "Allinea tutto:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
 #, kde-format
 msgid "Add Todo"
-msgstr "Dodaj zadanie"
+msgstr "Aggiungi cosa da fare"
 
 #: contents/ui/dialogs/ToDoDialog.qml:20
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
-msgstr "Nazwa:"
+msgstr "Titolo:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
 #, kde-format
 msgid "Todo title (required)"
-msgstr "Nazwa zadania (wymagana)"
+msgstr "Titolo cosa da fare (richiesto)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
 #, kde-format
 msgid "Description:"
-msgstr "Opis:"
+msgstr "Descrizione:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
 #, kde-format
 msgid "Optional"
-msgstr "Niewymagane"
+msgstr "Facoltativo"
 
 #: contents/ui/dialogs/URLDialog.qml:11
 #, kde-format
 msgid "Choose an URL"
-msgstr "Wybierz adres URL"
+msgstr "Scegli un URL"
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -213,43 +214,43 @@ msgstr "KleverNotes"
 #: contents/ui/pages/MainPage.qml:22
 #, kde-format
 msgid "Welcome"
-msgstr "Witaj"
+msgstr "Benvenuto"
 
 #: contents/ui/pages/MainPage.qml:73
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Witaj w KleverNotes!"
+msgstr "Benvenuto in KleverNotes!"
 
 #: contents/ui/pages/MainPage.qml:83
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr "Utwórz lub wybierz notatkę, aby zacząć pracować!"
+msgstr "Crea o seleziona una nota per iniziare a lavorare!"
 
 #: contents/ui/pages/PaintingPage.qml:28
 #, kde-format
 msgid "Paint!"
-msgstr "Maluj!"
+msgstr "Disegna!"
 
 #: contents/ui/pages/PaintingPage.qml:32
 #, kde-format
 msgid "Save"
-msgstr "Zapisz"
+msgstr "Salva"
 
 #: contents/ui/pages/PaintingPage.qml:37
 #, kde-format
 msgid "Clear"
-msgstr "Wyczyść"
+msgstr "Pulisci"
 
 #: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgid "Auto crop"
-msgstr "Samoprzycięty"
+msgstr "Ritaglio automatico"
 
 #: contents/ui/pages/SettingsPage.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
-msgstr "Ustawienia"
+msgstr "Impostazioni"
 
 #: contents/ui/pages/SettingsPage.qml:53
 #, kde-format
@@ -257,133 +258,133 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
-"Wybierz miejsce dla przyszłej pamięci KleverNotes lub wybierz już "
-"istniejące.\n"
+"Scegli una posizione per il tuo futuro spazio di archiviazione di "
+"KleverNotes o selezionane una esistente.\n"
 
 #: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "General"
-msgstr "Ogólne"
+msgstr "Generale"
 
 #: contents/ui/pages/SettingsPage.qml:96
 #, kde-format
 msgid "Storage path:"
-msgstr "Ścieżka do pamięci:"
+msgstr "Percorso di archiviazione:"
 
 #: contents/ui/pages/SettingsPage.qml:104
 #, kde-format
 msgid "Change storage path"
-msgstr "Zmień położenie pamięci"
+msgstr "Cambia il percorso di archiviazione"
 
 #: contents/ui/pages/SettingsPage.qml:116
 #, kde-format
 msgid "New Category name:"
-msgstr "Nazwa nowej kategorii:"
+msgstr "Nome della nuova categoria:"
 
 #: contents/ui/pages/SettingsPage.qml:144
 #, kde-format
 msgid "New Group name:"
-msgstr "Nazwa nowej grupy:"
+msgstr "Nome del nuovo gruppo:"
 
 #: contents/ui/pages/SettingsPage.qml:172
 #, kde-format
 msgid "New Note name:"
-msgstr "Nazwa nowej notatki:"
+msgstr "Nome della nuova nota:"
 
 #: contents/ui/pages/SettingsPage.qml:198
 #, kde-format
 msgid "Note display"
-msgstr "Wyświetlanie notatki"
+msgstr "Visualizzazione delle note"
 
 #: contents/ui/pages/SettingsPage.qml:204
 #, kde-format
 msgid "Background color:"
-msgstr "Barwa tła:"
+msgstr "Colore dello sfondo:"
 
 #: contents/ui/pages/SettingsPage.qml:243
 #, kde-format
 msgid "Text color:"
-msgstr "Barwa tekstu:"
+msgstr "Colore del testo:"
 
 #: contents/ui/pages/SettingsPage.qml:281
 #, kde-format
 msgid "Title color:"
-msgstr "Barwa nazwy:"
+msgstr "Colore del titolo:"
 
 #: contents/ui/pages/SettingsPage.qml:319
 #, kde-format
 msgid "Link color:"
-msgstr "Barwa odsyłacza:"
+msgstr "Colore dei collegamenti:"
 
 #: contents/ui/pages/SettingsPage.qml:357
 #, kde-format
 msgid "Visited Link color:"
-msgstr "Barwa odwiedzonego odsyłacza:"
+msgstr "Colore dei collegamenti visitati:"
 
 #: contents/ui/pages/SettingsPage.qml:394
 #, kde-format
 msgid "Code color:"
-msgstr "Barwa kodu:"
+msgstr "Colore del codice:"
 
 #: contents/ui/pages/SettingsPage.qml:434
 #, kde-format
 msgid "Font:"
-msgstr "Czcionka:"
+msgstr "Carattere:"
 
 #: contents/ui/sideBar/ActionBar.qml:218
 #, kde-format
 msgid "Create a new category"
-msgstr "Utwórz nową kategorię"
+msgstr "Crea una nuova categoria"
 
 #: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgid "Create a new group"
-msgstr "Utwórz nową grupę"
+msgstr "Crea un nuovo gruppo"
 
 #: contents/ui/sideBar/ActionBar.qml:232
 #, kde-format
 msgid "Create a new note"
-msgstr "Utwórz nową notatkę"
+msgstr "Crea una nuova nota"
 
 #: contents/ui/sideBar/ActionBar.qml:239
 #, kde-format
 msgid "Rename"
-msgstr "Przemianuj"
+msgstr "Rinomina"
 
 #: contents/ui/sideBar/Sidebar.qml:82
 #, kde-format
 msgid "Settings"
-msgstr "Ustawienia"
+msgstr "Impostazioni"
 
 #: contents/ui/sideBar/Sidebar.qml:91
 #, kde-format
 msgid "About Klever"
-msgstr "O programie Klever"
+msgstr "Informazioni su Klever"
 
 #: contents/ui/sideBar/TreeNode.qml:129
 #, kde-format
 msgid "Delete"
-msgstr "Usuń"
+msgstr "Elimina"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
 msgid "Note"
-msgstr "Notatka"
+msgstr "Nota"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
 msgid "TODO"
-msgstr "DO ZROBIENIA"
+msgstr "Da fare"
 
 #: contents/ui/textEditor/TextToolBar.qml:85
 #, kde-format
 msgid "Header"
-msgstr "Nagłówek"
+msgstr "Intestazione"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
 #, kde-format
 msgid "Clear checked"
-msgstr "Wyczyść zaznaczone"
+msgstr "Cancella marcate"
 
 #: main.cpp:47
 #, kde-format
@@ -394,7 +395,7 @@ msgstr "KleverNotes"
 #: main.cpp:51
 #, kde-format
 msgid "Application Description"
-msgstr "Opis programu"
+msgstr "Descrizione dell'applicazione"
 
 #: main.cpp:55
 #, kde-format
@@ -411,10 +412,10 @@ msgstr "Louis Schul"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Łukasz Wojniłowicz"
+msgstr "Vincenzo Reale"
 
 #: main.cpp:61
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "lukasz.wojnilowicz@gmail.com"
+msgstr "smart2128vr@gmail.com"

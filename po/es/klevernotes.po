@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 00:49+0000\n"
-"PO-Revision-Date: 2023-04-26 23:28+0200\n"
+"PO-Revision-Date: 2023-04-30 02:59+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -90,7 +90,7 @@ msgstr "Texto de la imagen: "
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
 #, kde-format
 msgid "Place this image inside the note folder"
-msgstr ""
+msgstr "Coloque esta imagen dentro de la carpeta de notas"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, kde-format
@@ -103,6 +103,8 @@ msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
 msgstr ""
+"Está a punto de salir sin guardar el dibujo.\n"
+"¿Desea guardarlo antes de salir?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:26
 #, kde-format
@@ -150,11 +152,15 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Parece que la carpeta seleccionada no es un almacenamiento de KleverNotes.\n"
+"\n"
+"Elija una ubicación para su futuro almacenamiento de KleverNotes o "
+"seleccione uno existente."
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
 msgid "Select Number"
-msgstr ""
+msgstr "Seleccionar número"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
 #, kde-format
@@ -169,7 +175,7 @@ msgstr "Columna"
 #: contents/ui/dialogs/TableMakerDialog.qml:205
 #, kde-format
 msgid "Align all:"
-msgstr ""
+msgstr "Alinear todo:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
 #, kde-format
@@ -185,7 +191,7 @@ msgstr "Título:"
 #: contents/ui/dialogs/ToDoDialog.qml:29
 #, kde-format
 msgid "Todo title (required)"
-msgstr ""
+msgstr "Título de tarea pendiente (obligatorio)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
 #, kde-format
@@ -200,7 +206,7 @@ msgstr "Opcional"
 #: contents/ui/dialogs/URLDialog.qml:11
 #, kde-format
 msgid "Choose an URL"
-msgstr ""
+msgstr "Escoja una URL"
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -220,7 +226,7 @@ msgstr "Bienvenido a KleverNotes"
 #: contents/ui/pages/MainPage.qml:83
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr ""
+msgstr "Cree o seleccione una nota para empezar a trabajar"
 
 #: contents/ui/pages/PaintingPage.qml:28
 #, kde-format
@@ -254,6 +260,8 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
+"Elija una ubicación para su futuro almacenamiento de KleverNotes o "
+"seleccione uno existente.\n"
 
 #: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
@@ -288,7 +296,7 @@ msgstr "Nuevo nombre de nota:"
 #: contents/ui/pages/SettingsPage.qml:198
 #, kde-format
 msgid "Note display"
-msgstr ""
+msgstr "Visualización de notas"
 
 #: contents/ui/pages/SettingsPage.qml:204
 #, kde-format
@@ -318,7 +326,7 @@ msgstr "Color de enlaces visitados:"
 #: contents/ui/pages/SettingsPage.qml:394
 #, kde-format
 msgid "Code color:"
-msgstr ""
+msgstr "Color del código:"
 
 #: contents/ui/pages/SettingsPage.qml:434
 #, kde-format
@@ -368,7 +376,7 @@ msgstr "Nota"
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
 msgid "TODO"
-msgstr ""
+msgstr "Tarea pendiente"
 
 #: contents/ui/textEditor/TextToolBar.qml:85
 #, kde-format
