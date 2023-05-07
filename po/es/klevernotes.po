@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 00:49+0000\n"
-"PO-Revision-Date: 2023-04-30 02:59+0200\n"
+"PO-Revision-Date: 2023-05-06 20:52+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -95,7 +95,7 @@ msgstr "Coloque esta imagen dentro de la carpeta de notas"
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, kde-format
 msgid "KleverNotes painting"
-msgstr ""
+msgstr "Dibujo de KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:18
 #, kde-format
@@ -109,7 +109,7 @@ msgstr ""
 #: contents/ui/dialogs/NamingErrorDialog.qml:26
 #, kde-format
 msgid "This "
-msgstr ""
+msgstr "Esta "
 
 #: contents/ui/dialogs/StorageDialog.qml:19
 #, kde-format
@@ -231,7 +231,7 @@ msgstr "Cree o seleccione una nota para empezar a trabajar"
 #: contents/ui/pages/PaintingPage.qml:28
 #, kde-format
 msgid "Paint!"
-msgstr ""
+msgstr "Dibujar"
 
 #: contents/ui/pages/PaintingPage.qml:32
 #, kde-format
@@ -386,7 +386,7 @@ msgstr "Cabecera"
 #: contents/ui/todoEditor/ToDoView.qml:21
 #, kde-format
 msgid "Clear checked"
-msgstr ""
+msgstr "Borrar marcadas"
 
 #: main.cpp:47
 #, kde-format
