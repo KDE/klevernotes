@@ -5,6 +5,7 @@
 Name=KleverNotes
 Name[ca]=KleverNotes
 Name[ca@valencia]=KleverNotes
+Name[cs]=KleverNotes
 Name[de]=KleverNotes
 Name[en_GB]=KleverNotes
 Name[es]=KleverNotes
@@ -22,6 +23,7 @@ Name[x-test]=xxKleverNotesxx
 Comment=KleverNotes Kirigami Application
 Comment[ca]=Aplicació de Kirigami KleverNotes
 Comment[ca@valencia]=Aplicació de Kirigami KleverNotes
+Comment[cs]=Aplikace Kirigami KleverNotes
 Comment[de]=KleverNotes - Kirigami-Anwendung
 Comment[en_GB]=KleverNotes Kirigami Application
 Comment[es]=Aplicación Kirigami KleverNotes
