@@ -8,56 +8,66 @@ import QtQuick.Dialogs 1.1
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
+import org.kde.kitemmodels 1.0
+import org.kde.kirigamiaddons.labs.components 1.0 as KirigamiComponents
+
 
 import "qrc:/contents/ui/dialogs"
 
 ToolBar {
     id: mainToolBar
 
-    property QtObject treeView: undefined
-    readonly property QtObject infoRow: treeView.currentlySelected
+    required property TreeView treeView
+    readonly property var treeModel: treeView.descendantsModel
+    readonly property QtObject renameAction: renameAction
+    readonly property QtObject createNoteAction: createNoteAction
+    readonly property QtObject createGroupAction: createGroupAction
+    readonly property QtObject createCategoryAction: createCategoryAction
+    readonly property var currentModelIndex: treeModel.mapToSource(treeModel.index(treeView.currentIndex, 0))
+    readonly property var timer: timer
 
-    function getName(useCase,shownName,realName,parentPath,callingAction,newItem){
+    function getName(useCase, shownName, parentPath, callingAction, newItem){
         namingDialog.useCase = useCase
         namingDialog.shownName = shownName
-        namingDialog.realName = realName
+        namingDialog.textFieldText = shownName
         namingDialog.parentPath = parentPath
         namingDialog.callingAction = callingAction
         namingDialog.newItem = newItem
         namingDialog.open()
-        namingDialog.nameField.selectAll()
-        namingDialog.nameField.forceActiveFocus()
     }
 
-    function makeRow(subEntryColumn,useCase,creatingPath,name,forcedLvl){
-        const newPath = creatingPath+"/"+name
-        let lvl
-        switch(useCase) {
-            case "Category":
-                StorageHandler.makeCategory(creatingPath,name)
-                lvl = 0
-                break
-            case "Group":
-                StorageHandler.makeGroup(creatingPath,name)
-                lvl = 1
-                break
-            case "Note":
-                StorageHandler.makeNote(creatingPath,name)
-                lvl = 2
-                break
+    Timer {
+        id: focusTimer
+
+        property var focusModelIndex
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: if (focusModelIndex) {
+            focusModelIndex.model.askForFocus(focusModelIndex)
+            focusModelIndex = undefined
         }
-        const caller = subEntryColumn
+    }
 
-        forcedLvl = (forcedLvl) ? forcedLvl : Infinity
+    Timer {
+        id: timer
 
-        treeView.hierarchyAsker.push([caller,forcedLvl,true])
-        View.hierarchySupplier(newPath,lvl)
+        property var modelIndex
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: if (modelIndex) {
+            modelIndex.model.askForExpand(modelIndex)
+            modelIndex = undefined
+            interval = Kirigami.Units.longDuration
+            focusTimer.start()
+        }
     }
 
     NamingDialog {
         id: namingDialog
-
-        sideBarAction: true
     }
 
     Kirigami.Action {
@@ -70,8 +80,7 @@ ToolBar {
 
         onNameChanged: {
             if (isActive) {
-                console.log(treeView.subEntryColumn)
-                makeRow(treeView.subEntryColumn,"Category",Config.storagePath,name)
+                treeView.model.addRow(name, 1)
                 isActive = false
                 name = ""
             }
@@ -80,9 +89,10 @@ ToolBar {
         onTriggered: {
             isActive = true
             const objectName = Config.defaultCategoryName
-            mainToolBar.getName("Category",objectName,objectName,Config.storagePath,createCategoryAction,true)
+            mainToolBar.getName("Category", objectName, Config.storagePath, createCategoryAction, true)
         }
     }
+
     Kirigami.Action {
         id: createGroupAction
 
@@ -90,12 +100,12 @@ ToolBar {
 
         property bool isActive : false
         property string categoryPath
-        property QtObject subEntryColumn
         property string name
+        property var parentModelIndex
 
         onNameChanged: {
             if (isActive) {
-                makeRow(subEntryColumn,"Group",categoryPath,name)
+                treeView.model.addRow(name, 2, parentModelIndex)
                 isActive = false
                 name = ""
             }
@@ -103,32 +113,31 @@ ToolBar {
 
         onTriggered: {
             isActive = true
-            const parentRow = infoRow.parentRow
 
-            switch(infoRow.useCase) {
+            switch(treeView.currentItem.useCase) {
                 case "Category":
-                    categoryPath = infoRow.path
-                    subEntryColumn = infoRow.subEntryColumn
+                    categoryPath = treeView.currentItem.path
+                    parentModelIndex = currentModelIndex
                     break;
                 case "Group":
-                    categoryPath = infoRow.parentPath
-                    subEntryColumn = parentRow.subEntryColumn
+                    categoryPath = KleverUtility.getParentPath(treeView.currentItem.path)
+
+                    parentModelIndex = treeView.model.parent(currentModelIndex)
                     break;
                 case "Note":
-                    // A note can be inside a group or a category
-                    if (parentRow.useCase == "Group"){
-                        categoryPath = parentRow.parentPath
-                        subEntryColumn = parentRow.parentRow.subEntryColumn
-                    }
-                    else {
-                        categoryPath = parentRow.path
-                        subEntryColumn = parentRow.subEntryColumn
+                    const groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    categoryPath = KleverUtility.getParentPath(groupPath)
+
+                    if (groupPath.endsWith(".BaseGroup")) {
+                        parentModelIndex = treeView.model.parent(currentModelIndex)
+                    } else {
+                        const groupModelIndex = treeView.model.parent(currentModelIndex)
+                        parentModelIndex = treeView.model.parent(groupModelIndex)
                     }
                     break;
             }
-
             const objectName = Config.defaultGroupName
-            mainToolBar.getName("Group",objectName,objectName,categoryPath,createGroupAction,true)
+            mainToolBar.getName("Group", objectName, categoryPath, createGroupAction, true)
         }
     }
 
@@ -139,41 +148,37 @@ ToolBar {
 
         property bool isActive : false
         property string groupPath
-        property QtObject subEntryColumn
         property string name
-        property int forcedLvl
+        property var parentModelIndex
 
         onNameChanged: {
             if (isActive) {
-                makeRow(subEntryColumn,"Note",groupPath,name,forcedLvl)
+                treeView.model.addRow(name, 3, parentModelIndex)
                 isActive = false
                 name = ""
-                forcedLvl = Infinity
             }
         }
 
         onTriggered: {
             isActive = true
-            switch(infoRow.useCase) {
+
+            switch(treeView.currentItem.useCase) {
                 case "Category":
-                    groupPath = infoRow.path+"/.BaseGroup"
-                    subEntryColumn = infoRow.subEntryColumn
-                    forcedLvl = 1
+                    groupPath = treeView.currentItem.path+"/.BaseGroup"
+                    parentModelIndex = currentModelIndex
                     break;
                 case "Group":
-                    groupPath = infoRow.path
-                    subEntryColumn = infoRow.subEntryColumn
+                    groupPath = treeView.currentItem.path
+                    parentModelIndex = currentModelIndex
                     break;
                 case "Note":
-                    groupPath = infoRow.parentPath
-                    if (groupPath.endsWith("/.BaseGroup")) forcedLvl = 1
-                    subEntryColumn = infoRow.parentRow.subEntryColumn
+                    groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    parentModelIndex = treeView.model.parent(currentModelIndex)
                     break;
             }
+            const shownName = Config.defaultNoteName
 
-            const objectName = Config.defaultNoteName
-            console.log(objectName)
-            mainToolBar.getName("Note",objectName,objectName,groupPath,createNoteAction,true)
+            mainToolBar.getName("Note", shownName, groupPath, createNoteAction, true)
         }
     }
 
@@ -183,36 +188,37 @@ ToolBar {
         icon.name: "edit-rename"
 
         property bool isActive : false
-        property string name : infoRow.textDisplay.text
+        property string name : treeView.currentItem.label
+
 
         onNameChanged: {
             if (isActive) {
-                infoRow.displayedName = name
-                if (infoRow.name == ".BaseCategory") {
-                    Config.categoryDisplayName = name
-                }
-                else {
-                    const oldPath = infoRow.path
-                    const newPath = infoRow.parentPath+"/"+name
-                    StorageHandler.rename(oldPath,newPath)
-                }
+                treeView.model.rename(currentModelIndex, name)
                 isActive = false
             }
         }
 
         onTriggered: {
             isActive = true
-            mainToolBar.getName(infoRow.useCase,name,infoRow.name,infoRow.parentPath,renameAction,false)
+
+            const useCase = treeView.currentItem.useCase
+            const parentPath = KleverUtility.getParentPath(treeView.currentItem.path)
+            mainToolBar.getName(useCase, name, parentPath, renameAction, false)
         }
     }
 
 
     RowLayout {
+        id: barLayout
+
+        property bool searching: false
+
         anchors.fill: parent
         spacing: 0
 
         ToolButton {
             action: createCategoryAction
+            visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new category")
@@ -220,6 +226,7 @@ ToolBar {
 
         ToolButton {
             action: createGroupAction
+            visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new group")
@@ -227,6 +234,7 @@ ToolBar {
 
         ToolButton {
             action: createNoteAction
+            visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Create a new note")
@@ -234,11 +242,54 @@ ToolBar {
 
         ToolButton {
             action: renameAction
+            visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Rename")
         }
 
-        Item { Layout.fillWidth: true}
+        Item {Layout.fillWidth: true; visible: !barLayout.searching}
+
+        ToolButton {
+            visible: !barLayout.searching
+            icon.name: "search-symbolic"
+            onClicked: {
+                barLayout.searching = true
+                searchBar.contentItem.forceActiveFocus()
+            }
+        }
+
+
+        SearchBar {
+            id: searchBar
+
+            visible: barLayout.searching
+            Layout.fillWidth: true
+
+            listModel: treeview.model
+            popup.onClosed: {
+                barLayout.searching = false
+                text = ""
+            }
+
+            onClickedIndexChanged: if (clickedIndex) {
+                let parentRowsList = []
+                let currentModelIndex = clickedIndex
+                while (currentModelIndex.parent.row !== -1) {
+                    const nextModelIndex = currentModelIndex.parent
+                    parentRowsList.push(nextModelIndex)
+                    currentModelIndex = nextModelIndex
+                }
+
+                const firstModelIndex = parentRowsList[parentRowsList.length - 1]
+
+                firstModelIndex.model.askForExpand(firstModelIndex)
+                // This might be the exact same as "firstModelIndex" but is still needed for Category notes
+                timer.modelIndex = parentRowsList[0]
+
+                focusTimer.focusModelIndex = clickedIndex
+                searchBar.popup.close()
+            }
+        }
     }
 }

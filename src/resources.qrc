@@ -33,9 +33,10 @@
         <file>contents/ui/painting/ColorButton.qml</file>
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
+        <file>contents/ui/sideBar/ContextMenu.qml</file>
+        <file>contents/ui/sideBar/SearchBar.qml</file>
         <file>contents/ui/sideBar/Sidebar.qml</file>
-        <file>contents/ui/sideBar/SubEntryColumn.qml</file>
-        <file>contents/ui/sideBar/TreeNode.qml</file>
+        <file>contents/ui/sideBar/TreeItem.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
 
         <file>contents/ui/textEditor/BottomToolBar.qml</file>

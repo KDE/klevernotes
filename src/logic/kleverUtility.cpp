@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QString>
 #include <QUrl>
+#include <kio/global.h>
 
 KleverUtility::KleverUtility(QObject *parent)
     : QObject(parent)
@@ -22,16 +23,17 @@ QString KleverUtility::getPath(const QUrl &url)
     return url.toLocalFile();
 }
 
-bool KleverUtility::exists(const QString &url)
+bool KleverUtility::exists(const QString &path)
 {
-    return QFile().exists(url);
+    return QFile().exists(path);
 }
 
-void KleverUtility::create(const QString &path)
+bool KleverUtility::create(const QString &path)
 {
     if (!exists(path)) {
-        QDir().mkpath(path);
+        return QDir().mkpath(path);
     }
+    return false;
 }
 
 QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration)
@@ -46,11 +48,29 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
     if (exists(imagePath)) {
         return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration + 1);
     }
-    qDebug() << imagePath + " C++";
     return imagePath;
 }
 
 bool KleverUtility::isEmptyDir(const QString &path)
 {
     return !exists(path) || QDir(path).isEmpty();
+}
+
+QString KleverUtility::isProperPath(const QString &parentPath, const QString &name)
+{
+    if (name.startsWith("."))
+        return "dot";
+
+    QString properName = KIO::encodeFileName(name);
+
+    QString newPath = parentPath + "/" + properName;
+
+    return (exists(newPath)) ? "exist" : "";
+}
+
+QString KleverUtility::getParentPath(const QString &path)
+{
+    QDir dir(path);
+    dir.cdUp();
+    return dir.absolutePath();
 }

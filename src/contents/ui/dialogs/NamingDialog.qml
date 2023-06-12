@@ -12,65 +12,66 @@ Kirigami.PromptDialog {
 
     title: "Choose a name"
 
-    property string useCase
-    property alias shownName: nameField.text
-    property string realName
-    property string parentPath
     property bool newItem
-    property bool sideBarAction
+    property string useCase
+    property string shownName
+    property string parentPath
     property QtObject callingAction
+    property alias textFieldText : nameField.text
 
     readonly property QtObject nameField : nameField
 
 
-    function throwError(){
+    function throwError(error) {
         let component = Qt.createComponent("qrc:/contents/ui/dialogs/NamingErrorDialog.qml")
 
         if (component.status == Component.Ready) {
             var dialog = component.createObject(textPromptDialog);
+            dialog.error = error
             dialog.useCase = useCase
             dialog.nameField = nameField
             dialog.open()
         }
     }
 
-    function checkName(){
+    function checkName() {
         // The user just pressed apply without renaming the object
-        if (nameField.text === shownName && !textPromptDialog.newItem) return true
+        if (textFieldText === shownName && !textPromptDialog.newItem) return ""
 
-        let exist = false
-        if (sideBarAction) {
-            const newPath = parentPath+"/"+nameField.text
-            exist = KleverUtility.exists(newPath)
-        }
+        const name = textFieldText.trim()
+        const error = KleverUtility.isProperPath(parentPath,name)
+        if (error !== "") return error
 
-        const isDisplay = (nameField.text === Config.categoryDisplayName)
+        if (name === Config.categoryDisplayName) return "exist"
 
-        return !(exist || isDisplay)
+        return ""
     }
-
 
     Controls.TextField {
         id:nameField
 
         text: shownName
+
         leftPadding: Kirigami.Units.largeSpacing
         rightPadding: Kirigami.Units.largeSpacing
 
         onSelectedTextChanged: nameField.forceActiveFocus()
 
-        Keys.onPressed: if ((event.key === Qt.Key_Return) || (event.key=== Qt.Key_Enter)) textPromptDialog.applied()
+        Keys.onPressed: if (event.key === Qt.Key_Enter) textPromptDialog.applied()
     }
 
     standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
     onApplied: {
-        if (checkName()){
+        const error = checkName()
+        if (error === "") {
             textPromptDialog.close()
-            callingAction.name = nameField.text
+            callingAction.name = nameField.text.trim()
             return
         }
-        throwError()
+        throwError(error)
         nameField.selectAll()
     }
+
+    onOpened: nameField.selectAll()
 }

@@ -8,94 +8,45 @@ import QtQuick.Layouts 1.3
 
 import org.kde.Klever 1.0
 
-import "qrc:/contents/ui/dialogs"
+import org.kde.kirigamiaddons.treeview 1.0 as TreeView
 
-Controls.ScrollView {
-    id: tree
+TreeView.TreeListView {
+    id: treeView
 
-    width: parent.width
-
-    property bool init: false
-    property QtObject currentlySelected: subEntryColumn.children[0]
-    property var hierarchyAsker: []
-
-    readonly property QtObject subEntryColumn: subEntryColumn
-    readonly property QtObject deleteConfirmationDialog: deleteConfirmationDialog
-
-    onCurrentlySelectedChanged: {
+    onCurrentItemChanged: {
         const mainWindow = applicationWindow()
-        if(mainWindow.isMainPage()) {
+        if (mainWindow.isMainPage()) {
             const mainPage = mainWindow.pageStack.currentItem
-            mainPage.currentlySelected = currentlySelected
+            mainPage.currentlySelected = currentItem
         }
     }
 
-    DeleteConfirmationDialog {
-        id: deleteConfirmationDialog
+    delegate: TreeItem {
+        id: treeItem
 
-        useCase: tree.currentlySelected.useCase
+        readonly property string path: model.path
+        readonly property string useCase: model.useCase
 
-        onAccepted: {
-            StorageHandler.remove(tree.currentlySelected.path)
+        readonly property bool wantFocus: model.wantFocus
+        property bool wantExpand: model.wantExpand
+
+        onWantFocusChanged: if (wantFocus) {
+            const sourceIndex = decoration.model.mapToSource(decoration.model.index(index, 0));
+            const newIndex = decoration.model.mapFromSource(sourceIndex);
+
+            treeView.currentIndex = newIndex.row
         }
-    }
-
-    SubEntryColumn {
-        id: subEntryColumn
-
-        delimiter : 1
-    }
-
-    Connections {
-        target: StorageHandler
-
-        function onStorageUpdated() {
-            const holder = currentlySelected.parent
-            const childrenList = holder.visibleChildren
-
-            let nextSelected
-            for (var childIdx = 0; childIdx < childrenList.length; childIdx++) {
-                if (currentlySelected == childrenList[childIdx]){
-                    holder.entries.splice(childIdx, 1)
-
-                    if (childIdx-1 >= 0) nextSelected = childrenList[childIdx-1]
-                    else if (childIdx+1 != childrenList.length) nextSelected = childrenList[childIdx+1]
-                    else nextSelected = holder.parent
-                    break
-                }
+        onWantExpandChanged: if (wantExpand) {
+            if (!kDescendantExpanded) {
+                decoration.model.toggleChildren(index)
+            } else {
+                actionBar.timer.interval = 0
             }
-            if (currentlySelected.useCase === "Note") holder.delimiter -= 1
-            currentlySelected.destroy()
-            currentlySelected = nextSelected
+            actionBar.timer.start()
         }
-    }
 
-    Connections {
-        target: View
 
-        function onHierarchySent(hierarchy) {
-            if (tree.hierarchyAsker.length != 0) {
-                const askerInfo = tree.hierarchyAsker.shift()
-
-                const caller = askerInfo[0]
-                if (caller == tree) {
-                    tree.subEntryColumn.addRows(hierarchy)
-                    return
-                }
-
-                const forcedLvl = askerInfo[1]
-                const reorder = askerInfo[2]
-                caller.addRow(hierarchy,forcedLvl,askerInfo)
-            }
-        }
-    }
-
-    onVisibleChanged: {
-        if (visible && !init) {
-            tree.init = true
-            const caller = tree
-            tree.hierarchyAsker.push([caller])
-            View.hierarchySupplier(Config.storagePath,-1)
-        }
+        label: model.displayName
+        icon.name: model.iconName
     }
 }

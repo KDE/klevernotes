@@ -19,9 +19,8 @@
 #include "logic/kleverUtility.h"
 #include "logic/mdHandler.h"
 #include "logic/qmlLinker.h"
-#include "logic/storageHandler.h"
 #include "logic/todoHandler.h"
-#include "logic/view.h"
+#include "logic/treeview/noteTreeModel.h"
 
 #include "logic/painting/pressureequation.h"
 #include "logic/painting/sketchmodel.h"
@@ -87,9 +86,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     App application;
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "App", &application);
 
-    StorageHandler storageHandler;
-    qmlRegisterSingletonInstance<StorageHandler>("org.kde.Klever", 1, 0, "StorageHandler", &storageHandler);
-
     TodoHandler todoHandler;
     qmlRegisterSingletonInstance<TodoHandler>("org.kde.Klever", 1, 0, "TodoHandler", &todoHandler);
 
@@ -102,8 +98,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     MDHandler mdHandler;
     qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);
 
-    View view;
-    qmlRegisterSingletonInstance<View>("org.kde.Klever", 1, 0, "View", &view);
+    qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     qRegisterMetaType<StrokeSample>();
     qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", "Use the createSample function on SketchViewHandler instead");

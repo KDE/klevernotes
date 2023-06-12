@@ -15,20 +15,17 @@ import org.kde.kirigami 2.5 as Kirigami
 
 import org.kde.Klever 1.0
 
-
-
 Kirigami.OverlayDrawer {
     id:drawer
 
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
     handleOpenIcon.source: null
-    handleVisible: applicationWindow().isMainPage() && modal && pageStack.layers.depth < 2
+    handleVisible: applicationWindow().isMainPage() && modal
 
     // Autohiding behavior
     modal: !applicationWindow().isMainPage() || !root.wideScreen
-    onEnabledChanged: drawerOpen = enabled && !modal
-    onModalChanged: drawerOpen = !modal && pageStack.layers.depth < 2
+    onModalChanged: drawerOpen = !modal
     // Prevent it to being close while in wideScreen
     closePolicy: Controls.Popup.CloseOnReleaseOutside
 
@@ -38,14 +35,17 @@ Kirigami.OverlayDrawer {
     bottomPadding: 0
 
     property bool storageExist: Config.storagePath !== "None"
+    onStorageExistChanged: if (storageExist) noteTreeModel.initModel()
 
+    width: Kirigami.Units.gridUnit * 15
     contentItem: ColumnLayout {
         id: column
-        // FIXME: Dirty workaround for 385992
-        implicitWidth: Kirigami.Units.gridUnit * 14
+
+        implicitWidth: Kirigami.Units.gridUnit * 15
+        width: Kirigami.Units.gridUnit * 15
 
         ActionBar{
-            id: action
+            id: actionBar
 
             treeView: treeview
 
@@ -53,22 +53,18 @@ Kirigami.OverlayDrawer {
             Layout.preferredHeight: pageStack.globalToolBar.preferredHeight
         }
 
-        TreeView{
+        TreeView {
             id: treeview
 
-            visible: storageExist
+            sourceModel: NoteTreeModel {
+                id: noteTreeModel
 
+                onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
+            }
+
+            Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.alignment:Qt.AlignTop
         }
-
-        Item{
-            id: dummyPlaceHolder
-
-            Layout.fillHeight: !storageExist
-            Layout.alignment:Qt.AlignTop
-        }
-
 
         Controls.ToolSeparator {
             orientation: Qt.Horizontal
@@ -91,21 +87,27 @@ Kirigami.OverlayDrawer {
             text: i18n("About Klever")
             icon: "help-about"
 
-            onClicked: {drawerOpen = false,applicationWindow().switchToPage('About')}
+            onClicked: applicationWindow().switchToPage('About')
         }
-
     }
 
-     Component.onCompleted: {
-        if (!storageExist){
-            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+    ContextMenu {
+        id: contextMenu
 
-            if (component.status == Component.Ready) {
-                var dialog = component.createObject(applicationWindow());
-                dialog.open()
-            }
+        actionBar: actionBar
+        treeView: treeview
+    }
+
+    Component.onCompleted: {
+    if (!storageExist){
+        let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+
+        if (component.status == Component.Ready) {
+            var dialog = component.createObject(applicationWindow());
+            dialog.open()
         }
-     }
+    }
+    }
 }
 
 

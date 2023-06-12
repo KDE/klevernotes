@@ -57,10 +57,8 @@ Kirigami.ScrollablePage {
     NamingDialog {
         id: namingDialog
 
-        sideBarAction: false
         useCase: ""
         parentPath: ""
-        realName: shownName
         newItem: false
     }
 

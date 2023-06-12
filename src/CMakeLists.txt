@@ -30,7 +30,6 @@ set(exec_SRCS
 
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
-    logic/storageHandler.cpp
     logic/todoHandler.cpp
 
     logic/mdHandler.cpp
@@ -43,6 +42,8 @@ set(exec_SRCS
     logic/painting/strokeitem.cpp
     logic/painting/strokelistitem.cpp
     logic/painting/strokepainter.cpp
+
+    logic/treeview/noteTreeModel.cpp
 
     resources.qrc)
 

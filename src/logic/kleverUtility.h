@@ -12,11 +12,12 @@ class KleverUtility : public QObject
 public:
     explicit KleverUtility(QObject *parent = nullptr);
 
-public slots:
-    QString getName(const QString &path);
-    QString getPath(const QUrl &url);
-    bool exists(const QString &path);
-    void create(const QString &path);
-    QString getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration = 0);
-    bool isEmptyDir(const QString &path);
+    Q_INVOKABLE QString getName(const QString &path);
+    Q_INVOKABLE QString getPath(const QUrl &url);
+    Q_INVOKABLE bool isEmptyDir(const QString &path);
+    Q_INVOKABLE QString isProperPath(const QString &parentPath, const QString &name);
+    Q_INVOKABLE QString getParentPath(const QString &path);
+    Q_INVOKABLE QString getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration = 0);
+    static bool create(const QString &path);
+    static bool exists(const QString &path);
 };
