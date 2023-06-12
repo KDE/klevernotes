@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 # SPDX-License-Identifier: CC0-1.0
 # SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
@@ -42,7 +43,7 @@ Comment[uk]=Програма на Kirigami KleverNotes
 Comment[x-test]=xxKleverNotes Kirigami Applicationxx
 Version=1.0
 Exec=klevernotes
-Icon=applications-development
+Icon=org.kde.klevernotes.svg
 Type=Application
 Terminal=false
 Categories=Qt;KDE;Utility

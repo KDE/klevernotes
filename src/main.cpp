@@ -59,6 +59,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                         );
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
+    QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.klevernotes")));
 
     QQmlApplicationEngine engine;
 
