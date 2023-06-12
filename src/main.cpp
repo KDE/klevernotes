@@ -7,7 +7,12 @@
 #include <QQmlApplicationEngine>
 #include <QUrl>
 #include <QtQml>
+
+#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
+#include <QtWebEngineQuick>
+#else
 #include <QtWebEngine/QtWebEngine>
+#endif
 
 #include "app.h"
 #include <KAboutData>
@@ -31,8 +36,12 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QtWebEngine::initialize();
+#else
+    QtWebEngineQuick::initialize();
+#endif
     QApplication app(argc, argv);
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setApplicationName(QStringLiteral("KleverNotes"));

@@ -9,20 +9,25 @@ set(lib_SRCS
 
 add_library(klevernoteslib STATIC ${lib_SRCS})
 target_link_libraries(klevernoteslib
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::QuickControls2
-    Qt5::Svg
-    KF5::I18n
-    KF5::CoreAddons
-    KF5::ConfigCore
-    KF5::ConfigGui
-    KF5::KIOCore
+    Qt::Core
+    Qt::Gui
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Svg
     Qt::WebChannel
-    Qt::WebEngine
-    Qt::WebEngineWidgets)
+    Qt::WebEngineWidgets
+    KF${QT_MAJOR_VERSION}::I18n
+    KF${QT_MAJOR_VERSION}::CoreAddons
+    KF${QT_MAJOR_VERSION}::ConfigCore
+    KF${QT_MAJOR_VERSION}::ConfigGui
+    )
+
+if (QT_MAJOR_VERSION LESS 6)
+    target_link_libraries(klevernoteslib Qt::WebEngine KF5::KIOCore)
+else()
+    target_link_libraries(klevernoteslib Qt6::WebEngineQuick KF6::KIOCore KF6::KIOFileWidgets KF6::KIOWidgets)
+endif()
 
 set(exec_SRCS
     main.cpp
@@ -49,8 +54,7 @@ set(exec_SRCS
 
 add_executable(klevernotes ${exec_SRCS})
 target_link_libraries(klevernotes klevernoteslib)
-
-find_package(KF5KIO)
+find_package(KF${QT_MAJOR_VERSION}KIO)
 
 if (ANDROID)
     kirigami_package_breeze_icons(ICONS
@@ -63,3 +67,4 @@ endif()
 
 kconfig_add_kcfg_files(klevernotes GENERATE_MOC kleverconfig.kcfgc)
 install(TARGETS klevernotes ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+
