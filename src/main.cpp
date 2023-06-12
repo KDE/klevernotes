@@ -110,14 +110,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     qRegisterMetaType<StrokeSample>();
-    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", "Use the createSample function on SketchViewHandler instead");
+    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "strokeSample", "Use the createSample function on SketchViewHandler instead");
 
     qRegisterMetaType<Stroke>();
     qRegisterMetaType<Stroke::Type>();
-    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", "Use the createStroke function on SketchViewHandler instead");
+    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "stroke", "Use the createStroke function on SketchViewHandler instead");
 
     qRegisterMetaType<Event>();
-    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "Event", "They are provided by the SketchViewHandler");
+    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "event", "They are provided by the SketchViewHandler");
 
     qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
 
