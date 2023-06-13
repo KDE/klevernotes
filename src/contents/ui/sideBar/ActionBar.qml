@@ -80,7 +80,7 @@ ToolBar {
 
         onNameChanged: {
             if (isActive) {
-                treeView.model.addRow(name, 1)
+                treeView.model.addRow(name, Config.storagePath, 1)
                 isActive = false
                 name = ""
             }
@@ -105,7 +105,7 @@ ToolBar {
 
         onNameChanged: {
             if (isActive) {
-                treeView.model.addRow(name, 2, parentModelIndex)
+                treeView.model.addRow(name, categoryPath, 2, parentModelIndex)
                 isActive = false
                 name = ""
             }
@@ -153,7 +153,7 @@ ToolBar {
 
         onNameChanged: {
             if (isActive) {
-                treeView.model.addRow(name, 3, parentModelIndex)
+                treeView.model.addRow(name, groupPath, 3, parentModelIndex)
                 isActive = false
                 name = ""
             }
@@ -166,6 +166,7 @@ ToolBar {
                 case "Category":
                     groupPath = treeView.currentItem.path+"/.BaseGroup"
                     parentModelIndex = currentModelIndex
+                    console.log("here")
                     break;
                 case "Group":
                     groupPath = treeView.currentItem.path

@@ -345,10 +345,10 @@ QVariant NoteTreeModel::data(const QModelIndex &index, int role) const
     return item->data(role);
 }
 
-void NoteTreeModel::addRow(const QString &rowName, const int rowLevel, const QModelIndex &parentModelIndex)
+void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, const int rowLevel, const QModelIndex &parentModelIndex)
 {
     const auto parent = !parentModelIndex.isValid() ? m_rootItem.get() : static_cast<TreeItem *>(parentModelIndex.internalPointer());
-    QString parentPath = parent->data(PathRole).toString();
+
     bool rowCreated;
     switch (rowLevel) {
         case 1:
@@ -367,7 +367,7 @@ void NoteTreeModel::addRow(const QString &rowName, const int rowLevel, const QMo
     }
     if (!rowCreated) return;
 
-    const QString rowPath = parentPath.append(QLatin1Char('/') + rowName);
+    const QString rowPath = parentPath + (QLatin1Char('/') + rowName);
     auto newRow = std::make_unique<TreeItem>(rowPath, rowLevel, this, parent);
 
     beginInsertRows(parentModelIndex, parent->childCount(), parent->childCount());
