@@ -19,7 +19,7 @@ Kirigami.Page {
     property QtObject todoView: todoLoader.item
     readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
 
-    title: hasNote ? currentlySelected.displayedName : i18n("Welcome")
+    title: hasNote ? currentlySelected.label : i18n("Welcome")
 
     actions.contextualActions: hasNote
                                 ? editorView.visible
