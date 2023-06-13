@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-13 00:48+0000\n"
 "PO-Revision-Date: 2023-04-26 13:22+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -25,19 +25,19 @@ msgid "Color Picker"
 msgstr "Selector de color"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
-#: contents/ui/dialogs/NamingErrorDialog.qml:21
+#: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
 msgid "category"
 msgstr "categoria"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
-#: contents/ui/dialogs/NamingErrorDialog.qml:22
+#: contents/ui/dialogs/NamingErrorDialog.qml:21
 #, kde-format
 msgid "group"
 msgstr "grup"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
-#: contents/ui/dialogs/NamingErrorDialog.qml:23
+#: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "note"
 msgstr "nota"
@@ -107,7 +107,14 @@ msgstr ""
 "Esteu a punt de sortir sense desar el dibuix!\n"
 "Voleu desar-lo abans de sortir?\n"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:26
+#: contents/ui/dialogs/NamingErrorDialog.qml:31
+#, fuzzy, kde-format
+#| msgctxt "NAME OF TRANSLATORS"
+#| msgid "Your names"
+msgid "Your "
+msgstr "Josep M. Ferrer"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgid "This "
 msgstr "Actual "
@@ -145,7 +152,7 @@ msgstr "Crea un emmagatzematge"
 msgid "Create a new storage"
 msgstr "Crea un emmagatzematge nou"
 
-#: contents/ui/dialogs/StorageDialog.qml:96
+#: contents/ui/dialogs/StorageDialog.qml:95
 #, kde-format
 msgid ""
 "It looks like the selected folder is not a KleverNotes storage.\n"
@@ -264,110 +271,138 @@ msgstr ""
 "Trieu una ubicació per a l'emmagatzematge futur del KleverNotes o "
 "seleccioneu-ne un ja existent.\n"
 
-#: contents/ui/pages/SettingsPage.qml:91
+#: contents/ui/pages/SettingsPage.qml:89
 #, kde-format
 msgid "General"
 msgstr "General"
 
-#: contents/ui/pages/SettingsPage.qml:96
+#: contents/ui/pages/SettingsPage.qml:94
 #, kde-format
 msgid "Storage path:"
 msgstr "Camí de l'emmagatzematge:"
 
-#: contents/ui/pages/SettingsPage.qml:104
+#: contents/ui/pages/SettingsPage.qml:102
 #, kde-format
 msgid "Change storage path"
 msgstr "Canvia el camí de l'emmagatzematge"
 
-#: contents/ui/pages/SettingsPage.qml:116
+#: contents/ui/pages/SettingsPage.qml:114
 #, kde-format
 msgid "New Category name:"
 msgstr "Nom nou de la categoria:"
 
-#: contents/ui/pages/SettingsPage.qml:144
+#: contents/ui/pages/SettingsPage.qml:142
 #, kde-format
 msgid "New Group name:"
 msgstr "Nom nou del grup:"
 
-#: contents/ui/pages/SettingsPage.qml:172
+#: contents/ui/pages/SettingsPage.qml:170
 #, kde-format
 msgid "New Note name:"
 msgstr "Nom nou de la nota:"
 
-#: contents/ui/pages/SettingsPage.qml:198
+#: contents/ui/pages/SettingsPage.qml:196
 #, kde-format
 msgid "Note display"
 msgstr "Visualització de les notes"
 
-#: contents/ui/pages/SettingsPage.qml:204
+#: contents/ui/pages/SettingsPage.qml:202
 #, kde-format
 msgid "Background color:"
 msgstr "Color de fons:"
 
-#: contents/ui/pages/SettingsPage.qml:243
+#: contents/ui/pages/SettingsPage.qml:241
 #, kde-format
 msgid "Text color:"
 msgstr "Color del text:"
 
-#: contents/ui/pages/SettingsPage.qml:281
+#: contents/ui/pages/SettingsPage.qml:279
 #, kde-format
 msgid "Title color:"
 msgstr "Color del títol:"
 
-#: contents/ui/pages/SettingsPage.qml:319
+#: contents/ui/pages/SettingsPage.qml:317
 #, kde-format
 msgid "Link color:"
 msgstr "Color de l'enllaç:"
 
-#: contents/ui/pages/SettingsPage.qml:357
+#: contents/ui/pages/SettingsPage.qml:355
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Color de l'enllaç visitat:"
 
-#: contents/ui/pages/SettingsPage.qml:394
+#: contents/ui/pages/SettingsPage.qml:392
 #, kde-format
 msgid "Code color:"
 msgstr "Color del codi:"
 
-#: contents/ui/pages/SettingsPage.qml:434
+#: contents/ui/pages/SettingsPage.qml:432
 #, kde-format
 msgid "Font:"
 msgstr "Lletra:"
 
-#: contents/ui/sideBar/ActionBar.qml:218
+#: contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
 msgid "Create a new category"
 msgstr "Crea una categoria nova"
 
-#: contents/ui/sideBar/ActionBar.qml:225
+#: contents/ui/sideBar/ActionBar.qml:232
 #, kde-format
 msgid "Create a new group"
 msgstr "Crea un grup nou"
 
-#: contents/ui/sideBar/ActionBar.qml:232
+#: contents/ui/sideBar/ActionBar.qml:240
 #, kde-format
 msgid "Create a new note"
 msgstr "Crea una nota nova"
 
-#: contents/ui/sideBar/ActionBar.qml:239
+#: contents/ui/sideBar/ActionBar.qml:248 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
 msgid "Rename"
 msgstr "Canvia el nom"
 
-#: contents/ui/sideBar/Sidebar.qml:82
+#: contents/ui/sideBar/ContextMenu.qml:21
+#, fuzzy, kde-format
+#| msgid "category"
+msgid "New category"
+msgstr "categoria"
+
+#: contents/ui/sideBar/ContextMenu.qml:28
+#, fuzzy, kde-format
+#| msgid "group"
+msgid "New group"
+msgstr "grup"
+
+#: contents/ui/sideBar/ContextMenu.qml:35
+#, fuzzy, kde-format
+#| msgid "note"
+msgid "New note"
+msgstr "nota"
+
+#: contents/ui/sideBar/ContextMenu.qml:49
+#, kde-format
+msgid "Delete"
+msgstr "Suprimeix"
+
+#: contents/ui/sideBar/SearchBar.qml:50
+#, kde-format
+msgid "From : "
+msgstr ""
+
+#: contents/ui/sideBar/SearchBar.qml:71
+#, kde-format
+msgid "No search results"
+msgstr ""
+
+#: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
 msgid "Settings"
 msgstr "Configuració"
 
-#: contents/ui/sideBar/Sidebar.qml:91
+#: contents/ui/sideBar/Sidebar.qml:87
 #, kde-format
 msgid "About Klever"
 msgstr "Quant al Klever"
-
-#: contents/ui/sideBar/TreeNode.qml:129
-#, kde-format
-msgid "Delete"
-msgstr "Suprimeix"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
@@ -389,35 +424,70 @@ msgstr "Capçalera"
 msgid "Clear checked"
 msgstr "Neteja el marcat"
 
-#: main.cpp:47
+#: logic/treeview/noteTreeModel.cpp:364
+#, kde-format
+msgid "An error occurred while trying to create this item."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:393
+#, kde-format
+msgid "An error occurred while trying to remove this item."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:411
+#, kde-format
+msgid "An error occurred while trying to rename this item."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:451
+#, kde-format
+msgid "An error occurred while trying to create the note."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:461
+#, kde-format
+msgid "An error occurred while trying to create the group."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:470
+#, kde-format
+msgid "An error occurred while trying to create the category."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:477
+#, kde-format
+msgid "An error occurred while trying to create the storage."
+msgstr ""
+
+#: main.cpp:46
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:51
+#: main.cpp:50
 #, kde-format
 msgid "Application Description"
 msgstr "Descripció de l'aplicació"
 
-#: main.cpp:55
+#: main.cpp:54
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:56
+#: main.cpp:55
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:61
+#: main.cpp:60
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Josep M. Ferrer"
 
-#: main.cpp:61
+#: main.cpp:60
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
