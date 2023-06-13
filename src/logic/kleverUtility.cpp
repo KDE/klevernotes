@@ -74,3 +74,10 @@ QString KleverUtility::getParentPath(const QString &path)
     dir.cdUp();
     return dir.absolutePath();
 }
+
+bool KleverUtility::remove(const QString& path)
+{
+    QFile file(path);
+    return file.remove();
+}
+

@@ -18,6 +18,7 @@ public:
     Q_INVOKABLE QString isProperPath(const QString &parentPath, const QString &name);
     Q_INVOKABLE QString getParentPath(const QString &path);
     Q_INVOKABLE QString getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration = 0);
+    Q_INVOKABLE bool remove(const QString &path);
     static bool create(const QString &path);
     static bool exists(const QString &path);
 };

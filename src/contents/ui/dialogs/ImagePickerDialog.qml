@@ -258,13 +258,12 @@ Kirigami.Dialog {
         clearTmp()
         path = ""
         imageName = ""
-        storedImageChoosen = false
         displayImage.height = undefined
     }
 
     function clearTmp() {
-        if (paintedImageChoosen) {
-            StorageHandler.destroy(KleverUtility.getPath(path))
+        if (paintedImageChoosen && (path !== "")) {
+            KleverUtility.remove(KleverUtility.getPath(imagePickerDialog.path))
             paintedImageChoosen = false
         }
     }

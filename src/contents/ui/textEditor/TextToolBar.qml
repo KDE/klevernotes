@@ -36,13 +36,12 @@ Kirigami.Card {
             let modifiedPath = path
 
             let useLocalImage = storedImageChoosen
-            if (storeImage && !storedImageChoosen){
+            if (storeImage && !storedImageChoosen) {
                 let wantedImageName = imageName
-                let suggestedName = paintedImageChoosen ? "painting" : ""
-                if (imageName === "" && suggestedName !== "") {
-                    wantedImageName = suggestedName
 
-                } else {
+                if (wantedImageName === "" && paintedImageChoosen) {
+                    wantedImageName = "painting"
+                } else if (!paintedImageChoosen) {
                     const fileName = KleverUtility.getName(path)
                     wantedImageName = fileName.substring(0,fileName.lastIndexOf("."))
                 }
@@ -50,6 +49,7 @@ Kirigami.Card {
                 // We can't asign the result to modifiedPath and use it to saveToFile or it won't work !
                 const validPath = KleverUtility.getImageStoragingPath(noteImagesStoringPath, wantedImageName)
                 modifiedPath = validPath
+                console.log(validPath, wantedImageName)
 
                 imageObject.grabToImage(function(result) {
                     result.saveToFile(validPath)
@@ -73,7 +73,11 @@ Kirigami.Card {
 
             let imageString = `![${imageName}](${modifiedPath}) `
             toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, imageString)
+            storedImageChoosen = false
         }
+
+        onRejected: storedImageChoosen = false
+
     }
 
     TableMakerDialog {
