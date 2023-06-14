@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-26 15:29+0300\n"
+"PO-Revision-Date: 2023-06-13 09:09+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -107,11 +107,9 @@ msgstr ""
 "Хочете зберегти його до завершення роботи програми?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your "
-msgstr "Юрій Чорноіван"
+msgstr "Ваше "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -361,22 +359,19 @@ msgid "Rename"
 msgstr "Перейменувати"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgid "New category"
-msgstr "категорія"
+msgstr "Нова категорія"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgid "New group"
-msgstr "група"
+msgstr "Створити групу"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgid "New note"
-msgstr "нотатка"
+msgstr "Нова нотатка"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
@@ -386,12 +381,12 @@ msgstr "Вилучити"
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "З : "
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Нічого не знайдено"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
@@ -426,37 +421,37 @@ msgstr "Спорожнити позначені"
 #: logic/treeview/noteTreeModel.cpp:364
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "Сталася помилка під час створення цього запису."
 
 #: logic/treeview/noteTreeModel.cpp:393
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Сталася помилка під час вилучення цього запису."
 
 #: logic/treeview/noteTreeModel.cpp:411
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Сталася помилка під час перейменування цього запису."
 
 #: logic/treeview/noteTreeModel.cpp:451
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Сталася помилка під час створення нотатки."
 
 #: logic/treeview/noteTreeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "Сталася помилка під час створення групи."
 
 #: logic/treeview/noteTreeModel.cpp:470
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "Сталася помилка під час створення категорії."
 
 #: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Сталася помилка під час створення сховища."
 
 #: main.cpp:46
 #, kde-format

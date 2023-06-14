@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-27 22:53+0200\n"
+"PO-Revision-Date: 2023-06-13 06:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -106,11 +106,9 @@ msgstr ""
 "Ali jo želite shraniti pred odhodom?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your "
-msgstr "Matjaž Jeran"
+msgstr "Vaš "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -360,22 +358,19 @@ msgid "Rename"
 msgstr "Preimenuj"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgid "New category"
-msgstr "kategorija"
+msgstr "Nova kategorija"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgid "New group"
-msgstr "grupa"
+msgstr "Nova grupa"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgid "New note"
-msgstr "opomba"
+msgstr "Nova opomba"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
@@ -385,12 +380,12 @@ msgstr "Zbriši"
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "Od: "
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Ni zadetkov iskanja"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
@@ -425,37 +420,37 @@ msgstr "Očisti odkljukano"
 #: logic/treeview/noteTreeModel.cpp:364
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu kreiranja te postavke."
 
 #: logic/treeview/noteTreeModel.cpp:393
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu odstranjevanja te postavke."
 
 #: logic/treeview/noteTreeModel.cpp:411
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu preimenovanja te postavke."
 
 #: logic/treeview/noteTreeModel.cpp:451
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu kreiranja opombe."
 
 #: logic/treeview/noteTreeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu kreiranja grupe."
 
 #: logic/treeview/noteTreeModel.cpp:470
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu kreiranja kategorije."
 
 #: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Prišlo je do napake pri poskusu kreiranja hrambe."
 
 #: main.cpp:46
 #, kde-format

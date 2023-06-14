@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-26 18:41+0200\n"
+"PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -85,7 +85,7 @@ msgstr ""
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
 #, kde-format
 msgid "Image text: "
-msgstr ""
+msgstr "Bildtext: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
 #, kde-format

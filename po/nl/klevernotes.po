@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-26 11:17+0200\n"
+"PO-Revision-Date: 2023-06-13 10:29+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -107,11 +107,9 @@ msgstr ""
 "Wilt u het opslaan alvorens te verlaten?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your "
-msgstr "Freek de Kruijf - 2023"
+msgstr "Uw "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -361,22 +359,19 @@ msgid "Rename"
 msgstr "Hernoemen"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgid "New category"
-msgstr "categorie"
+msgstr "Nieuwe categorie"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgid "New group"
-msgstr "groep"
+msgstr "Nieuwe groep"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgid "New note"
-msgstr "notitie"
+msgstr "Nieuwe notitie"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
@@ -386,12 +381,12 @@ msgstr "Verwijderen"
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "Van : "
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Geen zoekresultaten"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
@@ -426,37 +421,37 @@ msgstr "Wissen geactiveerd"
 #: logic/treeview/noteTreeModel.cpp:364
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging dit item aan te maken."
 
 #: logic/treeview/noteTreeModel.cpp:393
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging dit item te verwijderen."
 
 #: logic/treeview/noteTreeModel.cpp:411
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging dit item te hernoemen."
 
 #: logic/treeview/noteTreeModel.cpp:451
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging deze notitie aan te maken."
 
 #: logic/treeview/noteTreeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging deze groep aan te maken."
 
 #: logic/treeview/noteTreeModel.cpp:470
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging deze categorie aan te maken."
 
 #: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Er is een fout opgetreden bij de poging deze opslag aan te maken."
 
 #: main.cpp:46
 #, kde-format

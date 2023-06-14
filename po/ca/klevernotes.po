@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-26 13:22+0200\n"
+"PO-Revision-Date: 2023-06-13 10:43+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -108,16 +108,14 @@ msgstr ""
 "Voleu desar-lo abans de sortir?\n"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your "
-msgstr "Josep M. Ferrer"
+msgstr "El/La "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgid "This "
-msgstr "Actual "
+msgstr "Aquest/a "
 
 #: contents/ui/dialogs/StorageDialog.qml:19
 #, kde-format
@@ -362,22 +360,19 @@ msgid "Rename"
 msgstr "Canvia el nom"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgid "New category"
-msgstr "categoria"
+msgstr "Categoria nova"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgid "New group"
-msgstr "grup"
+msgstr "Grup nou"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgid "New note"
-msgstr "nota"
+msgstr "Nota nova"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
@@ -387,12 +382,12 @@ msgstr "Suprimeix"
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "Des de: "
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Cerca sense cap resultat"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
@@ -427,43 +422,43 @@ msgstr "Neteja el marcat"
 #: logic/treeview/noteTreeModel.cpp:364
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "S'ha produït un error en intentar crear aquest element."
 
 #: logic/treeview/noteTreeModel.cpp:393
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "S'ha produït un error en intentar eliminar aquest element."
 
 #: logic/treeview/noteTreeModel.cpp:411
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "S'ha produït un error en intentar canviar de nom aquest element."
 
 #: logic/treeview/noteTreeModel.cpp:451
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "S'ha produït un error en intentar crear la nota."
 
 #: logic/treeview/noteTreeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "S'ha produït un error en intentar crear el grup."
 
 #: logic/treeview/noteTreeModel.cpp:470
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "S'ha produït un error en intentar crear la categoria."
 
 #: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "S'ha produït un error en intentar crear l'emmagatzematge."
 
 #: main.cpp:46
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr "´KleverNotes"
 
 #: main.cpp:50
 #, kde-format
