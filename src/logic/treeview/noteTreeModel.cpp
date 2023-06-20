@@ -405,7 +405,12 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
         KleverConfig::setCategoryDisplayName(newName);
     } else {
         QDir dir(rowPath);
-        const bool renamed = dir.rename(dir.dirName(), newName);
+        dir.cdUp();
+        QString parentPath = dir.absolutePath();
+
+        QString newPath = parentPath.append(QStringLiteral("/")).append(newName);
+
+        const bool renamed = QDir().rename(rowPath, newPath);
 
         if (!renamed) {
             emit errorOccurred(i18n("An error occurred while trying to rename this item."));
