@@ -106,7 +106,7 @@ ColumnLayout {
                             Kirigami.Heading {
                                 id: displayTitle
 
-                                text: title
+                                text: todoTitle
                                 level: 2
                                 elide: Text.ElideRight
 
@@ -131,7 +131,7 @@ ColumnLayout {
                                 Controls.Label {
                                     id: descriptionLabel
 
-                                    text: desc
+                                    text: todoDesc
                                     wrapMode: Text.WordWrap
                                     elide: Text.ElideRight
 
