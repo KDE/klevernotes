@@ -66,7 +66,9 @@ RowLayout {
 
             QtMdEditor.QmlLinker{
                 id: editorLink
-                text: root.text
+                text: root.text !== ""
+                        ? root.text
+                        : "\n"
                 WebChannel.id: "linkToEditor"
             }
 
