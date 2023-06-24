@@ -9,6 +9,8 @@ import Qt.labs.platform 1.1
 
 import "qrc:/contents/ui/dialogs"
 
+import "qrc:/contents/ui/dialogs"
+
 GridLayout{
     id: root
 
@@ -17,13 +19,22 @@ GridLayout{
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
 
+    required property string noteName
+
+
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
             id: pdfPrinter
-            icon.name: "viewpdf"
-            onTriggered: {
-                display.makePdf()
+
+            property string path
+            onPathChanged: if (path.length > 0) {
+                display.makePdf(path)
+                path = ""
             }
+
+            icon.name: "viewpdf"
+            onTriggered: pdfSaver.open()
+
         },
         Kirigami.Action {
             id: editorToggler

@@ -39,6 +39,7 @@ Kirigami.Page {
 
         sourceComponent: EditorView {
             path: currentlySelected.path + "/note.md"
+            noteName: root.title
             visible: bottomToolBar.showNoteEditor
         }
         active: root.hasNote
