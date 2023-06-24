@@ -128,4 +128,9 @@ RowLayout {
     function changeStyle() {
         cssLink.css = defaultCSS
     }
+
+    function makePdf(filePath) {
+        if (filePath.length > 0) web_view.printToPdf(filePath.replace("file://",""))
+    }
+
 }
