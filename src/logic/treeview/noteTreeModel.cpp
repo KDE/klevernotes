@@ -406,9 +406,8 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
     } else {
         QDir dir(rowPath);
         dir.cdUp();
-        QString parentPath = dir.absolutePath();
 
-        QString newPath = parentPath.append(QStringLiteral("/")).append(newName);
+        const QString newPath = dir.absolutePath() + QLatin1Char('/') + newName;
 
         const bool renamed = QDir().rename(rowPath, newPath);
 
