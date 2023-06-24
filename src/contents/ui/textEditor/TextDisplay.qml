@@ -143,4 +143,9 @@ RowLayout {
     function changeStyle() {
         cssVarLink.cssVar = defaultCSS
     }
+
+    function makePdf(filePath) {
+        if (filePath.length > 0) web_view.printToPdf(filePath.replace("file://",""))
+    }
+
 }
