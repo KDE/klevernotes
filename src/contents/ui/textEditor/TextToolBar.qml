@@ -39,7 +39,7 @@ Kirigami.Card {
             if (storeImage && !storedImageChoosen) {
                 let wantedImageName = imageName
 
-                if (wantedImageName === "" && paintedImageChoosen) {
+                if (wantedImageName.length === 0 && paintedImageChoosen) {
                     wantedImageName = "painting"
                 } else if (!paintedImageChoosen) {
                     const fileName = KleverUtility.getName(path)
@@ -49,7 +49,6 @@ Kirigami.Card {
                 // We can't asign the result to modifiedPath and use it to saveToFile or it won't work !
                 const validPath = KleverUtility.getImageStoragingPath(noteImagesStoringPath, wantedImageName)
                 modifiedPath = validPath
-                console.log(validPath, wantedImageName)
 
                 imageObject.grabToImage(function(result) {
                     result.saveToFile(validPath)
