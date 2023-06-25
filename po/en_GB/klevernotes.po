@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:48+0000\n"
+"POT-Creation-Date: 2023-06-25 00:53+0000\n"
 "PO-Revision-Date: 2023-06-17 12:18+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -336,22 +336,22 @@ msgstr "Code colour:"
 msgid "Font:"
 msgstr "Font:"
 
-#: contents/ui/sideBar/ActionBar.qml:224
+#: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgid "Create a new category"
 msgstr "Create a new category"
 
-#: contents/ui/sideBar/ActionBar.qml:232
+#: contents/ui/sideBar/ActionBar.qml:233
 #, kde-format
 msgid "Create a new group"
 msgstr "Create a new group"
 
-#: contents/ui/sideBar/ActionBar.qml:240
+#: contents/ui/sideBar/ActionBar.qml:241
 #, kde-format
 msgid "Create a new note"
 msgstr "Create a new note"
 
-#: contents/ui/sideBar/ActionBar.qml:248 contents/ui/sideBar/ContextMenu.qml:42
+#: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
 msgid "Rename"
 msgstr "Rename"
@@ -406,7 +406,7 @@ msgstr "Note"
 msgid "TODO"
 msgstr "TODO"
 
-#: contents/ui/textEditor/TextToolBar.qml:85
+#: contents/ui/textEditor/TextToolBar.qml:88
 #, kde-format
 msgid "Header"
 msgstr "Header"
@@ -426,27 +426,27 @@ msgstr "An error occurred while trying to create this item."
 msgid "An error occurred while trying to remove this item."
 msgstr "An error occurred while trying to remove this item."
 
-#: logic/treeview/noteTreeModel.cpp:411
+#: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "An error occurred while trying to rename this item."
 
-#: logic/treeview/noteTreeModel.cpp:451
+#: logic/treeview/noteTreeModel.cpp:455
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "An error occurred while trying to create the note."
 
-#: logic/treeview/noteTreeModel.cpp:461
+#: logic/treeview/noteTreeModel.cpp:465
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "An error occurred while trying to create the group."
 
-#: logic/treeview/noteTreeModel.cpp:470
+#: logic/treeview/noteTreeModel.cpp:474
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "An error occurred while trying to create the category."
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:481
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "An error occurred while trying to create the storage."

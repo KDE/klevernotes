@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:48+0000\n"
+"POT-Creation-Date: 2023-06-25 00:53+0000\n"
 "PO-Revision-Date: 2023-06-13 06:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -337,22 +337,22 @@ msgstr "Barva kode:"
 msgid "Font:"
 msgstr "Pisava:"
 
-#: contents/ui/sideBar/ActionBar.qml:224
+#: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgid "Create a new category"
 msgstr "Ustvari novo kategorijo"
 
-#: contents/ui/sideBar/ActionBar.qml:232
+#: contents/ui/sideBar/ActionBar.qml:233
 #, kde-format
 msgid "Create a new group"
 msgstr "Ustvari novo grupo"
 
-#: contents/ui/sideBar/ActionBar.qml:240
+#: contents/ui/sideBar/ActionBar.qml:241
 #, kde-format
 msgid "Create a new note"
 msgstr "Ustvari novo opombo"
 
-#: contents/ui/sideBar/ActionBar.qml:248 contents/ui/sideBar/ContextMenu.qml:42
+#: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
 msgid "Rename"
 msgstr "Preimenuj"
@@ -407,7 +407,7 @@ msgstr "Opomba"
 msgid "TODO"
 msgstr "SEZNAM OPRAVIL"
 
-#: contents/ui/textEditor/TextToolBar.qml:85
+#: contents/ui/textEditor/TextToolBar.qml:88
 #, kde-format
 msgid "Header"
 msgstr "Glava"
@@ -427,27 +427,27 @@ msgstr "Prišlo je do napake pri poskusu kreiranja te postavke."
 msgid "An error occurred while trying to remove this item."
 msgstr "Prišlo je do napake pri poskusu odstranjevanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:411
+#: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Prišlo je do napake pri poskusu preimenovanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:451
+#: logic/treeview/noteTreeModel.cpp:455
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Prišlo je do napake pri poskusu kreiranja opombe."
 
-#: logic/treeview/noteTreeModel.cpp:461
+#: logic/treeview/noteTreeModel.cpp:465
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Prišlo je do napake pri poskusu kreiranja grupe."
 
-#: logic/treeview/noteTreeModel.cpp:470
+#: logic/treeview/noteTreeModel.cpp:474
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Prišlo je do napake pri poskusu kreiranja kategorije."
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:481
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Prišlo je do napake pri poskusu kreiranja hrambe."
