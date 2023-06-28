@@ -5,7 +5,7 @@
 import QtQuick 2.2
 import QtQuick.Controls 2.2
 import QtWebChannel 1.0
-import QtWebEngine 1.6
+import QtWebEngine 1.10
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import Qt.labs.platform 1.1
@@ -18,6 +18,7 @@ RowLayout {
 
     required property string path
     required property string text
+    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
@@ -29,28 +30,29 @@ RowLayout {
         '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
     }
 
-    spacing:0
+    spacing: 0
 
-    onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle()
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
     Kirigami.Card{
-        id:background
+        id: background
 
         Layout.fillWidth: true
         Layout.fillHeight: true
 
         WebEngineView{
-            id:web_view
+            id: web_view
 
             onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
 
-            settings.showScrollBars:false
+            settings.showScrollBars: false
+            settings.printElementBackgrounds: false
 
             width: background.width - 4
-            height:background.height - 4
+            height: background.height - 4
             x: 2
             y: 2
             url: "qrc:/index.html"
@@ -58,6 +60,11 @@ RowLayout {
 
             webChannel: WebChannel{
                 registeredObjects: [editorLink, cssLink, homePathPasser, notePathPasser]
+            }
+
+            onPdfPrintingFinished: {
+                applicationWindow().switchToPage('Printing')
+                applicationWindow().pageStack.currentItem.pdfPath = root.previewLocation
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
@@ -90,10 +97,10 @@ RowLayout {
         }
 
         MouseArea{
-            anchors.fill:web_view
-            enabled:true
+            anchors.fill: web_view
+            enabled: true
 
-            onWheel:{
+            onWheel: {
                 (wheel.angleDelta.y > 0)
                     ? vbar.decrease()
                     : vbar.increase()
@@ -115,7 +122,7 @@ RowLayout {
         size: background.height / web_view.contentsSize.height
         stepSize: 0.03
         snapMode: ScrollBar.SnapOnRelease
-        onPositionChanged:  {
+        onPositionChanged: {
             let scrollY = web_view.contentsSize.height*vbar.position + 5
             web_view.runJavaScript("window.scrollTo(0,"+scrollY+")")
         }
@@ -129,8 +136,8 @@ RowLayout {
         cssLink.css = defaultCSS
     }
 
-    function makePdf(filePath) {
-        if (filePath.length > 0) web_view.printToPdf(filePath.replace("file://",""))
+    function makePdf() {
+        web_view.printToPdf(root.previewLocation.replace("file://",""))
     }
 
 }
