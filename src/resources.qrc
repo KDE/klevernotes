@@ -28,6 +28,7 @@
         <file>contents/ui/pages/AboutPage.qml</file>
         <file>contents/ui/pages/MainPage.qml</file>
         <file>contents/ui/pages/PaintingPage.qml</file>
+        <file>contents/ui/pages/PrintingPage.qml</file>
         <file>contents/ui/pages/SettingsPage.qml</file>
 
         <file>contents/ui/painting/ColorBar.qml</file>

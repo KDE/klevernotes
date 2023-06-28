@@ -40,6 +40,7 @@ Kirigami.ApplicationWindow {
             case "Main": return pagePool.loadPage("qrc:contents/ui/pages/MainPage.qml");
             case "Settings": return pagePool.loadPage("qrc:contents/ui/pages/SettingsPage.qml");
             case "Painting": return pagePool.loadPage("qrc:contents/ui/pages/PaintingPage.qml");
+            case "Printing": return pagePool.loadPage("qrc:contents/ui/pages/PrintingPage.qml");
             case "About": return pagePool.loadPage("qrc:contents/ui/pages/AboutPage.qml");
         }
     }
