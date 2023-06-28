@@ -1,74 +1,76 @@
+# Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-25 00:53+0000\n"
-"PO-Revision-Date: 2023-04-27 05:31+0200\n"
-"Last-Translator: KDE Francophone <kde-francophone@kde.org>\n"
-"Language-Team: KDE Francophone <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2023-06-26 22:06+0200\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
 msgid "Color Picker"
-msgstr ""
+msgstr "Sélecteur de couleurs"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
 msgid "category"
-msgstr ""
+msgstr "catégorie"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
 #, kde-format
 msgid "group"
-msgstr ""
+msgstr "groupe"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "note"
-msgstr ""
+msgstr "note"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, kde-format
 msgid "Image picker"
-msgstr ""
+msgstr "Sélecteur d'images"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
 msgid "Font selector"
-msgstr ""
+msgstr "Sélecteur de polices"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
 #, kde-format
 msgid "Image selector"
-msgstr ""
+msgstr "Sélecteur d'images"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
 #, kde-format
 msgid "Web image"
-msgstr ""
+msgstr "Image pour Internet"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
 #, kde-format
 msgid "Local image"
-msgstr ""
+msgstr "Image locale"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
 #, kde-format
 msgid "Paint an image"
-msgstr ""
+msgstr "Dessiner une image"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
 #, kde-format
 msgid "Stored image"
-msgstr ""
+msgstr "Image enregistrée"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
 #, kde-format
@@ -78,12 +80,12 @@ msgstr ""
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
 #, kde-format
 msgid "Image text: "
-msgstr ""
+msgstr "Texte de l'image : "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
 #, kde-format
 msgid "Place this image inside the note folder"
-msgstr ""
+msgstr "Placer cette image à l'intérieur du dossier de note"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, kde-format
@@ -100,12 +102,12 @@ msgstr ""
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
 msgid "Your "
-msgstr ""
+msgstr "Votre "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgid "This "
-msgstr ""
+msgstr "Celui-ci"
 
 #: contents/ui/dialogs/StorageDialog.qml:19
 #, kde-format
@@ -119,22 +121,22 @@ msgstr ""
 #: contents/ui/dialogs/StorageDialog.qml:42
 #, kde-format
 msgid "Existing storage"
-msgstr ""
+msgstr "Zone d'enregistrement existante"
 
 #: contents/ui/dialogs/StorageDialog.qml:46
 #, kde-format
 msgid "Change the storage path"
-msgstr ""
+msgstr "Modifier l'emplacement de la zone d'enregistrement"
 
 #: contents/ui/dialogs/StorageDialog.qml:59
 #, kde-format
 msgid "Create storage"
-msgstr ""
+msgstr "Créer un zone d'enregistrement"
 
 #: contents/ui/dialogs/StorageDialog.qml:63
 #, kde-format
 msgid "Create a new storage"
-msgstr ""
+msgstr "Créer une nouvelle zone d'enregistrement"
 
 #: contents/ui/dialogs/StorageDialog.qml:95
 #, kde-format
@@ -148,99 +150,99 @@ msgstr ""
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
 msgid "Select Number"
-msgstr ""
+msgstr "Sélectionner un numéro"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
 #, kde-format
 msgid "Row"
-msgstr ""
+msgstr "Ligne"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:44
 #, kde-format
 msgid "Column"
-msgstr ""
+msgstr "Colonne"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:205
 #, kde-format
 msgid "Align all:"
-msgstr ""
+msgstr "Tout aligner :"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
 #, kde-format
 msgid "Add Todo"
-msgstr ""
+msgstr "Ajouter une tâche à faire"
 
 #: contents/ui/dialogs/ToDoDialog.qml:20
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
-msgstr ""
+msgstr "Titre :"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
 #, kde-format
 msgid "Todo title (required)"
-msgstr ""
+msgstr "Titre de tâche à faire (Obligatoire)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
 #, kde-format
 msgid "Description:"
-msgstr ""
+msgstr "Description :"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
 #, kde-format
 msgid "Optional"
-msgstr ""
+msgstr "Optionnel"
 
 #: contents/ui/dialogs/URLDialog.qml:11
 #, kde-format
 msgid "Choose an URL"
-msgstr ""
+msgstr "Sélectionner une URL"
 
 #: contents/ui/main.qml:15
 #, kde-format
 msgid "KleverNotes"
-msgstr ""
+msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
 #, kde-format
 msgid "Welcome"
-msgstr ""
+msgstr "Bienvenue"
 
 #: contents/ui/pages/MainPage.qml:73
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr ""
+msgstr "Bienvenue dans KleverNotes !"
 
 #: contents/ui/pages/MainPage.qml:83
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr ""
+msgstr "Créer ou sélectionner une note pour commencer à travailler !"
 
 #: contents/ui/pages/PaintingPage.qml:28
 #, kde-format
 msgid "Paint!"
-msgstr ""
+msgstr "Dessiner !"
 
 #: contents/ui/pages/PaintingPage.qml:32
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 #: contents/ui/pages/PaintingPage.qml:37
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
 #: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgid "Auto crop"
-msgstr ""
+msgstr "Rogner automatiquement"
 
 #: contents/ui/pages/SettingsPage.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
-msgstr ""
+msgstr "Configuration"
 
 #: contents/ui/pages/SettingsPage.qml:53
 #, kde-format
@@ -252,162 +254,165 @@ msgstr ""
 #: contents/ui/pages/SettingsPage.qml:89
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: contents/ui/pages/SettingsPage.qml:94
 #, kde-format
 msgid "Storage path:"
-msgstr ""
+msgstr "Emplacement pour enregistrement :"
 
 #: contents/ui/pages/SettingsPage.qml:102
 #, kde-format
 msgid "Change storage path"
-msgstr ""
+msgstr "Modifier l'emplacement de la zone d'enregistrement"
 
 #: contents/ui/pages/SettingsPage.qml:114
 #, kde-format
 msgid "New Category name:"
-msgstr ""
+msgstr "Nom de nouvelle catégorie :"
 
 #: contents/ui/pages/SettingsPage.qml:142
 #, kde-format
 msgid "New Group name:"
-msgstr ""
+msgstr "Nom de nouveau groupe :"
 
 #: contents/ui/pages/SettingsPage.qml:170
 #, kde-format
 msgid "New Note name:"
-msgstr ""
+msgstr "Nom de nouvelle note :"
 
 #: contents/ui/pages/SettingsPage.qml:196
 #, kde-format
 msgid "Note display"
-msgstr ""
+msgstr "Affichage de note"
 
 #: contents/ui/pages/SettingsPage.qml:202
 #, kde-format
 msgid "Background color:"
-msgstr ""
+msgstr "Couleur d'arrière-plan :"
 
 #: contents/ui/pages/SettingsPage.qml:241
 #, kde-format
 msgid "Text color:"
-msgstr ""
+msgstr "Couleur du texte :"
 
 #: contents/ui/pages/SettingsPage.qml:279
 #, kde-format
 msgid "Title color:"
-msgstr ""
+msgstr "Couleur de titre :"
 
 #: contents/ui/pages/SettingsPage.qml:317
 #, kde-format
 msgid "Link color:"
-msgstr ""
+msgstr "Couleur de lien :"
 
 #: contents/ui/pages/SettingsPage.qml:355
 #, kde-format
 msgid "Visited Link color:"
-msgstr ""
+msgstr "Couleur de lien visité :"
 
 #: contents/ui/pages/SettingsPage.qml:392
 #, kde-format
 msgid "Code color:"
-msgstr ""
+msgstr "Couleur de code :"
 
 #: contents/ui/pages/SettingsPage.qml:432
 #, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "Police :"
 
 #: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgid "Create a new category"
-msgstr ""
+msgstr "Créer une nouvelle catégorie"
 
 #: contents/ui/sideBar/ActionBar.qml:233
 #, kde-format
 msgid "Create a new group"
-msgstr ""
+msgstr "Créer un nouveau groupe"
 
 #: contents/ui/sideBar/ActionBar.qml:241
 #, kde-format
 msgid "Create a new note"
-msgstr ""
+msgstr "Créer une nouvelle note"
 
 #: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
 msgid "Rename"
-msgstr ""
+msgstr "Renommer"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
 #, kde-format
 msgid "New category"
-msgstr ""
+msgstr "Nouvelle catégorie"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgid "New group"
-msgstr ""
+msgstr "Nouveau groupe"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
 #, kde-format
 msgid "New note"
-msgstr ""
+msgstr "Nouvelle note"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "De :"
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Aucun résultat pour la recherche"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Configuration"
 
 #: contents/ui/sideBar/Sidebar.qml:87
 #, kde-format
 msgid "About Klever"
-msgstr ""
+msgstr "À propos de Klever"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
 msgid "TODO"
-msgstr ""
+msgstr "Tâche à faire"
 
 #: contents/ui/textEditor/TextToolBar.qml:88
 #, kde-format
 msgid "Header"
-msgstr ""
+msgstr "En-tête"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
 #, kde-format
 msgid "Clear checked"
-msgstr ""
+msgstr "Effacement vérifié"
 
 #: logic/treeview/noteTreeModel.cpp:364
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr ""
+"Une erreur a été rencontrée lors de la tentative de création de cet élément."
 
 #: logic/treeview/noteTreeModel.cpp:393
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr ""
+"Une erreur a été rencontrée lors de la tentative de suppression de cet "
+"élément."
 
 #: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
@@ -418,6 +423,7 @@ msgstr ""
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr ""
+"Une erreur a été rencontrée lors de la tentative de création de la note."
 
 #: logic/treeview/noteTreeModel.cpp:465
 #, kde-format
@@ -438,32 +444,32 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr ""
+msgstr "KleverNotes"
 
 #: main.cpp:50
 #, kde-format
 msgid "Application Description"
-msgstr ""
+msgstr "Description de l'application"
 
 #: main.cpp:54
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr ""
+msgstr "(c) 2022-2023"
 
 #: main.cpp:55
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
-msgstr ""
+msgstr "Louis Schul"
 
 #: main.cpp:60
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Xavier BESNARD"
 
 #: main.cpp:60
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "xavier.besnard@neuf.fr"
