@@ -5,6 +5,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
+import Qt.labs.platform 1.1
 
 import "qrc:/contents/ui/dialogs"
 
@@ -27,7 +28,10 @@ GridLayout{
             }
 
             icon.name: "viewpdf"
-            onTriggered: pdfSaver.open()
+            onTriggered: {
+                //pdfSaver.open()
+                display.makePdf()
+            }
         },
         Kirigami.Action {
             id: editorToggler
