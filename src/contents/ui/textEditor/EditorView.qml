@@ -9,8 +9,6 @@ import Qt.labs.platform 1.1
 
 import "qrc:/contents/ui/dialogs"
 
-import "qrc:/contents/ui/dialogs"
-
 GridLayout{
     id: root
 
@@ -33,7 +31,11 @@ GridLayout{
             }
 
             icon.name: "viewpdf"
-            onTriggered: pdfSaver.open()
+
+            onTriggered: {
+                //pdfSaver.open()
+                display.makePdf()
+            }
 
         },
         Kirigami.Action {

@@ -21,6 +21,7 @@ Kirigami.Page {
     title: i18n("Print")
 
     property string pdfPath
+
     readonly property QtObject textDisplay: applicationWindow().pageStack.get(0).editorView.display
 
     actions.contextualActions: [

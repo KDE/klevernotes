@@ -19,8 +19,8 @@ RowLayout {
     property bool printBackground: false
     required property string path
     required property string text
-    readonly property string stylePath: Config.stylePath
 
+    readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
     property var defaultCSS: {
@@ -39,7 +39,6 @@ RowLayout {
 
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
 
-
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
@@ -56,6 +55,8 @@ RowLayout {
 
             settings.showScrollBars: false
             settings.printElementBackgrounds: root.printBackground
+
+
 
             width: background.width - 4
             height: background.height - 4
@@ -76,6 +77,11 @@ RowLayout {
                 const printingPage = applicationWindow().pageStack.currentItem
                 printingPage.pdfPath = ""
                 printingPage.pdfPath = root.previewLocation
+            }
+
+            onPdfPrintingFinished: {
+                applicationWindow().switchToPage('Printing')
+                applicationWindow().pageStack.currentItem.pdfPath = root.previewLocation
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
@@ -162,10 +168,6 @@ RowLayout {
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
-    }
-
-    function makePdf(filePath) {
-        if (filePath.length > 0) web_view.printToPdf(filePath.replace("file://",""))
     }
 
 }
