@@ -19,9 +19,8 @@ RowLayout {
     required property string path
     required property string text
     readonly property string stylePath: Config.stylePath
-=======
-    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
+    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
@@ -35,7 +34,7 @@ RowLayout {
 
     spacing: 0
 
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle()
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle(defaultCSS)
 
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
 
@@ -63,14 +62,19 @@ RowLayout {
             y: 2
             url: "qrc:/index.html"
             focus: true
+            backgroundColor: "transparent"
 
             webChannel: WebChannel{
                 registeredObjects: [editorLink, cssVarLink, cssStyleLink, homePathPasser, notePathPasser]
             }
 
             onPdfPrintingFinished: {
-                applicationWindow().switchToPage('Printing')
-                applicationWindow().pageStack.currentItem.pdfPath = root.previewLocation
+                if (applicationWindow().pageStack.currentItem !== applicationWindow().getPage("Printing")) {
+                    applicationWindow().switchToPage('Printing')
+                }
+                const printingPage = applicationWindow().pageStack.currentItem
+                printingPage.pdfPath = ""
+                printingPage.pdfPath = root.previewLocation
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
@@ -120,7 +124,6 @@ RowLayout {
             }
 
             // Use to make some test
-
              onClicked: web_view.runJavaScript("document.body.innerHTML",function(result) { console.log(result); });
 
         }
@@ -148,15 +151,22 @@ RowLayout {
     function loadStyle() {
         let current = DocumentHandler.getCssStyle(stylePath)
         cssStyleLink.cssStyle = current
-        changeStyle()
+        changeStyle(defaultCSS)
     }
 
-    function changeStyle() {
-        cssVarLink.cssVar = defaultCSS
+    function changeStyle(style) {
+        cssVarLink.cssVar = style
     }
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
     }
+
+    // function changeBackground(firstTimeDisablingBackground) {
+    //     root.firstTimeDisablingBackground = firstTimeDisablingBackground
+    //     applicationWindow().pageStack.currentItem.pdfPath = ""
+    //     printBackground = !printBackground
+    //     makePdf()
+    // }
 
 }

@@ -52,20 +52,20 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
 
     KColorScheme activeView(QPalette::Active, KColorScheme::View, schemeConfig);
 
-    QString bodyColor = activeView.background(activeView.NormalBackground).color().name(QColor::HexArgb);
-    QString textColor = activeView.foreground(activeView.ActiveText).color().name(QColor::HexArgb);
-    QString titleColor = activeView.foreground(activeView.InactiveText).color().name(QColor::HexArgb);
-    QString linkColor = activeView.foreground(activeView.LinkText).color().name(QColor::HexArgb);
-    QString visitedLinkColor = activeView.foreground(activeView.VisitedText).color().name(QColor::HexArgb);
-    QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexArgb);
+    QString bodyColor = activeView.background(activeView.NormalBackground).color().name(QColor::HexRgb);
+    QString textColor = activeView.foreground(activeView.NormalText).color().name(QColor::HexRgb);
+    QString titleColor = activeView.foreground(activeView.InactiveText).color().name(QColor::HexRgb);
+    QString linkColor = activeView.foreground(activeView.LinkText).color().name(QColor::HexRgb);
+    QString visitedLinkColor = activeView.foreground(activeView.VisitedText).color().name(QColor::HexRgb);
+    QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
 
     QVariantMap res;
-    res.insert("bodyColor", bodyColor);
-    res.insert("textColor", textColor);
-    res.insert("titleColor", titleColor);
-    res.insert("linkColor", linkColor);
-    res.insert("visitedLinkColor", visitedLinkColor);
-    res.insert("codeColor", codeColor);
+    res.insert("--bodyColor", bodyColor);
+    res.insert("--textColor", textColor);
+    res.insert("--titleColor", titleColor);
+    res.insert("--linkColor", linkColor);
+    res.insert("--visitedLinkColor", visitedLinkColor);
+    res.insert("--codeColor", codeColor);
     return res;
 }
 
