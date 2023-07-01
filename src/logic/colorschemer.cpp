@@ -66,6 +66,7 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
     res.insert("--linkColor", linkColor);
     res.insert("--visitedLinkColor", visitedLinkColor);
     res.insert("--codeColor", codeColor);
+
     return res;
 }
 

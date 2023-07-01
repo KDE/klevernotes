@@ -21,7 +21,6 @@ Kirigami.Page {
     title: i18n("Print")
 
     property string pdfPath
-
     readonly property QtObject textDisplay: applicationWindow().pageStack.get(0).editorView.display
 
     actions.contextualActions: [
@@ -35,59 +34,28 @@ Kirigami.Page {
                 Component.onCompleted: currentIndex = ColorSchemer.indexForScheme(Config.colorScheme);
                 visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
-                    let colors;
-                    if (currentIndex === 0) colors = "default"
-                    else {
-                        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-                        colors = ColorSchemer.getUsefullColors(currentIndex)
-                    }
-                    requestPdf(colors)
+                    if (currentIndex === 0) return;
+                    const colors = ColorSchemer.getUsefullColors(currentIndex)
+                    console.log(colors.bodyColor)
+                    // ColorSchemer.apply(currentIndex);
+                    // Config.colorScheme = ColorSchemer.nameForIndex(currentIndex);
+                    // Config.save();
                 }
             }
+            // onTriggered:
         },
         Kirigami.Action {
-            text: i18n("background")
-            icon.name: "backgroundtool"
-            checkable: true
-            onTriggered: {
-                requestPdf()
-                if (!Config.pdfWarningHidden) backgroundWarning.open()
-            }
-        },
-        Kirigami.Action {
-            separator: true
-            enabled: false
-        },
-        Kirigami.Action {
-            id: saveAction
-            property string path
-
             text: i18n("Save")
             icon.name: "document-save-symbolic"
-            onTriggered: pdfSaver.open()
-            onPathChanged: {
-                webEnginePreview.printToPdf(path.replace("file://",""))
-            }
+            // onTriggered:
+        },
+        Kirigami.Action {
+            text: i18n("Cancel")
+            icon.name: "edit-clear"
+            // onTriggered:
         }
     ]
 
-    onBackRequested: (event) => {
-        event.accepted = true;
-        closePage()
-    }
-
-    WarningDialog {
-        id: backgroundWarning
-
-        onClosed: Config.pdfWarningHidden = checkbox.checked
-    }
-
-    FileSaverDialog {
-        id: pdfSaver
-
-        caller: saveAction
-        noteName: applicationWindow().pageStack.get(0).title
-    }
 
     WebEngineView {
         id: webEnginePreview
