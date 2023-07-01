@@ -16,6 +16,7 @@ import org.kde.Klever 1.0
 RowLayout {
     id: root
 
+    property bool printBackground: false
     required property string path
     required property string text
     readonly property string stylePath: Config.stylePath
@@ -54,7 +55,7 @@ RowLayout {
             onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
 
             settings.showScrollBars: false
-            settings.printElementBackgrounds: false
+            settings.printElementBackgrounds: root.printBackground
 
             width: background.width - 4
             height: background.height - 4
@@ -155,18 +156,11 @@ RowLayout {
     }
 
     function changeStyle(style) {
-        cssVarLink.cssVar = style
+        if (style === "default") cssVarLink.css = defaultCSS
+        else cssVarLink.css = style
     }
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
     }
-
-    // function changeBackground(firstTimeDisablingBackground) {
-    //     root.firstTimeDisablingBackground = firstTimeDisablingBackground
-    //     applicationWindow().pageStack.currentItem.pdfPath = ""
-    //     printBackground = !printBackground
-    //     makePdf()
-    // }
-
 }

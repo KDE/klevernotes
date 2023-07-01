@@ -12,11 +12,10 @@ import "qrc:/contents/ui/dialogs"
 GridLayout{
     id: root
 
-    readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
+    required property string path
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
-    required property string path
-    required property string noteName
+    readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
 
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
