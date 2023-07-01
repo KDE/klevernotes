@@ -19,6 +19,7 @@ Kirigami.Page {
     title: i18n("Print")
 
     property string pdfPath
+    readonly property QtObject textDisplay: applicationWindow().pageStack.get(0).editorView.display
 
     actions.contextualActions: [
         Kirigami.Action {
@@ -32,14 +33,15 @@ Kirigami.Page {
                 visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
                     if (currentIndex === 0) return;
+                    const textDisplay = applicationWindow().pageStack.get(0).editorView.display
                     const colors = ColorSchemer.getUsefullColors(currentIndex)
-                    console.log(colors.bodyColor)
+                    requestPdf(colors)
+
                     // ColorSchemer.apply(currentIndex);
                     // Config.colorScheme = ColorSchemer.nameForIndex(currentIndex);
                     // Config.save();
                 }
             }
-            // onTriggered:
         },
         Kirigami.Action {
             text: i18n("Save")
@@ -51,20 +53,32 @@ Kirigami.Page {
             icon.name: "edit-clear"
             // onTriggered:
         }
-
-
     ]
 
     WebEngineView {
         id: webEnginePreview
 
         anchors.fill: parent
-
         url: pdfPath
         settings.pluginsEnabled: true
         settings.pdfViewerEnabled: true
         settings.javascriptEnabled: false
         onContextMenuRequested: request.accepted = true // disable context menu
         onPdfPrintingFinished: printPreview.close()
+    }
+
+    Timer {
+        id: applyingCssTimer
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: textDisplay.makePdf()
+    }
+
+    function requestPdf(style) {
+        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
+        textDisplay.changeStyle(style)
+        applyingCssTimer.start()
     }
 }
