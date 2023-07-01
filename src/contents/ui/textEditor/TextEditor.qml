@@ -5,6 +5,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.2
 import org.kde.Klever 1.0
+import QtQuick.Controls.Styles 1.4
 
 ScrollView {
     id: view
@@ -21,13 +22,16 @@ ScrollView {
         textArea.tempBuff = false
     }
 
+    // Without it the background is from Theme.Window instead of Theme.View
+    background: Item {}
+
     TextArea{
         id: textArea
 
+        property bool tempBuff
+
         persistentSelection: true
         wrapMode: TextEdit.Wrap
-
-        property bool tempBuff
 
         onTextChanged : if (!tempBuff) modified = true
     }
