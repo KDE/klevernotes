@@ -22,7 +22,7 @@ RowLayout {
 
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
-    // Kirigami.Theme.colorSet: Kirigami.Theme.View
+
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
@@ -55,8 +55,6 @@ RowLayout {
 
             settings.showScrollBars: false
             settings.printElementBackgrounds: root.printBackground
-
-
 
             width: background.width - 4
             height: background.height - 4
@@ -174,12 +172,4 @@ RowLayout {
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
     }
-
-    // function changeBackground(firstTimeDisablingBackground) {
-    //     root.firstTimeDisablingBackground = firstTimeDisablingBackground
-    //     applicationWindow().pageStack.currentItem.pdfPath = ""
-    //     printBackground = !printBackground
-    //     makePdf()
-    // }
-
 }

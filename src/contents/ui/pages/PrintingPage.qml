@@ -34,29 +34,49 @@ Kirigami.Page {
                 Component.onCompleted: currentIndex = ColorSchemer.indexForScheme(Config.colorScheme);
                 visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
-                    if (currentIndex === 0) return;
-                    const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-                    const colors = ColorSchemer.getUsefullColors(currentIndex)
+                    let colors;
+                    if (currentIndex === 0) colors = "default"
+                    else {
+                        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
+                        colors = ColorSchemer.getUsefullColors(currentIndex)
+                    }
                     requestPdf(colors)
-
-                    // ColorSchemer.apply(currentIndex);
-                    // Config.colorScheme = ColorSchemer.nameForIndex(currentIndex);
-                    // Config.save();
                 }
             }
         },
         Kirigami.Action {
-            text: i18n("Save")
+            text: i18n("background")
             icon.name: "document-save-symbolic"
-            // onTriggered:
+            onTriggered: requestPdf()
         },
         Kirigami.Action {
-            text: i18n("Cancel")
-            icon.name: "edit-clear"
-            // onTriggered:
+            separator: true
+            enabled: false
+        },
+        Kirigami.Action {
+            id: saveAction
+            property string path
+
+            text: i18n("Save")
+            icon.name: "document-save-symbolic"
+            onTriggered: pdfSaver.open()
+            onPathChanged: {
+                webEnginePreview.printToPdf(path.replace("file://",""))
+            }
         }
     ]
 
+    onBackRequested: (event) => {
+        event.accepted = true;
+        closePage()
+    }
+
+    FileSaverDialog {
+        id: pdfSaver
+
+        caller: saveAction
+        noteName: applicationWindow().pageStack.get(0).title
+    }
 
     WebEngineView {
         id: webEnginePreview
@@ -90,20 +110,5 @@ Kirigami.Page {
         const textDisplay = applicationWindow().pageStack.get(0).editorView.display
         textDisplay.changeStyle("default")
         applicationWindow().pageStack.pop()
-    }
-
-    Timer {
-        id: applyingCssTimer
-
-        interval: Kirigami.Units.longDuration
-        repeat: false
-
-        onTriggered: textDisplay.makePdf()
-    }
-
-    function requestPdf(style) {
-        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-        textDisplay.changeStyle(style)
-        applyingCssTimer.start()
     }
 }
