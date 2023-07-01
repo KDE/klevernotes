@@ -20,6 +20,8 @@
 #include "logic/mdHandler.h"
 #include "logic/qmlLinker.h"
 #include "logic/todoHandler.h"
+#include "logic/colorschemer.h"
+
 #include "logic/treeview/noteTreeModel.h"
 
 #include "logic/painting/pressureequation.h"
@@ -99,6 +101,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     MDHandler mdHandler;
     qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);
+
+    ColorSchemer colorScheme;
+    qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
 
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 

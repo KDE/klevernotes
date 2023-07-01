@@ -20,6 +20,7 @@ target_link_libraries(klevernoteslib
     KF5::ConfigCore
     KF5::ConfigGui
     KF5::KIOCore
+    KF5::ConfigWidgets
     Qt::WebChannel
     Qt::WebEngine
     Qt::WebEngineWidgets)
@@ -28,10 +29,10 @@ set(exec_SRCS
     main.cpp
     app.cpp
 
+    logic/colorschemer.cpp
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
     logic/todoHandler.cpp
-
     logic/mdHandler.cpp
     logic/qmlLinker.cpp
     logic/view.cpp
