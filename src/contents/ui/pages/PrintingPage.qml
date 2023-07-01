@@ -13,6 +13,8 @@ import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/dialogs"
+
 Kirigami.Page {
     id: printPreview
 
@@ -32,28 +34,49 @@ Kirigami.Page {
                 Component.onCompleted: currentIndex = ColorSchemer.indexForScheme(Config.colorScheme);
                 visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
-                    if (currentIndex === 0) return;
-                    const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-                    const colors = ColorSchemer.getUsefullColors(currentIndex)
+                    let colors;
+                    if (currentIndex === 0) colors = "default"
+                    else {
+                        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
+                        colors = ColorSchemer.getUsefullColors(currentIndex)
+                    }
                     requestPdf(colors)
-
-                    // ColorSchemer.apply(currentIndex);
-                    // Config.colorScheme = ColorSchemer.nameForIndex(currentIndex);
-                    // Config.save();
                 }
             }
         },
         Kirigami.Action {
-            text: i18n("Save")
+            text: i18n("background")
             icon.name: "document-save-symbolic"
-            // onTriggered:
+            onTriggered: requestPdf()
         },
         Kirigami.Action {
-            text: i18n("Cancel")
-            icon.name: "edit-clear"
-            // onTriggered:
+            separator: true
+            enabled: false
+        },
+        Kirigami.Action {
+            id: saveAction
+            property string path
+
+            text: i18n("Save")
+            icon.name: "document-save-symbolic"
+            onTriggered: pdfSaver.open()
+            onPathChanged: {
+                webEnginePreview.printToPdf(path.replace("file://",""))
+            }
         }
     ]
+
+    onBackRequested: (event) => {
+        event.accepted = true;
+        closePage()
+    }
+
+    FileSaverDialog {
+        id: pdfSaver
+
+        caller: saveAction
+        noteName: applicationWindow().pageStack.get(0).title
+    }
 
     WebEngineView {
         id: webEnginePreview
@@ -64,7 +87,7 @@ Kirigami.Page {
         settings.pdfViewerEnabled: true
         settings.javascriptEnabled: false
         onContextMenuRequested: request.accepted = true // disable context menu
-        onPdfPrintingFinished: printPreview.close()
+        onPdfPrintingFinished: printPreview.closePage()
     }
 
     Timer {
@@ -78,7 +101,14 @@ Kirigami.Page {
 
     function requestPdf(style) {
         const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-        textDisplay.changeStyle(style)
+        if (style) textDisplay.changeStyle(style)
+        else textDisplay.printBackground = !textDisplay.printBackground
         applyingCssTimer.start()
+    }
+
+    function closePage() {
+        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
+        textDisplay.changeStyle("default")
+        applicationWindow().pageStack.pop()
     }
 }
