@@ -35,14 +35,15 @@ Kirigami.Page {
                 visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
                     if (currentIndex === 0) return;
+                    const textDisplay = applicationWindow().pageStack.get(0).editorView.display
                     const colors = ColorSchemer.getUsefullColors(currentIndex)
-                    console.log(colors.bodyColor)
+                    requestPdf(colors)
+
                     // ColorSchemer.apply(currentIndex);
                     // Config.colorScheme = ColorSchemer.nameForIndex(currentIndex);
                     // Config.save();
                 }
             }
-            // onTriggered:
         },
         Kirigami.Action {
             text: i18n("Save")
@@ -89,5 +90,20 @@ Kirigami.Page {
         const textDisplay = applicationWindow().pageStack.get(0).editorView.display
         textDisplay.changeStyle("default")
         applicationWindow().pageStack.pop()
+    }
+
+    Timer {
+        id: applyingCssTimer
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: textDisplay.makePdf()
+    }
+
+    function requestPdf(style) {
+        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
+        textDisplay.changeStyle(style)
+        applyingCssTimer.start()
     }
 }

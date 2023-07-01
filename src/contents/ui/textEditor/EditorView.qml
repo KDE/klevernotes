@@ -13,23 +13,15 @@ GridLayout{
     id: root
 
     required property string path
+    required property string noteName
+
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
 
-    required property string noteName
-
-
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
             id: pdfPrinter
-
-            property string path
-            onPathChanged: if (path.length > 0) {
-                display.makePdf(path)
-                path = ""
-            }
-
             icon.name: "viewpdf"
 
             onTriggered: {
