@@ -19,7 +19,7 @@ RowLayout {
     required property string path
     required property string text
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
-
+    // Kirigami.Theme.colorSet: Kirigami.Theme.View
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
@@ -32,7 +32,7 @@ RowLayout {
 
     spacing: 0
 
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle()
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle(defaultCSS)
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
@@ -57,18 +57,23 @@ RowLayout {
             y: 2
             url: "qrc:/index.html"
             focus: true
+            backgroundColor: "transparent"
 
             webChannel: WebChannel{
                 registeredObjects: [editorLink, cssLink, homePathPasser, notePathPasser]
             }
 
             onPdfPrintingFinished: {
-                applicationWindow().switchToPage('Printing')
-                applicationWindow().pageStack.currentItem.pdfPath = root.previewLocation
+                if (applicationWindow().pageStack.currentItem !== applicationWindow().getPage("Printing")) {
+                    applicationWindow().switchToPage('Printing')
+                }
+                const printingPage = applicationWindow().pageStack.currentItem
+                printingPage.pdfPath = ""
+                printingPage.pdfPath = root.previewLocation
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
-                changeStyle()
+                changeStyle(defaultCSS)
             }
 
             QtMdEditor.QmlLinker{
@@ -107,7 +112,6 @@ RowLayout {
             }
 
             // Use to make some test
-
              onClicked: web_view.runJavaScript("document.body.innerHTML",function(result) { console.log(result); });
 
         }
@@ -132,12 +136,19 @@ RowLayout {
         Layout.fillHeight: true
     }
 
-    function changeStyle() {
-        cssLink.css = defaultCSS
+    function changeStyle(style) {
+        cssLink.css = style
     }
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
     }
+
+    // function changeBackground(firstTimeDisablingBackground) {
+    //     root.firstTimeDisablingBackground = firstTimeDisablingBackground
+    //     applicationWindow().pageStack.currentItem.pdfPath = ""
+    //     printBackground = !printBackground
+    //     makePdf()
+    // }
 
 }
