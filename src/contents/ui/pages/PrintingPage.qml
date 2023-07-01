@@ -7,8 +7,11 @@
 
 import QtQuick 2.15
 import QtWebEngine 1.10
-
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.2
 import org.kde.kirigami 2.19 as Kirigami
+
+import org.kde.Klever 1.0
 
 Kirigami.Page {
     id: printPreview
@@ -16,6 +19,41 @@ Kirigami.Page {
     title: i18n("Print")
 
     property string pdfPath
+
+    actions.contextualActions: [
+        Kirigami.Action {
+            displayComponent: ComboBox {
+                id: colorTheme
+                displayText: i18n("Color theme")
+                textRole: "display"
+                valueRole: "display"
+                model: ColorSchemer.model
+                Component.onCompleted: currentIndex = ColorSchemer.indexForScheme(Config.colorScheme);
+                visible: Qt.platform.os !== "android"
+                onCurrentValueChanged: {
+                    if (currentIndex === 0) return;
+                    const colors = ColorSchemer.getUsefullColors(currentIndex)
+                    console.log(colors.bodyColor)
+                    // ColorSchemer.apply(currentIndex);
+                    // Config.colorScheme = ColorSchemer.nameForIndex(currentIndex);
+                    // Config.save();
+                }
+            }
+            // onTriggered:
+        },
+        Kirigami.Action {
+            text: i18n("Save")
+            icon.name: "document-save-symbolic"
+            // onTriggered:
+        },
+        Kirigami.Action {
+            text: i18n("Cancel")
+            icon.name: "edit-clear"
+            // onTriggered:
+        }
+
+
+    ]
 
     WebEngineView {
         id: webEnginePreview
