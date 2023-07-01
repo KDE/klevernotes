@@ -29,7 +29,6 @@ GridLayout{
 
             icon.name: "viewpdf"
             onTriggered: {
-                //pdfSaver.open()
                 display.makePdf()
             }
         },
