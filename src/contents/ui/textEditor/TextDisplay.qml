@@ -16,10 +16,11 @@ import org.kde.Klever 1.0
 RowLayout {
     id: root
 
+    property bool printBackground: false
     required property string path
     required property string text
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
-    // Kirigami.Theme.colorSet: Kirigami.Theme.View
+
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
@@ -49,7 +50,7 @@ RowLayout {
             onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
 
             settings.showScrollBars: false
-            settings.printElementBackgrounds: false
+            settings.printElementBackgrounds: root.printBackground
 
             width: background.width - 4
             height: background.height - 4
@@ -137,18 +138,11 @@ RowLayout {
     }
 
     function changeStyle(style) {
-        cssLink.css = style
+        if (style === "default") cssLink.css = defaultCSS
+        else cssLink.css = style
     }
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
     }
-
-    // function changeBackground(firstTimeDisablingBackground) {
-    //     root.firstTimeDisablingBackground = firstTimeDisablingBackground
-    //     applicationWindow().pageStack.currentItem.pdfPath = ""
-    //     printBackground = !printBackground
-    //     makePdf()
-    // }
-
 }
