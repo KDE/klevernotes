@@ -46,8 +46,12 @@ Kirigami.Page {
         },
         Kirigami.Action {
             text: i18n("background")
-            icon.name: "document-save-symbolic"
-            onTriggered: requestPdf()
+            icon.name: "backgroundtool"
+            checkable: true
+            onTriggered: {
+                requestPdf()
+                if (!Config.pdfWarningHidden) backgroundWarning.open()
+            }
         },
         Kirigami.Action {
             separator: true
@@ -69,6 +73,12 @@ Kirigami.Page {
     onBackRequested: (event) => {
         event.accepted = true;
         closePage()
+    }
+
+    WarningDialog {
+        id: backgroundWarning
+
+        onClosed: Config.pdfWarningHidden = checkbox.checked
     }
 
     FileSaverDialog {
