@@ -62,6 +62,9 @@
         <entry name="stylePath" type="Path">
             <label>Path to the note display css style</label>
             <default>:/KleverStyle.css</default>
+        <entry name="pdfWarningHidden" type="Bool">
+            <label>Whether or not the warning message for pdf background should be hidden</label>
+            <default>false</default>
         </entry>
     </group>
 </kcfg>
