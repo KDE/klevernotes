@@ -54,7 +54,7 @@ Kirigami.ApplicationWindow {
     pageStack.onCurrentItemChanged: if (isMainPage() && pageStack.depth > 1) pageStack.pop()
 
     function isMainPage(){
-        return pageStack.currentItem == getPage("Main")
+        return pageStack.currentItem === getPage("Main")
     }
 
     function showCheatSheet() {

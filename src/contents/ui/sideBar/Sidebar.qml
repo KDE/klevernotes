@@ -25,9 +25,10 @@ Kirigami.OverlayDrawer {
 
     // Autohiding behavior
     modal: !applicationWindow().isMainPage() || !root.wideScreen
+    onEnabledChanged: drawerOpen = enabled && !modal
     onModalChanged: drawerOpen = !modal
     // Prevent it to being close while in wideScreen
-    closePolicy: Controls.Popup.CloseOnReleaseOutside
+    closePolicy: modal ? Controls.Popup.CloseOnReleaseOutside : Controls.Popup.NoAutoClose
 
     leftPadding: 0
     rightPadding: 0
