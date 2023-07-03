@@ -19,6 +19,7 @@
         <file>contents/ui/dialogs/TableMakerDialog.qml</file>
         <file>contents/ui/dialogs/ToDoDialog.qml</file>
         <file>contents/ui/dialogs/URLDialog.qml</file>
+        <file>contents/ui/dialogs/WarningDialog.qml</file>
 
         <file>contents/ui/dialogs/colorDialog/ColorDialog.qml</file>
         <file>contents/ui/dialogs/colorDialog/ColorPicker.qml</file>

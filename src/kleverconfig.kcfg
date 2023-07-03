@@ -59,5 +59,10 @@
             <label>The default text view code color (if note specified default to system theme)</label>
             <default>None</default>
         </entry>
+
+        <entry name="pdfWarningHidden" type="Bool">
+            <label>Whether or not the warning message for pdf background should be hidden</label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>
