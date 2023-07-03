@@ -53,7 +53,7 @@ Kirigami.ApplicationWindow {
     pageStack.onCurrentItemChanged: if (isMainPage() && pageStack.depth > 1) pageStack.pop(1)
 
     function isMainPage(){
-        return pageStack.currentItem == getPage("Main")
+        return pageStack.currentItem === getPage("Main")
     }
 
     // This timer allows to batch update the window size change to reduce
