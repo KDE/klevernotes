@@ -33,13 +33,23 @@ endif()
 if(QT_MAJOR_VERSION STREQUAL "5")
        set(QTQUICKDIALOG_VERSION "1.3")
        set(KIRIGAMI_LISTITEM_ICON "icon")
+       set(KIRIGAMI_ACTION_ICON "iconName")
+       set(KIRIGAMI_PAGE_ACTION "actions.contextualActions")
 else()
        set(QTQUICKDIALOG_VERSION "")
        set(KIRIGAMI_LISTITEM_ICON "icon.name")
+       set(KIRIGAMI_ACTION_ICON "icon.name")
+       set(KIRIGAMI_PAGE_ACTION "actions")
 endif()
 
 configure_file(contents/ui/sideBar/ActionBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/ActionBar.qml)
 configure_file(contents/ui/sideBar/Sidebar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/Sidebar.qml)
+configure_file(contents/ui/textEditor/TextToolBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/textEditor/TextToolBar.qml)
+configure_file(contents/ui/textEditor/BottomToolBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/textEditor/BottomToolBar.qml)
+configure_file(contents/ui/dialogs/FilePickerDialog.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/dialogs/FilePickerDialog.qml)
+configure_file(contents/ui/pages/MainPage.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/pages/MainPage.qml)
+configure_file(contents/ui/pages/PaintingPage.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/pages/PaintingPage.qml)
+
 configure_file(resources.qrc ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc)
 
 set(exec_SRCS
