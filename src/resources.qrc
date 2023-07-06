@@ -32,10 +32,10 @@
         <file>contents/ui/painting/ColorBar.qml</file>
         <file>contents/ui/painting/ColorButton.qml</file>
 
-        <file alias="contents/ui/sideBar/ActionBar.qml">/home/louis/kde6/build/klevernotes/src/contents/ui/sideBar/ActionBar.qml</file>
+        <file alias="contents/ui/sideBar/ActionBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/ContextMenu.qml</file>
         <file>contents/ui/sideBar/SearchBar.qml</file>
-        <file alias="contents/ui/sideBar/Sidebar.qml">/home/louis/kde6/build/klevernotes/src/contents/ui/sideBar/Sidebar.qml</file>
+        <file alias="contents/ui/sideBar/Sidebar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/sideBar/Sidebar.qml</file>
         <file>contents/ui/sideBar/TreeItem.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
 
