@@ -29,6 +29,19 @@ else()
     target_link_libraries(klevernoteslib Qt6::WebEngineQuick KF6::KIOCore KF6::KIOFileWidgets KF6::KIOWidgets)
 endif()
 
+
+if(QT_MAJOR_VERSION STREQUAL "5")
+       set(QTQUICKDIALOG_VERSION "1.3")
+       set(KIRIGAMI_LISTITEM_ICON "icon")
+else()
+       set(QTQUICKDIALOG_VERSION "")
+       set(KIRIGAMI_LISTITEM_ICON "icon.name")
+endif()
+
+configure_file(contents/ui/sideBar/ActionBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/ActionBar.qml)
+configure_file(contents/ui/sideBar/Sidebar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/Sidebar.qml)
+configure_file(resources.qrc ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc)
+
 set(exec_SRCS
     main.cpp
     app.cpp
@@ -50,11 +63,12 @@ set(exec_SRCS
 
     logic/treeview/noteTreeModel.cpp
 
-    resources.qrc)
+    ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc)
 
 add_executable(klevernotes ${exec_SRCS})
 target_link_libraries(klevernotes klevernoteslib)
 find_package(KF${QT_MAJOR_VERSION}KIO)
+
 
 if (ANDROID)
     kirigami_package_breeze_icons(ICONS

@@ -76,7 +76,7 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
-            icon: "settings-configure"
+            @KIRIGAMI_LISTITEM_ICON@: "settings-configure"
 
             Layout.alignment:Qt.AlignBottom
 
@@ -85,7 +85,7 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("About Klever")
-            icon: "help-about"
+            @KIRIGAMI_LISTITEM_ICON@: "help-about"
 
             onClicked: applicationWindow().switchToPage('About')
         }
