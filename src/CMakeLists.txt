@@ -21,25 +21,22 @@ target_link_libraries(klevernoteslib
     KF${QT_MAJOR_VERSION}::CoreAddons
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
-    )
-
-if (QT_MAJOR_VERSION LESS 6)
-    target_link_libraries(klevernoteslib Qt::WebEngine KF5::KIOCore)
-else()
-    target_link_libraries(klevernoteslib Qt6::WebEngineQuick KF6::KIOCore KF6::KIOFileWidgets KF6::KIOWidgets)
-endif()
-
+)
 
 if(QT_MAJOR_VERSION STREQUAL "5")
        set(QTQUICKDIALOG_VERSION "1.3")
        set(KIRIGAMI_LISTITEM_ICON "icon")
        set(KIRIGAMI_ACTION_ICON "iconName")
        set(KIRIGAMI_PAGE_ACTION "actions.contextualActions")
+
+       target_link_libraries(klevernoteslib Qt::WebEngine KF5::KIOCore)
 else()
        set(QTQUICKDIALOG_VERSION "")
        set(KIRIGAMI_LISTITEM_ICON "icon.name")
        set(KIRIGAMI_ACTION_ICON "icon.name")
        set(KIRIGAMI_PAGE_ACTION "actions")
+
+       target_link_libraries(klevernoteslib Qt6::WebEngineQuick KF6::KIOCore KF6::KIOFileWidgets KF6::KIOWidgets)
 endif()
 
 configure_file(contents/ui/sideBar/ActionBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/ActionBar.qml)
@@ -73,7 +70,8 @@ set(exec_SRCS
 
     logic/treeview/noteTreeModel.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc)
+    ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc
+)
 
 add_executable(klevernotes ${exec_SRCS})
 target_link_libraries(klevernotes klevernoteslib)

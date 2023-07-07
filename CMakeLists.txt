@@ -37,8 +37,9 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS
     QuickControls2
     Svg
     WebEngineWidgets
-    )
-if (QT_MAJOR_VERSION LESS 6)
+)
+
+if (QT_MAJOR_VERSION STREQUAL "5")
     find_package(Qt5 REQUIRED COMPONENTS WebEngine)
 else()
     find_package(Qt6 REQUIRED COMPONENTS WebEngineQuick)
@@ -48,7 +49,8 @@ find_package(KF${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Kirigami2
     CoreAddons
     Config
-    I18n)
+    I18n
+)
 
 if (ANDROID)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
