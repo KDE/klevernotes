@@ -11,6 +11,7 @@
   <name xml:lang="cs">KleverNotes</name>
   <name xml:lang="de">KleverNotes</name>
   <name xml:lang="en-GB">KleverNotes</name>
+  <name xml:lang="eo">KleverNotes</name>
   <name xml:lang="es">KleverNotes</name>
   <name xml:lang="fi">KleverNotes</name>
   <name xml:lang="fr">KleverNotes</name>
@@ -28,6 +29,7 @@
   <summary xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes</summary>
   <summary xml:lang="ca-valencia">KleverNotes és una aplicació de presa i gestió de notes</summary>
   <summary xml:lang="en-GB">KleverNotes is a note taking and management application</summary>
+  <summary xml:lang="eo">KleverNotes estas not-prena kaj -mastruma aplikaĵo</summary>
   <summary xml:lang="es">KleverNotes es una aplicación para tomar notas y gestionarlas</summary>
   <summary xml:lang="fi">KleverNotes on muistiinpanojen kirjoitus- ja hallintasovellus</summary>
   <summary xml:lang="fr">L'application Klevernotes est une application de prise de notes et pour leurs gestions.</summary>
@@ -49,6 +51,7 @@
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
   <developer_name xml:lang="de">Die KDE-Gemeinschaft</developer_name>
   <developer_name xml:lang="en-GB">The KDE Community</developer_name>
+  <developer_name xml:lang="eo">La KDE-Komunumo</developer_name>
   <developer_name xml:lang="es">La Comunidad KDE</developer_name>
   <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
   <developer_name xml:lang="fr">La communauté de KDE</developer_name>
