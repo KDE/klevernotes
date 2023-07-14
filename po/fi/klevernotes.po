@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-25 00:53+0000\n"
-"PO-Revision-Date: 2023-05-05 18:04+0300\n"
+"PO-Revision-Date: 2023-06-27 17:42+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -355,37 +355,35 @@ msgid "Rename"
 msgstr "Muuta nimeä"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgid "New category"
-msgstr "luokka"
+msgstr "Uusi luokka"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgid "New group"
-msgstr "ryhmä"
+msgstr "Uusi ryhmä"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgid "New note"
-msgstr "huomautus"
+msgstr "Uusi muistiinpano"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
 msgid "Delete"
 msgstr "Poista"
 
+# *** TARKISTA: Pitäisi tietää, mihin tämä on selite.
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "Mistä: "
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Ei hakutuloksia"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
@@ -420,37 +418,37 @@ msgstr "Poista valinnat"
 #: logic/treeview/noteTreeModel.cpp:364
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "Yritettäessä luoda kohdetta sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:393
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Yritettäessä poistaa kohdetta sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Yritettäessä muuttaa kohteen nimeä sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:455
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Yritettäessä luoda muistiinpanoa sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:465
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "Yritettäessä luoda ryhmää sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:474
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "Yritettäessä luoda luokkaa sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:481
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Yritettäessä luoda talletustilaa sattui virhe."
 
 #: main.cpp:46
 #, kde-format
