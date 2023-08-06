@@ -86,7 +86,7 @@ Kirigami.Dialog {
     onFolderChanged: {
         let folderPath = KleverUtility.getPath(setupPopup.folder)
         if (userChoice === "Storage created at "){
-            folderPath = folderPath.concat("klevernotes")
+            folderPath = folderPath.concat("/klevernotes")
         }
 
         var pathEnd = folderPath.substring(folderPath.length,folderPath.length-11)
