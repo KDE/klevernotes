@@ -18,6 +18,7 @@
   <name xml:lang="gl">KleverNotes</name>
   <name xml:lang="it">KleverNotes</name>
   <name xml:lang="ka">KleverNotes</name>
+  <name xml:lang="ko">KleverNotes</name>
   <name xml:lang="nl">KleverNotes</name>
   <name xml:lang="pl">KleverNotes</name>
   <name xml:lang="pt">KleverNotes</name>
@@ -37,6 +38,7 @@
   <summary xml:lang="gl">KleverNotes é unha aplicación para tomar e xestionar notas.</summary>
   <summary xml:lang="it">KleverNotes è un'applicazione per prendere appunti e gestire</summary>
   <summary xml:lang="ka">KleverNotes ჩანიშვნისა და შენიშვნების მართვის აპლიკაციაა</summary>
+  <summary xml:lang="ko">KleverNotes는 메모 작성 및 관리 앱입니다</summary>
   <summary xml:lang="nl">KleverNotes is een toepassing voor maken en beheren van notities </summary>
   <summary xml:lang="pl">KleverNotes jest aplikacją do robienia i zarządzania notatkami</summary>
   <summary xml:lang="pt">O KleverNotes é uma aplicação de gestão e registo de notas</summary>
@@ -60,6 +62,7 @@
   <developer_name xml:lang="gl">A comunidade de KDE</developer_name>
   <developer_name xml:lang="it">La comunità KDE</developer_name>
   <developer_name xml:lang="ka">KDE-ის საზოგადოება</developer_name>
+  <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
   <developer_name xml:lang="nl">De KDE gemeenschap</developer_name>
   <developer_name xml:lang="pl">Społeczność KDE</developer_name>
   <developer_name xml:lang="pt">A Comunidade do KDE</developer_name>
@@ -80,6 +83,7 @@
     <p xml:lang="gl">KleverNotes é unha aplicación para tomar e xestionar notas en dispositivos móbiles e de escritorio. Usa Markdown e ofrece unha vista previa do contido.</p>
     <p xml:lang="it">KleverNotes è un'applicazione per prendere appunti e gestire i tuoi dispositivi mobili e desktop. Utilizza markdown e ti consente di visualizzare in anteprima i tuoi contenuti.</p>
     <p xml:lang="ka">KleverNotes ჩანიშვნისა და შენიშვნების მართვის აპლიკაციაა თქვენი მობილურისა და სახლის კომპიუტერისთვის. ის მარკდაუნს იყენებს და საშუალებას გაძლევთ, გადახედოთ შემცველობას, რომელიც თქვენ გეკუთვნით.</p>
+    <p xml:lang="ko">KleverNotes는 모바일 장치 및 데스크톱용 메모 작성 및 관리 앱입니다. Markdown 형식을 지원하며 내용을 미리 볼 수 있습니다.</p>
     <p xml:lang="nl">KleverNotes is een toepassing voor maken en beheren van notities voor mobiele en bureaublad apparaten. Het gebruikt markdown en biedt u het bekijken van een voorbeeld van uw inhoud.</p>
     <p xml:lang="pl">KleverNotes jest aplikacją do robienia i zarządzania notatkami dla urządzeń przenośnych i biurkowych. Używa markdown i umożliwia podgląd treści.</p>
     <p xml:lang="pt">O KleverNotes é uma aplicação para tirar e gerir notas no seu telemóvel e no seu computador. Use o Markdown e permite-lhe antever o seu conteúdo.</p>
