@@ -48,7 +48,7 @@ RowLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
 
-        WebEngineView{
+        WebEngineView {
             id: web_view
 
             onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
@@ -74,6 +74,17 @@ RowLayout {
             }
 
             onLoadProgressChanged: if (loadProgress === 100) loadStyle()
+
+            onScrollPositionChanged: if (!vbar.active) {
+                vbar.position = scrollPosition.y / contentsSize.height
+            }
+
+            onNavigationRequested: {
+                if (request.url.toString() !== "qrc:/index.html") {
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    Qt.openUrlExternally(request.url)
+                }
+            }
 
             onScrollPositionChanged: if (!vbar.active) {
                 vbar.position = scrollPosition.y / contentsSize.height
