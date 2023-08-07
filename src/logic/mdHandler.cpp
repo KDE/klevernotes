@@ -52,7 +52,7 @@ QJsonObject MDHandler::getInstructions(const QString &selectedText, const QStrin
 
     QJsonArray instructions;
     bool applyToAll = false;
-
+    int counter = 1;
     for (int lineIndex = 0; lineIndex < selectedLines.size(); lineIndex++) {
         const QString line = selectedLines.at(lineIndex).toString();
 
@@ -63,10 +63,13 @@ QJsonObject MDHandler::getInstructions(const QString &selectedText, const QStrin
         }
 
         bool skip = false;
+
         for (int charsIndex = 0; charsIndex < charsList.size(); charsIndex++) {
             QString chars = charsList.at(charsIndex);
-            if (applyIncrement)
-                chars = QString::number(lineIndex + 1) + chars;
+            if (applyIncrement) {
+                chars = QString::number(counter) + chars;
+                counter++;
+            }
 
             if (line.startsWith(chars)) {
                 skip = true;
