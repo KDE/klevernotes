@@ -102,6 +102,15 @@ Kirigami.Card {
         }
     }
 
+    LinkDialog {
+        id: linkDialog
+
+        onAccepted: {
+            let linkString = `[${linkText}](${urlText}) `
+            toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, linkString)
+        }
+    }
+
     Kirigami.ActionToolBar {
         id: mainToolBar
 
@@ -244,6 +253,11 @@ Kirigami.Card {
                 id: imageAction
                 icon.name: "insert-image"
                 onTriggered: imagePickerDialog.open()
+            },
+            Kirigami.Action {
+                id: linkAction
+                icon.name: "insert-link-symbolic"
+                onTriggered: linkDialog.open()
             },
             Kirigami.Action {
                 id: tableAction

@@ -13,6 +13,7 @@
         <file>contents/ui/dialogs/FontPickerDialog.qml</file>
         <file>contents/ui/dialogs/ImagePickerDialog.qml</file>
         <file>contents/ui/dialogs/LeavePaintingDialog.qml</file>
+        <file>contents/ui/dialogs/LinkDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
