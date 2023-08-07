@@ -42,13 +42,25 @@ QStringList MDHandler::getPositionLineInfo(QJsonArray lines, int position)
     return info;
 }
 
-QJsonObject MDHandler::getInstructions(const QString &selectedText, const QStringList &charsList, const bool checkLineEnd, const bool applyIncrement) const
+QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStringList& charsList, const bool checkLineEnd, const bool applyIncrement, const bool checkByBlock) const
 {
     QJsonObject final = QJsonObject();
+    if (checkByBlock) {
+        bool apply;
+        for (int charsIndex = 0; charsIndex < charsList.size(); charsIndex++) {
+            QString chars = charsList.at(charsIndex).trimmed();
+            apply = !(selectedText.trimmed().startsWith(chars) && selectedText.trimmed().startsWith(chars));
+        }
+        final["instructions"] = apply ? "apply" : "remove";
+        final["textLength"] = selectedText.trimmed().length();
+
+        return final;
+    }
 
     QJsonArray selectedLines = getLines(selectedText);
 
     final["lines"] = selectedLines;
+    final["applyBlock"] = false;
 
     QJsonArray instructions;
     bool applyToAll = false;
