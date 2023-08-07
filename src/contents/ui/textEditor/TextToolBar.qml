@@ -117,20 +117,29 @@ Kirigami.Card {
         function applyInstructions(selectionEnd,info,givenSpecialChars,multiPlaceApply,applyIncrement){
             const instructions = info.instructions
             const lines = info.lines
+
             let end = selectionEnd
             let applied = false
             let specialChars = givenSpecialChars
+
+            // Currently only used for ordered list
+            const nonEmptyStrChecker = /^(?!\s*$).+/g
+            const nonEmptyStrNumber = lines.filter(e => nonEmptyStrChecker.test(e)).length
+            const hasNonEmptyStrings = nonEmptyStrNumber > 0
+            let counter = nonEmptyStrNumber + 1
 
             for (var i = lines.length-1 ; i >= 0; i--){
                 const line = lines[i]
                 const instruction = instructions[i]
 
-                const start = end-line.length
+                end = (line.length > 0 || lines.length == 1) ? end : end - 1
+                const start = end - line.length
 
                 // Currently only used for ordered list
+                if (line.trim().length === 0 && hasNonEmptyStrings) continue
                 if (applyIncrement) {
-                    if (line.trim().length === 0) continue
-                    specialChars = (i + 1).toString() + givenSpecialChars
+                    specialChars = counter.toString() + givenSpecialChars
+                    counter--
                 }
 
                 switch(instruction) {
@@ -147,7 +156,7 @@ Kirigami.Card {
                 default:
                     break
                 }
-                end = start-1
+                end = start - 1
             }
             if (applied) toolbarHolder.editorTextArea.select(toolbarHolder.editorTextArea.selectionStart-specialChars.length,toolbarHolder.editorTextArea.selectionEnd)
         }
