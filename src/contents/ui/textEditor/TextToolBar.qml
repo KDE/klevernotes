@@ -11,8 +11,8 @@ import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/dialogs"
 
-Kirigami.Card {
-    id: toolbarHolder
+Kirigami.ActionToolBar {
+    id: mainToolBar
 
     required property TextArea editorTextArea
     required property string notePath
@@ -30,7 +30,7 @@ Kirigami.Card {
     ImagePickerDialog {
         id: imagePickerDialog
 
-        noteImagesStoringPath: toolbarHolder.notePath.replace("note.md","") + "Images/"
+        noteImagesStoringPath: mainToolBar.notePath.replace("note.md","") + "Images/"
 
         onAccepted: if (imageLoaded) {
             let modifiedPath = path
@@ -71,7 +71,7 @@ Kirigami.Card {
             }
 
             let imageString = `![${imageName}](${modifiedPath}) `
-            toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, imageString)
+            mainToolBar.editorTextArea.insert(mainToolBar.editorTextArea.cursorPosition, imageString)
             storedImageChoosen = false
         }
 
@@ -98,7 +98,7 @@ Kirigami.Card {
 
             const result = "\n"+headers+columnsAlignments+cells.repeat(tableMakerDialog.rowCount-1)
 
-            toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, result)
+            mainToolBar.editorTextArea.insert(mainToolBar.editorTextArea.cursorPosition, result)
         }
     }
 
@@ -107,230 +107,226 @@ Kirigami.Card {
 
         onAccepted: {
             let linkString = `[${linkText}](${urlText}) `
-            toolbarHolder.editorTextArea.insert(toolbarHolder.editorTextArea.cursorPosition, linkString)
+            mainToolBar.editorTextArea.insert(mainToolBar.editorTextArea.cursorPosition, linkString)
         }
     }
 
-    Kirigami.ActionToolBar {
-        id: mainToolBar
+    function applyInstructions(selectionEnd, info, givenSpecialChars,
+                               multiPlaceApply, applyIncrement, checkByBlock) {
 
-        function applyInstructions(selectionEnd, info, givenSpecialChars,
-                                   multiPlaceApply, applyIncrement, checkByBlock) {
+        if (checkByBlock) {
+            const instruction = info.instructions
+            const start = selectionEnd - info.textLength
 
-            if (checkByBlock) {
-                const instruction = info.instructions
-                const start = selectionEnd - info.textLength
-
-                if (instruction === "apply") {
-                    toolbarHolder.editorTextArea.insert(selectionEnd, givenSpecialChars)
-                    toolbarHolder.editorTextArea.insert(start, givenSpecialChars)
-                    return
-                }
-                toolbarHolder.editorTextArea.remove(selectionEnd - givenSpecialChars.length, selectionEnd)
-                toolbarHolder.editorTextArea.remove(start, start + givenSpecialChars.length)
+            if (instruction === "apply") {
+                mainToolBar.editorTextArea.insert(selectionEnd, givenSpecialChars)
+                mainToolBar.editorTextArea.insert(start, givenSpecialChars)
                 return
             }
+            mainToolBar.editorTextArea.remove(selectionEnd - givenSpecialChars.length, selectionEnd)
+            mainToolBar.editorTextArea.remove(start, start + givenSpecialChars.length)
+            return
+        }
 
 
-            const instructions = info.instructions
-            const lines = info.lines
+        const instructions = info.instructions
+        const lines = info.lines
 
-            let end = selectionEnd
-            let applied = false
-            let specialChars = givenSpecialChars
+        let end = selectionEnd
+        let applied = false
+        let specialChars = givenSpecialChars
+
+        // Currently only used for ordered list
+        const nonEmptyStrChecker = /^(?!\s*$).+/g
+        const nonEmptyStrNumber = lines.filter(e => nonEmptyStrChecker.test(e)).length
+        const hasNonEmptyStrings = nonEmptyStrNumber > 0
+        let counter = nonEmptyStrNumber + 1
+
+        for (var i = lines.length-1 ; i >= 0; i--){
+            const line = lines[i]
+            const instruction = instructions[i]
+
+            end = (line.length > 0 || lines.length == 1) ? end : end - 1
+            const start = end - line.length
 
             // Currently only used for ordered list
-            const nonEmptyStrChecker = /^(?!\s*$).+/g
-            const nonEmptyStrNumber = lines.filter(e => nonEmptyStrChecker.test(e)).length
-            const hasNonEmptyStrings = nonEmptyStrNumber > 0
-            let counter = nonEmptyStrNumber + 1
-
-            for (var i = lines.length-1 ; i >= 0; i--){
-                const line = lines[i]
-                const instruction = instructions[i]
-
-                end = (line.length > 0 || lines.length == 1) ? end : end - 1
-                const start = end - line.length
-
-                // Currently only used for ordered list
-                if (line.trim().length === 0 && hasNonEmptyStrings) continue
-                if (applyIncrement) {
-                    specialChars = counter.toString() + givenSpecialChars
-                    counter--
-                }
-
-                switch(instruction) {
-                case "apply":
-                    if (multiPlaceApply) toolbarHolder.editorTextArea.insert(end,specialChars)
-                    toolbarHolder.editorTextArea.insert(start,specialChars)
-
-                    applied = true
-                    break;
-                case "remove":
-                    if (multiPlaceApply) toolbarHolder.editorTextArea.remove(end - specialChars.length, end)
-                    toolbarHolder.editorTextArea.remove(start, start + specialChars.length)
-                    break;
-                default:
-                    break
-                }
-                end = start - 1
+            if (line.trim().length === 0 && hasNonEmptyStrings) continue
+            if (applyIncrement) {
+                specialChars = counter.toString() + givenSpecialChars
+                counter--
             }
-            if (applied) {
-                let start = toolbarHolder.editorTextArea.selectionStart - specialChars.length
-                let end = toolbarHolder.editorTextArea.selectionEnd
-                toolbarHolder.editorTextArea.select(start, end)
+
+            switch(instruction) {
+            case "apply":
+                if (multiPlaceApply) mainToolBar.editorTextArea.insert(end,specialChars)
+                mainToolBar.editorTextArea.insert(start,specialChars)
+
+                applied = true
+                break;
+            case "remove":
+                if (multiPlaceApply) mainToolBar.editorTextArea.remove(end - specialChars.length, end)
+                mainToolBar.editorTextArea.remove(start, start + specialChars.length)
+                break;
+            default:
+                break
             }
+            end = start - 1
         }
-
-        function handleAction(selectionStart, selectionEnd, specialChars,
-                              multiPlaceApply, applyIncrement, checkByBlock) {
-
-            const selectedText = editorTextArea.getText(selectionStart, selectionEnd)
-            const info = MDHandler.getInstructions(selectedText, specialChars,
-                                                   multiPlaceApply, applyIncrement,
-                                                   checkByBlock)
-
-            const appliedSpecialChars = specialChars[0]
-            mainToolBar.applyInstructions(selectionEnd, info,
-                                          appliedSpecialChars, multiPlaceApply,
-                                          applyIncrement, checkByBlock)
+        if (applied) {
+            let start = mainToolBar.editorTextArea.selectionStart - specialChars.length
+            let end = mainToolBar.editorTextArea.selectionEnd
+            mainToolBar.editorTextArea.select(start, end)
         }
-
-        function getLinesBlock(selectionStart,selectionEnd) {
-            const startingText = editorTextArea.getText(0, editorTextArea.selectionStart)
-            const endingText = editorTextArea.getText(editorTextArea.selectionEnd,
-                                                      editorTextArea.text.length)
-
-
-            const startBlockIndex = startingText.lastIndexOf('\n')+1
-
-            return [startBlockIndex,editorTextArea.selectionEnd]
-        }
-
-        actions: [
-            Kirigami.Action {
-                text: "𝐇"
-
-                Kirigami.Action {
-                    text: "𝐇𝟏"
-                    onTriggered: {
-                        const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
-
-                        mainToolBar.handleAction(selectionStart, selectionEnd, ["# "], false, false, false)
-                    }
-                }
-                Kirigami.Action {
-                    text: "𝐇𝟐"
-                    onTriggered: {
-                        const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
-
-                        mainToolBar.handleAction(selectionStart, selectionEnd, ["## "], false, false, false)
-                    }
-                }
-                Kirigami.Action {
-                    text: "𝐇𝟑"
-                    onTriggered: {
-                        const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
-
-                        mainToolBar.handleAction(selectionStart, selectionEnd, ["### "], false, false, false)
-                    }
-                }
-                Kirigami.Action {
-                    text: "𝐇𝟒"
-                    onTriggered: {
-                        const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
-
-                        mainToolBar.handleAction(selectionStart, selectionEnd, ["#### "], false, false, false)
-                    }
-                }
-                Kirigami.Action {
-                    text: "𝐇𝟓"
-                    onTriggered: {
-                        const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
-
-                        mainToolBar.handleAction(selectionStart, selectionEnd, ["###### "], false, false, false)
-                    }
-                }
-                Kirigami.Action {
-                    text: "𝐇𝟔"
-                    onTriggered: {
-                        const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
-
-                        mainToolBar.handleAction(selectionStart, selectionEnd, ["####### "], false, false, false)
-                    }
-                }
-
-            },
-            Kirigami.Action {
-                id: boldAction
-                icon.name: "format-text-bold"
-                onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
-                                                      editorTextArea.selectionEnd, ["**","__"],
-                                                      true, false, false)
-            },
-            Kirigami.Action {
-                id: italicAction
-                icon.name: "format-text-italic"
-                onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
-                                                      editorTextArea.selectionEnd, ["_","*"],
-                                                      true, false, false)
-            },
-            Kirigami.Action {
-                id: strikethroughAction
-                icon.name: "format-text-strikethrough"
-                onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
-                                                      editorTextArea.selectionEnd, ["~~"],
-                                                      true, false, false)
-            },
-            Kirigami.Action {
-                id: codeBlockAction
-                icon.name: "format-text-code"
-                onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
-                                                      editorTextArea.selectionEnd, ["\n```\n"],
-                                                      true, false, true)
-            },
-            Kirigami.Action {
-                id: quoteAction
-                icon.name: "format-text-blockquote"
-                onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
-                                                      editorTextArea.selectionEnd, ["> "],
-                                                      false, false, false)
-            },
-            Kirigami.Action {
-                id: imageAction
-                icon.name: "insert-image"
-                onTriggered: imagePickerDialog.open()
-            },
-            Kirigami.Action {
-                id: linkAction
-                icon.name: "insert-link-symbolic"
-                onTriggered: linkDialog.open()
-            },
-            Kirigami.Action {
-                id: tableAction
-                icon.name: "insert-table"
-                onTriggered: tableMakerDialog.open()
-            },
-            Kirigami.Action {
-                id: orderedListAction
-                icon.name: "format-ordered-list-symbolic"
-                onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,
-                                                                                     editorTextArea.selectionEnd);
-
-                    mainToolBar.handleAction(selectionStart, selectionEnd, [". "], false, true, false)
-                }
-            },
-            Kirigami.Action {
-                id: unorderedListAction
-                icon.name: "format-unordered-list-symbolic"
-                onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,
-                                                                                     editorTextArea.selectionEnd);
-
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
-                }
-            }
-        ]
     }
+
+    function handleAction(selectionStart, selectionEnd, specialChars,
+                          multiPlaceApply, applyIncrement, checkByBlock) {
+
+        const selectedText = editorTextArea.getText(selectionStart, selectionEnd)
+        const info = MDHandler.getInstructions(selectedText, specialChars,
+                                               multiPlaceApply, applyIncrement,
+                                               checkByBlock)
+
+        const appliedSpecialChars = specialChars[0]
+        mainToolBar.applyInstructions(selectionEnd, info,
+                                      appliedSpecialChars, multiPlaceApply,
+                                      applyIncrement, checkByBlock)
+    }
+
+    function getLinesBlock(selectionStart,selectionEnd) {
+        const startingText = editorTextArea.getText(0, editorTextArea.selectionStart)
+        const endingText = editorTextArea.getText(editorTextArea.selectionEnd,
+                                                  editorTextArea.text.length)
+
+
+        const startBlockIndex = startingText.lastIndexOf('\n')+1
+
+        return [startBlockIndex,editorTextArea.selectionEnd]
+    }
+
+    actions: [
+        Kirigami.Action {
+            text: "𝐇"
+
+            Kirigami.Action {
+                text: "𝐇𝟏"
+                onTriggered: {
+                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+
+                    mainToolBar.handleAction(selectionStart, selectionEnd, ["# "], false, false, false)
+                }
+            }
+            Kirigami.Action {
+                text: "𝐇𝟐"
+                onTriggered: {
+                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+
+                    mainToolBar.handleAction(selectionStart, selectionEnd, ["## "], false, false, false)
+                }
+            }
+            Kirigami.Action {
+                text: "𝐇𝟑"
+                onTriggered: {
+                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+
+                    mainToolBar.handleAction(selectionStart, selectionEnd, ["### "], false, false, false)
+                }
+            }
+            Kirigami.Action {
+                text: "𝐇𝟒"
+                onTriggered: {
+                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+
+                    mainToolBar.handleAction(selectionStart, selectionEnd, ["#### "], false, false, false)
+                }
+            }
+            Kirigami.Action {
+                text: "𝐇𝟓"
+                onTriggered: {
+                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+
+                    mainToolBar.handleAction(selectionStart, selectionEnd, ["###### "], false, false, false)
+                }
+            }
+            Kirigami.Action {
+                text: "𝐇𝟔"
+                onTriggered: {
+                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+
+                    mainToolBar.handleAction(selectionStart, selectionEnd, ["####### "], false, false, false)
+                }
+            }
+
+        },
+        Kirigami.Action {
+            id: boldAction
+            icon.name: "format-text-bold"
+            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+                                                  editorTextArea.selectionEnd, ["**","__"],
+                                                  true, false, false)
+        },
+        Kirigami.Action {
+            id: italicAction
+            icon.name: "format-text-italic"
+            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+                                                  editorTextArea.selectionEnd, ["_","*"],
+                                                  true, false, false)
+        },
+        Kirigami.Action {
+            id: strikethroughAction
+            icon.name: "format-text-strikethrough"
+            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+                                                  editorTextArea.selectionEnd, ["~~"],
+                                                  true, false, false)
+        },
+        Kirigami.Action {
+            id: codeBlockAction
+            icon.name: "format-text-code"
+            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+                                                  editorTextArea.selectionEnd, ["\n```\n"],
+                                                  true, false, true)
+        },
+        Kirigami.Action {
+            id: quoteAction
+            icon.name: "format-text-blockquote"
+            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+                                                  editorTextArea.selectionEnd, ["> "],
+                                                  false, false, false)
+        },
+        Kirigami.Action {
+            id: imageAction
+            icon.name: "insert-image"
+            onTriggered: imagePickerDialog.open()
+        },
+        Kirigami.Action {
+            id: linkAction
+            icon.name: "insert-link-symbolic"
+            onTriggered: linkDialog.open()
+        },
+        Kirigami.Action {
+            id: tableAction
+            icon.name: "insert-table"
+            onTriggered: tableMakerDialog.open()
+        },
+        Kirigami.Action {
+            id: orderedListAction
+            icon.name: "format-ordered-list-symbolic"
+            onTriggered: {
+                const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,
+                                                                                 editorTextArea.selectionEnd);
+
+                mainToolBar.handleAction(selectionStart, selectionEnd, [". "], false, true, false)
+            }
+        },
+        Kirigami.Action {
+            id: unorderedListAction
+            icon.name: "format-unordered-list-symbolic"
+            onTriggered: {
+                const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,
+                                                                                 editorTextArea.selectionEnd);
+
+                mainToolBar.handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
+            }
+        }
+    ]
 }

@@ -55,18 +55,14 @@ GridLayout{
         editorTextArea: root.editor.textArea
         notePath: root.path
 
-        Layout.preferredHeight: childrenRect.height
-        Layout.column: 0
-        Layout.columnSpan: 2
+        Layout.row: 0
     }
 
     // This item can be seen as useless but it prevent a weird bug with the height not being adjusted
     Item {
-        Layout.fillWidth: true
+        Layout.row: 1
         Layout.fillHeight: true
-        Layout.row: 3
-        Layout.column: 0
-        Layout.columnSpan: 2
+        Layout.fillWidth: true
 
         GridLayout {
             anchors.fill:parent

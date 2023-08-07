@@ -86,17 +86,6 @@ RowLayout {
                 }
             }
 
-            onScrollPositionChanged: if (!vbar.active) {
-                vbar.position = scrollPosition.y / contentsSize.height
-            }
-
-            onNavigationRequested: {
-                if (request.url.toString() !== "qrc:/index.html") {
-                    request.action = WebEngineNavigationRequest.IgnoreRequest
-                    Qt.openUrlExternally(request.url)
-                }
-            }
-
             QtMdEditor.QmlLinker{
                 id: editorLink
                 text: root.text.length > 0 ? root.text : "\n"
