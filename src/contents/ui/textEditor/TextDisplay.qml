@@ -75,6 +75,17 @@ RowLayout {
 
             onLoadProgressChanged: if (loadProgress === 100) loadStyle()
 
+            onScrollPositionChanged: if (!vbar.active) {
+                vbar.position = scrollPosition.y / contentsSize.height
+            }
+
+            onNavigationRequested: {
+                if (request.url.toString() !== "qrc:/index.html") {
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    Qt.openUrlExternally(request.url)
+                }
+            }
+
             QtMdEditor.QmlLinker{
                 id: editorLink
                 text: root.text.length > 0 ? root.text : "\n"
@@ -106,21 +117,6 @@ RowLayout {
                 WebChannel.id: "notePathPasser"
             }
         }
-
-        MouseArea{
-            anchors.fill: web_view
-            enabled: true
-
-            onWheel: {
-                (wheel.angleDelta.y > 0)
-                    ? vbar.decrease()
-                    : vbar.increase()
-            }
-
-            // Use to make some test
-             onClicked: web_view.runJavaScript("document.body.innerHTML",function(result) { console.log(result); });
-
-        }
     }
 
     ScrollBar {
@@ -130,11 +126,12 @@ RowLayout {
         active: hovered || pressed
         orientation: Qt.Vertical
         size: background.height / web_view.contentsSize.height
-        stepSize: 0.03
-        snapMode: ScrollBar.SnapOnRelease
+        snapMode: ScrollBar.SnapAlways
         onPositionChanged: {
-            let scrollY = web_view.contentsSize.height*vbar.position + 5
-            web_view.runJavaScript("window.scrollTo(0,"+scrollY+")")
+            if (active) {
+                let scrollY = web_view.contentsSize.height * vbar.position
+                web_view.runJavaScript("window.scrollTo(0," + scrollY + ")")
+            }
         }
 
         Layout.row:0
