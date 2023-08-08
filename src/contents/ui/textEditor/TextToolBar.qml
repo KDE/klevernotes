@@ -12,7 +12,7 @@ import org.kde.Klever 1.0
 import "qrc:/contents/ui/dialogs"
 
 Kirigami.ActionToolBar {
-    id: mainToolBar
+    id: toolbar
 
     required property TextArea editorTextArea
     required property string notePath
@@ -30,7 +30,7 @@ Kirigami.ActionToolBar {
     ImagePickerDialog {
         id: imagePickerDialog
 
-        noteImagesStoringPath: mainToolBar.notePath.replace("note.md","") + "Images/"
+        noteImagesStoringPath: toolbar.notePath.replace("note.md","") + "Images/"
 
         onAccepted: if (imageLoaded) {
             let modifiedPath = path
@@ -71,12 +71,13 @@ Kirigami.ActionToolBar {
             }
 
             let imageString = `![${imageName}](${modifiedPath}) `
-            mainToolBar.editorTextArea.insert(mainToolBar.editorTextArea.cursorPosition, imageString)
+
+            toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, imageString)
+
             storedImageChoosen = false
         }
 
         onRejected: storedImageChoosen = false
-
     }
 
     TableMakerDialog {
@@ -98,7 +99,7 @@ Kirigami.ActionToolBar {
 
             const result = "\n"+headers+columnsAlignments+cells.repeat(tableMakerDialog.rowCount-1)
 
-            mainToolBar.editorTextArea.insert(mainToolBar.editorTextArea.cursorPosition, result)
+            toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, result)
         }
     }
 
@@ -107,7 +108,7 @@ Kirigami.ActionToolBar {
 
         onAccepted: {
             let linkString = `[${linkText}](${urlText}) `
-            mainToolBar.editorTextArea.insert(mainToolBar.editorTextArea.cursorPosition, linkString)
+            toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, linkString)
         }
     }
 
@@ -119,12 +120,12 @@ Kirigami.ActionToolBar {
             const start = selectionEnd - info.textLength
 
             if (instruction === "apply") {
-                mainToolBar.editorTextArea.insert(selectionEnd, givenSpecialChars)
-                mainToolBar.editorTextArea.insert(start, givenSpecialChars)
+                toolbar.editorTextArea.insert(selectionEnd, givenSpecialChars)
+                toolbar.editorTextArea.insert(start, givenSpecialChars)
                 return
             }
-            mainToolBar.editorTextArea.remove(selectionEnd - givenSpecialChars.length, selectionEnd)
-            mainToolBar.editorTextArea.remove(start, start + givenSpecialChars.length)
+            toolbar.editorTextArea.remove(selectionEnd - givenSpecialChars.length, selectionEnd)
+            toolbar.editorTextArea.remove(start, start + givenSpecialChars.length)
             return
         }
 
@@ -158,14 +159,14 @@ Kirigami.ActionToolBar {
 
             switch(instruction) {
             case "apply":
-                if (multiPlaceApply) mainToolBar.editorTextArea.insert(end,specialChars)
-                mainToolBar.editorTextArea.insert(start,specialChars)
+                if (multiPlaceApply) toolbar.editorTextArea.insert(end, specialChars)
+                toolbar.editorTextArea.insert(start, specialChars)
 
                 applied = true
                 break;
             case "remove":
-                if (multiPlaceApply) mainToolBar.editorTextArea.remove(end - specialChars.length, end)
-                mainToolBar.editorTextArea.remove(start, start + specialChars.length)
+                if (multiPlaceApply) toolbar.editorTextArea.remove(end - specialChars.length, end)
+                toolbar.editorTextArea.remove(start, start + specialChars.length)
                 break;
             default:
                 break
@@ -173,9 +174,9 @@ Kirigami.ActionToolBar {
             end = start - 1
         }
         if (applied) {
-            let start = mainToolBar.editorTextArea.selectionStart - specialChars.length
-            let end = mainToolBar.editorTextArea.selectionEnd
-            mainToolBar.editorTextArea.select(start, end)
+            let start = toolbar.editorTextArea.selectionStart - specialChars.length
+            let end = toolbar.editorTextArea.selectionEnd
+            toolbar.editorTextArea.select(start, end)
         }
     }
 
@@ -188,7 +189,7 @@ Kirigami.ActionToolBar {
                                                checkByBlock)
 
         const appliedSpecialChars = specialChars[0]
-        mainToolBar.applyInstructions(selectionEnd, info,
+        applyInstructions(selectionEnd, info,
                                       appliedSpecialChars, multiPlaceApply,
                                       applyIncrement, checkByBlock)
     }
@@ -201,7 +202,7 @@ Kirigami.ActionToolBar {
 
         const startBlockIndex = startingText.lastIndexOf('\n')+1
 
-        return [startBlockIndex,editorTextArea.selectionEnd]
+        return [startBlockIndex, editorTextArea.selectionEnd]
     }
 
     actions: [
@@ -211,49 +212,55 @@ Kirigami.ActionToolBar {
             Kirigami.Action {
                 text: "𝐇𝟏"
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                         editorTextArea.selectionEnd);
 
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["# "], false, false, false)
+                    handleAction(selectionStart, selectionEnd, ["# "], false, false, false)
                 }
             }
             Kirigami.Action {
                 text: "𝐇𝟐"
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                         editorTextArea.selectionEnd);
 
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["## "], false, false, false)
+                    handleAction(selectionStart, selectionEnd, ["## "], false, false, false)
                 }
             }
             Kirigami.Action {
                 text: "𝐇𝟑"
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                         editorTextArea.selectionEnd);
 
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["### "], false, false, false)
+                    handleAction(selectionStart, selectionEnd, ["### "], false, false, false)
                 }
             }
             Kirigami.Action {
                 text: "𝐇𝟒"
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                         editorTextArea.selectionEnd);
 
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["#### "], false, false, false)
+                    handleAction(selectionStart, selectionEnd, ["#### "], false, false, false)
                 }
             }
             Kirigami.Action {
                 text: "𝐇𝟓"
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                         editorTextArea.selectionEnd);
 
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["###### "], false, false, false)
+                    handleAction(selectionStart, selectionEnd, ["###### "], false, false, false)
                 }
             }
             Kirigami.Action {
                 text: "𝐇𝟔"
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,editorTextArea.selectionEnd);
+                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                         editorTextArea.selectionEnd);
 
-                    mainToolBar.handleAction(selectionStart, selectionEnd, ["####### "], false, false, false)
+                    handleAction(selectionStart, selectionEnd, ["####### "], false, false, false)
                 }
             }
 
@@ -261,35 +268,35 @@ Kirigami.ActionToolBar {
         Kirigami.Action {
             id: boldAction
             icon.name: "format-text-bold"
-            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+            onTriggered: handleAction(editorTextArea.selectionStart,
                                                   editorTextArea.selectionEnd, ["**","__"],
                                                   true, false, false)
         },
         Kirigami.Action {
             id: italicAction
             icon.name: "format-text-italic"
-            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+            onTriggered: handleAction(editorTextArea.selectionStart,
                                                   editorTextArea.selectionEnd, ["_","*"],
                                                   true, false, false)
         },
         Kirigami.Action {
             id: strikethroughAction
             icon.name: "format-text-strikethrough"
-            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+            onTriggered: handleAction(editorTextArea.selectionStart,
                                                   editorTextArea.selectionEnd, ["~~"],
                                                   true, false, false)
         },
         Kirigami.Action {
             id: codeBlockAction
             icon.name: "format-text-code"
-            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+            onTriggered: handleAction(editorTextArea.selectionStart,
                                                   editorTextArea.selectionEnd, ["\n```\n"],
                                                   true, false, true)
         },
         Kirigami.Action {
             id: quoteAction
             icon.name: "format-text-blockquote"
-            onTriggered: mainToolBar.handleAction(editorTextArea.selectionStart,
+            onTriggered: handleAction(editorTextArea.selectionStart,
                                                   editorTextArea.selectionEnd, ["> "],
                                                   false, false, false)
         },
@@ -312,20 +319,20 @@ Kirigami.ActionToolBar {
             id: orderedListAction
             icon.name: "format-ordered-list-symbolic"
             onTriggered: {
-                const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,
+                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
                                                                                  editorTextArea.selectionEnd);
 
-                mainToolBar.handleAction(selectionStart, selectionEnd, [". "], false, true, false)
+                handleAction(selectionStart, selectionEnd, [". "], false, true, false)
             }
         },
         Kirigami.Action {
             id: unorderedListAction
             icon.name: "format-unordered-list-symbolic"
             onTriggered: {
-                const [selectionStart, selectionEnd] = mainToolBar.getLinesBlock(editorTextArea.selectionStart,
+                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
                                                                                  editorTextArea.selectionEnd);
 
-                mainToolBar.handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
+                handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
             }
         }
     ]
