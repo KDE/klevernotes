@@ -135,10 +135,9 @@ Kirigami.ActionToolBar {
             let end = selectionEnd
 
             // Currently only used for ordered list
-            const nonEmptyStrChecker = /^(?!\s*$).+/g
-            const nonEmptyStrNumber = lines.filter(e => nonEmptyStrChecker.test(e)).length
+            const nonEmptyStrNumber = lines.filter((line) => line.trim().length > 0).length
             const hasNonEmptyStrings = nonEmptyStrNumber > 0
-            let counter = nonEmptyStrNumber + 1
+            let counter = nonEmptyStrNumber
 
             for (var i = lines.length-1 ; i >= 0; i--) {
                 const line = lines[i]
