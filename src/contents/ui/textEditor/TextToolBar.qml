@@ -112,71 +112,77 @@ Kirigami.ActionToolBar {
         }
     }
 
-    function applyInstructions(selectionEnd, info, givenSpecialChars,
+    function applyInstructions(selectionStart, selectionEnd, info, givenSpecialChars,
                                multiPlaceApply, applyIncrement, checkByBlock) {
-
-        if (checkByBlock) {
-            const instruction = info.instructions
-            const start = selectionEnd - info.textLength
-
-            if (instruction === "apply") {
-                toolbar.editorTextArea.insert(selectionEnd, givenSpecialChars)
-                toolbar.editorTextArea.insert(start, givenSpecialChars)
-                return
-            }
-            toolbar.editorTextArea.remove(selectionEnd - givenSpecialChars.length, selectionEnd)
-            toolbar.editorTextArea.remove(start, start + givenSpecialChars.length)
-            return
-        }
-
-
-        const instructions = info.instructions
-        const lines = info.lines
-
-        let end = selectionEnd
         let applied = false
         let specialChars = givenSpecialChars
+        if (checkByBlock) {
+            const instruction = info.instructions
 
-        // Currently only used for ordered list
-        const nonEmptyStrChecker = /^(?!\s*$).+/g
-        const nonEmptyStrNumber = lines.filter(e => nonEmptyStrChecker.test(e)).length
-        const hasNonEmptyStrings = nonEmptyStrNumber > 0
-        let counter = nonEmptyStrNumber + 1
+            if (instruction === "apply") {
+                toolbar.editorTextArea.insert(selectionEnd, specialChars)
+                toolbar.editorTextArea.insert(selectionStart, specialChars)
+                applied = true
 
-        for (var i = lines.length-1 ; i >= 0; i--){
-            const line = lines[i]
-            const instruction = instructions[i]
+            } else {
+                toolbar.editorTextArea.remove(selectionEnd - specialChars.length + 1, selectionEnd + 1)
+                toolbar.editorTextArea.remove(selectionStart, selectionStart + specialChars.length)
+            }
+        } else {
+            const instructions = info.instructions
+            const lines = info.lines
 
-            end = (line.length > 0 || lines.length == 1) ? end : end - 1
-            const start = end - line.length
+            let end = selectionEnd
 
             // Currently only used for ordered list
-            if (line.trim().length === 0 && hasNonEmptyStrings) continue
-            if (applyIncrement) {
-                specialChars = counter.toString() + givenSpecialChars
-                counter--
-            }
+            const nonEmptyStrChecker = /^(?!\s*$).+/g
+            const nonEmptyStrNumber = lines.filter(e => nonEmptyStrChecker.test(e)).length
+            const hasNonEmptyStrings = nonEmptyStrNumber > 0
+            let counter = nonEmptyStrNumber + 1
 
-            switch(instruction) {
-            case "apply":
-                if (multiPlaceApply) toolbar.editorTextArea.insert(end, specialChars)
-                toolbar.editorTextArea.insert(start, specialChars)
+            for (var i = lines.length-1 ; i >= 0; i--) {
+                const line = lines[i]
+                const instruction = instructions[i]
 
-                applied = true
-                break;
-            case "remove":
-                if (multiPlaceApply) toolbar.editorTextArea.remove(end - specialChars.length, end)
-                toolbar.editorTextArea.remove(start, start + specialChars.length)
-                break;
-            default:
-                break
+
+                end = (line.length > 0 || lines.length == 1) ? end : end - 1
+                const start = end - line.length
+
+                // Currently only used for ordered list
+                if (line.trim().length === 0 && hasNonEmptyStrings) continue
+                if (applyIncrement) {
+                    specialChars = counter.toString() + givenSpecialChars
+                    counter--
+                }
+
+                switch(instruction) {
+                case "apply":
+                    if (multiPlaceApply) toolbar.editorTextArea.insert(end, specialChars)
+                    toolbar.editorTextArea.insert(start, specialChars)
+
+                    applied = true
+                    break;
+                case "remove":
+                    if (multiPlaceApply) toolbar.editorTextArea.remove(end - specialChars.length, end)
+                    toolbar.editorTextArea.remove(start, start + specialChars.length)
+                    break;
+                default:
+                    break
+                }
+                end = start - 1
             }
-            end = start - 1
         }
         if (applied) {
-            let start = toolbar.editorTextArea.selectionStart - specialChars.length
             let end = toolbar.editorTextArea.selectionEnd
-            toolbar.editorTextArea.select(start, end)
+
+            let endingNewLineCounter = 0
+            while (specialChars.endsWith('\n')) {
+                endingNewLineCounter++
+                specialChars = specialChars.substring(0, specialChars.length - 2)
+            }
+
+            end = (checkByBlock) ? end - endingNewLineCounter : end
+            toolbar.editorTextArea.select(selectionStart, end)
         }
     }
 
@@ -189,9 +195,9 @@ Kirigami.ActionToolBar {
                                                checkByBlock)
 
         const appliedSpecialChars = specialChars[0]
-        applyInstructions(selectionEnd, info,
-                                      appliedSpecialChars, multiPlaceApply,
-                                      applyIncrement, checkByBlock)
+        applyInstructions(selectionStart, selectionEnd, info,
+                          appliedSpecialChars, multiPlaceApply,
+                          applyIncrement, checkByBlock)
     }
 
     function getLinesBlock(selectionStart,selectionEnd) {

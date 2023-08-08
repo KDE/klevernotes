@@ -52,7 +52,6 @@ QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStrin
             apply = !(selectedText.trimmed().startsWith(chars) && selectedText.trimmed().startsWith(chars));
         }
         final["instructions"] = apply ? "apply" : "remove";
-        final["textLength"] = selectedText.trimmed().length();
 
         return final;
     }
