@@ -51,5 +51,8 @@
         <file alias="qwebchannel.js">contents/resources/qwebchannel.js</file>
         <file alias="marked.js">contents/resources/3rdparty/marked.js</file>
         <file alias="markdown.css">contents/resources/3rdparty/markdown.css</file>
-        </qresource>
+
+        <file alias="demo_note.md">example/Demo/note.md</file>
+        <file alias="logo.png">example/Demo/logo.png</file>
+    </qresource>
 </RCC>
