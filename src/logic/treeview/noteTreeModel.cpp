@@ -243,15 +243,30 @@ void NoteTreeModel::initModel()
             m_rootItem = nullptr;
             return;
         }
-    }
-    // This normally won't happen, but who knows
-    QString basePath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory/.BaseGroup"));
-    if (!KleverUtility::exists(basePath)) {
-        const QString categoryPath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory"));
-        const bool groupCreated = makeGroup(categoryPath, ".BaseGroup");
+
+        // This normally won't happen, but who knows
+        QString basePath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory/.BaseGroup"));
+        bool groupCreated = KleverUtility::exists(basePath);
         if (!groupCreated) {
-            m_rootItem = nullptr;
-            return;
+            const QString categoryPath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory"));
+            groupCreated = makeGroup(categoryPath, ".BaseGroup");
+            if (!groupCreated) {
+                m_rootItem = nullptr;
+                return;
+            }
+        }
+        const bool initDemoNote = makeNote(basePath, "Demo");
+        if (!initDemoNote) emit errorOccurred(i18n("An error occurred while trying to create the demo note."));
+        else {
+            const QString notePath = basePath.append("/Demo/");
+
+            QString mdPath = notePath + "note.md";
+            QFile::remove(mdPath);
+            QFile::copy(QStringLiteral(":/demo_note.md"), mdPath);
+
+            QString imagePath = notePath + "Images/";
+            QDir().mkpath(imagePath);
+            QFile::copy(QStringLiteral(":/logo.png"), imagePath.append("logo.png"));
         }
     }
 
