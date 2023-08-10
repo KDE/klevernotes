@@ -11,7 +11,8 @@ class QmlLinker : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString text MEMBER changedText NOTIFY textChanged FINAL)
-    Q_PROPERTY(QVariantMap css MEMBER changedCss NOTIFY cssChanged FINAL)
+    Q_PROPERTY(QVariantMap cssVar MEMBER changedCssVar NOTIFY cssVarChanged FINAL)
+    Q_PROPERTY(QString cssStyle MEMBER changedCssStyle NOTIFY cssStyleChanged FINAL)
     Q_PROPERTY(QString homePath MEMBER changedHomePath NOTIFY homePathChanged FINAL)
     Q_PROPERTY(QString notePath MEMBER changedNotePath NOTIFY notePathChanged FINAL)
 
@@ -20,13 +21,15 @@ public:
 
 signals:
     void textChanged(const QString &text);
-    void cssChanged(const QVariantMap &css);
+    void cssVarChanged(const QVariantMap &cssVar);
+    void cssStyleChanged(const QString &cssStyle);
     void homePathChanged(const QString &homePath);
     void notePathChanged(const QString &notePath);
 
 private:
     QString changedText;
-    QVariantMap changedCss;
+    QVariantMap changedCssVar;
+    QString changedCssStyle;
     QString changedHomePath;
     QString changedNotePath;
 };

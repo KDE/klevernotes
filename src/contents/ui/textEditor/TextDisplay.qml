@@ -31,7 +31,7 @@ RowLayout {
 
     spacing:0
 
-    onDefaultCSSChanged: if(web_view.loadProgress === 100) changeStyle()
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle()
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
@@ -57,10 +57,11 @@ RowLayout {
             focus: true
 
             webChannel: WebChannel{
-                registeredObjects: [editorLink, cssLink, homePathPasser, notePathPasser]
+                registeredObjects: [editorLink, cssVarLink, cssStyleLink, homePathPasser, notePathPasser]
             }
 
             onLoadProgressChanged: if (loadProgress === 100) {
+                loadStyle()
                 changeStyle()
             }
 
@@ -71,9 +72,16 @@ RowLayout {
             }
 
             QtMdEditor.QmlLinker{
-                id: cssLink
-                css: {"key":"value"}
-                WebChannel.id: "linkToCss"
+                id: cssVarLink
+
+                cssVar: {"key":"value"}
+                WebChannel.id: "linkToCssVar"
+            }
+
+            QtMdEditor.QmlLinker{
+                id: cssStyleLink
+
+                WebChannel.id: "linkToCssStyle"
             }
 
             QtMdEditor.QmlLinker{
@@ -125,7 +133,12 @@ RowLayout {
         Layout.fillHeight: true
     }
 
+    function loadStyle() {
+        let current = DocumentHandler.readNote(":/KleverStyle.css")
+        cssStyleLink.cssStyle = current
+    }
+
     function changeStyle() {
-        cssLink.css = defaultCSS
+        cssVarLink.cssVar = defaultCSS
     }
 }

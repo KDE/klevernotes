@@ -52,6 +52,11 @@
         <file alias="marked.js">contents/resources/3rdparty/marked.js</file>
         <file alias="markdown.css">contents/resources/3rdparty/markdown.css</file>
 
+        <file alias="Avenir.css">contents/resources/style/Avenir.css</file>
+        <file alias="KleverStyle.css">contents/resources/style/KleverStyle.css</file>
+        <file alias="Style7.css">contents/resources/style/Style7.css</file>
+        <file alias="Style9.css">contents/resources/style/Style9.css</file>
+
         <file alias="demo_note.md">example/Demo/note.md</file>
         <file alias="logo.png">example/Demo/logo.png</file>
     </qresource>
