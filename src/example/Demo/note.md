@@ -91,26 +91,26 @@ Sample text here...
 #### Default
 
 | Company | Contact | Country |
-| ------ | ----------- | --- |
- Alfreds Futterkiste   | Maria Anders | Germany 
+| ------ | ------ | ------ |
+| Alfreds Futterkiste | Maria Anders | Germany |
 | Centro comercial Moctezuma | Francisco Chang | Mexico |
-| Ernst Handel |Roland Mendel  | Austria |
+| Ernst Handel | Roland Mendel | Austria |
 
 #### Only middle pipes are necessary  !
 
 Company | Contact | Country 
-:------ | ------:-----| ---: 
- Alfreds Futterkiste   | Maria Anders | Germany 
+------ | ------ | ------
+Alfreds Futterkiste | Maria Anders | Germany
 Centro comercial Moctezuma | Francisco Chang | Mexico 
-Ernst Handel |Roland Mendel  | Austria 
+Ernst Handel | Roland Mendel | Austria
 
 #### Choose columns alignment
 
 | Left | Center | Right |
-| :------ | ------:-----| ---:|
-| Alfreds Futterkiste   | Maria Anders | Germany |
+| :------ | :------: | ------:|
+| Alfreds Futterkiste | Maria Anders | Germany |
 | Centro comercial Moctezuma | Francisco Chang | Mexico |
-| Ernst Handel |Roland Mendel  | Austria |
+| Ernst Handel | Roland Mendel | Austria |
 
 
 ## Links
@@ -136,5 +136,5 @@ With a reference later in the document defining the URL location checkout the ed
 
 ![KleverNotes](./Images/logo.png "KleverNotes logo !") 
 
-Using notation like "/home/user/myfile.png" or "~/myfile.png" will also work if you want to acces image stored on your system but not alongside your note 😁
+Using notation like "/home/user/myfile.png" or "~/myfile.png" will also work if you want to access image stored on your system but not alongside your note 😁
 
