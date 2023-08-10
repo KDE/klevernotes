@@ -1,0 +1,129 @@
+body {
+    font-family: var(--font), sans-serif;
+    padding: 1em;
+    margin: auto;
+    max-width: 42em;
+    background: var(--bodyColor);
+    color: var(--textColor);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--titleColor);
+    font-size: 28pt;
+}
+
+h2 {
+    border-bottom: 1px solid var(--titleColor);
+    color: var(--titleColor);
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    color: var(--titleColor);
+    background-color: inherit;
+    font-size: 14px;
+    filter: brightness(130%);
+}
+
+hr {
+    height: 0.2em;
+    border: 0;
+    color: var(--titleColor);
+    background-color: var(--titleColor);
+    filter: brightness(130%);
+}
+
+p, ul, ol, dl, li, table, pre {
+    margin: 15px 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    padding: 0;
+    border-collapse: collapse;
+}
+
+table tr {
+    border-top: 1px solid var(--textColor);
+    margin: 0;
+    padding: 0;
+    color: var(--textColor)
+    filter: brightness(130%);
+    background-color: var(--codeColor);
+}
+
+table tr:nth-child(2n) {
+    background-color: var(--codeColor);
+    filter: brightness(90%);
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--textColor);
+    margin: 0;
+    padding: 6px 13px;
+    filter: brightness(130%);
+}
+
+table tr td {
+    border: 1px solid var(--textColor);
+    margin: 0;
+    padding: 6px 13px;
+    filter: brightness(130%);
+}
+
+a {
+    color: var(--linkColor);
+    background-color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--visitedLinkColor);
+}
+
+
+code, pre {
+    font-family: monospace;
+    font-size: 10pt;
+    border-radius: 3px;
+    background-color: var(--codeColor);
+    color: inherit;
+}
+
+code {
+    border: 1px solid var(--codeColor);
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+pre {
+    border: 1px solid var(--codeColor);
+    overflow: auto;
+    padding: 4px 8px;
+}
+
+pre > code {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
