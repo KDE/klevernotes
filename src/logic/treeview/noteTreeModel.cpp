@@ -265,6 +265,12 @@ void NoteTreeModel::initModel()
             QFile::remove(mdPath);
             QFile::copy(QStringLiteral(":/demo_note.md"), mdPath);
 
+            QFile demoNote(mdPath);
+            demoNote.setPermissions(QFile::ReadOwner|QFile::WriteOwner|
+                                    QFile::ReadUser|QFile::WriteUser|
+                                    QFile::ReadGroup|QFile::WriteGroup|
+                                    QFile::ReadOther|QFile::WriteOther);
+
             QString imagePath = notePath + "Images/";
             QDir().mkpath(imagePath);
             QFile::copy(QStringLiteral(":/logo.png"), imagePath.append("logo.png"));
