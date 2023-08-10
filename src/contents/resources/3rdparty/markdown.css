@@ -9,141 +9,9 @@
 }
 
 /*  https://github.com/jasonm23/markdown-css-themes/tree/gh-pages*/
-/* avenir-white.css (OKAY)
-body {
-    font-family: var(--font), sans-serif;
-    padding: 1em;
-    margin: auto;
-    max-width: 42em;
-    background: var(--bodyColor);
-    color: var(--textColor);
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-}
-
-h1 {
-    color: var(--titleColor);
-    font-size: 28pt;
-}
-
-h2 {
-    border-bottom: 1px solid var(--titleColor);
-    color: var(--titleColor);
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 18px;
-}
-
-h4 {
-    font-size: 16px;
-}
-
-h5 {
-    font-size: 14px;
-}
-
-h6 {
-    color: var(--titleColor);
-    background-color: inherit;
-    font-size: 14px;
-    filter: brightness(130%);
-}
-
-hr {
-    height: 0.2em;
-    border: 0;
-    color: var(--titleColor);
-    background-color: var(--titleColor);
-    filter: brightness(130%);
-}
-
-p, ul, ol, dl, li, table, pre {
-    margin: 15px 0;
-}
-
-img {
-    max-width: 100%;
-}
-
-table {
-    padding: 0;border-collapse: collapse;
-}
-
-table tr {
-    border-top: 1px solid var(--textColor);
-    margin: 0;
-    padding: 0;
-    color: var(--textColor)
-    filter: brightness(130%);
-    background-color: var(--codeColor);
-}
-
-table tr:nth-child(2n) {
-    background-color: var(--codeColor);
-    filter: brightness(90%);
-}
-
-table tr th {
-    font-weight: bold;
-    border: 1px solid var(--textColor);
-    margin: 0;
-    padding: 6px 13px;
-    filter: brightness(130%);
-}
-
-table tr td {
-    border: 1px solid var(--textColor);
-    margin: 0;
-    padding: 6px 13px;
-    filter: brightness(130%);
-}
-
-a {
-    color: var(--linkColor);
-    background-color: inherit;
-    text-decoration: none;
-}
-
-a:visited {
-    color: var(--visitedLinkColor);
-}
 
 
-code, pre {
-    font-family: monospace;
-    font-size: 10pt;
-    border-radius: 3px;
-    background-color: var(--codeColor);
-    color: inherit;
-}
-
-code {
-    border: 1px solid var(--codeColor);
-    margin: 0 2px;
-    padding: 0 5px;
-}
-
-pre {
-    border: 1px solid var(--codeColor);
-    overflow: auto;
-    padding: 4px 8px;
-}
-
-pre > code {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-*/
-
-
-
-/* md7.css (OKAY) DEFAULT ??
+/* md7.css
 body {
     font-family: var(--font), sans-serif;
     font-size: 14px;
@@ -533,11 +401,7 @@ sup {
     line-height: 0;
 }*/
 
-
-
-
-
-/* md9.css (OKAY) => blockquote GOOD
+/* md9.css
 h1, h2, h3, h4, h5, h6, p, blockquote {
     margin: 0;
     padding: 0;
@@ -641,6 +505,7 @@ blockquote:before {
     color: var(--titleColor);
     filter: brightness(130%);
 }
+
 blockquote p {
     font-size: 14px;
     font-weight: 300;
@@ -690,4 +555,358 @@ sup {
 */
 
 
+/* avenir-white.css
+body {
+    font-family: var(--font), sans-serif;
+    padding: 1em;
+    margin: auto;
+    max-width: 42em;
+    background: var(--bodyColor);
+    color: var(--textColor);
+}
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--titleColor);
+    font-size: 28pt;
+}
+
+h2 {
+    border-bottom: 1px solid var(--titleColor);
+    color: var(--titleColor);
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    color: var(--titleColor);
+    background-color: inherit;
+    font-size: 14px;
+    filter: brightness(130%);
+}
+
+hr {
+    height: 0.2em;
+    border: 0;
+    color: var(--titleColor);
+    background-color: var(--titleColor);
+    filter: brightness(130%);
+}
+
+p, ul, ol, dl, li, table, pre {
+    margin: 15px 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    padding: 0;
+    border-collapse: collapse;
+}
+
+table tr {
+    border-top: 1px solid var(--textColor);
+    margin: 0;
+    padding: 0;
+    color: var(--textColor)
+    filter: brightness(130%);
+    background-color: var(--codeColor);
+}
+
+table tr:nth-child(2n) {
+    background-color: var(--codeColor);
+    filter: brightness(90%);
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--textColor);
+    margin: 0;
+    padding: 6px 13px;
+    filter: brightness(130%);
+}
+
+table tr td {
+    border: 1px solid var(--textColor);
+    margin: 0;
+    padding: 6px 13px;
+    filter: brightness(130%);
+}
+
+a {
+    color: var(--linkColor);
+    background-color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--visitedLinkColor);
+}
+
+
+code, pre {
+    font-family: monospace;
+    font-size: 10pt;
+    border-radius: 3px;
+    background-color: var(--codeColor);
+    color: inherit;
+}
+
+code {
+    border: 1px solid var(--codeColor);
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+pre {
+    border: 1px solid var(--codeColor);
+    overflow: auto;
+    padding: 4px 8px;
+}
+
+pre > code {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+*/
+
+/* DEFAULT*/
+body {
+    font-family: var(--font), sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--bodyColor);
+    padding: 30px;
+    color: var(--textColor);
+}
+
+a {
+    color: var(--linkColor);
+}
+
+a:visited {
+    color: var(--visitedLinkColor);
+}
+
+a.absent {
+    color: #cc0000;
+}
+
+a.anchor {
+    display: block;
+    padding-left: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: var(--titleColor);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 36px;
+}
+
+h1 {
+    font-size: 28pt;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 13px;
+}
+
+p, ul, ol, dl, li, table, pre {
+    margin: 15px 0;
+}
+
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(90deg, transparent, transparent 50%, var(--bodyColor) 50%, var(--bodyColor) 100%), linear-gradient(90deg, var(--bodyColor), var(--linkColor), var(--linkColor), var(--linkColor), var(--bodyColor));
+    background-size: 10px 2px, 100% 2px;
+    border: none;
+}
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+li {
+    margin: 0;
+}
+
+ul, ol {
+    padding-left: 30px;
+}
+
+ul :first-child, ol :first-child {
+    margin-top: 0;
+}
+
+blockquote {
+    margin: 0;
+    padding: 0 15px;
+    margin-bottom: 18px;
+    border-left: 1px dashed;
+    border-image: linear-gradient(var(--bodyColor), var(--linkColor)) 20;
+    font-family: serif;
+    font-style: italic;
+}
+
+blockquote > :first-child {
+    margin-top: 0;
+}
+
+blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: 20px;
+    font-family: serif;
+    color: var(--titleColor);
+}
+
+blockquote p {
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+table {
+    padding: 0;
+    margin: 10px 0 15px 0;
+    border-collapse: collapse;
+    width: 100%
+}
+
+table tr {
+    border-top: 1px solid var(--textColor);
+    margin: 0;
+    padding: 0;
+    color: var(--textColor)
+    filter: brightness(130%);
+    background-color: var(--codeColor);
+}
+
+table tr:nth-child(2n) {
+    background-color: var(--codeColor);
+    filter: brightness(95%);
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--textColor);
+    margin: 0;
+    padding: 6px 13px;
+    filter: brightness(130%);
+}
+
+table tr td {
+    border: 1px solid var(--textColor);
+    margin: 0;
+    padding: 6px 13px;
+    filter: brightness(130%);
+}
+
+img {
+    max-width: 100%;
+}
+
+code {
+    margin: 0 2px;
+    padding: 1px 3px;
+    white-space: nowrap;
+    border: 1px solid var(--titleColor);
+    background-color: var(--codeColor);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    filter: brightness(80%);
+    font-size: 14px;
+}
+
+pre code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+    font-family: monospace;
+}
+
+pre {
+    background-color: var(--codeColor);
+    border: 2px solid var(--linkColor);
+    border-radius: 10px;
+    filter: brightness(80%);
+    display: block;
+    padding: 10px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+pre code {
+    background-color: transparent;
+    border: none;
+}
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
