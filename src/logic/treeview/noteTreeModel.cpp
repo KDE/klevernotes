@@ -256,8 +256,9 @@ void NoteTreeModel::initModel()
             }
         }
         const bool initDemoNote = makeNote(basePath, "Demo");
-        if (!initDemoNote) emit errorOccurred(i18n("An error occurred while trying to create the demo note."));
-        else {
+        if (!initDemoNote) {
+            emit errorOccurred(i18n("An error occurred while trying to create the demo note."));
+        } else {
             const QString notePath = basePath.append("/Demo/");
 
             QString mdPath = notePath + "note.md";
