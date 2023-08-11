@@ -37,3 +37,15 @@ void DocumentHandler::writeNote(const QString &note, const QString &path)
     }
     file.close();
 }
+
+QString DocumentHandler::getCssStyle(const QString& path) const
+{
+    QString style;
+    if (QFile::exists(path)){
+        style = readNote(path);
+    } else {
+        style = readNote(QStringLiteral(":/KleverStyle.css"));
+    }
+
+    return style;
+}

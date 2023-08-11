@@ -14,4 +14,6 @@ public:
 
     Q_INVOKABLE QString readNote(const QString &path) const;
     Q_INVOKABLE void writeNote(const QString &note, const QString &path);
+    Q_INVOKABLE QString getCssStyle(const QString &path) const;
+
 };

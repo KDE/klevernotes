@@ -62,7 +62,6 @@ RowLayout {
 
             onLoadProgressChanged: if (loadProgress === 100) {
                 loadStyle()
-                changeStyle()
             }
 
             QtMdEditor.QmlLinker{
@@ -134,8 +133,9 @@ RowLayout {
     }
 
     function loadStyle() {
-        let current = DocumentHandler.readNote(":/KleverStyle.css")
+        let current = DocumentHandler.getCssStyle(":/KleverStyle.css")
         cssStyleLink.cssStyle = current
+        changeStyle()
     }
 
     function changeStyle() {
