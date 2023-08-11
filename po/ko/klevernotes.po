@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-25 00:53+0000\n"
+"POT-Creation-Date: 2023-08-11 00:46+0000\n"
 "PO-Revision-Date: 2023-08-06 23:18+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -416,37 +416,43 @@ msgstr "머리글"
 msgid "Clear checked"
 msgstr "선택 항목 지우기"
 
-#: logic/treeview/noteTreeModel.cpp:364
+#: logic/treeview/noteTreeModel.cpp:260
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to create the note."
+msgid "An error occurred while trying to create the demo note."
+msgstr "메모를 생성하는 중 오류가 발생했습니다."
+
+#: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "이 항목을 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:393
+#: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "이 항목을 삭제하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:415
+#: logic/treeview/noteTreeModel.cpp:437
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "이 항목의 이름을 변경하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:455
+#: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "메모를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:487
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "그룹을 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:474
+#: logic/treeview/noteTreeModel.cpp:496
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "분류를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:481
+#: logic/treeview/noteTreeModel.cpp:503
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
