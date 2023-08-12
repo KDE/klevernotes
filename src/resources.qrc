@@ -60,6 +60,6 @@
         <file alias="Style9.css">contents/resources/style/Style9.css</file>
 
         <file alias="demo_note.md">example/Demo/note.md</file>
-        <file alias="logo.png">example/Demo/logo.png</file>
+        <file alias="Images/logo.png">example/Demo/Images/logo.png</file>
     </qresource>
 </RCC>

@@ -823,7 +823,7 @@ InlineLexer.prototype.outputLink = function(cap, link) {
   // ======
   if (href.startsWith("./")) href = globalNotePath + href.substring(1);
   if (href.startsWith("~")) href = globalHomePath + href.substring(1);
-  if (!(href.startsWith("http") || href.startsWith("//"))) href = "file:" + href;
+  if (!(href.startsWith("http") || href.startsWith("//") || href.startsWith("qrc:"))) href = "file:" + href;
   // ======
 
     return cap[0].charAt(0) !== '!'

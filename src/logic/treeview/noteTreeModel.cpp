@@ -273,7 +273,7 @@ void NoteTreeModel::initModel()
 
             QString imagePath = notePath + "Images/";
             QDir().mkpath(imagePath);
-            QFile::copy(QStringLiteral(":/logo.png"), imagePath.append("logo.png"));
+            QFile::copy(QStringLiteral(":/Images/logo.png"), imagePath.append("logo.png"));
         }
     }
 
