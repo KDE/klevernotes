@@ -12,7 +12,7 @@ DocumentHandler::DocumentHandler(QObject *parent)
 {
 }
 
-QString DocumentHandler::readNote(const QString &path) const
+QString DocumentHandler::readFile(const QString &path) const
 {
     QFile file(path);
 
@@ -28,7 +28,7 @@ QString DocumentHandler::readNote(const QString &path) const
     return line;
 }
 
-void DocumentHandler::writeNote(const QString &note, const QString &path)
+void DocumentHandler::writeFile(const QString &note, const QString &path)
 {
     QFile file(path);
     if (file.open(QIODevice::WriteOnly)) {
@@ -42,9 +42,9 @@ QString DocumentHandler::getCssStyle(const QString& path) const
 {
     QString style;
     if (QFile::exists(path)){
-        style = readNote(path);
+        style = readFile(path);
     } else {
-        style = readNote(QStringLiteral(":/KleverStyle.css"));
+        style = readFile(QStringLiteral(":/KleverStyle.css"));
     }
 
     return style;

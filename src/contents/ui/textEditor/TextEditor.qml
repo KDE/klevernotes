@@ -16,7 +16,7 @@ ScrollView {
 
     onPathChanged: {
         textArea.tempBuff = true ;
-        textArea.text = DocumentHandler.readNote(path) ;
+        textArea.text = DocumentHandler.readFile(path) ;
         modified = false ;
         textArea.tempBuff = false
     }
@@ -41,7 +41,7 @@ ScrollView {
 
     function saveNote (text, path) {
         if (modified) {
-            DocumentHandler.writeNote(text, path)
+            DocumentHandler.writeFile(text, path)
             modified = false
         }
     }
