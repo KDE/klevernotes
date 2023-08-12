@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
+#include <QJsonObject>
 #include <QObject>
 #include <QUrl>
 
@@ -19,6 +20,7 @@ public:
     Q_INVOKABLE QString getParentPath(const QString &path);
     Q_INVOKABLE QString getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration = 0);
     Q_INVOKABLE bool remove(const QString &path);
+    Q_INVOKABLE QJsonObject getCssStylesList();
     static bool create(const QString &path);
     static bool exists(const QString &path);
 };
