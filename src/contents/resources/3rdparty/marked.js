@@ -942,8 +942,11 @@ Renderer.prototype.list = function(body, ordered, start) {
   return '<' + type + startatt + '>\n' + body + '</' + type + '>\n';
 };
 
-Renderer.prototype.listitem = function(text) {
-  return '<li>' + text + '</li>\n';
+Renderer.prototype.listitem = function(text, hasCheck) {
+  const out = hasCheck
+    ? '<li class="hasCheck"> <label class="form-control">\n' + text + '</label></li>\n'
+    : '<li>' + text + '</li>\n'
+  return out;
 };
 
 Renderer.prototype.checkbox = function(checked) {
@@ -1225,7 +1228,9 @@ Parser.prototype.tok = function() {
     case 'list_item_start': {
       body = '';
 
+      let hasTask = false;
       if (this.token.task) {
+        hasTask = true;
         body += this.renderer.checkbox(this.token.checked);
       }
 
@@ -1235,7 +1240,7 @@ Parser.prototype.tok = function() {
           : this.tok();
       }
 
-      return this.renderer.listitem(body);
+      return this.renderer.listitem(body, hasTask);
     }
     case 'loose_item_start': {
       body = '';

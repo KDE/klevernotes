@@ -12,10 +12,8 @@ body {
     font-family: var(--font), sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: var(--bodyColor);
-    padding: 30px;
+    padding: 10px;
     color: var(--textColor);
 }
 
@@ -110,6 +108,55 @@ ul, ol {
 
 ul :first-child, ol :first-child {
     margin-top: 0;
+}
+
+li::marker {
+    color: var(--linkColor);
+}
+
+/* For custom checkbox
+ *thanks to https://moderncss.dev/pure-css-custom-checkbox-style/
+ */
+.hasCheck {
+    list-style-type: none;
+    margin: 0.5em;
+    margin-left: -20px;
+}
+
+.form-control {
+    line-height: 1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+input[type="checkbox"]:disabled {
+    /* Remove most all native input styles */
+    appearance: none;
+    /* Not removed via appearance */
+    margin: 0;
+
+    font: inherit;
+
+    color: var(--linkColor);
+    border: 0.15em solid var(--linkColor);
+    border-radius: 0.15em;
+    cursor: not-allowed;
+
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    transform: scale(0);
+    background-color: var(--linkColor);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }
 
 blockquote {
