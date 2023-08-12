@@ -59,5 +59,9 @@
             <label>The default text view code color (if note specified default to system theme)</label>
             <default>None</default>
         </entry>
+        <entry name="stylePath" type="Path">
+            <label>Path to the note display css style</label>
+            <default>:/KleverStyle.css</default>
+        </entry>
     </group>
 </kcfg>

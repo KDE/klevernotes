@@ -18,6 +18,7 @@ RowLayout {
 
     required property string path
     required property string text
+    readonly property string stylePath: Config.stylePath
 
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
@@ -32,6 +33,7 @@ RowLayout {
     spacing:0
 
     onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle()
+    onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
@@ -133,7 +135,7 @@ RowLayout {
     }
 
     function loadStyle() {
-        let current = DocumentHandler.getCssStyle(":/KleverStyle.css")
+        let current = DocumentHandler.getCssStyle(stylePath)
         cssStyleLink.cssStyle = current
         changeStyle()
     }
