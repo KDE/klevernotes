@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-11 00:46+0000\n"
-"PO-Revision-Date: 2023-06-13 09:09+0300\n"
+"PO-Revision-Date: 2023-08-11 09:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -419,10 +419,9 @@ msgid "Clear checked"
 msgstr "Спорожнити позначені"
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Сталася помилка під час створення нотатки."
+msgstr "Сталася помилка під час створення демонстраційної нотатки."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format

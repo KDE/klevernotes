@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-11 00:46+0000\n"
-"PO-Revision-Date: 2023-06-13 10:43+0200\n"
+"PO-Revision-Date: 2023-08-11 09:36+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -420,10 +420,9 @@ msgid "Clear checked"
 msgstr "Neteja el marcat"
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "S'ha produït un error en intentar crear la nota."
+msgstr "S'ha produït un error en intentar crear la nota de mostra."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format

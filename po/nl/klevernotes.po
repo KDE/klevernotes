@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-11 00:46+0000\n"
-"PO-Revision-Date: 2023-06-13 10:29+0200\n"
+"PO-Revision-Date: 2023-08-11 14:03+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -419,10 +419,9 @@ msgid "Clear checked"
 msgstr "Wissen geactiveerd"
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Er is een fout opgetreden bij de poging deze notitie aan te maken."
+msgstr "Er is een fout opgetreden bij de poging de demo-notitie aan te maken."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
