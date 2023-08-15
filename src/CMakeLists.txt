@@ -72,6 +72,11 @@ set(exec_SRCS
     logic/painting/strokelistitem.cpp
     logic/painting/strokepainter.cpp
 
+    logic/parser/blockLexer.cpp
+    logic/parser/inlineLexer.cpp
+    logic/parser/parser.cpp
+    logic/parser/renderer.cpp
+
     logic/treeview/noteTreeModel.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc
