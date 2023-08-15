@@ -62,7 +62,6 @@ set(exec_SRCS
     logic/kleverUtility.cpp
     logic/todoHandler.cpp
     logic/mdHandler.cpp
-    logic/qmlLinker.cpp
     logic/view.cpp
 
     logic/painting/pointMaker.cpp

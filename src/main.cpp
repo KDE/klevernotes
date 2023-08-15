@@ -23,7 +23,6 @@
 #include "logic/documentHandler.h"
 #include "logic/kleverUtility.h"
 #include "logic/mdHandler.h"
-#include "logic/qmlLinker.h"
 #include "logic/todoHandler.h"
 #include "logic/colorschemer.h"
 
@@ -90,8 +89,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::viewCodeColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
-
-    qmlRegisterType<QmlLinker>("qtMdEditor", 1, 0, "QmlLinker");
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
