@@ -2,9 +2,13 @@
 
 #include <QRegularExpression>
 
+class Parser;
+
 class InlineLexer
 {
 public:
+    InlineLexer(Parser *parser);
+
 private:
     QRegularExpression inline_escape = QRegularExpression("^\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\]\\\\^_`{|}~~|])");
 
@@ -47,4 +51,6 @@ private:
         QRegularExpression("^[\\s\\S]+?(?=[\\\\<!\\[`*~]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)");
 
     QRegularExpression inline_backPedal = QRegularExpression("(?:[^?!.,:;*_~()&]+|\\([^)]*\\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+");
+
+    Parser *m_parser;
 };

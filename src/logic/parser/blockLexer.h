@@ -3,9 +3,13 @@
 #include <QRegularExpression>
 #include <QString>
 
+class Parser;
+
 class BlockLexer
 {
 public:
+    BlockLexer(Parser *parser);
+
 private:
     QMap<QString, QRegularExpression> preprocessRegex{{"\n", QRegularExpression("\r\n|\r|\u2424")},
                                                       {"    ", QRegularExpression("\t")},
@@ -71,4 +75,6 @@ private:
         "summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: +|\\n|\\/?>)|<(?:script|pre|style|!--))[^\\n]+)*)");
 
     QRegularExpression block_text = QRegularExpression("^[^\n]+");
+
+    Parser *m_parser;
 };
