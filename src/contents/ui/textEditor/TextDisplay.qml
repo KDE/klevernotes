@@ -24,6 +24,12 @@ RowLayout {
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
+    onPathChanged:  MDParser.notePath = path;
+    onTextChanged: {
+        text = text.length > 0 ? text : "\n"
+        editorLink.text = MDParser.parse(text)
+    }
+
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
@@ -68,7 +74,7 @@ RowLayout {
             backgroundColor: "transparent"
 
             webChannel: WebChannel{
-                registeredObjects: [editorLink, cssVarLink, cssStyleLink, homePathPasser, notePathPasser]
+                registeredObjects: [editorLink, cssLink]
             }
 
             onPdfPrintingFinished: {
@@ -92,7 +98,6 @@ RowLayout {
 
             QtMdEditor.QmlLinker{
                 id: editorLink
-                text: root.text.length > 0 ? root.text : "\n"
                 WebChannel.id: "linkToEditor"
             }
 

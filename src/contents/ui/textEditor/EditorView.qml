@@ -84,6 +84,8 @@ GridLayout{
 
                 path: root.path
 
+                onTextChanged: display.text = text //Workaround
+
                 Layout.fillWidth:true
                 Layout.fillHeight:true
                 Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height/2
@@ -95,7 +97,7 @@ GridLayout{
 
                 visible: viewToggler.checked
 
-                text: editor.text
+                text: editor.text //Doesn't update ?!
                 path: root.path.replace("note.md", "")
 
                 Layout.fillWidth:true

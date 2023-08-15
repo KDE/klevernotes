@@ -36,6 +36,8 @@
 #include "logic/painting/strokeitem.h"
 #include "logic/painting/strokelistitem.h"
 
+#include "logic/parser/parser.h"
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -114,6 +116,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
+
+    Parser parser;
+    qmlRegisterSingletonInstance<Parser>("org.kde.Klever", 1, 0, "MDParser", &parser);
 
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 

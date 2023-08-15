@@ -7,71 +7,36 @@
     <style></style>
 </head>
 <body>
-  <div id="placeholder" ></div>
-  <script>
-  'use strict';
+    <div id="placeholder" ></div>
+    <script>
 
-  const placeholder = document.getElementById('placeholder');
+        const placeholder = document.getElementById('placeholder');
 
-  var homePath;
-  let updateHomePath = function(path) {
-      homePath = path;
-      updateRender();
-  }
-
-  var notePath;
-  let updateNotePath = function(path) {
-      notePath = path;
-      updateRender();
-  }
-
-  var mdText;
-  let updateText = function(text) {
-      mdText = text;
-      updateRender();
-  }
-
-  let updateRender = function() {
-      if (mdText && notePath && homePath) {
-          placeholder.innerHTML = marked(mdText, false, false, homePath, notePath);
-      }
-  }
-
-    let updateCssVar = function(css) {
-        const cssVarsHolder = document.querySelector(':root');
-
-        for (const [cssVar, value] of Object.entries(css)) {
-          cssVarsHolder.style.setProperty(cssVar, value);
+        var mdText;
+        let updateText = function(text) {
+            mdText = text;
+            placeholder.innerHTML = text;
         }
-    }
 
-    let updateCssStyle = function(css) {
-        const style =  document.getElementsByTagName("style")[0];
-        style.innerHTML = css
-    }
+        let updateCss = function(css) {
+            const cssVarsHolder = document.querySelector(':root');
 
-    new QWebChannel(qt.webChannelTransport,
-        function(channel) {
-            let linkToEditor = channel.objects.linkToEditor;
-            linkToEditor.textChanged.connect(updateText);
-            updateText(linkToEditor.text);
-
-            let linkToCssVar = channel.objects.linkToCssVar;
-            linkToCssVar.cssVarChanged.connect(updateCssVar);
-
-            let linkToCssStyle = channel.objects.linkToCssStyle;
-            linkToCssStyle.cssStyleChanged.connect(updateCssStyle);
-
-            let homePathPasser = channel.objects.homePathPasser;
-            homePathPasser.homePathChanged.connect(updateHomePath);
-            updateHomePath(homePathPasser.homePath);
-
-            let notePathPasser = channel.objects.notePathPasser;
-            notePathPasser.notePathChanged.connect(updateNotePath);
-            updateNotePath(notePathPasser.notePath);
+            for (const [cssVar, value] of Object.entries(css)) {
+                cssVarsHolder.style.setProperty(cssVar, value);
+            }
         }
-    );
-  </script>
+
+        new QWebChannel(qt.webChannelTransport,
+            function(channel) {
+                let linkToEditor = channel.objects.linkToEditor;
+                linkToEditor.textChanged.connect(updateText);
+                updateText(linkToEditor.text);
+
+                let linkToCss = channel.objects.linkToCss;
+                linkToCss.cssChanged.connect(updateCss);
+            }
+        );
+    </script>
 </body>
 </html>
 
