@@ -141,7 +141,8 @@ RowLayout {
         let newCssVar = ""
         let noBg
         let style = root.cssStyle
-        for (const [cssVar, value] of Object.entries(defaultCSS)) {
+
+        for (const [cssVar, value] of Object.entries(styleDict)) {
             noBg = cssVar === "--bodyColor" && !root.printBackground
 
             varStartIndex = style.indexOf(cssVar)
