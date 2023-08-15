@@ -16,20 +16,15 @@ import org.kde.Klever 1.0
 RowLayout {
     id: root
 
-    property bool printBackground: true
-
     required property string path
     required property string text
 
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
-    onPathChanged:  MDParser.notePath = path;
-    onTextChanged: {
-        text = text.length > 0 ? text : "\n"
-        editorLink.text = MDParser.parse(text)
-    }
-
+    property string parsedHtml
+    property string cssStyle
+    property string completCss
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
@@ -39,14 +34,21 @@ RowLayout {
         '--visitedLinkColor': Config.viewVisitedLinkColor !== "None" ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
         '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
     }
+    property bool printBackground: true
 
     spacing: 0
 
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle("default")
-    onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
-
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
+
+    onPathChanged:  MDParser.notePath = path;
+    onTextChanged: {
+        text = text.length > 0 ? text : "\n"
+        parsedHtml = MDParser.parse(text)
+        updateHtml()
+    }
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle({})
+    onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
 
     Kirigami.Card{
         id: background
@@ -69,13 +71,8 @@ RowLayout {
             height: background.height - 4
             x: 2
             y: 2
-            url: "file:/"
             focus: true
             backgroundColor: "transparent"
-
-            webChannel: WebChannel{
-                registeredObjects: [editorLink, cssLink]
-            }
 
             onPdfPrintingFinished: {
                 const printingPage = applicationWindow().pageStack.currentItem
@@ -94,36 +91,6 @@ RowLayout {
                     Qt.openUrlExternally(request.url)
                     request.action = WebEngineNavigationRequest.IgnoreRequest
                 }
-            }
-
-            QtMdEditor.QmlLinker{
-                id: editorLink
-                WebChannel.id: "linkToEditor"
-            }
-
-            QtMdEditor.QmlLinker{
-                id: cssVarLink
-
-                cssVar: {"key":"value"}
-                WebChannel.id: "linkToCssVar"
-            }
-
-            QtMdEditor.QmlLinker{
-                id: cssStyleLink
-
-                WebChannel.id: "linkToCssStyle"
-            }
-
-            QtMdEditor.QmlLinker{
-                id: homePathPasser
-                homePath: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].toString().substring("file://".length)
-                WebChannel.id: "homePathPasser"
-            }
-
-            QtMdEditor.QmlLinker{
-                id: notePathPasser
-                notePath: root.path
-                WebChannel.id: "notePathPasser"
             }
 
             Component.onCompleted: {
@@ -153,22 +120,50 @@ RowLayout {
         Layout.fillHeight: true
     }
 
-    function loadStyle() {
-        cssStyleLink.cssStyle = DocumentHandler.getCssStyle(stylePath)
-        changeStyle("default")
+    function updateHtml() {
+        let defaultHtml = DocumentHandler.readNote(":/index.html")
+
+        let customHtml = '<style>\n'
+            + root.completCss
+            + '</style>\n'
+            + parsedHtml
+
+        const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
+
+        web_view.loadHtml(finishedHtml, "file:/")
     }
 
-    function changeStyle(style) {
-        let currentColors = {}
-        const copiedDict = style === "default" ? defaultCSS : style
+    function changeStyle(styleDict: Object) {
+        const emptyDict = Object.keys(styleDict).length === 0;
+        const styleDict = emptyDict ? defaultCSS : style
 
-        for (var key in copiedDict) {
-            currentColors[key] = copiedDict[key];
+        let varStartIndex
+        let varEndIndex
+        let newCssVar = ""
+        let noBg
+        let style = root.cssStyle
+        for (const [cssVar, value] of Object.entries(defaultCSS)) {
+            noBg = cssVar === "--bodyColor" && !root.printBackground
+
+            varStartIndex = style.indexOf(cssVar)
+            if (-1 < varStartIndex) {
+                varEndIndex = style.indexOf(";", varStartIndex)
+
+                newCssVar = noBg
+                    ? cssVar + ": " + "undefined" + ";\n"
+                    : cssVar + ": " + value + ";\n"
+
+                style = style.substring(0, varStartIndex) + newCssVar + style.substring(varEndIndex)
+            }
         }
 
-        if (!root.printBackground) currentColors["--bodyColor"] = "undefined"
+        root.completCss = style
+        updateHtml()
+    }
 
-        cssVarLink.cssVar = currentColors
+    function loadStyle() {
+        root.cssStyle = DocumentHandler.getCssStyle(stylePath)
+        changeStyle({})
     }
 
     function makePdf() {
