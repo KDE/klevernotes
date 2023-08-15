@@ -58,7 +58,7 @@ QString Parser::tok()
 
         outputed = inlineLexer.output(text);
         QString outputedText = inlineLexer.output(text, true);
-        QString unescaped = Renderer::unescape(outputedText);
+        QString unescaped = Renderer::unescape(outputed);
 
         return Renderer::heading(outputed, m_token["depth"].toInt(), unescaped);
     }
