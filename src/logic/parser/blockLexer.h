@@ -10,7 +10,13 @@ class BlockLexer
 public:
     BlockLexer(Parser *parser);
 
+    void lex(QString &src);
+
 private:
+    QString preprocess(QString &src);
+    void tokenize(QString &src, bool top);
+    QStringList splitCells(QString &tableRow, int count = -1);
+
     QMap<QString, QRegularExpression> preprocessRegex{{"\n", QRegularExpression("\r\n|\r|\u2424")},
                                                       {"    ", QRegularExpression("\t")},
                                                       {" ", QRegularExpression("\u00a0")},
