@@ -114,13 +114,13 @@ RowLayout {
             }
         }
 
-        Layout.row:0
-        Layout.column:1
+        Layout.row :0
+        Layout.column: 1
         Layout.fillHeight: true
     }
 
     function updateHtml() {
-        let defaultHtml = DocumentHandler.readNote(":/index.html")
+        let defaultHtml = DocumentHandler.readFile(":/index.html")
 
         let customHtml = '<style>\n'
             + root.completCss
