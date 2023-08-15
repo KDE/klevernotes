@@ -2,20 +2,11 @@
 
 #include <QRegularExpression>
 
-class Parser;
-
 class InlineLexer
 {
 public:
-    explicit InlineLexer(Parser *parser);
-
-    QString output(QString &src, bool useInlineText = false);
-
 private:
-    QString mangle(const QString &text);
-    QString escapes(QString &text);
-    QString outputLink(QRegularExpressionMatch &cap, QMap<QString, QString> linkInfo, bool useInlineText);
-
+>>>>>>> fc77b2a (Adding block and inline regex)
     QRegularExpression inline_escape = QRegularExpression("^\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\]\\\\^_`{|}~~|])");
 
     QRegularExpression inline_autolink = QRegularExpression(
@@ -57,7 +48,4 @@ private:
         QRegularExpression("^[\\s\\S]+?(?=[\\\\<!\\[`*~]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)");
 
     QRegularExpression inline_backPedal = QRegularExpression("(?:[^?!.,:;*_~()&]+|\\([^)]*\\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+");
-
-    bool m_inLink = false;
-    Parser *m_parser;
 };
