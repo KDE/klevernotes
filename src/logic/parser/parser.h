@@ -18,7 +18,7 @@ public:
     QString getNotePath();
     void setNotePath(const QString &notePath);
 
-    QVector<QVariantMap> tokens;
+    QVector<QVariantHash> tokens;
     QMap<QString, QMap<QString, QString>> links;
 
 private:
@@ -31,5 +31,5 @@ private:
     InlineLexer inlineLexer = InlineLexer(this);
 
     QString m_notePath;
-    QVariantMap m_token;
+    QVariantHash m_token;
 };
