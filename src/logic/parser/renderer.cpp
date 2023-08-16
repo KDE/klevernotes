@@ -165,23 +165,17 @@ QString Renderer::unescape(const QString &html)
 
         if (entity == "colon") {
             result.replace(match.capturedStart(), match.capturedLength(), ":");
-        } else if (entity.startsWith("#")) {
-            if (entity.at(1) == 'x') {
-                bool ok;
-                int code = entity.mid(2).toInt(&ok, 16);
-                if (ok) {
-                    result.replace(match.capturedStart(), match.capturedLength(), QChar(code));
-                }
-            } else {
-                bool ok;
-                int code = entity.mid(1).toInt(&ok);
-                if (ok) {
-                    result.replace(match.capturedStart(), match.capturedLength(), QChar(code));
-                }
-            }
-        } else {
-            result.replace(match.capturedStart(), match.capturedLength(), "");
+            continue;
         }
+        if (entity.startsWith("#")) {
+            bool ok;
+            // check for hexadecimal or numerical value
+            int code = (entity.at(1) == 'x') ? entity.mid(2).toInt(&ok, 16) : entity.mid(1).toInt(&ok);
+
+            result.replace(match.capturedStart(), match.capturedLength(), QChar(code));
+            continue;
+        }
+        result.replace(match.capturedStart(), match.capturedLength(), "");
     }
 
     return result;
