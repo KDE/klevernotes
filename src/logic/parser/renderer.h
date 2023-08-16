@@ -9,9 +9,9 @@ public:
     static QString code(QString &code, QString &lang);
     static QString blockquote(const QString &quote);
     static QString html(const QString &html);
-    static QString heading(QString &text, int lvl, const QString &raw);
+    static QString heading(const QString &text, int lvl, QString &raw);
     static QString hr();
-    static QString list(QString &body, bool ordered, const QString &start);
+    static QString list(const QString &body, bool ordered, const QString &start);
     static QString listItem(const QString &text);
     static QString checkbox(bool checked);
     static QString paragraph(const QString &text);
@@ -27,5 +27,5 @@ public:
     static QString image(const QString &href, const QString &title, const QString &text);
     static QString text(const QString &text);
     static QString escape(QString &html, bool encode);
-    static QString unescape(QString &html);
+    static QString unescape(const QString &html);
 };

@@ -23,7 +23,7 @@ QString Renderer::html(const QString &html)
     return html;
 }
 
-QString Renderer::heading(QString &text, int lvl, const QString &raw)
+QString Renderer::heading(const QString &text, int lvl, QString &raw)
 {
     return "<h" + QString::number(lvl) + QString::fromStdString(" id=\"") + raw.toLower().replace(QRegularExpression("[^\\w]+"), "-")
         + QString::fromStdString("\">") + text + "</h" + QString::number(lvl) + QString::fromStdString(">\n");
@@ -34,7 +34,7 @@ QString Renderer::hr()
     return "<hr>\n";
 }
 
-QString Renderer::list(QString &body, bool ordered, const QString &start)
+QString Renderer::list(const QString &body, bool ordered, const QString &start)
 {
     QString type = ordered ? "ol" : "ul";
     QString startatt = (ordered && start != 1) ? (QString::fromStdString(" start=\"") + start + QString::fromStdString("\"")) : "";
@@ -152,7 +152,7 @@ QString Renderer::escape(QString &html, bool encode)
         .replace(QRegularExpression("'"), "&#39;");
 }
 
-QString Renderer::unescape(QString &html)
+QString Renderer::unescape(const QString &html)
 {
     // explicitly match decimal, hex, and named HTML entities
     QString result = html;
