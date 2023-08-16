@@ -7,12 +7,12 @@ class Parser;
 class InlineLexer
 {
 public:
-    InlineLexer(Parser *parser);
+    explicit InlineLexer(Parser *parser);
 
     QString output(QString &src, bool useInlineText = false);
 
 private:
-    QString mangle(QString &text);
+    QString mangle(const QString &text);
     QString escapes(QString &text);
     QString outputLink(QRegularExpressionMatch &cap, QMap<QString, QString> linkInfo, bool useInlineText);
 

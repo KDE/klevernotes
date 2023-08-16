@@ -250,7 +250,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
     return out;
 };
 
-QString InlineLexer::mangle(QString &text)
+QString InlineLexer::mangle(const QString &text)
 {
     QString out = "";
     int l = text.length();

@@ -13,17 +13,17 @@ QString Renderer::code(QString &code, QString &lang)
         + QString::fromStdString("</code></pre>\n");
 }
 
-QString Renderer::blockquote(QString &quote)
+QString Renderer::blockquote(const QString &quote)
 {
     return QString::fromStdString("<blockquote>\n") + quote + QString::fromStdString("</blockquote>\n");
 }
 
-QString Renderer::html(QString &html)
+QString Renderer::html(const QString &html)
 {
     return html;
 }
 
-QString Renderer::heading(QString &text, int lvl, QString &raw)
+QString Renderer::heading(QString &text, int lvl, const QString &raw)
 {
     return "<h" + QString::number(lvl) + QString::fromStdString(" id=\"") + raw.toLower().replace(QRegularExpression("[^\\w]+"), "-")
         + QString::fromStdString("\">") + text + "</h" + QString::number(lvl) + QString::fromStdString(">\n");
@@ -34,7 +34,7 @@ QString Renderer::hr()
     return "<hr>\n";
 }
 
-QString Renderer::list(QString &body, bool ordered, QString &start)
+QString Renderer::list(QString &body, bool ordered, const QString &start)
 {
     QString type = ordered ? "ol" : "ul";
     QString startatt = (ordered && start != 1) ? (QString::fromStdString(" start=\"") + start + QString::fromStdString("\"")) : "";
@@ -42,7 +42,7 @@ QString Renderer::list(QString &body, bool ordered, QString &start)
     return "<" + type + startatt + QString::fromStdString(">\n") + body + "</" + type + QString::fromStdString(">\n");
 }
 
-QString Renderer::listItem(QString &text)
+QString Renderer::listItem(const QString &text)
 {
     return "<li>" + text + QString::fromStdString("</li>\n");
 }
@@ -54,12 +54,12 @@ QString Renderer::checkbox(bool checked)
     return "<input " + checkedString + QString::fromStdString("disabled=\"\" type=\"checkbox\"") + ">";
 }
 
-QString Renderer::paragraph(QString &text)
+QString Renderer::paragraph(const QString &text)
 {
     return "<p>" + text + QString::fromStdString("</p>\n");
 }
 
-QString Renderer::table(QString &header, QString &body)
+QString Renderer::table(const QString &header, QString &body)
 {
     if (!body.isEmpty())
         body = "<tbody>" + body + "</tbody>";
@@ -68,12 +68,12 @@ QString Renderer::table(QString &header, QString &body)
         + QString::fromStdString("</table>\n");
 }
 
-QString Renderer::tableRow(QString &content)
+QString Renderer::tableRow(const QString &content)
 {
     return QString::fromStdString("<tr>\n") + content + QString::fromStdString("</tr>\n");
 }
 
-QString Renderer::tableCell(QString &content, QVariantMap flags)
+QString Renderer::tableCell(const QString &content, const QVariantMap flags)
 {
     QString type = flags["header"].toBool() ? "th" : "td";
     QString align = flags["align"].toString();
@@ -84,17 +84,17 @@ QString Renderer::tableCell(QString &content, QVariantMap flags)
     return tag + content + "</" + type + QString::fromStdString(">\n");
 }
 
-QString Renderer::strong(QString &text)
+QString Renderer::strong(const QString &text)
 {
     return "<strong>" + text + "</strong>";
 }
 
-QString Renderer::em(QString &text)
+QString Renderer::em(const QString &text)
 {
     return "<em>" + text + "</em>";
 }
 
-QString Renderer::codeSpan(QString &text)
+QString Renderer::codeSpan(const QString &text)
 {
     return "<code>" + text + "</code>";
 }
@@ -104,12 +104,12 @@ QString Renderer::br()
     return "<br>";
 }
 
-QString Renderer::del(QString &text)
+QString Renderer::del(const QString &text)
 {
     return "<del>" + text + "</del>";
 }
 
-QString Renderer::link(QString &href, QString &title, QString &text)
+QString Renderer::link(QString &href, const QString &title, const QString &text)
 {
     QByteArray uri = QUrl::fromUserInput(href).toEncoded();
     if (uri.isEmpty())
@@ -126,7 +126,7 @@ QString Renderer::link(QString &href, QString &title, QString &text)
     return out;
 }
 
-QString Renderer::image(QString &href, QString &title, QString &text)
+QString Renderer::image(const QString &href, const QString &title, const QString &text)
 {
     QString out = QString::fromStdString("<img src=\"") + href + QString::fromStdString("\" alt=\"") + text + QString::fromStdString("\"");
     if (!title.isEmpty()) {
@@ -136,7 +136,7 @@ QString Renderer::image(QString &href, QString &title, QString &text)
     return out;
 }
 
-QString Renderer::text(QString &text)
+QString Renderer::text(const QString &text)
 {
     return text;
 }
