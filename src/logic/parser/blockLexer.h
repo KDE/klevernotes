@@ -8,7 +8,7 @@ class Parser;
 class BlockLexer
 {
 public:
-    BlockLexer(Parser *parser);
+    explicit BlockLexer(Parser *parser);
 
     void lex(QString &src);
 
