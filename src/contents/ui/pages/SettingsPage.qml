@@ -5,6 +5,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.3
 import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
@@ -26,7 +27,7 @@ Kirigami.ScrollablePage {
     }
 
     function updateColor(button, selectedColor) {
-         switch(button.parent.name) {
+         switch(button.name) {
             case "background":
                 Config.viewBodyColor = selectedColor
                 break;
@@ -53,6 +54,8 @@ Kirigami.ScrollablePage {
 
         subtitle: i18n("Please choose a location for your future KleverNotes storage or select an existing one.\n")
         firstSetup: false
+
+        onClosed: storageField.text = Config.storagePath
     }
 
     NamingDialog {
@@ -85,130 +88,171 @@ Kirigami.ScrollablePage {
         }
     }
     ColumnLayout {
-        anchors.fill: parent
-        Kirigami.FormLayout {
-            id: formLayout
+        spacing: 0
 
-            Kirigami.Separator {
-                Kirigami.FormData.label: i18n("General")
-                Kirigami.FormData.isSection: true
-            }
+        FormCard.FormHeader {
+            Layout.fillWidth: true
+            title: i18n("General")
+            visible: Qt.platform.os !== "android"
+        }
 
-            Row {
-                Kirigami.FormData.label: i18n("Storage path:")
+        FormCard.FormCard {
+            Layout.fillWidth: true
 
-                Controls.TextField {
-                    text: Config.storagePath
-                    readOnly: true
-                }
+            ColumnLayout {
+                RowLayout {
+                    id: storageDelegate
 
-                Controls.Button{
-                    text: i18n("Change storage path")
-                    onClicked: storageDialog.open()
-                }
-            }
+                    Layout.margins: 0
+                    Layout.rightMargin: Kirigami.Units.largeSpacing
+                    Layout.fillWidth: true
+                    FormCard.FormTextFieldDelegate {
+                        id: storageField
 
-            Item {
-                Kirigami.FormData.isSection: true
-            }
+                        text: Config.storagePath
+                        label: i18n("Storage path:")
 
-            Controls.TextField {
-                id: newCategoryField
+                        Layout.margins: 0
+                        Layout.fillWidth: true
+                        // workaround to make it readOnly
+                        onTextChanged: text = Config.storagePath
 
-                Kirigami.FormData.label: i18n("New Category name:")
-
-                readOnly: true
-                text: Config.defaultCategoryName
-
-                property bool isActive: false
-                property string name
-
-                onNameChanged: {
-                    if (isActive) {
-                        Config.defaultCategoryName = name
-                        isActive = false
-                        name = ""
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: storageDialog.open()
+                        }
                     }
                 }
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        newCategoryField.isActive = true
-                        updateName(newCategoryField.text, newCategoryField)
+                FormCard.FormDelegateSeparator { above: storageDelegate; below: categoryDelegate }
+
+                RowLayout {
+                    id: categoryDelegate
+
+                    Layout.margins: 0
+                    Layout.rightMargin: Kirigami.Units.largeSpacing
+                    Layout.fillWidth: true
+                    FormCard.FormTextFieldDelegate {
+                        id: newCategoryField
+
+                        text: Config.defaultCategoryName
+                        label: i18n("New Category name:")
+
+                        Layout.margins: 0
+                        Layout.fillWidth: true
+
+                        property bool isActive: false
+                        property string name
+
+                        onNameChanged: {
+                            if (isActive) {
+                                text = name
+                                Config.defaultCategoryName = name
+                                isActive = false
+                                name = ""
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                newCategoryField.isActive = true
+                                updateName(newCategoryField.text, newCategoryField)
+                            }
+                        }
+                    }
+                }
+
+                FormCard.FormDelegateSeparator { above: categoryDelegate; below: groupDelegate }
+
+                RowLayout {
+                    id: groupDelegate
+
+                    Layout.margins: 0
+                    Layout.rightMargin: Kirigami.Units.largeSpacing
+                    Layout.fillWidth: true
+                    FormCard.FormTextFieldDelegate {
+                        id: newGroupField
+
+                        text: Config.defaultGroupName
+                        label: i18n("New Group name:")
+
+                        Layout.margins: 0
+                        Layout.fillWidth: true
+
+                        property bool isActive: false
+                        property string name
+
+                        onNameChanged: {
+                            if (isActive) {
+                                text = name
+                                Config.defaultGroupName = name
+                                isActive = false
+                                name = ""
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                newGroupField.isActive = true
+                                updateName(newGroupField.text, newGroupField)
+                            }
+                        }
+                    }
+                }
+
+                FormCard.FormDelegateSeparator { above: groupDelegate; below: noteDelegate }
+
+                RowLayout {
+                    id: noteDelegate
+
+                    Layout.margins: 0
+                    Layout.rightMargin: Kirigami.Units.largeSpacing
+                    Layout.fillWidth: true
+                    FormCard.FormTextFieldDelegate {
+                        id: newNoteField
+
+                        text: Config.defaultNoteName
+                        label: i18n("New Note name:")
+
+                        Layout.margins: 0
+                        Layout.fillWidth: true
+
+                        property bool isActive: false
+                        property string name
+
+                        onNameChanged: {
+                            if (isActive) {
+                                text = name
+                                Config.defaultNoteName = name
+                                isActive = false
+                                name = ""
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                newNoteField.isActive = true
+                                updateName(newNoteField.text, newNoteField)
+                            }
+                        }
                     }
                 }
             }
+        }
 
-            Controls.TextField {
-                id: newGroupField
+        Item {height: Kirigami.Units.largeSpacing * 2}
 
-                Kirigami.FormData.label: i18n("New Group name:")
-
-                readOnly: true
-                text: Config.defaultGroupName
-
-                property bool isActive: false
-                property string name
-
-                onNameChanged: {
-                    if (isActive) {
-                        Config.defaultCategoryName = name
-                        isActive = false
-                        name = ""
-                    }
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        newGroupField.isActive = true
-                        updateName(newGroupField.text, newGroupField)
-                    }
-                }
-            }
-
-            Controls.TextField {
-                id: newNoteField
-
-                Kirigami.FormData.label: i18n("New Note name:")
-
-                readOnly: true
-                text: Config.defaultNoteName
-
-                property bool isActive: false
-                property string name
-
-                onNameChanged: {
-                    if (isActive) {
-                        Config.defaultCategoryName = name
-                        isActive = false
-                        name = ""
-                    }
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        newNoteField.isActive = true
-                        updateName(newNoteField.text, newNoteField)
-                    }
-                }
-            }
-
-            Kirigami.Separator {
-                Kirigami.FormData.label: i18n("Note display")
-                Kirigami.FormData.isSection: true
-            }
+        FormCard.FormHeader {
+            Layout.fillWidth: true
+            title: i18n("Display")
+            visible: Qt.platform.os !== "android"
         }
 
         DisplayPreview {
             id: displayPreview
-
-            Layout.maximumWidth: Kirigami.Units.gridUnit * 40
-            Layout.margins: formLayout.wideMode ? Kirigami.Units.largeSpacing * 5 : 0
-            Layout.topMargin: Kirigami.Units.smallSpacing
-            Layout.alignment: Qt.AlignCenter
         }
     }
 }
