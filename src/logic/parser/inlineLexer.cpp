@@ -279,7 +279,7 @@ QString InlineLexer::outputLink(QRegularExpressionMatch &cap, QMap<QString, QStr
         href = m_parser->getNotePath() + href.mid(1);
     if (href.startsWith("~"))
         href = QDir::homePath() + href.mid(1);
-    if (!(href.startsWith("http") || href.startsWith("//")))
+    if (!(href.startsWith("http") || href.startsWith("//") || href.startsWith("qrc:")))
         href = "file:" + href;
     // ======
     QString out;

@@ -131,7 +131,8 @@ QString Parser::tok()
     if (type == "list_item_start") {
         body = "";
 
-        if (m_token["task"].toBool()) {
+        bool hasTask = m_token["task"].toBool();
+        if (hasTask) {
             body += Renderer::checkbox(m_token["checked"].toBool());
         }
 
@@ -139,7 +140,7 @@ QString Parser::tok()
             body += m_token["type"].toString() == "text" ? parseText() : tok();
         }
 
-        return Renderer::listItem(body);
+        return Renderer::listItem(body, hasTask);
     }
 
     if (type == "loose_item_start") {

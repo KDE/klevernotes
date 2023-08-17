@@ -12,7 +12,7 @@ public:
     static QString heading(const QString &text, int lvl, QString &raw);
     static QString hr();
     static QString list(const QString &body, bool ordered, const QString &start);
-    static QString listItem(const QString &text);
+    static QString listItem(const QString &text, const bool hasCheck = false);
     static QString checkbox(bool checked);
     static QString paragraph(const QString &text);
     static QString table(const QString &header, QString &body);

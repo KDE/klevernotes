@@ -42,9 +42,15 @@ QString Renderer::list(const QString &body, bool ordered, const QString &start)
     return "<" + type + startatt + QString::fromStdString(">\n") + body + "</" + type + QString::fromStdString(">\n");
 }
 
-QString Renderer::listItem(const QString &text)
+QString Renderer::listItem(const QString &text, const bool hasCheck)
 {
-    return "<li>" + text + QString::fromStdString("</li>\n");
+    QString out;
+    if (hasCheck) {
+        out = QString::fromStdString("<li class=\"hasCheck\"> <label class=\"form-control\">\n") + text + QString::fromStdString("</label></li>\n");
+    } else {
+        out = QString::fromStdString("<li>") + text + QString::fromStdString("</li>\n");
+    }
+    return out;
 }
 
 QString Renderer::checkbox(bool checked)
@@ -77,10 +83,12 @@ QString Renderer::tableCell(const QString &content, const QVariantMap flags)
 {
     QString type = flags["header"].toBool() ? "th" : "td";
     QString align = flags["align"].toString();
-    QString tag = !align.isEmpty() ? ("<" + type + QString::fromStdString(" align=\"") + align + QString::fromStdString("\">"))
-
-                                   : "<" + type + ">";
-
+    QString tag;
+    if (!align.isEmpty()) {
+        tag = QString::fromStdString("<") + type + QString::fromStdString(" style=\"text-align:") + align + QString::fromStdString(";\">");
+    } else {
+        tag = QString::fromStdString("<") + type + QString::fromStdString(">");
+    }
     return tag + content + "</" + type + QString::fromStdString(">\n");
 }
 
