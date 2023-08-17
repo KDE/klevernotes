@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-11 00:46+0000\n"
+"POT-Creation-Date: 2023-08-17 00:46+0000\n"
 "PO-Revision-Date: 2023-08-11 13:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -252,13 +252,13 @@ msgstr "Temizle"
 msgid "Auto crop"
 msgstr "Otomatik kırp"
 
-#: contents/ui/pages/SettingsPage.qml:17
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: contents/ui/pages/SettingsPage.qml:53
+#: contents/ui/pages/SettingsPage.qml:54
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -267,72 +267,72 @@ msgstr ""
 "Gelecekteki Akıllı Notlarınız için bir depolama konumu oluşturun veya var "
 "olan bir tanesini seçin.\n"
 
-#: contents/ui/pages/SettingsPage.qml:89
+#: contents/ui/pages/SettingsPage.qml:93
 #, kde-format
 msgid "General"
 msgstr "Genel"
 
-#: contents/ui/pages/SettingsPage.qml:94
+#: contents/ui/pages/SettingsPage.qml:98
 #, kde-format
 msgid "Storage path:"
 msgstr "Depolama yolu:"
 
-#: contents/ui/pages/SettingsPage.qml:102
+#: contents/ui/pages/SettingsPage.qml:106
 #, kde-format
 msgid "Change storage path"
 msgstr "Depolama yolunu değiştir"
 
-#: contents/ui/pages/SettingsPage.qml:114
+#: contents/ui/pages/SettingsPage.qml:118
 #, kde-format
 msgid "New Category name:"
 msgstr "Yeni kategori adı:"
 
-#: contents/ui/pages/SettingsPage.qml:142
+#: contents/ui/pages/SettingsPage.qml:146
 #, kde-format
 msgid "New Group name:"
 msgstr "Yeni grup adı:"
 
-#: contents/ui/pages/SettingsPage.qml:170
+#: contents/ui/pages/SettingsPage.qml:174
 #, kde-format
 msgid "New Note name:"
 msgstr "Yeni not adı:"
 
-#: contents/ui/pages/SettingsPage.qml:196
+#: contents/ui/pages/SettingsPage.qml:200
 #, kde-format
 msgid "Note display"
 msgstr "Not görünümü"
 
-#: contents/ui/pages/SettingsPage.qml:202
+#: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
-msgid "Background color:"
-msgstr "Arka plan rengi:"
+msgid "Style:"
+msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:241
+#: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
 msgid "Text color:"
 msgstr "Metin rengi:"
 
-#: contents/ui/pages/SettingsPage.qml:279
+#: contents/ui/settings/DisplayPreview.qml:88
 #, kde-format
 msgid "Title color:"
 msgstr "Başlık rengi:"
 
-#: contents/ui/pages/SettingsPage.qml:317
+#: contents/ui/settings/DisplayPreview.qml:126
 #, kde-format
 msgid "Link color:"
 msgstr "Bağlantı rengi:"
 
-#: contents/ui/pages/SettingsPage.qml:355
+#: contents/ui/settings/DisplayPreview.qml:164
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Ziyaret edilmiş bağlantı rengi:"
 
-#: contents/ui/pages/SettingsPage.qml:392
+#: contents/ui/settings/DisplayPreview.qml:201
 #, kde-format
 msgid "Code color:"
 msgstr "Kod rengi:"
 
-#: contents/ui/pages/SettingsPage.qml:432
+#: contents/ui/settings/DisplayPreview.qml:241
 #, kde-format
 msgid "Font:"
 msgstr "Yazıtipi:"
@@ -417,6 +417,17 @@ msgstr "Başlık"
 msgid "Clear checked"
 msgstr "İşaretliyi temizle"
 
+#: logic/kleverUtility.cpp:97
+#, kde-format
+msgid ""
+"/*            \n"
+"This file is a copy of the default CSS style for the note "
+"display.            \n"
+"Feel free to edit it or make your own.            \n"
+"Note: each style need to have a different name.            \n"
+"*/\n"
+msgstr ""
+
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
@@ -490,3 +501,6 @@ msgstr "Emir SARI"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "emir_sari@icloud.com"
+
+#~ msgid "Background color:"
+#~ msgstr "Arka plan rengi:"

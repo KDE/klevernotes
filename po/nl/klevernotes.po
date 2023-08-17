@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-11 00:46+0000\n"
+"POT-Creation-Date: 2023-08-17 00:46+0000\n"
 "PO-Revision-Date: 2023-08-11 14:03+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -253,13 +253,13 @@ msgstr "Wissen"
 msgid "Auto crop"
 msgstr "Automatisch bijsnijden"
 
-#: contents/ui/pages/SettingsPage.qml:17
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: contents/ui/pages/SettingsPage.qml:53
+#: contents/ui/pages/SettingsPage.qml:54
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -268,72 +268,72 @@ msgstr ""
 "Kies een locatie voor het opslaan van uw toekomstige KleverNotes of "
 "selecteer een bestaande.\n"
 
-#: contents/ui/pages/SettingsPage.qml:89
+#: contents/ui/pages/SettingsPage.qml:93
 #, kde-format
 msgid "General"
 msgstr "Algemeen"
 
-#: contents/ui/pages/SettingsPage.qml:94
+#: contents/ui/pages/SettingsPage.qml:98
 #, kde-format
 msgid "Storage path:"
 msgstr "Opslagpad:"
 
-#: contents/ui/pages/SettingsPage.qml:102
+#: contents/ui/pages/SettingsPage.qml:106
 #, kde-format
 msgid "Change storage path"
 msgstr "Opslagpad wijzigen"
 
-#: contents/ui/pages/SettingsPage.qml:114
+#: contents/ui/pages/SettingsPage.qml:118
 #, kde-format
 msgid "New Category name:"
 msgstr "Nieuwe categorienaam:"
 
-#: contents/ui/pages/SettingsPage.qml:142
+#: contents/ui/pages/SettingsPage.qml:146
 #, kde-format
 msgid "New Group name:"
 msgstr "Nieuwe groepsnaam:"
 
-#: contents/ui/pages/SettingsPage.qml:170
+#: contents/ui/pages/SettingsPage.qml:174
 #, kde-format
 msgid "New Note name:"
 msgstr "Nieuwe notitienaam:"
 
-#: contents/ui/pages/SettingsPage.qml:196
+#: contents/ui/pages/SettingsPage.qml:200
 #, kde-format
 msgid "Note display"
 msgstr "Notitie tonen"
 
-#: contents/ui/pages/SettingsPage.qml:202
+#: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
-msgid "Background color:"
-msgstr "Achtergrondkleur:"
+msgid "Style:"
+msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:241
+#: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
 msgid "Text color:"
 msgstr "Tekstkleur:"
 
-#: contents/ui/pages/SettingsPage.qml:279
+#: contents/ui/settings/DisplayPreview.qml:88
 #, kde-format
 msgid "Title color:"
 msgstr "Kleuren van titel:"
 
-#: contents/ui/pages/SettingsPage.qml:317
+#: contents/ui/settings/DisplayPreview.qml:126
 #, kde-format
 msgid "Link color:"
 msgstr "Kleur van koppeling:"
 
-#: contents/ui/pages/SettingsPage.qml:355
+#: contents/ui/settings/DisplayPreview.qml:164
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Kleur van bezochte koppeling:"
 
-#: contents/ui/pages/SettingsPage.qml:392
+#: contents/ui/settings/DisplayPreview.qml:201
 #, kde-format
 msgid "Code color:"
 msgstr "Kleur van code:"
 
-#: contents/ui/pages/SettingsPage.qml:432
+#: contents/ui/settings/DisplayPreview.qml:241
 #, kde-format
 msgid "Font:"
 msgstr "Lettertype:"
@@ -418,6 +418,17 @@ msgstr "Kop"
 msgid "Clear checked"
 msgstr "Wissen geactiveerd"
 
+#: logic/kleverUtility.cpp:97
+#, kde-format
+msgid ""
+"/*            \n"
+"This file is a copy of the default CSS style for the note "
+"display.            \n"
+"Feel free to edit it or make your own.            \n"
+"Note: each style need to have a different name.            \n"
+"*/\n"
+msgstr ""
+
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
@@ -491,3 +502,6 @@ msgstr "Freek de Kruijf - 2023"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
+
+#~ msgid "Background color:"
+#~ msgstr "Achtergrondkleur:"

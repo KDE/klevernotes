@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-11 00:46+0000\n"
+"POT-Creation-Date: 2023-08-17 00:46+0000\n"
 "PO-Revision-Date: 2023-06-17 08:57+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -249,85 +249,85 @@ msgstr "Borrar"
 msgid "Auto crop"
 msgstr "Recorte automático"
 
-#: contents/ui/pages/SettingsPage.qml:17
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Configuración"
 
-#: contents/ui/pages/SettingsPage.qml:53
+#: contents/ui/pages/SettingsPage.qml:54
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr "Escolla onde almacenar os datos de KleverNotes.\n"
 
-#: contents/ui/pages/SettingsPage.qml:89
+#: contents/ui/pages/SettingsPage.qml:93
 #, kde-format
 msgid "General"
 msgstr "Xeral"
 
-#: contents/ui/pages/SettingsPage.qml:94
+#: contents/ui/pages/SettingsPage.qml:98
 #, kde-format
 msgid "Storage path:"
 msgstr "Ruta de almacenamento:"
 
-#: contents/ui/pages/SettingsPage.qml:102
+#: contents/ui/pages/SettingsPage.qml:106
 #, kde-format
 msgid "Change storage path"
 msgstr "Cambiar a ruta de almacenamento"
 
-#: contents/ui/pages/SettingsPage.qml:114
+#: contents/ui/pages/SettingsPage.qml:118
 #, kde-format
 msgid "New Category name:"
 msgstr "Nome da nova categoría:"
 
-#: contents/ui/pages/SettingsPage.qml:142
+#: contents/ui/pages/SettingsPage.qml:146
 #, kde-format
 msgid "New Group name:"
 msgstr "Nome do novo grupo:"
 
-#: contents/ui/pages/SettingsPage.qml:170
+#: contents/ui/pages/SettingsPage.qml:174
 #, kde-format
 msgid "New Note name:"
 msgstr "Nome da nova nota:"
 
-#: contents/ui/pages/SettingsPage.qml:196
+#: contents/ui/pages/SettingsPage.qml:200
 #, kde-format
 msgid "Note display"
 msgstr "Visualización das notas"
 
-#: contents/ui/pages/SettingsPage.qml:202
+#: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
-msgid "Background color:"
-msgstr "Cor de fondo:"
+msgid "Style:"
+msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:241
+#: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
 msgid "Text color:"
 msgstr "Cor do texto:"
 
-#: contents/ui/pages/SettingsPage.qml:279
+#: contents/ui/settings/DisplayPreview.qml:88
 #, kde-format
 msgid "Title color:"
 msgstr "Cor do título:"
 
-#: contents/ui/pages/SettingsPage.qml:317
+#: contents/ui/settings/DisplayPreview.qml:126
 #, kde-format
 msgid "Link color:"
 msgstr "Cor das ligazóns:"
 
-#: contents/ui/pages/SettingsPage.qml:355
+#: contents/ui/settings/DisplayPreview.qml:164
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Cor das ligazóns visitadas:"
 
-#: contents/ui/pages/SettingsPage.qml:392
+#: contents/ui/settings/DisplayPreview.qml:201
 #, kde-format
 msgid "Code color:"
 msgstr "Cor do código:"
 
-#: contents/ui/pages/SettingsPage.qml:432
+#: contents/ui/settings/DisplayPreview.qml:241
 #, kde-format
 msgid "Font:"
 msgstr "Tipo de letra:"
@@ -412,6 +412,17 @@ msgstr "Cabeceira"
 msgid "Clear checked"
 msgstr "Desmarcar o marcado"
 
+#: logic/kleverUtility.cpp:97
+#, kde-format
+msgid ""
+"/*            \n"
+"This file is a copy of the default CSS style for the note "
+"display.            \n"
+"Feel free to edit it or make your own.            \n"
+"Note: each style need to have a different name.            \n"
+"*/\n"
+msgstr ""
+
 #: logic/treeview/noteTreeModel.cpp:260
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create the note."
@@ -486,3 +497,6 @@ msgstr "Adrian Chaves (Gallaecio)"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adrian@chaves.io"
+
+#~ msgid "Background color:"
+#~ msgstr "Cor de fondo:"
