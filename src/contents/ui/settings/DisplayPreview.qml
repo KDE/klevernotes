@@ -5,19 +5,35 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import "qrc:/contents/ui/textEditor"
 
 import org.kde.Klever 1.0
 
 
-RowLayout {
-    spacing: 0
+FormCard.FormCard {
+    FormCard.FormComboBoxDelegate {
+        text: i18n("Style:")
+
+        readonly property var styles: KleverUtility.getCssStylesList()
+        readonly property var stylesNames: Object.keys(styles)
+        readonly property var styleName: KleverUtility.getName(Config.stylePath).replace(".css", "")
+
+        model: stylesNames
+        currentIndex: stylesNames.indexOf(styleName)
+
+        onCurrentValueChanged: {
+            const path = styles[currentValue]
+
+            if (Config.stylePath !== path) Config.stylePath = path;
+        }
+    }
 
     TextDisplay {
         id: displayer
-        Layout.fillHeight: true
         Layout.fillWidth: true
+        Layout.preferredHeight: Kirigami.Units.gridUnit * 20
 
         visible: true
 
@@ -25,235 +41,107 @@ RowLayout {
         text: DocumentHandler.readFile(":/demo_note.md")
     }
 
-    Kirigami.FormLayout {
-        Layout.maximumWidth: Kirigami.Units.gridUnit * 8
+    Column {
+        Layout.fillWidth: true
+        spacing: 0
 
-        Controls.ComboBox {
-            Kirigami.FormData.label: i18n("Style:")
-
-            readonly property var styles: KleverUtility.getCssStylesList()
-            readonly property var stylesNames: Object.keys(styles)
-            readonly property var styleName: KleverUtility.getName(Config.stylePath).replace(".css", "")
-
-            model: stylesNames
-            width: Kirigami.Units.gridUnit * 7
-            currentIndex: stylesNames.indexOf(styleName)
-
-            onCurrentValueChanged: {
-                const path = styles[currentValue]
-
-                if (Config.stylePath !== path) Config.stylePath = path;
-            }
-        }
-
-        Row {
-            Kirigami.FormData.label: i18n("Text color:")
-
-            property string name: "text"
-
-            Controls.Button {
-                id: textButton
-
-                width: Kirigami.Units.gridUnit * 7
-
-                anchors.bottom: resetText.bottom
-                anchors.top: resetText.top
-                anchors.margins: Kirigami.Units.smallSpacing
+        RowLayout {
+            width: parent.width
+            SettingsColorButton {
+                name: "text"
+                text: i18n("Text color:")
 
                 Kirigami.Theme.colorSet: Kirigami.Theme.View
                 Kirigami.Theme.inherit: false
+                color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
 
-                property string color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
-
-                background: Rectangle {
-                    color: textButton.color
-                    radius: Kirigami.Units.smallSpacing
-                }
-
-                onClicked: {
-                    colorPicker.caller = textButton
-                    colorPicker.open()
-                }
+                Layout.alignment: Qt.AlignHCenter
             }
 
-            Controls.Button {
-                id: resetText
-                icon.name: "edit-undo"
-
-                onClicked: updateColor(resetText, "None")
-            }
-        }
-
-        Row {
-            Kirigami.FormData.label: i18n("Title color:")
-
-            property string name: "title"
-
-            Controls.Button {
-                id: titleButton
-
-                width: Kirigami.Units.gridUnit * 7
-
-                anchors.bottom: resetTitle.bottom
-                anchors.top: resetTitle.top
-                anchors.margins: Kirigami.Units.smallSpacing
+            SettingsColorButton {
+                name: "title"
+                text: i18n("Title color:")
 
                 Kirigami.Theme.colorSet: Kirigami.Theme.View
                 Kirigami.Theme.inherit: false
+                color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
 
-                property string color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
-
-                background: Rectangle {
-                    color: titleButton.color
-                    radius: Kirigami.Units.smallSpacing
-                }
-
-                onClicked: {
-                    colorPicker.caller = titleButton
-                    colorPicker.open()
-                }
-            }
-
-            Controls.Button {
-                id: resetTitle
-                icon.name: "edit-undo"
-
-                onClicked: updateColor(resetTitle, "None")
+                Layout.alignment: Qt.AlignHCenter
             }
         }
 
-        Row {
-            Kirigami.FormData.label: i18n("Link color:")
-
-            property string name: "link"
-
-            Controls.Button {
-                id: linkButton
-
-                width: Kirigami.Units.gridUnit * 7
-
-                anchors.bottom: resetLink.bottom
-                anchors.top: resetLink.top
-                anchors.margins: Kirigami.Units.smallSpacing
+        RowLayout {
+            width: parent.width
+            SettingsColorButton {
+                name: "link"
+                text: i18n("Link color:")
 
                 Kirigami.Theme.colorSet: Kirigami.Theme.View
                 Kirigami.Theme.inherit: false
+                color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
 
-                property string color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
-
-                background: Rectangle {
-                    color: linkButton.color
-                    radius: Kirigami.Units.smallSpacing
-                }
-
-                onClicked: {
-                    colorPicker.caller = linkButton
-                    colorPicker.open()
-                }
+                Layout.alignment: Qt.AlignHCenter
             }
 
-            Controls.Button {
-                id: resetLink
-                icon.name: "edit-undo"
-
-                onClicked: updateColor(resetLink, "None")
-            }
-        }
-
-        Row {
-            Kirigami.FormData.label: i18n("Visited Link color:")
-
-            property string name: "visitedLink"
-
-            Controls.Button {
-                id: visitedLinkButton
-
-                width: Kirigami.Units.gridUnit * 7
-
-                anchors.bottom: resetVisitiedLink.bottom
-                anchors.top: resetVisitiedLink.top
-                anchors.margins: Kirigami.Units.smallSpacing
+            SettingsColorButton {
+                name: "visitedLink"
+                text: i18n("Visited Link color:")
 
                 Kirigami.Theme.colorSet: Kirigami.Theme.View
                 Kirigami.Theme.inherit: false
+                color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
 
-                property string color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
-
-                background: Rectangle {
-                    color: visitedLinkButton.color
-                    radius: Kirigami.Units.smallSpacing
-                }
-                onClicked: {
-                    colorPicker.caller = visitedLinkButton
-                    colorPicker.open()
-                }
-            }
-
-            Controls.Button {
-                id: resetVisitiedLink
-                icon.name: "edit-undo"
-
-                onClicked: updateColor(resetVisitiedLink, "None")
+                Layout.alignment: Qt.AlignHCenter
             }
         }
 
-        Row {
-            Kirigami.FormData.label: i18n("Code color:")
+        RowLayout {
+            width: parent.width
+            SettingsColorButton {
+                id: codeRow
 
-            property string name: "code"
-
-            Controls.Button {
-                id: codeButton
-
-                width: Kirigami.Units.gridUnit * 7
-
-                anchors.bottom: resetCode.bottom
-                anchors.top: resetCode.top
-                anchors.margins: Kirigami.Units.smallSpacing
+                name: "code"
+                text: i18n("Code color:")
 
                 Kirigami.Theme.colorSet: Kirigami.Theme.View
                 Kirigami.Theme.inherit: false
+                color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
 
-                property string color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
-
-                background: Rectangle {
-                    color: codeButton.color
-                    radius: Kirigami.Units.smallSpacing
-                }
-
-                onClicked: {
-                    colorPicker.caller = codeButton
-                    colorPicker.open()
-                }
+                Layout.alignment: Qt.AlignHCenter
             }
 
-            Controls.Button {
-                id: resetCode
-                icon.name: "edit-undo"
+            Column {
+                spacing: Kirigami.Units.smallSpacing
+                padding: Kirigami.Units.largeSpacing
 
-                onClicked: updateColor(resetCode, "None")
-            }
-        }
+                Controls.Label {
+                    id: title
 
-        Controls.TextField {
-            id: fontDisplay
-
-            Kirigami.FormData.label: i18n("Font:")
-
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
-
-            readOnly: true
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 7
-            text: (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont.family
-            font.family: text
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    fontDialog.currentFamily = parent.text
-                    fontDialog.open()
+                    text: i18n("Font:")
                 }
+
+                Controls.TextField {
+
+                    id: fontDisplay
+
+                    readOnly: true
+                    width: codeRow.colorButton.width
+
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    Kirigami.Theme.inherit: false
+                    text: (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont.family
+                    font.family: text
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            fontDialog.currentFamily = parent.text
+                            fontDialog.open()
+                        }
+                    }
+                }
+
+                Layout.alignment: Qt.AlignHCenter
             }
         }
     }

@@ -37,6 +37,7 @@
         <file>contents/ui/painting/ColorButton.qml</file>
 
         <file>contents/ui/settings/DisplayPreview.qml</file>
+        <file>contents/ui/settings/SettingsColorButton.qml</file>
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/ContextMenu.qml</file>
