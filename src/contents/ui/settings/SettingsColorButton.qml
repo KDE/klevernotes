@@ -32,9 +32,6 @@ Column {
             anchors.top: resetText.top
             anchors.margins: Kirigami.Units.smallSpacing
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
-
             background: Rectangle {
                 color: root.color
                 radius: Kirigami.Units.smallSpacing

@@ -27,7 +27,7 @@ Kirigami.ScrollablePage {
     }
 
     function updateColor(button, selectedColor) {
-         switch(button.name) {
+        switch(button.name) {
             case "background":
                 Config.viewBodyColor = selectedColor
                 break;
@@ -69,14 +69,15 @@ Kirigami.ScrollablePage {
     ColorDialog {
         id: colorPicker
 
-        property QtObject caller
-
-        selectedColor: caller.color
+        property var caller
+        onCallerChanged: selectedColor = caller.color
 
         onApplied: {
             if (selectedColor != caller.color) updateColor(caller, selectedColor)
             colorPicker.close()
         }
+
+        onClosed: caller = undefined
     }
 
     FontPickerDialog{

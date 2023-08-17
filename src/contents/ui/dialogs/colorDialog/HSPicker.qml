@@ -96,11 +96,11 @@ Item {
 
         function handleMouse(mouse) {
             if (mouse.buttons & Qt.LeftButton) {
-                pickerCursor.x = Math.max(0, Math.min(bouderies.width,  mouse.x));
-                pickerCursor.y = Math.max(0, Math.min(bouderies.height, mouse.y));
+                const currentX = Math.max(0, Math.min(bouderies.width,  mouse.x));
+                const currentY = Math.max(0, Math.min(bouderies.height, mouse.y));
 
-                root.h = (pickerCursor.x/bouderies.width)
-                root.s = ((bouderies.height-pickerCursor.y)/bouderies.height)
+                root.h = (currentX/bouderies.width)
+                root.s = ((bouderies.height-currentY)/bouderies.height)
             }
         }
         onPositionChanged: handleMouse(mouse)

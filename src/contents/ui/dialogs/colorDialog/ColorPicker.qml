@@ -14,7 +14,6 @@ Rectangle {
     color: "transparent"
 
     property color selectedColor
-    property bool initital: false
 
     onSelectedColorChanged: if (!visible) {
         hsPicker.h = selectedColor.hslHue
@@ -37,8 +36,8 @@ Rectangle {
                 Layout.fillWidth:true
                 Layout.fillHeight:true
 
-                onSChanged: _hsla(h,s,lightnessSlider.v)
-                onHChanged: _hsla(h,s,lightnessSlider.v)
+                onSChanged: _hsla(h,s,lightnessSlider.l)
+                onHChanged: _hsla(h,s,lightnessSlider.l)
             }
 
             // lightness picking slider

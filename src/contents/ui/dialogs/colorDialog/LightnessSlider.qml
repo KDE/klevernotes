@@ -8,9 +8,10 @@ Item{
     property int cursorHeight: 7
     property real l
     Rectangle {
+        id: gradientRect
         y: 10
+        width: parent.width
         height: parent.height - 20
-        width:parent.width
 
 
         gradient: Gradient {
@@ -22,7 +23,11 @@ Item{
             id: pickerCursor
             width: parent.width
             Rectangle {
-                x: -2; y: -height*0.5
+                x: -2;
+                property real cal: (gradientRect.height - (gradientRect.height * lightSlider.l))
+
+                y: Math.min(cal, gradientRect.height)
+
                 width: parent.width + 4; height: cursorHeight
                 border.color: (lightSlider.l > 50) ? "black" : "white"
                 border.width: 2
@@ -36,9 +41,9 @@ Item{
 
             function handleMouse(mouse) {
                 if (mouse.buttons & Qt.LeftButton) {
-                    pickerCursor.y = Math.max(0, Math.min(height, mouse.y))
+                    const currentY = Math.max(0, Math.min(height, mouse.y))
 
-                    lightSlider.l = ((height-pickerCursor.y)/height)
+                    lightSlider.l = (height-currentY)/height
                 }
             }
             onPositionChanged: {
