@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-17 00:46+0000\n"
-"PO-Revision-Date: 2023-08-13 00:34+0200\n"
+"PO-Revision-Date: 2023-08-17 08:33+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -305,7 +305,7 @@ msgstr "Prikaz opombe"
 #: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
 msgid "Style:"
-msgstr ""
+msgstr "Slog:"
 
 #: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
@@ -427,6 +427,11 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Ta datoteka je kopija privzetega sloga CSS za prikaz opombe.            \n"
+"Prosto za urejanje ali izdelavo vaše lastne.            \n"
+"Opomba: vsak slog mora imeti drugačno ime.            \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format

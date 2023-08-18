@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-17 00:46+0000\n"
-"PO-Revision-Date: 2023-08-11 13:31+0300\n"
+"PO-Revision-Date: 2023-08-17 12:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -43,17 +43,17 @@ msgstr "not"
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, kde-format
 msgid "Image picker"
-msgstr "Görsel seçici"
+msgstr "Görsel seçicisi"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
 msgid "Font selector"
-msgstr "Yazıtipi seçici"
+msgstr "Yazıtipi seçicisi"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
 #, kde-format
 msgid "Image selector"
-msgstr "Görsel seçici"
+msgstr "Görsel seçicisi"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
 #, kde-format
@@ -305,7 +305,7 @@ msgstr "Not görünümü"
 #: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
 msgid "Style:"
-msgstr ""
+msgstr "Biçem:"
 
 #: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
@@ -427,6 +427,13 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Bu dosya, not görünümü için kullanılan öntanımlı CSS dosyasının bir "
+"kopyasıdır.            \n"
+"İstediğiniz gibi değiştirebilir veya kendi sürümünüzü "
+"yapabilirsiniz.            \n"
+"Not: Her bir biçemin adı farklı olmalıdır.            \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
