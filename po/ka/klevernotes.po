@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-17 00:46+0000\n"
-"PO-Revision-Date: 2023-08-12 06:20+0200\n"
+"PO-Revision-Date: 2023-08-18 06:14+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -305,7 +305,7 @@ msgstr "შენიშვნის ჩვენება"
 #: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
 msgid "Style:"
-msgstr ""
+msgstr "სტილი:"
 
 #: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
@@ -427,6 +427,12 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*              \n"
+"ეს ფაილი შენიშვნის ჩვენებისთვის განკუთვნილი ნაგულისხმევი CSS სტილის "
+"ასლია.       \n"
+"შეცვალეთ ის თქვენი სურვილის მიხედვით.             \n"
+"შენიშვნა: თითოეულ სტილს თავისი სახელი უნდა ჰქონდეს.        \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
