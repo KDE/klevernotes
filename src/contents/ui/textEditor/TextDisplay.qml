@@ -16,7 +16,8 @@ import org.kde.Klever 1.0
 RowLayout {
     id: root
 
-    property bool printBackground: false
+    property bool printBackground: true
+
     required property string path
     required property string text
 
@@ -54,7 +55,6 @@ RowLayout {
             onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
 
             settings.showScrollBars: false
-            settings.printElementBackgrounds: root.printBackground
 
             width: background.width - 4
             height: background.height - 4
@@ -69,12 +69,10 @@ RowLayout {
             }
 
             onPdfPrintingFinished: {
-                if (applicationWindow().pageStack.currentItem !== applicationWindow().getPage("Printing")) {
-                    applicationWindow().switchToPage('Printing')
-                }
                 const printingPage = applicationWindow().pageStack.currentItem
                 printingPage.pdfPath = ""
                 printingPage.pdfPath = root.previewLocation
+
             }
 
             onPdfPrintingFinished: {
@@ -165,8 +163,16 @@ RowLayout {
     }
 
     function changeStyle(style) {
-        if (style === "default") cssVarLink.css = defaultCSS
-        else cssVarLink.css = style
+        let currentColors = {}
+        const copiedDict = style === "default" ? defaultCSS : style
+
+        for (var key in copiedDict) {
+            currentColors[key] = copiedDict[key];
+        }
+
+        if (!root.printBackground) currentColors["--bodyColor"] = "undefined"
+
+        cssVarLink.cssVar = currentColors
     }
 
     function makePdf() {

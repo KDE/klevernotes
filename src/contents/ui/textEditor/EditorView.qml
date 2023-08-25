@@ -25,7 +25,7 @@ GridLayout{
             icon.name: "viewpdf"
 
             onTriggered: {
-                display.makePdf()
+                applicationWindow().switchToPage('Printing')
             }
 
         },
