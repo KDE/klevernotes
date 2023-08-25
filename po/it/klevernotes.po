@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-17 00:46+0000\n"
-"PO-Revision-Date: 2023-06-13 16:28+0200\n"
+"PO-Revision-Date: 2023-08-17 15:05+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -304,7 +304,7 @@ msgstr "Visualizzazione delle note"
 #: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
 msgid "Style:"
-msgstr ""
+msgstr "Stile:"
 
 #: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
@@ -426,12 +426,19 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Questo file è una copia dello stile CSS predefinito per la visualizzazione "
+"della nota.           \n"
+"Sentiti libero di modificarlo o crearne uno tuo.           \n"
+"Nota: ogni stile deve avere un nome diverso.            \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Si è verificato un errore durante il tentativo di creare la nota."
+msgstr ""
+"Si è verificato un errore durante il tentativo di creare la nota "
+"dimostrativa."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
