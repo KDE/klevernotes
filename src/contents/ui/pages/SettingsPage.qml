@@ -100,145 +100,115 @@ Kirigami.ScrollablePage {
         FormCard.FormCard {
             Layout.fillWidth: true
 
-            ColumnLayout {
-                RowLayout {
-                    id: storageDelegate
+            FormCard.FormTextFieldDelegate {
+                id: storageField
 
-                    Layout.margins: 0
-                    Layout.rightMargin: Kirigami.Units.largeSpacing
-                    Layout.fillWidth: true
-                    FormCard.FormTextFieldDelegate {
-                        id: storageField
+                text: Config.storagePath
+                label: i18n("Storage path:")
 
-                        text: Config.storagePath
-                        label: i18n("Storage path:")
+                Layout.margins: 0
+                Layout.fillWidth: true
+                // workaround to make it readOnly
+                onTextChanged: text = Config.storagePath
 
-                        Layout.margins: 0
-                        Layout.fillWidth: true
-                        // workaround to make it readOnly
-                        onTextChanged: text = Config.storagePath
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: storageDialog.open()
+                }
+            }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: storageDialog.open()
-                        }
+            FormCard.FormDelegateSeparator { above: storageDelegate; below: categoryDelegate }
+
+            FormCard.FormTextFieldDelegate {
+                id: newCategoryField
+
+                text: Config.defaultCategoryName
+                label: i18n("New Category name:")
+
+                Layout.margins: 0
+                Layout.fillWidth: true
+
+                property bool isActive: false
+                property string name
+
+                onNameChanged: {
+                    if (isActive) {
+                        text = name
+                        Config.defaultCategoryName = name
+                        isActive = false
+                        name = ""
                     }
                 }
 
-                FormCard.FormDelegateSeparator { above: storageDelegate; below: categoryDelegate }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        newCategoryField.isActive = true
+                        updateName(newCategoryField.text, newCategoryField)
+                    }
+                }
+            }
 
-                RowLayout {
-                    id: categoryDelegate
+            FormCard.FormDelegateSeparator { above: categoryDelegate; below: groupDelegate }
 
-                    Layout.margins: 0
-                    Layout.rightMargin: Kirigami.Units.largeSpacing
-                    Layout.fillWidth: true
-                    FormCard.FormTextFieldDelegate {
-                        id: newCategoryField
+            FormCard.FormTextFieldDelegate {
+                id: newGroupField
 
-                        text: Config.defaultCategoryName
-                        label: i18n("New Category name:")
+                text: Config.defaultGroupName
+                label: i18n("New Group name:")
 
-                        Layout.margins: 0
-                        Layout.fillWidth: true
+                Layout.margins: 0
+                Layout.fillWidth: true
 
-                        property bool isActive: false
-                        property string name
+                property bool isActive: false
+                property string name
 
-                        onNameChanged: {
-                            if (isActive) {
-                                text = name
-                                Config.defaultCategoryName = name
-                                isActive = false
-                                name = ""
-                            }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                newCategoryField.isActive = true
-                                updateName(newCategoryField.text, newCategoryField)
-                            }
-                        }
+                onNameChanged: {
+                    if (isActive) {
+                        text = name
+                        Config.defaultGroupName = name
+                        isActive = false
+                        name = ""
                     }
                 }
 
-                FormCard.FormDelegateSeparator { above: categoryDelegate; below: groupDelegate }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        newGroupField.isActive = true
+                        updateName(newGroupField.text, newGroupField)
+                    }
+                }
+            }
 
-                RowLayout {
-                    id: groupDelegate
+            FormCard.FormDelegateSeparator { above: groupDelegate; below: noteDelegate }
 
-                    Layout.margins: 0
-                    Layout.rightMargin: Kirigami.Units.largeSpacing
-                    Layout.fillWidth: true
-                    FormCard.FormTextFieldDelegate {
-                        id: newGroupField
+            FormCard.FormTextFieldDelegate {
+                id: newNoteField
 
-                        text: Config.defaultGroupName
-                        label: i18n("New Group name:")
+                text: Config.defaultNoteName
+                label: i18n("New Note name:")
 
-                        Layout.margins: 0
-                        Layout.fillWidth: true
+                Layout.margins: 0
+                Layout.fillWidth: true
 
-                        property bool isActive: false
-                        property string name
+                property bool isActive: false
+                property string name
 
-                        onNameChanged: {
-                            if (isActive) {
-                                text = name
-                                Config.defaultGroupName = name
-                                isActive = false
-                                name = ""
-                            }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                newGroupField.isActive = true
-                                updateName(newGroupField.text, newGroupField)
-                            }
-                        }
+                onNameChanged: {
+                    if (isActive) {
+                        text = name
+                        Config.defaultNoteName = name
+                        isActive = false
+                        name = ""
                     }
                 }
 
-                FormCard.FormDelegateSeparator { above: groupDelegate; below: noteDelegate }
-
-                RowLayout {
-                    id: noteDelegate
-
-                    Layout.margins: 0
-                    Layout.rightMargin: Kirigami.Units.largeSpacing
-                    Layout.fillWidth: true
-                    FormCard.FormTextFieldDelegate {
-                        id: newNoteField
-
-                        text: Config.defaultNoteName
-                        label: i18n("New Note name:")
-
-                        Layout.margins: 0
-                        Layout.fillWidth: true
-
-                        property bool isActive: false
-                        property string name
-
-                        onNameChanged: {
-                            if (isActive) {
-                                text = name
-                                Config.defaultNoteName = name
-                                isActive = false
-                                name = ""
-                            }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                newNoteField.isActive = true
-                                updateName(newNoteField.text, newNoteField)
-                            }
-                        }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        newNoteField.isActive = true
+                        updateName(newNoteField.text, newNoteField)
                     }
                 }
             }
