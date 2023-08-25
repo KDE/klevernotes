@@ -22,7 +22,7 @@ GridLayout{
             id: pdfPrinter
             icon.name: "viewpdf"
             onTriggered: {
-                display.makePdf()
+                applicationWindow().switchToPage('Printing')
             }
         },
         Kirigami.Action {

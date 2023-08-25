@@ -20,7 +20,8 @@ Kirigami.Page {
 
     title: i18n("Print")
 
-    property string pdfPath
+    property string pdfPath: ""
+    property var colors
     readonly property QtObject textDisplay: applicationWindow().pageStack.get(0).editorView.display
 
     actions.contextualActions: [
@@ -31,26 +32,26 @@ Kirigami.Page {
                 textRole: "display"
                 valueRole: "display"
                 model: ColorSchemer.model
-                Component.onCompleted: currentIndex = ColorSchemer.indexForScheme(Config.colorScheme);
+
                 visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
-                    let colors;
-                    if (currentIndex === 0) colors = "default"
+                    if (currentIndex === 0) printPreview.colors = "default"
                     else {
-                        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-                        colors = ColorSchemer.getUsefullColors(currentIndex)
+                        printPreview.colors = ColorSchemer.getUsefullColors(currentIndex)
                     }
-                    requestPdf(colors)
+                    requestPdf(toogleBackground.checked)
                 }
             }
         },
         Kirigami.Action {
+            id: toogleBackground
+
             text: i18n("background")
             icon.name: "backgroundtool"
             checkable: true
             onTriggered: {
-                requestPdf()
-                if (!Config.pdfWarningHidden) backgroundWarning.open()
+                requestPdf(checked)
+                if (!Config.pdfWarningHidden && checked) backgroundWarning.open()
             }
         },
         Kirigami.Action {
@@ -92,12 +93,23 @@ Kirigami.Page {
         id: webEnginePreview
 
         anchors.fill: parent
+
         url: pdfPath
+        visible: false
+        onLoadProgressChanged: if (loadProgress === 100) visible = true
         settings.pluginsEnabled: true
         settings.pdfViewerEnabled: true
         settings.javascriptEnabled: false
         onContextMenuRequested: request.accepted = true // disable context menu
         onPdfPrintingFinished: printPreview.closePage()
+    }
+
+    BusyIndicator {
+        anchors.centerIn: parent
+
+        width: Kirigami.Units.gridUnit * 5
+        height: width
+        visible: !webEnginePreview.visible
     }
 
     Timer {
@@ -106,19 +118,23 @@ Kirigami.Page {
         interval: Kirigami.Units.longDuration
         repeat: false
 
-        onTriggered: textDisplay.makePdf()
+        onTriggered: {
+            webEnginePreview.visible = false
+            textDisplay.makePdf()
+        }
     }
 
-    function requestPdf(style) {
-        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
-        if (style) textDisplay.changeStyle(style)
-        else textDisplay.printBackground = !textDisplay.printBackground
+    function requestPdf(changeBackground) {
+        textDisplay.printBackground = changeBackground
+        textDisplay.changeStyle(colors)
         applyingCssTimer.start()
     }
 
     function closePage() {
-        const textDisplay = applicationWindow().pageStack.get(0).editorView.display
+        textDisplay.printBackground = true
         textDisplay.changeStyle("default")
         applicationWindow().pageStack.pop()
     }
+
+    Component.onCompleted: requestPdf(false)
 }
