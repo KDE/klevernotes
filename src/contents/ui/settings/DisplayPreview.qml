@@ -41,107 +41,89 @@ FormCard.FormCard {
         text: DocumentHandler.readFile(":/demo_note.md")
     }
 
-    Column {
-        Layout.fillWidth: true
-        spacing: 0
+    RowLayout {
+        SettingsColorButton {
+            name: "text"
+            title: i18n("Text color:")
 
-        RowLayout {
-            width: parent.width
-            SettingsColorButton {
-                name: "text"
-                text: i18n("Text color:")
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
 
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                Kirigami.Theme.inherit: false
-                color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
-
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            SettingsColorButton {
-                name: "title"
-                text: i18n("Title color:")
-
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                Kirigami.Theme.inherit: false
-                color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
-
-                Layout.alignment: Qt.AlignHCenter
-            }
+            Layout.preferredWidth: displayer.width / 2
         }
 
-        RowLayout {
-            width: parent.width
-            SettingsColorButton {
-                name: "link"
-                text: i18n("Link color:")
+        SettingsColorButton {
+            name: "title"
+            title: i18n("Title color:")
 
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                Kirigami.Theme.inherit: false
-                color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
 
-                Layout.alignment: Qt.AlignHCenter
-            }
 
-            SettingsColorButton {
-                name: "visitedLink"
-                text: i18n("Visited Link color:")
+            Layout.preferredWidth: displayer.width / 2
+        }
+    }
+    RowLayout {
+        SettingsColorButton {
+            id: linkButton
 
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                Kirigami.Theme.inherit: false
-                color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
+            name: "link"
+            title: i18n("Link color:")
 
-                Layout.alignment: Qt.AlignHCenter
-            }
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
+
+            Layout.preferredWidth: displayer.width / 2
         }
 
-        RowLayout {
-            width: parent.width
-            SettingsColorButton {
-                id: codeRow
+        SettingsColorButton {
+            name: "visitedLink"
+            title: i18n("Visited Link color:")
 
-                name: "code"
-                text: i18n("Code color:")
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
 
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                Kirigami.Theme.inherit: false
-                color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
+            Layout.preferredWidth: displayer.width / 2
+        }
+    }
 
-                Layout.alignment: Qt.AlignHCenter
-            }
+    RowLayout {
+        SettingsColorButton {
+            name: "code"
+            title: i18n("Code color:")
 
-            Column {
-                spacing: Kirigami.Units.smallSpacing
-                padding: Kirigami.Units.largeSpacing
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
 
-                Controls.Label {
-                    id: title
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: displayer.width / 2
+        }
 
-                    text: i18n("Font:")
+        FormCard.FormTextFieldDelegate {
+            id: fontDisplay
+
+            label: i18n("Font:")
+
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            text: (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont.family
+            font.family: text
+
+            Layout.margins: 0
+            Layout.preferredWidth: displayer.width / 2
+
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    fontDialog.currentFamily = parent.text
+                    fontDialog.open()
                 }
-
-                Controls.TextField {
-
-                    id: fontDisplay
-
-                    readOnly: true
-                    width: codeRow.colorButton.width
-
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    Kirigami.Theme.inherit: false
-                    text: (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont.family
-                    font.family: text
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            fontDialog.currentFamily = parent.text
-                            fontDialog.open()
-                        }
-                    }
-                }
-
-                Layout.alignment: Qt.AlignHCenter
             }
         }
     }

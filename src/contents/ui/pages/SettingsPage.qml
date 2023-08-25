@@ -117,7 +117,7 @@ Kirigami.ScrollablePage {
                 }
             }
 
-            FormCard.FormDelegateSeparator { above: storageDelegate; below: categoryDelegate }
+            FormCard.FormDelegateSeparator { above: storageField; below: newCategoryField }
 
             FormCard.FormTextFieldDelegate {
                 id: newCategoryField
@@ -149,7 +149,7 @@ Kirigami.ScrollablePage {
                 }
             }
 
-            FormCard.FormDelegateSeparator { above: categoryDelegate; below: groupDelegate }
+            FormCard.FormDelegateSeparator { above: newCategoryField; below: newGroupField }
 
             FormCard.FormTextFieldDelegate {
                 id: newGroupField
@@ -181,7 +181,7 @@ Kirigami.ScrollablePage {
                 }
             }
 
-            FormCard.FormDelegateSeparator { above: groupDelegate; below: noteDelegate }
+            FormCard.FormDelegateSeparator { above: newGroupField; below: newNoteField }
 
             FormCard.FormTextFieldDelegate {
                 id: newNoteField
