@@ -32,7 +32,6 @@ Kirigami.Page {
                 textRole: "display"
                 valueRole: "display"
                 model: ColorSchemer.model
-
                 onCurrentValueChanged: {
                     if (currentIndex === 0) printPreview.colors = "default"
                     else {

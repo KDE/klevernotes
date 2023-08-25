@@ -7,13 +7,12 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import Qt.labs.platform 1.1
 
-import "../dialogs"
+import "qrc:/contents/ui/dialogs"
 
 GridLayout{
     id: root
 
     required property string path
-
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
@@ -22,11 +21,7 @@ GridLayout{
         Kirigami.Action {
             id: pdfPrinter
             icon.name: "viewpdf"
-
-            onTriggered: {
-                applicationWindow().switchToPage('Printing')
-            }
-
+            onTriggered: applicationWindow().switchToPage('Printing')
         },
         Kirigami.Action {
             id: editorToggler
@@ -43,6 +38,13 @@ GridLayout{
             onCheckedChanged: if (!checked && !editorToggler.checked) checked = true
         }
     ]
+
+    FileSaverDialog {
+        id: pdfSaver
+
+        caller: pdfPrinter
+        noteName: root.noteName
+    }
 
     rows: 4
     columns: 2

@@ -158,7 +158,6 @@ RowLayout {
         if (!root.printBackground) currentColors["--bodyColor"] = "undefined"
 
         cssVarLink.cssVar = currentColors
-
     }
 
     function makePdf() {
