@@ -7,7 +7,7 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import Qt.labs.platform 1.1
 
-import "qrc:/contents/ui/dialogs"
+import "../dialogs"
 
 GridLayout{
     id: root
