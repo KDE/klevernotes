@@ -33,7 +33,6 @@ Kirigami.Page {
                 valueRole: "display"
                 model: ColorSchemer.model
 
-                visible: Qt.platform.os !== "android"
                 onCurrentValueChanged: {
                     if (currentIndex === 0) printPreview.colors = "default"
                     else {

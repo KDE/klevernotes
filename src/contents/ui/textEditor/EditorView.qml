@@ -13,7 +13,6 @@ GridLayout{
     id: root
 
     required property string path
-    required property string noteName
 
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
@@ -44,13 +43,6 @@ GridLayout{
             onCheckedChanged: if (!checked && !editorToggler.checked) checked = true
         }
     ]
-
-    FileSaverDialog {
-        id: pdfSaver
-
-        caller: pdfPrinter
-        noteName: root.noteName
-    }
 
     rows: 4
     columns: 2

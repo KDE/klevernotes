@@ -36,9 +36,8 @@ RowLayout {
 
     spacing: 0
 
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle(defaultCSS)
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle("default")
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
-
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
@@ -72,22 +71,9 @@ RowLayout {
                 const printingPage = applicationWindow().pageStack.currentItem
                 printingPage.pdfPath = ""
                 printingPage.pdfPath = root.previewLocation
-
             }
 
-            onPdfPrintingFinished: {
-                if (applicationWindow().pageStack.currentItem !== applicationWindow().getPage("Printing")) {
-                    applicationWindow().switchToPage('Printing')
-                }
-                const printingPage = applicationWindow().pageStack.currentItem
-                printingPage.pdfPath = ""
-                printingPage.pdfPath = root.previewLocation
-            }
-
-            onLoadProgressChanged: if (loadProgress === 100) {
-                changeStyle(defaultCSS)
-
-            }
+            onLoadProgressChanged: if (loadProgress === 100) loadStyle()
 
             QtMdEditor.QmlLinker{
                 id: editorLink
@@ -157,9 +143,8 @@ RowLayout {
     }
 
     function loadStyle() {
-        let current = DocumentHandler.getCssStyle(stylePath)
-        cssStyleLink.cssStyle = current
-        changeStyle(defaultCSS)
+        cssStyleLink.cssStyle = DocumentHandler.getCssStyle(stylePath)
+        changeStyle("default")
     }
 
     function changeStyle(style) {
@@ -173,6 +158,7 @@ RowLayout {
         if (!root.printBackground) currentColors["--bodyColor"] = "undefined"
 
         cssVarLink.cssVar = currentColors
+
     }
 
     function makePdf() {
