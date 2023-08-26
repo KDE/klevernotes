@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-17 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2023-08-17 12:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -211,6 +211,21 @@ msgstr "İsteğe bağlı"
 msgid "Choose an URL"
 msgstr "Bir URL seç"
 
+#: contents/ui/dialogs/WarningDialog.qml:14
+#, kde-format
+msgid "Warning"
+msgstr ""
+
+#: contents/ui/dialogs/WarningDialog.qml:21
+#, kde-format
+msgid "This could cause visual artifact near the end of the pdf."
+msgstr ""
+
+#: contents/ui/dialogs/WarningDialog.qml:29
+#, kde-format
+msgid "Do not show again"
+msgstr ""
+
 #: contents/ui/main.qml:15
 #, kde-format
 msgid "KleverNotes"
@@ -237,7 +252,7 @@ msgstr ""
 msgid "Paint!"
 msgstr "Boya!"
 
-#: contents/ui/pages/PaintingPage.qml:32
+#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
 #, kde-format
 msgid "Save"
 msgstr "Kaydet"
@@ -251,6 +266,23 @@ msgstr "Temizle"
 #, kde-format
 msgid "Auto crop"
 msgstr "Otomatik kırp"
+
+#: contents/ui/pages/PrintingPage.qml:21
+#, kde-format
+msgid "Print"
+msgstr ""
+
+#: contents/ui/pages/PrintingPage.qml:31
+#, fuzzy, kde-format
+#| msgid "Color Picker"
+msgid "Color theme"
+msgstr "Renk Seçicisi"
+
+#: contents/ui/pages/PrintingPage.qml:47
+#, fuzzy, kde-format
+#| msgid "Background color:"
+msgid "background"
+msgstr "Arka plan rengi:"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -475,39 +507,36 @@ msgstr "Kategori oluşturulmaya çalışılırken bir hata oluştu."
 msgid "An error occurred while trying to create the storage."
 msgstr "Depolama oluşturulmaya çalışılırken bir hata oluştu."
 
-#: main.cpp:46
+#: main.cpp:48
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "Akıllı Notlar"
 
-#: main.cpp:50
+#: main.cpp:52
 #, kde-format
 msgid "Application Description"
 msgstr "Uygulama Açıklaması"
 
-#: main.cpp:54
+#: main.cpp:56
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:55
+#: main.cpp:57
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Emir SARI"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "emir_sari@icloud.com"
-
-#~ msgid "Background color:"
-#~ msgstr "Arka plan rengi:"

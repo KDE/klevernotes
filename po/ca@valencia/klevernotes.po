@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-17 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2023-08-17 13:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -214,6 +214,21 @@ msgstr "Opcional"
 msgid "Choose an URL"
 msgstr "Seleccioneu un URL"
 
+#: contents/ui/dialogs/WarningDialog.qml:14
+#, kde-format
+msgid "Warning"
+msgstr ""
+
+#: contents/ui/dialogs/WarningDialog.qml:21
+#, kde-format
+msgid "This could cause visual artifact near the end of the pdf."
+msgstr ""
+
+#: contents/ui/dialogs/WarningDialog.qml:29
+#, kde-format
+msgid "Do not show again"
+msgstr ""
+
 #: contents/ui/main.qml:15
 #, kde-format
 msgid "KleverNotes"
@@ -239,7 +254,7 @@ msgstr "Creeu o seleccioneu una nota per a començar a treballar!"
 msgid "Paint!"
 msgstr "Pinta!"
 
-#: contents/ui/pages/PaintingPage.qml:32
+#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
 #, kde-format
 msgid "Save"
 msgstr "Guarda"
@@ -253,6 +268,22 @@ msgstr "Neteja"
 #, kde-format
 msgid "Auto crop"
 msgstr "Escapçament automàtic"
+
+#: contents/ui/pages/PrintingPage.qml:21
+#, kde-format
+msgid "Print"
+msgstr ""
+
+#: contents/ui/pages/PrintingPage.qml:31
+#, fuzzy, kde-format
+#| msgid "Color Picker"
+msgid "Color theme"
+msgstr "Selector de color"
+
+#: contents/ui/pages/PrintingPage.qml:47
+#, kde-format
+msgid "background"
+msgstr ""
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -476,35 +507,35 @@ msgstr "S'ha produït un error en intentar crear la categoria."
 msgid "An error occurred while trying to create the storage."
 msgstr "S'ha produït un error en intentar crear l'emmagatzematge."
 
-#: main.cpp:46
+#: main.cpp:48
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "´KleverNotes"
 
-#: main.cpp:50
+#: main.cpp:52
 #, kde-format
 msgid "Application Description"
 msgstr "Descripció de l'aplicació"
 
-#: main.cpp:54
+#: main.cpp:56
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:55
+#: main.cpp:57
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Josep M. Ferrer"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

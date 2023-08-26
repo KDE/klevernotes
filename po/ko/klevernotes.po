@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-17 00:46+0000\n"
-"PO-Revision-Date: 2023-08-06 23:18+0200\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"PO-Revision-Date: 2023-08-25 22:29+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -211,6 +211,21 @@ msgstr "선택 사항"
 msgid "Choose an URL"
 msgstr "URL 선택"
 
+#: contents/ui/dialogs/WarningDialog.qml:14
+#, kde-format
+msgid "Warning"
+msgstr ""
+
+#: contents/ui/dialogs/WarningDialog.qml:21
+#, kde-format
+msgid "This could cause visual artifact near the end of the pdf."
+msgstr ""
+
+#: contents/ui/dialogs/WarningDialog.qml:29
+#, kde-format
+msgid "Do not show again"
+msgstr ""
+
 #: contents/ui/main.qml:15
 #, kde-format
 msgid "KleverNotes"
@@ -236,7 +251,7 @@ msgstr "작업을 시작하려면 메모를 만들거나 선택하십시오!"
 msgid "Paint!"
 msgstr "그리기!"
 
-#: contents/ui/pages/PaintingPage.qml:32
+#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
 #, kde-format
 msgid "Save"
 msgstr "저장"
@@ -250,6 +265,23 @@ msgstr "지우기"
 #, kde-format
 msgid "Auto crop"
 msgstr "자동 자르기"
+
+#: contents/ui/pages/PrintingPage.qml:21
+#, kde-format
+msgid "Print"
+msgstr ""
+
+#: contents/ui/pages/PrintingPage.qml:31
+#, fuzzy, kde-format
+#| msgid "Color Picker"
+msgid "Color theme"
+msgstr "색상 선택기"
+
+#: contents/ui/pages/PrintingPage.qml:47
+#, fuzzy, kde-format
+#| msgid "Background color:"
+msgid "background"
+msgstr "배경색:"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -304,7 +336,7 @@ msgstr "메모 표시"
 #: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
 msgid "Style:"
-msgstr ""
+msgstr "스타일: "
 
 #: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
@@ -379,7 +411,7 @@ msgstr "삭제"
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "검색 위치: "
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
@@ -426,12 +458,16 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"이 파일은 메모 표시에 사용되는 기본 CSS 스타일의 복사본입니다.            \n"
+"자유롭게 편집하거나 복제할 수 있습니다.            \n"
+"메모: 각각 스타일마다 고유한 이름을 지정해야 합니다.            \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "메모를 생성하는 중 오류가 발생했습니다."
+msgstr "데모 메모를 생성하는 중 오류가 발생했습니다."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
@@ -468,39 +504,36 @@ msgstr "분류를 생성하는 중 오류가 발생했습니다."
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
 
-#: main.cpp:46
+#: main.cpp:48
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:50
+#: main.cpp:52
 #, kde-format
 msgid "Application Description"
 msgstr "앱 설명"
 
-#: main.cpp:54
+#: main.cpp:56
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:55
+#: main.cpp:57
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
-
-#~ msgid "Background color:"
-#~ msgstr "배경색:"
