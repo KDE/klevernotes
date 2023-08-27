@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-26 00:46+0000\n"
-"PO-Revision-Date: 2023-08-17 13:36+0200\n"
+"PO-Revision-Date: 2023-08-26 10:02+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -216,17 +216,17 @@ msgstr "Een URL kiezen"
 #: contents/ui/dialogs/WarningDialog.qml:14
 #, kde-format
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 #: contents/ui/dialogs/WarningDialog.qml:21
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Dit zou een visuele artifact bij het einde van de pdf kunnen geven."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
 #, kde-format
 msgid "Do not show again"
-msgstr ""
+msgstr "Niet meer tonen"
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -271,19 +271,17 @@ msgstr "Automatisch bijsnijden"
 #: contents/ui/pages/PrintingPage.qml:21
 #, kde-format
 msgid "Print"
-msgstr ""
+msgstr "Afdrukken"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgid "Color theme"
-msgstr "Kleurenkiezer"
+msgstr "Kleurenthema"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Background color:"
+#, kde-format
 msgid "background"
-msgstr "Achtergrondkleur:"
+msgstr "achtergrond"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-26 00:46+0000\n"
-"PO-Revision-Date: 2023-08-17 09:06+0300\n"
+"PO-Revision-Date: 2023-08-26 08:48+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -216,17 +216,17 @@ msgstr "Виберіть адресу"
 #: contents/ui/dialogs/WarningDialog.qml:14
 #, kde-format
 msgid "Warning"
-msgstr ""
+msgstr "Попередження"
 
 #: contents/ui/dialogs/WarningDialog.qml:21
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Це може спричинити візуальний дефект наприкінці pdf."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
 #, kde-format
 msgid "Do not show again"
-msgstr ""
+msgstr "Більше не показувати"
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -271,19 +271,17 @@ msgstr "Автообрізання"
 #: contents/ui/pages/PrintingPage.qml:21
 #, kde-format
 msgid "Print"
-msgstr ""
+msgstr "Надрукувати"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgid "Color theme"
-msgstr "Піпетка"
+msgstr "Тема кольорів"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Background color:"
+#, kde-format
 msgid "background"
-msgstr "Колір тла:"
+msgstr "тло"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
