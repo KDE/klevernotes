@@ -204,7 +204,7 @@ msgstr ""
 #: contents/ui/dialogs/WarningDialog.qml:14
 #, kde-format
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #: contents/ui/dialogs/WarningDialog.qml:21
 #, kde-format
@@ -214,7 +214,7 @@ msgstr ""
 #: contents/ui/dialogs/WarningDialog.qml:29
 #, kde-format
 msgid "Do not show again"
-msgstr ""
+msgstr "Znovu nezobrazovat"
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -259,19 +259,17 @@ msgstr "Automatický ořez"
 #: contents/ui/pages/PrintingPage.qml:21
 #, kde-format
 msgid "Print"
-msgstr ""
+msgstr "Tisk"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgid "Color theme"
-msgstr "Kapátko"
+msgstr "Barevný motiv"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Background color:"
+#, kde-format
 msgid "background"
-msgstr "Barva pozadí:"
+msgstr "pozadí"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -324,7 +322,7 @@ msgstr ""
 #: contents/ui/settings/DisplayPreview.qml:32
 #, kde-format
 msgid "Style:"
-msgstr ""
+msgstr "Styl:"
 
 #: contents/ui/settings/DisplayPreview.qml:50
 #, kde-format
@@ -448,10 +446,9 @@ msgid ""
 msgstr ""
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Nastala chyba při pokusu o vytvoření poznámky."
+msgstr ""
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
