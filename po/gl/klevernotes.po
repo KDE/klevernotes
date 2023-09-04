@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-26 00:46+0000\n"
-"PO-Revision-Date: 2023-08-26 04:27+0200\n"
+"PO-Revision-Date: 2023-09-03 11:31+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -212,17 +212,17 @@ msgstr "Escolla un URL"
 #: contents/ui/dialogs/WarningDialog.qml:14
 #, kde-format
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: contents/ui/dialogs/WarningDialog.qml:21
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Isto pode causar un defecto visual cara ao final do PDF."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
 #, kde-format
 msgid "Do not show again"
-msgstr ""
+msgstr "Non amosar de novo."
 
 #: contents/ui/main.qml:15
 #, kde-format
@@ -267,19 +267,17 @@ msgstr "Recorte automático"
 #: contents/ui/pages/PrintingPage.qml:21
 #, kde-format
 msgid "Print"
-msgstr ""
+msgstr "Imprimir"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgid "Color theme"
-msgstr "Selector de cores"
+msgstr "Tema de cores"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Background color:"
+#, kde-format
 msgid "background"
-msgstr "Cor de fondo:"
+msgstr "fondo"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
