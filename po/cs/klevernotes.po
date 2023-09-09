@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:47+0000\n"
 "PO-Revision-Date: 2023-06-13 09:50+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -100,6 +100,21 @@ msgstr ""
 msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:12
+#, kde-format
+msgid "Create your link"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:19
+#, kde-format
+msgid "URL:"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:29
+#, kde-format
+msgid "Link text:"
 msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
@@ -271,85 +286,80 @@ msgstr "Barevný motiv"
 msgid "background"
 msgstr "pozadí"
 
-#: contents/ui/pages/SettingsPage.qml:18
+#: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Nastavení"
 
-#: contents/ui/pages/SettingsPage.qml:54
+#: contents/ui/pages/SettingsPage.qml:25
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:93
+#: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
 msgid "General"
 msgstr "Obecné"
 
-#: contents/ui/pages/SettingsPage.qml:98
+#: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgid "Storage path:"
 msgstr "Cesta k úložišti:"
 
-#: contents/ui/pages/SettingsPage.qml:106
-#, kde-format
-msgid "Change storage path"
-msgstr ""
-
-#: contents/ui/pages/SettingsPage.qml:118
+#: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "New Category name:"
 msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:146
+#: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgid "New Group name:"
 msgstr "Název nové skupiny:"
 
-#: contents/ui/pages/SettingsPage.qml:174
+#: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
 msgid "New Note name:"
 msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:200
+#: contents/ui/pages/SettingsPage.qml:184
 #, kde-format
-msgid "Note display"
+msgid "Display"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:32
+#: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgid "Style:"
 msgstr "Styl:"
 
-#: contents/ui/settings/DisplayPreview.qml:50
+#: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgid "Text color:"
 msgstr "Barva textu:"
 
-#: contents/ui/settings/DisplayPreview.qml:88
+#: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
 msgid "Title color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:126
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgid "Link color:"
 msgstr "Barva odkazu:"
 
-#: contents/ui/settings/DisplayPreview.qml:164
+#: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Barva navštíveného odkazu:"
 
-#: contents/ui/settings/DisplayPreview.qml:201
+#: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
 msgid "Code color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:241
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgid "Font:"
 msgstr "Písmo:"
@@ -424,7 +434,7 @@ msgstr "Poznámka"
 msgid "TODO"
 msgstr "Úloha"
 
-#: contents/ui/textEditor/TextToolBar.qml:88
+#: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
 msgid "Header"
 msgstr "Záhlaví"

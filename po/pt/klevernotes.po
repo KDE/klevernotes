@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:47+0000\n"
 "PO-Revision-Date: 2023-06-13 17:27+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -107,6 +107,22 @@ msgid ""
 msgstr ""
 "Está prestes a sair sem gravar o seu desenho!\n"
 "Deseja gravá-lo antes de sair ?\n"
+
+#: contents/ui/dialogs/LinkDialog.qml:12
+#, fuzzy, kde-format
+#| msgid "Create storage"
+msgid "Create your link"
+msgstr "Criar um armazenamento"
+
+#: contents/ui/dialogs/LinkDialog.qml:19
+#, kde-format
+msgid "URL:"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:29
+#, kde-format
+msgid "Link text:"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -288,13 +304,13 @@ msgstr "Obter uma Cor"
 msgid "background"
 msgstr "Cor de fundo:"
 
-#: contents/ui/pages/SettingsPage.qml:18
+#: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Configuração"
 
-#: contents/ui/pages/SettingsPage.qml:54
+#: contents/ui/pages/SettingsPage.qml:25
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -303,72 +319,68 @@ msgstr ""
 "Escolha por favor uma localização para o seu futuro armazenamento do "
 "KleverNotes ou escolha um existente.\n"
 
-#: contents/ui/pages/SettingsPage.qml:93
+#: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
 msgid "General"
 msgstr "Geral"
 
-#: contents/ui/pages/SettingsPage.qml:98
+#: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgid "Storage path:"
 msgstr "Local de armazenamento:"
 
-#: contents/ui/pages/SettingsPage.qml:106
-#, kde-format
-msgid "Change storage path"
-msgstr "Mudar o local de armazenamento"
-
-#: contents/ui/pages/SettingsPage.qml:118
+#: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "New Category name:"
 msgstr "Nome da nova categoria:"
 
-#: contents/ui/pages/SettingsPage.qml:146
+#: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgid "New Group name:"
 msgstr "Nome do novo grupo:"
 
-#: contents/ui/pages/SettingsPage.qml:174
+#: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
 msgid "New Note name:"
 msgstr "Nome da nova nota:"
 
-#: contents/ui/pages/SettingsPage.qml:200
-#, kde-format
-msgid "Note display"
+#: contents/ui/pages/SettingsPage.qml:184
+#, fuzzy, kde-format
+#| msgid "Note display"
+msgid "Display"
 msgstr "Apresentação da nota"
 
-#: contents/ui/settings/DisplayPreview.qml:32
+#: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgid "Style:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:50
+#: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgid "Text color:"
 msgstr "Cor do texto:"
 
-#: contents/ui/settings/DisplayPreview.qml:88
+#: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
 msgid "Title color:"
 msgstr "Cor do título:"
 
-#: contents/ui/settings/DisplayPreview.qml:126
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgid "Link color:"
 msgstr "Cor da ligação:"
 
-#: contents/ui/settings/DisplayPreview.qml:164
+#: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Cor da ligação visitada:"
 
-#: contents/ui/settings/DisplayPreview.qml:201
+#: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
 msgid "Code color:"
 msgstr "Cor do código:"
 
-#: contents/ui/settings/DisplayPreview.qml:241
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgid "Font:"
 msgstr "Tipo de letra:"
@@ -443,7 +455,7 @@ msgstr "Nota"
 msgid "TODO"
 msgstr "A FAZER"
 
-#: contents/ui/textEditor/TextToolBar.qml:88
+#: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
 msgid "Header"
 msgstr "Cabeçalho"
@@ -538,3 +550,6 @@ msgstr "José Nuno Pires"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zepires@gmail.com"
+
+#~ msgid "Change storage path"
+#~ msgstr "Mudar o local de armazenamento"

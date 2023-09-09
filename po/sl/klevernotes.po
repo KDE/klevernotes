@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:47+0000\n"
 "PO-Revision-Date: 2023-08-26 06:46+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -104,6 +104,22 @@ msgid ""
 msgstr ""
 "Nameravate zapustiti aplikacijo ne da bi shranili vašo risbo\n"
 "Ali jo želite shraniti pred odhodom?\n"
+
+#: contents/ui/dialogs/LinkDialog.qml:12
+#, fuzzy, kde-format
+#| msgid "Create storage"
+msgid "Create your link"
+msgstr "Ustvari hrambo"
+
+#: contents/ui/dialogs/LinkDialog.qml:19
+#, kde-format
+msgid "URL:"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:29
+#, kde-format
+msgid "Link text:"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -282,13 +298,13 @@ msgstr "Barvna tema"
 msgid "background"
 msgstr "ozadje"
 
-#: contents/ui/pages/SettingsPage.qml:18
+#: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: contents/ui/pages/SettingsPage.qml:54
+#: contents/ui/pages/SettingsPage.qml:25
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -297,72 +313,68 @@ msgstr ""
 "Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
 "obstoječo.\n"
 
-#: contents/ui/pages/SettingsPage.qml:93
+#: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
 msgid "General"
 msgstr "Splošno"
 
-#: contents/ui/pages/SettingsPage.qml:98
+#: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgid "Storage path:"
 msgstr "Pot hrambe:"
 
-#: contents/ui/pages/SettingsPage.qml:106
-#, kde-format
-msgid "Change storage path"
-msgstr "Spremeni pot hrambe"
-
-#: contents/ui/pages/SettingsPage.qml:118
+#: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "New Category name:"
 msgstr "Novo ime kategorije:"
 
-#: contents/ui/pages/SettingsPage.qml:146
+#: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgid "New Group name:"
 msgstr "Novo ime grupe:"
 
-#: contents/ui/pages/SettingsPage.qml:174
+#: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
 msgid "New Note name:"
 msgstr "Novo ime opombe:"
 
-#: contents/ui/pages/SettingsPage.qml:200
-#, kde-format
-msgid "Note display"
+#: contents/ui/pages/SettingsPage.qml:184
+#, fuzzy, kde-format
+#| msgid "Note display"
+msgid "Display"
 msgstr "Prikaz opombe"
 
-#: contents/ui/settings/DisplayPreview.qml:32
+#: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgid "Style:"
 msgstr "Slog:"
 
-#: contents/ui/settings/DisplayPreview.qml:50
+#: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgid "Text color:"
 msgstr "Barva besedila:"
 
-#: contents/ui/settings/DisplayPreview.qml:88
+#: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
 msgid "Title color:"
 msgstr "Barva naslova:"
 
-#: contents/ui/settings/DisplayPreview.qml:126
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgid "Link color:"
 msgstr "Barva povezave:"
 
-#: contents/ui/settings/DisplayPreview.qml:164
+#: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Barva obiskane povezave:"
 
-#: contents/ui/settings/DisplayPreview.qml:201
+#: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
 msgid "Code color:"
 msgstr "Barva kode:"
 
-#: contents/ui/settings/DisplayPreview.qml:241
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgid "Font:"
 msgstr "Pisava:"
@@ -437,7 +449,7 @@ msgstr "Opomba"
 msgid "TODO"
 msgstr "SEZNAM OPRAVIL"
 
-#: contents/ui/textEditor/TextToolBar.qml:88
+#: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
 msgid "Header"
 msgstr "Glava"
@@ -536,3 +548,6 @@ msgstr "Matjaž Jeran"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
+
+#~ msgid "Change storage path"
+#~ msgstr "Spremeni pot hrambe"

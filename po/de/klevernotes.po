@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:47+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -102,6 +102,21 @@ msgstr ""
 msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:12
+#, kde-format
+msgid "Create your link"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:19
+#, kde-format
+msgid "URL:"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:29
+#, kde-format
+msgid "Link text:"
 msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
@@ -277,85 +292,80 @@ msgstr "Farbauswahl"
 msgid "background"
 msgstr "Hintergrundfarbe:"
 
-#: contents/ui/pages/SettingsPage.qml:18
+#: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: contents/ui/pages/SettingsPage.qml:54
+#: contents/ui/pages/SettingsPage.qml:25
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:93
+#: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
 msgid "General"
 msgstr "Allgemein"
 
-#: contents/ui/pages/SettingsPage.qml:98
+#: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgid "Storage path:"
 msgstr "Speicherpfad:"
 
-#: contents/ui/pages/SettingsPage.qml:106
-#, kde-format
-msgid "Change storage path"
-msgstr "Speicherpfad ändern"
-
-#: contents/ui/pages/SettingsPage.qml:118
+#: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "New Category name:"
 msgstr "Neuer Kategorienname:"
 
-#: contents/ui/pages/SettingsPage.qml:146
+#: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgid "New Group name:"
 msgstr "Neuer Gruppenname:"
 
-#: contents/ui/pages/SettingsPage.qml:174
+#: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
 msgid "New Note name:"
 msgstr "Neuer Notizname:"
 
-#: contents/ui/pages/SettingsPage.qml:200
+#: contents/ui/pages/SettingsPage.qml:184
 #, kde-format
-msgid "Note display"
+msgid "Display"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:32
+#: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgid "Style:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:50
+#: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgid "Text color:"
 msgstr "Textfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:88
+#: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
 msgid "Title color:"
 msgstr "Titelfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:126
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgid "Link color:"
 msgstr "Farbe für Verknüpfungen:"
 
-#: contents/ui/settings/DisplayPreview.qml:164
+#: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgid "Visited Link color:"
 msgstr "Farbe für besuchte Verknüpfungen:"
 
-#: contents/ui/settings/DisplayPreview.qml:201
+#: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
 msgid "Code color:"
 msgstr "Quelltextfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:241
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgid "Font:"
 msgstr "Schriftart:"
@@ -433,7 +443,7 @@ msgstr "Notiz"
 msgid "TODO"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:88
+#: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
 msgid "Header"
 msgstr "Kopfzeile"
@@ -527,3 +537,6 @@ msgstr "Deutsches KDE-Übersetzerteam"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
+
+#~ msgid "Change storage path"
+#~ msgstr "Speicherpfad ändern"

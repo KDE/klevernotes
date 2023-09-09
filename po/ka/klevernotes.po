@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:47+0000\n"
 "PO-Revision-Date: 2023-08-27 11:03+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -105,6 +105,22 @@ msgid ""
 msgstr ""
 "აპირებთ, თქვენი ნახატის გარეშე გახვიდეთ?\n"
 "თუ გნებავთ, შეინახოთ ის გასვლამდე?\n"
+
+#: contents/ui/dialogs/LinkDialog.qml:12
+#, fuzzy, kde-format
+#| msgid "Create storage"
+msgid "Create your link"
+msgstr "საცავის შექმნა"
+
+#: contents/ui/dialogs/LinkDialog.qml:19
+#, kde-format
+msgid "URL:"
+msgstr ""
+
+#: contents/ui/dialogs/LinkDialog.qml:29
+#, kde-format
+msgid "Link text:"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -282,13 +298,13 @@ msgstr "ფერის თემა"
 msgid "background"
 msgstr "ფონი"
 
-#: contents/ui/pages/SettingsPage.qml:18
+#: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "მორგება"
 
-#: contents/ui/pages/SettingsPage.qml:54
+#: contents/ui/pages/SettingsPage.qml:25
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -297,72 +313,68 @@ msgstr ""
 "აირჩიეთ მდებარეობა KleverNotes-ის მომავალი შენიშვნებისთვის, ან აირჩიეთ "
 "არსებული.\n"
 
-#: contents/ui/pages/SettingsPage.qml:93
+#: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
 msgid "General"
 msgstr "ძირითადი"
 
-#: contents/ui/pages/SettingsPage.qml:98
+#: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgid "Storage path:"
 msgstr "საცავის ბილიკი:"
 
-#: contents/ui/pages/SettingsPage.qml:106
-#, kde-format
-msgid "Change storage path"
-msgstr "საცავის ბილიკის შეცვლა"
-
-#: contents/ui/pages/SettingsPage.qml:118
+#: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgid "New Category name:"
 msgstr "ახალი კატეგორიის სახელი:"
 
-#: contents/ui/pages/SettingsPage.qml:146
+#: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgid "New Group name:"
 msgstr "ახალი ჯგუფის სახელი:"
 
-#: contents/ui/pages/SettingsPage.qml:174
+#: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
 msgid "New Note name:"
 msgstr "ახალი შენიშვნის სახელი:"
 
-#: contents/ui/pages/SettingsPage.qml:200
-#, kde-format
-msgid "Note display"
+#: contents/ui/pages/SettingsPage.qml:184
+#, fuzzy, kde-format
+#| msgid "Note display"
+msgid "Display"
 msgstr "შენიშვნის ჩვენება"
 
-#: contents/ui/settings/DisplayPreview.qml:32
+#: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgid "Style:"
 msgstr "სტილი:"
 
-#: contents/ui/settings/DisplayPreview.qml:50
+#: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgid "Text color:"
 msgstr "ტექსტის ფერი:"
 
-#: contents/ui/settings/DisplayPreview.qml:88
+#: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
 msgid "Title color:"
 msgstr "სათაურის ფერი:"
 
-#: contents/ui/settings/DisplayPreview.qml:126
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgid "Link color:"
 msgstr "ბმულის ფერი:"
 
-#: contents/ui/settings/DisplayPreview.qml:164
+#: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgid "Visited Link color:"
 msgstr "გახსნილი ბმულის ფერი:"
 
-#: contents/ui/settings/DisplayPreview.qml:201
+#: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
 msgid "Code color:"
 msgstr "კოდის ფერი:"
 
-#: contents/ui/settings/DisplayPreview.qml:241
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgid "Font:"
 msgstr "ფონტი:"
@@ -437,7 +449,7 @@ msgstr "შენიშვნა"
 msgid "TODO"
 msgstr "განრიგის სია"
 
-#: contents/ui/textEditor/TextToolBar.qml:88
+#: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
 msgid "Header"
 msgstr "სათაური"
@@ -537,3 +549,6 @@ msgstr "Temuri Doghonadze"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
+
+#~ msgid "Change storage path"
+#~ msgstr "საცავის ბილიკის შეცვლა"
