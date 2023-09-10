@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-09 00:47+0000\n"
-"PO-Revision-Date: 2023-08-26 07:38+0200\n"
+"PO-Revision-Date: 2023-09-09 13:04+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -105,20 +105,19 @@ msgstr ""
 "Vill du spara den innan du avslutar?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgid "Create your link"
-msgstr "Skapa lagring"
+msgstr "Skapa din länk"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "Webbadress:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgid "Link text:"
-msgstr ""
+msgstr "Länktext:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -338,10 +337,9 @@ msgid "New Note name:"
 msgstr "Namn på ny anteckning:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Note display"
+#, kde-format
 msgid "Display"
-msgstr "Anteckningsvisning"
+msgstr "Visning"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format

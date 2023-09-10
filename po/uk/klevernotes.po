@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-09 00:47+0000\n"
-"PO-Revision-Date: 2023-08-26 08:48+0300\n"
+"PO-Revision-Date: 2023-09-09 08:52+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -107,20 +107,19 @@ msgstr ""
 "Хочете зберегти його до завершення роботи програми?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgid "Create your link"
-msgstr "Створити сховище"
+msgstr "Створення посилання"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "Адреса:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgid "Link text:"
-msgstr ""
+msgstr "Текст посилання:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -340,10 +339,9 @@ msgid "New Note name:"
 msgstr "Назва нової нотатки:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Note display"
+#, kde-format
 msgid "Display"
-msgstr "Показ нотатки"
+msgstr "Показ"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format

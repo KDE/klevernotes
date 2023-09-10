@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2023.
+# SPDX-FileCopyrightText: 2023 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-09 00:47+0000\n"
-"PO-Revision-Date: 2023-08-26 10:02+0200\n"
+"PO-Revision-Date: 2023-09-09 09:52+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -107,20 +107,19 @@ msgstr ""
 "Wilt u het opslaan alvorens te verlaten?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgid "Create your link"
-msgstr "Opslag aanmaken"
+msgstr "Uw koppeling maken"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgid "Link text:"
-msgstr ""
+msgstr "Koppelingstekst:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -340,10 +339,9 @@ msgid "New Note name:"
 msgstr "Nieuwe notitienaam:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Note display"
+#, kde-format
 msgid "Display"
-msgstr "Notitie tonen"
+msgstr "Weergave"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
