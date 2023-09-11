@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-09 00:47+0000\n"
-"PO-Revision-Date: 2023-08-27 11:03+0200\n"
+"PO-Revision-Date: 2023-09-10 05:19+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -107,20 +107,19 @@ msgstr ""
 "თუ გნებავთ, შეინახოთ ის გასვლამდე?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgid "Create your link"
-msgstr "საცავის შექმნა"
+msgstr "შექმენით თქვენი ბმული"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgid "Link text:"
-msgstr ""
+msgstr "ბმულის ტექსტი:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -339,10 +338,9 @@ msgid "New Note name:"
 msgstr "ახალი შენიშვნის სახელი:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Note display"
+#, kde-format
 msgid "Display"
-msgstr "შენიშვნის ჩვენება"
+msgstr "ჩვენება"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
