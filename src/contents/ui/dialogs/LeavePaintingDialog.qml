@@ -6,7 +6,7 @@ import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Controls 2.15 as Controls
 
 Kirigami.PromptDialog {
-    title: i18n("KleverNotes painting")
+    title: i18nc("@title:dialog", "KleverNotes painting")
 
     // Dirty workaround to prevent weird height
     height: header.height + footer.height + topPadding + bottomPadding + mainItem.height

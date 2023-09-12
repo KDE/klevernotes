@@ -10,7 +10,7 @@ import org.kde.Klever 1.0
 Kirigami.PromptDialog {
     id: textPromptDialog
 
-    title: "Choose a name"
+    title: i18nc("@title:dialog", "Choose a name")
 
     property bool newItem
     property string useCase

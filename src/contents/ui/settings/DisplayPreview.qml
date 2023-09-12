@@ -14,7 +14,7 @@ import org.kde.Klever 1.0
 
 FormCard.FormCard {
     FormCard.FormComboBoxDelegate {
-        text: i18n("Style:")
+        text: i18nc("@label:combobox", "Style:")
 
         readonly property var styles: KleverUtility.getCssStylesList()
         readonly property var stylesNames: Object.keys(styles)
@@ -44,7 +44,7 @@ FormCard.FormCard {
     RowLayout {
         SettingsColorButton {
             name: "text"
-            title: i18n("Text color:")
+            title: i18nc("@label:button", "Text color:")
 
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
@@ -55,7 +55,7 @@ FormCard.FormCard {
 
         SettingsColorButton {
             name: "title"
-            title: i18n("Title color:")
+            title: i18nc("@label:button", "Title color:")
 
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
@@ -70,7 +70,7 @@ FormCard.FormCard {
             id: linkButton
 
             name: "link"
-            title: i18n("Link color:")
+            title: i18nc("@label:button", "Link color:")
 
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
@@ -81,7 +81,7 @@ FormCard.FormCard {
 
         SettingsColorButton {
             name: "visitedLink"
-            title: i18n("Visited Link color:")
+            title: i18nc("@label:button", "Visited Link color:")
 
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
@@ -94,7 +94,7 @@ FormCard.FormCard {
     RowLayout {
         SettingsColorButton {
             name: "code"
-            title: i18n("Code color:")
+            title: i18nc("@label:button", "Code color:")
 
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
@@ -107,7 +107,7 @@ FormCard.FormCard {
         FormCard.FormTextFieldDelegate {
             id: fontDisplay
 
-            label: i18n("Font:")
+            label: i18nc("@label:textbox", "Font:")
 
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false

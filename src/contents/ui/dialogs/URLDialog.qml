@@ -8,7 +8,7 @@ import QtQuick.Controls 2.15 as Controls
 Kirigami.PromptDialog {
     id: textPromptDialog
 
-    title: i18n("Choose an URL")
+    title: i18nc("@title:dialog", "Choose an URL")
 
     property QtObject caller
 

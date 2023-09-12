@@ -13,7 +13,7 @@ Kirigami.Dialog {
     readonly property int rowCount: rowSpin.value
     readonly property int columnCount: columnSpin.value
 
-    title: i18n("Select Number")
+    title: i18nc("@title:dialog, table => an html table", "Table creation")
 
     width: Kirigami.Units.gridUnit * 18
 
@@ -24,7 +24,7 @@ Kirigami.Dialog {
             width: parent.width
             height: 50
             Text {
-                text: i18n("Row")
+                text: i18nc("Name, 'a row'", "Row")
                 horizontalAlignment: Text.AlignHCenter
                 color: Kirigami.Theme.textColor
 

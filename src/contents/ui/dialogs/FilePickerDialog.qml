@@ -9,7 +9,7 @@ import org.kde.kirigami 2.19 as Kirigami
 FileDialog {
     id: fileDialog
 
-    title: i18n("Image picker")
+    title: i18nc("@title:dialog", "Image picker")
     selectExisting: true
     selectMultiple: false
     nameFilters: [ "Image files (*.jpeg *.jpg *.png)" ]

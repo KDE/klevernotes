@@ -25,23 +25,23 @@ Kirigami.Page {
     readonly property point cursorPos: Qt.point(handler.point.x, handler.point.y)
     readonly property var penType: Stroke.Fill
 
-    title: i18n("Paint!")
+    title: i18nc("@title:page", "Paint!")
 
     actions.contextualActions: [
         Kirigami.Action {
-            text: i18n("Save")
+            text: i18nc("@label:button", "Save")
             icon.name: "document-save-symbolic"
             onTriggered: root.saveImage()
         },
         Kirigami.Action {
-            text: i18n("Clear")
+            text: i18nc("@label:button, as in 'erase everything'", "Clear")
             icon.name: "edit-clear"
             onTriggered: root.clearCanvas()
         },
         Kirigami.Action {
             id: autoCropAction
 
-            text: i18n("Auto crop")
+            text: i18nc("@label:action", "Auto crop")
             checked: true
             checkable: true
             icon.name: "image-crop-symbolic"

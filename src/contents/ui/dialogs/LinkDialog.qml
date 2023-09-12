@@ -9,14 +9,14 @@ import QtQuick.Controls 2.15 as Controls
 Kirigami.PromptDialog {
     id: textPromptDialog
 
-    title: i18n("Create your link")
+    title: i18nc("@title:dialog", "Create your link")
 
     property alias urlText: urlTextField.text
     property alias linkText: linkTextField.text
 
     Kirigami.FormLayout {
         Row {
-            Kirigami.FormData.label: i18n("URL:")
+            Kirigami.FormData.label: i18nc("@label:textbox, link URL, like the 'href' of an html <a> ", "URL:")
 
             Controls.TextField {
                 id: urlTextField
@@ -26,7 +26,7 @@ Kirigami.PromptDialog {
         }
 
         Row {
-            Kirigami.FormData.label: i18n("Link text:")
+            Kirigami.FormData.label: i18nc("@label:textbox, the displayed text of a link, in html: <a>This text</a> ", "Link text:")
 
             Controls.TextField {
                 id: linkTextField

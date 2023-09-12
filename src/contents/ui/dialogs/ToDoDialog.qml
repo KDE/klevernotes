@@ -9,7 +9,7 @@ import QtQuick.Controls 2.15 as Controls
 Kirigami.PromptDialog {
     id: promptDialog
 
-    title: i18n("Add Todo")
+    title: i18nc("@title:dialog", "Add Todo")
 
     property int callerModelIndex: -1
     property alias name: nameField.text
@@ -26,14 +26,14 @@ Kirigami.PromptDialog {
         Controls.TextField {
             id: nameField
 
-            placeholderText: i18n("Todo title (required)")
+            placeholderText: i18nc("@placeholderText:textbox", "Todo title (required)")
             onAccepted: descriptionField.forceActiveFocus()
 
             Layout.fillWidth: true
         }
 
         Kirigami.Heading {
-            text: i18n("Description:")
+            text: i18nc("@label:textbox", "Description:")
             level: 2
 
             Layout.fillWidth: true
@@ -46,7 +46,7 @@ Kirigami.PromptDialog {
             Controls.TextArea {
                 id: descriptionField
 
-                placeholderText: i18n("Optional")
+                placeholderText: i18nc("@placeholderText:textbox", "Optional")
                 wrapMode: TextEdit.WrapAnywhere
             }
         }

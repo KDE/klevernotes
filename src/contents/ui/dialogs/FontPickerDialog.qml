@@ -7,7 +7,7 @@ import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.Dialog {
     id: scrollableDialog
-    title: i18n("Font selector")
+    title: i18nc("@title:dialog", "Font selector")
 
     property string currentFamily
     property string checkedFamily

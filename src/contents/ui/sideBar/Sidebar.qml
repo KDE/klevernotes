@@ -84,7 +84,7 @@ Kirigami.OverlayDrawer {
         }
 
         Kirigami.BasicListItem {
-            text: i18n("About Klever")
+            text: i18n("About KleverNotes")
             icon: "help-about"
 
             onClicked: applicationWindow().switchToPage('About')

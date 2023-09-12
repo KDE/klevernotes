@@ -222,7 +222,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18n("Create a new category")
+            ToolTip.text: i18nc("as in 'A note category'", "Create a new category")
         }
 
         ToolButton {
@@ -230,7 +230,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18n("Create a new group")
+            ToolTip.text: i18nc("as in 'A note group'", "Create a new group")
         }
 
         ToolButton {
@@ -238,7 +238,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18n("Create a new note")
+            ToolTip.text: i18nc("as in 'A note'", "Create a new note")
         }
 
         ToolButton {

@@ -8,11 +8,11 @@ import org.kde.kirigami 2.19 as Kirigami
 Kirigami.PromptDialog {
     property string useCase
     readonly property var useCaseTrad: {
-        "Category": i18n("category"),
-        "Group": i18n("group"),
-        "Note": i18n("note")
+        "category": i18nc("Name, as in 'A note category'", "category"),
+        "group": i18nc("Name, as in 'A note group'", "group"),
+        "note": i18n("Name, as in 'A note'", "note")
     }
 
-    subtitle: "Are you sure you want to delete this "+useCaseTrad[useCase]+"?"
+    subtitle: i18nc("@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note group) or 'note' (a note)", "Are you sure you want to delete this %1 ?",useCaseTrad[useCase.toLowerCase()])
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 }

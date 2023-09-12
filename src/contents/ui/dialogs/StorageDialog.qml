@@ -16,7 +16,9 @@ Kirigami.Dialog {
     closePolicy: Controls.Popup.NoAutoClose
     standardButtons: Kirigami.Dialog.NoButton
 
-    property string subtitle: i18n("It looks like this is your first time using this app!\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
+    property string subtitle: i18nc("@subtitle:dialog, Storage as in 'the folder where all the notes will be stored'", "It looks like this is your first time using this app!\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
+    readonly property string existingStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Existing storage chosen at ")
+    readonly property string newStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Storage created at ")
     property bool firstSetup: true
     property string folder
     property string userChoice
@@ -39,34 +41,34 @@ Kirigami.Dialog {
 
             Controls.Button{
                 icon.name: "folder-sync"
-                text: i18n("Existing storage")
+                text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Existing storage")
 
                 Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
                 Controls.ToolTip.visible: hovered
-                Controls.ToolTip.text: i18n("Change the storage path")
+                Controls.ToolTip.text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Change the storage path")
 
                 Layout.fillWidth: true
                 Layout.margins: Kirigami.Units.smallSpacing
 
                 onClicked: {
-                    setupPopup.userChoice = "Existing storage chosen at "
+                    setupPopup.userChoice = setupPopup.existingStorage
                     getFolder()
                 }
             }
 
             Controls.Button{
                 icon.name: "folder-new"
-                text: i18n("Create storage")
+                text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Create storage")
 
                 Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
                 Controls.ToolTip.visible: hovered
-                Controls.ToolTip.text: i18n("Create a new storage")
+                Controls.ToolTip.text: i18nc("Storage as in 'the folder where all the notes will be stored'", "Create a new storage")
 
                 Layout.fillWidth: true
                 Layout.margins: Kirigami.Units.smallSpacing
 
                 onClicked: {
-                    setupPopup.userChoice = "Storage created at "
+                    setupPopup.userChoice = setupPopup.newStorage
                     getFolder()
                 }
             }
@@ -85,14 +87,14 @@ Kirigami.Dialog {
 
     onFolderChanged: {
         let folderPath = KleverUtility.getPath(setupPopup.folder)
-        if (userChoice === "Storage created at "){
+        if (userChoice === setupPopup.newStorage){
             folderPath = folderPath.concat("/klevernotes")
         }
 
         var pathEnd = folderPath.substring(folderPath.length,folderPath.length-11)
 
         if (pathEnd.toLowerCase() !== "klevernotes"){
-            subtitle = i18n("It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
+            subtitle = i18nc("@subtitle:dialog, Storage as in 'the folder where all the notes will be stored'", "It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
             return
         }
         Config.storagePath = folderPath

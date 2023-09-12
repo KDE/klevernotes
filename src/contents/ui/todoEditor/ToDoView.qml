@@ -18,7 +18,7 @@ ColumnLayout {
             id: clearTodosAction
 
             icon.name: "edit-clear-history"
-            text: i18n("Clear checked")
+            text: i18nc("@label:button, checked as in 'the todos that are checked'", "Clear checked")
 
             onTriggered: clearCheckedTodos()
         }

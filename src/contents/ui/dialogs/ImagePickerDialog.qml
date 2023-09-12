@@ -15,7 +15,7 @@ import "qrc:/contents/ui/dialogs"
 Kirigami.Dialog {
     id: imagePickerDialog
 
-    title: i18n("Image selector")
+    title: i18nc("@title:dialog", "Image selector")
 
     height: header.height + footer.height + topPadding + bottomPadding + mainItem.height
 
@@ -64,7 +64,7 @@ Kirigami.Dialog {
                     ? internetButton.height
                     : Kirigami.Units.iconSizes.large
 
-                text: i18n("Web image")
+                text: i18nc("@label:button, As in 'image from the internet'", "Web image")
 
                 display: imageHolder.visible
                     ? Controls.AbstractButton.TextBesideIcon
@@ -93,7 +93,7 @@ Kirigami.Dialog {
                 icon.height: internetButton.icon.height
                 icon.width: icon.height
 
-                text: i18n("Local image")
+                text: i18nc("label:button, Image from the local file system", "Local image")
 
                 display: internetButton.display
 
@@ -119,7 +119,7 @@ Kirigami.Dialog {
                     height: internetButton.icon.height
                 }
 
-                text: i18n("Paint an image")
+                text: i18nc("@label:button", "Paint an image")
 
                 display: internetButton.display
 
@@ -140,7 +140,7 @@ Kirigami.Dialog {
                 icon.width: icon.height
                 icon.height: internetButton.icon.height
 
-                text: i18n("Stored image")
+                text: i18nc("@label:button, Collection of image stored inside the note folder", "Image collection")
 
                 display: internetButton.display
 
@@ -207,7 +207,7 @@ Kirigami.Dialog {
                 Kirigami.Theme.inherit: false
                 color: Kirigami.Theme.textColor
 
-                text: i18n("It seems that the image you select doesn't exist or is not supported.")
+                text: i18n("It appears that the image you selected does not exist or is not supported.")
                 wrapMode: Text.Wrap
                 visible: !displayImage.visible
 
@@ -227,7 +227,7 @@ Kirigami.Dialog {
 
             spacing: Kirigami.Units.smallSpacing
             Controls.Label {
-                text: i18n("Image text: ")
+                text: i18nc("@label:textbox, text associated to the selected image", "Image text: ")
             }
 
             Controls.TextField {
@@ -244,7 +244,7 @@ Kirigami.Dialog {
             id: storeCheckbox
 
             checked: true
-            text: i18n("Place this image inside the note folder")
+            text: i18nc("@label:checkbox", "Place this image inside the note folder")
             width: internetButton.width * 2
             visible: displayImage.visible && !storedImageChoosen && !paintedImageChoosen
 

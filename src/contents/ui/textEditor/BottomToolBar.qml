@@ -15,13 +15,13 @@ Kirigami.NavigationTabBar {
     actions: [
         Kirigami.Action {
             iconName: "document-edit"
-            text: i18n("Note")
+            text: i18nc("@label:button, as in 'A note'", "Note")
 
             onTriggered: showNoteEditor = true
         },
         Kirigami.Action {
             iconName: "dino-double-tick-symbolic"
-            text: i18n("TODO")
+            text: i18nc("@label:button", "TODO")
 
             onTriggered: showNoteEditor = false
         }

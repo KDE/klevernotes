@@ -18,7 +18,7 @@ import "qrc:/contents/ui/dialogs"
 Kirigami.Page {
     id: printPreview
 
-    title: i18n("Print")
+    title: i18nc("@title:page", "Print")
 
     property string pdfPath: ""
     property var colors
@@ -28,7 +28,7 @@ Kirigami.Page {
         Kirigami.Action {
             displayComponent: ComboBox {
                 id: colorTheme
-                displayText: i18n("Color theme")
+                displayText: i18nc("@label:ComboBox", "Color theme")
                 textRole: "display"
                 valueRole: "display"
                 model: ColorSchemer.model
@@ -44,7 +44,7 @@ Kirigami.Page {
         Kirigami.Action {
             id: toogleBackground
 
-            text: i18n("background")
+            text: i18nc("@label:button, as in 'the background of an image'", "Background")
             icon.name: "backgroundtool"
             checkable: true
             onTriggered: {
@@ -60,7 +60,7 @@ Kirigami.Page {
             id: saveAction
             property string path
 
-            text: i18n("Save")
+            text: i18nc("@label:button", "Save")
             icon.name: "document-save-symbolic"
             onTriggered: pdfSaver.open()
             onPathChanged: {

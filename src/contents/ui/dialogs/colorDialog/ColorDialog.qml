@@ -7,7 +7,7 @@ import QtQuick.Controls 2.15 as Controls
 import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.Dialog {
-    title: i18n("Color Picker")
+    title: i18nc("@title:dialog", "Color Picker")
     padding: 0
     preferredWidth: Kirigami.Units.gridUnit * 16
     preferredHeight : Kirigami.Units.gridUnit * 16

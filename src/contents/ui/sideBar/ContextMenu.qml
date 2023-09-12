@@ -18,21 +18,21 @@ Controls.Menu {
 
     Controls.MenuItem {
         icon.name: "journal-new"
-        text: i18n("New category")
+        text: i18nc("as in 'A note category'", "New category")
 
         onTriggered: actionBar.createCategoryAction.triggered()
     }
 
     Controls.MenuItem {
         icon.name: "folder-new"
-        text: i18n("New group")
+        text: i18nc("as in 'A note group'", "New group")
 
         onTriggered: actionBar.createGroupAction.triggered()
     }
 
     Controls.MenuItem {
         icon.name: "document-new"
-        text: i18n("New note")
+        text: i18nc("as in 'A note'", "New note")
 
         onTriggered: actionBar.createNoteAction.triggered()
     }

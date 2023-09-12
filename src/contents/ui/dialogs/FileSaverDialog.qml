@@ -9,7 +9,7 @@ import org.kde.kirigami 2.19 as Kirigami
 FileDialog {
     id: fileDialog
 
-    title: "Save note"
+    title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note")
 
     folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
     currentFile: folder+"/"+noteName+".pdf"

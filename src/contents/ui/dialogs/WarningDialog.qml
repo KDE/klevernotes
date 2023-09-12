@@ -11,7 +11,7 @@ Kirigami.PromptDialog {
 
     property alias checkbox: checkbox
 
-    title: i18n("Warning")
+    title: i18nc("@title:dialog", "Warning")
 
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing * 2
@@ -26,7 +26,7 @@ Kirigami.PromptDialog {
         Controls.CheckBox {
             id: checkbox
             Layout.fillWidth: true
-            text: i18n("Do not show again")
+            text: i18nc("@label:checkbox", "Do not show again")
         }
     }
 

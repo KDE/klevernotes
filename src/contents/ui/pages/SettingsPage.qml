@@ -59,7 +59,7 @@ FormCard.FormCardPage {
 
     FormCard.FormHeader {
         Layout.fillWidth: true
-        title: i18n("General")
+        title: i18nc("@title, general settings", "General")
     }
 
     FormCard.FormCard {
@@ -69,7 +69,7 @@ FormCard.FormCardPage {
             id: storageField
 
             text: Config.storagePath
-            label: i18n("Storage path:")
+            label: i18nc("@label:textbox, Storage as in 'the folder where all the notes will be stored'", "Storage path:")
 
             Layout.margins: 0
             Layout.fillWidth: true
@@ -88,7 +88,7 @@ FormCard.FormCardPage {
             id: newCategoryField
 
             text: Config.defaultCategoryName
-            label: i18n("New Category name:")
+            label: i18nc("@label:textbox, the default note category name", "New Category name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
@@ -120,7 +120,7 @@ FormCard.FormCardPage {
             id: newGroupField
 
             text: Config.defaultGroupName
-            label: i18n("New Group name:")
+            label: i18nc("@label:textbox, the default note group name", "New Group name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
@@ -152,7 +152,7 @@ FormCard.FormCardPage {
             id: newNoteField
 
             text: Config.defaultNoteName
-            label: i18n("New Note name:")
+            label: i18nc("@label:textbox, the default note name", "New Note name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
@@ -181,7 +181,7 @@ FormCard.FormCardPage {
 
     FormCard.FormHeader {
         Layout.fillWidth: true
-        title: i18n("Display")
+        title: i18nc("@title, display as in 'the note display' where you can visualize the note", "Display")
     }
 
     DisplayPreview {
