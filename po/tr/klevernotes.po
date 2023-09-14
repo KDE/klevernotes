@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-09 00:47+0000\n"
+"POT-Creation-Date: 2023-09-14 00:45+0000\n"
 "PO-Revision-Date: 2023-09-09 13:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -18,80 +18,124 @@ msgstr ""
 "X-Generator: Lokalize 23.11.70\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Color Picker"
+msgctxt "@title:dialog"
 msgid "Color Picker"
 msgstr "Renk Seçicisi"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "category"
+msgctxt "Name, as in 'A note category'"
 msgid "category"
 msgstr "kategori"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "group"
+msgctxt "Name, as in 'A note group'"
 msgid "group"
 msgstr "grup"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
-msgid "note"
-msgstr "not"
+msgid "Name, as in 'A note'"
+msgstr ""
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid "Are you sure you want to delete this %1 ?"
+msgstr ""
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image picker"
+msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Görsel seçicisi"
 
+#: contents/ui/dialogs/FileSaverDialog.qml:12
+#, fuzzy, kde-format
+#| msgid "New note"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note"
+msgstr "Yeni Not"
+
 #: contents/ui/dialogs/FontPickerDialog.qml:10
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Font selector"
+msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Yazıtipi seçicisi"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image selector"
+msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Görsel seçicisi"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Web image"
+msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Web görseli"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Local image"
+msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Yerel görsel"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Paint an image"
+msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Bir görsel boya"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
-#, kde-format
-msgid "Stored image"
-msgstr "Depolanan görsel"
+#, fuzzy, kde-format
+#| msgid "Image selector"
+msgctxt "@label:button, Collection of image stored inside the note folder"
+msgid "Image collection"
+msgstr "Görsel seçicisi"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
-#, kde-format
-msgid "It seems that the image you select doesn't exist or is not supported."
+#, fuzzy, kde-format
+#| msgid ""
+#| "It seems that the image you select doesn't exist or is not supported."
+msgid ""
+"It appears that the image you selected does not exist or is not supported."
 msgstr "Görünüşe göre seçtiğiniz görsel yok veya desteklenmiyor."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image text: "
+msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Görsel metni: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Place this image inside the note folder"
+msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
 msgstr "Bu görseli not klasörünün içine yerleştir"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KleverNotes painting"
+msgctxt "@title:dialog"
 msgid "KleverNotes painting"
 msgstr "Akıllı Notlar boyaması"
 
@@ -105,32 +149,71 @@ msgstr ""
 "Ayrılmadan önce kaydetmek istiyor musunuz?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create your link"
+msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "Bağlantını Oluştur"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "URL:"
+msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Link text:"
+msgctxt ""
+"@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Bağlantı metni:"
 
+#: contents/ui/dialogs/NamingDialog.qml:13
+#, fuzzy, kde-format
+#| msgid "Choose an URL"
+msgctxt "@title:dialog"
+msgid "Choose a name"
+msgstr "Bir URL seç"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:9
+#, fuzzy, kde-format
+#| msgid "KleverNotes"
+msgctxt ""
+"@title:dialog, 'storage' as in 'the folder where all the notes will be "
+"stored'"
+msgid "KleverNotes Storage"
+msgstr "Akıllı Notlar"
+
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
-msgid "Your "
-msgstr "Sizin "
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid "Your %1 name starts with a dot, "
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
-msgid "This "
-msgstr "Bu "
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid ""
+"This %1 already exist.\n"
+"Please choose another name for it.\n"
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:19
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "It looks like this is your first time using this app!\n"
+#| "\n"
+#| "Please choose a location for your future KleverNotes storage or select an "
+#| "existing one."
+msgctxt ""
+"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+"stored'"
 msgid ""
 "It looks like this is your first time using this app!\n"
 "\n"
@@ -142,28 +225,65 @@ msgstr ""
 "Gelecekteki Akıllı Notlarınız için bir depolama konumu oluşturun veya var "
 "olan bir tanesini seçin."
 
-#: contents/ui/dialogs/StorageDialog.qml:42
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:20
+#, fuzzy, kde-format
+#| msgid "Existing storage"
+msgctxt ""
+"Storage as in 'the folder where all the notes will be stored'; this text "
+"will be followed by the path to this folder"
+msgid "Existing storage chosen at "
+msgstr "Var olan depolama"
+
+#: contents/ui/dialogs/StorageDialog.qml:21
+#, fuzzy, kde-format
+#| msgid "Storage path:"
+msgctxt ""
+"Storage as in 'the folder where all the notes will be stored'; this text "
+"will be followed by the path to this folder"
+msgid "Storage created at "
+msgstr "Depolama yolu:"
+
+#: contents/ui/dialogs/StorageDialog.qml:44
+#, fuzzy, kde-format
+#| msgid "Existing storage"
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "Var olan depolama"
 
-#: contents/ui/dialogs/StorageDialog.qml:46
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:48
+#, fuzzy, kde-format
+#| msgid "Change the storage path"
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "Depolama yolunu değiştir"
 
-#: contents/ui/dialogs/StorageDialog.qml:59
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:61
+#, fuzzy, kde-format
+#| msgid "Create storage"
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "Depolama oluştur"
 
-#: contents/ui/dialogs/StorageDialog.qml:63
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:65
+#, fuzzy, kde-format
+#| msgid "Create a new storage"
+msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "Yeni bir depolama oluştur"
 
-#: contents/ui/dialogs/StorageDialog.qml:95
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:97
+#, fuzzy, kde-format
+#| msgid ""
+#| "It looks like the selected folder is not a KleverNotes storage.\n"
+#| "\n"
+#| "Please choose a location for your future KleverNotes storage or select an "
+#| "existing one."
+msgctxt ""
+"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+"stored'"
 msgid ""
 "It looks like the selected folder is not a KleverNotes storage.\n"
 "\n"
@@ -177,11 +297,14 @@ msgstr ""
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
-msgid "Select Number"
-msgstr "Sayı Seç"
+msgctxt "@title:dialog, table => an html table"
+msgid "Table creation"
+msgstr ""
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Row"
+msgctxt "Name, 'a row'"
 msgid "Row"
 msgstr "Satır"
 
@@ -196,7 +319,9 @@ msgid "Align all:"
 msgstr "Tümünü hizala:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add Todo"
+msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "Yapılacak Ekle"
 
@@ -207,27 +332,37 @@ msgid "Title:"
 msgstr "Başlık:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Todo title (required)"
+msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "Yapılacak başlığı (zorunlu)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Description:"
+msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "Açıklama:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Optional"
+msgctxt "@placeholderText:textbox"
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
 #: contents/ui/dialogs/URLDialog.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Choose an URL"
+msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Bir URL seç"
 
 #: contents/ui/dialogs/WarningDialog.qml:14
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Warning"
+msgctxt "@title:dialog"
 msgid "Warning"
 msgstr "Uyarı"
 
@@ -237,17 +372,23 @@ msgid "This could cause visual artifact near the end of the pdf."
 msgstr "Bu, PDF'nin sonuna doğru görsel kalıntılara neden olabilir."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Do not show again"
+msgctxt "@label:checkbox"
 msgid "Do not show again"
 msgstr "Bir daha gösterme"
 
 #: contents/ui/main.qml:15
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KleverNotes"
+msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "Akıllı Notlar"
 
 #: contents/ui/pages/MainPage.qml:22
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Welcome"
+msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
@@ -263,38 +404,52 @@ msgstr ""
 "Çalışmaya başlamak için bir not oluşturun veya var olan bir tanesini seçin!"
 
 #: contents/ui/pages/PaintingPage.qml:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Paint!"
+msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Boya!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save"
+msgctxt "@label:button"
 msgid "Save"
 msgstr "Kaydet"
 
 #: contents/ui/pages/PaintingPage.qml:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Clear"
+msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Temizle"
 
 #: contents/ui/pages/PaintingPage.qml:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Auto crop"
+msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Otomatik kırp"
 
 #: contents/ui/pages/PrintingPage.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print"
+msgctxt "@title:page"
 msgid "Print"
 msgstr "Yazdır"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Color theme"
+msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "Renk teması"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, kde-format
-msgid "background"
+#, fuzzy, kde-format
+#| msgid "background"
+msgctxt "@label:button, as in 'the background of an image'"
+msgid "Background"
 msgstr "arka plan"
 
 #: contents/ui/pages/SettingsPage.qml:19
@@ -313,82 +468,116 @@ msgstr ""
 "olan bir tanesini seçin.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title, general settings"
 msgid "General"
 msgstr "Genel"
 
 #: contents/ui/pages/SettingsPage.qml:72
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Storage path:"
+msgctxt ""
+"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "Depolama yolu:"
 
 #: contents/ui/pages/SettingsPage.qml:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Category name:"
+msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Yeni kategori adı:"
 
 #: contents/ui/pages/SettingsPage.qml:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Group name:"
+msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "Yeni grup adı:"
 
 #: contents/ui/pages/SettingsPage.qml:155
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Note name:"
+msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Yeni not adı:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Display"
+msgctxt ""
+"@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
 msgstr "Görüntü"
 
 #: contents/ui/settings/DisplayPreview.qml:17
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Style:"
+msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Biçem:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Text color:"
+msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Metin rengi:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Title color:"
+msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Başlık rengi:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Link color:"
+msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Bağlantı rengi:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visited Link color:"
+msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Ziyaret edilen bağlantı rengi:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Code color:"
+msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Kod rengi:"
 
 #: contents/ui/settings/DisplayPreview.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Font:"
+msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Yazıtipi:"
 
 #: contents/ui/sideBar/ActionBar.qml:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a new category"
+msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Yeni bir kategori oluştur"
 
 #: contents/ui/sideBar/ActionBar.qml:233
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a new group"
+msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Yeni bir grup oluştur"
 
 #: contents/ui/sideBar/ActionBar.qml:241
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a new note"
+msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Yeni bir not oluştur"
 
@@ -398,17 +587,23 @@ msgid "Rename"
 msgstr "Yeniden Adlandır"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New category"
+msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Yeni Kategori"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New group"
+msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "Yeni Grup"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New note"
+msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Yeni Not"
 
@@ -433,17 +628,22 @@ msgid "Settings"
 msgstr "Ayarlar"
 
 #: contents/ui/sideBar/Sidebar.qml:87
-#, kde-format
-msgid "About Klever"
+#, fuzzy, kde-format
+#| msgid "About Klever"
+msgid "About KleverNotes"
 msgstr "Akıllı Notlar Hakkında"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Note"
+msgctxt "@label:button, as in 'A note'"
 msgid "Note"
 msgstr "Not"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "TODO"
+msgctxt "@label:button"
 msgid "TODO"
 msgstr "YAPILACAK"
 
@@ -453,7 +653,9 @@ msgid "Header"
 msgstr "Başlık"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Clear checked"
+msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "İşaretliyi temizle"
 
@@ -548,6 +750,21 @@ msgstr "Emir SARI"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "emir_sari@icloud.com"
+
+#~ msgid "note"
+#~ msgstr "not"
+
+#~ msgid "Stored image"
+#~ msgstr "Depolanan görsel"
+
+#~ msgid "Your "
+#~ msgstr "Sizin "
+
+#~ msgid "This "
+#~ msgstr "Bu "
+
+#~ msgid "Select Number"
+#~ msgstr "Sayı Seç"
 
 #~ msgid "Change storage path"
 #~ msgstr "Depolama yolunu değiştir"

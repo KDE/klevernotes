@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-09 00:47+0000\n"
+"POT-Creation-Date: 2023-09-14 00:45+0000\n"
 "PO-Revision-Date: 2023-09-09 10:14+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -20,81 +20,125 @@ msgstr ""
 "X-Generator: Lokalize 22.12.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Color Picker"
+msgctxt "@title:dialog"
 msgid "Color Picker"
 msgstr "Selector de color"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "category"
+msgctxt "Name, as in 'A note category'"
 msgid "category"
 msgstr "categoria"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "group"
+msgctxt "Name, as in 'A note group'"
 msgid "group"
 msgstr "grup"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
-msgid "note"
-msgstr "nota"
+msgid "Name, as in 'A note'"
+msgstr ""
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid "Are you sure you want to delete this %1 ?"
+msgstr ""
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image picker"
+msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Selector d'imatges"
 
+#: contents/ui/dialogs/FileSaverDialog.qml:12
+#, fuzzy, kde-format
+#| msgid "New note"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note"
+msgstr "Nota nova"
+
 #: contents/ui/dialogs/FontPickerDialog.qml:10
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Font selector"
+msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Selector de lletra"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image selector"
+msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Selector d'imatges"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Web image"
+msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Imatge de la web"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Local image"
+msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Imatge local"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Paint an image"
+msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Pinta una imatge"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
-#, kde-format
-msgid "Stored image"
-msgstr "Imatge emmagatzemada"
+#, fuzzy, kde-format
+#| msgid "Image selector"
+msgctxt "@label:button, Collection of image stored inside the note folder"
+msgid "Image collection"
+msgstr "Selector d'imatges"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
-#, kde-format
-msgid "It seems that the image you select doesn't exist or is not supported."
+#, fuzzy, kde-format
+#| msgid ""
+#| "It seems that the image you select doesn't exist or is not supported."
+msgid ""
+"It appears that the image you selected does not exist or is not supported."
 msgstr ""
 "Pareix que la imatge que heu seleccionat no existix o no és compatible."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Image text: "
+msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Text de la imatge: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Place this image inside the note folder"
+msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
 msgstr "Situa esta imatge dins de la carpeta de notes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KleverNotes painting"
+msgctxt "@title:dialog"
 msgid "KleverNotes painting"
 msgstr "Pintura de KleverNotes"
 
@@ -108,32 +152,71 @@ msgstr ""
 "Voleu guardar-lo abans d'eixir?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create your link"
+msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "Creeu un enllaç"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "URL:"
+msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Link text:"
+msgctxt ""
+"@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Text de l'enllaç:"
 
+#: contents/ui/dialogs/NamingDialog.qml:13
+#, fuzzy, kde-format
+#| msgid "Choose an URL"
+msgctxt "@title:dialog"
+msgid "Choose a name"
+msgstr "Seleccioneu un URL"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:9
+#, fuzzy, kde-format
+#| msgid "KleverNotes"
+msgctxt ""
+"@title:dialog, 'storage' as in 'the folder where all the notes will be "
+"stored'"
+msgid "KleverNotes Storage"
+msgstr "KleverNotes"
+
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
-msgid "Your "
-msgstr "El/La "
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid "Your %1 name starts with a dot, "
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
-msgid "This "
-msgstr "Este/a "
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid ""
+"This %1 already exist.\n"
+"Please choose another name for it.\n"
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:19
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "It looks like this is your first time using this app!\n"
+#| "\n"
+#| "Please choose a location for your future KleverNotes storage or select an "
+#| "existing one."
+msgctxt ""
+"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+"stored'"
 msgid ""
 "It looks like this is your first time using this app!\n"
 "\n"
@@ -145,28 +228,65 @@ msgstr ""
 "Seleccioneu una ubicació per a l'emmagatzematge futur de KleverNotes o "
 "seleccioneu-ne un ja existent."
 
-#: contents/ui/dialogs/StorageDialog.qml:42
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:20
+#, fuzzy, kde-format
+#| msgid "Existing storage"
+msgctxt ""
+"Storage as in 'the folder where all the notes will be stored'; this text "
+"will be followed by the path to this folder"
+msgid "Existing storage chosen at "
+msgstr "Emmagatzematge existent"
+
+#: contents/ui/dialogs/StorageDialog.qml:21
+#, fuzzy, kde-format
+#| msgid "Storage path:"
+msgctxt ""
+"Storage as in 'the folder where all the notes will be stored'; this text "
+"will be followed by the path to this folder"
+msgid "Storage created at "
+msgstr "Camí de l'emmagatzematge:"
+
+#: contents/ui/dialogs/StorageDialog.qml:44
+#, fuzzy, kde-format
+#| msgid "Existing storage"
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "Emmagatzematge existent"
 
-#: contents/ui/dialogs/StorageDialog.qml:46
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:48
+#, fuzzy, kde-format
+#| msgid "Change the storage path"
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "Canvia el camí de l'emmagatzematge"
 
-#: contents/ui/dialogs/StorageDialog.qml:59
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:61
+#, fuzzy, kde-format
+#| msgid "Create storage"
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "Crea un emmagatzematge"
 
-#: contents/ui/dialogs/StorageDialog.qml:63
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:65
+#, fuzzy, kde-format
+#| msgid "Create a new storage"
+msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "Crea un emmagatzematge nou"
 
-#: contents/ui/dialogs/StorageDialog.qml:95
-#, kde-format
+#: contents/ui/dialogs/StorageDialog.qml:97
+#, fuzzy, kde-format
+#| msgid ""
+#| "It looks like the selected folder is not a KleverNotes storage.\n"
+#| "\n"
+#| "Please choose a location for your future KleverNotes storage or select an "
+#| "existing one."
+msgctxt ""
+"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+"stored'"
 msgid ""
 "It looks like the selected folder is not a KleverNotes storage.\n"
 "\n"
@@ -180,11 +300,14 @@ msgstr ""
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
-msgid "Select Number"
-msgstr "Seleccioneu el número"
+msgctxt "@title:dialog, table => an html table"
+msgid "Table creation"
+msgstr ""
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Row"
+msgctxt "Name, 'a row'"
 msgid "Row"
 msgstr "Fila"
 
@@ -199,7 +322,9 @@ msgid "Align all:"
 msgstr "Alinea-ho tot:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add Todo"
+msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "Afig una tasca pendent"
 
@@ -210,27 +335,37 @@ msgid "Title:"
 msgstr "Títol:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Todo title (required)"
+msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "Títol de la tasca pendent (es requerix)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Description:"
+msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "Descripció:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Optional"
+msgctxt "@placeholderText:textbox"
 msgid "Optional"
 msgstr "Opcional"
 
 #: contents/ui/dialogs/URLDialog.qml:11
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Choose an URL"
+msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Seleccioneu un URL"
 
 #: contents/ui/dialogs/WarningDialog.qml:14
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Warning"
+msgctxt "@title:dialog"
 msgid "Warning"
 msgstr "Avís"
 
@@ -240,17 +375,23 @@ msgid "This could cause visual artifact near the end of the pdf."
 msgstr "Açò pot provocar un defecte visual prop del final de PDF."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Do not show again"
+msgctxt "@label:checkbox"
 msgid "Do not show again"
 msgstr "No ho tornes a mostrar"
 
 #: contents/ui/main.qml:15
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "KleverNotes"
+msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Welcome"
+msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Us donem la benvinguda"
 
@@ -265,38 +406,52 @@ msgid "Create or select a note to start working !"
 msgstr "Creeu o seleccioneu una nota per a començar a treballar!"
 
 #: contents/ui/pages/PaintingPage.qml:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Paint!"
+msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Pinta!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save"
+msgctxt "@label:button"
 msgid "Save"
 msgstr "Guarda"
 
 #: contents/ui/pages/PaintingPage.qml:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Clear"
+msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Neteja"
 
 #: contents/ui/pages/PaintingPage.qml:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Auto crop"
+msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Escapçament automàtic"
 
 #: contents/ui/pages/PrintingPage.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print"
+msgctxt "@title:page"
 msgid "Print"
 msgstr "Imprimix"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Color theme"
+msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "Tema de color"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, kde-format
-msgid "background"
+#, fuzzy, kde-format
+#| msgid "background"
+msgctxt "@label:button, as in 'the background of an image'"
+msgid "Background"
 msgstr "fons"
 
 #: contents/ui/pages/SettingsPage.qml:19
@@ -315,82 +470,116 @@ msgstr ""
 "seleccioneu-ne un ja existent.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title, general settings"
 msgid "General"
 msgstr "General"
 
 #: contents/ui/pages/SettingsPage.qml:72
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Storage path:"
+msgctxt ""
+"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "Camí de l'emmagatzematge:"
 
 #: contents/ui/pages/SettingsPage.qml:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Category name:"
+msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Nom nou de la categoria:"
 
 #: contents/ui/pages/SettingsPage.qml:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Group name:"
+msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "Nom nou del grup:"
 
 #: contents/ui/pages/SettingsPage.qml:155
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Note name:"
+msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Nom nou de la nota:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Display"
+msgctxt ""
+"@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
 msgstr "Visualització"
 
 #: contents/ui/settings/DisplayPreview.qml:17
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Style:"
+msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Estil:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Text color:"
+msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Color del text:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Title color:"
+msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Color del títol:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Link color:"
+msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Color de l'enllaç:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visited Link color:"
+msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Color de l'enllaç visitat:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Code color:"
+msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Color del codi:"
 
 #: contents/ui/settings/DisplayPreview.qml:110
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Font:"
+msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Lletra:"
 
 #: contents/ui/sideBar/ActionBar.qml:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a new category"
+msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Crea una categoria nova"
 
 #: contents/ui/sideBar/ActionBar.qml:233
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a new group"
+msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Crea un grup nou"
 
 #: contents/ui/sideBar/ActionBar.qml:241
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a new note"
+msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Crea una nota nova"
 
@@ -400,17 +589,23 @@ msgid "Rename"
 msgstr "Canvia el nom"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New category"
+msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Categoria nova"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New group"
+msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "Grup nou"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New note"
+msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Nota nova"
 
@@ -435,17 +630,22 @@ msgid "Settings"
 msgstr "Configuració"
 
 #: contents/ui/sideBar/Sidebar.qml:87
-#, kde-format
-msgid "About Klever"
+#, fuzzy, kde-format
+#| msgid "About Klever"
+msgid "About KleverNotes"
 msgstr "Quant a Klever"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Note"
+msgctxt "@label:button, as in 'A note'"
 msgid "Note"
 msgstr "Nota"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "TODO"
+msgctxt "@label:button"
 msgid "TODO"
 msgstr "Per fer («TODO»)"
 
@@ -455,7 +655,9 @@ msgid "Header"
 msgstr "Capçalera"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Clear checked"
+msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Neteja el marcat"
 
@@ -549,3 +751,18 @@ msgstr "Josep M. Ferrer"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
+
+#~ msgid "note"
+#~ msgstr "nota"
+
+#~ msgid "Stored image"
+#~ msgstr "Imatge emmagatzemada"
+
+#~ msgid "Your "
+#~ msgstr "El/La "
+
+#~ msgid "This "
+#~ msgstr "Este/a "
+
+#~ msgid "Select Number"
+#~ msgstr "Seleccioneu el número"
