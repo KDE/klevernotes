@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 00:45+0000\n"
-"PO-Revision-Date: 2023-09-10 05:19+0200\n"
+"PO-Revision-Date: 2023-09-15 06:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -19,24 +19,21 @@ msgstr ""
 "X-Generator: Poedit 3.3.2\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Color Picker"
 msgstr "ფერის ამრჩევი"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "category"
 msgstr "კატეგორია"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "group"
 msgstr "ჯგუფი"
@@ -45,7 +42,7 @@ msgstr "ჯგუფი"
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "Name, as in 'A note'"
-msgstr ""
+msgstr "სახელი, როგორც 'შენიშვნაშია'"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
@@ -53,90 +50,77 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Are you sure you want to delete this %1 ?"
-msgstr ""
+msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Image picker"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "გამოსახულების ამრჩევი"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "New note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note"
-msgstr "ახალი შენიშვნა"
+msgstr "შენიშვნის შენახვა"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
-#, fuzzy, kde-format
-#| msgid "Font selector"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "ფონტის ამრჩევი"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
-#, fuzzy, kde-format
-#| msgid "Image selector"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr "გამოსახულების სელექტორი"
+msgstr "გამოსახულების ამრჩევი"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
-#, fuzzy, kde-format
-#| msgid "Web image"
+#, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "ვებ-გამოსახულება"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
-#, fuzzy, kde-format
-#| msgid "Local image"
+#, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "ლოკალური გამოსახულება"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
-#, fuzzy, kde-format
-#| msgid "Paint an image"
+#, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr "გამოსახულების დხატვა"
+msgstr "გამოსახულების დახატვა"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
-#, fuzzy, kde-format
-#| msgid "Image selector"
+#, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr "გამოსახულების სელექტორი"
+msgstr "გამოსახულების კოლექცია"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
-#, fuzzy, kde-format
-#| msgid ""
-#| "It seems that the image you select doesn't exist or is not supported."
+#, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr ""
 "როგორც ჩანს, გამოსახულება, რომელიც აირჩიეთ, არ არსებობს ან მხარდაჭერილი არაა."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
-#, fuzzy, kde-format
-#| msgid "Image text: "
+#, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "გამოსახულების ტექსტი: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
-#, fuzzy, kde-format
-#| msgid "Place this image inside the note folder"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
 msgstr "ამ გამოსახულების მოთავსება შენიშვნის საქაღალდეში"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
-#, fuzzy, kde-format
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
 msgstr "KleverNotes-ის ხატვა"
@@ -151,42 +135,37 @@ msgstr ""
 "თუ გნებავთ, შეინახოთ ის გასვლამდე?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Create your link"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "შექმენით თქვენი ბმული"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "Link text:"
+#, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "ბმულის ტექსტი:"
 
 #: contents/ui/dialogs/NamingDialog.qml:13
-#, fuzzy, kde-format
-#| msgid "Choose an URL"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "აირჩიეთ URL"
+msgstr "აირჩიეთ სახელი"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotes"
+msgstr "KleverNotes-ის საცავი"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -194,7 +173,7 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Your %1 name starts with a dot, "
-msgstr ""
+msgstr "თქვენი %1-ის სახელი წერტილით იწყება, "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -205,14 +184,11 @@ msgid ""
 "This %1 already exist.\n"
 "Please choose another name for it.\n"
 msgstr ""
+"ეს %1 უკვე არსებობს.\n"
+"მისთვს სხვა სახელის არჩევა მოგიწევთ.\n"
 
 #: contents/ui/dialogs/StorageDialog.qml:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "It looks like this is your first time using this app!\n"
-#| "\n"
-#| "Please choose a location for your future KleverNotes storage or select an "
-#| "existing one."
+#, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 "stored'"
@@ -222,67 +198,56 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"როგორც ჩანს, აპლიკაცია პირველად გაუსვით!\n"
+"როგორც ჩანს, აპლიკაციას პირველად იყენებთ!\n"
 "\n"
-"აირჩით მდებარეობა, სადაც გნებავთ, KleverNotes -ის საცავი მდებარეობდეს, ან "
-"უკვე არსებული აირჩიეთ."
+"აირჩით მდებარეობა, სადაც გნებავთ, KleverNotes-ის საცავი მდებარეობდეს, ან "
+"აირჩიეთ უკვე არსებული."
 
 #: contents/ui/dialogs/StorageDialog.qml:20
-#, fuzzy, kde-format
-#| msgid "Existing storage"
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr "არსებული საცავი"
+msgstr "არსებული საცავი მისამართზე "
 
 #: contents/ui/dialogs/StorageDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "საცავის ბილიკი:"
+msgstr "საცავი შეიქმნა მისამართზე "
 
 #: contents/ui/dialogs/StorageDialog.qml:44
-#, fuzzy, kde-format
-#| msgid "Existing storage"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "არსებული საცავი"
 
 #: contents/ui/dialogs/StorageDialog.qml:48
-#, fuzzy, kde-format
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "საცავის ბილიკის შეცვლა"
 
 #: contents/ui/dialogs/StorageDialog.qml:61
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "საცავის შექმნა"
 
 #: contents/ui/dialogs/StorageDialog.qml:65
-#, fuzzy, kde-format
-#| msgid "Create a new storage"
+#, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "ახალი საცავის შექმნა"
 
 #: contents/ui/dialogs/StorageDialog.qml:97
-#, fuzzy, kde-format
-#| msgid ""
-#| "It looks like the selected folder is not a KleverNotes storage.\n"
-#| "\n"
-#| "Please choose a location for your future KleverNotes storage or select an "
-#| "existing one."
+#, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 "stored'"
@@ -294,17 +259,17 @@ msgid ""
 msgstr ""
 "როგორც ჩანს, თქვენი მონიშნული საქაღალდე KleverNotes-ის საცავი არაა.\n"
 "\n"
-"აირჩიეთ საქაღალდე KleverNotes-ის მომავალი საცავისთვის, ან უკვე არსებული."
+"აირჩიეთ საქაღალდე KleverNotes-ის მომავალი საცავისთვის, ან აირჩიეთ უკვე "
+"არსებული."
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "ცხრილის შექმნა"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
-#, fuzzy, kde-format
-#| msgid "Row"
+#, kde-format
 msgctxt "Name, 'a row'"
 msgid "Row"
 msgstr "მწკრივი"
@@ -320,8 +285,7 @@ msgid "Align all:"
 msgstr "ყველას სწორება:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Add Todo"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "განრიგის დამატება"
@@ -333,36 +297,31 @@ msgid "Title:"
 msgstr "სათაური:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "Todo title (required)"
+#, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "განრიგის სათაური (აუცილებელია)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
-#, fuzzy, kde-format
-#| msgid "Description:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "აღწერა:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
-#, fuzzy, kde-format
-#| msgid "Optional"
+#, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
 msgstr "არასავალდებულო"
 
 #: contents/ui/dialogs/URLDialog.qml:11
-#, fuzzy, kde-format
-#| msgid "Choose an URL"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "აირჩიეთ URL"
 
 #: contents/ui/dialogs/WarningDialog.qml:14
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Warning"
 msgstr "გაფრთხილება"
@@ -373,22 +332,19 @@ msgid "This could cause visual artifact near the end of the pdf."
 msgstr "ამან შეიძლება PDF ფაილის ბოლოში ვიზუალური არტეფაქტები გამოიწვიოს."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "Do not show again"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Do not show again"
 msgstr "აღარ მაჩვენო"
 
 #: contents/ui/main.qml:15
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome"
+#, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "კეთილი იყოს თქვენი მობრძანება"
@@ -404,50 +360,43 @@ msgid "Create or select a note to start working !"
 msgstr "მუშაობის დასაწყებად აირჩიეთ შენიშვნა !"
 
 #: contents/ui/pages/PaintingPage.qml:28
-#, fuzzy, kde-format
-#| msgid "Paint!"
+#, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "დახატეთ!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
-#, fuzzy, kde-format
-#| msgid "Save"
+#, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "შენახვა"
 
 #: contents/ui/pages/PaintingPage.qml:37
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "გაწმენდა"
 
 #: contents/ui/pages/PaintingPage.qml:44
-#, fuzzy, kde-format
-#| msgid "Auto crop"
+#, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "ავტომატური ამოჭრა"
 
 #: contents/ui/pages/PrintingPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Print"
+#, kde-format
 msgctxt "@title:page"
 msgid "Print"
 msgstr "დაბეჭდვა"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "ფერის თემა"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "background"
+#, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "ფონი"
@@ -468,115 +417,99 @@ msgstr ""
 "არსებული.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general settings"
 msgid "General"
-msgstr "ძირითადი"
+msgstr "ზოგადი"
 
 #: contents/ui/pages/SettingsPage.qml:72
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "საცავის ბილიკი:"
 
 #: contents/ui/pages/SettingsPage.qml:91
-#, fuzzy, kde-format
-#| msgid "New Category name:"
+#, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "ახალი კატეგორიის სახელი:"
 
 #: contents/ui/pages/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "New Group name:"
+#, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "ახალი ჯგუფის სახელი:"
 
 #: contents/ui/pages/SettingsPage.qml:155
-#, fuzzy, kde-format
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "ახალი შენიშვნის სახელი:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Display"
+#, kde-format
 msgctxt ""
 "@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
 msgstr "ჩვენება"
 
 #: contents/ui/settings/DisplayPreview.qml:17
-#, fuzzy, kde-format
-#| msgid "Style:"
+#, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "სტილი:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
-#, fuzzy, kde-format
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "ტექსტის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
-#, fuzzy, kde-format
-#| msgid "Title color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "სათაურის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
-#, fuzzy, kde-format
-#| msgid "Link color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "ბმულის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
-#, fuzzy, kde-format
-#| msgid "Visited Link color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "გახსნილი ბმულის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
-#, fuzzy, kde-format
-#| msgid "Code color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "კოდის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:110
-#, fuzzy, kde-format
-#| msgid "Font:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "ფონტი:"
 
 #: contents/ui/sideBar/ActionBar.qml:225
-#, fuzzy, kde-format
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "ახალი კატეგორიის შექმნა"
 
 #: contents/ui/sideBar/ActionBar.qml:233
-#, fuzzy, kde-format
-#| msgid "Create a new group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "ახალი ჯგუფის შექმნა"
 
 #: contents/ui/sideBar/ActionBar.qml:241
-#, fuzzy, kde-format
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "ახალი შენიშვნის შექმნა"
@@ -587,22 +520,19 @@ msgid "Rename"
 msgstr "გადარქმევა"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "New category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "ახალი კატეგორია"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "New group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "ახალი ჯგუფი"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "New note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "ახალი შენიშვნა"
@@ -628,21 +558,18 @@ msgid "Settings"
 msgstr "მორგება"
 
 #: contents/ui/sideBar/Sidebar.qml:87
-#, fuzzy, kde-format
-#| msgid "About Klever"
+#, kde-format
 msgid "About KleverNotes"
-msgstr "Klever-ის შესახებ"
+msgstr "KleverNotes-ის შესახებ"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
-#, fuzzy, kde-format
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
 msgstr "შენიშვნა"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
-#, fuzzy, kde-format
-#| msgid "TODO"
+#, kde-format
 msgctxt "@label:button"
 msgid "TODO"
 msgstr "განრიგის სია"
@@ -653,11 +580,10 @@ msgid "Header"
 msgstr "სათაური"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
-#, fuzzy, kde-format
-#| msgid "Clear checked"
+#, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr "შემოწმებულის გასუფთავება"
+msgstr "ჩართულის გასუფთავება"
 
 #: logic/kleverUtility.cpp:97
 #, kde-format

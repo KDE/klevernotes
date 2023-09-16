@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 00:45+0000\n"
-"PO-Revision-Date: 2023-09-09 07:05+0200\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2023-09-15 16:12+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -16,36 +16,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Color Picker"
-msgstr "Pobiralnik barve"
+msgstr "Kapalka"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "category"
 msgstr "kategorija"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "group"
-msgstr "grupa"
+msgstr "skupina"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
-#, kde-format
+#, fuzzy, kde-format
 msgid "Name, as in 'A note'"
-msgstr ""
+msgstr "Ime, kot v »Opomba«"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
@@ -53,63 +50,55 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Are you sure you want to delete this %1 ?"
-msgstr ""
+msgstr "Ali ste prepričani, da želite izbrisati %1?"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, fuzzy, kde-format
-#| msgid "Image picker"
 msgctxt "@title:dialog"
 msgid "Image picker"
-msgstr "Pobiralnik slike"
+msgstr "Izbirnik slik"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "New note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note"
-msgstr "Nova opomba"
+msgstr "Shrani opombo"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
-#, fuzzy, kde-format
-#| msgid "Font selector"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Izbirnik pisave"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:18
-#, fuzzy, kde-format
-#| msgid "Image selector"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Izbirnik slike"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
-#, fuzzy, kde-format
-#| msgid "Web image"
+#, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Spletna slika"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:96
-#, fuzzy, kde-format
-#| msgid "Local image"
+#, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
-msgstr "Lokalna slika"
+msgstr "Krajevna slika"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
 #, fuzzy, kde-format
-#| msgid "Paint an image"
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr "Pobarvaj sliko"
+msgstr "Narišite/pobarvajte sliko"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
-#, fuzzy, kde-format
-#| msgid "Image selector"
+#, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr "Izbirnik slike"
+msgstr "Zbirka slik"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
 #, fuzzy, kde-format
@@ -120,18 +109,16 @@ msgid ""
 msgstr "Kaže, da slika, ki ste jo izbrali ne obstaja ali ni podprta."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
-#, fuzzy, kde-format
-#| msgid "Image text: "
+#, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Besedilo slike: "
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:247
-#, fuzzy, kde-format
-#| msgid "Place this image inside the note folder"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr "Postavi to sliko znotraj maše z opombami"
+msgstr "Postavite to sliko znotraj mape z opombami"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, fuzzy, kde-format
@@ -150,42 +137,37 @@ msgstr ""
 "Ali jo želite shraniti pred odhodom?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Create your link"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr "Ustvari vašo povezavo"
+msgstr "Ustvarite svojo povezavo"
 
 #: contents/ui/dialogs/LinkDialog.qml:19
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "Link text:"
+#, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Besedilo povezave:"
 
 #: contents/ui/dialogs/NamingDialog.qml:13
-#, fuzzy, kde-format
-#| msgid "Choose an URL"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "Izberite URL"
+msgstr "Izberite ime"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotes"
+msgstr "Shramba KleverNotes"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -193,7 +175,7 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Your %1 name starts with a dot, "
-msgstr ""
+msgstr "Vaše ime %1 se začne s piko, "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -204,14 +186,11 @@ msgid ""
 "This %1 already exist.\n"
 "Please choose another name for it.\n"
 msgstr ""
+"Ta %1 že obstaja.\n"
+"Izberite drugo ime zanj_o.\n"
 
 #: contents/ui/dialogs/StorageDialog.qml:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "It looks like this is your first time using this app!\n"
-#| "\n"
-#| "Please choose a location for your future KleverNotes storage or select an "
-#| "existing one."
+#, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 "stored'"
@@ -221,59 +200,52 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Kot kaže, je to prvič, da uporabljate to aplikacijo\n"
+"Kot kaže, je to prvič, da uporabljate ta program.\n"
 "\n"
-"Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
-"obstoječo."
+"Izberite mesto vaše bodoče shrambe KleverNotes ali izberite obstoječo."
 
 #: contents/ui/dialogs/StorageDialog.qml:20
 #, fuzzy, kde-format
-#| msgid "Existing storage"
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr "Obstoječa hramba"
+msgstr "Obstoječa shramba, izbrana na "
 
 #: contents/ui/dialogs/StorageDialog.qml:21
 #, fuzzy, kde-format
-#| msgid "Storage path:"
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "Pot hrambe:"
+msgstr "Shramba ustvarjena na"
 
 #: contents/ui/dialogs/StorageDialog.qml:44
-#, fuzzy, kde-format
-#| msgid "Existing storage"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr "Obstoječa hramba"
+msgstr "Obstoječa shramba"
 
 #: contents/ui/dialogs/StorageDialog.qml:48
-#, fuzzy, kde-format
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr "Spremeni pot hrambe"
+msgstr "Spremeni pot shrambe"
 
 #: contents/ui/dialogs/StorageDialog.qml:61
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr "Ustvari hrambo"
+msgstr "Ustvari shrambo"
 
 #: contents/ui/dialogs/StorageDialog.qml:65
-#, fuzzy, kde-format
-#| msgid "Create a new storage"
+#, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr "Ustvari novo hrambo"
+msgstr "Ustvarite novo shrambo"
 
 #: contents/ui/dialogs/StorageDialog.qml:97
 #, fuzzy, kde-format
@@ -300,11 +272,10 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "Ustvarjanje tabele"
 
 #: contents/ui/dialogs/TableMakerDialog.qml:27
-#, fuzzy, kde-format
-#| msgid "Row"
+#, kde-format
 msgctxt "Name, 'a row'"
 msgid "Row"
 msgstr "Vrstica"
@@ -320,11 +291,10 @@ msgid "Align all:"
 msgstr "Poravnaj vse:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Add Todo"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
-msgstr "Dodaj seznam opravil"
+msgstr "Dodaj opravek"
 
 #: contents/ui/dialogs/ToDoDialog.qml:20
 #, kde-format
@@ -333,36 +303,31 @@ msgid "Title:"
 msgstr "Naslov:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "Todo title (required)"
+#, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr "Naslov opravila (zahtevano)"
+msgstr "Naslov opravka (zahtevano)"
 
 #: contents/ui/dialogs/ToDoDialog.qml:36
-#, fuzzy, kde-format
-#| msgid "Description:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "Opis:"
 
 #: contents/ui/dialogs/ToDoDialog.qml:49
-#, fuzzy, kde-format
-#| msgid "Optional"
+#, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
 msgstr "Neobvezno"
 
 #: contents/ui/dialogs/URLDialog.qml:11
-#, fuzzy, kde-format
-#| msgid "Choose an URL"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Izberite URL"
 
 #: contents/ui/dialogs/WarningDialog.qml:14
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Warning"
 msgstr "Opozorilo"
@@ -373,22 +338,19 @@ msgid "This could cause visual artifact near the end of the pdf."
 msgstr "To utegne povzročiti vizualni artefakt na koncu pdf dokumenta."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "Do not show again"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Do not show again"
 msgstr "Ne prikazuj več"
 
 #: contents/ui/main.qml:15
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome"
+#, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Dobrodošli"
@@ -411,46 +373,40 @@ msgid "Paint!"
 msgstr "Pobarvaj!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
-#, fuzzy, kde-format
-#| msgid "Save"
+#, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Shrani"
 
 #: contents/ui/pages/PaintingPage.qml:37
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
-msgstr "Očisti"
+msgstr "Počisti"
 
 #: contents/ui/pages/PaintingPage.qml:44
-#, fuzzy, kde-format
-#| msgid "Auto crop"
+#, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Samodejno obreži"
 
 #: contents/ui/pages/PrintingPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Print"
+#, kde-format
 msgctxt "@title:page"
 msgid "Print"
-msgstr "Tiskaj"
+msgstr "Natisni"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "Barvna tema"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "background"
+#, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
-msgstr "ozadje"
+msgstr "Ozadje"
 
 #: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
@@ -468,118 +424,102 @@ msgstr ""
 "obstoječo.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general settings"
 msgid "General"
 msgstr "Splošno"
 
 #: contents/ui/pages/SettingsPage.qml:72
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr "Pot hrambe:"
+msgstr "Pot shrambe:"
 
 #: contents/ui/pages/SettingsPage.qml:91
-#, fuzzy, kde-format
-#| msgid "New Category name:"
+#, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Novo ime kategorije:"
 
 #: contents/ui/pages/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "New Group name:"
+#, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
-msgstr "Novo ime grupe:"
+msgstr "Novo ime skupine:"
 
 #: contents/ui/pages/SettingsPage.qml:155
-#, fuzzy, kde-format
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Novo ime opombe:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Display"
+#, kde-format
 msgctxt ""
 "@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
-msgstr "Prikaz"
+msgstr "Prikaži"
 
 #: contents/ui/settings/DisplayPreview.qml:17
-#, fuzzy, kde-format
-#| msgid "Style:"
+#, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Slog:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
-#, fuzzy, kde-format
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Barva besedila:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
-#, fuzzy, kde-format
-#| msgid "Title color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Barva naslova:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
-#, fuzzy, kde-format
-#| msgid "Link color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Barva povezave:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
-#, fuzzy, kde-format
-#| msgid "Visited Link color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Barva obiskane povezave:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
-#, fuzzy, kde-format
-#| msgid "Code color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Barva kode:"
 
 #: contents/ui/settings/DisplayPreview.qml:110
-#, fuzzy, kde-format
-#| msgid "Font:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Pisava:"
 
 #: contents/ui/sideBar/ActionBar.qml:225
-#, fuzzy, kde-format
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
-msgstr "Ustvari novo kategorijo"
+msgstr "Ustvarite novo kategorijo"
 
 #: contents/ui/sideBar/ActionBar.qml:233
-#, fuzzy, kde-format
-#| msgid "Create a new group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
-msgstr "Ustvari novo grupo"
+msgstr "Ustvarite novo skupino"
 
 #: contents/ui/sideBar/ActionBar.qml:241
-#, fuzzy, kde-format
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr "Ustvari novo opombo"
+msgstr "Ustvarite novo opombo"
 
 #: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
@@ -587,22 +527,19 @@ msgid "Rename"
 msgstr "Preimenuj"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "New category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Nova kategorija"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "New group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
-msgstr "Nova grupa"
+msgstr "Nova skupina"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "New note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Nova opomba"
@@ -628,24 +565,21 @@ msgid "Settings"
 msgstr "Nastavitve"
 
 #: contents/ui/sideBar/Sidebar.qml:87
-#, fuzzy, kde-format
-#| msgid "About Klever"
+#, kde-format
 msgid "About KleverNotes"
-msgstr "O programu Klever"
+msgstr "O programu KleverNotes"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
-#, fuzzy, kde-format
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
 msgstr "Opomba"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
-#, fuzzy, kde-format
-#| msgid "TODO"
+#, kde-format
 msgctxt "@label:button"
 msgid "TODO"
-msgstr "SEZNAM OPRAVIL"
+msgstr "OPRAVKI"
 
 #: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
@@ -653,11 +587,10 @@ msgid "Header"
 msgstr "Glava"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
-#, fuzzy, kde-format
-#| msgid "Clear checked"
+#, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr "Očisti odkljukano"
+msgstr "Počisti odkljukano"
 
 #: logic/kleverUtility.cpp:97
 #, kde-format
@@ -748,21 +681,3 @@ msgstr "Matjaž Jeran"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
-
-#~ msgid "note"
-#~ msgstr "opomba"
-
-#~ msgid "Stored image"
-#~ msgstr "Shranjena slika"
-
-#~ msgid "Your "
-#~ msgstr "Vaš "
-
-#~ msgid "This "
-#~ msgstr "To "
-
-#~ msgid "Select Number"
-#~ msgstr "Izberite število"
-
-#~ msgid "Change storage path"
-#~ msgstr "Spremeni pot hrambe"
