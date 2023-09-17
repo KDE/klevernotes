@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 00:45+0000\n"
-"PO-Revision-Date: 2023-09-15 16:12+0200\n"
+"PO-Revision-Date: 2023-09-16 11:32+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -40,9 +40,9 @@ msgstr "skupina"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
-#, fuzzy, kde-format
+#, kde-format
 msgid "Name, as in 'A note'"
-msgstr "Ime, kot v »Opomba«"
+msgstr "Ime, kot v »Zabeležka«"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
@@ -53,7 +53,7 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "Ali ste prepričani, da želite izbrisati %1?"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Izbirnik slik"
@@ -62,7 +62,7 @@ msgstr "Izbirnik slik"
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note"
-msgstr "Shrani opombo"
+msgstr "Shrani zabeležko"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
@@ -74,7 +74,7 @@ msgstr "Izbirnik pisave"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr "Izbirnik slike"
+msgstr "Izbirnik slik"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:67
 #, kde-format
@@ -89,10 +89,10 @@ msgid "Local image"
 msgstr "Krajevna slika"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:122
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr "Narišite/pobarvajte sliko"
+msgstr "Naslikajte sliko"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:143
 #, kde-format
@@ -101,12 +101,10 @@ msgid "Image collection"
 msgstr "Zbirka slik"
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:210
-#, fuzzy, kde-format
-#| msgid ""
-#| "It seems that the image you select doesn't exist or is not supported."
+#, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
-msgstr "Kaže, da slika, ki ste jo izbrali ne obstaja ali ni podprta."
+msgstr "Kaže, da slika, ki ste jo izbrali, ne obstaja ali ni podprta."
 
 #: contents/ui/dialogs/ImagePickerDialog.qml:230
 #, kde-format
@@ -118,14 +116,13 @@ msgstr "Besedilo slike: "
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr "Postavite to sliko znotraj mape z opombami"
+msgstr "Postavite to sliko znotraj mape z zabeležkami"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
-#, fuzzy, kde-format
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr "Barvanje KleverNotes"
+msgstr "Slikanje KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:18
 #, kde-format
@@ -133,8 +130,8 @@ msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
 msgstr ""
-"Nameravate zapustiti aplikacijo ne da bi shranili vašo risbo\n"
-"Ali jo želite shraniti pred odhodom?\n"
+"Nameravate zapustiti program, ne da bi shranili svojo risbo.\n"
+"Ali jo želite shraniti pred izhodom?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:12
 #, kde-format
@@ -205,20 +202,20 @@ msgstr ""
 "Izberite mesto vaše bodoče shrambe KleverNotes ali izberite obstoječo."
 
 #: contents/ui/dialogs/StorageDialog.qml:20
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr "Obstoječa shramba, izbrana na "
+msgstr "Obstoječa shramba, izbrana v "
 
 #: contents/ui/dialogs/StorageDialog.qml:21
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "Shramba ustvarjena na"
+msgstr "Shramba, ustvarjena v"
 
 #: contents/ui/dialogs/StorageDialog.qml:44
 #, kde-format
@@ -248,12 +245,7 @@ msgid "Create a new storage"
 msgstr "Ustvarite novo shrambo"
 
 #: contents/ui/dialogs/StorageDialog.qml:97
-#, fuzzy, kde-format
-#| msgid ""
-#| "It looks like the selected folder is not a KleverNotes storage.\n"
-#| "\n"
-#| "Please choose a location for your future KleverNotes storage or select an "
-#| "existing one."
+#, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 "stored'"
@@ -263,10 +255,9 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Kot kaže izbrana mapa ni hramba KleverNotes\n"
+"Izbrana mapa ni videti shramba KleverNotes.\n"
 "\n"
-"Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
-"obstoječo."
+"Izberite mesto za vašo bodočo hrambo KleverNotes ali izberite obstoječo."
 
 #: contents/ui/dialogs/TableMakerDialog.qml:16
 #, kde-format
@@ -335,7 +326,7 @@ msgstr "Opozorilo"
 #: contents/ui/dialogs/WarningDialog.qml:21
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr "To utegne povzročiti vizualni artefakt na koncu pdf dokumenta."
+msgstr "To utegne povzročiti vizualni artefakt na koncu dokumenta pdf."
 
 #: contents/ui/dialogs/WarningDialog.qml:29
 #, kde-format
@@ -363,14 +354,13 @@ msgstr "Dobrodošli v KleverNotes!"
 #: contents/ui/pages/MainPage.qml:83
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr "Ustvarite ali izberite opombo za začetek dela !"
+msgstr "Za pričetek z delom ustvarite ali izberite zabeležko!"
 
 #: contents/ui/pages/PaintingPage.qml:28
-#, fuzzy, kde-format
-#| msgid "Paint!"
+#, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
-msgstr "Pobarvaj!"
+msgstr "Slikaj!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
 #, kde-format
@@ -420,8 +410,7 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
-"Izberite lokacijo za vaše bodoče hrambe KleverNotes ali izberite že "
-"obstoječo.\n"
+"Izberite mesto za vašo bodočo hrambo KleverNotes ali izberite obstoječo.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
@@ -452,7 +441,7 @@ msgstr "Novo ime skupine:"
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
-msgstr "Novo ime opombe:"
+msgstr "Novo ime zabeležke:"
 
 #: contents/ui/pages/SettingsPage.qml:184
 #, kde-format
@@ -519,7 +508,7 @@ msgstr "Ustvarite novo skupino"
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr "Ustvarite novo opombo"
+msgstr "Ustvarite novo zabeležko"
 
 #: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
@@ -542,12 +531,12 @@ msgstr "Nova skupina"
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
-msgstr "Nova opomba"
+msgstr "Nova zabeležka"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
 msgid "Delete"
-msgstr "Zbriši"
+msgstr "Izbriši"
 
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
@@ -573,7 +562,7 @@ msgstr "O programu KleverNotes"
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
-msgstr "Opomba"
+msgstr "Zabeležka"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
@@ -603,20 +592,20 @@ msgid ""
 "*/\n"
 msgstr ""
 "/*            \n"
-"Ta datoteka je kopija privzetega sloga CSS za prikaz opombe.            \n"
-"Prosto za urejanje ali izdelavo vaše lastne.            \n"
+"Ta datoteka je kopija privzetega sloga CSS za prikaz zabeležke.            \n"
+"Prosto jo urejajte ali izdelajte svojo lastno.            \n"
 "Opomba: vsak slog mora imeti drugačno ime.            \n"
 "*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Prišlo je do napake pri poskusu kreiranja vzorčne opombe."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja vzorčne zabeležke."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr "Prišlo je do napake pri poskusu kreiranja te postavke."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja te postavke."
 
 #: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
@@ -631,33 +620,33 @@ msgstr "Prišlo je do napake pri poskusu preimenovanja te postavke."
 #: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr "Prišlo je do napake pri poskusu kreiranja opombe."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja zabeležke."
 
 #: logic/treeview/noteTreeModel.cpp:487
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr "Prišlo je do napake pri poskusu kreiranja grupe."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja skupine."
 
 #: logic/treeview/noteTreeModel.cpp:496
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr "Prišlo je do napake pri poskusu kreiranja kategorije."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja kategorije."
 
 #: logic/treeview/noteTreeModel.cpp:503
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr "Prišlo je do napake pri poskusu kreiranja hrambe."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja shrambe."
 
 #: main.cpp:48
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "KleveNotes"
+msgstr "KleverNotes"
 
 #: main.cpp:52
 #, kde-format
 msgid "Application Description"
-msgstr "Opis aplikacije"
+msgstr "Opis programa"
 
 #: main.cpp:56
 #, kde-format
@@ -674,10 +663,10 @@ msgstr "Louis Schul"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Matjaž Jeran"
+msgstr "Matjaž Jeran, Martin Srebotnjak"
 
 #: main.cpp:62
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "matjaz.jeran@amis.net"
+msgstr "matjaz.jeran@amis.net, miles@filmsi.net"
