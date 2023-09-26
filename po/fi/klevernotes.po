@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 00:45+0000\n"
-"PO-Revision-Date: 2023-07-24 21:34+0300\n"
+"PO-Revision-Date: 2023-09-04 15:28+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -661,10 +661,9 @@ msgid ""
 msgstr ""
 
 #: logic/treeview/noteTreeModel.cpp:260
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create the note."
+#, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Yritettäessä luoda muistiinpanoa sattui virhe."
+msgstr "Yritettäessä luoda demoa sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
