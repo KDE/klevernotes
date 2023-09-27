@@ -10,6 +10,8 @@ import QtQuick.Dialogs 1.3
 import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/dialogs"
+import "qrc:/contents/ui/dialogs/imagePickerDialog"
+import "qrc:/contents/ui/dialogs/tableMakerDialog"
 
 Kirigami.ActionToolBar {
     id: toolbar
@@ -84,20 +86,22 @@ Kirigami.ActionToolBar {
         id: tableMakerDialog
 
         onAccepted: {
-            const alignPattern = {"left":":------","center":":------:","right":"------:"}
-            const cells = "|"+"       |".repeat(tableMakerDialog.columnCount)+"\n"
-            const headers = "|"+(i18n("Header")+"|").repeat(tableMakerDialog.columnCount)+"\n"
+            const alignPattern = {
+                "left": ":" + "-".repeat(i18n("Header").length - 1),
+                "center": ":" + "-".repeat(i18n("Header").length - 2) + ":",
+                "right": "-".repeat(i18n("Header").length - 1) + ":"
+            }
+            const cells = "|" + (" ".repeat(i18n("Header").length) + "|").repeat(tableMakerDialog.columnCount) + "\n"
+            const headers = "|" + (i18n("Header") + "|").repeat(tableMakerDialog.columnCount) + "\n"
 
             let columnsAlignments = "|"
 
-            for(var childIdx = 0; childIdx < tableMakerDialog.listView.count ; childIdx++) {
-                const columnAlignment = tableMakerDialog.listView.itemAtIndex(childIdx).children[0].data[0].checkedButton.align
-
-                columnsAlignments = columnsAlignments.concat(alignPattern[columnAlignment],"|")
+            for(var childIdx = 0; childIdx < tableMakerDialog.columnCount; childIdx++) {
+                columnsAlignments = columnsAlignments.concat(alignPattern[tableMakerDialog.alignment],"|")
             }
-            columnsAlignments +="\n"
+            columnsAlignments += "\n"
 
-            const result = "\n"+headers+columnsAlignments+cells.repeat(tableMakerDialog.rowCount-1)
+            const result = "\n" + headers + columnsAlignments + cells.repeat(tableMakerDialog.rowCount-1)
 
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, result)
         }

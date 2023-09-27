@@ -4,6 +4,7 @@
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Controls 2.15 as Controls
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.PromptDialog {
     id: textPromptDialog
@@ -12,8 +13,10 @@ Kirigami.PromptDialog {
 
     property QtObject caller
 
-    Controls.TextField {
+    FormCard.FormTextFieldDelegate {
         id: urlField
+
+        label: i18nc("@label:textbox, link URL, like the 'href' of an html <a> ", "URL:")
 
         Keys.onPressed: if ((event.key === Qt.Key_Return) || (event.key=== Qt.Key_Enter)) textPromptDialog.accept()
     }

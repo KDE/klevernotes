@@ -5,6 +5,7 @@ import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as Controls
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.PromptDialog {
     id: textPromptDialog
@@ -14,25 +15,23 @@ Kirigami.PromptDialog {
     property alias urlText: urlTextField.text
     property alias linkText: linkTextField.text
 
-    Kirigami.FormLayout {
-        Row {
-            Kirigami.FormData.label: i18nc("@label:textbox, link URL, like the 'href' of an html <a> ", "URL:")
+    ColumnLayout {
+        FormCard.FormTextFieldDelegate {
+            id: urlTextField
 
-            Controls.TextField {
-                id: urlTextField
-
-                focus: true
-            }
+            label: i18nc("@label:textbox, link URL, like the 'href' of an html <a> ", "URL:")
+            Layout.fillWidth: true
         }
 
-        Row {
-            Kirigami.FormData.label: i18nc("@label:textbox, the displayed text of a link, in html: <a>This text</a> ", "Link text:")
+        FormCard.FormTextFieldDelegate {
+            id: linkTextField
 
-            Controls.TextField {
-                id: linkTextField
-            }
+            label: i18nc("@label:textbox, the displayed text of a link, in html: <a>This text</a> ", "Link text:")
+            Layout.fillWidth: true
         }
     }
+
+    onOpened: urlTextField.forceActiveFocus()
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 }

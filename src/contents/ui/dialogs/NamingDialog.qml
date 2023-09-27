@@ -4,6 +4,7 @@
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Controls 2.15 as Controls
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
@@ -17,9 +18,9 @@ Kirigami.PromptDialog {
     property string shownName
     property string parentPath
     property QtObject callingAction
-    property alias textFieldText : nameField.text
+    property alias textFieldText: nameField.text
 
-    readonly property QtObject nameField : nameField
+    readonly property QtObject nameField: nameField
 
 
     function throwError(error) {
@@ -47,17 +48,17 @@ Kirigami.PromptDialog {
         return ""
     }
 
-    Controls.TextField {
-        id:nameField
+    FormCard.FormTextFieldDelegate {
+        id: nameField
 
+        label: i18nc("As in 'a name'", "Name:")
         text: shownName
+        maximumLength: 40
 
         leftPadding: Kirigami.Units.largeSpacing
         rightPadding: Kirigami.Units.largeSpacing
 
-        onSelectedTextChanged: nameField.forceActiveFocus()
-
-        Keys.onPressed: if (event.key === Qt.Key_Enter) textPromptDialog.applied()
+        Keys.onPressed: if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return) textPromptDialog.applied()
     }
 
     standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
@@ -70,8 +71,8 @@ Kirigami.PromptDialog {
             return
         }
         throwError(error)
-        nameField.selectAll()
+        nameField.forceActiveFocus()
     }
 
-    onOpened: nameField.selectAll()
+    onOpened: nameField.forceActiveFocus()
 }

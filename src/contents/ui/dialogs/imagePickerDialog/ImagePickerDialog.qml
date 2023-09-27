@@ -6,6 +6,7 @@ import QtQuick.Controls 2.3 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import Qt.labs.platform 1.1
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
@@ -46,23 +47,32 @@ Kirigami.Dialog {
         caller: imagePickerDialog
     }
 
-    Column {
+    // GridLayout was causing to much problem :/
+    ColumnLayout {
         id: mainItem
 
-        padding: Kirigami.Units.largeSpacing
-        spacing: Kirigami.Units.largeSpacing
+        property int iconSize: imageHolder.visible
+            ? Kirigami.Units.iconSizes.small
+            : Kirigami.Units.iconSizes.large
 
-        Layout.alignment: Qt.AlignTop
+        width: Kirigami.Units.iconSizes.huge * 4
+        spacing: 0
 
-        Row {
-            Controls.ToolButton {
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            spacing: 0
+            ButtonDelegate {
                 id: internetButton
 
-                icon.name: "internet-amarok"
-                icon.width: icon.height
-                icon.height: imageHolder.visible
-                    ? internetButton.height
-                    : Kirigami.Units.iconSizes.large
+
+                icon {
+                    name: "internet-amarok"
+                    width: mainItem.iconSize
+                    height: mainItem.iconSize
+                }
+
+                padding: Kirigami.Units.largeSpacing
 
                 text: i18nc("@label:button, As in 'image from the internet'", "Web image")
 
@@ -71,9 +81,9 @@ Kirigami.Dialog {
                     : Controls.AbstractButton.TextUnderIcon
 
 
-                width: Kirigami.Units.iconSizes.huge * 2
-                height: imageHolder.visible
-                    ? Kirigami.Units.iconSizes.medium
+                Layout.preferredWidth: Kirigami.Units.iconSizes.huge * 2
+                Layout.preferredHeight: imageHolder.visible
+                    ? Kirigami.Units.iconSizes.small * 3
                     : width
 
                 onClicked: {
@@ -82,23 +92,23 @@ Kirigami.Dialog {
                     storedImageChoosen = false
                     urlDialog.open()
                 }
-
             }
 
-
-            Controls.ToolButton {
+            ButtonDelegate {
                 id: localButton
 
-                icon.name: "document-open-folder"
-                icon.height: internetButton.icon.height
-                icon.width: icon.height
+                icon {
+                    name: "document-open-folder"
+                    width: mainItem.iconSize
+                    height: mainItem.iconSize
+                }
 
                 text: i18nc("label:button, Image from the local file system", "Local image")
 
                 display: internetButton.display
 
-                width: internetButton.width
-                height: internetButton.height
+                Layout.preferredWidth: Kirigami.Units.iconSizes.huge * 2
+                Layout.preferredHeight: internetButton.height
 
                 onClicked: {
                     imagePickerDialog.paintClipRect = undefined
@@ -109,22 +119,26 @@ Kirigami.Dialog {
                 }
             }
         }
-        Row {
-            Controls.ToolButton {
+
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            spacing: 0
+            ButtonDelegate {
                 id: paintingButton
 
                 icon {
-                    name: "oilpaint"
-                    width: icon.height
-                    height: internetButton.icon.height
+                    name: "tool-paintbrush-symbolic"
+                    width: mainItem.iconSize
+                    height: mainItem.iconSize
                 }
 
                 text: i18nc("@label:button", "Paint an image")
 
                 display: internetButton.display
 
-                width: storageButton.visible ? internetButton.width : 2 * internetButton.width
-                height: internetButton.height
+                Layout.preferredWidth: storageButton.visible ? Kirigami.Units.iconSizes.huge * 2 : Kirigami.Units.iconSizes.huge * 4
+                Layout.preferredHeight: internetButton.height
 
                 onClicked: {
                     imagePickerDialog.paintClipRect = undefined
@@ -133,12 +147,15 @@ Kirigami.Dialog {
                     applicationWindow().switchToPage('Painting')
                 }
             }
-            Controls.ToolButton {
+
+            ButtonDelegate {
                 id: storageButton
 
-                icon.name: "dblatex"
-                icon.width: icon.height
-                icon.height: internetButton.icon.height
+                icon {
+                    name: "dblatex"
+                    width: mainItem.iconSize
+                    height: mainItem.iconSize
+                }
 
                 text: i18nc("@label:button, Collection of image stored inside the note folder", "Image collection")
 
@@ -146,8 +163,8 @@ Kirigami.Dialog {
 
                 visible: imagePickerDialog.storedImagesExist
 
-                width: internetButton.width
-                height: internetButton.height
+                Layout.preferredWidth: visible ? Kirigami.Units.iconSizes.huge * 2 : 0
+                Layout.preferredHeight: visible ? internetButton.height : 0
 
                 onClicked: {
                     imagePickerDialog.paintClipRect = undefined
@@ -159,19 +176,20 @@ Kirigami.Dialog {
             }
         }
 
-        Kirigami.Separator{
+        Kirigami.Separator {
+            Layout.fillWidth: true
             visible: imageHolder.visible
-            width: internetButton.width * 2
-            anchors.horizontalCenter: parent.horizontalCenter
         }
-
 
         Item {
             id: imageHolder
 
-            visible: path != ""
-            height: Kirigami.Units.iconSizes.huge * 3
-            width: internetButton.width * 2
+            Layout.fillWidth: true
+            Layout.preferredHeight: Kirigami.Units.iconSizes.huge * 3 + Kirigami.Units.largeSpacing
+            Layout.margins: Kirigami.Units.smallSpacing
+
+            visible: imagePickerDialog.path !== ""
+
             Image {
                 id: displayImage
 
@@ -183,20 +201,20 @@ Kirigami.Dialog {
                 fillMode: Image.PreserveAspectFit
                 sourceClipRect: imagePickerDialog.paintClipRect
 
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.centerIn: parent
 
                 onStatusChanged: if (status == Image.Ready){
                     // If the image is placed inside the note folder, we want it to be max 1024x1024
-                    if (Math.max(implicitWidth,implicitHeight,1024) == 1024) {
+                    if (Math.max(implicitWidth, implicitHeight, 1024) == 1024) {
                         idealWidth = implicitWidth
                         idealHeight = implicitHeight
                     } else {
                         let divider = (implicitHeight > implicitWidth)
-                            ? implicitHeight/1024
-                            : implicitWidth/1024
+                            ? implicitHeight / 1024
+                            : implicitWidth / 1024
 
-                        idealWidth = Math.round(implicitWidth/divider)
-                        idealHeight = Math.round(implicitHeight/divider)
+                        idealWidth = Math.round(implicitWidth / divider)
+                        idealHeight = Math.round(implicitHeight / divider)
                     }
                     height = Kirigami.Units.iconSizes.huge * 3
                 }
@@ -208,47 +226,35 @@ Kirigami.Dialog {
                 color: Kirigami.Theme.textColor
 
                 text: i18n("It appears that the image you selected does not exist or is not supported.")
-                wrapMode: Text.Wrap
+                wrapMode: Text.WordWrap
                 visible: !displayImage.visible
 
                 anchors.fill: parent
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.centerIn: parent
+                padding: Kirigami.Units.largeSpacing
             }
         }
 
-        Kirigami.Separator{
-            width: internetButton.width * 2
-            anchors.horizontalCenter: parent.horizontalCenter
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            visible: imageHolder.visible
         }
 
-        RowLayout {
-            width: internetButton.width * 2
-            anchors.horizontalCenter: parent.horizontalCenter
+        FormCard.FormTextFieldDelegate {
+            id: nameTextField
 
-            spacing: Kirigami.Units.smallSpacing
-            Controls.Label {
-                text: i18nc("@label:textbox, text associated to the selected image", "Image text: ")
-            }
+            Layout.fillWidth: true
 
-            Controls.TextField {
-                id: nameTextField
-
-                focus: true
-                Layout.fillWidth: true
-            }
-
-            Layout.margins: Kirigami.Units.largeSpacing
+            label: i18nc("@label:textbox, text associated to the selected image", "Image text: ")
+            maximumLength: 40
         }
 
-        Controls.CheckBox {
+        FormCard.FormCheckDelegate {
             id: storeCheckbox
 
-            checked: true
-            text: i18nc("@label:checkbox", "Place this image inside the note folder")
-            width: internetButton.width * 2
-            visible: displayImage.visible && !storedImageChoosen && !paintedImageChoosen
+            Layout.fillWidth: true
 
-            anchors.horizontalCenter: parent.horizontalCenter
+            text: i18nc("@label:checkbox", "Place this image inside the note folder")
         }
     }
 

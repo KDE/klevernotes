@@ -77,7 +77,7 @@ Kirigami.Page {
     WarningDialog {
         id: backgroundWarning
 
-        onClosed: Config.pdfWarningHidden = checkbox.checked
+        onClosed: Config.pdfWarningHidden = dontShow
     }
 
     FileSaverDialog {

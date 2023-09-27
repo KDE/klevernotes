@@ -5,13 +5,14 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.3
 import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
 Kirigami.Dialog {
     id: setupPopup
 
-    width: Kirigami.Units.gridUnit * 22
+    width: Kirigami.Units.gridUnit * 18
 
     closePolicy: Controls.Popup.NoAutoClose
     standardButtons: Kirigami.Dialog.NoButton
@@ -25,52 +26,43 @@ Kirigami.Dialog {
     showCloseButton: !firstSetup
 
     ColumnLayout{
-        width: parent.width
-
         Controls.Label {
             text: subtitle
             wrapMode: Text.Wrap
 
-            Layout.fillWidth: true
             Layout.margins: Kirigami.Units.smallSpacing
+            Layout.fillWidth: true
         }
 
-        RowLayout {
+        FormCard.FormButtonDelegate {
+            icon.name: "folder-sync"
+            text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Existing storage")
+
+            Controls.ToolTip.text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Change the storage path")
+            Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+            Controls.ToolTip.visible: hovered
+
             Layout.fillWidth: true
-            Layout.fillHeight: true
 
-            Controls.Button{
-                icon.name: "folder-sync"
-                text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Existing storage")
-
-                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
-                Controls.ToolTip.visible: hovered
-                Controls.ToolTip.text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Change the storage path")
-
-                Layout.fillWidth: true
-                Layout.margins: Kirigami.Units.smallSpacing
-
-                onClicked: {
-                    setupPopup.userChoice = setupPopup.existingStorage
-                    getFolder()
-                }
+            onClicked: {
+                setupPopup.userChoice = setupPopup.existingStorage
+                getFolder()
             }
+        }
 
-            Controls.Button{
-                icon.name: "folder-new"
-                text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Create storage")
+        FormCard.FormButtonDelegate {
+            icon.name: "folder-new"
+            text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Create storage")
 
-                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
-                Controls.ToolTip.visible: hovered
-                Controls.ToolTip.text: i18nc("Storage as in 'the folder where all the notes will be stored'", "Create a new storage")
+            Controls.ToolTip.text: i18nc("Storage as in 'the folder where all the notes will be stored'", "Create a new storage")
+            Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+            Controls.ToolTip.visible: hovered
 
-                Layout.fillWidth: true
-                Layout.margins: Kirigami.Units.smallSpacing
+            Layout.fillWidth: true
 
-                onClicked: {
-                    setupPopup.userChoice = setupPopup.newStorage
-                    getFolder()
-                }
+            onClicked: {
+                setupPopup.userChoice = setupPopup.newStorage
+                getFolder()
             }
         }
     }

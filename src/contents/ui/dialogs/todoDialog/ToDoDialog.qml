@@ -5,6 +5,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Controls 2.15 as Controls
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.PromptDialog {
     id: promptDialog
@@ -16,39 +17,27 @@ Kirigami.PromptDialog {
     property alias description: descriptionField.text
 
     ColumnLayout {
-        Kirigami.Heading {
-            text: i18nc("@label:textbox", "Title:")
-            level: 2
-
-            Layout.fillWidth: true
-        }
-
-        Controls.TextField {
+        FormCard.FormTextFieldDelegate {
             id: nameField
 
+            label: i18nc("@label:textbox", "Title:")
+            maximumLength: 40
             placeholderText: i18nc("@placeholderText:textbox", "Todo title (required)")
+            Layout.fillWidth: true
+
             onAccepted: descriptionField.forceActiveFocus()
-
-            Layout.fillWidth: true
         }
 
-        Kirigami.Heading {
-            text: i18nc("@label:textbox", "Description:")
-            level: 2
+        TextAreaDelegate {
+            id: descriptionField
 
             Layout.fillWidth: true
-        }
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 8
 
-        Controls.ScrollView {
-            Layout.fillWidth: true
-            Layout.preferredHeight: Kirigami.Units.gridUnit * 4
-
-            Controls.TextArea {
-                id: descriptionField
-
-                placeholderText: i18nc("@placeholderText:textbox", "Optional")
-                wrapMode: TextEdit.WrapAnywhere
-            }
+            label: i18nc("@label:textbox", "Description:")
+            wrapMode: TextEdit.WrapAnywhere
+            placeholderText: i18nc("@placeholderText:textbox", "Optional")
+            maximumLength: 240
         }
     }
 

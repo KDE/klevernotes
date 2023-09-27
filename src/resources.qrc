@@ -11,14 +11,11 @@
         <file>contents/ui/dialogs/FileSaverDialog.qml</file>
         <file>contents/ui/dialogs/FolderPickerDialog.qml</file>
         <file>contents/ui/dialogs/FontPickerDialog.qml</file>
-        <file>contents/ui/dialogs/ImagePickerDialog.qml</file>
         <file>contents/ui/dialogs/LeavePaintingDialog.qml</file>
         <file>contents/ui/dialogs/LinkDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
-        <file>contents/ui/dialogs/TableMakerDialog.qml</file>
-        <file>contents/ui/dialogs/ToDoDialog.qml</file>
         <file>contents/ui/dialogs/URLDialog.qml</file>
         <file>contents/ui/dialogs/WarningDialog.qml</file>
 
@@ -26,6 +23,15 @@
         <file>contents/ui/dialogs/colorDialog/ColorPicker.qml</file>
         <file>contents/ui/dialogs/colorDialog/HSPicker.qml</file>
         <file>contents/ui/dialogs/colorDialog/LightnessSlider.qml</file>
+
+        <file>contents/ui/dialogs/imagePickerDialog/ButtonDelegate.qml</file>
+        <file>contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml</file>
+
+        <file>contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml</file>
+        <file>contents/ui/dialogs/tableMakerDialog/UpDownButtonDelegate.qml</file>
+
+        <file>contents/ui/dialogs/todoDialog/TextAreaDelegate.qml</file>
+        <file>contents/ui/dialogs/todoDialog/ToDoDialog.qml</file>
 
         <file>contents/ui/pages/AboutPage.qml</file>
         <file>contents/ui/pages/MainPage.qml</file>
