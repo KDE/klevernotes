@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-14 00:45+0000\n"
+"POT-Creation-Date: 2023-09-28 00:43+0000\n"
 "PO-Revision-Date: 2023-09-15 06:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -39,10 +39,11 @@ msgid "group"
 msgstr "ჯგუფი"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
-#: contents/ui/dialogs/NamingErrorDialog.qml:22
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "სახელი, როგორც 'შენიშვნაშია'"
+#, fuzzy, kde-format
+#| msgid "note"
+msgctxt "Name, as in 'A note'"
+msgid "note"
+msgstr "შენიშვნა"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
@@ -70,50 +71,50 @@ msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "ფონტის ამრჩევი"
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:18
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:19
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "გამოსახულების ამრჩევი"
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:67
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "ვებ-გამოსახულება"
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:96
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "ლოკალური გამოსახულება"
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:122
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "გამოსახულების დახატვა"
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:143
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "გამოსახულების კოლექცია"
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:210
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr ""
 "როგორც ჩანს, გამოსახულება, რომელიც აირჩიეთ, არ არსებობს ან მხარდაჭერილი არაა."
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:230
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "გამოსახულების ტექსტი: "
 
-#: contents/ui/dialogs/ImagePickerDialog.qml:247
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -134,13 +135,13 @@ msgstr ""
 "აპირებთ, თქვენი ნახატის გარეშე გახვიდეთ?\n"
 "თუ გნებავთ, შეინახოთ ის გასვლამდე?\n"
 
-#: contents/ui/dialogs/LinkDialog.qml:12
+#: contents/ui/dialogs/LinkDialog.qml:13
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "შექმენით თქვენი ბმული"
 
-#: contents/ui/dialogs/LinkDialog.qml:19
+#: contents/ui/dialogs/LinkDialog.qml:22 contents/ui/dialogs/URLDialog.qml:19
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
@@ -153,11 +154,17 @@ msgctxt ""
 msgid "Link text:"
 msgstr "ბმულის ტექსტი:"
 
-#: contents/ui/dialogs/NamingDialog.qml:13
+#: contents/ui/dialogs/NamingDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
 msgstr "აირჩიეთ სახელი"
+
+#: contents/ui/dialogs/NamingDialog.qml:54
+#, kde-format
+msgctxt "As in 'a name'"
+msgid "Name:"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
 #, kde-format
@@ -166,6 +173,11 @@ msgctxt ""
 "stored'"
 msgid "KleverNotes Storage"
 msgstr "KleverNotes-ის საცავი"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:22
+#, kde-format
+msgid "Name, as in 'A note'"
+msgstr "სახელი, როგორც 'შენიშვნაშია'"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -187,7 +199,7 @@ msgstr ""
 "ეს %1 უკვე არსებობს.\n"
 "მისთვს სხვა სახელის არჩევა მოგიწევთ.\n"
 
-#: contents/ui/dialogs/StorageDialog.qml:19
+#: contents/ui/dialogs/StorageDialog.qml:20
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
@@ -203,7 +215,7 @@ msgstr ""
 "აირჩით მდებარეობა, სადაც გნებავთ, KleverNotes-ის საცავი მდებარეობდეს, ან "
 "აირჩიეთ უკვე არსებული."
 
-#: contents/ui/dialogs/StorageDialog.qml:20
+#: contents/ui/dialogs/StorageDialog.qml:21
 #, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
@@ -211,7 +223,7 @@ msgctxt ""
 msgid "Existing storage chosen at "
 msgstr "არსებული საცავი მისამართზე "
 
-#: contents/ui/dialogs/StorageDialog.qml:21
+#: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
@@ -219,34 +231,34 @@ msgctxt ""
 msgid "Storage created at "
 msgstr "საცავი შეიქმნა მისამართზე "
 
-#: contents/ui/dialogs/StorageDialog.qml:44
+#: contents/ui/dialogs/StorageDialog.qml:39
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "არსებული საცავი"
 
-#: contents/ui/dialogs/StorageDialog.qml:48
+#: contents/ui/dialogs/StorageDialog.qml:41
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "საცავის ბილიკის შეცვლა"
 
-#: contents/ui/dialogs/StorageDialog.qml:61
+#: contents/ui/dialogs/StorageDialog.qml:55
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "საცავის შექმნა"
 
-#: contents/ui/dialogs/StorageDialog.qml:65
+#: contents/ui/dialogs/StorageDialog.qml:57
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "ახალი საცავის შექმნა"
 
-#: contents/ui/dialogs/StorageDialog.qml:97
+#: contents/ui/dialogs/StorageDialog.qml:89
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
@@ -262,76 +274,120 @@ msgstr ""
 "აირჩიეთ საქაღალდე KleverNotes-ის მომავალი საცავისთვის, ან აირჩიეთ უკვე "
 "არსებული."
 
-#: contents/ui/dialogs/TableMakerDialog.qml:16
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
 msgstr "ცხრილის შექმნა"
 
-#: contents/ui/dialogs/TableMakerDialog.qml:27
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:38
 #, kde-format
-msgctxt "Name, 'a row'"
+msgctxt ""
+"@label, display the final size of the table %1 is the number of row and %2 "
+"the number of column"
+msgid "Size: %1 x %2"
+msgstr ""
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:151
+#, kde-format
+msgctxt "@label:button"
+msgid "More options"
+msgstr ""
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:205
+#, fuzzy, kde-format
+#| msgctxt "Name, 'a row'"
+#| msgid "Row"
+msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
 msgstr "მწკრივი"
 
-#: contents/ui/dialogs/TableMakerDialog.qml:44
-#, kde-format
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:217
+#, fuzzy, kde-format
+#| msgid "Column"
+msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
 msgstr "სვეტები"
 
-#: contents/ui/dialogs/TableMakerDialog.qml:205
-#, kde-format
-msgid "Align all:"
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:229
+#, fuzzy, kde-format
+#| msgid "Align all:"
+msgctxt "@label:combobox"
+msgid "Alignment :"
 msgstr "ყველას სწორება:"
 
-#: contents/ui/dialogs/ToDoDialog.qml:12
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:234
+#, kde-format
+msgctxt "@entry:combobox, alignment name"
+msgid "Left"
+msgstr ""
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:235
+#, kde-format
+msgctxt "@entry:combobox, alignment name"
+msgid "Center"
+msgstr ""
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:236
+#, kde-format
+msgctxt "@entry:combobox, alignment name"
+msgid "Right"
+msgstr ""
+
+#: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:172
+#, kde-format
+msgctxt "@label %1 is current text length, %2 is maximum length of text field"
+msgid "%1/%2"
+msgstr ""
+
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:13
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "განრიგის დამატება"
 
-#: contents/ui/dialogs/ToDoDialog.qml:20
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:23
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
 msgstr "სათაური:"
 
-#: contents/ui/dialogs/ToDoDialog.qml:29
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "განრიგის სათაური (აუცილებელია)"
 
-#: contents/ui/dialogs/ToDoDialog.qml:36
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:37
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "აღწერა:"
 
-#: contents/ui/dialogs/ToDoDialog.qml:49
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
 msgstr "არასავალდებულო"
 
-#: contents/ui/dialogs/URLDialog.qml:11
+#: contents/ui/dialogs/URLDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "აირჩიეთ URL"
 
-#: contents/ui/dialogs/WarningDialog.qml:14
+#: contents/ui/dialogs/WarningDialog.qml:15
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Warning"
 msgstr "გაფრთხილება"
 
-#: contents/ui/dialogs/WarningDialog.qml:21
+#: contents/ui/dialogs/WarningDialog.qml:19
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
 msgstr "ამან შეიძლება PDF ფაილის ბოლოში ვიზუალური არტეფაქტები გამოიწვიოს."
 
-#: contents/ui/dialogs/WarningDialog.qml:29
+#: contents/ui/dialogs/WarningDialog.qml:28
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Do not show again"
@@ -574,7 +630,11 @@ msgctxt "@label:button"
 msgid "TODO"
 msgstr "განრიგის სია"
 
-#: contents/ui/textEditor/TextToolBar.qml:89
+#: contents/ui/textEditor/TextToolBar.qml:90
+#: contents/ui/textEditor/TextToolBar.qml:91
+#: contents/ui/textEditor/TextToolBar.qml:92
+#: contents/ui/textEditor/TextToolBar.qml:94
+#: contents/ui/textEditor/TextToolBar.qml:95
 #, kde-format
 msgid "Header"
 msgstr "სათაური"
@@ -675,9 +735,6 @@ msgstr "Temuri Doghonadze"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
-
-#~ msgid "note"
-#~ msgstr "შენიშვნა"
 
 #~ msgid "Stored image"
 #~ msgstr "დამახსოვრებული გამოსახულება"
