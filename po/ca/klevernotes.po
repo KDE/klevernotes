@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 00:43+0000\n"
-"PO-Revision-Date: 2023-09-14 12:44+0200\n"
+"PO-Revision-Date: 2023-09-28 12:08+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -40,8 +40,7 @@ msgid "group"
 msgstr "grup"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
 msgstr "nota"
@@ -165,7 +164,7 @@ msgstr "Trieu un nom"
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr ""
+msgstr "Nom:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
 #, kde-format
@@ -287,59 +286,55 @@ msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
 "the number of column"
 msgid "Size: %1 x %2"
-msgstr ""
+msgstr "Mida: %1 x %2"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:151
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr ""
+msgstr "Més opcions"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:205
-#, fuzzy, kde-format
-#| msgctxt "Name, 'a row'"
-#| msgid "Row"
+#, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
 msgstr "Fila"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:217
-#, fuzzy, kde-format
-#| msgid "Column"
+#, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
 msgstr "Columna"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:229
-#, fuzzy, kde-format
-#| msgid "Align all:"
+#, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr "Alinea-ho tot:"
+msgstr "Alineació:"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:234
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
-msgstr ""
+msgstr "Esquerra"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:235
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
-msgstr ""
+msgstr "Centre"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:236
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
-msgstr ""
+msgstr "Dreta"
 
 #: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:172
 #, kde-format
 msgctxt "@label %1 is current text length, %2 is maximum length of text field"
 msgid "%1/%2"
-msgstr ""
+msgstr "%1/%2"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:13
 #, kde-format
