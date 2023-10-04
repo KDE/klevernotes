@@ -134,7 +134,7 @@ RowLayout {
 
     function changeStyle(styleDict: Object) {
         const emptyDict = Object.keys(styleDict).length === 0;
-        const styleDict = emptyDict ? defaultCSS : style
+        styleDict = emptyDict ? defaultCSS : styleDict
 
         let varStartIndex
         let varEndIndex
@@ -162,7 +162,7 @@ RowLayout {
     }
 
     function loadStyle() {
-        root.cssStyle = DocumentHandler.getCssStyle(stylePath)
+        root.cssStyle = DocumentHandler.getCssStyle(root.stylePath)
         changeStyle({})
     }
 
