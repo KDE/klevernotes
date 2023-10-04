@@ -34,6 +34,7 @@ RowLayout {
         '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
     }
     property bool printBackground: true
+    property bool isInit: false
 
     spacing: 0
 
@@ -79,7 +80,10 @@ RowLayout {
                 printingPage.pdfPath = root.previewLocation
             }
 
-            onLoadProgressChanged: if (loadProgress === 100) loadStyle()
+            onLoadProgressChanged: if (loadProgress === 100 && !root.isInit) {
+                loadStyle()
+                root.isInit = true
+            }
 
             onScrollPositionChanged: if (!vbar.active) {
                 vbar.position = scrollPosition.y / contentsSize.height

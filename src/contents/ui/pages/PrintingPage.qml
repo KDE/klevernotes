@@ -33,7 +33,7 @@ Kirigami.Page {
                 valueRole: "display"
                 model: ColorSchemer.model
                 onCurrentValueChanged: {
-                    if (currentIndex === 0) printPreview.colors = "default"
+                    if (currentIndex === 0) printPreview.colors = {}
                     else {
                         printPreview.colors = ColorSchemer.getUsefullColors(currentIndex)
                     }
