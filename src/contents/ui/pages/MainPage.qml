@@ -21,7 +21,7 @@ Kirigami.Page {
 
     title: hasNote ? currentlySelected.label : i18nc("@title:page", "Welcome")
 
-    actions.contextualActions: hasNote
+    @KIRIGAMI_PAGE_ACTION@: hasNote
                                 ? editorView.visible
                                     ? editorView.actions
                                     : todoView.actions

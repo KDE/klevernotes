@@ -116,7 +116,7 @@ TreeView.AbstractTreeItem {
 
         acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-        onClicked: {
+        onClicked: function (mouse) {
             listItem.clicked()
             if (mouse.button === Qt.RightButton) {
                 contextMenu.canDelete = !listItem.path.endsWith("/.BaseCategory")

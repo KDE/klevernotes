@@ -70,3 +70,4 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
     return res;
 }
 
+#include "moc_colorschemer.cpp"

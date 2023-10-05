@@ -76,7 +76,7 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("Settings")
-            icon: "settings-configure"
+            @KIRIGAMI_LISTITEM_ICON@: "settings-configure"
 
             Layout.alignment:Qt.AlignBottom
 
@@ -85,7 +85,7 @@ Kirigami.OverlayDrawer {
 
         Kirigami.BasicListItem {
             text: i18n("About KleverNotes")
-            icon: "help-about"
+            @KIRIGAMI_LISTITEM_ICON@: "help-about"
 
             onClicked: applicationWindow().switchToPage('About')
         }
@@ -99,14 +99,14 @@ Kirigami.OverlayDrawer {
     }
 
     Component.onCompleted: {
-    if (!storageExist){
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+        if (!storageExist){
+            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
 
-        if (component.status == Component.Ready) {
-            var dialog = component.createObject(applicationWindow());
-            dialog.open()
+            if (component.status == Component.Ready) {
+                var dialog = component.createObject(applicationWindow());
+                dialog.open()
+            }
         }
-    }
     }
 }
 

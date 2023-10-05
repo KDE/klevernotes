@@ -51,15 +51,19 @@ RowLayout {
         WebEngineView {
             id: web_view
 
-            onJavaScriptConsoleMessage: console.error('WEB:', message, lineNumber, sourceID)
+            onJavaScriptConsoleMessage: function(level, message, lineNumber, sourceID) {console.error('WEB:', message, lineNumber, sourceID)}
 
-            settings.showScrollBars: false
+            settings {
+                showScrollBars: false
+                localContentCanAccessFileUrls: true
+                localContentCanAccessRemoteUrls: true
+            }
 
             width: background.width - 4
             height: background.height - 4
             x: 2
             y: 2
-            url: "qrc:/index.html"
+            url: "file:/"
             focus: true
             backgroundColor: "transparent"
 
@@ -79,10 +83,10 @@ RowLayout {
                 vbar.position = scrollPosition.y / contentsSize.height
             }
 
-            onNavigationRequested: {
-                if (request.url.toString() !== "qrc:/index.html") {
-                    request.action = WebEngineNavigationRequest.IgnoreRequest
+            onNavigationRequested: function(request) {
+                if (request.url.toString().startsWith("http")) {
                     Qt.openUrlExternally(request.url)
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
                 }
             }
 
@@ -107,7 +111,7 @@ RowLayout {
 
             QtMdEditor.QmlLinker{
                 id: homePathPasser
-                homePath: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].substring("file://".length)
+                homePath: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0].toString().substring("file://".length)
                 WebChannel.id: "homePathPasser"
             }
 
@@ -115,6 +119,11 @@ RowLayout {
                 id: notePathPasser
                 notePath: root.path
                 WebChannel.id: "notePathPasser"
+            }
+
+            Component.onCompleted: {
+                let defaultHtml = DocumentHandler.readFile(":/index.html")
+                web_view.loadHtml(defaultHtml, "file:/")
             }
         }
     }

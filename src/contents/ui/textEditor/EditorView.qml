@@ -26,16 +26,16 @@ GridLayout{
         Kirigami.Action {
             id: editorToggler
             checkable: true
-            icon.name: checked ? "text-flow-into-frame" : "text-unflow"
+            icon.name: editorToggler.checked ? "text-flow-into-frame" : "text-unflow"
             checked: true
-            onCheckedChanged: if (!checked && !viewToggler.checked) checked = true
+            onCheckedChanged: if (!editorToggler.checked && !viewToggler.checked) editorToggler.checked = true
         },
         Kirigami.Action {
             id: viewToggler
             checkable: true
-            icon.name: checked ? "quickview" : "view-hidden"
+            icon.name: viewToggler.checked ? "quickview" : "view-hidden"
             checked: applicationWindow().wideScreen
-            onCheckedChanged: if (!checked && !editorToggler.checked) checked = true
+            onCheckedChanged: if (!viewToggler.checked && !editorToggler.checked) viewToggler.checked = true
         }
     ]
 

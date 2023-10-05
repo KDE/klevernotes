@@ -7,7 +7,7 @@
         <file>contents/ui/main.qml</file>
 
         <file>contents/ui/dialogs/DeleteConfirmationDialog.qml</file>
-        <file>contents/ui/dialogs/FilePickerDialog.qml</file>
+        <file alias="contents/ui/dialogs/FilePickerDialog.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/dialogs/FilePickerDialog.qml</file>
         <file>contents/ui/dialogs/FileSaverDialog.qml</file>
         <file>contents/ui/dialogs/FolderPickerDialog.qml</file>
         <file>contents/ui/dialogs/FontPickerDialog.qml</file>
@@ -34,8 +34,8 @@
         <file>contents/ui/dialogs/todoDialog/ToDoDialog.qml</file>
 
         <file>contents/ui/pages/AboutPage.qml</file>
-        <file>contents/ui/pages/MainPage.qml</file>
-        <file>contents/ui/pages/PaintingPage.qml</file>
+        <file alias="contents/ui/pages/MainPage.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/pages/MainPage.qml</file>
+        <file alias="contents/ui/pages/PaintingPage.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/pages/PaintingPage.qml</file>
         <file>contents/ui/pages/PrintingPage.qml</file>
         <file>contents/ui/pages/SettingsPage.qml</file>
 
@@ -45,18 +45,18 @@
         <file>contents/ui/settings/DisplayPreview.qml</file>
         <file>contents/ui/settings/SettingsColorButton.qml</file>
 
-        <file>contents/ui/sideBar/ActionBar.qml</file>
+        <file alias="contents/ui/sideBar/ActionBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/ContextMenu.qml</file>
-        <file>contents/ui/sideBar/SearchBar.qml</file>
-        <file>contents/ui/sideBar/Sidebar.qml</file>
+        <file alias="contents/ui/sideBar/SearchBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/sideBar/SearchBar.qml</file>
+        <file alias="contents/ui/sideBar/Sidebar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/sideBar/Sidebar.qml</file>
         <file>contents/ui/sideBar/TreeItem.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
 
-        <file>contents/ui/textEditor/BottomToolBar.qml</file>
+        <file alias="contents/ui/textEditor/BottomToolBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/textEditor/BottomToolBar.qml</file>
         <file>contents/ui/textEditor/EditorView.qml</file>
         <file>contents/ui/textEditor/TextDisplay.qml</file>
         <file>contents/ui/textEditor/TextEditor.qml</file>
-        <file>contents/ui/textEditor/TextToolBar.qml</file>
+        <file alias="contents/ui/textEditor/TextToolBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/textEditor/TextToolBar.qml</file>
 
         <file>contents/ui/todoEditor/ToDoView.qml</file>
 

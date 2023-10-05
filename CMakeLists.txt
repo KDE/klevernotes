@@ -30,8 +30,28 @@ ecm_setup_version(${PROJECT_VERSION}
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/version-klevernotes.h"
 )
 
-find_package(Qt5 ${QT5_MIN_VERSION} REQUIRED COMPONENTS Core Gui Qml QuickControls2 Svg WebEngineWidgets WebEngine)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 CoreAddons Config ConfigWidgets I18n)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Core
+    Gui
+    Qml
+    QuickControls2
+    Svg
+    WebEngineWidgets
+)
+
+if (QT_MAJOR_VERSION STREQUAL "5")
+    find_package(Qt5 REQUIRED COMPONENTS WebEngine)
+else()
+    find_package(Qt6 REQUIRED COMPONENTS WebEngineQuick)
+endif()
+
+find_package(KF${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Kirigami2
+    CoreAddons
+    Config
+    I18n
+    ConfigWidgets
+)
 
 if (ANDROID)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
