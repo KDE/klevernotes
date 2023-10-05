@@ -284,7 +284,7 @@ QString InlineLexer::outputLink(QRegularExpressionMatch &cap, QMap<QString, QStr
     // ======
     QString out;
     QString cap1 = cap.captured(1);
-    if (cap.captured(0).at(0) != "!") {
+    if (cap.captured(0).at(0) != QChar::fromLatin1('!')) {
         QString outputed = output(cap1);
         out = Renderer::link(href, title, outputed);
     } else {

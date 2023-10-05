@@ -37,7 +37,7 @@ QString Renderer::hr()
 QString Renderer::list(const QString &body, bool ordered, const QString &start)
 {
     QString type = ordered ? "ol" : "ul";
-    QString startatt = (ordered && start != 1) ? (QString::fromStdString(" start=\"") + start + QString::fromStdString("\"")) : "";
+    QString startatt = (ordered && start != QString::number(1)) ? (QString::fromStdString(" start=\"") + start + QString::fromStdString("\"")) : "";
 
     return "<" + type + startatt + QString::fromStdString(">\n") + body + "</" + type + QString::fromStdString(">\n");
 }

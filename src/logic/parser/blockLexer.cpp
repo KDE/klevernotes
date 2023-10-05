@@ -176,7 +176,7 @@ void BlockLexer::tokenize(QString &remaining, bool top)
                 bool loose = next || QRegularExpression("\n\n(?!\\s*$)").match(item).hasMatch();
 
                 if (globalCap.hasNext()) {
-                    next = item[item.length() - 1] == "\n";
+                    next = item[item.length() - 1] == QChar::fromLatin1('\n');
                     if (!loose) {
                         loose = next;
                     }
@@ -186,7 +186,7 @@ void BlockLexer::tokenize(QString &remaining, bool top)
                 bool istask = taskCatcher.hasMatch();
                 bool ischecked = false;
                 if (istask) {
-                    ischecked = item[1] != " ";
+                    ischecked = item[1] != QChar::fromLatin1(' ');
                     item.replace(taskCatcher.capturedStart(1), taskCatcher.capturedLength(1), "");
                 }
                 QVariantMap startingTok{{"type", loose ? "loose_item_start" : "list_item_start"}, {"task", istask}, {"checked", ischecked}};
