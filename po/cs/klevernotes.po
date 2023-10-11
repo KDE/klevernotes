@@ -286,11 +286,10 @@ msgid "Row"
 msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:217
-#, fuzzy, kde-format
-#| msgid "Column"
+#, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
-msgstr "Sloupec"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:229
 #, kde-format
