@@ -1,47 +1,50 @@
+# Translation for klevernotes.po to Euskara/Basque (eu).
+# Copyright (C) 2023 This file is copyright:
+# This file is distributed under the same license as the klevernotes package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+#
+# Translators:
+# SPDX-FileCopyrightText: 2023 Iñigo Salvador Azurmendi <xalba@ni.eus>
 msgid ""
 msgstr ""
-"Project-Id-Version: kdeorg\n"
+"Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-06 00:42+0000\n"
-"PO-Revision-Date: 2023-10-21 13:55\n"
-"Last-Translator: \n"
-"Language-Team: Chinese Simplified\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2023-10-21 23:07+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: kdeorg\n"
-"X-Crowdin-Project-ID: 269464\n"
-"X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/klevernotes/klevernotes.pot\n"
-"X-Crowdin-File-ID: 42149\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Color Picker"
-msgstr ""
+msgstr "Kolore-hautatzailea"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "category"
-msgstr ""
+msgstr "kategoria"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
 #, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "group"
-msgstr ""
+msgstr "Taldea"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
-msgstr ""
+msgstr "Oharra"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
@@ -49,79 +52,79 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Are you sure you want to delete this %1 ?"
-msgstr ""
+msgstr "Ziur zaude %1 hori ezabatu nahi duzula?"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
-msgstr ""
+msgstr "Irudi-hautatzailea"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note"
-msgstr ""
+msgstr "Gorde oharra"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
-msgstr ""
+msgstr "Letra-tipo hautatzailea"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:19
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr ""
+msgstr "Irudi-hautatzailea"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
-msgstr ""
+msgstr "Web-irudia"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
-msgstr ""
+msgstr "Irudi lokala"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr ""
+msgstr "Margotu irudi bat"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr ""
+msgstr "Irudi bilduma"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
-msgstr ""
+msgstr "Ematen du hautatu duzun irudia ez dagoela edo ez duela euskarririk."
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
-msgstr ""
+msgstr "Irudiaren testua:"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr ""
+msgstr "Ipini irudi hori ohar-karpetaren barruan"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr ""
+msgstr "«KleverNotes» margolana"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:18
 #, kde-format
@@ -129,37 +132,39 @@ msgid ""
 "You're about to leave without saving your drawing!\n"
 "Do you want to save it before leaving ?\n"
 msgstr ""
+"Zure marrazkia gorde gabe irtetera zoaz!\n"
+"Irten aurretik gorde nahi duzu?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:13
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr ""
+msgstr "Sortu zure esteka"
 
 #: contents/ui/dialogs/LinkDialog.qml:22 contents/ui/dialogs/URLDialog.qml:19
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr ""
+msgstr "Estekaren testua:"
 
 #: contents/ui/dialogs/NamingDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr ""
+msgstr "Aukeratu izen bat"
 
 #: contents/ui/dialogs/NamingDialog.qml:54
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr ""
+msgstr "Izena:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
 #, kde-format
@@ -167,12 +172,12 @@ msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr ""
+msgstr "«KleverNotes» biltegiratzea"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "Name, as in 'A note'"
-msgstr ""
+msgstr "Izena, 'Ohar bat' antzekoa"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -180,7 +185,7 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Your %1 name starts with a dot, "
-msgstr ""
+msgstr "Zure %1 izena puntu batez hasten da,"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -191,6 +196,8 @@ msgid ""
 "This %1 already exist.\n"
 "Please choose another name for it.\n"
 msgstr ""
+"%1 hori jada badago .\n"
+"Mesedez, aukeratu harentzako beste izen bat.\n"
 
 #: contents/ui/dialogs/StorageDialog.qml:20
 #, kde-format
@@ -203,6 +210,10 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Ematen du aplikazio hau erabiltzen duzun lehen aldia dela!\n"
+"\n"
+"Mesedez, aukeratu zure etorkizuneko «KleverNotes» biltegiratzerako kokaleku "
+"bat edo aurrez dagoen bat aukeratu."
 
 #: contents/ui/dialogs/StorageDialog.qml:21
 #, kde-format
@@ -210,7 +221,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr ""
+msgstr "Aurrez, hemen dagoen biltegiratzea, "
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -218,34 +229,34 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr ""
+msgstr "Biltegiratzea hemen sortua, "
 
 #: contents/ui/dialogs/StorageDialog.qml:39
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr ""
+msgstr "Aurrez dagoen biltegiratzea"
 
 #: contents/ui/dialogs/StorageDialog.qml:41
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr ""
+msgstr "Aldatu biltegiratzearen bide-izena"
 
 #: contents/ui/dialogs/StorageDialog.qml:55
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr ""
+msgstr "Sortu biltegiratzea"
 
 #: contents/ui/dialogs/StorageDialog.qml:57
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr ""
+msgstr "Sortu biltegiratze berri bat"
 
 #: contents/ui/dialogs/StorageDialog.qml:89
 #, kde-format
@@ -258,12 +269,16 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Ematen du aukeratutako karpeta ez dela «KleverNotes» biltegiratzea.\n"
+"\n"
+"Mesedez, aukeratu zure etorkizuneko «KleverNotes» biltegiratzerako kokaleku "
+"bat edo aurrez dagoen bat aukeratu."
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "Taula sorrera"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:38
 #, kde-format
@@ -271,178 +286,178 @@ msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
 "the number of column"
 msgid "Size: %1 x %2"
-msgstr ""
+msgstr "Neurria: %1 x %2"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:151
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr ""
+msgstr "Aukera gehiago"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:205
 #, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
-msgstr ""
+msgstr "Errenkada"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:217
 #, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
-msgstr ""
+msgstr "Zutabea"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:229
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr ""
+msgstr "Lerrokatzea:"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:234
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
-msgstr ""
+msgstr "Ezkerrean"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:235
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
-msgstr ""
+msgstr "Erdian"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:236
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
-msgstr ""
+msgstr "Eskuinean"
 
 #: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:172
 #, kde-format
 msgctxt "@label %1 is current text length, %2 is maximum length of text field"
 msgid "%1/%2"
-msgstr ""
+msgstr "%1/%2"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:13
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
-msgstr ""
+msgstr "Gehitu zeregina"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:23
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
-msgstr ""
+msgstr "Titulua:"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr ""
+msgstr "Zereginaren titulua (beharrezkoa)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:37
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
-msgstr ""
+msgstr "Azalpena:"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
-msgstr ""
+msgstr "Aukerakoa"
 
 #: contents/ui/dialogs/URLDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
-msgstr ""
+msgstr "Aukeratu URL bat"
 
 #: contents/ui/dialogs/WarningDialog.qml:15
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Warning"
-msgstr ""
+msgstr "Abisua"
 
 #: contents/ui/dialogs/WarningDialog.qml:19
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Horrek, «pdf»aren bukaera ondoan, ikus-akatsak sor litzake."
 
 #: contents/ui/dialogs/WarningDialog.qml:28
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Do not show again"
-msgstr ""
+msgstr "Ez erakutsi berriz"
 
 #: contents/ui/main.qml:15
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
-msgstr ""
+msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
-msgstr ""
+msgstr "Ongi etorri"
 
 #: contents/ui/pages/MainPage.qml:73
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr ""
+msgstr "Ongi etorri «KleverNotes»era!"
 
 #: contents/ui/pages/MainPage.qml:83
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr ""
+msgstr "Ohar bat sortu edo aukeratu lanean hasteko!"
 
 #: contents/ui/pages/PaintingPage.qml:28
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
-msgstr ""
+msgstr "Margotu!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
-msgstr ""
+msgstr "Gorde"
 
 #: contents/ui/pages/PaintingPage.qml:37
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
-msgstr ""
+msgstr "Garbitu"
 
 #: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
-msgstr ""
+msgstr "Mozketa automatikoa"
 
 #: contents/ui/pages/PrintingPage.qml:21
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
-msgstr ""
+msgstr "Inprimatu"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
-msgstr ""
+msgstr "Kolore-gaia"
 
 #: contents/ui/pages/PrintingPage.qml:47
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
-msgstr ""
+msgstr "Hondoko planoa"
 
 #: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
-msgstr ""
+msgstr "Ezarpenak"
 
 #: contents/ui/pages/SettingsPage.qml:25
 #, kde-format
@@ -450,164 +465,166 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
+"Mesedez, aukeratu zure etorkizuneko «KleverNotes» biltegiratzerako kokaleku "
+"bat edo aurrez dagoen bat aukeratu.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
 #, kde-format
 msgctxt "@title, general settings"
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr ""
+msgstr "Biltegiratzearen bide-izena:"
 
 #: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
-msgstr ""
+msgstr "Kategoria-izen berria:"
 
 #: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
-msgstr ""
+msgstr "Talde-izen berria:"
 
 #: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
-msgstr ""
+msgstr "Ohar-izen berria:"
 
 #: contents/ui/pages/SettingsPage.qml:184
 #, kde-format
 msgctxt ""
 "@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
-msgstr ""
+msgstr "Azaldu"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
-msgstr ""
+msgstr "Estiloa:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
-msgstr ""
+msgstr "Testuaren kolorea:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
-msgstr ""
+msgstr "Tituluaren kolorea:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
-msgstr ""
+msgstr "Estekaren kolorea:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
-msgstr ""
+msgstr "Bisitatutako estekaren kolorea:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
-msgstr ""
+msgstr "Kodearen kolorea:"
 
 #: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr ""
+msgstr "Letra-tipoa:"
 
 #: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
-msgstr ""
+msgstr "Sortu kategoria berri bat"
 
 #: contents/ui/sideBar/ActionBar.qml:233
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
-msgstr ""
+msgstr "Sortu talde berri bat"
 
 #: contents/ui/sideBar/ActionBar.qml:241
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr ""
+msgstr "Sortu ohar berri bat"
 
 #: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
 msgid "Rename"
-msgstr ""
+msgstr "Berrizendatu"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
-msgstr ""
+msgstr "Kategoria berria"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
-msgstr ""
+msgstr "Talde berria"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
-msgstr ""
+msgstr "Ohar berria"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Ezabatu"
 
 #: contents/ui/sideBar/SearchBar.qml:50
 #, kde-format
 msgid "From : "
-msgstr ""
+msgstr "Nondik:"
 
 #: contents/ui/sideBar/SearchBar.qml:71
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "Bilaketaren emaitzarik ez"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Ezarpenak"
 
 #: contents/ui/sideBar/Sidebar.qml:87
 #, kde-format
 msgid "About KleverNotes"
-msgstr ""
+msgstr "«KleverNotes»eri buruz"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
-msgstr ""
+msgstr "Oharra"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
-msgstr ""
+msgstr "ZEREGINA"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
@@ -616,13 +633,13 @@ msgstr ""
 #: contents/ui/textEditor/TextToolBar.qml:95
 #, kde-format
 msgid "Header"
-msgstr ""
+msgstr "Goiburua"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr ""
+msgstr "Garbitu markatutakoa"
 
 #: logic/kleverUtility.cpp:97
 #, kde-format
@@ -634,77 +651,83 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Fitxategi hau, oharra azaltzeko CSS estilo lehenetsiaren kopia bat "
+"da.            \n"
+"Hau editatzeko edo zurea propioa egiteko askatasuna duzu.            \n"
+"Oharra: estilo bakoitzak izen ezberdina izan behar du.            \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr ""
+msgstr "Errore bat gertatu da ohar erakusgaia sortzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "Errore bat gertatu da elementu hau sortzen saiatzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:415
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Errore bat gertatu da elementu hau ezabatzen saiatzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:437
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Errore bat gertatu da elementu hau berrizendatzen saiatzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Errore bat gertatu da oharra sortzen saiatzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:487
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "Errore bat gertatu da taldea sortzen saiatzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:496
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "Errore bat gertatu da kategoria sortzen saiatzerakoan."
 
 #: logic/treeview/noteTreeModel.cpp:503
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Errore bat gertatu da biltegiratzea sortzen saiatzerakoan."
 
 #: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr ""
+msgstr "KleverNotes"
 
 #: main.cpp:61
 #, kde-format
 msgid "Application Description"
-msgstr ""
+msgstr "Aplikazioaren deskribapena"
 
 #: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr ""
+msgstr "(c) 2022-2023"
 
 #: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
-msgstr ""
+msgstr "Louis Schul"
 
 #: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Iñigo Salvador Azurmendi"
 
 #: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "xalba@ni.eus"
