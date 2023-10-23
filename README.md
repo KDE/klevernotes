@@ -3,28 +3,37 @@
     SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 -->
 
-# KleverNotes
+# Klevernotes 
 
+KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content. 
 
-A convergent markdown note taking application.
+Different Markdown flavors are supported thanks to [Marked.js](https://marked.js.org/#specifications) (more features will come). 
 
+**Get involved and join our Matrix channel: [klevernotes:kde.org](https://matrix.to/#/#klevernotes:kde.org)**
 
-## Dependencies
-* Kirigami
-* Qt Quick Controls
+## Screenshots
 
-## Installing
-1. Install the required packages, which you can find [on this page](https://develop.kde.org/docs/getting-started/kirigami/introduction-getting_started/)
-2. Download or clone the repo
-3. Inside the directory run :
+### Adaptative
+![Screenshot of Klevernotes main page on desktop](https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png)
+![Screenshot of Klevernotes main page on mobile](https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png)
+### Todos for each note
+![Screenshot of Klevernotes todo](https://cdn.kde.org/screenshots/klevernotes/todo_mobile.png)
+### Draw your thoughts ! 
+![Screenshot of  Klevernotes drawing](https://cdn.kde.org/screenshots/klevernotes/painting.png)
+### Print your note ! 
+![Screenshot of  Klevernotes print page](https://cdn.kde.org/screenshots/klevernotes/printing.png)
 
-```sh
-mkdir build
-cd build
-/usr/bin/cmake  -Wno-dev -G Ninja ../
-/usr/bin/ninja
+## Get it
+
+Klevernotes is currently in [KDE incubator](https://community.kde.org/Incubator) 
+
+You'll need to build the app to test it ! 
+
+## Build
+
+**[kdesrc-build](https://invent.kde.org/sdk/kdesrc-build)** would be the best option to build klevernotes and its dependencies easily.
+
+Arch Linux dependencies:
 ```
-
-`/usr/bin/cmake` is the default path to cmake, replace it by yours if it's different.
-
-Same goes for `/usr/bin/ninja`.
+base-devel extra-cmake-modules cmake qt5-base qt5-declarative qt5-quickcontrols2 kirigami2 ki18n kcoreaddons breeze kio qt5-webengine extra-cmake-modules
+```
