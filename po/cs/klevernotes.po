@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# Vit Pelcak <vit@pelcak.org>, 2023.
+# SPDX-FileCopyrightText: 2023 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-06 00:42+0000\n"
-"PO-Revision-Date: 2023-06-13 09:50+0200\n"
+"PO-Revision-Date: 2023-10-19 10:27+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,33 +15,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Color Picker"
-msgstr ""
+msgstr "Kapátko"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "category"
-msgstr ""
+msgstr "kategorie"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
 #, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "group"
-msgstr ""
+msgstr "skupina"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
-msgstr ""
+msgstr "poznámka"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
@@ -49,7 +49,7 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Are you sure you want to delete this %1 ?"
-msgstr ""
+msgstr "Opravdu si přejete smazat tento %1?"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
 #, kde-format
@@ -61,55 +61,55 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note"
-msgstr ""
+msgstr "Uložit poznámku"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
-msgstr ""
+msgstr "Volba písma"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:19
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr ""
+msgstr "Výběr obrázku"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
-msgstr ""
+msgstr "Obrázek z webu"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
-msgstr ""
+msgstr "Místní obrázek"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr ""
+msgstr "Namalovat obrázek"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr ""
+msgstr "Sbírka obrázků"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
-msgstr ""
+msgstr "Zdá se, že vybraný obrázek neexistuje nebo není podporován."
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
-msgstr ""
+msgstr "Text obrázku: "
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
@@ -121,7 +121,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr ""
+msgstr "Malování KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:18
 #, kde-format
@@ -134,32 +134,32 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr ""
+msgstr "Vytvořit svůj odkaz"
 
 #: contents/ui/dialogs/LinkDialog.qml:22 contents/ui/dialogs/URLDialog.qml:19
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr ""
+msgstr "Text odkazu:"
 
 #: contents/ui/dialogs/NamingDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr ""
+msgstr "Vyberte název"
 
 #: contents/ui/dialogs/NamingDialog.qml:54
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr ""
+msgstr "Název:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
 #, kde-format
@@ -167,7 +167,7 @@ msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr ""
+msgstr "Úložiště KleverNotes"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
@@ -239,13 +239,13 @@ msgstr ""
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr ""
+msgstr "Vytvořit úložiště"
 
 #: contents/ui/dialogs/StorageDialog.qml:57
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr ""
+msgstr "Vytvořit nové úložiště"
 
 #: contents/ui/dialogs/StorageDialog.qml:89
 #, kde-format
@@ -263,7 +263,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "Vytvoření tabulky"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:38
 #, kde-format
@@ -271,61 +271,61 @@ msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
 "the number of column"
 msgid "Size: %1 x %2"
-msgstr ""
+msgstr "Velikost: %1 x %2"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:151
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr ""
+msgstr "Více možností"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:205
 #, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
-msgstr ""
+msgstr "Řádek"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:217
 #, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
-msgstr ""
+msgstr "Sloupec"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:229
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr ""
+msgstr "Zarovnání: "
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:234
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
-msgstr ""
+msgstr "Vlevo"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:235
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
-msgstr ""
+msgstr "Střed"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:236
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
-msgstr ""
+msgstr "Vpravo"
 
 #: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:172
 #, kde-format
 msgctxt "@label %1 is current text length, %2 is maximum length of text field"
 msgid "%1/%2"
-msgstr ""
+msgstr "%1/%2"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:13
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
-msgstr ""
+msgstr "Přidat úlohu"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:23
 #, kde-format
@@ -337,7 +337,7 @@ msgstr "Název:"
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr ""
+msgstr "Název úlohy (povinné)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:37
 #, kde-format
@@ -349,19 +349,19 @@ msgstr "Popis:"
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
-msgstr ""
+msgstr "Volitelné"
 
 #: contents/ui/dialogs/URLDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
-msgstr ""
+msgstr "Zvolit URL"
 
 #: contents/ui/dialogs/WarningDialog.qml:15
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #: contents/ui/dialogs/WarningDialog.qml:19
 #, kde-format
@@ -372,19 +372,19 @@ msgstr ""
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Do not show again"
-msgstr ""
+msgstr "Znovu nezobrazovat"
 
 #: contents/ui/main.qml:15
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
-msgstr ""
+msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
-msgstr ""
+msgstr "Vítejte"
 
 #: contents/ui/pages/MainPage.qml:73
 #, kde-format
@@ -400,43 +400,43 @@ msgstr ""
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
-msgstr ""
+msgstr "Namalovat."
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 #: contents/ui/pages/PaintingPage.qml:37
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
-msgstr ""
+msgstr "Vyprázdnit"
 
 #: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
-msgstr ""
+msgstr "Automatický ořez"
 
 #: contents/ui/pages/PrintingPage.qml:21
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
-msgstr ""
+msgstr "Tisk"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
-msgstr ""
+msgstr "Barevný motiv"
 
 #: contents/ui/pages/PrintingPage.qml:47
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
-msgstr ""
+msgstr "Pozadí"
 
 #: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
@@ -455,26 +455,26 @@ msgstr ""
 #, kde-format
 msgctxt "@title, general settings"
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: contents/ui/pages/SettingsPage.qml:72
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr ""
+msgstr "Cesta k úložišti:"
 
 #: contents/ui/pages/SettingsPage.qml:91
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
-msgstr ""
+msgstr "Název nové kategorie:"
 
 #: contents/ui/pages/SettingsPage.qml:123
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
-msgstr ""
+msgstr "Název nové skupiny:"
 
 #: contents/ui/pages/SettingsPage.qml:155
 #, kde-format
@@ -487,19 +487,19 @@ msgstr ""
 msgctxt ""
 "@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
-msgstr ""
+msgstr "Zobrazení"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
-msgstr ""
+msgstr "Styl:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
-msgstr ""
+msgstr "Barva textu:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
 #, kde-format
@@ -511,13 +511,13 @@ msgstr ""
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
-msgstr ""
+msgstr "Barva odkazu:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
-msgstr ""
+msgstr "Barva navštíveného odkazu:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
 #, kde-format
@@ -529,25 +529,25 @@ msgstr ""
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr ""
+msgstr "Písmo:"
 
 #: contents/ui/sideBar/ActionBar.qml:225
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
-msgstr ""
+msgstr "Vytvořit novou kategorii"
 
 #: contents/ui/sideBar/ActionBar.qml:233
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
-msgstr ""
+msgstr "Vytvořit novou skupinu"
 
 #: contents/ui/sideBar/ActionBar.qml:241
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr ""
+msgstr "Vytvořit novou poznámku"
 
 #: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
@@ -558,19 +558,19 @@ msgstr "Přejmenovat"
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
-msgstr ""
+msgstr "Nová kategorie"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
-msgstr ""
+msgstr "Nová skupina"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
-msgstr ""
+msgstr "Nová poznámka"
 
 #: contents/ui/sideBar/ContextMenu.qml:49
 #, kde-format
@@ -595,19 +595,19 @@ msgstr "Nastavení"
 #: contents/ui/sideBar/Sidebar.qml:87
 #, kde-format
 msgid "About KleverNotes"
-msgstr ""
+msgstr "O aplikaci KleverNotes"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
-msgstr ""
+msgstr "Poznámka"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
-msgstr ""
+msgstr "Úloha"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
@@ -622,7 +622,7 @@ msgstr "Záhlaví"
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr ""
+msgstr "Vymazat zaškrtnuté"
 
 #: logic/kleverUtility.cpp:97
 #, kde-format
@@ -638,7 +638,7 @@ msgstr ""
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr ""
+msgstr "Při pokusu o vytvoření zkušební poznámky nastala chyba."
 
 #: logic/treeview/noteTreeModel.cpp:386
 #, kde-format
