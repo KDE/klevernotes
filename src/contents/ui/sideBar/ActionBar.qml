@@ -73,10 +73,11 @@ ToolBar {
     Kirigami.Action {
         id: createCategoryAction
 
-        icon.name: "journal-new"
-
-        property bool isActive : false
         property string name
+        property bool isActive : false
+
+        shortcut: "Ctrl+Alt+C"
+        icon.name: "journal-new"
 
         onNameChanged: {
             if (isActive) {
@@ -96,12 +97,13 @@ ToolBar {
     Kirigami.Action {
         id: createGroupAction
 
-        icon.name: "folder-new"
-
-        property bool isActive : false
-        property string categoryPath
         property string name
+        property string categoryPath
         property var parentModelIndex
+        property bool isActive : false
+
+        shortcut: "Ctrl+Alt+G"
+        icon.name: "folder-new"
 
         onNameChanged: {
             if (isActive) {
@@ -144,12 +146,13 @@ ToolBar {
     Kirigami.Action {
         id: createNoteAction
 
-        icon.name: "document-new"
-
-        property bool isActive : false
-        property string groupPath
         property string name
+        property string groupPath
         property var parentModelIndex
+        property bool isActive : false
+
+        shortcut: "Ctrl+Alt+N"
+        icon.name: "document-new"
 
         onNameChanged: {
             if (isActive) {
@@ -166,7 +169,6 @@ ToolBar {
                 case "Category":
                     groupPath = treeView.currentItem.path+"/.BaseGroup"
                     parentModelIndex = currentModelIndex
-                    console.log("here")
                     break;
                 case "Group":
                     groupPath = treeView.currentItem.path
@@ -186,11 +188,11 @@ ToolBar {
     Kirigami.Action{
         id: renameAction
 
-        icon.name: "edit-rename"
-
         property bool isActive : false
         property string name : treeView.currentItem.label
 
+        shortcut: "Ctrl+R"
+        icon.name: "edit-rename"
 
         onNameChanged: {
             if (isActive) {
@@ -222,7 +224,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18nc("as in 'A note category'", "Create a new category")
+            ToolTip.text: i18nc("as in 'A note category'", "Create a new category") + " (" + createCategoryAction.shortcut + ")"
         }
 
         ToolButton {
@@ -230,7 +232,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18nc("as in 'A note group'", "Create a new group")
+            ToolTip.text: i18nc("as in 'A note group'", "Create a new group") + " (" + createGroupAction.shortcut + ")"
         }
 
         ToolButton {
@@ -238,7 +240,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18nc("as in 'A note'", "Create a new note")
+            ToolTip.text: i18nc("as in 'A note'", "Create a new note") + " (" + createNoteAction.shortcut + ")"
         }
 
         ToolButton {
@@ -246,7 +248,7 @@ ToolBar {
             visible: !barLayout.searching
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18n("Rename")
+            ToolTip.text: i18n("Rename") + " (" + renameAction.shortcut + ")"
         }
 
         Item {Layout.fillWidth: true; visible: !barLayout.searching}

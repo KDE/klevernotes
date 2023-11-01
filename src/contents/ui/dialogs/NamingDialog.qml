@@ -75,4 +75,6 @@ Kirigami.PromptDialog {
     }
 
     onOpened: nameField.forceActiveFocus()
+
+    onRejected: callingAction.isActive = false
 }
