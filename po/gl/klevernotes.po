@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 00:42+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-10-12 23:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -542,25 +542,25 @@ msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Fonte:"
 
-#: contents/ui/sideBar/ActionBar.qml:225
+#: contents/ui/sideBar/ActionBar.qml:227
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Crear unha categoría nova"
 
-#: contents/ui/sideBar/ActionBar.qml:233
+#: contents/ui/sideBar/ActionBar.qml:235
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Crear un novo grupo"
 
-#: contents/ui/sideBar/ActionBar.qml:241
+#: contents/ui/sideBar/ActionBar.qml:243
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Crear unha nova nota"
 
-#: contents/ui/sideBar/ActionBar.qml:249 contents/ui/sideBar/ContextMenu.qml:42
+#: contents/ui/sideBar/ActionBar.qml:251 contents/ui/sideBar/ContextMenu.qml:42
 #, kde-format
 msgid "Rename"
 msgstr "Renomear"
@@ -620,6 +620,30 @@ msgctxt "@label:button"
 msgid "TODO"
 msgstr "PENDENTE"
 
+#: contents/ui/textEditor/EditorView.qml:22
+#: contents/ui/textEditor/EditorView.qml:131
+#, fuzzy, kde-format
+#| msgctxt "@title:page"
+#| msgid "Print"
+msgctxt "@tooltip, Print action, will be followed by the shortcut"
+msgid "Print"
+msgstr "Imprimir"
+
+#: contents/ui/textEditor/EditorView.qml:29
+#: contents/ui/textEditor/EditorView.qml:138
+#, kde-format
+msgctxt "@tooltip, will be followed by the shortcut"
+msgid "View/Hide editor"
+msgstr ""
+
+#: contents/ui/textEditor/EditorView.qml:39
+#: contents/ui/textEditor/EditorView.qml:147
+#, kde-format
+msgctxt ""
+"@tooltip, display as in 'the note preview', will be followed by the shortcut"
+msgid "View/Hide preview"
+msgstr ""
+
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
 #: contents/ui/textEditor/TextToolBar.qml:92
@@ -628,6 +652,121 @@ msgstr "PENDENTE"
 #, kde-format
 msgid "Header"
 msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:220
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Headers"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:220
+#, kde-format
+msgctxt "@tooltip, short form of 'number'"
+msgid "num"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:225
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 1"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:237
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 2"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:249
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 3"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:261
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 4"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:273
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 5"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:285
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 6"
+msgstr "Cabeceira"
+
+#: contents/ui/textEditor/TextToolBar.qml:299
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Bold"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:308
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Italic"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:317
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Strikethrough"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:326
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Code"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:335
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Quote"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:344
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Image"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:351
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:358
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Table"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:365
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Ordered list"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:377
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Unordered list"
+msgstr ""
 
 # skip-rule: proposta-en-clear
 #: contents/ui/todoEditor/ToDoView.qml:21
