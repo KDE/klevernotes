@@ -2,7 +2,13 @@
     SPDX-License-Identifier: GPL-2.0-or-later
     SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 -->
-
+# ⚠️ THIS BRANCH IS FOR TESTING PURPOSE ⚠️
+This branch will be used to push new awaiting merge request and test them live all together in order to catch potential bug
+<br>
+And also play with the latest features 😎
+<br>
+<br>
+<br>
 # Klevernotes 
 
 KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content. 
