@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-29 04:54+0200\n"
+"PO-Revision-Date: 2023-11-04 06:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -626,9 +626,7 @@ msgid "TODO"
 msgstr "განრიგის სია"
 
 #: contents/ui/textEditor/EditorView.qml:24
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "დაბეჭდვა"
@@ -637,14 +635,14 @@ msgstr "დაბეჭდვა"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "რედაქტორის ჩვენება/დამალვა"
 
 #: contents/ui/textEditor/EditorView.qml:40
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "მინიატურის ჩვენება/დამალვა"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
@@ -656,119 +654,112 @@ msgid "Header"
 msgstr "სათაური"
 
 #: contents/ui/textEditor/TextToolBar.qml:220
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
-msgstr "სათაური"
+msgstr "თავსართები"
 
 #: contents/ui/textEditor/TextToolBar.qml:220
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr ""
+msgstr "რიცხვ"
 
 #: contents/ui/textEditor/TextToolBar.qml:225
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "სათაური"
+msgstr "თავსართი 1"
 
 #: contents/ui/textEditor/TextToolBar.qml:237
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "სათაური"
+msgstr "თავსართი 2"
 
 #: contents/ui/textEditor/TextToolBar.qml:249
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "სათაური"
+msgstr "თავსართი 3"
 
 #: contents/ui/textEditor/TextToolBar.qml:261
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "სათაური"
+msgstr "თავსართი 4"
 
 #: contents/ui/textEditor/TextToolBar.qml:273
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "სათაური"
+msgstr "თავსართი 5"
 
 #: contents/ui/textEditor/TextToolBar.qml:285
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "სათაური"
+msgstr "თავსართი 6"
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr ""
+msgstr "გასქელება"
 
 #: contents/ui/textEditor/TextToolBar.qml:308
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr ""
+msgstr "დახრა"
 
 #: contents/ui/textEditor/TextToolBar.qml:317
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr ""
+msgstr "ხაზგადასმული"
 
 #: contents/ui/textEditor/TextToolBar.qml:326
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr ""
+msgstr "კოდი"
 
 #: contents/ui/textEditor/TextToolBar.qml:335
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr ""
+msgstr "ციტატა"
 
 #: contents/ui/textEditor/TextToolBar.qml:344
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr ""
+msgstr "გამოსახულება"
 
 #: contents/ui/textEditor/TextToolBar.qml:351
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr ""
+msgstr "ბმული"
 
 #: contents/ui/textEditor/TextToolBar.qml:358
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr ""
+msgstr "ცხრილი"
 
 #: contents/ui/textEditor/TextToolBar.qml:365
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "დალაგებული სია"
 
 #: contents/ui/textEditor/TextToolBar.qml:377
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "დაულაგებელი სია"
 
 #: contents/ui/todoEditor/ToDoView.qml:21
 #, kde-format
