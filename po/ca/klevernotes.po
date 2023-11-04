@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 00:43+0000\n"
+"POT-Creation-Date: 2023-11-04 00:43+0000\n"
 "PO-Revision-Date: 2023-11-02 09:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -626,22 +626,19 @@ msgctxt "@label:button"
 msgid "TODO"
 msgstr "Per fer («TODO»)"
 
-#: contents/ui/textEditor/EditorView.qml:22
-#: contents/ui/textEditor/EditorView.qml:131
+#: contents/ui/textEditor/EditorView.qml:24
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Imprimeix"
 
-#: contents/ui/textEditor/EditorView.qml:29
-#: contents/ui/textEditor/EditorView.qml:138
+#: contents/ui/textEditor/EditorView.qml:31
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Mostra/oculta l'editor"
 
-#: contents/ui/textEditor/EditorView.qml:39
-#: contents/ui/textEditor/EditorView.qml:147
+#: contents/ui/textEditor/EditorView.qml:40
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"

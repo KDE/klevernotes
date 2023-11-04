@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 00:43+0000\n"
+"POT-Creation-Date: 2023-11-04 00:43+0000\n"
 "PO-Revision-Date: 2023-10-21 23:07+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -626,8 +626,7 @@ msgctxt "@label:button"
 msgid "TODO"
 msgstr "ZEREGINA"
 
-#: contents/ui/textEditor/EditorView.qml:22
-#: contents/ui/textEditor/EditorView.qml:131
+#: contents/ui/textEditor/EditorView.qml:24
 #, fuzzy, kde-format
 #| msgctxt "@title:page"
 #| msgid "Print"
@@ -635,15 +634,13 @@ msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Inprimatu"
 
-#: contents/ui/textEditor/EditorView.qml:29
-#: contents/ui/textEditor/EditorView.qml:138
+#: contents/ui/textEditor/EditorView.qml:31
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:39
-#: contents/ui/textEditor/EditorView.qml:147
+#: contents/ui/textEditor/EditorView.qml:40
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
