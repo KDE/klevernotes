@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-05 12:34+0000\n"
 "PO-Revision-Date: 2023-11-04 19:53+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -628,8 +628,6 @@ msgstr "ZEREGINA"
 
 #: contents/ui/textEditor/EditorView.qml:24
 #, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Inprimatu"
@@ -658,7 +656,6 @@ msgstr "Goiburua"
 
 #: contents/ui/textEditor/TextToolBar.qml:220
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "Goiburuak"
@@ -671,42 +668,36 @@ msgstr "zk."
 
 #: contents/ui/textEditor/TextToolBar.qml:225
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "Izenburua 1"
 
 #: contents/ui/textEditor/TextToolBar.qml:237
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "Izenburua 2"
 
 #: contents/ui/textEditor/TextToolBar.qml:249
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "Izenburua 3"
 
 #: contents/ui/textEditor/TextToolBar.qml:261
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "Izenburua 4"
 
 #: contents/ui/textEditor/TextToolBar.qml:273
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "Izenburua 5"
 
 #: contents/ui/textEditor/TextToolBar.qml:285
 #, kde-format
-#| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "Izenburua 6"
@@ -867,4 +858,3 @@ msgstr "Iñigo Salvador Azurmendi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
-
