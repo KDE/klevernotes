@@ -57,6 +57,13 @@ Kirigami.ApplicationWindow {
         return pageStack.currentItem == getPage("Main")
     }
 
+    function showCheatSheet() {
+        if (!isMainPage()) return
+
+        const mainPage = pageStack.get(0)
+        const editorView = mainPage.editorView
+        editorView.cheatSheet.open() 
+    }
     // This timer allows to batch update the window size change to reduce
     // the io load and also work around the fact that x/y/width/height are
     // changed when loading the page and overwrite the saved geometry from

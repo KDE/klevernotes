@@ -16,6 +16,7 @@ GridLayout{
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
+    readonly property QtObject cheatSheet: cheatSheet
 
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
@@ -103,5 +104,9 @@ GridLayout{
                 Layout.preferredWidth: parent.columns === 2 ? parent.width/2 : parent.width
             }
         }
+    }
+
+    CheatSheet {
+        id: cheatSheet
     }
 }

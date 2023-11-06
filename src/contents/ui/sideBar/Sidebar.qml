@@ -75,6 +75,15 @@ Kirigami.OverlayDrawer {
         }
 
         Kirigami.BasicListItem {
+            text: i18n("Cheat sheet")
+            @KIRIGAMI_LISTITEM_ICON@: "text-markdown"
+
+            Layout.alignment:Qt.AlignBottom
+
+            onClicked: applicationWindow().showCheatSheet()
+        }
+
+        Kirigami.BasicListItem {
             text: i18n("Settings")
             @KIRIGAMI_LISTITEM_ICON@: "settings-configure"
 
