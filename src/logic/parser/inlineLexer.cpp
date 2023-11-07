@@ -1,4 +1,5 @@
 #include "inlineLexer.h"
+#include <QDebug>
 
 #include <QDir>
 #include <QMap>
@@ -106,6 +107,27 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             linkInfo = {{"href", escapes(href)}, {"title", escapes(title)}};
 
             out += outputLink(cap, linkInfo, useInlineText);
+            m_inLink = false;
+            continue;
+        }
+
+        // wikilink
+        cap = inline_wikilink.match(src);
+        if (cap.hasMatch()) {
+            if (cap.captured().trimmed().isEmpty())
+                continue;
+
+            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+
+            m_inLink = true;
+            href = cap.captured(1).trimmed();
+
+            bool hasPipe = !cap.captured(2).isEmpty();
+
+            QString potentitalTitle = cap.captured(3).trimmed();
+            title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : href.split(QStringLiteral("/")).last();
+
+            out += Renderer::link(href, title, title);
             m_inLink = false;
             continue;
         }

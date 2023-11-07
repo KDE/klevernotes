@@ -40,6 +40,8 @@ private:
 
     QRegularExpression inline_nolink = QRegularExpression("^!?\\[(?!\\s*\\])((?:\\[[^\\[\\]]*\\]|\\\\[\\[\\]]|[^\\[\\]])*)\\](?:\\[\\])?");
 
+    QRegularExpression inline_wikilink = QRegularExpression("\\[\\[([^\\]\\|\\r\\n]*)(\\|)*([^\\]\\|\\r\\n]*)\\]\\]");
+
     QRegularExpression inline_strong =
         QRegularExpression("^__([^\\s][\\s\\S]*?[^\\s])__(?!_)|^\\*\\*([^\\s][\\s\\S]*?[^\\s])\\*\\*(?!\\*)|^__([^\\s])__(?!_)|^\\*\\*([^\\s])\\*\\*(?!\\*)");
 
