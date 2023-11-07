@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:34+0000\n"
+"POT-Creation-Date: 2023-11-07 01:20+0000\n"
 "PO-Revision-Date: 2023-11-02 16:55+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -605,10 +605,15 @@ msgstr "Нічого не знайдено"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
+msgid "Cheat sheet"
+msgstr ""
+
+#: contents/ui/sideBar/Sidebar.qml:87
+#, kde-format
 msgid "Settings"
 msgstr "Параметри"
 
-#: contents/ui/sideBar/Sidebar.qml:87
+#: contents/ui/sideBar/Sidebar.qml:96
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Про KleverNotes"
@@ -625,19 +630,279 @@ msgctxt "@label:button"
 msgid "TODO"
 msgstr "ЩЕ НЕ НАПИСАНО"
 
-#: contents/ui/textEditor/EditorView.qml:24
+#: contents/ui/textEditor/CheatSheet.qml:15
+#, kde-format
+msgctxt "@window:title"
+msgid "Markdown Cheat Sheet"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:29
+#, kde-format
+msgid "Copied !"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:40
+#, kde-format
+msgctxt "@title, cheat sheet section"
+msgid "Basic syntax"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:47
+#, fuzzy, kde-format
+#| msgid "Header"
+msgid "Heading"
+msgstr "Заголовок"
+
+#: contents/ui/textEditor/CheatSheet.qml:48
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@tooltip, text format header level, will be followed by the shortcut"
+#| msgid "Header 1"
+msgctxt "exemple"
+msgid "Heading1"
+msgstr "Заголовок 1"
+
+#: contents/ui/textEditor/CheatSheet.qml:53
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Bold"
+msgid "Bold"
+msgstr "Жирний"
+
+#: contents/ui/textEditor/CheatSheet.qml:54
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Bold"
+msgctxt "exemple"
+msgid "Bold text"
+msgstr "Жирний"
+
+#: contents/ui/textEditor/CheatSheet.qml:59
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Italic"
+msgid "Italic"
+msgstr "Курсив"
+
+#: contents/ui/textEditor/CheatSheet.qml:60
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Italic"
+msgctxt "exemple"
+msgid "Italic text"
+msgstr "Курсив"
+
+#: contents/ui/textEditor/CheatSheet.qml:65
+#, kde-format
+msgid "Blockquote"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:66
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Quote"
+msgctxt "exemple"
+msgid "Quote"
+msgstr "Цитата"
+
+#: contents/ui/textEditor/CheatSheet.qml:71
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Ordered list"
+msgid "Ordered list"
+msgstr "Впорядкований список"
+
+#: contents/ui/textEditor/CheatSheet.qml:72
+#: contents/ui/textEditor/CheatSheet.qml:79
+#, kde-format
+msgctxt "exemple"
+msgid "First item"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:73
+#: contents/ui/textEditor/CheatSheet.qml:80
+#, kde-format
+msgctxt "exemple"
+msgid "Second item"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:78
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Unordered list"
+msgid "Unordered list"
+msgstr "Невпорядкований список"
+
+#: contents/ui/textEditor/CheatSheet.qml:85
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Code"
+msgid "Code"
+msgstr "Код"
+
+#: contents/ui/textEditor/CheatSheet.qml:86
+#, kde-format
+msgctxt "exemple"
+msgid "Inline code"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:91
+#, kde-format
+msgctxt "@label, horizontal rule => <hr> html tag"
+msgid "Rule"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:97
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Link"
+msgid "Link"
+msgstr "Посилання"
+
+#: contents/ui/textEditor/CheatSheet.qml:98
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Title:"
+msgctxt "exemple"
+msgid "title"
+msgstr "Заголовок:"
+
+#: contents/ui/textEditor/CheatSheet.qml:98
+#, kde-format
+msgctxt "exemple"
+msgid "https://www.example.com"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:103
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Image"
+msgid "Image"
+msgstr "Зображення"
+
+#: contents/ui/textEditor/CheatSheet.qml:104
+#, kde-format
+msgctxt "exemple"
+msgid "alt text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:104
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Image"
+msgctxt "exemple"
+msgid "image"
+msgstr "Зображення"
+
+#: contents/ui/textEditor/CheatSheet.qml:111
+#, kde-format
+msgctxt "@title, cheat sheet section"
+msgid "Extended syntax"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:118
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Table"
+msgid "Table"
+msgstr "Таблиця"
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, fuzzy, kde-format
+#| msgctxt "@entry:combobox, alignment name"
+#| msgid "Left"
+msgctxt "@label, noun, 'The left side of something'"
+msgid "Left"
+msgstr "Ліворуч"
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, fuzzy, kde-format
+#| msgctxt "@entry:combobox, alignment name"
+#| msgid "Center"
+msgctxt "@label, verb, 'To center something'"
+msgid "Center"
+msgstr "За центром"
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, fuzzy, kde-format
+#| msgctxt "@entry:combobox, alignment name"
+#| msgid "Right"
+msgctxt "@label, noun, 'The right side of something"
+msgid "Right"
+msgstr "Праворуч"
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 1"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 2"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 3"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:126
+#, kde-format
+msgid "Fenced code block"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:128
+#, kde-format
+msgctxt "exemple"
+msgid "Sample text here..."
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:134
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Strikethrough"
+msgid "Strikethrough"
+msgstr "Перекреслення"
+
+#: contents/ui/textEditor/CheatSheet.qml:135
+#, kde-format
+msgctxt "exemple, something wrong"
+msgid "The world is flat."
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:140
+#, kde-format
+msgid "Task list"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:141
+#, kde-format
+msgctxt "exemple"
+msgid "Make more foo"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:142
+#, kde-format
+msgctxt "exemple"
+msgid "Make more bar"
+msgstr ""
+
+#: contents/ui/textEditor/EditorView.qml:25
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Надрукувати"
 
-#: contents/ui/textEditor/EditorView.qml:31
+#: contents/ui/textEditor/EditorView.qml:32
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Показати/Приховати редактор"
 
-#: contents/ui/textEditor/EditorView.qml:40
+#: contents/ui/textEditor/EditorView.qml:41
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"

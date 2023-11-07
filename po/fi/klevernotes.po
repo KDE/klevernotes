@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:34+0000\n"
-"PO-Revision-Date: 2023-09-04 15:28+0300\n"
+"POT-Creation-Date: 2023-11-07 01:20+0000\n"
+"PO-Revision-Date: 2023-10-12 18:08+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -18,24 +18,21 @@ msgstr ""
 "X-Generator: Lokalize 22.12.3\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Color Picker"
 msgstr "Värivalitsin"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
-#, fuzzy, kde-format
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "category"
 msgstr "luokka"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
 #: contents/ui/dialogs/NamingErrorDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "group"
 msgstr "ryhmä"
@@ -47,95 +44,83 @@ msgctxt "Name, as in 'A note'"
 msgid "note"
 msgstr "huomautus"
 
+# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Are you sure you want to delete this %1 ?"
-msgstr ""
+msgstr "%1: haluatko varmasti poistaa?"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Image picker"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Kuvavalitsin"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "New note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note"
-msgstr "Uusi muistiinpano"
+msgstr "Tallenna muistiinpano"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:10
-#, fuzzy, kde-format
-#| msgid "Font selector"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Fonttivalitsin"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:19
-#, fuzzy, kde-format
-#| msgid "Image selector"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Kuvavalitsin"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
-#, fuzzy, kde-format
-#| msgid "Web image"
+#, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Verkkokuva"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
-#, fuzzy, kde-format
-#| msgid "Local image"
+#, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Paikallinen kuva"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
-#, fuzzy, kde-format
-#| msgid "Paint an image"
+#, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Maalaa kuva"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
-#, fuzzy, kde-format
-#| msgid "Image selector"
+#, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr "Kuvavalitsin"
+msgstr "Kuvakokoelma"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
-#, fuzzy, kde-format
-#| msgid ""
-#| "It seems that the image you select doesn't exist or is not supported."
+#, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
-msgstr "Valitsemasi kuva ei vaikuta olevan olemassa tai sitä ei tueta."
+msgstr "Valitsemaasi kuvaa ei tunnu olevan olemassa tai sen muotoa ei tueta."
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
-#, fuzzy, kde-format
-#| msgid "Image text: "
+#, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Kuvateksti: "
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
-#, fuzzy, kde-format
-#| msgid "Place this image inside the note folder"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
 msgstr "Sijoita tämä kuva muistiinpanokansioon"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:9
-#, fuzzy, kde-format
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
 msgstr "KleverNotes-maalaus"
@@ -150,31 +135,29 @@ msgstr ""
 "Haluatko tallentaa sen ennen lopettamista?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:13
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr "Luo talletustila"
+msgstr "Luo linkki"
 
 #: contents/ui/dialogs/LinkDialog.qml:22 contents/ui/dialogs/URLDialog.qml:19
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
-msgstr ""
+msgstr "Verkko-osoite:"
 
 #: contents/ui/dialogs/LinkDialog.qml:29
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr ""
+msgstr "Linkin teksti:"
 
 #: contents/ui/dialogs/NamingDialog.qml:14
-#, fuzzy, kde-format
-#| msgid "Choose an URL"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "Valitse verkko-osoite"
+msgstr "Valitse nimi"
 
 #: contents/ui/dialogs/NamingDialog.qml:54
 #, kde-format
@@ -183,18 +166,17 @@ msgid "Name:"
 msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:9
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotes"
+msgstr "KleverNotesin talletustila"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgid "Name, as in 'A note'"
-msgstr ""
+msgstr "Nimi, esimerkiksi ”Muistiinpano”"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -202,7 +184,7 @@ msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
 "group) or 'note' (a note)"
 msgid "Your %1 name starts with a dot, "
-msgstr ""
+msgstr "%1: nimi alkaa pisteellä, "
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -213,14 +195,11 @@ msgid ""
 "This %1 already exist.\n"
 "Please choose another name for it.\n"
 msgstr ""
+"%1 on jo olemassa.\n"
+"Valitse sille toinen nimi.\n"
 
 #: contents/ui/dialogs/StorageDialog.qml:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "It looks like this is your first time using this app!\n"
-#| "\n"
-#| "Please choose a location for your future KleverNotes storage or select an "
-#| "existing one."
+#, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 "stored'"
@@ -230,66 +209,55 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Vaikuttaa siltä, että käytä sovellusta ensi kertaa!\n"
+"Vaikuttaa siltä, että käytät sovellusta ensi kertaa!\n"
 "\n"
 "Anna uuden tai olemassa olevan KleverNotes-talletustilan sijainti."
 
 #: contents/ui/dialogs/StorageDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "Existing storage"
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr "Olemassa oleva sijainti"
+msgstr "Olemassa oleva talletustila valittu kansiosta "
 
 #: contents/ui/dialogs/StorageDialog.qml:22
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "Talletustilan sijainti:"
+msgstr "Talletustila on luotu kansioon "
 
 #: contents/ui/dialogs/StorageDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Existing storage"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "Olemassa oleva sijainti"
 
 #: contents/ui/dialogs/StorageDialog.qml:41
-#, fuzzy, kde-format
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "Vaihda talletustilan sijaintia"
 
 #: contents/ui/dialogs/StorageDialog.qml:55
-#, fuzzy, kde-format
-#| msgid "Create storage"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "Luo talletustila"
 
 #: contents/ui/dialogs/StorageDialog.qml:57
-#, fuzzy, kde-format
-#| msgid "Create a new storage"
+#, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "Luo uusi talletustila"
 
 #: contents/ui/dialogs/StorageDialog.qml:89
-#, fuzzy, kde-format
-#| msgid ""
-#| "It looks like the selected folder is not a KleverNotes storage.\n"
-#| "\n"
-#| "Please choose a location for your future KleverNotes storage or select an "
-#| "existing one."
+#, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 "stored'"
@@ -307,7 +275,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "Taulukon luonti"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:38
 #, kde-format
@@ -369,8 +337,7 @@ msgid "%1/%2"
 msgstr ""
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:13
-#, fuzzy, kde-format
-#| msgid "Add Todo"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "Lisää tehtävä"
@@ -382,29 +349,25 @@ msgid "Title:"
 msgstr "Otsikko:"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
-#, fuzzy, kde-format
-#| msgid "Todo title (required)"
+#, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "Tehtävän otsikko (vaaditaan)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:37
-#, fuzzy, kde-format
-#| msgid "Description:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "Kuvaus:"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Optional"
+#, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
 msgstr "Valinnainen"
 
 #: contents/ui/dialogs/URLDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "Choose an URL"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Valitse verkko-osoite"
@@ -413,29 +376,27 @@ msgstr "Valitse verkko-osoite"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Warning"
-msgstr ""
+msgstr "Varoitus"
 
 #: contents/ui/dialogs/WarningDialog.qml:19
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Voi aiheuttaa näyttövirheitä PDF:n loppuun."
 
 #: contents/ui/dialogs/WarningDialog.qml:28
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Do not show again"
-msgstr ""
+msgstr "Älä näytä enää"
 
 #: contents/ui/main.qml:15
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
 #: contents/ui/pages/MainPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome"
+#, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Tervetuloa"
@@ -451,29 +412,25 @@ msgid "Create or select a note to start working !"
 msgstr "Aloita työt luomalla tai valitsemalla muistiinpano!"
 
 #: contents/ui/pages/PaintingPage.qml:28
-#, fuzzy, kde-format
-#| msgid "Paint!"
+#, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Maalaa!"
 
 #: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
-#, fuzzy, kde-format
-#| msgid "Save"
+#, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Tallenna"
 
 #: contents/ui/pages/PaintingPage.qml:37
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Tyhjennä"
 
 #: contents/ui/pages/PaintingPage.qml:44
-#, fuzzy, kde-format
-#| msgid "Auto crop"
+#, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Rajaa automaattisesti"
@@ -482,21 +439,19 @@ msgstr "Rajaa automaattisesti"
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
-msgstr ""
+msgstr "Tulostus"
 
 #: contents/ui/pages/PrintingPage.qml:31
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
-msgstr "Värivalitsin"
+msgstr "Väriteema"
 
 #: contents/ui/pages/PrintingPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Background color:"
+#, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
-msgstr "Taustaväri:"
+msgstr "Tausta"
 
 #: contents/ui/pages/SettingsPage.qml:19
 #, kde-format
@@ -512,114 +467,99 @@ msgid ""
 msgstr "Anna uuden tai olemassa olevan KleverNotes-talletustilan sijainti.\n"
 
 #: contents/ui/pages/SettingsPage.qml:62
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general settings"
 msgid "General"
 msgstr "Perusasetukset"
 
 #: contents/ui/pages/SettingsPage.qml:72
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "Talletustilan sijainti:"
 
 #: contents/ui/pages/SettingsPage.qml:91
-#, fuzzy, kde-format
-#| msgid "New Category name:"
+#, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Uuden luokan nimi:"
 
 #: contents/ui/pages/SettingsPage.qml:123
-#, fuzzy, kde-format
-#| msgid "New Group name:"
+#, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "Uuden ryhmän nimi:"
 
 #: contents/ui/pages/SettingsPage.qml:155
-#, fuzzy, kde-format
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Uuden muistiinpanon nimi:"
 
 #: contents/ui/pages/SettingsPage.qml:184
-#, fuzzy, kde-format
-#| msgid "Note display"
+#, kde-format
 msgctxt ""
 "@title, display as in 'the note display' where you can visualize the note"
 msgid "Display"
-msgstr "Muistiinpanonäkymä"
+msgstr "Näkymä"
 
 #: contents/ui/settings/DisplayPreview.qml:17
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
-msgstr ""
+msgstr "Tyyli:"
 
 #: contents/ui/settings/DisplayPreview.qml:47
-#, fuzzy, kde-format
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Tekstiväri:"
 
 #: contents/ui/settings/DisplayPreview.qml:58
-#, fuzzy, kde-format
-#| msgid "Title color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Otsikkoväri:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
-#, fuzzy, kde-format
-#| msgid "Link color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Linkkiväri:"
 
 #: contents/ui/settings/DisplayPreview.qml:84
-#, fuzzy, kde-format
-#| msgid "Visited Link color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Vieraillun linkin väri:"
 
 #: contents/ui/settings/DisplayPreview.qml:97
-#, fuzzy, kde-format
-#| msgid "Code color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Koodiväri:"
 
 #: contents/ui/settings/DisplayPreview.qml:110
-#, fuzzy, kde-format
-#| msgid "Font:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Fontti:"
 
 #: contents/ui/sideBar/ActionBar.qml:227
-#, fuzzy, kde-format
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Luo uusi luokka"
 
 #: contents/ui/sideBar/ActionBar.qml:235
-#, fuzzy, kde-format
-#| msgid "Create a new group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Luo uusi ryhmä"
 
 #: contents/ui/sideBar/ActionBar.qml:243
-#, fuzzy, kde-format
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Luo uusi muistiinpano"
@@ -630,22 +570,19 @@ msgid "Rename"
 msgstr "Muuta nimeä"
 
 #: contents/ui/sideBar/ContextMenu.qml:21
-#, fuzzy, kde-format
-#| msgid "New category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Uusi luokka"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
-#, fuzzy, kde-format
-#| msgid "New group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "Uusi ryhmä"
 
 #: contents/ui/sideBar/ContextMenu.qml:35
-#, fuzzy, kde-format
-#| msgid "New note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Uusi muistiinpano"
@@ -668,42 +605,274 @@ msgstr "Ei hakutuloksia"
 
 #: contents/ui/sideBar/Sidebar.qml:78
 #, kde-format
+msgid "Cheat sheet"
+msgstr ""
+
+#: contents/ui/sideBar/Sidebar.qml:87
+#, kde-format
 msgid "Settings"
 msgstr "Asetukset"
 
-#: contents/ui/sideBar/Sidebar.qml:87
-#, fuzzy, kde-format
-#| msgid "About Klever"
+#: contents/ui/sideBar/Sidebar.qml:96
+#, kde-format
 msgid "About KleverNotes"
-msgstr "Tietoa Kleveristä"
+msgstr "Tietoa KleverNotesista"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
-#, fuzzy, kde-format
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
 msgstr "Huomautus"
 
 #: contents/ui/textEditor/BottomToolBar.qml:24
-#, fuzzy, kde-format
-#| msgid "TODO"
+#, kde-format
 msgctxt "@label:button"
 msgid "TODO"
 msgstr "TEHTÄVÄ"
 
-#: contents/ui/textEditor/EditorView.qml:24
+#: contents/ui/textEditor/CheatSheet.qml:15
+#, kde-format
+msgctxt "@window:title"
+msgid "Markdown Cheat Sheet"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:29
+#, kde-format
+msgid "Copied !"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:40
+#, kde-format
+msgctxt "@title, cheat sheet section"
+msgid "Basic syntax"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:47
+#, fuzzy, kde-format
+#| msgid "Header"
+msgid "Heading"
+msgstr "Ylätunniste"
+
+#: contents/ui/textEditor/CheatSheet.qml:48
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "exemple"
+msgid "Heading1"
+msgstr "Ylätunniste"
+
+#: contents/ui/textEditor/CheatSheet.qml:53
+#, kde-format
+msgid "Bold"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:54
+#, kde-format
+msgctxt "exemple"
+msgid "Bold text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:59
+#, kde-format
+msgid "Italic"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:60
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox, text associated to the selected image"
+#| msgid "Image text: "
+msgctxt "exemple"
+msgid "Italic text"
+msgstr "Kuvateksti: "
+
+#: contents/ui/textEditor/CheatSheet.qml:65
+#, kde-format
+msgid "Blockquote"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:66
+#, kde-format
+msgctxt "exemple"
+msgid "Quote"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:71
+#, kde-format
+msgid "Ordered list"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:72
+#: contents/ui/textEditor/CheatSheet.qml:79
+#, kde-format
+msgctxt "exemple"
+msgid "First item"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:73
+#: contents/ui/textEditor/CheatSheet.qml:80
+#, kde-format
+msgctxt "exemple"
+msgid "Second item"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:78
+#, kde-format
+msgid "Unordered list"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:85
+#, kde-format
+msgid "Code"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:86
+#, kde-format
+msgctxt "exemple"
+msgid "Inline code"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:91
+#, kde-format
+msgctxt "@label, horizontal rule => <hr> html tag"
+msgid "Rule"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:97
+#, kde-format
+msgid "Link"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:98
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Title:"
+msgctxt "exemple"
+msgid "title"
+msgstr "Otsikko:"
+
+#: contents/ui/textEditor/CheatSheet.qml:98
+#, kde-format
+msgctxt "exemple"
+msgid "https://www.example.com"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:103
+#, kde-format
+msgid "Image"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:104
+#, kde-format
+msgctxt "exemple"
+msgid "alt text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:104
+#, fuzzy, kde-format
+#| msgctxt "@label:button, As in 'image from the internet'"
+#| msgid "Web image"
+msgctxt "exemple"
+msgid "image"
+msgstr "Verkkokuva"
+
+#: contents/ui/textEditor/CheatSheet.qml:111
+#, kde-format
+msgctxt "@title, cheat sheet section"
+msgid "Extended syntax"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:118
+#, kde-format
+msgid "Table"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, kde-format
+msgctxt "@label, noun, 'The left side of something'"
+msgid "Left"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, kde-format
+msgctxt "@label, verb, 'To center something'"
+msgid "Center"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, kde-format
+msgctxt "@label, noun, 'The right side of something"
+msgid "Right"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 1"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 2"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 3"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:126
+#, kde-format
+msgid "Fenced code block"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:128
+#, kde-format
+msgctxt "exemple"
+msgid "Sample text here..."
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:134
+#, kde-format
+msgid "Strikethrough"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:135
+#, kde-format
+msgctxt "exemple, something wrong"
+msgid "The world is flat."
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:140
+#, kde-format
+msgid "Task list"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:141
+#, kde-format
+msgctxt "exemple"
+msgid "Make more foo"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:142
+#, kde-format
+msgctxt "exemple"
+msgid "Make more bar"
+msgstr ""
+
+#: contents/ui/textEditor/EditorView.qml:25
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:31
+#: contents/ui/textEditor/EditorView.qml:32
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:40
+#: contents/ui/textEditor/EditorView.qml:41
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
@@ -835,8 +1004,7 @@ msgid "Unordered list"
 msgstr ""
 
 #: contents/ui/todoEditor/ToDoView.qml:21
-#, fuzzy, kde-format
-#| msgid "Clear checked"
+#, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Poista valinnat"
@@ -851,6 +1019,11 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Tiedosto on kopio muistiinpanonäkymän oletus-CSS-tyylistä.            \n"
+"Muokkaa vapaasti tai luo omasi.            \n"
+"Huom! Kullakin tyylillä on oltava oma nimensä.            \n"
+"*/\n"
 
 #: logic/treeview/noteTreeModel.cpp:260
 #, kde-format
