@@ -119,7 +119,6 @@ QString InlineLexer::output(QString &src, bool useInlineText)
 
             src.replace(cap.capturedStart(), cap.capturedLength(), "");
 
-            m_inLink = true;
             href = cap.captured(1).trimmed();
 
             bool hasPipe = !cap.captured(2).isEmpty();
@@ -128,7 +127,6 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : href.split(QStringLiteral("/")).last();
 
             out += Renderer::link(href, title, title);
-            m_inLink = false;
             continue;
         }
 

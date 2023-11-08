@@ -2,12 +2,14 @@
 
 #include <QJsonArray>
 
+#include "logic/noteMapper.h"
 #include "renderer.h"
 
 using namespace std;
 
-Parser::Parser(QObject *parent)
+Parser::Parser(QObject *parent, NoteMapper *noteMapper)
     : QObject(parent)
+    , m_noteMapper(noteMapper)
 {
 }
 

@@ -2,15 +2,16 @@
 // SPDX-License-Identifier: LGPL-2.0-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 
 #include "noteTreeModel.h"
-#include "kleverconfig.h"
 #include "../kleverUtility.h"
+#include "kleverconfig.h"
+#include <KIO/CopyJob>
 #include <QDir>
 #include <QFileInfo>
 #include <QIcon>
 #include <klocalizedstring.h>
-#include <KIO/CopyJob>
+#include <qstringliteral.h>
 
-TreeItem::TreeItem(const QString &path, const int &depth_level, QAbstractItemModel *model, TreeItem *parentItem)
+TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
     , m_model(model)
     , m_path(path)
@@ -57,6 +58,8 @@ TreeItem::TreeItem(const QString &path, const int &depth_level, QAbstractItemMod
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
+    QString test = QStringLiteral("test");
+    m_model->noteMapper()->addGlobalPath(test);
     m_childItems.push_back(std::move(item));
 }
 
@@ -229,9 +232,9 @@ void TreeItem::askForExpand(const QModelIndex &itemIndex)
     emit m_model->dataChanged(itemIndex, itemIndex);
 }
 
-
-NoteTreeModel::NoteTreeModel(QObject *parent)
+NoteTreeModel::NoteTreeModel(QObject *parent, NoteMapper *noteMapper)
     : QAbstractItemModel(parent)
+    , m_noteMapper(noteMapper)
 {
 }
 

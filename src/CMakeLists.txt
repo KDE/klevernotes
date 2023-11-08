@@ -60,9 +60,10 @@ set(exec_SRCS
     logic/colorschemer.cpp
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
-    logic/todoHandler.cpp
     logic/mdHandler.cpp
+    logic/noteMapper.cpp
     logic/view.cpp
+    logic/todoHandler.cpp
 
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp

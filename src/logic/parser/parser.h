@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QString>
 
+#include "../noteMapper.h"
 #include "blockLexer.h"
 #include "inlineLexer.h"
 
@@ -11,7 +12,7 @@ class Parser : public QObject
     Q_OBJECT
     Q_PROPERTY(QString notePath WRITE setNotePath)
 public:
-    explicit Parser(QObject *parent = nullptr);
+    explicit Parser(QObject *parent = nullptr, NoteMapper *noteMapper = nullptr);
 
     Q_INVOKABLE QString parse(QString src);
 
@@ -29,6 +30,7 @@ private:
 
     BlockLexer blockLexer = BlockLexer(this);
     InlineLexer inlineLexer = InlineLexer(this);
+    NoteMapper *m_noteMapper;
 
     QString m_notePath;
     QVariantMap m_token;

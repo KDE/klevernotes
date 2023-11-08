@@ -7,10 +7,13 @@
 #include <QFileInfo>
 #include <memory>
 
+#include "logic/noteMapper.h"
+
+class NoteTreeModel;
 class TreeItem
 {
 public:
-    explicit TreeItem(const QString &path, const int &depth_level, QAbstractItemModel *model, TreeItem *parentItem = nullptr);
+    explicit TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem = nullptr);
 
     void appendChild(std::unique_ptr<TreeItem> &&child);
 
@@ -31,7 +34,7 @@ private:
     std::vector<std::unique_ptr<TreeItem>> m_childItems;
     TreeItem *m_parentItem;
 
-    QAbstractItemModel *m_model;
+    NoteTreeModel *m_model;
 
     // Content
     QString m_path;
@@ -46,7 +49,7 @@ class NoteTreeModel : public QAbstractItemModel
     Q_OBJECT
 
 public:
-    explicit NoteTreeModel(QObject *parent = nullptr);
+    explicit NoteTreeModel(QObject *parent = nullptr, NoteMapper *noteMapper = nullptr);
 
     enum ExtraRoles {
         PathRole = Qt::UserRole + 1, // For getting a string with the fullPath of the Category/Group/Note
@@ -71,6 +74,10 @@ public:
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void initModel();
+    NoteMapper *noteMapper()
+    {
+        return m_noteMapper;
+    };
 
 signals:
     void errorOccurred(const QString &errorMessage);
@@ -79,6 +86,7 @@ private:
     QString m_path;
     std::unique_ptr<TreeItem> m_rootItem;
     QFileInfo m_fileInfo;
+    NoteMapper *m_noteMapper;
 
     // Storage Handler
     bool makeStorage(const QString &storagePath);
