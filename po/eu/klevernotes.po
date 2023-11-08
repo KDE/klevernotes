@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 01:20+0000\n"
-"PO-Revision-Date: 2023-11-04 19:53+0100\n"
+"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"PO-Revision-Date: 2023-11-07 22:53+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -604,17 +604,17 @@ msgstr "Nondik:"
 msgid "No search results"
 msgstr "Bilaketaren emaitzarik ez"
 
-#: contents/ui/sideBar/Sidebar.qml:78
+#: contents/ui/sideBar/Sidebar.qml:79
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "Amarru-orria"
 
-#: contents/ui/sideBar/Sidebar.qml:87
+#: contents/ui/sideBar/Sidebar.qml:88
 #, kde-format
 msgid "Settings"
 msgstr "Ezarpenak"
 
-#: contents/ui/sideBar/Sidebar.qml:96
+#: contents/ui/sideBar/Sidebar.qml:97
 #, kde-format
 msgid "About KleverNotes"
 msgstr "«KleverNotes»eri buruz"
@@ -635,81 +635,65 @@ msgstr "ZEREGINA"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "«Markdown»erako amarru-orria"
 
 #: contents/ui/textEditor/CheatSheet.qml:29
 #, kde-format
 msgid "Copied !"
-msgstr ""
+msgstr "Kopiatuta !"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "Oinarrizko sintaxia"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgid "Heading"
-msgstr "Goiburua"
+msgstr "Izenburua"
 
 #: contents/ui/textEditor/CheatSheet.qml:48
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, text format header level, will be followed by the shortcut"
-#| msgid "Header 1"
+#, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr "Izenburua 1"
+msgstr "Izenburua1"
 
 #: contents/ui/textEditor/CheatSheet.qml:53
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Bold"
+#, kde-format
 msgid "Bold"
 msgstr "Lodia"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Bold"
+#, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr "Lodia"
+msgstr "Testu lodia"
 
 #: contents/ui/textEditor/CheatSheet.qml:59
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Italic"
+#, kde-format
 msgid "Italic"
 msgstr "Etzana"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Italic"
+#, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr "Etzana"
+msgstr "Testu etzana"
 
 #: contents/ui/textEditor/CheatSheet.qml:65
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "Bloke-aipua"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Quote"
+#, kde-format
 msgctxt "exemple"
 msgid "Quote"
 msgstr "Aipua"
 
 #: contents/ui/textEditor/CheatSheet.qml:71
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Ordered list"
+#, kde-format
 msgid "Ordered list"
 msgstr "Zerrenda ordenatua"
 
@@ -718,26 +702,22 @@ msgstr "Zerrenda ordenatua"
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr ""
+msgstr "Lehenengo elementua"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
 #: contents/ui/textEditor/CheatSheet.qml:80
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr ""
+msgstr "Bigarren elementua"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Unordered list"
+#, kde-format
 msgid "Unordered list"
 msgstr "Zerrenda ez-ordenatua"
 
 #: contents/ui/textEditor/CheatSheet.qml:85
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Code"
+#, kde-format
 msgid "Code"
 msgstr "Kodea"
 
@@ -745,39 +725,33 @@ msgstr "Kodea"
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr ""
+msgstr "Lerro barruko kodea"
 
 #: contents/ui/textEditor/CheatSheet.qml:91
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr ""
+msgstr "Araua"
 
 #: contents/ui/textEditor/CheatSheet.qml:97
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Link"
+#, kde-format
 msgid "Link"
 msgstr "Esteka"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Title:"
+#, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr "Titulua:"
+msgstr "titulua"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
-msgstr ""
+msgstr "https://www.example.com"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Image"
+#, kde-format
 msgid "Image"
 msgstr "Irudia"
 
@@ -785,86 +759,74 @@ msgstr "Irudia"
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "Ordezko testua"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Image"
+#, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr "Irudia"
+msgstr "irudia"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "Hedatutako sintaxia"
 
 #: contents/ui/textEditor/CheatSheet.qml:118
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Table"
+#, kde-format
 msgid "Table"
 msgstr "Taula"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Left"
+#, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
-msgstr "Ezkerrean"
+msgstr "Ezkerrera"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Center"
+#, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
-msgstr "Erdian"
+msgstr "Erdiratu"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
-msgstr "Eskuinean"
+msgstr "Eskuinera"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr ""
+msgstr "Gelaxka 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr ""
+msgstr "Gelaxka 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr ""
+msgstr "Gelaxka 3"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Hesitutako kode-blokea"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr ""
+msgstr "Lagin testua hemen..."
 
 #: contents/ui/textEditor/CheatSheet.qml:134
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Strikethrough"
+#, kde-format
 msgid "Strikethrough"
 msgstr "Marratua"
 
@@ -872,24 +834,24 @@ msgstr "Marratua"
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "Mundua laua da."
 
 #: contents/ui/textEditor/CheatSheet.qml:140
 #, kde-format
 msgid "Task list"
-msgstr ""
+msgstr "Zeregin-zerrenda"
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr ""
+msgstr "Egin «foo» gehiago"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
-msgstr ""
+msgstr "Egin «bar» gehiago"
 
 #: contents/ui/textEditor/EditorView.qml:25
 #, kde-format
@@ -1090,35 +1052,35 @@ msgstr "Errore bat gertatu da kategoria sortzen saiatzerakoan."
 msgid "An error occurred while trying to create the storage."
 msgstr "Errore bat gertatu da biltegiratzea sortzen saiatzerakoan."
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Application Description"
 msgstr "Aplikazioaren deskribapena"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Iñigo Salvador Azurmendi"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

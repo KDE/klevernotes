@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 01:20+0000\n"
+"POT-Creation-Date: 2023-11-08 00:43+0000\n"
 "PO-Revision-Date: 2023-11-03 10:52+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -605,17 +605,17 @@ msgstr "De :"
 msgid "No search results"
 msgstr "Aucun résultat pour la recherche"
 
-#: contents/ui/sideBar/Sidebar.qml:78
+#: contents/ui/sideBar/Sidebar.qml:79
 #, kde-format
 msgid "Cheat sheet"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:87
+#: contents/ui/sideBar/Sidebar.qml:88
 #, kde-format
 msgid "Settings"
 msgstr "Configuration"
 
-#: contents/ui/sideBar/Sidebar.qml:96
+#: contents/ui/sideBar/Sidebar.qml:97
 #, kde-format
 msgid "About KleverNotes"
 msgstr "À propos de KleverNotes"
@@ -1102,35 +1102,35 @@ msgstr ""
 "Une erreur a été rencontrée lors de la tentative de création de la zone "
 "d'enregistrement."
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Application Description"
 msgstr "Description de l'application"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Xavier BESNARD"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

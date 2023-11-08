@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 01:20+0000\n"
+"POT-Creation-Date: 2023-11-08 00:43+0000\n"
 "PO-Revision-Date: 2023-10-09 00:22+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -603,17 +603,17 @@ msgstr "검색 위치: "
 msgid "No search results"
 msgstr "검색 결과 없음"
 
-#: contents/ui/sideBar/Sidebar.qml:78
+#: contents/ui/sideBar/Sidebar.qml:79
 #, kde-format
 msgid "Cheat sheet"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:87
+#: contents/ui/sideBar/Sidebar.qml:88
 #, kde-format
 msgid "Settings"
 msgstr "설정"
 
-#: contents/ui/sideBar/Sidebar.qml:96
+#: contents/ui/sideBar/Sidebar.qml:97
 #, kde-format
 msgid "About KleverNotes"
 msgstr "KleverNotes 정보"
@@ -1073,35 +1073,35 @@ msgstr "분류를 생성하는 중 오류가 발생했습니다."
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Application Description"
 msgstr "앱 설명"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
