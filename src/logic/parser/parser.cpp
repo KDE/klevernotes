@@ -1,15 +1,18 @@
+/*
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+*/
+
 #include "parser.h"
 
 #include <QJsonArray>
 
-#include "logic/noteMapper.h"
 #include "renderer.h"
 
 using namespace std;
 
-Parser::Parser(QObject *parent, NoteMapper *noteMapper)
+Parser::Parser(QObject *parent)
     : QObject(parent)
-    , m_noteMapper(noteMapper)
 {
 }
 

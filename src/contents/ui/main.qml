@@ -14,6 +14,8 @@ Kirigami.ApplicationWindow {
 
     title: i18nc("@title:ApplicationWindow", "KleverNotes")
 
+    property NoteMapper noteMapper: NoteMapper {}
+
     minimumWidth: Kirigami.Units.gridUnit * 25
     minimumHeight: Kirigami.Units.gridUnit * 30
 

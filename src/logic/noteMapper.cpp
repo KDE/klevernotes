@@ -1,14 +1,19 @@
+/*
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+*/
+
 #include "noteMapper.h"
 
-NoteMapper::NoteMapper()
+NoteMapper::NoteMapper(QObject *parent)
+    : QObject(parent)
 {
 }
 
 // Treeview
 void NoteMapper::addGlobalPath(const QString &path)
 {
-    qDebug() << path;
-    // m_treeViewPaths.insert(path);
+    m_treeViewPaths.insert(path);
 }
 
 void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath)

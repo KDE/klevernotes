@@ -9,7 +9,7 @@
 #include <QFileInfo>
 #include <QIcon>
 #include <klocalizedstring.h>
-#include <qstringliteral.h>
+#include <qobjectdefs.h>
 
 TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -58,8 +58,10 @@ TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *m
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
-    QString test = QStringLiteral("test");
-    m_model->noteMapper()->addGlobalPath(test);
+    if (item->m_depth_level == 3) {
+        const QString path = item->m_path.remove(KleverConfig::storagePath());
+        Q_EMIT m_model->newGlobalPathFound(path);
+    }
     m_childItems.push_back(std::move(item));
 }
 
@@ -175,6 +177,8 @@ void TreeItem::remove()
 {
     Q_ASSERT(m_parentItem);
 
+    Q_EMIT m_model->globalPathRemoved(m_path);
+
     const auto it = std::find_if(m_parentItem->m_childItems.cbegin(), m_parentItem->m_childItems.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
         return treeItem.get() == const_cast<TreeItem *>(this);
     });
@@ -192,6 +196,9 @@ void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModel
     currentPathParts[newPartIdx] = newPart;
 
     QString newPath = currentPathParts.join("/");
+    if (m_depth_level == 3) {
+        Q_EMIT m_model->globalPathUpdated(m_path, newPath);
+    }
     m_path = newPath;
 
     // By default we assume that we are in the first call
@@ -232,9 +239,8 @@ void TreeItem::askForExpand(const QModelIndex &itemIndex)
     emit m_model->dataChanged(itemIndex, itemIndex);
 }
 
-NoteTreeModel::NoteTreeModel(QObject *parent, NoteMapper *noteMapper)
+NoteTreeModel::NoteTreeModel(QObject *parent)
     : QAbstractItemModel(parent)
-    , m_noteMapper(noteMapper)
 {
 }
 
@@ -506,6 +512,3 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
     if (!categoryCreated) emit errorOccurred(i18n("An error occurred while trying to create the storage."));
     return categoryCreated;
 }
-
-
-

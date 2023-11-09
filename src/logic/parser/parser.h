@@ -1,18 +1,23 @@
+/*
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+*/
+
 #pragma once
 
 #include <QObject>
 #include <QString>
 
-#include "../noteMapper.h"
 #include "blockLexer.h"
 #include "inlineLexer.h"
+#include "logic/noteMapper.h"
 
 class Parser : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString notePath WRITE setNotePath)
 public:
-    explicit Parser(QObject *parent = nullptr, NoteMapper *noteMapper = nullptr);
+    explicit Parser(QObject *parent = nullptr);
 
     Q_INVOKABLE QString parse(QString src);
 

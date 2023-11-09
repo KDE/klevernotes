@@ -1,3 +1,8 @@
+/*
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+*/
+
 #pragma once
 
 #include <QDebug>
@@ -7,13 +12,14 @@
 
 class NoteMapper : public QObject
 {
+    Q_OBJECT
 public:
-    NoteMapper();
+    NoteMapper(QObject *parent = nullptr);
 
     // Treeview
-    void addGlobalPath(const QString &path);
-    void updateGlobalPath(const QString &oldPath, const QString &newPath);
-    void removeGlobalPath(const QString &path);
+    Q_INVOKABLE void addGlobalPath(const QString &path);
+    Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath);
+    Q_INVOKABLE void removeGlobalPath(const QString &path);
 
     // Parser
 

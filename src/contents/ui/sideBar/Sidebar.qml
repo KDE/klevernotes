@@ -18,6 +18,8 @@ import org.kde.Klever 1.0
 Kirigami.OverlayDrawer {
     id:drawer
 
+    property NoteMapper noteMapper: applicationWindow().noteMapper
+
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
     handleOpenIcon.source: null
@@ -59,6 +61,9 @@ Kirigami.OverlayDrawer {
             sourceModel: NoteTreeModel {
                 id: noteTreeModel
 
+                onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path)
+                onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath)
+                onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
                 onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
             }
 

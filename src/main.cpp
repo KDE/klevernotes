@@ -115,17 +115,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
 
-    NoteMapper noteMapper;
-
-    Parser parser(nullptr, &noteMapper);
-    // TODO use SinglonType here ????
-    qmlRegisterSingletonInstance<Parser>("org.kde.Klever", 1, 0, "MDParser", &parser);
-
-    qmlRegisterSingletonType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel", [&noteMapper](QQmlEngine *engine, QJSEngine *) -> QObject * {
-        Q_UNUSED(engine)
-        return new NoteTreeModel(nullptr, &noteMapper);
-    });
-
+    qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
+    qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     qRegisterMetaType<StrokeSample>();

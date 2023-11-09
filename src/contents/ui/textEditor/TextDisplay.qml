@@ -41,14 +41,19 @@ RowLayout {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
-    onPathChanged:  MDParser.notePath = path;
+    onPathChanged:  parser.notePath = path;
     onTextChanged: {
         text = text.length > 0 ? text : "\n"
-        parsedHtml = MDParser.parse(text)
+        parsedHtml = parser.parse(text)
         updateHtml()
     }
+
     onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle({})
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
+
+    Parser { 
+        id: parser 
+    }
 
     Kirigami.Card{
         id: background

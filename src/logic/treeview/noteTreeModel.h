@@ -47,9 +47,8 @@ private:
 class NoteTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
-
 public:
-    explicit NoteTreeModel(QObject *parent = nullptr, NoteMapper *noteMapper = nullptr);
+    explicit NoteTreeModel(QObject *parent = nullptr);
 
     enum ExtraRoles {
         PathRole = Qt::UserRole + 1, // For getting a string with the fullPath of the Category/Group/Note
@@ -74,19 +73,18 @@ public:
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void initModel();
-    NoteMapper *noteMapper()
-    {
-        return m_noteMapper;
-    };
 
 signals:
     void errorOccurred(const QString &errorMessage);
+    void newGlobalPathFound(const QString &path);
+    void globalPathUpdated(const QString &oldPath, const QString &newPath);
+    void globalPathRemoved(const QString &path);
 
 private:
     QString m_path;
     std::unique_ptr<TreeItem> m_rootItem;
     QFileInfo m_fileInfo;
-    NoteMapper *m_noteMapper;
+    NoteMapper *m_noteMapper = nullptr;
 
     // Storage Handler
     bool makeStorage(const QString &storagePath);
