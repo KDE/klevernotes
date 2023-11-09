@@ -59,7 +59,8 @@ TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *m
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
     if (item->m_depth_level == 3) {
-        const QString path = item->m_path.remove(KleverConfig::storagePath());
+        // very important to make a copy here !
+        const QString path = QString(item->m_path).remove(KleverConfig::storagePath());
         Q_EMIT m_model->newGlobalPathFound(path);
     }
     m_childItems.push_back(std::move(item));

@@ -131,6 +131,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             QString potentitalTitle = cap.captured(3).trimmed();
             title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : href.split(QStringLiteral("/")).last();
 
+            m_parser->linkedNotesPaths.insert(href);
+
             out += Renderer::link(href, title, title);
             continue;
         }

@@ -18,7 +18,7 @@ import org.kde.Klever 1.0
 Kirigami.OverlayDrawer {
     id:drawer
 
-    property NoteMapper noteMapper: applicationWindow().noteMapper
+    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
 
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null

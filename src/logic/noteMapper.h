@@ -22,6 +22,7 @@ public:
     Q_INVOKABLE void removeGlobalPath(const QString &path);
 
     // Parser
+    Q_INVOKABLE void addNotePaths(const QStringList &notePaths);
 
 private:
     // Parser

@@ -26,6 +26,10 @@ public:
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
+    QSet<QString> linkedNotesPaths;
+
+signals:
+    void newLinkedNotesPaths(const QStringList &linkedNotesPaths);
 
 private:
     QString tok();

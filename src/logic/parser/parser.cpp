@@ -6,6 +6,7 @@
 #include "parser.h"
 
 #include <QJsonArray>
+#include <qobjectdefs.h>
 
 #include "renderer.h"
 
@@ -31,6 +32,7 @@ QString Parser::parse(QString src)
 {
     links.clear();
     tokens.clear();
+    linkedNotesPaths.clear();
 
     blockLexer.lex(src);
 
@@ -40,6 +42,8 @@ QString Parser::parse(QString src)
     while (getNextToken()) {
         out += tok();
     }
+
+    Q_EMIT newLinkedNotesPaths(linkedNotesPaths.values());
 
     return out;
 }

@@ -38,3 +38,8 @@ QString NoteMapper::sanitizePath(QString &path)
 {
     return path;
 }
+
+void NoteMapper::addNotePaths(const QStringList &notePaths)
+{
+    qDebug() << notePaths << "from mapper";
+}

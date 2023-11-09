@@ -18,6 +18,7 @@ RowLayout {
     required property string path
     required property string text
 
+    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
@@ -52,7 +53,9 @@ RowLayout {
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
 
     Parser { 
-        id: parser 
+        id: parser
+
+        onNewLinkedNotesPaths: noteMapper.addNotePaths(linkedNotesPaths)
     }
 
     Kirigami.Card{
