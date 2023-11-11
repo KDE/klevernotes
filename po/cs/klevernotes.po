@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 00:43+0000\n"
-"PO-Revision-Date: 2023-10-19 10:27+0200\n"
+"PO-Revision-Date: 2023-11-08 14:21+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -225,14 +225,14 @@ msgstr ""
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr ""
+msgstr "Existující úložiště"
 
 #: contents/ui/dialogs/StorageDialog.qml:41
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr ""
+msgstr "Změnit cestu k úložišti"
 
 #: contents/ui/dialogs/StorageDialog.qml:55
 #, kde-format
@@ -480,7 +480,7 @@ msgstr "Název nové skupiny:"
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
-msgstr ""
+msgstr "Název nové poznámky:"
 
 #: contents/ui/pages/SettingsPage.qml:184
 #, kde-format
@@ -505,7 +505,7 @@ msgstr "Barva textu:"
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
-msgstr ""
+msgstr "Barva popisku:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
@@ -523,7 +523,7 @@ msgstr "Barva navštíveného odkazu:"
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
-msgstr ""
+msgstr "Barva kódu"
 
 #: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
@@ -623,61 +623,57 @@ msgstr ""
 #: contents/ui/textEditor/CheatSheet.qml:29
 #, kde-format
 msgid "Copied !"
-msgstr ""
+msgstr "Zkopírováno."
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "Základní syntaxe"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgid "Heading"
 msgstr "Záhlaví"
 
 #: contents/ui/textEditor/CheatSheet.qml:48
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr "Záhlaví"
+msgstr "Záhlaví 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:53
 #, kde-format
 msgid "Bold"
-msgstr ""
+msgstr "Tučné"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr ""
+msgstr "Tučný text"
 
 #: contents/ui/textEditor/CheatSheet.qml:59
 #, kde-format
 msgid "Italic"
-msgstr ""
+msgstr "Kurzíva"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, text associated to the selected image"
-#| msgid "Image text: "
+#, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr "Text obrázku: "
+msgstr "Skloněný text"
 
 #: contents/ui/textEditor/CheatSheet.qml:65
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "Blok citace"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr ""
+msgstr "Citát"
 
 #: contents/ui/textEditor/CheatSheet.qml:71
 #, kde-format
@@ -696,7 +692,7 @@ msgstr ""
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr ""
+msgstr "Druhá položka"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
@@ -706,7 +702,7 @@ msgstr ""
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
@@ -718,31 +714,29 @@ msgstr ""
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr ""
+msgstr "Pravidlo"
 
 #: contents/ui/textEditor/CheatSheet.qml:97
 #, kde-format
 msgid "Link"
-msgstr ""
+msgstr "Odkaz"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Title:"
+#, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr "Název:"
+msgstr "název"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
-msgstr ""
+msgstr "https://www.priklad.cz"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "Obrázek"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
@@ -751,12 +745,10 @@ msgid "alt text"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@label:button, As in 'image from the internet'"
-#| msgid "Web image"
+#, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr "Obrázek z webu"
+msgstr "obrázek"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
@@ -767,28 +759,22 @@ msgstr ""
 #: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgid "Table"
-msgstr ""
+msgstr "Tabulka"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Left"
+#, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
 msgstr "Vlevo"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Center"
+#, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
 msgstr "Střed"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
 msgstr "Vpravo"
@@ -797,19 +783,19 @@ msgstr "Vpravo"
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr ""
+msgstr "Buňka 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr ""
+msgstr "Buňka 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr ""
+msgstr "Buňka 3"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
@@ -825,7 +811,7 @@ msgstr ""
 #: contents/ui/textEditor/CheatSheet.qml:134
 #, kde-format
 msgid "Strikethrough"
-msgstr ""
+msgstr "Přeškrtnutí"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
@@ -851,9 +837,7 @@ msgid "Make more bar"
 msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:25
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Tisk"
@@ -862,14 +846,14 @@ msgstr "Tisk"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "Zobrazit/skrýt editor"
 
 #: contents/ui/textEditor/EditorView.qml:41
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "Zobrazit/skrýt náhled"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
@@ -881,8 +865,7 @@ msgid "Header"
 msgstr "Záhlaví"
 
 #: contents/ui/textEditor/TextToolBar.qml:220
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "Záhlaví"
@@ -894,94 +877,88 @@ msgid "num"
 msgstr ""
 
 #: contents/ui/textEditor/TextToolBar.qml:225
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "Záhlaví"
+msgstr "Záhlaví 1"
 
 #: contents/ui/textEditor/TextToolBar.qml:237
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "Záhlaví"
+msgstr "Záhlaví 2"
 
 #: contents/ui/textEditor/TextToolBar.qml:249
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "Záhlaví"
+msgstr "Záhlaví 3"
 
 #: contents/ui/textEditor/TextToolBar.qml:261
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "Záhlaví"
+msgstr "Záhlaví 4"
 
 #: contents/ui/textEditor/TextToolBar.qml:273
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "Záhlaví"
+msgstr "Záhlaví 5"
 
 #: contents/ui/textEditor/TextToolBar.qml:285
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "Záhlaví"
+msgstr "Záhlaví 6"
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr ""
+msgstr "Tučné"
 
 #: contents/ui/textEditor/TextToolBar.qml:308
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr ""
+msgstr "Kurzíva"
 
 #: contents/ui/textEditor/TextToolBar.qml:317
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr ""
+msgstr "Přeškrtnutí"
 
 #: contents/ui/textEditor/TextToolBar.qml:326
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
 #: contents/ui/textEditor/TextToolBar.qml:335
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr ""
+msgstr "Citát"
 
 #: contents/ui/textEditor/TextToolBar.qml:344
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr ""
+msgstr "Obrázek"
 
 #: contents/ui/textEditor/TextToolBar.qml:351
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr ""
+msgstr "Odkaz"
 
 #: contents/ui/textEditor/TextToolBar.qml:358
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr ""
+msgstr "Tabulka"
 
 #: contents/ui/textEditor/TextToolBar.qml:365
 #, kde-format
@@ -1072,7 +1049,7 @@ msgstr "(c) 2022-2023"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
-msgstr ""
+msgstr "Louis Schul"
 
 #: main.cpp:72
 #, kde-format
