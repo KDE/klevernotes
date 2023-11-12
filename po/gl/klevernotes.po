@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 00:43+0000\n"
-"PO-Revision-Date: 2023-10-12 23:42+0200\n"
+"PO-Revision-Date: 2023-11-11 14:42+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -601,7 +601,7 @@ msgstr "A busca non ten resultados."
 #: contents/ui/sideBar/Sidebar.qml:79
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "Apuntes"
 
 #: contents/ui/sideBar/Sidebar.qml:88
 #, kde-format
@@ -629,177 +629,163 @@ msgstr "PENDENTE"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "Apuntes de Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:29
 #, kde-format
 msgid "Copied !"
-msgstr ""
+msgstr "Copiouse!"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "Sintaxe básica"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgid "Heading"
 msgstr "Cabeceira"
 
 #: contents/ui/textEditor/CheatSheet.qml:48
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr "Cabeceira"
+msgstr "Cabeceira 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:53
 #, kde-format
 msgid "Bold"
-msgstr ""
+msgstr "Grosa"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr ""
+msgstr "Letra grosa"
 
 #: contents/ui/textEditor/CheatSheet.qml:59
 #, kde-format
 msgid "Italic"
-msgstr ""
+msgstr "Cursiva"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, text associated to the selected image"
-#| msgid "Image text: "
+#, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr "Texto da imaxe: "
+msgstr "Letra cursiva"
 
 #: contents/ui/textEditor/CheatSheet.qml:65
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "Bloque de cita"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr ""
+msgstr "Cita"
 
 #: contents/ui/textEditor/CheatSheet.qml:71
 #, kde-format
 msgid "Ordered list"
-msgstr ""
+msgstr "Lista ordenada"
 
 #: contents/ui/textEditor/CheatSheet.qml:72
 #: contents/ui/textEditor/CheatSheet.qml:79
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr ""
+msgstr "Primeiro elemento"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
 #: contents/ui/textEditor/CheatSheet.qml:80
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr ""
+msgstr "Segundo elemento"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Unordered list"
-msgstr ""
+msgstr "Lista desordenada"
 
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr ""
+msgstr "Código in situ"
 
 #: contents/ui/textEditor/CheatSheet.qml:91
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr ""
+msgstr "Regra"
 
 #: contents/ui/textEditor/CheatSheet.qml:97
 #, kde-format
 msgid "Link"
-msgstr ""
+msgstr "Ligazón"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Title:"
+#, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr "Título:"
+msgstr "título"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
-msgstr ""
+msgstr "https://www.example.com"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "Imaxe"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "texto alternativo"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@label:button, As in 'image from the internet'"
-#| msgid "Web image"
+#, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr "Imaxe web"
+msgstr "imaxe"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "Sintaxe avanzada"
 
 #: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgid "Table"
-msgstr ""
+msgstr "Táboa"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Left"
+#, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
 msgstr "Esquerda"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Center"
+#, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
 msgstr "Centro"
 
 #: contents/ui/textEditor/CheatSheet.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
 msgstr "Dereita"
@@ -808,63 +794,61 @@ msgstr "Dereita"
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr ""
+msgstr "Cela 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr ""
+msgstr "Cela 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:121
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr ""
+msgstr "Cela 3"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Bloque de código encadrado"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr ""
+msgstr "Texto de exemplo…"
 
 #: contents/ui/textEditor/CheatSheet.qml:134
 #, kde-format
 msgid "Strikethrough"
-msgstr ""
+msgstr "Riscar"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "A Terra é plana."
 
 #: contents/ui/textEditor/CheatSheet.qml:140
 #, kde-format
 msgid "Task list"
-msgstr ""
+msgstr "Lista de tarefas"
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr ""
+msgstr "Facer máis a"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
-msgstr ""
+msgstr "Facer máis b"
 
 #: contents/ui/textEditor/EditorView.qml:25
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Imprimir"
@@ -873,14 +857,14 @@ msgstr "Imprimir"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "Amosar ou agochar o editor"
 
 #: contents/ui/textEditor/EditorView.qml:41
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "Amosar ou agochar a vista previa"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
@@ -892,119 +876,112 @@ msgid "Header"
 msgstr "Cabeceira"
 
 #: contents/ui/textEditor/TextToolBar.qml:220
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
-msgstr "Cabeceira"
+msgstr "Cabeceiras"
 
 #: contents/ui/textEditor/TextToolBar.qml:220
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr ""
+msgstr "núm."
 
 #: contents/ui/textEditor/TextToolBar.qml:225
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "Cabeceira"
+msgstr "Cabeceira 1"
 
 #: contents/ui/textEditor/TextToolBar.qml:237
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "Cabeceira"
+msgstr "Cabeceira 2"
 
 #: contents/ui/textEditor/TextToolBar.qml:249
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "Cabeceira"
+msgstr "Cabeceira 3"
 
 #: contents/ui/textEditor/TextToolBar.qml:261
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "Cabeceira"
+msgstr "Cabeceira 4"
 
 #: contents/ui/textEditor/TextToolBar.qml:273
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "Cabeceira"
+msgstr "Cabeceira 5"
 
 #: contents/ui/textEditor/TextToolBar.qml:285
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "Cabeceira"
+msgstr "Cabeceira 6"
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr ""
+msgstr "Grosa"
 
 #: contents/ui/textEditor/TextToolBar.qml:308
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr ""
+msgstr "Cursiva"
 
 #: contents/ui/textEditor/TextToolBar.qml:317
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr ""
+msgstr "Riscar"
 
 #: contents/ui/textEditor/TextToolBar.qml:326
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 #: contents/ui/textEditor/TextToolBar.qml:335
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr ""
+msgstr "Cita"
 
 #: contents/ui/textEditor/TextToolBar.qml:344
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr ""
+msgstr "Imaxe"
 
 #: contents/ui/textEditor/TextToolBar.qml:351
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr ""
+msgstr "Ligazón"
 
 #: contents/ui/textEditor/TextToolBar.qml:358
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr ""
+msgstr "Táboa"
 
 #: contents/ui/textEditor/TextToolBar.qml:365
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "Lista ordenada"
 
 #: contents/ui/textEditor/TextToolBar.qml:377
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "Lista desordenada"
 
 # skip-rule: proposta-en-clear
 #: contents/ui/todoEditor/ToDoView.qml:21
