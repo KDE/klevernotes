@@ -34,12 +34,8 @@ void NoteMapper::removeGlobalPath(const QString &path)
 }
 
 // Parser
-QString NoteMapper::sanitizePath(QString &path)
-{
-    return path;
-}
-
 void NoteMapper::addNotePaths(const QStringList &notePaths)
 {
-    qDebug() << notePaths << "from mapper";
+    m_linkedNotePaths.clear();
+    m_linkedNotePaths = QSet(notePaths.begin(), notePaths.end());
 }

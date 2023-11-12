@@ -22,7 +22,8 @@ public:
     Q_INVOKABLE QString parse(QString src);
 
     QString getNotePath();
-    void setNotePath(const QString &notePath);
+    void setNotePath(QString &notePath);
+    QString sanitizePath(QString &path);
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
@@ -42,5 +43,8 @@ private:
     NoteMapper *m_noteMapper;
 
     QString m_notePath;
+    QString m_groupPath;
+    QString m_categPath;
+
     QVariantMap m_token;
 };

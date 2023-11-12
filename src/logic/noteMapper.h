@@ -26,8 +26,7 @@ public:
 
 private:
     // Parser
-    QSet<QString> notePaths;
-    QString sanitizePath(QString &path);
+    QSet<QString> m_linkedNotePaths;
 
     // Treeview
     QSet<QString> m_treeViewPaths;

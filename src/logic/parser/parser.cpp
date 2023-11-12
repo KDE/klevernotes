@@ -5,8 +5,8 @@
 
 #include "parser.h"
 
+#include "kleverconfig.h"
 #include <QJsonArray>
-#include <qobjectdefs.h>
 
 #include "renderer.h"
 
@@ -17,10 +17,61 @@ Parser::Parser(QObject *parent)
 {
 }
 
-void Parser::setNotePath(const QString &notePath)
+QString Parser::sanitizePath(QString &path)
+{
+    // if no "/" -> from same group
+    // if "/" -> from inside categ => if "name" ; from same group if "."
+    // if 2 "/" -> categ + group
+
+    QStringList parts = path.split("/");
+
+    bool leadingSlashRemnant = false;
+    for (int i = 0; i < parts.count(); i++) {
+        QString part = parts[i].trimmed();
+        if (part.isEmpty()) {
+            if (i == 0) {
+                leadingSlashRemnant = true;
+            } else { // The path is not correctly formed
+                return path;
+            }
+        }
+        parts[i] = part;
+    }
+
+    if (leadingSlashRemnant)
+        parts.removeAt(0);
+
+    switch (parts.count()) {
+    case 1: // Note name only
+        path = m_groupPath + parts[0];
+        break;
+    case 2:
+        if (parts[0] == QStringLiteral(".")) { // Note name only
+            path = m_groupPath + parts[1];
+        } else { // Note inside category
+            path = QStringLiteral("/") + parts[0] + QStringLiteral("/.BaseGroup/") + parts[1];
+        }
+        break;
+    case 3: // 'Full' path
+        path = QStringLiteral("/") + parts.join("/");
+    default: // Not a note path
+        break;
+    }
+
+    return path;
+}
+
+void Parser::setNotePath(QString &notePath)
 {
     if (m_notePath != notePath)
         m_notePath = notePath;
+
+    notePath = notePath.remove(KleverConfig::storagePath()).chopped(1);
+    notePath.chop(notePath.size() - notePath.lastIndexOf("/"));
+    if (m_groupPath != notePath) {
+        m_groupPath = notePath + "/";
+        m_categPath = notePath.chopped(notePath.size() - notePath.lastIndexOf("/") - 1);
+    }
 }
 
 QString Parser::getNotePath()

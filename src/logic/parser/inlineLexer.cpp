@@ -125,6 +125,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             src.replace(cap.capturedStart(), cap.capturedLength(), "");
 
             href = cap.captured(1).trimmed();
+            href = m_parser->sanitizePath(href);
 
             bool hasPipe = !cap.captured(2).isEmpty();
 

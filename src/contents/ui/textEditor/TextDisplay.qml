@@ -42,7 +42,10 @@ RowLayout {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
-    onPathChanged:  parser.notePath = path;
+    onPathChanged: {
+        parser.notePath = path
+    }
+
     onTextChanged: {
         text = text.length > 0 ? text : "\n"
         parsedHtml = parser.parse(text)
@@ -98,9 +101,16 @@ RowLayout {
             }
 
             onNavigationRequested: function(request) {
-                if (request.url.toString().startsWith("http")) {
+                const url = request.url.toString()
+                if (url.startsWith("http")) {
                     Qt.openUrlExternally(request.url)
                     request.action = WebEngineNavigationRequest.IgnoreRequest
+                    return
+                }
+                if (url.startsWith("file:///")) {
+                    console.log(url)
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    return
                 }
             }
 
