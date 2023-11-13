@@ -17,12 +17,8 @@ Parser::Parser(QObject *parent)
 {
 }
 
-QString Parser::sanitizePath(QString &path)
+QStringList Parser::sanitizePath(QString path)
 {
-    // if no "/" -> from same group
-    // if "/" -> from inside categ => if "name" ; from same group if "."
-    // if 2 "/" -> categ + group
-
     QStringList parts = path.split("/");
 
     bool leadingSlashRemnant = false;
@@ -32,7 +28,7 @@ QString Parser::sanitizePath(QString &path)
             if (i == 0) {
                 leadingSlashRemnant = true;
             } else { // The path is not correctly formed
-                return path;
+                return {path, path};
             }
         }
         parts[i] = part;
@@ -55,10 +51,11 @@ QString Parser::sanitizePath(QString &path)
     case 3: // 'Full' path
         path = QStringLiteral("/") + parts.join("/");
     default: // Not a note path
-        break;
+        return {path, path};
     }
 
-    return path;
+    QString displayedPath = QString(path).replace("/.BaseGroup", "").replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue());
+    return {path, displayedPath};
 }
 
 void Parser::setNotePath(QString &notePath)
@@ -94,7 +91,7 @@ QString Parser::parse(QString src)
         out += tok();
     }
 
-    Q_EMIT newLinkedNotesPaths(linkedNotesPaths.values());
+    Q_EMIT newLinkedNotesPaths(linkedNotesPaths);
 
     return out;
 }

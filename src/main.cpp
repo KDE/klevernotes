@@ -27,7 +27,7 @@
 #include "logic/todoHandler.h"
 #include "logic/colorschemer.h"
 
-#include "logic/noteMapper.h"
+#include "logic/noteMapper/noteMapper.h"
 #include "logic/parser/parser.h"
 #include "logic/treeview/noteTreeModel.h"
 

@@ -61,8 +61,8 @@ Kirigami.OverlayDrawer {
             sourceModel: NoteTreeModel {
                 id: noteTreeModel
 
-                onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path)
-                onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath)
+                onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path, displayedPath)
+                onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath, displayedPath)
                 onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
                 onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
             }

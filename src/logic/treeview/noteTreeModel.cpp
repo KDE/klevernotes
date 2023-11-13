@@ -9,7 +9,6 @@
 #include <QFileInfo>
 #include <QIcon>
 #include <klocalizedstring.h>
-#include <qobjectdefs.h>
 
 TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -60,8 +59,9 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
     if (item->m_depth_level == 3) {
         // very important to make a copy here !
-        const QString path = QString(item->m_path).remove(KleverConfig::storagePath());
-        Q_EMIT m_model->newGlobalPathFound(path);
+        QString path = QString(item->m_path).remove(KleverConfig::storagePath());
+        QString displayedPath = QString(path).replace(".BaseGroup/", "").replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue());
+        Q_EMIT m_model->newGlobalPathFound(path, displayedPath);
     }
     m_childItems.push_back(std::move(item));
 }
@@ -198,7 +198,7 @@ void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModel
 
     QString newPath = currentPathParts.join("/");
     if (m_depth_level == 3) {
-        Q_EMIT m_model->globalPathUpdated(m_path, newPath);
+        Q_EMIT m_model->globalPathUpdated(m_path, newPath, "");
     }
     m_path = newPath;
 

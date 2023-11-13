@@ -36,7 +36,9 @@ Kirigami.OverlaySheet {
                 model: existingLinks 
 
                 FormCard.FormButtonDelegate {
-                    text: modelData
+                    text: model.displayedPath
+
+                    onClicked: console.log(model.realPath)
                 }
             }
         }
@@ -53,7 +55,9 @@ Kirigami.OverlaySheet {
                 model: absentLinks 
 
                 FormCard.FormButtonDelegate {
-                    text: modelData
+                    text: model.displayedPath
+
+                    onClicked: console.log(model.realPath)
                 } 
             }
         }

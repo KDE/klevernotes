@@ -7,8 +7,6 @@
 #include <QFileInfo>
 #include <memory>
 
-#include "logic/noteMapper.h"
-
 class NoteTreeModel;
 class TreeItem
 {
@@ -76,15 +74,14 @@ public:
 
 signals:
     void errorOccurred(const QString &errorMessage);
-    void newGlobalPathFound(const QString &path);
-    void globalPathUpdated(const QString &oldPath, const QString &newPath);
+    void newGlobalPathFound(const QString &path, const QString &displayedPath);
+    void globalPathUpdated(const QString &oldPath, const QString &newPath, const QString &displayedPath);
     void globalPathRemoved(const QString &path);
 
 private:
     QString m_path;
     std::unique_ptr<TreeItem> m_rootItem;
     QFileInfo m_fileInfo;
-    NoteMapper *m_noteMapper = nullptr;
 
     // Storage Handler
     bool makeStorage(const QString &storagePath);

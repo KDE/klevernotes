@@ -6,11 +6,11 @@
 #pragma once
 
 #include <QObject>
+#include <QSet>
 #include <QString>
 
 #include "blockLexer.h"
 #include "inlineLexer.h"
-#include "logic/noteMapper.h"
 
 class Parser : public QObject
 {
@@ -23,14 +23,14 @@ public:
 
     QString getNotePath();
     void setNotePath(QString &notePath);
-    QString sanitizePath(QString &path);
+    QStringList sanitizePath(QString path);
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
-    QSet<QString> linkedNotesPaths;
+    QVariantMap linkedNotesPaths;
 
 signals:
-    void newLinkedNotesPaths(const QStringList &linkedNotesPaths);
+    void newLinkedNotesPaths(const QVariantMap &linkedNotesPaths);
 
 private:
     QString tok();
@@ -40,7 +40,6 @@ private:
 
     BlockLexer blockLexer = BlockLexer(this);
     InlineLexer inlineLexer = InlineLexer(this);
-    NoteMapper *m_noteMapper;
 
     QString m_notePath;
     QString m_groupPath;

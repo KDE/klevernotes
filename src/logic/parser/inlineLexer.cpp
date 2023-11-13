@@ -10,7 +10,9 @@
 #include <QMap>
 #include <QRandomGenerator>
 #include <QString>
+#include <qvariant.h>
 
+#include "kleverconfig.h"
 #include "parser.h"
 #include "renderer.h"
 
@@ -124,17 +126,17 @@ QString InlineLexer::output(QString &src, bool useInlineText)
 
             src.replace(cap.capturedStart(), cap.capturedLength(), "");
 
-            href = cap.captured(1).trimmed();
-            href = m_parser->sanitizePath(href);
+            href = cap.captured(1).trimmed().replace(KleverConfig::storagePath(), "");
+            QStringList sanitizedHref = m_parser->sanitizePath(href);
 
             bool hasPipe = !cap.captured(2).isEmpty();
 
             QString potentitalTitle = cap.captured(3).trimmed();
-            title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : href.split(QStringLiteral("/")).last();
+            title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref[1].split(QStringLiteral("/")).last();
 
-            m_parser->linkedNotesPaths.insert(href);
+            m_parser->linkedNotesPaths[sanitizedHref[0]] = QVariant(sanitizedHref[1]);
 
-            out += Renderer::link(href, title, title);
+            out += Renderer::link(sanitizedHref[0], title, title);
             continue;
         }
 
