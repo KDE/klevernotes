@@ -20,6 +20,13 @@ GridLayout{
 
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
+            id: linkedNotesAction
+            shortcut: "Ctrl+M"
+            tooltip: i18nc("@tooltip, will be followed by the shortcut", "Linked notes") + " (" + shortcut + ")"
+            icon.name: "gnumeric-link-internal"
+            onTriggered: linkedNotesMap.open()
+        },
+        Kirigami.Action {
             id: pdfPrinter
             shortcut: "Ctrl+P"
             tooltip: i18nc("@tooltip, Print action, will be followed by the shortcut", "Print") + " (" + shortcut + ")"
@@ -110,5 +117,12 @@ GridLayout{
 
     CheatSheet {
         id: cheatSheet
+    }
+
+    NotesMap {
+        id: linkedNotesMap
+        
+        absentLinks: applicationWindow().noteMapper.absentLinks 
+        existingLinks: applicationWindow().noteMapper.existingLinks
     }
 }

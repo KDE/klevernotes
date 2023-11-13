@@ -4,10 +4,30 @@
 */
 
 #include "noteMapper.h"
+#include <qobjectdefs.h>
 
 NoteMapper::NoteMapper(QObject *parent)
     : QObject(parent)
 {
+}
+
+QStringList NoteMapper::getAbsentLinkedPaths()
+{
+    return m_absentLinkedPath.isEmpty() ? QStringList() : m_absentLinkedPath.values();
+}
+
+QStringList NoteMapper::getExistingLinkedPaths()
+{
+    return m_existingLinkedPath.isEmpty() ? QStringList() : m_existingLinkedPath.values();
+}
+
+void NoteMapper::filterLinkedPath()
+{
+    m_existingLinkedPath = m_treeViewPaths & m_linkedNotePaths; // Intersect but doesn't modify m_treeViewPaths
+    m_absentLinkedPath = m_linkedNotePaths - m_existingLinkedPath; // Substract but doesn't modify m_linkedNotePaths
+
+    Q_EMIT absentLinksChanged();
+    Q_EMIT existingLinksChanged();
 }
 
 // Treeview
@@ -38,4 +58,5 @@ void NoteMapper::addNotePaths(const QStringList &notePaths)
 {
     m_linkedNotePaths.clear();
     m_linkedNotePaths = QSet(notePaths.begin(), notePaths.end());
+    filterLinkedPath();
 }
