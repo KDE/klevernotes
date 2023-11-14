@@ -45,9 +45,13 @@ endif()
 configure_file(contents/ui/sideBar/ActionBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/ActionBar.qml)
 configure_file(contents/ui/sideBar/SearchBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/SearchBar.qml)
 configure_file(contents/ui/sideBar/Sidebar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/sideBar/Sidebar.qml)
-configure_file(contents/ui/textEditor/TextToolBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/textEditor/TextToolBar.qml)
+
 configure_file(contents/ui/textEditor/BottomToolBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/textEditor/BottomToolBar.qml)
+configure_file(contents/ui/textEditor/NotesMap.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/textEditor/NotesMap.qml)
+configure_file(contents/ui/textEditor/TextToolBar.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/textEditor/TextToolBar.qml)
+
 configure_file(contents/ui/dialogs/FilePickerDialog.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/dialogs/FilePickerDialog.qml)
+
 configure_file(contents/ui/pages/MainPage.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/pages/MainPage.qml)
 configure_file(contents/ui/pages/PaintingPage.qml ${CMAKE_CURRENT_BINARY_DIR}/contents/ui/pages/PaintingPage.qml)
 
@@ -64,7 +68,6 @@ set(exec_SRCS
     logic/view.cpp
     logic/todoHandler.cpp
 
-    logic/noteMapper/linkedNotesModel.cpp
     logic/noteMapper/noteMapper.cpp
 
     logic/painting/pointMaker.cpp

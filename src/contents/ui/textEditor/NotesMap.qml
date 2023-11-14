@@ -7,6 +7,8 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
+import org.kde.kitemmodels 1.0
+
 Kirigami.OverlaySheet {
     id: cheatSheet
 
@@ -17,11 +19,26 @@ Kirigami.OverlaySheet {
         Kirigami.Theme.inherit: false
         color: Kirigami.Theme.backgroundColor    
     }
-
-    required property var existingLinks
-    required property var absentLinks
-
+    
     contentItem: ColumnLayout {
+        KSortFilterProxyModel {
+            id: absentLinks
+            sourceModel: applicationWindow().noteMapper
+            
+            @FILTER_NAMING@: "exists"
+            filterString: "No"
+            filterCaseSensitivity: Qt.CaseInsensitive
+        }
+
+        KSortFilterProxyModel {
+            id: existingLinks
+            sourceModel: applicationWindow().noteMapper
+            
+            @FILTER_NAMING@: "exists"
+            filterString: "Yes"
+            filterCaseSensitivity: Qt.CaseInsensitive
+        }
+
         spacing: Kirigami.Units.smallSpacing 
 
         FormCard.FormHeader {

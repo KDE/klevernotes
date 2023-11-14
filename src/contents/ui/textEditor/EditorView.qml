@@ -121,8 +121,5 @@ GridLayout{
 
     NotesMap {
         id: linkedNotesMap
-        
-        absentLinks: applicationWindow().noteMapper.absentLinks 
-        existingLinks: applicationWindow().noteMapper.existingLinks
     }
 }
