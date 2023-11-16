@@ -23,7 +23,7 @@ ToolBar {
     readonly property QtObject createNoteAction: createNoteAction
     readonly property QtObject createGroupAction: createGroupAction
     readonly property QtObject createCategoryAction: createCategoryAction
-    readonly property var currentModelIndex: treeModel.mapToSource(treeModel.index(treeView.currentIndex, 0))
+    property var currentModelIndex
     readonly property var timer: timer
 
     function getName(useCase, shownName, parentPath, callingAction, newItem){

@@ -61,14 +61,18 @@ Kirigami.OverlayDrawer {
             sourceModel: NoteTreeModel {
                 id: noteTreeModel
 
-               onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path, displayedPath)
-               onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath, displayedPath)
-               onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
-               onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
+                onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path, displayedPath)
+                onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath, displayedPath)
+                onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
+                onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
             }
 
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            onCurrentItemChanged: {
+                actionBar.currentModelIndex = treeview.descendantsModel.mapToSource(treeview.descendantsModel.index(treeview.currentIndex, 0))
+            }
         }
 
         Controls.ToolSeparator {
