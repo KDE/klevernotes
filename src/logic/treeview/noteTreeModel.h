@@ -74,8 +74,8 @@ public:
 
 signals:
     void errorOccurred(const QString &errorMessage);
-    void newGlobalPathFound(const QString &path, const QString &displayedPath);
-    void globalPathUpdated(const QString &oldPath, const QString &newPath, const QString &displayedPath);
+    void newGlobalPathFound(const QString &path /* , const QString &displayedPath */);
+    void globalPathUpdated(const QString &oldPath, const QString &newPath /* , const QString &displayedPath */);
     void globalPathRemoved(const QString &path);
 
 private:

@@ -5,20 +5,20 @@
 #pragma once
 
 #include <QAbstractItemModel>
-#include <QList>
+#include <QSet>
 #include <memory>
 
 class LinkedNoteItem
 {
 public:
-    explicit LinkedNoteItem(const QString &path, const QString &displayedPath, const QString &exists);
+    explicit LinkedNoteItem(const QString &path, const QString &exists);
 
     QVariant data(int role) const;
     void updatePath(const QString &path);
-    void updateDisplayedPath(const QString &path);
     void updateExists(const QString &exists);
 
 private:
+    void setDisplayPath(QString &path);
     QString m_path;
     QString m_displayPath;
     QString m_exists; // QString because we use a KSortFilterProxyModel
@@ -42,69 +42,24 @@ public:
     int rowCount(const QModelIndex &parent = {}) const override;
     int columnCount(const QModelIndex &parent = {}) const override;
     QHash<int, QByteArray> roleNames() const override;
+
     void clear();
     void addRow(const QString &path, const QString &displayedPath);
-    bool hasPath(const QString &path);
 
     // Treeview
-    Q_INVOKABLE void addGlobalPath(const QString &path, const QString &displayedPath);
-    Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath, const QString &displayedPath);
+    Q_INVOKABLE void addGlobalPath(const QString &path);
+    Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath);
     Q_INVOKABLE void removeGlobalPath(const QString &path);
 
     // Parser
     Q_INVOKABLE void addNotePaths(const QVariantMap &notePaths);
 
 private:
-    // void filterLinkedPath();
-
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;
 
     // Parser
     QVariantMap m_linkedNotePaths; // Stored to avoid unnecessary looping
 
     // Treeview
-    QMap<QString, QString> m_treeViewPaths;
+    QSet<QString> m_treeViewPaths;
 };
-/*
-
-#include "linkedNotesModel.h"
-#include <QDebug>
-#include <QMap>
-#include <QObject>
-#include <QString>
-
-class NoteMapper : public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(LinkedNotesModel *absentLinks READ getAbsentLinkedPaths NOTIFY absentLinksChanged)
-    Q_PROPERTY(LinkedNotesModel *existingLinks READ getExistingLinkedPaths NOTIFY existingLinksChanged)
-public:
-    NoteMapper(QObject *parent = nullptr);
-
-    LinkedNotesModel *getExistingLinkedPaths();
-    LinkedNotesModel *getAbsentLinkedPaths();
-
-    // Treeview
-    Q_INVOKABLE void addGlobalPath(const QString &path, const QString &displayedPath);
-    Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath, const QString &displayedPath);
-    Q_INVOKABLE void removeGlobalPath(const QString &path);
-
-    // Parser
-    Q_INVOKABLE void addNotePaths(const QVariantMap &notePaths);
-
-signals:
-    void absentLinksChanged();
-    void existingLinksChanged();
-
-private:
-    void filterLinkedPath();
-
-    LinkedNotesModel m_existingLinkedPath;
-    LinkedNotesModel m_absentLinkedPath;
-
-    // Parser
-    QVariantMap m_linkedNotePaths;
-
-    // Treeview
-    QMap<QString, QString> m_treeViewPaths;
-}; */

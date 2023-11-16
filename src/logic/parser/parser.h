@@ -23,7 +23,7 @@ public:
 
     QString getNotePath();
     void setNotePath(QString &notePath);
-    QStringList sanitizePath(QString path);
+    QPair<QString, bool> sanitizePath(QString path);
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;

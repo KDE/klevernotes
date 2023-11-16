@@ -3,16 +3,13 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 #include "noteMapper.h"
+#include "kleverconfig.h"
 #include <QDebug>
-#include <qabstractitemmodel.h>
-#include <qobjectdefs.h>
-#include <qstringliteral.h>
 
-LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &displayedPath, const QString &exists)
-    : m_path(path)
-    , m_displayPath(displayedPath)
-    , m_exists(exists)
+LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &exists)
+    : m_exists(exists)
 {
+    updatePath(path);
 }
 
 QVariant LinkedNoteItem::data(int role) const
@@ -36,10 +33,13 @@ QVariant LinkedNoteItem::data(int role) const
 void LinkedNoteItem::updatePath(const QString &path)
 {
     m_path = path;
+    QString toDisplay(path);
+    setDisplayPath(toDisplay);
 }
 
-void LinkedNoteItem::updateDisplayedPath(const QString &path)
+void LinkedNoteItem::setDisplayPath(QString &path)
 {
+    path.replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
     m_displayPath = path;
 }
 
@@ -103,7 +103,7 @@ void NoteMapper::addRow(const QString &path, const QString &displayedPath)
 {
     QString exists = m_treeViewPaths.contains(path) ? QStringLiteral("Yes") : QStringLiteral("No");
 
-    auto newRow = std::make_unique<LinkedNoteItem>(path, displayedPath, exists);
+    auto newRow = std::make_unique<LinkedNoteItem>(path, exists);
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
@@ -111,9 +111,9 @@ void NoteMapper::addRow(const QString &path, const QString &displayedPath)
 }
 
 // Treeview
-void NoteMapper::addGlobalPath(const QString &path, const QString &displayedPath)
+void NoteMapper::addGlobalPath(const QString &path)
 {
-    m_treeViewPaths[path] = displayedPath;
+    m_treeViewPaths.insert(path);
 
     for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
         auto child = static_cast<LinkedNoteItem *>(it->get());
@@ -126,14 +126,12 @@ void NoteMapper::addGlobalPath(const QString &path, const QString &displayedPath
     }
 }
 
-void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath, const QString &displayedPath)
+void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath)
 {
-    if (!m_treeViewPaths.contains(oldPath))
+    if (!m_treeViewPaths.remove(oldPath))
         return;
 
-    m_treeViewPaths.erase(m_treeViewPaths.find(oldPath));
-    m_treeViewPaths[newPath] = displayedPath;
-
+    m_treeViewPaths.insert(newPath);
     for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
         auto child = static_cast<LinkedNoteItem *>(it->get());
 

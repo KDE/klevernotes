@@ -17,7 +17,7 @@ Parser::Parser(QObject *parent)
 {
 }
 
-QStringList Parser::sanitizePath(QString path)
+QPair<QString, bool> Parser::sanitizePath(QString path)
 {
     QStringList parts = path.split("/");
 
@@ -28,7 +28,7 @@ QStringList Parser::sanitizePath(QString path)
             if (i == 0) {
                 leadingSlashRemnant = true;
             } else { // The path is not correctly formed
-                return {path, path};
+                return qMakePair(path, false);
             }
         }
         parts[i] = part;
@@ -36,6 +36,9 @@ QStringList Parser::sanitizePath(QString path)
 
     if (leadingSlashRemnant)
         parts.removeAt(0);
+
+    if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue())
+        parts[0] = QStringLiteral(".BaseCategory");
 
     switch (parts.count()) {
     case 1: // Note name only
@@ -49,18 +52,13 @@ QStringList Parser::sanitizePath(QString path)
         }
         break;
     case 3: // 'Full' path
-        path = KleverConfig::storagePath() + QStringLiteral("/") + parts.join("/");
+        path = QStringLiteral("/") + parts.join("/");
         break;
     default: // Not a note path
-        return {path, path};
+        return qMakePair(path, false);
     }
 
-    QString displayedPath = QString(path)
-                                .replace(KleverConfig::storagePath(), "")
-                                .replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue())
-                                .replace(".BaseGroup/", "");
-
-    return {path, displayedPath};
+    return qMakePair(path, true);
 }
 
 void Parser::setNotePath(QString &notePath)
@@ -68,7 +66,7 @@ void Parser::setNotePath(QString &notePath)
     if (m_notePath != notePath)
         m_notePath = notePath;
 
-    notePath.chop(1); // remove the useless ending "/"
+    notePath.remove(KleverConfig::storagePath()).chop(1); // remove the useless ending "/"
     notePath.chop(notePath.size() - notePath.lastIndexOf("/"));
     if (m_groupPath != notePath) {
         m_groupPath = notePath + "/";

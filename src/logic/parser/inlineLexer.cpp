@@ -12,7 +12,6 @@
 #include <QString>
 #include <qvariant.h>
 
-#include "kleverconfig.h"
 #include "parser.h"
 #include "renderer.h"
 
@@ -127,16 +126,16 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             src.replace(cap.capturedStart(), cap.capturedLength(), "");
 
             href = cap.captured(1).trimmed();
-            QStringList sanitizedHref = m_parser->sanitizePath(href);
+            QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
 
             bool hasPipe = !cap.captured(2).isEmpty();
 
             QString potentitalTitle = cap.captured(3).trimmed();
-            title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref[1].split(QStringLiteral("/")).last();
+            title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
-            if (sanitizedHref[0] != sanitizedHref[1]) {
-                m_parser->linkedNotesPaths[sanitizedHref[0]] = QVariant(sanitizedHref[1]);
-                out += Renderer::link(sanitizedHref[0], title, title);
+            if (sanitizedHref.second) {
+                m_parser->linkedNotesPaths[sanitizedHref.first] = QVariant(sanitizedHref.first); // keep the Map for future change
+                out += Renderer::link(sanitizedHref.first, title, title);
                 continue;
             }
 
