@@ -10,7 +10,6 @@
 #include <QMap>
 #include <QRandomGenerator>
 #include <QString>
-#include <qvariant.h>
 
 #include "parser.h"
 #include "renderer.h"
@@ -128,13 +127,16 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             href = cap.captured(1).trimmed();
             QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
 
-            bool hasPipe = !cap.captured(2).isEmpty();
+            cap3 = cap.captured(3).trimmed();
 
-            QString potentitalTitle = cap.captured(3).trimmed();
+            bool hasPipe = !cap.captured(4).isEmpty();
+
+            QString potentitalTitle = cap.captured(5).trimmed();
             title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
             if (sanitizedHref.second) {
-                m_parser->linkedNotesPaths[sanitizedHref.first] = QVariant(sanitizedHref.first); // keep the Map for future change
+                m_parser->notePathHeaderPairs.append(sanitizedHref.first);
+                m_parser->notePathHeaderPairs.append(cap3);
                 out += Renderer::link(sanitizedHref.first, title, title);
                 continue;
             }

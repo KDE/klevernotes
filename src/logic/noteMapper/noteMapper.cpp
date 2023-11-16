@@ -6,8 +6,10 @@
 #include "kleverconfig.h"
 #include <QDebug>
 
-LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &exists)
+LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &exists, const QString &header, const bool headerExists)
     : m_exists(exists)
+    , m_header(header)
+    , m_headerExists(headerExists)
 {
     updatePath(path);
 }
@@ -23,6 +25,12 @@ QVariant LinkedNoteItem::data(int role) const
 
     case NoteMapper::ExistsRole:
         return m_exists;
+
+    case NoteMapper::HeaderRole:
+        return m_header;
+
+    case NoteMapper::HeaderExistsRole:
+        return m_headerExists;
 
     default:
         Q_UNREACHABLE();
@@ -61,7 +69,7 @@ QModelIndex NoteMapper::index(int row, int column, const QModelIndex &parent) co
 
 QHash<int, QByteArray> NoteMapper::roleNames() const
 {
-    return {{DisplayedPathRole, "displayedPath"}, {PathRole, "realPath"}, {ExistsRole, "exists"}};
+    return {{DisplayedPathRole, "displayedPath"}, {PathRole, "realPath"}, {ExistsRole, "exists"}, {HeaderRole, "header"}, {HeaderExistsRole, "headerExists"}};
 }
 
 QModelIndex NoteMapper::parent(const QModelIndex &index) const
@@ -99,11 +107,26 @@ void NoteMapper::clear()
     endResetModel();
 }
 
-void NoteMapper::addRow(const QString &path, const QString &displayedPath)
+void NoteMapper::addRow(const QString &path, const QString &header)
 {
-    QString exists = m_treeViewPaths.contains(path) ? QStringLiteral("Yes") : QStringLiteral("No");
+    QPair<QString, QString> pathHeaderPair = qMakePair(path, header);
+    if (m_existingPathHeaderPair.contains(pathHeaderPair))
+        return;
 
-    auto newRow = std::make_unique<LinkedNoteItem>(path, exists);
+    m_existingPathHeaderPair.insert(pathHeaderPair);
+
+    QString exists;
+    bool headerExists = false;
+    if (m_treeViewPaths.contains(path)) {
+        exists = QStringLiteral("Yes");
+        if (!header.isEmpty()) {
+            // check for header here
+        }
+    } else {
+        exists = QStringLiteral("No");
+    }
+
+    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, header, headerExists);
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
@@ -120,6 +143,7 @@ void NoteMapper::addGlobalPath(const QString &path)
 
         if (child->data(PathRole).toString() == path && child->data(ExistsRole) != QStringLiteral("Yes")) {
             child->updateExists(QStringLiteral("Yes"));
+            // Check if header exists
             QModelIndex childIndex = createIndex(0, 0, child);
             Q_EMIT dataChanged(childIndex, childIndex);
         }
@@ -173,15 +197,17 @@ void NoteMapper::removeGlobalPath(const QString &path)
 }
 
 // Parser
-void NoteMapper::addNotePaths(const QVariantMap &notePaths)
+void NoteMapper::addNotePaths(const QStringList &notePathHeaderPairs)
 {
-    if (notePaths == m_linkedNotePaths)
+    Q_ASSERT(notePathHeaderPairs.size() % 2 == 0);
+
+    if (notePathHeaderPairs == m_notePathHeaderPairs)
         return;
 
     clear();
-    m_linkedNotePaths = notePaths;
+    m_notePathHeaderPairs = notePathHeaderPairs;
 
-    for (auto it = notePaths.constBegin(); it != notePaths.constEnd(); it++) {
-        addRow(it.key(), it.value().toString());
+    for (int i = 0; i < notePathHeaderPairs.size(); i += 2) {
+        addRow(notePathHeaderPairs[i], notePathHeaderPairs[i+1]);
     }
 }

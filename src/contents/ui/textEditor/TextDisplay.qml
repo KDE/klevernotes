@@ -58,7 +58,7 @@ RowLayout {
     Parser { 
         id: parser
 
-        onNewLinkedNotesPaths: noteMapper.addNotePaths(linkedNotesPaths)
+        onNewLinkedNotesPaths: noteMapper.addNotePaths(notePathHeaderPairs)
     }
 
     Kirigami.Card{

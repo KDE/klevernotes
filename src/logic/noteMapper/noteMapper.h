@@ -11,7 +11,7 @@
 class LinkedNoteItem
 {
 public:
-    explicit LinkedNoteItem(const QString &path, const QString &exists);
+    explicit LinkedNoteItem(const QString &path, const QString &exists, const QString &header, const bool headerExists);
 
     QVariant data(int role) const;
     void updatePath(const QString &path);
@@ -22,6 +22,9 @@ private:
     QString m_path;
     QString m_displayPath;
     QString m_exists; // QString because we use a KSortFilterProxyModel
+
+    QString m_header;
+    bool m_headerExists;
 };
 
 class NoteMapper : public QAbstractItemModel
@@ -34,6 +37,8 @@ public:
         PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Category/Group/Note
         DisplayedPathRole, // To get a string with the name of the Category/Group/Note to be displayed instead of the hidden name
         ExistsRole, // To know if the path exist or not
+        HeaderRole, // To get the referenced header
+        HeaderExistsRole, // To know if the header exists
     };
 
     QVariant data(const QModelIndex &index, int role) const override;
@@ -44,7 +49,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     void clear();
-    void addRow(const QString &path, const QString &displayedPath);
+    void addRow(const QString &path, const QString &header);
 
     // Treeview
     Q_INVOKABLE void addGlobalPath(const QString &path);
@@ -52,13 +57,14 @@ public:
     Q_INVOKABLE void removeGlobalPath(const QString &path);
 
     // Parser
-    Q_INVOKABLE void addNotePaths(const QVariantMap &notePaths);
+    Q_INVOKABLE void addNotePaths(const QStringList &notePaths);
 
 private:
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;
+    QSet<QPair<QString, QString>> m_existingPathHeaderPair; // Avoid duplicating entries
 
     // Parser
-    QVariantMap m_linkedNotePaths; // Stored to avoid unnecessary looping
+    QStringList m_notePathHeaderPairs; // Stored to avoid unnecessary looping
 
     // Treeview
     QSet<QString> m_treeViewPaths;

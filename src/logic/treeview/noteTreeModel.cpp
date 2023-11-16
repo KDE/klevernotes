@@ -67,7 +67,7 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 
 TreeItem *TreeItem::child(int row)
 {
-    if (row < 0 || row >= m_childItems.size()) {
+    if (row < 0 || row >= (int)m_childItems.size()) {
         return nullptr;
     }
     return m_childItems.at(row).get();
@@ -75,7 +75,7 @@ TreeItem *TreeItem::child(int row)
 
 std::unique_ptr<TreeItem> TreeItem::uniqueChildAt(int row)
 {
-    if (row < 0 || row >= m_childItems.size()) {
+    if (row < 0 || row >= (int)m_childItems.size()) {
         return nullptr;
     }
 
