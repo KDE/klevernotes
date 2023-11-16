@@ -83,7 +83,7 @@ QString Parser::parse(QString src)
 {
     links.clear();
     tokens.clear();
-    notePathHeaderPairs.clear();
+    linkedNoteInfos.clear();
 
     blockLexer.lex(src);
 
@@ -94,7 +94,7 @@ QString Parser::parse(QString src)
         out += tok();
     }
 
-    Q_EMIT newLinkedNotesPaths(notePathHeaderPairs);
+    Q_EMIT newLinkedNotesPaths(linkedNoteInfos);
 
     return out;
 }

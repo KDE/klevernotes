@@ -135,8 +135,9 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
             if (sanitizedHref.second) {
-                m_parser->notePathHeaderPairs.append(sanitizedHref.first);
-                m_parser->notePathHeaderPairs.append(cap3);
+                m_parser->linkedNoteInfos.append(sanitizedHref.first);
+                m_parser->linkedNoteInfos.append(cap3);
+                m_parser->linkedNoteInfos.append(title);
                 out += Renderer::link(sanitizedHref.first, title, title);
                 continue;
             }

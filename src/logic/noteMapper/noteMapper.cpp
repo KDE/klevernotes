@@ -5,12 +5,14 @@
 #include "noteMapper.h"
 #include "kleverconfig.h"
 #include <QDebug>
+#include <qstringliteral.h>
 
-LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &exists, const QString &header, const bool headerExists)
+LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &exists, QString &header, const bool headerExists, const QString &title)
     : m_exists(exists)
-    , m_header(header)
     , m_headerExists(headerExists)
+    , m_title(title)
 {
+    m_header = header.replace(QStringLiteral("#"), QStringLiteral("")).trimmed();
     updatePath(path);
 }
 
@@ -31,6 +33,9 @@ QVariant LinkedNoteItem::data(int role) const
 
     case NoteMapper::HeaderExistsRole:
         return m_headerExists;
+
+    case NoteMapper::TitleRole:
+        return m_title;
 
     default:
         Q_UNREACHABLE();
@@ -56,6 +61,11 @@ void LinkedNoteItem::updateExists(const QString &exists)
     m_exists = exists;
 }
 
+void LinkedNoteItem::updateHeaderExists(const bool exists)
+{
+    m_headerExists = exists;
+}
+
 NoteMapper::NoteMapper(QObject *parent)
     : QAbstractItemModel(parent)
 {
@@ -69,7 +79,12 @@ QModelIndex NoteMapper::index(int row, int column, const QModelIndex &parent) co
 
 QHash<int, QByteArray> NoteMapper::roleNames() const
 {
-    return {{DisplayedPathRole, "displayedPath"}, {PathRole, "realPath"}, {ExistsRole, "exists"}, {HeaderRole, "header"}, {HeaderExistsRole, "headerExists"}};
+    return {{DisplayedPathRole, "displayedPath"},
+            {PathRole, "realPath"},
+            {ExistsRole, "exists"},
+            {HeaderRole, "header"},
+            {HeaderExistsRole, "headerExists"},
+            {TitleRole, "title"}};
 }
 
 QModelIndex NoteMapper::parent(const QModelIndex &index) const
@@ -105,28 +120,30 @@ void NoteMapper::clear()
     beginResetModel();
     m_list.clear();
     endResetModel();
+    m_existingLinkedNoteInfos.clear();
 }
 
-void NoteMapper::addRow(const QString &path, const QString &header)
+void NoteMapper::addRow(const QString &path, QString &header, const QString &title)
 {
-    QPair<QString, QString> pathHeaderPair = qMakePair(path, header);
-    if (m_existingPathHeaderPair.contains(pathHeaderPair))
+    std::tuple<QString, QString, QString> linkedNoteInfo = {path, header, title};
+    if (m_existingLinkedNoteInfos.find(linkedNoteInfo) != m_existingLinkedNoteInfos.cend()) // Can't use .contains (C++ 20)
         return;
 
-    m_existingPathHeaderPair.insert(pathHeaderPair);
+    m_existingLinkedNoteInfos.insert(linkedNoteInfo);
 
     QString exists;
     bool headerExists = false;
     if (m_treeViewPaths.contains(path)) {
         exists = QStringLiteral("Yes");
-        if (!header.isEmpty()) {
-            // check for header here
+        if (!header.isEmpty() && header.startsWith(QStringLiteral("#"))) {
+            QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
+            headerExists = m_headerChecker->readFile(filePath, header) == QStringLiteral("true");
         }
     } else {
         exists = QStringLiteral("No");
     }
 
-    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, header, headerExists);
+    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, header, headerExists, title);
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
@@ -143,7 +160,7 @@ void NoteMapper::addGlobalPath(const QString &path)
 
         if (child->data(PathRole).toString() == path && child->data(ExistsRole) != QStringLiteral("Yes")) {
             child->updateExists(QStringLiteral("Yes"));
-            // Check if header exists
+            // Don't need to check for header since this is a brand new file
             QModelIndex childIndex = createIndex(0, 0, child);
             Q_EMIT dataChanged(childIndex, childIndex);
         }
@@ -197,17 +214,17 @@ void NoteMapper::removeGlobalPath(const QString &path)
 }
 
 // Parser
-void NoteMapper::addNotePaths(const QStringList &notePathHeaderPairs)
+void NoteMapper::addNotePaths(const QStringList &linkedNoteInfos)
 {
-    Q_ASSERT(notePathHeaderPairs.size() % 2 == 0);
+    Q_ASSERT(linkedNoteInfos.size() % 3 == 0);
 
-    if (notePathHeaderPairs == m_notePathHeaderPairs)
+    if (linkedNoteInfos == m_previousLinkedNoteInfos)
         return;
 
     clear();
-    m_notePathHeaderPairs = notePathHeaderPairs;
+    m_previousLinkedNoteInfos = linkedNoteInfos;
 
-    for (int i = 0; i < notePathHeaderPairs.size(); i += 2) {
-        addRow(notePathHeaderPairs[i], notePathHeaderPairs[i+1]);
+    for (int i = 0; i < m_previousLinkedNoteInfos.size(); i += 3) {
+        addRow(m_previousLinkedNoteInfos[i], m_previousLinkedNoteInfos[i + 1], m_previousLinkedNoteInfos[i + 2]);
     }
 }

@@ -4,18 +4,21 @@
 */
 #pragma once
 
+#include "logic/documentHandler.h"
 #include <QAbstractItemModel>
 #include <QSet>
 #include <memory>
+#include <set>
 
 class LinkedNoteItem
 {
 public:
-    explicit LinkedNoteItem(const QString &path, const QString &exists, const QString &header, const bool headerExists);
+    explicit LinkedNoteItem(const QString &path, const QString &exists, QString &header, const bool headerExists, const QString &title);
 
     QVariant data(int role) const;
     void updatePath(const QString &path);
     void updateExists(const QString &exists);
+    void updateHeaderExists(const bool exists);
 
 private:
     void setDisplayPath(QString &path);
@@ -25,6 +28,8 @@ private:
 
     QString m_header;
     bool m_headerExists;
+
+    QString m_title;
 };
 
 class NoteMapper : public QAbstractItemModel
@@ -39,6 +44,7 @@ public:
         ExistsRole, // To know if the path exist or not
         HeaderRole, // To get the referenced header
         HeaderExistsRole, // To know if the header exists
+        TitleRole, // To get the title displayed on the preview
     };
 
     QVariant data(const QModelIndex &index, int role) const override;
@@ -49,7 +55,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     void clear();
-    void addRow(const QString &path, const QString &header);
+    void addRow(const QString &path, QString &header, const QString &title);
 
     // Treeview
     Q_INVOKABLE void addGlobalPath(const QString &path);
@@ -57,15 +63,17 @@ public:
     Q_INVOKABLE void removeGlobalPath(const QString &path);
 
     // Parser
-    Q_INVOKABLE void addNotePaths(const QStringList &notePaths);
+    Q_INVOKABLE void addNotePaths(const QStringList &linkedNoteInfos);
 
 private:
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;
-    QSet<QPair<QString, QString>> m_existingPathHeaderPair; // Avoid duplicating entries
+    std::set<std::tuple<QString, QString, QString>> m_existingLinkedNoteInfos; // Avoid duplicating entries
 
     // Parser
-    QStringList m_notePathHeaderPairs; // Stored to avoid unnecessary looping
+    QStringList m_previousLinkedNoteInfos; // Stored to avoid unnecessary looping
 
     // Treeview
     QSet<QString> m_treeViewPaths;
+
+    DocumentHandler *m_headerChecker = new DocumentHandler;
 };

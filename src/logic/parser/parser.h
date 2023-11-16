@@ -27,7 +27,7 @@ public:
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
-    QStringList notePathHeaderPairs;
+    QStringList linkedNoteInfos;
 
 signals:
     void newLinkedNotesPaths(const QStringList &notePathHeaderPairs);

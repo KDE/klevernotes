@@ -6,23 +6,36 @@
 #include <QFile>
 #include <QString>
 #include <QTextStream>
+#include <qstringliteral.h>
 
 DocumentHandler::DocumentHandler(QObject *parent)
     : QObject(parent)
 {
 }
 
-QString DocumentHandler::readFile(const QString &path) const
+QString DocumentHandler::readFile(const QString &path, const QString checkFor) const
 {
     QFile file(path);
+    bool needCheck = !checkFor.isEmpty();
 
-    QString line;
+    QString line("\n");
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream stream(&file);
         while (!stream.atEnd()) {
-            line.append(stream.readLine() + "\n");
+            QString currentLine = stream.readLine();
+            if (needCheck) {
+                if (currentLine.trimmed() == checkFor) {
+                    line += QStringLiteral("true\n");
+                    break;
+                }
+            } else {
+                line.append(currentLine + "\n");
+            }
         }
-        line.remove(line.length() - 1, 2);
+        if (line.length() > 3)
+            line.remove(line.length() - 1, 1); // Remove the last \n
+        if (line.length() > 3)
+            line.remove(0, 1); // Remove the first \n
     }
     file.close();
     return line;

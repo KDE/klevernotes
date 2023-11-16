@@ -9,6 +9,8 @@ import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.kitemmodels 1.0
 
+import "qrc:/contents/ui/textEditor/components/"
+
 Kirigami.OverlaySheet {
     id: cheatSheet
 
@@ -39,7 +41,8 @@ Kirigami.OverlaySheet {
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 
-        spacing: Kirigami.Units.smallSpacing 
+        spacing: 0
+        Layout.preferredWidth: Kirigami.Units.gridUnit * 30
 
         FormCard.FormHeader {
             Layout.fillWidth: true
@@ -52,10 +55,8 @@ Kirigami.OverlaySheet {
             Repeater {
                 model: existingLinks 
 
-                FormCard.FormButtonDelegate {
-                    text: model.displayedPath
-
-                    onClicked: console.log(model.realPath)
+                delegate: NotesMapEntry {
+                    onClicked: console.log(path)
                 }
             }
         }
@@ -71,10 +72,8 @@ Kirigami.OverlaySheet {
             Repeater {
                 model: absentLinks 
 
-                FormCard.FormButtonDelegate {
-                    text: model.displayedPath
-
-                    onClicked: console.log(model.realPath)
+                delegate: NotesMapEntry {
+                    onClicked: showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exisits", displayedPath))
                 } 
             }
         }

@@ -12,7 +12,7 @@ class DocumentHandler : public QObject
 public:
     explicit DocumentHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE QString readFile(const QString &path) const;
+    Q_INVOKABLE QString readFile(const QString &path, const QString checkFor = QStringLiteral("")) const;
     Q_INVOKABLE void writeFile(const QString &note, const QString &path);
     Q_INVOKABLE QString getCssStyle(const QString &path) const;
 };
