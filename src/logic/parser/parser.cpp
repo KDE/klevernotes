@@ -49,12 +49,17 @@ QStringList Parser::sanitizePath(QString path)
         }
         break;
     case 3: // 'Full' path
-        path = QStringLiteral("/") + parts.join("/");
+        path = KleverConfig::storagePath() + QStringLiteral("/") + parts.join("/");
+        break;
     default: // Not a note path
         return {path, path};
     }
 
-    QString displayedPath = QString(path).replace("/.BaseGroup", "").replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue());
+    QString displayedPath = QString(path)
+                                .replace(KleverConfig::storagePath(), "")
+                                .replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue())
+                                .replace(".BaseGroup/", "");
+
     return {path, displayedPath};
 }
 
@@ -63,7 +68,7 @@ void Parser::setNotePath(QString &notePath)
     if (m_notePath != notePath)
         m_notePath = notePath;
 
-    notePath = notePath.remove(KleverConfig::storagePath()).chopped(1);
+    notePath.chop(1); // remove the useless ending "/"
     notePath.chop(notePath.size() - notePath.lastIndexOf("/"));
     if (m_groupPath != notePath) {
         m_groupPath = notePath + "/";

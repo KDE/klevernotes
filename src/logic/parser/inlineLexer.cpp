@@ -126,7 +126,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
 
             src.replace(cap.capturedStart(), cap.capturedLength(), "");
 
-            href = cap.captured(1).trimmed().replace(KleverConfig::storagePath(), "");
+            href = cap.captured(1).trimmed();
             QStringList sanitizedHref = m_parser->sanitizePath(href);
 
             bool hasPipe = !cap.captured(2).isEmpty();
@@ -134,9 +134,14 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             QString potentitalTitle = cap.captured(3).trimmed();
             title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref[1].split(QStringLiteral("/")).last();
 
-            m_parser->linkedNotesPaths[sanitizedHref[0]] = QVariant(sanitizedHref[1]);
+            if (sanitizedHref[0] != sanitizedHref[1]) {
+                m_parser->linkedNotesPaths[sanitizedHref[0]] = QVariant(sanitizedHref[1]);
+                out += Renderer::link(sanitizedHref[0], title, title);
+                continue;
+            }
 
-            out += Renderer::link(sanitizedHref[0], title, title);
+            // Not a note path
+            out += Renderer::paragraph(cap.captured(0));
             continue;
         }
 

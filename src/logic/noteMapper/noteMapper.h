@@ -14,6 +14,9 @@ public:
     explicit LinkedNoteItem(const QString &path, const QString &displayedPath, const QString &exists);
 
     QVariant data(int role) const;
+    void updatePath(const QString &path);
+    void updateDisplayedPath(const QString &path);
+    void updateExists(const QString &exists);
 
 private:
     QString m_path;

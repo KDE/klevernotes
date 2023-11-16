@@ -59,8 +59,11 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
     if (item->m_depth_level == 3) {
         // very important to make a copy here !
-        QString path = QString(item->m_path).remove(KleverConfig::storagePath());
-        QString displayedPath = QString(path).replace(".BaseGroup/", "").replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue());
+        QString path = QString(item->m_path);
+        QString displayedPath = QString(path)
+                                    .remove(KleverConfig::storagePath())
+                                    .replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue())
+                                    .replace(".BaseGroup/", "");
         Q_EMIT m_model->newGlobalPathFound(path, displayedPath);
     }
     m_childItems.push_back(std::move(item));

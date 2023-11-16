@@ -4,6 +4,8 @@
 */
 #include "noteMapper.h"
 #include <QDebug>
+#include <qabstractitemmodel.h>
+#include <qobjectdefs.h>
 #include <qstringliteral.h>
 
 LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &displayedPath, const QString &exists)
@@ -30,6 +32,21 @@ QVariant LinkedNoteItem::data(int role) const
     }
     return 0;
 };
+
+void LinkedNoteItem::updatePath(const QString &path)
+{
+    m_path = path;
+}
+
+void LinkedNoteItem::updateDisplayedPath(const QString &path)
+{
+    m_displayPath = path;
+}
+
+void LinkedNoteItem::updateExists(const QString &exists)
+{
+    m_exists = exists;
+}
 
 NoteMapper::NoteMapper(QObject *parent)
     : QAbstractItemModel(parent)
@@ -97,6 +114,16 @@ void NoteMapper::addRow(const QString &path, const QString &displayedPath)
 void NoteMapper::addGlobalPath(const QString &path, const QString &displayedPath)
 {
     m_treeViewPaths[path] = displayedPath;
+
+    for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
+        auto child = static_cast<LinkedNoteItem *>(it->get());
+
+        if (child->data(PathRole).toString() == path && child->data(ExistsRole) != QStringLiteral("Yes")) {
+            child->updateExists(QStringLiteral("Yes"));
+            QModelIndex childIndex = createIndex(0, 0, child);
+            Q_EMIT dataChanged(childIndex, childIndex);
+        }
+    }
 }
 
 void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath, const QString &displayedPath)
@@ -106,6 +133,25 @@ void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath
 
     m_treeViewPaths.erase(m_treeViewPaths.find(oldPath));
     m_treeViewPaths[newPath] = displayedPath;
+
+    for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
+        auto child = static_cast<LinkedNoteItem *>(it->get());
+
+        bool needUpdate = false;
+        if (child->data(PathRole).toString() == oldPath) {
+            needUpdate = true;
+            child->updatePath(newPath);
+        }
+        if (child->data(PathRole).toString() == newPath) {
+            needUpdate = true;
+            child->updateExists(QStringLiteral("Yes"));
+        }
+
+        if (needUpdate) {
+            QModelIndex childIndex = createIndex(0, 0, child);
+            Q_EMIT dataChanged(childIndex, childIndex);
+        }
+    }
 }
 
 void NoteMapper::removeGlobalPath(const QString &path)
@@ -114,6 +160,18 @@ void NoteMapper::removeGlobalPath(const QString &path)
         return;
 
     m_treeViewPaths.erase(m_treeViewPaths.find(path));
+
+    for (auto it = m_list.cbegin(); it != m_list.cend();) {
+        auto child = static_cast<LinkedNoteItem *>(it->get());
+
+        if (child->data(PathRole).toString() == path) {
+            beginRemoveRows(QModelIndex(), it - m_list.begin(), it - m_list.begin());
+            m_list.erase(it);
+            endRemoveRows();
+        } else {
+            it++;
+        }
+    }
 }
 
 // Parser
