@@ -11,11 +11,12 @@ FormCard.AbstractFormDelegate {
     id: root
 
     readonly property string title: model.title
-    readonly property string path: model.realPath
+    readonly property string notePath: model.notePath
     readonly property string displayedPath: model.displayedPath
     readonly property bool exists: model.exists
     readonly property string header: model.header
     readonly property bool headerExists: model.headerExists
+    readonly property int headerLevel: model.headerLevel
     
     readonly property int elemWidth: Math.round((root.width - arrow.width - root.horizontalPadding * 2 - Kirigami.Units.smallSpacing * 3) / 5) 
 

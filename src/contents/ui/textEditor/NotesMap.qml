@@ -56,7 +56,11 @@ Kirigami.OverlaySheet {
                 model: existingLinks 
 
                 delegate: NotesMapEntry {
-                    onClicked: console.log(path)
+                    onClicked: {
+                        let toPrint = path
+                        toPrint += headerExists ? (" " + header + " " + headerLevel) : ""
+                        console.log(toPrint)
+                    }
                 }
             }
         }

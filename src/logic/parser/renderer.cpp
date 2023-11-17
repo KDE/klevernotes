@@ -122,6 +122,17 @@ QString Renderer::del(const QString &text)
     return "<del>" + text + "</del>";
 }
 
+QString Renderer::wikilink(QString &href, const QString &title, const QString &text)
+{
+    QString out = QString::fromStdString("<a href=\"") + href + QString::fromStdString("\"");
+
+    if (!title.isEmpty()) {
+        out += QString::fromStdString(" title=\"") + title + QString::fromStdString("\"");
+    }
+    out += ">" + text + "</a>";
+    return out;
+}
+
 QString Renderer::link(QString &href, const QString &title, const QString &text)
 {
     QByteArray uri = QUrl::fromUserInput(href).toEncoded();

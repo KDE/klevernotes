@@ -5,14 +5,19 @@
 #include "noteMapper.h"
 #include "kleverconfig.h"
 #include <QDebug>
-#include <qstringliteral.h>
 
-LinkedNoteItem::LinkedNoteItem(const QString &path, const QString &exists, QString &header, const bool headerExists, const QString &title)
+LinkedNoteItem::LinkedNoteItem(const QString &path,
+                               const QString &exists,
+                               const QString &header,
+                               const bool headerExists,
+                               const int headerLevel,
+                               const QString &title)
     : m_exists(exists)
+    , m_header(header)
     , m_headerExists(headerExists)
+    , m_headerLevel(headerLevel)
     , m_title(title)
 {
-    m_header = header.replace(QStringLiteral("#"), QStringLiteral("")).trimmed();
     updatePath(path);
 }
 
@@ -33,6 +38,9 @@ QVariant LinkedNoteItem::data(int role) const
 
     case NoteMapper::HeaderExistsRole:
         return m_headerExists;
+
+    case NoteMapper::HeaderLevelRole:
+        return m_headerLevel;
 
     case NoteMapper::TitleRole:
         return m_title;
@@ -80,10 +88,11 @@ QModelIndex NoteMapper::index(int row, int column, const QModelIndex &parent) co
 QHash<int, QByteArray> NoteMapper::roleNames() const
 {
     return {{DisplayedPathRole, "displayedPath"},
-            {PathRole, "realPath"},
+            {PathRole, "notePath"},
             {ExistsRole, "exists"},
             {HeaderRole, "header"},
             {HeaderExistsRole, "headerExists"},
+            {HeaderLevelRole, "headerLevel"},
             {TitleRole, "title"}};
 }
 
@@ -135,7 +144,8 @@ void NoteMapper::addRow(const QString &path, QString &header, const QString &tit
     bool headerExists = false;
     if (m_treeViewPaths.contains(path)) {
         exists = QStringLiteral("Yes");
-        if (!header.isEmpty() && header.startsWith(QStringLiteral("#"))) {
+        if (!header.isEmpty()) {
+            cleanHeader(header);
             QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
             headerExists = m_headerChecker->readFile(filePath, header) == QStringLiteral("true");
         }
@@ -143,11 +153,65 @@ void NoteMapper::addRow(const QString &path, QString &header, const QString &tit
         exists = QStringLiteral("No");
     }
 
-    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, header, headerExists, title);
+    int headerLevel = getHeaderLevel(header);
+
+    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, header, headerExists, headerLevel, title);
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
     endInsertRows();
+}
+
+int NoteMapper::getHeaderLevel(QString &header)
+{
+    int level = 0;
+
+    while (!header.isEmpty() && header[0] == QStringLiteral("#")) {
+        header.remove(0, 1);
+        level++;
+        if (level == 6)
+            break;
+    }
+
+    header = header.trimmed(); // There's a space between the '#' and the header text
+    return level;
+}
+
+void NoteMapper::cleanHeader(QString &header)
+{
+    // Note: This receive a trimmed string
+    QString space = QStringLiteral(" ");
+    QString hashtag = QStringLiteral("#");
+    if (!header.isEmpty() && !header.startsWith(hashtag)) {
+        header = hashtag + space + header;
+        return;
+    }
+
+    int strSize = header.size();
+    for (int i = 0; i < strSize; i++) {
+        if (i > 6 && header[i] != space) { // case: ######something
+            header = hashtag.repeated(6) + space + header.remove(0, 6);
+            return;
+        }
+
+        if (header[i] != hashtag) { // case: ####something ; #### something
+            if (header[i] != space) { // Combaning the ifs would exclude second case on return
+                header = hashtag.repeated(i) + space + header.remove(0, i);
+            }
+            return;
+        }
+    }
+
+    // The header was just a maximum of 6 concatenated '#'
+    header = QStringLiteral("");
+}
+
+QVariantList NoteMapper::getCleanedHeaderAndLevel(QString header)
+{
+    cleanHeader(header);
+    int headerLevel = getHeaderLevel(header);
+
+    return {header, headerLevel};
 }
 
 // Treeview

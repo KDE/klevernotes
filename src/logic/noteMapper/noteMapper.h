@@ -8,12 +8,18 @@
 #include <QAbstractItemModel>
 #include <QSet>
 #include <memory>
+#include <qobjectdefs.h>
 #include <set>
 
 class LinkedNoteItem
 {
 public:
-    explicit LinkedNoteItem(const QString &path, const QString &exists, QString &header, const bool headerExists, const QString &title);
+    explicit LinkedNoteItem(const QString &path,
+                            const QString &exists,
+                            const QString &header,
+                            const bool headerExists,
+                            const int headerLevel,
+                            const QString &title);
 
     QVariant data(int role) const;
     void updatePath(const QString &path);
@@ -28,6 +34,7 @@ private:
 
     QString m_header;
     bool m_headerExists;
+    int m_headerLevel;
 
     QString m_title;
 };
@@ -44,6 +51,7 @@ public:
         ExistsRole, // To know if the path exist or not
         HeaderRole, // To get the referenced header
         HeaderExistsRole, // To know if the header exists
+        HeaderLevelRole, // To know the level (1-6) of the header
         TitleRole, // To get the title displayed on the preview
     };
 
@@ -57,6 +65,8 @@ public:
     void clear();
     void addRow(const QString &path, QString &header, const QString &title);
 
+    Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(QString header);
+
     // Treeview
     Q_INVOKABLE void addGlobalPath(const QString &path);
     Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath);
@@ -66,6 +76,8 @@ public:
     Q_INVOKABLE void addNotePaths(const QStringList &linkedNoteInfos);
 
 private:
+    int getHeaderLevel(QString &header); // We also want to trim the "#" from header
+    void cleanHeader(QString &header);
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;
     std::set<std::tuple<QString, QString, QString>> m_existingLinkedNoteInfos; // Avoid duplicating entries
 

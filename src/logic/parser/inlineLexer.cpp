@@ -138,7 +138,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                 m_parser->linkedNoteInfos.append(sanitizedHref.first);
                 m_parser->linkedNoteInfos.append(cap3);
                 m_parser->linkedNoteInfos.append(title);
-                out += Renderer::link(sanitizedHref.first, title, title);
+                QString fullLink = sanitizedHref.first + QStringLiteral("@") + cap3; // <Note path>@<header ref>
+                out += Renderer::wikilink(fullLink, title, title);
                 continue;
             }
 

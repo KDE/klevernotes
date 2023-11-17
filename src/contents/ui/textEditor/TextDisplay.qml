@@ -47,7 +47,6 @@ RowLayout {
     }
 
     onTextChanged: {
-        text = text.length > 0 ? text : "\n"
         parsedHtml = parser.parse(text)
         updateHtml()
     }
@@ -108,7 +107,16 @@ RowLayout {
                     return
                 }
                 if (url.startsWith("file:///")) {
-                    console.log(url)
+                    let notePath = Config.storagePath + url.substring(7)
+                    const delimiterIndex = notePath.lastIndexOf("@")
+                    const header = notePath.substring(delimiterIndex + 1)
+                    
+                    notePath = notePath.substring(0, delimiterIndex)
+
+                    const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+
+                    console.log(notePath, headerInfo[0], headerInfo[1])
+                    // if headerInfo[1] == 0 => no header
                     request.action = WebEngineNavigationRequest.IgnoreRequest
                     return
                 }
