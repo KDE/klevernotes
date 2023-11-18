@@ -59,7 +59,7 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         let toPrint = path
                         toPrint += headerExists ? (" " + header + " " + headerLevel) : ""
-                        console.log(toPrint)
+                        console.log(toPrint, exists, exists == "Yes")
                     }
                 }
             }

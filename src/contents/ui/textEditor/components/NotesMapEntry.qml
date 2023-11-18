@@ -13,7 +13,7 @@ FormCard.AbstractFormDelegate {
     readonly property string title: model.title
     readonly property string notePath: model.notePath
     readonly property string displayedPath: model.displayedPath
-    readonly property bool exists: model.exists
+    readonly property string exists: model.exists
     readonly property string header: model.header
     readonly property bool headerExists: model.headerExists
     readonly property int headerLevel: model.headerLevel
@@ -35,7 +35,7 @@ FormCard.AbstractFormDelegate {
         Controls.Label {
             text: root.displayedPath
             elide: Text.ElideRight
-            color: root.exists ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
+            color: root.exists === "Yes" ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
             Layout.preferredWidth: root.elemWidth * 2
         }
 
