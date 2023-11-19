@@ -119,30 +119,27 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // wikilink
         cap = inline_wikilink.match(src);
         if (cap.hasMatch()) {
-            if (cap.captured().trimmed().isEmpty())
-                continue;
-
             src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            if (!cap.captured(1).trimmed().isEmpty()) {
+                href = cap.captured(1).trimmed();
+                QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
 
-            href = cap.captured(1).trimmed();
-            QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
+                cap3 = cap.captured(3).trimmed();
 
-            cap3 = cap.captured(3).trimmed();
+                bool hasPipe = !cap.captured(4).isEmpty();
 
-            bool hasPipe = !cap.captured(4).isEmpty();
+                QString potentitalTitle = cap.captured(5).trimmed();
+                title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
-            QString potentitalTitle = cap.captured(5).trimmed();
-            title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
-
-            if (sanitizedHref.second) {
-                m_parser->linkedNoteInfos.append(sanitizedHref.first);
-                m_parser->linkedNoteInfos.append(cap3);
-                m_parser->linkedNoteInfos.append(title);
-                QString fullLink = sanitizedHref.first + QStringLiteral("@") + cap3; // <Note path>@<header ref>
-                out += Renderer::wikilink(fullLink, title, title);
-                continue;
+                if (sanitizedHref.second) {
+                    m_parser->linkedNoteInfos.append(sanitizedHref.first);
+                    m_parser->linkedNoteInfos.append(cap3);
+                    m_parser->linkedNoteInfos.append(title);
+                    QString fullLink = sanitizedHref.first + QStringLiteral("@") + cap3; // <Note path>@<header ref>
+                    out += Renderer::wikilink(fullLink, title, title);
+                    continue;
+                }
             }
-
             // Not a note path
             out += Renderer::paragraph(cap.captured(0));
             continue;
