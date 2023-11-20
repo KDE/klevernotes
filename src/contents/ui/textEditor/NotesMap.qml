@@ -12,7 +12,7 @@ import org.kde.kitemmodels 1.0
 import "qrc:/contents/ui/textEditor/components/"
 
 Kirigami.OverlaySheet {
-    id: cheatSheet
+    id: noteMap
 
     title: i18nc("@window:title","Linked notes map")
 
@@ -57,9 +57,11 @@ Kirigami.OverlaySheet {
 
                 delegate: NotesMapEntry {
                     onClicked: {
-                        let toPrint = path
-                        toPrint += headerExists ? (" " + header + " " + headerLevel) : ""
-                        console.log(toPrint, exists, exists == "Yes")
+                        // TODO if header exists, scroll to header
+                        const sidebar = applicationWindow().globalDrawer
+                        const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+                        sidebar.askForFocus(noteModelIndex)
+                        noteMap.close()
                     }
                 }
             }

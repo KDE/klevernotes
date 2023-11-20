@@ -135,7 +135,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                     m_parser->linkedNoteInfos.append(sanitizedHref.first);
                     m_parser->linkedNoteInfos.append(cap3);
                     m_parser->linkedNoteInfos.append(title);
-                    QString fullLink = sanitizedHref.first + QStringLiteral("@") + cap3; // <Note path>@<header ref>
+                    // This hopefuly, is enough to separate the 2 without collinding with user input
+                    QString fullLink = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
                     out += Renderer::wikilink(fullLink, title, title);
                     continue;
                 }

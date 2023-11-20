@@ -9,6 +9,8 @@
 #include <QFileInfo>
 #include <QIcon>
 #include <klocalizedstring.h>
+#include <memory>
+#include <qabstractitemmodel.h>
 
 TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -464,6 +466,37 @@ void NoteTreeModel::askForExpand(const QModelIndex& rowModelIndex)
     row->askForExpand(rowModelIndex);
 }
 
+QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
+{
+    QStringList currentPathParts = notePath.split("/");
+    currentPathParts.pop_front(); // remove the first empty string
+    QString currentPathPart = currentPathParts.takeAt(0);
+
+    auto currentParentItem = m_rootItem.get();
+    QModelIndex currentModelIndex;
+
+    for (int i = 0; i < currentParentItem->childCount();) {
+        auto currentItem = currentParentItem->child(i);
+        QString currentItemPath = currentItem->data(PathRole).toString();
+        if (currentItemPath.endsWith(currentPathPart)) {
+            currentModelIndex = createIndex(i, 0, currentItem);
+            if (currentPathParts.isEmpty()) {
+                break;
+            } else {
+                currentPathPart = currentPathParts.takeAt(0);
+
+                if (currentPathPart == QStringLiteral(".BaseGroup"))
+                    currentPathPart = currentPathParts.takeAt(0);
+            }
+            currentParentItem = currentItem;
+            i = 0;
+            continue;
+        }
+        i++;
+    }
+
+    return currentModelIndex;
+}
 
 // Storage Handler
 bool NoteTreeModel::makeNote(const QString &groupPath, const QString &noteName)

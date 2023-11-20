@@ -19,6 +19,7 @@ Kirigami.OverlayDrawer {
     id:drawer
 
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
+    readonly property NoteTreeModel treeModel: treeview.model
 
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
@@ -40,6 +41,37 @@ Kirigami.OverlayDrawer {
     onStorageExistChanged: if (storageExist) noteTreeModel.initModel()
 
     width: Kirigami.Units.gridUnit * 15
+
+    Timer {
+        id: focusTimer
+
+        property var focusModelIndex
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: if (focusModelIndex) {
+            focusModelIndex.model.askForFocus(focusModelIndex)
+            focusModelIndex = undefined
+        }
+    }
+
+    Timer {
+        id: timer
+
+        property var modelIndex
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: if (modelIndex) {
+            modelIndex.model.askForExpand(modelIndex)
+            modelIndex = undefined
+            interval = Kirigami.Units.longDuration
+            focusTimer.start()
+        }
+    }
+
     contentItem: ColumnLayout {
         id: column
 
@@ -125,6 +157,25 @@ Kirigami.OverlayDrawer {
                 dialog.open()
             }
         }
+    }
+
+    function askForFocus(modelIndex) {
+        let parentRowsList = []
+        let currentModelIndex = modelIndex
+        while (currentModelIndex.parent.row !== -1) {
+            const nextModelIndex = currentModelIndex.parent
+            parentRowsList.push(nextModelIndex)
+            currentModelIndex = nextModelIndex
+        }
+
+        const firstModelIndex = parentRowsList[parentRowsList.length - 1]
+
+        firstModelIndex.model.askForExpand(firstModelIndex)
+        // This might be the exact same as "firstModelIndex" but is still needed for Category notes
+        timer.modelIndex = parentRowsList[0]
+        timer.start()
+
+        focusTimer.focusModelIndex = modelIndex
     }
 }
 

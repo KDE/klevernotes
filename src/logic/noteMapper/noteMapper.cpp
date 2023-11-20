@@ -44,10 +44,13 @@ QVariant LinkedNoteItem::data(int role) const
 
     case NoteMapper::TitleRole:
         return m_title;
-
-    default:
-        Q_UNREACHABLE();
     }
+    // default Q_UNREACHABLE would crash the app when doing the following :
+    // - be in a note
+    // - click on a group/category
+    // - go back to the same note
+    // => repeater goes crazy and send a role = 0, 2 times for each entry
+    // before going back to normal
     return 0;
 };
 
@@ -282,8 +285,9 @@ void NoteMapper::addNotePaths(const QStringList &linkedNoteInfos)
 {
     Q_ASSERT(linkedNoteInfos.size() % 3 == 0);
 
-    if (linkedNoteInfos == m_previousLinkedNoteInfos)
+    if (linkedNoteInfos == m_previousLinkedNoteInfos) {
         return;
+    }
 
     clear();
     m_previousLinkedNoteInfos = linkedNoteInfos;

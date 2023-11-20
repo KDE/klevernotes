@@ -6,6 +6,7 @@
 #include <QAbstractItemModel>
 #include <QFileInfo>
 #include <memory>
+#include <qabstractitemmodel.h>
 
 class NoteTreeModel;
 class TreeItem
@@ -71,11 +72,12 @@ public:
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void initModel();
+    Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
 
 signals:
     void errorOccurred(const QString &errorMessage);
-    void newGlobalPathFound(const QString &path /* , const QString &displayedPath */);
-    void globalPathUpdated(const QString &oldPath, const QString &newPath /* , const QString &displayedPath */);
+    void newGlobalPathFound(const QString &path);
+    void globalPathUpdated(const QString &oldPath, const QString &newPath);
     void globalPathRemoved(const QString &path);
 
 private:
