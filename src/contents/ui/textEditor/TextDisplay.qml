@@ -18,10 +18,12 @@ RowLayout {
     required property string path
     required property string text
 
+    readonly property Parser parser: parser
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
+    property string defaultHtml
     property string parsedHtml
     property string cssStyle
     property string completCss
@@ -90,9 +92,14 @@ RowLayout {
                 printingPage.pdfPath = root.previewLocation
             }
 
-            onLoadProgressChanged: if (loadProgress === 100 && !root.isInit) {
-                loadStyle()
-                root.isInit = true
+            onLoadProgressChanged: if (loadProgress === 100) {
+                if (!root.isInit) {
+                    loadStyle()
+                    root.isInit = true
+                    updateHtml()
+                }
+
+                scrollToHeader()
             }
 
             onScrollPositionChanged: if (!vbar.active) {
@@ -109,24 +116,26 @@ RowLayout {
                 if (url.startsWith("file:///")) {
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                    const header = notePath.substring(delimiterIndex + 1)
+                    const header = notePath.substring(delimiterIndex + 9)
                     
                     notePath = notePath.substring(0, delimiterIndex)
 
                     const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
                     const sidebar = applicationWindow().globalDrawer
                     const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
-                    sidebar.askForFocus(noteModelIndex)
 
-                    // if headerInfo[1] == 0 => no header
+                    if (noteModelIndex.row !== -1) {
+                        if (header[1] !== 0) parser.headerInfo = headerInfo
+
+                        sidebar.askForFocus(noteModelIndex)
+                    } 
+                    else {
+                        notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
+                        showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
+                    }
                     request.action = WebEngineNavigationRequest.IgnoreRequest
                     return
                 }
-            }
-
-            Component.onCompleted: {
-                let defaultHtml = DocumentHandler.readFile(":/index.html")
-                web_view.loadHtml(defaultHtml, "file:/")
             }
         }
     }
@@ -152,13 +161,14 @@ RowLayout {
     }
 
     function updateHtml() {
-        let defaultHtml = DocumentHandler.readFile(":/index.html")
+        if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
 
         let customHtml = '<style>\n'
             + root.completCss
             + '</style>\n'
             + parsedHtml
-
+        
+        let defaultHtml = root.defaultHtml
         const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
 
         web_view.loadHtml(finishedHtml, "file:/")
@@ -200,5 +210,16 @@ RowLayout {
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
+    }
+
+    function scrollToHeader() {
+        if (parser.headerLevel) {
+            web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
+                if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
+                    web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
+                    parser.headerInfo = ["", 0]
+                }
+            ; })
+        }
     }
 }

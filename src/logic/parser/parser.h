@@ -8,6 +8,7 @@
 #include <QObject>
 #include <QSet>
 #include <QString>
+#include <qobjectdefs.h>
 
 #include "blockLexer.h"
 #include "inlineLexer.h"
@@ -16,6 +17,8 @@ class Parser : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString notePath WRITE setNotePath)
+    Q_PROPERTY(QVariantList headerInfo WRITE setHeaderInfo)
+    Q_PROPERTY(int headerLevel READ headerLevel)
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -23,6 +26,8 @@ public:
 
     QString getNotePath();
     void setNotePath(QString &notePath);
+    void setHeaderInfo(const QVariantList &headerInfo);
+    int headerLevel();
     QPair<QString, bool> sanitizePath(QString path);
 
     QVector<QVariantMap> tokens;
@@ -46,4 +51,8 @@ private:
     QString m_categPath;
 
     QVariantMap m_token;
+
+    // NoteMapper
+    QString m_header;
+    int m_headerLevel;
 };

@@ -475,12 +475,14 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
     auto currentParentItem = m_rootItem.get();
     QModelIndex currentModelIndex;
 
+    bool hasBreak = false;
     for (int i = 0; i < currentParentItem->childCount();) {
         auto currentItem = currentParentItem->child(i);
         QString currentItemPath = currentItem->data(PathRole).toString();
         if (currentItemPath.endsWith(currentPathPart)) {
             currentModelIndex = createIndex(i, 0, currentItem);
             if (currentPathParts.isEmpty()) {
+                hasBreak = true;
                 break;
             } else {
                 currentPathPart = currentPathParts.takeAt(0);
@@ -495,7 +497,7 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
         i++;
     }
 
-    return currentModelIndex;
+    return hasBreak ? currentModelIndex : QModelIndex(); // Easier to handle in qml
 }
 
 // Storage Handler

@@ -121,5 +121,7 @@ GridLayout{
 
     NotesMap {
         id: linkedNotesMap
+
+        parser: display.parser
     }
 }

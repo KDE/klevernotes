@@ -14,6 +14,8 @@ import "qrc:/contents/ui/textEditor/components/"
 Kirigami.OverlaySheet {
     id: noteMap
 
+    required property QtObject parser
+
     title: i18nc("@window:title","Linked notes map")
 
     background: Rectangle {
@@ -57,7 +59,7 @@ Kirigami.OverlaySheet {
 
                 delegate: NotesMapEntry {
                     onClicked: {
-                        // TODO if header exists, scroll to header
+                        if (headerExists) parser.headerInfo = [header, headerLevel]
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
                         sidebar.askForFocus(noteModelIndex)
@@ -79,7 +81,7 @@ Kirigami.OverlaySheet {
                 model: absentLinks 
 
                 delegate: NotesMapEntry {
-                    onClicked: showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exisits", displayedPath))
+                    onClicked: showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", displayedPath))
                 } 
             }
         }

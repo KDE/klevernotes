@@ -61,6 +61,17 @@ QPair<QString, bool> Parser::sanitizePath(QString path)
     return qMakePair(path, true);
 }
 
+void Parser::setHeaderInfo(const QVariantList &headerInfo)
+{
+    m_header = headerInfo[0].toString();
+    m_headerLevel = m_header.isEmpty() ? 0 : headerInfo[1].toInt();
+}
+
+int Parser::headerLevel()
+{
+    return m_headerLevel;
+};
+
 void Parser::setNotePath(QString &notePath)
 {
     if (m_notePath != notePath)
@@ -116,11 +127,16 @@ QString Parser::tok()
     if (type == "heading") {
         text = m_token["text"].toString();
 
+        int level = m_token["depth"].toInt();
+        bool scrollTo = false;
+        if (text == m_header && level == m_headerLevel)
+            scrollTo = true;
+
         outputed = inlineLexer.output(text);
         QString outputedText = inlineLexer.output(text, true);
         QString unescaped = Renderer::unescape(outputedText);
 
-        return Renderer::heading(outputed, m_token["depth"].toInt(), unescaped);
+        return Renderer::heading(outputed, level, unescaped, scrollTo);
     }
 
     if (type == "code") {
