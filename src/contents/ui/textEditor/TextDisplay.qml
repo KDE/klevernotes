@@ -120,7 +120,7 @@ RowLayout {
                 if (url.startsWith("file:///")) {
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                    const header = notePath.substring(delimiterIndex + 9)
+                    const header = notePath.substring(delimiterIndex + 8)
                     
                     notePath = notePath.substring(0, delimiterIndex)
 
