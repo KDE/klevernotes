@@ -16,8 +16,8 @@ class Parser : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString notePath WRITE setNotePath)
-    Q_PROPERTY(QVariantList headerInfo WRITE setHeaderInfo)
-    Q_PROPERTY(int headerLevel READ headerLevel)
+    Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
+    Q_PROPERTY(QString headerLevel READ headerLevel)
     Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
 public:
     explicit Parser(QObject *parent = nullptr);
@@ -32,8 +32,8 @@ public:
     // NoteMapper
     void setNoteMapEnabled(const bool noteMapEnabled);
     bool noteMapEnabled();
-    void setHeaderInfo(const QVariantList &headerInfo);
-    int headerLevel();
+    void setHeaderInfo(const QStringList &headerInfo);
+    QString headerLevel();
     QPair<QString, bool> sanitizePath(QString path);
     void addToLinkedNoteInfos(const QStringList &infos);
     void addToNoteHeaders(const QString &header);
@@ -61,7 +61,7 @@ private:
     QString m_groupPath;
     QString m_categPath;
     QString m_header;
-    int m_headerLevel;
+    QString m_headerLevel;
     bool m_headerFound;
     QStringList m_noteHeaders;
     QStringList m_previousNoteHeaders;

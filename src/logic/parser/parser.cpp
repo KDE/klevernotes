@@ -61,13 +61,13 @@ QPair<QString, bool> Parser::sanitizePath(QString path)
     return qMakePair(path, true);
 }
 
-void Parser::setHeaderInfo(const QVariantList &headerInfo)
+void Parser::setHeaderInfo(const QStringList &headerInfo)
 {
-    m_header = headerInfo[0].toString();
-    m_headerLevel = m_header.isEmpty() ? 0 : headerInfo[1].toInt();
+    m_header = headerInfo[0];
+    m_headerLevel = m_header.isEmpty() ? QStringLiteral("0") : headerInfo[1];
 }
 
-int Parser::headerLevel()
+QString Parser::headerLevel()
 {
     return m_headerLevel;
 };
@@ -125,7 +125,7 @@ QString Parser::parse(QString src)
     }
 
     if (!m_headerFound) { // Prevent the TextDisplay.qml scrollToHeader to search an unexisting header
-        m_headerLevel = 0;
+        m_headerLevel = QStringLiteral("0");
         m_header = QStringLiteral("");
     }
 
@@ -150,7 +150,7 @@ QString Parser::tok()
         text = m_token["text"].toString();
 
         QString level = m_token["depth"].toString();
-        if (text == m_header && level == m_headerLevel)
+        if (text == m_header && level == QString(m_headerLevel))
             m_headerFound = true;
 
         outputed = inlineLexer.output(text);
