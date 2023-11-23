@@ -101,6 +101,7 @@ QString Parser::parse(QString src)
     tokens.clear();
     m_linkedNoteInfos.clear();
     m_noteHeaders.clear();
+    m_headerFound = false;
 
     blockLexer.lex(src);
 
@@ -123,6 +124,11 @@ QString Parser::parse(QString src)
         }
     }
 
+    if (!m_headerFound) { // Prevent the TextDisplay.qml scrollToHeader to search an unexisting header
+        m_headerLevel = 0;
+        m_header = QStringLiteral("");
+    }
+
     return out;
 }
 
@@ -143,16 +149,15 @@ QString Parser::tok()
     if (type == "heading") {
         text = m_token["text"].toString();
 
-        int level = m_token["depth"].toInt();
-        bool scrollTo = false;
+        QString level = m_token["depth"].toString();
         if (text == m_header && level == m_headerLevel)
-            scrollTo = true;
+            m_headerFound = true;
 
         outputed = inlineLexer.output(text);
         QString outputedText = inlineLexer.output(text, true);
         QString unescaped = Renderer::unescape(outputedText);
 
-        return Renderer::heading(outputed, level, unescaped, scrollTo);
+        return Renderer::heading(outputed, level, unescaped, m_headerFound);
     }
 
     if (type == "code") {

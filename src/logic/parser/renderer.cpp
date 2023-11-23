@@ -28,11 +28,10 @@ QString Renderer::html(const QString &html)
     return html;
 }
 
-QString Renderer::heading(const QString &text, int lvl, QString &raw, const bool scrollTo)
+QString Renderer::heading(const QString &text, const QString &lvl, QString &raw, const bool scrollTo)
 {
     QString id = scrollTo ? QString::fromStdString("noteMapperScrollTo") : raw.toLower().replace(QRegularExpression("[^\\w]+"), "-");
-    return "<h" + QString::number(lvl) + QString::fromStdString(" id=\"") + id + QString::fromStdString("\">") + text + "</h" + QString::number(lvl)
-        + QString::fromStdString(">\n");
+    return "<h" + lvl + QString::fromStdString(" id=\"") + id + QString::fromStdString("\">") + text + "</h" + lvl + QString::fromStdString(">\n");
 }
 
 QString Renderer::hr()

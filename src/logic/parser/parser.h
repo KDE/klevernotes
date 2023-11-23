@@ -8,7 +8,6 @@
 #include <QObject>
 #include <QSet>
 #include <QString>
-#include <qobjectdefs.h>
 
 #include "blockLexer.h"
 #include "inlineLexer.h"
@@ -63,6 +62,7 @@ private:
     QString m_categPath;
     QString m_header;
     int m_headerLevel;
+    bool m_headerFound;
     QStringList m_noteHeaders;
     QStringList m_previousNoteHeaders;
     QStringList m_linkedNoteInfos;
