@@ -6,7 +6,6 @@
 #include <QAbstractItemModel>
 #include <QFileInfo>
 #include <memory>
-#include <qabstractitemmodel.h>
 
 class NoteTreeModel;
 class TreeItem
@@ -46,6 +45,7 @@ private:
 class NoteTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
+    Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
 public:
     explicit NoteTreeModel(QObject *parent = nullptr);
 
@@ -74,19 +74,26 @@ public:
     Q_INVOKABLE void initModel();
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
 
+    // NoteMapper
+    void setNoteMapEnabled(const bool noteMapEnabled);
+    bool noteMapEnabled();
     bool isInit();
     void addInitialGlobalPath(const QString &path);
 
 signals:
     void errorOccurred(const QString &errorMessage);
+    // NoteMapper
     void newGlobalPathFound(const QString &path);
     void globalPathUpdated(const QString &oldPath, const QString &newPath);
     void globalPathRemoved(const QString &path);
     void initialGlobalPathsSent(const QStringList &initialGlobalPaths);
 
 private:
+    // NoteMapper
+    bool m_noteMapEnabled;
     bool m_isInit = false;
     QStringList m_initialGlobalPaths;
+
     QString m_path;
     std::unique_ptr<TreeItem> m_rootItem;
     QFileInfo m_fileInfo;

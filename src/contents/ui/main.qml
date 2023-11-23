@@ -14,7 +14,7 @@ Kirigami.ApplicationWindow {
 
     title: i18nc("@title:ApplicationWindow", "KleverNotes")
 
-    property NoteMapper noteMapper: NoteMapper {}
+    readonly property NoteMapper noteMapper: NoteMapper {}
 
     minimumWidth: Kirigami.Units.gridUnit * 25
     minimumHeight: Kirigami.Units.gridUnit * 30
@@ -24,7 +24,7 @@ Kirigami.ApplicationWindow {
         const mainPage = pageStack.get(0)
         const editor = mainPage.editorView.editor
         editor.saveNote(editor.text, editor.path)
-        noteMapper.saveMap()
+        if (Config.noteMapEnabled) noteMapper.saveMap()
     }
 
     onWidthChanged: saveWindowGeometryTimer.restart()

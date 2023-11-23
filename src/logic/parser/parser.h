@@ -19,6 +19,7 @@ class Parser : public QObject
     Q_PROPERTY(QString notePath WRITE setNotePath)
     Q_PROPERTY(QVariantList headerInfo WRITE setHeaderInfo)
     Q_PROPERTY(int headerLevel READ headerLevel)
+    Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -26,18 +27,20 @@ public:
 
     QString getNotePath();
     void setNotePath(QString &notePath);
-    void setHeaderInfo(const QVariantList &headerInfo);
-    int headerLevel();
-    QPair<QString, bool> sanitizePath(QString path);
-
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
 
     // NoteMapper
+    void setNoteMapEnabled(const bool noteMapEnabled);
+    bool noteMapEnabled();
+    void setHeaderInfo(const QVariantList &headerInfo);
+    int headerLevel();
+    QPair<QString, bool> sanitizePath(QString path);
     void addToLinkedNoteInfos(const QStringList &infos);
     void addToNoteHeaders(const QString &header);
 
 signals:
+    // NoteMapper
     void newLinkedNotesPaths(const QStringList &notePathHeaderPairs);
     void noteHeadersSent(const QString notePath, const QStringList &noteHeaders);
 
@@ -51,13 +54,13 @@ private:
     InlineLexer inlineLexer = InlineLexer(this);
 
     QString m_notePath;
-    QString m_mapperNotePath;
-    QString m_groupPath;
-    QString m_categPath;
-
     QVariantMap m_token;
 
     // NoteMapper
+    bool m_noteMapEnabled;
+    QString m_mapperNotePath;
+    QString m_groupPath;
+    QString m_categPath;
     QString m_header;
     int m_headerLevel;
     QStringList m_noteHeaders;

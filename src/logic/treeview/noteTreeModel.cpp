@@ -58,7 +58,7 @@ TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *m
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
-    if (item->m_depth_level == 3) {
+    if (item->m_depth_level == 3 && m_model->noteMapEnabled()) {
         // very important to make a copy here !
         QString path = QString(item->m_path).remove(KleverConfig::storagePath());
         if (m_model->isInit()) {
@@ -182,7 +182,8 @@ void TreeItem::remove()
 {
     Q_ASSERT(m_parentItem);
 
-    Q_EMIT m_model->globalPathRemoved(m_path);
+    if (m_model->noteMapEnabled())
+        Q_EMIT m_model->globalPathRemoved(m_path);
 
     const auto it = std::find_if(m_parentItem->m_childItems.cbegin(), m_parentItem->m_childItems.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
         return treeItem.get() == const_cast<TreeItem *>(this);
@@ -201,7 +202,7 @@ void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModel
     currentPathParts[newPartIdx] = newPart;
 
     QString newPath = currentPathParts.join("/");
-    if (m_depth_level == 3) {
+    if (m_depth_level == 3 && m_model->noteMapEnabled()) {
         Q_EMIT m_model->globalPathUpdated(m_path, newPath);
     }
     m_path = newPath;
@@ -295,8 +296,10 @@ void NoteTreeModel::initModel()
     m_rootItem = std::make_unique<TreeItem>(KleverConfig::storagePath(), 0, this);
     endResetModel();
 
-    m_isInit = true;
-    Q_EMIT initialGlobalPathsSent(m_initialGlobalPaths);
+    if (m_noteMapEnabled) {
+        m_isInit = true;
+        Q_EMIT initialGlobalPathsSent(m_initialGlobalPaths);
+    }
 }
 
 
@@ -506,7 +509,16 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
     return hasBreak ? currentModelIndex : QModelIndex(); // Easier to handle in qml
 }
 
-// For mapper
+// NoteMapper
+void NoteTreeModel::setNoteMapEnabled(const bool noteMapEnabled)
+{
+    m_noteMapEnabled = noteMapEnabled;
+}
+
+bool NoteTreeModel::noteMapEnabled()
+{
+    return m_noteMapEnabled;
+}
 
 bool NoteTreeModel::isInit()
 {

@@ -117,31 +117,33 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         }
 
         // wikilink
-        cap = inline_wikilink.match(src);
-        if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
-            if (!cap.captured(1).trimmed().isEmpty()) {
-                href = cap.captured(1).trimmed();
-                QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
+        if (m_parser->noteMapEnabled()) {
+            cap = inline_wikilink.match(src);
+            if (cap.hasMatch()) {
+                src.replace(cap.capturedStart(), cap.capturedLength(), "");
+                if (!cap.captured(1).trimmed().isEmpty()) {
+                    href = cap.captured(1).trimmed();
+                    QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
 
-                cap3 = cap.captured(3).trimmed();
+                    cap3 = cap.captured(3).trimmed();
 
-                bool hasPipe = !cap.captured(4).isEmpty();
+                    bool hasPipe = !cap.captured(4).isEmpty();
 
-                QString potentitalTitle = cap.captured(5).trimmed();
-                title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
+                    QString potentitalTitle = cap.captured(5).trimmed();
+                    title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
-                if (sanitizedHref.second) {
-                    m_parser->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
-                    // This hopefuly, is enough to separate the 2 without collinding with user input
-                    QString fullLink = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
-                    out += Renderer::wikilink(fullLink, title, title);
-                    continue;
+                    if (sanitizedHref.second) {
+                        m_parser->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
+                        // This hopefuly, is enough to separate the 2 without collinding with user input
+                        QString fullLink = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
+                        out += Renderer::wikilink(fullLink, title, title);
+                        continue;
+                    }
                 }
+                // Not a note path
+                out += Renderer::paragraph(cap.captured(0));
+                continue;
             }
-            // Not a note path
-            out += Renderer::paragraph(cap.captured(0));
-            continue;
         }
 
         // reflink, nolink

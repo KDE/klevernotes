@@ -93,6 +93,8 @@ Kirigami.OverlayDrawer {
             sourceModel: NoteTreeModel {
                 id: noteTreeModel
 
+                noteMapEnabled: Config.noteMapEnabled
+
                 onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path)
                 onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath)
                 onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)

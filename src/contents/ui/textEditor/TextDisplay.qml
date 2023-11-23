@@ -19,6 +19,7 @@ RowLayout {
     required property string text
 
     readonly property Parser parser: parser
+    readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
@@ -48,9 +49,11 @@ RowLayout {
         parser.notePath = path
     }
 
-    onTextChanged: {
-        parsedHtml = parser.parse(text)
-        updateHtml()
+    onTextChanged: root.parseText()
+
+    onNoteMapEnabledChanged: {
+        parser.noteMapEnabled = noteMapEnabled
+        root.parseText()
     }
 
     onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle({})
@@ -173,6 +176,11 @@ RowLayout {
         const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
 
         web_view.loadHtml(finishedHtml, "file:/")
+    }
+
+    function parseText() {
+        parsedHtml = parser.parse(text)
+        updateHtml()
     }
 
     function changeStyle(styleDict: Object) {

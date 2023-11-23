@@ -77,6 +77,10 @@ void Parser::setNotePath(QString &notePath)
     if (m_notePath != notePath)
         m_notePath = notePath;
 
+    // We do this here because we're sure to be in another note
+    m_previousLinkedNoteInfos.clear();
+    m_previousNoteHeaders.clear();
+
     m_mapperNotePath = notePath.remove(KleverConfig::storagePath()).chopped(1);
     QString groupPath(m_mapperNotePath);
     groupPath.chop(groupPath.size() - groupPath.lastIndexOf("/"));
@@ -107,14 +111,16 @@ QString Parser::parse(QString src)
         out += tok();
     }
 
-    // We try to not spam with signals
-    if (m_linkedNoteInfos != m_previousLinkedNoteInfos) {
-        m_previousLinkedNoteInfos = m_linkedNoteInfos;
-        Q_EMIT newLinkedNotesPaths(m_linkedNoteInfos);
-    }
-    if (m_noteHeaders != m_previousNoteHeaders) {
-        m_previousNoteHeaders = m_noteHeaders;
-        Q_EMIT noteHeadersSent(m_mapperNotePath, m_noteHeaders);
+    if (KleverConfig::noteMapEnabled()) {
+        // We try to not spam with signals
+        if (m_linkedNoteInfos != m_previousLinkedNoteInfos) {
+            m_previousLinkedNoteInfos = m_linkedNoteInfos;
+            Q_EMIT newLinkedNotesPaths(m_linkedNoteInfos);
+        }
+        if (m_noteHeaders != m_previousNoteHeaders) {
+            m_previousNoteHeaders = m_noteHeaders;
+            Q_EMIT noteHeadersSent(m_mapperNotePath, m_noteHeaders);
+        }
     }
 
     return out;
@@ -295,4 +301,14 @@ void Parser::addToLinkedNoteInfos(const QStringList &infos)
 void Parser::addToNoteHeaders(const QString &header)
 {
     m_noteHeaders.append(header);
+}
+
+void Parser::setNoteMapEnabled(const bool noteMapEnabled)
+{
+    m_noteMapEnabled = noteMapEnabled;
+}
+
+bool Parser::noteMapEnabled()
+{
+    return m_noteMapEnabled;
 }

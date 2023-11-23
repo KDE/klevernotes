@@ -90,6 +90,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::viewCodeColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::noteMapEnabledChanged, config, &KleverConfig::save);
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 

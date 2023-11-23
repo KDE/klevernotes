@@ -67,5 +67,11 @@
             <label>Whether or not the warning message for pdf background should be hidden</label>
             <default>false</default>
         </entry>
+
+<!-- TODO: make different groups -->
+        <entry name="noteMapEnabled" type="Bool">
+            <label>Whether or not the note map is enable</label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>

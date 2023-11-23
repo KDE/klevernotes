@@ -77,7 +77,10 @@ void BlockLexer::tokenize(QString &remaining, bool top)
         cap = block_heading.match(remaining);
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), "");
-            m_parser->addToNoteHeaders(cap.captured().trimmed());
+
+            if (m_parser->noteMapEnabled()) {
+                m_parser->addToNoteHeaders(cap.captured(0).trimmed());
+            }
 
             QVariantMap tok{{"type", "heading"}, {"depth", cap.capturedLength(1)}, {"text", cap.captured(2)}};
             m_parser->tokens.append(tok);
