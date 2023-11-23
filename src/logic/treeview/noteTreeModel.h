@@ -74,13 +74,19 @@ public:
     Q_INVOKABLE void initModel();
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
 
+    bool isInit();
+    void addInitialGlobalPath(const QString &path);
+
 signals:
     void errorOccurred(const QString &errorMessage);
     void newGlobalPathFound(const QString &path);
     void globalPathUpdated(const QString &oldPath, const QString &newPath);
     void globalPathRemoved(const QString &path);
+    void initialGlobalPathsSent(const QStringList &initialGlobalPaths);
 
 private:
+    bool m_isInit = false;
+    QStringList m_initialGlobalPaths;
     QString m_path;
     std::unique_ptr<TreeItem> m_rootItem;
     QFileInfo m_fileInfo;

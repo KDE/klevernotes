@@ -2,9 +2,11 @@
     SPDX-License-Identifier: GPL-2.0-or-later
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
+
 #include "noteMapper.h"
 #include "kleverconfig.h"
 #include <QDebug>
+#include <QJsonArray>
 
 LinkedNoteItem::LinkedNoteItem(const QString &path,
                                const QString &exists,
@@ -80,6 +82,41 @@ void LinkedNoteItem::updateHeaderExists(const bool exists)
 NoteMapper::NoteMapper(QObject *parent)
     : QAbstractItemModel(parent)
 {
+    QString mapPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
+    convertSavedMap(m_documentHandler->getSavedMap(mapPath));
+}
+
+void NoteMapper::convertSavedMap(const QJsonObject &savedMap)
+{
+    QString path;
+    QJsonArray headersJson;
+    QString header;
+    for (auto jsonIter = savedMap.begin(); jsonIter != savedMap.end(); jsonIter++) {
+        path = jsonIter.key();
+        headersJson = jsonIter.value().toArray();
+        QStringList headers;
+        for (auto headersIter = headersJson.begin(); headersIter != headersJson.end(); headersIter++) {
+            header = headersIter->toString();
+            headers.append(header);
+        }
+        m_savedMap.insert(path, headers);
+    }
+}
+
+void NoteMapper::saveMap()
+{
+    QJsonObject map;
+    QVariantMap vmap;
+
+    QMapIterator<QString, QStringList> i(m_existsMap);
+    while (i.hasNext()) {
+        i.next();
+        vmap.insert(i.key(), i.value());
+    }
+
+    QJsonObject json = QJsonObject::fromVariantMap(vmap);
+    QString savingPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
+    m_documentHandler->saveMap(json, savingPath);
 }
 
 QModelIndex NoteMapper::index(int row, int column, const QModelIndex &parent) const
@@ -135,7 +172,7 @@ void NoteMapper::clear()
     m_existingLinkedNoteInfos.clear();
 }
 
-void NoteMapper::addRow(const QString &path, QString &header, const QString &title)
+void NoteMapper::addRow(const QString &path, const QString &header, const QString &title)
 {
     std::tuple<QString, QString, QString> linkedNoteInfo = {path, header, title};
     if (m_existingLinkedNoteInfos.find(linkedNoteInfo) != m_existingLinkedNoteInfos.cend()) // Can't use .contains (C++ 20)
@@ -143,22 +180,31 @@ void NoteMapper::addRow(const QString &path, QString &header, const QString &tit
 
     m_existingLinkedNoteInfos.insert(linkedNoteInfo);
 
-    QString exists;
+    int headerLevel = 0;
     bool headerExists = false;
+    QString cleanedHeader(header);
+    QString exists = QStringLiteral("No");
     if (m_treeViewPaths.contains(path)) {
         exists = QStringLiteral("Yes");
-        if (!header.isEmpty()) {
-            cleanHeader(header);
-            QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
-            headerExists = m_headerChecker->readFile(filePath, header) == QStringLiteral("true");
+
+        if (!cleanedHeader.isEmpty()) {
+            cleanHeader(cleanedHeader);
+
+            if (m_existsMap.contains(path)) {
+                headerExists = m_existsMap[path].contains(cleanedHeader);
+            } else {
+                QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
+                headerExists = m_documentHandler->readFile(filePath, cleanedHeader) == QStringLiteral("true");
+                if (headerExists) {
+                    QStringList headers(cleanedHeader);
+                    m_existsMap.insert(path, headers);
+                }
+            }
+            headerLevel = getHeaderLevel(cleanedHeader);
         }
-    } else {
-        exists = QStringLiteral("No");
     }
 
-    int headerLevel = getHeaderLevel(header);
-
-    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, header, headerExists, headerLevel, title);
+    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, cleanedHeader, headerExists, headerLevel, title);
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
@@ -218,6 +264,18 @@ QVariantList NoteMapper::getCleanedHeaderAndLevel(QString header)
 }
 
 // Treeview
+void NoteMapper::addInitialGlobalPaths(const QStringList &paths)
+{
+    for (const auto &path : paths) {
+        m_treeViewPaths.insert(path);
+
+        if (m_savedMap.contains(path)) {
+            m_existsMap.insert(path, m_savedMap.take(path));
+        }
+    }
+    m_savedMap.clear(); // No need to preserve the rest
+}
+
 void NoteMapper::addGlobalPath(const QString &path)
 {
     m_treeViewPaths.insert(path);
@@ -238,6 +296,9 @@ void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath
 {
     if (!m_treeViewPaths.remove(oldPath))
         return;
+
+    if (m_existsMap.contains(oldPath))
+        m_existsMap.insert(newPath, m_existsMap.take(oldPath));
 
     m_treeViewPaths.insert(newPath);
     for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
@@ -265,6 +326,8 @@ void NoteMapper::removeGlobalPath(const QString &path)
     if (!m_treeViewPaths.contains(path))
         return;
 
+    m_existsMap.remove(path);
+
     m_treeViewPaths.erase(m_treeViewPaths.find(path));
 
     for (auto it = m_list.cbegin(); it != m_list.cend();) {
@@ -285,14 +348,14 @@ void NoteMapper::addNotePaths(const QStringList &linkedNoteInfos)
 {
     Q_ASSERT(linkedNoteInfos.size() % 3 == 0);
 
-    if (linkedNoteInfos == m_previousLinkedNoteInfos) {
-        return;
-    }
-
     clear();
-    m_previousLinkedNoteInfos = linkedNoteInfos;
 
-    for (int i = 0; i < m_previousLinkedNoteInfos.size(); i += 3) {
-        addRow(m_previousLinkedNoteInfos[i], m_previousLinkedNoteInfos[i + 1], m_previousLinkedNoteInfos[i + 2]);
+    for (int i = 0; i < linkedNoteInfos.size(); i += 3) {
+        addRow(linkedNoteInfos[i], linkedNoteInfos[i + 1], linkedNoteInfos[i + 2]);
     }
+}
+
+void NoteMapper::updatePathInfo(const QString &path, const QStringList &headers)
+{
+    m_existsMap[path] = headers;
 }

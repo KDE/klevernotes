@@ -24,6 +24,7 @@ Kirigami.ApplicationWindow {
         const mainPage = pageStack.get(0)
         const editor = mainPage.editorView.editor
         editor.saveNote(editor.text, editor.path)
+        noteMapper.saveMap()
     }
 
     onWidthChanged: saveWindowGeometryTimer.restart()

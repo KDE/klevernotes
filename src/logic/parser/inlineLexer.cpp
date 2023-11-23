@@ -132,9 +132,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                 title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
                 if (sanitizedHref.second) {
-                    m_parser->linkedNoteInfos.append(sanitizedHref.first);
-                    m_parser->linkedNoteInfos.append(cap3);
-                    m_parser->linkedNoteInfos.append(title);
+                    m_parser->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
                     // This hopefuly, is enough to separate the 2 without collinding with user input
                     QString fullLink = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
                     out += Renderer::wikilink(fullLink, title, title);

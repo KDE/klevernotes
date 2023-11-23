@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
+#include <QJsonObject>
 #include <QObject>
 #include <QUrl>
 
@@ -15,4 +16,7 @@ public:
     Q_INVOKABLE QString readFile(const QString &path, const QString checkFor = QStringLiteral("")) const;
     Q_INVOKABLE void writeFile(const QString &note, const QString &path);
     Q_INVOKABLE QString getCssStyle(const QString &path) const;
+
+    QJsonObject getSavedMap(const QString &mapPath);
+    bool saveMap(const QJsonObject &map, const QString &path);
 };

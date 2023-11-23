@@ -16,7 +16,7 @@ import org.kde.kirigami 2.5 as Kirigami
 import org.kde.Klever 1.0
 
 Kirigami.OverlayDrawer {
-    id:drawer
+    id: drawer
 
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property NoteTreeModel treeModel: treeview.model
@@ -96,6 +96,7 @@ Kirigami.OverlayDrawer {
                 onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path)
                 onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath)
                 onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
+                onInitialGlobalPathsSent: drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
                 onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
             }
 

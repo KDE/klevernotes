@@ -32,10 +32,14 @@ public:
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
-    QStringList linkedNoteInfos;
+
+    // NoteMapper
+    void addToLinkedNoteInfos(const QStringList &infos);
+    void addToNoteHeaders(const QString &header);
 
 signals:
     void newLinkedNotesPaths(const QStringList &notePathHeaderPairs);
+    void noteHeadersSent(const QString notePath, const QStringList &noteHeaders);
 
 private:
     QString tok();
@@ -47,6 +51,7 @@ private:
     InlineLexer inlineLexer = InlineLexer(this);
 
     QString m_notePath;
+    QString m_mapperNotePath;
     QString m_groupPath;
     QString m_categPath;
 
@@ -55,4 +60,8 @@ private:
     // NoteMapper
     QString m_header;
     int m_headerLevel;
+    QStringList m_noteHeaders;
+    QStringList m_previousNoteHeaders;
+    QStringList m_linkedNoteInfos;
+    QStringList m_previousLinkedNoteInfos;
 };

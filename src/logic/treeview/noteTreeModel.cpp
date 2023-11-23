@@ -10,7 +10,6 @@
 #include <QIcon>
 #include <klocalizedstring.h>
 #include <memory>
-#include <qabstractitemmodel.h>
 
 TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -62,7 +61,11 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
     if (item->m_depth_level == 3) {
         // very important to make a copy here !
         QString path = QString(item->m_path).remove(KleverConfig::storagePath());
-        Q_EMIT m_model->newGlobalPathFound(path);
+        if (m_model->isInit()) {
+            Q_EMIT m_model->newGlobalPathFound(path);
+        } else {
+            m_model->addInitialGlobalPath(path);
+        }
     }
     m_childItems.push_back(std::move(item));
 }
@@ -291,6 +294,9 @@ void NoteTreeModel::initModel()
     beginResetModel();
     m_rootItem = std::make_unique<TreeItem>(KleverConfig::storagePath(), 0, this);
     endResetModel();
+
+    m_isInit = true;
+    Q_EMIT initialGlobalPathsSent(m_initialGlobalPaths);
 }
 
 
@@ -498,6 +504,18 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
     }
 
     return hasBreak ? currentModelIndex : QModelIndex(); // Easier to handle in qml
+}
+
+// For mapper
+
+bool NoteTreeModel::isInit()
+{
+    return m_isInit;
+}
+
+void NoteTreeModel::addInitialGlobalPath(const QString &path)
+{
+    m_initialGlobalPaths.append(path);
 }
 
 // Storage Handler

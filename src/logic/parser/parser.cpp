@@ -77,11 +77,12 @@ void Parser::setNotePath(QString &notePath)
     if (m_notePath != notePath)
         m_notePath = notePath;
 
-    notePath.remove(KleverConfig::storagePath()).chop(1); // remove the useless ending "/"
-    notePath.chop(notePath.size() - notePath.lastIndexOf("/"));
-    if (m_groupPath != notePath) {
-        m_groupPath = notePath + "/";
-        m_categPath = notePath.chopped(notePath.size() - notePath.lastIndexOf("/") - 1);
+    m_mapperNotePath = notePath.remove(KleverConfig::storagePath()).chopped(1);
+    QString groupPath(m_mapperNotePath);
+    groupPath.chop(groupPath.size() - groupPath.lastIndexOf("/"));
+    if (m_groupPath != groupPath) {
+        m_groupPath = groupPath + "/";
+        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf("/") - 1);
     }
 }
 
@@ -94,7 +95,8 @@ QString Parser::parse(QString src)
 {
     links.clear();
     tokens.clear();
-    linkedNoteInfos.clear();
+    m_linkedNoteInfos.clear();
+    m_noteHeaders.clear();
 
     blockLexer.lex(src);
 
@@ -105,7 +107,15 @@ QString Parser::parse(QString src)
         out += tok();
     }
 
-    Q_EMIT newLinkedNotesPaths(linkedNoteInfos);
+    // We try to not spam with signals
+    if (m_linkedNoteInfos != m_previousLinkedNoteInfos) {
+        m_previousLinkedNoteInfos = m_linkedNoteInfos;
+        Q_EMIT newLinkedNotesPaths(m_linkedNoteInfos);
+    }
+    if (m_noteHeaders != m_previousNoteHeaders) {
+        m_previousNoteHeaders = m_noteHeaders;
+        Q_EMIT noteHeadersSent(m_mapperNotePath, m_noteHeaders);
+    }
 
     return out;
 }
@@ -275,4 +285,14 @@ bool Parser::getNextToken()
 QString Parser::peekType()
 {
     return (!tokens.isEmpty()) ? tokens.last()["type"].toString() : "";
+}
+
+void Parser::addToLinkedNoteInfos(const QStringList &infos)
+{
+    m_linkedNoteInfos.append(infos);
+}
+
+void Parser::addToNoteHeaders(const QString &header)
+{
+    m_noteHeaders.append(header);
 }

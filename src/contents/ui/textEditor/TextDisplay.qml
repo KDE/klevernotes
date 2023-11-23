@@ -60,6 +60,7 @@ RowLayout {
         id: parser
 
         onNewLinkedNotesPaths: noteMapper.addNotePaths(notePathHeaderPairs)
+        onNoteHeadersSent: noteMapper.updatePathInfo(notePath, noteHeaders)
     }
 
     Kirigami.Card{

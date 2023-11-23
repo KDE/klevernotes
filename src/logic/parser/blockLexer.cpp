@@ -10,7 +10,6 @@
 #include <QString>
 
 #include "parser.h"
-#include "renderer.h"
 
 BlockLexer::BlockLexer(Parser *parser)
     : m_parser(parser)
@@ -78,6 +77,7 @@ void BlockLexer::tokenize(QString &remaining, bool top)
         cap = block_heading.match(remaining);
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), "");
+            m_parser->addToNoteHeaders(cap.captured().trimmed());
 
             QVariantMap tok{{"type", "heading"}, {"depth", cap.capturedLength(1)}, {"text", cap.captured(2)}};
             m_parser->tokens.append(tok);

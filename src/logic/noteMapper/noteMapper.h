@@ -8,7 +8,6 @@
 #include <QAbstractItemModel>
 #include <QSet>
 #include <memory>
-#include <qobjectdefs.h>
 #include <set>
 
 class LinkedNoteItem
@@ -63,29 +62,35 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     void clear();
-    void addRow(const QString &path, QString &header, const QString &title);
+    void addRow(const QString &path, const QString &header, const QString &title);
 
     Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(QString header);
+    Q_INVOKABLE void saveMap();
 
     // Treeview
+    Q_INVOKABLE void addInitialGlobalPaths(const QStringList &paths);
     Q_INVOKABLE void addGlobalPath(const QString &path);
     Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath);
     Q_INVOKABLE void removeGlobalPath(const QString &path);
 
     // Parser
     Q_INVOKABLE void addNotePaths(const QStringList &linkedNoteInfos);
+    Q_INVOKABLE void updatePathInfo(const QString &path, const QStringList &headers);
 
 private:
     int getHeaderLevel(QString &header); // We also want to trim the "#" from header
     void cleanHeader(QString &header);
+
+    QMap<QString, QStringList> m_existsMap;
+    QMap<QString, QStringList> m_savedMap;
+    void convertSavedMap(const QJsonObject &savedMap);
+
+    // Model
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;
     std::set<std::tuple<QString, QString, QString>> m_existingLinkedNoteInfos; // Avoid duplicating entries
-
-    // Parser
-    QStringList m_previousLinkedNoteInfos; // Stored to avoid unnecessary looping
 
     // Treeview
     QSet<QString> m_treeViewPaths;
 
-    DocumentHandler *m_headerChecker = new DocumentHandler;
+    DocumentHandler *m_documentHandler = new DocumentHandler;
 };

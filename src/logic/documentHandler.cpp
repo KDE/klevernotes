@@ -4,9 +4,9 @@
 #include "documentHandler.h"
 #include <QDebug>
 #include <QFile>
+#include <QJsonDocument>
 #include <QString>
 #include <QTextStream>
-#include <qstringliteral.h>
 
 DocumentHandler::DocumentHandler(QObject *parent)
     : QObject(parent)
@@ -61,4 +61,32 @@ QString DocumentHandler::getCssStyle(const QString& path) const
     }
 
     return style;
+}
+
+// TODO use those method for the todoHandler
+bool DocumentHandler::saveMap(const QJsonObject &map, const QString &path)
+{
+    QJsonDocument doc = QJsonDocument(map);
+
+    QFile file(path);
+    if (file.open(QIODevice::WriteOnly)) {
+        if (file.write(doc.toJson()) < 0)
+            return false;
+        file.close();
+        return true;
+    }
+
+    return false;
+}
+
+QJsonObject DocumentHandler::getSavedMap(const QString &mapPath)
+{
+    QFile file(mapPath);
+
+    QJsonObject json;
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        json = QJsonDocument::fromJson(file.readAll()).object();
+        file.close();
+    }
+    return json;
 }
