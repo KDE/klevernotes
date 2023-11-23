@@ -124,7 +124,10 @@ Kirigami.OverlayDrawer {
 
             Layout.alignment:Qt.AlignBottom
 
-            onClicked: applicationWindow().showCheatSheet()
+            onClicked: {
+                applicationWindow().showCheatSheet()
+                if (drawer.modal) drawer.close()
+            }
         }
 
         Kirigami.BasicListItem {

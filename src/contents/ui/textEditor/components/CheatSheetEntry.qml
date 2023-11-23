@@ -13,36 +13,23 @@ FormCard.AbstractFormDelegate {
     required property string element
     required property string syntax
 
-    width: parent.width
-
-    contentItem: GridLayout {
-        flow: root.width > Kirigami.Units.gridUnit * 28
-            ? GridLayout.LeftToRight
-            : GridLayout.TopToBottom
-
-        rowSpacing: root.width > Kirigami.Units.gridUnit * 28
-            ? 0
-            : Kirigami.Units.largeSpacing
-
-        columnSpacing: root.width > Kirigami.Units.gridUnit * 28
-            ? Kirigami.Units.largeSpacing
-            : 0
-
+    contentItem: ColumnLayout {
+        spacing: Kirigami.Units.largeSpacing
 
         Controls.Label {
             text: root.element
             textFormat: Text.RichText
-            Layout.preferredWidth: root.width / (root.width > Kirigami.Units.gridUnit * 28 ? 2 : 1) 
+            Layout.fillWidth: true
         }
 
         Kirigami.Separator {
-            Layout.preferredWidth: root.width <= Kirigami.Units.gridUnit * 28 ? root.width - Kirigami.Units.gridUnit * 2 : 1 
-            Layout.fillHeight: root.width > Kirigami.Units.gridUnit * 28
+            Layout.preferredWidth: root.width - Kirigami.Units.gridUnit * 4
         }
 
         Controls.Label {
             text: root.syntax
-            Layout.preferredWidth: root.width / (root.width > Kirigami.Units.gridUnit * 28 ? 2 : 1)  
+            elide: Text.ElideMiddle
+            Layout.fillWidth: true
         }
     }
 }
