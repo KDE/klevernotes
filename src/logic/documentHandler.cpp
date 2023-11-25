@@ -13,27 +13,19 @@ DocumentHandler::DocumentHandler(QObject *parent)
 {
 }
 
-QString DocumentHandler::readFile(const QString &path, const QString checkFor) const
+QString DocumentHandler::readFile(const QString &path) const
 {
     QFile file(path);
-    bool needCheck = !checkFor.isEmpty();
 
-    QString line("\n");
+    QString line("\n"); // The parser will still receive something even if the file is empty
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream stream(&file);
         while (!stream.atEnd()) {
-            QString currentLine = stream.readLine();
-            if (needCheck) {
-                if (currentLine.trimmed() == checkFor) {
-                    line += QStringLiteral("true\n");
-                    break;
-                }
-            } else {
-                line.append(currentLine + "\n");
-            }
+            line.append(stream.readLine() + "\n");
         }
         if (line.length() > 3)
             line.remove(line.length() - 1, 1); // Remove the last \n
+
         if (line.length() > 3)
             line.remove(0, 1); // Remove the first \n
     }
@@ -61,6 +53,26 @@ QString DocumentHandler::getCssStyle(const QString& path) const
     }
 
     return style;
+}
+
+bool DocumentHandler::checkForHeader(const QString &path, const QString &header)
+{
+    QFile file(path);
+    if (header.isEmpty())
+        return false;
+
+    bool found = false;
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream stream(&file);
+        while (!stream.atEnd()) {
+            if (stream.readLine().trimmed() == header) {
+                found = true;
+                break;
+            }
+        }
+    }
+    file.close();
+    return found;
 }
 
 // TODO use those method for the todoHandler

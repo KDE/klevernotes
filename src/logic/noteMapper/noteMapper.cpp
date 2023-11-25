@@ -5,6 +5,7 @@
 
 #include "noteMapper.h"
 #include "kleverconfig.h"
+#include "noteMapperUtils.h"
 #include <QDebug>
 #include <QJsonArray>
 
@@ -59,14 +60,15 @@ QVariant LinkedNoteItem::data(int role) const
 void LinkedNoteItem::updatePath(const QString &path)
 {
     m_path = path;
-    QString toDisplay(path);
-    setDisplayPath(toDisplay);
+    setDisplayPath(path);
 }
 
 void LinkedNoteItem::setDisplayPath(const QString &path)
 {
     auto newPath = path;
     newPath.replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
+    m_displayPath = newPath;
+}
 
 void LinkedNoteItem::updateExists(const QString &exists)
 {
@@ -113,8 +115,8 @@ void NoteMapper::saveMap()
         vmap.insert(i.key(), i.value());
     }
 
-    QJsonObject json = QJsonObject::fromVariantMap(vmap);
-    QString savingPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
+    const QJsonObject json = QJsonObject::fromVariantMap(vmap);
+    const QString savingPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
     m_documentHandler->saveMap(json, savingPath);
 }
 
@@ -179,87 +181,43 @@ void NoteMapper::addRow(const QString &path, const QString &header, const QStrin
 
     m_existingLinkedNoteInfos.insert(linkedNoteInfo);
 
-    int headerLevel = 0;
     bool headerExists = false;
-    QString cleanedHeader(header);
-    QString exists = QStringLiteral("No");
+    const QString cleanedHeader = NoteMapperUtils::cleanHeader(header); // The header is trimmed by default, see inlineLexer wikilink => captured(3).trimmed
+    const int headerLevel = NoteMapperUtils::headerLevel(cleanedHeader);
+    const QString headerText = NoteMapperUtils::headerText(cleanedHeader);
+
+    QString exists = QStringLiteral("No"); // Not a bool because used for KSortFilterProxyModel filterString
     if (m_treeViewPaths.contains(path)) {
         exists = QStringLiteral("Yes");
 
-        if (!cleanedHeader.isEmpty()) {
-            cleanHeader(cleanedHeader);
-
+        if (!headerText.isEmpty()) {
             if (m_existsMap.contains(path)) {
                 headerExists = m_existsMap[path].contains(cleanedHeader);
             } else {
-                QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
-                headerExists = m_documentHandler->readFile(filePath, cleanedHeader) == QStringLiteral("true");
+                const QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
+                headerExists = m_documentHandler->checkForHeader(filePath, cleanedHeader);
                 if (headerExists) {
-                    QStringList headers(cleanedHeader);
+                    const QStringList headers(cleanedHeader);
                     m_existsMap.insert(path, headers);
                 }
             }
-            headerLevel = getHeaderLevel(cleanedHeader);
         }
     }
 
-    const auto newRow = std::make_unique<LinkedNoteItem>(path, exists, cleanedHeader, headerExists, headerLevel, title);
+    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, headerText, headerExists, headerLevel, title); // making it a const prevent std::move
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
     endInsertRows();
 }
 
-int NoteMapper::getHeaderLevel(QString &header)
+QVariantList NoteMapper::getCleanedHeaderAndLevel(const QString &header)
 {
-    int level = 0;
+    const QString cleanedHeader = NoteMapperUtils::cleanHeader(header);
+    const int headerLevel = NoteMapperUtils::headerLevel(cleanedHeader);
+    const QString headerText = NoteMapperUtils::headerText(cleanedHeader);
 
-    while (!header.isEmpty() && header[0] == QStringLiteral("#")) {
-        header.remove(0, 1);
-        level++;
-        if (level == 6)
-            break;
-    }
-
-    header = header.trimmed(); // There's a space between the '#' and the header text
-    return level;
-}
-
-void NoteMapper::cleanHeader(QString &header)
-{
-    // Note: This receive a trimmed string
-    QString space = QStringLiteral(" ");
-    QString hashtag = QStringLiteral("#");
-    if (!header.isEmpty() && !header.startsWith(hashtag)) {
-        header = hashtag + space + header;
-        return;
-    }
-
-    int strSize = header.size();
-    for (int i = 0; i < strSize; i++) {
-        if (i > 6 && header[i] != space) { // case: ######something
-            header = hashtag.repeated(6) + space + header.remove(0, 6);
-            return;
-        }
-
-        if (header[i] != hashtag) { // case: ####something ; #### something
-            if (header[i] != space) { // Combaning the ifs would exclude second case on return
-                header = hashtag.repeated(i) + space + header.remove(0, i);
-            }
-            return;
-        }
-    }
-
-    // The header was just a maximum of 6 concatenated '#'
-    header = QStringLiteral("");
-}
-
-QVariantList NoteMapper::getCleanedHeaderAndLevel(QString header)
-{
-    cleanHeader(header);
-    int headerLevel = getHeaderLevel(header);
-
-    return {header, headerLevel};
+    return {headerText, headerLevel};
 }
 
 // Treeview
@@ -280,7 +238,7 @@ void NoteMapper::addGlobalPath(const QString &path)
     m_treeViewPaths.insert(path);
 
     for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
-        auto child = static_cast<LinkedNoteItem *>(it->get());
+        const auto child = static_cast<LinkedNoteItem *>(it->get());
 
         if (child->data(PathRole).toString() == path && child->data(ExistsRole) != QStringLiteral("Yes")) {
             child->updateExists(QStringLiteral("Yes"));
@@ -301,7 +259,7 @@ void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath
 
     m_treeViewPaths.insert(newPath);
     for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
-        auto child = static_cast<LinkedNoteItem *>(it->get());
+        const auto child = static_cast<LinkedNoteItem *>(it->get());
 
         bool needUpdate = false;
         if (child->data(PathRole).toString() == oldPath) {
@@ -314,7 +272,7 @@ void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath
         }
 
         if (needUpdate) {
-            QModelIndex childIndex = createIndex(0, 0, child);
+            const QModelIndex childIndex = createIndex(0, 0, child);
             Q_EMIT dataChanged(childIndex, childIndex);
         }
     }
@@ -330,7 +288,7 @@ void NoteMapper::removeGlobalPath(const QString &path)
     m_treeViewPaths.erase(m_treeViewPaths.find(path));
 
     for (auto it = m_list.cbegin(); it != m_list.cend();) {
-        auto child = static_cast<LinkedNoteItem *>(it->get());
+        const auto child = static_cast<LinkedNoteItem *>(it->get());
 
         if (child->data(PathRole).toString() == path) {
             beginRemoveRows(QModelIndex(), it - m_list.begin(), it - m_list.begin());

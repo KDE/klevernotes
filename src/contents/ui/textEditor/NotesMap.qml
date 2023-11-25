@@ -59,7 +59,10 @@ Kirigami.OverlaySheet {
 
                 delegate: NotesMapEntry {
                     onClicked: {
-                        if (headerExists) parser.headerInfo = [header, headerLevel.toString()]
+                        if (headerExists) {
+                            console.log(header, headerLevel.toString())
+                            parser.headerInfo = [header, headerLevel.toString()]
+                        }
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
                         sidebar.askForFocus(noteModelIndex)

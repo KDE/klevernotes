@@ -26,7 +26,7 @@ public:
     void updateHeaderExists(const bool exists);
 
 private:
-    void setDisplayPath(QString &path);
+    void setDisplayPath(const QString &path);
     QString m_path;
     QString m_displayPath;
     QString m_exists; // QString because we use a KSortFilterProxyModel
@@ -64,7 +64,7 @@ public:
     void clear();
     void addRow(const QString &path, const QString &header, const QString &title);
 
-    Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(QString header);
+    Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(const QString &header);
     Q_INVOKABLE void saveMap();
 
     // Treeview
@@ -78,9 +78,6 @@ public:
     Q_INVOKABLE void updatePathInfo(const QString &path, const QStringList &headers);
 
 private:
-    int getHeaderLevel(QString &header); // We also want to trim the "#" from header
-    void cleanHeader(QString &header);
-
     QMap<QString, QStringList> m_existsMap;
     QMap<QString, QStringList> m_savedMap;
     void convertSavedMap(const QJsonObject &savedMap);

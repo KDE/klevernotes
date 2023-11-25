@@ -69,6 +69,7 @@ set(exec_SRCS
     logic/todoHandler.cpp
 
     logic/noteMapper/noteMapper.cpp
+    logic/noteMapper/noteMapperUtils.cpp
 
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp
