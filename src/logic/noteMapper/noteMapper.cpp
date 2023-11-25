@@ -63,11 +63,10 @@ void LinkedNoteItem::updatePath(const QString &path)
     setDisplayPath(toDisplay);
 }
 
-void LinkedNoteItem::setDisplayPath(QString &path)
+void LinkedNoteItem::setDisplayPath(const QString &path)
 {
-    path.replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
-    m_displayPath = path;
-}
+    auto newPath = path;
+    newPath.replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
 
 void LinkedNoteItem::updateExists(const QString &exists)
 {
@@ -82,7 +81,7 @@ void LinkedNoteItem::updateHeaderExists(const bool exists)
 NoteMapper::NoteMapper(QObject *parent)
     : QAbstractItemModel(parent)
 {
-    QString mapPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
+    const QString mapPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
     convertSavedMap(m_documentHandler->getSavedMap(mapPath));
 }
 
@@ -133,7 +132,7 @@ QHash<int, QByteArray> NoteMapper::roleNames() const
             {HeaderRole, "header"},
             {HeaderExistsRole, "headerExists"},
             {HeaderLevelRole, "headerLevel"},
-            {TitleRole, "title"}};
+            {TitleRole, "title"},};
 }
 
 QModelIndex NoteMapper::parent(const QModelIndex &index) const
@@ -204,7 +203,7 @@ void NoteMapper::addRow(const QString &path, const QString &header, const QStrin
         }
     }
 
-    auto newRow = std::make_unique<LinkedNoteItem>(path, exists, cleanedHeader, headerExists, headerLevel, title);
+    const auto newRow = std::make_unique<LinkedNoteItem>(path, exists, cleanedHeader, headerExists, headerLevel, title);
 
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_list.push_back(std::move(newRow));
