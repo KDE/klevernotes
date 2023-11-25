@@ -6,7 +6,7 @@
 #include "noteMapper.h"
 #include "kleverconfig.h"
 #include "noteMapperUtils.h"
-#include <QDebug>
+// #include <QDebug>
 #include <QJsonArray>
 
 LinkedNoteItem::LinkedNoteItem(const QString &path,
@@ -84,38 +84,12 @@ NoteMapper::NoteMapper(QObject *parent)
     : QAbstractItemModel(parent)
 {
     const QString mapPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
-    convertSavedMap(m_documentHandler->getSavedMap(mapPath));
-}
-
-void NoteMapper::convertSavedMap(const QJsonObject &savedMap)
-{
-    QString path;
-    QJsonArray headersJson;
-    QString header;
-    for (auto jsonIter = savedMap.begin(); jsonIter != savedMap.end(); jsonIter++) {
-        path = jsonIter.key();
-        headersJson = jsonIter.value().toArray();
-        QStringList headers;
-        for (auto headersIter = headersJson.begin(); headersIter != headersJson.end(); headersIter++) {
-            header = headersIter->toString();
-            headers.append(header);
-        }
-        m_savedMap.insert(path, headers);
-    }
+    m_savedMap = NoteMapperUtils::convertSavedMap(m_documentHandler->getSavedMap(mapPath));
 }
 
 void NoteMapper::saveMap()
 {
-    QJsonObject map;
-    QVariantMap vmap;
-
-    QMapIterator<QString, QStringList> i(m_existsMap);
-    while (i.hasNext()) {
-        i.next();
-        vmap.insert(i.key(), i.value());
-    }
-
-    const QJsonObject json = QJsonObject::fromVariantMap(vmap);
+    const QJsonObject json = QJsonObject::fromVariantMap(m_existsMap);
     const QString savingPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
     m_documentHandler->saveMap(json, savingPath);
 }
@@ -188,17 +162,31 @@ void NoteMapper::addRow(const QString &path, const QString &header, const QStrin
 
     QString exists = QStringLiteral("No"); // Not a bool because used for KSortFilterProxyModel filterString
     if (m_treeViewPaths.contains(path)) {
+        bool entirelyCheck = false;
         exists = QStringLiteral("Yes");
 
         if (!headerText.isEmpty()) {
+            QStringList headers;
             if (m_existsMap.contains(path)) {
-                headerExists = m_existsMap[path].contains(cleanedHeader);
-            } else {
+                const QVariantMap pathInfo = m_existsMap[path].toMap();
+                if (pathInfo.contains("headers")) {
+                    headers = pathInfo["headers"].toStringList();
+                }
+
+                if (pathInfo.contains("entirelyCheck")) {
+                    entirelyCheck = pathInfo["entirelyCheck"].toBool();
+                }
+                headerExists = headers.contains(cleanedHeader);
+            }
+
+            if (!headerExists && !entirelyCheck) {
                 const QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
                 headerExists = m_documentHandler->checkForHeader(filePath, cleanedHeader);
                 if (headerExists) {
-                    const QStringList headers(cleanedHeader);
-                    m_existsMap.insert(path, headers);
+                    // We don't update the "entirelyCheck" value, only NoteMapper::updatePathInfo can do it
+                    headers.append(cleanedHeader);
+                    const QVariantMap newPathInfo = {{"headers", QVariant(headers)}, {"lastUpdate", QVariant(entirelyCheck)}};
+                    m_existsMap[path] = newPathInfo;
                 }
             }
         }
@@ -249,8 +237,10 @@ void NoteMapper::addGlobalPath(const QString &path)
     }
 }
 
-void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath)
+void NoteMapper::updateGlobalPath(const QString &_oldPath, const QString &_newPath)
 {
+    const auto oldPath = QString(_oldPath).remove(KleverConfig::storagePath());
+    const auto newPath = QString(_newPath).remove(KleverConfig::storagePath());
     if (!m_treeViewPaths.remove(oldPath))
         return;
 
@@ -278,8 +268,9 @@ void NoteMapper::updateGlobalPath(const QString &oldPath, const QString &newPath
     }
 }
 
-void NoteMapper::removeGlobalPath(const QString &path)
+void NoteMapper::removeGlobalPath(const QString &_path)
 {
+    const auto path = QString(_path).remove(KleverConfig::storagePath());
     if (!m_treeViewPaths.contains(path))
         return;
 
@@ -314,5 +305,7 @@ void NoteMapper::addNotePaths(const QStringList &linkedNoteInfos)
 
 void NoteMapper::updatePathInfo(const QString &path, const QStringList &headers)
 {
-    m_existsMap[path] = headers;
+    const QVariantMap newPathInfo = {{"headers", QVariant(headers)}, {"entirelyCheck", QVariant(true)}};
+
+    m_existsMap[path] = newPathInfo;
 }

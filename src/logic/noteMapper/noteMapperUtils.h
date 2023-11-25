@@ -4,6 +4,8 @@
 */
 #pragma once
 
+#include <QDate>
+#include <QJsonObject>
 #include <QObject>
 #include <QRegularExpression>
 
@@ -20,6 +22,7 @@ public:
     static QString cleanHeader(const QString &header);
     static int headerLevel(const QString &header);
     static QString headerText(const QString &_header);
+    static QVariantMap convertSavedMap(const QJsonObject &savedMap);
 
 private:
     inline static QRegularExpression m_heading_checker = QRegularExpression("^(#*)( *)(.*)");

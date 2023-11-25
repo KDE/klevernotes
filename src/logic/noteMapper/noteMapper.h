@@ -7,6 +7,7 @@
 #include "logic/documentHandler.h"
 #include <QAbstractItemModel>
 #include <QSet>
+#include <QVariant>
 #include <memory>
 #include <set>
 
@@ -70,17 +71,16 @@ public:
     // Treeview
     Q_INVOKABLE void addInitialGlobalPaths(const QStringList &paths);
     Q_INVOKABLE void addGlobalPath(const QString &path);
-    Q_INVOKABLE void updateGlobalPath(const QString &oldPath, const QString &newPath);
-    Q_INVOKABLE void removeGlobalPath(const QString &path);
+    Q_INVOKABLE void updateGlobalPath(const QString &_oldPath, const QString &_newPath);
+    Q_INVOKABLE void removeGlobalPath(const QString &_path);
 
     // Parser
     Q_INVOKABLE void addNotePaths(const QStringList &linkedNoteInfos);
     Q_INVOKABLE void updatePathInfo(const QString &path, const QStringList &headers);
 
 private:
-    QMap<QString, QStringList> m_existsMap;
-    QMap<QString, QStringList> m_savedMap;
-    void convertSavedMap(const QJsonObject &savedMap);
+    QVariantMap m_existsMap;
+    QVariantMap m_savedMap;
 
     // Model
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;

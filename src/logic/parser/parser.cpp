@@ -120,6 +120,11 @@ QString Parser::parse(QString src)
         }
         if (m_noteHeaders != m_previousNoteHeaders) {
             m_previousNoteHeaders = m_noteHeaders;
+            m_emptyHeadersSent = false;
+            Q_EMIT noteHeadersSent(m_mapperNotePath, m_noteHeaders);
+        } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
+            // This way the mapper can receive info about the note (the note has no header), and we still prevent spamming
+            m_emptyHeadersSent = true;
             Q_EMIT noteHeadersSent(m_mapperNotePath, m_noteHeaders);
         }
     }

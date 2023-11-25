@@ -63,6 +63,7 @@ private:
     QString m_header;
     QString m_headerLevel;
     bool m_headerFound;
+    bool m_emptyHeadersSent;
     QStringList m_noteHeaders;
     QStringList m_previousNoteHeaders;
     QStringList m_linkedNoteInfos;

@@ -4,8 +4,7 @@
 */
 
 #include "noteMapperUtils.h"
-#include <QDebug>
-#include <qstringliteral.h>
+// #include <QDebug>
 
 NoteMapperUtils::NoteMapperUtils(QObject *parent)
     : QObject(parent)
@@ -15,7 +14,8 @@ NoteMapperUtils::NoteMapperUtils(QObject *parent)
 QString NoteMapperUtils::cleanHeader(const QString &_header)
 {
     // Note: This receive a trimmed string
-    if (_header.isEmpty()) return _header;
+    if (_header.isEmpty())
+        return _header;
 
     const auto match = m_heading_checker.match(_header);
 
@@ -37,17 +37,18 @@ QString NoteMapperUtils::cleanHeader(const QString &_header)
         return header;
     }
 
-    if (cap3.isEmpty()) return QStringLiteral(""); // All we have is a header level <= 6, nothing to really work with
+    if (cap3.isEmpty())
+        return QStringLiteral(""); // All we have is a header level <= 6, nothing to really work with
 
     if (cap2.isEmpty()) { // Just need a space
         header = cap1 + space + cap3;
         return header;
     }
-    
+
     return _header; // Everything is fine with it
 }
 
-int NoteMapperUtils::headerLevel(const QString &header) 
+int NoteMapperUtils::headerLevel(const QString &header)
 {
     // We receive a correctly formed header; max of 6 '#'
     const auto match = m_heading_level.match(header);
@@ -70,3 +71,7 @@ QString NoteMapperUtils::headerText(const QString &header)
     return match.captured(3);
 }
 
+QVariantMap NoteMapperUtils::convertSavedMap(const QJsonObject &savedMap)
+{
+    return savedMap.toVariantMap();
+}
