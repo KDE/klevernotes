@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <QMap>
 #include <QObject>
 #include <QRegularExpression>
 #include <QString>
@@ -11,22 +12,26 @@
 class HighlightHelper : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantMap highlighters READ getHighlighters)
+    Q_PROPERTY(QStringList highlighters READ getHighlighters NOTIFY neverChangingProperty)
 public:
     explicit HighlightHelper(QObject *parent = nullptr);
 
-    QVariantMap getHighlighters();
+    QStringList getHighlighters();
+    Q_INVOKABLE QStringList getHighlighterStyle(const QString &highlighter);
+
+signals:
+    void neverChangingProperty();
 
 private:
-    QMap<QString, QString> m_highlightersCommands = {
-        {"chroma", "chroma --list"},
-        {"pygmentize", "pygmentize -L styles"},
+    QMap<QString, QStringList> m_highlightersCommands = {
+        {"chroma", {"chroma --list", "chroma --style=\"%1\" --lexer=%2 --html --html-inline-styles input.txt"}},
+        {"pygmentize", {"pygmentize -L styles", "pygmentize -l %1 -f html -O style=%2 -O noclasses=True input.txt"}},
     };
 
     QRegularExpression m_chromaRegex = QRegularExpression("");
     QRegularExpression m_pygmentizeRegex = QRegularExpression("(\\* )(.+)(:)");
 
-    QStringList getHighlighterStyle(const QString &highlighter);
+    QStringList getHighlighterStyleFromCmd(const QString &highlighter);
     void setAvailableHighlighters();
-    QVariantMap m_availableHighlighters;
+    QMap<QString, QStringList> m_availableHighlighters;
 };

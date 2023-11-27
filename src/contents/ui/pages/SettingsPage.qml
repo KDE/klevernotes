@@ -188,6 +188,36 @@ FormCard.FormCardPage {
         id: displayPreview
     }
 
+    
+    FormCard.FormHeader {
+        Layout.fillWidth: true
+        title: i18nc("@title", "KleverNotes plugins")
+    }
+
+    FormCard.FormCard {
+        id: pluginsCard
+
+        Layout.fillWidth: true
+        // TODO put this alongside the note linking value  
+        ExpendingFormCheckBox {
+            text: i18nc("@label:checkbox", "Enable code syntax highliting")
+
+            checked: Config.codeSynthaxHighlightEnabled
+            highlighterCombobox.model: HighlightHelper.highlighters 
+            styleCombobox.model: HighlightHelper.getHighlighterStyle(highlighterCombobox.currentValue) 
+
+            onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) Config.codeSynthaxHighlightEnabled = checked
+            highlighterCombobox.onCurrentValueChanged: {
+                const highlighter = highlighterCombobox.currentValue
+                if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
+            }
+            styleCombobox.onCurrentValueChanged: {
+                const style = styleCombobox.currentValue
+                if (style != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = style 
+            }
+        }
+    }
+
     function updateName(shownName,callingAction){
         namingDialog.shownName = shownName
         namingDialog.callingAction = callingAction

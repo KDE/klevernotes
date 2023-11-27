@@ -30,16 +30,21 @@ HighlightHelper::HighlightHelper(QObject *parent)
     setAvailableHighlighters();
 }
 
-QVariantMap HighlightHelper::getHighlighters()
+QStringList HighlightHelper::getHighlighters()
 {
-    return m_availableHighlighters;
+    return m_availableHighlighters.keys();
 }
 
 QStringList HighlightHelper::getHighlighterStyle(const QString &highlighter)
 {
+    return m_availableHighlighters.contains(highlighter) ? m_availableHighlighters[highlighter] : QStringList();
+}
+
+QStringList HighlightHelper::getHighlighterStyleFromCmd(const QString &highlighter)
+{
     QStringList styles;
 
-    const QString cmd = m_highlightersCommands[highlighter];
+    const QString cmd = m_highlightersCommands[highlighter].constFirst();
     const QString output = QString::fromStdString(execCommand(cmd.toStdString().c_str()));
 
     if (output.isEmpty()) {
@@ -62,6 +67,7 @@ QStringList HighlightHelper::getHighlighterStyle(const QString &highlighter)
         styles = output.mid(startIndex, endIndex - startIndex).split(" ");
     }
 
+    styles.sort();
     return styles;
 }
 
@@ -69,7 +75,7 @@ void HighlightHelper::setAvailableHighlighters()
 {
     for (auto it = m_highlightersCommands.cbegin(); it != m_highlightersCommands.cend(); it++) {
         if (commandExists(it.key())) {
-            m_availableHighlighters[it.key()] = getHighlighterStyle(it.key());
+            m_availableHighlighters[it.key()] = getHighlighterStyleFromCmd(it.key());
         }
     }
 }
