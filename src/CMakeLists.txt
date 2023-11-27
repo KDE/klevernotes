@@ -76,6 +76,8 @@ set(exec_SRCS
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
 
+    logic/syntaxHighlight/highlightHelper.cpp
+
     logic/treeview/noteTreeModel.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc
