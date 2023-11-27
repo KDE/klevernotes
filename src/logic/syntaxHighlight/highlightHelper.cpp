@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 #include "highlightHelper.h"
+#include "kleverconfig.h"
 #include <QDebug>
 #include <array>
 #include <string>
@@ -30,6 +31,33 @@ HighlightHelper::HighlightHelper(QObject *parent)
     : QObject(parent)
 {
     setAvailableHighlighters();
+}
+
+QString HighlightHelper::getHighlightedString(const QString &inputStr, const QString &lang)
+{
+    const QString highlighter = KleverConfig::codeSynthaxHighlighter();
+    const QString style = KleverConfig::codeSynthaxHighlighterStyle();
+
+    if (inputStr.isEmpty() || lang.isEmpty() || !m_availableHighlighters.contains(highlighter)) {
+        return inputStr;
+    }
+
+    QString cmd = m_highlightersCommands[highlighter].last();
+    cmd.replace("%1", lang);
+    if (m_availableHighlighters[highlighter].contains(style)) {
+        cmd.replace("nord", style);
+    }
+
+    m_documentHandler->writeFile(inputStr, m_tempInputFilePath); // could be really cool to get ride of this part !
+    QString output = QString::fromStdString(execCommand(cmd.toStdString().c_str()));
+
+    if (highlighter == QStringLiteral("chroma") && !output.isEmpty()) {
+        const int startIndex = output.indexOf("<code>") + 6;
+        const int endIndex = output.lastIndexOf("</code>");
+        output = output.mid(startIndex, endIndex - startIndex);
+    }
+
+    return output.isEmpty() ? inputStr : output;
 }
 
 QStringList HighlightHelper::getHighlighters()

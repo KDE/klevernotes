@@ -1,4 +1,6 @@
 #include "renderer.h"
+#include "kleverconfig.h"
+#include "logic/syntaxHighlight/highlightHelper.h"
 
 #include <QRegularExpression>
 #include <QUrl>
@@ -9,8 +11,13 @@ QString Renderer::code(QString &code, QString &lang)
         return "<pre><code>" + escape(code, true) + "</code></pre>";
     }
 
-    return QString::fromStdString("<pre><code class=\"language-") + escape(lang, true) + QString::fromStdString("\">") + escape(code, true)
-        + QString::fromStdString("</code></pre>\n");
+    const bool useHighlight = KleverConfig::codeSynthaxHighlightEnabled();
+    if (useHighlight) {
+        code = HighlightHelper::getHighlightedString(code, lang);
+    }
+
+    return QString::fromStdString("<pre><code class=\"language-") + escape(lang, true) + QString::fromStdString("\">")
+        + (useHighlight ? code : escape(code, true)) + QString::fromStdString("</code></pre>\n");
 }
 
 QString Renderer::blockquote(const QString &quote)
