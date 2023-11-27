@@ -3,6 +3,8 @@
 
 #include "highlightHelper.h"
 #include <QDebug>
+#include <array>
+#include <string>
 
 std::string execCommand(const char *cmd)
 {
