@@ -7,7 +7,7 @@
 #include <array>
 #include <string>
 
-std::string execCommand(const char *cmd)
+QString execCommand(const char *cmd)
 {
     std::array<char, 128> buffer;
     std::string result;
@@ -19,12 +19,12 @@ std::string execCommand(const char *cmd)
     while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
         result += buffer.data();
     }
-    return result;
+    return QString::fromStdString(result);
 }
 
 bool commandExists(const QString &command)
 {
-    return !QString::fromStdString(execCommand(("command -v " + command.toStdString()).c_str())).isEmpty();
+    return !execCommand(("command -v " + command.toStdString()).c_str()).isEmpty();
 }
 
 HighlightHelper::HighlightHelper(QObject *parent)
@@ -48,34 +48,47 @@ QString HighlightHelper::getHighlightedString(const QString &inputStr, const QSt
         cmd.replace("nord", style);
     }
 
-    m_documentHandler->writeFile(inputStr, m_tempInputFilePath); // could be really cool to get ride of this part !
-    QString output = QString::fromStdString(execCommand(cmd.toStdString().c_str()));
+    const QString echo = "echo \"" + inputStr + "\" | ";
+    cmd = echo + cmd;
+
+    QString output = execCommand(cmd.toStdString().c_str());
 
     if (highlighter == QStringLiteral("chroma") && !output.isEmpty()) {
         const int startIndex = output.indexOf("<code>") + 6;
         const int endIndex = output.lastIndexOf("</code>");
-        output = output.mid(startIndex, endIndex - startIndex);
+
+        if (startIndex < endIndex && -1 < startIndex && -1 < endIndex) {
+            output = output.mid(startIndex, endIndex - startIndex);
+        }
+    }
+    if (highlighter == QStringLiteral("pygmentize") && !output.isEmpty()) {
+        const int startIndex = output.indexOf("<span>");
+        const int endIndex = output.lastIndexOf("\n</pre>");
+
+        if (startIndex < endIndex && -1 < startIndex && -1 < endIndex) {
+            output = output.mid(startIndex, endIndex - startIndex);
+        }
     }
 
     return output.isEmpty() ? inputStr : output;
 }
 
-QStringList HighlightHelper::getHighlighters()
+QStringList HighlightHelper::getHighlighters() const
 {
     return m_availableHighlighters.keys();
 }
 
-QStringList HighlightHelper::getHighlighterStyle(const QString &highlighter)
+QStringList HighlightHelper::getHighlighterStyle(const QString &highlighter) const
 {
     return m_availableHighlighters.contains(highlighter) ? m_availableHighlighters[highlighter] : QStringList();
 }
 
-QStringList HighlightHelper::getHighlighterStyleFromCmd(const QString &highlighter)
+QStringList HighlightHelper::getHighlighterStyleFromCmd(const QString &highlighter) const
 {
     QStringList styles;
 
     const QString cmd = m_highlightersCommands[highlighter].constFirst();
-    const QString output = QString::fromStdString(execCommand(cmd.toStdString().c_str()));
+    const QString output = execCommand(cmd.toStdString().c_str());
 
     if (output.isEmpty()) {
         return styles;

@@ -15,16 +15,13 @@
 class HighlightHelper : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList highlighters READ getHighlighters NOTIFY neverChangingProperty)
+    Q_PROPERTY(QStringList highlighters READ getHighlighters CONSTANT)
 public:
     explicit HighlightHelper(QObject *parent = nullptr);
 
-    QStringList getHighlighters();
-    Q_INVOKABLE QStringList getHighlighterStyle(const QString &highlighter);
+    QStringList getHighlighters() const;
+    Q_INVOKABLE QStringList getHighlighterStyle(const QString &highlighter) const;
     static QString getHighlightedString(const QString &inputStr, const QString &lang);
-
-signals:
-    void neverChangingProperty();
 
 private:
     inline static QString m_tempInputFilePath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/KleverNotesSyntaxHighlightInput.txt";
@@ -32,20 +29,18 @@ private:
     inline static QMap<QString, QStringList> m_highlightersCommands = {
         {
             "chroma",
-            {"chroma --list", "chroma --style=\"nord\" --lexer=%1 --html --html-inline-styles " + m_tempInputFilePath},
+            {"chroma --list", "chroma --style=\"nord\" --lexer=%1 --html --html-inline-styles"},
         },
         {
             "pygmentize",
-            {"pygmentize -L styles", "pygmentize -l %1 -f html -O style=nord -O noclasses=True " + m_tempInputFilePath},
+            {"pygmentize -L styles", "pygmentize -l %1 -f html -O style=nord -O noclasses=True"},
         },
     }; // nord style by default, will be replace by the given style if it exists
 
     QRegularExpression m_chromaRegex = QRegularExpression("");
     QRegularExpression m_pygmentizeRegex = QRegularExpression("(\\* )(.+)(:)");
 
-    QStringList getHighlighterStyleFromCmd(const QString &highlighter);
+    QStringList getHighlighterStyleFromCmd(const QString &highlighter) const;
     void setAvailableHighlighters();
     inline static QMap<QString, QStringList> m_availableHighlighters;
-
-    inline static DocumentHandler *m_documentHandler = new DocumentHandler;
 };

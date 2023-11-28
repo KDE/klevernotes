@@ -65,9 +65,11 @@ QString Parser::tok()
 
     if (type == "code") {
         text = m_token["text"].toString();
-        QString lang = m_token["lang"].toString();
+        const QString lang = m_token["lang"].toString();
 
-        return Renderer::code(text, lang);
+        const bool highlight = m_highlightEnabled && !lang.isEmpty();
+
+        return Renderer::code(text, lang, highlight);
     }
 
     if (type == "table") {
@@ -199,4 +201,16 @@ bool Parser::getNextToken()
 QString Parser::peekType()
 {
     return (!tokens.isEmpty()) ? tokens.last()["type"].toString() : "";
+}
+
+// Syntax highlight
+void Parser::setHighlightEnabled(const bool highlightEnabled)
+{
+    m_highlightEnabled = highlightEnabled;
+    qDebug() << m_highlightEnabled;
+}
+
+bool Parser::highlightEnabled() const
+{
+    return m_highlightEnabled;
 }

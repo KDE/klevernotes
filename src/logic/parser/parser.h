@@ -5,11 +5,13 @@
 
 #include "blockLexer.h"
 #include "inlineLexer.h"
+#include "kleverconfig.h"
 
 class Parser : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString notePath WRITE setNotePath)
+    Q_PROPERTY(bool highlightEnabled WRITE setHighlightEnabled)
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -20,6 +22,10 @@ public:
 
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
+
+    // Syntax highlight
+    void setHighlightEnabled(const bool highlightEnabled);
+    bool highlightEnabled() const;
 
 private:
     QString tok();
@@ -32,4 +38,7 @@ private:
 
     QString m_notePath;
     QVariantMap m_token;
+
+    // Synthax highlight
+    bool m_highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
 };
