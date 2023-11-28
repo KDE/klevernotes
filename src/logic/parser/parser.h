@@ -11,6 +11,7 @@
 
 #include "blockLexer.h"
 #include "inlineLexer.h"
+#include "kleverconfig.h"
 
 class Parser : public QObject
 {
@@ -56,14 +57,14 @@ private:
     QVariantMap m_token;
 
     // NoteMapper
-    bool m_noteMapEnabled;
+    bool m_noteMapEnabled = KleverConfig::noteMapEnabled();
     QString m_mapperNotePath;
     QString m_groupPath;
     QString m_categPath;
     QString m_header;
     QString m_headerLevel;
-    bool m_headerFound;
-    bool m_emptyHeadersSent;
+    bool m_headerFound = false;
+    bool m_emptyHeadersSent = false;
     QStringList m_noteHeaders;
     QStringList m_previousNoteHeaders;
     QStringList m_linkedNoteInfos;

@@ -60,7 +60,6 @@ Kirigami.OverlaySheet {
                 delegate: NotesMapEntry {
                     onClicked: {
                         if (headerExists) {
-                            console.log(header, headerLevel.toString())
                             parser.headerInfo = [header, headerLevel.toString()]
                         }
                         const sidebar = applicationWindow().globalDrawer

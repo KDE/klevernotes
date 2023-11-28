@@ -112,7 +112,7 @@ QString Parser::parse(QString src)
         out += tok();
     }
 
-    if (KleverConfig::noteMapEnabled()) {
+    if (m_noteMapEnabled) {
         // We try to not spam with signals
         if (m_linkedNoteInfos != m_previousLinkedNoteInfos) {
             m_previousLinkedNoteInfos = m_linkedNoteInfos;
