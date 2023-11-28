@@ -18,9 +18,9 @@ public:
     void lex(QString &src);
 
 private:
-    QString preprocess(QString &src);
+    QString preprocess(QString &src) const;
     void tokenize(QString &src, bool top);
-    QStringList splitCells(QString &tableRow, int count = -1);
+    QStringList splitCells(QString &tableRow, int count = -1) const;
 
     QMap<QString, QRegularExpression> preprocessRegex{{"\n", QRegularExpression("\r\n|\r|\u2424")},
                                                       {"    ", QRegularExpression("\t")},

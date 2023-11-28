@@ -87,7 +87,7 @@ NoteMapper::NoteMapper(QObject *parent)
     m_savedMap = NoteMapperUtils::convertSavedMap(m_documentHandler->getSavedMap(mapPath));
 }
 
-void NoteMapper::saveMap()
+void NoteMapper::saveMap() const
 {
     const QJsonObject json = QJsonObject::fromVariantMap(m_existsMap);
     const QString savingPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
@@ -199,7 +199,7 @@ void NoteMapper::addRow(const QString &path, const QString &header, const QStrin
     endInsertRows();
 }
 
-QVariantList NoteMapper::getCleanedHeaderAndLevel(const QString &header)
+QVariantList NoteMapper::getCleanedHeaderAndLevel(const QString &header) const
 {
     const QString cleanedHeader = NoteMapperUtils::cleanHeader(header);
     const int headerLevel = NoteMapperUtils::headerLevel(cleanedHeader);

@@ -25,17 +25,17 @@ public:
 
     Q_INVOKABLE QString parse(QString src);
 
-    QString getNotePath();
-    void setNotePath(QString &notePath);
+    QString getNotePath() const;
+    void setNotePath(const QString &notePath);
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
 
     // NoteMapper
     void setNoteMapEnabled(const bool noteMapEnabled);
-    bool noteMapEnabled();
+    bool noteMapEnabled() const;
     void setHeaderInfo(const QStringList &headerInfo);
-    QString headerLevel();
-    QPair<QString, bool> sanitizePath(QString path);
+    QString headerLevel() const;
+    QPair<QString, bool> sanitizePath(const QString _path) const;
     void addToLinkedNoteInfos(const QStringList &infos);
     void addToNoteHeaders(const QString &header);
 
@@ -47,7 +47,7 @@ signals:
 private:
     QString tok();
     QString parseText();
-    QString peekType();
+    QString peekType() const;
     bool getNextToken();
 
     BlockLexer blockLexer = BlockLexer(this);

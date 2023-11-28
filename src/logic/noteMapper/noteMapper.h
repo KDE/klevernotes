@@ -65,8 +65,8 @@ public:
     void clear();
     void addRow(const QString &path, const QString &header, const QString &title);
 
-    Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(const QString &header);
-    Q_INVOKABLE void saveMap();
+    Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(const QString &header) const;
+    Q_INVOKABLE void saveMap() const;
 
     // Treeview
     Q_INVOKABLE void addInitialGlobalPaths(const QStringList &paths);

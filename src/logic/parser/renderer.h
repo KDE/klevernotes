@@ -14,7 +14,7 @@ public:
     static QString code(QString &code, QString &lang);
     static QString blockquote(const QString &quote);
     static QString html(const QString &html);
-    static QString heading(const QString &text, const QString &lvl, QString &raw, const bool scrollTo = false);
+    static QString heading(const QString &text, const QString &lvl, const QString &raw, const bool scrollTo = false);
     static QString hr();
     static QString list(const QString &body, bool ordered, const QString &start);
     static QString listItem(const QString &text, const bool hasCheck = false);

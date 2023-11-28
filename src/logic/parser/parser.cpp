@@ -17,9 +17,9 @@ Parser::Parser(QObject *parent)
 {
 }
 
-QPair<QString, bool> Parser::sanitizePath(QString path)
+QPair<QString, bool> Parser::sanitizePath(const QString _path) const
 {
-    QStringList parts = path.split("/");
+    QStringList parts = _path.split("/");
 
     bool leadingSlashRemnant = false;
     for (int i = 0; i < parts.count(); i++) {
@@ -28,7 +28,7 @@ QPair<QString, bool> Parser::sanitizePath(QString path)
             if (i == 0) {
                 leadingSlashRemnant = true;
             } else { // The path is not correctly formed
-                return qMakePair(path, false);
+                return qMakePair(_path, false);
             }
         }
         parts[i] = part;
@@ -40,6 +40,7 @@ QPair<QString, bool> Parser::sanitizePath(QString path)
     if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue())
         parts[0] = QStringLiteral(".BaseCategory");
 
+    QString path = _path;
     switch (parts.count()) {
     case 1: // Note name only
         path = m_groupPath + parts[0];
@@ -55,7 +56,7 @@ QPair<QString, bool> Parser::sanitizePath(QString path)
         path = QStringLiteral("/") + parts.join("/");
         break;
     default: // Not a note path
-        return qMakePair(path, false);
+        return qMakePair(_path, false);
     }
 
     return qMakePair(path, true);
@@ -67,30 +68,35 @@ void Parser::setHeaderInfo(const QStringList &headerInfo)
     m_headerLevel = m_header.isEmpty() ? QStringLiteral("0") : headerInfo[1];
 }
 
-QString Parser::headerLevel()
+QString Parser::headerLevel() const
 {
     return m_headerLevel;
 };
 
-void Parser::setNotePath(QString &notePath)
+void Parser::setNotePath(const QString &notePath)
 {
-    if (m_notePath != notePath)
-        m_notePath = notePath;
+    if (notePath.isEmpty() || notePath == "qrc:" || m_notePath == notePath) {
+        return;
+    }
+
+    m_notePath = notePath;
 
     // We do this here because we're sure to be in another note
     m_previousLinkedNoteInfos.clear();
     m_previousNoteHeaders.clear();
 
-    m_mapperNotePath = notePath.remove(KleverConfig::storagePath()).chopped(1);
-    QString groupPath(m_mapperNotePath);
-    groupPath.chop(groupPath.size() - groupPath.lastIndexOf("/"));
+    // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
+    m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
+
+    // /Category/Group/Note => /Category/Group (no '/' at the end to make it easier for m_categPath)
+    QString groupPath = m_mapperNotePath.chopped(m_mapperNotePath.size() - m_mapperNotePath.lastIndexOf("/"));
     if (m_groupPath != groupPath) {
-        m_groupPath = groupPath + "/";
-        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf("/") - 1);
+        m_groupPath = groupPath + "/"; // /Category/Group => /Category/Group/
+        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf("/") - 1); // /Category/Group => /Category/
     }
 }
 
-QString Parser::getNotePath()
+QString Parser::getNotePath() const
 {
     return m_notePath;
 }
@@ -139,7 +145,7 @@ QString Parser::parse(QString src)
 
 QString Parser::tok()
 {
-    QString type = m_token["type"].toString();
+    const QString type = m_token["type"].toString();
     QString outputed, text, body;
     QVariantMap flags;
 
@@ -154,18 +160,18 @@ QString Parser::tok()
     if (type == "heading") {
         text = m_token["text"].toString();
 
-        QString level = m_token["depth"].toString();
+        const QString level = m_token["depth"].toString();
         if (text == m_header && level == QString(m_headerLevel))
             m_headerFound = true;
 
         outputed = inlineLexer.output(text);
-        QString outputedText = inlineLexer.output(text, true);
-        QString unescaped = Renderer::unescape(outputedText);
+        const QString outputedText = inlineLexer.output(text, true);
+        const QString unescaped = Renderer::unescape(outputedText);
 
         return Renderer::heading(outputed, level, unescaped, m_headerFound);
     }
 
-    if (type == "code") {
+    if (type == "code") { // adding const with the Synthax Highlighting MR
         text = m_token["text"].toString();
         QString lang = m_token["lang"].toString();
 
@@ -173,7 +179,6 @@ QString Parser::tok()
     }
 
     if (type == "table") {
-        QString header = "";
         body = "";
         int i, j;
 
@@ -187,7 +192,8 @@ QString Parser::tok()
             flags = {{"header", true}, {"align", alignList[i]}};
             cell += Renderer::tableCell(outputed, flags);
         }
-        header += Renderer::tableRow(cell);
+
+        const QString header = Renderer::tableRow(cell);
 
         QJsonArray cellsList = m_token["cells"].toJsonArray();
         for (i = 0; i < cellsList.size(); i++) {
@@ -220,8 +226,8 @@ QString Parser::tok()
 
     if (type == "list_start") {
         body = "";
-        bool ordered = m_token["ordered"].toBool();
-        QString start = m_token["start"].toString();
+        const bool ordered = m_token["ordered"].toBool();
+        const QString start = m_token["start"].toString();
 
         while (getNextToken() && m_token["type"].toString() != "list_end") {
             body += tok();
@@ -233,7 +239,7 @@ QString Parser::tok()
     if (type == "list_item_start") {
         body = "";
 
-        bool hasTask = m_token["task"].toBool();
+        const bool hasTask = m_token["task"].toBool();
         if (hasTask) {
             body += Renderer::checkbox(m_token["checked"].toBool());
         }
@@ -280,10 +286,10 @@ QString Parser::tok()
 QString Parser::parseText()
 {
     QString body = m_token["text"].toString();
-
+    QString text;
     while (peekType() == "text") {
         getNextToken();
-        QString text = m_token["text"].toString();
+        text = m_token["text"].toString();
 
         body += QString::fromStdString("\n") + text;
     }
@@ -298,7 +304,7 @@ bool Parser::getNextToken()
     return !m_token.isEmpty();
 }
 
-QString Parser::peekType()
+QString Parser::peekType() const
 {
     return (!tokens.isEmpty()) ? tokens.last()["type"].toString() : "";
 }
@@ -318,7 +324,7 @@ void Parser::setNoteMapEnabled(const bool noteMapEnabled)
     m_noteMapEnabled = noteMapEnabled;
 }
 
-bool Parser::noteMapEnabled()
+bool Parser::noteMapEnabled() const
 {
     return m_noteMapEnabled;
 }
