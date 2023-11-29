@@ -28,6 +28,7 @@
   <name xml:lang="tr">Akıllı Notlar</name>
   <name xml:lang="uk">KleverNotes</name>
   <name xml:lang="x-test">xxKleverNotesxx</name>
+  <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>KleverNotes is a note taking and management application</summary>
   <summary xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes</summary>
   <summary xml:lang="ca-valencia">KleverNotes és una aplicació de presa i gestió de notes</summary>
@@ -74,6 +75,7 @@
   <developer_name xml:lang="tr">KDE Topluluğu</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxThe KDE Communityxx</developer_name>
+  <developer_name xml:lang="zh-TW">KDE 社群</developer_name>
   <description>
     <p>KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
