@@ -3,14 +3,11 @@
 
 #pragma once
 
-#include "logic/documentHandler.h"
 #include <QMap>
 #include <QObject>
 #include <QRegularExpression>
 #include <QStandardPaths>
 #include <QString>
-#include <QVariantMap>
-#include <qstandardpaths.h>
 
 class HighlightHelper : public QObject
 {

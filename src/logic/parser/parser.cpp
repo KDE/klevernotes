@@ -15,6 +15,9 @@ void Parser::setNotePath(const QString &notePath)
 {
     if (m_notePath != notePath)
         m_notePath = notePath;
+
+    // We do this here because we're sure to be in another note
+    m_previousNoteCodeBlocks.clear();
 }
 
 QString Parser::getNotePath()
@@ -26,8 +29,19 @@ QString Parser::parse(QString src)
 {
     links.clear();
     tokens.clear();
+    m_noteCodeBlocks.clear();
 
     blockLexer.lex(src);
+
+    if (m_highlightEnabled) {
+        m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks;
+        if (!m_sameCodeBlocks) {
+            m_previousNoteCodeBlocks = m_noteCodeBlocks;
+            m_previousHighlightedBlocks.clear();
+        } else {
+            m_currentBlockIndex = 0;
+        }
+    }
 
     std::reverse(tokens.begin(), tokens.end());
 
@@ -69,7 +83,18 @@ QString Parser::tok()
 
         const bool highlight = m_highlightEnabled && !lang.isEmpty();
 
-        return Renderer::code(text, lang, highlight);
+        QString returnValue;
+        if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
+            returnValue = m_previousHighlightedBlocks[m_currentBlockIndex];
+            m_currentBlockIndex++;
+        } else {
+            returnValue = Renderer::code(text, lang, highlight);
+            if (m_highlightEnabled && highlight) { // We want to store only the highlighted values
+                m_previousHighlightedBlocks.append(returnValue);
+            }
+        }
+
+        return returnValue;
     }
 
     if (type == "table") {
@@ -213,4 +238,9 @@ void Parser::setHighlightEnabled(const bool highlightEnabled)
 bool Parser::highlightEnabled() const
 {
     return m_highlightEnabled;
+}
+
+void Parser::addToNoteCodeBlocks(const QString &codeBlock)
+{
+    m_noteCodeBlocks.append(codeBlock);
 }

@@ -26,6 +26,7 @@ public:
     // Syntax highlight
     void setHighlightEnabled(const bool highlightEnabled);
     bool highlightEnabled() const;
+    void addToNoteCodeBlocks(const QString &codeBlock);
 
 private:
     QString tok();
@@ -41,4 +42,9 @@ private:
 
     // Synthax highlight
     bool m_highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
+    bool m_sameCodeBlocks = false;
+    int m_currentBlockIndex = 0;
+    QStringList m_noteCodeBlocks;
+    QStringList m_previousHighlightedBlocks;
+    QStringList m_previousNoteCodeBlocks;
 };
