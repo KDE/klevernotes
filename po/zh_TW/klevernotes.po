@@ -1,0 +1,1075 @@
+# Copyright (C) 2023 This file is copyright:
+# This file is distributed under the same license as the klevernotes package.
+#
+# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: klevernotes\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"PO-Revision-Date: 2023-11-28 18:17+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 23.08.3\n"
+
+#: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Color Picker"
+msgstr "取色工具"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
+#: contents/ui/dialogs/NamingErrorDialog.qml:20
+#, kde-format
+msgctxt "Name, as in 'A note category'"
+msgid "category"
+msgstr "分類"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:21
+#, kde-format
+msgctxt "Name, as in 'A note group'"
+msgid "group"
+msgstr "群組"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
+#, kde-format
+msgctxt "Name, as in 'A note'"
+msgid "note"
+msgstr "筆記"
+
+# %1 是譯文，所以不加空格
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid "Are you sure you want to delete this %1 ?"
+msgstr "您確定要刪除這個%1嗎？"
+
+#: contents/ui/dialogs/FilePickerDialog.qml:12
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Image picker"
+msgstr "影像選取工具"
+
+#: contents/ui/dialogs/FileSaverDialog.qml:12
+#, kde-format
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note"
+msgstr "儲存筆記"
+
+#: contents/ui/dialogs/FontPickerDialog.qml:10
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Font selector"
+msgstr "字型選擇器"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:19
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Image selector"
+msgstr "影像選擇器"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
+#, kde-format
+msgctxt "@label:button, As in 'image from the internet'"
+msgid "Web image"
+msgstr "網路影像"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
+#, kde-format
+msgctxt "label:button, Image from the local file system"
+msgid "Local image"
+msgstr "本機影像"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
+#, kde-format
+msgctxt "@label:button"
+msgid "Paint an image"
+msgstr "繪製一個影像"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
+#, kde-format
+msgctxt "@label:button, Collection of image stored inside the note folder"
+msgid "Image collection"
+msgstr "影像收藏"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
+#, kde-format
+msgid ""
+"It appears that the image you selected does not exist or is not supported."
+msgstr "您選取的影像看來不存在或不支援。"
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
+#, kde-format
+msgctxt "@label:textbox, text associated to the selected image"
+msgid "Image text: "
+msgstr "影像文字："
+
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Place this image inside the note folder"
+msgstr "將這個影像置於筆記資料夾中"
+
+#: contents/ui/dialogs/LeavePaintingDialog.qml:9
+#, kde-format
+msgctxt "@title:dialog"
+msgid "KleverNotes painting"
+msgstr "KleverNotes 繪製"
+
+#: contents/ui/dialogs/LeavePaintingDialog.qml:18
+#, kde-format
+msgid ""
+"You're about to leave without saving your drawing!\n"
+"Do you want to save it before leaving ?\n"
+msgstr ""
+"您的繪圖尚未儲存！\n"
+"您要在離開前先儲存嗎？\n"
+
+#: contents/ui/dialogs/LinkDialog.qml:13
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Create your link"
+msgstr "建立您的連結"
+
+#: contents/ui/dialogs/LinkDialog.qml:22 contents/ui/dialogs/URLDialog.qml:19
+#, kde-format
+msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
+msgid "URL:"
+msgstr "網址："
+
+#: contents/ui/dialogs/LinkDialog.qml:29
+#, kde-format
+msgctxt ""
+"@label:textbox, the displayed text of a link, in html: <a>This text</a> "
+msgid "Link text:"
+msgstr "連結文字："
+
+#: contents/ui/dialogs/NamingDialog.qml:14
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Choose a name"
+msgstr "選擇名稱"
+
+#: contents/ui/dialogs/NamingDialog.qml:54
+#, kde-format
+msgctxt "As in 'a name'"
+msgid "Name:"
+msgstr "名稱："
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:9
+#, kde-format
+msgctxt ""
+"@title:dialog, 'storage' as in 'the folder where all the notes will be "
+"stored'"
+msgid "KleverNotes Storage"
+msgstr "KleverNotes 筆記儲存庫"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:22
+#, kde-format
+msgid "Name, as in 'A note'"
+msgstr ""
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:31
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid "Your %1 name starts with a dot, "
+msgstr "您的%1名稱開頭是一個句點，"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+"group) or 'note' (a note)"
+msgid ""
+"This %1 already exist.\n"
+"Please choose another name for it.\n"
+msgstr ""
+"這個%1已經存在了。\n"
+"請另選一個名稱。\n"
+
+#: contents/ui/dialogs/StorageDialog.qml:20
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+"stored'"
+msgid ""
+"It looks like this is your first time using this app!\n"
+"\n"
+"Please choose a location for your future KleverNotes storage or select an "
+"existing one."
+msgstr ""
+"這看來是您第一次使用這個應用程式！\n"
+"\n"
+"請選擇新的筆記儲存庫的路徑或是一個既存的筆記儲存庫。"
+
+#: contents/ui/dialogs/StorageDialog.qml:21
+#, kde-format
+msgctxt ""
+"Storage as in 'the folder where all the notes will be stored'; this text "
+"will be followed by the path to this folder"
+msgid "Existing storage chosen at "
+msgstr "既存筆記儲存庫已選擇，位於"
+
+#: contents/ui/dialogs/StorageDialog.qml:22
+#, kde-format
+msgctxt ""
+"Storage as in 'the folder where all the notes will be stored'; this text "
+"will be followed by the path to this folder"
+msgid "Storage created at "
+msgstr "筆記儲存庫建立時間"
+
+#: contents/ui/dialogs/StorageDialog.qml:39
+#, kde-format
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
+msgid "Existing storage"
+msgstr "既存筆記儲存庫"
+
+#: contents/ui/dialogs/StorageDialog.qml:41
+#, kde-format
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
+msgid "Change the storage path"
+msgstr "變更筆記儲存庫路徑"
+
+#: contents/ui/dialogs/StorageDialog.qml:55
+#, kde-format
+msgctxt ""
+"@label:button, Storage as in 'the folder where all the notes will be stored'"
+msgid "Create storage"
+msgstr "建立筆記儲存庫"
+
+#: contents/ui/dialogs/StorageDialog.qml:57
+#, kde-format
+msgctxt "Storage as in 'the folder where all the notes will be stored'"
+msgid "Create a new storage"
+msgstr "建立新的筆記儲存庫"
+
+#: contents/ui/dialogs/StorageDialog.qml:89
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+"stored'"
+msgid ""
+"It looks like the selected folder is not a KleverNotes storage.\n"
+"\n"
+"Please choose a location for your future KleverNotes storage or select an "
+"existing one."
+msgstr ""
+"所選資料夾看起來不是 KleverNotes 筆記儲存庫。\n"
+"\n"
+"請選擇新的筆記儲存庫的路徑或是一個既存的筆記儲存庫。"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:22
+#, kde-format
+msgctxt "@title:dialog, table => an html table"
+msgid "Table creation"
+msgstr "表格建立"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:38
+#, kde-format
+msgctxt ""
+"@label, display the final size of the table %1 is the number of row and %2 "
+"the number of column"
+msgid "Size: %1 x %2"
+msgstr "大小：%1 x %2"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:151
+#, kde-format
+msgctxt "@label:button"
+msgid "More options"
+msgstr "更多選項"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:205
+#, kde-format
+msgctxt "@label:spinbox, name, 'a row'"
+msgid "Row"
+msgstr "列"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:217
+#, kde-format
+msgctxt "@label:spinbox, name, 'a column'"
+msgid "Column"
+msgstr "欄"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:229
+#, kde-format
+msgctxt "@label:combobox"
+msgid "Alignment :"
+msgstr "對齊："
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:234
+#, kde-format
+msgctxt "@entry:combobox, alignment name"
+msgid "Left"
+msgstr "置左"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:235
+#, kde-format
+msgctxt "@entry:combobox, alignment name"
+msgid "Center"
+msgstr "置中"
+
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:236
+#, kde-format
+msgctxt "@entry:combobox, alignment name"
+msgid "Right"
+msgstr "置右"
+
+#: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:172
+#, kde-format
+msgctxt "@label %1 is current text length, %2 is maximum length of text field"
+msgid "%1/%2"
+msgstr "%1/%2"
+
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:13
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Add Todo"
+msgstr "新增待辦事項"
+
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:23
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Title:"
+msgstr "標題："
+
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
+#, kde-format
+msgctxt "@placeholderText:textbox"
+msgid "Todo title (required)"
+msgstr "待辦事項標題（必須）"
+
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:37
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Description:"
+msgstr "描述："
+
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
+#, kde-format
+msgctxt "@placeholderText:textbox"
+msgid "Optional"
+msgstr "選擇性"
+
+#: contents/ui/dialogs/URLDialog.qml:12
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Choose an URL"
+msgstr "選擇網址"
+
+#: contents/ui/dialogs/WarningDialog.qml:15
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Warning"
+msgstr "警告"
+
+#: contents/ui/dialogs/WarningDialog.qml:19
+#, kde-format
+msgid "This could cause visual artifact near the end of the pdf."
+msgstr "這可能造成在 pdf 的末端出現顯示不自然的問題。"
+
+#: contents/ui/dialogs/WarningDialog.qml:28
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Do not show again"
+msgstr "不要再顯示"
+
+#: contents/ui/main.qml:15
+#, kde-format
+msgctxt "@title:ApplicationWindow"
+msgid "KleverNotes"
+msgstr "KleverNotes 筆記"
+
+#: contents/ui/pages/MainPage.qml:22
+#, kde-format
+msgctxt "@title:page"
+msgid "Welcome"
+msgstr "歡迎"
+
+#: contents/ui/pages/MainPage.qml:73
+#, kde-format
+msgid "Welcome to KleverNotes!"
+msgstr "歡迎來到 KleverNotes 筆記！"
+
+#: contents/ui/pages/MainPage.qml:83
+#, kde-format
+msgid "Create or select a note to start working !"
+msgstr "建立或選取一個筆記來開始工作吧！"
+
+#: contents/ui/pages/PaintingPage.qml:28
+#, kde-format
+msgctxt "@title:page"
+msgid "Paint!"
+msgstr "繪製！"
+
+#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:63
+#, kde-format
+msgctxt "@label:button"
+msgid "Save"
+msgstr "儲存"
+
+#: contents/ui/pages/PaintingPage.qml:37
+#, kde-format
+msgctxt "@label:button, as in 'erase everything'"
+msgid "Clear"
+msgstr "清除"
+
+#: contents/ui/pages/PaintingPage.qml:44
+#, kde-format
+msgctxt "@label:action"
+msgid "Auto crop"
+msgstr "自動裁剪"
+
+#: contents/ui/pages/PrintingPage.qml:21
+#, kde-format
+msgctxt "@title:page"
+msgid "Print"
+msgstr "列印"
+
+#: contents/ui/pages/PrintingPage.qml:31
+#, kde-format
+msgctxt "@label:ComboBox"
+msgid "Color theme"
+msgstr "顏色主題"
+
+#: contents/ui/pages/PrintingPage.qml:47
+#, kde-format
+msgctxt "@label:button, as in 'the background of an image'"
+msgid "Background"
+msgstr "背景"
+
+#: contents/ui/pages/SettingsPage.qml:19
+#, kde-format
+msgctxt "@title:window"
+msgid "Settings"
+msgstr "設定"
+
+#: contents/ui/pages/SettingsPage.qml:25
+#, kde-format
+msgid ""
+"Please choose a location for your future KleverNotes storage or select an "
+"existing one.\n"
+msgstr "請選擇新的筆記儲存庫的路徑或是一個既存的筆記儲存庫。\n"
+
+#: contents/ui/pages/SettingsPage.qml:62
+#, kde-format
+msgctxt "@title, general settings"
+msgid "General"
+msgstr "一般"
+
+#: contents/ui/pages/SettingsPage.qml:72
+#, kde-format
+msgctxt ""
+"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
+msgid "Storage path:"
+msgstr "筆記儲存庫路徑："
+
+#: contents/ui/pages/SettingsPage.qml:91
+#, kde-format
+msgctxt "@label:textbox, the default note category name"
+msgid "New Category name:"
+msgstr "新分類名稱："
+
+#: contents/ui/pages/SettingsPage.qml:123
+#, kde-format
+msgctxt "@label:textbox, the default note group name"
+msgid "New Group name:"
+msgstr "新群組名稱："
+
+#: contents/ui/pages/SettingsPage.qml:155
+#, kde-format
+msgctxt "@label:textbox, the default note name"
+msgid "New Note name:"
+msgstr "新筆記名稱："
+
+#: contents/ui/pages/SettingsPage.qml:184
+#, kde-format
+msgctxt ""
+"@title, display as in 'the note display' where you can visualize the note"
+msgid "Display"
+msgstr "顯示"
+
+#: contents/ui/settings/DisplayPreview.qml:17
+#, kde-format
+msgctxt "@label:combobox"
+msgid "Style:"
+msgstr "風格："
+
+#: contents/ui/settings/DisplayPreview.qml:47
+#, kde-format
+msgctxt "@label:button"
+msgid "Text color:"
+msgstr "文字顏色："
+
+#: contents/ui/settings/DisplayPreview.qml:58
+#, kde-format
+msgctxt "@label:button"
+msgid "Title color:"
+msgstr "標題顏色："
+
+#: contents/ui/settings/DisplayPreview.qml:73
+#, kde-format
+msgctxt "@label:button"
+msgid "Link color:"
+msgstr "連結顏色："
+
+#: contents/ui/settings/DisplayPreview.qml:84
+#, kde-format
+msgctxt "@label:button"
+msgid "Visited Link color:"
+msgstr "造訪過的連結顏色："
+
+#: contents/ui/settings/DisplayPreview.qml:97
+#, kde-format
+msgctxt "@label:button"
+msgid "Code color:"
+msgstr "程式碼顏色："
+
+#: contents/ui/settings/DisplayPreview.qml:110
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Font:"
+msgstr "字型："
+
+#: contents/ui/sideBar/ActionBar.qml:227
+#, kde-format
+msgctxt "as in 'A note category'"
+msgid "Create a new category"
+msgstr "建立新分類"
+
+#: contents/ui/sideBar/ActionBar.qml:235
+#, kde-format
+msgctxt "as in 'A note group'"
+msgid "Create a new group"
+msgstr "建立新群組"
+
+#: contents/ui/sideBar/ActionBar.qml:243
+#, kde-format
+msgctxt "as in 'A note'"
+msgid "Create a new note"
+msgstr "建立新筆記"
+
+#: contents/ui/sideBar/ActionBar.qml:251 contents/ui/sideBar/ContextMenu.qml:42
+#, kde-format
+msgid "Rename"
+msgstr "重新命名"
+
+#: contents/ui/sideBar/ContextMenu.qml:21
+#, kde-format
+msgctxt "as in 'A note category'"
+msgid "New category"
+msgstr "新增分類"
+
+#: contents/ui/sideBar/ContextMenu.qml:28
+#, kde-format
+msgctxt "as in 'A note group'"
+msgid "New group"
+msgstr "新增群組"
+
+#: contents/ui/sideBar/ContextMenu.qml:35
+#, kde-format
+msgctxt "as in 'A note'"
+msgid "New note"
+msgstr "新增筆記"
+
+#: contents/ui/sideBar/ContextMenu.qml:49
+#, kde-format
+msgid "Delete"
+msgstr "刪除"
+
+#: contents/ui/sideBar/SearchBar.qml:50
+#, kde-format
+msgid "From : "
+msgstr "從："
+
+#: contents/ui/sideBar/SearchBar.qml:71
+#, kde-format
+msgid "No search results"
+msgstr "沒有搜尋結果"
+
+#: contents/ui/sideBar/Sidebar.qml:79
+#, kde-format
+msgid "Cheat sheet"
+msgstr "小抄"
+
+#: contents/ui/sideBar/Sidebar.qml:88
+#, kde-format
+msgid "Settings"
+msgstr "設定"
+
+#: contents/ui/sideBar/Sidebar.qml:97
+#, kde-format
+msgid "About KleverNotes"
+msgstr "關於 KleverNotes 筆記"
+
+#: contents/ui/textEditor/BottomToolBar.qml:18
+#, kde-format
+msgctxt "@label:button, as in 'A note'"
+msgid "Note"
+msgstr "筆記"
+
+#: contents/ui/textEditor/BottomToolBar.qml:24
+#, kde-format
+msgctxt "@label:button"
+msgid "TODO"
+msgstr "TODO"
+
+#: contents/ui/textEditor/CheatSheet.qml:15
+#, kde-format
+msgctxt "@window:title"
+msgid "Markdown Cheat Sheet"
+msgstr "Markdown 小抄"
+
+#: contents/ui/textEditor/CheatSheet.qml:29
+#, kde-format
+msgid "Copied !"
+msgstr "已複製！"
+
+#: contents/ui/textEditor/CheatSheet.qml:40
+#, kde-format
+msgctxt "@title, cheat sheet section"
+msgid "Basic syntax"
+msgstr "基本語法"
+
+#: contents/ui/textEditor/CheatSheet.qml:47
+#, kde-format
+msgid "Heading"
+msgstr "標題"
+
+#: contents/ui/textEditor/CheatSheet.qml:48
+#, kde-format
+msgctxt "exemple"
+msgid "Heading1"
+msgstr "標題 1"
+
+#: contents/ui/textEditor/CheatSheet.qml:53
+#, kde-format
+msgid "Bold"
+msgstr "粗體"
+
+#: contents/ui/textEditor/CheatSheet.qml:54
+#, kde-format
+msgctxt "exemple"
+msgid "Bold text"
+msgstr "粗體文字"
+
+#: contents/ui/textEditor/CheatSheet.qml:59
+#, kde-format
+msgid "Italic"
+msgstr "斜體"
+
+#: contents/ui/textEditor/CheatSheet.qml:60
+#, kde-format
+msgctxt "exemple"
+msgid "Italic text"
+msgstr "斜體文字"
+
+#: contents/ui/textEditor/CheatSheet.qml:65
+#, kde-format
+msgid "Blockquote"
+msgstr "區塊引言"
+
+#: contents/ui/textEditor/CheatSheet.qml:66
+#, kde-format
+msgctxt "exemple"
+msgid "Quote"
+msgstr "引言"
+
+#: contents/ui/textEditor/CheatSheet.qml:71
+#, kde-format
+msgid "Ordered list"
+msgstr "有序列表"
+
+#: contents/ui/textEditor/CheatSheet.qml:72
+#: contents/ui/textEditor/CheatSheet.qml:79
+#, kde-format
+msgctxt "exemple"
+msgid "First item"
+msgstr "第一個項目"
+
+#: contents/ui/textEditor/CheatSheet.qml:73
+#: contents/ui/textEditor/CheatSheet.qml:80
+#, kde-format
+msgctxt "exemple"
+msgid "Second item"
+msgstr "第二個項目"
+
+#: contents/ui/textEditor/CheatSheet.qml:78
+#, kde-format
+msgid "Unordered list"
+msgstr "無序列表"
+
+#: contents/ui/textEditor/CheatSheet.qml:85
+#, kde-format
+msgid "Code"
+msgstr "程式碼"
+
+#: contents/ui/textEditor/CheatSheet.qml:86
+#, kde-format
+msgctxt "exemple"
+msgid "Inline code"
+msgstr "行內程式碼"
+
+#: contents/ui/textEditor/CheatSheet.qml:91
+#, kde-format
+msgctxt "@label, horizontal rule => <hr> html tag"
+msgid "Rule"
+msgstr "橫線"
+
+#: contents/ui/textEditor/CheatSheet.qml:97
+#, kde-format
+msgid "Link"
+msgstr "連結"
+
+#: contents/ui/textEditor/CheatSheet.qml:98
+#, kde-format
+msgctxt "exemple"
+msgid "title"
+msgstr "標題"
+
+#: contents/ui/textEditor/CheatSheet.qml:98
+#, kde-format
+msgctxt "exemple"
+msgid "https://www.example.com"
+msgstr "https://www.example.com"
+
+#: contents/ui/textEditor/CheatSheet.qml:103
+#, kde-format
+msgid "Image"
+msgstr "影像"
+
+#: contents/ui/textEditor/CheatSheet.qml:104
+#, kde-format
+msgctxt "exemple"
+msgid "alt text"
+msgstr "替代文字"
+
+#: contents/ui/textEditor/CheatSheet.qml:104
+#, kde-format
+msgctxt "exemple"
+msgid "image"
+msgstr "影像"
+
+#: contents/ui/textEditor/CheatSheet.qml:111
+#, kde-format
+msgctxt "@title, cheat sheet section"
+msgid "Extended syntax"
+msgstr "擴充語法"
+
+#: contents/ui/textEditor/CheatSheet.qml:118
+#, kde-format
+msgid "Table"
+msgstr "表格"
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, kde-format
+msgctxt "@label, noun, 'The left side of something'"
+msgid "Left"
+msgstr "左"
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, kde-format
+msgctxt "@label, verb, 'To center something'"
+msgid "Center"
+msgstr "置中"
+
+#: contents/ui/textEditor/CheatSheet.qml:119
+#, kde-format
+msgctxt "@label, noun, 'The right side of something"
+msgid "Right"
+msgstr "右"
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 1"
+msgstr "儲存格 1"
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 2"
+msgstr "儲存格 2"
+
+#: contents/ui/textEditor/CheatSheet.qml:121
+#, kde-format
+msgctxt "exemple"
+msgid "Cell 3"
+msgstr "儲存格 3"
+
+#: contents/ui/textEditor/CheatSheet.qml:126
+#, kde-format
+msgid "Fenced code block"
+msgstr "欄狀程式碼區塊"
+
+#: contents/ui/textEditor/CheatSheet.qml:128
+#, kde-format
+msgctxt "exemple"
+msgid "Sample text here..."
+msgstr "範例文字於此..."
+
+#: contents/ui/textEditor/CheatSheet.qml:134
+#, kde-format
+msgid "Strikethrough"
+msgstr "刪除線"
+
+#: contents/ui/textEditor/CheatSheet.qml:135
+#, kde-format
+msgctxt "exemple, something wrong"
+msgid "The world is flat."
+msgstr "世界是平的"
+
+#: contents/ui/textEditor/CheatSheet.qml:140
+#, kde-format
+msgid "Task list"
+msgstr "工作列表"
+
+#: contents/ui/textEditor/CheatSheet.qml:141
+#, kde-format
+msgctxt "exemple"
+msgid "Make more foo"
+msgstr "做更多的某事"
+
+#: contents/ui/textEditor/CheatSheet.qml:142
+#, kde-format
+msgctxt "exemple"
+msgid "Make more bar"
+msgstr "繼續做另一件事"
+
+#: contents/ui/textEditor/EditorView.qml:25
+#, kde-format
+msgctxt "@tooltip, Print action, will be followed by the shortcut"
+msgid "Print"
+msgstr "列印"
+
+#: contents/ui/textEditor/EditorView.qml:32
+#, kde-format
+msgctxt "@tooltip, will be followed by the shortcut"
+msgid "View/Hide editor"
+msgstr "檢視/隱藏編輯器"
+
+#: contents/ui/textEditor/EditorView.qml:41
+#, kde-format
+msgctxt ""
+"@tooltip, display as in 'the note preview', will be followed by the shortcut"
+msgid "View/Hide preview"
+msgstr "檢視/隱藏預覽"
+
+#: contents/ui/textEditor/TextToolBar.qml:90
+#: contents/ui/textEditor/TextToolBar.qml:91
+#: contents/ui/textEditor/TextToolBar.qml:92
+#: contents/ui/textEditor/TextToolBar.qml:94
+#: contents/ui/textEditor/TextToolBar.qml:95
+#, kde-format
+msgid "Header"
+msgstr "標頭"
+
+#: contents/ui/textEditor/TextToolBar.qml:220
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Headers"
+msgstr "標頭"
+
+#: contents/ui/textEditor/TextToolBar.qml:220
+#, kde-format
+msgctxt "@tooltip, short form of 'number'"
+msgid "num"
+msgstr "數字"
+
+#: contents/ui/textEditor/TextToolBar.qml:225
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 1"
+msgstr "標頭 1"
+
+#: contents/ui/textEditor/TextToolBar.qml:237
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 2"
+msgstr "標頭 2"
+
+#: contents/ui/textEditor/TextToolBar.qml:249
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 3"
+msgstr "標頭 3"
+
+#: contents/ui/textEditor/TextToolBar.qml:261
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 4"
+msgstr "標頭 4"
+
+#: contents/ui/textEditor/TextToolBar.qml:273
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 5"
+msgstr "標頭 5"
+
+#: contents/ui/textEditor/TextToolBar.qml:285
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 6"
+msgstr "標頭 6"
+
+#: contents/ui/textEditor/TextToolBar.qml:299
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Bold"
+msgstr "粗體"
+
+#: contents/ui/textEditor/TextToolBar.qml:308
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Italic"
+msgstr "斜體"
+
+#: contents/ui/textEditor/TextToolBar.qml:317
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Strikethrough"
+msgstr "刪除線"
+
+#: contents/ui/textEditor/TextToolBar.qml:326
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Code"
+msgstr "程式碼"
+
+#: contents/ui/textEditor/TextToolBar.qml:335
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Quote"
+msgstr "引言"
+
+#: contents/ui/textEditor/TextToolBar.qml:344
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Image"
+msgstr "影像"
+
+#: contents/ui/textEditor/TextToolBar.qml:351
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link"
+msgstr "連結"
+
+#: contents/ui/textEditor/TextToolBar.qml:358
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Table"
+msgstr "表格"
+
+#: contents/ui/textEditor/TextToolBar.qml:365
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Ordered list"
+msgstr "有序列表"
+
+#: contents/ui/textEditor/TextToolBar.qml:377
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Unordered list"
+msgstr "無序列表"
+
+#: contents/ui/todoEditor/ToDoView.qml:21
+#, kde-format
+msgctxt "@label:button, checked as in 'the todos that are checked'"
+msgid "Clear checked"
+msgstr "清除已勾選"
+
+#: logic/kleverUtility.cpp:97
+#, kde-format
+msgid ""
+"/*            \n"
+"This file is a copy of the default CSS style for the note "
+"display.            \n"
+"Feel free to edit it or make your own.            \n"
+"Note: each style need to have a different name.            \n"
+"*/\n"
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:260
+#, kde-format
+msgid "An error occurred while trying to create the demo note."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:386
+#, kde-format
+msgid "An error occurred while trying to create this item."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:415
+#, kde-format
+msgid "An error occurred while trying to remove this item."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:437
+#, kde-format
+msgid "An error occurred while trying to rename this item."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:477
+#, kde-format
+msgid "An error occurred while trying to create the note."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:487
+#, kde-format
+msgid "An error occurred while trying to create the group."
+msgstr ""
+
+#: logic/treeview/noteTreeModel.cpp:496
+#, kde-format
+msgid "An error occurred while trying to create the category."
+msgstr "嘗試建立分類時發生錯誤。"
+
+#: logic/treeview/noteTreeModel.cpp:503
+#, kde-format
+msgid "An error occurred while trying to create the storage."
+msgstr "建立筆記儲存庫時發生錯誤。"
+
+#: main.cpp:58
+#, kde-format
+msgctxt "@title"
+msgid "KleverNotes"
+msgstr "KleverNotes 筆記"
+
+#: main.cpp:62
+#, kde-format
+msgid "Application Description"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "(c) 2022-2023"
+msgstr ""
+
+#: main.cpp:67
+#, kde-format
+msgctxt "@info:credit"
+msgid "Louis Schul"
+msgstr "Louis Schul"
+
+#: main.cpp:72
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kisaragi Hiu"
+
+#: main.cpp:72
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "mail@kisaragi-hiu.com"
