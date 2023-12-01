@@ -7,6 +7,8 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import Qt.labs.platform 1.1
 
+import org.kde.Klever 1.0
+
 import "qrc:/contents/ui/dialogs"
 
 GridLayout{
@@ -19,6 +21,15 @@ GridLayout{
     readonly property QtObject cheatSheet: cheatSheet
 
     property list<Kirigami.Action> actions: [
+        Kirigami.Action {
+            id: linkedNotesAction
+            enabled: Config.noteMapEnabled
+            visible: enabled
+            shortcut: "Ctrl+M"
+            tooltip: i18nc("@tooltip, will be followed by the shortcut", "Linked notes") + " (" + shortcut + ")"
+            icon.name: "gnumeric-link-internal"
+            onTriggered: noteMapLoader.item.open()
+        },
         Kirigami.Action {
             id: pdfPrinter
             shortcut: "Ctrl+P"
@@ -110,5 +121,16 @@ GridLayout{
 
     CheatSheet {
         id: cheatSheet
+    }
+
+    Loader {
+        id: noteMapLoader
+
+        sourceComponent: NotesMap {
+            id: linkedNotesMap
+
+            parser: display.parser
+        }
+        active: Config.noteMapEnabled
     }
 }

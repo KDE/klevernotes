@@ -23,8 +23,7 @@ ToolBar {
     readonly property QtObject createNoteAction: createNoteAction
     readonly property QtObject createGroupAction: createGroupAction
     readonly property QtObject createCategoryAction: createCategoryAction
-    readonly property var currentModelIndex: treeModel.mapToSource(treeModel.index(treeView.currentIndex, 0))
-    readonly property var timer: timer
+    property var currentModelIndex
 
     function getName(useCase, shownName, parentPath, callingAction, newItem){
         namingDialog.useCase = useCase
@@ -34,36 +33,6 @@ ToolBar {
         namingDialog.callingAction = callingAction
         namingDialog.newItem = newItem
         namingDialog.open()
-    }
-
-    Timer {
-        id: focusTimer
-
-        property var focusModelIndex
-
-        interval: Kirigami.Units.longDuration
-        repeat: false
-
-        onTriggered: if (focusModelIndex) {
-            focusModelIndex.model.askForFocus(focusModelIndex)
-            focusModelIndex = undefined
-        }
-    }
-
-    Timer {
-        id: timer
-
-        property var modelIndex
-
-        interval: Kirigami.Units.longDuration
-        repeat: false
-
-        onTriggered: if (modelIndex) {
-            modelIndex.model.askForExpand(modelIndex)
-            modelIndex = undefined
-            interval = Kirigami.Units.longDuration
-            focusTimer.start()
-        }
     }
 
     NamingDialog {
@@ -262,7 +231,6 @@ ToolBar {
             }
         }
 
-
         SearchBar {
             id: searchBar
 
@@ -276,22 +244,9 @@ ToolBar {
             }
 
             onClickedIndexChanged: if (clickedIndex) {
-                let parentRowsList = []
-                let currentModelIndex = clickedIndex
-                while (currentModelIndex.parent.row !== -1) {
-                    const nextModelIndex = currentModelIndex.parent
-                    parentRowsList.push(nextModelIndex)
-                    currentModelIndex = nextModelIndex
-                }
-
-                const firstModelIndex = parentRowsList[parentRowsList.length - 1]
-
-                firstModelIndex.model.askForExpand(firstModelIndex)
-                // This might be the exact same as "firstModelIndex" but is still needed for Category notes
-                timer.modelIndex = parentRowsList[0]
-
-                focusTimer.focusModelIndex = clickedIndex
+                applicationWindow().globalDrawer.askForFocus(clickedIndex)
                 searchBar.popup.close()
+                return;
             }
         }
     }

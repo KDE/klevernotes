@@ -188,6 +188,28 @@ FormCard.FormCardPage {
         id: displayPreview
     }
 
+    // TODO: reorganize settings in different tabs
+    FormCard.FormHeader {
+        Layout.fillWidth: true
+        title: i18nc("@title", "KleverNotes plugins")
+    }
+
+    FormCard.FormCard {
+        id: pluginsCard
+
+        Layout.fillWidth: true
+
+        FormCard.FormCheckDelegate {
+            id: noteMapperCheck
+
+            text: i18nc("@label:checkbox", "Enable note linking")
+            description: i18nc("@description:checkbox", "Note linking allows you to create a link from one note to another.\nAdvice: restart the app once actived.")
+            checked: Config.noteMapEnabled
+
+            onCheckedChanged: if (checked != Config.noteMapEnabled) Config.noteMapEnabled = checked
+        }
+    }
+
     function updateName(shownName,callingAction){
         namingDialog.shownName = shownName
         namingDialog.callingAction = callingAction
