@@ -62,7 +62,7 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 
 TreeItem *TreeItem::child(int row)
 {
-    if (row < 0 || row >= m_childItems.size()) {
+    if (row < 0 || row >= (int)m_childItems.size()) {
         return nullptr;
     }
     return m_childItems.at(row).get();
@@ -70,7 +70,7 @@ TreeItem *TreeItem::child(int row)
 
 std::unique_ptr<TreeItem> TreeItem::uniqueChildAt(int row)
 {
-    if (row < 0 || row >= m_childItems.size()) {
+    if (row < 0 || row >= (int)m_childItems.size()) {
         return nullptr;
     }
 
@@ -79,8 +79,6 @@ std::unique_ptr<TreeItem> TreeItem::uniqueChildAt(int row)
 
 int TreeItem::childCount() const
 {
-    // Not super clean, but required to not let the app crash when the storage can't be created
-    if (this == nullptr) return 0;
     return m_childItems.size();
 }
 
@@ -345,6 +343,10 @@ int NoteTreeModel::rowCount(const QModelIndex &parent) const
         parentItem = m_rootItem.get();
     } else {
         parentItem = static_cast<TreeItem *>(parent.internalPointer());
+    }
+
+    if (m_rootItem == nullptr) {
+        return 0;
     }
 
     return parentItem->childCount();

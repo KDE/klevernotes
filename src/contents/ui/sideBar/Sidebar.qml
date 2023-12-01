@@ -35,8 +35,8 @@ Kirigami.OverlayDrawer {
     topPadding: 0
     bottomPadding: 0
 
-    property bool storageExist: Config.storagePath !== "None"
-    onStorageExistChanged: if (storageExist) noteTreeModel.initModel()
+    readonly property string storagePath: Config.storagePath
+    onStoragePathChanged: if (storagePath !== "None") noteTreeModel.initModel()
 
     width: Kirigami.Units.gridUnit * 15
     contentItem: ColumnLayout {
@@ -109,7 +109,7 @@ Kirigami.OverlayDrawer {
     }
 
     Component.onCompleted: {
-        if (!storageExist){
+        if (storagePath === "None"){
             let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
 
             if (component.status == Component.Ready) {
