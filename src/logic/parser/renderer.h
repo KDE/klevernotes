@@ -11,7 +11,7 @@
 class Renderer
 {
 public:
-    static QString code(QString &code, QString &lang);
+    static QString code(QString &code, const QString &lang, const bool highlight);
     static QString blockquote(const QString &quote);
     static QString html(const QString &html);
     static QString heading(const QString &text, const QString &lvl, const QString &raw, const bool scrollTo = false);

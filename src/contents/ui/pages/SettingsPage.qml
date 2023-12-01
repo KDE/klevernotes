@@ -208,6 +208,24 @@ FormCard.FormCardPage {
 
             onCheckedChanged: if (checked != Config.noteMapEnabled) Config.noteMapEnabled = checked
         }
+
+        ExpendingFormCheckBox {
+            text: i18nc("@label:checkbox", "Enable code syntax highliting")
+
+            checked: Config.codeSynthaxHighlightEnabled
+            highlighterCombobox.model: HighlightHelper.highlighters 
+            styleCombobox.model: HighlightHelper.getHighlighterStyle(highlighterCombobox.currentValue) 
+
+            onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) Config.codeSynthaxHighlightEnabled = checked
+            highlighterCombobox.onCurrentValueChanged: {
+                const highlighter = highlighterCombobox.currentValue
+                if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
+            }
+            styleCombobox.onCurrentValueChanged: {
+                const style = styleCombobox.currentValue
+                if (style != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = style 
+            }
+        }
     }
 
     function updateName(shownName,callingAction){
@@ -241,5 +259,4 @@ FormCard.FormCardPage {
         }
     }
 }
-
 

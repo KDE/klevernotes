@@ -73,5 +73,18 @@
             <label>Whether or not the note map is enable</label>
             <default>false</default>
         </entry>
+<!-- TODO: put this alongside the note linking value -->
+        <entry name="codeSynthaxHighlightEnabled" type="Bool">
+            <label>Whether or not the code block syntax highlighting is enable</label>
+            <default>false</default>
+        </entry>
+        <entry name="codeSynthaxHighlighter" type="String">
+            <label>The highlighter choosen by the user</label>
+            <default></default>
+        </entry>
+        <entry name="codeSynthaxHighlighterStyle" type="String">
+            <label>The highlighter style choosen by the user</label>
+            <default></default>
+        </entry>
     </group>
 </kcfg>

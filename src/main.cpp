@@ -7,7 +7,6 @@
 #include <QQmlApplicationEngine>
 #include <QUrl>
 #include <QtQml>
-#include <qobject.h>
 
 #if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
 #include <QtWebEngineQuick>
@@ -37,6 +36,8 @@
 #include "logic/painting/sketchview.h"
 #include "logic/painting/strokeitem.h"
 #include "logic/painting/strokelistitem.h"
+
+#include "logic/syntaxHighlight/highlightHelper.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -91,6 +92,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::noteMapEnabledChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::codeSynthaxHighlightEnabledChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::codeSynthaxHighlighterChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::codeSynthaxHighlighterStyleChanged, config, &KleverConfig::save);
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
@@ -119,6 +123,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
     qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
+
+    HighlightHelper highlightHelper;
+    qmlRegisterSingletonInstance<HighlightHelper>("org.kde.Klever", 1, 0, "HighlightHelper", &highlightHelper);
 
     qRegisterMetaType<StrokeSample>();
     qRegisterMetaType<Stroke>();

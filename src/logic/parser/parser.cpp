@@ -84,6 +84,7 @@ void Parser::setNotePath(const QString &notePath)
     // We do this here because we're sure to be in another note
     m_previousLinkedNoteInfos.clear();
     m_previousNoteHeaders.clear();
+    m_previousNoteCodeBlocks.clear();
 
     // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
     m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
@@ -108,8 +109,19 @@ QString Parser::parse(QString src)
     m_linkedNoteInfos.clear();
     m_noteHeaders.clear();
     m_headerFound = false;
+    m_noteCodeBlocks.clear();
 
     blockLexer.lex(src);
+
+    if (m_highlightEnabled) {
+        m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks;
+        if (!m_sameCodeBlocks) {
+            m_previousNoteCodeBlocks = m_noteCodeBlocks;
+            m_previousHighlightedBlocks.clear();
+        } else {
+            m_currentBlockIndex = 0;
+        }
+    }
 
     std::reverse(tokens.begin(), tokens.end());
 
@@ -173,9 +185,22 @@ QString Parser::tok()
 
     if (type == "code") { // adding const with the Synthax Highlighting MR
         text = m_token["text"].toString();
-        QString lang = m_token["lang"].toString();
+        const QString lang = m_token["lang"].toString();
 
-        return Renderer::code(text, lang);
+        const bool highlight = m_highlightEnabled && !lang.isEmpty();
+
+        QString returnValue;
+        if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
+            returnValue = m_previousHighlightedBlocks[m_currentBlockIndex];
+            m_currentBlockIndex++;
+        } else {
+            returnValue = Renderer::code(text, lang, highlight);
+            if (m_highlightEnabled && highlight) { // We want to store only the highlighted values
+                m_previousHighlightedBlocks.append(returnValue);
+            }
+        }
+
+        return returnValue;
     }
 
     if (type == "table") {
@@ -309,6 +334,7 @@ QString Parser::peekType() const
     return (!tokens.isEmpty()) ? tokens.last()["type"].toString() : "";
 }
 
+// Notemapper
 void Parser::addToLinkedNoteInfos(const QStringList &infos)
 {
     m_linkedNoteInfos.append(infos);
@@ -327,4 +353,20 @@ void Parser::setNoteMapEnabled(const bool noteMapEnabled)
 bool Parser::noteMapEnabled() const
 {
     return m_noteMapEnabled;
+}
+
+// Syntax highlight
+void Parser::setHighlightEnabled(const bool highlightEnabled)
+{
+    m_highlightEnabled = highlightEnabled;
+}
+
+bool Parser::highlightEnabled() const
+{
+    return m_highlightEnabled;
+}
+
+void Parser::addToNoteCodeBlocks(const QString &codeBlock)
+{
+    m_noteCodeBlocks.append(codeBlock);
 }

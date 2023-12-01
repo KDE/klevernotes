@@ -20,6 +20,7 @@ class Parser : public QObject
     Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
     Q_PROPERTY(QString headerLevel READ headerLevel)
     Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
+    Q_PROPERTY(bool highlightEnabled WRITE setHighlightEnabled)
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -39,6 +40,10 @@ public:
     void addToLinkedNoteInfos(const QStringList &infos);
     void addToNoteHeaders(const QString &header);
 
+    // Syntax highlight
+    void setHighlightEnabled(const bool highlightEnabled);
+    bool highlightEnabled() const;
+    void addToNoteCodeBlocks(const QString &codeBlock);
 signals:
     // NoteMapper
     void newLinkedNotesPaths(const QStringList &notePathHeaderPairs);
@@ -69,4 +74,12 @@ private:
     QStringList m_previousNoteHeaders;
     QStringList m_linkedNoteInfos;
     QStringList m_previousLinkedNoteInfos;
+
+    // Synthax highlight
+    bool m_highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
+    bool m_sameCodeBlocks = false;
+    int m_currentBlockIndex = 0;
+    QStringList m_noteCodeBlocks;
+    QStringList m_previousHighlightedBlocks;
+    QStringList m_previousNoteCodeBlocks;
 };

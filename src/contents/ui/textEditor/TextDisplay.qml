@@ -21,6 +21,7 @@ RowLayout {
     readonly property Parser parser: parser
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
+    readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
@@ -53,6 +54,11 @@ RowLayout {
 
     onNoteMapEnabledChanged: {
         parser.noteMapEnabled = noteMapEnabled
+        root.parseText()
+    }
+
+    onHighlightEnabledChanged: {
+        parser.highlightEnabled = highlightEnabled 
         root.parseText()
     }
 
