@@ -15,6 +15,8 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0
 
+import org.kde.Klever 1.0
+
 T.CheckDelegate {
     id: root
 
@@ -113,13 +115,45 @@ T.CheckDelegate {
                 id: highlighterCombobox
                 visible: checkBoxItem.checked
                 text: i18nc("@label:combobox", "Highlighter")
-                currentIndex: 0
+                onModelChanged: if (model.length !== 0) {
+                    const baseIndex = 0;
+
+                    if (Config.codeSynthaxHighlighter.length === 0) {
+                        highlighterCombobox.currentIndex = baseIndex
+                        return
+                    }
+
+                    const inModelIndex = model.indexOf(Config.codeSynthaxHighlighter)
+
+                    highlighterCombobox.currentIndex = inModelIndex === -1
+                        ? baseIndex
+                        : inModelIndex
+                }
             } 
             FormComboBoxDelegate {
                 id: styleCombobox
+                
+                property bool configStyleSet: false
+
                 visible: checkBoxItem.checked
                 text: i18nc("@label:combobox", "Highlighter style")
-                currentIndex: 0
+
+                onCurrentValueChanged: if (!styleCombobox.configStyleSet) {
+                    const baseIndex = 0;
+
+                    if (Config.codeSynthaxHighlighterStyle.length === 0) {
+                        styleCombobox.currentIndex = baseIndex
+                        return
+                    }
+
+                    const inModelIndex = model.indexOf(Config.codeSynthaxHighlighterStyle)
+
+                    styleCombobox.currentIndex = inModelIndex === -1
+                        ? baseIndex
+                        : inModelIndex
+
+                    styleCombobox.configStyleSet = true
+                }
             }
         }
     }

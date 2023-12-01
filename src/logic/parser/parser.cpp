@@ -232,7 +232,6 @@ QString Parser::peekType()
 void Parser::setHighlightEnabled(const bool highlightEnabled)
 {
     m_highlightEnabled = highlightEnabled;
-    qDebug() << m_highlightEnabled;
 }
 
 bool Parser::highlightEnabled() const
