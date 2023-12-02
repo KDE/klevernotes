@@ -235,6 +235,10 @@ NoteTreeModel::NoteTreeModel(QObject *parent)
 
 void NoteTreeModel::initModel()
 {
+    if (KleverConfig::storagePath().isEmpty() || !KleverConfig::storagePath().toLower().endsWith("klevernotes")) {
+        return;
+    }
+
     if (!KleverUtility::exists(KleverConfig::storagePath())) {
         const bool storageCreated = makeStorage(KleverConfig::storagePath());
         if (!storageCreated) {
