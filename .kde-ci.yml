@@ -10,7 +10,7 @@ Dependencies:
     'frameworks/kirigami': '@stable'
     'frameworks/kcoreaddons': '@stable'
     'frameworks/kconfig': '@stable'
-    'libraries/kirigami-addons': '@latest'
+    'libraries/kirigami-addons': '@stable'
     'frameworks/qqc2-desktop-style': '@stable'
 
 - 'on': [ 'Linux/Qt6', 'FreeBSD/Qt6', 'Windows/Qt6']
