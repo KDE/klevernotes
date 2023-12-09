@@ -23,6 +23,7 @@
   <name xml:lang="nl">KleverNotes</name>
   <name xml:lang="pl">KleverNotes</name>
   <name xml:lang="pt">KleverNotes</name>
+  <name xml:lang="sk">KleverNotes</name>
   <name xml:lang="sl">KleverNotes</name>
   <name xml:lang="sv">KleverNotes</name>
   <name xml:lang="tr">Akıllı Notlar</name>
@@ -70,6 +71,7 @@
   <developer_name xml:lang="nl">De KDE gemeenschap</developer_name>
   <developer_name xml:lang="pl">Społeczność KDE</developer_name>
   <developer_name xml:lang="pt">A Comunidade do KDE</developer_name>
+  <developer_name xml:lang="sk">KDE Komunita</developer_name>
   <developer_name xml:lang="sl">Skupnost KDE</developer_name>
   <developer_name xml:lang="sv">KDE-gemenskapen</developer_name>
   <developer_name xml:lang="tr">KDE Topluluğu</developer_name>
