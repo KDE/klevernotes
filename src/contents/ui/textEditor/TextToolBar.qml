@@ -72,7 +72,7 @@ Kirigami.ActionToolBar {
                 modifiedPath = "~" + modifiedPath.substring(idx)
             }
 
-            let imageString = `![${imageName}](${modifiedPath}) `
+            let imageString = '![' + imageName + '](' + modifiedPath + ') '
 
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, imageString)
 
@@ -111,7 +111,7 @@ Kirigami.ActionToolBar {
         id: linkDialog
 
         onAccepted: {
-            let linkString = `[${linkText}](${urlText}) `
+            let linkString = '[' + linkText + '](' + urlText + ') '
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, linkString)
         }
     }

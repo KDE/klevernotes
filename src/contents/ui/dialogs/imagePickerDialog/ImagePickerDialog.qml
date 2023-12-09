@@ -65,7 +65,6 @@ Kirigami.Dialog {
             ButtonDelegate {
                 id: internetButton
 
-
                 icon {
                     name: "internet-amarok"
                     width: mainItem.iconSize
@@ -79,7 +78,6 @@ Kirigami.Dialog {
                 display: imageHolder.visible
                     ? Controls.AbstractButton.TextBesideIcon
                     : Controls.AbstractButton.TextUnderIcon
-
 
                 Layout.preferredWidth: Kirigami.Units.iconSizes.huge * 2
                 Layout.preferredHeight: imageHolder.visible
@@ -128,7 +126,7 @@ Kirigami.Dialog {
                 id: paintingButton
 
                 icon {
-                    name: "tool-paintbrush-symbolic"
+                    name: "draw-brush"
                     width: mainItem.iconSize
                     height: mainItem.iconSize
                 }

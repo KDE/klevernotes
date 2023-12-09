@@ -31,9 +31,14 @@ Kirigami.PromptDialog {
         }
     }
 
+    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+
     onOpened: urlTextField.forceActiveFocus()
 
-    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+    onClosed: {
+        urlText = ""
+        linkText = ""
+    }
 }
 
 
