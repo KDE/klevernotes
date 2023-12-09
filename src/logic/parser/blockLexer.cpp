@@ -176,7 +176,7 @@ void BlockLexer::tokenize(QString &remaining, bool top)
                 bool loose = next || QRegularExpression("\n\n(?!\\s*$)").match(item).hasMatch();
 
                 if (globalCap.hasNext()) {
-                    next = item[item.length() - 1] == QChar::fromLatin1('\n');
+                    next = !item.isEmpty() && item[item.length() - 1] == QChar::fromLatin1('\n');
                     if (!loose) {
                         loose = next;
                     }
