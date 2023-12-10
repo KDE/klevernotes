@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -85,48 +85,48 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Bildauswahl"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
 #, fuzzy, kde-format
 #| msgid "Web image"
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Internetbild"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
 #, fuzzy, kde-format
 #| msgid "Local image"
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Lokales Bild"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
 #, fuzzy, kde-format
 #| msgid "Paint an image"
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Ein Bild malen"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
 #, fuzzy, kde-format
 #| msgid "Image selector"
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Bildauswahl"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr ""
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
 #, fuzzy, kde-format
 #| msgid "Image text: "
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Bildtext: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -1056,42 +1056,42 @@ msgid ""
 "*/\n"
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:260
+#: logic/treeview/noteTreeModel.cpp:262
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:386
+#: logic/treeview/noteTreeModel.cpp:392
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:415
+#: logic/treeview/noteTreeModel.cpp:421
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:437
+#: logic/treeview/noteTreeModel.cpp:443
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:483
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:487
+#: logic/treeview/noteTreeModel.cpp:493
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:496
+#: logic/treeview/noteTreeModel.cpp:502
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:503
+#: logic/treeview/noteTreeModel.cpp:509
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr ""

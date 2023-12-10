@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2023-11-07 19:07+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -76,43 +76,43 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Izbirnik slik"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Spletna slika"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Krajevna slika"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Naslikajte sliko"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Zbirka slik"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Kaže, da slika, ki ste jo izbrali, ne obstaja ali ni podprta."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Besedilo slike: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -1006,42 +1006,42 @@ msgstr ""
 "Opomba: vsak slog mora imeti drugačno ime.            \n"
 "*/\n"
 
-#: logic/treeview/noteTreeModel.cpp:260
+#: logic/treeview/noteTreeModel.cpp:262
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja vzorčne zabeležke."
 
-#: logic/treeview/noteTreeModel.cpp:386
+#: logic/treeview/noteTreeModel.cpp:392
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:415
+#: logic/treeview/noteTreeModel.cpp:421
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Prišlo je do napake pri poskusu odstranjevanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:437
+#: logic/treeview/noteTreeModel.cpp:443
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Prišlo je do napake pri poskusu preimenovanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:483
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja zabeležke."
 
-#: logic/treeview/noteTreeModel.cpp:487
+#: logic/treeview/noteTreeModel.cpp:493
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja skupine."
 
-#: logic/treeview/noteTreeModel.cpp:496
+#: logic/treeview/noteTreeModel.cpp:502
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja kategorije."
 
-#: logic/treeview/noteTreeModel.cpp:503
+#: logic/treeview/noteTreeModel.cpp:509
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja shrambe."

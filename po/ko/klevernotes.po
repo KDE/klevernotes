@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2023-10-09 00:22+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -75,43 +75,43 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "그림 선택기"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "웹 그림"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "로컬 그림"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "그림 그리기"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "그림 모음집"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "선택한 그림이 없거나 지원하지 않는 것 같습니다."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "그림 텍스트: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -1033,42 +1033,42 @@ msgstr ""
 "메모: 각각 스타일마다 고유한 이름을 지정해야 합니다.            \n"
 "*/\n"
 
-#: logic/treeview/noteTreeModel.cpp:260
+#: logic/treeview/noteTreeModel.cpp:262
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "데모 메모를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:386
+#: logic/treeview/noteTreeModel.cpp:392
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "이 항목을 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:415
+#: logic/treeview/noteTreeModel.cpp:421
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "이 항목을 삭제하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:437
+#: logic/treeview/noteTreeModel.cpp:443
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "이 항목의 이름을 변경하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:483
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "메모를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:487
+#: logic/treeview/noteTreeModel.cpp:493
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "그룹을 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:496
+#: logic/treeview/noteTreeModel.cpp:502
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "분류를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:503
+#: logic/treeview/noteTreeModel.cpp:509
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2023-11-26 01:21+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -76,43 +76,43 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Görsel Seçicisi"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Web Görseli"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Yerel Görsel"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Bir Görsel Boya"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Görsel Seçicisi"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Görünüşe göre seçtiğiniz görsel yok veya desteklenmiyor."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Görsel metni: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -1012,42 +1012,42 @@ msgstr ""
 "Not: Her bir biçemin adı farklı olmalıdır.            \n"
 "*/\n"
 
-#: logic/treeview/noteTreeModel.cpp:260
+#: logic/treeview/noteTreeModel.cpp:262
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Tanıtım notu oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:386
+#: logic/treeview/noteTreeModel.cpp:392
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Bu öge oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:415
+#: logic/treeview/noteTreeModel.cpp:421
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Bu öge kaldırılmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:437
+#: logic/treeview/noteTreeModel.cpp:443
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Bu öge yeniden adlandırılmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:483
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Not oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:487
+#: logic/treeview/noteTreeModel.cpp:493
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Grup oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:496
+#: logic/treeview/noteTreeModel.cpp:502
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Kategori oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:503
+#: logic/treeview/noteTreeModel.cpp:509
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Depolama oluşturulmaya çalışılırken bir hata oluştu."

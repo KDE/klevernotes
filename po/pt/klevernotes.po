@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 00:43+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2023-06-13 17:27+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -85,35 +85,35 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Selector de imagens"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
 #, fuzzy, kde-format
 #| msgid "Web image"
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Imagem da Web"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:106
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
 #, fuzzy, kde-format
 #| msgid "Local image"
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Imagem local"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:136
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
 #, fuzzy, kde-format
 #| msgid "Paint an image"
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Pintar uma imagem"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:160
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
 #, fuzzy, kde-format
 #| msgid "Image selector"
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Selector de imagens"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:228
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
 #, fuzzy, kde-format
 #| msgid ""
 #| "It seems that the image you select doesn't exist or is not supported."
@@ -123,14 +123,14 @@ msgstr ""
 "Parece que a imagem que seleccionou não existe ou não existe suporte para "
 "ela."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:248
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
 #, fuzzy, kde-format
 #| msgid "Image text: "
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Texto da imagem: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
 #, fuzzy, kde-format
 #| msgid "Place this image inside the note folder"
 msgctxt "@label:checkbox"
@@ -1093,43 +1093,43 @@ msgid ""
 "*/\n"
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:260
+#: logic/treeview/noteTreeModel.cpp:262
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create the note."
 msgid "An error occurred while trying to create the demo note."
 msgstr "Ocorreu um erro ao tentar criar a nota."
 
-#: logic/treeview/noteTreeModel.cpp:386
+#: logic/treeview/noteTreeModel.cpp:392
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Ocorreu um erro ao tentar criar este item."
 
-#: logic/treeview/noteTreeModel.cpp:415
+#: logic/treeview/noteTreeModel.cpp:421
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Ocorreu um erro ao tentar remover este item."
 
-#: logic/treeview/noteTreeModel.cpp:437
+#: logic/treeview/noteTreeModel.cpp:443
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Ocorreu um erro ao tentar mudar o nome deste item."
 
-#: logic/treeview/noteTreeModel.cpp:477
+#: logic/treeview/noteTreeModel.cpp:483
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Ocorreu um erro ao tentar criar a nota."
 
-#: logic/treeview/noteTreeModel.cpp:487
+#: logic/treeview/noteTreeModel.cpp:493
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Ocorreu um erro ao tentar criar o grupo."
 
-#: logic/treeview/noteTreeModel.cpp:496
+#: logic/treeview/noteTreeModel.cpp:502
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Ocorreu um erro ao tentar criar a categoria."
 
-#: logic/treeview/noteTreeModel.cpp:503
+#: logic/treeview/noteTreeModel.cpp:509
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Ocorreu um erro ao tentar criar o armazenamento."
