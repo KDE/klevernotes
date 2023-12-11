@@ -65,8 +65,13 @@ void BlockLexer::tokenize(QString &remaining, bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), "");
 
-            QVariantMap tok{{"type", "code"}, {"text", cap.captured(3)}, {"lang", cap.captured(2)}};
+            const QString text = cap.captured(3);
+            const QString lang = cap.captured(2);
+            const QVariantMap tok{{"type", "code"}, {"text", text}, {"lang", lang}};
             m_parser->tokens.append(tok);
+            if (m_parser->highlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
+                m_parser->addToNoteCodeBlocks(text);
+            }
             continue;
         }
 

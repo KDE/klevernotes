@@ -11,6 +11,8 @@ Different Markdown flavors are supported thanks to [Marked.js](https://marked.js
 
 **Get involved and join our Matrix channel: [klevernotes:kde.org](https://matrix.to/#/#klevernotes:kde.org)**
 
+___
+
 ## Screenshots
 
 ### Adaptative
@@ -22,6 +24,23 @@ Different Markdown flavors are supported thanks to [Marked.js](https://marked.js
 ![Screenshot of  Klevernotes drawing](https://cdn.kde.org/screenshots/klevernotes/painting.png)
 ### Print your note ! 
 ![Screenshot of  Klevernotes print page](https://cdn.kde.org/screenshots/klevernotes/printing.png)
+
+___
+
+## Plugins
+> A feature that goes beyond the normal scope of Markdown. 
+> It is considered a 'plugin' and can be enabled/disabled at any time in the settings. 
+> A plugin is disabled by default.
+
+### Syntax highlighting
+Highlight your blocks of code !
+
+#### Supported highlighter:
+- [KSyntaxHighlighter](https://invent.kde.org/frameworks/syntax-highlighting) 
+- [Chroma](https://github.com/alecthomas/chroma)
+- [Pygments](https://pygments.org/)
+
+___
 
 ## Get it
 

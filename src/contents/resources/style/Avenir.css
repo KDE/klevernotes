@@ -116,6 +116,7 @@ code, pre {
     font-family: monospace;
     font-size: 10pt;
     border-radius: 3px;
+    white-space: pre-wrap;
     background-color: var(--codeColor);
     color: inherit;
 }

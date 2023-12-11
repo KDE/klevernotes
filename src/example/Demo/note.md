@@ -82,8 +82,13 @@ Indented code
 
 Block code "fences"
 
-```
-Sample text here...
+```C++
+#include <iostream>
+
+int main() {
+    std::cout << "Hello World!";
+    return 0;
+}
 ```
 
 ## Tables

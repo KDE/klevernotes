@@ -43,6 +43,7 @@
         <file>contents/ui/painting/ColorButton.qml</file>
 
         <file>contents/ui/settings/DisplayPreview.qml</file>
+        <file>contents/ui/settings/ExpendingFormCheckBox.qml</file>
         <file>contents/ui/settings/SettingsColorButton.qml</file>
 
         <file alias="contents/ui/sideBar/ActionBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/sideBar/ActionBar.qml</file>

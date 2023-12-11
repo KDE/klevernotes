@@ -18,6 +18,8 @@ RowLayout {
     required property string path
     required property string text
 
+    readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
+    readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
@@ -44,9 +46,18 @@ RowLayout {
     onPathChanged:  MDParser.notePath = path;
     onTextChanged: {
         text = text.length > 0 ? text : "\n"
-        parsedHtml = MDParser.parse(text)
-        updateHtml()
+        root.parseText()
     }
+
+    onHighlightEnabledChanged: {
+        MDParser.highlightEnabled = highlightEnabled 
+        root.parseText()
+    }
+    onHighlighterStyleChanged: {
+        MDParser.newHighlightStyle()
+        root.parseText()
+    }
+
     onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle({})
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
 
@@ -134,6 +145,11 @@ RowLayout {
         const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
 
         web_view.loadHtml(finishedHtml, "file:/")
+    }
+
+    function parseText() {
+        parsedHtml = MDParser.parse(text)
+        updateHtml()
     }
 
     function changeStyle(styleDict: Object) {

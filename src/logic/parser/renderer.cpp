@@ -1,16 +1,16 @@
 #include "renderer.h"
+#include "logic/syntaxHighlight/highlightHelper.h"
 
 #include <QRegularExpression>
 #include <QUrl>
 
-QString Renderer::code(QString &code, QString &lang)
+QString Renderer::code(QString &code, const QString &lang, const bool highlight)
 {
-    if (lang.isEmpty()) {
-        return "<pre><code>" + escape(code, true) + "</code></pre>";
+    if (highlight) {
+        code = HighlightHelper::getHighlightedString(code, lang);
     }
 
-    return QString::fromStdString("<pre><code class=\"language-") + escape(lang, true) + QString::fromStdString("\">") + escape(code, true)
-        + QString::fromStdString("</code></pre>\n");
+    return "<pre><code>" + (highlight ? code : escape(code, true)) + QString::fromStdString("</code></pre>\n");
 }
 
 QString Renderer::blockquote(const QString &quote)
