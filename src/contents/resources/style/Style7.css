@@ -1,16 +1,19 @@
 :root {
     --bodyColor: ;
     --font: ;
+    --fontSize: ;
     --textColor: ;
     --titleColor: ;
     --linkColor: ;
     --visitedLinkColor: ;
     --codeColor: ;
+    --codeFont: ;
+    --codeFontSize: ;
 }
 
 body {
     font-family: var(--font), sans-serif;
-    font-size: 14px;
+    font-size: var(--fontSize); /*was 14, all other font-size are based on that*/
     line-height: 1.6;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -87,31 +90,31 @@ h6 tt, h6 code {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: calc(var(--fontSize) * 2);
     color: var(--titleColor);
 }
 
 h2 {
-    font-size: 24px;
+    font-size: calc(var(--fontSize) + 10px);
     border-bottom: 1px solid var(--titleColor);
     color: var(--titleColor);
 }
 
 h3 {
-    font-size: 18px;
+    font-size: calc(var(--fontSize) + 4px);
 }
 
 h4 {
-    font-size: 16px;
+    font-size: calc(var(--fontSize) + 2px);
 }
 
 h5 {
-    font-size: 14px;
+    font-size: var(--fontSize);
 }
 
 h6 {
     color: var(--titleColor);
-    font-size: 14px;
+    font-size: var(--fontSize);
     filter: brightness(130%);
 }
 
@@ -177,7 +180,7 @@ dl {
 }
 
 dl dt {
-    font-size: 14px;
+    font-size: var(--fontSize);
     font-weight: bold;
     font-style: italic;
     padding: 0;
@@ -373,12 +376,13 @@ pre code {
     white-space: pre-wrap;
     border: none;
     background: transparent;
+    font-family: var(--codeFont), monospace; 
 }
 
 pre {
     background-color: var(--codeColor);
     border: 1px solid var(--linkColor);
-    font-size: 13px;
+    font-size: var(--codeFontSize);
     line-height: 19px;
     overflow: auto;
     padding: 6px 10px;

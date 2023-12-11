@@ -1,11 +1,14 @@
 :root {
     --bodyColor: ;
     --font: ;
+    --fontSize: ;
     --textColor: ;
     --titleColor: ;
     --linkColor: ;
     --visitedLinkColor: ;
     --codeColor: ;
+    --codeFont: ;
+    --codeFontSize: ;
 }
 
 body {
@@ -23,31 +26,31 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     color: var(--titleColor);
-    font-size: 28pt;
+    font-size: calc(var(--fontSize) + 12px); /*No font-size was in body, let's assume its 16, all other font-size are based on that*/
 }
 
 h2 {
     border-bottom: 1px solid var(--titleColor);
     color: var(--titleColor);
-    font-size: 24px;
+    font-size: calc(var(--fontSize) + 8px);
 }
 
 h3 {
-    font-size: 18px;
+    font-size: calc(var(--fontSize) + 2px);
 }
 
 h4 {
-    font-size: 16px;
+    font-size: var(--fontSize);
 }
 
 h5 {
-    font-size: 14px;
+    font-size: calc(var(--fontSize) - 2px);
 }
 
 h6 {
     color: var(--titleColor);
     background-color: inherit;
-    font-size: 14px;
+    font-size: calc(var(--fontSize) - 2px);
     filter: brightness(130%);
 }
 
@@ -113,8 +116,8 @@ a:visited {
 
 
 code, pre {
-    font-family: monospace;
-    font-size: 10pt;
+    font-family: var(--codeFont), monospace;
+    font-size: var(--codeFontSize);
     border-radius: 3px;
     white-space: pre-wrap;
     background-color: var(--codeColor);

@@ -3,11 +3,11 @@
 
 #include "kleverUtility.h"
 #include "documentHandler.h"
-#include "kleverconfig.h"
-#include <QDebug>
+// #include <QDebug>
 #include <QDir>
+#include <QFontInfo>
+#include <QStandardPaths>
 #include <QString>
-#include <QUrl>
 #include <kio/global.h>
 #include <klocalizedstring.h>
 
@@ -16,12 +16,12 @@ KleverUtility::KleverUtility(QObject *parent)
 {
 }
 
-QString KleverUtility::getName(const QString &path)
+QString KleverUtility::getName(const QString &path) const
 {
     return QDir(path).dirName();
 }
 
-QString KleverUtility::getPath(const QUrl &url)
+QString KleverUtility::getPath(const QUrl &url) const
 {
     return url.toLocalFile();
 }
@@ -39,7 +39,7 @@ bool KleverUtility::create(const QString &path)
     return false;
 }
 
-QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration)
+QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPath, const QString &wantedName, int iteration) const
 {
     create(noteImagesStoringPath);
 
@@ -54,12 +54,12 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
     return imagePath;
 }
 
-bool KleverUtility::isEmptyDir(const QString &path)
+bool KleverUtility::isEmptyDir(const QString &path) const
 {
     return !exists(path) || QDir(path).isEmpty();
 }
 
-QString KleverUtility::isProperPath(const QString &parentPath, const QString &name)
+QString KleverUtility::isProperPath(const QString &parentPath, const QString &name) const
 {
     if (name.startsWith("."))
         return "dot";
@@ -71,20 +71,20 @@ QString KleverUtility::isProperPath(const QString &parentPath, const QString &na
     return (exists(newPath)) ? "exist" : "";
 }
 
-QString KleverUtility::getParentPath(const QString &path)
+QString KleverUtility::getParentPath(const QString &path) const
 {
     QDir dir(path);
     dir.cdUp();
     return dir.absolutePath();
 }
 
-bool KleverUtility::remove(const QString &path)
+bool KleverUtility::remove(const QString &path) const
 {
     QFile file(path);
     return file.remove();
 }
 
-QJsonObject KleverUtility::getCssStylesList()
+QJsonObject KleverUtility::getCssStylesList() const
 {
     QJsonObject styleNameAndPath = {{"KleverStyle", ":/KleverStyle.css"}, {"Avenir", ":/Avenir.css"}, {"Style7", ":/Style7.css"}, {"Style9", ":/Style9.css"}};
 
@@ -125,4 +125,15 @@ QJsonObject KleverUtility::getCssStylesList()
     }
 
     return styleNameAndPath;
+}
+
+QJsonObject KleverUtility::fontInfo(const QFont &font) const
+{
+    QJsonObject fontInfo;
+
+    QFontInfo info(font);
+
+    fontInfo["family"] = info.family();
+    fontInfo["pointSize"] = info.pointSize();
+    return fontInfo;
 }

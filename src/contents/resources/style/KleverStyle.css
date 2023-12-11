@@ -1,16 +1,19 @@
 :root {
     --bodyColor: ;
     --font: ;
+    --fontSize: ;
     --textColor: ;
     --titleColor: ;
     --linkColor: ;
     --visitedLinkColor: ;
     --codeColor: ;
+    --codeFont: ;
+    --codeFontSize: ;
 }
 
 body {
     font-family: var(--font), sans-serif;
-    font-size: 16px;
+    font-size: var(--fontSize); /* was 16, all other font-size are based on that*/
     line-height: 1.6;
     background-color: var(--bodyColor);
     padding: 10px;
@@ -52,29 +55,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 28pt;
+    font-size: calc(var(--fontSize) + 12px);
     margin-bottom: 18px;
 }
 
 h2 {
-    font-size: 24px;
+    font-size: calc(var(--fontSize) + 8px);
     margin-bottom: 12px;
 }
 
 h3 {
-    font-size: 18px;
+    font-size: calc(var(--fontSize) + 2px);
 }
 
 h4 {
-    font-size: 16px;
+    font-size: var(--fontSize);
 }
 
 h5 {
-    font-size: 14px;
+    font-size: calc(var(--fontSize) - 2px);
 }
 
 h6 {
-    font-size: 13px;
+    font-size: calc(var(--fontSize) - 3px);
 }
 
 p, ul, ol, dl, li, table, pre {
@@ -181,7 +184,7 @@ blockquote > :last-child {
 
 blockquote:before {
     content: "\201C";
-    font-size: 20px;
+    font-size: calc(var(--fontSize) + 4px);
     font-family: serif;
     color: var(--titleColor);
 }
@@ -243,7 +246,7 @@ code {
     -moz-border-radius: 5px;
     border-radius: 5px;
     filter: brightness(80%);
-    font-size: 14px;
+    font-size: var(--codeFontSize);
 }
 
 pre code {
@@ -252,7 +255,7 @@ pre code {
     white-space: pre-wrap;
     border: none;
     background: transparent;
-    font-family: monospace;
+    font-family: var(--codeFont), monospace;
 }
 
 pre {

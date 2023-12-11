@@ -31,6 +31,7 @@ ScrollView {
 
         persistentSelection: true
         wrapMode: TextEdit.Wrap
+        font: Config.editorFont
 
         onTextChanged : if (!tempBuff) modified = true
     }

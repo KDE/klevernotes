@@ -82,6 +82,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::defaultCategoryNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultGroupNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultNoteNameChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::editorFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewBodyColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewTextColorChanged, config, &KleverConfig::save);
@@ -89,6 +90,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::viewLinkColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewVisitedLinkColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewCodeColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewFontChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::codeFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeSynthaxHighlightEnabledChanged, config, &KleverConfig::save);

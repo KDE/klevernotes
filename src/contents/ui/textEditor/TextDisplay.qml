@@ -33,14 +33,19 @@ RowLayout {
     property string parsedHtml
     property string cssStyle
     property string completCss
+    readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
+    readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
     property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
-        '--font': Config.viewFont !== "None" ? Config.viewFont : Kirigami.Theme.defaultFont,
+        '--font': viewFontInfo.family,
+        '--fontSize': viewFontInfo.pointSize + "px",
         '--textColor': Config.viewTextColor !== "None" ? Config.viewTextColor : Kirigami.Theme.textColor,
         '--titleColor': Config.viewTitleColor !== "None" ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor,
         '--linkColor': Config.viewLinkColor !== "None" ? Config.viewLinkColor : Kirigami.Theme.linkColor,
         '--visitedLinkColor': Config.viewVisitedLinkColor !== "None" ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
         '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
+        '--codeFont': codeFontInfo.family,
+        '--codeFontSize': codeFontInfo.pointSize + "px",
     }
     property bool printBackground: true
     property bool isInit: false

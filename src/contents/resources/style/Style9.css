@@ -1,11 +1,14 @@
 :root {
     --bodyColor: ;
     --font: ;
+    --fontSize: ;
     --textColor: ;
     --titleColor: ;
     --linkColor: ;
     --visitedLinkColor: ;
     --codeColor: ;
+    --codeFont: ;
+    --codeFontSize: ;
 }
 
 h1, h2, h3, h4, h5, h6, p, blockquote {
@@ -15,7 +18,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
 
 body {
     font-family: var(--font), sans-serif;
-    font-size: 13px;
+    font-size: var(--fontSize); /*was 13, all other font-size are based on this*/
     line-height: 18px;
     color: var(--textColor);
     background-color: var(--bodyColor);
@@ -66,27 +69,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     margin-bottom: 18px;
-    font-size: 30px;
+    font-size: calc(var(--fontSize) + 17px);
 }
 
 h2 {
-    font-size: 24px;
+    font-size: calc(var(--fontSize) + 11px);
 }
 
 h3 {
-    font-size: 18px;
+    font-size: calc(var(--fontSize) + 5px);
 }
 
 h4 {
-    font-size: 16px;
+    font-size: calc(car(--fontSize) + 3px);
 }
 
 h5 {
-    font-size: 14px;
+    font-size: calc(var(--fontSize) + 1px);
 }
 
 h6 {
-    font-size: 13px;
+    font-size: var(--fontSize);
 }
 
 hr {
@@ -105,7 +108,7 @@ blockquote {
 
 blockquote:before {
     content:"\201C";
-    font-size:40px;
+    font-size: calc(var(--fontSize) + 27px);
     margin-left:-10px;
     font-family: serif;
     color: var(--titleColor);
@@ -113,7 +116,7 @@ blockquote:before {
 }
 
 blockquote p {
-    font-size: 14px;
+    font-size: calc(var(--fontSize) + 1px);
     font-weight: 300;
     line-height: 18px;
     margin-bottom: 0;
@@ -121,12 +124,12 @@ blockquote p {
 }
 
 code, pre {
-    font-family:monospace;
+    font-family: var(--codeFont), monospace;
 }
 
 code {
     padding: 1px 3px;
-    font-size: 12px;
+    font-size: var(--codeFontSize);
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -138,7 +141,7 @@ pre {
     padding: 14px;
     margin: 0 0 18px;
     line-height: 16px;
-    font-size: 11px;
+    font-size: var(--codeFontSize);
     border: 1px solid var(--textColor);
     white-space: pre;
     white-space: pre-wrap;
@@ -148,7 +151,7 @@ pre {
 }
 
 pre code {
-    font-size: 11px;
+    font-size: var(--codeFontSize);
     padding: 0;
     background: transparent;
 }

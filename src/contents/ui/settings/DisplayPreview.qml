@@ -11,7 +11,6 @@ import "qrc:/contents/ui/textEditor"
 
 import org.kde.Klever 1.0
 
-
 FormCard.FormCard {
     FormCard.FormComboBoxDelegate {
         text: i18nc("@label:combobox", "Style:")
@@ -104,26 +103,31 @@ FormCard.FormCard {
             Layout.preferredWidth: displayer.width / 2
         }
 
-        FormCard.FormTextFieldDelegate {
-            id: fontDisplay
+        Item {
+            Layout.preferredWidth: displayer.width / 2
+        }
+    }
 
-            label: i18nc("@label:textbox", "Font:")
+    RowLayout {
+        FontPicker {
+            configFont: Config.viewFont
+            label: i18nc("@label:textbox", "General font:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
-            text: (Config.viewFont !== "None") ? Config.viewFont : Kirigami.Theme.defaultFont.family
-            font.family: text
-
-            Layout.margins: 0
             Layout.preferredWidth: displayer.width / 2
 
+            onNewFontChanged: if (text !== newFont) {
+                Config.viewFont = newFont 
+            }
+        }
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    fontDialog.currentFamily = parent.text
-                    fontDialog.open()
-                }
+        FontPicker {
+            configFont: Config.codeFont
+            label: i18nc("@label:textbox", "Code block font:")
+
+            Layout.preferredWidth: displayer.width / 2
+
+            onNewFontChanged: if (text !== newFont) {
+                Config.codeFont = newFont 
             }
         }
     }

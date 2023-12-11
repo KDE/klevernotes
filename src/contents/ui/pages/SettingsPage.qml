@@ -51,7 +51,7 @@ FormCard.FormCardPage {
             id: fontDialog
 
             onApplied: {
-                Config.viewFont = checkedFamily
+                caller.newFont = Qt.font({"family": checkedFamily, "pointSize": checkedSize})
                 fontDialog.close()
             }
         }
@@ -175,6 +175,19 @@ FormCard.FormCardPage {
                     newNoteField.isActive = true
                     updateName(newNoteField.text, newNoteField)
                 }
+            }
+        }
+
+        FormCard.FormDelegateSeparator { above: newNoteField; below: textEditorFont }
+
+        FontPicker {
+            id: textEditorFont
+            
+            configFont: Config.editorFont
+            label: i18nc("@label:textbox, the font used in the text editor", "Editor font:")
+
+            onNewFontChanged: if (text !== newFont) {
+                Config.editorFont = newFont
             }
         }
     }
