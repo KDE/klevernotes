@@ -53,10 +53,12 @@
         <file>contents/ui/sideBar/TreeItem.qml</file>
         <file>contents/ui/sideBar/TreeView.qml</file>
 
-        <file alias="contents/ui/textEditor/BottomToolBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/textEditor/BottomToolBar.qml</file>
         <file>contents/ui/textEditor/components/CheatSheetEntry.qml</file>
+        <file>contents/ui/textEditor/components/NotesMapEntry.qml</file>
+        <file alias="contents/ui/textEditor/BottomToolBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/textEditor/BottomToolBar.qml</file>
         <file>contents/ui/textEditor/CheatSheet.qml</file>
         <file>contents/ui/textEditor/EditorView.qml</file>
+        <file alias="contents/ui/textEditor/NotesMap.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/textEditor/NotesMap.qml</file>
         <file>contents/ui/textEditor/TextDisplay.qml</file>
         <file>contents/ui/textEditor/TextEditor.qml</file>
         <file alias="contents/ui/textEditor/TextToolBar.qml">@CMAKE_CURRENT_BINARY_DIR@/contents/ui/textEditor/TextToolBar.qml</file>

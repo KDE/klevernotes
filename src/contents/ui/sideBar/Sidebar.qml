@@ -16,7 +16,10 @@ import org.kde.kirigami 2.5 as Kirigami
 import org.kde.Klever 1.0
 
 Kirigami.OverlayDrawer {
-    id:drawer
+    id: drawer
+
+    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
+    readonly property NoteTreeModel treeModel: treeview.model
 
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
@@ -39,6 +42,37 @@ Kirigami.OverlayDrawer {
     onStoragePathChanged: if (storagePath !== "None") noteTreeModel.initModel()
 
     width: Kirigami.Units.gridUnit * 15
+
+    Timer {
+        id: focusTimer
+
+        property var focusModelIndex
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: if (focusModelIndex) {
+            focusModelIndex.model.askForFocus(focusModelIndex)
+            focusModelIndex = undefined
+        }
+    }
+
+    Timer {
+        id: timer
+
+        property var modelIndex
+
+        interval: Kirigami.Units.longDuration
+        repeat: false
+
+        onTriggered: if (modelIndex) {
+            modelIndex.model.askForExpand(modelIndex)
+            modelIndex = undefined
+            interval = Kirigami.Units.longDuration
+            focusTimer.start()
+        }
+    }
+
     contentItem: ColumnLayout {
         id: column
 
@@ -60,11 +94,21 @@ Kirigami.OverlayDrawer {
             sourceModel: NoteTreeModel {
                 id: noteTreeModel
 
+                noteMapEnabled: Config.noteMapEnabled
+
+                onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path)
+                onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath)
+                onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
+                onInitialGlobalPathsSent: drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
                 onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
             }
 
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            onCurrentItemChanged: {
+                actionBar.currentModelIndex = treeview.descendantsModel.mapToSource(treeview.descendantsModel.index(treeview.currentIndex, 0))
+            }
         }
 
         Controls.ToolSeparator {
@@ -81,7 +125,10 @@ Kirigami.OverlayDrawer {
 
             Layout.alignment:Qt.AlignBottom
 
-            onClicked: applicationWindow().showCheatSheet()
+            onClicked: {
+                applicationWindow().showCheatSheet()
+                if (drawer.modal) drawer.close()
+            }
         }
 
         Kirigami.BasicListItem {
@@ -117,6 +164,25 @@ Kirigami.OverlayDrawer {
                 dialog.open()
             }
         }
+    }
+
+    function askForFocus(modelIndex) {
+        let parentRowsList = []
+        let currentModelIndex = modelIndex
+        while (currentModelIndex.parent.row !== -1) {
+            const nextModelIndex = currentModelIndex.parent
+            parentRowsList.push(nextModelIndex)
+            currentModelIndex = nextModelIndex
+        }
+
+        const firstModelIndex = parentRowsList[parentRowsList.length - 1]
+
+        firstModelIndex.model.askForExpand(firstModelIndex)
+        // This might be the exact same as "firstModelIndex" but is still needed for Category notes
+        timer.modelIndex = parentRowsList[0]
+        timer.start()
+
+        focusTimer.focusModelIndex = modelIndex
     }
 }
 

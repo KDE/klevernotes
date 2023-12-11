@@ -29,16 +29,34 @@ ___
 
 ## Plugins
 > A feature that goes beyond the normal scope of Markdown. 
-> It is considered a 'plugin' and can be enabled/disabled at any time in the settings. 
+> It is considered a 'plugin' and can be enabled/disabled at any time in the settings.
 > A plugin is disabled by default.
+
+<details><summary>Available plugins</summary>
+
+### Note linking
+Link your notes together. You can even link them to a specific header !
+
+Use the following syntax to do so : 
+
+`[[ Category/Group/Note:# header | displayed name ]]`
 
 ### Syntax highlighting
 Highlight your blocks of code !
+Use the following syntax to do so : 
+```
+    ```<lang>
+        code goes here
+    ```
+```
+Replace `<lang>` with the desired language :smile:
 
 #### Supported highlighter:
 - [KSyntaxHighlighter](https://invent.kde.org/frameworks/syntax-highlighting) 
 - [Chroma](https://github.com/alecthomas/chroma)
 - [Pygments](https://pygments.org/)
+
+</details>
 
 ___
 

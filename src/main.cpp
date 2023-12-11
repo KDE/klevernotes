@@ -7,7 +7,6 @@
 #include <QQmlApplicationEngine>
 #include <QUrl>
 #include <QtQml>
-#include <qqml.h>
 
 #if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
 #include <QtWebEngineQuick>
@@ -27,6 +26,7 @@
 #include "logic/todoHandler.h"
 #include "logic/colorschemer.h"
 
+#include "logic/parser/parser.h"
 #include "logic/treeview/noteTreeModel.h"
 
 #include "logic/painting/pressureequation.h"
@@ -36,8 +36,7 @@
 #include "logic/painting/strokeitem.h"
 #include "logic/painting/strokelistitem.h"
 
-#include "logic/parser/parser.h"
-
+#include "logic/noteMapper/noteMapper.h"
 #include "logic/syntaxHighlight/highlightHelper.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -95,6 +94,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::codeSynthaxHighlightEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterStyleChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::noteMapEnabledChanged, config, &KleverConfig::save);
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
@@ -120,9 +120,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
 
-    Parser parser;
-    qmlRegisterSingletonInstance<Parser>("org.kde.Klever", 1, 0, "MDParser", &parser);
-
+    qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
+    qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     HighlightHelper highlightHelper;

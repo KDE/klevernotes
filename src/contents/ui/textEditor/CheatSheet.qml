@@ -7,6 +7,8 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
+import org.kde.Klever 1.0
+
 import "qrc:/contents/ui/textEditor/components/"
 
 Kirigami.OverlaySheet {
@@ -142,6 +144,25 @@ Kirigami.OverlaySheet {
                         "- [x] " + i18nc("exemple", "Make more bar")
                 onClicked: clipboardHelper.text = syntax
             } 
+        }
+
+        FormCard.FormHeader {
+            Layout.fillWidth: true
+            title: i18nc("@title, cheat sheet section", "KleverNotes plugins")
+            visible: Config.noteMapEnabled // Will change when more plugins are added
+        }
+
+        FormCard.FormCard {
+            Layout.fillWidth: true
+            visible: Config.noteMapEnabled
+
+            CheatSheetEntry {
+                element: i18n("Note link")
+                syntax: "[[ " 
+                    + i18nc("exemple, a note path ('/' are important), Category as in 'a category, Group 'a group', Note 'a note'", "Category/Group/Note") 
+                    + ":# " + i18nc("exemple", "header") + " | " + i18nc("exemple", "displayed name") + " ]]"
+                onClicked: clipboardHelper.text = syntax
+            }
         }
     }
 }

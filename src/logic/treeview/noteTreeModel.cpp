@@ -2,15 +2,16 @@
 // SPDX-License-Identifier: LGPL-2.0-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 
 #include "noteTreeModel.h"
-#include "kleverconfig.h"
 #include "../kleverUtility.h"
+#include "kleverconfig.h"
+#include <KIO/CopyJob>
 #include <QDir>
 #include <QFileInfo>
 #include <QIcon>
 #include <klocalizedstring.h>
-#include <KIO/CopyJob>
+#include <memory>
 
-TreeItem::TreeItem(const QString &path, const int &depth_level, QAbstractItemModel *model, TreeItem *parentItem)
+TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
     , m_model(model)
     , m_path(path)
@@ -57,6 +58,15 @@ TreeItem::TreeItem(const QString &path, const int &depth_level, QAbstractItemMod
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
+    if (item->m_depth_level == 3 && m_model->noteMapEnabled()) {
+        // very important to make a copy here !
+        QString path = QString(item->m_path).remove(KleverConfig::storagePath());
+        if (m_model->isInit()) {
+            Q_EMIT m_model->newGlobalPathFound(path);
+        } else {
+            m_model->addInitialGlobalPath(path);
+        }
+    }
     m_childItems.push_back(std::move(item));
 }
 
@@ -170,6 +180,9 @@ void TreeItem::remove()
 {
     Q_ASSERT(m_parentItem);
 
+    if (m_model->noteMapEnabled())
+        Q_EMIT m_model->globalPathRemoved(m_path);
+
     const auto it = std::find_if(m_parentItem->m_childItems.cbegin(), m_parentItem->m_childItems.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
         return treeItem.get() == const_cast<TreeItem *>(this);
     });
@@ -187,6 +200,9 @@ void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModel
     currentPathParts[newPartIdx] = newPart;
 
     QString newPath = currentPathParts.join("/");
+    if (m_depth_level == 3 && m_model->noteMapEnabled()) {
+        Q_EMIT m_model->globalPathUpdated(m_path, newPath);
+    }
     m_path = newPath;
 
     // By default we assume that we are in the first call
@@ -226,7 +242,6 @@ void TreeItem::askForExpand(const QModelIndex &itemIndex)
     m_wantExpand = false;
     emit m_model->dataChanged(itemIndex, itemIndex);
 }
-
 
 NoteTreeModel::NoteTreeModel(QObject *parent)
     : QAbstractItemModel(parent)
@@ -282,6 +297,11 @@ void NoteTreeModel::initModel()
     beginResetModel();
     m_rootItem = std::make_unique<TreeItem>(KleverConfig::storagePath(), 0, this);
     endResetModel();
+
+    if (m_noteMapEnabled) {
+        m_isInit = true;
+        Q_EMIT initialGlobalPathsSent(m_initialGlobalPaths);
+    }
 }
 
 
@@ -375,7 +395,7 @@ QVariant NoteTreeModel::data(const QModelIndex &index, int role) const
 
 void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, const int rowLevel, const QModelIndex &parentModelIndex)
 {
-    const auto parent = !parentModelIndex.isValid() ? m_rootItem.get() : static_cast<TreeItem *>(parentModelIndex.internalPointer());
+    const auto parentRow = !parentModelIndex.isValid() ? m_rootItem.get() : static_cast<TreeItem *>(parentModelIndex.internalPointer());
 
     bool rowCreated;
     switch (rowLevel) {
@@ -396,10 +416,10 @@ void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, co
     if (!rowCreated) return;
 
     const QString rowPath = parentPath + (QLatin1Char('/') + rowName);
-    auto newRow = std::make_unique<TreeItem>(rowPath, rowLevel, this, parent);
+    auto newRow = std::make_unique<TreeItem>(rowPath, rowLevel, this, parentRow);
 
-    beginInsertRows(parentModelIndex, parent->childCount(), parent->childCount());
-    parent->appendChild(std::move(newRow));
+    beginInsertRows(parentModelIndex, parentRow->childCount(), parentRow->childCount());
+    parentRow->appendChild(std::move(newRow));
     endInsertRows();
 }
 
@@ -461,6 +481,60 @@ void NoteTreeModel::askForExpand(const QModelIndex& rowModelIndex)
     row->askForExpand(rowModelIndex);
 }
 
+QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
+{
+    QStringList currentPathParts = notePath.split("/");
+    currentPathParts.pop_front(); // remove the first empty string
+    QString currentPathPart = currentPathParts.takeAt(0);
+
+    auto currentParentItem = m_rootItem.get();
+    QModelIndex currentModelIndex;
+
+    bool hasBreak = false;
+    for (int i = 0; i < currentParentItem->childCount();) {
+        auto currentItem = currentParentItem->child(i);
+        QString currentItemPath = currentItem->data(PathRole).toString();
+        if (currentItemPath.endsWith(currentPathPart)) {
+            currentModelIndex = createIndex(i, 0, currentItem);
+            if (currentPathParts.isEmpty()) {
+                hasBreak = true;
+                break;
+            } else {
+                currentPathPart = currentPathParts.takeAt(0);
+
+                if (currentPathPart == QStringLiteral(".BaseGroup"))
+                    currentPathPart = currentPathParts.takeAt(0);
+            }
+            currentParentItem = currentItem;
+            i = 0;
+            continue;
+        }
+        i++;
+    }
+
+    return hasBreak ? currentModelIndex : QModelIndex(); // Easier to handle in qml
+}
+
+// NoteMapper
+void NoteTreeModel::setNoteMapEnabled(const bool noteMapEnabled)
+{
+    m_noteMapEnabled = noteMapEnabled;
+}
+
+bool NoteTreeModel::noteMapEnabled()
+{
+    return m_noteMapEnabled;
+}
+
+bool NoteTreeModel::isInit()
+{
+    return m_isInit;
+}
+
+void NoteTreeModel::addInitialGlobalPath(const QString &path)
+{
+    m_initialGlobalPaths.append(path);
+}
 
 // Storage Handler
 bool NoteTreeModel::makeNote(const QString &groupPath, const QString &noteName)
@@ -509,6 +583,3 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
     if (!categoryCreated) emit errorOccurred(i18n("An error occurred while trying to create the storage."));
     return categoryCreated;
 }
-
-
-

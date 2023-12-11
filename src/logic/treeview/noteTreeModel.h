@@ -7,10 +7,11 @@
 #include <QFileInfo>
 #include <memory>
 
+class NoteTreeModel;
 class TreeItem
 {
 public:
-    explicit TreeItem(const QString &path, const int &depth_level, QAbstractItemModel *model, TreeItem *parentItem = nullptr);
+    explicit TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem = nullptr);
 
     void appendChild(std::unique_ptr<TreeItem> &&child);
 
@@ -31,7 +32,7 @@ private:
     std::vector<std::unique_ptr<TreeItem>> m_childItems;
     TreeItem *m_parentItem;
 
-    QAbstractItemModel *m_model;
+    NoteTreeModel *m_model;
 
     // Content
     QString m_path;
@@ -44,7 +45,7 @@ private:
 class NoteTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
-
+    Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
 public:
     explicit NoteTreeModel(QObject *parent = nullptr);
 
@@ -71,11 +72,28 @@ public:
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void initModel();
+    Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
+
+    // NoteMapper
+    void setNoteMapEnabled(const bool noteMapEnabled);
+    bool noteMapEnabled();
+    bool isInit();
+    void addInitialGlobalPath(const QString &path);
 
 signals:
     void errorOccurred(const QString &errorMessage);
+    // NoteMapper
+    void newGlobalPathFound(const QString &path);
+    void globalPathUpdated(const QString &oldPath, const QString &newPath);
+    void globalPathRemoved(const QString &path);
+    void initialGlobalPathsSent(const QStringList &initialGlobalPaths);
 
 private:
+    // NoteMapper
+    bool m_noteMapEnabled;
+    bool m_isInit = false;
+    QStringList m_initialGlobalPaths;
+
     QString m_path;
     std::unique_ptr<TreeItem> m_rootItem;
     QFileInfo m_fileInfo;

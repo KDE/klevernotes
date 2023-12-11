@@ -1,3 +1,8 @@
+/*
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+*/
+
 #pragma once
 
 #include <QString>
@@ -9,7 +14,7 @@ public:
     static QString code(QString &code, const QString &lang, const bool highlight);
     static QString blockquote(const QString &quote);
     static QString html(const QString &html);
-    static QString heading(const QString &text, int lvl, QString &raw);
+    static QString heading(const QString &text, const QString &lvl, const QString &raw, const bool scrollTo = false);
     static QString hr();
     static QString list(const QString &body, bool ordered, const QString &start);
     static QString listItem(const QString &text, const bool hasCheck = false);
@@ -23,6 +28,7 @@ public:
     static QString codeSpan(const QString &text);
     static QString br();
     static QString del(const QString &text);
+    static QString wikilink(const QString &href, const QString &title, const QString &text);
     static QString link(QString &href, const QString &title, const QString &text);
     static QString image(const QString &href, const QString &title, const QString &text);
     static QString text(const QString &text);

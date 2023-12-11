@@ -189,6 +189,7 @@ FormCard.FormCardPage {
     }
 
     
+    // TODO: reorganize settings in different tabs
     FormCard.FormHeader {
         Layout.fillWidth: true
         title: i18nc("@title", "KleverNotes plugins")
@@ -198,8 +199,21 @@ FormCard.FormCardPage {
         id: pluginsCard
 
         Layout.fillWidth: true
-        // TODO put this alongside the note linking value  
+        FormCard.FormCheckDelegate {
+            id: noteMapperCheck
+
+            text: i18nc("@label:checkbox", "Enable note linking")
+            description: i18nc("@description:checkbox", "Note linking allows you to create a link from one note to another.") 
+                + "\n" + i18nc("@description:checkbox", "Advice: restart the app once actived.")
+            checked: Config.noteMapEnabled
+
+            onCheckedChanged: if (checked != Config.noteMapEnabled) Config.noteMapEnabled = checked
+        }
+
+        FormCard.FormDelegateSeparator { above: noteMapperCheck; below: highlitingCheck }
+
         ExpendingFormCheckBox {
+            id: highlitingCheck
             text: i18nc("@label:checkbox", "Enable code syntax highliting")
             description: "<a href='https://invent.kde.org/office/klevernotes#syntax-highlighting'>" + i18nc("@description:checkbox", "List of supported highlighters") + "</a>"
 

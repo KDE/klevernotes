@@ -40,9 +40,9 @@ TreeView.TreeListView {
             if (!kDescendantExpanded) {
                 decoration.model.toggleChildren(index)
             } else {
-                actionBar.timer.interval = 0
+                drawer.timer.interval = 0
             }
-            actionBar.timer.start()
+            drawer.timer.start()
         }
 
 

@@ -17,12 +17,19 @@ RowLayout {
 
     required property string path
     required property string text
-
+    
+    // Syntax highlight
     readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
     readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
+    // NoteMapper
+    readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
+
+    readonly property Parser parser: parser
+    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property string stylePath: Config.stylePath
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
 
+    property string defaultHtml
     property string parsedHtml
     property string cssStyle
     property string completCss
@@ -43,23 +50,33 @@ RowLayout {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
-    onPathChanged:  MDParser.notePath = path;
-    onTextChanged: {
-        text = text.length > 0 ? text : "\n"
+    onPathChanged: parser.notePath = path
+    onTextChanged: root.parseText()
+
+    onHighlightEnabledChanged: {
+        parser.highlightEnabled = highlightEnabled 
         root.parseText()
     }
 
-    onHighlightEnabledChanged: {
-        MDParser.highlightEnabled = highlightEnabled 
+    onHighlighterStyleChanged: {
+        parser.newHighlightStyle()
         root.parseText()
     }
-    onHighlighterStyleChanged: {
-        MDParser.newHighlightStyle()
+
+    onNoteMapEnabledChanged: {
+        parser.noteMapEnabled = noteMapEnabled
         root.parseText()
     }
 
     onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle({})
     onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
+
+    Parser { 
+        id: parser
+
+        onNewLinkedNotesInfos: noteMapper.addLinkedNotesInfos(linkedNotesInfos)
+        onNoteHeadersSent: noteMapper.updatePathInfo(notePath, noteHeaders)
+    }
 
     Kirigami.Card{
         id: background
@@ -91,9 +108,14 @@ RowLayout {
                 printingPage.pdfPath = root.previewLocation
             }
 
-            onLoadProgressChanged: if (loadProgress === 100 && !root.isInit) {
-                loadStyle()
-                root.isInit = true
+            onLoadProgressChanged: if (loadProgress === 100) {
+                if (!root.isInit) {
+                    loadStyle()
+                    root.isInit = true
+                    updateHtml()
+                }
+
+                scrollToHeader()
             }
 
             onScrollPositionChanged: if (!vbar.active) {
@@ -101,15 +123,35 @@ RowLayout {
             }
 
             onNavigationRequested: function(request) {
-                if (request.url.toString().startsWith("http")) {
+                const url = request.url.toString()
+                if (url.startsWith("http")) {
                     Qt.openUrlExternally(request.url)
                     request.action = WebEngineNavigationRequest.IgnoreRequest
+                    return
                 }
-            }
+                if (url.startsWith("file:///")) {
+                    let notePath = url.substring(7)
+                    const delimiterIndex = notePath.lastIndexOf("@HEADER@")
+                    const header = notePath.substring(delimiterIndex + 8)
+                    
+                    notePath = notePath.substring(0, delimiterIndex)
 
-            Component.onCompleted: {
-                let defaultHtml = DocumentHandler.readFile(":/index.html")
-                web_view.loadHtml(defaultHtml, "file:/")
+                    const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+                    const sidebar = applicationWindow().globalDrawer
+                    const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+
+                    if (noteModelIndex.row !== -1) {
+                        if (header[1] !== 0) parser.headerInfo = headerInfo
+
+                        sidebar.askForFocus(noteModelIndex)
+                    } 
+                    else {
+                        notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
+                        showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
+                    }
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    return
+                }
             }
         }
     }
@@ -135,20 +177,21 @@ RowLayout {
     }
 
     function updateHtml() {
-        let defaultHtml = DocumentHandler.readFile(":/index.html")
+        if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
 
         let customHtml = '<style>\n'
             + root.completCss
             + '</style>\n'
             + parsedHtml
-
+        
+        let defaultHtml = root.defaultHtml
         const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
 
         web_view.loadHtml(finishedHtml, "file:/")
     }
 
     function parseText() {
-        parsedHtml = MDParser.parse(text)
+        parsedHtml = parser.parse(text)
         updateHtml()
     }
 
@@ -188,5 +231,16 @@ RowLayout {
 
     function makePdf() {
         web_view.printToPdf(root.previewLocation.replace("file://",""))
+    }
+
+    function scrollToHeader() {
+        if (parser.headerLevel !== "0") {
+            web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
+                if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
+                    web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
+                    parser.headerInfo = ["", "0"]
+                }
+            ; })
+        }
     }
 }
