@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-12 00:42+0000\n"
+"POT-Creation-Date: 2023-12-13 00:42+0000\n"
 "PO-Revision-Date: 2023-11-11 09:49+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -532,13 +532,13 @@ msgstr ""
 #: contents/ui/pages/SettingsPage.qml:220
 #, kde-format
 msgctxt "@description:checkbox"
-msgid "Advice: restart the app once actived."
+msgid "Advice: restart the app once activated."
 msgstr ""
 
 #: contents/ui/pages/SettingsPage.qml:230
 #, kde-format
 msgctxt "@label:checkbox"
-msgid "Enable code syntax highliting"
+msgid "Enable code syntax highlighting"
 msgstr ""
 
 #: contents/ui/pages/SettingsPage.qml:231

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-12 00:42+0000\n"
-"PO-Revision-Date: 2023-11-26 01:21+0300\n"
+"POT-Creation-Date: 2023-12-13 00:42+0000\n"
+"PO-Revision-Date: 2023-12-12 15:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.01.80\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:10
 #, kde-format
@@ -502,7 +502,7 @@ msgstr "Yeni not adı:"
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "Düzenleyici yazıtipi:"
 
 #: contents/ui/pages/SettingsPage.qml:197
 #, kde-format
@@ -512,42 +512,46 @@ msgid "Display"
 msgstr "Görüntü"
 
 #: contents/ui/pages/SettingsPage.qml:208
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title"
 msgid "KleverNotes plugins"
-msgstr "Akıllı Notlar Boyaması"
+msgstr "Akıllı Notlar Eklentileri"
 
 #: contents/ui/pages/SettingsPage.qml:218
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "Not bağlantılamayı etkinleştir"
 
 #: contents/ui/pages/SettingsPage.qml:219
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr ""
+"Not bağlantılama, bir nottan başka bir nota bağlantı oluşturmanıza izin "
+"verir."
 
 #: contents/ui/pages/SettingsPage.qml:220
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@description:checkbox"
+#| msgid "Advice: restart the app once actived."
 msgctxt "@description:checkbox"
-msgid "Advice: restart the app once actived."
-msgstr ""
+msgid "Advice: restart the app once activated."
+msgstr "Tavsiye: Etkinleştirdikten sonra uygulamayı yeniden başlatın."
 
 #: contents/ui/pages/SettingsPage.qml:230
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:checkbox"
+#| msgid "Enable code syntax highliting"
 msgctxt "@label:checkbox"
-msgid "Enable code syntax highliting"
-msgstr ""
+msgid "Enable code syntax highlighting"
+msgstr "Kod sözdizimi vurgulamayı etkinleştir"
 
 #: contents/ui/pages/SettingsPage.qml:231
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "Desteklenen vurgulayıcıların listesi"
 
 #: contents/ui/settings/DisplayPreview.qml:16
 #, kde-format
@@ -586,30 +590,28 @@ msgid "Code color:"
 msgstr "Kod rengi:"
 
 #: contents/ui/settings/DisplayPreview.qml:114
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "Genel"
+msgstr "Genel yazıtipi:"
 
 #: contents/ui/settings/DisplayPreview.qml:125
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "Kod bloku yazıtipi:"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "Vurgulayıcı"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:140
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Vurgulayıcı biçemi"
 
 #: contents/ui/sideBar/ActionBar.qml:196
 #, kde-format
@@ -917,19 +919,15 @@ msgid "Make more bar"
 msgstr "Biraz yararlı işler yap"
 
 #: contents/ui/textEditor/CheatSheet.qml:151
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "Akıllı Notlar Boyaması"
+msgstr "Akıllı Notlar Eklentileri"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "Not"
+msgstr "Not bağlantısı"
 
 #: contents/ui/textEditor/CheatSheet.qml:162
 #, kde-format
@@ -937,29 +935,25 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "Kategori/Grup/Not"
 
 #: contents/ui/textEditor/CheatSheet.qml:163
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr "Başlık"
+msgstr "başlık"
 
 #: contents/ui/textEditor/CheatSheet.qml:163
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "görüntülenen ad"
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "Bağlantı metni:"
+msgstr "Bağlantılanan notlar"
 
 #: contents/ui/textEditor/EditorView.qml:36
 #, kde-format
@@ -984,30 +978,26 @@ msgstr "Önizlemeyi görüntüle/gizle"
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Bağlantılanan notlar haritası"
 
 #: contents/ui/textEditor/NotesMap.qml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "Var olan depolama"
+msgstr "Var Olan Notlar"
 
 #: contents/ui/textEditor/NotesMap.qml:76
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "Eksik notlar"
 
 #: contents/ui/textEditor/NotesMap.qml:86
 #: contents/ui/textEditor/TextDisplay.qml:155
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 yok"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
