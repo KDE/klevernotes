@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-13 00:42+0000\n"
-"PO-Revision-Date: 2023-12-12 12:45+0100\n"
+"PO-Revision-Date: 2023-12-13 11:20+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -531,17 +531,13 @@ msgid "Note linking allows you to create a link from one note to another."
 msgstr "L'enllaçat de notes permet crear un enllaç des d'una nota a una altra."
 
 #: contents/ui/pages/SettingsPage.qml:220
-#, fuzzy, kde-format
-#| msgctxt "@description:checkbox"
-#| msgid "Advice: restart the app once actived."
+#, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "Consell: Reinicieu l'aplicació un cop s'hagi activat."
 
 #: contents/ui/pages/SettingsPage.qml:230
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highliting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "Activa el ressaltat de sintaxi del codi"
@@ -1211,7 +1207,3 @@ msgstr "Josep M. Ferrer"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
-
-#~ msgctxt "@label:textbox"
-#~ msgid "Font:"
-#~ msgstr "Lletra:"

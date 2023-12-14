@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-13 00:42+0000\n"
-"PO-Revision-Date: 2023-12-12 09:20+0200\n"
+"PO-Revision-Date: 2023-12-13 14:52+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -530,17 +530,13 @@ msgid "Note linking allows you to create a link from one note to another."
 msgstr "Прив'язка нотаток надає вам змогу створювати зв'язок між нотатками."
 
 #: contents/ui/pages/SettingsPage.qml:220
-#, fuzzy, kde-format
-#| msgctxt "@description:checkbox"
-#| msgid "Advice: restart the app once actived."
+#, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "Порада: перезапустіть програму після вмикання можливості"
 
 #: contents/ui/pages/SettingsPage.qml:230
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highliting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "Увімкнути підсвічування синтаксису коду"

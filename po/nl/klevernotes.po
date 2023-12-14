@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-13 00:42+0000\n"
-"PO-Revision-Date: 2023-12-12 13:02+0100\n"
+"PO-Revision-Date: 2023-12-13 13:05+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -532,17 +532,13 @@ msgstr ""
 "naar een andere."
 
 #: contents/ui/pages/SettingsPage.qml:220
-#, fuzzy, kde-format
-#| msgctxt "@description:checkbox"
-#| msgid "Advice: restart the app once actived."
+#, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "Advies: de toepassing herstarten na activering."
 
 #: contents/ui/pages/SettingsPage.qml:230
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highliting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "Accentuering van syntaxis van code inschakelen"
