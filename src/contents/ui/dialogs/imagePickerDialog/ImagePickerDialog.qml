@@ -29,7 +29,8 @@ Kirigami.Dialog {
     property bool paintedImageChoosen: false
     property bool storedImagesExist: !KleverUtility.isEmptyDir(noteImagesStoringPath)
 
-    readonly property QtObject imageObject: displayImage
+    readonly property Image imageObject: displayImage
+    readonly property FormCard.FormCheckDelegate storeCheckbox: storeCheckbox
     readonly property bool imageLoaded: displayImage.visible
     readonly property bool storeImage: storeCheckbox.checked && !storedImageChoosen
 
@@ -266,9 +267,10 @@ Kirigami.Dialog {
     }
 
     function clearTmp() {
-        if (paintedImageChoosen && (path !== "")) {
-            KleverUtility.remove(KleverUtility.getPath(imagePickerDialog.path))
+        if (paintedImageChoosen) {
             paintedImageChoosen = false
+            storeCheckbox.enabled = true
+            storeCheckbox.checked = false
         }
     }
 }

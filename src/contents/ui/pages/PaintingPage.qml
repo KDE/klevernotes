@@ -35,7 +35,7 @@ Kirigami.Page {
         },
         Kirigami.Action {
             text: i18nc("@label:button, as in 'erase everything'", "Clear")
-            icon.name: "edit-clear"
+            icon.name: "edit-clear-symbolic"
             onTriggered: root.clearCanvas()
         },
         Kirigami.Action {
@@ -51,7 +51,7 @@ Kirigami.Page {
 
             checked: !root.isEraser
             checkable: true
-            icon.name: "tool-pencil-symbolic"
+            icon.name: "draw-brush"
             onTriggered: {
                 handler.changePointer(0)
             }
@@ -61,7 +61,7 @@ Kirigami.Page {
 
             checked: root.isEraser
             checkable: true
-            icon.name: "tool-eraser-symbolic"
+            icon.name: "draw-eraser"
             onTriggered: {
                 handler.changePointer(1)
             }
@@ -272,6 +272,8 @@ Kirigami.Page {
         imagePickerDialog.paintClipRect = cropRect
         imagePickerDialog.path = imagePath
         imagePickerDialog.paintedImageChoosen = true
+        imagePickerDialog.storeCheckbox.checked = true
+        imagePickerDialog.storeCheckbox.enabled = false
     }
 
     function closePage(imagePath, cropRect) {
