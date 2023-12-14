@@ -240,6 +240,7 @@ RowLayout {
 
     function scrollToHeader() {
         if (parser.headerLevel !== "0") {
+            console.log("OUAIS")
             web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
                 if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
                     web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")

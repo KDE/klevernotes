@@ -2,10 +2,9 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 #include "documentHandler.h"
-#include <QDebug>
+// #include <QDebug>
 #include <QFile>
 #include <QJsonDocument>
-#include <QString>
 #include <QTextStream>
 
 DocumentHandler::DocumentHandler(QObject *parent)
@@ -13,15 +12,15 @@ DocumentHandler::DocumentHandler(QObject *parent)
 {
 }
 
-QString DocumentHandler::readFile(const QString &path) const
+QString DocumentHandler::readFile(const QString &path)
 {
     QFile file(path);
 
-    QString line("\n"); // The parser will still receive something even if the file is empty
+    QString line = QStringLiteral("\n"); // The parser will still receive something even if the file is empty
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream stream(&file);
         while (!stream.atEnd()) {
-            line.append(stream.readLine() + "\n");
+            line.append(stream.readLine() + QStringLiteral("\n"));
         }
         if (line.length() > 3)
             line.remove(line.length() - 1, 1); // Remove the last \n
@@ -43,7 +42,7 @@ void DocumentHandler::writeFile(const QString &note, const QString &path)
     file.close();
 }
 
-QString DocumentHandler::getCssStyle(const QString& path) const
+QString DocumentHandler::getCssStyle(const QString &path)
 {
     QString style;
     if (QFile::exists(path)){
@@ -75,10 +74,9 @@ bool DocumentHandler::checkForHeader(const QString &path, const QString &header)
     return found;
 }
 
-// TODO use those method for the todoHandler
-bool DocumentHandler::saveMap(const QJsonObject &map, const QString &path)
+bool DocumentHandler::saveJson(const QJsonObject &json, const QString &path)
 {
-    QJsonDocument doc = QJsonDocument(map);
+    QJsonDocument doc = QJsonDocument(json);
 
     QFile file(path);
     if (file.open(QIODevice::WriteOnly)) {
@@ -91,9 +89,9 @@ bool DocumentHandler::saveMap(const QJsonObject &map, const QString &path)
     return false;
 }
 
-QJsonObject DocumentHandler::getSavedMap(const QString &mapPath)
+QJsonObject DocumentHandler::getJson(const QString &jsonPath)
 {
-    QFile file(mapPath);
+    QFile file(jsonPath);
 
     QJsonObject json;
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {

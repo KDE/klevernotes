@@ -141,12 +141,11 @@ Kirigami.ActionToolBar {
             // Currently only used for ordered list
             const nonEmptyStrNumber = lines.filter((line) => line.trim().length > 0).length
             const hasNonEmptyStrings = nonEmptyStrNumber > 0
-            let counter = nonEmptyStrNumber
+            let counter = hasNonEmptyStrings ? nonEmptyStrNumber : 1 // Pressing ordered list on an single empty line will return 1. and not 0.
 
             for (var i = lines.length-1 ; i >= 0; i--) {
                 const line = lines[i]
                 const instruction = instructions[i]
-
 
                 end = (line.length > 0 || lines.length == 1) ? end : end - 1
                 const start = end - line.length

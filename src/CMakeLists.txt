@@ -65,8 +65,6 @@ set(exec_SRCS
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
     logic/mdHandler.cpp
-    logic/view.cpp
-    logic/todoHandler.cpp
 
     logic/noteMapper/noteMapper.cpp
     logic/noteMapper/noteMapperUtils.cpp

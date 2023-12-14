@@ -50,7 +50,7 @@ private:
 
 std::unique_ptr<Serializer> createSerializer(const QSize &size, const QString &fileName)
 {
-    if (fileName.endsWith(".svg")) {
+    if (fileName.endsWith(QStringLiteral(".svg"))) {
         auto generator = std::make_unique<QSvgGenerator>();
         generator->setFileName(fileName);
         generator->setViewBox(QRect{{0, 0}, size});
@@ -77,7 +77,7 @@ void SketchSerializer::serialize(SketchModel *model, const QSize &size, const QU
     auto painter = std::make_unique<QPainter>(serializer->device());
     painter->setRenderHint(QPainter::Antialiasing);
 
-    for (const auto &stroke : qAsConst(strokes)) {
+    for (const auto &stroke : std::as_const(strokes)) {
         m_strokepainter.render(stroke, painter.get());
     }
 }

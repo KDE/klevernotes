@@ -3,12 +3,13 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 
+// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
+
 #include "inlineLexer.h"
 
 #include <QDir>
 #include <QMap>
 #include <QRandomGenerator>
-#include <QString>
 
 #include "parser.h"
 #include "renderer.h"
@@ -20,15 +21,15 @@ InlineLexer::InlineLexer(Parser *parser)
 
 QString InlineLexer::output(QString &src, bool useInlineText)
 {
-    QString out = "", text, href, title, cap0, cap1, cap2, cap3, cap4, outputed;
+    static const QString emptyStr = QLatin1String();
+    QString out = emptyStr, text, href, title, cap0, cap1, cap2, cap3, cap4, outputed;
     QMap<QString, QString> linkInfo;
+    QRegularExpressionMatch cap, secondCap;
 
     while (!src.isEmpty()) {
-        QRegularExpressionMatch cap, secondCap;
-
         cap = inline_escape.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             out += cap.captured(1);
             continue;
@@ -36,19 +37,19 @@ QString InlineLexer::output(QString &src, bool useInlineText)
 
         cap = inline_autolink.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            if (cap.captured(2) == "@") {
+            if (cap.captured(2) == QStringLiteral("@")) {
                 cap1 = cap.captured(1);
                 QString mangled = mangle(cap1);
                 text = Renderer::escape(mangled, false);
-                href = "mailto:" + text;
+                href = QStringLiteral("mailto:") + text;
             } else {
                 cap1 = cap.captured(1);
                 text = Renderer::escape(cap1, false);
                 href = text;
             }
-            title = "";
+            title = emptyStr;
 
             out += Renderer::link(href, title, text);
             continue;
@@ -58,20 +59,20 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         cap = inline_url.match(src);
         if (!m_inLink && cap.hasMatch()) {
             cap0 = inline_backPedal.match(cap.captured(0)).captured(0);
-            src.replace(src.indexOf(cap0), cap.capturedLength(), "");
+            src.replace(src.indexOf(cap0), cap.capturedLength(), emptyStr);
 
-            if (cap.captured(2) == "@") {
+            if (cap.captured(2) == QStringLiteral("@")) {
                 text = Renderer::escape(cap0, false);
-                href = "mailto:" + text;
+                href = QStringLiteral("mailto:") + text;
             } else {
                 text = Renderer::escape(cap0, false);
-                if (cap.captured(1) == "www.") {
-                    href = "http://" + text;
+                if (cap.captured(1) == QStringLiteral("www.")) {
+                    href = QStringLiteral("http://") + text;
                 } else {
                     href = text;
                 }
             }
-            title = "";
+            title = emptyStr;
 
             out += Renderer::link(href, title, text);
             continue;
@@ -80,15 +81,17 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // tag
         cap = inline_tag.match(src);
         if (cap.hasMatch()) {
-            const bool hasOpeningLink = QRegularExpression("^<a ", QRegularExpression::CaseInsensitiveOption).match(cap.captured(0)).hasMatch();
-            const bool hasClosingLink = QRegularExpression("^<\\/a>", QRegularExpression::CaseInsensitiveOption).match(cap.captured(0)).hasMatch();
+            static const QRegularExpression aTagOpenReg = QRegularExpression(QStringLiteral("^<a "), QRegularExpression::CaseInsensitiveOption);
+            const bool hasOpeningLink = aTagOpenReg.match(cap.captured(0)).hasMatch();
+            static const QRegularExpression aTagCloseRag = QRegularExpression(QStringLiteral("^<\\/a>"), QRegularExpression::CaseInsensitiveOption);
+            const bool hasClosingLink = aTagCloseRag.match(cap.captured(0)).hasMatch();
 
             if (!m_inLink && hasOpeningLink) {
                 m_inLink = true;
             } else if (m_inLink && hasClosingLink) {
                 m_inLink = false;
             }
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             out += cap.captured(0);
             continue;
@@ -97,16 +100,17 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // link
         cap = inline_link.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             m_inLink = true;
             href = cap.captured(2);
 
             const int end = cap.captured(3).length() - 2;
-            title = !cap.captured(3).isEmpty() ? cap.captured(3).mid(1, end) : "";
+            title = !cap.captured(3).isEmpty() ? cap.captured(3).mid(1, end) : emptyStr;
 
             href = href.trimmed();
-            const QRegularExpressionMatch tagMatch = QRegularExpression("^<([\\s\\S]*)>$").match(href);
+            static const QRegularExpression tagReg = QRegularExpression(QStringLiteral("^<([\\s\\S]*)>$"));
+            const QRegularExpressionMatch tagMatch = tagReg.match(href);
             href = href.replace(tagMatch.capturedStart(), tagMatch.capturedLength(), tagMatch.captured(1));
             linkInfo = {{"href", escapes(href)}, {"title", escapes(title)}};
 
@@ -118,10 +122,10 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // wikilink
         if (m_parser->noteMapEnabled()) {
             const static QRegularExpression inline_wikilink =
-                QRegularExpression("\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]");
+                QRegularExpression(QStringLiteral("\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]"));
             cap = inline_wikilink.match(src);
             if (cap.hasMatch()) {
-                src.replace(cap.capturedStart(), cap.capturedLength(), "");
+                src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
                 if (!cap.captured(1).trimmed().isEmpty()) {
                     href = cap.captured(1).trimmed();
                     const QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
@@ -148,22 +152,23 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         }
 
         // reflink, nolink
-        QRegularExpressionMatch tempMatch = inline_reflink.match(src);
+        const QRegularExpressionMatch tempMatch = inline_reflink.match(src);
         if (tempMatch.hasMatch())
             cap = tempMatch;
         else
             cap = inline_nolink.match(src);
 
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             cap2 = cap.captured(2);
-            cap1 = cap.captured(1).replace(QRegularExpression("\\s+"), " ");
+            static const QRegularExpression whiteSpaceReg = QRegularExpression(QStringLiteral("\\s+"));
+            cap1 = cap.captured(1).replace(whiteSpaceReg, QStringLiteral(" "));
 
             const QString linkId = !cap2.isEmpty() ? cap2 : cap1;
 
             linkInfo = m_parser->links[linkId.toLower()];
-            if (linkInfo.isEmpty() || linkInfo["href"].isEmpty()) {
+            if (linkInfo.isEmpty() || linkInfo[QStringLiteral("href")].isEmpty()) {
                 out += cap.captured(0).at(0);
                 src = cap.captured(0).mid(1) + src;
                 continue;
@@ -178,7 +183,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // strong
         cap = inline_strong.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             cap4 = cap.captured(4);
             cap3 = cap.captured(3);
@@ -204,7 +209,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // em
         cap = inline_em.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             const QString cap6 = cap.captured(6);
             const QString cap5 = cap.captured(5);
@@ -236,7 +241,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // code
         cap = inline_code.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             QString capTrimmed = cap.captured(2).trimmed();
             const QString escaped = Renderer::escape(capTrimmed, true);
@@ -248,7 +253,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // br
         cap = inline_br.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             if (!useInlineText)
                 out += Renderer::br();
@@ -258,7 +263,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // del (gfm)
         cap = inline_del.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             cap1 = cap.captured(1);
             outputed = output(cap1);
@@ -270,7 +275,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // text
         cap = inline_text.match(src);
         if (cap.hasMatch()) {
-            src.replace(cap.capturedStart(), cap.capturedLength(), "");
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             cap0 = cap.captured(0);
             const QString escaped = Renderer::escape(cap0, false);
@@ -287,17 +292,17 @@ QString InlineLexer::output(QString &src, bool useInlineText)
     return out;
 };
 
-QString InlineLexer::mangle(const QString &text)
+QString InlineLexer::mangle(const QString &text) const
 {
-    QString out = "";
+    QString out = QLatin1String();
     const int l = text.length();
 
     for (int i = 0; i < l; i++) {
-        QChar ch = text.at(i);
+        const QChar ch = text.at(i);
         if (QRandomGenerator::global()->generate() % 2 == 0) {
-            out += "x" + QString::number(ch.unicode(), 16);
+            out += QStringLiteral("x") + QString::number(ch.unicode(), 16);
         } else {
-            out += "&#" + QString::number(ch.unicode()) + ";";
+            out += QStringLiteral("&#") + QString::number(ch.unicode()) + QStringLiteral(";");
         }
     }
 
@@ -306,35 +311,35 @@ QString InlineLexer::mangle(const QString &text)
 
 QString InlineLexer::outputLink(QRegularExpressionMatch &cap, QMap<QString, QString> linkInfo, bool useInlineText)
 {
-    QString href = linkInfo["href"];
-    QString title = linkInfo["title"];
-    title = !title.isEmpty() ? Renderer::escape(title, false) : "";
+    QString href = linkInfo[QStringLiteral("href")];
+    QString title = linkInfo[QStringLiteral("title")];
+    title = !title.isEmpty() ? Renderer::escape(title, false) : QLatin1String();
 
     // KLEVERNOTES ADDED THOSE LINES
     // ======
-    if (href.startsWith("./"))
+    if (href.startsWith(QStringLiteral("./")))
         href = m_parser->getNotePath() + href.mid(1);
-    if (href.startsWith("~"))
+    if (href.startsWith(QStringLiteral("~")))
         href = QDir::homePath() + href.mid(1);
-    if (!(href.startsWith("http") || href.startsWith("//") || href.startsWith("qrc:")))
-        href = "file:" + href;
+    if (!(href.startsWith(QStringLiteral("http")) || href.startsWith(QStringLiteral("//")) || href.startsWith(QStringLiteral("qrc:"))))
+        href = QStringLiteral("file:") + href;
     // ======
     QString out;
     QString cap1 = cap.captured(1);
     if (cap.captured(0).at(0) != QChar::fromLatin1('!')) {
-        QString outputed = output(cap1);
+        const QString outputed = output(cap1);
         out = Renderer::link(href, title, outputed);
     } else {
-        QString escaped = Renderer::escape(cap1, false);
+        const QString escaped = Renderer::escape(cap1, false);
         out = (useInlineText) ? escaped : Renderer::image(href, title, escaped);
     }
 
     return out;
 }
 
-QString InlineLexer::escapes(QString &text)
+QString InlineLexer::escapes(QString &text) const
 {
-    const static QRegularExpression escapesReg("\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\]\\^_`{|}~])");
+    const static QRegularExpression escapesReg(QStringLiteral("\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\]\\^_`{|}~])"));
 
-    return !text.isEmpty() ? text.replace(escapesReg, "\\1") : text;
+    return !text.isEmpty() ? text.replace(escapesReg, QStringLiteral("\\1")) : text;
 }

@@ -12,9 +12,14 @@
 
 Event TabletEvent::create(QTabletEvent *event)
 {
+#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
+    const QPointF eventPos = event->position();
+#else
+    const QPointF eventPos = event->posF();
+#endif
     Event point;
-    point.x = static_cast<float>(event->posF().x());
-    point.y = static_cast<float>(event->posF().y());
+    point.x = static_cast<float>(eventPos.x());
+    point.y = static_cast<float>(eventPos.y());
     point.pressure = static_cast<float>(event->pressure());
 
     return point;

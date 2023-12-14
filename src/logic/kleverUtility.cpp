@@ -7,7 +7,6 @@
 #include <QDir>
 #include <QFontInfo>
 #include <QStandardPaths>
-#include <QString>
 #include <kio/global.h>
 #include <klocalizedstring.h>
 
@@ -46,7 +45,7 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
     QString imagePath = noteImagesStoringPath + wantedName;
     if (iteration != 0)
         imagePath += "(" + QString::number(iteration) + ")";
-    imagePath += ".png";
+    imagePath += QStringLiteral(".png");
 
     if (exists(imagePath)) {
         return getImageStoragingPath(noteImagesStoringPath, wantedName, iteration + 1);
@@ -61,14 +60,14 @@ bool KleverUtility::isEmptyDir(const QString &path) const
 
 QString KleverUtility::isProperPath(const QString &parentPath, const QString &name) const
 {
-    if (name.startsWith("."))
-        return "dot";
+    if (name.startsWith(QStringLiteral(".")))
+        return QStringLiteral("dot");
 
-    QString properName = KIO::encodeFileName(name);
+    const QString properName = KIO::encodeFileName(name);
 
-    QString newPath = parentPath + "/" + properName;
+    const QString newPath = parentPath + "/" + properName;
 
-    return (exists(newPath)) ? "exist" : "";
+    return (exists(newPath)) ? QStringLiteral("exist") : QString();
 }
 
 QString KleverUtility::getParentPath(const QString &path) const
@@ -88,24 +87,23 @@ QJsonObject KleverUtility::getCssStylesList() const
 {
     QJsonObject styleNameAndPath = {{"KleverStyle", ":/KleverStyle.css"}, {"Avenir", ":/Avenir.css"}, {"Style7", ":/Style7.css"}, {"Style9", ":/Style9.css"}};
 
-    QString externalStylesFolderPath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).append("/Styles/");
-    QDir externalStylesFolder(externalStylesFolderPath);
+    static const QString externalStylesFolderPath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).append("/Styles/");
+    static const QDir externalStylesFolder(externalStylesFolderPath);
 
     if (!externalStylesFolder.exists()) {
         create(externalStylesFolderPath);
-        QString message = i18n(
+        static const QString message = i18n(
             "/*\
             \nThis file is a copy of the default CSS style for the note display.\
             \nFeel free to edit it or make your own.\
             \nNote: each style need to have a different name.\
             \n*/\n");
 
-        DocumentHandler handler;
-        QString defaultCss = handler.getCssStyle(":/KleverStyle.css");
-        QString filePath = externalStylesFolderPath.append("KleverStyle.css");
+        static const QString defaultCss = DocumentHandler::getCssStyle(QStringLiteral(":/KleverStyle.css"));
+        static const QString fileContent = message + defaultCss;
+        static const QString filePath = externalStylesFolderPath + QStringLiteral("KleverStyle.css");
 
-        QString fileContent = message + defaultCss;
-        handler.writeFile(fileContent, filePath);
+        DocumentHandler::writeFile(fileContent, filePath);
     }
 
     const QFileInfoList fileList = externalStylesFolder.entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::Files);
@@ -113,7 +111,7 @@ QJsonObject KleverUtility::getCssStylesList() const
     for (const QFileInfo &file : fileList) {
         QString name = file.fileName();
 
-        if (!name.endsWith(".css"))
+        if (!name.endsWith(QStringLiteral(".css")))
             continue;
 
         name.chop(4);
@@ -131,9 +129,9 @@ QJsonObject KleverUtility::fontInfo(const QFont &font) const
 {
     QJsonObject fontInfo;
 
-    QFontInfo info(font);
+    const QFontInfo info(font);
 
-    fontInfo["family"] = info.family();
-    fontInfo["pointSize"] = info.pointSize();
+    fontInfo[QStringLiteral("family")] = info.family();
+    fontInfo[QStringLiteral("pointSize")] = info.pointSize();
     return fontInfo;
 }

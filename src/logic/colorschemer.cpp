@@ -7,7 +7,7 @@
 #include <KColorScheme>
 
 #include "colorschemer.h"
-#include <QDebug>
+// #include <QDebug>
 
 ColorSchemer::ColorSchemer(QObject *parent)
     : QObject(parent)
@@ -60,12 +60,12 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
     QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
 
     QVariantMap res;
-    res.insert("--bodyColor", bodyColor);
-    res.insert("--textColor", textColor);
-    res.insert("--titleColor", titleColor);
-    res.insert("--linkColor", linkColor);
-    res.insert("--visitedLinkColor", visitedLinkColor);
-    res.insert("--codeColor", codeColor);
+    res.insert(QStringLiteral("--bodyColor"), bodyColor);
+    res.insert(QStringLiteral("--textColor"), textColor);
+    res.insert(QStringLiteral("--titleColor"), titleColor);
+    res.insert(QStringLiteral("--linkColor"), linkColor);
+    res.insert(QStringLiteral("--visitedLinkColor"), visitedLinkColor);
+    res.insert(QStringLiteral("--codeColor"), codeColor);
 
     return res;
 }

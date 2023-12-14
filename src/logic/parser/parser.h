@@ -3,11 +3,12 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 
+// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
+
 #pragma once
 
 #include <QObject>
 #include <QSet>
-#include <QString>
 
 #include "blockLexer.h"
 #include "inlineLexer.h"
@@ -21,7 +22,7 @@ class Parser : public QObject
     Q_PROPERTY(bool highlightEnabled WRITE setHighlightEnabled)
     // NoteMapper
     Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
-    Q_PROPERTY(QString headerLevel READ headerLevel)
+    Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
 
     Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
 public:

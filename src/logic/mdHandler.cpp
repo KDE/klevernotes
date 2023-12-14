@@ -2,64 +2,38 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 #include "mdHandler.h"
-#include <QDebug>
-#include <QJsonArray>
-#include <QJsonObject>
-#include <QStringList>
+// #include <QDebug>
 
 MDHandler::MDHandler(QObject *parent)
     : QObject(parent)
 {
 }
 
-QJsonArray MDHandler::getLines(const QString &text) const
+QJsonObject MDHandler::blockChecker(const QString &selectedText, const QStringList &charsList) const
 {
-    return QJsonArray::fromStringList(text.split('\n'));
-}
-
-QStringList MDHandler::getPositionLineInfo(QJsonArray lines, int position)
-{
-    QStringList info;
-
-    int textLength = 0;
-
-    int lineIndex = 0;
-    QString cursorLine = lines[0].toString();
-    int inLineCursorPosition = position;
-    for (int i = 0; i < lines.size(); i++) {
-        QString line = lines[i].toString();
-        cursorLine = line;
-        lineIndex = i;
-        int nextTextLength = textLength + line.length();
-        if (nextTextLength >= position)
-            break;
-        textLength = nextTextLength + 1;
-        inLineCursorPosition = position - textLength;
+    QJsonObject final = QJsonObject();
+    bool apply;
+    for (int charsIndex = 0; charsIndex < charsList.size(); charsIndex++) {
+        const QString chars = charsList.at(charsIndex).trimmed();
+        const QString trimmedText = selectedText.trimmed();
+        apply = !(trimmedText.startsWith(chars) && trimmedText.endsWith(chars));
     }
-    info.append(QString::number(lineIndex));
-    info.append(cursorLine);
-    info.append(QString::number(inLineCursorPosition));
-    return info;
+    final[QStringLiteral("instructions")] = apply ? "apply" : "remove";
+
+    return final;
 }
 
 QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStringList& charsList, const bool checkLineEnd, const bool applyIncrement, const bool checkByBlock) const
 {
-    QJsonObject final = QJsonObject();
     if (checkByBlock) {
-        bool apply;
-        for (int charsIndex = 0; charsIndex < charsList.size(); charsIndex++) {
-            QString chars = charsList.at(charsIndex).trimmed();
-            apply = !(selectedText.trimmed().startsWith(chars) && selectedText.trimmed().startsWith(chars));
-        }
-        final["instructions"] = apply ? "apply" : "remove";
-
-        return final;
+        return blockChecker(selectedText, charsList);
     }
 
-    QJsonArray selectedLines = getLines(selectedText);
+    QJsonObject final = QJsonObject();
+    const QJsonArray selectedLines = QJsonArray::fromStringList(selectedText.split('\n'));
 
-    final["lines"] = selectedLines;
-    final["applyBlock"] = false;
+    final[QStringLiteral("lines")] = selectedLines;
+    final[QStringLiteral("applyBlock")] = false;
 
     QJsonArray instructions;
     bool applyToAll = false;
@@ -103,7 +77,7 @@ QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStrin
             }
         }
     }
-    final["instructions"] = instructions;
+    final[QStringLiteral("instructions")] = instructions;
 
     return final;
 }

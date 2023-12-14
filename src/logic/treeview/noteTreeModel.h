@@ -11,16 +11,16 @@ class NoteTreeModel;
 class TreeItem
 {
 public:
-    explicit TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem = nullptr);
+    explicit TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem = nullptr);
 
     void appendChild(std::unique_ptr<TreeItem> &&child);
 
-    TreeItem *child(int row);
+    TreeItem *child(int row) const;
     std::unique_ptr<TreeItem> uniqueChildAt(int row);
     int childCount() const;
     QVariant data(int role) const;
     int row() const;
-    TreeItem *parentItem();
+    TreeItem *parentItem() const;
     void remove();
     void changeDisplayName(const QString &name);
     void changePath(const QString &newPart, const QModelIndex &parentModelIndex, int newPartIdx = -1);

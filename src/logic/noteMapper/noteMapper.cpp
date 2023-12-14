@@ -5,6 +5,7 @@
 
 #include "noteMapper.h"
 #include "kleverconfig.h"
+#include "logic/documentHandler.h"
 #include "noteMapperUtils.h"
 // #include <QDebug>
 #include <QJsonArray>
@@ -66,7 +67,7 @@ void LinkedNoteItem::updatePath(const QString &path)
 void LinkedNoteItem::setDisplayPath(const QString &path)
 {
     auto newPath = path;
-    newPath.replace(".BaseCategory", KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
+    newPath.replace(QStringLiteral(".BaseCategory"), KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
     m_displayPath = newPath;
 }
 
@@ -84,14 +85,14 @@ NoteMapper::NoteMapper(QObject *parent)
     : QAbstractItemModel(parent)
 {
     const QString mapPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
-    m_savedMap = NoteMapperUtils::convertSavedMap(m_documentHandler->getSavedMap(mapPath));
+    m_savedMap = NoteMapperUtils::convertSavedMap(DocumentHandler::getJson(mapPath));
 }
 
 void NoteMapper::saveMap() const
 {
     const QJsonObject json = QJsonObject::fromVariantMap(m_existsMap);
     const QString savingPath = KleverConfig::storagePath() + QStringLiteral("/notesMap.json");
-    m_documentHandler->saveMap(json, savingPath);
+    DocumentHandler::saveJson(json, savingPath);
 }
 
 QModelIndex NoteMapper::index(int row, int column, const QModelIndex &parent) const
@@ -165,19 +166,21 @@ void NoteMapper::addRow(const QStringList &infos)
             QStringList headers;
             if (m_existsMap.contains(path)) {
                 const QVariantMap pathInfo = m_existsMap[path].toMap();
-                if (pathInfo.contains("headers")) {
-                    headers = pathInfo["headers"].toStringList();
+                static const QString headersStr = QStringLiteral("headers");
+                if (pathInfo.contains(headersStr)) {
+                    headers = pathInfo[headersStr].toStringList();
                 }
 
-                if (pathInfo.contains("entirelyCheck")) {
-                    entirelyCheck = pathInfo["entirelyCheck"].toBool();
+                static const QString entirelyCheckStr = QStringLiteral("entirelyCheck");
+                if (pathInfo.contains(entirelyCheckStr)) {
+                    entirelyCheck = pathInfo[entirelyCheckStr].toBool();
                 }
                 headerExists = headers.contains(cleanedHeader);
             }
 
             if (!headerExists && !entirelyCheck) {
                 const QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
-                headerExists = m_documentHandler->checkForHeader(filePath, cleanedHeader);
+                headerExists = DocumentHandler::checkForHeader(filePath, cleanedHeader);
                 if (headerExists) {
                     // We don't update the "entirelyCheck" value, only NoteMapper::updatePathInfo can do it
                     headers.append(cleanedHeader);

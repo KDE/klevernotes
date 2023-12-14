@@ -7,7 +7,6 @@
 #include <QObject>
 #include <QRegularExpression>
 #include <QStandardPaths>
-#include <QString>
 
 class HighlightHelper : public QObject
 {
@@ -47,7 +46,7 @@ private:
 #endif
     }; // nord style by default, will be replace by the given style if it exists
 
-    QRegularExpression m_pygmentizeRegex = QRegularExpression("(\\* )(.+)(:)");
+    inline static const QRegularExpression m_pygmentizeRegex = QRegularExpression(QStringLiteral("(\\* )(.+)(:)"));
 
     QStringList getHighlighterStyleFromCmd(const QString &highlighter) const;
     void setAvailableHighlighters();

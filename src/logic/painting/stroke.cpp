@@ -96,7 +96,7 @@ QRectF Stroke::boundingRect() const
         auto maxX = 0.0f;
         auto maxY = 0.0f;
 
-        for (const auto &sample : qAsConst(m_samples)) {
+        for (const auto &sample : std::as_const(m_samples)) {
             const auto position = sample.position;
             if (position.x() < minX)
                 minX = position.x();

@@ -13,11 +13,11 @@ class DocumentHandler : public QObject
 public:
     explicit DocumentHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE QString readFile(const QString &path) const;
-    Q_INVOKABLE void writeFile(const QString &note, const QString &path);
-    Q_INVOKABLE QString getCssStyle(const QString &path) const;
+    Q_INVOKABLE static QString readFile(const QString &path);
+    Q_INVOKABLE static void writeFile(const QString &note, const QString &path);
+    Q_INVOKABLE static QString getCssStyle(const QString &path);
 
-    bool checkForHeader(const QString &path, const QString &header);
-    QJsonObject getSavedMap(const QString &mapPath);
-    bool saveMap(const QJsonObject &map, const QString &path);
+    static bool checkForHeader(const QString &path, const QString &header);
+    Q_INVOKABLE static QJsonObject getJson(const QString &jsonPath);
+    Q_INVOKABLE static bool saveJson(const QJsonObject &json, const QString &path);
 };

@@ -15,13 +15,13 @@ QString execCommand(const QString &input)
 {
     QProcess process;
 
-    const QString sh = findExecutable("sh");
+    const QString sh = findExecutable(QStringLiteral("sh"));
     if (sh.isEmpty()) {
         return {};
     }
 
     // We let sh handle the pipes and all the args, easier than using multiple QProcess
-    process.start(sh, QStringList() << "-c" << input);
+    process.start(sh, QStringList() << QStringLiteral("-c") << input);
 
     if (!process.waitForStarted()) {
         return {};
@@ -53,13 +53,13 @@ QString HighlightHelper::getHighlightedString(const QString &inputStr, const QSt
     }
 
     QString cmd = highlighter + m_highlightersCommands[highlighter].last();
-    static const QRegularExpression nord = QRegularExpression("[Nn]ord");
-    cmd.replace("%1", lang);
+    static const QRegularExpression nord = QRegularExpression(QStringLiteral("[Nn]ord"));
+    cmd.replace(QStringLiteral("%1"), lang);
     if (m_availableHighlighters[highlighter].contains(style)) {
         cmd.replace(nord, style);
     }
 
-    const QString echo = "echo \"" + inputStr + "\" | ";
+    const QString echo = QStringLiteral("echo \"") + inputStr + QStringLiteral("\" | ");
 
     cmd = echo + cmd;
 
@@ -76,11 +76,11 @@ QString HighlightHelper::getHighlightedString(const QString &inputStr, const QSt
     int endIndex = -1;
     if (isChroma) {
         static const auto codeBlockStart = QStringLiteral("<code>");
-        startIndex = output.indexOf("<code>") + codeBlockStart.length();
-        endIndex = output.lastIndexOf("</code>");
+        startIndex = output.indexOf(codeBlockStart) + codeBlockStart.length();
+        endIndex = output.lastIndexOf(QStringLiteral("</code>"));
     } else if (isPygmentizeOrKSyntaxHighlither) {
-        startIndex = output.indexOf("<span");
-        endIndex = output.lastIndexOf("\n</pre>");
+        startIndex = output.indexOf(QStringLiteral("<span"));
+        endIndex = output.lastIndexOf(QStringLiteral("\n</pre>"));
     }
 
     const bool correctIndexes = startIndex < endIndex && -1 < startIndex && -1 < endIndex;
@@ -115,17 +115,17 @@ QStringList HighlightHelper::getHighlighterStyleFromCmd(const QString &highlight
         auto it = m_pygmentizeRegex.globalMatch(output);
 
         while (it.hasNext()) {
-            QRegularExpressionMatch match = it.next();
+            const QRegularExpressionMatch match = it.next();
             styles.append(match.captured(2));
         }
     } else if (highlighter == m_chromaName) {
         static const auto styleStart = QStringLiteral("\nstyles: ");
         const int startIndex = output.lastIndexOf(styleStart) + styleStart.length();
-        const int endIndex = output.lastIndexOf("\nformatters: ");
+        const int endIndex = output.lastIndexOf(QStringLiteral("\nformatters: "));
 
-        styles = output.mid(startIndex, endIndex - startIndex).split(" ");
+        styles = output.mid(startIndex, endIndex - startIndex).split(QStringLiteral(" "));
     } else if (highlighter == m_kSyntaxName || highlighter == m_kateSyntaxName) {
-        styles = output.split("\n");
+        styles = output.split(QStringLiteral("\n"));
         styles.takeLast(); // there's a blank line at the end
     }
 

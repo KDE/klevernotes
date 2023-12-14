@@ -3,6 +3,8 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 
+// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
+
 #include "parser.h"
 
 #include "renderer.h"
@@ -17,7 +19,8 @@ Parser::Parser(QObject *parent)
 
 QPair<QString, bool> Parser::sanitizePath(const QString &_path) const
 {
-    QStringList parts = _path.split("/");
+    static const QString slashStr = QStringLiteral("/");
+    QStringList parts = _path.split(slashStr);
 
     bool leadingSlashRemnant = false;
     for (int i = 0; i < parts.count(); i++) {
@@ -47,11 +50,11 @@ QPair<QString, bool> Parser::sanitizePath(const QString &_path) const
         if (parts[0] == QStringLiteral(".")) { // Note name only
             path = m_groupPath + parts[1];
         } else { // Note inside category
-            path = QStringLiteral("/") + parts[0] + QStringLiteral("/.BaseGroup/") + parts[1];
+            path = slashStr + parts[0] + QStringLiteral("/.BaseGroup/") + parts[1];
         }
         break;
     case 3: // 'Full' path
-        path = QStringLiteral("/") + parts.join("/");
+        path = slashStr + parts.join(slashStr);
         break;
     default: // Not a note path
         return qMakePair(_path, false);
@@ -73,7 +76,7 @@ QString Parser::headerLevel() const
 
 void Parser::setNotePath(const QString &notePath)
 {
-    if (notePath.isEmpty() || notePath == "qrc:" || m_notePath == notePath) {
+    if (notePath.isEmpty() || notePath == QStringLiteral("qrc:") || m_notePath == notePath) {
         return;
     }
 
@@ -90,10 +93,10 @@ void Parser::setNotePath(const QString &notePath)
     m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
 
     // /Category/Group/Note => /Category/Group (no '/' at the end to make it easier for m_categPath)
-    QString groupPath = m_mapperNotePath.chopped(m_mapperNotePath.size() - m_mapperNotePath.lastIndexOf("/"));
+    const QString groupPath = m_mapperNotePath.chopped(m_mapperNotePath.size() - m_mapperNotePath.lastIndexOf(QStringLiteral("/")));
     if (m_groupPath != groupPath) {
-        m_groupPath = groupPath + "/"; // /Category/Group => /Category/Group/
-        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf("/") - 1); // /Category/Group => /Category/
+        m_groupPath = groupPath + QStringLiteral("/"); // /Category/Group => /Category/Group/
+        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf(QStringLiteral("/")) - 1); // /Category/Group => /Category/
     }
 }
 
@@ -156,7 +159,7 @@ QString Parser::parse(QString src)
 
     if (!m_headerFound) { // Prevent the TextDisplay.qml scrollToHeader to search an unexisting header
         m_headerLevel = QStringLiteral("0");
-        m_header = QStringLiteral("");
+        m_header = QLatin1String();
     }
 
     return out;
@@ -164,22 +167,23 @@ QString Parser::parse(QString src)
 
 QString Parser::tok()
 {
-    const QString type = m_token["type"].toString();
+    const QString type = m_token[QStringLiteral("type")].toString();
     QString outputed, text, body;
     QVariantMap flags;
+    static const QString emptyStr = QLatin1String();
 
-    if (type == "space") {
+    if (type == QStringLiteral("space")) {
         return {};
     }
 
-    if (type == "hr") {
+    if (type == QStringLiteral("hr")) {
         return Renderer::hr();
     }
 
-    if (type == "heading") {
-        text = m_token["text"].toString();
+    if (type == QStringLiteral("heading")) {
+        text = m_token[QStringLiteral("text")].toString();
 
-        const QString level = m_token["depth"].toString();
+        const QString level = m_token[QStringLiteral("depth")].toString();
         if (text == m_header && level == QString(m_headerLevel))
             m_headerFound = true;
 
@@ -190,9 +194,9 @@ QString Parser::tok()
         return Renderer::heading(outputed, level, unescaped, m_headerFound);
     }
 
-    if (type == "code") { // adding const with the Synthax Highlighting MR
-        text = m_token["text"].toString();
-        const QString lang = m_token["lang"].toString();
+    if (type == QStringLiteral("code")) { // adding const with the Synthax Highlighting MR
+        text = m_token[QStringLiteral("text")].toString();
+        const QString lang = m_token[QStringLiteral("lang")].toString();
 
         const bool highlight = m_highlightEnabled && !lang.isEmpty();
 
@@ -210,13 +214,13 @@ QString Parser::tok()
         return returnValue;
     }
 
-    if (type == "table") {
-        body = "";
+    if (type == QStringLiteral("table")) {
+        body = emptyStr;
         int i, j;
 
-        QString cell = "";
-        QStringList headersList = m_token["header"].toStringList();
-        QStringList alignList = m_token["align"].toStringList();
+        QString cell = emptyStr;
+        const QStringList headersList = m_token[QStringLiteral("header")].toStringList();
+        const QStringList alignList = m_token[QStringLiteral("align")].toStringList();
         for (i = 0; i < headersList.size(); i++) {
             QString currentHeader = headersList[i];
             outputed = inlineLexer.output(currentHeader);
@@ -227,11 +231,11 @@ QString Parser::tok()
 
         const QString header = Renderer::tableRow(cell);
 
-        QJsonArray cellsList = m_token["cells"].toJsonArray();
+        const QJsonArray cellsList = m_token[QStringLiteral("cells")].toJsonArray();
         for (i = 0; i < cellsList.size(); i++) {
-            QJsonArray row = cellsList[i].toArray();
+            const QJsonArray row = cellsList[i].toArray();
 
-            cell = "";
+            cell = emptyStr;
             for (j = 0; j < row.size(); j++) {
                 QString currentCell = row[j].toString();
                 outputed = inlineLexer.output(currentCell);
@@ -246,68 +250,68 @@ QString Parser::tok()
         return Renderer::table(header, body);
     }
 
-    if (type == "blockquote_start") {
-        body = "";
+    if (type == QStringLiteral("blockquote_start")) {
+        body = emptyStr;
 
-        while (getNextToken() && m_token["type"].toString() != "blockquote_end") {
+        while (getNextToken() && m_token[QStringLiteral("type")].toString() != QStringLiteral("blockquote_end")) {
             body += tok();
         }
 
         return Renderer::blockquote(body);
     }
 
-    if (type == "list_start") {
-        body = "";
-        const bool ordered = m_token["ordered"].toBool();
-        const QString start = m_token["start"].toString();
+    if (type == QStringLiteral("list_start")) {
+        body = emptyStr;
+        const bool ordered = m_token[QStringLiteral("ordered")].toBool();
+        const QString start = m_token[QStringLiteral("start")].toString();
 
-        while (getNextToken() && m_token["type"].toString() != "list_end") {
+        while (getNextToken() && m_token[QStringLiteral("type")].toString() != QStringLiteral("list_end")) {
             body += tok();
         }
 
         return Renderer::list(body, ordered, start);
     }
 
-    if (type == "list_item_start") {
-        body = "";
+    if (type == QStringLiteral("list_item_start")) {
+        body = emptyStr;
 
-        const bool hasTask = m_token["task"].toBool();
+        const bool hasTask = m_token[QStringLiteral("task")].toBool();
         if (hasTask) {
-            body += Renderer::checkbox(m_token["checked"].toBool());
+            body += Renderer::checkbox(m_token[QStringLiteral("checked")].toBool());
         }
 
-        while (getNextToken() && m_token["type"].toString() != "list_item_end") {
-            body += m_token["type"].toString() == "text" ? parseText() : tok();
+        while (getNextToken() && m_token[QStringLiteral("type")].toString() != QStringLiteral("list_item_end")) {
+            body += m_token[QStringLiteral("type")].toString() == QStringLiteral("text") ? parseText() : tok();
         }
 
         return Renderer::listItem(body, hasTask);
     }
 
-    if (type == "loose_item_start") {
-        body = "";
+    if (type == QStringLiteral("loose_item_start")) {
+        body = emptyStr;
 
-        while (getNextToken() && m_token["type"].toString() != "list_item_end") {
+        while (getNextToken() && m_token[QStringLiteral("type")].toString() != QStringLiteral("list_item_end")) {
             body += tok();
         }
 
         return Renderer::listItem(body);
     }
 
-    if (type == "html") {
-        text = m_token["text"].toString();
+    if (type == QStringLiteral("html")) {
+        text = m_token[QStringLiteral("text")].toString();
 
         return Renderer::html(text);
     }
 
-    if (type == "paragraph") {
-        text = m_token["text"].toString();
+    if (type == QStringLiteral("paragraph")) {
+        text = m_token[QStringLiteral("text")].toString();
         outputed = inlineLexer.output(text);
 
         return Renderer::paragraph(outputed);
     }
 
-    if (type == "text") {
-        QString parsedText = parseText();
+    if (type == QStringLiteral("text")) {
+        const QString parsedText = parseText();
 
         return Renderer::paragraph(parsedText);
     }
@@ -317,10 +321,10 @@ QString Parser::tok()
 
 QString Parser::parseText()
 {
-    QString body = m_token["text"].toString();
-    while (peekType() == "text") {
+    QString body = m_token[QStringLiteral("text")].toString();
+    while (peekType() == QStringLiteral("text")) {
         getNextToken();
-        QString text = m_token["text"].toString();
+        const QString text = m_token[QStringLiteral("text")].toString();
 
         body += QString::fromStdString("\n") + text;
     }
@@ -337,7 +341,7 @@ bool Parser::getNextToken()
 
 QString Parser::peekType() const
 {
-    return (!tokens.isEmpty()) ? tokens.last()["type"].toString() : "";
+    return (!tokens.isEmpty()) ? tokens.last()[QStringLiteral("type")].toString() : QLatin1String();
 }
 
 // Syntax highlight

@@ -5,7 +5,8 @@
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
-#include <QUrl>
+
+// Do not remove this, breaks Qt6 build
 #include <QtQml>
 
 #if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
@@ -15,18 +16,16 @@
 #endif
 
 #include "app.h"
+#include "kleverconfig.h"
 #include <KAboutData>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "kleverconfig.h"
+#include "logic/colorschemer.h"
 #include "logic/documentHandler.h"
 #include "logic/kleverUtility.h"
 #include "logic/mdHandler.h"
-#include "logic/todoHandler.h"
-#include "logic/colorschemer.h"
 
-#include "logic/parser/parser.h"
 #include "logic/treeview/noteTreeModel.h"
 
 #include "logic/painting/pressureequation.h"
@@ -36,6 +35,8 @@
 #include "logic/painting/strokeitem.h"
 #include "logic/painting/strokelistitem.h"
 
+#include "logic/parser/parser.h"
+// Plugins
 #include "logic/noteMapper/noteMapper.h"
 #include "logic/syntaxHighlight/highlightHelper.h"
 
@@ -108,9 +109,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     App application;
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "App", &application);
 
-    TodoHandler todoHandler;
-    qmlRegisterSingletonInstance<TodoHandler>("org.kde.Klever", 1, 0, "TodoHandler", &todoHandler);
-
     KleverUtility kleverUtility;
     qmlRegisterSingletonInstance<KleverUtility>("org.kde.Klever", 1, 0, "KleverUtility", &kleverUtility);
 
@@ -140,9 +138,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "stroke", "Use the createStroke function on SketchViewHandler instead");
     qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "event", "They are provided by the SketchViewHandler");
 #else
-    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", "Use the createSample function on SketchViewHandler instead");
-    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", "Use the createStroke function on SketchViewHandler instead");
-    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "Event", "They are provided by the SketchViewHandler");
+    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", QStringLiteral("Use the createSample function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "Event", QStringLiteral("They are provided by the SketchViewHandler"));
 #endif
     qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
 

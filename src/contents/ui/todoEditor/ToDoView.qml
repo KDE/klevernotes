@@ -201,7 +201,7 @@ ColumnLayout {
     }
 
     function setTodos() {
-        const todos = TodoHandler.readTodos(root.path).todos
+        const todos = DocumentHandler.getJson(root.path).todos
         root.alreadySavedCount = todos.length
 
         todos.forEach(todo => todoModel.append(todo))
@@ -214,6 +214,6 @@ ColumnLayout {
             const model = todoModel.get(idx)
             json.todos.push(model)
         }
-        TodoHandler.writeTodos(json, root.path)
+        DocumentHandler.writeTodos(json, root.path)
     }
 }

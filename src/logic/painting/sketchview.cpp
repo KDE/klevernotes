@@ -105,7 +105,12 @@ void SketchView::tabletEvent(QTabletEvent *event)
     event->accept();
 
     if (m_lastType == event->type()) {
-        const auto length = (event->globalPos() - m_lastGlobalPos).manhattanLength();
+#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
+        const QPointF eventPos = event->globalPosition();
+#else
+        const QPoint eventPos = event->globalPos();
+#endif
+        const auto length = (eventPos - m_lastGlobalPos).manhattanLength();
         constexpr auto lengthThreshold = 4.0;
 
         if (length < lengthThreshold)
@@ -113,6 +118,10 @@ void SketchView::tabletEvent(QTabletEvent *event)
     }
 
     m_lastType = event->type();
+#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
+    m_lastGlobalPos = event->globalPosition();
+#else
     m_lastGlobalPos = event->globalPos();
+#endif
     emit tabletEventReceived(event);
 }

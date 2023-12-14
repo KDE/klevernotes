@@ -6,18 +6,16 @@
 #include "kleverconfig.h"
 #include <KIO/CopyJob>
 #include <QDir>
-#include <QFileInfo>
 #include <QIcon>
 #include <klocalizedstring.h>
-#include <memory>
 
-TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *model, TreeItem *parentItem)
+TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
     , m_model(model)
     , m_path(path)
     , m_depth_level(depth_level)
 {
-    QFileInfo fileInfo(path);
+    const QFileInfo fileInfo(path);
     Q_ASSERT(fileInfo.exists());
 
     const QString fileName = fileInfo.fileName();
@@ -27,7 +25,7 @@ TreeItem::TreeItem(const QString &path, const int &depth_level, NoteTreeModel *m
         const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask);
 
         for (const QFileInfo &file : fileList) {
-            QString name = file.fileName();
+            const QString name = file.fileName();
 
             const bool isNotBaseFolder = (name != QStringLiteral(".BaseCategory") && name != QStringLiteral(".BaseGroup"));
 
@@ -60,7 +58,7 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
     if (item->m_depth_level == 3 && m_model->noteMapEnabled()) {
         // very important to make a copy here !
-        QString path = QString(item->m_path).remove(KleverConfig::storagePath());
+        const QString path = QString(item->m_path).remove(KleverConfig::storagePath());
         if (m_model->isInit()) {
             Q_EMIT m_model->newGlobalPathFound(path);
         } else {
@@ -70,7 +68,7 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
     m_childItems.push_back(std::move(item));
 }
 
-TreeItem *TreeItem::child(int row)
+TreeItem *TreeItem::child(int row) const
 {
     if (row < 0 || row >= static_cast<int>(m_childItems.size())) {
         return nullptr;
@@ -145,19 +143,21 @@ QVariant TreeItem::data(int role) const
         }
 
     case NoteTreeModel::NoteNameRole:
-        if (m_depth_level != 3) return QStringLiteral("");
+        if (m_depth_level != 3)
+            return QLatin1String();
         return data(NoteTreeModel::DisplayNameRole);
 
     case NoteTreeModel::BranchNameRole:
-        if (m_depth_level != 3) return QStringLiteral("");
+        if (m_depth_level != 3)
+            return QLatin1String();
         else { //The switch statement is not happy without this else...
-            QString parentName = m_parentItem->data(NoteTreeModel::DisplayNameRole).toString();
-            if (m_parentItem->data(NoteTreeModel::UseCaseRole).toString() != "Group") {
+            const QString parentName = m_parentItem->data(NoteTreeModel::DisplayNameRole).toString();
+            if (m_parentItem->data(NoteTreeModel::UseCaseRole).toString() != QStringLiteral("Group")) {
                 return parentName;
             }
-            QString grandParentName = m_parentItem->parentItem()->data(NoteTreeModel::DisplayNameRole).toString();
+            const QString grandParentName = m_parentItem->parentItem()->data(NoteTreeModel::DisplayNameRole).toString();
 
-            return grandParentName + QStringLiteral("→")+parentName;
+            return grandParentName + QStringLiteral("→") + parentName;
         }
 
     case NoteTreeModel::WantFocusRole:
@@ -171,7 +171,7 @@ QVariant TreeItem::data(int role) const
     }
 };
 
-TreeItem *TreeItem::parentItem()
+TreeItem *TreeItem::parentItem() const
 {
     return m_parentItem;
 }
@@ -191,15 +191,15 @@ void TreeItem::remove()
 
 void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModelIndex, int newPartIdx)
 {
-    QStringList currentPathParts = m_path.split("/");
-    if (currentPathParts.last() == ".BaseCategory")
+    QStringList currentPathParts = m_path.split(QStringLiteral("/"));
+    if (currentPathParts.last() == QStringLiteral(".BaseCategory"))
         return;
 
     if (newPartIdx == -1)
         newPartIdx = currentPathParts.size() - 1;
     currentPathParts[newPartIdx] = newPart;
 
-    QString newPath = currentPathParts.join("/");
+    QString newPath = currentPathParts.join(QStringLiteral("/"));
     if (m_depth_level == 3 && m_model->noteMapEnabled()) {
         Q_EMIT m_model->globalPathUpdated(m_path, newPath);
     }
@@ -250,7 +250,7 @@ NoteTreeModel::NoteTreeModel(QObject *parent)
 
 void NoteTreeModel::initModel()
 {
-    if (KleverConfig::storagePath().isEmpty() || !KleverConfig::storagePath().toLower().endsWith("klevernotes")) {
+    if (KleverConfig::storagePath().isEmpty() || !KleverConfig::storagePath().toLower().endsWith(QStringLiteral("klevernotes"))) {
         return;
     }
 
@@ -262,23 +262,23 @@ void NoteTreeModel::initModel()
         }
 
         // This normally won't happen, but who knows
-        QString basePath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory/.BaseGroup"));
+        const QString basePath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory/.BaseGroup"));
         bool groupCreated = KleverUtility::exists(basePath);
         if (!groupCreated) {
             const QString categoryPath = KleverConfig::storagePath().append(QStringLiteral("/.BaseCategory"));
-            groupCreated = makeGroup(categoryPath, ".BaseGroup");
+            groupCreated = makeGroup(categoryPath, QStringLiteral(".BaseGroup"));
             if (!groupCreated) {
                 m_rootItem = nullptr;
                 return;
             }
         }
-        const bool initDemoNote = makeNote(basePath, "Demo");
+        const bool initDemoNote = makeNote(basePath, QStringLiteral("Demo"));
         if (!initDemoNote) {
             emit errorOccurred(i18n("An error occurred while trying to create the demo note."));
         } else {
-            const QString notePath = basePath.append("/Demo/");
+            const QString notePath = basePath + QStringLiteral("/Demo/");
 
-            QString mdPath = notePath + "note.md";
+            const QString mdPath = notePath + QStringLiteral("note.md");
             QFile::remove(mdPath);
             QFile::copy(QStringLiteral(":/demo_note.md"), mdPath);
 
@@ -288,9 +288,9 @@ void NoteTreeModel::initModel()
                                     QFile::ReadGroup|QFile::WriteGroup|
                                     QFile::ReadOther|QFile::WriteOther);
 
-            QString imagePath = notePath + "Images/";
+            const QString imagePath = notePath + QStringLiteral("Images/");
             QDir().mkpath(imagePath);
-            QFile::copy(QStringLiteral(":/Images/logo.png"), imagePath.append("logo.png"));
+            QFile::copy(QStringLiteral(":/Images/logo.png"), imagePath + QStringLiteral("logo.png"));
         }
     }
 
@@ -415,7 +415,7 @@ void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, co
     }
     if (!rowCreated) return;
 
-    const QString rowPath = parentPath + (QLatin1Char('/') + rowName);
+    const QString rowPath = parentPath + QLatin1Char('/') + rowName;
     auto newRow = std::make_unique<TreeItem>(rowPath, rowLevel, this, parentRow);
 
     beginInsertRows(parentModelIndex, parentRow->childCount(), parentRow->childCount());
@@ -483,7 +483,7 @@ void NoteTreeModel::askForExpand(const QModelIndex& rowModelIndex)
 
 QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
 {
-    QStringList currentPathParts = notePath.split("/");
+    QStringList currentPathParts = notePath.split(QStringLiteral("/"));
     currentPathParts.pop_front(); // remove the first empty string
     QString currentPathPart = currentPathParts.takeAt(0);
 
@@ -492,8 +492,8 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
 
     bool hasBreak = false;
     for (int i = 0; i < currentParentItem->childCount();) {
-        auto currentItem = currentParentItem->child(i);
-        QString currentItemPath = currentItem->data(PathRole).toString();
+        const auto currentItem = currentParentItem->child(i);
+        const QString currentItemPath = currentItem->data(PathRole).toString();
         if (currentItemPath.endsWith(currentPathPart)) {
             currentModelIndex = createIndex(i, 0, currentItem);
             if (currentPathParts.isEmpty()) {
@@ -539,10 +539,10 @@ void NoteTreeModel::addInitialGlobalPath(const QString &path)
 // Storage Handler
 bool NoteTreeModel::makeNote(const QString &groupPath, const QString &noteName)
 {
-    const QString notePath = QString(groupPath).append(QLatin1Char('/') + noteName);
+    const QString notePath = groupPath + QLatin1Char('/') + noteName;
 
-    QFile note(notePath + "/note.md");
-    QFile todo(notePath + "/todo.json");
+    QFile note(notePath + QStringLiteral("/note.md"));
+    QFile todo(notePath + QStringLiteral("/todo.json"));
 
     const bool noteFolderCreated = KleverUtility::create(notePath);
     bool creationSucces;
@@ -561,7 +561,7 @@ bool NoteTreeModel::makeNote(const QString &groupPath, const QString &noteName)
 
 bool NoteTreeModel::makeGroup(const QString &categoryPath, const QString &groupName)
 {
-    const QString groupPath = QString(categoryPath).append(QLatin1Char('/') + groupName);
+    const QString groupPath = categoryPath + QLatin1Char('/') + groupName;
 
     const bool groupCreated = KleverUtility::create(groupPath);
     if (!groupCreated) emit errorOccurred(i18n("An error occurred while trying to create the group."));
@@ -570,16 +570,16 @@ bool NoteTreeModel::makeGroup(const QString &categoryPath, const QString &groupN
 
 bool NoteTreeModel::makeCategory(const QString &storagePath, const QString &categoryName)
 {
-    const QString categoryPath = QString(storagePath).append(QLatin1Char('/') + categoryName);
+    const QString categoryPath = storagePath + QLatin1Char('/') + categoryName;
 
-    const bool groupCreated = makeGroup(categoryPath, ".BaseGroup");
+    const bool groupCreated = makeGroup(categoryPath, QStringLiteral(".BaseGroup"));
     if (!groupCreated) emit errorOccurred(i18n("An error occurred while trying to create the category."));
     return groupCreated;
 }
 
 bool NoteTreeModel::makeStorage(const QString &storagePath)
 {
-    const bool categoryCreated = makeCategory(storagePath, "/.BaseCategory");
+    const bool categoryCreated = makeCategory(storagePath, QStringLiteral("/.BaseCategory"));
     if (!categoryCreated) emit errorOccurred(i18n("An error occurred while trying to create the storage."));
     return categoryCreated;
 }

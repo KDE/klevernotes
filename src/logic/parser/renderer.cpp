@@ -3,6 +3,8 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 
+// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
+
 #include "renderer.h"
 #include "logic/syntaxHighlight/highlightHelper.h"
 
@@ -15,12 +17,12 @@ QString Renderer::code(QString &code, const QString &lang, const bool highlight)
         code = HighlightHelper::getHighlightedString(code, lang);
     }
 
-    return "<pre><code>" + (highlight ? code : escape(code, true)) + QString::fromStdString("</code></pre>\n");
+    return QStringLiteral("<pre><code>") + (highlight ? code : escape(code, true)) + QStringLiteral("</code></pre>\n");
 }
 
 QString Renderer::blockquote(const QString &quote)
 {
-    return QString::fromStdString("<blockquote>\n") + quote + QString::fromStdString("</blockquote>\n");
+    return QStringLiteral("<blockquote>\n") + quote + QStringLiteral("</blockquote>\n");
 }
 
 QString Renderer::html(const QString &html)
@@ -30,107 +32,97 @@ QString Renderer::html(const QString &html)
 
 QString Renderer::heading(const QString &text, const QString &lvl, const QString &raw, const bool scrollTo)
 {
-    const QString id = scrollTo ? QString::fromStdString("noteMapperScrollTo") : raw.toLower().replace(QRegularExpression("[^\\w]+"), "-");
-    return "<h" + lvl + QString::fromStdString(" id=\"") + id + QString::fromStdString("\">") + text + "</h" + lvl + QString::fromStdString(">\n");
+    static const QRegularExpression rawReg = QRegularExpression(QStringLiteral("[^\\w]+"));
+    const QString id = scrollTo ? QStringLiteral("noteMapperScrollTo") : raw.toLower().replace(rawReg, QStringLiteral("-"));
+    return QStringLiteral("<h") + lvl + QStringLiteral(" id=\"") + id + QStringLiteral("\">") + text + QStringLiteral("</h") + lvl + QStringLiteral(">\n");
 }
 
 QString Renderer::hr()
 {
-    return "<hr>\n";
+    return QStringLiteral("<hr>\n");
 }
 
 QString Renderer::list(const QString &body, bool ordered, const QString &start)
 {
-    const QString type = ordered ? "ol" : "ul";
-    const QString startat = (ordered && start != QString::number(1)) ? (QString::fromStdString(" start=\"") + start + QString::fromStdString("\"")) : "";
+    const QString type = ordered ? QStringLiteral("ol") : QStringLiteral("ul");
+    const QString startat = (ordered && start != QString::number(1)) ? (QStringLiteral(" start=\"") + start + QStringLiteral("\"")) : QLatin1String();
 
-    return "<" + type + startat + QString::fromStdString(">\n") + body + "</" + type + QString::fromStdString(">\n");
+    return QStringLiteral("<") + type + startat + QStringLiteral(">\n") + body + QStringLiteral("</") + type + QStringLiteral(">\n");
 }
 
 QString Renderer::listItem(const QString &text, const bool hasCheck)
 {
-    QString out;
-    if (hasCheck) {
-        out = QString::fromStdString("<li class=\"hasCheck\"> <label class=\"form-control\">\n") + text + QString::fromStdString("</label></li>\n");
-    } else {
-        out = QString::fromStdString("<li>") + text + QString::fromStdString("</li>\n");
-    }
+    const QString out = hasCheck ? QStringLiteral("<li class=\"hasCheck\"> <label class=\"form-control\">\n") + text + QStringLiteral("</label></li>\n")
+                                 : QStringLiteral("<li>") + text + QStringLiteral("</li>\n");
     return out;
 }
 
 QString Renderer::checkbox(bool checked)
 {
-    const QString checkedString = checked ? QString::fromStdString("checked=\"\" ") : "";
+    const QString checkedString = checked ? QStringLiteral("checked=\"\" ") : QLatin1String();
 
-    return "<input " + checkedString + QString::fromStdString("disabled=\"\" type=\"checkbox\"") + ">";
+    return QStringLiteral("<input ") + checkedString + QStringLiteral("disabled=\"\" type=\"checkbox\">");
 }
 
 QString Renderer::paragraph(const QString &text)
 {
-    return "<p>" + text + QString::fromStdString("</p>\n");
+    return QStringLiteral("<p>") + text + QStringLiteral("</p>\n");
 }
 
 QString Renderer::table(const QString &header, QString &body)
 {
     if (!body.isEmpty())
-        body = "<tbody>" + body + "</tbody>";
+        body = QStringLiteral("<tbody>") + body + QStringLiteral("</tbody>");
 
-    return QString::fromStdString("<table>\n") + QString::fromStdString("<thead>\n") + header + QString::fromStdString("</thead>\n") + body
-        + QString::fromStdString("</table>\n");
+    return QStringLiteral("<table>\n") + QStringLiteral("<thead>\n") + header + QStringLiteral("</thead>\n") + body + QStringLiteral("</table>\n");
 }
 
 QString Renderer::tableRow(const QString &content)
 {
-    return QString::fromStdString("<tr>\n") + content + QString::fromStdString("</tr>\n");
+    return QStringLiteral("<tr>\n") + content + QStringLiteral("</tr>\n");
 }
 
-QString Renderer::tableCell(const QString &content, const QVariantMap flags)
+QString Renderer::tableCell(const QString &content, const QVariantMap &flags)
 {
-    const QString type = flags["header"].toBool() ? "th" : "td";
-    const QString align = flags["align"].toString();
-    QString tag;
-    if (!align.isEmpty()) {
-        tag = QString::fromStdString("<") + type + QString::fromStdString(" style=\"text-align:") + align + QString::fromStdString(";\">");
-    } else {
-        tag = QString::fromStdString("<") + type + QString::fromStdString(">");
-    }
-    return tag + content + "</" + type + QString::fromStdString(">\n");
+    const QString type = flags[QStringLiteral("header")].toBool() ? QStringLiteral("th") : QStringLiteral("td");
+    const QString align = flags[QStringLiteral("align")].toString();
+    const QString tag = align.isEmpty() ? QStringLiteral("<") + type + QStringLiteral(">")
+                                        : QStringLiteral("<") + type + QStringLiteral(" style=\"text-align:") + align + QStringLiteral(";\">");
+    return tag + content + QStringLiteral("</") + type + QStringLiteral(">\n");
 }
 
 QString Renderer::strong(const QString &text)
 {
-    return "<strong>" + text + "</strong>";
+    return QStringLiteral("<strong>") + text + QStringLiteral("</strong>");
 }
 
 QString Renderer::em(const QString &text)
 {
-    return "<em>" + text + "</em>";
+    return QStringLiteral("<em>") + text + QStringLiteral("</em>");
 }
 
 QString Renderer::codeSpan(const QString &text)
 {
-    return "<code>" + text + "</code>";
+    return QStringLiteral("<code>") + text + QStringLiteral("</code>");
 }
 
 QString Renderer::br()
 {
-    return "<br>";
+    return QStringLiteral("<br>");
 }
 
 QString Renderer::del(const QString &text)
 {
-    return "<del>" + text + "</del>";
+    return QStringLiteral("<del>") + text + QStringLiteral("</del>");
 }
 
 QString Renderer::wikilink(const QString &href, const QString &title, const QString &text)
 {
-    QString out = QString::fromStdString("<a href=\"") + href + QString::fromStdString("\"");
+    const QString leading = QStringLiteral("<a href=\"") + href + QStringLiteral("\"");
+    const QString middle = title.isEmpty() ? QLatin1String() : QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    const QString ending = QStringLiteral(">") + text + QStringLiteral("</a>");
 
-    if (!title.isEmpty()) {
-        out += QString::fromStdString(" title=\"") + title + QString::fromStdString("\"");
-    }
-    out += ">" + text + "</a>";
-    return out;
+    return leading + middle + ending;
 }
 
 QString Renderer::link(QString &href, const QString &title, const QString &text)
@@ -139,25 +131,23 @@ QString Renderer::link(QString &href, const QString &title, const QString &text)
     if (uri.isEmpty())
         return text;
 
-    href = QString(uri).replace(QRegularExpression("%25"), "%");
+    static const QRegularExpression uriPercentReg = QRegularExpression(QStringLiteral("%25"));
+    href = QString(uri).replace(uriPercentReg, QStringLiteral("%"));
 
-    QString out = QString::fromStdString("<a href=\"") + escape(href, false) + QString::fromStdString("\"");
+    const QString leading = QStringLiteral("<a href=\"") + escape(href, false) + QStringLiteral("\"");
+    const QString middle = title.isEmpty() ? QLatin1String() : QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    const QString ending = QStringLiteral(">") + text + QStringLiteral("</a>");
 
-    if (!title.isEmpty()) {
-        out += QString::fromStdString(" title=\"") + title + QString::fromStdString("\"");
-    }
-    out += ">" + text + "</a>";
-    return out;
+    return leading + middle + ending;
 }
 
 QString Renderer::image(const QString &href, const QString &title, const QString &text)
 {
-    QString out = QString::fromStdString("<img src=\"") + href + QString::fromStdString("\" alt=\"") + text + QString::fromStdString("\"");
-    if (!title.isEmpty()) {
-        out += QString::fromStdString(" title=\"") + title + QString::fromStdString("\"");
-    }
-    out += ">";
-    return out;
+    const QString leading = QStringLiteral("<img src=\"") + href + QStringLiteral("\" alt=\"") + text + QStringLiteral("\"");
+    const QString middle = title.isEmpty() ? QLatin1String() : QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    static const QString ending = QStringLiteral(">");
+
+    return leading + middle + ending;
 }
 
 QString Renderer::text(const QString &text)
@@ -167,20 +157,24 @@ QString Renderer::text(const QString &text)
 
 QString Renderer::escape(QString &html, bool encode)
 {
-    const QRegularExpression encodedReplacement = !encode ? QRegularExpression("&(?!#?\\w+;)") : QRegularExpression("&");
+    const QRegularExpression encodedReplacement = !encode ? QRegularExpression(QStringLiteral("&(?!#?\\w+;)")) : QRegularExpression(QStringLiteral("&"));
 
-    return html.replace(encodedReplacement, "&amp;")
-        .replace(QRegularExpression("<"), "&lt;")
-        .replace(QRegularExpression(">"), "&gt;")
-        .replace(QRegularExpression("\""), "&quot;")
-        .replace(QRegularExpression("'"), "&#39;");
+    static const QRegularExpression leftBracketReg = QRegularExpression(QStringLiteral("<"));
+    static const QRegularExpression rightBracketReg = QRegularExpression(QStringLiteral(">"));
+    static const QRegularExpression quoteReg = QRegularExpression(QStringLiteral("\""));
+    static const QRegularExpression apostropheReg = QRegularExpression(QStringLiteral("'"));
+    return html.replace(encodedReplacement, QStringLiteral("&amp;"))
+        .replace(leftBracketReg, QStringLiteral("&lt;"))
+        .replace(rightBracketReg, QStringLiteral("&gt;"))
+        .replace(quoteReg, QStringLiteral("&quot;"))
+        .replace(apostropheReg, QStringLiteral("&#39;"));
 }
 
 QString Renderer::unescape(const QString &html)
 {
     // explicitly match decimal, hex, and named HTML entities
     QString result = html;
-    const QRegularExpression regex("&(#(?:\\d+)|(?:#x[0-9A-Fa-f]+)|(?:\\w+));?");
+    static const QRegularExpression regex(QStringLiteral("&(#(?:\\d+)|(?:#x[0-9A-Fa-f]+)|(?:\\w+));?"));
     QRegularExpressionMatchIterator i = regex.globalMatch(result);
 
     QRegularExpressionMatch match;
@@ -188,11 +182,11 @@ QString Renderer::unescape(const QString &html)
         match = i.next();
         const QString entity = match.captured(1).toLower();
 
-        if (entity == "colon") {
-            result.replace(match.capturedStart(), match.capturedLength(), ":");
+        if (entity == QStringLiteral("colon")) {
+            result.replace(match.capturedStart(), match.capturedLength(), QStringLiteral(":"));
             continue;
         }
-        if (entity.startsWith("#")) {
+        if (entity.startsWith(QStringLiteral("#"))) {
             bool ok;
             // check for hexadecimal or numerical value
             const int charCode = (entity.at(1) == 'x') ? entity.mid(2).toInt(&ok, 16) : entity.mid(1).toInt(&ok);
@@ -200,7 +194,7 @@ QString Renderer::unescape(const QString &html)
             result.replace(match.capturedStart(), match.capturedLength(), QChar(charCode));
             continue;
         }
-        result.replace(match.capturedStart(), match.capturedLength(), "");
+        result.replace(match.capturedStart(), match.capturedLength(), QLatin1String());
     }
 
     return result;

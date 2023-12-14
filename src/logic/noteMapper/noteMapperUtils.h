@@ -4,7 +4,6 @@
 */
 #pragma once
 
-#include <QDate>
 #include <QJsonObject>
 #include <QObject>
 #include <QRegularExpression>

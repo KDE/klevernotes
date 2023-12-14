@@ -13,9 +13,12 @@ class MDHandler : public QObject
 public:
     explicit MDHandler(QObject *parent = nullptr);
 
-public slots:
-    QJsonArray getLines(const QString &text) const;
-    // Would love to use a pair here, but QML doesn't like it :/
-    QStringList getPositionLineInfo(QJsonArray lines, int position);
-    QJsonObject getInstructions(const QString &selectedText, const QStringList &charsList, const bool checkLineEnd, const bool applyIncrement, const bool checkByBlock) const;
+    Q_INVOKABLE QJsonObject getInstructions(const QString &selectedText,
+                                            const QStringList &charsList,
+                                            const bool checkLineEnd,
+                                            const bool applyIncrement,
+                                            const bool checkByBlock) const;
+
+private:
+    QJsonObject blockChecker(const QString &selectedText, const QStringList &charsList) const;
 };

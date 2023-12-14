@@ -3,9 +3,10 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 
+// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
+
 #pragma once
 
-#include <QString>
 #include <QVariantMap>
 
 class Renderer
@@ -22,7 +23,7 @@ public:
     static QString paragraph(const QString &text);
     static QString table(const QString &header, QString &body);
     static QString tableRow(const QString &content);
-    static QString tableCell(const QString &content, const QVariantMap flags);
+    static QString tableCell(const QString &content, const QVariantMap &flags);
     static QString strong(const QString &text);
     static QString em(const QString &text);
     static QString codeSpan(const QString &text);

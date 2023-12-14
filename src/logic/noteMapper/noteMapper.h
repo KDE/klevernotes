@@ -4,12 +4,10 @@
 */
 #pragma once
 
-#include "logic/documentHandler.h"
 #include <QAbstractItemModel>
 #include <QSet>
 #include <QVariant>
 #include <memory>
-#include <set>
 
 class LinkedNoteItem
 {
@@ -87,6 +85,4 @@ private:
 
     // Treeview
     QSet<QString> m_treeViewPaths;
-
-    DocumentHandler *m_documentHandler = new DocumentHandler;
 };
