@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 00:42+0000\n"
+"POT-Creation-Date: 2023-12-15 00:42+0000\n"
 "PO-Revision-Date: 2023-11-28 18:17+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -76,43 +76,43 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "影像選擇器"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "網路影像"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:105
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "本機影像"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:135
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "繪製一個影像"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:159
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "影像收藏"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:227
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "您選取的影像看來不存在或不支援。"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:247
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "影像文字："
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:256
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -1013,109 +1013,109 @@ msgstr ""
 msgid "Header"
 msgstr "標頭"
 
-#: contents/ui/textEditor/TextToolBar.qml:220
+#: contents/ui/textEditor/TextToolBar.qml:219
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "標頭"
 
-#: contents/ui/textEditor/TextToolBar.qml:220
+#: contents/ui/textEditor/TextToolBar.qml:219
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
 msgstr "數字"
 
-#: contents/ui/textEditor/TextToolBar.qml:225
+#: contents/ui/textEditor/TextToolBar.qml:224
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "標頭 1"
 
-#: contents/ui/textEditor/TextToolBar.qml:237
+#: contents/ui/textEditor/TextToolBar.qml:236
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "標頭 2"
 
-#: contents/ui/textEditor/TextToolBar.qml:249
+#: contents/ui/textEditor/TextToolBar.qml:248
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "標頭 3"
 
-#: contents/ui/textEditor/TextToolBar.qml:261
+#: contents/ui/textEditor/TextToolBar.qml:260
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "標頭 4"
 
-#: contents/ui/textEditor/TextToolBar.qml:273
+#: contents/ui/textEditor/TextToolBar.qml:272
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "標頭 5"
 
-#: contents/ui/textEditor/TextToolBar.qml:285
+#: contents/ui/textEditor/TextToolBar.qml:284
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "標頭 6"
 
-#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:298
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
 msgstr "粗體"
 
-#: contents/ui/textEditor/TextToolBar.qml:308
+#: contents/ui/textEditor/TextToolBar.qml:307
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
 msgstr "斜體"
 
-#: contents/ui/textEditor/TextToolBar.qml:317
+#: contents/ui/textEditor/TextToolBar.qml:316
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
 msgstr "刪除線"
 
-#: contents/ui/textEditor/TextToolBar.qml:326
+#: contents/ui/textEditor/TextToolBar.qml:325
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
 msgstr "程式碼"
 
-#: contents/ui/textEditor/TextToolBar.qml:335
+#: contents/ui/textEditor/TextToolBar.qml:334
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
 msgstr "引言"
 
-#: contents/ui/textEditor/TextToolBar.qml:344
+#: contents/ui/textEditor/TextToolBar.qml:343
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
 msgstr "影像"
 
-#: contents/ui/textEditor/TextToolBar.qml:351
+#: contents/ui/textEditor/TextToolBar.qml:350
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
 msgstr "連結"
 
-#: contents/ui/textEditor/TextToolBar.qml:358
+#: contents/ui/textEditor/TextToolBar.qml:357
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
 msgstr "表格"
 
-#: contents/ui/textEditor/TextToolBar.qml:365
+#: contents/ui/textEditor/TextToolBar.qml:364
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
 msgstr "有序列表"
 
-#: contents/ui/textEditor/TextToolBar.qml:377
+#: contents/ui/textEditor/TextToolBar.qml:376
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
@@ -1127,7 +1127,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "清除已勾選"
 
-#: logic/kleverUtility.cpp:97
+#: logic/kleverUtility.cpp:96
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1178,35 +1178,35 @@ msgstr "嘗試建立分類時發生錯誤。"
 msgid "An error occurred while trying to create the storage."
 msgstr "建立筆記儲存庫時發生錯誤。"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes 筆記"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Application Description"
 msgstr ""
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr ""
 
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:74
+#: main.cpp:75
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kisaragi Hiu"
 
-#: main.cpp:74
+#: main.cpp:75
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

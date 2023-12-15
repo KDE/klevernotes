@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 00:42+0000\n"
+"POT-Creation-Date: 2023-12-15 00:42+0000\n"
 "PO-Revision-Date: 2023-10-09 00:22+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -75,43 +75,43 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "그림 선택기"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "웹 그림"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:105
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "로컬 그림"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:135
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "그림 그리기"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:159
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "그림 모음집"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:227
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "선택한 그림이 없거나 지원하지 않는 것 같습니다."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:247
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "그림 텍스트: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:256
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -1034,116 +1034,116 @@ msgstr ""
 msgid "Header"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:220
+#: contents/ui/textEditor/TextToolBar.qml:219
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:220
+#: contents/ui/textEditor/TextToolBar.qml:219
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:225
+#: contents/ui/textEditor/TextToolBar.qml:224
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:237
+#: contents/ui/textEditor/TextToolBar.qml:236
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:249
+#: contents/ui/textEditor/TextToolBar.qml:248
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:261
+#: contents/ui/textEditor/TextToolBar.qml:260
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:273
+#: contents/ui/textEditor/TextToolBar.qml:272
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:285
+#: contents/ui/textEditor/TextToolBar.qml:284
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "머리글"
 
-#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:298
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:308
+#: contents/ui/textEditor/TextToolBar.qml:307
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:317
+#: contents/ui/textEditor/TextToolBar.qml:316
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:326
+#: contents/ui/textEditor/TextToolBar.qml:325
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:335
+#: contents/ui/textEditor/TextToolBar.qml:334
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:344
+#: contents/ui/textEditor/TextToolBar.qml:343
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:351
+#: contents/ui/textEditor/TextToolBar.qml:350
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:358
+#: contents/ui/textEditor/TextToolBar.qml:357
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:365
+#: contents/ui/textEditor/TextToolBar.qml:364
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:377
+#: contents/ui/textEditor/TextToolBar.qml:376
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
@@ -1155,7 +1155,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "선택 항목 지우기"
 
-#: logic/kleverUtility.cpp:97
+#: logic/kleverUtility.cpp:96
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1211,35 +1211,35 @@ msgstr "분류를 생성하는 중 오류가 발생했습니다."
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Application Description"
 msgstr "앱 설명"
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:74
+#: main.cpp:75
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: main.cpp:74
+#: main.cpp:75
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

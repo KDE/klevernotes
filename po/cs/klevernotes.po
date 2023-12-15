@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 00:42+0000\n"
+"POT-Creation-Date: 2023-12-15 00:42+0000\n"
 "PO-Revision-Date: 2023-11-08 14:21+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -75,43 +75,43 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Výběr obrázku"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:76
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:77
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Obrázek z webu"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:104
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:105
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Místní obrázek"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:134
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:135
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Namalovat obrázek"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:158
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:159
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Sbírka obrázků"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:226
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:227
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Zdá se, že vybraný obrázek neexistuje nebo není podporován."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:246
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:247
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Text obrázku: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:256
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -496,12 +496,10 @@ msgid "Display"
 msgstr "Zobrazení"
 
 #: contents/ui/pages/SettingsPage.qml:208
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title"
 msgid "KleverNotes plugins"
-msgstr "Malování KleverNotes"
+msgstr ""
 
 #: contents/ui/pages/SettingsPage.qml:218
 #, kde-format
@@ -570,12 +568,10 @@ msgid "Code color:"
 msgstr "Barva kódu"
 
 #: contents/ui/settings/DisplayPreview.qml:114
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "Obecné"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:125
 #, kde-format
@@ -901,19 +897,15 @@ msgid "Make more bar"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:151
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "Malování KleverNotes"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:160
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "Poznámka"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:162
 #, kde-format
@@ -924,11 +916,10 @@ msgid "Category/Group/Note"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:163
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr "Záhlaví"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:163
 #, kde-format
@@ -937,13 +928,10 @@ msgid "displayed name"
 msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "Text odkazu:"
+msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:36
 #, kde-format
@@ -971,14 +959,10 @@ msgid "Linked notes map"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "Existující úložiště"
+msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:76
 #, kde-format
@@ -1002,109 +986,109 @@ msgstr ""
 msgid "Header"
 msgstr "Záhlaví"
 
-#: contents/ui/textEditor/TextToolBar.qml:220
+#: contents/ui/textEditor/TextToolBar.qml:219
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "Záhlaví"
 
-#: contents/ui/textEditor/TextToolBar.qml:220
+#: contents/ui/textEditor/TextToolBar.qml:219
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:225
+#: contents/ui/textEditor/TextToolBar.qml:224
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "Záhlaví 1"
 
-#: contents/ui/textEditor/TextToolBar.qml:237
+#: contents/ui/textEditor/TextToolBar.qml:236
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "Záhlaví 2"
 
-#: contents/ui/textEditor/TextToolBar.qml:249
+#: contents/ui/textEditor/TextToolBar.qml:248
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "Záhlaví 3"
 
-#: contents/ui/textEditor/TextToolBar.qml:261
+#: contents/ui/textEditor/TextToolBar.qml:260
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "Záhlaví 4"
 
-#: contents/ui/textEditor/TextToolBar.qml:273
+#: contents/ui/textEditor/TextToolBar.qml:272
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "Záhlaví 5"
 
-#: contents/ui/textEditor/TextToolBar.qml:285
+#: contents/ui/textEditor/TextToolBar.qml:284
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "Záhlaví 6"
 
-#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:298
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
 msgstr "Tučné"
 
-#: contents/ui/textEditor/TextToolBar.qml:308
+#: contents/ui/textEditor/TextToolBar.qml:307
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
 msgstr "Kurzíva"
 
-#: contents/ui/textEditor/TextToolBar.qml:317
+#: contents/ui/textEditor/TextToolBar.qml:316
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
 msgstr "Přeškrtnutí"
 
-#: contents/ui/textEditor/TextToolBar.qml:326
+#: contents/ui/textEditor/TextToolBar.qml:325
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
 msgstr "Kód"
 
-#: contents/ui/textEditor/TextToolBar.qml:335
+#: contents/ui/textEditor/TextToolBar.qml:334
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
 msgstr "Citát"
 
-#: contents/ui/textEditor/TextToolBar.qml:344
+#: contents/ui/textEditor/TextToolBar.qml:343
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
 msgstr "Obrázek"
 
-#: contents/ui/textEditor/TextToolBar.qml:351
+#: contents/ui/textEditor/TextToolBar.qml:350
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
 msgstr "Odkaz"
 
-#: contents/ui/textEditor/TextToolBar.qml:358
+#: contents/ui/textEditor/TextToolBar.qml:357
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
 msgstr "Tabulka"
 
-#: contents/ui/textEditor/TextToolBar.qml:365
+#: contents/ui/textEditor/TextToolBar.qml:364
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:377
+#: contents/ui/textEditor/TextToolBar.qml:376
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
@@ -1116,7 +1100,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Vymazat zaškrtnuté"
 
-#: logic/kleverUtility.cpp:97
+#: logic/kleverUtility.cpp:96
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1167,40 +1151,36 @@ msgstr "Nastala chyba při pokusu o vytvoření kategorie."
 msgid "An error occurred while trying to create the storage."
 msgstr "Nastala chyba při pokusu o vytvoření úložiště."
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Application Description"
 msgstr "Popis aplikace"
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:74
+#: main.cpp:75
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vít Pelčák"
 
-#: main.cpp:74
+#: main.cpp:75
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
-
-#~ msgctxt "@label:textbox"
-#~ msgid "Font:"
-#~ msgstr "Písmo:"
