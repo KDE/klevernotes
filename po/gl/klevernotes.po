@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-15 00:42+0000\n"
-"PO-Revision-Date: 2023-12-13 08:38+0100\n"
+"PO-Revision-Date: 2023-12-15 08:05+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -528,13 +528,13 @@ msgstr "A ligazón de notas permite crear unha ligazón dunha nota a outra."
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Consello: reinicie a aplicación despois de activalo."
 
 #: contents/ui/pages/SettingsPage.qml:230
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Activar o realce de sintaxe de código"
 
 #: contents/ui/pages/SettingsPage.qml:231
 #, kde-format
