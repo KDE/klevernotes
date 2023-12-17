@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-15 00:42+0000\n"
-"PO-Revision-Date: 2023-12-13 11:29+0100\n"
+"PO-Revision-Date: 2023-12-14 09:37+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -536,13 +536,13 @@ msgstr ""
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Conseil : redémarrez l'application après activation."
 
 #: contents/ui/pages/SettingsPage.qml:230
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Activer la coloration syntaxique du code"
 
 #: contents/ui/pages/SettingsPage.qml:231
 #, kde-format

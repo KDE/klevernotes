@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-15 00:42+0000\n"
-"PO-Revision-Date: 2023-11-10 05:08+0100\n"
+"PO-Revision-Date: 2023-12-16 06:31+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -502,7 +502,7 @@ msgstr "ახალი შენიშვნის სახელი:"
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "რედაქტორის ფონტი:"
 
 #: contents/ui/pages/SettingsPage.qml:197
 #, kde-format
@@ -512,42 +512,42 @@ msgid "Display"
 msgstr "ჩვენება"
 
 #: contents/ui/pages/SettingsPage.qml:208
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes-ის ხატვა"
+msgstr "KleverNotes-ის დამატებები"
 
 #: contents/ui/pages/SettingsPage.qml:218
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "შენიშვნის მიბმის დაშვება"
 
 #: contents/ui/pages/SettingsPage.qml:219
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr ""
+"შენიშვნების მიბმა ერთი შენიშვნიდან მეორეზე ბმულის გაკეთების საშუალებას "
+"მოგცემთ."
 
 #: contents/ui/pages/SettingsPage.qml:220
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "რჩევა: გადატვირთეთ აპი აქტივაციის შემდეგ."
 
 #: contents/ui/pages/SettingsPage.qml:230
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "კოდის სინტაქსის გამოკვეთის ჩართვა"
 
 #: contents/ui/pages/SettingsPage.qml:231
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "მხარდაჭერილი გამომკვეთების სია"
 
 #: contents/ui/settings/DisplayPreview.qml:16
 #, kde-format
@@ -586,30 +586,28 @@ msgid "Code color:"
 msgstr "კოდის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:114
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "ზოგადი"
+msgstr "ზოგადი ფონტი:"
 
 #: contents/ui/settings/DisplayPreview.qml:125
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "კოდის ბლოკის ფონტი:"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "გამომკვეთი"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:140
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "გამომკვეთის სტილი"
 
 #: contents/ui/sideBar/ActionBar.qml:196
 #, kde-format
@@ -917,19 +915,15 @@ msgid "Make more bar"
 msgstr "მეტი ვირის გაკეთება"
 
 #: contents/ui/textEditor/CheatSheet.qml:151
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes-ის ხატვა"
+msgstr "KleverNotes-ის დამატებები"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "შენიშვნა"
+msgstr "შენიშვნის ბმა"
 
 #: contents/ui/textEditor/CheatSheet.qml:162
 #, kde-format
@@ -937,29 +931,25 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "კატეგორია/ჯგუფი/შენიშვნა"
 
 #: contents/ui/textEditor/CheatSheet.qml:163
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr "სათაური"
+msgstr "თავსართი"
 
 #: contents/ui/textEditor/CheatSheet.qml:163
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "ნაჩვენები სახელი"
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "ბმულის ტექსტი:"
+msgstr "მიბმული შენიშვნები"
 
 #: contents/ui/textEditor/EditorView.qml:36
 #, kde-format
@@ -984,30 +974,26 @@ msgstr "მინიატურის ჩვენება/დამალვ�
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "მიბმული შენიშვნების რუკა"
 
 #: contents/ui/textEditor/NotesMap.qml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "არსებული საცავი"
+msgstr "არსებული შენიშვნები"
 
 #: contents/ui/textEditor/NotesMap.qml:76
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "ნაკლული შენიშვნები"
 
 #: contents/ui/textEditor/NotesMap.qml:86
 #: contents/ui/textEditor/TextDisplay.qml:155
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 არ არსებობს"
 
 #: contents/ui/textEditor/TextToolBar.qml:90
 #: contents/ui/textEditor/TextToolBar.qml:91
