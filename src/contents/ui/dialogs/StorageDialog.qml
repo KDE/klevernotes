@@ -4,6 +4,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.3
+
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
@@ -12,18 +13,23 @@ import org.kde.Klever 1.0
 Kirigami.Dialog {
     id: setupPopup
 
+    readonly property string newStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Storage created at ")
+    readonly property string existingStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Existing storage chosen at ")
+
+    property string folder
+    property string userChoice
+    property bool firstSetup: true
+    property string subtitle: i18nc("@subtitle:dialog, Storage as in 'the folder where all the notes will be stored'", "It looks like this is your first time using this app!\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
+
     width: Kirigami.Units.gridUnit * 18
 
     closePolicy: Controls.Popup.NoAutoClose
     standardButtons: Kirigami.Dialog.NoButton
-
-    property string subtitle: i18nc("@subtitle:dialog, Storage as in 'the folder where all the notes will be stored'", "It looks like this is your first time using this app!\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
-    readonly property string existingStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Existing storage chosen at ")
-    readonly property string newStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Storage created at ")
-    property bool firstSetup: true
-    property string folder
-    property string userChoice
     showCloseButton: !firstSetup
+
+    onFolderChanged: {
+        setupStorage()
+    }
 
     ColumnLayout{
         Controls.Label {
@@ -77,7 +83,7 @@ Kirigami.Dialog {
         }
     }
 
-    onFolderChanged: {
+    function setupStorage() {
         let folderPath = KleverUtility.getPath(setupPopup.folder)
         if (userChoice === setupPopup.newStorage){
             folderPath = folderPath.concat("/klevernotes")

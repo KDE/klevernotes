@@ -2,41 +2,79 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
-import QtQuick.Layouts 1.15
+
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
+
 import "qrc:/contents/ui/sideBar"
 
 Kirigami.ApplicationWindow {
     id: root
 
-    title: i18nc("@title:ApplicationWindow", "KleverNotes")
+    readonly property NoteMapper noteMapper: noteMapper
 
-    readonly property NoteMapper noteMapper: NoteMapper {}
+    title: i18nc("@title:ApplicationWindow", "KleverNotes")
 
     minimumWidth: Kirigami.Units.gridUnit * 25
     minimumHeight: Kirigami.Units.gridUnit * 30
 
+    globalDrawer: sideBar
+    pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
+
     onClosing: {
-        App.saveWindowGeometry(root) ;
+        saveState() 
+    }
+    onXChanged: {
+        saveWindowGeometryTimer.restart()
+    }
+    onYChanged: {
+        saveWindowGeometryTimer.restart()
+    }
+    onWidthChanged: {
+        saveWindowGeometryTimer.restart()
+    }
+    onHeightChanged: {
+        saveWindowGeometryTimer.restart()
+    }
+    pageStack.onCurrentItemChanged: if (isMainPage() && pageStack.depth > 1) {
+        pageStack.pop()
+    }
+    Component.onCompleted: {
+        App.restoreWindowGeometry(root)
+        switchToPage('Main')
+    }
+
+    // This timer allows to batch update the window size change to reduce
+    // the io load and also work around the fact that x/y/width/height are
+    // changed when loading the page and overwrite the saved geometry from
+    // the previous session.
+    Timer {
+        id: saveWindowGeometryTimer
+
+        interval: 1000
+        onTriggered: App.saveWindowGeometry(root)
+    }
+
+    Kirigami.PagePool { 
+        id: pagePool 
+    }
+
+    Sidebar { 
+        id: sideBar 
+    }
+
+    NoteMapper { 
+        id: noteMapper 
+    }
+
+    function saveState() {
+        App.saveWindowGeometry(root)
         const mainPage = pageStack.get(0)
         const editor = mainPage.editorView.editor
         editor.saveNote(editor.text, editor.path)
         if (Config.noteMapEnabled) noteMapper.saveMap()
     }
-
-    onWidthChanged: saveWindowGeometryTimer.restart()
-    onHeightChanged: saveWindowGeometryTimer.restart()
-    onXChanged: saveWindowGeometryTimer.restart()
-    onYChanged: saveWindowGeometryTimer.restart()
-
-    pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
-
-    Kirigami.PagePool {id: pagePool}
-
-    globalDrawer: Sidebar{}
 
     function getPage(name) {
         switch (name) {
@@ -54,8 +92,6 @@ Kirigami.ApplicationWindow {
         pageStack.push(page);
     }
 
-    pageStack.onCurrentItemChanged: if (isMainPage() && pageStack.depth > 1) pageStack.pop()
-
     function isMainPage(){
         return pageStack.currentItem === getPage("Main")
     }
@@ -66,20 +102,5 @@ Kirigami.ApplicationWindow {
         const mainPage = pageStack.get(0)
         const editorView = mainPage.editorView
         editorView.cheatSheet.open() 
-    }
-    // This timer allows to batch update the window size change to reduce
-    // the io load and also work around the fact that x/y/width/height are
-    // changed when loading the page and overwrite the saved geometry from
-    // the previous session.
-    Timer {
-        id: saveWindowGeometryTimer
-
-        interval: 1000
-        onTriggered: App.saveWindowGeometry(root)
-    }
-
-    Component.onCompleted: {
-        App.restoreWindowGeometry(root)
-        switchToPage('Main')
     }
 }

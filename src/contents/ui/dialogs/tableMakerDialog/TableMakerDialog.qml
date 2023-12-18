@@ -3,9 +3,10 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as Controls
-import org.kde.kirigami 2.19 as Kirigami
 import QtQuick.Templates 2.15
+import QtQuick.Controls 2.15 as Controls
+
+import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.Dialog {
@@ -14,7 +15,6 @@ Kirigami.Dialog {
     property int rowCount: 1
     property int columnCount: 1
     property string alignment: optionsColumn.isExpended ? alignmentBox.currentValue : "left"
-
     property int hoveredRow: 0
     property int hoveredColumn: 0
     property bool isHovered: false
@@ -24,13 +24,18 @@ Kirigami.Dialog {
     width: Kirigami.Units.gridUnit * 15
     padding: 0
 
-    onRowCountChanged: if (rowCount !== rowSpin.value) rowSpin.value = rowCount
-    onColumnCountChanged: if (columnCount !== columnSpin.value) columnSpin.value = columnCount
+    onRowCountChanged: if (rowCount !== rowSpin.value) {
+        rowSpin.value = rowCount
+    }
+    onColumnCountChanged: if (columnCount !== columnSpin.value) {
+        columnSpin.value = columnCount
+    }
 
     ColumnLayout {
         id: itemLayout
 
         property int generalTiming: Kirigami.Units.longDuration
+        
         height: Kirigami.Units.gridUnit * 21
         spacing: 0
 
@@ -39,8 +44,8 @@ Kirigami.Dialog {
 
             Layout.alignment: Qt.AlignTop
             Layout.preferredHeight: Kirigami.Units.gridUnit * 3
-            Layout.rightMargin: Kirigami.Units.gridUnit
             Layout.leftMargin: Kirigami.Units.gridUnit
+            Layout.rightMargin: Kirigami.Units.gridUnit
         }
 
         GridLayout {
@@ -54,12 +59,13 @@ Kirigami.Dialog {
             Layout.preferredHeight: Kirigami.Units.gridUnit * 15
             Layout.alignment: Qt.AlignTop || Qt.AlignHCenter
             Layout.margins: 0
-            Layout.rightMargin: Kirigami.Units.largeSpacing * 3
             Layout.leftMargin: Kirigami.Units.largeSpacing * 3
+            Layout.rightMargin: Kirigami.Units.largeSpacing * 3
 
             states: State {
                 name: "invisible"
                 when: optionsColumn.isExpended
+
                 PropertyChanges { target: mainHolder; Layout.preferredHeight: 0 }
                 PropertyChanges { target: mainHolder; opacity: 0 }
             }
@@ -70,8 +76,6 @@ Kirigami.Dialog {
             Behavior on opacity {
                 NumberAnimation { duration: itemLayout.generalTiming - 20 }
             }
-
-
 
             Repeater {
                 model: mainHolder.rows * mainHolder.columns

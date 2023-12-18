@@ -2,8 +2,8 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.3
+
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
@@ -14,7 +14,7 @@ import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/dialogs/colorDialog"
 
 FormCard.FormCardPage {
-    id:settingsPage
+    id: settingsPage
 
     title: i18nc("@title:window", "Settings")
 
@@ -38,14 +38,17 @@ FormCard.FormCardPage {
             id: colorPicker
 
             property var caller
-            onCallerChanged: selectedColor = caller.color
 
+            onCallerChanged: {
+                selectedColor = caller.color
+            }
             onApplied: {
                 if (selectedColor != caller.color) updateColor(caller, selectedColor)
                 colorPicker.close()
             }
-
-            onClosed: caller = undefined
+            onClosed: {
+                caller = undefined
+            }
         },
         FontPickerDialog{
             id: fontDialog
@@ -58,8 +61,8 @@ FormCard.FormCardPage {
     ]
 
     FormCard.FormHeader {
-        Layout.fillWidth: true
         title: i18nc("@title, general settings", "General")
+        Layout.fillWidth: true
     }
 
     FormCard.FormCard {
@@ -73,8 +76,11 @@ FormCard.FormCardPage {
 
             Layout.margins: 0
             Layout.fillWidth: true
+            
             // workaround to make it readOnly
-            onTextChanged: text = Config.storagePath
+            onTextChanged: {
+                text = Config.storagePath
+            }
 
             MouseArea {
                 anchors.fill: parent
@@ -87,22 +93,20 @@ FormCard.FormCardPage {
         FormCard.FormTextFieldDelegate {
             id: newCategoryField
 
+            property string name
+            property bool isActive: false
+
             text: Config.defaultCategoryName
             label: i18nc("@label:textbox, the default note category name", "New Category name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
 
-            property bool isActive: false
-            property string name
-
-            onNameChanged: {
-                if (isActive) {
-                    text = name
-                    Config.defaultCategoryName = name
-                    isActive = false
-                    name = ""
-                }
+            onNameChanged: if (isActive) {
+                text = name
+                Config.defaultCategoryName = name
+                isActive = false
+                name = ""
             }
 
             MouseArea {
@@ -119,22 +123,20 @@ FormCard.FormCardPage {
         FormCard.FormTextFieldDelegate {
             id: newGroupField
 
+            property string name
+            property bool isActive: false
+
             text: Config.defaultGroupName
             label: i18nc("@label:textbox, the default note group name", "New Group name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
 
-            property bool isActive: false
-            property string name
-
-            onNameChanged: {
-                if (isActive) {
-                    text = name
-                    Config.defaultGroupName = name
-                    isActive = false
-                    name = ""
-                }
+            onNameChanged: if (isActive) {
+                text = name
+                Config.defaultGroupName = name
+                isActive = false
+                name = ""
             }
 
             MouseArea {
@@ -151,22 +153,20 @@ FormCard.FormCardPage {
         FormCard.FormTextFieldDelegate {
             id: newNoteField
 
+            property string name
+            property bool isActive: false
+
             text: Config.defaultNoteName
             label: i18nc("@label:textbox, the default note name", "New Note name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
 
-            property bool isActive: false
-            property string name
-
-            onNameChanged: {
-                if (isActive) {
-                    text = name
-                    Config.defaultNoteName = name
-                    isActive = false
-                    name = ""
-                }
+            onNameChanged: if (isActive) {
+                text = name
+                Config.defaultNoteName = name
+                isActive = false
+                name = ""
             }
 
             MouseArea {
@@ -200,18 +200,18 @@ FormCard.FormCardPage {
     DisplayPreview {
         id: displayPreview
     }
-
     
     // TODO: reorganize settings in different tabs
     FormCard.FormHeader {
-        Layout.fillWidth: true
         title: i18nc("@title", "KleverNotes plugins")
+        Layout.fillWidth: true
     }
 
     FormCard.FormCard {
         id: pluginsCard
 
         Layout.fillWidth: true
+
         FormCard.FormCheckDelegate {
             id: noteMapperCheck
 
@@ -220,21 +220,26 @@ FormCard.FormCardPage {
                 + "\n" + i18nc("@description:checkbox", "Advice: restart the app once activated.")
             checked: Config.noteMapEnabled
 
-            onCheckedChanged: if (checked != Config.noteMapEnabled) Config.noteMapEnabled = checked
+            onCheckedChanged: if (checked != Config.noteMapEnabled) {
+                Config.noteMapEnabled = checked
+            }
         }
 
         FormCard.FormDelegateSeparator { above: noteMapperCheck; below: highlitingCheck }
 
         ExpendingFormCheckBox {
             id: highlitingCheck
+
             text: i18nc("@label:checkbox", "Enable code syntax highlighting")
             description: "<a href='https://invent.kde.org/office/klevernotes#syntax-highlighting'>" + i18nc("@description:checkbox", "List of supported highlighters") + "</a>"
-
             checked: Config.codeSynthaxHighlightEnabled
+
             highlighterCombobox.model: HighlightHelper.highlighters 
             styleCombobox.model: HighlightHelper.getHighlighterStyle(highlighterCombobox.currentValue) 
 
-            onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) Config.codeSynthaxHighlightEnabled = checked
+            onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) {
+                Config.codeSynthaxHighlightEnabled = checked
+            }
             highlighterCombobox.onCurrentValueChanged: {
                 const highlighter = highlighterCombobox.currentValue
                 if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
@@ -277,4 +282,3 @@ FormCard.FormCardPage {
         }
     }
 }
-

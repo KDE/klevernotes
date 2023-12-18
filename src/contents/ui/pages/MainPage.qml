@@ -4,6 +4,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
+
 import org.kde.kirigami 2.19 as Kirigami
 
 import "qrc:/contents/ui/textEditor"
@@ -14,18 +15,24 @@ import org.kde.Klever 1.0
 Kirigami.Page {
     id: root
 
+    readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
+
     property QtObject currentlySelected
     property QtObject editorView: editorLoader.item
     property QtObject todoView: todoLoader.item
-    readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
 
     title: hasNote ? currentlySelected.label : i18nc("@title:page", "Welcome")
 
-    @KIRIGAMI_PAGE_ACTION@: hasNote
-                                ? editorView.visible
-                                    ? editorView.actions
-                                    : todoView.actions
-                                : []
+    @KIRIGAMI_PAGE_ACTION@: {
+        if (hasNote) {
+            // At first both Loaders item are "null"
+            if (editorLoader.item && editorLoader.item.visible) { 
+                return editorLoader.item.actions
+            }
+            return todoLoader.item ? todoLoader.item.actions : []
+        }
+        return []
+    }
 
     onCurrentlySelectedChanged: if (root.hasNote) {
         const editor = editorView.editor
@@ -60,12 +67,13 @@ Kirigami.Page {
     Kirigami.Card {
         id: placeHolder
 
-        visible: !root.hasNote
-
         anchors.fill: parent
+
+        visible: !root.hasNote
 
         ColumnLayout {
             anchors.fill: parent
+
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
 

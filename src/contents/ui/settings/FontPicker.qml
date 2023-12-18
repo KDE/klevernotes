@@ -3,6 +3,7 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
@@ -10,6 +11,7 @@ import org.kde.Klever 1.0
 
 FormCard.FormTextFieldDelegate {
     required property font configFont
+
     property font newFont
     property var fontInfo
 
@@ -18,6 +20,13 @@ FormCard.FormTextFieldDelegate {
 
     Layout.margins: 0
 
+    onConfigFontChanged: {
+        setInfo()
+    }
+    Component.onCompleted: {
+        setInfo()
+    }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
@@ -25,12 +34,6 @@ FormCard.FormTextFieldDelegate {
             fontDialog.open()
         }
     }
-
-    onConfigFontChanged: {
-        setInfo()
-    }
-
-    Component.onCompleted: setInfo()
 
     function setInfo() {
         fontInfo = KleverUtility.fontInfo(configFont)

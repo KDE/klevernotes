@@ -11,6 +11,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.15 as Controls
+
+import org.kde.kirigamiaddons.delegates 1.0 as Delegates
 import org.kde.kirigami 2.5 as Kirigami
 
 import org.kde.Klever 1.0
@@ -20,6 +22,14 @@ Kirigami.OverlayDrawer {
 
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property NoteTreeModel treeModel: treeview.model
+    readonly property string storagePath: Config.storagePath
+
+    width: Kirigami.Units.gridUnit * 15
+
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
 
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
     handleClosedIcon.source: null
@@ -33,53 +43,13 @@ Kirigami.OverlayDrawer {
     // Prevent it to being close while in wideScreen
     closePolicy: modal ? Controls.Popup.CloseOnReleaseOutside : Controls.Popup.NoAutoClose
 
-    leftPadding: 0
-    rightPadding: 0
-    topPadding: 0
-    bottomPadding: 0
-
-    readonly property string storagePath: Config.storagePath
-    onStoragePathChanged: if (storagePath !== "None") noteTreeModel.initModel()
-
-    width: Kirigami.Units.gridUnit * 15
-
-    Timer {
-        id: focusTimer
-
-        property var focusModelIndex
-
-        interval: Kirigami.Units.longDuration
-        repeat: false
-
-        onTriggered: if (focusModelIndex) {
-            focusModelIndex.model.askForFocus(focusModelIndex)
-            focusModelIndex = undefined
-        }
-    }
-
-    Timer {
-        id: timer
-
-        property var modelIndex
-
-        interval: Kirigami.Units.longDuration
-        repeat: false
-
-        onTriggered: if (modelIndex) {
-            modelIndex.model.askForExpand(modelIndex)
-            modelIndex = undefined
-            interval = Kirigami.Units.longDuration
-            focusTimer.start()
-        }
-    }
-
     contentItem: ColumnLayout {
         id: column
 
-        implicitWidth: Kirigami.Units.gridUnit * 15
         width: Kirigami.Units.gridUnit * 15
+        implicitWidth: Kirigami.Units.gridUnit * 15
 
-        ActionBar{
+        ActionBar {
             id: actionBar
 
             treeView: treeview
@@ -96,11 +66,21 @@ Kirigami.OverlayDrawer {
 
                 noteMapEnabled: Config.noteMapEnabled
 
-                onNewGlobalPathFound: drawer.noteMapper.addGlobalPath(path)
-                onGlobalPathUpdated: drawer.noteMapper.updateGlobalPath(oldPath, newPath)
-                onGlobalPathRemoved: drawer.noteMapper.removeGlobalPath(path)
-                onInitialGlobalPathsSent: drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
-                onErrorOccurred: applicationWindow().showPassiveNotification(errorMessage)
+                onNewGlobalPathFound: {
+                    drawer.noteMapper.addGlobalPath(path)
+                }
+                onGlobalPathUpdated: {
+                    drawer.noteMapper.updateGlobalPath(oldPath, newPath)
+                }
+                onGlobalPathRemoved: {
+                    drawer.noteMapper.removeGlobalPath(path)
+                }
+                onInitialGlobalPathsSent: {
+                    drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
+                }
+                onErrorOccurred: {
+                    applicationWindow().showPassiveNotification(errorMessage)
+                }
             }
 
             Layout.fillWidth: true
@@ -114,16 +94,14 @@ Kirigami.OverlayDrawer {
         Controls.ToolSeparator {
             orientation: Qt.Horizontal
 
-            Layout.topMargin: -1;
             Layout.fillWidth: true
-            Layout.alignment:Qt.AlignBottom
         }
 
-        Kirigami.BasicListItem {
+        Delegates.RoundedItemDelegate {
             text: i18n("Cheat sheet")
-            @KIRIGAMI_LISTITEM_ICON@: "text-markdown"
+            icon.name: "text-markdown"
 
-            Layout.alignment:Qt.AlignBottom
+            Layout.fillWidth: true
 
             onClicked: {
                 applicationWindow().showCheatSheet()
@@ -131,30 +109,32 @@ Kirigami.OverlayDrawer {
             }
         }
 
-        Kirigami.BasicListItem {
+        Delegates.RoundedItemDelegate {
             text: i18n("Settings")
-            @KIRIGAMI_LISTITEM_ICON@: "settings-configure"
+            icon.name: "settings-configure"
 
-            Layout.alignment:Qt.AlignBottom
+            Layout.fillWidth: true
 
-            onClicked: applicationWindow().switchToPage('Settings')
+            onClicked: {
+                applicationWindow().switchToPage('Settings')
+            }
         }
 
-        Kirigami.BasicListItem {
+        Delegates.RoundedItemDelegate {
             text: i18n("About KleverNotes")
-            @KIRIGAMI_LISTITEM_ICON@: "help-about"
+            icon.name: "help-about"
 
-            onClicked: applicationWindow().switchToPage('About')
+            Layout.fillWidth: true
+
+            onClicked: {
+                applicationWindow().switchToPage('About')
+            }
         }
     }
 
-    ContextMenu {
-        id: contextMenu
-
-        actionBar: actionBar
-        treeView: treeview
+    onStoragePathChanged: if (storagePath !== "None") {
+        noteTreeModel.initModel()
     }
-
     Component.onCompleted: {
         if (storagePath === "None"){
             let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
@@ -163,6 +143,43 @@ Kirigami.OverlayDrawer {
                 var dialog = component.createObject(applicationWindow());
                 dialog.open()
             }
+        }
+    }
+
+    ContextMenu {
+        id: contextMenu
+
+        treeView: treeview
+        actionBar: actionBar
+    }
+
+    Timer {
+        id: focusTimer
+
+        property var focusModelIndex
+
+        repeat: false
+        interval: Kirigami.Units.longDuration
+
+        onTriggered: if (focusModelIndex) {
+            focusModelIndex.model.askForFocus(focusModelIndex)
+            focusModelIndex = undefined
+        }
+    }
+
+    Timer {
+        id: timer
+
+        property var modelIndex
+
+        repeat: false
+        interval: Kirigami.Units.longDuration
+
+        onTriggered: if (modelIndex) {
+            modelIndex.model.askForExpand(modelIndex)
+            modelIndex = undefined
+            interval = Kirigami.Units.longDuration
+            focusTimer.start()
         }
     }
 
@@ -185,5 +202,3 @@ Kirigami.OverlayDrawer {
         focusTimer.focusModelIndex = modelIndex
     }
 }
-
-

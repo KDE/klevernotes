@@ -2,8 +2,9 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15 as Controls
+
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
@@ -73,6 +74,7 @@ ColumnLayout {
 
         Component {
             id: todoDelegate
+
             Kirigami.AbstractCard {
                 id: card
 
@@ -80,6 +82,7 @@ ColumnLayout {
 
                 contentItem: Item {
                     id: holder
+
                     implicitWidth: parent.width
                     implicitHeight: Kirigami.Units.iconSizes.large
 
@@ -92,11 +95,12 @@ ColumnLayout {
                             id: check
 
                             checked: todoChecked
+                            Layout.alignment: Qt.AlignVCenter
+
                             onCheckedChanged: {
                                 todoModel.setProperty(index, "todoChecked", checked)
                                 root.saveTodos()
                             }
-                            Layout.alignment: Qt.AlignVCenter
                         }
 
                         ColumnLayout {
@@ -123,17 +127,18 @@ ColumnLayout {
                             ColumnLayout {
                                 id: expendable
 
+                                spacing: 0
+
                                 Layout.fillWidth: true
                                 Layout.fillHeight: true
                                 Layout.margins: 0
-                                spacing: 0
 
                                 Controls.Label {
                                     id: descriptionLabel
 
                                     text: todoDesc
-                                    wrapMode: Text.WordWrap
                                     elide: Text.ElideRight
+                                    wrapMode: Text.WordWrap
 
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
@@ -171,10 +176,11 @@ ColumnLayout {
                     visible: (descriptionLabel.implicitHeight - 10 > expendable.height ||
                     holder.implicitHeight > Kirigami.Units.iconSizes.large)
 
-                    onClicked: holder.implicitHeight =
-                                holder.implicitHeight == Kirigami.Units.iconSizes.large
-                                    ? delegateLayout.implicitHeight
-                                    : Kirigami.Units.iconSizes.large
+                    onClicked: {
+                        holder.implicitHeight = holder.implicitHeight == Kirigami.Units.iconSizes.large
+                            ? delegateLayout.implicitHeight
+                            : Kirigami.Units.iconSizes.large
+                    }
                 }
             }
         }
@@ -187,7 +193,9 @@ ColumnLayout {
 
         Layout.fillWidth: true
 
-        onClicked: todoDialog.open()
+        onClicked: {
+            todoDialog.open()
+        }
     }
 
     function clearCheckedTodos() {
@@ -202,6 +210,7 @@ ColumnLayout {
 
     function setTodos() {
         const todos = DocumentHandler.getJson(root.path).todos
+        if (!todos) return
         root.alreadySavedCount = todos.length
 
         todos.forEach(todo => todoModel.append(todo))

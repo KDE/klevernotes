@@ -2,18 +2,17 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as Controls
+
 import org.kde.kirigami 2.19 as Kirigami
 
 Rectangle {
     id: button
 
+    property bool multicolor: false
+
     signal primaryColorChanged
     signal secondaryColorChanged
     signal openColorPicker
-
-    property bool multicolor: false
 
     width: Kirigami.Units.gridUnit * 1.5
     height: Kirigami.Units.gridUnit * 1.5
@@ -33,4 +32,3 @@ Rectangle {
         }
     }
 }
-

@@ -5,12 +5,11 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Dialogs @QTQUICKDIALOG_VERSION@
+
+import org.kde.kitemmodels 1.0
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
-import org.kde.kitemmodels 1.0
-import org.kde.kirigamiaddons.labs.components 1.0 as KirigamiComponents
-
 
 import "qrc:/contents/ui/dialogs"
 
@@ -23,162 +22,12 @@ ToolBar {
     readonly property QtObject createNoteAction: createNoteAction
     readonly property QtObject createGroupAction: createGroupAction
     readonly property QtObject createCategoryAction: createCategoryAction
-    property var currentModelIndex
 
-    function getName(useCase, shownName, parentPath, callingAction, newItem){
-        namingDialog.useCase = useCase
-        namingDialog.shownName = shownName
-        namingDialog.textFieldText = shownName
-        namingDialog.parentPath = parentPath
-        namingDialog.callingAction = callingAction
-        namingDialog.newItem = newItem
-        namingDialog.open()
-    }
+    property var currentModelIndex
 
     NamingDialog {
         id: namingDialog
     }
-
-    Kirigami.Action {
-        id: createCategoryAction
-
-        property string name
-        property bool isActive : false
-
-        shortcut: "Ctrl+Alt+C"
-        icon.name: "journal-new"
-
-        onNameChanged: {
-            if (isActive) {
-                treeView.model.addRow(name, Config.storagePath, 1)
-                isActive = false
-                name = ""
-            }
-        }
-
-        onTriggered: {
-            isActive = true
-            const objectName = Config.defaultCategoryName
-            mainToolBar.getName("Category", objectName, Config.storagePath, createCategoryAction, true)
-        }
-    }
-
-    Kirigami.Action {
-        id: createGroupAction
-
-        property string name
-        property string categoryPath
-        property var parentModelIndex
-        property bool isActive : false
-
-        shortcut: "Ctrl+Alt+G"
-        icon.name: "folder-new"
-
-        onNameChanged: {
-            if (isActive) {
-                treeView.model.addRow(name, categoryPath, 2, parentModelIndex)
-                isActive = false
-                name = ""
-            }
-        }
-
-        onTriggered: {
-            isActive = true
-
-            switch(treeView.currentItem.useCase) {
-                case "Category":
-                    categoryPath = treeView.currentItem.path
-                    parentModelIndex = currentModelIndex
-                    break;
-                case "Group":
-                    categoryPath = KleverUtility.getParentPath(treeView.currentItem.path)
-
-                    parentModelIndex = treeView.model.parent(currentModelIndex)
-                    break;
-                case "Note":
-                    const groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
-                    categoryPath = KleverUtility.getParentPath(groupPath)
-
-                    if (groupPath.endsWith(".BaseGroup")) {
-                        parentModelIndex = treeView.model.parent(currentModelIndex)
-                    } else {
-                        const groupModelIndex = treeView.model.parent(currentModelIndex)
-                        parentModelIndex = treeView.model.parent(groupModelIndex)
-                    }
-                    break;
-            }
-            const objectName = Config.defaultGroupName
-            mainToolBar.getName("Group", objectName, categoryPath, createGroupAction, true)
-        }
-    }
-
-    Kirigami.Action {
-        id: createNoteAction
-
-        property string name
-        property string groupPath
-        property var parentModelIndex
-        property bool isActive : false
-
-        shortcut: "Ctrl+Alt+N"
-        icon.name: "document-new"
-
-        onNameChanged: {
-            if (isActive) {
-                treeView.model.addRow(name, groupPath, 3, parentModelIndex)
-                isActive = false
-                name = ""
-            }
-        }
-
-        onTriggered: {
-            isActive = true
-
-            switch(treeView.currentItem.useCase) {
-                case "Category":
-                    groupPath = treeView.currentItem.path+"/.BaseGroup"
-                    parentModelIndex = currentModelIndex
-                    break;
-                case "Group":
-                    groupPath = treeView.currentItem.path
-                    parentModelIndex = currentModelIndex
-                    break;
-                case "Note":
-                    groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
-                    parentModelIndex = treeView.model.parent(currentModelIndex)
-                    break;
-            }
-            const shownName = Config.defaultNoteName
-
-            mainToolBar.getName("Note", shownName, groupPath, createNoteAction, true)
-        }
-    }
-
-    Kirigami.Action{
-        id: renameAction
-
-        property bool isActive : false
-        property string name : treeView.currentItem.label
-
-        shortcut: "Ctrl+R"
-        icon.name: "edit-rename"
-
-        onNameChanged: {
-            if (isActive) {
-                treeView.model.rename(currentModelIndex, name)
-                isActive = false
-            }
-        }
-
-        onTriggered: {
-            isActive = true
-
-            const useCase = treeView.currentItem.useCase
-            const parentPath = KleverUtility.getParentPath(treeView.currentItem.path)
-            mainToolBar.getName(useCase, name, parentPath, renameAction, false)
-        }
-    }
-
 
     RowLayout {
         id: barLayout
@@ -235,19 +84,157 @@ ToolBar {
             id: searchBar
 
             visible: barLayout.searching
+            listModel: treeview.model
+
             Layout.fillWidth: true
 
-            listModel: treeview.model
             popup.onClosed: {
                 barLayout.searching = false
                 text = ""
             }
-
             onClickedIndexChanged: if (clickedIndex) {
                 applicationWindow().globalDrawer.askForFocus(clickedIndex)
                 searchBar.popup.close()
                 return;
             }
         }
+    }
+
+    Kirigami.Action {
+        id: createCategoryAction
+
+        property string name
+        property bool isActive : false
+
+        shortcut: "Ctrl+Alt+C"
+        icon.name: "journal-new"
+
+        onNameChanged: if (isActive) {
+            treeView.model.addRow(name, Config.storagePath, 1)
+            isActive = false
+            name = ""
+        }
+        onTriggered: {
+            isActive = true
+            const objectName = Config.defaultCategoryName
+            mainToolBar.getName("Category", objectName, Config.storagePath, createCategoryAction, true)
+        }
+    }
+
+    Kirigami.Action {
+        id: createGroupAction
+
+        property string name
+        property string categoryPath
+        property var parentModelIndex
+        property bool isActive : false
+
+        shortcut: "Ctrl+Alt+G"
+        icon.name: "folder-new"
+
+        onNameChanged: if (isActive) {
+            treeView.model.addRow(name, categoryPath, 2, parentModelIndex)
+            isActive = false
+            name = ""
+        }
+        onTriggered: {
+            isActive = true
+
+            switch(treeView.currentItem.useCase) {
+                case "Category":
+                    categoryPath = treeView.currentItem.path
+                    parentModelIndex = currentModelIndex
+                    break;
+                case "Group":
+                    categoryPath = KleverUtility.getParentPath(treeView.currentItem.path)
+
+                    parentModelIndex = treeView.model.parent(currentModelIndex)
+                    break;
+                case "Note":
+                    const groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    categoryPath = KleverUtility.getParentPath(groupPath)
+
+                    if (groupPath.endsWith(".BaseGroup")) {
+                        parentModelIndex = treeView.model.parent(currentModelIndex)
+                    } else {
+                        const groupModelIndex = treeView.model.parent(currentModelIndex)
+                        parentModelIndex = treeView.model.parent(groupModelIndex)
+                    }
+                    break;
+            }
+            const objectName = Config.defaultGroupName
+            mainToolBar.getName("Group", objectName, categoryPath, createGroupAction, true)
+        }
+    }
+
+    Kirigami.Action {
+        id: createNoteAction
+
+        property string name
+        property string groupPath
+        property var parentModelIndex
+        property bool isActive : false
+
+        shortcut: "Ctrl+Alt+N"
+        icon.name: "document-new"
+
+        onNameChanged: if (isActive) {
+            treeView.model.addRow(name, groupPath, 3, parentModelIndex)
+            isActive = false
+            name = ""
+        }
+        onTriggered: {
+            isActive = true
+
+            switch(treeView.currentItem.useCase) {
+                case "Category":
+                    groupPath = treeView.currentItem.path+"/.BaseGroup"
+                    parentModelIndex = currentModelIndex
+                    break;
+                case "Group":
+                    groupPath = treeView.currentItem.path
+                    parentModelIndex = currentModelIndex
+                    break;
+                case "Note":
+                    groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    parentModelIndex = treeView.model.parent(currentModelIndex)
+                    break;
+            }
+            const shownName = Config.defaultNoteName
+
+            mainToolBar.getName("Note", shownName, groupPath, createNoteAction, true)
+        }
+    }
+
+    Kirigami.Action{
+        id: renameAction
+
+        property bool isActive : false
+        property string name : treeView.currentItem.label
+
+        shortcut: "Ctrl+R"
+        icon.name: "edit-rename"
+
+        onNameChanged: if (isActive) {
+            treeView.model.rename(currentModelIndex, name)
+            isActive = false
+        }
+        onTriggered: {
+            isActive = true
+
+            const useCase = treeView.currentItem.useCase
+            const parentPath = KleverUtility.getParentPath(treeView.currentItem.path)
+            mainToolBar.getName(useCase, name, parentPath, renameAction, false)
+        }
+    }
+
+    function getName(useCase, shownName, parentPath, callingAction, newItem){
+        namingDialog.useCase = useCase
+        namingDialog.shownName = shownName
+        namingDialog.textFieldText = shownName
+        namingDialog.parentPath = parentPath
+        namingDialog.callingAction = callingAction
+        namingDialog.newItem = newItem
+        namingDialog.open()
     }
 }

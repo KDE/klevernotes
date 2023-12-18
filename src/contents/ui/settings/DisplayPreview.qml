@@ -2,8 +2,8 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
+
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
@@ -13,11 +13,11 @@ import org.kde.Klever 1.0
 
 FormCard.FormCard {
     FormCard.FormComboBoxDelegate {
-        text: i18nc("@label:combobox", "Style:")
-
         readonly property var styles: KleverUtility.getCssStylesList()
         readonly property var stylesNames: Object.keys(styles)
         readonly property var styleName: KleverUtility.getName(Config.stylePath).replace(".css", "")
+
+        text: i18nc("@label:combobox", "Style:")
 
         model: stylesNames
         currentIndex: stylesNames.indexOf(styleName)
@@ -31,13 +31,14 @@ FormCard.FormCard {
 
     TextDisplay {
         id: displayer
-        Layout.fillWidth: true
-        Layout.preferredHeight: Kirigami.Units.gridUnit * 20
-
-        visible: true
 
         path: "qrc:"
         text: DocumentHandler.readFile(":/demo_note.md")
+
+        visible: true
+
+        Layout.fillWidth: true
+        Layout.preferredHeight: Kirigami.Units.gridUnit * 20
     }
 
     RowLayout {
@@ -59,7 +60,6 @@ FormCard.FormCard {
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
             color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
-
 
             Layout.preferredWidth: displayer.width / 2
         }
@@ -110,8 +110,8 @@ FormCard.FormCard {
 
     RowLayout {
         FontPicker {
-            configFont: Config.viewFont
             label: i18nc("@label:textbox", "General font:")
+            configFont: Config.viewFont
 
             Layout.preferredWidth: displayer.width / 2
 
@@ -121,8 +121,8 @@ FormCard.FormCard {
         }
 
         FontPicker {
-            configFont: Config.codeFont
             label: i18nc("@label:textbox", "Code block font:")
+            configFont: Config.codeFont
 
             Layout.preferredWidth: displayer.width / 2
 
@@ -132,4 +132,3 @@ FormCard.FormCard {
         }
     }
 }
-

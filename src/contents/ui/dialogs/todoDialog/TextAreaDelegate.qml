@@ -10,6 +10,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0
 
@@ -125,46 +126,39 @@ AbstractFormDelegate {
      */
     signal textEdited();
 
-    /**
-     * @brief Clears the contents of the text input and resets partial
-     * text input from an input method.
-     */
-    function clear() {
-        textArea.clear();
-    }
-
-    /**
-     * Inserts text into the TextInput at position.
-     */
-    function insert(position: int, text: string) {
-        textArea.insert(position, text);
-    }
-
-    onActiveFocusChanged: { // propagate focus to the text field
-        if (activeFocus) {
-            textArea.forceActiveFocus();
-        }
-    }
-
-    onClicked: textArea.forceActiveFocus()
     background: null
-    Accessible.role: Accessible.EditableText
 
     contentItem: ColumnLayout {
         spacing: Kirigami.Units.smallSpacing
+
         RowLayout {
             spacing: Kirigami.Units.largeSpacing
+
             Label {
-                Layout.fillWidth: true
                 text: label
                 elide: Text.ElideRight
                 color: root.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: Text.Wrap
                 maximumLineCount: 2
+
+                Layout.fillWidth: true
             }
             Label {
+                text: metrics.label(textArea.text.length, root.maximumLength)
+                font: Kirigami.Theme.smallFont
+                color: textArea.text.length === root.maximumLength
+                    ? Kirigami.Theme.neutralTextColor
+                    : Kirigami.Theme.textColor
+
+                horizontalAlignment: Text.AlignRight
+                visible: root.maximumLength > 0
+
+                Layout.margins: Kirigami.Units.smallSpacing
+                Layout.preferredWidth: metrics.advanceWidth
+
                 TextMetrics {
                     id: metrics
+
                     text: label(root.maximumLength, root.maximumLength)
                     font: Kirigami.Theme.smallFont
 
@@ -172,28 +166,22 @@ AbstractFormDelegate {
                         return i18nc("@label %1 is current text length, %2 is maximum length of text field", "%1/%2", current, maximum)
                     }
                 }
-                visible: root.maximumLength > 0
-                text: metrics.label(textArea.text.length, root.maximumLength)
-                font: Kirigami.Theme.smallFont
-                color: textArea.text.length === root.maximumLength
-                    ? Kirigami.Theme.neutralTextColor
-                    : Kirigami.Theme.textColor
-                horizontalAlignment: Text.AlignRight
-
-                Layout.margins: Kirigami.Units.smallSpacing
-                Layout.preferredWidth: metrics.advanceWidth
             }
         }
 
         ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
+
             TextArea {
                 id: textArea
-                Accessible.description: label
-                placeholderText: root.placeholderText
+
                 text: root.text
-                onEditingFinished: root.editingFinished()
+                placeholderText: root.placeholderText
+                activeFocusOnTab: false
+
+                Accessible.description: label
+
                 onTextChanged: {
                     if (0 < root.maximumLength && root.maximumLength < text.length) {
                         const excess = text.length - root.maximumLength
@@ -214,19 +202,47 @@ AbstractFormDelegate {
                     }
                     root.text = text
                 }
-                activeFocusOnTab: false
+                onEditingFinished: { 
+                    root.editingFinished()
+                }
             }
         }
 
         Kirigami.InlineMessage {
             id: formErrorHandler
+
             text: root.statusMessage
             type: root.status
             visible: root.statusMessage.length > 0
+
             Layout.fillWidth: true
             Layout.topMargin: visible ? Kirigami.Units.smallSpacing : 0
         }
     }
+
+    Accessible.role: Accessible.EditableText
+
+    onActiveFocusChanged: { // propagate focus to the text field
+        if (activeFocus) {
+            textArea.forceActiveFocus();
+        }
+    }
+    onClicked: { 
+        textArea.forceActiveFocus()
+    }
+
+    /**
+     * @brief Clears the contents of the text input and resets partial
+     * text input from an input method.
+     */
+    function clear() {
+        textArea.clear();
+    }
+
+    /**
+     * Inserts text into the TextInput at position.
+     */
+    function insert(position: int, text: string) {
+        textArea.insert(position, text);
+    }
 }
-
-

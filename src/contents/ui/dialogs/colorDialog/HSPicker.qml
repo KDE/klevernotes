@@ -6,12 +6,12 @@ import QtQuick 2.11
 Item {
     id: root
 
-    property int cursorRadius : 10
     property real h
     property real s
+    property int cursorRadius: 10
 
     Rectangle {
-    // This way the middle of the cursor can trully be in a corner
+        // This way the middle of the cursor can trully be in a corner
         x : cursorRadius
         y : cursorRadius + parent.height - 2 * cursorRadius
         width: parent.height - 2 * cursorRadius
@@ -19,80 +19,100 @@ Item {
         rotation: -90
         transformOrigin: Item.TopLeft
         gradient: Gradient {
-                    GradientStop { position: 0.0;  color: "#FF0000" }
-                    GradientStop { position: 0.16; color: "#FFFF00" }
-                    GradientStop { position: 0.33; color: "#00FF00" }
-                    GradientStop { position: 0.5;  color: "#00FFFF" }
-                    GradientStop { position: 0.76; color: "#0000FF" }
-                    GradientStop { position: 0.85; color: "#FF00FF" }
-                    GradientStop { position: 1.0;  color: "#FF0000" }
-                }
+            GradientStop { position: 0.0;  color: "#FF0000" }
+            GradientStop { position: 0.16; color: "#FFFF00" }
+            GradientStop { position: 0.33; color: "#00FF00" }
+            GradientStop { position: 0.5;  color: "#00FFFF" }
+            GradientStop { position: 0.76; color: "#0000FF" }
+            GradientStop { position: 0.85; color: "#FF00FF" }
+            GradientStop { position: 1.0;  color: "#FF0000" }
+        }
     }
 
     Rectangle {
-        id:bouderies
+        id: bouderies
+
         x: cursorRadius
         y: cursorRadius
         width: parent.width - 2 * cursorRadius
         height: parent.height - 2 * cursorRadius
+
         gradient: Gradient {
             GradientStop { position: 1.0; color: "#FFFFFFFF" }
             GradientStop { position: 0.0; color: "#00000000" }
         }
     }
 
-    Rectangle{
-        id:pickerCursor
-        visible: !mouseArea.containsPress
-        color:"transparent"
-        width: cursorRadius*2
-        height: cursorRadius*2
+    Rectangle {
+        id: pickerCursor
+
         x: root.h * bouderies.width
         y: (root.s * bouderies.height * -1) + bouderies.height
+        width: cursorRadius*2
+        height: cursorRadius*2
 
-        Rectangle{
-            id:north
-            color:"black"
-            x: cursorRadius-1
+        color: "transparent"
+        visible: !mouseArea.containsPress
+
+        Rectangle {
+            id: north
+
+            x: cursorRadius - 1
+            width: 2
+            height: cursorRadius
             anchors.top: parent.top
-            height: cursorRadius
-            width:2
+
+            color: "black"
         }
 
-        Rectangle{
-            id:east
-            color:"black"
-            y:cursorRadius-1
+        Rectangle {
+            id: east
+
+            y: cursorRadius - 1
+            width: cursorRadius
+            height: 2
             anchors.right: parent.right
-            height: 2
-            width:cursorRadius
+
+            color: "black"
         }
 
-        Rectangle{
-            id:south
-            color:"black"
-            x:cursorRadius-1
-            anchors.bottom: parent.bottom
+        Rectangle {
+            id: south
+
+            x: cursorRadius - 1
+            width: 2
             height: cursorRadius
-            width:2
+            anchors.bottom: parent.bottom
+
+            color: "black"
         }
 
-        Rectangle{
-            id:west
-            color:"black"
-            y:cursorRadius-1
-            anchors.left: parent.left
+        Rectangle {
+            id: west
+
+            y: cursorRadius - 1
+            width: cursorRadius
             height: 2
-            width:cursorRadius
+            anchors.left: parent.left
+
+            color: "black"
         }
 
     }
 
     MouseArea {
-        id:mouseArea
+        id: mouseArea
+
         anchors.fill: bouderies
 
         cursorShape: (containsPress) ? Qt.CrossCursor : Qt.ArrowCursor
+
+        onPressed: {
+            handleMouse(mouse)
+        }
+        onPositionChanged: {
+            handleMouse(mouse)
+        }
 
         function handleMouse(mouse) {
             if (mouse.buttons & Qt.LeftButton) {
@@ -103,8 +123,5 @@ Item {
                 root.s = ((bouderies.height-currentY)/bouderies.height)
             }
         }
-        onPositionChanged: handleMouse(mouse)
-        onPressed: handleMouse(mouse)
     }
 }
-

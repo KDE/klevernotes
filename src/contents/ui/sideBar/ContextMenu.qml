@@ -17,31 +17,39 @@ Controls.Menu {
     property bool canDelete: false
 
     Controls.MenuItem {
-        icon.name: "journal-new"
         text: i18nc("as in 'A note category'", "New category")
+        icon.name: "journal-new"
 
-        onTriggered: actionBar.createCategoryAction.triggered()
+        onTriggered: {
+            actionBar.createCategoryAction.triggered()
+        }
     }
 
     Controls.MenuItem {
         icon.name: "folder-new"
         text: i18nc("as in 'A note group'", "New group")
 
-        onTriggered: actionBar.createGroupAction.triggered()
+        onTriggered: {
+            actionBar.createGroupAction.triggered()
+        }
     }
 
     Controls.MenuItem {
         icon.name: "document-new"
         text: i18nc("as in 'A note'", "New note")
 
-        onTriggered: actionBar.createNoteAction.triggered()
+        onTriggered: {
+            actionBar.createNoteAction.triggered()
+        }
     }
 
     Controls.MenuItem {
         icon.name: "edit-rename"
         text: i18n("Rename")
 
-        onTriggered: actionBar.renameAction.triggered()
+        onTriggered: {
+            actionBar.renameAction.triggered()
+        }
     }
 
     Controls.MenuItem {
@@ -49,7 +57,9 @@ Controls.Menu {
         text: i18n("Delete")
 
         visible: contextMenu.canDelete
-        onTriggered: deleteConfirmationDialog.open()
+        onTriggered: {
+            deleteConfirmationDialog.open()
+        }
     }
 
     DeleteConfirmationDialog {
@@ -62,4 +72,3 @@ Controls.Menu {
         }
     }
 }
-

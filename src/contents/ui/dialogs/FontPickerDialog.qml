@@ -3,18 +3,34 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.Dialog {
     id: scrollableDialog
-    title: i18nc("@title:dialog", "Font selector")
 
     property string checkedFamily
     property int checkedSize
     property var caller
 
+    title: i18nc("@title:dialog", "Font selector")
+
     standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
+    
+    onCallerChanged: if (caller) {
+        const familyDefaultIndex = 0
+        const sizeDefaultIndex = 4
+        const fontInfo = caller.fontInfo
+        const familyModelIndex = fontBox.model.indexOf(fontInfo.family)
+        const sizeModelIndex = sizeBox.model.indexOf(fontInfo.pointSize)
+
+        fontBox.currentIndex = familyModelIndex > -1 ? familyModelIndex : familyDefaultIndex 
+        sizeBox.currentIndex = sizeModelIndex > -1 ? sizeModelIndex : sizeDefaultIndex 
+    }
+    onClosed: {
+        caller = undefined
+    }
 
     GridLayout {
         rows: 1
@@ -27,7 +43,9 @@ Kirigami.Dialog {
             Layout.row: 0
             Layout.column: 0
 
-            onCurrentValueChanged: scrollableDialog.checkedFamily = currentValue;
+            onCurrentValueChanged: {
+                scrollableDialog.checkedFamily = currentValue;
+            }
         }
 
         FormCard.FormComboBoxDelegate {
@@ -38,7 +56,9 @@ Kirigami.Dialog {
             Layout.row: 0
             Layout.column: 1
 
-            onCurrentValueChanged: scrollableDialog.checkedSize = currentValue
+            onCurrentValueChanged: {
+                scrollableDialog.checkedSize = currentValue
+            }
         }
 
         FormCard.FormSectionText {
@@ -53,16 +73,4 @@ Kirigami.Dialog {
             Layout.rowSpan: 2
         }
     }
-    
-    onCallerChanged: if (caller) {
-        const familyDefaultIndex = 0
-        const sizeDefaultIndex = 4
-        const fontInfo = caller.fontInfo
-        const familyModelIndex = fontBox.model.indexOf(fontInfo.family)
-        const sizeModelIndex = sizeBox.model.indexOf(fontInfo.pointSize)
-
-        fontBox.currentIndex = familyModelIndex > -1 ? familyModelIndex : familyDefaultIndex 
-        sizeBox.currentIndex = sizeModelIndex > -1 ? sizeModelIndex : sizeDefaultIndex 
-    }
-    onClosed: caller = undefined
 }

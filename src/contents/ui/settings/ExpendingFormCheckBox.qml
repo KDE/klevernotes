@@ -58,8 +58,6 @@ T.CheckDelegate {
     hoverEnabled: true
     background: FormDelegateBackground { control: root }
 
-    Layout.fillWidth: true
-
     contentItem: ColumnLayout {
         spacing: 0
         RowLayout {
@@ -67,46 +65,56 @@ T.CheckDelegate {
 
             Controls.CheckBox {
                 id: checkBoxItem
-                Layout.rightMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
-                focusPolicy: Qt.NoFocus // provided by delegate
 
+                focusPolicy: Qt.NoFocus // provided by delegate
+                enabled: root.enabled
+                checked: root.checked
                 checkState: root.checkState
                 nextCheckState: root.nextCheckState
                 tristate: root.tristate
+
+                Layout.rightMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
 
                 onToggled: {
                     root.toggle();
                     root.toggled();
                 }
-                onClicked: root.clicked()
-                onPressAndHold: root.pressAndHold()
-                onDoubleClicked: root.doubleClicked()
-
-                enabled: root.enabled
-                checked: root.checked
+                onClicked: {
+                    root.clicked()
+                }
+                onPressAndHold: {
+                    root.pressAndHold()
+                }
+                onDoubleClicked: {
+                    root.doubleClicked()
+                }
             }
 
             ColumnLayout {
-                Layout.fillWidth: true
                 spacing: Kirigami.Units.smallSpacing
+                Layout.fillWidth: true
+
                 Controls.Label {
                     text: root.text
                     color: root.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                     elide: Text.ElideRight
                     wrapMode: Text.Wrap
                     maximumLineCount: 2
+
                     Layout.fillWidth: true
                 }
 
                 Controls.Label {
                     id: internalDescriptionItem
-                    Layout.fillWidth: true
+
                     text: root.description
                     color: Kirigami.Theme.disabledTextColor
                     visible: root.description !== ""
                     wrapMode: Text.Wrap
                     textFormat: Text.StyledText // This way we can display a link to the supported Highlighters
                     onLinkActivated: Qt.openUrlExternally(link)
+
+                    Layout.fillWidth: true
                 }
             }
         }
@@ -114,9 +122,12 @@ T.CheckDelegate {
         ColumnLayout {
             spacing: 0
             visible: checkBoxItem.checked
+
             FormComboBoxDelegate {
                 id: highlighterCombobox
+
                 text: i18nc("@label:combobox", "Highlighter")
+
                 onModelChanged: if (model.length !== 0) {
                     const baseIndex = 0;
 
@@ -132,6 +143,7 @@ T.CheckDelegate {
                         : inModelIndex
                 }
             } 
+
             FormComboBoxDelegate {
                 id: styleCombobox
                 
@@ -158,5 +170,6 @@ T.CheckDelegate {
             }
         }
     }
-}
 
+    Layout.fillWidth: true
+}

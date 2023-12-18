@@ -27,7 +27,7 @@ target_link_libraries(klevernoteslib
 if(QT_MAJOR_VERSION STREQUAL "5")
        set(QTQUICKDIALOG_VERSION "1.3")
        set(FILTER_NAMING "filterRole")
-       set(KIRIGAMI_LISTITEM_ICON "icon")
+       # set(KIRIGAMI_LISTITEM_ICON "icon")
        set(KIRIGAMI_ACTION_ICON "iconName")
        set(KIRIGAMI_PAGE_ACTION "actions.contextualActions")
 
@@ -35,7 +35,7 @@ if(QT_MAJOR_VERSION STREQUAL "5")
 else()
        set(QTQUICKDIALOG_VERSION "")
        set(FILTER_NAMING "filterRoleName")
-       set(KIRIGAMI_LISTITEM_ICON "icon.name")
+       # set(KIRIGAMI_LISTITEM_ICON "icon.name")
        set(KIRIGAMI_ACTION_ICON "icon.name")
        set(KIRIGAMI_PAGE_ACTION "actions")
 

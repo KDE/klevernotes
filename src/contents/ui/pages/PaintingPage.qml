@@ -4,8 +4,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as Controls
+
 import org.kde.kirigami 2.19 as Kirigami
-import Qt.labs.platform 1.1
 
 import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/painting"
@@ -16,14 +16,14 @@ import WashiPad 1.0
 Kirigami.Page {
     id: root
 
-    property bool cantLeave: false
-    property bool isEraser: false
-    property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
-
     readonly property QtObject editorView: pageStack.get(0).editorView
     readonly property size size: Qt.size(sketchContent.width, sketchContent.height)
     readonly property point cursorPos: Qt.point(handler.point.x, handler.point.y)
     readonly property var penType: Stroke.Fill
+
+    property bool cantLeave: false
+    property bool isEraser: false
+    property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
 
     title: i18nc("@title:page", "Paint!")
 
@@ -31,12 +31,18 @@ Kirigami.Page {
         Kirigami.Action {
             text: i18nc("@label:button", "Save")
             icon.name: "document-save-symbolic"
-            onTriggered: root.saveImage()
+
+            onTriggered: {
+                root.saveImage()
+            }
         },
         Kirigami.Action {
             text: i18nc("@label:button, as in 'erase everything'", "Clear")
             icon.name: "edit-clear-symbolic"
-            onTriggered: root.clearCanvas()
+            
+            onTriggered: {
+                root.clearCanvas()
+            }
         },
         Kirigami.Action {
             id: autoCropAction
@@ -52,6 +58,7 @@ Kirigami.Page {
             checked: !root.isEraser
             checkable: true
             icon.name: "draw-brush"
+            
             onTriggered: {
                 handler.changePointer(0)
             }
@@ -62,6 +69,7 @@ Kirigami.Page {
             checked: root.isEraser
             checkable: true
             icon.name: "draw-eraser"
+            
             onTriggered: {
                 handler.changePointer(1)
             }
@@ -78,11 +86,12 @@ Kirigami.Page {
         clearCanvas()
     }
 
-
     LeavePaintingDialog {
         id: leavingDialog
 
-        onAccepted: root.saveImage()
+        onAccepted: {
+            root.saveImage()
+        }
         onDiscarded: {
             leavingDialog.close()
             root.closePage()
@@ -95,14 +104,15 @@ Kirigami.Page {
         Controls.ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
+
             Flickable {
                 id: flickable
 
-                interactive: !mouseArea.isPress
-                clip:true
-
                 contentWidth: sketchContent.width
                 contentHeight: sketchContent.height
+
+                clip:true
+                interactive: !mouseArea.isPress
 
                 Rectangle {
                     id: sketchContent
@@ -112,16 +122,19 @@ Kirigami.Page {
 
                     StrokeListItem {
                         id: fillStrokes
-                        anchors.fill: parent
+
                         z: 0
+                        anchors.fill: parent
+
                         type: Stroke.Fill
                         model: sketchModel
                     }
 
                     StrokeItem {
                         id: currentStroke
-                        anchors.fill: parent
+
                         z: stroke.type === Stroke.Outline ? 1 : 0
+                        anchors.fill: parent
                     }
                 }
 
@@ -132,28 +145,23 @@ Kirigami.Page {
                     property bool isPress: false
 
                     anchors.fill: sketchContent
+
                     enabled: true
                     acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-                    onPositionChanged: {
-                        if (isPress) {
+                    onPositionChanged: if (isPress) {
                             handler.mouseMoved(mouse.x-flickable.contentX, mouse.y-flickable.contentY)
-                        }
                     }
-                    onReleased: {
-                        if (mouse.button === lastButton) {
-                            isPress = false
+                    onReleased: if (mouse.button === lastButton) {
+                        isPress = false
 
-                            handler.changeMousePress(isPress)
-                        }
+                        handler.changeMousePress(isPress)
                     }
-                    onPressed: {
-                        if (!isPress) {
-                            isPress = true
-                            lastButton = mouse.button
+                    onPressed: if (!isPress) {
+                        isPress = true
+                        lastButton = mouse.button
 
-                            handler.changeMousePress(isPress)
-                        }
+                        handler.changeMousePress(isPress)
                     }
                 }
             }
@@ -171,15 +179,16 @@ Kirigami.Page {
     Rectangle {
         id: cursor
 
+        x: handler.point.x - width / 2
+        y: handler.point.y - height / 2
+        width: height
+        height: pressureEquation.width * 1.5
+
         color: "transparent"
         border {
             color: root.isEraser ? Qt.rgba(1, 0, 0, 0.75) : Qt.rgba(0, 0, 1, 0.75)
             width: 10
         }
-        x: handler.point.x - width / 2
-        y: handler.point.y - height / 2
-        width: height
-        height: pressureEquation.width * 1.5
         radius: height / 2
         visible: mouseArea.isPress
     }
@@ -196,11 +205,9 @@ Kirigami.Page {
                 eraseSamples()
             }
         }
-
         onIsEraserChanged: {
             root.isEraser = sketchViewIsEraser
         }
-
         onPressedChanged: {
             if (root.isEraser) return
 
@@ -243,7 +250,6 @@ Kirigami.Page {
 
         readonly property real minFillWidth: 4
         readonly property real maxFillWidth: 20
-
         readonly property real minEraserWidth: 8
         readonly property real maxEraserWidth: 80
 
@@ -261,7 +267,7 @@ Kirigami.Page {
     }
 
     function clearCanvas() {
-        const point = Qt.vector2d(512,512)
+        const point = Qt.vector2d(512, 512)
         fillStrokes.eraseArea(point, 1024)
         root.cantLeave = false
     }
@@ -298,4 +304,3 @@ Kirigami.Page {
         closePage(filePath, cropRect)
     }
 }
-

@@ -1,14 +1,17 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
-// SPDX-FileCopyrightText: 2019 CrazyCxl <chenxiaolong0001@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+// ORIGINALLY BASED ON : https://github.com/CrazyCxl/markdown-editor
+// SPDX-FileCopyrightText: 2019 CrazyCxl <chenxiaolong0001@gmail.com>
 
 import QtQuick 2.2
 import QtQuick.Controls 2.2
 import QtWebChannel 1.0
 import QtWebEngine 1.10
 import QtQuick.Layouts 1.15
-import org.kde.kirigami 2.19 as Kirigami
 import Qt.labs.platform 1.1
+
+import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
 
@@ -23,19 +26,14 @@ RowLayout {
     readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
     // NoteMapper
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
+    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
 
     readonly property Parser parser: parser
-    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property string stylePath: Config.stylePath
-    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
-
-    property string defaultHtml
-    property string parsedHtml
-    property string cssStyle
-    property string completCss
-    readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
     readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
-    property var defaultCSS: {
+    readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
+    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
+    readonly property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': viewFontInfo.family,
         '--fontSize': viewFontInfo.pointSize + "px",
@@ -47,6 +45,11 @@ RowLayout {
         '--codeFont': codeFontInfo.family,
         '--codeFontSize': codeFontInfo.pointSize + "px",
     }
+
+    property string defaultHtml
+    property string parsedHtml
+    property string cssStyle
+    property string completCss
     property bool printBackground: true
     property bool isInit: false
 
@@ -55,35 +58,32 @@ RowLayout {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
-    onPathChanged: parser.notePath = path
-    onTextChanged: root.parseText()
-
+    onPathChanged: {
+        parser.notePath = path
+    }
+    onTextChanged: {
+        root.parseText()
+    }
     onHighlightEnabledChanged: {
         parser.highlightEnabled = highlightEnabled 
         root.parseText()
     }
-
     onHighlighterStyleChanged: {
         parser.newHighlightStyle()
         root.parseText()
     }
-
     onNoteMapEnabledChanged: {
         parser.noteMapEnabled = noteMapEnabled
         root.parseText()
     }
-
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) changeStyle({})
-    onStylePathChanged: if (web_view.loadProgress === 100) loadStyle()
-
-    Parser { 
-        id: parser
-
-        onNewLinkedNotesInfos: noteMapper.addLinkedNotesInfos(linkedNotesInfos)
-        onNoteHeadersSent: noteMapper.updatePathInfo(notePath, noteHeaders)
+    onDefaultCSSChanged: if (web_view.loadProgress === 100) {
+        changeStyle({})
+    }
+    onStylePathChanged: if (web_view.loadProgress === 100) {
+        loadStyle()
     }
 
-    Kirigami.Card{
+    Kirigami.Card {
         id: background
 
         Layout.fillWidth: true
@@ -92,27 +92,27 @@ RowLayout {
         WebEngineView {
             id: web_view
 
-            onJavaScriptConsoleMessage: function(level, message, lineNumber, sourceID) {console.error('WEB:', message, lineNumber, sourceID)}
+            x: 2
+            y: 2
+            width: background.width - 4
+            height: background.height - 4
 
             settings {
                 showScrollBars: false
                 localContentCanAccessFileUrls: true
                 localContentCanAccessRemoteUrls: true
             }
-
-            width: background.width - 4
-            height: background.height - 4
-            x: 2
-            y: 2
             focus: true
             backgroundColor: "transparent"
 
+            onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
+                console.error('WEB:', message, lineNumber, sourceID)
+            }
             onPdfPrintingFinished: {
                 const printingPage = applicationWindow().pageStack.currentItem
                 printingPage.pdfPath = ""
                 printingPage.pdfPath = root.previewLocation
             }
-
             onLoadProgressChanged: if (loadProgress === 100) {
                 if (!root.isInit) {
                     loadStyle()
@@ -122,11 +122,9 @@ RowLayout {
 
                 scrollToHeader()
             }
-
             onScrollPositionChanged: if (!vbar.active) {
                 vbar.position = scrollPosition.y / contentsSize.height
             }
-
             onNavigationRequested: function(request) {
                 const url = request.url.toString()
                 if (url.startsWith("http")) {
@@ -164,21 +162,22 @@ RowLayout {
     ScrollBar {
         id: vbar
 
-        hoverEnabled: true
-        active: hovered || pressed
-        orientation: Qt.Vertical
         size: background.height / web_view.contentsSize.height
+        active: hovered || pressed
         snapMode: ScrollBar.SnapAlways
+        orientation: Qt.Vertical
+        hoverEnabled: true
+
+        Layout.row :0
+        Layout.column: 1
+        Layout.fillHeight: true
+
         onPositionChanged: {
             if (active) {
                 let scrollY = web_view.contentsSize.height * vbar.position
                 web_view.runJavaScript("window.scrollTo(0," + scrollY + ")")
             }
         }
-
-        Layout.row :0
-        Layout.column: 1
-        Layout.fillHeight: true
     }
 
     function updateHtml() {
@@ -193,6 +192,13 @@ RowLayout {
         const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
 
         web_view.loadHtml(finishedHtml, "file:/")
+    }
+
+    Parser { 
+        id: parser
+
+        onNewLinkedNotesInfos: noteMapper.addLinkedNotesInfos(linkedNotesInfos)
+        onNoteHeadersSent: noteMapper.updatePathInfo(notePath, noteHeaders)
     }
 
     function parseText() {
@@ -240,13 +246,12 @@ RowLayout {
 
     function scrollToHeader() {
         if (parser.headerLevel !== "0") {
-            console.log("OUAIS")
             web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
                 if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
                     web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
                     parser.headerInfo = ["", "0"]
                 }
-            ; })
+            })
         }
     }
 }

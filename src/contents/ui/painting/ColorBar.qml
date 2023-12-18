@@ -3,7 +3,7 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as Controls
+
 import org.kde.kirigami 2.19 as Kirigami
 
 import "qrc:/contents/ui/dialogs/colorDialog"
@@ -11,16 +11,17 @@ import "qrc:/contents/ui/dialogs/colorDialog"
 Kirigami.ShadowedRectangle {
     id: root
 
-    property color primaryColor: "black"
-    property color secondaryColor: "white"
-
     readonly property var colorsList: [
         "#000000", "#808080", "#FFFFFF", "#FF0000", "#FF8000",
         "#FFFF00", "#00FF00", "#00FFFF", "#0000FF", "#FF00FF"
     ]
 
+    property color primaryColor: "black"
+    property color secondaryColor: "white"
+
     Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Kirigami.Theme.inherit: false
+
     color: Kirigami.Theme.backgroundColor
     radius: Kirigami.Units.smallSpacing
 
@@ -32,8 +33,9 @@ Kirigami.ShadowedRectangle {
         Rectangle {
             width: Kirigami.Units.gridUnit * 2.5
             height: Kirigami.Units.gridUnit * 2.5
-            radius: Kirigami.Units.smallSpacing
+
             color: Qt.rgba(1, 1, 1, 0.2)
+            radius: Kirigami.Units.smallSpacing
 
             Layout.leftMargin: Kirigami.Units.smallSpacing
 
@@ -71,7 +73,6 @@ Kirigami.ShadowedRectangle {
                     color: "black"
                     width: 1
                 }
-
                 multicolor: true
 
                 onOpenColorPicker: {
@@ -86,8 +87,12 @@ Kirigami.ShadowedRectangle {
             ColorButton {
                 color: modelData
 
-                onPrimaryColorChanged: root.primaryColor = color
-                onSecondaryColorChanged: root.secondaryColor = color
+                onPrimaryColorChanged: {
+                    root.primaryColor = color
+                }
+                onSecondaryColorChanged: {
+                    root.secondaryColor = color
+                }
             }
         }
     }
