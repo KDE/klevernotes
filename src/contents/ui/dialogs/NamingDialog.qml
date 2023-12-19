@@ -51,8 +51,10 @@ Kirigami.PromptDialog {
         leftPadding: Kirigami.Units.largeSpacing
         rightPadding: Kirigami.Units.largeSpacing
 
-        Keys.onPressed: if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return) {
-            textPromptDialog.applied()
+        Keys.onPressed: function(event) {
+            if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return) {
+                textPromptDialog.applied()
+            }
         }
     }
 

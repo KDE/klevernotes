@@ -197,8 +197,12 @@ RowLayout {
     Parser { 
         id: parser
 
-        onNewLinkedNotesInfos: noteMapper.addLinkedNotesInfos(linkedNotesInfos)
-        onNoteHeadersSent: noteMapper.updatePathInfo(notePath, noteHeaders)
+        onNewLinkedNotesInfos: function(linkedNotesInfos) {
+            noteMapper.addLinkedNotesInfos(linkedNotesInfos)
+        }
+        onNoteHeadersSent: function(notePath, noteHeaders) {
+            noteMapper.updatePathInfo(notePath, noteHeaders)
+        }
     }
 
     function parseText() {
@@ -206,7 +210,7 @@ RowLayout {
         updateHtml()
     }
 
-    function changeStyle(styleDict: Object) {
+    function changeStyle(styleDict) {
         const emptyDict = Object.keys(styleDict).length === 0;
         styleDict = emptyDict ? defaultCSS : styleDict
 
