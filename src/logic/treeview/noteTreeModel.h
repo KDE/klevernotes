@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "kleverconfig.h"
 #include <QAbstractItemModel>
 #include <QFileInfo>
 #include <memory>
@@ -90,7 +91,7 @@ signals:
 
 private:
     // NoteMapper
-    bool m_noteMapEnabled;
+    bool m_noteMapEnabled = KleverConfig::noteMapEnabled();
     bool m_isInit = false;
     QStringList m_initialGlobalPaths;
 

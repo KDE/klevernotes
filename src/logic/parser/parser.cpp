@@ -88,6 +88,8 @@ void Parser::setNotePath(const QString &notePath)
     // NoteMapper
     m_previousLinkedNotesInfos.clear();
     m_previousNoteHeaders.clear();
+    m_linkedNotesChanged = true;
+    m_notePathChanged = true;
 
     // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
     m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
@@ -117,7 +119,9 @@ QString Parser::parse(QString src)
     m_noteHeaders.clear();
     m_headerFound = false;
     m_linkedNotesInfos.clear();
-    m_linkedNotesChanged = false;
+    if (!m_notePathChanged) {
+        m_linkedNotesChanged = false;
+    }
 
     blockLexer.lex(src);
 
@@ -138,6 +142,8 @@ QString Parser::parse(QString src)
     while (getNextToken()) {
         out += tok();
     }
+
+    m_notePathChanged = false;
 
     if (m_noteMapEnabled) {
         // We try to not spam with signals
@@ -368,7 +374,7 @@ void Parser::newHighlightStyle()
 // NoteMapper
 void Parser::addToLinkedNoteInfos(const QStringList &infos)
 {
-    if (!m_previousLinkedNotesInfos.remove(infos) && !m_linkedNotesInfos.contains(infos)) {
+    if ((!m_previousLinkedNotesInfos.remove(infos) && !m_linkedNotesInfos.contains(infos)) || infos.isEmpty()) {
         m_linkedNotesChanged = true;
     }
     m_linkedNotesInfos.insert(infos);

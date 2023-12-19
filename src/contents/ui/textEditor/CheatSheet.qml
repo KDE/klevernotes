@@ -12,7 +12,7 @@ import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/textEditor/components/"
 
-Kirigami.OverlaySheet {
+Kirigami.Dialog {
     id: cheatSheet
 
     title: i18nc("@window:title","Markdown Cheat Sheet")
@@ -23,20 +23,24 @@ Kirigami.OverlaySheet {
         color: Kirigami.Theme.backgroundColor    
     }
 
-    TextEdit { // Don't move this, weird height issue with the OverlaySheet otherwise
-        id: clipboardHelper
-        visible: false
-        onTextChanged: if (length > 0) {
-            selectAll()
-            copy()
-            showPassiveNotification(i18n("Copied !"))
-            cheatSheet.close()
-        }
-    }
+    width: applicationWindow().width > Kirigami.Units.gridUnit * 31 ? Kirigami.Units.gridUnit * 30 : applicationWindow().width - Kirigami.Units.gridUnit
+    height: applicationWindow().height - Kirigami.Units.gridUnit * 2//0 ? Kirigami.Units.gridUnit * 28
 
-    contentItem: ColumnLayout {
+    standardButtons: Controls.Dialog.NoButton
+
+    ColumnLayout {
         spacing: 0
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 30
+
+        TextEdit { // Don't move this, weird height issue with the OverlaySheet otherwise
+            id: clipboardHelper
+            visible: false
+            onTextChanged: if (length > 0) {
+                selectAll()
+                copy()
+                showPassiveNotification(i18n("Copied !"))
+                cheatSheet.close()
+            }
+        }
 
         FormCard.FormHeader {
             Layout.fillWidth: true

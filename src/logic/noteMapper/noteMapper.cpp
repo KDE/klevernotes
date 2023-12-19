@@ -9,6 +9,7 @@
 #include "noteMapperUtils.h"
 // #include <QDebug>
 #include <QJsonArray>
+#include <qlogging.h>
 
 LinkedNoteItem::LinkedNoteItem(const QString &path,
                                const QString &exists,
@@ -291,7 +292,7 @@ void NoteMapper::removeGlobalPath(const QString &_path)
 }
 
 // Parser
-void NoteMapper::addLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos)
+void NoteMapper::addLinkedNotesInfos(const QList<QStringList> &linkedNotesInfos)
 {
     clear();
 

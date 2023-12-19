@@ -3,6 +3,7 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15 as Controls
 
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
@@ -10,7 +11,7 @@ import org.kde.kitemmodels 1.0
 
 import "qrc:/contents/ui/textEditor/components/"
 
-Kirigami.OverlaySheet {
+Kirigami.Dialog {
     id: noteMap
 
     required property QtObject parser
@@ -22,10 +23,17 @@ Kirigami.OverlaySheet {
         Kirigami.Theme.inherit: false
         color: Kirigami.Theme.backgroundColor    
     }
-    
-    contentItem: ColumnLayout {
+
+    width: Kirigami.Units.gridUnit * 30
+    height: layout.height + header.height + footer.height + verticalPadding * 2
+    verticalPadding: Kirigami.Units.largeSpacing
+
+    standardButtons: Controls.Dialog.NoButton
+
+    ColumnLayout {
+        id: layout
+
         spacing: 0
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 30
 
         FormCard.FormHeader {
             title: i18nc("@title, notes map section", "Existing notes")
@@ -39,6 +47,7 @@ Kirigami.OverlaySheet {
                 model: existingLinks 
 
                 delegate: NotesMapEntry {
+                    height: Kirigami.Units.gridUnit * 3
                     onClicked: {
                         if (headerExists) {
                             parser.headerInfo = [header, headerLevel.toString()]
@@ -64,6 +73,7 @@ Kirigami.OverlaySheet {
                 model: missingLinks 
 
                 delegate: NotesMapEntry {
+                    height: Kirigami.Units.gridUnit * 3
                     onClicked: showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", displayedPath))
                 } 
             }

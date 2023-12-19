@@ -3,11 +3,11 @@
 
 #include "noteTreeModel.h"
 #include "../kleverUtility.h"
-#include "kleverconfig.h"
 #include <KIO/CopyJob>
 #include <QDir>
 #include <QIcon>
 #include <klocalizedstring.h>
+#include <qlogging.h>
 
 TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)

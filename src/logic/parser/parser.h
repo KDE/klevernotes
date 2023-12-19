@@ -96,4 +96,5 @@ private:
     QSet<QStringList> m_linkedNotesInfos;
     QSet<QStringList> m_previousLinkedNotesInfos;
     bool m_linkedNotesChanged = false;
+    bool m_notePathChanged = true;
 };

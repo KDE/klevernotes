@@ -8,6 +8,7 @@
 #include <QSet>
 #include <QVariant>
 #include <memory>
+#include <qtmetamacros.h>
 
 class LinkedNoteItem
 {
@@ -40,6 +41,7 @@ private:
 class NoteMapper : public QAbstractItemModel
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ rowCount CONSTANT) // QML will handle the signal and change it for us
 public:
     explicit NoteMapper(QObject *parent = nullptr);
 
@@ -73,7 +75,7 @@ public:
     Q_INVOKABLE void removeGlobalPath(const QString &_path);
 
     // Parser
-    Q_INVOKABLE void addLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
+    Q_INVOKABLE void addLinkedNotesInfos(const QList<QStringList> &linkedNotesInfos);
     Q_INVOKABLE void updatePathInfo(const QString &path, const QStringList &headers);
 
 private:
