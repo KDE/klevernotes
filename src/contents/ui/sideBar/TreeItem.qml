@@ -19,6 +19,8 @@ Delegates.RoundedTreeDelegate {
     required property bool wantExpand
     required property bool wantFocus
 
+    signal itemRightClicked 
+
     text: displayName
     icon.name: iconName
     highlighted: treeview.currentItem ? treeView.currentItem.path === path : false
@@ -64,6 +66,7 @@ Delegates.RoundedTreeDelegate {
             if (mouse.button === Qt.RightButton) {
                 contextMenu.canDelete = !treeItem.path.endsWith("/.BaseCategory")
                 contextMenu.popup()
+                itemRightClicked()
                 return
             }
             treeItem.clicked()

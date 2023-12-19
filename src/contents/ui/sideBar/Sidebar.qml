@@ -83,8 +83,13 @@ Kirigami.OverlayDrawer {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
+            onItemRightClicked: function (clickedItem) {
+                const tempModelIndex = treeview.getModelIndex(clickedItem.index)
+                actionBar.setClickedItemInfo(clickedItem, tempModelIndex)
+            }
             onCurrentItemChanged: {
-                actionBar.currentModelIndex = treeview.descendantsModel.mapToSource(treeview.descendantsModel.index(treeview.currentIndex, 0))
+                const currentModelIndex = treeview.getModelIndex(treeview.currentIndex)
+                actionBar.setClickedItemInfo(treeview.currentItem, currentModelIndex)
             }
         }
 

@@ -17,6 +17,9 @@ Controls.ScrollView {
     property alias currentItem: treeView.currentItem
     property alias currentIndex: treeView.currentIndex
     property alias descendantsModel: descendantsModel
+
+    signal itemRightClicked(clickedItem: TreeItem)
+
     ListView {
         id: treeView
 
@@ -27,6 +30,9 @@ Controls.ScrollView {
         delegate: TreeItem {
             id: treeItem
 
+            onItemRightClicked: {
+                scrollView.itemRightClicked(treeItem)
+            }
             onWantFocusChanged: if (wantFocus) {
                 clicked()
             }
@@ -34,9 +40,8 @@ Controls.ScrollView {
                 if (!kDescendantExpanded) {
                     descendantsModel.toggleChildren(index)
                 }
-                drawer.timer.start()
             }
-            onClicked: function (mouse) {
+            onClicked: {
                 descendantsModel.toggleChildren(index)
                 forceActiveFocus()
                 const mainWindow = applicationWindow()
@@ -47,5 +52,9 @@ Controls.ScrollView {
                 }
             }
         }
+    }
+
+    function getModelIndex(rowIndex) {
+        return descendantsModel.mapToSource(descendantsModel.index(rowIndex, 0))
     }
 }

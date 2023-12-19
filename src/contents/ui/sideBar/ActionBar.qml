@@ -23,9 +23,14 @@ ToolBar {
     readonly property QtObject createCategoryAction: createCategoryAction
 
     property var currentModelIndex
+    property var currentClickedItem
 
     NamingDialog {
         id: namingDialog
+
+        onRejected: {
+            useCurrentItem()
+        }
     }
 
     RowLayout {
@@ -112,6 +117,7 @@ ToolBar {
             treeView.model.addRow(name, Config.storagePath, 1)
             isActive = false
             name = ""
+            useCurrentItem()
         }
         onTriggered: {
             isActive = true
@@ -135,22 +141,23 @@ ToolBar {
             treeView.model.addRow(name, categoryPath, 2, parentModelIndex)
             isActive = false
             name = ""
+            useCurrentItem()
         }
         onTriggered: {
             isActive = true
 
-            switch(treeView.currentItem.useCase) {
+            switch(mainToolBar.currentClickedItem.useCase) {
                 case "Category":
-                    categoryPath = treeView.currentItem.path
+                    categoryPath = mainToolBar.currentClickedItem.path
                     parentModelIndex = currentModelIndex
                     break;
                 case "Group":
-                    categoryPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    categoryPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
 
                     parentModelIndex = treeView.model.parent(currentModelIndex)
                     break;
                 case "Note":
-                    const groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    const groupPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
                     categoryPath = KleverUtility.getParentPath(groupPath)
 
                     if (groupPath.endsWith(".BaseGroup")) {
@@ -181,21 +188,22 @@ ToolBar {
             treeView.model.addRow(name, groupPath, 3, parentModelIndex)
             isActive = false
             name = ""
+            useCurrentItem()
         }
         onTriggered: {
             isActive = true
 
-            switch(treeView.currentItem.useCase) {
+            switch(mainToolBar.currentClickedItem.useCase) {
                 case "Category":
-                    groupPath = treeView.currentItem.path+"/.BaseGroup"
+                    groupPath = mainToolBar.currentClickedItem.path+"/.BaseGroup"
                     parentModelIndex = currentModelIndex
                     break;
                 case "Group":
-                    groupPath = treeView.currentItem.path
+                    groupPath = mainToolBar.currentClickedItem.path
                     parentModelIndex = currentModelIndex
                     break;
                 case "Note":
-                    groupPath = KleverUtility.getParentPath(treeView.currentItem.path)
+                    groupPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
                     parentModelIndex = treeView.model.parent(currentModelIndex)
                     break;
             }
@@ -209,7 +217,7 @@ ToolBar {
         id: renameAction
 
         property bool isActive: false
-        property string name: treeView.currentItem ? treeView.currentItem.text : ""
+        property string name: mainToolBar.currentClickedItem ? mainToolBar.currentClickedItem.text : ""
 
         shortcut: "Ctrl+R"
         icon.name: "edit-rename"
@@ -217,12 +225,13 @@ ToolBar {
         onNameChanged: if (isActive) {
             treeView.model.rename(currentModelIndex, name)
             isActive = false
+            useCurrentItem()
         }
         onTriggered: {
             isActive = true
 
-            const useCase = treeView.currentItem.useCase
-            const parentPath = KleverUtility.getParentPath(treeView.currentItem.path)
+            const useCase = mainToolBar.currentClickedItem.useCase
+            const parentPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
             mainToolBar.getName(useCase, name, parentPath, renameAction, false)
         }
     }
@@ -235,5 +244,15 @@ ToolBar {
         namingDialog.callingAction = callingAction
         namingDialog.newItem = newItem
         namingDialog.open()
+    }
+
+    function setClickedItemInfo(clickedItem, clickedModelIndex) {
+        currentClickedItem = clickedItem
+        currentModelIndex = clickedModelIndex
+    }
+
+    function useCurrentItem() {
+        const currentModelIndex = treeView.getModelIndex(treeView.currentIndex)
+        setClickedItemInfo(treeView.currentItem, currentModelIndex)
     }
 }
