@@ -9,7 +9,6 @@
 #include "noteMapperUtils.h"
 // #include <QDebug>
 #include <QJsonArray>
-#include <qlogging.h>
 
 LinkedNoteItem::LinkedNoteItem(const QString &path,
                                const QString &exists,

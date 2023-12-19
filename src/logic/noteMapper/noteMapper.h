@@ -8,7 +8,6 @@
 #include <QSet>
 #include <QVariant>
 #include <memory>
-#include <qtmetamacros.h>
 
 class LinkedNoteItem
 {
