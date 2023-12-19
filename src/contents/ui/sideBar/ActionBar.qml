@@ -17,7 +17,6 @@ ToolBar {
     id: mainToolBar
 
     required property TreeView treeView
-    readonly property var treeModel: treeView.descendantsModel
     readonly property QtObject renameAction: renameAction
     readonly property QtObject createNoteAction: createNoteAction
     readonly property QtObject createGroupAction: createGroupAction
@@ -209,8 +208,8 @@ ToolBar {
     Kirigami.Action{
         id: renameAction
 
-        property bool isActive : false
-        property string name : treeView.currentItem.label
+        property bool isActive: false
+        property string name: treeView.currentItem ? treeView.currentItem.text : ""
 
         shortcut: "Ctrl+R"
         icon.name: "edit-rename"

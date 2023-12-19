@@ -21,7 +21,7 @@ Kirigami.Page {
     property QtObject editorView: editorLoader.item
     property QtObject todoView: todoLoader.item
 
-    title: hasNote ? currentlySelected.label : i18nc("@title:page", "Welcome")
+    title: hasNote ? currentlySelected.text : i18nc("@title:page", "Welcome")
 
     @KIRIGAMI_PAGE_ACTION@: {
         if (hasNote) {

@@ -428,6 +428,10 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
     auto row = static_cast<TreeItem *>(index.internalPointer());
     const QString rowPath = row->data(PathRole).toString();
 
+    if (row->childCount() > 0) { // Prevent KDescendantsProxyModel from crashing
+            row->askForExpand(index);
+    }
+
     auto *job = KIO::trash(QUrl::fromLocalFile(rowPath));
     job->start();
 

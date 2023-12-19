@@ -65,7 +65,7 @@ Controls.Menu {
     DeleteConfirmationDialog {
         id: deleteConfirmationDialog
 
-        useCase: treeView.currentItem.useCase
+        useCase: treeView.currentItem ? treeView.currentItem.useCase : ""
 
         onAccepted: {
             treeView.model.removeFromTree(actionBar.currentModelIndex)

@@ -37,7 +37,7 @@ Kirigami.OverlayDrawer {
     handleVisible: applicationWindow().isMainPage() && modal
 
     // Autohiding behavior
-    modal: !applicationWindow().isMainPage() || !root.wideScreen
+    modal: Kirigami.Settings.isMobile //|| (!applicationWindow().isMainPage())//( )//!root.wideScreen //|| !applicationWindow().isMainPage()
     onEnabledChanged: drawerOpen = enabled && !modal
     onModalChanged: drawerOpen = !modal
     // Prevent it to being close while in wideScreen
@@ -45,9 +45,6 @@ Kirigami.OverlayDrawer {
 
     contentItem: ColumnLayout {
         id: column
-
-        width: Kirigami.Units.gridUnit * 15
-        implicitWidth: Kirigami.Units.gridUnit * 15
 
         ActionBar {
             id: actionBar
@@ -61,24 +58,24 @@ Kirigami.OverlayDrawer {
         TreeView {
             id: treeview
 
-            sourceModel: NoteTreeModel {
+            model: NoteTreeModel {
                 id: noteTreeModel
 
                 noteMapEnabled: Config.noteMapEnabled
 
-                onNewGlobalPathFound: {
+                onNewGlobalPathFound: function (path) {
                     drawer.noteMapper.addGlobalPath(path)
                 }
-                onGlobalPathUpdated: {
+                onGlobalPathUpdated: function (oldPath, newPath) {
                     drawer.noteMapper.updateGlobalPath(oldPath, newPath)
                 }
-                onGlobalPathRemoved: {
+                onGlobalPathRemoved: function (path) {
                     drawer.noteMapper.removeGlobalPath(path)
                 }
-                onInitialGlobalPathsSent: {
+                onInitialGlobalPathsSent: function (initialGlobalPaths) {
                     drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
                 }
-                onErrorOccurred: {
+                onErrorOccurred: function (errorMessage) {
                     applicationWindow().showPassiveNotification(errorMessage)
                 }
             }
@@ -159,7 +156,7 @@ Kirigami.OverlayDrawer {
         property var focusModelIndex
 
         repeat: false
-        interval: Kirigami.Units.longDuration
+        interval: Kirigami.Units.shortDuration
 
         onTriggered: if (focusModelIndex) {
             focusModelIndex.model.askForFocus(focusModelIndex)
@@ -173,12 +170,12 @@ Kirigami.OverlayDrawer {
         property var modelIndex
 
         repeat: false
-        interval: Kirigami.Units.longDuration
+        interval: Kirigami.Units.shortDuration
 
         onTriggered: if (modelIndex) {
             modelIndex.model.askForExpand(modelIndex)
             modelIndex = undefined
-            interval = Kirigami.Units.longDuration
+            interval = Kirigami.Units.shortDuration
             focusTimer.start()
         }
     }
