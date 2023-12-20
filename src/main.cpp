@@ -37,7 +37,7 @@
 
 #include "logic/parser/parser.h"
 
-#include "logic/printing/printtingHelper.h"
+#include "logic/printing/printingHelper.h"
 
 // Plugins
 #include "logic/noteMapper/noteMapper.h"
@@ -124,7 +124,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
 
-    qmlRegisterType<PrinttingUtility>("org.kde.Klever", 1, 0, "PrinttingUtility");
+    qmlRegisterType<PrintingUtility>("org.kde.Klever", 1, 0, "PrintingUtility");
 
     qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");

@@ -81,7 +81,7 @@ set(exec_SRCS
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
 
-    logic/printing/printtingHelper.cpp
+    logic/printing/printingHelper.cpp
 
     logic/syntaxHighlight/highlightHelper.cpp
 

@@ -75,7 +75,7 @@ Kirigami.Page {
                 pdfSaver.open()
             }
             onPathChanged: {
-                printtingUtility.copy(pdfPath.substring(7), path.substring(7))
+                printingUtility.copy(pdfPath.substring(7), path.substring(7))
             }
         }
     ]
@@ -148,8 +148,8 @@ Kirigami.Page {
         }
     }
 
-    PrinttingUtility {
-        id: printtingUtility
+    PrintingUtility {
+        id: printingUtility
 
         onPdfCopyDone: function (succes, errorMessage) {
             if (!succes) {
@@ -162,7 +162,7 @@ Kirigami.Page {
 
     function displayPdf() {
         busyIndicator.visible = true
-        printtingUtility.writePdf(emptyPdf.substring(7)) 
+        printingUtility.writePdf(emptyPdf.substring(7)) 
         pdfDoc.source = emptyPdf
         changingDocTimer.start()
     }

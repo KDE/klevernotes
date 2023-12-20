@@ -5,12 +5,12 @@
 
 #include <QObject>
 
-class PrinttingUtility : public QObject
+class PrintingUtility : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit PrinttingUtility(QObject *parent = nullptr);
+    explicit PrintingUtility(QObject *parent = nullptr);
 
     Q_INVOKABLE void writePdf(const QString &path) const;
     Q_INVOKABLE void copy(const QString &fromPath, const QString &toPath) const;
