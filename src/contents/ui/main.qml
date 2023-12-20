@@ -13,15 +13,24 @@ Kirigami.ApplicationWindow {
     id: root
 
     readonly property NoteMapper noteMapper: noteMapper
+    property string currentPageName: "Main"
 
     title: i18nc("@title:ApplicationWindow", "KleverNotes")
 
-    minimumWidth: Kirigami.Units.gridUnit * 25
+    minimumWidth: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 25 :  Kirigami.Units.gridUnit * 35
     minimumHeight: Kirigami.Units.gridUnit * 30
 
     globalDrawer: sideBar
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
 
+    onCurrentPageNameChanged: {
+        if (!isMainPage()) {
+            sideBar.close()
+        } else if (pageStack.depth > 1){
+            if (!sideBar.modal) sideBar.open()
+            pageStack.pop()
+        }
+    }
     onClosing: {
         saveState() 
     }
@@ -36,9 +45,6 @@ Kirigami.ApplicationWindow {
     }
     onHeightChanged: {
         saveWindowGeometryTimer.restart()
-    }
-    pageStack.onCurrentItemChanged: if (isMainPage() && pageStack.depth > 1) {
-        pageStack.pop()
     }
     Component.onCompleted: {
         App.restoreWindowGeometry(root)
@@ -89,11 +95,13 @@ Kirigami.ApplicationWindow {
     function switchToPage(pageName) {
         const page = getPage(pageName)
 
-        pageStack.push(page);
+        pageStack.push(page)
+
+        currentPageName = pageName
     }
 
-    function isMainPage(){
-        return pageStack.currentItem === getPage("Main")
+    function isMainPage() {
+        return currentPageName === "Main"
     }
 
     function showCheatSheet() {

@@ -174,8 +174,8 @@ Kirigami.Page {
     }
 
     function closePage() {
+        applicationWindow().currentPageName = "Main"
         textDisplay.printBackground = true
         textDisplay.changeStyle(textDisplay.defaultCSS)
-        applicationWindow().pageStack.pop()
     }
 }

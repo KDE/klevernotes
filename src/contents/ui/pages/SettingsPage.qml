@@ -251,6 +251,10 @@ FormCard.FormCardPage {
         }
     }
 
+    onBackRequested: {
+        applicationWindow().currentPageName = "Main"
+    }
+
     function updateName(shownName,callingAction){
         namingDialog.shownName = shownName
         namingDialog.callingAction = callingAction

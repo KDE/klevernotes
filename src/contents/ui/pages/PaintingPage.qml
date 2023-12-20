@@ -82,6 +82,7 @@ Kirigami.Page {
             leavingDialog.open();
             return
         }
+        applicationWindow().currentPageName = "Main"
         showImagePicker()
         clearCanvas()
     }
@@ -285,7 +286,6 @@ Kirigami.Page {
     function closePage(imagePath, cropRect) {
         root.cantLeave = false
         clearCanvas()
-        applicationWindow().pageStack.pop()
         showImagePicker(imagePath, cropRect)
     }
 
