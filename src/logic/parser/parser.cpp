@@ -76,12 +76,14 @@ QString Parser::headerLevel() const
 
 void Parser::setNotePath(const QString &notePath)
 {
-    if (notePath.isEmpty() || notePath == QStringLiteral("qrc:") || m_notePath == notePath) {
+    if (notePath.isEmpty() || m_notePath == notePath) {
         return;
     }
 
     m_notePath = notePath;
-
+    if (notePath == QStringLiteral("qrc:")) {
+        return;
+    }
     // We do this here because we're sure to be in another note
     // Syntax highlight
     m_previousNoteCodeBlocks.clear();
