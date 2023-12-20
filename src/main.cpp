@@ -36,6 +36,9 @@
 #include "logic/painting/strokelistitem.h"
 
 #include "logic/parser/parser.h"
+
+#include "logic/printing/printtingHelper.h"
+
 // Plugins
 #include "logic/noteMapper/noteMapper.h"
 #include "logic/syntaxHighlight/highlightHelper.h"
@@ -121,12 +124,17 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
 
-    qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
+    qmlRegisterType<PrinttingUtility>("org.kde.Klever", 1, 0, "PrinttingUtility");
+
     qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
+    // === PLUGINS ===
+    qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
+
     HighlightHelper highlightHelper;
     qmlRegisterSingletonInstance<HighlightHelper>("org.kde.Klever", 1, 0, "HighlightHelper", &highlightHelper);
+    // === === === ===
 
     qRegisterMetaType<StrokeSample>();
     qRegisterMetaType<Stroke>();

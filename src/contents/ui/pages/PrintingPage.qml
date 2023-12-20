@@ -8,6 +8,8 @@
 import QtQuick 2.15
 import QtWebEngine 1.10
 import QtQuick.Controls 2.2
+import QtQuick.Pdf
+import Qt.labs.platform 1.1
 
 import org.kde.kirigami 2.19 as Kirigami
 
@@ -19,13 +21,14 @@ Kirigami.Page {
     id: printPreview
 
     readonly property QtObject textDisplay: applicationWindow().pageStack.get(0).editorView.display
+    readonly property string pdfPath: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
+    readonly property string emptyPdf: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf"
 
-    property string pdfPath: ""
     property var colors
 
     title: i18nc("@title:page", "Print")
 
-    actions.contextualActions: [
+    actions: [
         Kirigami.Action {
             displayComponent: ComboBox {
                 id: colorTheme
@@ -72,7 +75,7 @@ Kirigami.Page {
                 pdfSaver.open()
             }
             onPathChanged: {
-                webEnginePreview.printToPdf(path.replace("file://",""))
+                printtingUtility.copy(pdfPath.substring(7), path.substring(7))
             }
         }
     ]
@@ -100,35 +103,27 @@ Kirigami.Page {
         noteName: applicationWindow().pageStack.get(0).title
     }
 
-    WebEngineView {
-        id: webEnginePreview
-
+    PdfMultiPageView {
+        id: viewer
+        width: Kirigami.Units.gridUnit * 15
         anchors.fill: parent
+        document: PdfDocument { 
+            id: pdfDoc
 
-        url: pdfPath
-        visible: false
-
-        settings.pluginsEnabled: true
-        settings.pdfViewerEnabled: true
-        settings.javascriptEnabled: false
-
-        onLoadProgressChanged: if (loadProgress === 100) {
-            visible = true
-        }
-        onContextMenuRequested: {
-            request.accepted = true // disable context menu
-        }
-        onPdfPrintingFinished: {
-            printPreview.closePage()
+            onStatusChanged: function (status) {
+                if (status === PdfDocument.Ready && source.toString().endsWith("preview.pdf")) {
+                    busyIndicator.visible = false
+                }
+            }
         }
     }
 
     BusyIndicator {
+        id: busyIndicator
+        
         width: Kirigami.Units.gridUnit * 5
         height: width
         anchors.centerIn: parent
-
-        visible: !webEnginePreview.visible
     }
 
     Timer {
@@ -138,9 +133,38 @@ Kirigami.Page {
         interval: Kirigami.Units.longDuration
 
         onTriggered: {
-            webEnginePreview.visible = false
             textDisplay.makePdf()
         }
+    }
+
+    Timer {
+        id: changingDocTimer
+
+        repeat: false
+        interval: Kirigami.Units.longDuration
+
+        onTriggered: {
+            pdfDoc.source = pdfPath
+        }
+    }
+
+    PrinttingUtility {
+        id: printtingUtility
+
+        onPdfCopyDone: function (succes, errorMessage) {
+            if (!succes) {
+                showPassiveNotification(errorMessage)
+            } else {
+                closePage()
+            } 
+        }
+    }
+
+    function displayPdf() {
+        busyIndicator.visible = true
+        printtingUtility.writePdf(emptyPdf.substring(7)) 
+        pdfDoc.source = emptyPdf
+        changingDocTimer.start()
     }
 
     function requestPdf(changeBackground) {
@@ -151,7 +175,7 @@ Kirigami.Page {
 
     function closePage() {
         textDisplay.printBackground = true
-        textDisplay.changeStyle("default")
+        textDisplay.changeStyle(textDisplay.defaultCSS)
         applicationWindow().pageStack.pop()
     }
 }

@@ -33,6 +33,7 @@ RowLayout {
     readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
     readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
+    readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
     readonly property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': viewFontInfo.family,
@@ -110,8 +111,8 @@ RowLayout {
             }
             onPdfPrintingFinished: {
                 const printingPage = applicationWindow().pageStack.currentItem
-                printingPage.pdfPath = ""
-                printingPage.pdfPath = root.previewLocation
+
+                printingPage.displayPdf()
             }
             onLoadProgressChanged: if (loadProgress === 100) {
                 if (!root.isInit) {
@@ -211,6 +212,7 @@ RowLayout {
     }
 
     function changeStyle(styleDict) {
+        if (!styleDict) return
         const emptyDict = Object.keys(styleDict).length === 0;
         styleDict = emptyDict ? defaultCSS : styleDict
 

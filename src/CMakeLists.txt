@@ -81,6 +81,8 @@ set(exec_SRCS
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
 
+    logic/printing/printtingHelper.cpp
+
     logic/syntaxHighlight/highlightHelper.cpp
 
     logic/treeview/noteTreeModel.cpp
