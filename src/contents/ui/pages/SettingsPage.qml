@@ -60,195 +60,46 @@ FormCard.FormCardPage {
         }
     ]
 
-    FormCard.FormHeader {
-        title: i18nc("@title, general settings", "General")
+    header: TabBar {
+        id: tabBar
+
         Layout.fillWidth: true
     }
 
-    FormCard.FormCard {
-        Layout.fillWidth: true
-
-        FormCard.FormTextFieldDelegate {
-            id: storageField
-
-            text: Config.storagePath
-            label: i18nc("@label:textbox, Storage as in 'the folder where all the notes will be stored'", "Storage path:")
-
-            Layout.margins: 0
-            Layout.fillWidth: true
-            
-            // workaround to make it readOnly
-            onTextChanged: {
-                text = Config.storagePath
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: storageDialog.open()
-            }
-        }
-
-        FormCard.FormDelegateSeparator { above: storageField; below: newCategoryField }
-
-        FormCard.FormTextFieldDelegate {
-            id: newCategoryField
-
-            property string name
-            property bool isActive: false
-
-            text: Config.defaultCategoryName
-            label: i18nc("@label:textbox, the default note category name", "New Category name:")
-
-            Layout.margins: 0
-            Layout.fillWidth: true
-
-            onNameChanged: if (isActive) {
-                text = name
-                Config.defaultCategoryName = name
-                isActive = false
-                name = ""
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    newCategoryField.isActive = true
-                    updateName(newCategoryField.text, newCategoryField)
-                }
-            }
-        }
-
-        FormCard.FormDelegateSeparator { above: newCategoryField; below: newGroupField }
-
-        FormCard.FormTextFieldDelegate {
-            id: newGroupField
-
-            property string name
-            property bool isActive: false
-
-            text: Config.defaultGroupName
-            label: i18nc("@label:textbox, the default note group name", "New Group name:")
-
-            Layout.margins: 0
-            Layout.fillWidth: true
-
-            onNameChanged: if (isActive) {
-                text = name
-                Config.defaultGroupName = name
-                isActive = false
-                name = ""
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    newGroupField.isActive = true
-                    updateName(newGroupField.text, newGroupField)
-                }
-            }
-        }
-
-        FormCard.FormDelegateSeparator { above: newGroupField; below: newNoteField }
-
-        FormCard.FormTextFieldDelegate {
-            id: newNoteField
-
-            property string name
-            property bool isActive: false
-
-            text: Config.defaultNoteName
-            label: i18nc("@label:textbox, the default note name", "New Note name:")
-
-            Layout.margins: 0
-            Layout.fillWidth: true
-
-            onNameChanged: if (isActive) {
-                text = name
-                Config.defaultNoteName = name
-                isActive = false
-                name = ""
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    newNoteField.isActive = true
-                    updateName(newNoteField.text, newNoteField)
-                }
-            }
-        }
-
-        FormCard.FormDelegateSeparator { above: newNoteField; below: textEditorFont }
-
-        FontPicker {
-            id: textEditorFont
-            
-            configFont: Config.editorFont
-            label: i18nc("@label:textbox, the font used in the text editor", "Editor font:")
-
-            onNewFontChanged: if (text !== newFont) {
-                Config.editorFont = newFont
-            }
-        }
-    }
-
-    FormCard.FormHeader {
-        Layout.fillWidth: true
-        title: i18nc("@title, display as in 'the note display' where you can visualize the note", "Display")
-    }
-
-    DisplayPreview {
-        id: displayPreview
-    }
-    
-    // TODO: reorganize settings in different tabs
-    FormCard.FormHeader {
-        title: i18nc("@title", "KleverNotes plugins")
-        Layout.fillWidth: true
-    }
-
-    FormCard.FormCard {
-        id: pluginsCard
+    Loader {
+        id: generalLoader
 
         Layout.fillWidth: true
+        Layout.fillHeight: true
+        
+        sourceComponent: GeneralTab {}
 
-        FormCard.FormCheckDelegate {
-            id: noteMapperCheck
+        active: tabBar.currentTab === "general" 
+        visible: active
+    }
 
-            text: i18nc("@label:checkbox", "Enable note linking")
-            description: i18nc("@description:checkbox", "Note linking allows you to create a link from one note to another.") 
-                + "\n" + i18nc("@description:checkbox", "Advice: restart the app once activated.")
-            checked: Config.noteMapEnabled
+    Loader {
+        id: appearanceLoader
 
-            onCheckedChanged: if (checked != Config.noteMapEnabled) {
-                Config.noteMapEnabled = checked
-            }
-        }
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+ 
+        sourceComponent: AppearanceTab {}
 
-        FormCard.FormDelegateSeparator { above: noteMapperCheck; below: highlitingCheck }
+        active: tabBar.currentTab === "appearance" 
+        visible: active
+    }
 
-        ExpendingFormCheckBox {
-            id: highlitingCheck
+    Loader {
+        id: pluginsLoader
 
-            text: i18nc("@label:checkbox", "Enable code syntax highlighting")
-            description: "<a href='https://invent.kde.org/office/klevernotes#syntax-highlighting'>" + i18nc("@description:checkbox", "List of supported highlighters") + "</a>"
-            checked: Config.codeSynthaxHighlightEnabled
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+ 
+        sourceComponent: PluginsTab {}
 
-            highlighterCombobox.model: HighlightHelper.highlighters 
-            styleCombobox.model: HighlightHelper.getHighlighterStyle(highlighterCombobox.currentValue) 
-
-            onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) {
-                Config.codeSynthaxHighlightEnabled = checked
-            }
-            highlighterCombobox.onCurrentValueChanged: {
-                const highlighter = highlighterCombobox.currentValue
-                if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
-            }
-            styleCombobox.onCurrentValueChanged: {
-                const style = styleCombobox.currentValue
-                if (style != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = style 
-            }
-        }
+        active: tabBar.currentTab === "plugins" 
+        visible: active
     }
 
     onBackRequested: {
