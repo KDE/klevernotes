@@ -3,6 +3,7 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "6.6",
     "sdk": "org.kde.Sdk",
+    "sdk-version": "6.6",
     "base": "io.qt.qtwebengine.BaseApp",
     "base-version": "6.6",
     "command": "klevernotes",
