@@ -50,7 +50,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     KAboutData aboutData(
         // The program name used internally.
-        QStringLiteral("KleverNotes"),
+        QStringLiteral("klevernotes"),
         // A displayable program name string.
         i18nc("@title", "KleverNotes"),
         // The program version string.
