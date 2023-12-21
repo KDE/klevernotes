@@ -44,7 +44,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QtWebEngineQuick::initialize();
     QApplication app(argc, argv);
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
-    QCoreApplication::setApplicationName(QStringLiteral("KleverNotes"));
 
     KLocalizedString::setApplicationDomain("klevernotes");
 
