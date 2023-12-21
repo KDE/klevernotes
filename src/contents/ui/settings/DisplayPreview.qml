@@ -108,27 +108,25 @@ FormCard.FormCard {
         }
     }
 
-    RowLayout {
-        FontPicker {
-            label: i18nc("@label:textbox", "General font:")
-            configFont: Config.viewFont
+    FontPicker {
+        label: i18nc("@label:textbox", "General font:")
+        configFont: Config.viewFont
 
-            Layout.preferredWidth: displayer.width / 2
+        Layout.fillWidth: true
 
-            onNewFontChanged: if (text !== newFont) {
-                Config.viewFont = newFont 
-            }
+        onNewFontChanged: if (text !== newFont) {
+            Config.viewFont = newFont 
         }
+    }
 
-        FontPicker {
-            label: i18nc("@label:textbox", "Code block font:")
-            configFont: Config.codeFont
+    FontPicker {
+        label: i18nc("@label:textbox", "Code block font:")
+        configFont: Config.codeFont
 
-            Layout.preferredWidth: displayer.width / 2
+        Layout.fillWidth: true
 
-            onNewFontChanged: if (text !== newFont) {
-                Config.codeFont = newFont 
-            }
+        onNewFontChanged: if (text !== newFont) {
+            Config.codeFont = newFont 
         }
     }
 }

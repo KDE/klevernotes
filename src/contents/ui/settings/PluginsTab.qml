@@ -16,12 +16,12 @@ ColumnLayout {
     Layout.fillHeight: true
 
     FormCard.FormHeader {
-        title: i18nc("@title", "KleverNotes plugins")
+        title: i18nc("@title", "Utility plugins")
         Layout.fillWidth: true
     }
 
     FormCard.FormCard {
-        id: pluginsCard
+        id: utilityCard
 
         Layout.fillWidth: true
 
@@ -37,8 +37,17 @@ ColumnLayout {
                 Config.noteMapEnabled = checked
             }
         }
+    }
 
-        FormCard.FormDelegateSeparator { above: noteMapperCheck; below: highlitingCheck }
+    FormCard.FormHeader {
+        title: i18nc("@title", "Cosmetic plugins")
+        Layout.fillWidth: true
+    }
+
+    FormCard.FormCard {
+        id: appearanceCard
+
+        Layout.fillWidth: true
 
         ExpendingFormCheckBox {
             id: highlitingCheck

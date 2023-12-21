@@ -16,7 +16,7 @@ ColumnLayout {
     Layout.fillHeight: true
 
     FormCard.FormHeader {
-        title: i18nc("@title, general settings", "General")
+        title: i18nc("@title, general storage settings, Storage as in 'the folder where all the notes will be stored'", "Storage")
         Layout.fillWidth: true
     }
 
@@ -42,8 +42,15 @@ ColumnLayout {
                 onClicked: storageDialog.open()
             }
         }
+    }
 
-        FormCard.FormDelegateSeparator { above: storageField; below: newCategoryField }
+    FormCard.FormHeader {
+        title: i18nc("@title, general sidebar settings", "Sidebar")
+        Layout.fillWidth: true
+    }
+
+    FormCard.FormCard {
+        Layout.fillWidth: true
 
         FormCard.FormTextFieldDelegate {
             id: newCategoryField
@@ -130,19 +137,6 @@ ColumnLayout {
                     newNoteField.isActive = true
                     updateName(newNoteField.text, newNoteField)
                 }
-            }
-        }
-
-        FormCard.FormDelegateSeparator { above: newNoteField; below: textEditorFont }
-
-        FontPicker {
-            id: textEditorFont
-            
-            configFont: Config.editorFont
-            label: i18nc("@label:textbox, the font used in the text editor", "Editor font:")
-
-            onNewFontChanged: if (text !== newFont) {
-                Config.editorFont = newFont
             }
         }
     }
