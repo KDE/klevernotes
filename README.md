@@ -70,7 +70,31 @@ You'll need to build the app to test it !
 
 **[kdesrc-build](https://invent.kde.org/sdk/kdesrc-build)** would be the best option to build klevernotes and its dependencies easily.
 
+
+### ⚠️  Note: This requires building with _QT6_, the default with kdesrc-build. ⚠️
+
+<br>
+
 Arch Linux dependencies:
 ```
-base-devel extra-cmake-modules cmake qt5-base qt5-declarative qt5-quickcontrols2 kirigami2 ki18n kcoreaddons breeze kio qt5-webengine extra-cmake-modules
+base-devel extra-cmake-modules cmake qt6-base qt6-declarative qt6-quickcontrols2 qt6-webengine
+```
+
+<br>
+
+Once kdesrc-build is correctly installed on your system:
+
+1. Let's make sure KleverNotes will look good by running:
+```
+kdesrc-build kirigami kcoreaddons ki18n breeze plasma-integration qqc2-desktop-style
+```
+
+2. Let's build KleverNotes:
+```
+kdesrc-build klevernotes
+```
+
+3. Start it with:
+```
+kdesrc-run klevernotes
 ```
