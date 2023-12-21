@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-19 00:42+0000\n"
-"PO-Revision-Date: 2023-11-08 10:33+0100\n"
+"PO-Revision-Date: 2023-12-14 22:31+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -500,7 +500,7 @@ msgstr "Nome della nuova nota:"
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "Carattere dell'editor:"
 
 #: contents/ui/pages/SettingsPage.qml:197
 #, kde-format
@@ -510,42 +510,42 @@ msgid "Display"
 msgstr "Visualizzazione"
 
 #: contents/ui/pages/SettingsPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title"
 msgid "KleverNotes plugins"
-msgstr "Disegni di KleverNotes"
+msgstr "Estensioni di KleverNotes"
 
 #: contents/ui/pages/SettingsPage.qml:218
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "Abilita il collegamento delle note"
 
 #: contents/ui/pages/SettingsPage.qml:219
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr ""
+"Il collegamento delle note consente di creare un collegamento da una nota a "
+"un'altra."
 
 #: contents/ui/pages/SettingsPage.qml:220
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Consiglio: riavvia l'applicazione una volta attivata."
 
 #: contents/ui/pages/SettingsPage.qml:233
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Abilita l'evidenziazione della sintassi del codice"
 
 #: contents/ui/pages/SettingsPage.qml:234
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "Elenco degli evidenziatori supportati"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -584,30 +584,28 @@ msgid "Code color:"
 msgstr "Colore del codice:"
 
 #: contents/ui/settings/DisplayPreview.qml:113
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "Generale"
+msgstr "Carattere generale:"
 
 #: contents/ui/settings/DisplayPreview.qml:124
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "Carattere del blocco di codice:"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:129
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "Evidenziatore"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:152
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Stile dell'evidenziatore"
 
 #: contents/ui/sideBar/ActionBar.qml:45
 #, kde-format
@@ -915,19 +913,15 @@ msgid "Make more bar"
 msgstr "Produci altro zucchero"
 
 #: contents/ui/textEditor/CheatSheet.qml:152
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "Disegni di KleverNotes"
+msgstr "Estensioni di KleverNotes"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "Nota"
+msgstr "Collegamento della nota"
 
 #: contents/ui/textEditor/CheatSheet.qml:163
 #, kde-format
@@ -935,29 +929,25 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "Categoria/Gruppo/Nota"
 
 #: contents/ui/textEditor/CheatSheet.qml:164
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr "Intestazione"
+msgstr "intestazione"
 
 #: contents/ui/textEditor/CheatSheet.qml:164
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "nome visualizzato"
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "Testo del collegamento:"
+msgstr "Note collegate"
 
 #: contents/ui/textEditor/EditorView.qml:40
 #, kde-format
@@ -982,30 +972,26 @@ msgstr "Visualizza/Nascondi l'anteprima"
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Mappa delle note collegate"
 
 #: contents/ui/textEditor/NotesMap.qml:31
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "Archiviazione esistente"
+msgstr "Note esistenti"
 
 #: contents/ui/textEditor/NotesMap.qml:56
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "Note mancanti"
 
 #: contents/ui/textEditor/NotesMap.qml:67
 #: contents/ui/textEditor/TextDisplay.qml:153
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 non esiste"
 
 #: contents/ui/textEditor/TextToolBar.qml:35
 #, kde-format

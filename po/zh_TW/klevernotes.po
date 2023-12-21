@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-19 00:42+0000\n"
-"PO-Revision-Date: 2023-11-28 18:17+0900\n"
+"PO-Revision-Date: 2023-12-20 17:35+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -497,7 +497,7 @@ msgstr "新筆記名稱："
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "編輯器字型："
 
 #: contents/ui/pages/SettingsPage.qml:197
 #, kde-format
@@ -507,42 +507,40 @@ msgid "Display"
 msgstr "顯示"
 
 #: contents/ui/pages/SettingsPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes 繪製"
+msgstr "KleverNotes 外掛程式"
 
 #: contents/ui/pages/SettingsPage.qml:218
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "啟用筆記連結"
 
 #: contents/ui/pages/SettingsPage.qml:219
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
-msgstr ""
+msgstr "筆記連結讓您從一個筆記建立到另一個筆記的連結。"
 
 #: contents/ui/pages/SettingsPage.qml:220
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "建議：啟用後重新啟動應用程式。"
 
 #: contents/ui/pages/SettingsPage.qml:233
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "啟用語法突顯"
 
 #: contents/ui/pages/SettingsPage.qml:234
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "支援的突顯器列表"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -581,30 +579,28 @@ msgid "Code color:"
 msgstr "程式碼顏色："
 
 #: contents/ui/settings/DisplayPreview.qml:113
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "一般"
+msgstr "一般字型："
 
 #: contents/ui/settings/DisplayPreview.qml:124
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "程式碼區塊字型"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:129
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "突顯器"
 
 #: contents/ui/settings/ExpendingFormCheckBox.qml:152
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "突顯器風格"
 
 #: contents/ui/sideBar/ActionBar.qml:45
 #, kde-format
@@ -912,19 +908,15 @@ msgid "Make more bar"
 msgstr "繼續做另一件事"
 
 #: contents/ui/textEditor/CheatSheet.qml:152
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes 繪製"
+msgstr "KleverNotes 外掛程式"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "筆記"
+msgstr "筆記連結"
 
 #: contents/ui/textEditor/CheatSheet.qml:163
 #, kde-format
@@ -932,11 +924,10 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "分類/群組/筆記"
 
 #: contents/ui/textEditor/CheatSheet.qml:164
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
 msgstr "標頭"
@@ -945,16 +936,13 @@ msgstr "標頭"
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "顯示名稱"
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "連結文字："
+msgstr "已連結的筆記"
 
 #: contents/ui/textEditor/EditorView.qml:40
 #, kde-format
@@ -979,30 +967,26 @@ msgstr "檢視/隱藏預覽"
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "已連結筆記地圖"
 
 #: contents/ui/textEditor/NotesMap.qml:31
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "既存筆記儲存庫"
+msgstr "既存的筆記"
 
 #: contents/ui/textEditor/NotesMap.qml:56
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "缺乏的筆記"
 
 #: contents/ui/textEditor/NotesMap.qml:67
 #: contents/ui/textEditor/TextDisplay.qml:153
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 不存在"
 
 #: contents/ui/textEditor/TextToolBar.qml:35
 #, kde-format
@@ -1141,32 +1125,32 @@ msgstr ""
 #: logic/treeview/noteTreeModel.cpp:277
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr ""
+msgstr "建立範例筆記時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:412
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "建立此項目時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "移除此項目時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "重新命名此項目時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:557
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "建立筆記時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:567
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "建立群組時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:576
 #, kde-format
@@ -1192,7 +1176,7 @@ msgstr ""
 #: main.cpp:69
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr ""
+msgstr "(c) 2022-2023"
 
 #: main.cpp:70
 #, kde-format
