@@ -8,9 +8,7 @@
 
 #include "sketchview.h"
 
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
 #include <QPointingDevice>
-#endif
 
 Q_GLOBAL_STATIC(SketchView *, s_instance);
 
@@ -51,11 +49,7 @@ void SketchViewHandler::onTabletEventReceived(QTabletEvent *event)
     m_point = TabletEvent::create(event);
     emit pointChanged(m_point);
 
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
     int pointerIndex = (event->pointerType() == QPointingDevice::PointerType::Eraser) ? 1 : 0;
-#else
-    int pointerIndex = (event->pointerType() == QTabletEvent::Eraser) ? 1 : 0;
-#endif
     changePointer(pointerIndex);
 
     if (event->type() == QEvent::TabletPress && !m_pressed) {
@@ -105,11 +99,7 @@ void SketchView::tabletEvent(QTabletEvent *event)
     event->accept();
 
     if (m_lastType == event->type()) {
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
         const QPointF eventPos = event->globalPosition();
-#else
-        const QPoint eventPos = event->globalPos();
-#endif
         const auto length = (eventPos - m_lastGlobalPos).manhattanLength();
         constexpr auto lengthThreshold = 4.0;
 
@@ -118,10 +108,6 @@ void SketchView::tabletEvent(QTabletEvent *event)
     }
 
     m_lastType = event->type();
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
     m_lastGlobalPos = event->globalPosition();
-#else
-    m_lastGlobalPos = event->globalPos();
-#endif
     emit tabletEventReceived(event);
 }

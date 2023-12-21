@@ -67,11 +67,7 @@ signals:
     void pressedChanged(bool mousePressed);
 
 private:
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
     QPointF m_lastGlobalPos;
-#else
-    QPoint m_lastGlobalPos;
-#endif
     QEvent::Type m_lastType = QEvent::None;
 };
 

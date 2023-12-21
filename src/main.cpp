@@ -9,11 +9,7 @@
 // Do not remove this, breaks Qt6 build
 #include <QtQml>
 
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
 #include <QtWebEngineQuick>
-#else
-#include <QtWebEngine/QtWebEngine>
-#endif
 
 #include "app.h"
 #include "kleverconfig.h"
@@ -45,12 +41,7 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QtWebEngine::initialize();
-#else
     QtWebEngineQuick::initialize();
-#endif
     QApplication app(argc, argv);
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setApplicationName(QStringLiteral("KleverNotes"));
@@ -141,15 +132,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qRegisterMetaType<Stroke::Type>();
     qRegisterMetaType<Event>();
 
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
     qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "strokeSample", "Use the createSample function on SketchViewHandler instead");
     qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "stroke", "Use the createStroke function on SketchViewHandler instead");
     qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "event", "They are provided by the SketchViewHandler");
-#else
-    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", QStringLiteral("Use the createSample function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "Event", QStringLiteral("They are provided by the SketchViewHandler"));
-#endif
+
     qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
 
     qmlRegisterType<SketchViewHandler>("WashiPad", 1, 0, "SketchViewHandler");

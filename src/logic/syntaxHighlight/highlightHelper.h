@@ -33,17 +33,14 @@ private:
             m_pygmentizeName,
             {" -L styles", " -l %1 -f html -O style=nord -O noclasses=True"},
         },
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
         {
             m_kSyntaxName,
             {" --list-themes", " --stdin -s %1 -f html -t 'Nord' -b"},
         },
-#else
         {
             m_kateSyntaxName,
             {" --list-themes", " --stdin -s %1 -f html -t 'Nord' -b"},
         },
-#endif
     }; // nord style by default, will be replace by the given style if it exists
 
     inline static const QRegularExpression m_pygmentizeRegex = QRegularExpression(QStringLiteral("(\\* )(.+)(:)"));
