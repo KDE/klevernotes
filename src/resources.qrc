@@ -68,6 +68,7 @@
         <file>contents/ui/textEditor/TextEditor.qml</file>
         <file>contents/ui/textEditor/TextToolBar.qml</file>
 
+        <file>contents/ui/todoEditor/TodoDelegate.qml</file>
         <file>contents/ui/todoEditor/ToDoView.qml</file>
 
         <file alias="index.html">contents/resources/index.html</file>

@@ -65,13 +65,13 @@ ColumnLayout {
             anchors.fill: parent
 
             model: todoModel
-            delegate: todoDelegate
+            delegate: TodoDelegate {}
         }
 
         ListModel {
             id: todoModel
         }
-
+/*
         Component {
             id: todoDelegate
 
@@ -183,7 +183,7 @@ ColumnLayout {
                     }
                 }
             }
-        }
+        }*/
     }
 
     Controls.Button {
