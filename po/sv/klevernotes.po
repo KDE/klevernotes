@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-19 00:42+0000\n"
+"POT-Creation-Date: 2023-12-22 00:41+0000\n"
 "PO-Revision-Date: 2023-11-11 09:49+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -386,7 +386,7 @@ msgstr "Visa inte igen"
 msgid "This could cause visual artifact near the end of the pdf."
 msgstr "Det kan orsaka visuella förvrängningar nära slutet på PDF:en."
 
-#: contents/ui/main.qml:17
+#: contents/ui/main.qml:18
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
@@ -414,7 +414,7 @@ msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Måla."
 
-#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:68
+#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
@@ -432,19 +432,19 @@ msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Beskär automatiskt"
 
-#: contents/ui/pages/PrintingPage.qml:26
+#: contents/ui/pages/PrintingPage.qml:29
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
 msgstr "Skriv ut"
 
-#: contents/ui/pages/PrintingPage.qml:36
+#: contents/ui/pages/PrintingPage.qml:39
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "Färgtema"
 
-#: contents/ui/pages/PrintingPage.qml:50
+#: contents/ui/pages/PrintingPage.qml:53
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
@@ -609,25 +609,25 @@ msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr ""
 
-#: contents/ui/sideBar/ActionBar.qml:45
+#: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Skapa en ny kategori"
 
-#: contents/ui/sideBar/ActionBar.qml:53
+#: contents/ui/sideBar/ActionBar.qml:57
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Skapa en ny grupp"
 
-#: contents/ui/sideBar/ActionBar.qml:61
+#: contents/ui/sideBar/ActionBar.qml:65
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Skapa en ny anteckning"
 
-#: contents/ui/sideBar/ActionBar.qml:69 contents/ui/sideBar/ContextMenu.qml:48
+#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:48
 #, kde-format
 msgid "Rename"
 msgstr "Byt namn"
@@ -665,17 +665,17 @@ msgstr "Från: "
 msgid "No search results"
 msgstr "Inga sökresultat"
 
-#: contents/ui/sideBar/Sidebar.qml:101
+#: contents/ui/sideBar/Sidebar.qml:100
 #, kde-format
 msgid "Cheat sheet"
 msgstr "Fuskblad"
 
-#: contents/ui/sideBar/Sidebar.qml:113
+#: contents/ui/sideBar/Sidebar.qml:112
 #, kde-format
 msgid "Settings"
 msgstr "Inställningar"
 
-#: contents/ui/sideBar/Sidebar.qml:124
+#: contents/ui/sideBar/Sidebar.qml:123
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Om KleverNotes"
@@ -698,223 +698,223 @@ msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
 msgstr "Markdown fuskblad"
 
-#: contents/ui/textEditor/CheatSheet.qml:32
+#: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgid "Copied !"
 msgstr "Kopierad."
 
-#: contents/ui/textEditor/CheatSheet.qml:43
+#: contents/ui/textEditor/CheatSheet.qml:47
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
 msgstr "Grundsyntax"
 
-#: contents/ui/textEditor/CheatSheet.qml:50
+#: contents/ui/textEditor/CheatSheet.qml:54
 #, kde-format
 msgid "Heading"
 msgstr "Rubrik"
 
-#: contents/ui/textEditor/CheatSheet.qml:51
+#: contents/ui/textEditor/CheatSheet.qml:55
 #, kde-format
 msgctxt "exemple"
 msgid "Heading1"
 msgstr "Rubrik 1"
 
-#: contents/ui/textEditor/CheatSheet.qml:56
+#: contents/ui/textEditor/CheatSheet.qml:60
 #, kde-format
 msgid "Bold"
 msgstr "Fetstil"
 
-#: contents/ui/textEditor/CheatSheet.qml:57
+#: contents/ui/textEditor/CheatSheet.qml:61
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
 msgstr "Fetstilstext"
 
-#: contents/ui/textEditor/CheatSheet.qml:62
+#: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgid "Italic"
 msgstr "Kursiv"
 
-#: contents/ui/textEditor/CheatSheet.qml:63
+#: contents/ui/textEditor/CheatSheet.qml:67
 #, kde-format
 msgctxt "exemple"
 msgid "Italic text"
 msgstr "Kursiv text"
 
-#: contents/ui/textEditor/CheatSheet.qml:68
+#: contents/ui/textEditor/CheatSheet.qml:72
 #, kde-format
 msgid "Blockquote"
 msgstr "Blockcitat"
 
-#: contents/ui/textEditor/CheatSheet.qml:69
+#: contents/ui/textEditor/CheatSheet.qml:73
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
 msgstr "Citat"
 
-#: contents/ui/textEditor/CheatSheet.qml:74
+#: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Ordered list"
 msgstr "Ordnad lista"
 
-#: contents/ui/textEditor/CheatSheet.qml:75
-#: contents/ui/textEditor/CheatSheet.qml:82
+#: contents/ui/textEditor/CheatSheet.qml:79
+#: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
 msgstr "Första objektet"
 
-#: contents/ui/textEditor/CheatSheet.qml:76
-#: contents/ui/textEditor/CheatSheet.qml:83
+#: contents/ui/textEditor/CheatSheet.qml:80
+#: contents/ui/textEditor/CheatSheet.qml:87
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
 msgstr "Andra objektet"
 
-#: contents/ui/textEditor/CheatSheet.qml:81
+#: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Unordered list"
 msgstr "Oordnad lista"
 
-#: contents/ui/textEditor/CheatSheet.qml:88
+#: contents/ui/textEditor/CheatSheet.qml:92
 #, kde-format
 msgid "Code"
 msgstr "Kod"
 
-#: contents/ui/textEditor/CheatSheet.qml:89
+#: contents/ui/textEditor/CheatSheet.qml:93
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
 msgstr "Kod på plats"
 
-#: contents/ui/textEditor/CheatSheet.qml:94
+#: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
 msgstr "Regel"
 
-#: contents/ui/textEditor/CheatSheet.qml:100
+#: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
 msgid "Link"
 msgstr "Länk"
 
-#: contents/ui/textEditor/CheatSheet.qml:101
+#: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "title"
 msgstr "titel"
 
-#: contents/ui/textEditor/CheatSheet.qml:101
+#: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
 msgstr "https://www.exempel.se"
 
-#: contents/ui/textEditor/CheatSheet.qml:106
+#: contents/ui/textEditor/CheatSheet.qml:110
 #, kde-format
 msgid "Image"
 msgstr "Bild"
 
-#: contents/ui/textEditor/CheatSheet.qml:107
+#: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
 msgstr "alternativ text"
 
-#: contents/ui/textEditor/CheatSheet.qml:107
+#: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "image"
 msgstr "Bild"
 
-#: contents/ui/textEditor/CheatSheet.qml:114
+#: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
 msgstr "Utökad syntax"
 
-#: contents/ui/textEditor/CheatSheet.qml:121
+#: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
 msgid "Table"
 msgstr "Tabell"
 
-#: contents/ui/textEditor/CheatSheet.qml:122
+#: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
 msgstr "Vänster"
 
-#: contents/ui/textEditor/CheatSheet.qml:122
+#: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
 msgstr "Centrera"
 
-#: contents/ui/textEditor/CheatSheet.qml:122
+#: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
 msgstr "Höger"
 
-#: contents/ui/textEditor/CheatSheet.qml:124
+#: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
 msgstr "Cell 1"
 
-#: contents/ui/textEditor/CheatSheet.qml:124
+#: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
 msgstr "Cell 2"
 
-#: contents/ui/textEditor/CheatSheet.qml:124
+#: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
 msgstr "Cell 3"
 
-#: contents/ui/textEditor/CheatSheet.qml:129
+#: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
 msgstr "Inhägnat kodblock"
 
-#: contents/ui/textEditor/CheatSheet.qml:131
+#: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
 msgstr "Exempeltext här..."
 
-#: contents/ui/textEditor/CheatSheet.qml:137
+#: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgid "Strikethrough"
 msgstr "Överstruken"
 
-#: contents/ui/textEditor/CheatSheet.qml:138
+#: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
 msgstr "Världen är platt."
 
-#: contents/ui/textEditor/CheatSheet.qml:143
+#: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgid "Task list"
 msgstr "Uppgiftslista"
 
-#: contents/ui/textEditor/CheatSheet.qml:144
+#: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
 msgstr "Gör mer här"
 
-#: contents/ui/textEditor/CheatSheet.qml:145
+#: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
 msgstr "Gör mer där"
 
-#: contents/ui/textEditor/CheatSheet.qml:152
+#: contents/ui/textEditor/CheatSheet.qml:156
 #, fuzzy, kde-format
 #| msgctxt "@title:dialog"
 #| msgid "KleverNotes painting"
@@ -922,14 +922,14 @@ msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "KleverNotes målning"
 
-#: contents/ui/textEditor/CheatSheet.qml:161
+#: contents/ui/textEditor/CheatSheet.qml:165
 #, fuzzy, kde-format
 #| msgctxt "@label:button, as in 'A note'"
 #| msgid "Note"
 msgid "Note link"
 msgstr "Anteckning"
 
-#: contents/ui/textEditor/CheatSheet.qml:163
+#: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
@@ -937,14 +937,14 @@ msgctxt ""
 msgid "Category/Group/Note"
 msgstr ""
 
-#: contents/ui/textEditor/CheatSheet.qml:164
+#: contents/ui/textEditor/CheatSheet.qml:168
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "exemple"
 msgid "header"
 msgstr "Rubrik"
 
-#: contents/ui/textEditor/CheatSheet.qml:164
+#: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
@@ -978,13 +978,13 @@ msgctxt ""
 msgid "View/Hide preview"
 msgstr "Visa eller dölj förhandsgranskning"
 
-#: contents/ui/textEditor/NotesMap.qml:18
+#: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
 msgstr ""
 
-#: contents/ui/textEditor/NotesMap.qml:31
+#: contents/ui/textEditor/NotesMap.qml:39
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@label:button, Storage as in 'the folder where all the notes will be "
@@ -994,14 +994,14 @@ msgctxt "@title, notes map section"
 msgid "Existing notes"
 msgstr "Befintlig lagring"
 
-#: contents/ui/textEditor/NotesMap.qml:56
+#: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
 msgstr ""
 
-#: contents/ui/textEditor/NotesMap.qml:67
-#: contents/ui/textEditor/TextDisplay.qml:153
+#: contents/ui/textEditor/NotesMap.qml:77
+#: contents/ui/textEditor/TextDisplay.qml:154
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1146,75 +1146,81 @@ msgstr ""
 "Observera: varje stil måste ha olika namn.            \n"
 "*/\n"
 
-#: logic/treeview/noteTreeModel.cpp:277
+#: logic/printing/printingHelper.cpp:34
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to create this item."
+msgid "An error occured while trying to copy this pdf."
+msgstr "Ett fel uppstod vid försök att skapa objektet."
+
+#: logic/treeview/noteTreeModel.cpp:276
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Ett fel uppstod vid försök att skapa demonstationsanteckningen."
 
-#: logic/treeview/noteTreeModel.cpp:412
+#: logic/treeview/noteTreeModel.cpp:411
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Ett fel uppstod vid försök att skapa objektet."
 
-#: logic/treeview/noteTreeModel.cpp:441
+#: logic/treeview/noteTreeModel.cpp:444
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Ett fel uppstod vid försök att ta bort objektet."
 
-#: logic/treeview/noteTreeModel.cpp:463
+#: logic/treeview/noteTreeModel.cpp:466
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Ett fel uppstod vid försök att byta namn på objektet."
 
-#: logic/treeview/noteTreeModel.cpp:557
+#: logic/treeview/noteTreeModel.cpp:560
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Ett fel uppstod vid försök att skapa anteckningen."
 
-#: logic/treeview/noteTreeModel.cpp:567
+#: logic/treeview/noteTreeModel.cpp:570
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Ett fel uppstod vid försök att skapa gruppen."
 
-#: logic/treeview/noteTreeModel.cpp:576
+#: logic/treeview/noteTreeModel.cpp:579
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Ett fel uppstod vid försök att skapa kategorin."
 
-#: logic/treeview/noteTreeModel.cpp:583
+#: logic/treeview/noteTreeModel.cpp:586
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Ett fel uppstod vid försök att skapa lagringen."
 
-#: main.cpp:61
+#: main.cpp:55
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:65
+#: main.cpp:59
 #, kde-format
 msgid "Application Description"
 msgstr "Programbeskrivning"
 
-#: main.cpp:69
+#: main.cpp:63
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "© 2022-2023"
 
-#: main.cpp:70
+#: main.cpp:64
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:75
+#: main.cpp:69
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Stefan Asserhäll"
 
-#: main.cpp:75
+#: main.cpp:69
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
