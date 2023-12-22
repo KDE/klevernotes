@@ -27,7 +27,7 @@ Kirigami.Page {
 
     title: i18nc("@title:page", "Paint!")
 
-    @KIRIGAMI_PAGE_ACTION@: [
+    actions: [
         Kirigami.Action {
             text: i18nc("@label:button", "Save")
             icon.name: "document-save-symbolic"

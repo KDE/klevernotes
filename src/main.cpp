@@ -131,9 +131,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qRegisterMetaType<Stroke::Type>();
     qRegisterMetaType<Event>();
 
-    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "strokeSample", "Use the createSample function on SketchViewHandler instead");
-    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "stroke", "Use the createStroke function on SketchViewHandler instead");
-    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "event", "They are provided by the SketchViewHandler");
+    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "strokeSample", QStringLiteral("Use the createSample function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "event", QStringLiteral("They are provided by the SketchViewHandler"));
 
     qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
 

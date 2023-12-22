@@ -23,7 +23,7 @@ public:
 
     void paint(QPainter *painter) override;
 
-signals:
+Q_SIGNALS:
     void strokeChanged(const Stroke &stroke);
 
 private:

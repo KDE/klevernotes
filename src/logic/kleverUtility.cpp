@@ -44,7 +44,7 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
 
     QString imagePath = noteImagesStoringPath + wantedName;
     if (iteration != 0)
-        imagePath += "(" + QString::number(iteration) + ")";
+        imagePath += QStringLiteral("(") + QString::number(iteration) + QStringLiteral(")");
     imagePath += QStringLiteral(".png");
 
     if (exists(imagePath)) {
@@ -65,7 +65,7 @@ QString KleverUtility::isProperPath(const QString &parentPath, const QString &na
 
     const QString properName = KIO::encodeFileName(name);
 
-    const QString newPath = parentPath + "/" + properName;
+    const QString newPath = parentPath + QStringLiteral("/") + properName;
 
     return (exists(newPath)) ? QStringLiteral("exist") : QString();
 }
@@ -85,9 +85,12 @@ bool KleverUtility::remove(const QString &path) const
 
 QJsonObject KleverUtility::getCssStylesList() const
 {
-    QJsonObject styleNameAndPath = {{"KleverStyle", ":/KleverStyle.css"}, {"Avenir", ":/Avenir.css"}, {"Style7", ":/Style7.css"}, {"Style9", ":/Style9.css"}};
+    QJsonObject styleNameAndPath = {{QStringLiteral("KleverStyle"), QStringLiteral(":/KleverStyle.css")},
+                                    {QStringLiteral("Avenir"), QStringLiteral(":/Avenir.css")},
+                                    {QStringLiteral("Style7"), QStringLiteral(":/Style7.css")},
+                                    {QStringLiteral("Style9"), QStringLiteral(":/Style9.css")}};
 
-    static const QString externalStylesFolderPath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).append("/Styles/");
+    static const QString externalStylesFolderPath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) + QStringLiteral("/Styles/");
     static const QDir externalStylesFolder(externalStylesFolderPath);
 
     if (!externalStylesFolder.exists()) {

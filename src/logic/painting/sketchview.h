@@ -37,12 +37,12 @@ public:
     Q_INVOKABLE void changeMousePress(bool pressed);
     Q_INVOKABLE void mouseMoved(const float x, const float y);
 
-signals:
+Q_SIGNALS:
     void pointChanged(const Event &point);
     void pressedChanged(const bool pressed);
     void isEraserChanged(const bool sketchViewIsEraser);
 
-private slots:
+private Q_SLOTS:
     void onTabletEventReceived(QTabletEvent *event);
 
 private:
@@ -62,7 +62,7 @@ public:
 
     void tabletEvent(QTabletEvent *event) override;
 
-signals:
+Q_SIGNALS:
     void tabletEventReceived(QTabletEvent *event);
     void pressedChanged(bool mousePressed);
 

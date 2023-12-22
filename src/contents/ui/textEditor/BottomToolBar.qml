@@ -3,7 +3,7 @@
 
 
 import QtQuick 2.15
-import QtQuick.Dialogs @QTQUICKDIALOG_VERSION@
+import QtQuick.Dialogs
 
 import org.kde.kirigami 2.19 as Kirigami
 
@@ -14,7 +14,7 @@ Kirigami.NavigationTabBar {
 
     actions: [
         Kirigami.Action {
-            @KIRIGAMI_ACTION_ICON@: "document-edit"
+            icon.name: "document-edit"
             text: i18nc("@label:button, as in 'A note'", "Note")
 
             onTriggered: {
@@ -22,7 +22,7 @@ Kirigami.NavigationTabBar {
             }
         },
         Kirigami.Action {
-            @KIRIGAMI_ACTION_ICON@: "view-task"
+            icon.name: "view-task"
             text: i18nc("@label:button", "TODO")
 
             onTriggered: {

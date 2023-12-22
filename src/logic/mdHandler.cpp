@@ -12,13 +12,14 @@ MDHandler::MDHandler(QObject *parent)
 QJsonObject MDHandler::blockChecker(const QString &selectedText, const QStringList &charsList) const
 {
     QJsonObject final = QJsonObject();
-    bool apply;
+    bool apply = false;
     for (int charsIndex = 0; charsIndex < charsList.size(); charsIndex++) {
         const QString chars = charsList.at(charsIndex).trimmed();
         const QString trimmedText = selectedText.trimmed();
         apply = !(trimmedText.startsWith(chars) && trimmedText.endsWith(chars));
     }
-    final[QStringLiteral("instructions")] = apply ? "apply" : "remove";
+
+    final[QStringLiteral("instructions")] = apply ? QJsonValue(QStringLiteral("apply")) : QJsonValue(QStringLiteral("remove"));
 
     return final;
 }
@@ -30,7 +31,7 @@ QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStrin
     }
 
     QJsonObject final = QJsonObject();
-    const QJsonArray selectedLines = QJsonArray::fromStringList(selectedText.split('\n'));
+    const QJsonArray selectedLines = QJsonArray::fromStringList(selectedText.split(QStringLiteral("\n")));
 
     final[QStringLiteral("lines")] = selectedLines;
     final[QStringLiteral("applyBlock")] = false;
@@ -41,9 +42,9 @@ QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStrin
     for (int lineIndex = 0; lineIndex < selectedLines.size(); lineIndex++) {
         const QString line = selectedLines.at(lineIndex).toString();
 
-        instructions.append("remove");
+        instructions.append(QStringLiteral("remove"));
         if (line.isEmpty() && selectedLines.size() > 1) {
-            instructions[instructions.size() - 1] = "none";
+            instructions[instructions.size() - 1] = QStringLiteral("none");
             continue;
         }
 
@@ -67,13 +68,13 @@ QJsonObject MDHandler::getInstructions(const QString& selectedText, const QStrin
         if (skip)
             continue;
         applyToAll = true;
-        instructions[instructions.size() - 1] = "apply";
+        instructions[instructions.size() - 1] = QStringLiteral("apply");
     }
 
     if (applyToAll) {
         for (int i = 0; i < instructions.count(); ++i) {
-            if (instructions[i] == "remove") {
-                instructions[i] = "none";
+            if (instructions[i] == QStringLiteral("remove")) {
+                instructions[i] = QStringLiteral("none");
             }
         }
     }

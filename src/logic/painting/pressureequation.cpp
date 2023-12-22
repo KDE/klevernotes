@@ -47,7 +47,7 @@ void PressureEquation::setMinWidth(float minWidth)
         return;
 
     m_minWidth = minWidth;
-    emit minWidthChanged(minWidth);
+    Q_EMIT minWidthChanged(minWidth);
     updateWidth();
 }
 
@@ -57,7 +57,7 @@ void PressureEquation::setMaxWidth(float maxWidth)
         return;
 
     m_maxWidth = maxWidth;
-    emit maxWidthChanged(maxWidth);
+    Q_EMIT maxWidthChanged(maxWidth);
     updateWidth();
 }
 
@@ -67,12 +67,12 @@ void PressureEquation::setPressure(float pressure)
         return;
 
     m_pressure = pressure;
-    emit pressureChanged(pressure);
+    Q_EMIT pressureChanged(pressure);
     updateWidth();
 }
 
 void PressureEquation::updateWidth()
 {
     m_width = computeWidth(m_minWidth, m_maxWidth, m_pressure);
-    emit widthChanged(m_width);
+    Q_EMIT widthChanged(m_width);
 }

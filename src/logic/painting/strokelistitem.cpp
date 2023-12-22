@@ -52,7 +52,7 @@ void StrokeListItem::setType(Stroke::Type type)
         return;
 
     m_type = type;
-    emit typeChanged(type);
+    Q_EMIT typeChanged(type);
     update();
 }
 
@@ -62,6 +62,6 @@ void StrokeListItem::setModel(SketchModel *model)
         return;
 
     m_model = model;
-    emit modelChanged(model);
+    Q_EMIT modelChanged(model);
     update();
 }

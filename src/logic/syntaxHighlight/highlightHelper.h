@@ -27,19 +27,19 @@ private:
     inline static QMap<QString, QStringList> m_highlightersCommands = {
         {
             m_chromaName,
-            {" --list", " --style=\"nord\" --lexer=%1 --html --html-inline-styles"},
+            {QStringLiteral(" --list"), QStringLiteral(" --style=\"nord\" --lexer=%1 --html --html-inline-styles")},
         },
         {
             m_pygmentizeName,
-            {" -L styles", " -l %1 -f html -O style=nord -O noclasses=True"},
+            {QStringLiteral(" -L styles"), QStringLiteral(" -l %1 -f html -O style=nord -O noclasses=True")},
         },
         {
             m_kSyntaxName,
-            {" --list-themes", " --stdin -s %1 -f html -t 'Nord' -b"},
+            {QStringLiteral(" --list-themes"), QStringLiteral(" --stdin -s %1 -f html -t 'Nord' -b")},
         },
         {
             m_kateSyntaxName,
-            {" --list-themes", " --stdin -s %1 -f html -t 'Nord' -b"},
+            {QStringLiteral(" --list-themes"), QStringLiteral(" --stdin -s %1 -f html -t 'Nord' -b")},
         },
     }; // nord style by default, will be replace by the given style if it exists
 

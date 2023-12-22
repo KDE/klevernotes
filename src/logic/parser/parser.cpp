@@ -233,7 +233,7 @@ QString Parser::tok()
             QString currentHeader = headersList[i];
             outputed = inlineLexer.output(currentHeader);
 
-            flags = {{"header", true}, {"align", alignList[i]}};
+            flags = {{QStringLiteral("header"), true}, {QStringLiteral("align"), alignList[i]}};
             cell += Renderer::tableCell(outputed, flags);
         }
 
@@ -248,7 +248,7 @@ QString Parser::tok()
                 QString currentCell = row[j].toString();
                 outputed = inlineLexer.output(currentCell);
 
-                flags = {{"header", false}, {"align", alignList[j]}};
+                flags = {{QStringLiteral("header"), false}, {QStringLiteral("align"), alignList[j]}};
 
                 cell += Renderer::tableCell(outputed, flags);
             }

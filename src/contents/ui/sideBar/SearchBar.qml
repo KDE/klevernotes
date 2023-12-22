@@ -29,7 +29,7 @@ KirigamiComponents.SearchPopupField {
                 id: descendants
                 model: root.listModel
             }
-            @FILTER_NAMING@: "noteName"
+            filterRoleName: "noteName"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 

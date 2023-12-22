@@ -20,14 +20,14 @@ Stroke StrokeItem::stroke() const
 void StrokeItem::setStroke(const Stroke &stroke)
 {
     m_stroke = stroke;
-    emit strokeChanged(stroke);
+    Q_EMIT strokeChanged(stroke);
     update();
 }
 
 void StrokeItem::addSample(const StrokeSample &sample)
 {
     m_stroke.addSample(sample);
-    emit strokeChanged(m_stroke);
+    Q_EMIT strokeChanged(m_stroke);
     update();
 }
 

@@ -23,7 +23,7 @@ Kirigami.Page {
 
     title: hasNote ? currentlySelected.text : i18nc("@title:page", "Welcome")
 
-    @KIRIGAMI_PAGE_ACTION@: {
+    actions: {
         if (hasNote) {
             // At first both Loaders item are "null"
             if (editorLoader.item && editorLoader.item.visible) { 

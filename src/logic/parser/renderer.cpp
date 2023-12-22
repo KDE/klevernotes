@@ -45,7 +45,12 @@ QString Renderer::hr()
 QString Renderer::list(const QString &body, bool ordered, const QString &start)
 {
     const QString type = ordered ? QStringLiteral("ol") : QStringLiteral("ul");
-    const QString startat = (ordered && start != QString::number(1)) ? (QStringLiteral(" start=\"") + start + QStringLiteral("\"")) : QLatin1String();
+    QString startat;
+    if (ordered && start != QString::number(1)) {
+        startat = (QStringLiteral(" start=\"") + start + QStringLiteral("\""));
+    } else {
+        startat = QLatin1String();
+    }
 
     return QStringLiteral("<") + type + startat + QStringLiteral(">\n") + body + QStringLiteral("</") + type + QStringLiteral(">\n");
 }
@@ -86,8 +91,12 @@ QString Renderer::tableCell(const QString &content, const QVariantMap &flags)
 {
     const QString type = flags[QStringLiteral("header")].toBool() ? QStringLiteral("th") : QStringLiteral("td");
     const QString align = flags[QStringLiteral("align")].toString();
-    const QString tag = align.isEmpty() ? QStringLiteral("<") + type + QStringLiteral(">")
-                                        : QStringLiteral("<") + type + QStringLiteral(" style=\"text-align:") + align + QStringLiteral(";\">");
+    QString tag;
+    if (align.isEmpty()) {
+        tag = QStringLiteral("<") + type + QStringLiteral(">");
+    } else {
+        tag = QStringLiteral("<") + type + QStringLiteral(" style=\"text-align:") + align + QStringLiteral(";\">");
+    }
     return tag + content + QStringLiteral("</") + type + QStringLiteral(">\n");
 }
 
@@ -119,9 +128,11 @@ QString Renderer::del(const QString &text)
 QString Renderer::wikilink(const QString &href, const QString &title, const QString &text)
 {
     const QString leading = QStringLiteral("<a href=\"") + href + QStringLiteral("\"");
-    const QString middle = title.isEmpty() ? QLatin1String() : QStringLiteral(" title=\"") + title + QStringLiteral("\"");
     const QString ending = QStringLiteral(">") + text + QStringLiteral("</a>");
-
+    QString middle = QLatin1String();
+    if (!title.isEmpty()) {
+        QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    }
     return leading + middle + ending;
 }
 
@@ -132,11 +143,14 @@ QString Renderer::link(QString &href, const QString &title, const QString &text)
         return text;
 
     static const QRegularExpression uriPercentReg = QRegularExpression(QStringLiteral("%25"));
-    href = QString(uri).replace(uriPercentReg, QStringLiteral("%"));
+    href = QString::fromUtf8(uri).replace(uriPercentReg, QStringLiteral("%"));
 
     const QString leading = QStringLiteral("<a href=\"") + escape(href, false) + QStringLiteral("\"");
-    const QString middle = title.isEmpty() ? QLatin1String() : QStringLiteral(" title=\"") + title + QStringLiteral("\"");
     const QString ending = QStringLiteral(">") + text + QStringLiteral("</a>");
+    QString middle = QLatin1String();
+    if (!title.isEmpty()) {
+        QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    }
 
     return leading + middle + ending;
 }
@@ -144,7 +158,10 @@ QString Renderer::link(QString &href, const QString &title, const QString &text)
 QString Renderer::image(const QString &href, const QString &title, const QString &text)
 {
     const QString leading = QStringLiteral("<img src=\"") + href + QStringLiteral("\" alt=\"") + text + QStringLiteral("\"");
-    const QString middle = title.isEmpty() ? QLatin1String() : QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    QString middle = QLatin1String();
+    if (!title.isEmpty()) {
+        QStringLiteral(" title=\"") + title + QStringLiteral("\"");
+    }
     static const QString ending = QStringLiteral(">");
 
     return leading + middle + ending;
@@ -189,7 +206,7 @@ QString Renderer::unescape(const QString &html)
         if (entity.startsWith(QStringLiteral("#"))) {
             bool ok;
             // check for hexadecimal or numerical value
-            const int charCode = (entity.at(1) == 'x') ? entity.mid(2).toInt(&ok, 16) : entity.mid(1).toInt(&ok);
+            const int charCode = (entity.at(1) == QChar::fromLatin1('x')) ? entity.mid(2).toInt(&ok, 16) : entity.mid(1).toInt(&ok);
 
             result.replace(match.capturedStart(), match.capturedLength(), QChar(charCode));
             continue;

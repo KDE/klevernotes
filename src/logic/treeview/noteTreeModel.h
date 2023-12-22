@@ -81,7 +81,7 @@ public:
     bool isInit();
     void addInitialGlobalPath(const QString &path);
 
-signals:
+Q_SIGNALS:
     void errorOccurred(const QString &errorMessage);
     // NoteMapper
     void newGlobalPathFound(const QString &path);

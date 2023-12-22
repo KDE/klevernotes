@@ -155,8 +155,8 @@ QVariant TreeItem::data(int role) const
                 return parentName;
             }
             const QString grandParentName = m_parentItem->parentItem()->data(NoteTreeModel::DisplayNameRole).toString();
-
-            return grandParentName + QStringLiteral("→") + parentName;
+            const QString finalValue = grandParentName + QStringLiteral("→") + parentName;
+            return finalValue;
         }
 
     case NoteTreeModel::WantFocusRole:
@@ -212,7 +212,7 @@ void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModel
     if (static_cast<TreeItem *>(parentModelIndex.internalPointer()) != this) {
         thisModelIndex = m_model->index(this->row(), 0, thisModelIndex);
     }
-    emit m_model->dataChanged(thisModelIndex, thisModelIndex);
+    Q_EMIT m_model->dataChanged(thisModelIndex, thisModelIndex);
 
     for (const std::unique_ptr<TreeItem> &child : m_childItems) {
         child->changePath(newPart, thisModelIndex, newPartIdx);
@@ -228,18 +228,18 @@ void TreeItem::askForFocus(const QModelIndex &itemIndex)
 {
     // We just want to send a signal to QML
     m_wantFocus = true;
-    emit m_model->dataChanged(itemIndex, itemIndex);
+    Q_EMIT m_model->dataChanged(itemIndex, itemIndex);
     m_wantFocus = false;
-    emit m_model->dataChanged(itemIndex, itemIndex);
+    Q_EMIT m_model->dataChanged(itemIndex, itemIndex);
 }
 
 void TreeItem::askForExpand(const QModelIndex &itemIndex)
 {
     // We just want to send a signal to QML
     m_wantExpand = true;
-    emit m_model->dataChanged(itemIndex, itemIndex);
+    Q_EMIT m_model->dataChanged(itemIndex, itemIndex);
     m_wantExpand = false;
-    emit m_model->dataChanged(itemIndex, itemIndex);
+    Q_EMIT m_model->dataChanged(itemIndex, itemIndex);
 }
 
 NoteTreeModel::NoteTreeModel(QObject *parent)
@@ -273,7 +273,7 @@ void NoteTreeModel::initModel()
         }
         const bool initDemoNote = makeNote(basePath, QStringLiteral("Demo"));
         if (!initDemoNote) {
-            emit errorOccurred(i18n("An error occurred while trying to create the demo note."));
+            Q_EMIT errorOccurred(i18n("An error occurred while trying to create the demo note."));
         } else {
             const QString notePath = basePath + QStringLiteral("/Demo/");
 
@@ -408,7 +408,7 @@ void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, co
             rowCreated = makeNote(parentPath, rowName);
             break;
         default:
-            emit errorOccurred(i18n("An error occurred while trying to create this item."));
+            Q_EMIT errorOccurred(i18n("An error occurred while trying to create this item."));
             rowCreated = false;
             break;
     }
@@ -441,7 +441,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
             endRemoveRows();
             return;
         }
-        emit errorOccurred(i18n("An error occurred while trying to remove this item."));
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to remove this item."));
         qWarning() << job->errorString();
     });
 }
@@ -463,7 +463,7 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
         const bool renamed = QDir().rename(rowPath, newPath);
 
         if (!renamed) {
-            emit errorOccurred(i18n("An error occurred while trying to rename this item."));
+            Q_EMIT errorOccurred(i18n("An error occurred while trying to rename this item."));
             return;
         }
     }
@@ -557,7 +557,8 @@ bool NoteTreeModel::makeNote(const QString &groupPath, const QString &noteName)
             todo.close();
         }
     }
-    if (!noteFolderCreated || !creationSucces) emit errorOccurred(i18n("An error occurred while trying to create the note."));
+    if (!noteFolderCreated || !creationSucces)
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to create the note."));
 
     return (noteFolderCreated && creationSucces);
 }
@@ -567,7 +568,8 @@ bool NoteTreeModel::makeGroup(const QString &categoryPath, const QString &groupN
     const QString groupPath = categoryPath + QLatin1Char('/') + groupName;
 
     const bool groupCreated = KleverUtility::create(groupPath);
-    if (!groupCreated) emit errorOccurred(i18n("An error occurred while trying to create the group."));
+    if (!groupCreated)
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to create the group."));
     return groupCreated;
 }
 
@@ -576,13 +578,15 @@ bool NoteTreeModel::makeCategory(const QString &storagePath, const QString &cate
     const QString categoryPath = storagePath + QLatin1Char('/') + categoryName;
 
     const bool groupCreated = makeGroup(categoryPath, QStringLiteral(".BaseGroup"));
-    if (!groupCreated) emit errorOccurred(i18n("An error occurred while trying to create the category."));
+    if (!groupCreated)
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to create the category."));
     return groupCreated;
 }
 
 bool NoteTreeModel::makeStorage(const QString &storagePath)
 {
     const bool categoryCreated = makeCategory(storagePath, QStringLiteral("/.BaseCategory"));
-    if (!categoryCreated) emit errorOccurred(i18n("An error occurred while trying to create the storage."));
+    if (!categoryCreated)
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to create the storage."));
     return categoryCreated;
 }

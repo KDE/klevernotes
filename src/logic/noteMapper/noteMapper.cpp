@@ -161,17 +161,17 @@ void NoteMapper::addRow(const QStringList &infos)
     if (m_treeViewPaths.contains(path)) {
         exists = QStringLiteral("Yes");
 
+        static const QString headersStr = QStringLiteral("headers");
+        static const QString entirelyCheckStr = QStringLiteral("entirelyCheck");
         if (!headerText.isEmpty()) {
             bool entirelyCheck = false;
             QStringList headers;
             if (m_existsMap.contains(path)) {
                 const QVariantMap pathInfo = m_existsMap[path].toMap();
-                static const QString headersStr = QStringLiteral("headers");
                 if (pathInfo.contains(headersStr)) {
                     headers = pathInfo[headersStr].toStringList();
                 }
 
-                static const QString entirelyCheckStr = QStringLiteral("entirelyCheck");
                 if (pathInfo.contains(entirelyCheckStr)) {
                     entirelyCheck = pathInfo[entirelyCheckStr].toBool();
                 }
@@ -184,7 +184,7 @@ void NoteMapper::addRow(const QStringList &infos)
                 if (headerExists) {
                     // We don't update the "entirelyCheck" value, only NoteMapper::updatePathInfo can do it
                     headers.append(cleanedHeader);
-                    const QVariantMap newPathInfo = {{"headers", QVariant(headers)}, {"lastUpdate", QVariant(entirelyCheck)}};
+                    const QVariantMap newPathInfo = {{headersStr, QVariant(headers)}, {entirelyCheckStr, QVariant(entirelyCheck)}};
                     m_existsMap[path] = newPathInfo;
                 }
             }
@@ -302,7 +302,7 @@ void NoteMapper::addLinkedNotesInfos(const QList<QStringList> &linkedNotesInfos)
 
 void NoteMapper::updatePathInfo(const QString &path, const QStringList &headers)
 {
-    const QVariantMap newPathInfo = {{"headers", QVariant(headers)}, {"entirelyCheck", QVariant(true)}};
+    const QVariantMap newPathInfo = {{QStringLiteral("headers"), QVariant(headers)}, {QStringLiteral("entirelyCheck"), QVariant(true)}};
 
     m_existsMap[path] = newPathInfo;
 }

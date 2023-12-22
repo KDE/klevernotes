@@ -48,12 +48,12 @@ public:
     bool highlightEnabled() const;
     void addToNoteCodeBlocks(const QString &codeBlock);
 
-signals:
+Q_SIGNALS:
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
     void noteHeadersSent(const QString &notePath, const QStringList &noteHeaders);
 
-public slots:
+public Q_SLOTS:
     void newHighlightStyle();
 
 private:

@@ -112,7 +112,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             static const QRegularExpression tagReg = QRegularExpression(QStringLiteral("^<([\\s\\S]*)>$"));
             const QRegularExpressionMatch tagMatch = tagReg.match(href);
             href = href.replace(tagMatch.capturedStart(), tagMatch.capturedLength(), tagMatch.captured(1));
-            linkInfo = {{"href", escapes(href)}, {"title", escapes(title)}};
+            linkInfo = {{QStringLiteral("href"), escapes(href)}, {QStringLiteral("title"), escapes(title)}};
 
             out += outputLink(cap, linkInfo, useInlineText);
             m_inLink = false;

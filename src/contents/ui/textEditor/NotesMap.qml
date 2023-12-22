@@ -83,7 +83,7 @@ Kirigami.Dialog {
             id: missingLinks
 
             sourceModel: applicationWindow().noteMapper
-            @FILTER_NAMING@: "exists"
+            filterRoleName: "exists"
             filterString: "No"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
@@ -92,7 +92,7 @@ Kirigami.Dialog {
             id: existingLinks
 
             sourceModel: applicationWindow().noteMapper
-            @FILTER_NAMING@: "exists"
+            filterRoleName: "exists"
             filterString: "Yes"
             filterCaseSensitivity: Qt.CaseInsensitive
         }

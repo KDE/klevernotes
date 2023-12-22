@@ -29,7 +29,7 @@ QString execCommand(const QString &input)
 
     process.waitForFinished(5000); // if it takes more then 5 secs, there's a problem !
 
-    return process.exitCode() == 0 ? process.readAllStandardOutput() : QString();
+    return process.exitCode() == 0 ? QString::fromUtf8(process.readAllStandardOutput()) : QLatin1String();
 }
 
 bool commandExists(const QString &command)

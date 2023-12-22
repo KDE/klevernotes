@@ -23,10 +23,10 @@ private:
     void tokenize(QString &src, const bool top);
     QStringList splitCells(QString &tableRow, const int count = -1) const;
 
-    QMap<QString, QRegularExpression> preprocessRegex{{"\n", QRegularExpression("\r\n|\r|\u2424")},
-                                                      {"    ", QRegularExpression("\t")},
-                                                      {" ", QRegularExpression("\u00a0")},
-                                                      {"", QRegularExpression("^ +$")}};
+    QMap<QString, QRegularExpression> preprocessRegex{{QStringLiteral("\n"), QRegularExpression(QStringLiteral("\r\n|\r|\u2424"))},
+                                                      {QStringLiteral("    "), QRegularExpression(QStringLiteral("\t"))},
+                                                      {QStringLiteral(" "), QRegularExpression(QStringLiteral("\u00a0"))},
+                                                      {QStringLiteral(""), QRegularExpression(QStringLiteral("^ +$"))}};
 
     inline static const QRegularExpression block_newline = QRegularExpression(QStringLiteral("^\n+"));
 
