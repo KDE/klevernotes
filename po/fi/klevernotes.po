@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-10-12 18:08+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1147,7 +1147,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Poista valinnat"
 
-#: logic/kleverUtility.cpp:96
+#: logic/kleverUtility.cpp:99
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1166,7 +1166,7 @@ msgstr ""
 #: logic/printing/printingHelper.cpp:34
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
-msgid "An error occured while trying to copy this pdf."
+msgid "An error occurred while trying to copy this pdf."
 msgstr "Yritettäessä luoda kohdetta sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:276
@@ -1189,55 +1189,55 @@ msgstr "Yritettäessä poistaa kohdetta sattui virhe."
 msgid "An error occurred while trying to rename this item."
 msgstr "Yritettäessä muuttaa kohteen nimeä sattui virhe."
 
-#: logic/treeview/noteTreeModel.cpp:560
+#: logic/treeview/noteTreeModel.cpp:561
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Yritettäessä luoda muistiinpanoa sattui virhe."
 
-#: logic/treeview/noteTreeModel.cpp:570
+#: logic/treeview/noteTreeModel.cpp:572
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Yritettäessä luoda ryhmää sattui virhe."
 
-#: logic/treeview/noteTreeModel.cpp:579
+#: logic/treeview/noteTreeModel.cpp:582
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Yritettäessä luoda luokkaa sattui virhe."
 
-#: logic/treeview/noteTreeModel.cpp:586
+#: logic/treeview/noteTreeModel.cpp:590
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Yritettäessä luoda talletustilaa sattui virhe."
 
-#: main.cpp:55
+#: main.cpp:54
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:59
+#: main.cpp:58
 #, kde-format
 msgid "Application Description"
 msgstr "Sovelluksen kuvaus"
 
-#: main.cpp:63
+#: main.cpp:62
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "© 2022–2023"
 
-#: main.cpp:64
+#: main.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Tommi Nieminen"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-12-14 22:31+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1116,7 +1116,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Cancella marcate"
 
-#: logic/kleverUtility.cpp:96
+#: logic/kleverUtility.cpp:99
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1136,7 +1136,7 @@ msgstr ""
 #: logic/printing/printingHelper.cpp:34
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
-msgid "An error occured while trying to copy this pdf."
+msgid "An error occurred while trying to copy this pdf."
 msgstr ""
 "Si è verificato un errore durante il tentativo di creare questo elemento."
 
@@ -1165,55 +1165,55 @@ msgid "An error occurred while trying to rename this item."
 msgstr ""
 "Si è verificato un errore durante il tentativo di rinominare questo elemento."
 
-#: logic/treeview/noteTreeModel.cpp:560
+#: logic/treeview/noteTreeModel.cpp:561
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Si è verificato un errore durante il tentativo di creare la nota."
 
-#: logic/treeview/noteTreeModel.cpp:570
+#: logic/treeview/noteTreeModel.cpp:572
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Si è verificato un errore durante il tentativo di creare il gruppo."
 
-#: logic/treeview/noteTreeModel.cpp:579
+#: logic/treeview/noteTreeModel.cpp:582
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Si è verificato un errore durante il tentativo di creare la categoria."
 
-#: logic/treeview/noteTreeModel.cpp:586
+#: logic/treeview/noteTreeModel.cpp:590
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Si è verificato un errore durante il tentativo di creare l'archivio."
 
-#: main.cpp:55
+#: main.cpp:54
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:59
+#: main.cpp:58
 #, kde-format
 msgid "Application Description"
 msgstr "Descrizione dell'applicazione"
 
-#: main.cpp:63
+#: main.cpp:62
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:64
+#: main.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vincenzo Reale"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
-"PO-Revision-Date: 2023-12-13 21:55+0300\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"PO-Revision-Date: 2023-12-22 10:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 24.01.85\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -1118,7 +1118,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "İşaretliyi Temizle"
 
-#: logic/kleverUtility.cpp:96
+#: logic/kleverUtility.cpp:99
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1138,9 +1138,9 @@ msgstr ""
 
 #: logic/printing/printingHelper.cpp:34
 #, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
-msgid "An error occured while trying to copy this pdf."
-msgstr "Bu öge oluşturulmaya çalışılırken bir hata oluştu."
+#| msgid "An error occured while trying to copy this pdf."
+msgid "An error occurred while trying to copy this pdf."
+msgstr "Bu PDF kopyalanmaya çalışılırken bir hata oluştu."
 
 #: logic/treeview/noteTreeModel.cpp:276
 #, kde-format
@@ -1162,55 +1162,55 @@ msgstr "Bu öge kaldırılmaya çalışılırken bir hata oluştu."
 msgid "An error occurred while trying to rename this item."
 msgstr "Bu öge yeniden adlandırılmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:560
+#: logic/treeview/noteTreeModel.cpp:561
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Not oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:570
+#: logic/treeview/noteTreeModel.cpp:572
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Grup oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:579
+#: logic/treeview/noteTreeModel.cpp:582
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Kategori oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:586
+#: logic/treeview/noteTreeModel.cpp:590
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Depolama oluşturulmaya çalışılırken bir hata oluştu."
 
-#: main.cpp:55
+#: main.cpp:54
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "Akıllı Notlar"
 
-#: main.cpp:59
+#: main.cpp:58
 #, kde-format
 msgid "Application Description"
 msgstr "Uygulama Açıklaması"
 
-#: main.cpp:63
+#: main.cpp:62
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:64
+#: main.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Emir SARI"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

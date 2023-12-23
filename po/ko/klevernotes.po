@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-10-09 00:22+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1155,7 +1155,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "선택 항목 지우기"
 
-#: logic/kleverUtility.cpp:96
+#: logic/kleverUtility.cpp:99
 #, kde-format
 msgid ""
 "/*            \n"
@@ -1174,7 +1174,7 @@ msgstr ""
 #: logic/printing/printingHelper.cpp:34
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
-msgid "An error occured while trying to copy this pdf."
+msgid "An error occurred while trying to copy this pdf."
 msgstr "이 항목을 생성하는 중 오류가 발생했습니다."
 
 #: logic/treeview/noteTreeModel.cpp:276
@@ -1197,55 +1197,55 @@ msgstr "이 항목을 삭제하는 중 오류가 발생했습니다."
 msgid "An error occurred while trying to rename this item."
 msgstr "이 항목의 이름을 변경하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:560
+#: logic/treeview/noteTreeModel.cpp:561
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "메모를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:570
+#: logic/treeview/noteTreeModel.cpp:572
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "그룹을 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:579
+#: logic/treeview/noteTreeModel.cpp:582
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "분류를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/noteTreeModel.cpp:586
+#: logic/treeview/noteTreeModel.cpp:590
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
 
-#: main.cpp:55
+#: main.cpp:54
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:59
+#: main.cpp:58
 #, kde-format
 msgid "Application Description"
 msgstr "앱 설명"
 
-#: main.cpp:63
+#: main.cpp:62
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:64
+#: main.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: main.cpp:69
+#: main.cpp:68
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
