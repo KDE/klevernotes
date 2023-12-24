@@ -98,6 +98,13 @@ Kirigami.AbstractCard {
                     source: "edit-entry"
                 }
             }
+
+            onClicked: {
+                todoDialog.callerModelIndex = index
+                todoDialog.name = displayTitle.text
+                todoDialog.description = descriptionLabel.text
+                todoDialog.open()
+            }
         }
     }
 
