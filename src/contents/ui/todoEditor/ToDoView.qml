@@ -223,6 +223,6 @@ ColumnLayout {
             const model = todoModel.get(idx)
             json.todos.push(model)
         }
-        DocumentHandler.writeTodos(json, root.path)
+        DocumentHandler.saveJson(json, root.path)
     }
 }
