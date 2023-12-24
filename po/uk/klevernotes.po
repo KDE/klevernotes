@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-23 00:42+0000\n"
-"PO-Revision-Date: 2023-12-22 09:22+0200\n"
+"PO-Revision-Date: 2023-12-23 08:52+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -1133,8 +1133,7 @@ msgstr ""
 "*/\n"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occured while trying to copy this pdf."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Сталася помилка під час спроби скопіювати цей PDF."
 
