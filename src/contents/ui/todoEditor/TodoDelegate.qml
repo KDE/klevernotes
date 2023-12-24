@@ -5,115 +5,121 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as Controls
 
-import org.kde.kirigami 2.19 as Kirigami
-
-import org.kde.Klever 1.0
+import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.AbstractCard {
     id: card
 
-    width: parent.width
+    padding: 0
+    implicitWidth: cardsView.width
 
-    contentItem: Item {
-        id: holder
+    contentItem: RowLayout {
+        spacing: 0
+        // Tried to used a FormCheckDelegate with a custom trailing, doesn't work :/
+        FormCard.AbstractFormDelegate {
+            id: check
 
-        implicitWidth: parent.width
-        implicitHeight: Kirigami.Units.iconSizes.large
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width - editButton.width
+            Layout.alignment: Qt.AlignTop
+            Layout.margins: 0
 
-        RowLayout {
-            id: delegateLayout
+            contentItem: RowLayout {
+                Controls.CheckBox {
+                    id: checkbox
 
-            anchors.fill: parent
+                    checked: todoChecked
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
-            Controls.CheckBox {
-                id: check
-
-                checked: todoChecked
-                Layout.alignment: Qt.AlignVCenter
-
-                onCheckedChanged: {
-                    todoModel.setProperty(index, "todoChecked", checked)
-                    root.saveTodos()
-                }
-            }
-
-            ColumnLayout {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                Kirigami.Heading {
-                    id: displayTitle
-
-                    text: todoTitle
-                    level: 2
-                    elide: Text.ElideRight
-
-                    Layout.fillWidth: true
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
-                }
-                Kirigami.Separator {
-                    visible: descriptionLabel.text.length > 0
-
-                    Layout.fillWidth: true
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
+                    onCheckedChanged: {
+                        todoModel.setProperty(index, "todoChecked", checked)
+                        root.saveTodos()
+                    }
                 }
 
                 ColumnLayout {
-                    id: expendable
-
-                    spacing: 0
-
                     Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    Layout.margins: 0
+                    Kirigami.Heading {
+                        id: displayTitle
+
+                        text: todoTitle
+                        level: 1
+                        elide: Text.ElideRight
+
+                        Layout.fillWidth: true
+                    }
+
+                    Kirigami.Separator {
+                        id: centralSeperator
+
+                        Layout.fillWidth: true
+                    }
 
                     Controls.Label {
                         id: descriptionLabel
 
                         text: todoDesc
                         elide: Text.ElideRight
-                        wrapMode: Text.WordWrap
+                        wrapMode: Text.WrapAnywhere
+                        maximumLineCount: 1
 
+                        // Both are required the center part of the whole delegate goes crazy without this
                         Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        Layout.margins: 0
+
+                        Behavior on maximumLineCount {
+                            NumberAnimation { duration: Kirigami.Units.shortDuration }
+                        }
                     }
                 }
             }
 
-            Controls.Button {
-                id: editButton
+            onClicked: {
+                checkbox.checked = !checkbox.checked
+            }
+        }
 
-                icon.name: "document-edit"
-                icon.height: Kirigami.Units.iconSizes.small
+        FormCard.AbstractFormDelegate {
+            id: editButton
 
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+            Layout.fillHeight: true
+            Layout.preferredWidth: Kirigami.Units.iconSizes.large
 
-                onClicked: {
-                    todoDialog.callerModelIndex = index
-                    todoDialog.name = displayTitle.text
-                    todoDialog.description = descriptionLabel.text
-                    todoDialog.open()
+            // Can't put the icon directly, won't let me change the size
+            contentItem: Item {
+                anchors.fill: parent
+                Kirigami.Icon {
+                    x: width / 2
+                    y: Math.round((parent.height - width) / 2)
+                    width: Math.round(parent.width / 2)
+                    height: Math.round(parent.width / 2)
+
+                    source: "edit-entry"
                 }
             }
         }
     }
 
-    footer: Controls.Button{
-        id: expend
+    footer: FormCard.AbstractFormDelegate {
+        focusPolicy: Qt.StrongFocus
+        visible: descriptionLabel.truncated || descriptionLabel.maximumLineCount > 1
 
-        height: Kirigami.Units.iconSizes.small * 2
+        contentItem: RowLayout {
+            spacing: 0
 
-        icon.name: descriptionLabel.implicitHeight > expendable.height ? "expand" : "collapse"
-        icon.height: Kirigami.Units.iconSizes.small
+            FormCard.FormArrow {
+                direction: descriptionLabel.truncated ? Qt.DownArrow : Qt.UpArrow
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            }
+        }
 
-        visible: (descriptionLabel.implicitHeight - 10 > expendable.height ||
-        holder.implicitHeight > Kirigami.Units.iconSizes.large)
+        Accessible.onPressAction: action ? action.trigger() : root.clicked()
 
         onClicked: {
-            holder.implicitHeight = holder.implicitHeight == Kirigami.Units.iconSizes.large
-                ? delegateLayout.implicitHeight
-                : Kirigami.Units.iconSizes.large
+            descriptionLabel.maximumLineCount = descriptionLabel.truncated
+                ? 12
+                : 1
         }
     }
 }
