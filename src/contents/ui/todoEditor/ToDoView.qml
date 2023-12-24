@@ -6,6 +6,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as Controls
 
 import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
@@ -72,13 +73,22 @@ ColumnLayout {
             id: todoModel
         }
     }
-
-    Controls.Button {
-        icon.name: "list-add-symbolic"
-        icon.width: Kirigami.Units.iconSizes.medium
-        icon.height: Kirigami.Units.iconSizes.medium
-
+    
+    FormCard.AbstractFormDelegate {
         Layout.fillWidth: true
+
+        contentItem: RowLayout {
+            spacing: 0
+
+            Kirigami.Icon {
+                width: Kirigami.Units.iconSizes.medium
+                height: Kirigami.Units.iconSizes.medium
+
+                source: "list-add-symbolic"
+
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            }
+        }
 
         onClicked: {
             todoDialog.open()
