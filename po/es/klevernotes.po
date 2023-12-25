@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-23 00:42+0000\n"
-"PO-Revision-Date: 2023-12-12 19:25+0100\n"
+"PO-Revision-Date: 2023-12-24 12:24+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1134,10 +1134,9 @@ msgstr ""
 "*/\n"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr "Ha ocurrido un error al intentar crear este elemento."
+msgstr "Ha ocurrido un error al intentar copiar este PDF."
 
 #: logic/treeview/noteTreeModel.cpp:276
 #, kde-format
