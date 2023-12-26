@@ -269,6 +269,18 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             outputed = output(cap1);
 
             out += Renderer::del(outputed);
+
+            continue;
+        }
+
+        cap = inline_highlight.match(src);
+        if (cap.hasMatch()) {
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+
+            cap1 = cap.captured(1);
+            outputed = output(cap1);
+
+            out += QStringLiteral("HIGHLIGHT ICI !!");
             continue;
         }
 
