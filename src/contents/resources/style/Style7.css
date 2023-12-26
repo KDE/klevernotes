@@ -130,6 +130,10 @@ hr {
     background-color: var(--titleColor);
 }
 
+mark {
+    background-color: var(--linkColor);
+}
+
 body > h2:first-child {
     margin-top: 0;
     padding-top: 0;

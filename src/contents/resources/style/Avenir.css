@@ -114,6 +114,9 @@ a:visited {
     color: var(--visitedLinkColor);
 }
 
+mark {
+    background-color: var(--linkColor);
+}
 
 code, pre {
     font-family: var(--codeFont), monospace;

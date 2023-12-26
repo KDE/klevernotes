@@ -119,6 +119,10 @@ li::marker {
     color: var(--linkColor);
 }
 
+mark {
+    background-color: var(--linkColor);
+}
+
 /* For custom checkbox
  *thanks to https://moderncss.dev/pure-css-custom-checkbox-style/
  */

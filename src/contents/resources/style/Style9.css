@@ -99,6 +99,10 @@ hr {
     filter: brightness(130%);
 }
 
+mark {
+    background-color: var(--linkColor);
+}
+
 blockquote {
     padding: 13px 13px 21px 15px;
     margin-bottom: 18px;
