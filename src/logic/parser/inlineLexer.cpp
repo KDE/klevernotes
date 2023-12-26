@@ -280,7 +280,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             cap1 = cap.captured(1);
             outputed = output(cap1);
 
-            out += QStringLiteral("HIGHLIGHT ICI !!");
+            out += Renderer::mark(outputed);
             continue;
         }
 

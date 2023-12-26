@@ -125,6 +125,11 @@ QString Renderer::del(const QString &text)
     return QStringLiteral("<del>") + text + QStringLiteral("</del>");
 }
 
+QString Renderer::mark(const QString &text)
+{
+    return QStringLiteral("<mark>") + text + QStringLiteral("</mark>");
+}
+
 QString Renderer::wikilink(const QString &href, const QString &title, const QString &text)
 {
     const QString leading = QStringLiteral("<a href=\"") + href + QStringLiteral("\"");
