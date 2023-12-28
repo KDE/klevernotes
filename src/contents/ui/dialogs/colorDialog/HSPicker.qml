@@ -107,10 +107,10 @@ Item {
 
         cursorShape: (containsPress) ? Qt.CrossCursor : Qt.ArrowCursor
 
-        onPressed: {
+        onPressed: function (mouse) {
             handleMouse(mouse)
         }
-        onPositionChanged: {
+        onPositionChanged: function (mouse) {
             handleMouse(mouse)
         }
 

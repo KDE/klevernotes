@@ -25,7 +25,9 @@ FormCard.FormCardPage {
             subtitle: i18n("Please choose a location for your future KleverNotes storage or select an existing one.\n")
             firstSetup: false
 
-            onClosed: storageField.text = Config.storagePath
+            onClosed: {
+                storageField.text = Config.storagePath
+            }
         },
         NamingDialog {
             id: namingDialog
@@ -39,7 +41,7 @@ FormCard.FormCardPage {
 
             property var caller
 
-            onCallerChanged: {
+            onCallerChanged: if (caller) {
                 selectedColor = caller.color
             }
             onApplied: {

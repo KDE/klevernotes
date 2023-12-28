@@ -11,7 +11,7 @@ Kirigami.NavigationTabBar {
     actions: [
         Kirigami.Action {
             text: i18nc("@label, tab (inside tab bar), general settings of the app", "General")
-            icon.name: "settings"
+            icon.name: "settings-configure" 
             checked: root.currentTab === "general"
             onTriggered: {
                 root.currentTab = "general"
