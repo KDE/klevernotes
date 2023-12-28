@@ -43,6 +43,7 @@ RowLayout {
         '--linkColor': Config.viewLinkColor !== "None" ? Config.viewLinkColor : Kirigami.Theme.linkColor,
         '--visitedLinkColor': Config.viewVisitedLinkColor !== "None" ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
         '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
+        '--highlightColor': Config.viewHighlightColor !== "None" ? Config.viewHighlightColor : Kirigami.Theme.highlightColor,
         '--codeFont': codeFontInfo.family,
         '--codeFontSize': codeFontInfo.pointSize + "px",
     }

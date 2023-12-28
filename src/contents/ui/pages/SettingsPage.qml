@@ -134,6 +134,9 @@ FormCard.FormCardPage {
             case "code":
                 Config.viewCodeColor = selectedColor
                 break;
+            case "highlight":
+                Config.viewHighlightColor = selectedColor
+                break;
         }
     }
 }

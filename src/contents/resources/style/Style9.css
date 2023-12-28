@@ -7,6 +7,7 @@
     --linkColor: ;
     --visitedLinkColor: ;
     --codeColor: ;
+    --highlightColor: ;
     --codeFont: ;
     --codeFontSize: ;
 }
@@ -100,7 +101,7 @@ hr {
 }
 
 mark {
-    background-color: var(--linkColor);
+    background-color: var(--highlightColor);
 }
 
 blockquote {

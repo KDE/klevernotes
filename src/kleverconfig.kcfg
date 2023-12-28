@@ -31,39 +31,44 @@
             <default>New Note</default>
         </entry>
         <entry name="editorFont" type="Font">
-            <label>The default text editor font (if note specified default to system theme)</label>
+            <label>The default text editor font (if not specified default to system theme)</label>
         </entry>
 
         <entry name="viewBodyColor" type="String">
-            <label>The default text view body color (if note specified default to system theme)</label>
+            <label>The default text view body color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
         <entry name="codeFont" type="Font">
             <label>The default code block font</label>
         </entry>
         <entry name="viewFont" type="Font">
-            <label>The default text view font (if note specified default to system theme)</label>
+            <label>The default text view font (if not specified default to system theme)</label>
         </entry>
         <entry name="viewTextColor" type="String">
-            <label>The default text view text color (if note specified default to system theme)</label>
+            <label>The default text view text color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
         <entry name="viewTitleColor" type="String">
-            <label>The default text view title color (if note specified default to system theme)</label>
+            <label>The default text view title color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
         <entry name="viewLinkColor" type="String">
-            <label>The default text view link color (if note specified default to system theme)</label>
+            <label>The default text view link color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
         <entry name="viewVisitedLinkColor" type="String">
-            <label>The default text view visited link color (if note specified default to system theme)</label>
+            <label>The default text view visited link color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
         <entry name="viewCodeColor" type="String">
-            <label>The default text view code color (if note specified default to system theme)</label>
+            <label>The default text view code color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
+        <entry name="viewHighlightColor" type="String">
+            <label>The default text view highlight color (if not specified default to system theme)</label>
+            <default>None</default>
+        </entry>
+
         <entry name="stylePath" type="Path">
             <label>Path to the note display css style</label>
             <default>:/KleverStyle.css</default>

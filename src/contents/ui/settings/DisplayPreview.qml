@@ -66,8 +66,6 @@ FormCard.FormCard {
     }
     RowLayout {
         SettingsColorButton {
-            id: linkButton
-
             name: "link"
             title: i18nc("@label:button", "Link color:")
 
@@ -103,9 +101,17 @@ FormCard.FormCard {
             Layout.preferredWidth: displayer.width / 2
         }
 
-        Item {
+       SettingsColorButton {
+            name: "highlight"
+            title: i18nc("@label:button", "Highlight color:")
+
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: (Config.viewHighlightColor !== "None") ? Config.viewHighlightColor : Kirigami.Theme.highlightColor
+
+            Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: displayer.width / 2
-        }
+        } 
     }
 
     FontPicker {

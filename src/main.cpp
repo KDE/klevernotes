@@ -84,6 +84,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::viewLinkColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewVisitedLinkColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewCodeColorChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::viewHighlightColorChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
