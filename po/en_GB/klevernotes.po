@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-06-17 12:18+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -515,91 +515,22 @@ msgstr ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 
-#: contents/ui/pages/SettingsPage.qml:64
-#, fuzzy, kde-format
-#| msgid "General"
-msgctxt "@title, general settings"
-msgid "General"
-msgstr "General"
+#: contents/ui/settings/AppearanceTab.qml:18
+#, kde-format
+msgctxt "@title, as in text editor"
+msgid "Editor"
+msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:75
-#, fuzzy, kde-format
-#| msgid "Storage path:"
-msgctxt ""
-"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
-msgid "Storage path:"
-msgstr "Storage path:"
-
-#: contents/ui/pages/SettingsPage.qml:100
-#, fuzzy, kde-format
-#| msgid "New Category name:"
-msgctxt "@label:textbox, the default note category name"
-msgid "New Category name:"
-msgstr "New Category name:"
-
-#: contents/ui/pages/SettingsPage.qml:130
-#, fuzzy, kde-format
-#| msgid "New Group name:"
-msgctxt "@label:textbox, the default note group name"
-msgid "New Group name:"
-msgstr "New Group name:"
-
-#: contents/ui/pages/SettingsPage.qml:160
-#, fuzzy, kde-format
-#| msgid "New Note name:"
-msgctxt "@label:textbox, the default note name"
-msgid "New Note name:"
-msgstr "New Note name:"
-
-#: contents/ui/pages/SettingsPage.qml:187
+#: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
 msgstr ""
 
-#: contents/ui/pages/SettingsPage.qml:197
-#, fuzzy, kde-format
-#| msgid "Note display"
-msgctxt ""
-"@title, display as in 'the note display' where you can visualize the note"
-msgid "Display"
-msgstr "Note display"
-
-#: contents/ui/pages/SettingsPage.qml:206
-#, fuzzy, kde-format
-#| msgid "KleverNotes painting"
-msgctxt "@title"
-msgid "KleverNotes plugins"
-msgstr "KleverNotes painting"
-
-#: contents/ui/pages/SettingsPage.qml:218
+#: contents/ui/settings/AppearanceTab.qml:38
 #, kde-format
-msgctxt "@label:checkbox"
-msgid "Enable note linking"
-msgstr ""
-
-#: contents/ui/pages/SettingsPage.qml:219
-#, kde-format
-msgctxt "@description:checkbox"
-msgid "Note linking allows you to create a link from one note to another."
-msgstr ""
-
-#: contents/ui/pages/SettingsPage.qml:220
-#, kde-format
-msgctxt "@description:checkbox"
-msgid "Advice: restart the app once activated."
-msgstr ""
-
-#: contents/ui/pages/SettingsPage.qml:233
-#, kde-format
-msgctxt "@label:checkbox"
-msgid "Enable code syntax highlighting"
-msgstr ""
-
-#: contents/ui/pages/SettingsPage.qml:234
-#, kde-format
-msgctxt "@description:checkbox"
-msgid "List of supported highlighters"
+msgctxt "@title, where you can view the renderer note"
+msgid "Note preview"
 msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:20
@@ -643,14 +574,14 @@ msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Code colour:"
 
-#: contents/ui/settings/DisplayPreview.qml:113
+#: contents/ui/settings/DisplayPreview.qml:112
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "General"
 
-#: contents/ui/settings/DisplayPreview.qml:124
+#: contents/ui/settings/DisplayPreview.qml:123
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -666,6 +597,113 @@ msgstr ""
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:19
+#, fuzzy, kde-format
+#| msgid "Stored image"
+msgctxt ""
+"@title, general storage settings, Storage as in 'the folder where all the "
+"notes will be stored'"
+msgid "Storage"
+msgstr "Stored image"
+
+#: contents/ui/settings/GeneralTab.qml:30
+#, fuzzy, kde-format
+#| msgid "Storage path:"
+msgctxt ""
+"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
+msgid "Storage path:"
+msgstr "Storage path:"
+
+#: contents/ui/settings/GeneralTab.qml:48
+#, kde-format
+msgctxt "@title, general sidebar settings"
+msgid "Sidebar"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:62
+#, fuzzy, kde-format
+#| msgid "New Category name:"
+msgctxt "@label:textbox, the default note category name"
+msgid "New Category name:"
+msgstr "New Category name:"
+
+#: contents/ui/settings/GeneralTab.qml:92
+#, fuzzy, kde-format
+#| msgid "New Group name:"
+msgctxt "@label:textbox, the default note group name"
+msgid "New Group name:"
+msgstr "New Group name:"
+
+#: contents/ui/settings/GeneralTab.qml:122
+#, fuzzy, kde-format
+#| msgid "New Note name:"
+msgctxt "@label:textbox, the default note name"
+msgid "New Note name:"
+msgstr "New Note name:"
+
+#: contents/ui/settings/PluginsTab.qml:19
+#, kde-format
+msgctxt "@title"
+msgid "Utility plugins"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:31
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable note linking"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:32
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "Note linking allows you to create a link from one note to another."
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:33
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "Advice: restart the app once activated."
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:43
+#, kde-format
+msgctxt "@title"
+msgid "Cosmetic plugins"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:55
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable code syntax highlighting"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:56
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "List of supported highlighters"
+msgstr ""
+
+#: contents/ui/settings/TabBar.qml:13
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@label, tab (inside tab bar), general settings of the app"
+msgid "General"
+msgstr "General"
+
+#: contents/ui/settings/TabBar.qml:21
+#, kde-format
+msgctxt ""
+"@label, tab (inside tab bar), all settings related to the general appearance "
+"of the app"
+msgid "Appearance"
+msgstr ""
+
+#: contents/ui/settings/TabBar.qml:29
+#, kde-format
+msgctxt "@label, tab (inside tab bar), all things related to plugins"
+msgid "Plugins"
 msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:49
@@ -1297,13 +1335,23 @@ msgid "Your emails"
 msgstr "steve.allewell@gmail.com"
 
 #, fuzzy
+#~| msgid "Note display"
+#~ msgctxt ""
+#~ "@title, display as in 'the note display' where you can visualize the note"
+#~ msgid "Display"
+#~ msgstr "Note display"
+
+#, fuzzy
+#~| msgid "KleverNotes painting"
+#~ msgctxt "@title"
+#~ msgid "KleverNotes plugins"
+#~ msgstr "KleverNotes painting"
+
+#, fuzzy
 #~| msgid "Font:"
 #~ msgctxt "@label:textbox"
 #~ msgid "Font:"
 #~ msgstr "Font:"
-
-#~ msgid "Stored image"
-#~ msgstr "Stored image"
 
 #~ msgid "Your "
 #~ msgstr "Your "

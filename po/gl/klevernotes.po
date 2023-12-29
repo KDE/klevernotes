@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-12-24 08:20+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -462,85 +462,29 @@ msgid ""
 msgstr ""
 "Escolla a localización onde ten ou quere o almacenamento de KleverNotes.\n"
 
-#: contents/ui/pages/SettingsPage.qml:64
-#, kde-format
-msgctxt "@title, general settings"
-msgid "General"
-msgstr "Xeral"
+#: contents/ui/settings/AppearanceTab.qml:18
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox, the font used in the text editor"
+#| msgid "Editor font:"
+msgctxt "@title, as in text editor"
+msgid "Editor"
+msgstr "Fonte do editor:"
 
-#: contents/ui/pages/SettingsPage.qml:75
-#, kde-format
-msgctxt ""
-"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
-msgid "Storage path:"
-msgstr "Ruta de almacenamento:"
-
-#: contents/ui/pages/SettingsPage.qml:100
-#, kde-format
-msgctxt "@label:textbox, the default note category name"
-msgid "New Category name:"
-msgstr "Nome da nova categoría:"
-
-#: contents/ui/pages/SettingsPage.qml:130
-#, kde-format
-msgctxt "@label:textbox, the default note group name"
-msgid "New Group name:"
-msgstr "Nome do novo grupo:"
-
-#: contents/ui/pages/SettingsPage.qml:160
-#, kde-format
-msgctxt "@label:textbox, the default note name"
-msgid "New Note name:"
-msgstr "Nome da nova nota:"
-
-#: contents/ui/pages/SettingsPage.qml:187
+#: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
 msgstr "Fonte do editor:"
 
-#: contents/ui/pages/SettingsPage.qml:197
-#, kde-format
-msgctxt ""
-"@title, display as in 'the note display' where you can visualize the note"
-msgid "Display"
-msgstr "Visualización"
-
-#: contents/ui/pages/SettingsPage.qml:206
-#, kde-format
-msgctxt "@title"
-msgid "KleverNotes plugins"
-msgstr "Complementos de KleverNotes"
-
-#: contents/ui/pages/SettingsPage.qml:218
-#, kde-format
-msgctxt "@label:checkbox"
-msgid "Enable note linking"
-msgstr "Activar a ligazón de notas"
-
-#: contents/ui/pages/SettingsPage.qml:219
-#, kde-format
-msgctxt "@description:checkbox"
-msgid "Note linking allows you to create a link from one note to another."
-msgstr "A ligazón de notas permite crear unha ligazón dunha nota a outra."
-
-#: contents/ui/pages/SettingsPage.qml:220
-#, kde-format
-msgctxt "@description:checkbox"
-msgid "Advice: restart the app once activated."
-msgstr "Consello: reinicie a aplicación despois de activalo."
-
-#: contents/ui/pages/SettingsPage.qml:233
-#, kde-format
-msgctxt "@label:checkbox"
-msgid "Enable code syntax highlighting"
-msgstr "Activar o realce de sintaxe de código"
-
-#: contents/ui/pages/SettingsPage.qml:234
-#, kde-format
-msgctxt "@description:checkbox"
-msgid "List of supported highlighters"
-msgstr "Lista de realzadores permitidos"
+#: contents/ui/settings/AppearanceTab.qml:38
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@tooltip, display as in 'the note preview', will be followed by the "
+#| "shortcut"
+#| msgid "View/Hide preview"
+msgctxt "@title, where you can view the renderer note"
+msgid "Note preview"
+msgstr "Amosar ou agochar a vista previa"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -578,13 +522,13 @@ msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Cor do código:"
 
-#: contents/ui/settings/DisplayPreview.qml:113
+#: contents/ui/settings/DisplayPreview.qml:112
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Fonte xeral:"
 
-#: contents/ui/settings/DisplayPreview.qml:124
+#: contents/ui/settings/DisplayPreview.qml:123
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -601,6 +545,110 @@ msgstr "Realzador"
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr "Estilo do realzador"
+
+#: contents/ui/settings/GeneralTab.qml:19
+#, fuzzy, kde-format
+#| msgid "Stored image"
+msgctxt ""
+"@title, general storage settings, Storage as in 'the folder where all the "
+"notes will be stored'"
+msgid "Storage"
+msgstr "Imaxe almacenada"
+
+#: contents/ui/settings/GeneralTab.qml:30
+#, kde-format
+msgctxt ""
+"@label:textbox, Storage as in 'the folder where all the notes will be stored'"
+msgid "Storage path:"
+msgstr "Ruta de almacenamento:"
+
+#: contents/ui/settings/GeneralTab.qml:48
+#, kde-format
+msgctxt "@title, general sidebar settings"
+msgid "Sidebar"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:62
+#, kde-format
+msgctxt "@label:textbox, the default note category name"
+msgid "New Category name:"
+msgstr "Nome da nova categoría:"
+
+#: contents/ui/settings/GeneralTab.qml:92
+#, kde-format
+msgctxt "@label:textbox, the default note group name"
+msgid "New Group name:"
+msgstr "Nome do novo grupo:"
+
+#: contents/ui/settings/GeneralTab.qml:122
+#, kde-format
+msgctxt "@label:textbox, the default note name"
+msgid "New Note name:"
+msgstr "Nome da nova nota:"
+
+#: contents/ui/settings/PluginsTab.qml:19
+#, kde-format
+msgctxt "@title"
+msgid "Utility plugins"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:31
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable note linking"
+msgstr "Activar a ligazón de notas"
+
+#: contents/ui/settings/PluginsTab.qml:32
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "Note linking allows you to create a link from one note to another."
+msgstr "A ligazón de notas permite crear unha ligazón dunha nota a outra."
+
+#: contents/ui/settings/PluginsTab.qml:33
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "Advice: restart the app once activated."
+msgstr "Consello: reinicie a aplicación despois de activalo."
+
+#: contents/ui/settings/PluginsTab.qml:43
+#, kde-format
+msgctxt "@title"
+msgid "Cosmetic plugins"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:55
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable code syntax highlighting"
+msgstr "Activar o realce de sintaxe de código"
+
+#: contents/ui/settings/PluginsTab.qml:56
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "List of supported highlighters"
+msgstr "Lista de realzadores permitidos"
+
+#: contents/ui/settings/TabBar.qml:13
+#, fuzzy, kde-format
+#| msgctxt "@title, general settings"
+#| msgid "General"
+msgctxt "@label, tab (inside tab bar), general settings of the app"
+msgid "General"
+msgstr "Xeral"
+
+#: contents/ui/settings/TabBar.qml:21
+#, kde-format
+msgctxt ""
+"@label, tab (inside tab bar), all settings related to the general appearance "
+"of the app"
+msgid "Appearance"
+msgstr ""
+
+#: contents/ui/settings/TabBar.qml:29
+#, kde-format
+msgctxt "@label, tab (inside tab bar), all things related to plugins"
+msgid "Plugins"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -1207,12 +1255,18 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adrian@chaves.io"
 
+#~ msgctxt ""
+#~ "@title, display as in 'the note display' where you can visualize the note"
+#~ msgid "Display"
+#~ msgstr "Visualización"
+
+#~ msgctxt "@title"
+#~ msgid "KleverNotes plugins"
+#~ msgstr "Complementos de KleverNotes"
+
 #~ msgctxt "@label:textbox"
 #~ msgid "Font:"
 #~ msgstr "Fonte:"
-
-#~ msgid "Stored image"
-#~ msgstr "Imaxe almacenada"
 
 #~ msgid "Your "
 #~ msgstr "Súa "
