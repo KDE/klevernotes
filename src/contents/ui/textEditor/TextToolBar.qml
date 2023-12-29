@@ -197,6 +197,18 @@ Kirigami.ActionToolBar {
 
                 handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
             }
+        },
+        Kirigami.Action {
+            id: highlightAction
+            shortcut: "Ctrl+Alt+H"
+            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Text highlight") + " (" + shortcut + ")"
+            icon.name: "draw-highlight"
+            onTriggered: {
+                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                                 editorTextArea.selectionEnd);
+
+                handleAction(selectionStart, selectionEnd, ["=="], true, false, false)
+            }
         }
     ]
 
