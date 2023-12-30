@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2023-12-23 11:33+0300\n"
+"PO-Revision-Date: 2023-12-29 10:21+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.01.85\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -468,12 +468,10 @@ msgstr ""
 "olan bir tanesini seçin.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "Düzenleyici yazıtipi:"
+msgstr "Düzenleyici"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -482,14 +480,10 @@ msgid "Editor font:"
 msgstr "Düzenleyici yazıtipi:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Önizlemeyi görüntüle/gizle"
+msgstr "Not Önizlemesi"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -552,16 +546,12 @@ msgid "Highlighter style"
 msgstr "Vurgulayıcı biçemi"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Depolama yolu:"
+msgstr "Depolama"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -574,7 +564,7 @@ msgstr "Depolama yolu:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Kenar Çubuğu"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -598,7 +588,7 @@ msgstr "Yeni not adı:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "İzlence Eklentileri"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -624,7 +614,7 @@ msgstr "Tavsiye: Etkinleştirdikten sonra uygulamayı yeniden başlatın."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Kozmetik Eklentiler"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -639,9 +629,7 @@ msgid "List of supported highlighters"
 msgstr "Desteklenen vurgulayıcıların listesi"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Genel"
@@ -652,13 +640,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Görünüş"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Eklentiler"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format

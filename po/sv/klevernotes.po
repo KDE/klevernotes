@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2023-12-28 16:54+0100\n"
+"PO-Revision-Date: 2023-12-29 08:10+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -466,12 +466,10 @@ msgstr ""
 "plats.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "Teckensnitt för editor:"
+msgstr "Editor"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -480,14 +478,10 @@ msgid "Editor font:"
 msgstr "Teckensnitt för editor:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Visa eller dölj förhandsgranskning"
+msgstr "Förhandsgranskning av anteckning"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -550,13 +544,12 @@ msgid "Highlighter style"
 msgstr "Färgläggningsstil"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Lagrad bild"
+msgstr "Lagring"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -569,7 +562,7 @@ msgstr "Lagringssökväg:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Sidorad"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -593,7 +586,7 @@ msgstr "Nytt anteckningsnamn:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Verktygsinsticksprogram"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -618,7 +611,7 @@ msgstr "Råd: starta om programmet när det är aktiverat."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Utseendeinsticksprogram"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -633,9 +626,7 @@ msgid "List of supported highlighters"
 msgstr "Lista över färgläggningar som stöds"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Allmänt"
@@ -646,13 +637,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Utseende"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Insticksprogram"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format

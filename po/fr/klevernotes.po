@@ -1267,7 +1267,7 @@ msgstr "Louis Schul"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Xavier BESNARD"
+msgstr "Xavier Besnard"
 
 #: main.cpp:68
 #, kde-format

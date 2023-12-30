@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2023-12-23 08:04+0100\n"
+"PO-Revision-Date: 2023-12-29 19:12+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -464,12 +464,10 @@ msgstr ""
 "Izberite mesto za vašo bodočo hrambo KleverNotes ali izberite obstoječo.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "Pisava urejevalnika:"
+msgstr "Urejevalnik"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -478,14 +476,10 @@ msgid "Editor font:"
 msgstr "Pisava urejevalnika:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Ogled/skrij predogled"
+msgstr "Predogled opombe"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -548,16 +542,12 @@ msgid "Highlighter style"
 msgstr "Slog označevalnika"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Pot shrambe:"
+msgstr "Shramba"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -570,7 +560,7 @@ msgstr "Pot shrambe:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Stranska letvica"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -594,7 +584,7 @@ msgstr "Novo ime zabeležke:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Uporabni vtičniki"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -621,7 +611,7 @@ msgstr "Nasvet: znova zaženite aplikacijo, ko je aktivirana."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Kozmetični vtičniki"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -636,9 +626,7 @@ msgid "List of supported highlighters"
 msgstr "Seznam podprtih označevalnikov"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Splošno"
@@ -649,13 +637,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Videz"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Vtičniki"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
