@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2023-12-24 05:11+0100\n"
+"POT-Creation-Date: 2023-12-31 00:42+0000\n"
+"PO-Revision-Date: 2023-12-30 06:06+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -468,12 +468,10 @@ msgstr ""
 "არსებული.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "რედაქტორის ფონტი:"
+msgstr "რედაქტორი"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -482,14 +480,10 @@ msgid "Editor font:"
 msgstr "რედაქტორის ფონტი:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "მინიატურის ჩვენება/დამალვა"
+msgstr "შენიშვნის მინიატურა"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -552,13 +546,12 @@ msgid "Highlighter style"
 msgstr "გამომკვეთის სტილი"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "დამახსოვრებული გამოსახულება"
+msgstr "საცავი"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -571,7 +564,7 @@ msgstr "საცავის ბილიკი:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "გვერდითი ზოლი"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -595,7 +588,7 @@ msgstr "ახალი შენიშვნის სახელი:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "ხელსაწყო დამატებები"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -621,7 +614,7 @@ msgstr "რჩევა: გადატვირთეთ აპი აქტ�
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "დამხმარე დამატებები"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -636,9 +629,7 @@ msgid "List of supported highlighters"
 msgstr "მხარდაჭერილი გამომკვეთების სია"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "ზოგადი"
@@ -649,13 +640,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "გარეგნობა"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "დამატებები"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -1160,7 +1151,7 @@ msgstr "დაულაგებელი სია"
 msgid "Header"
 msgstr "სათაური"
 
-#: contents/ui/todoEditor/ToDoView.qml:22
+#: contents/ui/todoEditor/ToDoView.qml:23
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2023-12-24 08:20+0100\n"
+"POT-Creation-Date: 2023-12-31 00:42+0000\n"
+"PO-Revision-Date: 2023-12-30 06:37+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -463,12 +463,10 @@ msgstr ""
 "Escolla a localización onde ten ou quere o almacenamento de KleverNotes.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "Fonte do editor:"
+msgstr "Editor"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -477,14 +475,10 @@ msgid "Editor font:"
 msgstr "Fonte do editor:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Amosar ou agochar a vista previa"
+msgstr "Vista previa de nota"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -547,13 +541,12 @@ msgid "Highlighter style"
 msgstr "Estilo do realzador"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Imaxe almacenada"
+msgstr "Almacenamento"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -566,7 +559,7 @@ msgstr "Ruta de almacenamento:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Barra lateral"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -590,7 +583,7 @@ msgstr "Nome da nova nota:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Complementos de utilidades"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -614,7 +607,7 @@ msgstr "Consello: reinicie a aplicación despois de activalo."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Complementos cosméticos"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -629,9 +622,7 @@ msgid "List of supported highlighters"
 msgstr "Lista de realzadores permitidos"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Xeral"
@@ -642,13 +633,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Aparencia"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Complementos"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -1154,7 +1145,7 @@ msgid "Header"
 msgstr "Cabeceira"
 
 # skip-rule: proposta-en-clear
-#: contents/ui/todoEditor/ToDoView.qml:22
+#: contents/ui/todoEditor/ToDoView.qml:23
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
