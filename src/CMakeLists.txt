@@ -38,6 +38,10 @@ set(exec_SRCS
     logic/kleverUtility.cpp
     logic/mdHandler.cpp
 
+    logic/emoji/emoticonFilterModel.cpp
+    logic/emoji/emojiModel.cpp
+    logic/emoji/emojiTones.cpp
+
     logic/noteMapper/noteMapper.cpp
     logic/noteMapper/noteMapperUtils.cpp
 

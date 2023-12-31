@@ -36,6 +36,8 @@
 #include "logic/printing/printingHelper.h"
 
 // Plugins
+#include "logic/emoji/emojiModel.h"
+#include "logic/emoji/emoticonFilterModel.h"
 #include "logic/noteMapper/noteMapper.h"
 #include "logic/syntaxHighlight/highlightHelper.h"
 
@@ -121,6 +123,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     // === PLUGINS ===
+    qmlRegisterType<EmoticonFilterModel>("org.kde.neochat", 1, 0, "EmoticonFilterModel");
+    qmlRegisterSingletonInstance("org.kde.neochat", 1, 0, "EmojiModel", &EmojiModel::instance());
+
     qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
 
     HighlightHelper highlightHelper;

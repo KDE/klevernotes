@@ -10,6 +10,7 @@ import org.kde.kirigami 2.19 as Kirigami
 import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/dialogs"
+import "qrc:/contents/ui/dialogs/emojiDialog"
 import "qrc:/contents/ui/dialogs/imagePickerDialog"
 import "qrc:/contents/ui/dialogs/tableMakerDialog"
 
@@ -206,8 +207,26 @@ Kirigami.ActionToolBar {
             onTriggered: {
                 handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["=="], true, false, false)
             }
+        },
+        Kirigami.Action {
+            id: emojiAction
+            shortcut: "Alt+."
+            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
+            icon.name: "format-list-unordered"
+            onTriggered: {
+                emojiDialog.open()
+                return
+                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
+                                                                                 editorTextArea.selectionEnd);
+
+                handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
+            }
         }
     ]
+
+    EmojiDialog {
+        id: emojiDialog
+    }
 
     ImagePickerDialog {
         id: imagePickerDialog
