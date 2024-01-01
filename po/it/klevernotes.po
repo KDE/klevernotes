@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 00:42+0000\n"
-"PO-Revision-Date: 2023-12-14 22:31+0100\n"
+"PO-Revision-Date: 2023-12-29 23:58+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -466,12 +466,10 @@ msgstr ""
 "KleverNotes o selezionane una esistente.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "Carattere dell'editor:"
+msgstr "Editor"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -480,14 +478,10 @@ msgid "Editor font:"
 msgstr "Carattere dell'editor:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Visualizza/Nascondi l'anteprima"
+msgstr "Anteprima della nota"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -550,13 +544,12 @@ msgid "Highlighter style"
 msgstr "Stile dell'evidenziatore"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Immagine archiviata"
+msgstr "Archiviazione"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -569,7 +562,7 @@ msgstr "Percorso di archiviazione:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Barra laterale"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -593,7 +586,7 @@ msgstr "Nome della nuova nota:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Estensioni di utilità"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -619,7 +612,7 @@ msgstr "Consiglio: riavvia l'applicazione una volta attivata."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Estensioni cosmetiche"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -634,9 +627,7 @@ msgid "List of supported highlighters"
 msgstr "Elenco degli evidenziatori supportati"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Generale"
@@ -647,13 +638,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Aspetto"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Estensioni"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -1182,11 +1173,9 @@ msgstr ""
 "*/\n"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr ""
-"Si è verificato un errore durante il tentativo di creare questo elemento."
+msgstr "Si è verificato un errore durante il tentativo di copiare questo pdf."
 
 #: logic/treeview/noteTreeModel.cpp:276
 #, kde-format

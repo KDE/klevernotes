@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-31 00:42+0000\n"
-"PO-Revision-Date: 2023-12-24 11:23+0100\n"
+"PO-Revision-Date: 2023-12-30 09:40+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -470,12 +470,10 @@ msgstr ""
 "pour KleverNotes ou un emplacement existant.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "Police pour l'éditeur :"
+msgstr "Éditeur"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -484,14 +482,10 @@ msgid "Editor font:"
 msgstr "Police pour l'éditeur :"
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Afficher / Masquer l'aperçu"
+msgstr "Aperçu de notes"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -554,13 +548,12 @@ msgid "Highlighter style"
 msgstr "Style de coloration"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Image enregistrée"
+msgstr "Enregistrement"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -573,7 +566,7 @@ msgstr "Emplacement pour enregistrement :"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Barre latérale"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -597,7 +590,7 @@ msgstr "Nom de nouvelle note :"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Modules externes d'utilitaires"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -622,7 +615,7 @@ msgstr "Conseil : redémarrez l'application après activation."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Modules externes pour la cosmétique"
 
 #: contents/ui/settings/PluginsTab.qml:55
 #, kde-format
@@ -637,9 +630,7 @@ msgid "List of supported highlighters"
 msgstr "Liste des colorations prises en charge"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Général"
@@ -650,13 +641,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Apparence"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Modules externes"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
