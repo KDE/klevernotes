@@ -4,13 +4,14 @@
 */
 
 // CREDIT TO ORIGINAL IDEA: https://marked.js.org/
-
 #include "inlineLexer.h"
+#include <QDebug>
 
 #include <QDir>
 #include <QMap>
 #include <QRandomGenerator>
 
+#include "logic/emoji/emojiModel.h"
 #include "parser.h"
 #include "renderer.h"
 
@@ -282,6 +283,32 @@ QString InlineLexer::output(QString &src, bool useInlineText)
 
             out += Renderer::mark(outputed);
             continue;
+        }
+
+        // emoji
+        if (m_parser->emojiEnabled()) {
+            static const auto emojiModel = &EmojiModel::instance();
+
+            cap = inline_emoji.match(src);
+            if (cap.hasMatch()) {
+                src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+                cap0 = cap.captured(0);
+                cap1 = cap.captured(1);
+                const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(cap1);
+
+                QString uniEmoji = QLatin1String();
+                for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
+                    const Emoji currentEmoji = it->value<Emoji>();
+                    if (currentEmoji.shortName == cap1) {
+                        uniEmoji = currentEmoji.unicode;
+                    }
+                }
+
+                outputed = uniEmoji.isEmpty() ? cap0 : uniEmoji;
+
+                out += Renderer::text(outputed);
+                continue;
+            }
         }
 
         // text

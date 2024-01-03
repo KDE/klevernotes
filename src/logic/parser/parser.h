@@ -23,8 +23,9 @@ class Parser : public QObject
     // NoteMapper
     Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
     Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
-
     Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
+    // Emoji
+    Q_PROPERTY(bool emojiEnabled WRITE setEmojiEnabled) // QML will handle the signal and change it for us
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -47,6 +48,9 @@ public:
     void setHighlightEnabled(const bool highlightEnabled);
     bool highlightEnabled() const;
     void addToNoteCodeBlocks(const QString &codeBlock);
+    // Emoji
+    void setEmojiEnabled(const bool emojiEnabled);
+    bool emojiEnabled() const;
 
 Q_SIGNALS:
     // NoteMapper
@@ -97,4 +101,7 @@ private:
     QSet<QStringList> m_previousLinkedNotesInfos;
     bool m_linkedNotesChanged = false;
     bool m_notePathChanged = true;
+
+    // Emoji support
+    bool m_emojiEnabled = false;
 };

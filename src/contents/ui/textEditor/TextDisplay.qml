@@ -27,6 +27,9 @@ RowLayout {
     // NoteMapper
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
+    // Emoji
+    property bool emojiEnabled: false // Will be replaced by config
+    Component.onCompleted: emojiEnabled = true
 
     readonly property Parser parser: parser
     readonly property string stylePath: Config.stylePath
@@ -76,6 +79,10 @@ RowLayout {
     }
     onNoteMapEnabledChanged: {
         parser.noteMapEnabled = noteMapEnabled
+        root.parseText()
+    }
+    onEmojiEnabledChanged: {
+        parser.emojiEnabled = emojiEnabled
         root.parseText()
     }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {

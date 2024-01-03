@@ -399,3 +399,14 @@ bool Parser::noteMapEnabled() const
 {
     return m_noteMapEnabled;
 }
+
+// Emoji
+void Parser::setEmojiEnabled(const bool emojiEnabled)
+{
+    m_emojiEnabled = emojiEnabled;
+}
+
+bool Parser::emojiEnabled() const
+{
+    return m_emojiEnabled;
+}
