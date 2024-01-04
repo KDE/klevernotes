@@ -210,22 +210,21 @@ Kirigami.ActionToolBar {
         },
         Kirigami.Action {
             id: emojiAction
-            shortcut: "Alt+."
+            shortcut: "Ctrl+Shift+E"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
-            icon.name: "format-list-unordered"
+            icon.name: "smiley"
             onTriggered: {
                 emojiDialog.open()
-                return
-                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                                 editorTextArea.selectionEnd);
-
-                handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
             }
         }
     ]
 
     EmojiDialog {
         id: emojiDialog
+
+        onChosen: function (emoji) {
+            editorTextArea.insert(editorTextArea.selectionStart, emoji)
+        }
     }
 
     ImagePickerDialog {

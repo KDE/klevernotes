@@ -6,8 +6,6 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
 
-//import org.kde.neochat
-
 QQC2.Popup {
     id: root
 
@@ -50,23 +48,8 @@ QQC2.Popup {
         id: emojiPicker
         height: 400
         onChosen: emoji => {
-            copyHelper.text = emoji
-            //root.chosen(emoji)
+            root.chosen(emoji)
             if (root.closeOnChosen) root.close()
-        }
-    }
-
-    TextEdit {
-        id: copyHelper
-
-        visible: false
-
-        onTextChanged: {
-            if (text !== "") {
-                selectAll()
-                copy()
-                text = ""
-            } 
         }
     }
 }
