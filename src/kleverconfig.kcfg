@@ -78,7 +78,11 @@
             <default>false</default>
         </entry>
 
-<!-- TODO: make different groups -->
+        <!-- TODO: make different groups -->
+        <entry name="quickEmojiEnabled" type="Bool">
+            <label>Whether or not quick emoji (':emoji_name:') is enable</label>
+            <default>false</default>
+        </entry>
         <entry name="codeSynthaxHighlightEnabled" type="Bool">
             <label>Whether or not the code block syntax highlighting is enable</label>
             <default>false</default>

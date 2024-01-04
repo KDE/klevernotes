@@ -56,19 +56,76 @@ ColumnLayout {
             description: "<a href='https://invent.kde.org/office/klevernotes#syntax-highlighting'>" + i18nc("@description:checkbox", "List of supported highlighters") + "</a>"
             checked: Config.codeSynthaxHighlightEnabled
 
-            highlighterCombobox.model: HighlightHelper.highlighters 
-            styleCombobox.model: HighlightHelper.getHighlighterStyle(highlighterCombobox.currentValue) 
-
             onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) {
                 Config.codeSynthaxHighlightEnabled = checked
             }
-            highlighterCombobox.onCurrentValueChanged: {
-                const highlighter = highlighterCombobox.currentValue
-                if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
+
+            FormCard.FormComboBoxDelegate {
+                id: highlighterCombobox
+
+                text: i18nc("@label:combobox", "Highlighter")
+                model: HighlightHelper.highlighters 
+
+                onModelChanged: if (model.length !== 0) {
+                    const baseIndex = 0;
+
+                    if (Config.codeSynthaxHighlighter.length === 0) {
+                        highlighterCombobox.currentIndex = baseIndex
+                        return
+                    }
+
+                    const inModelIndex = model.indexOf(Config.codeSynthaxHighlighter)
+
+                    highlighterCombobox.currentIndex = inModelIndex === -1
+                        ? baseIndex
+                        : inModelIndex
+                }
+                onCurrentValueChanged: {
+                    const highlighter = highlighterCombobox.currentValue
+                    if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
+                }
+            } 
+
+            FormCard.FormComboBoxDelegate {
+                id: styleCombobox
+                
+                property bool configStyleSet: false
+
+                text: i18nc("@label:combobox", "Highlighter style")
+                model: HighlightHelper.getHighlighterStyle(highlighterCombobox.currentValue)
+
+                onCurrentValueChanged: {
+                    if (!styleCombobox.configStyleSet) {
+                        const baseIndex = 0;
+
+                        if (Config.codeSynthaxHighlighterStyle.length === 0) {
+                            styleCombobox.currentIndex = baseIndex
+                            return
+                        }
+
+                        const inModelIndex = model.indexOf(Config.codeSynthaxHighlighterStyle)
+
+                        styleCombobox.currentIndex = inModelIndex === -1
+                            ? baseIndex
+                            : inModelIndex
+
+                        styleCombobox.configStyleSet = true
+                    }
+                    if (currentValue != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = currentValue 
+                }
             }
-            styleCombobox.onCurrentValueChanged: {
-                const style = styleCombobox.currentValue
-                if (style != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = style 
+        }
+    
+        ExpendingFormCheckBox {
+            id: emojiCheck
+
+            text: i18nc("@label:checkbox", "Enable quick emoji")
+            description: i18nc("@description:checkbox, will be followed by the corresponding syntax, spacing between the end of the sentence and the syntax is already there", 
+                "Quickly write emoji using the following syntax") + " :<i>" + i18nc("@exemple, something representing a possible emoji short name", "emoji_name") + "</i>:"
+            checked: Config.quickEmojiEnabled
+
+            onCheckedChanged: if (checked != Config.quickEmojiEnabled) {
+                Config.quickEmojiEnabled = checked
             }
         }
     }

@@ -103,5 +103,5 @@ private:
     bool m_notePathChanged = true;
 
     // Emoji support
-    bool m_emojiEnabled = false;
+    bool m_emojiEnabled = KleverConfig::quickEmojiEnabled();
 };

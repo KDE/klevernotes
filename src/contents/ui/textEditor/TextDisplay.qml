@@ -28,8 +28,7 @@ RowLayout {
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     // Emoji
-    property bool emojiEnabled: false // Will be replaced by config
-    Component.onCompleted: emojiEnabled = true
+    readonly property bool emojiEnabled: Config.quickEmojiEnabled
 
     readonly property Parser parser: parser
     readonly property string stylePath: Config.stylePath
@@ -82,6 +81,7 @@ RowLayout {
         root.parseText()
     }
     onEmojiEnabledChanged: {
+        console.log(Config.quickEmojiEnabled)
         parser.emojiEnabled = emojiEnabled
         root.parseText()
     }

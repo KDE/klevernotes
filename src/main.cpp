@@ -74,10 +74,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     auto config = KleverConfig::self();
+    // General
     QObject::connect(config, &KleverConfig::storagePathChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultCategoryNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultGroupNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultNoteNameChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
+    // Appearence
     QObject::connect(config, &KleverConfig::editorFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::viewBodyColorChanged, config, &KleverConfig::save);
@@ -90,11 +93,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::viewFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
-    QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
+    // Plugins
     QObject::connect(config, &KleverConfig::codeSynthaxHighlightEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterStyleChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::noteMapEnabledChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::quickEmojiEnabledChanged, config, &KleverConfig::save);
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
