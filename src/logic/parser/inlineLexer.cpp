@@ -288,10 +288,12 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // emoji
         if (m_parser->emojiEnabled()) {
             static const auto emojiModel = &EmojiModel::instance();
+            static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:(?=\\S)([\\s\\S]*\\S):"));
 
             cap = inline_emoji.match(src);
             if (cap.hasMatch()) {
                 src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+
                 cap0 = cap.captured(0);
                 cap1 = cap.captured(1);
                 const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(cap1);
@@ -304,7 +306,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                     }
                 }
 
-                outputed = uniEmoji.isEmpty() ? cap0 : uniEmoji;
+                outputed = uniEmoji.isEmpty() ? output(cap1) : uniEmoji;
 
                 out += Renderer::text(outputed);
                 continue;
