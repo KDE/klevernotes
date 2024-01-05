@@ -288,25 +288,62 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // emoji
         if (m_parser->emojiEnabled()) {
             static const auto emojiModel = &EmojiModel::instance();
-            static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:(?=\\S)([\\s\\S]*\\S):"));
+            // static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:(?=\\S)([\\s\\S]*\\S):"));
+            static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:((?=\\S)([^:]*)(:?)([^:]*)):"));
 
             cap = inline_emoji.match(src);
             if (cap.hasMatch()) {
-                src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
-
                 cap0 = cap.captured(0);
                 cap1 = cap.captured(1);
-                const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(cap1);
+                cap2 = cap.captured(2);
+                cap3 = cap.captured(3);
+                cap4 = cap.captured(4);
 
                 QString uniEmoji = QLatin1String();
-                for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
+
+                // Just looking at the first shortname, we don't care about a possible variant
+                const QVariantList cap2PossibleEmojis = emojiModel->filterModelNoCustom(cap2);
+                for (auto it = cap2PossibleEmojis.begin(); it != cap2PossibleEmojis.end(); it++) {
                     const Emoji currentEmoji = it->value<Emoji>();
-                    if (currentEmoji.shortName == cap1) {
+                    if (currentEmoji.shortName == cap2) {
                         uniEmoji = currentEmoji.unicode;
                     }
                 }
 
-                outputed = uniEmoji.isEmpty() ? output(cap1) : uniEmoji;
+                bool toneFound = false;
+                bool variantEmoji = false;
+                if (!cap3.isEmpty()) { // We have a variant
+                    if (!uniEmoji.isEmpty()) {
+                        const QVariantList tonedEmoji = emojiModel->tones(cap1);
+                        for (auto it = tonedEmoji.begin(); it != tonedEmoji.end(); it++) {
+                            const Emoji currentEmoji = it->value<Emoji>();
+                            if (currentEmoji.shortName.endsWith(cap4)) {
+                                uniEmoji = currentEmoji.unicode;
+                                toneFound = true;
+                            }
+                        }
+                    }
+
+                    if (!toneFound) {
+                        const QVariantList cap1PossibleEmojis = emojiModel->filterModelNoCustom(cap1);
+                        for (auto it = cap1PossibleEmojis.begin(); it != cap1PossibleEmojis.end(); it++) {
+                            const Emoji currentEmoji = it->value<Emoji>();
+                            if (currentEmoji.shortName == cap1) {
+                                uniEmoji = currentEmoji.unicode;
+                                variantEmoji = true;
+                            }
+                        }
+                    }
+                }
+
+                if (toneFound || variantEmoji) {
+                    src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+                } else {
+                    static const QString surroundingStr = QStringLiteral("::");
+                    src.replace(cap.capturedStart(), cap2.length() + surroundingStr.length(), emptyStr);
+                }
+
+                outputed = uniEmoji.isEmpty() ? output(cap2) : uniEmoji;
 
                 out += Renderer::text(outputed);
                 continue;

@@ -134,7 +134,7 @@ QVariantList EmojiModel::emojis(Category category) const
     return _emojis[category];
 }
 
-QVariantList EmojiModel::tones(const QString &baseEmoji) const
+QVariantList EmojiModel::tones(const QString &baseEmoji)
 {
     if (baseEmoji.endsWith(QStringLiteral("tone"))) {
         return EmojiTones::_tones.values(baseEmoji.split(QStringLiteral(":"))[0]);

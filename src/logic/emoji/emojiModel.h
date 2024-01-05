@@ -156,7 +156,7 @@ public:
     /**
      * @brief Return a list of emoji tones for the given base emoji.
      */
-    Q_INVOKABLE QVariantList tones(const QString &baseEmoji) const;
+    Q_INVOKABLE static QVariantList tones(const QString &baseEmoji);
 
     /**
      * @brief Return a list of the last used emoji shortnames
