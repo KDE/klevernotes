@@ -410,3 +410,13 @@ bool Parser::emojiEnabled() const
 {
     return m_emojiEnabled;
 }
+
+void Parser::setEmojiTone(const QString &emojiTone)
+{
+    m_emojiTone = emojiTone;
+};
+
+QString Parser::emojiTone() const
+{
+    return m_emojiTone;
+}

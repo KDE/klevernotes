@@ -74,7 +74,7 @@ ColumnLayout {
                         return
                     }
 
-                    const inModelIndex = model.indexOf(Config.codeSynthaxHighlighter)
+                    const inModelIndex = indexOfValue(Config.codeSynthaxHighlighter)
 
                     highlighterCombobox.currentIndex = inModelIndex === -1
                         ? baseIndex
@@ -103,7 +103,7 @@ ColumnLayout {
                             return
                         }
 
-                        const inModelIndex = model.indexOf(Config.codeSynthaxHighlighterStyle)
+                        const inModelIndex = indexOfValue(Config.codeSynthaxHighlighterStyle)
 
                         styleCombobox.currentIndex = inModelIndex === -1
                             ? baseIndex
@@ -111,11 +111,13 @@ ColumnLayout {
 
                         styleCombobox.configStyleSet = true
                     }
-                    if (currentValue != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = currentValue 
+                    if (currentValue != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = currentValue
                 }
             }
         }
     
+        FormCard.FormDelegateSeparator { above: highlitingCheck; below: emojiCheck }
+
         ExpendingFormCheckBox {
             id: emojiCheck
 
@@ -126,6 +128,28 @@ ColumnLayout {
 
             onCheckedChanged: if (checked != Config.quickEmojiEnabled) {
                 Config.quickEmojiEnabled = checked
+            }
+
+            FormCard.FormComboBoxDelegate {
+                id: tonesCombobox
+
+                textRole: "text"
+                valueRole: "value"
+                model: [
+                    { value: "None", text: i18nc("@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'", "Default") + " 🫶" },
+                    { value: "light skin tone", text: i18nc("@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'", "Light") + " 🫶🏻" },
+                    { value: "medium-light skin tone", text: i18nc("@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'", "Medium light") + " 🫶🏼" },
+                    { value: "medium skin tone", text: i18nc("@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'", "Medium") + " 🫶🏽" },
+                    { value: "medium-dark skin tone", text: i18nc("@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'", "Medium dark") + " 🫶🏾" },
+                    { value: "dark skin tone", text: i18nc("@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'", "Dark") + " 🫶🏿" }
+                ]
+
+                Component.onCompleted: {
+                    currentIndex = indexOfValue(Config.emojiTone)
+                }
+                onCurrentValueChanged: {
+                    if (currentValue != Config.emojiTone) Config.emojiTone = currentValue
+                }
             }
         }
     }

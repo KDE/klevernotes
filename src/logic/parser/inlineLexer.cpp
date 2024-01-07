@@ -288,59 +288,95 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // emoji
         if (m_parser->emojiEnabled()) {
             static const auto emojiModel = &EmojiModel::instance();
-            // static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:(?=\\S)([\\s\\S]*\\S):"));
-            static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:((?=\\S)([^:]*)(:?)([^:]*)):"));
+            static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:(?=\\S)([^:]*)(:?)([^:]*):"));
+            static const QString defaultToneStr = QStringLiteral("default skin tone");
+            static const QSet<QString> possibleTones = {
+                QStringLiteral("dark skin tone"),
+                QStringLiteral("medium-dark skin tone"),
+                QStringLiteral("medium skin tone"),
+                QStringLiteral("medium-light skin tone"),
+                QStringLiteral("light skin tone"),
+                defaultToneStr, // To possibly overwrite the default in config
+            };
 
             cap = inline_emoji.match(src);
             if (cap.hasMatch()) {
                 cap0 = cap.captured(0);
-                cap1 = cap.captured(1);
-                cap2 = cap.captured(2);
-                cap3 = cap.captured(3);
-                cap4 = cap.captured(4);
+                cap1 = cap.captured(1).trimmed();
+                cap3 = cap.captured(3).trimmed();
 
-                QString uniEmoji = QLatin1String();
+                QStringList variantInfo;
 
-                // Just looking at the first shortname, we don't care about a possible variant
-                const QVariantList cap2PossibleEmojis = emojiModel->filterModelNoCustom(cap2);
-                for (auto it = cap2PossibleEmojis.begin(); it != cap2PossibleEmojis.end(); it++) {
-                    const Emoji currentEmoji = it->value<Emoji>();
-                    if (currentEmoji.shortName == cap2) {
-                        uniEmoji = currentEmoji.unicode;
-                    }
+                if (!cap3.isEmpty()) {
+                    variantInfo = cap3.split(QStringLiteral(","));
                 }
 
-                bool toneFound = false;
-                bool variantEmoji = false;
-                if (!cap3.isEmpty()) { // We have a variant
-                    if (!uniEmoji.isEmpty()) {
-                        const QVariantList tonedEmoji = emojiModel->tones(cap1);
-                        for (auto it = tonedEmoji.begin(); it != tonedEmoji.end(); it++) {
-                            const Emoji currentEmoji = it->value<Emoji>();
-                            if (currentEmoji.shortName.endsWith(cap4)) {
-                                uniEmoji = currentEmoji.unicode;
-                                toneFound = true;
+                const QString configTone = m_parser->emojiTone();
+                QString tone = configTone == QStringLiteral("None") ? QLatin1String() : configTone;
+                QString givenVariant;
+                bool toneGiven = false;
+                bool optionsFound = false;
+                if (!variantInfo.isEmpty()) {
+                    // Ex:
+                    // "woman: dark skin tone, blond hair"
+                    // "woman: blond hair"
+                    const QString possibleTone = variantInfo[0].trimmed();
+                    if (possibleTones.contains(possibleTone)) {
+                        tone = possibleTone;
+                        toneGiven = true;
+                    } else {
+                        givenVariant = possibleTone;
+                    }
+                    if (variantInfo.length() > 1) {
+                        givenVariant = variantInfo[1].trimmed();
+                    }
+                }
+                const bool defaultToneGiven = tone == defaultToneStr;
+
+                QString uniEmoji;
+                const QString searchTerm = givenVariant.isEmpty() ? cap1 : (cap1 + QStringLiteral(": ") + givenVariant);
+
+                if (!tone.isEmpty() && !defaultToneGiven) {
+                    const QVariantList tonedEmoji = emojiModel->tones(cap1);
+                    for (auto it = tonedEmoji.begin(); it != tonedEmoji.end(); it++) {
+                        const Emoji currentEmoji = it->value<Emoji>();
+                        const QString emojiName = currentEmoji.shortName;
+                        if (emojiName.contains(tone)) {
+                            uniEmoji = currentEmoji.unicode;
+
+                            if (givenVariant.isEmpty()) { // only looking for tone
+                                if (toneGiven) {
+                                    optionsFound = true;
+                                }
+                                break;
+                            }
+                            // looking for tone + variant
+                            if (emojiName.endsWith(givenVariant)) {
+                                optionsFound = true;
+                                break;
                             }
                         }
                     }
-
-                    if (!toneFound) {
-                        const QVariantList cap1PossibleEmojis = emojiModel->filterModelNoCustom(cap1);
-                        for (auto it = cap1PossibleEmojis.begin(); it != cap1PossibleEmojis.end(); it++) {
-                            const Emoji currentEmoji = it->value<Emoji>();
-                            if (currentEmoji.shortName == cap1) {
-                                uniEmoji = currentEmoji.unicode;
-                                variantEmoji = true;
+                } else {
+                    qDebug() << searchTerm;
+                    const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(searchTerm);
+                    for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
+                        const Emoji currentEmoji = it->value<Emoji>();
+                        if (currentEmoji.shortName == searchTerm) {
+                            uniEmoji = currentEmoji.unicode;
+                            if (!givenVariant.isEmpty() || defaultToneGiven) {
+                                optionsFound = true;
                             }
+                            break;
                         }
                     }
                 }
 
-                if (toneFound || variantEmoji) {
+                if (optionsFound) {
                     src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
                 } else {
                     static const QString surroundingStr = QStringLiteral("::");
-                    src.replace(cap.capturedStart(), cap2.length() + surroundingStr.length(), emptyStr);
+                    src.replace(cap.capturedStart(), cap1.length() + surroundingStr.length(), emptyStr);
                 }
 
                 outputed = uniEmoji.isEmpty() ? output(cap2) : uniEmoji;

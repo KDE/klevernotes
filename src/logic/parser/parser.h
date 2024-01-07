@@ -26,6 +26,7 @@ class Parser : public QObject
     Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
     // Emoji
     Q_PROPERTY(bool emojiEnabled WRITE setEmojiEnabled) // QML will handle the signal and change it for us
+    Q_PROPERTY(QString emojiTone WRITE setEmojiTone) // QML will handle the signal and change it for us
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -51,6 +52,8 @@ public:
     // Emoji
     void setEmojiEnabled(const bool emojiEnabled);
     bool emojiEnabled() const;
+    void setEmojiTone(const QString &emojiTone);
+    QString emojiTone() const;
 
 Q_SIGNALS:
     // NoteMapper
@@ -104,4 +107,5 @@ private:
 
     // Emoji support
     bool m_emojiEnabled = KleverConfig::quickEmojiEnabled();
+    QString m_emojiTone = KleverConfig::emojiTone();
 };

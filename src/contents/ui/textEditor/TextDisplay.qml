@@ -29,6 +29,7 @@ RowLayout {
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     // Emoji
     readonly property bool emojiEnabled: Config.quickEmojiEnabled
+    readonly property string emojiTone: Config.emojiTone
 
     readonly property Parser parser: parser
     readonly property string stylePath: Config.stylePath
@@ -81,8 +82,11 @@ RowLayout {
         root.parseText()
     }
     onEmojiEnabledChanged: {
-        console.log(Config.quickEmojiEnabled)
         parser.emojiEnabled = emojiEnabled
+        root.parseText()
+    }
+    onEmojiToneChanged: {
+        parser.emojiTone = emojiTone
         root.parseText()
     }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {

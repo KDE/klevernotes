@@ -83,6 +83,10 @@
             <label>Whether or not quick emoji (':emoji_name:') is enable</label>
             <default>false</default>
         </entry>
+        <entry name="emojiTone" type="String">
+            <label>The tone the user wants to use by default when tone is available for an emoji</label>
+            <default>None</default>
+        </entry>
         <entry name="codeSynthaxHighlightEnabled" type="Bool">
             <label>Whether or not the code block syntax highlighting is enable</label>
             <default>false</default>
