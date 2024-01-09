@@ -204,10 +204,7 @@ Kirigami.ActionToolBar {
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Text highlight") + " (" + shortcut + ")"
             icon.name: "draw-highlight"
             onTriggered: {
-                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                                 editorTextArea.selectionEnd);
-
-                handleAction(selectionStart, selectionEnd, ["=="], true, false, false)
+                handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["=="], true, false, false)
             }
         }
     ]
