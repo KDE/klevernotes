@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-31 00:42+0000\n"
+"POT-Creation-Date: 2024-01-10 00:42+0000\n"
 "PO-Revision-Date: 2023-10-09 00:22+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -503,25 +503,33 @@ msgctxt "@label:button"
 msgid "Title color:"
 msgstr "제목 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:72
+#: contents/ui/settings/DisplayPreview.qml:70
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "링크 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:83
+#: contents/ui/settings/DisplayPreview.qml:81
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "방문한 링크 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:94
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "코드 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:112
+#: contents/ui/settings/DisplayPreview.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Title color:"
+msgctxt "@label:button"
+msgid "Highlight color:"
+msgstr "제목 색:"
+
+#: contents/ui/settings/DisplayPreview.qml:118
 #, fuzzy, kde-format
 #| msgctxt "@title, general settings"
 #| msgid "General"
@@ -529,7 +537,7 @@ msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "일반"
 
-#: contents/ui/settings/DisplayPreview.qml:123
+#: contents/ui/settings/DisplayPreview.qml:129
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1059,7 +1067,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:154
+#: contents/ui/textEditor/TextDisplay.qml:155
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1180,11 +1188,17 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:262
-#: contents/ui/textEditor/TextToolBar.qml:263
-#: contents/ui/textEditor/TextToolBar.qml:264
-#: contents/ui/textEditor/TextToolBar.qml:266
-#: contents/ui/textEditor/TextToolBar.qml:267
+#: contents/ui/textEditor/TextToolBar.qml:204
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Text highlight"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:271
+#: contents/ui/textEditor/TextToolBar.qml:272
+#: contents/ui/textEditor/TextToolBar.qml:273
+#: contents/ui/textEditor/TextToolBar.qml:275
+#: contents/ui/textEditor/TextToolBar.qml:276
 #, kde-format
 msgid "Header"
 msgstr "머리글"

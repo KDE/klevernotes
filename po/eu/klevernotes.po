@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-31 00:42+0000\n"
+"POT-Creation-Date: 2024-01-10 00:42+0000\n"
 "PO-Revision-Date: 2023-11-07 22:53+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -508,25 +508,33 @@ msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Tituluaren kolorea:"
 
-#: contents/ui/settings/DisplayPreview.qml:72
+#: contents/ui/settings/DisplayPreview.qml:70
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Estekaren kolorea:"
 
-#: contents/ui/settings/DisplayPreview.qml:83
+#: contents/ui/settings/DisplayPreview.qml:81
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Bisitatutako estekaren kolorea:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:94
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Kodearen kolorea:"
 
-#: contents/ui/settings/DisplayPreview.qml:112
+#: contents/ui/settings/DisplayPreview.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Title color:"
+msgctxt "@label:button"
+msgid "Highlight color:"
+msgstr "Tituluaren kolorea:"
+
+#: contents/ui/settings/DisplayPreview.qml:118
 #, fuzzy, kde-format
 #| msgctxt "@title, general settings"
 #| msgid "General"
@@ -534,7 +542,7 @@ msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Orokorra"
 
-#: contents/ui/settings/DisplayPreview.qml:123
+#: contents/ui/settings/DisplayPreview.qml:129
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1051,7 +1059,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:154
+#: contents/ui/textEditor/TextDisplay.qml:155
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1165,11 +1173,17 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
 msgstr "Zerrenda ez-ordenatua"
 
-#: contents/ui/textEditor/TextToolBar.qml:262
-#: contents/ui/textEditor/TextToolBar.qml:263
-#: contents/ui/textEditor/TextToolBar.qml:264
-#: contents/ui/textEditor/TextToolBar.qml:266
-#: contents/ui/textEditor/TextToolBar.qml:267
+#: contents/ui/textEditor/TextToolBar.qml:204
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Text highlight"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:271
+#: contents/ui/textEditor/TextToolBar.qml:272
+#: contents/ui/textEditor/TextToolBar.qml:273
+#: contents/ui/textEditor/TextToolBar.qml:275
+#: contents/ui/textEditor/TextToolBar.qml:276
 #, kde-format
 msgid "Header"
 msgstr "Goiburua"

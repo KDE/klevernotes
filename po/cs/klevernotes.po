@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-31 00:42+0000\n"
+"POT-Creation-Date: 2024-01-10 00:42+0000\n"
 "PO-Revision-Date: 2023-11-08 14:21+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -464,14 +464,10 @@ msgid "Editor font:"
 msgstr ""
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "Zobrazit/skrýt náhled"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -491,31 +487,39 @@ msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Barva popisku:"
 
-#: contents/ui/settings/DisplayPreview.qml:72
+#: contents/ui/settings/DisplayPreview.qml:70
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Barva odkazu:"
 
-#: contents/ui/settings/DisplayPreview.qml:83
+#: contents/ui/settings/DisplayPreview.qml:81
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Barva navštíveného odkazu:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:94
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Barva kódu"
 
-#: contents/ui/settings/DisplayPreview.qml:112
+#: contents/ui/settings/DisplayPreview.qml:106
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Title color:"
+msgctxt "@label:button"
+msgid "Highlight color:"
+msgstr "Barva popisku:"
+
+#: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:123
+#: contents/ui/settings/DisplayPreview.qml:129
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -534,16 +538,12 @@ msgid "Highlighter style"
 msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Cesta k úložišti:"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -619,12 +619,10 @@ msgid "List of supported highlighters"
 msgstr ""
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
-msgstr "Obecné"
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:21
 #, kde-format
@@ -1020,7 +1018,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:154
+#: contents/ui/textEditor/TextDisplay.qml:155
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1134,11 +1132,17 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:262
-#: contents/ui/textEditor/TextToolBar.qml:263
-#: contents/ui/textEditor/TextToolBar.qml:264
-#: contents/ui/textEditor/TextToolBar.qml:266
-#: contents/ui/textEditor/TextToolBar.qml:267
+#: contents/ui/textEditor/TextToolBar.qml:204
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Text highlight"
+msgstr ""
+
+#: contents/ui/textEditor/TextToolBar.qml:271
+#: contents/ui/textEditor/TextToolBar.qml:272
+#: contents/ui/textEditor/TextToolBar.qml:273
+#: contents/ui/textEditor/TextToolBar.qml:275
+#: contents/ui/textEditor/TextToolBar.qml:276
 #, kde-format
 msgid "Header"
 msgstr "Záhlaví"
@@ -1161,10 +1165,9 @@ msgid ""
 msgstr ""
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr "Nastala chyba při pokusu o vytvoření této položky."
+msgstr ""
 
 #: logic/treeview/noteTreeModel.cpp:276
 #, kde-format
@@ -1239,8 +1242,3 @@ msgstr "Vít Pelčák"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
-
-#~ msgctxt ""
-#~ "@title, display as in 'the note display' where you can visualize the note"
-#~ msgid "Display"
-#~ msgstr "Zobrazení"
