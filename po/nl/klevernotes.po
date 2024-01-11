@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# SPDX-FileCopyrightText: 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 00:42+0000\n"
-"PO-Revision-Date: 2023-12-29 15:49+0100\n"
+"PO-Revision-Date: 2024-01-10 11:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -522,12 +522,10 @@ msgid "Code color:"
 msgstr "Kleur van code:"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Accentuering"
+msgstr "Accentuatiekleur:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -1151,12 +1149,10 @@ msgid "Unordered list"
 msgstr "Ongeordende lijst"
 
 #: contents/ui/textEditor/TextToolBar.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Accentuering"
+msgstr "Accentuering van tekst"
 
 #: contents/ui/textEditor/TextToolBar.qml:271
 #: contents/ui/textEditor/TextToolBar.qml:272

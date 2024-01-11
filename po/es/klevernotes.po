@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the klevernotes package.
 #
 # Automatically generated, 2023.
-# SPDX-FileCopyrightText: 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 00:42+0000\n"
-"PO-Revision-Date: 2023-12-29 04:38+0100\n"
+"PO-Revision-Date: 2024-01-11 01:19+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -522,12 +522,10 @@ msgid "Code color:"
 msgstr "Color del código:"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Resaltador"
+msgstr "Color de resaltado:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -1149,12 +1147,10 @@ msgid "Unordered list"
 msgstr "Lista desordenada"
 
 #: contents/ui/textEditor/TextToolBar.qml:204
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Resaltador"
+msgstr "Texto resaltado"
 
 #: contents/ui/textEditor/TextToolBar.qml:271
 #: contents/ui/textEditor/TextToolBar.qml:272
