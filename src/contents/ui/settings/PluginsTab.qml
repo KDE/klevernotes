@@ -151,6 +151,18 @@ ColumnLayout {
                     if (currentValue != Config.emojiTone) Config.emojiTone = currentValue
                 }
             }
+
+            FormCard.FormSwitchDelegate {
+                id: quickEmojiDialogSwitch
+
+                text: i18nc("@lable:switch", "Enable quick emoji dialog")
+                description: i18nc("@description:switch", "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji inside the text.")
+                checked: Config.quickEmojiDialogEnabled
+
+                onCheckedChanged: if (checked != Config.quickEmojiDialogEnabled) {
+                    Config.quickEmojiDialogEnabled = checked
+                }
+            }
         }
     }
 }

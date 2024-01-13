@@ -358,7 +358,6 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                         }
                     }
                 } else {
-                    qDebug() << searchTerm;
                     const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(searchTerm);
                     for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
                         const Emoji currentEmoji = it->value<Emoji>();

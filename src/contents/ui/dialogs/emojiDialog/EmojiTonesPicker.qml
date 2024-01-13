@@ -6,6 +6,7 @@ import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 
 import org.kde.neochat
+import org.kde.Klever 1.0
 
 QQC2.Popup {
     id: root
@@ -63,7 +64,7 @@ QQC2.Popup {
             Keys.onEnterPressed: clicked()
             Keys.onReturnPressed: clicked()
             onClicked: {
-                root.chosen(modelData.unicode)
+                root.chosen(Config.quickEmojiDialogEnabled ? modelData.shortName : modelData.unicode)
                 EmojiModel.emojiUsed(modelData)
                 root.close()
             }

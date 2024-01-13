@@ -7,6 +7,7 @@ import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 
 import org.kde.neochat
+import org.kde.Klever 1.0
 
 QQC2.ScrollView {
     id: root
@@ -17,7 +18,6 @@ QQC2.ScrollView {
     readonly property int emojisPerRow: emojis.width / targetIconSize
     readonly property var searchCategory: EmojiModel.SearchNoCustom
     required property QtObject header
-    property bool stickers: false
 
     signal chosen(string unicode)
     signal stickerChosen(int index)
@@ -57,14 +57,10 @@ QQC2.ScrollView {
             width: emojis.cellWidth
             height: emojis.cellHeight
 
-            isImage: root.stickers
             Keys.onEnterPressed: clicked()
             Keys.onReturnPressed: clicked()
             onClicked: {
-                if (root.stickers) {
-                    root.stickerChosen(model.index)
-                }
-                root.chosen(modelData.isCustom ? modelData.shortName : modelData.unicode)
+                root.chosen(Config.quickEmojiDialogEnabled ? modelData.shortName : modelData.unicode)
                 EmojiModel.emojiUsed(modelData)
             }
             Keys.onSpacePressed: pressAndHold()

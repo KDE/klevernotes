@@ -82,7 +82,6 @@ ColumnLayout {
         onChosen: unicode => root.chosen(unicode)
         header: categories
         Keys.forwardTo: searchField
-        stickers: root.selectedType === 1
     }
 
     Component {

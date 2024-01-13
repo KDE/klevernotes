@@ -223,7 +223,7 @@ Kirigami.ActionToolBar {
         id: emojiDialog
 
         onChosen: function (emoji) {
-            editorTextArea.insert(editorTextArea.selectionStart, emoji)
+            editorTextArea.insert(editorTextArea.selectionStart, Config.quickEmojiDialogEnabled ? (":" + emoji + ":") : emoji)
         }
     }
 
