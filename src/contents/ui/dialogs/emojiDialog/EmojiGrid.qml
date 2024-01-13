@@ -60,7 +60,7 @@ QQC2.ScrollView {
             Keys.onEnterPressed: clicked()
             Keys.onReturnPressed: clicked()
             onClicked: {
-                root.chosen(Config.quickEmojiDialogEnabled ? modelData.shortName : modelData.unicode)
+                root.chosen(Config.quickEmojiEnabled && Config.quickEmojiDialogEnabled ? modelData.shortName : modelData.unicode)
                 EmojiModel.emojiUsed(modelData)
             }
             Keys.onSpacePressed: pressAndHold()
