@@ -7,6 +7,7 @@
 
 #include "parser.h"
 
+#include "kleverconfig.h"
 #include "renderer.h"
 #include <QJsonArray>
 
@@ -127,7 +128,7 @@ QString Parser::parse(QString src)
 
     blockLexer.lex(src);
 
-    if (m_highlightEnabled) {
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
         m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks && !m_noteCodeBlocks.isEmpty();
         if (!m_sameCodeBlocks || m_newHighlightStyle) {
             m_previousNoteCodeBlocks = m_noteCodeBlocks;
@@ -147,7 +148,7 @@ QString Parser::parse(QString src)
 
     m_notePathChanged = false;
 
-    if (m_noteMapEnabled) {
+    if (KleverConfig::noteMapEnabled()) {
         // We try to not spam with signals
         if (m_linkedNotesChanged || !m_previousLinkedNotesInfos.isEmpty()) { // The previous is not empty, some links notes are no longer there
             Q_EMIT newLinkedNotesInfos(m_linkedNotesInfos);
@@ -206,7 +207,8 @@ QString Parser::tok()
         text = m_token[QStringLiteral("text")].toString();
         const QString lang = m_token[QStringLiteral("lang")].toString();
 
-        const bool highlight = m_highlightEnabled && !lang.isEmpty();
+        const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
+        const bool highlight = highlightEnabled && !lang.isEmpty();
 
         QString returnValue;
         if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
@@ -214,7 +216,7 @@ QString Parser::tok()
             m_currentBlockIndex++;
         } else {
             returnValue = Renderer::code(text, lang, highlight);
-            if (m_highlightEnabled && highlight) { // We want to store only the highlighted values
+            if (highlightEnabled && highlight) { // We want to store only the highlighted values
                 m_previousHighlightedBlocks.append(returnValue);
             }
         }
@@ -353,16 +355,6 @@ QString Parser::peekType() const
 }
 
 // Syntax highlight
-void Parser::setHighlightEnabled(const bool highlightEnabled)
-{
-    m_highlightEnabled = highlightEnabled;
-}
-
-bool Parser::highlightEnabled() const
-{
-    return m_highlightEnabled;
-}
-
 void Parser::addToNoteCodeBlocks(const QString &codeBlock)
 {
     m_noteCodeBlocks.append(codeBlock);
@@ -390,27 +382,7 @@ void Parser::addToNoteHeaders(const QString &header)
     m_noteHeaders.insert(header);
 }
 
-void Parser::setNoteMapEnabled(const bool noteMapEnabled)
-{
-    m_noteMapEnabled = noteMapEnabled;
-}
-
-bool Parser::noteMapEnabled() const
-{
-    return m_noteMapEnabled;
-}
-
 // Emoji
-void Parser::setEmojiEnabled(const bool emojiEnabled)
-{
-    m_emojiEnabled = emojiEnabled;
-}
-
-bool Parser::emojiEnabled() const
-{
-    return m_emojiEnabled;
-}
-
 void Parser::setEmojiTone(const QString &emojiTone)
 {
     m_emojiTone = emojiTone;

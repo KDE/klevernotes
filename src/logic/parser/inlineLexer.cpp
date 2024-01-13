@@ -5,12 +5,13 @@
 
 // CREDIT TO ORIGINAL IDEA: https://marked.js.org/
 #include "inlineLexer.h"
-#include <QDebug>
+// #include <QDebug>
 
 #include <QDir>
 #include <QMap>
 #include <QRandomGenerator>
 
+#include "kleverconfig.h"
 #include "logic/emoji/emojiModel.h"
 #include "parser.h"
 #include "renderer.h"
@@ -121,7 +122,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         }
 
         // wikilink
-        if (m_parser->noteMapEnabled()) {
+        if (KleverConfig::noteMapEnabled()) {
             const static QRegularExpression inline_wikilink =
                 QRegularExpression(QStringLiteral("\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]"));
             cap = inline_wikilink.match(src);
@@ -286,7 +287,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         }
 
         // emoji
-        if (m_parser->emojiEnabled()) {
+        if (KleverConfig::quickEmojiEnabled()) {
             static const auto emojiModel = &EmojiModel::instance();
             static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral("^:(?=\\S)([^:]*)(:?)([^:]*):"));
             static const QString defaultToneStr = QStringLiteral("default skin tone");

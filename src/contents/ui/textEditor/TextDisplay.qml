@@ -70,7 +70,6 @@ RowLayout {
         root.parseText()
     }
     onHighlightEnabledChanged: {
-        parser.highlightEnabled = highlightEnabled 
         root.parseText()
     }
     onHighlighterStyleChanged: {
@@ -78,11 +77,9 @@ RowLayout {
         root.parseText()
     }
     onNoteMapEnabledChanged: {
-        parser.noteMapEnabled = noteMapEnabled
         root.parseText()
     }
     onEmojiEnabledChanged: {
-        parser.emojiEnabled = emojiEnabled
         root.parseText()
     }
     onEmojiToneChanged: {

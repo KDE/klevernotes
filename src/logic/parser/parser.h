@@ -18,14 +18,10 @@ class Parser : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString notePath WRITE setNotePath)
-    // Syntax highlight
-    Q_PROPERTY(bool highlightEnabled WRITE setHighlightEnabled)
     // NoteMapper
     Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
     Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
-    Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
     // Emoji
-    Q_PROPERTY(bool emojiEnabled WRITE setEmojiEnabled) // QML will handle the signal and change it for us
     Q_PROPERTY(QString emojiTone WRITE setEmojiTone) // QML will handle the signal and change it for us
 public:
     explicit Parser(QObject *parent = nullptr);
@@ -38,20 +34,16 @@ public:
     QMap<QString, QMap<QString, QString>> links;
 
     // NoteMapper
-    void setNoteMapEnabled(const bool noteMapEnabled);
-    bool noteMapEnabled() const;
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
     QPair<QString, bool> sanitizePath(const QString &_path) const;
     void addToLinkedNoteInfos(const QStringList &infos);
     void addToNoteHeaders(const QString &header);
+
     // Syntax highlight
-    void setHighlightEnabled(const bool highlightEnabled);
-    bool highlightEnabled() const;
     void addToNoteCodeBlocks(const QString &codeBlock);
+
     // Emoji
-    void setEmojiEnabled(const bool emojiEnabled);
-    bool emojiEnabled() const;
     void setEmojiTone(const QString &emojiTone);
     QString emojiTone() const;
 
@@ -76,7 +68,6 @@ private:
     QVariantMap m_token;
 
     // Synthax highlight
-    bool m_highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
     bool m_newHighlightStyle = true;
     bool m_sameCodeBlocks = false;
     int m_currentBlockIndex = 0;
@@ -85,7 +76,6 @@ private:
     QStringList m_previousNoteCodeBlocks;
 
     // NoteMapper
-    bool m_noteMapEnabled = KleverConfig::noteMapEnabled();
     QString m_mapperNotePath;
     QString m_groupPath;
     QString m_categPath;
@@ -106,6 +96,5 @@ private:
     bool m_notePathChanged = true;
 
     // Emoji support
-    bool m_emojiEnabled = KleverConfig::quickEmojiEnabled();
     QString m_emojiTone = KleverConfig::emojiTone();
 };

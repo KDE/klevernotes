@@ -10,6 +10,7 @@
 #include <QJsonArray>
 #include <QMap>
 
+#include "kleverconfig.h"
 #include "parser.h"
 
 BlockLexer::BlockLexer(Parser *parser)
@@ -77,7 +78,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             const QString lang = cap.captured(2);
             const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("code")}, {QStringLiteral("text"), text}, {QStringLiteral("lang"), lang}};
             m_parser->tokens.append(tok);
-            if (m_parser->highlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
+            if (KleverConfig::codeSynthaxHighlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
                 m_parser->addToNoteCodeBlocks(text);
             }
             continue;
@@ -87,7 +88,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            if (m_parser->noteMapEnabled()) {
+            if (KleverConfig::noteMapEnabled()) {
                 m_parser->addToNoteHeaders(cap.captured(0).trimmed());
             }
 
