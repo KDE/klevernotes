@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-10 00:42+0000\n"
+"POT-Creation-Date: 2024-01-14 01:59+0000\n"
 "PO-Revision-Date: 2023-12-29 08:10+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -50,6 +50,18 @@ msgctxt ""
 "group) or 'note' (a note)"
 msgid "Are you sure you want to delete this %1 ?"
 msgstr "Är du säker på att du vill ta bort %1?"
+
+#: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog"
+#| msgid "Color Picker"
+msgid "No stickers"
+msgstr "Färghämtare"
+
+#: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
+#, kde-format
+msgid "No emojis"
+msgstr ""
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -539,18 +551,6 @@ msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr "Teckensnitt för kodblock:"
 
-#: contents/ui/settings/ExpendingFormCheckBox.qml:129
-#, kde-format
-msgctxt "@label:combobox"
-msgid "Highlighter"
-msgstr "Färgläggning"
-
-#: contents/ui/settings/ExpendingFormCheckBox.qml:152
-#, kde-format
-msgctxt "@label:combobox"
-msgid "Highlighter style"
-msgstr "Färgläggningsstil"
-
 #: contents/ui/settings/GeneralTab.qml:19
 #, kde-format
 msgctxt ""
@@ -632,6 +632,93 @@ msgstr "Aktivera färgläggning av kodsyntax"
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr "Lista över färgläggningar som stöds"
+
+#: contents/ui/settings/PluginsTab.qml:66
+#, kde-format
+msgctxt "@label:combobox"
+msgid "Highlighter"
+msgstr "Färgläggning"
+
+#: contents/ui/settings/PluginsTab.qml:94
+#, kde-format
+msgctxt "@label:combobox"
+msgid "Highlighter style"
+msgstr "Färgläggningsstil"
+
+#: contents/ui/settings/PluginsTab.qml:124
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable quick emoji"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:126
+#, kde-format
+msgctxt ""
+"@description:checkbox, will be followed by the corresponding syntax, spacing "
+"between the end of the sentence and the syntax is already there"
+msgid "Quickly write emoji using the following syntax"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:126
+#, fuzzy, kde-format
+#| msgid "Rename"
+msgctxt "@exemple, something representing a possible emoji short name"
+msgid "emoji_name"
+msgstr "Byt namn"
+
+#: contents/ui/settings/PluginsTab.qml:139
+#, kde-format
+msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
+msgid "Default"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:140
+#, fuzzy, kde-format
+#| msgctxt "@entry:combobox, alignment name"
+#| msgid "Right"
+msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
+msgid "Light"
+msgstr "Höger"
+
+#: contents/ui/settings/PluginsTab.qml:141
+#, kde-format
+msgctxt ""
+"@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
+msgid "Medium light"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:142
+#, kde-format
+msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
+msgid "Medium"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:143
+#, kde-format
+msgctxt ""
+"@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
+msgid "Medium dark"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:144
+#, kde-format
+msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
+msgid "Dark"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:158
+#, kde-format
+msgctxt "@lable:switch"
+msgid "Enable quick emoji dialog"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:159
+#, kde-format
+msgctxt "@description:switch"
+msgid ""
+"The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
+"inside the text."
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -1033,121 +1120,122 @@ msgid "Missing notes"
 msgstr "Saknar anteckningar"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:155
+#: contents/ui/textEditor/TextDisplay.qml:163
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr "%1 finns inte"
 
-#: contents/ui/textEditor/TextToolBar.qml:35
+#: contents/ui/textEditor/TextToolBar.qml:36
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "Rubriker"
 
-#: contents/ui/textEditor/TextToolBar.qml:35
+#: contents/ui/textEditor/TextToolBar.qml:36
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
 msgstr "antal"
 
-#: contents/ui/textEditor/TextToolBar.qml:40
+#: contents/ui/textEditor/TextToolBar.qml:41
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "Rubrik 1"
 
-#: contents/ui/textEditor/TextToolBar.qml:52
+#: contents/ui/textEditor/TextToolBar.qml:53
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "Rubrik 2"
 
-#: contents/ui/textEditor/TextToolBar.qml:64
+#: contents/ui/textEditor/TextToolBar.qml:65
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "Rubrik 3"
 
-#: contents/ui/textEditor/TextToolBar.qml:76
+#: contents/ui/textEditor/TextToolBar.qml:77
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "Rubrik 4"
 
-#: contents/ui/textEditor/TextToolBar.qml:88
+#: contents/ui/textEditor/TextToolBar.qml:89
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "Rubrik 5"
 
-#: contents/ui/textEditor/TextToolBar.qml:100
+#: contents/ui/textEditor/TextToolBar.qml:101
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "Rubrik 6"
 
-#: contents/ui/textEditor/TextToolBar.qml:114
+#: contents/ui/textEditor/TextToolBar.qml:115
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
 msgstr "Fetstil"
 
-#: contents/ui/textEditor/TextToolBar.qml:123
+#: contents/ui/textEditor/TextToolBar.qml:124
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
 msgstr "Kursiv"
 
-#: contents/ui/textEditor/TextToolBar.qml:132
+#: contents/ui/textEditor/TextToolBar.qml:133
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
 msgstr "Överstruken"
 
-#: contents/ui/textEditor/TextToolBar.qml:141
+#: contents/ui/textEditor/TextToolBar.qml:142
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
 msgstr "Kod"
 
-#: contents/ui/textEditor/TextToolBar.qml:150
+#: contents/ui/textEditor/TextToolBar.qml:151
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
 msgstr "Citat"
 
-#: contents/ui/textEditor/TextToolBar.qml:159
+#: contents/ui/textEditor/TextToolBar.qml:160
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
 msgstr "Bild"
 
-#: contents/ui/textEditor/TextToolBar.qml:166
+#: contents/ui/textEditor/TextToolBar.qml:167
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
 msgstr "Länk"
 
-#: contents/ui/textEditor/TextToolBar.qml:173
+#: contents/ui/textEditor/TextToolBar.qml:174
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
 msgstr "Tabell"
 
-#: contents/ui/textEditor/TextToolBar.qml:180
+#: contents/ui/textEditor/TextToolBar.qml:181
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
 msgstr "Ordnad lista"
 
-#: contents/ui/textEditor/TextToolBar.qml:192
+#: contents/ui/textEditor/TextToolBar.qml:193
+#: contents/ui/textEditor/TextToolBar.qml:214
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
 msgstr "Oordnad lista"
 
-#: contents/ui/textEditor/TextToolBar.qml:204
+#: contents/ui/textEditor/TextToolBar.qml:205
 #, fuzzy, kde-format
 #| msgctxt "@label:combobox"
 #| msgid "Highlighter"
@@ -1155,11 +1243,11 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr "Färgläggning"
 
-#: contents/ui/textEditor/TextToolBar.qml:271
-#: contents/ui/textEditor/TextToolBar.qml:272
-#: contents/ui/textEditor/TextToolBar.qml:273
-#: contents/ui/textEditor/TextToolBar.qml:275
-#: contents/ui/textEditor/TextToolBar.qml:276
+#: contents/ui/textEditor/TextToolBar.qml:289
+#: contents/ui/textEditor/TextToolBar.qml:290
+#: contents/ui/textEditor/TextToolBar.qml:291
+#: contents/ui/textEditor/TextToolBar.qml:293
+#: contents/ui/textEditor/TextToolBar.qml:294
 #, kde-format
 msgid "Header"
 msgstr "Rubrik"
@@ -1169,6 +1257,72 @@ msgstr "Rubrik"
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Rensa markerade"
+
+#: logic/emoji/emojiModel.cpp:152 logic/emoji/emojiModel.cpp:210
+#, kde-format
+msgctxt "Previously used emojis"
+msgid "History"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:157
+#, kde-format
+msgctxt "'Smileys' is a category of emoji"
+msgid "Smileys"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:162
+#, kde-format
+msgctxt "'People' is a category of emoji"
+msgid "People"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:167
+#, kde-format
+msgctxt "'Nature' is a category of emoji"
+msgid "Nature"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:172
+#, kde-format
+msgctxt "'Food' is a category of emoji"
+msgid "Food"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:177
+#, kde-format
+msgctxt "'Activities' is a category of emoji"
+msgid "Activities"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:182
+#, kde-format
+msgctxt "'Travel' is  a category of emoji"
+msgid "Travel"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:187
+#, kde-format
+msgctxt "'Objects' is a category of emoji"
+msgid "Objects"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:192
+#, kde-format
+msgctxt "'Symbols' is a category of emoji"
+msgid "Symbols"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:197
+#, kde-format
+msgctxt "'Flags' is a category of emoji"
+msgid "Flags"
+msgstr ""
+
+#: logic/emoji/emojiModel.cpp:216
+#, kde-format
+msgctxt "'Custom' is a category of emoji"
+msgid "Custom"
+msgstr ""
 
 #: logic/kleverUtility.cpp:99
 #, kde-format
@@ -1231,35 +1385,35 @@ msgstr "Ett fel uppstod vid försök att skapa kategorin."
 msgid "An error occurred while trying to create the storage."
 msgstr "Ett fel uppstod vid försök att skapa lagringen."
 
-#: main.cpp:54
+#: main.cpp:56
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:58
+#: main.cpp:60
 #, kde-format
 msgid "Application Description"
 msgstr "Programbeskrivning"
 
-#: main.cpp:62
+#: main.cpp:64
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "© 2022-2023"
 
-#: main.cpp:63
+#: main.cpp:65
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:68
+#: main.cpp:70
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Stefan Asserhäll"
 
-#: main.cpp:68
+#: main.cpp:70
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
