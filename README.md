@@ -56,6 +56,14 @@ Replace `<lang>` with the desired language :smile:
 - [Chroma](https://github.com/alecthomas/chroma)
 - [Pygments](https://pygments.org/)
 
+### Quick emoji
+Quickly add emojis to your text !
+Use the following syntax to do so :
+
+`:emoji_name:`
+
+You can also choose your preferred tone for the emoji. If a colored variant of the emoji is available, your preferred tone will be used by default.
+
 </details>
 
 ___
