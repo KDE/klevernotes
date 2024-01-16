@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-14 01:59+0000\n"
-"PO-Revision-Date: 2024-01-11 01:19+0100\n"
+"PO-Revision-Date: 2024-01-15 03:37+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -54,16 +54,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "¿Seguro que quiere borrar esta %1?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Selector de color"
+msgstr "No hay pegatinas"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "No hay emojis"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -648,7 +646,7 @@ msgstr "Estilo del resaltador"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Activar emoji rápido"
 
 #: contents/ui/settings/PluginsTab.qml:126
 #, kde-format
@@ -656,60 +654,57 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Escribir rápidamente el emoji usando la siguiente sintaxis"
 
 #: contents/ui/settings/PluginsTab.qml:126
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "Cambiar nombre"
+msgstr "nombre_del_emoji"
 
 #: contents/ui/settings/PluginsTab.qml:139
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Predeterminado"
 
 #: contents/ui/settings/PluginsTab.qml:140
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Derecha"
+msgstr "Claro"
 
 #: contents/ui/settings/PluginsTab.qml:141
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Medio claro"
 
 #: contents/ui/settings/PluginsTab.qml:142
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Medio"
 
 #: contents/ui/settings/PluginsTab.qml:143
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Medio oscuro"
 
 #: contents/ui/settings/PluginsTab.qml:144
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Oscuro"
 
 #: contents/ui/settings/PluginsTab.qml:158
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Activar diálogo de emoji rápido"
 
 #: contents/ui/settings/PluginsTab.qml:159
 #, kde-format
@@ -718,6 +713,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"El diálogo de emoji inserta la sintaxis de «emoji rápido» en lugar del emoji "
+"real dentro del texto."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -1259,67 +1256,67 @@ msgstr "Borrar marcadas"
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "Historial"
 
 #: logic/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Caras"
 
 #: logic/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Personas"
 
 #: logic/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Naturaleza"
 
 #: logic/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Comida"
 
 #: logic/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Actividades"
 
 #: logic/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Viajes"
 
 #: logic/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Objetos"
 
 #: logic/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Símbolos"
 
 #: logic/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Banderas"
 
 #: logic/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizados"
 
 #: logic/kleverUtility.cpp:99
 #, kde-format

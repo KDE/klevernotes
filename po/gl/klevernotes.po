@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# SPDX-FileCopyrightText: 2023 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2023, 2024 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-14 01:59+0000\n"
-"PO-Revision-Date: 2023-12-30 06:37+0100\n"
+"PO-Revision-Date: 2024-01-15 19:40+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -52,16 +52,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "Seguro que quere eliminar esta/e %1?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Selector de cores"
+msgstr "Non hai adhesivos"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "Non hai expresións"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -529,12 +527,10 @@ msgid "Code color:"
 msgstr "Cor do código:"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Realzador"
+msgstr "Cor de realce:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -645,7 +641,7 @@ msgstr "Estilo do realzador"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Activar as expresións rápidas"
 
 #: contents/ui/settings/PluginsTab.qml:126
 #, kde-format
@@ -653,60 +649,57 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Escribir rapidamente expresións mediante a seguinte sintaxe:"
 
 #: contents/ui/settings/PluginsTab.qml:126
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "Renomear"
+msgstr "nome_da_expresion"
 
 #: contents/ui/settings/PluginsTab.qml:139
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Predeterminado"
 
 #: contents/ui/settings/PluginsTab.qml:140
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Dereita"
+msgstr "Claro"
 
 #: contents/ui/settings/PluginsTab.qml:141
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Medio claro"
 
 #: contents/ui/settings/PluginsTab.qml:142
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Medio"
 
 #: contents/ui/settings/PluginsTab.qml:143
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Medio escuro"
 
 #: contents/ui/settings/PluginsTab.qml:144
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Escuro"
 
 #: contents/ui/settings/PluginsTab.qml:158
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Activar o diálogo de expresións rápidas"
 
 #: contents/ui/settings/PluginsTab.qml:159
 #, kde-format
@@ -715,6 +708,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"O diálogo de expresións insire a sintaxe de «expresión rápida» en vez de a "
+"expresión real dentro do texto."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -1232,12 +1227,10 @@ msgid "Unordered list"
 msgstr "Lista desordenada"
 
 #: contents/ui/textEditor/TextToolBar.qml:205
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Realzador"
+msgstr "Realce do texto"
 
 #: contents/ui/textEditor/TextToolBar.qml:289
 #: contents/ui/textEditor/TextToolBar.qml:290
@@ -1259,67 +1252,67 @@ msgstr "Borrar o marcado"
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "Historial"
 
 #: logic/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Cariñas"
 
 #: logic/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Xente"
 
 #: logic/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Natureza"
 
 #: logic/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Comida"
 
 #: logic/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Actividades"
 
 #: logic/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Viaxe"
 
 #: logic/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Obxectos"
 
 #: logic/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Símbolos"
 
 #: logic/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Bandeiras"
 
 #: logic/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizadas"
 
 #: logic/kleverUtility.cpp:99
 #, kde-format
