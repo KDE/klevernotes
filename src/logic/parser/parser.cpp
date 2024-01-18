@@ -8,6 +8,7 @@
 #include "parser.h"
 
 #include "kleverconfig.h"
+#include "logic/plugins/puml/pumlHelper.h"
 #include "renderer.h"
 #include <QJsonArray>
 
@@ -205,22 +206,29 @@ QString Parser::tok()
 
     if (type == QStringLiteral("code")) { // adding const with the Synthax Highlighting MR
         text = m_token[QStringLiteral("text")].toString();
-        const QString lang = m_token[QStringLiteral("lang")].toString();
+        const QString lang = m_token[QStringLiteral("lang")].toString().trimmed();
 
-        const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
-        const bool highlight = highlightEnabled && !lang.isEmpty();
+        static const QString pumlStr = QStringLiteral("puml");
+        static const QString plantUMLStr = QStringLiteral("plantuml");
 
         QString returnValue;
-        if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
-            returnValue = m_previousHighlightedBlocks[m_currentBlockIndex];
-            m_currentBlockIndex++;
+        if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
+            qDebug() << PumlHelper::makeDiagram(pumlStr, plantUMLStr);
+            returnValue = Renderer::image(pumlStr, pumlStr, pumlStr);
         } else {
-            returnValue = Renderer::code(text, lang, highlight);
-            if (highlightEnabled && highlight) { // We want to store only the highlighted values
-                m_previousHighlightedBlocks.append(returnValue);
+            const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
+            const bool highlight = highlightEnabled && !lang.isEmpty();
+
+            if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
+                returnValue = m_previousHighlightedBlocks[m_currentBlockIndex];
+                m_currentBlockIndex++;
+            } else {
+                returnValue = Renderer::code(text, lang, highlight);
+                if (highlightEnabled && highlight) { // We want to store only the highlighted values
+                    m_previousHighlightedBlocks.append(returnValue);
+                }
             }
         }
-
         return returnValue;
     }
 

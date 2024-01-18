@@ -37,6 +37,18 @@ ColumnLayout {
                 Config.noteMapEnabled = checked
             }
         }
+
+        FormCard.FormCheckDelegate {
+            id: pumlCheck
+
+            text: i18nc("@label:checkbox", "Enable PlantUML")
+            description: i18nc("@description:checkbox", "PlantUML let's you create diagram.") 
+            checked: Config.pumlEnabled
+
+            onCheckedChanged: if (checked != Config.pumlEnabled) {
+                Config.pumlEnabled = checked
+            }
+        }
     }
 
     FormCard.FormHeader {

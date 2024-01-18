@@ -30,6 +30,8 @@ RowLayout {
     // Emoji
     readonly property bool emojiEnabled: Config.quickEmojiEnabled
     readonly property string emojiTone: Config.emojiTone
+    // PlantUML
+    readonly property bool pumlEnabled: Config.pumlEnabled
 
     readonly property Parser parser: parser
     readonly property string stylePath: Config.stylePath
@@ -84,6 +86,9 @@ RowLayout {
     }
     onEmojiToneChanged: {
         parser.emojiTone = emojiTone
+        root.parseText()
+    }
+    onPumlEnabledChanged: {
         root.parseText()
     }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {

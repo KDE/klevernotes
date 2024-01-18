@@ -101,6 +101,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::quickEmojiEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::emojiToneChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::quickEmojiDialogEnabledChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::pumlEnabledChanged, config, &KleverConfig::save);
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
