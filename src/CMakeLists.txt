@@ -38,13 +38,6 @@ set(exec_SRCS
     logic/kleverUtility.cpp
     logic/mdHandler.cpp
 
-    logic/emoji/emoticonFilterModel.cpp
-    logic/emoji/emojiModel.cpp
-    logic/emoji/emojiTones.cpp
-
-    logic/noteMapper/noteMapper.cpp
-    logic/noteMapper/noteMapperUtils.cpp
-
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp
     logic/painting/sketchview.cpp
@@ -59,9 +52,17 @@ set(exec_SRCS
 
     logic/printing/printingHelper.cpp
 
-    logic/syntaxHighlight/highlightHelper.cpp
-
     logic/treeview/noteTreeModel.cpp
+    
+    # PLUGINS
+    logic/plugins/emoji/emoticonFilterModel.cpp
+    logic/plugins/emoji/emojiModel.cpp
+    logic/plugins/emoji/emojiTones.cpp
+
+    logic/plugins/noteMapper/noteMapper.cpp
+    logic/plugins/noteMapper/noteMapperUtils.cpp
+
+    logic/plugins/syntaxHighlight/highlightHelper.cpp
 )
 
 add_executable(klevernotes ${exec_SRCS})

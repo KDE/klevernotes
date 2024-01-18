@@ -6,7 +6,7 @@
 // CREDIT TO ORIGINAL IDEA: https://marked.js.org/
 
 #include "renderer.h"
-#include "logic/syntaxHighlight/highlightHelper.h"
+#include "logic/plugins/syntaxHighlight/highlightHelper.h"
 
 #include <QRegularExpression>
 #include <QUrl>

@@ -103,13 +103,15 @@ QModelIndex NoteMapper::index(int row, int column, const QModelIndex &parent) co
 
 QHash<int, QByteArray> NoteMapper::roleNames() const
 {
-    return {{DisplayedPathRole, "displayedPath"},
-            {PathRole, "notePath"},
-            {ExistsRole, "exists"},
-            {HeaderRole, "header"},
-            {HeaderExistsRole, "headerExists"},
-            {HeaderLevelRole, "headerLevel"},
-            {TitleRole, "title"},};
+    return {
+        {DisplayedPathRole, "displayedPath"},
+        {PathRole, "notePath"},
+        {ExistsRole, "exists"},
+        {HeaderRole, "header"},
+        {HeaderExistsRole, "headerExists"},
+        {HeaderLevelRole, "headerLevel"},
+        {TitleRole, "title"},
+    };
 }
 
 QModelIndex NoteMapper::parent(const QModelIndex &index) const
