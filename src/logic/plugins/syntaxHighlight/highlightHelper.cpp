@@ -2,40 +2,9 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 #include "highlightHelper.h"
+#include "../cliHelper.h"
 #include "kleverconfig.h"
 // #include <QDebug>
-#include <QProcess>
-
-QString findExecutable(const QString &command)
-{
-    return QStandardPaths::findExecutable(command);
-}
-
-QString execCommand(const QString &input)
-{
-    QProcess process;
-
-    const QString sh = findExecutable(QStringLiteral("sh"));
-    if (sh.isEmpty()) {
-        return {};
-    }
-
-    // We let sh handle the pipes and all the args, easier than using multiple QProcess
-    process.start(sh, QStringList() << QStringLiteral("-c") << input);
-
-    if (!process.waitForStarted()) {
-        return {};
-    }
-
-    process.waitForFinished(5000); // if it takes more then 5 secs, there's a problem !
-
-    return process.exitCode() == 0 ? QString::fromUtf8(process.readAllStandardOutput()) : QLatin1String();
-}
-
-bool commandExists(const QString &command)
-{
-    return !findExecutable(command).isEmpty();
-}
 
 HighlightHelper::HighlightHelper(QObject *parent)
     : QObject(parent)
@@ -63,7 +32,7 @@ QString HighlightHelper::getHighlightedString(const QString &inputStr, const QSt
 
     cmd = echo + cmd;
 
-    QString output = execCommand(cmd);
+    QString output = CLIHelper::execCommand(cmd);
 
     if (output.isEmpty()) {
         return inputStr;
@@ -105,7 +74,7 @@ QStringList HighlightHelper::getHighlighterStyleFromCmd(const QString &highlight
     QStringList styles;
 
     const QString cmd = highlighter + m_highlightersCommands[highlighter].constFirst();
-    const QString output = execCommand(cmd);
+    const QString output = CLIHelper::execCommand(cmd);
 
     if (output.isEmpty()) {
         return styles;
@@ -136,7 +105,7 @@ QStringList HighlightHelper::getHighlighterStyleFromCmd(const QString &highlight
 void HighlightHelper::setAvailableHighlighters()
 {
     for (auto it = m_highlightersCommands.cbegin(); it != m_highlightersCommands.cend(); it++) {
-        if (commandExists(it.key())) {
+        if (CLIHelper::commandExists(it.key())) {
             m_availableHighlighters[it.key()] = getHighlighterStyleFromCmd(it.key());
         }
     }

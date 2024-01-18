@@ -3,9 +3,11 @@
 
 #include "pumlHelper.h"
 
+#include "../cliHelper.h"
+
 bool PumlHelper::makeDiagram(const QString &inputStr, const QString diagName)
 {
-    const bool pumlExist = true; // Check for puml on the system (use findExecutable)
+    const bool pumlExist = CLIHelper::commandExists(QStringLiteral("plantuml"));
     if (pumlExist) {
         const QString pumlError; // Run the command (use execCommand)
         if (!pumlError.isEmpty()) {

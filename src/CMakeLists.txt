@@ -55,6 +55,8 @@ set(exec_SRCS
     logic/treeview/noteTreeModel.cpp
     
     # PLUGINS
+    logic/plugins/cliHelper.cpp
+
     logic/plugins/emoji/emoticonFilterModel.cpp
     logic/plugins/emoji/emojiModel.cpp
     logic/plugins/emoji/emojiTones.cpp
