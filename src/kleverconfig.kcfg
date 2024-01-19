@@ -83,6 +83,10 @@
             <label>Whether or not PlantUML is enable</label>
             <default>false</default>
         </entry>
+        <entry name="pumlDark" type="Bool">
+            <label>Whether or not PlantUML diagram use dark background</label>
+            <default>false</default>
+        </entry>
         <entry name="quickEmojiEnabled" type="Bool">
             <label>Whether or not quick emoji (':emoji_name:') is enable</label>
             <default>false</default>

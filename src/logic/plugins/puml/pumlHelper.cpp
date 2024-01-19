@@ -5,11 +5,12 @@
 
 #include "../cliHelper.h"
 
-bool PumlHelper::makeDiagram(const QString &inputStr, const QString diagName)
+bool PumlHelper::makeDiagram(const QString &inputStr, const QString diagName, const bool darkTheme)
 {
     const bool pumlExist = CLIHelper::commandExists(QStringLiteral("plantuml"));
     if (pumlExist) {
-        const QString cmd = QStringLiteral("echo \"") + inputStr + QStringLiteral("\" | plantuml -pipe > ") + diagName;
+        const QString darkModeStr = darkTheme ? QStringLiteral(" -darkmode") : QLatin1String();
+        const QString cmd = QStringLiteral("echo \"") + inputStr + QStringLiteral("\" | plantuml") + darkModeStr + QStringLiteral(" -pipe > ") + diagName;
         const QString pumlError = CLIHelper::execCommand(cmd);
         if (!pumlError.isEmpty()) {
             return false;

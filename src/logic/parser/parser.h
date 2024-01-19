@@ -56,7 +56,10 @@ Q_SIGNALS:
     void noteHeadersSent(const QString &notePath, const QStringList &noteHeaders);
 
 public Q_SLOTS:
+    // Syntax highlight
     void newHighlightStyle();
+    // PUML
+    void pumlDarkChanged();
 
 private:
     QString tok();
@@ -102,6 +105,7 @@ private:
     QString m_emojiTone = KleverConfig::emojiTone();
 
     // PUML
+    bool m_pumlDarkChanged = true;
     bool m_samePUMLBlocks = false;
     int m_currentPUMLBlockIndex = 0;
     QStringList m_notePUMLBlocks;

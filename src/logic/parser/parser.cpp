@@ -145,9 +145,10 @@ QString Parser::parse(QString src)
     }
     if (KleverConfig::pumlEnabled()) {
         m_samePUMLBlocks = m_previousNotePUMLBlocks == m_notePUMLBlocks && !m_notePUMLBlocks.isEmpty();
-        if (!m_samePUMLBlocks) {
+        if (!m_samePUMLBlocks || m_pumlDarkChanged) {
             m_previousNotePUMLBlocks = m_notePUMLBlocks;
             m_previousPUMLDiag.clear();
+            m_pumlDarkChanged = false;
             m_samePUMLBlocks = false;
         }
         m_currentPUMLBlockIndex = 0;
@@ -233,7 +234,8 @@ QString Parser::tok()
                 const int diagNbr = m_previousPUMLDiag.size();
                 const QString diagName = QStringLiteral("/KleverNotesPUMLDiag") + QString::number(diagNbr) + QStringLiteral(".png");
                 const QString diagPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + diagName;
-                returnValue = Renderer::image(PumlHelper::makeDiagram(text, diagPath) ? diagPath : QLatin1String(), diagName, diagName);
+                const QString imgPath = PumlHelper::makeDiagram(text, diagPath, KleverConfig::pumlDark()) ? diagPath : QLatin1String();
+                returnValue = Renderer::image(imgPath, diagName, diagName);
                 m_previousPUMLDiag.append(returnValue);
             }
         } else {
@@ -426,4 +428,9 @@ QString Parser::emojiTone() const
 void Parser::addToNotePUMLBlock(const QString &pumlBlock)
 {
     m_notePUMLBlocks.append(pumlBlock);
+}
+
+void Parser::pumlDarkChanged()
+{
+    m_pumlDarkChanged = true;
 }

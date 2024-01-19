@@ -8,5 +8,5 @@
 class PumlHelper
 {
 public:
-    static bool makeDiagram(const QString &inputStr, const QString diagName);
+    static bool makeDiagram(const QString &inputStr, const QString diagName, const bool darkTheme);
 };

@@ -38,7 +38,7 @@ ColumnLayout {
             }
         }
 
-        FormCard.FormCheckDelegate {
+        ExpendingFormCheckBox {
             id: pumlCheck
 
             text: i18nc("@label:checkbox", "Enable PlantUML")
@@ -47,6 +47,18 @@ ColumnLayout {
 
             onCheckedChanged: if (checked != Config.pumlEnabled) {
                 Config.pumlEnabled = checked
+            }
+
+            FormCard.FormSwitchDelegate {
+                id: pumlDarkSwitch
+
+                text: i18nc("@lable:switch", "Enable dark background")
+                description: i18nc("@description:switch", "PlantUML diagram will have a dark background.")
+                checked: Config.pumlDark
+
+                onCheckedChanged: if (checked != Config.pumlDark) {
+                    Config.pumlDark = checked
+                }
             }
         }
     }
