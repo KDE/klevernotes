@@ -75,10 +75,12 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             const QString text = cap.captured(3);
-            const QString lang = cap.captured(2);
+            const QString lang = cap.captured(2).trimmed();
             const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("code")}, {QStringLiteral("text"), text}, {QStringLiteral("lang"), lang}};
             m_parser->tokens.append(tok);
-            if (KleverConfig::codeSynthaxHighlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
+            if (KleverConfig::pumlEnabled() && (lang.toLower() == QStringLiteral("puml") || lang.toLower() == QStringLiteral("plantuml"))) {
+                m_parser->addToNotePUMLBlock(text);
+            } else if (KleverConfig::codeSynthaxHighlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
                 m_parser->addToNoteCodeBlocks(text);
             }
             continue;

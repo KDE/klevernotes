@@ -94,6 +94,8 @@ void Parser::setNotePath(const QString &notePath)
     m_previousNoteHeaders.clear();
     m_linkedNotesChanged = true;
     m_notePathChanged = true;
+    // PUML
+    m_previousPUMLDiag.clear();
 
     // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
     m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
@@ -119,6 +121,8 @@ QString Parser::parse(QString src)
     m_noteCodeBlocks.clear();
     // NoteMapper
     m_linkedNotesInfos.clear();
+    // PUML
+    m_notePUMLBlocks.clear();
 
     m_noteHeaders.clear();
     m_headerFound = false;
@@ -138,6 +142,15 @@ QString Parser::parse(QString src)
             m_sameCodeBlocks = false;
         }
         m_currentBlockIndex = 0;
+    }
+    if (KleverConfig::pumlEnabled()) {
+        m_samePUMLBlocks = m_previousNotePUMLBlocks == m_notePUMLBlocks && !m_notePUMLBlocks.isEmpty();
+        if (!m_samePUMLBlocks) {
+            m_previousNotePUMLBlocks = m_notePUMLBlocks;
+            m_previousPUMLDiag.clear();
+            m_samePUMLBlocks = false;
+        }
+        m_currentPUMLBlockIndex = 0;
     }
 
     std::reverse(tokens.begin(), tokens.end());
@@ -213,8 +226,16 @@ QString Parser::tok()
 
         QString returnValue;
         if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-            qDebug() << PumlHelper::makeDiagram(pumlStr, plantUMLStr);
-            returnValue = Renderer::image(pumlStr, pumlStr, pumlStr);
+            if (m_samePUMLBlocks) {
+                returnValue = m_previousPUMLDiag[m_currentPUMLBlockIndex];
+                m_currentPUMLBlockIndex++;
+            } else {
+                const int diagNbr = m_previousPUMLDiag.size();
+                const QString diagName = QStringLiteral("/KleverNotesPUMLDiag") + QString::number(diagNbr) + QStringLiteral(".png");
+                const QString diagPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + diagName;
+                returnValue = Renderer::image(PumlHelper::makeDiagram(text, diagPath) ? diagPath : QLatin1String(), diagName, diagName);
+                m_previousPUMLDiag.append(returnValue);
+            }
         } else {
             const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
             const bool highlight = highlightEnabled && !lang.isEmpty();
@@ -399,4 +420,10 @@ void Parser::setEmojiTone(const QString &emojiTone)
 QString Parser::emojiTone() const
 {
     return m_emojiTone;
+}
+
+// PUML
+void Parser::addToNotePUMLBlock(const QString &pumlBlock)
+{
+    m_notePUMLBlocks.append(pumlBlock);
 }

@@ -47,6 +47,9 @@ public:
     void setEmojiTone(const QString &emojiTone);
     QString emojiTone() const;
 
+    // PUML
+    void addToNotePUMLBlock(const QString &pumlBlock);
+
 Q_SIGNALS:
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
@@ -97,4 +100,11 @@ private:
 
     // Emoji support
     QString m_emojiTone = KleverConfig::emojiTone();
+
+    // PUML
+    bool m_samePUMLBlocks = false;
+    int m_currentPUMLBlockIndex = 0;
+    QStringList m_notePUMLBlocks;
+    QStringList m_previousNotePUMLBlocks;
+    QStringList m_previousPUMLDiag;
 };
