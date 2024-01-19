@@ -43,6 +43,7 @@ Use the following syntax to do so :
 
 ### Syntax highlighting
 Highlight your blocks of code !
+
 Use the following syntax to do so : 
 ```
     ```<lang>
@@ -58,11 +59,26 @@ Replace `<lang>` with the desired language :smile:
 
 ### Quick emoji
 Quickly add emojis to your text !
+
 Use the following syntax to do so :
 
 `:emoji_name:`
 
 You can also choose your preferred tone for the emoji. If a colored variant of the emoji is available, your preferred tone will be used by default.
+
+### PlantUML
+Create diagram with PlantUML.
+
+Use the following syntax to do so :
+```puml
+<PlantUML syntax>
+```
+or
+```plantuml
+<PlantUML syntax>
+```
+
+[More info about PlantUML](https://plantuml.com/)
 
 </details>
 
