@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-14 01:59+0000\n"
+"POT-Creation-Date: 2024-01-19 01:41+0000\n"
 "PO-Revision-Date: 2024-01-14 10:23+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1251,72 +1251,6 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Počisti odkljukano"
 
-#: logic/emoji/emojiModel.cpp:152 logic/emoji/emojiModel.cpp:210
-#, kde-format
-msgctxt "Previously used emojis"
-msgid "History"
-msgstr "Zgodovina"
-
-#: logic/emoji/emojiModel.cpp:157
-#, kde-format
-msgctxt "'Smileys' is a category of emoji"
-msgid "Smileys"
-msgstr "Smeškoti"
-
-#: logic/emoji/emojiModel.cpp:162
-#, kde-format
-msgctxt "'People' is a category of emoji"
-msgid "People"
-msgstr "Ljudje"
-
-#: logic/emoji/emojiModel.cpp:167
-#, kde-format
-msgctxt "'Nature' is a category of emoji"
-msgid "Nature"
-msgstr "Narava"
-
-#: logic/emoji/emojiModel.cpp:172
-#, kde-format
-msgctxt "'Food' is a category of emoji"
-msgid "Food"
-msgstr "Hrana"
-
-#: logic/emoji/emojiModel.cpp:177
-#, kde-format
-msgctxt "'Activities' is a category of emoji"
-msgid "Activities"
-msgstr "Dejavnosti"
-
-#: logic/emoji/emojiModel.cpp:182
-#, kde-format
-msgctxt "'Travel' is  a category of emoji"
-msgid "Travel"
-msgstr "Potovanja"
-
-#: logic/emoji/emojiModel.cpp:187
-#, kde-format
-msgctxt "'Objects' is a category of emoji"
-msgid "Objects"
-msgstr "Predmeti"
-
-#: logic/emoji/emojiModel.cpp:192
-#, kde-format
-msgctxt "'Symbols' is a category of emoji"
-msgid "Symbols"
-msgstr "Simboli"
-
-#: logic/emoji/emojiModel.cpp:197
-#, kde-format
-msgctxt "'Flags' is a category of emoji"
-msgid "Flags"
-msgstr "Zastave"
-
-#: logic/emoji/emojiModel.cpp:216
-#, kde-format
-msgctxt "'Custom' is a category of emoji"
-msgid "Custom"
-msgstr "Po meri"
-
 #: logic/kleverUtility.cpp:99
 #, kde-format
 msgid ""
@@ -1332,6 +1266,73 @@ msgstr ""
 "Prosto jo urejajte ali izdelajte svojo lastno.            \n"
 "Opomba: vsak slog mora imeti drugačno ime.            \n"
 "*/\n"
+
+#: logic/plugins/emoji/emojiModel.cpp:152
+#: logic/plugins/emoji/emojiModel.cpp:210
+#, kde-format
+msgctxt "Previously used emojis"
+msgid "History"
+msgstr "Zgodovina"
+
+#: logic/plugins/emoji/emojiModel.cpp:157
+#, kde-format
+msgctxt "'Smileys' is a category of emoji"
+msgid "Smileys"
+msgstr "Smeškoti"
+
+#: logic/plugins/emoji/emojiModel.cpp:162
+#, kde-format
+msgctxt "'People' is a category of emoji"
+msgid "People"
+msgstr "Ljudje"
+
+#: logic/plugins/emoji/emojiModel.cpp:167
+#, kde-format
+msgctxt "'Nature' is a category of emoji"
+msgid "Nature"
+msgstr "Narava"
+
+#: logic/plugins/emoji/emojiModel.cpp:172
+#, kde-format
+msgctxt "'Food' is a category of emoji"
+msgid "Food"
+msgstr "Hrana"
+
+#: logic/plugins/emoji/emojiModel.cpp:177
+#, kde-format
+msgctxt "'Activities' is a category of emoji"
+msgid "Activities"
+msgstr "Dejavnosti"
+
+#: logic/plugins/emoji/emojiModel.cpp:182
+#, kde-format
+msgctxt "'Travel' is  a category of emoji"
+msgid "Travel"
+msgstr "Potovanja"
+
+#: logic/plugins/emoji/emojiModel.cpp:187
+#, kde-format
+msgctxt "'Objects' is a category of emoji"
+msgid "Objects"
+msgstr "Predmeti"
+
+#: logic/plugins/emoji/emojiModel.cpp:192
+#, kde-format
+msgctxt "'Symbols' is a category of emoji"
+msgid "Symbols"
+msgstr "Simboli"
+
+#: logic/plugins/emoji/emojiModel.cpp:197
+#, kde-format
+msgctxt "'Flags' is a category of emoji"
+msgid "Flags"
+msgstr "Zastave"
+
+#: logic/plugins/emoji/emojiModel.cpp:216
+#, kde-format
+msgctxt "'Custom' is a category of emoji"
+msgid "Custom"
+msgstr "Po meri"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
