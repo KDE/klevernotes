@@ -43,6 +43,7 @@ ColumnLayout {
 
             text: i18nc("@label:checkbox", "Enable PlantUML")
             description: i18nc("@description:checkbox", "PlantUML let's you create diagram.") 
+                + "\n" + i18nc("@description:checkbox", "Note: creating diagrams can be slow. If you have a large number of diagrams, displaying them as images would be easier.")
             checked: Config.pumlEnabled
 
             onCheckedChanged: if (checked != Config.pumlEnabled) {
