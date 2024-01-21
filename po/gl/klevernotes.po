@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-19 01:41+0000\n"
+"POT-Creation-Date: 2024-01-21 01:36+0000\n"
 "PO-Revision-Date: 2024-01-15 19:40+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -607,43 +607,75 @@ msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "Consello: reinicie a aplicación despois de activalo."
 
-#: contents/ui/settings/PluginsTab.qml:43
+#: contents/ui/settings/PluginsTab.qml:44
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable PlantUML"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:45
+#, kde-format
+msgctxt "@description:checkbox"
+msgid "PlantUML let's you create diagram."
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:46
+#, kde-format
+msgctxt "@description:checkbox"
+msgid ""
+"Note: creating diagrams can be slow. If you have a large number of diagrams, "
+"displaying them as images would be easier."
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:56
+#, kde-format
+msgctxt "@lable:switch"
+msgid "Enable dark background"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:57
+#, kde-format
+msgctxt "@description:switch"
+msgid "PlantUML diagram will have a dark background."
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
 msgstr "Complementos cosméticos"
 
-#: contents/ui/settings/PluginsTab.qml:55
+#: contents/ui/settings/PluginsTab.qml:80
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "Activar o realce de sintaxe de código"
 
-#: contents/ui/settings/PluginsTab.qml:56
+#: contents/ui/settings/PluginsTab.qml:81
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr "Lista de realzadores permitidos"
 
-#: contents/ui/settings/PluginsTab.qml:66
+#: contents/ui/settings/PluginsTab.qml:91
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
 msgstr "Realzador"
 
-#: contents/ui/settings/PluginsTab.qml:94
+#: contents/ui/settings/PluginsTab.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr "Estilo do realzador"
 
-#: contents/ui/settings/PluginsTab.qml:124
+#: contents/ui/settings/PluginsTab.qml:149
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
 msgstr "Activar as expresións rápidas"
 
-#: contents/ui/settings/PluginsTab.qml:126
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
@@ -651,57 +683,57 @@ msgctxt ""
 msgid "Quickly write emoji using the following syntax"
 msgstr "Escribir rapidamente expresións mediante a seguinte sintaxe:"
 
-#: contents/ui/settings/PluginsTab.qml:126
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "nome_da_expresion"
 
-#: contents/ui/settings/PluginsTab.qml:139
+#: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr "Predeterminado"
 
-#: contents/ui/settings/PluginsTab.qml:140
+#: contents/ui/settings/PluginsTab.qml:165
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "Claro"
 
-#: contents/ui/settings/PluginsTab.qml:141
+#: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr "Medio claro"
 
-#: contents/ui/settings/PluginsTab.qml:142
+#: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr "Medio"
 
-#: contents/ui/settings/PluginsTab.qml:143
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr "Medio escuro"
 
-#: contents/ui/settings/PluginsTab.qml:144
+#: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr "Escuro"
 
-#: contents/ui/settings/PluginsTab.qml:158
+#: contents/ui/settings/PluginsTab.qml:183
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr "Activar o diálogo de expresións rápidas"
 
-#: contents/ui/settings/PluginsTab.qml:159
+#: contents/ui/settings/PluginsTab.qml:184
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
@@ -1111,7 +1143,7 @@ msgid "Missing notes"
 msgstr "Notas que faltan"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:163
+#: contents/ui/textEditor/TextDisplay.qml:173
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
