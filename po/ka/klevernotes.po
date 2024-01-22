@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-21 01:36+0000\n"
-"PO-Revision-Date: 2023-12-30 06:06+0100\n"
+"PO-Revision-Date: 2024-01-21 11:52+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -53,16 +53,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "ფერის ამრჩევი"
+msgstr "სტიკერების გარეშე"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "ემოჯიების გარეშე"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -534,12 +532,10 @@ msgid "Code color:"
 msgstr "კოდის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "გამომკვეთი"
+msgstr "გამოკვეთის ფერი:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -622,13 +618,13 @@ msgstr "რჩევა: გადატვირთეთ აპი აქტ�
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "PlantUML-ის ჩართვა"
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
-msgstr ""
+msgstr "PlantUML დიაგრამების შექმნის საშუალებას გაძლევთ."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -637,18 +633,21 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"შენიშვნა: დიაგრამების შექმენა, შეიძლება, ნელი იყოს. თუ დიაგრამების დიდი "
+"რაოდენობა გაქვთ, მათი გამოსახულების სახით გამოტანა, შეიძლება, უფრო ადვილიც "
+"იყოს."
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "მუქი ფონის გამოყენება"
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "PlantUML-ის დიაგრამებს მუქი ფერი ექნებათ."
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
@@ -684,7 +683,7 @@ msgstr "გამომკვეთის სტილი"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "სწრაფი ემოჯიების დაშვება"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -692,60 +691,57 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "დაწერეთ სწრაფად ემოჯიები შემდეგი სინტაქსის გამოყენებით"
 
 #: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "გადარქმევა"
+msgstr "ემოჯის_სახელი"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "ნაგულისხმევი"
 
 #: contents/ui/settings/PluginsTab.qml:165
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "მარჯვენა"
+msgstr "ღია"
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "საშუალო ღია"
 
 #: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "საშუალო"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "საშუალო მუქი"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "ბნელი"
 
 #: contents/ui/settings/PluginsTab.qml:183
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "სწრაფი ემოჯის დიალოგის ჩართვა"
 
 #: contents/ui/settings/PluginsTab.qml:184
 #, kde-format
@@ -754,6 +750,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"ემოჯის დიალოგი ტექსტში ჩასვამს 'სწრაფი ემოჯის' სინტაქსს და არა ნამდვილ "
+"ემოჯის."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -1271,12 +1269,10 @@ msgid "Unordered list"
 msgstr "დაულაგებელი სია"
 
 #: contents/ui/textEditor/TextToolBar.qml:205
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "გამომკვეთი"
+msgstr "ტექსტის გამოკვეთა"
 
 #: contents/ui/textEditor/TextToolBar.qml:289
 #: contents/ui/textEditor/TextToolBar.qml:290
@@ -1315,67 +1311,67 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "ისტორია"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "სიცილაკები"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "ხალხი"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "ბუნება"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "საჭმელი"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "ქმედებები"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "მოგზაურობა"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "ობიექტები"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "სიმბოლოები"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "დროშები"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "ხელით მითითება"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
