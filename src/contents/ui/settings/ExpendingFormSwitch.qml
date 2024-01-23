@@ -82,7 +82,9 @@ T.SwitchDelegate {
                     visible: root.description !== ""
                     wrapMode: Text.Wrap
                     textFormat: Text.StyledText // This way we can display a link to the supported Highlighters
-                    onLinkActivated: Qt.openUrlExternally(link)
+                    onLinkActivated: function (link) {
+                        Qt.openUrlExternally(link)
+                    }
 
                     Layout.fillWidth: true
                 }
