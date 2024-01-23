@@ -25,7 +25,7 @@ ColumnLayout {
 
         Layout.fillWidth: true
 
-        FormCard.FormCheckDelegate {
+        FormCard.FormSwitchDelegate {
             id: noteMapperCheck
 
             text: i18nc("@label:checkbox", "Enable note linking")
@@ -38,7 +38,7 @@ ColumnLayout {
             }
         }
 
-        ExpendingFormCheckBox {
+        ExpendingFormSwitch {
             id: pumlCheck
 
             text: i18nc("@label:checkbox", "Enable PlantUML")
@@ -74,7 +74,7 @@ ColumnLayout {
 
         Layout.fillWidth: true
 
-        ExpendingFormCheckBox {
+        ExpendingFormSwitch {
             id: highlitingCheck
 
             text: i18nc("@label:checkbox", "Enable code syntax highlighting")
@@ -143,7 +143,7 @@ ColumnLayout {
     
         FormCard.FormDelegateSeparator { above: highlitingCheck; below: emojiCheck }
 
-        ExpendingFormCheckBox {
+        ExpendingFormSwitch {
             id: emojiCheck
 
             text: i18nc("@label:checkbox", "Enable quick emoji")
@@ -158,6 +158,8 @@ ColumnLayout {
             FormCard.FormComboBoxDelegate {
                 id: tonesCombobox
 
+
+                text: i18nc("@label:combobox", "Default emoji tone")
                 textRole: "text"
                 valueRole: "value"
                 model: [
