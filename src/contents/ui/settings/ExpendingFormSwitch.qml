@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
 /*
- * BASED ON FormCheckDelegate :
+ * BASED ON FormSwitchDelegate :
  * Copyright 2022 Devin Lin <devin@kde.org>
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -15,7 +15,7 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0
 
-T.CheckDelegate {
+T.SwitchDelegate {
     id: root
 
     default property alias delegates: internalColumn.children
@@ -60,33 +60,6 @@ T.CheckDelegate {
         RowLayout {
             spacing: 0
 
-            Controls.CheckBox {
-                id: checkBoxItem
-
-                focusPolicy: Qt.NoFocus // provided by delegate
-                enabled: root.enabled
-                checked: root.checked
-                checkState: root.checkState
-                nextCheckState: root.nextCheckState
-                tristate: root.tristate
-
-                Layout.rightMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
-
-                onToggled: {
-                    root.toggle();
-                    root.toggled();
-                }
-                onClicked: {
-                    root.clicked()
-                }
-                onPressAndHold: {
-                    root.pressAndHold()
-                }
-                onDoubleClicked: {
-                    root.doubleClicked()
-                }
-            }
-
             ColumnLayout {
                 spacing: Kirigami.Units.smallSpacing
                 Layout.fillWidth: true
@@ -114,13 +87,34 @@ T.CheckDelegate {
                     Layout.fillWidth: true
                 }
             }
+
+            Controls.Switch {
+                id: switchItem
+                focusPolicy: Qt.NoFocus // provided by delegate
+                Layout.leftMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
+
+                enabled: root.enabled
+                checked: root.checked
+
+                onToggled: root.toggled()
+                onClicked: root.clicked()
+                onPressAndHold: root.pressAndHold()
+                onDoubleClicked: root.doubleClicked()
+
+                onCheckedChanged: {
+                    root.checked = checked;
+                    checked = Qt.binding(() => root.checked);
+                }
+            }
         }
 
         ColumnLayout {
             id: internalColumn
 
             spacing: 0
-            visible: checkBoxItem.checked
+            visible: switchItem.checked
+
+            Layout.topMargin: Kirigami.Units.smallSpacing
         }
     }
 
