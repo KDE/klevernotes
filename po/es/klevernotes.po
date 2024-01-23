@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-21 01:36+0000\n"
-"PO-Revision-Date: 2024-01-15 03:37+0100\n"
+"PO-Revision-Date: 2024-01-23 00:29+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -616,13 +616,13 @@ msgstr "Consejo: Reinicie la aplicación tras activarlo."
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Activar PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
-msgstr ""
+msgstr "PlantUML permite crear diagramas."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -631,18 +631,20 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Nota: La creación de diagramas puede ser lenta. Si tiene un gran número de "
+"diagramas, mostrarlos como imágenes sería más fácil."
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Activar fondo oscuro"
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "El diagrama de PlantUML tendrá un fondo oscuro."
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format

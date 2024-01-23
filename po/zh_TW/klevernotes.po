@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-21 01:36+0000\n"
-"PO-Revision-Date: 2023-12-20 17:35+0900\n"
+"PO-Revision-Date: 2024-01-22 18:17+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -53,16 +53,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "您確定要刪除這個%1嗎？"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "取色工具"
+msgstr "無貼圖"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "無表情符號"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -179,7 +177,7 @@ msgstr "名稱："
 #: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgid "Name, as in 'A note'"
-msgstr ""
+msgstr "名稱，像是「一個筆記」"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -475,12 +473,10 @@ msgid ""
 msgstr "請選擇新的筆記儲存庫的路徑或是一個既存的筆記儲存庫。\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the font used in the text editor"
-#| msgid "Editor font:"
+#, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr "編輯器字型："
+msgstr "編輯器"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
@@ -489,14 +485,10 @@ msgid "Editor font:"
 msgstr "編輯器字型："
 
 #: contents/ui/settings/AppearanceTab.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@tooltip, display as in 'the note preview', will be followed by the "
-#| "shortcut"
-#| msgid "View/Hide preview"
+#, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr "檢視/隱藏預覽"
+msgstr "筆記預覽"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -535,12 +527,10 @@ msgid "Code color:"
 msgstr "程式碼顏色："
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "突顯器"
+msgstr "突顯顏色："
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -555,16 +545,12 @@ msgid "Code block font:"
 msgstr "程式碼區塊字型"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "筆記儲存庫路徑："
+msgstr "儲存庫"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -577,7 +563,7 @@ msgstr "筆記儲存庫路徑："
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "側邊欄"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -601,7 +587,7 @@ msgstr "新筆記名稱："
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "工具外掛程式"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
@@ -625,13 +611,13 @@ msgstr "建議：啟用後重新啟動應用程式。"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "啟用 PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
-msgstr ""
+msgstr "PlantUML 讓您建立圖表。"
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -640,24 +626,26 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"請注意：建立圖表效能可能不佳。如果您的圖表數量很多，將它們作為影像顯示可能會"
+"比較容易。"
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "啟用深色背景"
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "PlantUML 的圖表背景會是深色的。"
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "外觀外掛程式"
 
 #: contents/ui/settings/PluginsTab.qml:80
 #, kde-format
@@ -687,7 +675,7 @@ msgstr "突顯器風格"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "啟用快速表情符號"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -695,60 +683,57 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "使用以下語法快速寫下表情符號"
 
 #: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "重新命名"
+msgstr "表情符號短名稱"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "預設"
 
 #: contents/ui/settings/PluginsTab.qml:165
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "置右"
+msgstr "淺色"
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "中淺色"
 
 #: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "中間色"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "中深色"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "深色"
 
 #: contents/ui/settings/PluginsTab.qml:183
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "啟用快速表情符號對話框"
 
 #: contents/ui/settings/PluginsTab.qml:184
 #, kde-format
@@ -756,12 +741,10 @@ msgctxt "@description:switch"
 msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
-msgstr ""
+msgstr "表情符號對話框會插入「快速表情符號」語法，而不是實際的表情符號字元。"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "一般"
@@ -772,13 +755,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "外觀"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "外掛程式"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -1276,12 +1259,10 @@ msgid "Unordered list"
 msgstr "無序列表"
 
 #: contents/ui/textEditor/TextToolBar.qml:205
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "突顯器"
+msgstr "文字突顯"
 
 #: contents/ui/textEditor/TextToolBar.qml:289
 #: contents/ui/textEditor/TextToolBar.qml:290
@@ -1308,79 +1289,83 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"這個檔案是筆記顯示用的預設 CSS 樣式表複本。可以自由編輯它或是讓它變成自己的風"
+"格。            \n"
+"請注意：每一個樣式都需要有不同的名稱。            \n"
+"*/\n"
 
 #: logic/plugins/emoji/emojiModel.cpp:152
 #: logic/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "歷史"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "微笑"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "人們"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "自然"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "食物"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "活動"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "旅行"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "物體"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "符號"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "旗幟"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr "建立此項目時發生錯誤。"
+msgstr "嘗試複製此 PDF 時發生錯誤。"
 
 #: logic/treeview/noteTreeModel.cpp:276
 #, kde-format
@@ -1431,7 +1416,7 @@ msgstr "KleverNotes 筆記"
 #: main.cpp:60
 #, kde-format
 msgid "Application Description"
-msgstr ""
+msgstr "應用程式描述"
 
 #: main.cpp:64
 #, kde-format
