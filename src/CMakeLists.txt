@@ -56,6 +56,7 @@ set(exec_SRCS
     
     # PLUGINS
     logic/plugins/cliHelper.cpp
+    logic/plugins/pluginHelper.cpp
 
     logic/plugins/emoji/emoticonFilterModel.cpp
     logic/plugins/emoji/emojiModel.cpp
