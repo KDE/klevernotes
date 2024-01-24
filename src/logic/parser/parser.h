@@ -13,7 +13,6 @@
 #include "../plugins/pluginHelper.h"
 #include "blockLexer.h"
 #include "inlineLexer.h"
-#include "kleverconfig.h"
 
 class Parser : public QObject
 {
@@ -22,8 +21,6 @@ class Parser : public QObject
     // NoteMapper
     Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
     Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
-    // Emoji
-    Q_PROPERTY(QString emojiTone WRITE setEmojiTone) // QML will handle the signal and change it for us
 public:
     explicit Parser(QObject *parent = nullptr);
 
@@ -33,6 +30,8 @@ public:
     void setNotePath(const QString &notePath);
     QVector<QVariantMap> tokens;
     QMap<QString, QMap<QString, QString>> links;
+
+    PluginHelper *getPluginHelper();
 
     // NoteMapper
     void setHeaderInfo(const QStringList &headerInfo);
@@ -57,7 +56,7 @@ private:
 
     BlockLexer blockLexer = BlockLexer(this);
     InlineLexer inlineLexer = InlineLexer(this);
-    PluginHelper pluginHelper = PluginHelper();
+    PluginHelper *pluginHelper = new PluginHelper();
 
     QString m_notePath;
     QVariantMap m_token;

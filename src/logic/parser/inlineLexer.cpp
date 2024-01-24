@@ -28,6 +28,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
     QMap<QString, QString> linkInfo;
     QRegularExpressionMatch cap, secondCap;
 
+    PluginHelper *pluginHelper = m_parser->getPluginHelper();
+
     while (!src.isEmpty()) {
         cap = inline_escape.match(src);
         if (cap.hasMatch()) {
@@ -130,7 +132,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                 src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
                 if (!cap.captured(1).trimmed().isEmpty()) {
                     href = cap.captured(1).trimmed();
-                    const QPair<QString, bool> sanitizedHref = m_parser->sanitizePath(href);
+                    const QPair<QString, bool> sanitizedHref = pluginHelper->sanitizePath(href);
 
                     cap3 = cap.captured(3).trimmed();
 
@@ -140,7 +142,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                     title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
                     if (sanitizedHref.second) {
-                        m_parser->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
+                        pluginHelper->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
                         // This hopefuly, is enough to separate the 2 without collinding with user input
                         QString fullLink = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
                         out += Renderer::wikilink(fullLink, title, title);
@@ -312,7 +314,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                     variantInfo = cap3.split(QStringLiteral(","));
                 }
 
-                const QString configTone = m_parser->emojiTone();
+                const QString configTone = KleverConfig::emojiTone();
                 QString tone = configTone == QStringLiteral("None") ? QLatin1String() : configTone;
                 QString givenVariant;
                 bool toneGiven = false;

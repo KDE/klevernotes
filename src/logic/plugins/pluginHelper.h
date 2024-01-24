@@ -34,10 +34,6 @@ public:
     void addToNoteCodeBlocks(const QString &codeBlock);
     void newHighlightStyle();
 
-    // Emoji
-    void setEmojiTone(const QString &emojiTone);
-    QString emojiTone() const;
-
     // PUML
     void addToNotePUMLBlock(const QString &pumlBlock);
     void pumlDarkChanged();

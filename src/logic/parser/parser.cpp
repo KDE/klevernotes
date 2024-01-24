@@ -17,14 +17,19 @@ Parser::Parser(QObject *parent)
 {
 }
 
+PluginHelper *Parser::getPluginHelper()
+{
+    return pluginHelper;
+}
+
 void Parser::setHeaderInfo(const QStringList &headerInfo)
 {
-    pluginHelper.setHeaderInfo(headerInfo);
+    pluginHelper->setHeaderInfo(headerInfo);
 }
 
 QString Parser::headerLevel() const
 {
-    return pluginHelper.headerLevel();
+    return pluginHelper->headerLevel();
 };
 
 void Parser::setNotePath(const QString &notePath)
@@ -38,9 +43,9 @@ void Parser::setNotePath(const QString &notePath)
         return;
     }
     // We do this here because we're sure to be in another note
-    pluginHelper.clearPluginsInfo();
+    pluginHelper->clearPluginsInfo();
 
-    pluginHelper.setNoteMapperInfo(notePath);
+    pluginHelper->setNoteMapperInfo(notePath);
 }
 
 QString Parser::getNotePath() const
@@ -50,11 +55,11 @@ QString Parser::getNotePath() const
 
 QString Parser::parse(QString src)
 {
-    pluginHelper.clearPluginsInfo();
+    pluginHelper->clearPluginsInfo();
 
     blockLexer.lex(src);
 
-    pluginHelper.preTokChanges();
+    pluginHelper->preTokChanges();
 
     std::reverse(tokens.begin(), tokens.end());
 
@@ -63,7 +68,7 @@ QString Parser::parse(QString src)
         out += tok();
     }
 
-    pluginHelper.postTokChanges();
+    pluginHelper->postTokChanges();
 
     return out;
 }
@@ -87,20 +92,20 @@ QString Parser::tok()
         text = m_token[QStringLiteral("text")].toString();
 
         const QString level = m_token[QStringLiteral("depth")].toString();
-        pluginHelper.checkHeaderFound(text, level);
+        pluginHelper->checkHeaderFound(text, level);
 
         outputed = inlineLexer.output(text);
         const QString outputedText = inlineLexer.output(text, true);
         const QString unescaped = Renderer::unescape(outputedText);
 
-        return Renderer::heading(outputed, level, unescaped, pluginHelper.headerFound());
+        return Renderer::heading(outputed, level, unescaped, pluginHelper->headerFound());
     }
 
     if (type == QStringLiteral("code")) { // adding const with the Synthax Highlighting MR
         text = m_token[QStringLiteral("text")].toString();
         const QString lang = m_token[QStringLiteral("lang")].toString().trimmed();
 
-        return pluginHelper.blockCodePlugins(lang, text);
+        return pluginHelper->blockCodePlugins(lang, text);
     }
 
     if (type == QStringLiteral("table")) {
@@ -236,11 +241,11 @@ QString Parser::peekType() const
 // Syntax highlight
 void Parser::newHighlightStyle()
 {
-    pluginHelper.newHighlightStyle();
+    pluginHelper->newHighlightStyle();
 }
 
 // PUML
 void Parser::pumlDarkChanged()
 {
-    pluginHelper.pumlDarkChanged();
+    pluginHelper->pumlDarkChanged();
 }

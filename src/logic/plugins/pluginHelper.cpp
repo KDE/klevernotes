@@ -238,17 +238,6 @@ void PluginHelper::addToNoteHeaders(const QString &header)
     m_noteHeaders.insert(header);
 }
 
-// Emoji
-void PluginHelper::setEmojiTone(const QString &emojiTone)
-{
-    m_emojiTone = emojiTone;
-};
-
-QString PluginHelper::emojiTone() const
-{
-    return m_emojiTone;
-}
-
 // PUML
 void PluginHelper::addToNotePUMLBlock(const QString &pumlBlock)
 {

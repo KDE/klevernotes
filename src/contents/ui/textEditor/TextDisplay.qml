@@ -86,7 +86,6 @@ RowLayout {
         root.parseText()
     }
     onEmojiToneChanged: {
-        parser.emojiTone = emojiTone
         root.parseText()
     }
     onPumlEnabledChanged: {

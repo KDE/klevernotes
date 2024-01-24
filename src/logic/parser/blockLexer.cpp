@@ -44,6 +44,8 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
     static const QString emptyStr = QLatin1String();
     QRegularExpressionMatch cap;
 
+    PluginHelper *pluginHelper = m_parser->getPluginHelper();
+
     while (!remaining.isEmpty()) {
         cap = block_newline.match(remaining);
         if (cap.hasMatch()) {
@@ -79,9 +81,9 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("code")}, {QStringLiteral("text"), text}, {QStringLiteral("lang"), lang}};
             m_parser->tokens.append(tok);
             if (KleverConfig::pumlEnabled() && (lang.toLower() == QStringLiteral("puml") || lang.toLower() == QStringLiteral("plantuml"))) {
-                m_parser->addToNotePUMLBlock(text);
+                pluginHelper->addToNotePUMLBlock(text);
             } else if (KleverConfig::codeSynthaxHighlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
-                m_parser->addToNoteCodeBlocks(text);
+                pluginHelper->addToNoteCodeBlocks(text);
             }
             continue;
         }
@@ -91,7 +93,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             if (KleverConfig::noteMapEnabled()) {
-                m_parser->addToNoteHeaders(cap.captured(0).trimmed());
+                pluginHelper->addToNoteHeaders(cap.captured(0).trimmed());
             }
 
             const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("heading")},
