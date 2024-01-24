@@ -10,6 +10,7 @@
 #include <QObject>
 #include <QSet>
 
+#include "../plugins/pluginHelper.h"
 #include "blockLexer.h"
 #include "inlineLexer.h"
 #include "kleverconfig.h"
@@ -36,19 +37,6 @@ public:
     // NoteMapper
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
-    QPair<QString, bool> sanitizePath(const QString &_path) const;
-    void addToLinkedNoteInfos(const QStringList &infos);
-    void addToNoteHeaders(const QString &header);
-
-    // Syntax highlight
-    void addToNoteCodeBlocks(const QString &codeBlock);
-
-    // Emoji
-    void setEmojiTone(const QString &emojiTone);
-    QString emojiTone() const;
-
-    // PUML
-    void addToNotePUMLBlock(const QString &pumlBlock);
 
 Q_SIGNALS:
     // NoteMapper
@@ -69,46 +57,48 @@ private:
 
     BlockLexer blockLexer = BlockLexer(this);
     InlineLexer inlineLexer = InlineLexer(this);
+    PluginHelper pluginHelper = PluginHelper();
 
     QString m_notePath;
     QVariantMap m_token;
+    /*
+        // Synthax highlight
+        bool m_newHighlightStyle = true;
+        bool m_sameCodeBlocks = false;
+        int m_currentBlockIndex = 0;
+        QStringList m_noteCodeBlocks;
+        QStringList m_previousHighlightedBlocks;
+        QStringList m_previousNoteCodeBlocks;
 
-    // Synthax highlight
-    bool m_newHighlightStyle = true;
-    bool m_sameCodeBlocks = false;
-    int m_currentBlockIndex = 0;
-    QStringList m_noteCodeBlocks;
-    QStringList m_previousHighlightedBlocks;
-    QStringList m_previousNoteCodeBlocks;
+        // NoteMapper
+        QString m_mapperNotePath;
+        QString m_groupPath;
+        QString m_categPath;
+        QString m_header;
 
-    // NoteMapper
-    QString m_mapperNotePath;
-    QString m_groupPath;
-    QString m_categPath;
-    QString m_header;
+        QString m_headerLevel;
+        bool m_headerFound = false;
+        bool m_emptyHeadersSent = false;
 
-    QString m_headerLevel;
-    bool m_headerFound = false;
-    bool m_emptyHeadersSent = false;
+        // Valid to use QSet since, in any case, linking will be done on the first instance of a duplicated header
+        QSet<QString> m_noteHeaders;
+        QSet<QString> m_previousNoteHeaders;
+        bool m_noteHeadersChanged = false;
 
-    // Valid to use QSet since, in any case, linking will be done on the first instance of a duplicated header
-    QSet<QString> m_noteHeaders;
-    QSet<QString> m_previousNoteHeaders;
-    bool m_noteHeadersChanged = false;
+        QSet<QStringList> m_linkedNotesInfos;
+        QSet<QStringList> m_previousLinkedNotesInfos;
+        bool m_linkedNotesChanged = false;
+        bool m_notePathChanged = true;
 
-    QSet<QStringList> m_linkedNotesInfos;
-    QSet<QStringList> m_previousLinkedNotesInfos;
-    bool m_linkedNotesChanged = false;
-    bool m_notePathChanged = true;
+        // Emoji support
+        QString m_emojiTone = KleverConfig::emojiTone();
 
-    // Emoji support
-    QString m_emojiTone = KleverConfig::emojiTone();
-
-    // PUML
-    bool m_pumlDarkChanged = true;
-    bool m_samePUMLBlocks = false;
-    int m_currentPUMLBlockIndex = 0;
-    QStringList m_notePUMLBlocks;
-    QStringList m_previousNotePUMLBlocks;
-    QStringList m_previousPUMLDiag;
+        // PUML
+        bool m_pumlDarkChanged = true;
+        bool m_samePUMLBlocks = false;
+        int m_currentPUMLBlockIndex = 0;
+        QStringList m_notePUMLBlocks;
+        QStringList m_previousNotePUMLBlocks;
+        QStringList m_previousPUMLDiag;
+     */
 };

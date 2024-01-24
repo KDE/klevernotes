@@ -18,6 +18,8 @@ public:
     void preTokChanges();
     void postTokChanges();
 
+    QString blockCodePlugins(const QString &lang, const QString &_text);
+
     QPair<QString, bool> sanitizePath(const QString &_path) const;
 
     // NoteMapper
@@ -25,6 +27,8 @@ public:
     QString headerLevel() const;
     void addToLinkedNoteInfos(const QStringList &infos);
     void addToNoteHeaders(const QString &header);
+    void checkHeaderFound(const QString &header, const QString &level);
+    bool headerFound() const;
 
     // Syntax highlight
     void addToNoteCodeBlocks(const QString &codeBlock);

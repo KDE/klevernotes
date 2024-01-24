@@ -5,6 +5,9 @@
 
 #include "pluginHelper.h"
 
+#include "logic/parser/renderer.h"
+#include "logic/plugins/puml/pumlHelper.h"
+
 void PluginHelper::clearPluginsInfo()
 {
     // Syntax highlight
@@ -146,6 +149,44 @@ QPair<QString, bool> PluginHelper::sanitizePath(const QString &_path) const
     return qMakePair(path, true);
 }
 
+QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text)
+{
+    static const QString pumlStr = QStringLiteral("puml");
+    static const QString plantUMLStr = QStringLiteral("plantuml");
+
+    QString returnValue;
+    if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
+        if (m_samePUMLBlocks) {
+            returnValue = m_previousPUMLDiag[m_currentPUMLBlockIndex];
+            m_currentPUMLBlockIndex++;
+        } else {
+            const int diagNbr = m_previousPUMLDiag.size();
+            const QString diagName = QStringLiteral("/KleverNotesPUMLDiag") + QString::number(diagNbr) + QStringLiteral(".png");
+            const QString diagPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + diagName;
+            const QString imgPath = PumlHelper::makeDiagram(_text, diagPath, KleverConfig::pumlDark()) ? diagPath : QLatin1String();
+            returnValue = Renderer::image(imgPath, diagName, diagName);
+            m_previousPUMLDiag.append(returnValue);
+        }
+    } else {
+        const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
+        const bool highlight = highlightEnabled && !lang.isEmpty();
+
+        if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
+            returnValue = m_previousHighlightedBlocks[m_currentBlockIndex];
+            m_currentBlockIndex++;
+        } else {
+            QString text = _text;
+            returnValue = Renderer::code(text, lang, highlight);
+            if (highlightEnabled && highlight) { // We want to store only the highlighted values
+                m_previousHighlightedBlocks.append(returnValue);
+            }
+        }
+    }
+
+    return returnValue;
+}
+
+// NoteMapper
 void PluginHelper::setHeaderInfo(const QStringList &headerInfo)
 {
     m_header = headerInfo[0];
@@ -156,6 +197,18 @@ QString PluginHelper::headerLevel() const
 {
     return m_headerLevel;
 };
+
+void PluginHelper::checkHeaderFound(const QString &header, const QString &level)
+{
+    if (header == m_header && level == QString(m_headerLevel)) {
+        m_headerFound = true;
+    }
+}
+
+bool PluginHelper::headerFound() const
+{
+    return m_headerFound;
+}
 
 // Syntax highlight
 void PluginHelper::addToNoteCodeBlocks(const QString &codeBlock)
