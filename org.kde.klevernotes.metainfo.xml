@@ -54,30 +54,6 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <developer>The KDE Community</developer>
-  <developer xml:lang="ca">La comunitat KDE</developer>
-  <developer xml:lang="ca-valencia">La comunitat KDE</developer>
-  <developer xml:lang="cs">Komunita KDE</developer>
-  <developer xml:lang="de">Die KDE-Gemeinschaft</developer>
-  <developer xml:lang="en-GB">The KDE Community</developer>
-  <developer xml:lang="eo">La KDE-Komunumo</developer>
-  <developer xml:lang="es">La Comunidad KDE</developer>
-  <developer xml:lang="eu">KDE komunitatea</developer>
-  <developer xml:lang="fi">KDE-yhteisö</developer>
-  <developer xml:lang="fr">La communauté de KDE</developer>
-  <developer xml:lang="gl">A comunidade de KDE</developer>
-  <developer xml:lang="it">La comunità KDE</developer>
-  <developer xml:lang="ka">KDE-ის საზოგადოება</developer>
-  <developer xml:lang="ko">KDE 커뮤니티</developer>
-  <developer xml:lang="nl">De KDE gemeenschap</developer>
-  <developer xml:lang="pl">Społeczność KDE</developer>
-  <developer xml:lang="pt">A Comunidade do KDE</developer>
-  <developer xml:lang="sk">KDE Komunita</developer>
-  <developer xml:lang="sl">Skupnost KDE</developer>
-  <developer xml:lang="sv">KDE-gemenskapen</developer>
-  <developer xml:lang="tr">KDE Topluluğu</developer>
-  <developer xml:lang="uk">Спільнота KDE</developer>
-  <developer xml:lang="x-test">xxThe KDE Communityxx</developer>
-  <developer xml:lang="zh-TW">KDE 社群</developer>
   <description>
     <p>KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
