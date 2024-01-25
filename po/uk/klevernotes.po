@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-21 01:36+0000\n"
+"POT-Creation-Date: 2024-01-25 01:35+0000\n"
 "PO-Revision-Date: 2024-01-21 09:16+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -697,51 +697,57 @@ msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "назва_емоційки"
 
-#: contents/ui/settings/PluginsTab.qml:164
+#: contents/ui/settings/PluginsTab.qml:162
+#, kde-format
+msgctxt "@label:combobox"
+msgid "Default emoji tone"
+msgstr ""
+
+#: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr "Типовий"
 
-#: contents/ui/settings/PluginsTab.qml:165
+#: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "Світлий"
 
-#: contents/ui/settings/PluginsTab.qml:166
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr "Помірно світлий"
 
-#: contents/ui/settings/PluginsTab.qml:167
+#: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr "Проміжний"
 
-#: contents/ui/settings/PluginsTab.qml:168
+#: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr "Помірно темний"
 
-#: contents/ui/settings/PluginsTab.qml:169
+#: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr "Темний"
 
-#: contents/ui/settings/PluginsTab.qml:183
+#: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr "Увімкнути вікно швидких емоційок"
 
-#: contents/ui/settings/PluginsTab.qml:184
+#: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
