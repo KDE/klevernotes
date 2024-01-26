@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 01:35+0000\n"
-"PO-Revision-Date: 2024-01-21 15:08+0100\n"
+"PO-Revision-Date: 2024-01-25 13:23+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -702,7 +702,7 @@ msgstr "emoji_naam"
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "Standaard toon van emoji"
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format

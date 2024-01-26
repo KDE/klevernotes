@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: 2023 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 01:35+0000\n"
-"PO-Revision-Date: 2023-12-30 09:40+0100\n"
+"PO-Revision-Date: 2024-01-25 12:57+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -49,16 +49,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "Voulez-vous vraiment supprimer %1 ?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Sélecteur de couleurs"
+msgstr "Aucune étiquette auto-collante"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "Aucune émoticône"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -536,12 +534,10 @@ msgid "Code color:"
 msgstr "Couleur de code :"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Coloration"
+msgstr "Couleur de coloration :"
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -623,13 +619,13 @@ msgstr "Conseil : redémarrez l'application après activation."
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Activer de PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
-msgstr ""
+msgstr "PlantUML vous permet de créer un diagramme."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -638,18 +634,20 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Remarque : la création de diagrammes peut être lente. Si vous avez un grand "
+"nombre de diagrammes, leur affichage en tant qu'images serait plus facile."
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Activer l'arrière-plan sombre"
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "Le diagramme avec PlantUML aura un arrière-plan sombre."
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
@@ -685,7 +683,7 @@ msgstr "Style de coloration"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Activer les émoticône rapides"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -693,14 +691,13 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Insérez rapidement des émoticônes en utilisant la syntaxe suivante"
 
 #: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "Renommer"
+msgstr "nom-émoticône"
 
 #: contents/ui/settings/PluginsTab.qml:162
 #, kde-format
@@ -712,47 +709,45 @@ msgstr ""
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Par défaut"
 
 #: contents/ui/settings/PluginsTab.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Droite"
+msgstr "Clair"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Clair moyen"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Moyen"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Sombre moyen"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Sombre"
 
 #: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Activer la boîte de dialogue pour émoticône rapides"
 
 #: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
@@ -761,6 +756,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"La boîte de dialogue concernant les émoticônes insère à l'intérieur du "
+"texte, la syntaxe « Émoticônes rapides » au lieu de l'émoticône réelle."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -924,7 +921,7 @@ msgstr "Bloc de citation"
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Guillemet"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
@@ -1244,7 +1241,7 @@ msgstr "Code"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Guillemet"
 
 #: contents/ui/textEditor/TextToolBar.qml:160
 #, kde-format
@@ -1278,12 +1275,10 @@ msgid "Unordered list"
 msgstr "Liste non triée"
 
 #: contents/ui/textEditor/TextToolBar.qml:205
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Coloration"
+msgstr "Coloration du texte"
 
 #: contents/ui/textEditor/TextToolBar.qml:289
 #: contents/ui/textEditor/TextToolBar.qml:290
@@ -1322,67 +1317,67 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "Historique"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Émoticônes"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Personnes"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Nature"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Nourriture"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Activités"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Voyage"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Objets"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Symboles"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Étiquettes"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Personnalisé"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
