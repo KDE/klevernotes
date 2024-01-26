@@ -46,6 +46,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
 
     static PluginHelper *pluginHelper = m_parser->getPluginHelper();
     static NoteMapperParserUtils *mapperParserUtils = pluginHelper->getMapperParserUtils();
+    static HighlightParserUtils *highlightParserUtils = pluginHelper->getHighlightParserUtils();
 
     while (!remaining.isEmpty()) {
         cap = block_newline.match(remaining);
@@ -84,7 +85,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             if (KleverConfig::pumlEnabled() && (lang.toLower() == QStringLiteral("puml") || lang.toLower() == QStringLiteral("plantuml"))) {
                 pluginHelper->addToNotePUMLBlock(text);
             } else if (KleverConfig::codeSynthaxHighlightEnabled() && !lang.isEmpty()) { // Send only the value that will be highlighted
-                pluginHelper->addToNoteCodeBlocks(text);
+                highlightParserUtils->addToNoteCodeBlocks(text);
             }
             continue;
         }

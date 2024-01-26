@@ -9,6 +9,7 @@
 #include "logic/plugins/puml/pumlHelper.h"
 
 PluginHelper::PluginHelper(Parser *parser)
+    : m_highlightParserUtils(new HighlightParserUtils)
 {
     m_mapperParserUtils = new NoteMapperParserUtils(parser);
 }
@@ -16,7 +17,7 @@ PluginHelper::PluginHelper(Parser *parser)
 void PluginHelper::clearPluginsInfo()
 {
     // Syntax highlight
-    m_noteCodeBlocks.clear();
+    m_highlightParserUtils->clearInfo();
     // NoteMapper
     m_mapperParserUtils->clearInfo();
     // PUML
@@ -26,7 +27,7 @@ void PluginHelper::clearPluginsInfo()
 void PluginHelper::clearPluginsPreviousInfo()
 {
     // Syntax highlight
-    m_previousNoteCodeBlocks.clear();
+    m_highlightParserUtils->clearPreviousInfo();
     // NoteMapper
     m_mapperParserUtils->clearPreviousInfo();
     // PUML
@@ -35,16 +36,8 @@ void PluginHelper::clearPluginsPreviousInfo()
 
 void PluginHelper::preTokChanges()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks && !m_noteCodeBlocks.isEmpty();
-        if (!m_sameCodeBlocks || m_newHighlightStyle) {
-            m_previousNoteCodeBlocks = m_noteCodeBlocks;
-            m_previousHighlightedBlocks.clear();
-            m_newHighlightStyle = false;
-            m_sameCodeBlocks = false;
-        }
-        m_currentBlockIndex = 0;
-    }
+    m_highlightParserUtils->preTok();
+
     if (KleverConfig::pumlEnabled()) {
         m_samePUMLBlocks = m_previousNotePUMLBlocks == m_notePUMLBlocks && !m_notePUMLBlocks.isEmpty();
         if (!m_samePUMLBlocks || m_pumlDarkChanged) {
@@ -85,16 +78,7 @@ QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text
         const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
         const bool highlight = highlightEnabled && !lang.isEmpty();
 
-        if (m_sameCodeBlocks && highlight) { // Only the highlighted values are stored in here
-            returnValue = m_previousHighlightedBlocks[m_currentBlockIndex];
-            m_currentBlockIndex++;
-        } else {
-            QString text = _text;
-            returnValue = Renderer::code(text, lang, highlight);
-            if (highlightEnabled && highlight) { // We want to store only the highlighted values
-                m_previousHighlightedBlocks.append(returnValue);
-            }
-        }
+        returnValue = m_highlightParserUtils->renderCode(highlight, _text, lang);
     }
 
     return returnValue;
@@ -107,14 +91,9 @@ NoteMapperParserUtils *PluginHelper::getMapperParserUtils() const
 }
 
 // Syntax highlight
-void PluginHelper::addToNoteCodeBlocks(const QString &codeBlock)
+HighlightParserUtils *PluginHelper::getHighlightParserUtils() const
 {
-    m_noteCodeBlocks.append(codeBlock);
-}
-
-void PluginHelper::newHighlightStyle()
-{
-    m_newHighlightStyle = true;
+    return m_highlightParserUtils;
 }
 
 // PUML

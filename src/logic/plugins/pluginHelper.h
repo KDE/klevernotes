@@ -10,6 +10,7 @@
 #include <QSet>
 
 #include "logic/plugins/noteMapper/noteMapperParserUtils.h"
+#include "logic/plugins/syntaxHighlight/highlightParserUtils.h"
 
 class PluginHelper
 {
@@ -26,8 +27,7 @@ public:
     NoteMapperParserUtils *getMapperParserUtils() const;
 
     // Syntax highlight
-    void addToNoteCodeBlocks(const QString &codeBlock);
-    void newHighlightStyle();
+    HighlightParserUtils *getHighlightParserUtils() const;
 
     // PUML
     void addToNotePUMLBlock(const QString &pumlBlock);
@@ -35,12 +35,7 @@ public:
 
 private:
     // Synthax highlight
-    bool m_newHighlightStyle = true;
-    bool m_sameCodeBlocks = false;
-    int m_currentBlockIndex = 0;
-    QStringList m_noteCodeBlocks;
-    QStringList m_previousHighlightedBlocks;
-    QStringList m_previousNoteCodeBlocks;
+    HighlightParserUtils *m_highlightParserUtils = nullptr;
 
     // NoteMapper
     NoteMapperParserUtils *m_mapperParserUtils = nullptr;

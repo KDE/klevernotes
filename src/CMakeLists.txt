@@ -69,6 +69,7 @@ set(exec_SRCS
     logic/plugins/puml/pumlHelper.cpp
 
     logic/plugins/syntaxHighlight/highlightHelper.cpp
+    logic/plugins/syntaxHighlight/highlightParserUtils.cpp
 )
 
 add_executable(klevernotes ${exec_SRCS})

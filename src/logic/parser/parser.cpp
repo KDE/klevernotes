@@ -243,7 +243,7 @@ QString Parser::peekType() const
 // Syntax highlight
 void Parser::newHighlightStyle()
 {
-    pluginHelper->newHighlightStyle();
+    pluginHelper->getHighlightParserUtils()->newHighlightStyle();
 }
 
 // PUML
