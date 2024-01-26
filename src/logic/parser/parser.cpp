@@ -17,19 +17,19 @@ Parser::Parser(QObject *parent)
 {
 }
 
-PluginHelper *Parser::getPluginHelper()
+PluginHelper *Parser::getPluginHelper() const
 {
     return pluginHelper;
 }
 
 void Parser::setHeaderInfo(const QStringList &headerInfo)
 {
-    pluginHelper->setHeaderInfo(headerInfo);
+    pluginHelper->getMapperParserUtils()->setHeaderInfo(headerInfo);
 }
 
 QString Parser::headerLevel() const
 {
-    return pluginHelper->headerLevel();
+    return pluginHelper->getMapperParserUtils()->headerLevel();
 };
 
 void Parser::setNotePath(const QString &notePath)
@@ -45,7 +45,7 @@ void Parser::setNotePath(const QString &notePath)
     // We do this here because we're sure to be in another note
     pluginHelper->clearPluginsInfo();
 
-    pluginHelper->setNoteMapperInfo(notePath);
+    pluginHelper->getMapperParserUtils()->setPathsInfo(notePath);
 }
 
 QString Parser::getNotePath() const
@@ -80,6 +80,8 @@ QString Parser::tok()
     QVariantMap flags;
     static const QString emptyStr = QLatin1String();
 
+    NoteMapperParserUtils *mapperParserUtils = pluginHelper->getMapperParserUtils();
+
     if (type == QStringLiteral("space")) {
         return {};
     }
@@ -92,13 +94,13 @@ QString Parser::tok()
         text = m_token[QStringLiteral("text")].toString();
 
         const QString level = m_token[QStringLiteral("depth")].toString();
-        pluginHelper->checkHeaderFound(text, level);
+        mapperParserUtils->checkHeaderFound(text, level);
 
         outputed = inlineLexer.output(text);
         const QString outputedText = inlineLexer.output(text, true);
         const QString unescaped = Renderer::unescape(outputedText);
 
-        return Renderer::heading(outputed, level, unescaped, pluginHelper->headerFound());
+        return Renderer::heading(outputed, level, unescaped, mapperParserUtils->headerFound());
     }
 
     if (type == QStringLiteral("code")) { // adding const with the Synthax Highlighting MR

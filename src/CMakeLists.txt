@@ -63,6 +63,7 @@ set(exec_SRCS
     logic/plugins/emoji/emojiTones.cpp
 
     logic/plugins/noteMapper/noteMapper.cpp
+    logic/plugins/noteMapper/noteMapperParserUtils.cpp
     logic/plugins/noteMapper/noteMapperUtils.cpp
 
     logic/plugins/puml/pumlHelper.cpp

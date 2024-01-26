@@ -28,7 +28,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
     QMap<QString, QString> linkInfo;
     QRegularExpressionMatch cap, secondCap;
 
-    PluginHelper *pluginHelper = m_parser->getPluginHelper();
+    static const PluginHelper *pluginHelper = m_parser->getPluginHelper();
+    static NoteMapperParserUtils *mapperParserUtils = pluginHelper->getMapperParserUtils();
 
     while (!src.isEmpty()) {
         cap = inline_escape.match(src);
@@ -132,7 +133,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                 src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
                 if (!cap.captured(1).trimmed().isEmpty()) {
                     href = cap.captured(1).trimmed();
-                    const QPair<QString, bool> sanitizedHref = pluginHelper->sanitizePath(href);
+                    const QPair<QString, bool> sanitizedHref = mapperParserUtils->sanitizePath(href);
 
                     cap3 = cap.captured(3).trimmed();
 
@@ -142,7 +143,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
                     title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
                     if (sanitizedHref.second) {
-                        pluginHelper->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
+                        mapperParserUtils->addToLinkedNoteInfos({sanitizedHref.first, cap3, title});
                         // This hopefuly, is enough to separate the 2 without collinding with user input
                         QString fullLink = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
                         out += Renderer::wikilink(fullLink, title, title);

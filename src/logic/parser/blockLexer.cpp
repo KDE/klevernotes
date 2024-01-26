@@ -44,7 +44,8 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
     static const QString emptyStr = QLatin1String();
     QRegularExpressionMatch cap;
 
-    PluginHelper *pluginHelper = m_parser->getPluginHelper();
+    static PluginHelper *pluginHelper = m_parser->getPluginHelper();
+    static NoteMapperParserUtils *mapperParserUtils = pluginHelper->getMapperParserUtils();
 
     while (!remaining.isEmpty()) {
         cap = block_newline.match(remaining);
@@ -93,7 +94,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
             if (KleverConfig::noteMapEnabled()) {
-                pluginHelper->addToNoteHeaders(cap.captured(0).trimmed());
+                mapperParserUtils->addToNoteHeaders(cap.captured(0).trimmed());
             }
 
             const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("heading")},

@@ -9,26 +9,21 @@
 #include <QObject>
 #include <QSet>
 
+#include "logic/plugins/noteMapper/noteMapperParserUtils.h"
+
 class PluginHelper
 {
 public:
+    explicit PluginHelper(Parser *parser);
     void clearPluginsInfo();
     void clearPluginsPreviousInfo();
-    void setNoteMapperInfo(const QString &notePath);
     void preTokChanges();
     void postTokChanges();
 
     QString blockCodePlugins(const QString &lang, const QString &_text);
 
-    QPair<QString, bool> sanitizePath(const QString &_path) const;
-
     // NoteMapper
-    void setHeaderInfo(const QStringList &headerInfo);
-    QString headerLevel() const;
-    void addToLinkedNoteInfos(const QStringList &infos);
-    void addToNoteHeaders(const QString &header);
-    void checkHeaderFound(const QString &header, const QString &level);
-    bool headerFound() const;
+    NoteMapperParserUtils *getMapperParserUtils() const;
 
     // Syntax highlight
     void addToNoteCodeBlocks(const QString &codeBlock);
@@ -48,24 +43,7 @@ private:
     QStringList m_previousNoteCodeBlocks;
 
     // NoteMapper
-    QString m_mapperNotePath;
-    QString m_groupPath;
-    QString m_categPath;
-    QString m_header;
-
-    QString m_headerLevel;
-    bool m_headerFound = false;
-    bool m_emptyHeadersSent = false;
-
-    // Valid to use QSet since, in any case, linking will be done on the first instance of a duplicated header
-    QSet<QString> m_noteHeaders;
-    QSet<QString> m_previousNoteHeaders;
-    bool m_noteHeadersChanged = false;
-
-    QSet<QStringList> m_linkedNotesInfos;
-    QSet<QStringList> m_previousLinkedNotesInfos;
-    bool m_linkedNotesChanged = false;
-    bool m_notePathChanged = true;
+    NoteMapperParserUtils *m_mapperParserUtils = nullptr;
 
     // Emoji support
     QString m_emojiTone = KleverConfig::emojiTone();
