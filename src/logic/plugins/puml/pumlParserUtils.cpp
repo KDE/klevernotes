@@ -5,9 +5,9 @@
 
 #include "pumlParserUtils.h"
 
-#include "kleverconfig.h"
 #include "logic/parser/renderer.h"
 #include "logic/plugins/puml/pumlHelper.h"
+#include <QStandardPaths>
 
 void PUMLParserUtils::clearInfo()
 {
@@ -21,16 +21,14 @@ void PUMLParserUtils::clearPreviousInfo()
 
 void PUMLParserUtils::preTok()
 {
-    if (KleverConfig::pumlEnabled()) {
-        m_samePUMLBlocks = m_previousNotePUMLBlocks == m_notePUMLBlocks && !m_notePUMLBlocks.isEmpty();
-        if (!m_samePUMLBlocks || m_pumlDarkChanged) {
-            m_previousNotePUMLBlocks = m_notePUMLBlocks;
-            m_previousPUMLDiag.clear();
-            m_pumlDarkChanged = false;
-            m_samePUMLBlocks = false;
-        }
-        m_currentPUMLBlockIndex = 0;
+    m_samePUMLBlocks = m_previousNotePUMLBlocks == m_notePUMLBlocks && !m_notePUMLBlocks.isEmpty();
+    if (!m_samePUMLBlocks || m_pumlDarkChanged) {
+        m_previousNotePUMLBlocks = m_notePUMLBlocks;
+        m_previousPUMLDiag.clear();
+        m_pumlDarkChanged = false;
+        m_samePUMLBlocks = false;
     }
+    m_currentPUMLBlockIndex = 0;
 }
 
 void PUMLParserUtils::addToNotePUMLBlock(const QString &pumlBlock)
@@ -43,7 +41,7 @@ void PUMLParserUtils::pumlDarkChanged()
     m_pumlDarkChanged = true;
 }
 
-QString PUMLParserUtils::renderCode(const QString &_text)
+QString PUMLParserUtils::renderCode(const QString &_text, const bool pumlDark)
 {
     QString returnValue;
     if (m_samePUMLBlocks) {
@@ -53,7 +51,7 @@ QString PUMLParserUtils::renderCode(const QString &_text)
         const int diagNbr = m_previousPUMLDiag.size();
         const QString diagName = QStringLiteral("/KleverNotesPUMLDiag") + QString::number(diagNbr) + QStringLiteral(".png");
         const QString diagPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + diagName;
-        const QString imgPath = PumlHelper::makeDiagram(_text, diagPath, KleverConfig::pumlDark()) ? diagPath : QLatin1String();
+        const QString imgPath = PumlHelper::makeDiagram(_text, diagPath, pumlDark) ? diagPath : QLatin1String();
         returnValue = Renderer::image(imgPath, diagName, diagName);
         m_previousPUMLDiag.append(returnValue);
     }

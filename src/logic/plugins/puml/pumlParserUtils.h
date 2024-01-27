@@ -8,8 +8,6 @@
 #include <QObject>
 #include <QSet>
 
-// class Parser;
-
 class PUMLParserUtils
 {
 public:
@@ -20,7 +18,7 @@ public:
     void addToNotePUMLBlock(const QString &pumlBlock);
     void pumlDarkChanged();
 
-    QString renderCode(const QString &_text);
+    QString renderCode(const QString &_text, const bool pumlDark);
 
 private:
     bool m_pumlDarkChanged = true;

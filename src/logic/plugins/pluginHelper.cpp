@@ -16,36 +16,46 @@ PluginHelper::PluginHelper(Parser *parser)
 
 void PluginHelper::clearPluginsInfo()
 {
-    // Syntax highlight
-    m_highlightParserUtils->clearInfo();
-    // NoteMapper
-    m_mapperParserUtils->clearInfo();
-    // PUML
-    m_pumlParserUtils->clearInfo();
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
+        m_highlightParserUtils->clearInfo();
+    }
+    if (KleverConfig::noteMapEnabled()) {
+        m_mapperParserUtils->clearInfo();
+    }
+    if (KleverConfig::pumlEnabled()) {
+        m_pumlParserUtils->clearInfo();
+    }
 }
 
 void PluginHelper::clearPluginsPreviousInfo()
 {
-    // Syntax highlight
-    m_highlightParserUtils->clearPreviousInfo();
-    // NoteMapper
-    m_mapperParserUtils->clearPreviousInfo();
-    // PUML
-    m_pumlParserUtils->clearPreviousInfo();
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
+        m_highlightParserUtils->clearPreviousInfo();
+    }
+    if (KleverConfig::noteMapEnabled()) {
+        m_mapperParserUtils->clearPreviousInfo();
+    }
+    if (KleverConfig::pumlEnabled()) {
+        m_pumlParserUtils->clearPreviousInfo();
+    }
 }
 
 void PluginHelper::preTokChanges()
 {
     // Syntax highlight
-    m_highlightParserUtils->preTok();
-    // PUML
-    m_pumlParserUtils->preTok();
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
+        m_highlightParserUtils->preTok();
+    }
+    if (KleverConfig::pumlEnabled()) {
+        m_pumlParserUtils->preTok();
+    }
 }
 
 void PluginHelper::postTokChanges()
 {
-    // NoteMapper
-    m_mapperParserUtils->postTok();
+    if (KleverConfig::noteMapEnabled()) {
+        m_mapperParserUtils->postTok();
+    }
 }
 
 QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text)
@@ -55,7 +65,7 @@ QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text
 
     QString returnValue;
     if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-        returnValue = m_pumlParserUtils->renderCode(_text);
+        returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark());
     } else {
         const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
         const bool highlight = highlightEnabled && !lang.isEmpty();

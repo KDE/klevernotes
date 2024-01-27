@@ -5,7 +5,6 @@
 
 #include "highlightParserUtils.h"
 
-#include "kleverconfig.h"
 #include "logic/parser/renderer.h"
 
 void HighlightParserUtils::clearInfo()
@@ -30,16 +29,14 @@ void HighlightParserUtils::newHighlightStyle()
 
 void HighlightParserUtils::preTok()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks && !m_noteCodeBlocks.isEmpty();
-        if (!m_sameCodeBlocks || m_newHighlightStyle) {
-            m_previousNoteCodeBlocks = m_noteCodeBlocks;
-            m_previousHighlightedBlocks.clear();
-            m_newHighlightStyle = false;
-            m_sameCodeBlocks = false;
-        }
-        m_currentBlockIndex = 0;
+    m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks && !m_noteCodeBlocks.isEmpty();
+    if (!m_sameCodeBlocks || m_newHighlightStyle) {
+        m_previousNoteCodeBlocks = m_noteCodeBlocks;
+        m_previousHighlightedBlocks.clear();
+        m_newHighlightStyle = false;
+        m_sameCodeBlocks = false;
     }
+    m_currentBlockIndex = 0;
 }
 
 QString HighlightParserUtils::renderCode(const bool highlight, const QString &_text, const QString &lang)

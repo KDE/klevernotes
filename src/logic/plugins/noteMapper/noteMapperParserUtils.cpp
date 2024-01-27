@@ -115,23 +115,21 @@ void NoteMapperParserUtils::postTok()
 {
     m_notePathChanged = false;
 
-    if (KleverConfig::noteMapEnabled()) {
-        // We try to not spam with signals
-        if (m_linkedNotesChanged || !m_previousLinkedNotesInfos.isEmpty()) { // The previous is not empty, some links notes are no longer there
-            Q_EMIT m_parser->newLinkedNotesInfos(m_linkedNotesInfos);
-        }
-        m_previousLinkedNotesInfos = m_linkedNotesInfos;
-
-        if (m_linkedNotesChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
-            m_emptyHeadersSent = false;
-            Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders.values());
-        } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
-            // This way the mapper can receive info about the note (the note has no header), and we still prevent spamming
-            m_emptyHeadersSent = true;
-            Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, {});
-        }
-        m_previousNoteHeaders = m_noteHeaders;
+    // We try to not spam with signals
+    if (m_linkedNotesChanged || !m_previousLinkedNotesInfos.isEmpty()) { // The previous is not empty, some links notes are no longer there
+        Q_EMIT m_parser->newLinkedNotesInfos(m_linkedNotesInfos);
     }
+    m_previousLinkedNotesInfos = m_linkedNotesInfos;
+
+    if (m_linkedNotesChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
+        m_emptyHeadersSent = false;
+        Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders.values());
+    } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
+        // This way the mapper can receive info about the note (the note has no header), and we still prevent spamming
+        m_emptyHeadersSent = true;
+        Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, {});
+    }
+    m_previousNoteHeaders = m_noteHeaders;
 
     if (!m_headerFound) { // Prevent the TextDisplay.qml scrollToHeader to search an unexisting header
         m_headerLevel = QStringLiteral("0");
