@@ -5,7 +5,6 @@
 
 #pragma once
 
-#include "kleverconfig.h"
 #include <QObject>
 #include <QSet>
 
@@ -39,9 +38,6 @@ private:
 
     // NoteMapper
     NoteMapperParserUtils *m_mapperParserUtils = nullptr;
-
-    // Emoji support
-    QString m_emojiTone = KleverConfig::emojiTone();
 
     // PUML
     bool m_pumlDarkChanged = true;
