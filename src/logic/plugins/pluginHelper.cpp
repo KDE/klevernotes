@@ -5,11 +5,11 @@
 
 #include "pluginHelper.h"
 
-#include "logic/parser/renderer.h"
-#include "logic/plugins/puml/pumlHelper.h"
+#include "kleverconfig.h"
 
 PluginHelper::PluginHelper(Parser *parser)
     : m_highlightParserUtils(new HighlightParserUtils)
+    , m_pumlParserUtils(new PUMLParserUtils)
 {
     m_mapperParserUtils = new NoteMapperParserUtils(parser);
 }
@@ -21,7 +21,7 @@ void PluginHelper::clearPluginsInfo()
     // NoteMapper
     m_mapperParserUtils->clearInfo();
     // PUML
-    m_notePUMLBlocks.clear();
+    m_pumlParserUtils->clearInfo();
 }
 
 void PluginHelper::clearPluginsPreviousInfo()
@@ -31,23 +31,15 @@ void PluginHelper::clearPluginsPreviousInfo()
     // NoteMapper
     m_mapperParserUtils->clearPreviousInfo();
     // PUML
-    m_previousPUMLDiag.clear();
+    m_pumlParserUtils->clearPreviousInfo();
 }
 
 void PluginHelper::preTokChanges()
 {
+    // Syntax highlight
     m_highlightParserUtils->preTok();
-
-    if (KleverConfig::pumlEnabled()) {
-        m_samePUMLBlocks = m_previousNotePUMLBlocks == m_notePUMLBlocks && !m_notePUMLBlocks.isEmpty();
-        if (!m_samePUMLBlocks || m_pumlDarkChanged) {
-            m_previousNotePUMLBlocks = m_notePUMLBlocks;
-            m_previousPUMLDiag.clear();
-            m_pumlDarkChanged = false;
-            m_samePUMLBlocks = false;
-        }
-        m_currentPUMLBlockIndex = 0;
-    }
+    // PUML
+    m_pumlParserUtils->preTok();
 }
 
 void PluginHelper::postTokChanges()
@@ -63,17 +55,7 @@ QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text
 
     QString returnValue;
     if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-        if (m_samePUMLBlocks) {
-            returnValue = m_previousPUMLDiag[m_currentPUMLBlockIndex];
-            m_currentPUMLBlockIndex++;
-        } else {
-            const int diagNbr = m_previousPUMLDiag.size();
-            const QString diagName = QStringLiteral("/KleverNotesPUMLDiag") + QString::number(diagNbr) + QStringLiteral(".png");
-            const QString diagPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + diagName;
-            const QString imgPath = PumlHelper::makeDiagram(_text, diagPath, KleverConfig::pumlDark()) ? diagPath : QLatin1String();
-            returnValue = Renderer::image(imgPath, diagName, diagName);
-            m_previousPUMLDiag.append(returnValue);
-        }
+        returnValue = m_pumlParserUtils->renderCode(_text);
     } else {
         const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
         const bool highlight = highlightEnabled && !lang.isEmpty();
@@ -97,12 +79,7 @@ HighlightParserUtils *PluginHelper::getHighlightParserUtils() const
 }
 
 // PUML
-void PluginHelper::addToNotePUMLBlock(const QString &pumlBlock)
+PUMLParserUtils *PluginHelper::getPUMLParserUtils() const
 {
-    m_notePUMLBlocks.append(pumlBlock);
-}
-
-void PluginHelper::pumlDarkChanged()
-{
-    m_pumlDarkChanged = true;
+    return m_pumlParserUtils;
 }

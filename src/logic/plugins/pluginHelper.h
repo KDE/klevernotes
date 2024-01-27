@@ -9,6 +9,7 @@
 #include <QSet>
 
 #include "logic/plugins/noteMapper/noteMapperParserUtils.h"
+#include "logic/plugins/puml/pumlParserUtils.h"
 #include "logic/plugins/syntaxHighlight/highlightParserUtils.h"
 
 class PluginHelper
@@ -29,8 +30,7 @@ public:
     HighlightParserUtils *getHighlightParserUtils() const;
 
     // PUML
-    void addToNotePUMLBlock(const QString &pumlBlock);
-    void pumlDarkChanged();
+    PUMLParserUtils *getPUMLParserUtils() const;
 
 private:
     // Synthax highlight
@@ -40,10 +40,5 @@ private:
     NoteMapperParserUtils *m_mapperParserUtils = nullptr;
 
     // PUML
-    bool m_pumlDarkChanged = true;
-    bool m_samePUMLBlocks = false;
-    int m_currentPUMLBlockIndex = 0;
-    QStringList m_notePUMLBlocks;
-    QStringList m_previousNotePUMLBlocks;
-    QStringList m_previousPUMLDiag;
+    PUMLParserUtils *m_pumlParserUtils = nullptr;
 };

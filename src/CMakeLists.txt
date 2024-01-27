@@ -67,6 +67,7 @@ set(exec_SRCS
     logic/plugins/noteMapper/noteMapperUtils.cpp
 
     logic/plugins/puml/pumlHelper.cpp
+    logic/plugins/puml/pumlParserUtils.cpp
 
     logic/plugins/syntaxHighlight/highlightHelper.cpp
     logic/plugins/syntaxHighlight/highlightParserUtils.cpp

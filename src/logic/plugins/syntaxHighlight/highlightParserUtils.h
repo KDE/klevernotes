@@ -8,8 +8,6 @@
 #include <QObject>
 #include <QSet>
 
-// class Parser;
-
 class HighlightParserUtils
 {
 public:

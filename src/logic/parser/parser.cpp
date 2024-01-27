@@ -249,5 +249,5 @@ void Parser::newHighlightStyle()
 // PUML
 void Parser::pumlDarkChanged()
 {
-    pluginHelper->pumlDarkChanged();
+    pluginHelper->getPUMLParserUtils()->pumlDarkChanged();
 }
