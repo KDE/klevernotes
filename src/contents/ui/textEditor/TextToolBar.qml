@@ -209,6 +209,15 @@ Kirigami.ActionToolBar {
             }
         },
         Kirigami.Action {
+            id: linkNoteAction
+            shortcut: "Ctrl+Alt+K"
+            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link note") + " (" + shortcut + ")"
+            icon.name: "edit-link"
+            onTriggered: {
+                linkNoteDialog.open()
+            }
+        },
+        Kirigami.Action {
             id: emojiAction
             shortcut: "Ctrl+Shift+E"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
@@ -313,6 +322,12 @@ Kirigami.ActionToolBar {
             let linkString = '[' + linkText + '](' + urlText + ') '
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, linkString)
         }
+    }
+
+    LinkNoteDialog {
+        id: linkNoteDialog
+
+        listModel: applicationWindow().globalDrawer.treeModel
     }
 
     function applyInstructions(selectionStart, selectionEnd, info, givenSpecialChars,

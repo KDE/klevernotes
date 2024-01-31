@@ -13,6 +13,7 @@
         <file>contents/ui/dialogs/FontPickerDialog.qml</file>
         <file>contents/ui/dialogs/LeavePaintingDialog.qml</file>
         <file>contents/ui/dialogs/LinkDialog.qml</file>
+        <file>contents/ui/dialogs/LinkNoteDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
@@ -33,6 +34,7 @@
         <file>contents/ui/dialogs/imagePickerDialog/ButtonDelegate.qml</file>
         <file>contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml</file>
 
+
         <file>contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml</file>
         <file>contents/ui/dialogs/tableMakerDialog/UpDownButtonDelegate.qml</file>
 
@@ -50,12 +52,13 @@
 
         <file>contents/ui/settings/AppearanceTab.qml</file>
         <file>contents/ui/settings/DisplayPreview.qml</file>
-        <file>contents/ui/settings/ExpendingFormSwitch.qml</file>
         <file>contents/ui/settings/FontPicker.qml</file>
         <file>contents/ui/settings/GeneralTab.qml</file>
         <file>contents/ui/settings/PluginsTab.qml</file>
         <file>contents/ui/settings/SettingsColorButton.qml</file>
         <file>contents/ui/settings/TabBar.qml</file>
+
+        <file>contents/ui/sharedComponents/ExpendingFormSwitch.qml</file>
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/ContextMenu.qml</file>

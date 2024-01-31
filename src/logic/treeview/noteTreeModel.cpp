@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QIcon>
 #include <klocalizedstring.h>
+#include <qstringliteral.h>
 
 TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -158,6 +159,11 @@ QVariant TreeItem::data(int role) const
             const QString finalValue = grandParentName + QStringLiteral("→") + parentName;
             return finalValue;
         }
+
+    case NoteTreeModel::FullNameRole: {
+        const QString returnValue = data(NoteTreeModel::BranchNameRole).toString() + QStringLiteral(": ") + data(NoteTreeModel::NoteNameRole).toString();
+        return returnValue;
+    }
 
     case NoteTreeModel::WantFocusRole:
         return m_wantFocus;
@@ -327,16 +333,15 @@ QModelIndex NoteTreeModel::index(int row, int column, const QModelIndex &parent)
 
 QHash<int, QByteArray> NoteTreeModel::roleNames() const
 {
-    return {
-        {DisplayNameRole, "displayName"},
-        {PathRole, "path"},
-        {IconNameRole, "iconName"},
-        {UseCaseRole, "useCase"},
-        {NoteNameRole, "noteName"},
-        {BranchNameRole, "branchName"},
-        {WantFocusRole, "wantFocus"},
-        {WantExpandRole, "wantExpand"}
-    };
+    return {{DisplayNameRole, "displayName"},
+            {PathRole, "path"},
+            {IconNameRole, "iconName"},
+            {UseCaseRole, "useCase"},
+            {NoteNameRole, "noteName"},
+            {BranchNameRole, "branchName"},
+            {FullNameRole, "fullName"},
+            {WantFocusRole, "wantFocus"},
+            {WantExpandRole, "wantExpand"}};
 }
 
 QModelIndex NoteTreeModel::parent(const QModelIndex &index) const

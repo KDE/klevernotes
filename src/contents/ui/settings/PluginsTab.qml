@@ -9,6 +9,8 @@ import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/sharedComponents"
+
 ColumnLayout {
     id: root
 

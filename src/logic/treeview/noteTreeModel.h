@@ -57,6 +57,7 @@ public:
         UseCaseRole, // For getting a string to know if the item is a Category/Group/Note
         NoteNameRole, // For only filtering between notes in the searchBar
         BranchNameRole, // For getting the name of the category + group of a note
+        FullNameRole, // For getting the "full" name of the category + group + note of a note
         WantFocusRole, // For sending a signal to the qml ItemDelegate using dataChanged, asking for focus
         WantExpandRole, // For sending a signal to the qml ItemDelegate using dataChanged, asking to expands
     };
