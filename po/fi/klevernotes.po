@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 01:35+0000\n"
-"PO-Revision-Date: 2023-10-12 18:08+0300\n"
+"PO-Revision-Date: 2023-12-11 15:28+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -38,8 +38,7 @@ msgid "group"
 msgstr "ryhmä"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
 msgstr "huomautus"
@@ -175,7 +174,7 @@ msgstr "Valitse nimi"
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr ""
+msgstr "Nimi:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
@@ -295,58 +294,55 @@ msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
 "the number of column"
 msgid "Size: %1 x %2"
-msgstr ""
+msgstr "Koko: %1 × %2"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:155
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr ""
+msgstr "Enemmän valintoja"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:209
-#, fuzzy, kde-format
-#| msgid "Row"
+#, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
 msgstr "Rivi"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:221
-#, fuzzy, kde-format
-#| msgid "Column"
+#, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
 msgstr "Sarake"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:233
-#, fuzzy, kde-format
-#| msgid "Align all:"
+#, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr "Tasaa kaikki:"
+msgstr "Tasaus:"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:238
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
-msgstr ""
+msgstr "Vasemmalle"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:239
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
-msgstr ""
+msgstr "Keskitä"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:240
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
-msgstr ""
+msgstr "Oikealle"
 
 #: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:166
 #, kde-format
 msgctxt "@label %1 is current text length, %2 is maximum length of text field"
 msgid "%1/%2"
-msgstr ""
+msgstr "%1/%2"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:17
 #, kde-format
@@ -841,7 +837,7 @@ msgstr "Ei hakutuloksia"
 #: contents/ui/sideBar/Sidebar.qml:100
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "Luntti"
 
 #: contents/ui/sideBar/Sidebar.qml:112
 #, kde-format
@@ -869,95 +865,91 @@ msgstr "TEHTÄVÄ"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "Markdown-luntti"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgid "Copied !"
-msgstr ""
+msgstr "Kopioitu!"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "Peruskielioppi"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgid "Heading"
-msgstr "Ylätunniste"
+msgstr "Otsikko"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr "Ylätunniste"
+msgstr "Otsikko1"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
 #, kde-format
 msgid "Bold"
-msgstr ""
+msgstr "Lihavointi"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr ""
+msgstr "Lihavoitu teksti"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgid "Italic"
-msgstr ""
+msgstr "Kursiivi"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, text associated to the selected image"
-#| msgid "Image text: "
+#, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr "Kuvateksti: "
+msgstr "Kursivoitu teksti"
 
 #: contents/ui/textEditor/CheatSheet.qml:72
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "Lainauslohko"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr ""
+msgstr "Lainaus"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Ordered list"
-msgstr ""
+msgstr "Järjestetty luettelo"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr ""
+msgstr "Ensimmäinen kohta"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr ""
+msgstr "Toinen kohta"
 
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Unordered list"
-msgstr ""
+msgstr "Luetelma"
 
 #: contents/ui/textEditor/CheatSheet.qml:92
 #, kde-format
 msgid "Code"
-msgstr ""
+msgstr "Koodi"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
 #, kde-format
@@ -969,119 +961,115 @@ msgstr ""
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr ""
+msgstr "Sääntö"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
 msgid "Link"
-msgstr ""
+msgstr "Linkki"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Title:"
+#, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr "Otsikko:"
+msgstr "otsikko"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
-msgstr ""
+msgstr "https://www.esimerkki.fi/"
 
 #: contents/ui/textEditor/CheatSheet.qml:110
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "Kuva"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "vaihtoehtoinen teksti"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "@label:button, As in 'image from the internet'"
-#| msgid "Web image"
+#, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr "Verkkokuva"
+msgstr "kuva"
 
 #: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "Lisäkielioppi"
 
 #: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
 msgid "Table"
-msgstr ""
+msgstr "Taulukko"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
-msgstr ""
+msgstr "Vasemmalle"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
-msgstr ""
+msgstr "Keskitä"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
-msgstr ""
+msgstr "Oikealle"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr ""
+msgstr "1. solu"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr ""
+msgstr "2. solu"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr ""
+msgstr "3. solu"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Rajattu koodilohko"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr ""
+msgstr "Esimerkkiteksti tähän…"
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgid "Strikethrough"
-msgstr ""
+msgstr "Yliviivaus"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "Maailma on litteä."
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgid "Task list"
-msgstr ""
+msgstr "Tehtäväluettelo"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
@@ -1144,20 +1132,20 @@ msgstr "Linkin teksti:"
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
-msgstr ""
+msgstr "Tulosta"
 
 #: contents/ui/textEditor/EditorView.qml:51
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "Piilota tai näytä muokkain"
 
 #: contents/ui/textEditor/EditorView.qml:64
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "Piilota tai näytä esikatselu"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
@@ -1189,11 +1177,10 @@ msgid "%1 doesn't exists"
 msgstr ""
 
 #: contents/ui/textEditor/TextToolBar.qml:36
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
-msgstr "Ylätunniste"
+msgstr "Otsikot"
 
 #: contents/ui/textEditor/TextToolBar.qml:36
 #, kde-format
@@ -1202,107 +1189,101 @@ msgid "num"
 msgstr ""
 
 #: contents/ui/textEditor/TextToolBar.qml:41
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "Ylätunniste"
+msgstr "Otsikko 1"
 
 #: contents/ui/textEditor/TextToolBar.qml:53
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "Ylätunniste"
+msgstr "Otsikko 2"
 
 #: contents/ui/textEditor/TextToolBar.qml:65
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "Ylätunniste"
+msgstr "Otsikko 3"
 
 #: contents/ui/textEditor/TextToolBar.qml:77
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "Ylätunniste"
+msgstr "Otsikko 4"
 
 #: contents/ui/textEditor/TextToolBar.qml:89
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "Ylätunniste"
+msgstr "Otsikko 5"
 
 #: contents/ui/textEditor/TextToolBar.qml:101
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "Ylätunniste"
+msgstr "Otsikko 6"
 
 #: contents/ui/textEditor/TextToolBar.qml:115
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr ""
+msgstr "Lihavointi"
 
 #: contents/ui/textEditor/TextToolBar.qml:124
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr ""
+msgstr "Kursiivi"
 
 #: contents/ui/textEditor/TextToolBar.qml:133
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr ""
+msgstr "Yliviivaus"
 
 #: contents/ui/textEditor/TextToolBar.qml:142
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr ""
+msgstr "Koodi"
 
 #: contents/ui/textEditor/TextToolBar.qml:151
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr ""
+msgstr "Lainaus"
 
 #: contents/ui/textEditor/TextToolBar.qml:160
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr ""
+msgstr "Kuva"
 
 #: contents/ui/textEditor/TextToolBar.qml:167
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr ""
+msgstr "Linkki"
 
 #: contents/ui/textEditor/TextToolBar.qml:174
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr ""
+msgstr "Taulukko"
 
 #: contents/ui/textEditor/TextToolBar.qml:181
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "Järjestetty luettelo"
 
 #: contents/ui/textEditor/TextToolBar.qml:193
 #: contents/ui/textEditor/TextToolBar.qml:214
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "Luetelma"
 
 #: contents/ui/textEditor/TextToolBar.qml:205
 #, kde-format
