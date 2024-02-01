@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 01:35+0000\n"
-"PO-Revision-Date: 2024-01-21 11:09+0100\n"
+"PO-Revision-Date: 2024-01-29 19:01+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -61,7 +61,7 @@ msgstr "Sense adhesius"
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr "Sense emojis"
+msgstr "Sense emoji"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -682,7 +682,7 @@ msgstr "Estil del ressaltador"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr "Activa els emojis ràpids"
+msgstr "Activa els emoji ràpids"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -690,7 +690,7 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr "Escriu ràpidament emojis fent servir la sintaxi següent"
+msgstr "Escriu ràpidament emoji fent servir la sintaxi següent"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -702,7 +702,7 @@ msgstr "nom_emoji"
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "To predeterminat de l'emoji"
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
@@ -746,7 +746,7 @@ msgstr "Fosc"
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr "Activa el diàleg d'emojis ràpids"
+msgstr "Activa el diàleg d'emoji ràpids"
 
 #: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
@@ -755,7 +755,7 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
-"El diàleg d'emojis inserix la sintaxi d'«emojis ràpids» en lloc dels emojis "
+"El diàleg d'emoji inserix la sintaxi d'«emoji ràpids» en lloc dels emoji "
 "reals dins del text."
 
 #: contents/ui/settings/TabBar.qml:13
