@@ -32,6 +32,8 @@ Kirigami.PromptDialog {
 
     ColumnLayout {
         FormCard.FormComboBoxDelegate {
+            id: noteComboBox
+
             text: i18nc("@label:combobox, 'a note' (the noun)", "Note:")
             model: KSortFilterProxyModel {
                 id: searchFilterProxyModel
@@ -44,12 +46,31 @@ Kirigami.PromptDialog {
                 filterString: "Note"
             }
             textRole: "fullName"
+            valueRole: "path"
+            displayMode: FormCard.FormComboBoxDelegate.Dialog
+
+            onCurrentValueChanged: if (headerSwitch.checked) {
+                headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+            }
         }
 
         ExpendingFormSwitch {
+            id: headerSwitch
+
             text: i18nc("@label:switch", "Search headers")
+
+            onCheckedChanged: if (checked) {
+                headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+            }
+
             FormCard.FormComboBoxDelegate {
+                id: headerComboBox
+
                 text: i18nc("@label:textbox", "Header:")
+
+                textRole: "text"
+                valueRole: "value"
+                displayMode: FormCard.FormComboBoxDelegate.Dialog
             }
         }
 

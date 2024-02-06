@@ -22,4 +22,7 @@ public:
     static int headerLevel(const QString &header);
     static QString headerText(const QString &_header);
     static QVariantMap convertSavedMap(const QJsonObject &savedMap);
+    static bool entirelyChecked(const QVariantMap &pathInfo);
+    static QStringList getNoteHeaders(const QVariantMap &pathInfo);
+    static QList<QVariantMap> getHeadersComboList(const QStringList &headers);
 };

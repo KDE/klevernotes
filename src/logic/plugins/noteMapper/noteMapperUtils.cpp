@@ -77,3 +77,34 @@ QVariantMap NoteMapperUtils::convertSavedMap(const QJsonObject &savedMap)
 {
     return savedMap.toVariantMap();
 }
+
+bool NoteMapperUtils::entirelyChecked(const QVariantMap &pathInfo)
+{
+    static const QString entirelyCheckStr = QStringLiteral("entirelyCheck");
+
+    return pathInfo.contains(entirelyCheckStr) ? pathInfo[entirelyCheckStr].toBool() : false;
+}
+
+QStringList NoteMapperUtils::getNoteHeaders(const QVariantMap &pathInfo)
+{
+    static const QStringList emptyList;
+    static const QString headersStr = QStringLiteral("headers");
+    return pathInfo.contains(headersStr) ? pathInfo[headersStr].toStringList() : emptyList;
+}
+
+QList<QVariantMap> NoteMapperUtils::getHeadersComboList(const QStringList &headers)
+{
+    QList<QVariantMap> headersComboList;
+    for (auto &fullHeader : headers) {
+        const QString level = QString::number(headerLevel(fullHeader));
+        const QString header = headerText(fullHeader);
+        const QString text = level + QStringLiteral(": ") + header;
+
+        static const QString textStr = QStringLiteral("text");
+        static const QString valueStr = QStringLiteral("value");
+
+        const QVariantMap listElem = {{textStr, text}, {valueStr, fullHeader}};
+        headersComboList.append(listElem);
+    }
+    return headersComboList;
+}

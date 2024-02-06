@@ -148,6 +148,12 @@ void NoteMapper::clear()
     endResetModel();
 }
 
+QVariantMap NoteMapper::getPathInfo(const QString &path)
+{
+    static const QVariantMap emptyMap;
+    return m_existsMap.contains(path) ? m_existsMap[path].toMap() : emptyMap;
+}
+
 void NoteMapper::addRow(const QStringList &infos)
 {
     bool headerExists = false;
@@ -166,19 +172,10 @@ void NoteMapper::addRow(const QStringList &infos)
         static const QString headersStr = QStringLiteral("headers");
         static const QString entirelyCheckStr = QStringLiteral("entirelyCheck");
         if (!headerText.isEmpty()) {
-            bool entirelyCheck = false;
-            QStringList headers;
-            if (m_existsMap.contains(path)) {
-                const QVariantMap pathInfo = m_existsMap[path].toMap();
-                if (pathInfo.contains(headersStr)) {
-                    headers = pathInfo[headersStr].toStringList();
-                }
-
-                if (pathInfo.contains(entirelyCheckStr)) {
-                    entirelyCheck = pathInfo[entirelyCheckStr].toBool();
-                }
-                headerExists = headers.contains(cleanedHeader);
-            }
+            const QVariantMap pathInfo = getPathInfo(path);
+            const bool entirelyCheck = NoteMapperUtils::entirelyChecked(pathInfo);
+            QStringList headers = NoteMapperUtils::getNoteHeaders(pathInfo);
+            headerExists = headers.contains(cleanedHeader);
 
             if (!headerExists && !entirelyCheck) {
                 const QString filePath = KleverConfig::storagePath() + path + QStringLiteral("/note.md");
@@ -207,6 +204,39 @@ QVariantList NoteMapper::getCleanedHeaderAndLevel(const QString &header) const
     const QString headerText = NoteMapperUtils::headerText(cleanedHeader);
 
     return {headerText, headerLevel};
+}
+
+QList<QVariantMap> NoteMapper::getNoteHeaders(const QString &notePath)
+{
+    const QString cleanedPath = QString(notePath).remove(KleverConfig::storagePath());
+    const QVariantMap pathInfo = getPathInfo(cleanedPath);
+
+    if (NoteMapperUtils::entirelyChecked(pathInfo)) {
+        const QStringList headers = NoteMapperUtils::getNoteHeaders(pathInfo);
+        return NoteMapperUtils::getHeadersComboList(headers);
+    }
+
+    QString note = DocumentHandler::readFile(notePath + QStringLiteral("/note.md"));
+
+    static const QRegularExpression block_fences =
+        QRegularExpression(QStringLiteral("^ *(\\`{3,}|~{3,})[ \\.]*(\\S+)? *\n([\\s\\S]*?)\n? *\\1 *(?:\n+|$)"), QRegularExpression::MultilineOption);
+    note.remove(block_fences); // Avoid things like "#include <lib>" to be catched as a heading
+
+    static const QRegularExpression block_heading =
+        QRegularExpression(QStringLiteral("^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)"), QRegularExpression::MultilineOption);
+    QRegularExpressionMatchIterator heading_i = block_heading.globalMatch(note);
+
+    QStringList headers;
+    QRegularExpressionMatch match;
+    while (heading_i.hasNext()) {
+        match = heading_i.next();
+        const QString header = match.captured(0).trimmed();
+        headers.append(header);
+    }
+
+    updatePathInfo(cleanedPath, headers);
+
+    return NoteMapperUtils::getHeadersComboList(headers);
 }
 
 // Treeview

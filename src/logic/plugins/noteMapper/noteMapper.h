@@ -67,6 +67,8 @@ public:
     Q_INVOKABLE QVariantList getCleanedHeaderAndLevel(const QString &header) const;
     Q_INVOKABLE void saveMap() const;
 
+    Q_INVOKABLE QList<QVariantMap> getNoteHeaders(const QString &notePath);
+
     // Treeview
     Q_INVOKABLE void addInitialGlobalPaths(const QStringList &paths);
     Q_INVOKABLE void addGlobalPath(const QString &path);
@@ -80,6 +82,8 @@ public:
 private:
     QVariantMap m_existsMap;
     QVariantMap m_savedMap;
+
+    QVariantMap getPathInfo(const QString &path);
 
     // Model
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;
