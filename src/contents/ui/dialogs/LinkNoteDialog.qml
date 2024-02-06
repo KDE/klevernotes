@@ -14,6 +14,8 @@ Kirigami.PromptDialog {
     id: linkNoteDialog
 
     property alias linkText: linkTextField.text
+    readonly property string path: noteComboBox.currentValue
+    property string headerString: ""
     required property var listModel
 
     title: i18nc("@title:dialog", "Create your link")
@@ -22,12 +24,10 @@ Kirigami.PromptDialog {
 
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
-    onOpened: {
-        //urlTextField.forceActiveFocus()
-    }
     onClosed: {
-        urlText = ""
         linkText = ""
+        headerSwitch.checked = false
+        noteComboBox.currentIndex = 0
     }
 
     ColumnLayout {
@@ -52,15 +52,21 @@ Kirigami.PromptDialog {
             onCurrentValueChanged: if (headerSwitch.checked) {
                 headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
             }
+            Component.onCompleted: {
+                currentIndex = 0
+            }
         }
 
         ExpendingFormSwitch {
             id: headerSwitch
 
             text: i18nc("@label:switch", "Search headers")
+            checked: false
 
             onCheckedChanged: if (checked) {
                 headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+            } else {
+                linkNoteDialog.headerString = ""
             }
 
             FormCard.FormComboBoxDelegate {
@@ -71,6 +77,10 @@ Kirigami.PromptDialog {
                 textRole: "text"
                 valueRole: "value"
                 displayMode: FormCard.FormComboBoxDelegate.Dialog
+
+                onCurrentValueChanged: {
+                    linkNoteDialog.headerString = currentValue
+                }
             }
         }
 

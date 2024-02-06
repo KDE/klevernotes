@@ -209,21 +209,22 @@ Kirigami.ActionToolBar {
             }
         },
         Kirigami.Action {
-            id: linkNoteAction
-            shortcut: "Ctrl+Alt+K"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link note") + " (" + shortcut + ")"
-            icon.name: "edit-link"
-            onTriggered: {
-                linkNoteDialog.open()
-            }
-        },
-        Kirigami.Action {
             id: emojiAction
             shortcut: "Ctrl+Shift+E"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
             icon.name: "smiley"
             onTriggered: {
                 emojiDialog.open()
+            }
+        },
+        Kirigami.Action {
+            id: linkNoteAction
+            visible: Config.noteMapEnabled
+            shortcut: "Ctrl+Alt+K"
+            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link note") + " (" + shortcut + ")"
+            icon.name: "edit-link"
+            onTriggered: {
+                linkNoteDialog.open()
             }
         }
     ]
@@ -328,6 +329,19 @@ Kirigami.ActionToolBar {
         id: linkNoteDialog
 
         listModel: applicationWindow().globalDrawer.treeModel
+
+        onAccepted: {
+            const text = linkText.trim()
+            const notePath = path.substring(Config.storagePath.length)
+            const headerPart = headerString.length > 0 
+                ? " : " + headerString 
+                : ""
+            const textPart = text.length > 0 
+                ? " | " + linkText 
+                : ""
+            const linkString = '[[' + notePath + headerPart + textPart + ']]'
+            toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, linkString)
+        }
     }
 
     function applyInstructions(selectionStart, selectionEnd, info, givenSpecialChars,
