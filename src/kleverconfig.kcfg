@@ -13,16 +13,16 @@
             <label>Path to the ./KleverNotes folder</label>
             <default>None</default>
         </entry>
+
         <entry name="categoryDisplayName" type="String">
             <label>The default name shown in place of "./BaseCategory"</label>
             <default>Notes</default>
         </entry>
-
         <entry name="defaultCategoryName" type="String">
             <label>The default name for a new Category</label>
             <default>New Category</default>
         </entry>
-                <entry name="defaultGroupName" type="String">
+        <entry name="defaultGroupName" type="String">
             <label>The default name for a new Group</label>
             <default>New Group</default>
         </entry>
@@ -30,19 +30,30 @@
             <label>The default name for a new Note</label>
             <default>New Note</default>
         </entry>
+
+        <entry name="pdfWarningHidden" type="Bool">
+            <label>Whether or not the warning message for pdf background should be hidden</label>
+            <default>false</default>
+        </entry>
+    </group>
+
+    <group name="Appearance">
+        <entry name="stylePath" type="Path">
+            <label>Path to the note display css style</label>
+            <default>:/KleverStyle.css</default>
+        </entry>
         <entry name="editorFont" type="Font">
             <label>The default text editor font (if not specified default to system theme)</label>
-        </entry>
-
-        <entry name="viewBodyColor" type="String">
-            <label>The default text view body color (if not specified default to system theme)</label>
-            <default>None</default>
         </entry>
         <entry name="codeFont" type="Font">
             <label>The default code block font</label>
         </entry>
         <entry name="viewFont" type="Font">
             <label>The default text view font (if not specified default to system theme)</label>
+        </entry>
+        <entry name="viewBodyColor" type="String">
+            <label>The default text view body color (if not specified default to system theme)</label>
+            <default>None</default>
         </entry>
         <entry name="viewTextColor" type="String">
             <label>The default text view text color (if not specified default to system theme)</label>
@@ -68,17 +79,9 @@
             <label>The default text view highlight color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
+    </group>
 
-        <entry name="stylePath" type="Path">
-            <label>Path to the note display css style</label>
-            <default>:/KleverStyle.css</default>
-        </entry>
-        <entry name="pdfWarningHidden" type="Bool">
-            <label>Whether or not the warning message for pdf background should be hidden</label>
-            <default>false</default>
-        </entry>
-
-        <!-- TODO: make different groups -->
+    <group name="Plugins">
         <entry name="pumlEnabled" type="Bool">
             <label>Whether or not PlantUML is enable</label>
             <default>false</default>
@@ -87,6 +90,7 @@
             <label>Whether or not PlantUML diagram use dark background</label>
             <default>false</default>
         </entry>
+
         <entry name="quickEmojiEnabled" type="Bool">
             <label>Whether or not quick emoji (':emoji_name:') is enable</label>
             <default>false</default>
@@ -99,6 +103,7 @@
             <label>Whether or not the emoji dialog insert quick emoji (':emoji_name:')</label>
             <default>false</default>
         </entry>
+
         <entry name="codeSynthaxHighlightEnabled" type="Bool">
             <label>Whether or not the code block syntax highlighting is enable</label>
             <default>false</default>
@@ -111,6 +116,7 @@
             <label>The highlighter style choosen by the user</label>
             <default></default>
         </entry>
+
         <entry name="noteMapEnabled" type="Bool">
             <label>Whether or not the note map is enable</label>
             <default>false</default>
