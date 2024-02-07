@@ -148,7 +148,7 @@ void NoteMapper::clear()
     endResetModel();
 }
 
-QVariantMap NoteMapper::getPathInfo(const QString &path)
+QVariantMap NoteMapper::getPathInfo(const QString &path) const
 {
     static const QVariantMap emptyMap;
     return m_existsMap.contains(path) ? m_existsMap[path].toMap() : emptyMap;

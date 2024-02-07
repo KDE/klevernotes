@@ -83,7 +83,7 @@ private:
     QVariantMap m_existsMap;
     QVariantMap m_savedMap;
 
-    QVariantMap getPathInfo(const QString &path);
+    QVariantMap getPathInfo(const QString &path) const;
 
     // Model
     std::vector<std::unique_ptr<LinkedNoteItem>> m_list;

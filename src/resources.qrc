@@ -34,7 +34,6 @@
         <file>contents/ui/dialogs/imagePickerDialog/ButtonDelegate.qml</file>
         <file>contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml</file>
 
-
         <file>contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml</file>
         <file>contents/ui/dialogs/tableMakerDialog/UpDownButtonDelegate.qml</file>
 

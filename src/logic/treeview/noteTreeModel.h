@@ -51,15 +51,15 @@ public:
     explicit NoteTreeModel(QObject *parent = nullptr);
 
     enum ExtraRoles {
-        PathRole = Qt::UserRole + 1, // For getting a string with the fullPath of the Category/Group/Note
-        DisplayNameRole, // For getting a string with the name of the Category/Group/Note to be displayed instead of the hidden name
-        IconNameRole, // For getting a string with the icon name associated with the Category/Group/Note
-        UseCaseRole, // For getting a string to know if the item is a Category/Group/Note
+        PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Category/Group/Note
+        DisplayNameRole, // To get a string with the name of the Category/Group/Note to be displayed instead of the hidden name
+        IconNameRole, // To get a string with the icon name associated with the Category/Group/Note
+        UseCaseRole, // To get a string to know if the item is a Category/Group/Note
         NoteNameRole, // For only filtering between notes in the searchBar
-        BranchNameRole, // For getting the name of the category + group of a note
-        FullNameRole, // For getting the "full" name of the category + group + note of a note
-        WantFocusRole, // For sending a signal to the qml ItemDelegate using dataChanged, asking for focus
-        WantExpandRole, // For sending a signal to the qml ItemDelegate using dataChanged, asking to expands
+        BranchNameRole, // To get the name of the category + group of a note
+        FullNameRole, // To get the "full" name of the category + group + note of a note
+        WantFocusRole, // For send a signal to the qml ItemDelegate using dataChanged, asking for focus
+        WantExpandRole, // For send a signal to the qml ItemDelegate using dataChanged, asking to expands
     };
 
     QVariant data(const QModelIndex &index, int role) const override;
