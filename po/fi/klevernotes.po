@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# Tommi Nieminen <translator@legisign.org>, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 01:35+0000\n"
-"PO-Revision-Date: 2023-12-11 15:28+0200\n"
+"PO-Revision-Date: 2024-02-02 12:49+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -53,16 +53,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "%1: haluatko varmasti poistaa?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Värivalitsin"
+msgstr "Ei tarroja"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "Ei emojeja"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -478,19 +476,19 @@ msgstr "Anna uuden tai olemassa olevan KleverNotes-talletustilan sijainti.\n"
 #, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr ""
+msgstr "Muokkain"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "Muokkainfontti:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
 #, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr ""
+msgstr "Muistiinpanon esikatselu"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -529,35 +527,30 @@ msgid "Code color:"
 msgstr "Koodiväri:"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Otsikkoväri:"
+msgstr "Korostusväri:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "Perusasetukset"
+msgstr "Yleisfontti:"
 
 #: contents/ui/settings/DisplayPreview.qml:129
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "Koodilohkon fontti:"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Tallennettu kuva"
+msgstr "Talletuspaikka"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -570,7 +563,7 @@ msgstr "Talletustilan sijainti:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Sivupalkki"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -594,37 +587,37 @@ msgstr "Uuden muistiinpanon nimi:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Työkaluliitännäiset"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "Käytä muistiinpanojen linkitystä"
 
 #: contents/ui/settings/PluginsTab.qml:32
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
-msgstr ""
+msgstr "Linkityksellä voi luoda linkin muistiinpanosta toiseen."
 
 #: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Ohje: käynnistä ohjelma aktivoinnin jälkeen uudestaan."
 
 #: contents/ui/settings/PluginsTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Käytä PlantUML:ää"
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
-msgstr ""
+msgstr "PlantUML:llä voi luoda kaavioita."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -633,54 +626,56 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Huom! Kaavioiden luominen voi olla hidasta. Jos diagrammeja on useita, ne on "
+"nopeampi näyttää kuvina."
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Käytä tummaa taustaa"
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "PlantUML-kaaviolle tulee tumma tausta."
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Ulkoasuliitännäiset"
 
 #: contents/ui/settings/PluginsTab.qml:80
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Käytä koodin syntaksiväritystä"
 
 #: contents/ui/settings/PluginsTab.qml:81
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "Tuettujen syntaksiväritysten luettelo"
 
 #: contents/ui/settings/PluginsTab.qml:91
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "Korostus"
 
 #: contents/ui/settings/PluginsTab.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Korostustyyli"
 
 #: contents/ui/settings/PluginsTab.qml:149
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Käytä pikaemojeja"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -688,65 +683,65 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Kirjoita emojit nopeasti oheisella syntaksilla"
 
 #: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "Muuta nimeä"
+msgstr "emojin_nimi"
 
 #: contents/ui/settings/PluginsTab.qml:162
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "Emojien oletussävy"
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Oletus"
 
 #: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr ""
+msgstr "Vaalea"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Keskivaalea"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Keskimääräinen"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Keskitumma"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Tumma"
 
 #: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Käytä nopeaa emoji-ikkunaa"
 
+# *** TARKISTA: Alkukielen lause on sekava ja jättää epäselväksi, mitä näkyy kyselyikkunassa ja mitä tekstissä!
 #: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
 msgctxt "@description:switch"
@@ -754,11 +749,11 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"Emoji-ikkunassa käytetään ”pikaemojisyntaksia” varsinaisen tekstissä näkyvän "
+"emojin sijaan"
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Perusasetukset"
@@ -769,13 +764,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Ulkoasu"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Liitännäiset"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -955,7 +950,7 @@ msgstr "Koodi"
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr ""
+msgstr "Sisällytetty koodi"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
@@ -1084,19 +1079,15 @@ msgid "Make more bar"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:156
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes-maalaus"
+msgstr "KleverNotes-liitännäiset"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "Huomautus"
+msgstr "Muistiinpanolinkki"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1104,29 +1095,25 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "Luokka/ryhmä/muistiinpano"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr "Ylätunniste"
+msgstr "ylätunniste"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "näyttönimi"
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "Linkin teksti:"
+msgstr "Linkitetyt muistiinpanot"
 
 #: contents/ui/textEditor/EditorView.qml:40
 #, kde-format
@@ -1151,30 +1138,26 @@ msgstr "Piilota tai näytä esikatselu"
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Linkitettyjen muistiinpanojen kartta"
 
 #: contents/ui/textEditor/NotesMap.qml:39
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "Olemassa oleva sijainti"
+msgstr "Olemassa olevat muistiinpanot"
 
 #: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "Puuttuvat muistiinpanot"
 
 #: contents/ui/textEditor/NotesMap.qml:77
 #: contents/ui/textEditor/TextDisplay.qml:173
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "Ei ole olemassa: %1"
 
 #: contents/ui/textEditor/TextToolBar.qml:36
 #, kde-format
@@ -1186,7 +1169,7 @@ msgstr "Otsikot"
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr ""
+msgstr "nro"
 
 #: contents/ui/textEditor/TextToolBar.qml:41
 #, kde-format
@@ -1289,7 +1272,7 @@ msgstr "Luetelma"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr ""
+msgstr "Tekstin korostus"
 
 #: contents/ui/textEditor/TextToolBar.qml:289
 #: contents/ui/textEditor/TextToolBar.qml:290
@@ -1327,73 +1310,72 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Hymiöt"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Ihmiset"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Luonto"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Ruoka"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Toiminnat"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Matkailu"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Oliot"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Symbolit"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Liput"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Mukautettu"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr "Yritettäessä luoda kohdetta sattui virhe."
+msgstr "Yritettäessä kopioida tätä PDF:ää sattui virhe."
 
 #: logic/treeview/noteTreeModel.cpp:276
 #, kde-format
