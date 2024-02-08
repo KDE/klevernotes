@@ -121,7 +121,7 @@ void NoteMapperParserUtils::postTok()
     }
     m_previousLinkedNotesInfos = m_linkedNotesInfos;
 
-    if (m_linkedNotesChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
+    if (m_noteHeadersChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
         m_emptyHeadersSent = false;
         Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders.values());
     } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
