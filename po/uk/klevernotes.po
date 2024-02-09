@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 01:35+0000\n"
+"POT-Creation-Date: 2024-02-09 01:44+0000\n"
 "PO-Revision-Date: 2024-01-25 16:23+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -145,6 +145,7 @@ msgstr ""
 "Хочете зберегти його до завершення роботи програми?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
@@ -157,11 +158,33 @@ msgid "URL:"
 msgstr "Адреса:"
 
 #: contents/ui/dialogs/LinkDialog.qml:39
+#: contents/ui/dialogs/LinkNoteDialog.qml:90
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Текст посилання:"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:37
+#, fuzzy, kde-format
+#| msgctxt "@label:button, as in 'A note'"
+#| msgid "Note"
+msgctxt "@label:combobox, 'a note' (the noun)"
+msgid "Note:"
+msgstr "Нотатка"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:63
+#, kde-format
+msgctxt "@label:switch"
+msgid "Search headers"
+msgstr ""
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:75
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@label:textbox"
+msgid "Header:"
+msgstr "Заголовок"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -588,43 +611,43 @@ msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Назва нової нотатки:"
 
-#: contents/ui/settings/PluginsTab.qml:19
+#: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
 msgstr "Допоміжні додатки"
 
-#: contents/ui/settings/PluginsTab.qml:31
+#: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
 msgstr "Увімкнути прив'язку нотаток"
 
-#: contents/ui/settings/PluginsTab.qml:32
+#: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr "Прив'язка нотаток надає вам змогу створювати зв'язок між нотатками."
 
-#: contents/ui/settings/PluginsTab.qml:33
+#: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "Порада: перезапустіть програму після вмикання можливості"
 
-#: contents/ui/settings/PluginsTab.qml:44
+#: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
 msgstr "Увімкнути PlantUML"
 
-#: contents/ui/settings/PluginsTab.qml:45
+#: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
 msgstr "PlantUML надає вам змогу створити діаграму."
 
-#: contents/ui/settings/PluginsTab.qml:46
+#: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
 msgctxt "@description:checkbox"
 msgid ""
@@ -634,55 +657,55 @@ msgstr ""
 "Зауваження: створення діаграм може бути повільною справою. Якщо у вас багато "
 "діаграм, показ їх, як зображень, міг би бути простішим."
 
-#: contents/ui/settings/PluginsTab.qml:56
+#: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
 msgstr "Увімкнути темне тло"
 
-#: contents/ui/settings/PluginsTab.qml:57
+#: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
 msgstr "Діаграма PlantUML матиме темне тло."
 
-#: contents/ui/settings/PluginsTab.qml:68
+#: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
 msgstr "Косметичні додатки"
 
-#: contents/ui/settings/PluginsTab.qml:80
+#: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "Увімкнути підсвічування синтаксису коду"
 
-#: contents/ui/settings/PluginsTab.qml:81
+#: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr "Список підтримуваних засобів підсвічування"
 
-#: contents/ui/settings/PluginsTab.qml:91
+#: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
 msgstr "Підсвічування"
 
-#: contents/ui/settings/PluginsTab.qml:119
+#: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr "Стиль підсвічування"
 
-#: contents/ui/settings/PluginsTab.qml:149
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
 msgstr "Увімкнути швидкі емоційки"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
@@ -691,63 +714,63 @@ msgid "Quickly write emoji using the following syntax"
 msgstr ""
 "Швидкий запис емоційок за допомогою вказаних нижче синтаксичних конструкцій"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "назва_емоційки"
 
-#: contents/ui/settings/PluginsTab.qml:162
+#: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
 msgstr "Типовий тон емодзі"
 
-#: contents/ui/settings/PluginsTab.qml:166
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr "Типовий"
 
-#: contents/ui/settings/PluginsTab.qml:167
+#: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "Світлий"
 
-#: contents/ui/settings/PluginsTab.qml:168
+#: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr "Помірно світлий"
 
-#: contents/ui/settings/PluginsTab.qml:169
+#: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr "Проміжний"
 
-#: contents/ui/settings/PluginsTab.qml:170
+#: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr "Помірно темний"
 
-#: contents/ui/settings/PluginsTab.qml:171
+#: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr "Темний"
 
-#: contents/ui/settings/PluginsTab.qml:185
+#: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr "Увімкнути вікно швидких емоційок"
 
-#: contents/ui/settings/PluginsTab.qml:186
+#: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
@@ -1278,11 +1301,19 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr "Підсвічування тексту"
 
-#: contents/ui/textEditor/TextToolBar.qml:289
-#: contents/ui/textEditor/TextToolBar.qml:290
-#: contents/ui/textEditor/TextToolBar.qml:291
-#: contents/ui/textEditor/TextToolBar.qml:293
-#: contents/ui/textEditor/TextToolBar.qml:294
+#: contents/ui/textEditor/TextToolBar.qml:224
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, will be followed by the shortcut"
+#| msgid "Linked notes"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link note"
+msgstr "Пов'язані нотатки"
+
+#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:300
+#: contents/ui/textEditor/TextToolBar.qml:301
+#: contents/ui/textEditor/TextToolBar.qml:303
+#: contents/ui/textEditor/TextToolBar.qml:304
 #, kde-format
 msgid "Header"
 msgstr "Заголовок"
@@ -1381,42 +1412,42 @@ msgstr "Нетипові"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Сталася помилка під час спроби скопіювати цей PDF."
 
-#: logic/treeview/noteTreeModel.cpp:276
+#: logic/treeview/noteTreeModel.cpp:281
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Сталася помилка під час створення демонстраційної нотатки."
 
-#: logic/treeview/noteTreeModel.cpp:411
+#: logic/treeview/noteTreeModel.cpp:417
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Сталася помилка під час створення цього запису."
 
-#: logic/treeview/noteTreeModel.cpp:444
+#: logic/treeview/noteTreeModel.cpp:450
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Сталася помилка під час вилучення цього запису."
 
-#: logic/treeview/noteTreeModel.cpp:466
+#: logic/treeview/noteTreeModel.cpp:472
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Сталася помилка під час перейменування цього запису."
 
-#: logic/treeview/noteTreeModel.cpp:561
+#: logic/treeview/noteTreeModel.cpp:567
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Сталася помилка під час створення нотатки."
 
-#: logic/treeview/noteTreeModel.cpp:572
+#: logic/treeview/noteTreeModel.cpp:578
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Сталася помилка під час створення групи."
 
-#: logic/treeview/noteTreeModel.cpp:582
+#: logic/treeview/noteTreeModel.cpp:588
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Сталася помилка під час створення категорії."
 
-#: logic/treeview/noteTreeModel.cpp:590
+#: logic/treeview/noteTreeModel.cpp:596
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Сталася помилка під час створення сховища."

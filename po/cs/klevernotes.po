@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 01:35+0000\n"
+"POT-Creation-Date: 2024-02-09 01:44+0000\n"
 "PO-Revision-Date: 2023-11-08 14:21+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -52,11 +52,9 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "Opravdu si přejete smazat tento %1?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Kapátko"
+msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -143,6 +141,7 @@ msgid ""
 msgstr ""
 
 #: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
@@ -155,11 +154,33 @@ msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:39
+#: contents/ui/dialogs/LinkNoteDialog.qml:90
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Text odkazu:"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:37
+#, fuzzy, kde-format
+#| msgctxt "@label:button, as in 'A note'"
+#| msgid "Note"
+msgctxt "@label:combobox, 'a note' (the noun)"
+msgid "Note:"
+msgstr "Poznámka"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:63
+#, kde-format
+msgctxt "@label:switch"
+msgid "Search headers"
+msgstr ""
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:75
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@label:textbox"
+msgid "Header:"
+msgstr "Záhlaví"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -518,12 +539,10 @@ msgid "Code color:"
 msgstr "Barva kódu"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Barva popisku:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
@@ -576,43 +595,43 @@ msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Název nové poznámky:"
 
-#: contents/ui/settings/PluginsTab.qml:19
+#: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:31
+#: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:32
+#: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:33
+#: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:44
+#: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:45
+#: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:46
+#: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
 msgctxt "@description:checkbox"
 msgid ""
@@ -620,55 +639,55 @@ msgid ""
 "displaying them as images would be easier."
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:56
+#: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:57
+#: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:68
+#: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:80
+#: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:81
+#: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:91
+#: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:119
+#: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:149
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
@@ -676,66 +695,63 @@ msgctxt ""
 msgid "Quickly write emoji using the following syntax"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgid "Rename"
+#: contents/ui/settings/PluginsTab.qml:153
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "Přejmenovat"
+msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:162
+#: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:166
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#: contents/ui/settings/PluginsTab.qml:169
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Vpravo"
+msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:168
+#: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:169
+#: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:170
+#: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:171
+#: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:185
+#: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr ""
 
-#: contents/ui/settings/PluginsTab.qml:186
+#: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
@@ -1264,11 +1280,20 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:289
-#: contents/ui/textEditor/TextToolBar.qml:290
-#: contents/ui/textEditor/TextToolBar.qml:291
-#: contents/ui/textEditor/TextToolBar.qml:293
-#: contents/ui/textEditor/TextToolBar.qml:294
+#: contents/ui/textEditor/TextToolBar.qml:224
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
+#| msgid "Link text:"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link note"
+msgstr "Text odkazu:"
+
+#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:300
+#: contents/ui/textEditor/TextToolBar.qml:301
+#: contents/ui/textEditor/TextToolBar.qml:303
+#: contents/ui/textEditor/TextToolBar.qml:304
 #, kde-format
 msgid "Header"
 msgstr "Záhlaví"
@@ -1295,7 +1320,7 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "Historie"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
@@ -1307,97 +1332,97 @@ msgstr ""
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Lidé"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Příroda"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Jídlo"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Aktivity"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Cestování"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Objekty"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Symboly"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Příznaky"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Vlastní"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this pdf."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:276
+#: logic/treeview/noteTreeModel.cpp:281
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Při pokusu o vytvoření zkušební poznámky nastala chyba."
 
-#: logic/treeview/noteTreeModel.cpp:411
+#: logic/treeview/noteTreeModel.cpp:417
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Nastala chyba při pokusu o vytvoření této položky."
 
-#: logic/treeview/noteTreeModel.cpp:444
+#: logic/treeview/noteTreeModel.cpp:450
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Nastala chyba při pokusu o odstranění této položky."
 
-#: logic/treeview/noteTreeModel.cpp:466
+#: logic/treeview/noteTreeModel.cpp:472
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Nastala chyba při pokusu o přejmenování této položky."
 
-#: logic/treeview/noteTreeModel.cpp:561
+#: logic/treeview/noteTreeModel.cpp:567
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Nastala chyba při pokusu o vytvoření poznámky."
 
-#: logic/treeview/noteTreeModel.cpp:572
+#: logic/treeview/noteTreeModel.cpp:578
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Nastala chyba při pokusu o vytvoření skupiny."
 
-#: logic/treeview/noteTreeModel.cpp:582
+#: logic/treeview/noteTreeModel.cpp:588
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Nastala chyba při pokusu o vytvoření kategorie."
 
-#: logic/treeview/noteTreeModel.cpp:590
+#: logic/treeview/noteTreeModel.cpp:596
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Nastala chyba při pokusu o vytvoření úložiště."

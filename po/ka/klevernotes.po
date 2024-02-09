@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 01:35+0000\n"
+"POT-Creation-Date: 2024-02-09 01:44+0000\n"
 "PO-Revision-Date: 2024-01-27 05:23+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -145,6 +145,7 @@ msgstr ""
 "თუ გნებავთ, შეინახოთ ის გასვლამდე?\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
@@ -157,11 +158,33 @@ msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:39
+#: contents/ui/dialogs/LinkNoteDialog.qml:90
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "ბმულის ტექსტი:"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:37
+#, fuzzy, kde-format
+#| msgctxt "@label:button, as in 'A note'"
+#| msgid "Note"
+msgctxt "@label:combobox, 'a note' (the noun)"
+msgid "Note:"
+msgstr "შენიშვნა"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:63
+#, kde-format
+msgctxt "@label:switch"
+msgid "Search headers"
+msgstr ""
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:75
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@label:textbox"
+msgid "Header:"
+msgstr "სათაური"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -588,19 +611,19 @@ msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "ახალი შენიშვნის სახელი:"
 
-#: contents/ui/settings/PluginsTab.qml:19
+#: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
 msgstr "ხელსაწყო დამატებები"
 
-#: contents/ui/settings/PluginsTab.qml:31
+#: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
 msgstr "შენიშვნის მიბმის დაშვება"
 
-#: contents/ui/settings/PluginsTab.qml:32
+#: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
@@ -608,25 +631,25 @@ msgstr ""
 "შენიშვნების მიბმა ერთი შენიშვნიდან მეორეზე ბმულის გაკეთების საშუალებას "
 "მოგცემთ."
 
-#: contents/ui/settings/PluginsTab.qml:33
+#: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "რჩევა: გადატვირთეთ აპი აქტივაციის შემდეგ."
 
-#: contents/ui/settings/PluginsTab.qml:44
+#: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
 msgstr "PlantUML-ის ჩართვა"
 
-#: contents/ui/settings/PluginsTab.qml:45
+#: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
 msgstr "PlantUML დიაგრამების შექმნის საშუალებას გაძლევთ."
 
-#: contents/ui/settings/PluginsTab.qml:46
+#: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
 msgctxt "@description:checkbox"
 msgid ""
@@ -637,55 +660,55 @@ msgstr ""
 "რაოდენობა გაქვთ, მათი გამოსახულების სახით გამოტანა, შეიძლება, უფრო ადვილიც "
 "იყოს."
 
-#: contents/ui/settings/PluginsTab.qml:56
+#: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
 msgstr "მუქი ფონის გამოყენება"
 
-#: contents/ui/settings/PluginsTab.qml:57
+#: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
 msgstr "PlantUML-ის დიაგრამებს მუქი ფერი ექნებათ."
 
-#: contents/ui/settings/PluginsTab.qml:68
+#: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
 msgstr "დამხმარე დამატებები"
 
-#: contents/ui/settings/PluginsTab.qml:80
+#: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "კოდის სინტაქსის გამოკვეთის ჩართვა"
 
-#: contents/ui/settings/PluginsTab.qml:81
+#: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr "მხარდაჭერილი გამომკვეთების სია"
 
-#: contents/ui/settings/PluginsTab.qml:91
+#: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
 msgstr "გამომკვეთი"
 
-#: contents/ui/settings/PluginsTab.qml:119
+#: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr "გამომკვეთის სტილი"
 
-#: contents/ui/settings/PluginsTab.qml:149
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
 msgstr "სწრაფი ემოჯიების დაშვება"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
@@ -693,63 +716,63 @@ msgctxt ""
 msgid "Quickly write emoji using the following syntax"
 msgstr "დაწერეთ სწრაფად ემოჯიები შემდეგი სინტაქსის გამოყენებით"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "ემოჯის_სახელი"
 
-#: contents/ui/settings/PluginsTab.qml:162
+#: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
 msgstr "ნაგულისხმევი ემოჯის ტონი"
 
-#: contents/ui/settings/PluginsTab.qml:166
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr "ნაგულისხმევი"
 
-#: contents/ui/settings/PluginsTab.qml:167
+#: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "ღია"
 
-#: contents/ui/settings/PluginsTab.qml:168
+#: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr "საშუალო ღია"
 
-#: contents/ui/settings/PluginsTab.qml:169
+#: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr "საშუალო"
 
-#: contents/ui/settings/PluginsTab.qml:170
+#: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr "საშუალო მუქი"
 
-#: contents/ui/settings/PluginsTab.qml:171
+#: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr "ბნელი"
 
-#: contents/ui/settings/PluginsTab.qml:185
+#: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr "სწრაფი ემოჯის დიალოგის ჩართვა"
 
-#: contents/ui/settings/PluginsTab.qml:186
+#: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
@@ -1280,11 +1303,19 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr "ტექსტის გამოკვეთა"
 
-#: contents/ui/textEditor/TextToolBar.qml:289
-#: contents/ui/textEditor/TextToolBar.qml:290
-#: contents/ui/textEditor/TextToolBar.qml:291
-#: contents/ui/textEditor/TextToolBar.qml:293
-#: contents/ui/textEditor/TextToolBar.qml:294
+#: contents/ui/textEditor/TextToolBar.qml:224
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, will be followed by the shortcut"
+#| msgid "Linked notes"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link note"
+msgstr "მიბმული შენიშვნები"
+
+#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:300
+#: contents/ui/textEditor/TextToolBar.qml:301
+#: contents/ui/textEditor/TextToolBar.qml:303
+#: contents/ui/textEditor/TextToolBar.qml:304
 #, kde-format
 msgid "Header"
 msgstr "სათაური"
@@ -1384,42 +1415,42 @@ msgstr "ხელით მითითება"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "შეცდომა ამ PDF ფაილის კოპირებისას."
 
-#: logic/treeview/noteTreeModel.cpp:276
+#: logic/treeview/noteTreeModel.cpp:281
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "შეცდომა ამ დემო შენიშვნის შექმნისას."
 
-#: logic/treeview/noteTreeModel.cpp:411
+#: logic/treeview/noteTreeModel.cpp:417
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "შეცდომა ამ ელემენტის შექმნისას."
 
-#: logic/treeview/noteTreeModel.cpp:444
+#: logic/treeview/noteTreeModel.cpp:450
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "შეცდომა ამ ელემენტის წაშლისას."
 
-#: logic/treeview/noteTreeModel.cpp:466
+#: logic/treeview/noteTreeModel.cpp:472
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "შეცდომ ამ ელემენტის სახელის გადარქმევისას."
 
-#: logic/treeview/noteTreeModel.cpp:561
+#: logic/treeview/noteTreeModel.cpp:567
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "შეცდომა ამ შენიშვნის შექმნისას."
 
-#: logic/treeview/noteTreeModel.cpp:572
+#: logic/treeview/noteTreeModel.cpp:578
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "შეცდომა ჯგუფის შექმნისას."
 
-#: logic/treeview/noteTreeModel.cpp:582
+#: logic/treeview/noteTreeModel.cpp:588
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "შეცდომა კატეგორიის შექმნისას."
 
-#: logic/treeview/noteTreeModel.cpp:590
+#: logic/treeview/noteTreeModel.cpp:596
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "შეცდომა საცავის შექმნისას."

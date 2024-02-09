@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 01:35+0000\n"
+"POT-Creation-Date: 2024-02-09 01:44+0000\n"
 "PO-Revision-Date: 2024-02-07 23:40+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -144,6 +144,7 @@ msgstr ""
 "您要在離開前先儲存嗎？\n"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
@@ -156,11 +157,33 @@ msgid "URL:"
 msgstr "網址："
 
 #: contents/ui/dialogs/LinkDialog.qml:39
+#: contents/ui/dialogs/LinkNoteDialog.qml:90
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "連結文字："
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:37
+#, fuzzy, kde-format
+#| msgctxt "@label:button, as in 'A note'"
+#| msgid "Note"
+msgctxt "@label:combobox, 'a note' (the noun)"
+msgid "Note:"
+msgstr "筆記"
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:63
+#, kde-format
+msgctxt "@label:switch"
+msgid "Search headers"
+msgstr ""
+
+#: contents/ui/dialogs/LinkNoteDialog.qml:75
+#, fuzzy, kde-format
+#| msgid "Header"
+msgctxt "@label:textbox"
+msgid "Header:"
+msgstr "標頭"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -583,43 +606,43 @@ msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "新筆記名稱："
 
-#: contents/ui/settings/PluginsTab.qml:19
+#: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
 msgstr "工具外掛程式"
 
-#: contents/ui/settings/PluginsTab.qml:31
+#: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
 msgstr "啟用筆記連結"
 
-#: contents/ui/settings/PluginsTab.qml:32
+#: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr "筆記連結讓您從一個筆記建立到另一個筆記的連結。"
 
-#: contents/ui/settings/PluginsTab.qml:33
+#: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "建議：啟用後重新啟動應用程式。"
 
-#: contents/ui/settings/PluginsTab.qml:44
+#: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
 msgstr "啟用 PlantUML"
 
-#: contents/ui/settings/PluginsTab.qml:45
+#: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
 msgstr "PlantUML 讓您建立圖表。"
 
-#: contents/ui/settings/PluginsTab.qml:46
+#: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
 msgctxt "@description:checkbox"
 msgid ""
@@ -629,55 +652,55 @@ msgstr ""
 "請注意：建立圖表效能可能不佳。如果您的圖表數量很多，將它們作為影像顯示可能會"
 "比較容易。"
 
-#: contents/ui/settings/PluginsTab.qml:56
+#: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
 msgstr "啟用深色背景"
 
-#: contents/ui/settings/PluginsTab.qml:57
+#: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
 msgstr "PlantUML 的圖表背景會是深色的。"
 
-#: contents/ui/settings/PluginsTab.qml:68
+#: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
 msgstr "外觀外掛程式"
 
-#: contents/ui/settings/PluginsTab.qml:80
+#: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "啟用語法突顯"
 
-#: contents/ui/settings/PluginsTab.qml:81
+#: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr "支援的突顯器列表"
 
-#: contents/ui/settings/PluginsTab.qml:91
+#: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
 msgstr "突顯器"
 
-#: contents/ui/settings/PluginsTab.qml:119
+#: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr "突顯器風格"
 
-#: contents/ui/settings/PluginsTab.qml:149
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
 msgstr "啟用快速表情符號"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
@@ -685,63 +708,63 @@ msgctxt ""
 msgid "Quickly write emoji using the following syntax"
 msgstr "使用以下語法快速寫下表情符號"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "表情符號短名稱"
 
-#: contents/ui/settings/PluginsTab.qml:162
+#: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
 msgstr "預設表情符號皮膚顏色"
 
-#: contents/ui/settings/PluginsTab.qml:166
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr "預設"
 
-#: contents/ui/settings/PluginsTab.qml:167
+#: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "淺色"
 
-#: contents/ui/settings/PluginsTab.qml:168
+#: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr "中淺色"
 
-#: contents/ui/settings/PluginsTab.qml:169
+#: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr "中間色"
 
-#: contents/ui/settings/PluginsTab.qml:170
+#: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr "中深色"
 
-#: contents/ui/settings/PluginsTab.qml:171
+#: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr "深色"
 
-#: contents/ui/settings/PluginsTab.qml:185
+#: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr "啟用快速表情符號對話框"
 
-#: contents/ui/settings/PluginsTab.qml:186
+#: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
@@ -1270,11 +1293,19 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr "文字突顯"
 
-#: contents/ui/textEditor/TextToolBar.qml:289
-#: contents/ui/textEditor/TextToolBar.qml:290
-#: contents/ui/textEditor/TextToolBar.qml:291
-#: contents/ui/textEditor/TextToolBar.qml:293
-#: contents/ui/textEditor/TextToolBar.qml:294
+#: contents/ui/textEditor/TextToolBar.qml:224
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, will be followed by the shortcut"
+#| msgid "Linked notes"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link note"
+msgstr "已連結的筆記"
+
+#: contents/ui/textEditor/TextToolBar.qml:299
+#: contents/ui/textEditor/TextToolBar.qml:300
+#: contents/ui/textEditor/TextToolBar.qml:301
+#: contents/ui/textEditor/TextToolBar.qml:303
+#: contents/ui/textEditor/TextToolBar.qml:304
 #, kde-format
 msgid "Header"
 msgstr "標頭"
@@ -1373,42 +1404,42 @@ msgstr "自訂"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "嘗試複製此 PDF 時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:276
+#: logic/treeview/noteTreeModel.cpp:281
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "建立範例筆記時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:411
+#: logic/treeview/noteTreeModel.cpp:417
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "建立此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:444
+#: logic/treeview/noteTreeModel.cpp:450
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "移除此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:466
+#: logic/treeview/noteTreeModel.cpp:472
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "重新命名此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:561
+#: logic/treeview/noteTreeModel.cpp:567
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "建立筆記時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:572
+#: logic/treeview/noteTreeModel.cpp:578
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "建立群組時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:582
+#: logic/treeview/noteTreeModel.cpp:588
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "嘗試建立分類時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:590
+#: logic/treeview/noteTreeModel.cpp:596
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "建立筆記儲存庫時發生錯誤。"
