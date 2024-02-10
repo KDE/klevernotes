@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 01:44+0000\n"
-"PO-Revision-Date: 2024-01-26 09:17+0100\n"
+"PO-Revision-Date: 2024-02-09 20:55+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -164,25 +164,22 @@ msgid "Link text:"
 msgstr "Texto da ligazón:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "Nota"
+msgstr "Nota:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:63
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr ""
+msgstr "Buscar nas cabeceiras"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:75
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "Cabeceira"
+msgstr "Cabeceira:"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -1296,12 +1293,10 @@ msgid "Text highlight"
 msgstr "Realce do texto"
 
 #: contents/ui/textEditor/TextToolBar.qml:224
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, will be followed by the shortcut"
-#| msgid "Linked notes"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "Notas ligadas"
+msgstr "Nota de ligazón"
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #: contents/ui/textEditor/TextToolBar.qml:300
