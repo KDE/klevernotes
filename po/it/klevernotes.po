@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 01:44+0000\n"
-"PO-Revision-Date: 2024-01-25 14:14+0100\n"
+"POT-Creation-Date: 2024-02-11 01:41+0000\n"
+"PO-Revision-Date: 2024-02-09 11:55+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -164,25 +164,22 @@ msgid "Link text:"
 msgstr "Testo del collegamento:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "Nota"
+msgstr "Nota:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:63
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr ""
+msgstr "Cerca intestazioni"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:75
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "Intestazione"
+msgstr "Intestazione:"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -1179,7 +1176,7 @@ msgid "Missing notes"
 msgstr "Note mancanti"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:173
+#: contents/ui/textEditor/TextDisplay.qml:172
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1301,12 +1298,10 @@ msgid "Text highlight"
 msgstr "Evidenziazione del testo"
 
 #: contents/ui/textEditor/TextToolBar.qml:224
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, will be followed by the shortcut"
-#| msgid "Linked notes"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "Note collegate"
+msgstr "Nota collegata"
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #: contents/ui/textEditor/TextToolBar.qml:300

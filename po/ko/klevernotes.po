@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# Shinjo Park <kde@peremen.name>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 01:44+0000\n"
-"PO-Revision-Date: 2023-10-09 00:22+0200\n"
+"POT-Creation-Date: 2024-02-11 01:41+0000\n"
+"PO-Revision-Date: 2024-02-11 00:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -52,16 +52,14 @@ msgid "Are you sure you want to delete this %1 ?"
 msgstr "이 %1을(를) 삭제하시겠습니까?|/|이 %1$[을를 %1] 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "색상 선택기"
+msgstr "스티커 없음"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "이모지 없음"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -166,25 +164,22 @@ msgid "Link text:"
 msgstr "링크 텍스트:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "메모"
+msgstr "메모:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:63
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr ""
+msgstr "머리글 검색"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:75
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "머리글"
+msgstr "머리글:"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -506,19 +501,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr ""
+msgstr "편집기"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "편집기 글꼴:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
 #, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr ""
+msgstr "메모 미리 보기"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -557,35 +552,30 @@ msgid "Code color:"
 msgstr "코드 색:"
 
 #: contents/ui/settings/DisplayPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "제목 색:"
+msgstr "강조색:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "일반"
+msgstr "일반 글꼴:"
 
 #: contents/ui/settings/DisplayPreview.qml:129
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "코드 블록 글꼴:"
 
 #: contents/ui/settings/GeneralTab.qml:19
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "저장된 그림"
+msgstr "저장소"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -598,7 +588,7 @@ msgstr "저장소 경로:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "사이드바"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -622,37 +612,37 @@ msgstr "새 메모 이름:"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "유틸리티 플러그인"
 
 #: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "메모 링크 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
-msgstr ""
+msgstr "메모 링크를 사용하여 메모간 링크를 생성할 수 있습니다."
 
 #: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "팁: 활성화한 후 앱을 다시 시작하십시오."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "PlanetUML 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML let's you create diagram."
-msgstr ""
+msgstr "PlanetUML을 사용하여 다이어그램을 만들 수 있습니다."
 
 #: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
@@ -661,54 +651,56 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"메모: 다이어그램 생성 작업은 느릴 수도 있습니다. 다이어그램이 많이 있을 때에"
+"는 그림으로 표시하는 것이 더 빠를 수도 있습니다."
 
 #: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "어두운 배경 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "PlanetUML 다이어그램을 어두운 배경으로 표시합니다."
 
 #: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "모양 플러그인"
 
 #: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "코드 구문 강조 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "지원하는 구문 강조 도구 목록"
 
 #: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "강조 도구"
 
 #: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "강조 도구 스타일"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "빠른 이모지 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
@@ -716,66 +708,63 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "다음 문법을 사용하여 빠르게 이모지 입력"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "이름 바꾸기"
+msgstr "emoji_name"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "기본 이모지 톤"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "기본값"
 
 #: contents/ui/settings/PluginsTab.qml:169
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "오른쪽"
+msgstr "밝음"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "중간 밝음"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "중간"
 
 #: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "중간 어두움"
 
 #: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "어두움"
 
 #: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "빠른 이모지 대화 상자 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
@@ -784,11 +773,11 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"이모지 대화 상자에서 텍스트에 실제 이모지 대신 '빠른 이모지' 문법을 삽입합니"
+"다."
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "일반"
@@ -799,13 +788,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "모양"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "플러그인"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -866,7 +855,7 @@ msgstr "검색 결과 없음"
 #: contents/ui/sideBar/Sidebar.qml:100
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "치트 시트"
 
 #: contents/ui/sideBar/Sidebar.qml:112
 #, kde-format
@@ -894,177 +883,163 @@ msgstr "TODO"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "마크다운 치트 시트"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgid "Copied !"
-msgstr ""
+msgstr "복사됨!"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "기본 문법"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgid "Heading"
 msgstr "머리글"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr "머리글"
+msgstr "머리글1"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
 #, kde-format
 msgid "Bold"
-msgstr ""
+msgstr "굵게"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr ""
+msgstr "굵은 텍스트"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgid "Italic"
-msgstr ""
+msgstr "이탤릭"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, text associated to the selected image"
-#| msgid "Image text: "
+#, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr "그림 텍스트: "
+msgstr "이탤릭 텍스트"
 
 #: contents/ui/textEditor/CheatSheet.qml:72
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "블록 인용문"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr ""
+msgstr "인용문"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Ordered list"
-msgstr ""
+msgstr "정렬된 목록"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr ""
+msgstr "첫째 항목"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr ""
+msgstr "둘째 항목"
 
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Unordered list"
-msgstr ""
+msgstr "순서 없는 목록"
 
 #: contents/ui/textEditor/CheatSheet.qml:92
 #, kde-format
 msgid "Code"
-msgstr ""
+msgstr "코드"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr ""
+msgstr "인라인 코드"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr ""
+msgstr "수평선"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
 msgid "Link"
-msgstr ""
+msgstr "링크"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Title:"
+#, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr "제목:"
+msgstr "제목"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
-msgstr ""
+msgstr "https://www.example.com"
 
 #: contents/ui/textEditor/CheatSheet.qml:110
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "그림"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "대체 문자열"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "@label:button, As in 'image from the internet'"
-#| msgid "Web image"
+#, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr "웹 그림"
+msgstr "그림"
 
 #: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "확장된 문법"
 
 #: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
 msgid "Table"
-msgstr ""
+msgstr "표"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Left"
+#, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
 msgstr "왼쪽"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Center"
+#, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
 msgstr "가운데"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
 msgstr "오른쪽"
@@ -1073,73 +1048,69 @@ msgstr "오른쪽"
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr ""
+msgstr "셀 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr ""
+msgstr "셀 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr ""
+msgstr "셀 3"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "둘러싸인 코드 블록"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr ""
+msgstr "예제 텍스트..."
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgid "Strikethrough"
-msgstr ""
+msgstr "취소선"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "지구는 평평합니다."
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgid "Task list"
-msgstr ""
+msgstr "할 일 목록"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr ""
+msgstr "어쩌구 더 만들기"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
-msgstr ""
+msgstr "저쩌구 더 만들기"
 
 #: contents/ui/textEditor/CheatSheet.qml:156
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "KleverNotes painting"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes 그리기"
+msgstr "KleverNotes 플러그인"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "메모"
+msgstr "메모 링크"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1147,11 +1118,10 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "분류/그룹/메모"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "exemple"
 msgid "header"
 msgstr "머리글"
@@ -1160,21 +1130,16 @@ msgstr "머리글"
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "표시 이름"
 
 #: contents/ui/textEditor/EditorView.qml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "링크 텍스트:"
+msgstr "링크된 메모"
 
 #: contents/ui/textEditor/EditorView.qml:40
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "인쇄"
@@ -1183,47 +1148,42 @@ msgstr "인쇄"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "편집기 표시/숨기기"
 
 #: contents/ui/textEditor/EditorView.qml:64
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "미리 보기 표시/숨기기"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "링크된 메모 지도"
 
 #: contents/ui/textEditor/NotesMap.qml:39
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Existing storage"
+#, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "기존 저장소"
+msgstr "기존 메모"
 
 #: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "빠진 메모"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:173
+#: contents/ui/textEditor/TextDisplay.qml:172
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1이(가) 없음"
 
 #: contents/ui/textEditor/TextToolBar.qml:36
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
 msgstr "머리글"
@@ -1232,125 +1192,116 @@ msgstr "머리글"
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr ""
+msgstr "숫자"
 
 #: contents/ui/textEditor/TextToolBar.qml:41
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "머리글"
+msgstr "머리글 1"
 
 #: contents/ui/textEditor/TextToolBar.qml:53
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "머리글"
+msgstr "머리글 2"
 
 #: contents/ui/textEditor/TextToolBar.qml:65
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "머리글"
+msgstr "머리글 3"
 
 #: contents/ui/textEditor/TextToolBar.qml:77
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "머리글"
+msgstr "머리글 4"
 
 #: contents/ui/textEditor/TextToolBar.qml:89
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "머리글"
+msgstr "머리글 5"
 
 #: contents/ui/textEditor/TextToolBar.qml:101
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "머리글"
+msgstr "머리글 6"
 
 #: contents/ui/textEditor/TextToolBar.qml:115
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr ""
+msgstr "굵게"
 
 #: contents/ui/textEditor/TextToolBar.qml:124
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr ""
+msgstr "이탤릭"
 
 #: contents/ui/textEditor/TextToolBar.qml:133
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr ""
+msgstr "취소선"
 
 #: contents/ui/textEditor/TextToolBar.qml:142
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr ""
+msgstr "코드"
 
 #: contents/ui/textEditor/TextToolBar.qml:151
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr ""
+msgstr "인용문"
 
 #: contents/ui/textEditor/TextToolBar.qml:160
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr ""
+msgstr "그림"
 
 #: contents/ui/textEditor/TextToolBar.qml:167
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr ""
+msgstr "링크"
 
 #: contents/ui/textEditor/TextToolBar.qml:174
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr ""
+msgstr "표"
 
 #: contents/ui/textEditor/TextToolBar.qml:181
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "정렬된 목록"
 
 #: contents/ui/textEditor/TextToolBar.qml:193
 #: contents/ui/textEditor/TextToolBar.qml:214
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "순서 없는 목록"
 
 #: contents/ui/textEditor/TextToolBar.qml:205
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr ""
+msgstr "텍스트 구문 강조"
 
 #: contents/ui/textEditor/TextToolBar.qml:224
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "링크 텍스트:"
+msgstr "메모 링크"
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #: contents/ui/textEditor/TextToolBar.qml:300
@@ -1388,73 +1339,72 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "과거 기록"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "스마일리"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "사람"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "자연"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "음식"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "활동"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "여행"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "물체"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "기호"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "깃발"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "사용자 정의"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr "이 항목을 생성하는 중 오류가 발생했습니다."
+msgstr "이 PDF를 복사하는 중 오류가 발생했습니다."
 
 #: logic/treeview/noteTreeModel.cpp:281
 #, kde-format
