@@ -70,12 +70,16 @@ You can also choose your preferred tone for the emoji. If a colored variant of t
 Create diagram with PlantUML.
 
 Use the following syntax to do so :
-```puml
-<PlantUML syntax>
+```
+    ```puml
+    <PlantUML syntax>
+    ```
 ```
 or
-```plantuml
-<PlantUML syntax>
+```
+    ```plantuml
+    <PlantUML syntax>
+    ```
 ```
 
 [More info about PlantUML](https://plantuml.com/)
