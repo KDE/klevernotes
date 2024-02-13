@@ -162,12 +162,10 @@ msgid "Link text:"
 msgstr "Text odkazu:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "Poznámka"
+msgstr ""
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:63
 #, kde-format
@@ -176,11 +174,10 @@ msgid "Search headers"
 msgstr ""
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:75
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "Záhlaví"
+msgstr ""
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -1281,13 +1278,10 @@ msgid "Text highlight"
 msgstr ""
 
 #: contents/ui/textEditor/TextToolBar.qml:224
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "Text odkazu:"
+msgstr ""
 
 #: contents/ui/textEditor/TextToolBar.qml:299
 #: contents/ui/textEditor/TextToolBar.qml:300
