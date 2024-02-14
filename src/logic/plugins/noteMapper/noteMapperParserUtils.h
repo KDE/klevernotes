@@ -37,8 +37,7 @@ private:
     bool m_headerFound = false;
     bool m_emptyHeadersSent = false;
 
-    // Valid to use QSet since, in any case, linking will be done on the first instance of a duplicated header
-    QSet<QString> m_noteHeaders;
+    QStringList m_noteHeaders;
     QSet<QString> m_previousNoteHeaders;
     bool m_noteHeadersChanged = false;
 

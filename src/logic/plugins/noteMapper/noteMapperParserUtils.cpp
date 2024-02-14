@@ -108,7 +108,7 @@ void NoteMapperParserUtils::addToNoteHeaders(const QString &header)
     if (!m_previousNoteHeaders.remove(header) && !m_noteHeaders.contains(header)) {
         m_noteHeadersChanged = true;
     }
-    m_noteHeaders.insert(header);
+    m_noteHeaders.append(header);
 }
 
 void NoteMapperParserUtils::postTok()
@@ -120,16 +120,17 @@ void NoteMapperParserUtils::postTok()
         Q_EMIT m_parser->newLinkedNotesInfos(m_linkedNotesInfos);
     }
     m_previousLinkedNotesInfos = m_linkedNotesInfos;
+    m_noteHeaders.removeDuplicates();
 
     if (m_noteHeadersChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
         m_emptyHeadersSent = false;
-        Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders.values());
+        Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders);
     } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
         // This way the mapper can receive info about the note (the note has no header), and we still prevent spamming
         m_emptyHeadersSent = true;
         Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, {});
     }
-    m_previousNoteHeaders = m_noteHeaders;
+    m_previousNoteHeaders = QSet(m_noteHeaders.begin(), m_noteHeaders.end());
 
     if (!m_headerFound) { // Prevent the TextDisplay.qml scrollToHeader to search an unexisting header
         m_headerLevel = QStringLiteral("0");
