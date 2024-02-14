@@ -233,6 +233,7 @@ QList<QVariantMap> NoteMapper::getNoteHeaders(const QString &notePath)
         const QString header = match.captured(0).trimmed();
         headers.append(header);
     }
+    headers.removeDuplicates();
 
     updatePathInfo(cleanedPath, headers);
 
