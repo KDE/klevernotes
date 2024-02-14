@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-11 01:41+0000\n"
-"PO-Revision-Date: 2024-02-02 12:49+0200\n"
+"PO-Revision-Date: 2024-02-08 10:43+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1093,13 +1093,13 @@ msgstr "Tehtäväluettelo"
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr ""
+msgstr "Tee lisää sitä"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
-msgstr ""
+msgstr "Tee lisää tätä"
 
 #: contents/ui/textEditor/CheatSheet.qml:156
 #, kde-format
