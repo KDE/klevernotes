@@ -64,7 +64,7 @@ private:
     inline static const QRegularExpression inline_highlight = QRegularExpression(QStringLiteral("^==(?=\\S)([\\s\\S]*?\\S)=="));
 
     inline static const QRegularExpression inline_text =
-        QRegularExpression(QStringLiteral("^[\\s\\S]+?(?=[\\\\<!\\[`*~=:]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)"));
+        QRegularExpression(QStringLiteral("^[\\s\\S]+?(?=[\\\\<!\\[`*~_=:]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)"));
 
     inline static const QRegularExpression inline_backPedal =
         QRegularExpression(QStringLiteral("(?:[^?!.,:;*_~()&]+|\\([^)]*\\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+"));
