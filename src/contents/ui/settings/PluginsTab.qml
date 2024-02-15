@@ -101,7 +101,7 @@ ColumnLayout {
                         return
                     }
 
-                    const inModelIndex = indexOfValue(Config.codeSynthaxHighlighter)
+                    const inModelIndex = model.indexOf(Config.codeSynthaxHighlighter)
 
                     highlighterCombobox.currentIndex = inModelIndex === -1
                         ? baseIndex
@@ -127,18 +127,18 @@ ColumnLayout {
 
                         if (Config.codeSynthaxHighlighterStyle.length === 0) {
                             styleCombobox.currentIndex = baseIndex
-                            return
+                        } else {
+                            const inModelIndex = model.indexOf(Config.codeSynthaxHighlighterStyle)
+
+                            styleCombobox.currentIndex = inModelIndex === -1
+                                ? baseIndex
+                                : inModelIndex
                         }
-
-                        const inModelIndex = indexOfValue(Config.codeSynthaxHighlighterStyle)
-
-                        styleCombobox.currentIndex = inModelIndex === -1
-                            ? baseIndex
-                            : inModelIndex
-
                         styleCombobox.configStyleSet = true
                     }
-                    if (currentValue != Config.codeSynthaxHighlighterStyle) Config.codeSynthaxHighlighterStyle = currentValue
+                    if (currentValue != Config.codeSynthaxHighlighterStyle) {
+                        Config.codeSynthaxHighlighterStyle = currentValue
+                    }
                 }
             }
         }
