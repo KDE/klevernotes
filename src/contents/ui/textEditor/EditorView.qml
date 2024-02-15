@@ -87,6 +87,7 @@ GridLayout {
 
         notePath: root.path
         editorTextArea: root.editor.textArea
+        visible: editor.visible
 
         Layout.row: 0
     }
