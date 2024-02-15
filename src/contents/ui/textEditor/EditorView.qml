@@ -100,36 +100,35 @@ GridLayout {
         GridLayout {
             rows: columns > 1 ? 1 : 2
             columns: parent.width > Kirigami.Units.gridUnit * 30 ? 2 : 1
-            anchors.fill:parent
+            anchors.fill: parent
 
-            TextEditor{
+            TextEditor {
                 id: editor
 
-                visible: editorToggler.checked
+                readonly property int divider: display.visible 
+                    ? 2
+                    : 1
+                    
                 path: root.path
+                visible: editorToggler.checked // make sure that the textDisplay while correctly grow
 
-                Layout.fillWidth:true
-                Layout.fillHeight:true
-                Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height/2
-                Layout.preferredWidth: parent.columns === 2 ? parent.width/2 : parent.width
-
-                onTextChanged: {
-                    display.text = text //Workaround
-                }
+                Layout.preferredWidth: parent.columns === 2 ? parent.width / divider : parent.width
+                Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height / divider
             }
 
-            TextDisplay{
+            TextDisplay {
                 id: display
 
-                visible: viewToggler.checked
+                readonly property int divider: editor.visible 
+                    ? 2
+                    : 1
 
-                text: editor.text //Doesn't update ?!
+                text: editor.text
                 path: root.path.replace("note.md", "")
+                visible: viewToggler.checked // make sure that the textEditor while correctly grow
 
-                Layout.fillWidth:true
-                Layout.fillHeight:true
-                Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height/2
-                Layout.preferredWidth: parent.columns === 2 ? parent.width/2 : parent.width
+                Layout.preferredWidth: parent.columns === 2 ? parent.width / divider : parent.width
+                Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height / divider
             }
         }
     }
