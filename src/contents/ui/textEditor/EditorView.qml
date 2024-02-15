@@ -49,12 +49,15 @@ GridLayout {
             
             shortcut: "Ctrl+Shift+8"
             tooltip: i18nc("@tooltip, will be followed by the shortcut", "View/Hide editor") + " (" + shortcut + ")"
-            checked: true
+            checked: Config.editorVisible
             checkable: true
             icon.name: editorToggler.checked ? "text-flow-into-frame" : "text-unflow"
             
             onTriggered: if (!editorToggler.checked && !viewToggler.checked) {
                 editorToggler.checked = true
+            }
+            onCheckedChanged: if (Config.editorVisible !== editorToggler.checked) {
+                Config.editorVisible = editorToggler.checked
             }
         },
         Kirigami.Action {
@@ -62,12 +65,15 @@ GridLayout {
             
             shortcut: "Ctrl+Shift+9"
             tooltip: i18nc("@tooltip, display as in 'the note preview', will be followed by the shortcut", "View/Hide preview") + " (" + shortcut + ")"
-            checked: applicationWindow().wideScreen
+            checked: Config.previewVisible
             checkable: true
             icon.name: viewToggler.checked ? "quickview" : "view-hidden"
             
             onTriggered: if (!viewToggler.checked && !editorToggler.checked) {
                 viewToggler.checked = true
+            }
+            onCheckedChanged: if (Config.previewVisible !== viewToggler.checked) {
+                Config.previewVisible = viewToggler.checked
             }
         }
     ]
