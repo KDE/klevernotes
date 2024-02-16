@@ -9,6 +9,8 @@ import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 import org.kde.Klever 1.0
 
+import "qrc:/contents/ui/sharedComponents"
+
 ColumnLayout {
     id: root
 
@@ -136,6 +138,45 @@ ColumnLayout {
                 onClicked: {
                     newNoteField.isActive = true
                     updateName(newNoteField.text, newNoteField)
+                }
+            }
+        }
+    }
+
+    FormCard.FormHeader {
+        title: i18nc("@title, general text editor settings", "Editor")
+        Layout.fillWidth: true
+    }
+
+    FormCard.FormCard {
+        Layout.fillWidth: true
+
+        ExpendingFormSwitch {
+            id: spaceTabSwitch
+
+            text: i18nc("@label:checkbox", "Use spaces for tab")
+            checked: Config.useSpaceForTab
+
+            onCheckedChanged: if (checked != Config.useSpaceForTab) {
+                Config.useSpaceForTab = checked
+            }
+
+            FormCard.FormSpinBoxDelegate {
+                id: spaceSpinBox
+
+                property bool isInit: false
+
+                label: i18nc("@label:combobox", "Number of spaces")
+
+                from: 1
+                to: 8
+
+                Component.onCompleted: {
+                    value = Config.spacesForTab
+                    isInit = true
+                }
+                onValueChanged: {
+                    if (value != Config.spacesForTab && isInit) Config.spacesForTab = value
                 }
             }
         }

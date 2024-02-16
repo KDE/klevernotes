@@ -44,6 +44,15 @@
             <label>Whether or not the preview is visible</label>
             <default>true</default>
         </entry>
+
+        <entry name="useSpaceForTab" type="Bool">
+            <label>Whether or not the editor replace tab with space</label>
+            <default>true</default>
+        </entry>
+        <entry name="spacesForTab" type="Int">
+            <label>The number of spaces with which the tab is replaced</label>
+            <default>4</default>
+        </entry>
     </group>
 
     <group name="Appearance">
