@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-11 01:41+0000\n"
+"POT-Creation-Date: 2024-02-16 01:40+0000\n"
 "PO-Revision-Date: 2023-12-29 08:10+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1155,7 +1155,7 @@ msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Visa eller dölj editor"
 
-#: contents/ui/textEditor/EditorView.qml:64
+#: contents/ui/textEditor/EditorView.qml:67
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
@@ -1199,104 +1199,104 @@ msgctxt "@tooltip, short form of 'number'"
 msgid "num"
 msgstr "antal"
 
-#: contents/ui/textEditor/TextToolBar.qml:41
+#: contents/ui/textEditor/TextToolBar.qml:42
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "Rubrik 1"
 
-#: contents/ui/textEditor/TextToolBar.qml:53
+#: contents/ui/textEditor/TextToolBar.qml:55
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "Rubrik 2"
 
-#: contents/ui/textEditor/TextToolBar.qml:65
+#: contents/ui/textEditor/TextToolBar.qml:68
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "Rubrik 3"
 
-#: contents/ui/textEditor/TextToolBar.qml:77
+#: contents/ui/textEditor/TextToolBar.qml:81
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "Rubrik 4"
 
-#: contents/ui/textEditor/TextToolBar.qml:89
+#: contents/ui/textEditor/TextToolBar.qml:94
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "Rubrik 5"
 
-#: contents/ui/textEditor/TextToolBar.qml:101
+#: contents/ui/textEditor/TextToolBar.qml:107
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "Rubrik 6"
 
-#: contents/ui/textEditor/TextToolBar.qml:115
+#: contents/ui/textEditor/TextToolBar.qml:122
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
 msgstr "Fetstil"
 
-#: contents/ui/textEditor/TextToolBar.qml:124
+#: contents/ui/textEditor/TextToolBar.qml:133
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
 msgstr "Kursiv"
 
-#: contents/ui/textEditor/TextToolBar.qml:133
+#: contents/ui/textEditor/TextToolBar.qml:144
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
 msgstr "Överstruken"
 
-#: contents/ui/textEditor/TextToolBar.qml:142
+#: contents/ui/textEditor/TextToolBar.qml:155
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
 msgstr "Kod"
 
-#: contents/ui/textEditor/TextToolBar.qml:151
+#: contents/ui/textEditor/TextToolBar.qml:166
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
 msgstr "Citat"
 
-#: contents/ui/textEditor/TextToolBar.qml:160
+#: contents/ui/textEditor/TextToolBar.qml:177
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
 msgstr "Bild"
 
-#: contents/ui/textEditor/TextToolBar.qml:167
+#: contents/ui/textEditor/TextToolBar.qml:186
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
 msgstr "Länk"
 
-#: contents/ui/textEditor/TextToolBar.qml:174
+#: contents/ui/textEditor/TextToolBar.qml:195
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
 msgstr "Tabell"
 
-#: contents/ui/textEditor/TextToolBar.qml:181
+#: contents/ui/textEditor/TextToolBar.qml:204
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
 msgstr "Ordnad lista"
 
-#: contents/ui/textEditor/TextToolBar.qml:193
-#: contents/ui/textEditor/TextToolBar.qml:214
+#: contents/ui/textEditor/TextToolBar.qml:218
+#: contents/ui/textEditor/TextToolBar.qml:243
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
 msgstr "Oordnad lista"
 
-#: contents/ui/textEditor/TextToolBar.qml:205
+#: contents/ui/textEditor/TextToolBar.qml:232
 #, fuzzy, kde-format
 #| msgctxt "@label:combobox"
 #| msgid "Highlighter"
@@ -1304,7 +1304,7 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr "Färgläggning"
 
-#: contents/ui/textEditor/TextToolBar.qml:224
+#: contents/ui/textEditor/TextToolBar.qml:255
 #, fuzzy, kde-format
 #| msgctxt "@tooltip, will be followed by the shortcut"
 #| msgid "Linked notes"
@@ -1312,11 +1312,11 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "Länkade anteckningar"
 
-#: contents/ui/textEditor/TextToolBar.qml:299
-#: contents/ui/textEditor/TextToolBar.qml:300
-#: contents/ui/textEditor/TextToolBar.qml:301
-#: contents/ui/textEditor/TextToolBar.qml:303
-#: contents/ui/textEditor/TextToolBar.qml:304
+#: contents/ui/textEditor/TextToolBar.qml:332
+#: contents/ui/textEditor/TextToolBar.qml:333
+#: contents/ui/textEditor/TextToolBar.qml:334
+#: contents/ui/textEditor/TextToolBar.qml:336
+#: contents/ui/textEditor/TextToolBar.qml:337
 #, kde-format
 msgid "Header"
 msgstr "Rubrik"
