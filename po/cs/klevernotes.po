@@ -1,21 +1,21 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# SPDX-FileCopyrightText: 2023 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-16 01:40+0000\n"
-"PO-Revision-Date: 2023-11-08 14:21+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-02-16 10:08+0100\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "Text odkazu:"
 #, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr ""
+msgstr "Poznámka:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:63
 #, kde-format
@@ -177,7 +177,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr ""
+msgstr "Hlavička:"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -485,13 +485,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title, as in text editor"
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #: contents/ui/settings/AppearanceTab.qml:29
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "Písmo pro editor:"
 
 #: contents/ui/settings/AppearanceTab.qml:38
 #, kde-format
@@ -539,13 +539,13 @@ msgstr "Barva kódu"
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr ""
+msgstr "Barva zvýraznění:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr ""
+msgstr "Obecné písmo:"
 
 #: contents/ui/settings/DisplayPreview.qml:129
 #, kde-format
@@ -559,7 +559,7 @@ msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr ""
+msgstr "Úložiště"
 
 #: contents/ui/settings/GeneralTab.qml:30
 #, kde-format
@@ -572,7 +572,7 @@ msgstr "Cesta k úložišti:"
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Postranní panel"
 
 #: contents/ui/settings/GeneralTab.qml:62
 #, kde-format
@@ -708,39 +708,39 @@ msgstr ""
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Výchozí"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr ""
+msgstr "Lehce"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Středně světlý"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Střední"
 
 #: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Středně tmavý"
 
 #: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Tmavé"
 
 #: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
@@ -760,7 +760,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: contents/ui/settings/TabBar.qml:21
 #, kde-format
@@ -768,13 +768,13 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhled"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Moduly"
 
 #: contents/ui/sideBar/ActionBar.qml:49
 #, kde-format
@@ -1104,7 +1104,7 @@ msgstr ""
 #, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr ""
+msgstr "hlavička"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
@@ -1147,13 +1147,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr ""
+msgstr "Existující poznámky"
 
 #: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "Chybějící poznámky"
 
 #: contents/ui/textEditor/NotesMap.qml:77
 #: contents/ui/textEditor/TextDisplay.qml:172
@@ -1320,7 +1320,7 @@ msgstr "Historie"
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Emotikony"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
