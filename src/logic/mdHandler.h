@@ -2,8 +2,6 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
-#include <QJsonArray>
-#include <QJsonObject>
 #include <QObject>
 
 class MDHandler : public QObject
@@ -13,12 +11,17 @@ class MDHandler : public QObject
 public:
     explicit MDHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE QJsonObject getInstructions(const QString &selectedText,
-                                            const QStringList &charsList,
-                                            const bool checkLineEnd,
-                                            const bool applyIncrement,
-                                            const bool checkByBlock) const;
+    enum Instructions {
+        Apply = Qt::UserRole + 1,
+        Remove,
+        None,
+    };
+
+    Q_INVOKABLE QList<int> getBlockLimits(const int selectionStart, const int selectionEnd, const QString &text) const;
+    Q_INVOKABLE QString getNewText(const QString &baseText, const QStringList &charsList, bool multiPlaceApply, bool applyIncrement, bool checkByBlock) const;
 
 private:
-    QJsonObject blockChecker(const QString &selectedText, const QStringList &charsList) const;
+    Q_INVOKABLE QList<int>
+    getPerLineInstructions(const QStringList &lines, const QStringList &charsList, const bool checkLineEnd, const bool applyIncrement) const;
+    int getBlockInstruction(const QString &selectedText, const QStringList &charsList) const;
 };

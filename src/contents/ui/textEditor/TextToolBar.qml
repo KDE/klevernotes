@@ -43,10 +43,9 @@ Kirigami.ActionToolBar {
                 enabled: toolbar.visible
 
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                         editorTextArea.selectionEnd);
+                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                    handleAction(selectionStart, selectionEnd, ["# "], false, false, false)
+                    handleAction(blockStart, blockEnd, ["# "], false, false, false)
                 }
             }
             Kirigami.Action {
@@ -56,10 +55,9 @@ Kirigami.ActionToolBar {
                 enabled: toolbar.visible
 
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                         editorTextArea.selectionEnd);
+                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                    handleAction(selectionStart, selectionEnd, ["## "], false, false, false)
+                    handleAction(blockStart, blockEnd, ["## "], false, false, false)
                 }
             }
             Kirigami.Action {
@@ -69,10 +67,9 @@ Kirigami.ActionToolBar {
                 enabled: toolbar.visible
 
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                         editorTextArea.selectionEnd);
+                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                    handleAction(selectionStart, selectionEnd, ["### "], false, false, false)
+                    handleAction(blockStart, blockEnd, ["### "], false, false, false)
                 }
             }
             Kirigami.Action {
@@ -82,10 +79,9 @@ Kirigami.ActionToolBar {
                 enabled: toolbar.visible
 
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                         editorTextArea.selectionEnd);
+                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                    handleAction(selectionStart, selectionEnd, ["#### "], false, false, false)
+                    handleAction(blockStart, blockEnd, ["#### "], false, false, false)
                 }
             }
             Kirigami.Action {
@@ -95,10 +91,9 @@ Kirigami.ActionToolBar {
                 enabled: toolbar.visible
 
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                         editorTextArea.selectionEnd);
+                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                    handleAction(selectionStart, selectionEnd, ["###### "], false, false, false)
+                    handleAction(blockStart, blockEnd, ["###### "], false, false, false)
                 }
             }
             Kirigami.Action {
@@ -108,10 +103,9 @@ Kirigami.ActionToolBar {
                 enabled: toolbar.visible
 
                 onTriggered: {
-                    const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                         editorTextArea.selectionEnd);
+                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                    handleAction(selectionStart, selectionEnd, ["####### "], false, false, false)
+                    handleAction(blockStart, blockEnd, ["####### "], false, false, false)
                 }
             }
 
@@ -206,10 +200,9 @@ Kirigami.ActionToolBar {
             enabled: toolbar.visible
 
             onTriggered: {
-                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                                 editorTextArea.selectionEnd);
+                const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                handleAction(selectionStart, selectionEnd, [". "], false, true, false)
+                handleAction(blockStart, blockEnd, [". "], false, true, false)
             }
         },
         Kirigami.Action {
@@ -220,10 +213,9 @@ Kirigami.ActionToolBar {
             enabled: toolbar.visible
 
             onTriggered: {
-                const [selectionStart, selectionEnd] = getLinesBlock(editorTextArea.selectionStart,
-                                                                                 editorTextArea.selectionEnd);
+                const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
 
-                handleAction(selectionStart, selectionEnd, ["- "], false, false, false)
+                handleAction(blockStart, blockEnd, ["- "], false, false, false)
             }
         },
         Kirigami.Action {
@@ -377,100 +369,14 @@ Kirigami.ActionToolBar {
         }
     }
 
-    function applyInstructions(selectionStart, selectionEnd, info, givenSpecialChars,
-                               multiPlaceApply, applyIncrement, checkByBlock) {
-        let applied = false
-        let specialChars = givenSpecialChars
-        if (checkByBlock) {
-            const instruction = info.instructions
-
-            if (instruction === "apply") {
-                toolbar.editorTextArea.insert(selectionEnd, specialChars)
-                toolbar.editorTextArea.insert(selectionStart, specialChars)
-                applied = true
-
-            } else {
-                toolbar.editorTextArea.remove(selectionEnd - specialChars.length + 1, selectionEnd + 1)
-                toolbar.editorTextArea.remove(selectionStart, selectionStart + specialChars.length)
-            }
-        } else {
-            const instructions = info.instructions
-            const lines = info.lines
-
-            let end = selectionEnd
-
-            // Currently only used for ordered list
-            const nonEmptyStrNumber = lines.filter((line) => line.trim().length > 0).length
-            const hasNonEmptyStrings = nonEmptyStrNumber > 0
-            let counter = hasNonEmptyStrings ? nonEmptyStrNumber : 1 // Pressing ordered list on an single empty line will return 1. and not 0.
-
-            for (var i = lines.length-1 ; i >= 0; i--) {
-                const line = lines[i]
-                const instruction = instructions[i]
-
-                end = (line.length > 0 || lines.length == 1) ? end : end - 1
-                const start = end - line.length
-
-                // Currently only used for ordered list
-                if (line.trim().length === 0 && hasNonEmptyStrings) continue
-                if (applyIncrement) {
-                    specialChars = counter.toString() + givenSpecialChars
-                    counter--
-                }
-
-                switch(instruction) {
-                case "apply":
-                    if (multiPlaceApply) toolbar.editorTextArea.insert(end, specialChars)
-                    toolbar.editorTextArea.insert(start, specialChars)
-
-                    applied = true
-                    break;
-                case "remove":
-                    if (multiPlaceApply) toolbar.editorTextArea.remove(end - specialChars.length, end)
-                    toolbar.editorTextArea.remove(start, start + specialChars.length)
-                    break;
-                default:
-                    break
-                }
-                end = start - 1
-            }
-        }
-        if (applied) {
-            let end = toolbar.editorTextArea.selectionEnd
-
-            let endingNewLineCounter = 0
-            while (specialChars.endsWith('\n')) {
-                endingNewLineCounter++
-                specialChars = specialChars.substring(0, specialChars.length - 2)
-            }
-
-            end = (checkByBlock) ? end - endingNewLineCounter : end
-            toolbar.editorTextArea.select(selectionStart, end)
-        }
-    }
-
     function handleAction(selectionStart, selectionEnd, specialChars,
                           multiPlaceApply, applyIncrement, checkByBlock) {
 
         const selectedText = editorTextArea.getText(selectionStart, selectionEnd)
-        const info = MDHandler.getInstructions(selectedText, specialChars,
-                                               multiPlaceApply, applyIncrement,
-                                               checkByBlock)
+        const newString = MDHandler.getNewText(selectedText, specialChars, multiPlaceApply, applyIncrement, checkByBlock)
 
-        const appliedSpecialChars = specialChars[0]
-        applyInstructions(selectionStart, selectionEnd, info,
-                          appliedSpecialChars, multiPlaceApply,
-                          applyIncrement, checkByBlock)
-    }
-
-    function getLinesBlock(selectionStart,selectionEnd) {
-        const startingText = editorTextArea.getText(0, editorTextArea.selectionStart)
-        const endingText = editorTextArea.getText(editorTextArea.selectionEnd,
-                                                  editorTextArea.text.length)
-
-
-        const startBlockIndex = startingText.lastIndexOf('\n')+1
-
-        return [startBlockIndex, editorTextArea.selectionEnd]
+        editorTextArea.remove(selectionStart, selectionEnd)
+        editorTextArea.insert(selectionStart, newString)
+        editorTextArea.select(selectionStart, selectionStart + newString.length)
     }
 }
