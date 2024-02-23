@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 #include "mdHandler.h"
+#include <QRegularExpression>
 // #include <QDebug>
 
 MDHandler::MDHandler(QObject *parent)
@@ -80,78 +81,132 @@ QList<int> MDHandler::getPerLineInstructions(const QStringList &lines, const QSt
     return instructions;
 }
 
-QString MDHandler::getNewText(const QString &baseText, const QStringList &charsList, bool multiPlaceApply, bool applyIncrement, bool checkByBlock) const
+QString MDHandler::getTabbedLine(const QString &line, const QString &givenChar, const int goalCharsRep, const bool remove) const
 {
-    const QString choosenSpecialChars = charsList[0];
+    const QString regexStr = QStringLiteral("^[") + givenChar + QStringLiteral("]*"); // puts it inside [] to avoid the need to escape \t
+    const QRegularExpression reg = QRegularExpression(regexStr);
+    const QRegularExpressionMatch match = reg.match(line);
+
+    int charRep = goalCharsRep;
+    if (match.hasMatch()) {
+        const int givenCharsRep = match.capturedLength();
+        const bool isMultiple = (givenCharsRep % goalCharsRep) == 0;
+        if (!isMultiple) {
+            const int closestUpperMultiple = ((givenCharsRep - 1) | (goalCharsRep - 1)) + 1;
+            // closest lower multiple, or closest upper multiple
+            const int closestMultiple = remove ? std::max(0, closestUpperMultiple - goalCharsRep) : closestUpperMultiple;
+            charRep = remove ? givenCharsRep - closestMultiple : closestMultiple - givenCharsRep;
+        } else if (remove && givenCharsRep == 0) { // There's nothing to remove at the beginning of the line
+            charRep = 0;
+        }
+    }
+
+    QString newLine = line;
+    if (remove) {
+        newLine.remove(0, charRep);
+    } else {
+        const QString newChars = givenChar.repeated(charRep);
+        newLine.prepend(newChars);
+    }
+
+    return newLine;
+}
+
+QString MDHandler::getTextByLine(const QStringList &lines,
+                                 const QStringList &charsList,
+                                 const bool multiPlaceApply,
+                                 const bool applyIncrement,
+                                 const int goalCharsRep,
+                                 const int forcedInstruction) const
+{
     QString toReturn;
     static const QString lineBr = QStringLiteral("\n");
-    if (checkByBlock) {
-        const int choosenCharsSize = choosenSpecialChars.size();
-        int instruction = getBlockInstruction(baseText, charsList);
-        if (instruction == Instructions::Apply) {
-            toReturn = choosenSpecialChars + baseText + choosenSpecialChars;
-        } else {
-            const int end = baseText.size() - choosenCharsSize * 2;
-            toReturn = baseText.mid(choosenCharsSize, end);
+    const QString choosenSpecialChars = charsList[0];
+    QList<int> instructions;
+    if (!forcedInstruction) {
+        instructions = getPerLineInstructions(lines, charsList, multiPlaceApply, applyIncrement);
+    }
+
+    // Currently only used for ordered list
+    int nonEmptyStrNumber = 0;
+    for (const QString &line : lines) {
+        if (line.trimmed().length() > 0) {
+            nonEmptyStrNumber++;
         }
-    } else {
-        const QStringList lines = baseText.split(lineBr);
-        QList<int> instructions = getPerLineInstructions(lines, charsList, multiPlaceApply, applyIncrement);
+    }
+    const bool hasNonEmptyStrings = nonEmptyStrNumber > 0;
+    int counter = 1;
 
-        // Currently only used for ordered list
-        int nonEmptyStrNumber = 0;
-        for (const QString &line : lines) {
-            if (line.trimmed().length() > 0) {
-                nonEmptyStrNumber++;
-            }
-        }
+    const int linesCount = lines.length();
+    for (int i = 0; i < linesCount; i++) {
+        QString line = lines[i];
+        const int instruction = forcedInstruction ? forcedInstruction : instructions[i];
 
-        const bool hasNonEmptyStrings = nonEmptyStrNumber > 0;
-        int counter = 1;
-
-        const int linesCount = lines.length();
-        for (int i = 0; i < linesCount; i++) {
-            QString appliedSpecialChars = choosenSpecialChars;
-
-            QString line = lines[i];
-            const int instruction = instructions[i];
-
-            // Currently only used for ordered list
-            if (line.trimmed().length() == 0 && hasNonEmptyStrings) {
-                continue;
-            }
-            if (applyIncrement) {
-                appliedSpecialChars = QString::number(counter++) + choosenSpecialChars;
-            }
+        if (!line.trimmed().isEmpty() || !hasNonEmptyStrings) {
+            const QString appliedSpecialChars = applyIncrement ? QString::number(counter++) + choosenSpecialChars : choosenSpecialChars;
 
             switch (instruction) {
             case Instructions::Apply: {
-                if (multiPlaceApply) {
-                    line += appliedSpecialChars;
+                if (goalCharsRep) {
+                    line = getTabbedLine(line, appliedSpecialChars, goalCharsRep, false);
+                    break;
                 }
-                line = appliedSpecialChars + line;
-
+                if (multiPlaceApply) {
+                    line.append(appliedSpecialChars);
+                }
+                line.prepend(appliedSpecialChars);
                 break;
             }
             case Instructions::Remove: {
-                const int specialCharsSize = appliedSpecialChars.size();
-                int end = line.size() - specialCharsSize;
-                if (multiPlaceApply) {
-                    end -= specialCharsSize;
+                if (goalCharsRep) {
+                    line = getTabbedLine(line, appliedSpecialChars, goalCharsRep, true);
+                    break;
                 }
-
-                line = line.mid(specialCharsSize, end);
+                const int specialCharsSize = appliedSpecialChars.size();
+                int sliceEnd = line.size() - specialCharsSize;
+                if (multiPlaceApply) {
+                    sliceEnd -= specialCharsSize;
+                }
+                line = line.sliced(specialCharsSize, sliceEnd);
                 break;
             }
             default:
                 break;
             }
-            toReturn += line;
-            if (i != linesCount - 1) {
-                toReturn += lineBr;
-            }
+        }
+
+        toReturn.append(line);
+        if (i != linesCount - 1) {
+            toReturn.append(lineBr);
         }
     }
 
     return toReturn;
+}
+
+QString MDHandler::getTextByBlock(const QString &baseText, const QStringList &charsList) const
+{
+    const QString choosenSpecialChars = charsList[0];
+    const int choosenCharsSize = choosenSpecialChars.size();
+    const int instruction = getBlockInstruction(baseText, charsList);
+    if (instruction == Instructions::Apply) {
+        return choosenSpecialChars + baseText + choosenSpecialChars;
+    }
+    const int end = baseText.size() - choosenCharsSize * 2;
+    return baseText.sliced(choosenCharsSize, end);
+}
+
+QString MDHandler::getNewText(const QString &baseText,
+                              const QStringList &charsList,
+                              const bool multiPlaceApply,
+                              const bool applyIncrement,
+                              const bool checkByBlock,
+                              const int goalCharsRep,
+                              const int forcedInstruction) const
+{
+    if (checkByBlock) {
+        return getTextByBlock(baseText, charsList);
+    }
+    const QStringList lines = baseText.split(QStringLiteral("\n"));
+    return getTextByLine(lines, charsList, multiPlaceApply, applyIncrement, goalCharsRep, forcedInstruction);
 }

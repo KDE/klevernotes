@@ -37,6 +37,31 @@ ScrollView {
         onTextChanged: if (!tempBuff) {
             modified = true
         }
+        Keys.onTabPressed: {
+            handleTabPressed(false)
+        }
+        Keys.onBacktabPressed: {
+            handleTabPressed(true)
+        }
+
+        function handleTabPressed(backtab) {
+            const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
+            const chars = Config.useSpaceForTab ? " " : '\t'
+
+            if (selectionStart !== selectionEnd) {
+                const goalCharsRep = Config.useSpaceForTab ? Config.spacesForTab : 1
+                const instruction = backtab ? 258 : 257 // Instructions::Remove and Instructions::Apply 
+
+                const selectedText = getText(blockStart, blockEnd)
+                const newString = MDHandler.getNewText(selectedText, chars, false, false, false, goalCharsRep, instruction)
+
+                remove(blockStart, blockEnd)
+                insert(blockStart, newString)
+                select(blockStart, blockStart + newString.length)
+            } else if (noControl) {
+                insert(selectionStart, Config.useSpaceForTab ? chars.repeat(Config.spacesForTab) : chars)
+            }
+        }
     }
 
     Timer {
