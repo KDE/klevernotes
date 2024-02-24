@@ -43,6 +43,11 @@ ScrollView {
         Keys.onBacktabPressed: {
             handleTabPressed(true)
         }
+        Keys.onReturnPressed: {
+            const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
+            const newString = MDHandler.getLineFromPrevious(getText(blockStart, blockEnd))
+            insert(blockEnd, newString)
+        }
 
         function handleTabPressed(backtab) {
             const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)

@@ -17,6 +17,7 @@ public:
         None,
     };
 
+    Q_INVOKABLE QString getLineFromPrevious(const QString &previousLine) const;
     Q_INVOKABLE QList<int> getBlockLimits(const int selectionStart, const int selectionEnd, const QString &text) const;
     Q_INVOKABLE QString getNewText(const QString &baseText,
                                    const QStringList &charsList,

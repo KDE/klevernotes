@@ -210,3 +210,36 @@ QString MDHandler::getNewText(const QString &baseText,
     const QStringList lines = baseText.split(QStringLiteral("\n"));
     return getTextByLine(lines, charsList, multiPlaceApply, applyIncrement, goalCharsRep, forcedInstruction);
 }
+
+QString MDHandler::getLineFromPrevious(const QString &previousLine) const
+{
+    static const QString regexStr = QStringLiteral("^([ \t]*)([\\*\\+\\-] )*(\\d+\\. )*");
+
+    static const QRegularExpression reg = QRegularExpression(regexStr);
+
+    const QRegularExpressionMatch match = reg.match(previousLine);
+
+    QString newLine = QStringLiteral("\n");
+    if (match.hasMatch()) {
+        const QString tab = match.captured(1);
+        newLine.append(tab);
+
+        const QString unorderedList = match.captured(2);
+        const QString orderedList = match.captured(3);
+        if (!unorderedList.isEmpty()) {
+            newLine.append(unorderedList);
+        } else if (!orderedList.isEmpty()) {
+            const int orderedLength = orderedList.length();
+            const QString currentNumberStr = orderedList.sliced(0, orderedLength - 2);
+            bool ok;
+            int nextVal = currentNumberStr.toInt(&ok, 10);
+
+            if (ok) {
+                const QString nextValStr = QString::number(++nextVal) + QStringLiteral(". ");
+                newLine.append(nextValStr);
+            }
+        }
+    }
+
+    return newLine;
+}
