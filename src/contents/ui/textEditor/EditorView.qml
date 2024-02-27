@@ -10,7 +10,7 @@ import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/dialogs"
 
-GridLayout {
+ColumnLayout {
     id: root
 
     required property string path
@@ -78,8 +78,7 @@ GridLayout {
         }
     ]
 
-    rows: 4
-    columns: 2
+    spacing: Kirigami.Units.gridUnit
 
     FileSaverDialog {
         id: pdfSaver
@@ -94,21 +93,22 @@ GridLayout {
         notePath: root.path
         editorTextArea: root.editor.textArea
         visible: editor.visible
-
-        Layout.row: 0
     }
 
-    // This item can be seen as useless but it prevent a weird bug with the height not being adjusted
     Item {
-        Layout.row: 1
         Layout.fillHeight: true
         Layout.fillWidth: true
-
         GridLayout {
-            rows: columns > 1 ? 1 : 2
-            columns: parent.width > Kirigami.Units.gridUnit * 30 ? 2 : 1
-            anchors.fill: parent
+            id: generalLayout
 
+            readonly property int totalSpacing: Kirigami.Units.smallSpacing * 2 
+            readonly property bool isHorizontal: parent.width > Kirigami.Units.gridUnit * 30 
+
+            flow: isHorizontal ? GridLayout.LeftToRight : GridLayout.TopToBottom
+            rowSpacing: Kirigami.Units.smallSpacing
+            columnSpacing: Kirigami.Units.smallSpacing
+
+            anchors.fill: parent
             TextEditor {
                 id: editor
 
@@ -119,8 +119,29 @@ GridLayout {
                 path: root.path
                 visible: editorToggler.checked // make sure that the textDisplay while correctly grow
 
-                Layout.preferredWidth: parent.columns === 2 ? parent.width / divider : parent.width
-                Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height / divider
+                Layout.fillWidth: visible
+                Layout.fillHeight: visible
+                Layout.preferredWidth: generalLayout.isHorizontal
+                    ? display.visible 
+                        ? Math.round(generalLayout.width / 2) - generalLayout.totalSpacing
+                        : generalLayout.width - generalLayout.totalSpacing
+                    : root.width
+
+                Layout.preferredHeight: generalLayout.isHorizontal
+                    ? display.visible
+                        ? Math.round(generalLayout.height / 2) - generalLayout.totalSpacing
+                        : generalLayout.height - generalLayout.totalSpacing
+                    : generalLayout.height
+
+                LayoutMirroring.enabled: generalLayout.isHorizontal
+            }
+
+            Kirigami.Separator {
+                visible: editor.visible && display.visible
+
+                Layout.fillWidth: !generalLayout.isHorizontal
+                Layout.fillHeight: generalLayout.isHorizontal
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
             }
 
             TextDisplay {
@@ -133,9 +154,20 @@ GridLayout {
                 text: editor.text
                 path: root.path.replace("note.md", "")
                 visible: viewToggler.checked // make sure that the textEditor while correctly grow
+                
+                Layout.fillWidth: visible
+                Layout.fillHeight: visible
+                Layout.preferredWidth: generalLayout.isHorizontal
+                    ? editor.visible 
+                        ? Math.round(generalLayout.width / 2) - generalLayout.totalSpacing
+                        : generalLayout.width - generalLayout.totalSpacing
+                    : root.width
 
-                Layout.preferredWidth: parent.columns === 2 ? parent.width / divider : parent.width
-                Layout.preferredHeight: parent.columns === 2 ? parent.height : parent.height / divider
+                Layout.preferredHeight: generalLayout.isHorizontal
+                    ? editor.visible
+                        ? Math.round(generalLayout.height / 2) - generalLayout.totalSpacing
+                        : generalLayout.height - generalLayout.totalSpacing
+                    : generalLayout.height        
             }
         }
     }
