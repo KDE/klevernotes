@@ -15,9 +15,6 @@ ScrollView {
     property string text: textArea.text
     property bool modified : false
 
-    // Without it the background is from Theme.Window instead of Theme.View
-    background: Item {}
-
     onPathChanged: {
         textArea.tempBuff = true ;
         textArea.text = DocumentHandler.readFile(path) ;
@@ -33,6 +30,8 @@ ScrollView {
         font: Config.editorFont
         wrapMode: TextEdit.Wrap
         persistentSelection: true
+
+        background: Item{}
 
         onTextChanged: if (!tempBuff) {
             modified = true

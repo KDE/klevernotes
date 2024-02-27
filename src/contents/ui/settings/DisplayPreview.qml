@@ -46,8 +46,6 @@ FormCard.FormCard {
             name: "text"
             title: i18nc("@label:button", "Text color:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
             color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
 
             Layout.preferredWidth: displayer.width / 2
@@ -57,8 +55,6 @@ FormCard.FormCard {
             name: "title"
             title: i18nc("@label:button", "Title color:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
             color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
 
             Layout.preferredWidth: displayer.width / 2
@@ -69,8 +65,6 @@ FormCard.FormCard {
             name: "link"
             title: i18nc("@label:button", "Link color:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
             color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
 
             Layout.preferredWidth: displayer.width / 2
@@ -80,8 +74,6 @@ FormCard.FormCard {
             name: "visitedLink"
             title: i18nc("@label:button", "Visited Link color:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
             color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
 
             Layout.preferredWidth: displayer.width / 2
@@ -93,8 +85,6 @@ FormCard.FormCard {
             name: "code"
             title: i18nc("@label:button", "Code color:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
             color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
 
             Layout.alignment: Qt.AlignHCenter
@@ -105,8 +95,6 @@ FormCard.FormCard {
             name: "highlight"
             title: i18nc("@label:button", "Highlight color:")
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
             color: (Config.viewHighlightColor !== "None") ? Config.viewHighlightColor : Kirigami.Theme.highlightColor
 
             Layout.alignment: Qt.AlignHCenter

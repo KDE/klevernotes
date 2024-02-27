@@ -41,6 +41,7 @@ RowLayout {
     readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
     readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
+
     readonly property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
         '--font': viewFontInfo.family,
@@ -62,9 +63,6 @@ RowLayout {
     property bool printBackground: true
 
     spacing: 0
-
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-    Kirigami.Theme.inherit: false
 
     onPathChanged: {
         parser.notePath = path
@@ -105,87 +103,82 @@ RowLayout {
         loadBaseHtml()
     }
 
-    Kirigami.Card {
-        id: background
+    WebEngineView {
+        id: web_view
+
+        x: 2
+        y: 2
+        width: background.width - 4
+        height: background.height - 4
+
+        settings {
+            showScrollBars: false
+            localContentCanAccessFileUrls: true
+            localContentCanAccessRemoteUrls: true
+        }
+        focus: true
+        backgroundColor: "transparent"
+        webChannel: WebChannel{
+            registeredObjects: [contentLink, cssLink]
+        }
 
         Layout.fillWidth: true
         Layout.fillHeight: true
 
-        WebEngineView {
-            id: web_view
+        onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
+            console.error('WEB:', message, lineNumber, sourceID)
+        }
+        onPdfPrintingFinished: {
+            const printingPage = applicationWindow().pageStack.currentItem
 
-            x: 2
-            y: 2
-            width: background.width - 4
-            height: background.height - 4
+            printingPage.displayPdf()
+        }
+        onLoadProgressChanged: if (loadProgress === 100) {
+            loadStyle()
+            parseText()
+            scrollToHeader()
+        }
+        onScrollPositionChanged: if (!vbar.active) {
+            vbar.position = scrollPosition.y / contentsSize.height
+        }
+        onNavigationRequested: function(request) {
+            const url = request.url.toString()
+            if (url.startsWith("http")) {
+                Qt.openUrlExternally(request.url)
+                request.action = WebEngineNavigationRequest.IgnoreRequest
+                return
+            }
+            if (url.startsWith("file:///")) {
+                let notePath = url.substring(7)
+                const delimiterIndex = notePath.lastIndexOf("@HEADER@")
+                const header = notePath.substring(delimiterIndex + 8)
+                
+                notePath = notePath.substring(0, delimiterIndex)
 
-            settings {
-                showScrollBars: false
-                localContentCanAccessFileUrls: true
-                localContentCanAccessRemoteUrls: true
-            }
-            focus: true
-            backgroundColor: "transparent"
-            webChannel: WebChannel{
-                registeredObjects: [contentLink, cssLink]
-            }
+                const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+                const sidebar = applicationWindow().globalDrawer
+                const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
 
-            onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
-                console.error('WEB:', message, lineNumber, sourceID)
-            }
-            onPdfPrintingFinished: {
-                const printingPage = applicationWindow().pageStack.currentItem
+                if (noteModelIndex.row !== -1) {
+                    if (header[1] !== 0) parser.headerInfo = headerInfo
 
-                printingPage.displayPdf()
-            }
-            onLoadProgressChanged: if (loadProgress === 100) {
-                loadStyle()
-                parseText()
-                scrollToHeader()
-            }
-            onScrollPositionChanged: if (!vbar.active) {
-                vbar.position = scrollPosition.y / contentsSize.height
-            }
-            onNavigationRequested: function(request) {
-                const url = request.url.toString()
-                if (url.startsWith("http")) {
-                    Qt.openUrlExternally(request.url)
-                    request.action = WebEngineNavigationRequest.IgnoreRequest
-                    return
+                    sidebar.askForFocus(noteModelIndex)
+                } 
+                else {
+                    notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
+                    showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
                 }
-                if (url.startsWith("file:///")) {
-                    let notePath = url.substring(7)
-                    const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                    const header = notePath.substring(delimiterIndex + 8)
-                    
-                    notePath = notePath.substring(0, delimiterIndex)
-
-                    const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
-                    const sidebar = applicationWindow().globalDrawer
-                    const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
-
-                    if (noteModelIndex.row !== -1) {
-                        if (header[1] !== 0) parser.headerInfo = headerInfo
-
-                        sidebar.askForFocus(noteModelIndex)
-                    } 
-                    else {
-                        notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
-                        showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
-                    }
-                    request.action = WebEngineNavigationRequest.IgnoreRequest
-                    return
-                }
+                request.action = WebEngineNavigationRequest.IgnoreRequest
+                return
             }
-
-            QtMdEditor.QmlLinker{
-                id: contentLink
-                WebChannel.id: "contentLink"
-            }
-            QtMdEditor.QmlLinker{
-                id: cssLink
-                WebChannel.id: "cssLink"
-            }
+        }
+        QtMdEditor.QmlLinker{
+            id: contentLink
+            WebChannel.id: "contentLink"
+        }
+        QtMdEditor.QmlLinker{
+            id: cssLink
+            WebChannel.id: "cssLink"
         }
     }
 
@@ -210,12 +203,6 @@ RowLayout {
         }
     }
 
-    function loadBaseHtml() {
-        if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
-
-        web_view.loadHtml(root.defaultHtml, "file:/")
-    }
-
     Parser { 
         id: parser
 
@@ -225,6 +212,12 @@ RowLayout {
         onNoteHeadersSent: function(notePath, noteHeaders) {
             noteMapper.updatePathInfo(notePath, noteHeaders)
         }
+    }
+
+    function loadBaseHtml() {
+        if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
+
+        web_view.loadHtml(root.defaultHtml, "file:/")
     }
 
     function parseText() {

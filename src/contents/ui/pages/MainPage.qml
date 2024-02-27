@@ -64,38 +64,30 @@ Kirigami.Page {
     }
 
 
-    Kirigami.Card {
+    ColumnLayout {
         id: placeHolder
 
         anchors.fill: parent
-
         visible: !root.hasNote
 
-        ColumnLayout {
-            anchors.fill: parent
+        QQC2.Label {
+            text: i18n("Welcome to KleverNotes!")
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 24
 
-            Kirigami.Theme.colorSet: Kirigami.Theme.View
-            Kirigami.Theme.inherit: false
+            Layout.margins: Kirigami.Units.largeSpacing * 2
+            Layout.fillWidth: true
+        }
 
-            QQC2.Label {
-                text: i18n("Welcome to KleverNotes!")
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 24
+        QQC2.Label {
+            text: i18n("Create or select a note to start working !")
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 12
 
-                Layout.margins: Kirigami.Units.largeSpacing * 2
-                Layout.fillWidth: true
-            }
-
-            QQC2.Label {
-                text: i18n("Create or select a note to start working !")
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 12
-
-                Layout.margins: Kirigami.Units.largeSpacing * 2
-                Layout.fillWidth: true
-            }
+            Layout.margins: Kirigami.Units.largeSpacing * 2
+            Layout.fillWidth: true
         }
     }
 
