@@ -14,6 +14,7 @@ import Qt.labs.platform 1.1
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
+import qtMdEditor 1.0 as QtMdEditor
 
 RowLayout {
     id: root
@@ -59,7 +60,6 @@ RowLayout {
     property string cssStyle
     property string completCss
     property bool printBackground: true
-    property bool isInit: false
 
     spacing: 0
 
@@ -101,6 +101,9 @@ RowLayout {
     onStylePathChanged: if (web_view.loadProgress === 100) {
         loadStyle()
     }
+    Component.onCompleted: {
+        loadBaseHtml()
+    }
 
     Kirigami.Card {
         id: background
@@ -123,6 +126,9 @@ RowLayout {
             }
             focus: true
             backgroundColor: "transparent"
+            webChannel: WebChannel{
+                registeredObjects: [contentLink, cssLink]
+            }
 
             onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
                 console.error('WEB:', message, lineNumber, sourceID)
@@ -133,12 +139,8 @@ RowLayout {
                 printingPage.displayPdf()
             }
             onLoadProgressChanged: if (loadProgress === 100) {
-                if (!root.isInit) {
-                    loadStyle()
-                    root.isInit = true
-                    updateHtml()
-                }
-
+                loadStyle()
+                parseText()
                 scrollToHeader()
             }
             onScrollPositionChanged: if (!vbar.active) {
@@ -175,6 +177,15 @@ RowLayout {
                     return
                 }
             }
+
+            QtMdEditor.QmlLinker{
+                id: contentLink
+                WebChannel.id: "contentLink"
+            }
+            QtMdEditor.QmlLinker{
+                id: cssLink
+                WebChannel.id: "cssLink"
+            }
         }
     }
 
@@ -199,18 +210,10 @@ RowLayout {
         }
     }
 
-    function updateHtml() {
+    function loadBaseHtml() {
         if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
 
-        let customHtml = '<style>\n'
-            + root.completCss
-            + '</style>\n'
-            + parsedHtml
-        
-        let defaultHtml = root.defaultHtml
-        const finishedHtml = defaultHtml.replace("INSERT HTML HERE", customHtml)
-
-        web_view.loadHtml(finishedHtml, "file:/")
+        web_view.loadHtml(root.defaultHtml, "file:/")
     }
 
     Parser { 
@@ -225,8 +228,10 @@ RowLayout {
     }
 
     function parseText() {
-        parsedHtml = parser.parse(text)
-        updateHtml()
+        if (web_view.loadProgress === 100) {
+            parsedHtml = parser.parse(text)
+            contentLink.text = parsedHtml
+        }
     }
 
     function changeStyle(styleDict) {
@@ -255,8 +260,7 @@ RowLayout {
             }
         }
 
-        root.completCss = style
-        updateHtml()
+        cssLink.text = style
     }
 
     function loadStyle() {

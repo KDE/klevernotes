@@ -2,9 +2,38 @@
 <html lang="">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <script src="qrc:/qwebchannel.js"></script>
     </head>
     <body>
-        INSERT HTML HERE
+        <style id="css"></style>
+
+        <div id="contentElem"></div>
+
+        <script>
+            'use strict';
+
+            const contentElem = document.getElementById('contentElem');
+            const cssElem = document.getElementById('css');
+
+            const updateCss = function(css) {
+                cssElem.innerHTML = css
+            }
+
+            const updateText = function(text) {
+                contentElem.innerHTML = text
+            }
+
+            new QWebChannel(qt.webChannelTransport,
+                function(channel) {
+                    const contentLink = channel.objects.contentLink;
+                    updateText(contentLink.text);
+                    contentLink.textChanged.connect(updateText);
+
+                    const cssLink = channel.objects.cssLink;
+                    updateCss(cssLink.text);
+                    cssLink.textChanged.connect(updateCss);
+                }
+            );
+        </script>
     </body>
 </html>
