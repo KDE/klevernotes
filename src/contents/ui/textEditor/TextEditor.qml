@@ -4,6 +4,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.2
 
+import org.kde.kirigami 2.19 as Kirigami
+
 import org.kde.Klever 1.0
 
 ScrollView {
@@ -19,7 +21,6 @@ ScrollView {
         textArea.tempBuff = true ;
         textArea.text = DocumentHandler.readFile(path) ;
         modified = false ;
-        textArea.tempBuff = false
     }
 
     TextArea{
@@ -31,10 +32,15 @@ ScrollView {
         wrapMode: TextEdit.Wrap
         persistentSelection: true
 
-        background: Item{}
+        background: Item {}
 
-        onTextChanged: if (!tempBuff) {
-            modified = true
+        onTextChanged: {
+            if (!tempBuff) {
+                modified = true
+            } else {
+                cursorPosition = length
+                tempBuff = false
+            }
         }
         Keys.onTabPressed: {
             handleTabPressed(false)

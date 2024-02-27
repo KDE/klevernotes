@@ -79,6 +79,13 @@ ColumnLayout {
     ]
 
     spacing: Kirigami.Units.gridUnit
+    
+    onPathChanged: {
+        focusEditor()
+    }
+    Component.onCompleted: {
+        focusEditor()
+    }
 
     FileSaverDialog {
         id: pdfSaver
@@ -185,5 +192,11 @@ ColumnLayout {
             parser: display.parser
         }
         active: Config.noteMapEnabled
+    }
+
+    function focusEditor() {
+        if (editor.visible) {
+            editor.textArea.forceActiveFocus()
+        }
     }
 }
