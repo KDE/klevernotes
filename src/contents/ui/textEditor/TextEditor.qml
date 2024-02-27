@@ -63,7 +63,7 @@ ScrollView {
                 remove(blockStart, blockEnd)
                 insert(blockStart, newString)
                 select(blockStart, blockStart + newString.length)
-            } else if (noControl) {
+            } else if (!backtab) {
                 insert(selectionStart, Config.useSpaceForTab ? chars.repeat(Config.spacesForTab) : chars)
             }
         }
