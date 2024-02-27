@@ -37,6 +37,7 @@ set(exec_SRCS
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
     logic/mdHandler.cpp
+    logic/qmlLinker.cpp
 
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp

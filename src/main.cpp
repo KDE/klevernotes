@@ -21,6 +21,7 @@
 #include "logic/documentHandler.h"
 #include "logic/kleverUtility.h"
 #include "logic/mdHandler.h"
+#include "logic/qmlLinker.h"
 
 #include "logic/treeview/noteTreeModel.h"
 
@@ -106,6 +107,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::emojiToneChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::quickEmojiDialogEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::pumlEnabledChanged, config, &KleverConfig::save);
+
+    qmlRegisterType<QmlLinker>("qtMdEditor", 1, 0, "QmlLinker");
 
     qmlRegisterSingletonInstance("org.kde.Klever", 1, 0, "Config", config);
 
