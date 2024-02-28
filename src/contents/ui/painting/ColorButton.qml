@@ -23,7 +23,7 @@ Rectangle {
         enabled: true
         acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-        onClicked: {
+        onClicked: function (mouse) {
             if (!button.multicolor) {
                 mouse.button === Qt.LeftButton ? button.primaryColorChanged() : button.secondaryColorChanged()
                 return

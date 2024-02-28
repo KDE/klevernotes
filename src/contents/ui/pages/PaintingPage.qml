@@ -19,7 +19,7 @@ Kirigami.Page {
     readonly property QtObject editorView: pageStack.get(0).editorView
     readonly property size size: Qt.size(sketchContent.width, sketchContent.height)
     readonly property point cursorPos: Qt.point(handler.point.x, handler.point.y)
-    readonly property var penType: Stroke.Fill
+    readonly property var penType: stroke.Fill
 
     property bool cantLeave: false
     property bool isEraser: false
@@ -127,14 +127,14 @@ Kirigami.Page {
                         z: 0
                         anchors.fill: parent
 
-                        type: Stroke.Fill
+                        type: stroke.Fill
                         model: sketchModel
                     }
 
                     StrokeItem {
                         id: currentStroke
 
-                        z: stroke.type === Stroke.Outline ? 1 : 0
+                        z: stroke.type === stroke.Outline ? 1 : 0
                         anchors.fill: parent
                     }
                 }
@@ -150,19 +150,25 @@ Kirigami.Page {
                     enabled: true
                     acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-                    onPositionChanged: if (isPress) {
+                    onPositionChanged: function (mouse) {
+                        if (isPress) {
                             handler.mouseMoved(mouse.x-flickable.contentX, mouse.y-flickable.contentY)
+                        }
                     }
-                    onReleased: if (mouse.button === lastButton) {
-                        isPress = false
+                    onReleased: function (mouse) {
+                        if (mouse.button === lastButton) {
+                            isPress = false
 
-                        handler.changeMousePress(isPress)
+                            handler.changeMousePress(isPress)
+                        }
                     }
-                    onPressed: if (!isPress) {
-                        isPress = true
-                        lastButton = mouse.button
+                    onPressed: function (mouse) {
+                        if (!isPress) {
+                            isPress = true
+                            lastButton = mouse.button
 
-                        handler.changeMousePress(isPress)
+                            handler.changeMousePress(isPress)
+                        }
                     }
                 }
             }
@@ -206,10 +212,10 @@ Kirigami.Page {
                 eraseSamples()
             }
         }
-        onIsEraserChanged: {
+        onIsEraserChanged: function (sketchViewIsEraser) {
             root.isEraser = sketchViewIsEraser
         }
-        onPressedChanged: {
+        onPressedChanged: function (pressed) {
             if (root.isEraser) return
 
             if (!pressed && !isEmpty(currentStroke.stroke.boundingRect())) {
