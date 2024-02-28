@@ -64,7 +64,6 @@ Delegates.RoundedTreeDelegate {
 
         onClicked: function (mouse) {
             if (mouse.button === Qt.RightButton) {
-                contextMenu.canDelete = !treeItem.path.endsWith("/.BaseCategory")
                 contextMenu.popup()
                 itemRightClicked()
                 return

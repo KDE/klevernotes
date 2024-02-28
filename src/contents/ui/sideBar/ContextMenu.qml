@@ -14,8 +14,6 @@ Controls.Menu {
     required property ActionBar actionBar
     required property TreeView treeView
 
-    property bool canDelete: false
-
     Controls.MenuItem {
         text: i18nc("as in 'A note category'", "New category")
         icon.name: "journal-new"
@@ -56,7 +54,6 @@ Controls.Menu {
         icon.name: "user-trash-symbolic"
         text: i18n("Delete")
 
-        visible: contextMenu.canDelete
         onTriggered: {
             deleteConfirmationDialog.open()
         }
