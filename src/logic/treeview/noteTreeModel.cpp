@@ -21,7 +21,7 @@ TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *mo
     m_displayName = fileName == QStringLiteral(".BaseCategory") ? KleverConfig::categoryDisplayName() : fileName;
 
     if (depth_level < 3) {
-        const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask);
+        const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask, QDir::Name);
 
         for (const QFileInfo &file : fileList) {
             const QString name = file.fileName();
@@ -37,7 +37,7 @@ TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *mo
             if (name == QStringLiteral(".BaseGroup")) {
                 // Notes inside ".BaseGroup" folder should be shown as being held by the category directly, not by a group
                 // Move all the subTree child to the parent of the subTree
-                for (int i = subTree->childCount() - 1; i >= 0; i--) {
+                for (int i = 0; i < subTree->childCount(); i++) {
                     auto categoryNote = subTree->uniqueChildAt(i);
 
                     categoryNote->m_parentItem = this;
