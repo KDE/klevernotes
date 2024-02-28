@@ -269,6 +269,7 @@ Kirigami.ActionToolBar {
 
         onRejected: {
             storedImageChoosen = false
+            applicationWindow().currentPageName = "Main"
         }
         onAccepted: if (imageLoaded) {
             let modifiedPath = path
@@ -313,6 +314,8 @@ Kirigami.ActionToolBar {
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, imageString)
 
             storedImageChoosen = false
+
+            applicationWindow().currentPageName = "Main"
         }
     }
 

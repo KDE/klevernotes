@@ -4,6 +4,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as Controls
+import Qt.labs.platform 1.1
 
 import org.kde.kirigami 2.19 as Kirigami
 
@@ -82,9 +83,7 @@ Kirigami.Page {
             leavingDialog.open();
             return
         }
-        applicationWindow().currentPageName = "Main"
-        showImagePicker()
-        clearCanvas()
+        closePage()
     }
 
     LeavePaintingDialog {
@@ -292,6 +291,7 @@ Kirigami.Page {
     function closePage(imagePath, cropRect) {
         root.cantLeave = false
         clearCanvas()
+        applicationWindow().currentPageName = "Main"
         showImagePicker(imagePath, cropRect)
     }
 
@@ -302,7 +302,7 @@ Kirigami.Page {
             let date = new Date().valueOf()
             const tmpFileName = "/KNtmpPaint"+date+".png"
 
-            filePath = StandardPaths.writableLocation(StandardPaths.TempLocation)+tmpFileName
+            filePath = StandardPaths.writableLocation(StandardPaths.TempLocation) + tmpFileName
             serializer.serialize(sketchModel, Qt.size(1024, 1024), filePath)
 
             if (autoCropAction.checked) cropRect = serializer.getCropRect()
