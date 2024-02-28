@@ -110,7 +110,7 @@ Kirigami.OverlayDrawer {
 
         Delegates.RoundedItemDelegate {
             text: i18n("Settings")
-            icon.name: "settings-configure"
+            icon.name: "settings-configure-symbolic"
 
             Layout.fillWidth: true
 
@@ -121,7 +121,7 @@ Kirigami.OverlayDrawer {
 
         Delegates.RoundedItemDelegate {
             text: i18n("About KleverNotes")
-            icon.name: "help-about"
+            icon.name: "help-about-symbolic"
 
             Layout.fillWidth: true
 

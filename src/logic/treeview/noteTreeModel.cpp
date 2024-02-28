@@ -120,11 +120,11 @@ QVariant TreeItem::data(int role) const
     case NoteTreeModel::IconNameRole:
         switch (m_depth_level) {
         case 1:
-            return QStringLiteral("documentation");
+            return QStringLiteral("documentation-symbolic");
         case 2:
-            return QStringLiteral("document-open-folder");
+            return QStringLiteral("document-open-symbolic");
         case 3:
-            return QStringLiteral("document-edit-sign");
+            return QStringLiteral("document-edit-sign-symbolic");
         default:
             Q_UNREACHABLE();
         }

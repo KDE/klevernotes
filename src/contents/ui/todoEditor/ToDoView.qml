@@ -19,7 +19,7 @@ ColumnLayout {
         Kirigami.Action {
             id: clearTodosAction
 
-            icon.name: "edit-clear-history"
+            icon.name: "edit-clear-history-symbolic"
             text: i18nc("@label:button, checked as in 'the todos that are checked'", "Clear checked")
 
             onTriggered: clearCheckedTodos()

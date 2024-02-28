@@ -27,7 +27,7 @@ ColumnLayout {
             visible: enabled
             shortcut: "Ctrl+M"
             tooltip: i18nc("@tooltip, will be followed by the shortcut", "Linked notes") + " (" + shortcut + ")"
-            icon.name: "gnumeric-link-internal"
+            icon.name: "gnumeric-link-internal-symbolic"
             
             onTriggered: {
                 noteMapLoader.item.open()
@@ -38,7 +38,7 @@ ColumnLayout {
             
             shortcut: "Ctrl+P"
             tooltip: i18nc("@tooltip, Print action, will be followed by the shortcut", "Print") + " (" + shortcut + ")"
-            icon.name: "viewpdf"
+            icon.name: "pdftex-symbolic"
             
             onTriggered: {
                 applicationWindow().switchToPage('Printing')
@@ -51,7 +51,7 @@ ColumnLayout {
             tooltip: i18nc("@tooltip, will be followed by the shortcut", "View/Hide editor") + " (" + shortcut + ")"
             checked: Config.editorVisible
             checkable: true
-            icon.name: editorToggler.checked ? "text-flow-into-frame" : "text-unflow"
+            icon.name: editorToggler.checked ? "text-flow-into-frame-symbolic" : "text-unflow-symbolic"
             
             onTriggered: if (!editorToggler.checked && !viewToggler.checked) {
                 editorToggler.checked = true
@@ -67,7 +67,7 @@ ColumnLayout {
             tooltip: i18nc("@tooltip, display as in 'the note preview', will be followed by the shortcut", "View/Hide preview") + " (" + shortcut + ")"
             checked: Config.previewVisible
             checkable: true
-            icon.name: viewToggler.checked ? "quickview" : "view-hidden"
+            icon.name: viewToggler.checked ? "quickview-symbolic" : "view-hidden-symbolic"
             
             onTriggered: if (!viewToggler.checked && !editorToggler.checked) {
                 viewToggler.checked = true

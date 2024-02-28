@@ -53,7 +53,7 @@ FormCard.AbstractFormDelegate {
             Controls.Button {
                 id: resetText
 
-                icon.name: "edit-undo"
+                icon.name: "edit-undo-symbolic"
 
                 onClicked: {
                     updateColor(root, "None")

@@ -16,7 +16,7 @@ Controls.Menu {
 
     Controls.MenuItem {
         text: i18nc("as in 'A note category'", "New category")
-        icon.name: "journal-new"
+        icon.name: "journal-new-symbolic"
 
         onTriggered: {
             actionBar.createCategoryAction.triggered()
@@ -24,7 +24,7 @@ Controls.Menu {
     }
 
     Controls.MenuItem {
-        icon.name: "folder-new"
+        icon.name: "folder-new-symbolic"
         text: i18nc("as in 'A note group'", "New group")
 
         onTriggered: {
@@ -33,7 +33,7 @@ Controls.Menu {
     }
 
     Controls.MenuItem {
-        icon.name: "document-new"
+        icon.name: "document-new-symbolic"
         text: i18nc("as in 'A note'", "New note")
 
         onTriggered: {
@@ -42,7 +42,7 @@ Controls.Menu {
     }
 
     Controls.MenuItem {
-        icon.name: "edit-rename"
+        icon.name: "edit-rename-symbolic"
         text: i18n("Rename")
 
         onTriggered: {

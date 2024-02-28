@@ -114,7 +114,7 @@ Kirigami.ActionToolBar {
             id: boldAction
             shortcut: "Ctrl+B"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Bold") + " (" + shortcut + ")"
-            icon.name: "format-text-bold"
+            icon.name: "format-text-bold-symbolic"
             enabled: toolbar.visible
 
             onTriggered: handleAction(editorTextArea.selectionStart,
@@ -125,7 +125,7 @@ Kirigami.ActionToolBar {
             id: italicAction
             shortcut: "Ctrl+I"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Italic") + " (" + shortcut + ")"
-            icon.name: "format-text-italic"
+            icon.name: "format-text-italic-symbolic"
             enabled: toolbar.visible
 
             onTriggered: handleAction(editorTextArea.selectionStart,
@@ -136,7 +136,7 @@ Kirigami.ActionToolBar {
             id: strikethroughAction
             shortcut: "Alt+Shift+S"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Strikethrough") + " (" + shortcut + ")"
-            icon.name: "format-text-strikethrough"
+            icon.name: "format-text-strikethrough-symbolic"
             enabled: toolbar.visible
 
             onTriggered: handleAction(editorTextArea.selectionStart,
@@ -147,7 +147,7 @@ Kirigami.ActionToolBar {
             id: codeBlockAction
             shortcut: "Ctrl+Shift+K"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Code") + " (" + shortcut + ")"
-            icon.name: "format-text-code"
+            icon.name: "format-text-code-symbolic"
             enabled: toolbar.visible
 
             onTriggered: handleAction(editorTextArea.selectionStart,
@@ -158,7 +158,7 @@ Kirigami.ActionToolBar {
             id: quoteAction
             shortcut: "Ctrl+Shift+Q"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Quote") + " (" + shortcut + ")"
-            icon.name: "format-text-blockquote"
+            icon.name: "format-text-blockquote-symbolic"
             enabled: toolbar.visible
 
             onTriggered: handleAction(editorTextArea.selectionStart,
@@ -169,7 +169,7 @@ Kirigami.ActionToolBar {
             id: imageAction
             shortcut: "Ctrl+Shift+I"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Image") + " (" + shortcut + ")"
-            icon.name: "insert-image"
+            icon.name: "insert-image-symbolic"
             enabled: toolbar.visible
 
             onTriggered: imagePickerDialog.open()
@@ -187,7 +187,7 @@ Kirigami.ActionToolBar {
             id: tableAction
             shortcut: "Ctrl+T"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Table") + " (" + shortcut + ")"
-            icon.name: "insert-table"
+            icon.name: "insert-table-symbolic"
             enabled: toolbar.visible
 
             onTriggered: tableMakerDialog.open()
@@ -196,7 +196,7 @@ Kirigami.ActionToolBar {
             id: orderedListAction
             shortcut: "Ctrl+Shift+O"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Ordered list") + " (" + shortcut + ")"
-            icon.name: "format-list-ordered"
+            icon.name: "format-list-ordered-symbolic"
             enabled: toolbar.visible
 
             onTriggered: {
@@ -209,7 +209,7 @@ Kirigami.ActionToolBar {
             id: unorderedListAction
             shortcut: "Ctrl+Shift+U"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
-            icon.name: "format-list-unordered"
+            icon.name: "format-list-unordered-symbolic"
             enabled: toolbar.visible
 
             onTriggered: {
@@ -222,7 +222,7 @@ Kirigami.ActionToolBar {
             id: highlightAction
             shortcut: "Ctrl+Alt+H"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Text highlight") + " (" + shortcut + ")"
-            icon.name: "draw-highlight"
+            icon.name: "draw-highlight-symbolic"
             enabled: toolbar.visible
 
             onTriggered: {
@@ -233,7 +233,7 @@ Kirigami.ActionToolBar {
             id: emojiAction
             shortcut: "Ctrl+Shift+E"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
-            icon.name: "smiley"
+            icon.name: "smiley-symbolic"
             enabled: toolbar.visible
 
             onTriggered: {
@@ -245,7 +245,7 @@ Kirigami.ActionToolBar {
             visible: Config.noteMapEnabled
             shortcut: "Ctrl+Alt+K"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link note") + " (" + shortcut + ")"
-            icon.name: "edit-link"
+            icon.name: "edit-link-symbolic"
             enabled: toolbar.visible
 
             onTriggered: {

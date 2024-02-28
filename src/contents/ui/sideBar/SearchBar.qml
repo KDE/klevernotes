@@ -74,7 +74,7 @@ KirigamiComponents.SearchPopupField {
 
             text: i18n("No search results")
             visible: searchListView.count === 0
-            icon.name: "system-search"
+            icon.name: "system-search-symbolic"
         }
     }
 

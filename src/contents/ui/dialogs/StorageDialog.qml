@@ -41,7 +41,7 @@ Kirigami.Dialog {
         }
 
         FormCard.FormButtonDelegate {
-            icon.name: "folder-sync"
+            icon.name: "folder-sync-symbolic"
             text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Existing storage")
 
             Controls.ToolTip.text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Change the storage path")
@@ -57,7 +57,7 @@ Kirigami.Dialog {
         }
 
         FormCard.FormButtonDelegate {
-            icon.name: "folder-new"
+            icon.name: "folder-new-symbolic"
             text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Create storage")
 
             Controls.ToolTip.text: i18nc("Storage as in 'the folder where all the notes will be stored'", "Create a new storage")

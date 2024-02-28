@@ -14,7 +14,7 @@ Kirigami.NavigationTabBar {
 
     actions: [
         Kirigami.Action {
-            icon.name: "document-edit"
+            icon.name: "document-edit-symbolic"
             text: i18nc("@label:button, as in 'A note'", "Note")
 
             onTriggered: {
@@ -22,7 +22,7 @@ Kirigami.NavigationTabBar {
             }
         },
         Kirigami.Action {
-            icon.name: "view-task"
+            icon.name: "view-task-symbolic"
             text: i18nc("@label:button", "TODO")
 
             onTriggered: {

@@ -11,7 +11,7 @@ Kirigami.NavigationTabBar {
     actions: [
         Kirigami.Action {
             text: i18nc("@label, tab (inside tab bar), general settings of the app", "General")
-            icon.name: "settings-configure" 
+            icon.name: "settings-configure-symbolic" 
             checked: root.currentTab === "general"
             onTriggered: {
                 root.currentTab = "general"
@@ -19,7 +19,7 @@ Kirigami.NavigationTabBar {
         },
         Kirigami.Action {
             text: i18nc("@label, tab (inside tab bar), all settings related to the general appearance of the app", "Appearance")
-            icon.name: "preferences-desktop-theme-global"
+            icon.name: "preferences-desktop-theme-global-symbolic"
             checked: root.currentTab === "appearance"
             onTriggered: {
                 root.currentTab = "appearance"
@@ -27,7 +27,7 @@ Kirigami.NavigationTabBar {
         },
         Kirigami.Action {
             text: i18nc("@label, tab (inside tab bar), all things related to plugins", "Plugins")
-            icon.name: "plugins"
+            icon.name: "plugins-symbolic"
             checked: root.currentTab === "plugins"
             onTriggered: {
                 root.currentTab = "plugins"

@@ -57,7 +57,7 @@ Kirigami.Page {
 
             checked: !root.isEraser
             checkable: true
-            icon.name: "draw-brush"
+            icon.name: "draw-brush-symbolic"
             
             onTriggered: {
                 handler.changePointer(0)
@@ -68,7 +68,7 @@ Kirigami.Page {
 
             checked: root.isEraser
             checkable: true
-            icon.name: "draw-eraser"
+            icon.name: "draw-eraser-symbolic"
             
             onTriggered: {
                 handler.changePointer(1)

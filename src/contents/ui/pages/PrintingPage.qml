@@ -52,7 +52,7 @@ Kirigami.Page {
 
             text: i18nc("@label:button, as in 'the background of an image'", "Background")
             checkable: true
-            icon.name: "backgroundtool"
+            icon.name: "backgroundtool-symbolic"
 
             onTriggered: {
                 requestPdf(checked)

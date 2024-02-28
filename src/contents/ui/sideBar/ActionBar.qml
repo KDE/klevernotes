@@ -111,7 +111,7 @@ ToolBar {
         property bool isActive : false
 
         shortcut: "Ctrl+Alt+C"
-        icon.name: "journal-new"
+        icon.name: "journal-new-symbolic"
 
         onNameChanged: if (isActive) {
             treeView.model.addRow(name, Config.storagePath, 1)
@@ -135,7 +135,7 @@ ToolBar {
         property bool isActive : false
 
         shortcut: "Ctrl+Alt+G"
-        icon.name: "folder-new"
+        icon.name: "folder-new-symbolic"
 
         onNameChanged: if (isActive) {
             treeView.model.addRow(name, categoryPath, 2, parentModelIndex)
@@ -182,7 +182,7 @@ ToolBar {
         property bool isActive : false
 
         shortcut: "Ctrl+Alt+N"
-        icon.name: "document-new"
+        icon.name: "document-new-symbolic"
 
         onNameChanged: if (isActive) {
             treeView.model.addRow(name, groupPath, 3, parentModelIndex)
@@ -220,7 +220,7 @@ ToolBar {
         property string name: mainToolBar.currentClickedItem ? mainToolBar.currentClickedItem.text : ""
 
         shortcut: "Ctrl+R"
-        icon.name: "edit-rename"
+        icon.name: "edit-rename-symbolic"
 
         onNameChanged: if (isActive) {
             treeView.model.rename(currentModelIndex, name)
