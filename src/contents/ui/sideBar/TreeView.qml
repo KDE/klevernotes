@@ -20,6 +20,13 @@ Controls.ScrollView {
 
     signal itemRightClicked(clickedItem: TreeItem)
 
+    Component.onCompleted: {
+        // we do this in reverse to avoid collapsing a Category/Group before its children 
+        for (var i = treeView.count; i >= 0 ; --i) {
+            descendantsModel.toggleChildren(i)
+        }
+    }
+    
     ListView {
         id: treeView
 
