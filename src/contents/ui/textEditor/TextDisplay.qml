@@ -19,6 +19,8 @@ import qtMdEditor 1.0 as QtMdEditor
 RowLayout {
     id: root
 
+    readonly property var view: web_view
+
     required property string path
     required property string text
     
@@ -103,82 +105,88 @@ RowLayout {
         loadBaseHtml()
     }
 
-    WebEngineView {
-        id: web_view
-
-        x: 2
-        y: 2
-        width: background.width - 4
-        height: background.height - 4
-
-        settings {
-            showScrollBars: false
-            localContentCanAccessFileUrls: true
-            localContentCanAccessRemoteUrls: true
-        }
-        focus: true
-        backgroundColor: "transparent"
-        webChannel: WebChannel{
-            registeredObjects: [contentLink, cssLink]
-        }
-
+    // WARNING, HACK: 
+    // Do not remove, this prevent the WebEngineView from taking 
+    //to much space and escaping from the Card !
+    Item {
         Layout.fillWidth: true
         Layout.fillHeight: true
 
-        onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
-            console.error('WEB:', message, lineNumber, sourceID)
-        }
-        onPdfPrintingFinished: {
-            const printingPage = applicationWindow().pageStack.currentItem
+        WebEngineView {
+            id: web_view
 
-            printingPage.displayPdf()
-        }
-        onLoadProgressChanged: if (loadProgress === 100) {
-            loadStyle()
-            parseText()
-            scrollToHeader()
-        }
-        onScrollPositionChanged: if (!vbar.active) {
-            vbar.position = scrollPosition.y / contentsSize.height
-        }
-        onNavigationRequested: function(request) {
-            const url = request.url.toString()
-            if (url.startsWith("http")) {
-                Qt.openUrlExternally(request.url)
-                request.action = WebEngineNavigationRequest.IgnoreRequest
-                return
+            x: 2
+            y: 2
+
+            settings {
+                showScrollBars: false
+                localContentCanAccessFileUrls: true
+                localContentCanAccessRemoteUrls: true
             }
-            if (url.startsWith("file:///")) {
-                let notePath = url.substring(7)
-                const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                const header = notePath.substring(delimiterIndex + 8)
-                
-                notePath = notePath.substring(0, delimiterIndex)
+            focus: true
+            backgroundColor: "transparent"
+            webChannel: WebChannel{
+                registeredObjects: [contentLink, cssLink]
+            }
 
-                const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
-                const sidebar = applicationWindow().globalDrawer
-                const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+            anchors.fill: parent
+            clip: true
 
-                if (noteModelIndex.row !== -1) {
-                    if (header[1] !== 0) parser.headerInfo = headerInfo
+            onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
+                console.error('WEB:', message, lineNumber, sourceID)
+            }
+            onPdfPrintingFinished: {
+                const printingPage = applicationWindow().pageStack.currentItem
 
-                    sidebar.askForFocus(noteModelIndex)
-                } 
-                else {
-                    notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
-                    showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
+                printingPage.displayPdf()
+            }
+            onLoadProgressChanged: if (loadProgress === 100) {
+                loadStyle()
+                parseText()
+                scrollToHeader()
+            }
+            onScrollPositionChanged: if (!vbar.active) {
+                vbar.position = scrollPosition.y / contentsSize.height
+            }
+            onNavigationRequested: function(request) {
+                const url = request.url.toString()
+                if (url.startsWith("http")) {
+                    Qt.openUrlExternally(request.url)
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    return
                 }
-                request.action = WebEngineNavigationRequest.IgnoreRequest
-                return
+                if (url.startsWith("file:///")) {
+                    let notePath = url.substring(7)
+                    const delimiterIndex = notePath.lastIndexOf("@HEADER@")
+                    const header = notePath.substring(delimiterIndex + 8)
+                    
+                    notePath = notePath.substring(0, delimiterIndex)
+
+                    const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+                    const sidebar = applicationWindow().globalDrawer
+                    const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+
+                    if (noteModelIndex.row !== -1) {
+                        if (header[1] !== 0) parser.headerInfo = headerInfo
+
+                        sidebar.askForFocus(noteModelIndex)
+                    } 
+                    else {
+                        notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
+                        showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
+                    }
+                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    return
+                }
             }
-        }
-        QtMdEditor.QmlLinker{
-            id: contentLink
-            WebChannel.id: "contentLink"
-        }
-        QtMdEditor.QmlLinker{
-            id: cssLink
-            WebChannel.id: "cssLink"
+            QtMdEditor.QmlLinker{
+                id: contentLink
+                WebChannel.id: "contentLink"
+            }
+            QtMdEditor.QmlLinker{
+                id: cssLink
+                WebChannel.id: "cssLink"
+            }
         }
     }
 
