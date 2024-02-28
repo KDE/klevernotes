@@ -20,7 +20,7 @@ Kirigami.Page {
     readonly property QtObject editorView: pageStack.get(0).editorView
     readonly property size size: Qt.size(sketchContent.width, sketchContent.height)
     readonly property point cursorPos: Qt.point(handler.point.x, handler.point.y)
-    readonly property var penType: stroke.Fill
+    readonly property var penType: Stroke.Fill
 
     property bool cantLeave: false
     property bool isEraser: false
@@ -83,7 +83,7 @@ Kirigami.Page {
             leavingDialog.open();
             return
         }
-        closePage()
+        closePage("", {})
     }
 
     LeavePaintingDialog {
@@ -94,7 +94,7 @@ Kirigami.Page {
         }
         onDiscarded: {
             leavingDialog.close()
-            root.closePage()
+            root.closePage("", {})
         }
     }
 
@@ -126,14 +126,14 @@ Kirigami.Page {
                         z: 0
                         anchors.fill: parent
 
-                        type: stroke.Fill
+                        type: Stroke.Fill
                         model: sketchModel
                     }
 
                     StrokeItem {
                         id: currentStroke
 
-                        z: stroke.type === stroke.Outline ? 1 : 0
+                        z: Stroke.type === Stroke.Outline ? 1 : 0
                         anchors.fill: parent
                     }
                 }

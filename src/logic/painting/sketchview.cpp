@@ -9,13 +9,14 @@
 #include "sketchview.h"
 
 #include <QPointingDevice>
+#include <qglobalstatic.h>
 
-Q_GLOBAL_STATIC(SketchView *, s_instance);
+Q_GLOBAL_STATIC(SketchView *, s_instance, );
 
 SketchViewHandler::SketchViewHandler(QObject *parent)
     : QObject(parent)
 {
-    connect(SketchView::instance(), &SketchView::tabletEventReceived, this, &SketchViewHandler::onTabletEventReceived);
+    connect(new SketchView, &SketchView::tabletEventReceived, this, &SketchViewHandler::onTabletEventReceived);
 }
 
 Stroke SketchViewHandler::createStroke(Stroke::Type type, const QColor &color) const

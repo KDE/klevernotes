@@ -153,7 +153,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     // Will complain about valueType names strating with capital letter, but changing it will break things
     qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "strokeSample", QStringLiteral("Use the createSample function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
     qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "event", QStringLiteral("They are provided by the SketchViewHandler"));
 
     qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
