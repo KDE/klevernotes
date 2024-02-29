@@ -84,7 +84,7 @@ ToolBar {
             visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
-            ToolTip.text: i18n("Search") + " (" + renameAction.shortcut + ")"
+            ToolTip.text: i18n("Search") + " (" + searchAction.shortcut + ")"
         }
 
         ToolSeparator {
