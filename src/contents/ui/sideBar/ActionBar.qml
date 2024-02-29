@@ -80,12 +80,11 @@ ToolBar {
         }
 
         ToolButton {
+            action: searchAction
             visible: !barLayout.searching && mainToolBar.sideBarWide
-            icon.name: "search-symbolic"
-            onClicked: {
-                barLayout.searching = true
-                searchBar.contentItem.forceActiveFocus()
-            }
+            ToolTip.delay: Kirigami.Units.toolTipDelay
+            ToolTip.visible: hovered
+            ToolTip.text: i18n("Search") + " (" + renameAction.shortcut + ")"
         }
 
         ToolSeparator {
@@ -97,15 +96,15 @@ ToolBar {
         }
 
         ToolButton {
+            action: closeAction
             visible: !barLayout.searching && !Kirigami.Settings.isMobile
-            icon.name: mainToolBar.sideBarWide 
-                ? "sidebar-collapse-left-symbolic"
-                : "sidebar-expand-symbolic"
-
+            ToolTip.delay: Kirigami.Units.toolTipDelay
+            ToolTip.visible: hovered
+            ToolTip.text: (mainToolBar.sideBarWide 
+                ? i18n("Collapse sidebar")
+                : i18n("Expend sidebar")
+            )// + " (" + closeAction.shortcut + ")"
             Layout.fillWidth: !mainToolBar.sideBarWide
-            onClicked: {
-                drawer.close()
-            }
         }
 
         SearchBar {
@@ -259,6 +258,31 @@ ToolBar {
             mainToolBar.getName(useCase, name, parentPath, renameAction, false)
         }
     }
+
+    Kirigami.Action{
+        id: searchAction
+
+        shortcut: "Ctrl+F"
+        icon.name: "search-symbolic"
+
+        onTriggered: {
+            barLayout.searching = true
+            searchBar.forceActiveFocus()
+        }
+    }
+
+   Kirigami.Action{
+        id: closeAction
+
+        // shortcut: ""
+        icon.name: mainToolBar.sideBarWide 
+            ? "sidebar-collapse-left-symbolic"
+            : "sidebar-expand-symbolic"
+
+        onTriggered: {
+            drawer.close()
+        }
+    } 
 
     function getName(useCase, shownName, parentPath, callingAction, newItem){
         namingDialog.useCase = useCase

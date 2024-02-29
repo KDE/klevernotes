@@ -77,6 +77,11 @@ Kirigami.OverlayDrawer {
                     icon.name: "file-catalog-symbolic"
 
                     Layout.fillWidth: true
+                    Layout.preferredHeight: drawer.narrowWidth
+
+                    Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    Controls.ToolTip.visible: hovered
+                    Controls.ToolTip.text: i18n("Show notes")
 
                     onClicked: {
                         drawer.close()
@@ -93,6 +98,11 @@ Kirigami.OverlayDrawer {
                     icon.name: "text-markdown"
 
                     Layout.fillWidth: true
+                    Layout.preferredHeight: drawer.narrowWidth
+
+                    Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    Controls.ToolTip.visible: hovered
+                    Controls.ToolTip.text: i18n("Cheat sheet")
 
                     onClicked: {
                         applicationWindow().showCheatSheet()
@@ -104,6 +114,11 @@ Kirigami.OverlayDrawer {
                     icon.name: "settings-configure-symbolic"
 
                     Layout.fillWidth: true
+                    Layout.preferredHeight: drawer.narrowWidth
+
+                    Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    Controls.ToolTip.visible: hovered
+                    Controls.ToolTip.text: i18n("Settings")
 
                     onClicked: {
                         applicationWindow().switchToPage('Settings')
@@ -114,6 +129,11 @@ Kirigami.OverlayDrawer {
                     icon.name: "help-about-symbolic"
 
                     Layout.fillWidth: true
+                    Layout.preferredHeight: drawer.narrowWidth
+
+                    Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    Controls.ToolTip.visible: hovered
+                    Controls.ToolTip.text: i18n("About KleverNotes")
 
                     onClicked: {
                         applicationWindow().switchToPage('About')
