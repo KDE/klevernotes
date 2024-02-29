@@ -23,7 +23,7 @@ Delegates.RoundedTreeDelegate {
 
     text: displayName
     icon.name: iconName
-    highlighted: treeview.currentItem ? treeView.currentItem.path === path : false
+    highlighted: treeView.currentItem ? treeView.currentItem.path === path : false
 
     background: Rectangle { // Forced to do it, without that, the first element is not using the correct Theme
         Kirigami.Theme.colorSet: Kirigami.Theme.Window

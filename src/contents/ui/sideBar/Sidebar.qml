@@ -21,10 +21,15 @@ Kirigami.OverlayDrawer {
     id: drawer
 
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
-    readonly property NoteTreeModel treeModel: treeview.model
+    readonly property NoteTreeModel treeModel: treeView.model
     readonly property string storagePath: Config.storagePath
+    readonly property int narrowWidth: Kirigami.Units.gridUnit * 3
+    readonly property int largeWidth: Kirigami.Units.gridUnit * 15
 
-    width: Kirigami.Units.gridUnit * 15
+    property bool isWide: true
+    property bool changeWidth: true
+
+    width: isWide ? largeWidth : narrowWidth
 
     leftPadding: 0
     rightPadding: 0
@@ -32,7 +37,7 @@ Kirigami.OverlayDrawer {
     bottomPadding: 0
 
     edge: Qt.application.layoutDirection == Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
-    handleClosedIcon.source: null
+    handleClosedIcon.source: handleOpenIcon.source
     handleOpenIcon.source: null
     handleVisible: applicationWindow().isMainPage() && modal
 
@@ -40,97 +45,178 @@ Kirigami.OverlayDrawer {
     // Prevent it to being close while in wideScreen
     closePolicy: modal ? Controls.Popup.CloseOnReleaseOutside : Controls.Popup.NoAutoClose
 
-    contentItem: ColumnLayout {
+    contentItem: Item {
         id: column
 
         ActionBar {
             id: actionBar
 
-            treeView: treeview
+            height: pageStack.globalToolBar.preferredHeight
+            anchors {
+                top: parent.top
+                left: parent.left
+                right: parent.right
+            }    
 
-            Layout.fillWidth: true
-            Layout.preferredHeight: pageStack.globalToolBar.preferredHeight
+            treeView: treeView
+            sideBarWide: drawer.isWide
         }
-
-        TreeView {
-            id: treeview
-
-            model: NoteTreeModel {
-                id: noteTreeModel
-
-                noteMapEnabled: Config.noteMapEnabled
-
-                onNewGlobalPathFound: function (path) {
-                    drawer.noteMapper.addGlobalPath(path)
-                }
-                onGlobalPathUpdated: function (oldPath, newPath) {
-                    drawer.noteMapper.updateGlobalPath(oldPath, newPath)
-                }
-                onGlobalPathRemoved: function (path) {
-                    drawer.noteMapper.removeGlobalPath(path)
-                }
-                onInitialGlobalPathsSent: function (initialGlobalPaths) {
-                    drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
-                }
-                onErrorOccurred: function (errorMessage) {
-                    applicationWindow().showPassiveNotification(errorMessage)
-                }
+        
+        Loader {
+            active: !drawer.isWide
+            anchors {
+                top: actionBar.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
             }
+            sourceComponent: ColumnLayout {
+                anchors.fill: parent
 
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+                Controls.ToolButton {
+                    icon.name: "file-catalog-symbolic"
 
-            onItemRightClicked: function (clickedItem) {
-                const tempModelIndex = treeview.getModelIndex(clickedItem.index)
-                actionBar.setClickedItemInfo(clickedItem, tempModelIndex)
-            }
-            onCurrentItemChanged: {
-                const currentModelIndex = treeview.getModelIndex(treeview.currentIndex)
-                actionBar.setClickedItemInfo(treeview.currentItem, currentModelIndex)
-            }
-        }
+                    Layout.fillWidth: true
 
-        Controls.ToolSeparator {
-            orientation: Qt.Horizontal
+                    onClicked: {
+                        drawer.close()
+                    }
+                }
 
-            Layout.fillWidth: true
-        }
+                Item {
+                    id: spaceTaker
 
-        Delegates.RoundedItemDelegate {
-            text: i18n("Cheat sheet")
-            icon.name: "text-markdown"
+                    Layout.fillHeight: true
+                }
 
-            Layout.fillWidth: true
+                Controls.ToolButton {
+                    icon.name: "text-markdown"
 
-            onClicked: {
-                applicationWindow().showCheatSheet()
-                if (drawer.modal) drawer.close()
-            }
-        }
+                    Layout.fillWidth: true
 
-        Delegates.RoundedItemDelegate {
-            text: i18n("Settings")
-            icon.name: "settings-configure-symbolic"
+                    onClicked: {
+                        applicationWindow().showCheatSheet()
+                        if (drawer.modal) drawer.close()
+                    }
+                }
 
-            Layout.fillWidth: true
+                Controls.ToolButton {
+                    icon.name: "settings-configure-symbolic"
 
-            onClicked: {
-                applicationWindow().switchToPage('Settings')
+                    Layout.fillWidth: true
+
+                    onClicked: {
+                        applicationWindow().switchToPage('Settings')
+                    }
+                }
+
+                Controls.ToolButton {
+                    icon.name: "help-about-symbolic"
+
+                    Layout.fillWidth: true
+
+                    onClicked: {
+                        applicationWindow().switchToPage('About')
+                    }
+                }
             }
         }
 
-        Delegates.RoundedItemDelegate {
-            text: i18n("About KleverNotes")
-            icon.name: "help-about-symbolic"
+        Loader {
+            visible: drawer.isWide
+            anchors {
+                top: actionBar.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+            ColumnLayout {
+                anchors.fill: parent
+                TreeView {
+                    id: treeView
 
-            Layout.fillWidth: true
+                    model: NoteTreeModel {
+                        id: noteTreeModel
 
-            onClicked: {
-                applicationWindow().switchToPage('About')
+                        noteMapEnabled: Config.noteMapEnabled
+
+                        onNewGlobalPathFound: function (path) {
+                            drawer.noteMapper.addGlobalPath(path)
+                        }
+                        onGlobalPathUpdated: function (oldPath, newPath) {
+                            drawer.noteMapper.updateGlobalPath(oldPath, newPath)
+                        }
+                        onGlobalPathRemoved: function (path) {
+                            drawer.noteMapper.removeGlobalPath(path)
+                        }
+                        onInitialGlobalPathsSent: function (initialGlobalPaths) {
+                            drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
+                        }
+                        onErrorOccurred: function (errorMessage) {
+                            applicationWindow().showPassiveNotification(errorMessage)
+                        }
+                    }
+
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    onItemRightClicked: function (clickedItem) {
+                        const tempModelIndex = treeView.getModelIndex(clickedItem.index)
+                        actionBar.setClickedItemInfo(clickedItem, tempModelIndex)
+                    }
+                    onCurrentItemChanged: {
+                        const currentModelIndex = treeView.getModelIndex(treeView.currentIndex)
+                        actionBar.setClickedItemInfo(treeView.currentItem, currentModelIndex)
+                    }
+                }
+
+                Controls.ToolSeparator {
+                    orientation: Qt.Horizontal
+
+                    Layout.fillWidth: true
+                }
+
+                Delegates.RoundedItemDelegate {
+                    text: i18n("Cheat sheet")
+                    icon.name: "text-markdown"
+
+                    Layout.fillWidth: true
+
+                    onClicked: {
+                        applicationWindow().showCheatSheet()
+                        if (drawer.modal) drawer.close()
+                    }
+                }
+
+                Delegates.RoundedItemDelegate {
+                    text: i18n("Settings")
+                    icon.name: "settings-configure-symbolic"
+
+                    Layout.fillWidth: true
+
+                    onClicked: {
+                        applicationWindow().switchToPage('Settings')
+                    }
+                }
+
+                Delegates.RoundedItemDelegate {
+                    text: i18n("About KleverNotes")
+                    icon.name: "help-about-symbolic"
+
+                    Layout.fillWidth: true
+
+                    onClicked: {
+                        applicationWindow().switchToPage('About')
+                    }
+                }
             }
         }
     }
 
+    onClosed: if (changeWidth && !modal) {
+        isWide = !isWide
+        open()
+    }
     onStoragePathChanged: if (storagePath !== "None") {
         noteTreeModel.initModel()
     }
@@ -148,7 +234,7 @@ Kirigami.OverlayDrawer {
     ContextMenu {
         id: contextMenu
 
-        treeView: treeview
+        treeView: treeView
         actionBar: actionBar
     }
 

@@ -25,10 +25,12 @@ Kirigami.ApplicationWindow {
 
     onCurrentPageNameChanged: {
         if (!isMainPage()) {
+            sideBar.changeWidth = false
             sideBar.close()
         } else if (pageStack.depth > 1){
             if (!sideBar.modal) sideBar.open()
             pageStack.pop()
+            sideBar.changeWidth = true
         }
     }
     onClosing: {

@@ -17,6 +17,7 @@ ToolBar {
     id: mainToolBar
 
     required property TreeView treeView
+    required property bool sideBarWide
     readonly property QtObject renameAction: renameAction
     readonly property QtObject createNoteAction: createNoteAction
     readonly property QtObject createGroupAction: createGroupAction
@@ -43,40 +44,43 @@ ToolBar {
 
         ToolButton {
             action: createCategoryAction
-            visible: !barLayout.searching
+            visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
-            ToolTip.visible: hovered
+            ToolTip.visible: hovered 
             ToolTip.text: i18nc("as in 'A note category'", "Create a new category") + " (" + createCategoryAction.shortcut + ")"
         }
 
         ToolButton {
             action: createGroupAction
-            visible: !barLayout.searching
+            visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
-            ToolTip.visible: hovered
+            ToolTip.visible: hovered 
             ToolTip.text: i18nc("as in 'A note group'", "Create a new group") + " (" + createGroupAction.shortcut + ")"
         }
 
         ToolButton {
             action: createNoteAction
-            visible: !barLayout.searching
+            visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
-            ToolTip.visible: hovered
+            ToolTip.visible: hovered 
             ToolTip.text: i18nc("as in 'A note'", "Create a new note") + " (" + createNoteAction.shortcut + ")"
         }
 
         ToolButton {
             action: renameAction
-            visible: !barLayout.searching
+            visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: i18n("Rename") + " (" + renameAction.shortcut + ")"
         }
 
-        Item {Layout.fillWidth: true; visible: !barLayout.searching}
+        Item {
+            Layout.fillWidth: true; 
+            visible: !barLayout.searching
+        }
 
         ToolButton {
-            visible: !barLayout.searching
+            visible: !barLayout.searching && mainToolBar.sideBarWide
             icon.name: "search-symbolic"
             onClicked: {
                 barLayout.searching = true
@@ -84,11 +88,31 @@ ToolBar {
             }
         }
 
+        ToolSeparator {
+            visible: drawer.isWide
+            orientation: Qt.Vertical
+
+            Layout.fillHeight: true
+            Layout.margins: Kirigami.Units.smallSpacing
+        }
+
+        ToolButton {
+            visible: !barLayout.searching && !Kirigami.Settings.isMobile
+            icon.name: mainToolBar.sideBarWide 
+                ? "sidebar-collapse-left-symbolic"
+                : "sidebar-expand-symbolic"
+
+            Layout.fillWidth: !mainToolBar.sideBarWide
+            onClicked: {
+                drawer.close()
+            }
+        }
+
         SearchBar {
             id: searchBar
 
-            visible: barLayout.searching
-            listModel: treeview.model
+            visible: barLayout.searching && mainToolBar.sideBarWide
+            listModel: treeView.model
 
             Layout.fillWidth: true
 
