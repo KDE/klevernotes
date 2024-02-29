@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-28 01:36+0000\n"
-"PO-Revision-Date: 2024-02-07 23:40+0900\n"
+"POT-Creation-Date: 2024-02-29 01:38+0000\n"
+"PO-Revision-Date: 2024-02-29 03:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -165,25 +165,22 @@ msgid "Link text:"
 msgstr "連結文字："
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "筆記"
+msgstr "筆記："
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:63
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr ""
+msgstr "搜尋標頭"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:75
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "標頭"
+msgstr "標頭："
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -430,12 +427,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "歡迎"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:74
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "歡迎來到 KleverNotes 筆記！"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:84
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "建立或選取一個筆記來開始工作吧！"
@@ -525,43 +522,43 @@ msgctxt "@label:button"
 msgid "Text color:"
 msgstr "文字顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:58
+#: contents/ui/settings/DisplayPreview.qml:56
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "標題顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:70
+#: contents/ui/settings/DisplayPreview.qml:66
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "連結顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:81
+#: contents/ui/settings/DisplayPreview.qml:75
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "造訪過的連結顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:94
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "程式碼顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:96
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "突顯顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:106
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "一般字型："
 
-#: contents/ui/settings/DisplayPreview.qml:129
+#: contents/ui/settings/DisplayPreview.qml:117
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -607,9 +604,7 @@ msgid "New Note name:"
 msgstr "新筆記名稱："
 
 #: contents/ui/settings/GeneralTab.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "編輯器"
@@ -618,13 +613,13 @@ msgstr "編輯器"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Tab 鍵使用空格而非定位字元"
 
 #: contents/ui/settings/GeneralTab.qml:169
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "空格數量"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -830,30 +825,30 @@ msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "建立新筆記"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:48
+#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "重新命名"
 
-#: contents/ui/sideBar/ContextMenu.qml:20
+#: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "新增分類"
 
-#: contents/ui/sideBar/ContextMenu.qml:30
+#: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "新增群組"
 
-#: contents/ui/sideBar/ContextMenu.qml:39
+#: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "新增筆記"
 
-#: contents/ui/sideBar/ContextMenu.qml:57
+#: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Delete"
 msgstr "刪除"
@@ -1192,7 +1187,7 @@ msgid "Missing notes"
 msgstr "缺乏的筆記"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:176
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1314,12 +1309,10 @@ msgid "Text highlight"
 msgstr "文字突顯"
 
 #: contents/ui/textEditor/TextToolBar.qml:247
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, will be followed by the shortcut"
-#| msgid "Linked notes"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "已連結的筆記"
+msgstr "連結筆記"
 
 #: contents/ui/textEditor/TextToolBar.qml:324
 #: contents/ui/textEditor/TextToolBar.qml:325
@@ -1464,35 +1457,35 @@ msgstr "嘗試建立分類時發生錯誤。"
 msgid "An error occurred while trying to create the storage."
 msgstr "建立筆記儲存庫時發生錯誤。"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes 筆記"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Application Description"
 msgstr "應用程式描述"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kisaragi Hiu"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

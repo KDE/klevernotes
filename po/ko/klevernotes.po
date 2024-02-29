@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-28 01:36+0000\n"
+"POT-Creation-Date: 2024-02-29 01:38+0000\n"
 "PO-Revision-Date: 2024-02-11 00:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -430,12 +430,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "환영합니다"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:74
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "KleverNotes에 오신 것을 환영합니다!"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:84
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "작업을 시작하려면 메모를 만들거나 선택하십시오!"
@@ -527,43 +527,43 @@ msgctxt "@label:button"
 msgid "Text color:"
 msgstr "글자색:"
 
-#: contents/ui/settings/DisplayPreview.qml:58
+#: contents/ui/settings/DisplayPreview.qml:56
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "제목 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:70
+#: contents/ui/settings/DisplayPreview.qml:66
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "링크 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:81
+#: contents/ui/settings/DisplayPreview.qml:75
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "방문한 링크 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:94
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "코드 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:96
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "강조색:"
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:106
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "일반 글꼴:"
 
-#: contents/ui/settings/DisplayPreview.qml:129
+#: contents/ui/settings/DisplayPreview.qml:117
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -834,30 +834,30 @@ msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "새 메모 만들기"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:48
+#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "이름 바꾸기"
 
-#: contents/ui/sideBar/ContextMenu.qml:20
+#: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "새 분류"
 
-#: contents/ui/sideBar/ContextMenu.qml:30
+#: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "새 그룹"
 
-#: contents/ui/sideBar/ContextMenu.qml:39
+#: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "새 메모"
 
-#: contents/ui/sideBar/ContextMenu.qml:57
+#: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Delete"
 msgstr "삭제"
@@ -1196,7 +1196,7 @@ msgid "Missing notes"
 msgstr "빠진 메모"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:176
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1466,35 +1466,35 @@ msgstr "분류를 생성하는 중 오류가 발생했습니다."
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Application Description"
 msgstr "앱 설명"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

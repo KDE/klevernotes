@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-28 01:36+0000\n"
-"PO-Revision-Date: 2024-02-09 10:03+0100\n"
+"POT-Creation-Date: 2024-02-29 01:38+0000\n"
+"PO-Revision-Date: 2024-02-28 10:31+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -431,12 +431,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Us donem la benvinguda"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:74
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Us donem la benvinguda al KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:84
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Creeu o seleccioneu una nota per a començar a treballar!"
@@ -528,43 +528,43 @@ msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Color del text:"
 
-#: contents/ui/settings/DisplayPreview.qml:58
+#: contents/ui/settings/DisplayPreview.qml:56
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Color dels títols:"
 
-#: contents/ui/settings/DisplayPreview.qml:70
+#: contents/ui/settings/DisplayPreview.qml:66
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Color dels enllaços:"
 
-#: contents/ui/settings/DisplayPreview.qml:81
+#: contents/ui/settings/DisplayPreview.qml:75
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Color dels enllaços visitats:"
 
-#: contents/ui/settings/DisplayPreview.qml:94
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Color del codi:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:96
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Color de ressaltat:"
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:106
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Lletra general:"
 
-#: contents/ui/settings/DisplayPreview.qml:129
+#: contents/ui/settings/DisplayPreview.qml:117
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -610,9 +610,7 @@ msgid "New Note name:"
 msgstr "Nom nou de la nota:"
 
 #: contents/ui/settings/GeneralTab.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Editor"
@@ -621,13 +619,13 @@ msgstr "Editor"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Usa espais per a la tabulació"
 
 #: contents/ui/settings/GeneralTab.qml:169
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "Nombre d'espais"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -835,30 +833,30 @@ msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Crea una nota nova"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:48
+#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "Canvia el nom"
 
-#: contents/ui/sideBar/ContextMenu.qml:20
+#: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Categoria nova"
 
-#: contents/ui/sideBar/ContextMenu.qml:30
+#: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "Grup nou"
 
-#: contents/ui/sideBar/ContextMenu.qml:39
+#: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Nota nova"
 
-#: contents/ui/sideBar/ContextMenu.qml:57
+#: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Delete"
 msgstr "Suprimeix"
@@ -1197,7 +1195,7 @@ msgid "Missing notes"
 msgstr "Manquen notes"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:176
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1468,35 +1466,35 @@ msgstr "S'ha produït un error en intentar crear la categoria."
 msgid "An error occurred while trying to create the storage."
 msgstr "S'ha produït un error en intentar crear l'emmagatzematge."
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "´KleverNotes"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Application Description"
 msgstr "Descripció de l'aplicació"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Josep M. Ferrer"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-28 01:36+0000\n"
+"POT-Creation-Date: 2024-02-29 01:38+0000\n"
 "PO-Revision-Date: 2023-11-04 12:50+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -433,12 +433,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Witaj"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:74
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Witaj w KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:84
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Utwórz lub wybierz notatkę, aby zacząć pracować!"
@@ -534,31 +534,31 @@ msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Barwa tekstu:"
 
-#: contents/ui/settings/DisplayPreview.qml:58
+#: contents/ui/settings/DisplayPreview.qml:56
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Barwa nazwy:"
 
-#: contents/ui/settings/DisplayPreview.qml:70
+#: contents/ui/settings/DisplayPreview.qml:66
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Barwa odsyłacza:"
 
-#: contents/ui/settings/DisplayPreview.qml:81
+#: contents/ui/settings/DisplayPreview.qml:75
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Barwa odwiedzonego odsyłacza:"
 
-#: contents/ui/settings/DisplayPreview.qml:94
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Barwa kodu:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:96
 #, fuzzy, kde-format
 #| msgctxt "@label:button"
 #| msgid "Title color:"
@@ -566,7 +566,7 @@ msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Barwa nazwy:"
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:106
 #, fuzzy, kde-format
 #| msgctxt "@title, general settings"
 #| msgid "General"
@@ -574,7 +574,7 @@ msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Ogólne"
 
-#: contents/ui/settings/DisplayPreview.qml:129
+#: contents/ui/settings/DisplayPreview.qml:117
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -845,30 +845,30 @@ msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Utwórz nową notatkę"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:48
+#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "Przemianuj"
 
-#: contents/ui/sideBar/ContextMenu.qml:20
+#: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Nowa kategoria"
 
-#: contents/ui/sideBar/ContextMenu.qml:30
+#: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "Nowa grupa"
 
-#: contents/ui/sideBar/ContextMenu.qml:39
+#: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Nowa notatka"
 
-#: contents/ui/sideBar/ContextMenu.qml:57
+#: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Delete"
 msgstr "Usuń"
@@ -1257,7 +1257,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:176
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1532,35 +1532,35 @@ msgstr "Wystąpił błąd przy próbie utworzenia kategorii."
 msgid "An error occurred while trying to create the storage."
 msgstr "Wystąpił błąd przy próbie utworzenia pamięci."
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Application Description"
 msgstr "Opis programu"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Łukasz Wojniłowicz"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-28 01:36+0000\n"
-"PO-Revision-Date: 2024-02-09 16:55+0300\n"
+"POT-Creation-Date: 2024-02-29 01:38+0000\n"
+"PO-Revision-Date: 2024-02-28 11:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -197,7 +197,7 @@ msgstr "Ad:"
 #: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgid "Name, as in 'A note'"
-msgstr "Ad, 'Bir not'taki gibi"
+msgstr "Ad, ‘Bir not’taki gibi"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -415,7 +415,7 @@ msgstr "Bir daha gösterme"
 #: contents/ui/dialogs/WarningDialog.qml:29
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr "Bu, PDF'nin sonuna doğru görsel kalıntılara neden olabilir."
+msgstr "Bu, PDF’nin sonuna doğru görsel kalıntılara neden olabilir."
 
 #: contents/ui/main.qml:18
 #, kde-format
@@ -429,12 +429,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:74
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Akıllı Notlar'a Hoş Geldiniz!"
+msgstr "Akıllı Notlar’a hoş geldiniz!"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:84
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
@@ -527,43 +527,43 @@ msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Metin rengi:"
 
-#: contents/ui/settings/DisplayPreview.qml:58
+#: contents/ui/settings/DisplayPreview.qml:56
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Başlık rengi:"
 
-#: contents/ui/settings/DisplayPreview.qml:70
+#: contents/ui/settings/DisplayPreview.qml:66
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Bağlantı rengi:"
 
-#: contents/ui/settings/DisplayPreview.qml:81
+#: contents/ui/settings/DisplayPreview.qml:75
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Ziyaret edilen bağlantı rengi:"
 
-#: contents/ui/settings/DisplayPreview.qml:94
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Kod rengi:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:96
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Vurgu rengi:"
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:106
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Genel yazıtipi:"
 
-#: contents/ui/settings/DisplayPreview.qml:129
+#: contents/ui/settings/DisplayPreview.qml:117
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -609,9 +609,7 @@ msgid "New Note name:"
 msgstr "Yeni not adı:"
 
 #: contents/ui/settings/GeneralTab.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Düzenleyici"
@@ -620,13 +618,13 @@ msgstr "Düzenleyici"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Sekmeler için boşluk kullan"
 
 #: contents/ui/settings/GeneralTab.qml:169
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "Boşluk sayısı"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -658,7 +656,7 @@ msgstr "Tavsiye: Etkinleştirdikten sonra uygulamayı yeniden başlatın."
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr "PlantUML'yi etkinleştir"
+msgstr "PlantUML’yi etkinleştir"
 
 #: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
@@ -795,7 +793,7 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
-"Emoji iletişim kutusu, metnin içindeki gerçek emoji yerine 'tez emoji' "
+"Emoji iletişim kutusu, metnin içindeki gerçek emoji yerine ‘tez emoji’ "
 "sözdizimi ekler."
 
 #: contents/ui/settings/TabBar.qml:13
@@ -836,30 +834,30 @@ msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Yeni Bir Not Oluştur"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:48
+#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
-#: contents/ui/sideBar/ContextMenu.qml:20
+#: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
 msgstr "Yeni Kategori"
 
-#: contents/ui/sideBar/ContextMenu.qml:30
+#: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
 msgstr "Yeni Grup"
 
-#: contents/ui/sideBar/ContextMenu.qml:39
+#: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
 msgstr "Yeni Not"
 
-#: contents/ui/sideBar/ContextMenu.qml:57
+#: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Delete"
 msgstr "Sil"
@@ -1093,7 +1091,7 @@ msgstr "Kod bloku"
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr "Örnek metin..."
+msgstr "Örnek metin…"
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
@@ -1115,7 +1113,7 @@ msgstr "Görev listesi"
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr "KDE'yi tanıt"
+msgstr "KDE’yi tanıt"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
@@ -1198,7 +1196,7 @@ msgid "Missing notes"
 msgstr "Eksik notlar"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:176
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1470,35 +1468,35 @@ msgstr "Kategori oluşturulmaya çalışılırken bir hata oluştu."
 msgid "An error occurred while trying to create the storage."
 msgstr "Depolama oluşturulmaya çalışılırken bir hata oluştu."
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "Akıllı Notlar"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Application Description"
 msgstr "Uygulama Açıklaması"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022–2023"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Emir SARI"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
