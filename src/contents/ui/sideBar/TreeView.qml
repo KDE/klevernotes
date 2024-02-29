@@ -30,6 +30,7 @@ Controls.ScrollView {
     ListView {
         id: treeView
 
+        clip: true
         model: KDescendantsProxyModel {
             id: descendantsModel
         } 
