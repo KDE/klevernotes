@@ -60,7 +60,14 @@ KirigamiComponents.SearchPopupField {
                 }
             }
 
+            Keys.onReturnPressed: {
+                enterSelected()
+            }
             onClicked: {
+                enterSelected()
+            }
+
+            function enterSelected() {
                 const searchModelIndex = searchFilterProxyModel.mapToSource(searchFilterProxyModel.index(index,0))
 
                 const descendantsModelIndex = descendants.mapToSource(descendants.index(searchModelIndex.row, 0))
