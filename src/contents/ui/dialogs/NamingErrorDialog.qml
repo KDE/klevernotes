@@ -10,7 +10,7 @@ Kirigami.PromptDialog {
     readonly property var useCaseTrad: {
         "category": i18nc("Name, as in 'A note category'", "category"),
         "group": i18nc("Name, as in 'A note group'", "group"),
-        "note": i18n("Name, as in 'A note'", "note")
+        "note": i18nc("Name, as in 'A note'", "note")
     }
 
     property string error
