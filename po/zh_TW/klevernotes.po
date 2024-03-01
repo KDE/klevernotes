@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-29 01:38+0000\n"
+"POT-Creation-Date: 2024-03-01 02:01+0000\n"
 "PO-Revision-Date: 2024-02-29 03:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -437,25 +437,25 @@ msgstr "歡迎來到 KleverNotes 筆記！"
 msgid "Create or select a note to start working !"
 msgstr "建立或選取一個筆記來開始工作吧！"
 
-#: contents/ui/pages/PaintingPage.qml:28
+#: contents/ui/pages/PaintingPage.qml:29
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "繪製！"
 
-#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "儲存"
 
-#: contents/ui/pages/PaintingPage.qml:40
+#: contents/ui/pages/PaintingPage.qml:41
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "清除"
 
-#: contents/ui/pages/PaintingPage.qml:50
+#: contents/ui/pages/PaintingPage.qml:51
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -807,28 +807,43 @@ msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
 msgstr "外掛程式"
 
-#: contents/ui/sideBar/ActionBar.qml:49
+#: contents/ui/sideBar/ActionBar.qml:50
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "建立新分類"
 
-#: contents/ui/sideBar/ActionBar.qml:57
+#: contents/ui/sideBar/ActionBar.qml:58
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "建立新群組"
 
-#: contents/ui/sideBar/ActionBar.qml:65
+#: contents/ui/sideBar/ActionBar.qml:66
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "建立新筆記"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
+#: contents/ui/sideBar/ActionBar.qml:74 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "重新命名"
+
+#: contents/ui/sideBar/ActionBar.qml:87
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: contents/ui/sideBar/ActionBar.qml:104
+#, kde-format
+msgid "Collapse sidebar"
+msgstr ""
+
+#: contents/ui/sideBar/ActionBar.qml:105
+#, kde-format
+msgid "Expend sidebar"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -863,17 +878,24 @@ msgstr "從："
 msgid "No search results"
 msgstr "沒有搜尋結果"
 
-#: contents/ui/sideBar/Sidebar.qml:100
+#: contents/ui/sideBar/Sidebar.qml:84
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "New note"
+msgid "Show notes"
+msgstr "新增筆記"
+
+#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
 #, kde-format
 msgid "Cheat sheet"
 msgstr "小抄"
 
-#: contents/ui/sideBar/Sidebar.qml:112
+#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:212
 #, kde-format
 msgid "Settings"
 msgstr "設定"
 
-#: contents/ui/sideBar/Sidebar.qml:123
+#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:223
 #, kde-format
 msgid "About KleverNotes"
 msgstr "關於 KleverNotes 筆記"
@@ -1314,11 +1336,11 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "連結筆記"
 
-#: contents/ui/textEditor/TextToolBar.qml:324
-#: contents/ui/textEditor/TextToolBar.qml:325
-#: contents/ui/textEditor/TextToolBar.qml:326
+#: contents/ui/textEditor/TextToolBar.qml:327
 #: contents/ui/textEditor/TextToolBar.qml:328
 #: contents/ui/textEditor/TextToolBar.qml:329
+#: contents/ui/textEditor/TextToolBar.qml:331
+#: contents/ui/textEditor/TextToolBar.qml:332
 #, kde-format
 msgid "Header"
 msgstr "標頭"

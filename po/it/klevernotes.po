@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-29 01:38+0000\n"
-"PO-Revision-Date: 2024-02-09 11:55+0100\n"
+"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"PO-Revision-Date: 2024-02-28 15:52+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -438,25 +438,25 @@ msgstr "Benvenuto in KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Crea o seleziona una nota per iniziare a lavorare!"
 
-#: contents/ui/pages/PaintingPage.qml:28
+#: contents/ui/pages/PaintingPage.qml:29
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Disegna!"
 
-#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Salva"
 
-#: contents/ui/pages/PaintingPage.qml:40
+#: contents/ui/pages/PaintingPage.qml:41
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Pulisci"
 
-#: contents/ui/pages/PaintingPage.qml:50
+#: contents/ui/pages/PaintingPage.qml:51
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -607,9 +607,7 @@ msgid "New Note name:"
 msgstr "Nome della nuova nota:"
 
 #: contents/ui/settings/GeneralTab.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Editor"
@@ -618,13 +616,13 @@ msgstr "Editor"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Usa gli spazi come tabulazione"
 
 #: contents/ui/settings/GeneralTab.qml:169
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "Numero di spazi"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -816,28 +814,43 @@ msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
 msgstr "Estensioni"
 
-#: contents/ui/sideBar/ActionBar.qml:49
+#: contents/ui/sideBar/ActionBar.qml:50
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Crea una nuova categoria"
 
-#: contents/ui/sideBar/ActionBar.qml:57
+#: contents/ui/sideBar/ActionBar.qml:58
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Crea un nuovo gruppo"
 
-#: contents/ui/sideBar/ActionBar.qml:65
+#: contents/ui/sideBar/ActionBar.qml:66
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Crea una nuova nota"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
+#: contents/ui/sideBar/ActionBar.qml:74 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "Rinomina"
+
+#: contents/ui/sideBar/ActionBar.qml:87
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: contents/ui/sideBar/ActionBar.qml:104
+#, kde-format
+msgid "Collapse sidebar"
+msgstr ""
+
+#: contents/ui/sideBar/ActionBar.qml:105
+#, kde-format
+msgid "Expend sidebar"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -872,17 +885,24 @@ msgstr "From: "
 msgid "No search results"
 msgstr "Nessun risultato trovato"
 
-#: contents/ui/sideBar/Sidebar.qml:100
+#: contents/ui/sideBar/Sidebar.qml:84
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "New note"
+msgid "Show notes"
+msgstr "Nuova nota"
+
+#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
 #, kde-format
 msgid "Cheat sheet"
 msgstr "Prontuario"
 
-#: contents/ui/sideBar/Sidebar.qml:112
+#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:212
 #, kde-format
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: contents/ui/sideBar/Sidebar.qml:123
+#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:223
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Informazioni su KleverNotes"
@@ -1323,11 +1343,11 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "Nota collegata"
 
-#: contents/ui/textEditor/TextToolBar.qml:324
-#: contents/ui/textEditor/TextToolBar.qml:325
-#: contents/ui/textEditor/TextToolBar.qml:326
+#: contents/ui/textEditor/TextToolBar.qml:327
 #: contents/ui/textEditor/TextToolBar.qml:328
 #: contents/ui/textEditor/TextToolBar.qml:329
+#: contents/ui/textEditor/TextToolBar.qml:331
+#: contents/ui/textEditor/TextToolBar.qml:332
 #, kde-format
 msgid "Header"
 msgstr "Intestazione"

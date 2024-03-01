@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-29 01:38+0000\n"
+"POT-Creation-Date: 2024-03-01 02:01+0000\n"
 "PO-Revision-Date: 2023-06-13 17:27+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -490,28 +490,28 @@ msgstr "Bem-vindo ao KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Crie ou seleccione uma nota para começar a trabalhar !"
 
-#: contents/ui/pages/PaintingPage.qml:28
+#: contents/ui/pages/PaintingPage.qml:29
 #, fuzzy, kde-format
 #| msgid "Paint!"
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Pinte!"
 
-#: contents/ui/pages/PaintingPage.qml:32 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
 #, fuzzy, kde-format
 #| msgid "Save"
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Gravar"
 
-#: contents/ui/pages/PaintingPage.qml:40
+#: contents/ui/pages/PaintingPage.qml:41
 #, fuzzy, kde-format
 #| msgid "Clear"
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Limpar"
 
-#: contents/ui/pages/PaintingPage.qml:50
+#: contents/ui/pages/PaintingPage.qml:51
 #, fuzzy, kde-format
 #| msgid "Auto crop"
 msgctxt "@label:action"
@@ -880,31 +880,46 @@ msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
 msgstr ""
 
-#: contents/ui/sideBar/ActionBar.qml:49
+#: contents/ui/sideBar/ActionBar.qml:50
 #, fuzzy, kde-format
 #| msgid "Create a new category"
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Cria uma nova categoria"
 
-#: contents/ui/sideBar/ActionBar.qml:57
+#: contents/ui/sideBar/ActionBar.qml:58
 #, fuzzy, kde-format
 #| msgid "Create a new group"
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Criar um novo grupo"
 
-#: contents/ui/sideBar/ActionBar.qml:65
+#: contents/ui/sideBar/ActionBar.qml:66
 #, fuzzy, kde-format
 #| msgid "Create a new note"
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Criar uma nova nota"
 
-#: contents/ui/sideBar/ActionBar.qml:73 contents/ui/sideBar/ContextMenu.qml:46
+#: contents/ui/sideBar/ActionBar.qml:74 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "Mudar o Nome"
+
+#: contents/ui/sideBar/ActionBar.qml:87
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: contents/ui/sideBar/ActionBar.qml:104
+#, kde-format
+msgid "Collapse sidebar"
+msgstr ""
+
+#: contents/ui/sideBar/ActionBar.qml:105
+#, kde-format
+msgid "Expend sidebar"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, fuzzy, kde-format
@@ -942,17 +957,23 @@ msgstr "De : "
 msgid "No search results"
 msgstr "Pesquisa sem resultados"
 
-#: contents/ui/sideBar/Sidebar.qml:100
+#: contents/ui/sideBar/Sidebar.qml:84
+#, fuzzy, kde-format
+#| msgid "New note"
+msgid "Show notes"
+msgstr "Nova nota"
+
+#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
 #, kde-format
 msgid "Cheat sheet"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:112
+#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:212
 #, kde-format
 msgid "Settings"
 msgstr "Configuração"
 
-#: contents/ui/sideBar/Sidebar.qml:123
+#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:223
 #, fuzzy, kde-format
 #| msgid "About Klever"
 msgid "About KleverNotes"
@@ -1414,11 +1435,11 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "nota"
 
-#: contents/ui/textEditor/TextToolBar.qml:324
-#: contents/ui/textEditor/TextToolBar.qml:325
-#: contents/ui/textEditor/TextToolBar.qml:326
+#: contents/ui/textEditor/TextToolBar.qml:327
 #: contents/ui/textEditor/TextToolBar.qml:328
 #: contents/ui/textEditor/TextToolBar.qml:329
+#: contents/ui/textEditor/TextToolBar.qml:331
+#: contents/ui/textEditor/TextToolBar.qml:332
 #, kde-format
 msgid "Header"
 msgstr "Cabeçalho"
