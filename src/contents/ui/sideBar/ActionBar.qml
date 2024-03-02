@@ -97,7 +97,7 @@ ToolBar {
 
         ToolButton {
             action: closeAction
-            visible: !barLayout.searching && !Kirigami.Settings.isMobile
+            visible: !Kirigami.Settings.isMobile
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered
             ToolTip.text: (mainToolBar.sideBarWide 
@@ -107,23 +107,32 @@ ToolBar {
             Layout.fillWidth: !mainToolBar.sideBarWide
         }
 
-        SearchBar {
-            id: searchBar
+    }
 
-            visible: barLayout.searching && mainToolBar.sideBarWide
-            listModel: treeView.model
+    SearchBar {
+        id: searchBar
 
-            Layout.fillWidth: true
+        visible: barLayout.searching && mainToolBar.sideBarWide
+        listModel: treeView.model
 
-            popup.onClosed: {
-                barLayout.searching = false
-                text = ""
-            }
-            onClickedIndexChanged: if (clickedIndex) {
-                applicationWindow().globalDrawer.askForFocus(clickedIndex)
-                searchBar.popup.close()
-                return;
-            }
+        width: drawer.isWide 
+            ? drawer.largeWidth - Kirigami.Units.smallSpacing 
+            : drawer.largeWidth * 2
+        x: drawer.isWide 
+            ? 0 
+            : Math.round((applicationWindow().width - width + drawer.narrowWidth) / 2) // Center it in the main page
+        y: drawer.isWide 
+            ? 0 
+            : Math.round((applicationWindow().height - height) / 4) // "Center" it vertically (not pure center but looks nice)
+
+        popup.onClosed: {
+            barLayout.searching = false
+            text = ""
+        }
+        onClickedIndexChanged: if (clickedIndex) {
+            applicationWindow().globalDrawer.askForFocus(clickedIndex)
+            searchBar.popup.close()
+            return;
         }
     }
 
