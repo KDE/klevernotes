@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QIcon>
 #include <klocalizedstring.h>
+#include <qabstractitemmodel.h>
 
 TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -398,7 +399,7 @@ QVariant NoteTreeModel::data(const QModelIndex &index, int role) const
     return item->data(role);
 }
 
-void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, const int rowLevel, const QModelIndex &parentModelIndex)
+QModelIndex NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, const int rowLevel, const QModelIndex &parentModelIndex)
 {
     const auto parentRow = !parentModelIndex.isValid() ? m_rootItem.get() : static_cast<TreeItem *>(parentModelIndex.internalPointer());
 
@@ -418,14 +419,19 @@ void NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, co
             rowCreated = false;
             break;
     }
-    if (!rowCreated) return;
+    if (!rowCreated)
+            return QModelIndex();
 
     const QString rowPath = parentPath + QLatin1Char('/') + rowName;
     auto newRow = std::make_unique<TreeItem>(rowPath, rowLevel, this, parentRow);
 
-    beginInsertRows(parentModelIndex, parentRow->childCount(), parentRow->childCount());
+    const int childCount = parentRow->childCount();
+    beginInsertRows(parentModelIndex, childCount, childCount);
     parentRow->appendChild(std::move(newRow));
     endInsertRows();
+
+    QModelIndex currentModelIndex = createIndex(childCount, 0, parentRow->child(childCount));
+    return currentModelIndex;
 }
 
 void NoteTreeModel::removeFromTree(const QModelIndex &index)

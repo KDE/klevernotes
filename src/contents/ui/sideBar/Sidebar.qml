@@ -297,6 +297,8 @@ Kirigami.OverlayDrawer {
             currentModelIndex = nextModelIndex
         }
 
+        if (parentRowsList.length === 0) return;
+
         const firstModelIndex = parentRowsList[parentRowsList.length - 1]
 
         firstModelIndex.model.askForExpand(firstModelIndex)

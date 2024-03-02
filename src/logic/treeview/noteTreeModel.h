@@ -68,7 +68,7 @@ public:
     int rowCount(const QModelIndex &parent = {}) const override;
     int columnCount(const QModelIndex &parent = {}) const override;
     QHash<int, QByteArray> roleNames() const override;
-    Q_INVOKABLE void addRow(const QString &rowName, const QString &path, const int rowLevel, const QModelIndex &parentModelIndex = QModelIndex());
+    Q_INVOKABLE QModelIndex addRow(const QString &rowName, const QString &path, const int rowLevel, const QModelIndex &parentModelIndex = QModelIndex());
     Q_INVOKABLE void removeFromTree(const QModelIndex &index);
     Q_INVOKABLE void rename(const QModelIndex &rowModelIndex, const QString &newName);
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);

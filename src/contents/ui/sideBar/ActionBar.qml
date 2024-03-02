@@ -130,7 +130,7 @@ ToolBar {
             text = ""
         }
         onClickedIndexChanged: if (clickedIndex) {
-            applicationWindow().globalDrawer.askForFocus(clickedIndex)
+            askForFocus(clickedIndex)
             searchBar.popup.close()
             return;
         }
@@ -217,10 +217,10 @@ ToolBar {
         icon.name: "document-new-symbolic"
 
         onNameChanged: if (isActive) {
-            treeView.model.addRow(name, groupPath, 3, parentModelIndex)
+            const newModelIndex = treeView.model.addRow(name, groupPath, 3, parentModelIndex)
             isActive = false
             name = ""
-            useCurrentItem()
+            askForFocus(newModelIndex)
         }
         onTriggered: {
             isActive = true
@@ -311,5 +311,9 @@ ToolBar {
     function useCurrentItem() {
         const currentModelIndex = treeView.getModelIndex(treeView.currentIndex)
         setClickedItemInfo(treeView.currentItem, currentModelIndex)
+    }
+
+    function askForFocus(itemModelIndex) {
+        applicationWindow().globalDrawer.askForFocus(itemModelIndex)
     }
 }
