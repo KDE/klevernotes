@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2024-02-11 00:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -38,6 +38,7 @@ msgid "group"
 msgstr "그룹"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -192,11 +193,6 @@ msgstr "이름 선택"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "이름:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "이름, '메모'와 같은 형식"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -882,7 +878,7 @@ msgstr "삭제"
 msgid "From : "
 msgstr "검색 위치: "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "검색 결과 없음"
@@ -1521,6 +1517,9 @@ msgstr "박신조"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "이름, '메모'와 같은 형식"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"

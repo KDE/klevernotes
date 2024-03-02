@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2023-04-28 09:19-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -35,6 +35,7 @@ msgid "group"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -186,11 +187,6 @@ msgstr ""
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr ""
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
 msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
@@ -857,7 +853,7 @@ msgstr ""
 msgid "From : "
 msgstr ""
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr ""

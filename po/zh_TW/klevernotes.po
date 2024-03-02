@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2024-02-29 03:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -38,6 +38,7 @@ msgid "group"
 msgstr "群組"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -193,11 +194,6 @@ msgstr "選擇名稱"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "名稱："
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "名稱，像是「一個筆記」"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -873,7 +869,7 @@ msgstr "刪除"
 msgid "From : "
 msgstr "從："
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "沒有搜尋結果"
@@ -1512,6 +1508,9 @@ msgstr "Kisaragi Hiu"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mail@kisaragi-hiu.com"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "名稱，像是「一個筆記」"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"

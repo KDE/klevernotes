@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2024-02-16 10:08+0100\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -38,6 +38,7 @@ msgid "group"
 msgstr "skupina"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -190,11 +191,6 @@ msgstr "Vyberte název"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Název:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -860,7 +856,7 @@ msgstr "Smazat"
 msgid "From : "
 msgstr "Od : "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "Žádné výsledky hledání"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
-"PO-Revision-Date: 2024-02-28 08:36+0200\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
+"PO-Revision-Date: 2024-03-01 20:10+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -39,6 +39,7 @@ msgid "group"
 msgstr "група"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -194,11 +195,6 @@ msgstr "Виберіть назву"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Назва:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "Назва, як «Нотатка»"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -841,17 +837,17 @@ msgstr "Перейменувати"
 #: contents/ui/sideBar/ActionBar.qml:87
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Пошук"
 
 #: contents/ui/sideBar/ActionBar.qml:104
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Згорнути бічну панель"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Expend sidebar"
-msgstr ""
+msgstr "Розгорнути бічну панель"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -881,17 +877,15 @@ msgstr "Вилучити"
 msgid "From : "
 msgstr "З : "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "Нічого не знайдено"
 
 #: contents/ui/sideBar/Sidebar.qml:84
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
-msgstr "Нова нотатка"
+msgstr "Показати нотатки"
 
 #: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
 #, kde-format
@@ -1520,6 +1514,9 @@ msgstr "Юрій Чорноіван"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@ukr.net"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "Назва, як «Нотатка»"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"

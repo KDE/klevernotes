@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2024-02-29 03:09+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -39,6 +39,7 @@ msgid "group"
 msgstr "ჯგუფი"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -194,11 +195,6 @@ msgstr "აირჩიეთ სახელი"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "სახელი:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "სახელი, როგორც 'შენიშვნაშია'"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -883,7 +879,7 @@ msgstr "წაშლა"
 msgid "From : "
 msgstr "ვისგან : "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "ძებნის შედეგების გარეშე"
@@ -1523,6 +1519,9 @@ msgstr "Temuri Doghonadze"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "სახელი, როგორც 'შენიშვნაშია'"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"

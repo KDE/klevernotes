@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
-"PO-Revision-Date: 2024-02-28 05:48+0100\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
+"PO-Revision-Date: 2024-03-01 07:23+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -39,6 +39,7 @@ msgid "group"
 msgstr "skupina"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -193,11 +194,6 @@ msgstr "Izberite ime"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Ime:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "Ime, kot v »Zabeležka«"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -838,17 +834,17 @@ msgstr "Preimenuj"
 #: contents/ui/sideBar/ActionBar.qml:87
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Išči"
 
 #: contents/ui/sideBar/ActionBar.qml:104
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Strni stransko letvico"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Expend sidebar"
-msgstr ""
+msgstr "Razširi stransko letvico"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -878,17 +874,15 @@ msgstr "Izbriši"
 msgid "From : "
 msgstr "Od: "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "Ni zadetkov iskanja"
 
 #: contents/ui/sideBar/Sidebar.qml:84
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
-msgstr "Nova zabeležka"
+msgstr "Prikaži zabeležke"
 
 #: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
 #, kde-format
@@ -1517,6 +1511,9 @@ msgstr "Matjaž Jeran, Martin Srebotnjak"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net, miles@filmsi.net"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "Ime, kot v »Zabeležka«"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"

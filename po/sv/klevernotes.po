@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2023-12-29 08:10+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -38,6 +38,7 @@ msgid "group"
 msgstr "grupp"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -197,11 +198,6 @@ msgstr "Välj ett namn"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Namn:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "Namn, som 'En anteckning'"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -887,7 +883,7 @@ msgstr "Ta bort"
 msgid "From : "
 msgstr "Från: "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "Inga sökresultat"
@@ -1530,6 +1526,9 @@ msgstr "Stefan Asserhäll"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@bredband.net"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "Namn, som 'En anteckning'"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"

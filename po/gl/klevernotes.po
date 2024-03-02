@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:01+0000\n"
+"POT-Creation-Date: 2024-03-02 01:37+0000\n"
 "PO-Revision-Date: 2024-02-28 15:51+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -38,6 +38,7 @@ msgid "group"
 msgstr "grupo"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
 msgid "note"
@@ -192,11 +193,6 @@ msgstr "Escolla un nome"
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Nome:"
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgid "Name, as in 'A note'"
-msgstr "Nome, como «Unha nota»"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -875,7 +871,7 @@ msgstr "Eliminar"
 msgid "From : "
 msgstr "De: "
 
-#: contents/ui/sideBar/SearchBar.qml:75
+#: contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "No search results"
 msgstr "A busca non ten resultados."
@@ -1515,6 +1511,9 @@ msgstr "Adrian Chaves (Gallaecio)"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adrian@chaves.io"
+
+#~ msgid "Name, as in 'A note'"
+#~ msgstr "Nome, como «Unha nota»"
 
 #~ msgctxt ""
 #~ "@title, display as in 'the note display' where you can visualize the note"
