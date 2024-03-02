@@ -103,7 +103,7 @@ ToolBar {
             ToolTip.text: (mainToolBar.sideBarWide 
                 ? i18n("Collapse sidebar")
                 : i18n("Expend sidebar")
-            )// + " (" + closeAction.shortcut + ")"
+            ) + " (" + closeAction.shortcut + ")"
             Layout.fillWidth: !mainToolBar.sideBarWide
         }
 
@@ -283,7 +283,7 @@ ToolBar {
    Kirigami.Action{
         id: closeAction
 
-        // shortcut: ""
+        shortcut: "Ctrl+Shift+1"
         icon.name: mainToolBar.sideBarWide 
             ? "sidebar-collapse-left-symbolic"
             : "sidebar-expand-symbolic"
