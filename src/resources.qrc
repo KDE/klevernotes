@@ -14,6 +14,7 @@
         <file>contents/ui/dialogs/LeavePaintingDialog.qml</file>
         <file>contents/ui/dialogs/LinkDialog.qml</file>
         <file>contents/ui/dialogs/LinkNoteDialog.qml</file>
+        <file>contents/ui/dialogs/MoveDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>

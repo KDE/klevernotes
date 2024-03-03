@@ -13,8 +13,12 @@ KirigamiComponents.SearchPopupField {
     id: root
 
     required property var listModel
+    required property bool noteOnly
 
     property var clickedIndex
+    property bool textSelected: false
+    property string selectedText: ""
+    property string selectedUseCase: ""
 
     spaceAvailableLeft: false
     spaceAvailableRight: false
@@ -25,11 +29,17 @@ KirigamiComponents.SearchPopupField {
         KSortFilterProxyModel {
             id: searchFilterProxyModel
 
-            sourceModel: KDescendantsProxyModel {
-                id: descendants
-                model: root.listModel
+            sourceModel: KSortFilterProxyModel {
+                id: noteFilterProxyModel
+                sourceModel: KDescendantsProxyModel {
+                    id: descendants
+                    model: root.listModel
+                }
+                filterRoleName: "branchName"
+                filterCaseSensitivity: Qt.CaseInsensitive
+                filterString: noteOnly ? "" : "Not a note"
             }
-            filterRoleName: "noteName"
+            filterRoleName: noteOnly ? "noteName" : "displayName"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 
@@ -47,12 +57,23 @@ KirigamiComponents.SearchPopupField {
 
             contentItem: ColumnLayout {
                 Controls.Label {
-                    text: i18n("From : ")+model.branchName
+                    id: useCaseLabel
+                    readonly property var useCaseTrad: {
+                        "Category": i18nc("Name, as in 'A note category'", "Category"),
+                        "Group": i18nc("Name, as in 'A note group'", "Group"),
+                    }
+
+                    text: root.noteOnly
+                        ? i18n("From : ") + model.branchName
+                        : useCaseTrad[model.useCase]
+
                     font: Kirigami.Theme.smallFont
                     elide: Text.ElideRight
                     Layout.fillWidth: true
                 }
                 Controls.Label {
+                    id: nameLabel
+
                     text: model.displayName
                     wrapMode: Text.WordWrap
                     font.bold: true
@@ -72,6 +93,12 @@ KirigamiComponents.SearchPopupField {
 
                 const descendantsModelIndex = descendants.mapToSource(descendants.index(searchModelIndex.row, 0))
                 root.clickedIndex = descendantsModelIndex
+                
+                if (!noteOnly) {
+                    root.selectedText = nameLabel.text
+                    root.selectedUseCase = useCaseLabel.text
+                    root.text = selectedUseCase + ": " + selectedText
+                }
             }
         }
 
@@ -85,7 +112,23 @@ KirigamiComponents.SearchPopupField {
         }
     }
 
-    onTextChanged: {
+    onFieldFocusChanged: if (fieldFocus && selectedText.length !== 0) {
+        root.text = selectedText
         searchFilterProxyModel.setFilterFixedString(text)
     }
+    // Doesn't triggered when changing text to selected item
+    // see: https://doc.qt.io/qt-6/qml-qtquick-textinput.html#textEdited-signal
+    searchField.onTextEdited: {
+        searchFilterProxyModel.setFilterFixedString(text)
+        selectedText = ""
+        selectedUseCase = ""
+        clickedIndex = null
+    }
+    // true only when we clear the search field
+    onTextChanged: if (text.length === 0) {
+        selectedText = ""
+        selectedUseCase = ""
+        clickedIndex = null
+    }
+    onClickedIndexChanged: console.log(clickedIndex)
 }
