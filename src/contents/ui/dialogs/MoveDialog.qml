@@ -33,7 +33,7 @@ Kirigami.PromptDialog {
     ColumnLayout {
         Kirigami.Heading {
             text: i18nc("@subtitle:dialog, %1 can be 'group' (a note group) or 'note' (a note)",
-                "Where do you want to move this %1 ?", useCaseTrad[useCase.toLowerCase()])
+                "Where do you want to move this %1 ?", useCase ? useCaseTrad[useCase.toLowerCase()] : "")
             level: 4
 
             wrapMode: Text.WordWrap
@@ -44,17 +44,11 @@ Kirigami.PromptDialog {
         SearchBar {
             id: searchBar
 
-            // visible: barLayout.searching && mainToolBar.sideBarWide
             listModel: textPromptDialog.treeView
             noteOnly: false
             Layout.fillWidth: true
 
-            popup.onClosed: {
-                // barLayout.searching = false
-                // text = ""
-            }
             onClickedIndexChanged: if (clickedIndex) {
-                // askForFocus(clickedIndex)
                 searchBar.popup.close()
                 return;
             }
