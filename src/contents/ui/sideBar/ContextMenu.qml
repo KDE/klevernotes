@@ -51,6 +51,16 @@ Controls.Menu {
     }
 
     Controls.MenuItem {
+        icon.name: "edit-move-symbolic"
+        text: i18n("Move")
+        visible: actionBar.currentClickedItem.useCase !== "Category"
+
+        onTriggered: if (visible) { // A bit useless right now, but might be handy if we had a shortcut
+            moveDialog.open()
+        }
+    }
+
+    Controls.MenuItem {
         icon.name: "user-trash-symbolic"
         text: i18n("Delete")
 
@@ -69,6 +79,18 @@ Controls.Menu {
         }
         onClosed: {
             actionBar.useCurrentItem()
+        }
+    }
+
+    MoveDialog {
+        id: moveDialog
+
+        treeView: contextMenu.treeView.model
+        useCase: actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
+
+        onApplied: if (clickedIndex && actionBar.currentModelIndex) {
+            contextMenu.treeView.model.moveRow(actionBar.currentModelIndex, clickedIndex)
+            close()
         }
     }
 }

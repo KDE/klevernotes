@@ -30,7 +30,7 @@ Kirigami.PromptDialog {
     onOpened: {
         searchBar.forceActiveFocus()
     }
-    onRejected: {
+    onClosed: {
         searchBar.text = ""
     }
 
