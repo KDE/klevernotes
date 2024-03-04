@@ -24,10 +24,11 @@ public:
     TreeItem *getParentItem() const;
     void setParentItem(TreeItem *parentItem);
     void remove();
-    void changeDisplayName(const QString &name);
-    void changePath(const QString &newPart, const QModelIndex &parentModelIndex, int newPartIdx = -1);
+    void setRealName(const QString &name);
+    void setDisplayName(const QString &name);
     void askForFocus(const QModelIndex &itemIndex);
     void askForExpand(const QModelIndex &itemIndex);
+    int getDepth() const;
 
 private:
     // Position in tree
@@ -37,8 +38,8 @@ private:
     NoteTreeModel *m_model;
 
     // Content
-    QString m_path;
     int m_depth_level;
+    QString m_realName;
     QString m_displayName;
     bool m_wantFocus = false;
     bool m_wantExpand = false;
@@ -53,6 +54,7 @@ public:
 
     enum ExtraRoles {
         PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Category/Group/Note
+        RealNameRole, // To get a string with the real name of the Category/Group/Note
         DisplayNameRole, // To get a string with the name of the Category/Group/Note to be displayed instead of the hidden name
         IconNameRole, // To get a string with the icon name associated with the Category/Group/Note
         UseCaseRole, // To get a string to know if the item is a Category/Group/Note

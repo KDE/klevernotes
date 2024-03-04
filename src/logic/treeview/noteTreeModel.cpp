@@ -11,13 +11,13 @@
 TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
     , m_model(model)
-    , m_path(path)
     , m_depth_level(depth_level)
 {
     const QFileInfo fileInfo(path);
     Q_ASSERT(fileInfo.exists());
 
     const QString fileName = fileInfo.fileName();
+    m_realName = fileName;
     m_displayName = fileName == QStringLiteral(".BaseCategory") ? KleverConfig::categoryDisplayName() : fileName;
 
     if (depth_level < 3) {
@@ -55,7 +55,7 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
     if (item->m_depth_level == 3 && m_model->noteMapEnabled()) {
         // very important to make a copy here !
-        const QString path = QString(item->m_path).remove(KleverConfig::storagePath());
+        const QString path = item->data(NoteTreeModel::PathRole).toString().remove(KleverConfig::storagePath());
         if (m_model->isInit()) {
             Q_EMIT m_model->newGlobalPathFound(path);
         } else {
@@ -112,8 +112,23 @@ int TreeItem::row() const
 QVariant TreeItem::data(int role) const
 {
     switch (role) {
-    case NoteTreeModel::PathRole:
-        return m_path;
+    case NoteTreeModel::PathRole: {
+        static const QChar slash = QLatin1Char('/');
+        QString path;
+        if (m_depth_level == 1) {
+            path = KleverConfig::storagePath() + slash + m_realName;
+        } else {
+            path = m_parentItem->data(NoteTreeModel::PathRole).toString() + slash;
+            if (m_depth_level == 3 && m_parentItem->getDepth() == 1) {
+                path += QStringLiteral(".BaseGroup") + slash;
+            }
+            path.append(m_realName);
+        }
+        return path;
+    }
+
+    case NoteTreeModel::RealNameRole:
+        return m_realName;
 
     case Qt::DisplayRole:
     case NoteTreeModel::DisplayNameRole:
@@ -153,7 +168,7 @@ QVariant TreeItem::data(int role) const
 
     case NoteTreeModel::BranchNameRole:
         if (m_depth_level != 3)
-            return QLatin1String();
+            return QStringLiteral(".Not a note"); // No note can start with a '.'
         else { //The switch statement is not happy without this else...
             const QString parentName = m_parentItem->data(NoteTreeModel::DisplayNameRole).toString();
             if (m_parentItem->data(NoteTreeModel::UseCaseRole).toString() != QStringLiteral("Group")) {
@@ -190,12 +205,17 @@ void TreeItem::setParentItem(TreeItem *parentItem)
     m_parentItem = parentItem;
 }
 
+int TreeItem::getDepth() const
+{
+    return m_depth_level;
+}
+
 void TreeItem::remove()
 {
     Q_ASSERT(m_parentItem);
 
     if (m_model->noteMapEnabled())
-        Q_EMIT m_model->globalPathRemoved(m_path);
+        Q_EMIT m_model->globalPathRemoved(data(NoteTreeModel::PathRole).toString());
 
     const auto it = std::find_if(m_parentItem->m_childItems.cbegin(), m_parentItem->m_childItems.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
         return treeItem.get() == const_cast<TreeItem *>(this);
@@ -203,40 +223,14 @@ void TreeItem::remove()
     m_parentItem->m_childItems.erase(it);
 }
 
-void TreeItem::changePath(const QString &newPart, const QModelIndex &parentModelIndex, int newPartIdx)
-{
-    QStringList currentPathParts = m_path.split(QStringLiteral("/"));
-    if (currentPathParts.last() == QStringLiteral(".BaseCategory"))
-        return;
-
-    if (newPartIdx == -1)
-        newPartIdx = currentPathParts.size() - 1;
-    currentPathParts[newPartIdx] = newPart;
-
-    QString newPath = currentPathParts.join(QStringLiteral("/"));
-    if (m_depth_level == 3 && m_model->noteMapEnabled()) {
-        Q_EMIT m_model->globalPathUpdated(m_path, newPath);
-    }
-    m_path = newPath;
-
-    // By default we assume that we are in the first call
-    // So the parentModelIndex is actually the model index of this object
-    QModelIndex thisModelIndex = parentModelIndex;
-
-    // We have the parent model index and not the model index of this object
-    if (static_cast<TreeItem *>(parentModelIndex.internalPointer()) != this) {
-        thisModelIndex = m_model->index(this->row(), 0, thisModelIndex);
-    }
-    Q_EMIT m_model->dataChanged(thisModelIndex, thisModelIndex);
-
-    for (const std::unique_ptr<TreeItem> &child : m_childItems) {
-        child->changePath(newPart, thisModelIndex, newPartIdx);
-    }
-}
-
-void TreeItem::changeDisplayName(const QString &name)
+void TreeItem::setDisplayName(const QString &name)
 {
     m_displayName = name;
+}
+
+void TreeItem::setRealName(const QString &name)
+{
+    m_realName = name;
 }
 
 void TreeItem::askForFocus(const QModelIndex &itemIndex)
@@ -318,7 +312,6 @@ void NoteTreeModel::initModel()
     }
 }
 
-
 QModelIndex NoteTreeModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (!hasIndex(row, column, parent)) {
@@ -344,6 +337,7 @@ QHash<int, QByteArray> NoteTreeModel::roleNames() const
 {
     return {
         {DisplayNameRole, "displayName"},
+        {RealNameRole, "realName"},
         {PathRole, "path"},
         {IconNameRole, "iconName"},
         {UseCaseRole, "useCase"},
@@ -448,7 +442,8 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
     auto row = static_cast<TreeItem *>(index.internalPointer());
     const QString rowPath = row->data(PathRole).toString();
 
-    if (row->childCount() > 0) { // Prevent KDescendantsProxyModel from crashing
+    // Prevent KDescendantsProxyModel from crashing
+    if (row->childCount() > 0) {
             row->askForExpand(index);
     }
 
@@ -473,24 +468,28 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
 
     const QString rowPath = row->data(PathRole).toString();
 
-    if (rowPath.endsWith(QStringLiteral(".BaseCategory"))) {
-        KleverConfig::setCategoryDisplayName(newName);
+    const bool isBaseCategory = rowPath.endsWith(QStringLiteral(".BaseCategory"));
+    if (isBaseCategory) {
+            KleverConfig::setCategoryDisplayName(newName);
     } else {
-        QDir dir(rowPath);
-        dir.cdUp();
+            QDir dir(rowPath);
+            dir.cdUp();
 
-        const QString newPath = dir.absolutePath() + QLatin1Char('/') + newName;
+            const QString newPath = dir.absolutePath() + QLatin1Char('/') + newName;
 
-        const bool renamed = QDir().rename(rowPath, newPath);
+            const bool renamed = QDir().rename(rowPath, newPath);
 
-        if (!renamed) {
+            if (!renamed) {
             Q_EMIT errorOccurred(i18n("An error occurred while trying to rename this item."));
             return;
-        }
+            }
     }
 
-    row->changeDisplayName(newName);
-    row->changePath(newName, rowModelIndex);
+    row->setDisplayName(newName);
+    if (!isBaseCategory) {
+            row->setRealName(newName);
+    }
+    Q_EMIT dataChanged(rowModelIndex, rowModelIndex);
 }
 
 void NoteTreeModel::askForFocus(const QModelIndex& rowModelIndex)
