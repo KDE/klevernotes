@@ -114,6 +114,8 @@ ToolBar {
 
         visible: barLayout.searching && mainToolBar.sideBarWide
         listModel: treeView.model
+        inSideBar: true
+        currentUseCase: "note"
 
         width: drawer.isWide 
             ? drawer.largeWidth - Kirigami.Units.smallSpacing 

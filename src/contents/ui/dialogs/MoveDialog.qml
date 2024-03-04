@@ -21,11 +21,15 @@ Kirigami.PromptDialog {
         "group": i18nc("Name, as in 'A note group'", "group"),
         "note": i18nc("Name, as in 'A note'", "note")
     }
+    readonly property var clickedIndex: searchBar.clickedIndex
 
     title: i18nc("@title:dialog, to move a group/note", "Move")
 
     standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
+    onOpened: {
+        searchBar.forceActiveFocus()
+    }
     onRejected: {
         searchBar.text = ""
     }
@@ -45,7 +49,9 @@ Kirigami.PromptDialog {
             id: searchBar
 
             listModel: textPromptDialog.treeView
-            noteOnly: false
+            inSideBar: false
+            currentUseCase: textPromptDialog.useCase
+
             Layout.fillWidth: true
 
             onClickedIndexChanged: if (clickedIndex) {

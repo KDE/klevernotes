@@ -13,7 +13,8 @@ KirigamiComponents.SearchPopupField {
     id: root
 
     required property var listModel
-    required property bool noteOnly
+    required property bool inSideBar
+    required property string currentUseCase
 
     property var clickedIndex
     property bool textSelected: false
@@ -35,11 +36,19 @@ KirigamiComponents.SearchPopupField {
                     id: descendants
                     model: root.listModel
                 }
-                filterRoleName: "branchName"
+                filterRoleName: inSideBar 
+                    ? "useCase" 
+                    : currentUseCase === "Note" 
+                        ? "branchName"
+                        : "useCase"
                 filterCaseSensitivity: Qt.CaseInsensitive
-                filterString: noteOnly ? "" : "Not a note"
+                filterString: inSideBar
+                    ? "note"
+                    : currentUseCase === "Note" 
+                        ? ".Not a note"
+                        : "category"
             }
-            filterRoleName: noteOnly ? "noteName" : "displayName"
+            filterRoleName: inSideBar ? "noteName" : "displayName"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 
@@ -63,7 +72,7 @@ KirigamiComponents.SearchPopupField {
                         "Group": i18nc("Name, as in 'A note group'", "Group"),
                     }
 
-                    text: root.noteOnly
+                    text: root.inSideBar
                         ? i18n("From : ") + model.branchName
                         : useCaseTrad[model.useCase]
 
@@ -90,11 +99,11 @@ KirigamiComponents.SearchPopupField {
 
             function enterSelected() {
                 const searchModelIndex = searchFilterProxyModel.mapToSource(searchFilterProxyModel.index(index,0))
-
-                const descendantsModelIndex = descendants.mapToSource(descendants.index(searchModelIndex.row, 0))
+                const noteFilderModelIndex = noteFilterProxyModel.mapToSource(noteFilterProxyModel.index(searchModelIndex.row, 0))
+                const descendantsModelIndex = descendants.mapToSource(descendants.index(noteFilderModelIndex.row, 0))
                 root.clickedIndex = descendantsModelIndex
                 
-                if (!noteOnly) {
+                if (!inSideBar) {
                     root.selectedText = nameLabel.text
                     root.selectedUseCase = useCaseLabel.text
                     root.text = selectedUseCase + ": " + selectedText
@@ -130,5 +139,4 @@ KirigamiComponents.SearchPopupField {
         selectedUseCase = ""
         clickedIndex = null
     }
-    onClickedIndexChanged: console.log(clickedIndex)
 }

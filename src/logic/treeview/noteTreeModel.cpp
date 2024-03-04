@@ -167,9 +167,9 @@ QVariant TreeItem::data(int role) const
         return data(NoteTreeModel::DisplayNameRole);
 
     case NoteTreeModel::BranchNameRole:
-        if (m_depth_level != 3)
+        if (m_depth_level != 3) {
             return QStringLiteral(".Not a note"); // No note can start with a '.'
-        else { //The switch statement is not happy without this else...
+        } else { // The switch statement is not happy without this else...
             const QString parentName = m_parentItem->data(NoteTreeModel::DisplayNameRole).toString();
             if (m_parentItem->data(NoteTreeModel::UseCaseRole).toString() != QStringLiteral("Group")) {
                 return parentName;
