@@ -53,7 +53,10 @@
   <summary xml:lang="x-test">xxKleverNotes is a note taking and management applicationxx</summary>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-  <developer>The KDE Community</developer>
+  <developer id="https://kde.org">
+    <name>The KDE Community</name>
+  </developer>
+  <url type="homepage">https://invent.kde.org/office/klevernotes</url>
   <description>
     <p>KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
