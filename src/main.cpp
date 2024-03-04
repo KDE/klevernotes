@@ -58,7 +58,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         // The program version string.
         QStringLiteral("1.0"),
         // Short description of what the app does.
-        i18n("Application Description"),
+        i18n("Note taking and management application"),
         // The license this code is released under.
         KAboutLicense::GPL,
         // Copyright Statement.
