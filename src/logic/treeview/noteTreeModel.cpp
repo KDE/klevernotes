@@ -463,6 +463,51 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
     });
 }
 
+void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex)
+{
+    static const QChar slash = QLatin1Char('/');
+    auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
+
+    const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
+
+    if (row->getParentItem() == newParent) {
+            return;
+    }
+
+    const QString rowPath = row->data(PathRole).toString();
+    QString dest = newParent->data(PathRole).toString() + slash;
+
+    if (newParent->getDepth() == 1 && row->getDepth() == 3) {
+            dest += QStringLiteral(".BaseGroup") + slash;
+    }
+
+    dest += row->getRealName();
+
+    auto *job = KIO::move(QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(dest));
+    job->start();
+
+    connect(job, &KJob::result, this, [job, rowModelIndex, newParent, newParentIndex, this] {
+        if (!job->error()) {
+            const int oldRowNumber = rowModelIndex.row();
+            const QModelIndex oldParentIndex = parent(rowModelIndex);
+
+            beginRemoveRows(oldParentIndex, oldRowNumber, oldRowNumber);
+            const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
+            // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
+            auto row = oldParent->takeUniqueChildAt(oldRowNumber);
+            endRemoveRows();
+
+            const int lastRow = newParent->childCount();
+            beginInsertRows(newParentIndex, lastRow, lastRow);
+            newParent->appendChild(std::move(row));
+            endInsertRows();
+            return;
+        }
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to move this item."));
+        qWarning() << job->errorString();
+    });
+}
+
 void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newName)
 {
     const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());

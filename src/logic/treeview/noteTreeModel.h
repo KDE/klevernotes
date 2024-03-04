@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void initModel();
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
+    Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex);
 
     // NoteMapper
     void setNoteMapEnabled(const bool noteMapEnabled);
