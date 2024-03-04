@@ -127,9 +127,6 @@ QVariant TreeItem::data(int role) const
         return path;
     }
 
-    case NoteTreeModel::RealNameRole:
-        return m_realName;
-
     case Qt::DisplayRole:
     case NoteTreeModel::DisplayNameRole:
         return m_displayName;
@@ -231,6 +228,11 @@ void TreeItem::setDisplayName(const QString &name)
 void TreeItem::setRealName(const QString &name)
 {
     m_realName = name;
+}
+
+QString TreeItem::getRealName() const
+{
+    return m_realName;
 }
 
 void TreeItem::askForFocus(const QModelIndex &itemIndex)
@@ -337,7 +339,6 @@ QHash<int, QByteArray> NoteTreeModel::roleNames() const
 {
     return {
         {DisplayNameRole, "displayName"},
-        {RealNameRole, "realName"},
         {PathRole, "path"},
         {IconNameRole, "iconName"},
         {UseCaseRole, "useCase"},
