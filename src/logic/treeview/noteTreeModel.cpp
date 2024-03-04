@@ -7,7 +7,6 @@
 #include <QDir>
 #include <QIcon>
 #include <klocalizedstring.h>
-#include <qabstractitemmodel.h>
 
 TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -39,9 +38,7 @@ TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *mo
                 // Notes inside ".BaseGroup" folder should be shown as being held by the category directly, not by a group
                 // Move all the subTree child to the parent of the subTree
                 for (int i = 0; i < subTree->childCount(); i++) {
-                    auto categoryNote = subTree->uniqueChildAt(i);
-
-                    categoryNote->m_parentItem = this;
+                    auto categoryNote = subTree->takeUniqueChildAt(i);
 
                     appendChild(std::move(categoryNote));
                 }
@@ -65,6 +62,9 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
             m_model->addInitialGlobalPath(path);
         }
     }
+    if (item->getParentItem() != this) {
+        item->setParentItem(this);
+    }
     m_childItems.push_back(std::move(item));
 }
 
@@ -76,13 +76,17 @@ TreeItem *TreeItem::child(int row) const
     return m_childItems.at(row).get();
 }
 
-std::unique_ptr<TreeItem> TreeItem::uniqueChildAt(int row)
+std::unique_ptr<TreeItem> TreeItem::takeUniqueChildAt(int row)
 {
     if (row < 0 || row >= static_cast<int>(m_childItems.size())) {
         return nullptr;
     }
 
-    return std::move(m_childItems.at(row));
+    auto item = std::move(m_childItems.at(row));
+
+    m_childItems.erase(m_childItems.begin() + row);
+
+    return item;
 }
 
 int TreeItem::childCount() const
@@ -155,7 +159,7 @@ QVariant TreeItem::data(int role) const
             if (m_parentItem->data(NoteTreeModel::UseCaseRole).toString() != QStringLiteral("Group")) {
                 return parentName;
             }
-            const QString grandParentName = m_parentItem->parentItem()->data(NoteTreeModel::DisplayNameRole).toString();
+            const QString grandParentName = m_parentItem->getParentItem()->data(NoteTreeModel::DisplayNameRole).toString();
             const QString finalValue = grandParentName + QStringLiteral("→") + parentName;
             return finalValue;
         }
@@ -176,9 +180,14 @@ QVariant TreeItem::data(int role) const
     }
 };
 
-TreeItem *TreeItem::parentItem() const
+TreeItem *TreeItem::getParentItem() const
 {
     return m_parentItem;
+}
+
+void TreeItem::setParentItem(TreeItem *parentItem)
+{
+    m_parentItem = parentItem;
 }
 
 void TreeItem::remove()
@@ -353,7 +362,7 @@ QModelIndex NoteTreeModel::parent(const QModelIndex &index) const
     }
 
     const auto childItem = static_cast<TreeItem *>(index.internalPointer());
-    const auto parentItem = childItem->parentItem();
+    const auto parentItem = childItem->getParentItem();
 
     if (parentItem == m_rootItem.get()) {
         return {};

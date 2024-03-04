@@ -17,11 +17,12 @@ public:
     void appendChild(std::unique_ptr<TreeItem> &&child);
 
     TreeItem *child(int row) const;
-    std::unique_ptr<TreeItem> uniqueChildAt(int row);
+    std::unique_ptr<TreeItem> takeUniqueChildAt(int row);
     int childCount() const;
     QVariant data(int role) const;
     int row() const;
-    TreeItem *parentItem() const;
+    TreeItem *getParentItem() const;
+    void setParentItem(TreeItem *parentItem);
     void remove();
     void changeDisplayName(const QString &name);
     void changePath(const QString &newPart, const QModelIndex &parentModelIndex, int newPartIdx = -1);
