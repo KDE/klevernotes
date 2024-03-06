@@ -13,6 +13,7 @@ import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/dialogs/emojiDialog"
 import "qrc:/contents/ui/dialogs/imagePickerDialog"
 import "qrc:/contents/ui/dialogs/tableMakerDialog"
+import "qrc:/contents/ui/sharedComponents"
 
 Kirigami.ActionToolBar {
     id: toolbar
@@ -21,6 +22,75 @@ Kirigami.ActionToolBar {
     required property string notePath
 
     readonly property QtObject imagePickerDialog: imagePickerDialog
+
+    readonly property var actionsTrigger: {
+            "𝐇𝟏": function () {
+                const [blockStart, blockEnd] = getBlockLimits()
+                handleAction(blockStart, blockEnd, ["# "], false, false, false)
+            },
+            "𝐇𝟐": function () {
+                const [blockStart, blockEnd] = getBlockLimits()
+                handleAction(blockStart, blockEnd, ["## "], false, false, false)
+            },
+            "𝐇𝟑": function (){
+                const [blockStart, blockEnd] = getBlockLimits()
+                handleAction(blockStart, blockEnd, ["### "], false, false, false)
+            },
+            "𝐇𝟒": function () {
+                const [blockStart, blockEnd] = getBlockLimits()
+                handleAction(blockStart, blockEnd, ["#### "], false, false, false)
+            },
+            "𝐇𝟓": function (){
+                const [blockStart, blockEnd] = getBlockLimits()
+                handleAction(blockStart, blockEnd, ["###### "], false, false, false)
+            },
+            "𝐇𝟔": function () {
+                const [blockStart, blockEnd] = getBlockLimits()
+                handleAction(blockStart, blockEnd, ["####### "], false, false, false)
+            },
+        "bold": function () {
+            handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["**","__"], true, false, false)
+        },
+        "italic": function () {
+            handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["_","*"], true, false, false)
+        },
+        "strikethrough": function () {
+            handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["~~"], true, false, false)
+        },
+        "codeBlock": function () {
+            handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["\n```\n"], true, false, true)
+        },
+        "quote": function () {
+            handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["> "], false, false, false)
+        },
+        "image": function () {
+            imagePickerDialog.open()
+        },
+        "link": function () {
+            linkDialog.open()
+        },
+        "table": function () {
+            tableMakerDialog.open()
+        },
+        "orderedList": function () {
+            const [blockStart, blockEnd] = getBlockLimits()
+            handleAction(blockStart, blockEnd, [". "], false, true, false)
+        },
+        "unorderedList": function () {
+            const [blockStart, blockEnd] = getBlockLimits()
+            handleAction(blockStart, blockEnd, ["- "], false, false, false)
+        },
+        "highlight": function () {
+            handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["=="], true, false, false)
+        },
+        "emoji": function () {
+            emojiDialog.open()
+        },
+        "linkNote": function () {
+            linkNoteDialog.open()
+        }
+    }
+
     // This 'replicate' the DefaultCardBackground and just change the background color
     //(https://api.kde.org/frameworks/kirigami/html/DefaultCardBackground_8qml_source.html)
     background: Kirigami.ShadowedRectangle{
@@ -30,235 +100,16 @@ Kirigami.ActionToolBar {
         radius: Kirigami.Units.smallSpacing
     }
 
-    actions: [
-        Kirigami.Action {
-            text: "𝐇"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Headers") + " (Ctrl+" + i18nc("@tooltip, short form of 'number'", "num") + ")"
-            enabled: toolbar.visible
+    actions: setupActions()
 
-            Kirigami.Action {
-                text: "𝐇𝟏"
-                shortcut: "Ctrl+1"
-                tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 1") + " (" + shortcut + ")"
-                enabled: toolbar.visible
-
-                onTriggered: {
-                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                    handleAction(blockStart, blockEnd, ["# "], false, false, false)
-                }
-            }
-            Kirigami.Action {
-                text: "𝐇𝟐"
-                shortcut: "Ctrl+2"
-                tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 2") + " (" + shortcut + ")"
-                enabled: toolbar.visible
-
-                onTriggered: {
-                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                    handleAction(blockStart, blockEnd, ["## "], false, false, false)
-                }
-            }
-            Kirigami.Action {
-                text: "𝐇𝟑"
-                shortcut: "Ctrl+3"
-                tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 3") + " (" + shortcut + ")"
-                enabled: toolbar.visible
-
-                onTriggered: {
-                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                    handleAction(blockStart, blockEnd, ["### "], false, false, false)
-                }
-            }
-            Kirigami.Action {
-                text: "𝐇𝟒"
-                shortcut: "Ctrl+4"
-                tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 4") + " (" + shortcut + ")"
-                enabled: toolbar.visible
-
-                onTriggered: {
-                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                    handleAction(blockStart, blockEnd, ["#### "], false, false, false)
-                }
-            }
-            Kirigami.Action {
-                text: "𝐇𝟓"
-                shortcut: "Ctrl+5"
-                tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 5") + " (" + shortcut + ")"
-                enabled: toolbar.visible
-
-                onTriggered: {
-                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                    handleAction(blockStart, blockEnd, ["###### "], false, false, false)
-                }
-            }
-            Kirigami.Action {
-                text: "𝐇𝟔"
-                shortcut: "Ctrl+6"
-                tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 6") + " (" + shortcut + ")"
-                enabled: toolbar.visible
-
-                onTriggered: {
-                    const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                    handleAction(blockStart, blockEnd, ["####### "], false, false, false)
-                }
-            }
-
-        },
-        Kirigami.Action {
-            id: boldAction
-            shortcut: "Ctrl+B"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Bold") + " (" + shortcut + ")"
-            icon.name: "format-text-bold-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: handleAction(editorTextArea.selectionStart,
-                                                  editorTextArea.selectionEnd, ["**","__"],
-                                                  true, false, false)
-        },
-        Kirigami.Action {
-            id: italicAction
-            shortcut: "Ctrl+I"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Italic") + " (" + shortcut + ")"
-            icon.name: "format-text-italic-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: handleAction(editorTextArea.selectionStart,
-                                                  editorTextArea.selectionEnd, ["_","*"],
-                                                  true, false, false)
-        },
-        Kirigami.Action {
-            id: strikethroughAction
-            shortcut: "Alt+Shift+S"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Strikethrough") + " (" + shortcut + ")"
-            icon.name: "format-text-strikethrough-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: handleAction(editorTextArea.selectionStart,
-                                                  editorTextArea.selectionEnd, ["~~"],
-                                                  true, false, false)
-        },
-        Kirigami.Action {
-            id: codeBlockAction
-            shortcut: "Ctrl+Shift+K"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Code") + " (" + shortcut + ")"
-            icon.name: "format-text-code-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: handleAction(editorTextArea.selectionStart,
-                                                  editorTextArea.selectionEnd, ["\n```\n"],
-                                                  true, false, true)
-        },
-        Kirigami.Action {
-            id: quoteAction
-            shortcut: "Ctrl+Shift+Q"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Quote") + " (" + shortcut + ")"
-            icon.name: "format-text-blockquote-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: handleAction(editorTextArea.selectionStart,
-                                                  editorTextArea.selectionEnd, ["> "],
-                                                  false, false, false)
-        },
-        Kirigami.Action {
-            id: imageAction
-            shortcut: "Ctrl+Shift+I"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Image") + " (" + shortcut + ")"
-            icon.name: "insert-image-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: imagePickerDialog.open()
-        },
-        Kirigami.Action {
-            id: linkAction
-            shortcut: "Ctrl+K"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link") + " (" + shortcut + ")"
-            icon.name: "insert-link-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: linkDialog.open()
-        },
-        Kirigami.Action {
-            id: tableAction
-            shortcut: "Ctrl+T"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Table") + " (" + shortcut + ")"
-            icon.name: "insert-table-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: tableMakerDialog.open()
-        },
-        Kirigami.Action {
-            id: orderedListAction
-            shortcut: "Ctrl+Shift+O"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Ordered list") + " (" + shortcut + ")"
-            icon.name: "format-list-ordered-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: {
-                const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                handleAction(blockStart, blockEnd, [". "], false, true, false)
-            }
-        },
-        Kirigami.Action {
-            id: unorderedListAction
-            shortcut: "Ctrl+Shift+U"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
-            icon.name: "format-list-unordered-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: {
-                const [blockStart, blockEnd] = MDHandler.getBlockLimits(editorTextArea.selectionStart, editorTextArea.selectionEnd, editorTextArea.text);
-
-                handleAction(blockStart, blockEnd, ["- "], false, false, false)
-            }
-        },
-        Kirigami.Action {
-            id: highlightAction
-            shortcut: "Ctrl+Alt+H"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Text highlight") + " (" + shortcut + ")"
-            icon.name: "draw-highlight-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: {
-                handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["=="], true, false, false)
-            }
-        },
-        Kirigami.Action {
-            id: emojiAction
-            shortcut: "Ctrl+Shift+E"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
-            icon.name: "smiley-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: {
-                emojiDialog.open()
-            }
-        },
-        Kirigami.Action {
-            id: linkNoteAction
-            visible: Config.noteMapEnabled
-            shortcut: "Ctrl+Alt+K"
-            tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link note") + " (" + shortcut + ")"
-            icon.name: "edit-link-symbolic"
-            enabled: toolbar.visible
-
-            onTriggered: {
-                linkNoteDialog.open()
-            }
-        }
-    ]
+    ActionsList { id: actionsList } 
 
     EmojiDialog {
         id: emojiDialog
 
         onChosen: function (emoji) {
-            editorTextArea.insert(editorTextArea.selectionStart, Config.quickEmojiEnabled && Config.quickEmojiDialogEnabled ? (":" + emoji + ":") : emoji)
+            editorTextArea.insert(editorTextArea.selectionStart, 
+                Config.quickEmojiEnabled && Config.quickEmojiDialogEnabled ? (":" + emoji + ":") : emoji)
         }
     }
 
@@ -381,5 +232,58 @@ Kirigami.ActionToolBar {
         editorTextArea.remove(selectionStart, selectionEnd)
         editorTextArea.insert(selectionStart, newString)
         editorTextArea.select(selectionStart, selectionStart + newString.length)
+    }
+
+    function getBlockLimits() {
+        return MDHandler.getBlockLimits(editorTextArea.selectionStart, 
+            editorTextArea.selectionEnd, editorTextArea.text);
+    }
+
+    function addActionTrigger(currentAction) {
+        const actionName = currentAction.name
+        const currentActionName = currentAction.actionName
+
+        const currentTrigger = actionsTrigger[currentActionName]
+        if (currentAction.children.length > 0) {
+            for (let i = 0 ; i < currentAction.children.length ; i++) {
+                const actionChild = currentAction.children[i]
+                const actionChildName = actionChild.actionName
+                
+                const actionChildTrigger = actionsTrigger[actionChildName]
+                if (actionChildTrigger) {
+                    actionChild.triggerFunction = actionChildTrigger
+                }
+            }
+        } else if (currentTrigger) {
+            currentAction.triggerFunction = currentTrigger
+        }
+    }
+
+    function setupActions() {
+        const currentActionList = actionsList.actions
+        
+        // Will be replaced by Config values
+        const visibleIndexes = [] //[6, 13, 11, 4, 8, 5, 9] // test
+        const invisibleIndexes = [] //[3, 7, 12, 2, 10] // test
+        let visibleActions = Array(visible.length)
+
+        let unknownActions = []
+        for (var i = 0 ; i < currentActionList.length ; i++) {
+            const currentAction = currentActionList[i]
+            const visibleIndex = visibleIndexes.indexOf(i)
+            const invisibleIndex = invisibleIndexes.indexOf(i)
+
+            if (visibleIndex !== -1) {
+                addActionTrigger(currentAction)
+                visibleActions[visibleIndex] = currentAction
+            } else if (invisibleIndex === -1) {
+                addActionTrigger(currentAction)
+                unknownActions.push(currentAction)
+            }
+        }
+
+        const finalList = visibleActions.concat(unknownActions)
+
+        return finalList
     }
 }

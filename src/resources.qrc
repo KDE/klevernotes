@@ -58,7 +58,9 @@
         <file>contents/ui/settings/SettingsColorButton.qml</file>
         <file>contents/ui/settings/TabBar.qml</file>
 
+        <file>contents/ui/sharedComponents/ActionsList.qml</file>
         <file>contents/ui/sharedComponents/ExpendingFormSwitch.qml</file>
+        <file>contents/ui/sharedComponents/KAction.qml</file>
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
         <file>contents/ui/sideBar/ContextMenu.qml</file>
