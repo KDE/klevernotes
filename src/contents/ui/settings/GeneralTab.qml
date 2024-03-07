@@ -197,7 +197,7 @@ ColumnLayout {
         Layout.fillWidth: true
 
         Kirigami.Heading {
-            text: "Visible"
+            text: i18nc("@title, list of visible toolbar actions", "Visible")
             level: 4
             Layout.margins: Kirigami.Units.largeSpacing
             Layout.bottomMargin: visibleScrollView.viewCount > 0 ? Kirigami.Units.largeSpacing : 0
@@ -258,7 +258,7 @@ ColumnLayout {
         }
 
         Kirigami.Heading {
-            text: "Invisible"
+            text: i18nc("@title, list of invisible toolbar actions", "Invisible")
             level: 4
             Layout.topMargin: Kirigami.Units.gridUnit
             Layout.leftMargin: Kirigami.Units.largeSpacing
