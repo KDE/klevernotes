@@ -90,6 +90,7 @@ Kirigami.ActionToolBar {
             linkNoteDialog.open()
         }
     }
+    readonly property list<int> visibleTools: Config.visibleTools
 
     // This 'replicate' the DefaultCardBackground and just change the background color
     //(https://api.kde.org/frameworks/kirigami/html/DefaultCardBackground_8qml_source.html)
@@ -100,7 +101,9 @@ Kirigami.ActionToolBar {
         radius: Kirigami.Units.smallSpacing
     }
 
-    actions: setupActions()
+    onVisibleToolsChanged: {
+        actions = setupActions()
+    }
 
     ActionsList { id: actionsList } 
 
@@ -240,7 +243,6 @@ Kirigami.ActionToolBar {
     }
 
     function addActionTrigger(currentAction) {
-        const actionName = currentAction.name
         const currentActionName = currentAction.actionName
 
         const currentTrigger = actionsTrigger[currentActionName]
@@ -262,7 +264,6 @@ Kirigami.ActionToolBar {
     function setupActions() {
         const currentActionList = actionsList.actions
         
-        // Will be replaced by Config values
         const visibleIndexes = Config.visibleTools
         const invisibleIndexes = Config.invisibleTools
         let visibleActions = Array(visibleIndexes.length)

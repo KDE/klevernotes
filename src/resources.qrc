@@ -50,6 +50,9 @@
         <file>contents/ui/painting/ColorBar.qml</file>
         <file>contents/ui/painting/ColorButton.qml</file>
 
+        <file>contents/ui/settings/components/ClickableArrow.qml</file>
+        <file>contents/ui/settings/components/ClickableIcon.qml</file>
+        <file>contents/ui/settings/components/ActionListViewDelegate.qml</file>
         <file>contents/ui/settings/AppearanceTab.qml</file>
         <file>contents/ui/settings/DisplayPreview.qml</file>
         <file>contents/ui/settings/FontPicker.qml</file>

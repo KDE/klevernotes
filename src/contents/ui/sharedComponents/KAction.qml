@@ -5,7 +5,9 @@ import org.kde.kirigami 2.19
 
 Action {
     required property string actionName
-    property var triggerFunction
+    property string description
+
+    property var triggerFunction: function(){}
 
     onTriggered: triggerFunction()
 }
