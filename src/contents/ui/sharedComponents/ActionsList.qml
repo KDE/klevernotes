@@ -13,36 +13,36 @@ Item {
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Headers") + " (Ctrl+" + i18nc("@tooltip, short form of 'number'", "num") + ")"
 
             KAction {
-                actionName: "𝐇𝟏"
+                actionName: "h1"
                 text: "𝐇𝟏"
                 shortcut: "Ctrl+1"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 1") + " (" + shortcut + ")"
             }
             KAction {
-                actionName: "𝐇𝟐"
+                actionName: "h2"
                 text: "𝐇𝟐"
                 shortcut: "Ctrl+2"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 2") + " (" + shortcut + ")"
             }
             KAction {
-                actionName: "𝐇𝟑"
+                actionName: "h3"
                 text: "𝐇𝟑"
                 shortcut: "Ctrl+3"
             }
             KAction {
-                actionName: "𝐇𝟒"
+                actionName: "h4"
                 text: "𝐇𝟒"
                 shortcut: "Ctrl+4"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 4") + " (" + shortcut + ")"
             }
             KAction {
-                actionName: "𝐇𝟓"
+                actionName: "h5"
                 text: "𝐇𝟓"
                 shortcut: "Ctrl+5"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 5") + " (" + shortcut + ")"
             }
             KAction {
-                actionName: "𝐇𝟔"
+                actionName: "h6"
                 text: "𝐇𝟔"
                 shortcut: "Ctrl+6"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 6") + " (" + shortcut + ")"

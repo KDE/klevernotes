@@ -53,6 +53,13 @@
             <label>The number of spaces with which the tab is replaced</label>
             <default>4</default>
         </entry>
+
+        <entry name="visibleTools" type="IntList">
+            <label>The list of index of visible text actions</label>
+        </entry>
+        <entry name="invisibleTools" type="IntList">
+            <label>The list of index of invisible text actions</label>
+        </entry>
     </group>
 
     <group name="Appearance">

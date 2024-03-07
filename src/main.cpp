@@ -85,6 +85,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::previewVisibleChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::useSpaceForTabChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::spacesForTabChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::visibleToolsChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::invisibleToolsChanged, config, &KleverConfig::save);
     // Appearence
     QObject::connect(config, &KleverConfig::editorFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);

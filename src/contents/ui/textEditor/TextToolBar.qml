@@ -24,27 +24,27 @@ Kirigami.ActionToolBar {
     readonly property QtObject imagePickerDialog: imagePickerDialog
 
     readonly property var actionsTrigger: {
-            "𝐇𝟏": function () {
+            "h1": function () {
                 const [blockStart, blockEnd] = getBlockLimits()
                 handleAction(blockStart, blockEnd, ["# "], false, false, false)
             },
-            "𝐇𝟐": function () {
+            "h2": function () {
                 const [blockStart, blockEnd] = getBlockLimits()
                 handleAction(blockStart, blockEnd, ["## "], false, false, false)
             },
-            "𝐇𝟑": function (){
+            "h3": function (){
                 const [blockStart, blockEnd] = getBlockLimits()
                 handleAction(blockStart, blockEnd, ["### "], false, false, false)
             },
-            "𝐇𝟒": function () {
+            "h4": function () {
                 const [blockStart, blockEnd] = getBlockLimits()
                 handleAction(blockStart, blockEnd, ["#### "], false, false, false)
             },
-            "𝐇𝟓": function (){
+            "h5": function (){
                 const [blockStart, blockEnd] = getBlockLimits()
                 handleAction(blockStart, blockEnd, ["###### "], false, false, false)
             },
-            "𝐇𝟔": function () {
+            "h6": function () {
                 const [blockStart, blockEnd] = getBlockLimits()
                 handleAction(blockStart, blockEnd, ["####### "], false, false, false)
             },
@@ -263,11 +263,12 @@ Kirigami.ActionToolBar {
         const currentActionList = actionsList.actions
         
         // Will be replaced by Config values
-        const visibleIndexes = [] //[6, 13, 11, 4, 8, 5, 9] // test
-        const invisibleIndexes = [] //[3, 7, 12, 2, 10] // test
-        let visibleActions = Array(visible.length)
+        const visibleIndexes = Config.visibleTools
+        const invisibleIndexes = Config.invisibleTools
+        let visibleActions = Array(visibleIndexes.length)
 
         let unknownActions = []
+        let unknownIndexes = []
         for (var i = 0 ; i < currentActionList.length ; i++) {
             const currentAction = currentActionList[i]
             const visibleIndex = visibleIndexes.indexOf(i)
@@ -279,10 +280,15 @@ Kirigami.ActionToolBar {
             } else if (invisibleIndex === -1) {
                 addActionTrigger(currentAction)
                 unknownActions.push(currentAction)
+                unknownIndexes.push(i)
             }
         }
 
         const finalList = visibleActions.concat(unknownActions)
+
+        if (finalList.length !== visibleIndexes.length) {
+            Config.visibleTools = visibleIndexes.concat(unknownIndexes) 
+        }
 
         return finalList
     }
