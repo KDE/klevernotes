@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-03 01:44+0000\n"
+"POT-Creation-Date: 2024-03-07 01:34+0000\n"
 "PO-Revision-Date: 2023-11-07 22:53+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1526,8 +1526,8 @@ msgstr "KleverNotes"
 
 #: main.cpp:61
 #, kde-format
-msgid "Application Description"
-msgstr "Aplikazioaren deskribapena"
+msgid "Note taking and management application"
+msgstr ""
 
 #: main.cpp:65
 #, kde-format
@@ -1551,6 +1551,9 @@ msgstr "Iñigo Salvador Azurmendi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
+
+#~ msgid "Application Description"
+#~ msgstr "Aplikazioaren deskribapena"
 
 #~ msgid "Name, as in 'A note'"
 #~ msgstr "Izena, 'Ohar bat' antzekoa"

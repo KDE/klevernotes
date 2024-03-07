@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-03 01:44+0000\n"
+"POT-Creation-Date: 2024-03-07 01:34+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1541,8 +1541,8 @@ msgstr "KleverNotes"
 
 #: main.cpp:61
 #, kde-format
-msgid "Application Description"
-msgstr "Beschreibung der Anwendung"
+msgid "Note taking and management application"
+msgstr ""
 
 #: main.cpp:65
 #, kde-format
@@ -1566,6 +1566,9 @@ msgstr "Deutsches KDE-Übersetzerteam"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
+
+#~ msgid "Application Description"
+#~ msgstr "Beschreibung der Anwendung"
 
 #, fuzzy
 #~| msgid "KleverNotes"

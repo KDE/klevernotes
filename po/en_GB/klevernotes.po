@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-03 01:44+0000\n"
+"POT-Creation-Date: 2024-03-07 01:34+0000\n"
 "PO-Revision-Date: 2023-06-17 12:18+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -1575,8 +1575,8 @@ msgstr "KleverNotes"
 
 #: main.cpp:61
 #, kde-format
-msgid "Application Description"
-msgstr "Application Description"
+msgid "Note taking and management application"
+msgstr ""
 
 #: main.cpp:65
 #, kde-format
@@ -1600,6 +1600,9 @@ msgstr "Steve Allewell"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "steve.allewell@gmail.com"
+
+#~ msgid "Application Description"
+#~ msgstr "Application Description"
 
 #, fuzzy
 #~| msgid "Note display"
