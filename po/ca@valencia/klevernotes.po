@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-07 01:34+0000\n"
-"PO-Revision-Date: 2024-03-01 10:41+0100\n"
+"PO-Revision-Date: 2024-03-07 13:55+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1487,12 +1487,12 @@ msgstr "S'ha produït un error en intentar crear l'emmagatzematge."
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "´KleverNotes"
+msgstr "KleverNotes"
 
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Aplicació de presa i gestió de notes"
 
 #: main.cpp:65
 #, kde-format
@@ -1516,9 +1516,3 @@ msgstr "Josep M. Ferrer"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
-
-#~ msgid "Application Description"
-#~ msgstr "Descripció de l'aplicació"
-
-#~ msgid "Name, as in 'A note'"
-#~ msgstr "Nom, com a «Una nota»"

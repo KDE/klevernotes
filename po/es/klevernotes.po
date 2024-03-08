@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-07 01:34+0000\n"
-"PO-Revision-Date: 2024-03-01 20:58+0100\n"
+"PO-Revision-Date: 2024-03-07 23:39+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1490,7 +1490,7 @@ msgstr "KleverNotes"
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Aplicación de escritura y gestión de notas"
 
 #: main.cpp:65
 #, kde-format
