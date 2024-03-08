@@ -445,7 +445,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
 
     // Prevent KDescendantsProxyModel from crashing
     if (row->childCount() > 0) {
-            row->askForExpand(index);
+        row->askForExpand(index);
     }
 
     auto *job = KIO::trash(QUrl::fromLocalFile(rowPath));
@@ -471,16 +471,15 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
     const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
 
     if (row->getParentItem() == newParent) {
-            return;
+        return;
     }
 
     const QString rowPath = row->data(PathRole).toString();
     QString dest = newParent->data(PathRole).toString() + slash;
 
     if (newParent->getDepth() == 1 && row->getDepth() == 3) {
-            dest += QStringLiteral(".BaseGroup") + slash;
+        dest += QStringLiteral(".BaseGroup") + slash;
     }
-
     dest += row->getRealName();
 
     auto *job = KIO::move(QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(dest));
@@ -488,19 +487,20 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
 
     connect(job, &KJob::result, this, [job, rowModelIndex, newParent, newParentIndex, this] {
         if (!job->error()) {
+            newParent->askForExpand(newParentIndex);
+
             const int oldRowNumber = rowModelIndex.row();
+            const int lastRow = newParent->childCount();
             const QModelIndex oldParentIndex = parent(rowModelIndex);
 
-            beginRemoveRows(oldParentIndex, oldRowNumber, oldRowNumber);
-            const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
-            // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
-            auto row = oldParent->takeUniqueChildAt(oldRowNumber);
-            endRemoveRows();
+            beginMoveRows(oldParentIndex, oldRowNumber, oldRowNumber, newParentIndex, lastRow);
 
-            const int lastRow = newParent->childCount();
-            beginInsertRows(newParentIndex, lastRow, lastRow);
+            const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
+            // // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
+            auto row = oldParent->takeUniqueChildAt(oldRowNumber);
             newParent->appendChild(std::move(row));
-            endInsertRows();
+
+            endMoveRows();
             return;
         }
         Q_EMIT errorOccurred(i18n("An error occurred while trying to move this item."));
