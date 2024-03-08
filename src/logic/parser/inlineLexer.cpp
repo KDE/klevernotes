@@ -127,7 +127,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         // wikilink
         if (KleverConfig::noteMapEnabled()) {
             const static QRegularExpression inline_wikilink =
-                QRegularExpression(QStringLiteral("\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]"));
+                QRegularExpression(QStringLiteral("^\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]"));
             cap = inline_wikilink.match(src);
             if (cap.hasMatch()) {
                 src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
