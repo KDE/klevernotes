@@ -293,7 +293,7 @@ ToolBar {
         onTriggered: {
             drawer.close()
         }
-    } 
+    }
 
     function getName(useCase, shownName, parentPath, callingAction, newItem){
         namingDialog.useCase = useCase
@@ -303,6 +303,10 @@ ToolBar {
         namingDialog.callingAction = callingAction
         namingDialog.newItem = newItem
         namingDialog.open()
+    }
+
+    function forceError(error) {
+        namingDialog.throwError(error) 
     }
 
     function setClickedItemInfo(clickedItem, clickedModelIndex) {

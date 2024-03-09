@@ -463,7 +463,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
     });
 }
 
-void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex)
+void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName)
 {
     static const QChar slash = QLatin1Char('/');
     auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
@@ -475,17 +475,24 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
     }
 
     const QString rowPath = row->data(PathRole).toString();
-    QString dest = newParent->data(PathRole).toString() + slash;
+    const QString parentPath = newParent->data(PathRole).toString();
+    QString dest = parentPath + slash;
 
     if (newParent->getDepth() == 1 && row->getDepth() == 3) {
         dest += QStringLiteral(".BaseGroup") + slash;
     }
-    dest += row->getRealName();
+    const QString finalName = newName.isEmpty() ? row->getRealName() : newName;
+    dest += finalName;
+
+    if (QDir(dest).exists()) {
+        Q_EMIT moveError(rowModelIndex, newParentIndex, row->data(NoteTreeModel::UseCaseRole).toString(), row->getRealName(), parentPath);
+        return;
+    }
 
     auto *job = KIO::move(QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(dest));
     job->start();
 
-    connect(job, &KJob::result, this, [job, rowModelIndex, newParent, newParentIndex, this] {
+    connect(job, &KJob::result, this, [job, rowModelIndex, finalName, newParent, newParentIndex, this] {
         if (!job->error()) {
             newParent->askForExpand(newParentIndex);
 
@@ -498,6 +505,8 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
             const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
             // // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
             auto row = oldParent->takeUniqueChildAt(oldRowNumber);
+            row->setDisplayName(finalName);
+            row->setRealName(finalName);
             newParent->appendChild(std::move(row));
 
             endMoveRows();

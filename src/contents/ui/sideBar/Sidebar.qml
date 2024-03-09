@@ -154,6 +154,10 @@ Kirigami.OverlayDrawer {
                 anchors.fill: parent
                 TreeView {
                     id: treeView
+                    // used when moveRow throws an error
+                    property string name
+                    property var movingRowModelIndex
+                    property var movingRowNewParentIndex
 
                     model: NoteTreeModel {
                         id: noteTreeModel
@@ -175,11 +179,23 @@ Kirigami.OverlayDrawer {
                         onErrorOccurred: function (errorMessage) {
                             applicationWindow().showPassiveNotification(errorMessage)
                         }
+                        onMoveError: function (rowModelIndex, newParentIndex, useCase, shownName, parentPath) {
+                            treeView.movingRowModelIndex = rowModelIndex
+                            treeView.movingRowNewParentIndex = newParentIndex
+                            actionBar.getName(useCase, shownName, parentPath, treeView, false)
+                            actionBar.forceError("exist")
+                        }
                     }
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
+                    onNameChanged: if (name.length > 0) {
+                        noteTreeModel.moveRow(movingRowModelIndex, movingRowNewParentIndex, name)
+                        treeView.movingRowModelIndex = null
+                        treeView.movingRowNewParentIndex = null
+                        treeView.name = ""
+                    }
                     onItemRightClicked: function (clickedItem) {
                         const tempModelIndex = treeView.getModelIndex(clickedItem.index)
                         actionBar.setClickedItemInfo(clickedItem, tempModelIndex)
@@ -233,6 +249,7 @@ Kirigami.OverlayDrawer {
         }
     }
 
+    
     onClosed: if (changeWidth && !modal) {
         isWide = !isWide
         open()

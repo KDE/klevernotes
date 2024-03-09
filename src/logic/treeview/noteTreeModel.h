@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void initModel();
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
-    Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex);
+    Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName = QLatin1String());
 
     // NoteMapper
     void setNoteMapEnabled(const bool noteMapEnabled);
@@ -88,6 +88,8 @@ public:
 
 Q_SIGNALS:
     void errorOccurred(const QString &errorMessage);
+    void
+    moveError(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &useCase, const QString &shownName, const QString &parentPath);
     // NoteMapper
     void newGlobalPathFound(const QString &path);
     void globalPathUpdated(const QString &oldPath, const QString &newPath);
