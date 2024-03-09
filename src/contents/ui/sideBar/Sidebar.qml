@@ -158,6 +158,7 @@ Kirigami.OverlayDrawer {
                     property string name
                     property var movingRowModelIndex
                     property var movingRowNewParentIndex
+                    property var isActive: false
 
                     model: NoteTreeModel {
                         id: noteTreeModel
@@ -180,6 +181,7 @@ Kirigami.OverlayDrawer {
                             applicationWindow().showPassiveNotification(errorMessage)
                         }
                         onMoveError: function (rowModelIndex, newParentIndex, useCase, shownName, parentPath) {
+                            treeView.isActive = true
                             treeView.movingRowModelIndex = rowModelIndex
                             treeView.movingRowNewParentIndex = newParentIndex
                             actionBar.getName(useCase, shownName, parentPath, treeView, false)

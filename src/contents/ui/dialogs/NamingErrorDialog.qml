@@ -25,7 +25,8 @@ Kirigami.PromptDialog {
     standardButtons: Kirigami.Dialog.Ok
 
     onAccepted: {
-        nameField.selectAll()
+        // can't use selectAll or select on FormTextFieldDelegate :/
+        // nameField.selectAll()
     }
 
     function setSubtitle() {
@@ -37,5 +38,7 @@ Kirigami.PromptDialog {
         else if (error === "exist") {
             return i18nc("@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note group) or 'note' (a note)", "This %1 already exist.\nPlease choose another name for it.\n", useCaseTrad[useCase.toLowerCase()])
         }
+        
+        return ""
     }
 }
