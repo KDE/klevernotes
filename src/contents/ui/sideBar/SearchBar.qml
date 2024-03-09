@@ -39,19 +39,20 @@ KirigamiComponents.SearchPopupField {
                 filterRoleName: inSideBar 
                     ? "useCase" 
                     : currentUseCase === "Note" 
-                        ? "branchName"
+                        ? "noteName"
                         : "useCase"
-                filterCaseSensitivity: Qt.CaseInsensitive
                 filterString: inSideBar
                     ? "note"
                     : currentUseCase === "Note" 
                         ? ".Not a note"
                         : "category"
+                filterCaseSensitivity: Qt.CaseInsensitive
             }
             filterRoleName: inSideBar ? "noteName" : "displayName"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 
+        clip: true
         model: (root.text === "") ? null : searchFilterProxyModel
 
         delegate: Controls.ItemDelegate {
@@ -71,10 +72,15 @@ KirigamiComponents.SearchPopupField {
                         "Category": i18nc("Name, as in 'A note category'", "Category"),
                         "Group": i18nc("Name, as in 'A note group'", "Group"),
                     }
+                    readonly property string branchNameStr: model.branchName
+                    readonly property string branchNameContext: useCaseLabel.branchNameStr.length > 0 
+                        ? " (" + i18n("From :") + " " + useCaseLabel.branchNameStr + ")"
+                        : ""
+
 
                     text: root.inSideBar
-                        ? i18n("From : ") + model.branchName
-                        : useCaseTrad[model.useCase]
+                        ? i18n("From :") + " " + useCaseLabel.branchNameStr 
+                        : useCaseTrad[model.useCase] + useCaseLabel.branchNameContext
 
                     font: Kirigami.Theme.smallFont
                     elide: Text.ElideRight
