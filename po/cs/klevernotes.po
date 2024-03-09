@@ -816,12 +816,12 @@ msgstr "Přejmenovat"
 #: contents/ui/sideBar/ActionBar.qml:87
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 #: contents/ui/sideBar/ActionBar.qml:104
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Svinout postranní panel"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
@@ -862,11 +862,9 @@ msgid "No search results"
 msgstr "Žádné výsledky hledání"
 
 #: contents/ui/sideBar/Sidebar.qml:84
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
-msgstr "Nová poznámka"
+msgstr "Zobrazit poznámky"
 
 #: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
 #, kde-format
@@ -1490,6 +1488,3 @@ msgstr "Vít Pelčák"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
-
-#~ msgid "Application Description"
-#~ msgstr "Popis aplikace"
