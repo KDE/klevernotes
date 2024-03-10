@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 01:34+0000\n"
+"POT-Creation-Date: 2024-03-10 01:58+0000\n"
 "PO-Revision-Date: 2024-03-07 12:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -23,21 +23,24 @@ msgctxt "@title:dialog"
 msgid "Color Picker"
 msgstr "Kleurenkiezer"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:10
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
+#: contents/ui/dialogs/MoveDialog.qml:20
 #: contents/ui/dialogs/NamingErrorDialog.qml:11
 #, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "category"
 msgstr "categorie"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/MoveDialog.qml:21
 #: contents/ui/dialogs/NamingErrorDialog.qml:12
 #, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "group"
 msgstr "groep"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
+#: contents/ui/dialogs/MoveDialog.qml:22
 #: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "Name, as in 'A note'"
@@ -184,6 +187,22 @@ msgctxt "@label:textbox"
 msgid "Header:"
 msgstr "Kop:"
 
+#: contents/ui/dialogs/MoveDialog.qml:26
+#, kde-format
+msgctxt "@title:dialog, to move a group/note"
+msgid "Move"
+msgstr ""
+
+#: contents/ui/dialogs/MoveDialog.qml:40
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+#| "group) or 'note' (a note)"
+#| msgid "Are you sure you want to delete this %1 ?"
+msgctxt "@subtitle:dialog, %1 can be 'group' (a note group) or 'note' (a note)"
+msgid "Where do you want to move this %1 ?"
+msgstr "Wilt u deze %1 echt verwijderen?"
+
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog"
@@ -204,7 +223,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Opslag van KleverNotes"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:33
+#: contents/ui/dialogs/NamingErrorDialog.qml:34
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
@@ -212,7 +231,7 @@ msgctxt ""
 msgid "Your %1 name starts with a dot, "
 msgstr "Uw naam %1 begint met een punt, "
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
@@ -870,15 +889,37 @@ msgstr "Nieuwe notitie"
 
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
+msgid "Move"
+msgstr ""
+
+#: contents/ui/sideBar/ContextMenu.qml:65
+#, kde-format
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: contents/ui/sideBar/SearchBar.qml:50
-#, kde-format
-msgid "From : "
+#: contents/ui/sideBar/SearchBar.qml:72
+#, fuzzy, kde-format
+#| msgctxt "Name, as in 'A note category'"
+#| msgid "category"
+msgctxt "Name, as in 'A note category'"
+msgid "Category"
+msgstr "categorie"
+
+#: contents/ui/sideBar/SearchBar.qml:73
+#, fuzzy, kde-format
+#| msgctxt "Name, as in 'A note group'"
+#| msgid "group"
+msgctxt "Name, as in 'A note group'"
+msgid "Group"
+msgstr "groep"
+
+#: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
+#, fuzzy, kde-format
+#| msgid "From : "
+msgid "From :"
 msgstr "Van : "
 
-#: contents/ui/sideBar/SearchBar.qml:82
+#: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
 msgstr "Geen zoekresultaten"
@@ -888,17 +929,17 @@ msgstr "Geen zoekresultaten"
 msgid "Show notes"
 msgstr "Notities tonen"
 
-#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:200
+#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:218
 #, kde-format
 msgid "Cheat sheet"
 msgstr "Spiekbriefje"
 
-#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:212
+#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:230
 #, kde-format
 msgid "Settings"
 msgstr "Instellingen"
 
-#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:223
+#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:241
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Info over Klever"
@@ -1443,42 +1484,48 @@ msgstr "Aangepast"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Er is een fout opgetreden bij de poging deze pdf te kopiëren."
 
-#: logic/treeview/noteTreeModel.cpp:282
+#: logic/treeview/noteTreeModel.cpp:287
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Er is een fout opgetreden bij de poging de demo-notitie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:418
+#: logic/treeview/noteTreeModel.cpp:422
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Er is een fout opgetreden bij de poging dit item aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:456
+#: logic/treeview/noteTreeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te verwijderen."
 
-#: logic/treeview/noteTreeModel.cpp:478
+#: logic/treeview/noteTreeModel.cpp:515
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to remove this item."
+msgid "An error occurred while trying to move this item."
+msgstr "Er is een fout opgetreden bij de poging dit item te verwijderen."
+
+#: logic/treeview/noteTreeModel.cpp:538
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te hernoemen."
 
-#: logic/treeview/noteTreeModel.cpp:573
+#: logic/treeview/noteTreeModel.cpp:636
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Er is een fout opgetreden bij de poging deze notitie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:584
+#: logic/treeview/noteTreeModel.cpp:647
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Er is een fout opgetreden bij de poging deze groep aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:594
+#: logic/treeview/noteTreeModel.cpp:657
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Er is een fout opgetreden bij de poging deze categorie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:602
+#: logic/treeview/noteTreeModel.cpp:665
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Er is een fout opgetreden bij de poging deze opslag aan te maken."
