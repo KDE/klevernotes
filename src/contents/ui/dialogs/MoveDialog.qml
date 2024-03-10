@@ -17,9 +17,9 @@ Kirigami.PromptDialog {
     required property var treeView
     required property string useCase
     readonly property var useCaseTrad: {
-        "category": i18nc("Name, as in 'A note category'", "category"),
-        "group": i18nc("Name, as in 'A note group'", "group"),
-        "note": i18nc("Name, as in 'A note'", "note")
+        "category": i18nc("@subtitle:dialog, as in 'A note category'", "Where do you want to move this category ?"),
+        "group": i18nc("@subtitle:dialog, as in 'A note group'", "Where do you want to move this group ?"),
+        "note": i18nc("@subtitle:dialog", "Where do you want to move this note ?") 
     }
     readonly property var clickedIndex: searchBar.clickedIndex
 
@@ -36,8 +36,7 @@ Kirigami.PromptDialog {
 
     ColumnLayout {
         Kirigami.Heading {
-            text: i18nc("@subtitle:dialog, %1 can be 'group' (a note group) or 'note' (a note)",
-                "Where do you want to move this %1 ?", useCase ? useCaseTrad[useCase.toLowerCase()] : "")
+            text: useCase ? useCaseTrad[useCase.toLowerCase()] : ""
             level: 4
 
             wrapMode: Text.WordWrap

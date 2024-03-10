@@ -8,9 +8,9 @@ import org.kde.kirigami 2.19 as Kirigami
 
 Kirigami.PromptDialog {
     readonly property var useCaseTrad: {
-        "category": i18nc("Name, as in 'A note category'", "category"),
-        "group": i18nc("Name, as in 'A note group'", "group"),
-        "note": i18nc("Name, as in 'A note'", "note")
+        "category": i18nc("@subtitle:dialog, as in 'A note category'", "This category already exists."),
+        "group": i18nc("@subtitle:dialog, as in 'A note group'", "This group already exists."),
+        "note": i18nc("@subtitle:dialog", "This note already exists.") 
     }
 
     property string error
@@ -31,12 +31,11 @@ Kirigami.PromptDialog {
 
     function setSubtitle() {
         if (error === "dot") {
-            return i18nc("@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note group) or 'note' (a note)", "Your %1 name starts with a dot, "+
-                        "this may cause problem and is therefore not allowed.\n"+
-                        "Please remove the dot or choose another name.", useCaseTrad[useCase.toLowerCase()])
+            return i18nc("@subtitle:dialog", "This name starts with a dot, this may cause problem and is therefore not allowed.") 
+                + "\n" + i18nc("@subtitle:dialog", "Please remove the dot or choose another name.")
         }
         else if (error === "exist") {
-            return i18nc("@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note group) or 'note' (a note)", "This %1 already exist.\nPlease choose another name for it.\n", useCaseTrad[useCase.toLowerCase()])
+            return useCaseTrad[useCase] + "\n" + i18nc("@subtitle:dialog", "Please choose another name for it.") + "\n"
         }
         
         return ""

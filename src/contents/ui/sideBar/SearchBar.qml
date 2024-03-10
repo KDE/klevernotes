@@ -74,12 +74,12 @@ KirigamiComponents.SearchPopupField {
                     }
                     readonly property string branchNameStr: model.branchName
                     readonly property string branchNameContext: useCaseLabel.branchNameStr.length > 0 
-                        ? " (" + i18n("From :") + " " + useCaseLabel.branchNameStr + ")"
+                        ? " (" + i18n("From") + " : " + useCaseLabel.branchNameStr + ")"
                         : ""
 
 
                     text: root.inSideBar
-                        ? i18n("From :") + " " + useCaseLabel.branchNameStr 
+                        ? i18n("From") + " : " + useCaseLabel.branchNameStr 
                         : useCaseTrad[model.useCase] + useCaseLabel.branchNameContext
 
                     font: Kirigami.Theme.smallFont
