@@ -16,17 +16,21 @@ TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *mo
     const QFileInfo fileInfo(path);
     Q_ASSERT(fileInfo.exists());
 
+    static const QString baseCategStr = QStringLiteral(".BaseCategory");
+    static const QString baseGroupStr = QStringLiteral(".BaseGroup");
+
     const QString fileName = fileInfo.fileName();
     m_realName = fileName;
-    m_displayName = fileName == QStringLiteral(".BaseCategory") ? KleverConfig::categoryDisplayName() : fileName;
+    m_displayName = fileName == baseCategStr ? KleverConfig::categoryDisplayName() : fileName;
 
     if (depth_level < 3) {
-        const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask, QDir::Name);
+        const QDir::SortFlags sortFlags = fileName == baseGroupStr ? QDir::Name | QDir::Reversed : QDir::Name;
+        const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask, sortFlags);
 
         for (const QFileInfo &file : fileList) {
             const QString name = file.fileName();
 
-            const bool isNotBaseFolder = (name != QStringLiteral(".BaseCategory") && name != QStringLiteral(".BaseGroup"));
+            const bool isNotBaseFolder = (name != baseCategStr && name != baseGroupStr);
 
             if (!file.isDir() || (name.startsWith(QStringLiteral(".")) && isNotBaseFolder)) {
                 continue;
@@ -34,10 +38,10 @@ TreeItem::TreeItem(const QString &path, const int depth_level, NoteTreeModel *mo
 
             auto subTree = std::make_unique<TreeItem>(file.absoluteFilePath(), m_depth_level + 1, m_model, this);
 
-            if (name == QStringLiteral(".BaseGroup")) {
+            if (name == baseGroupStr) {
                 // Notes inside ".BaseGroup" folder should be shown as being held by the category directly, not by a group
                 // Move all the subTree child to the parent of the subTree
-                for (int i = 0; i < subTree->childCount(); i++) {
+                for (int i = subTree->childCount() - 1; i >= 0; i--) {
                     auto categoryNote = subTree->takeUniqueChildAt(i);
 
                     appendChild(std::move(categoryNote));
