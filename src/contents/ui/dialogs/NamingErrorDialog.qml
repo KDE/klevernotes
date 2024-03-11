@@ -35,7 +35,7 @@ Kirigami.PromptDialog {
                 + "\n" + i18nc("@subtitle:dialog", "Please remove the dot or choose another name.")
         }
         else if (error === "exist") {
-            return useCaseTrad[useCase] + "\n" + i18nc("@subtitle:dialog", "Please choose another name for it.") + "\n"
+            return useCaseTrad[useCase.toLowerCase()] + "\n" + i18nc("@subtitle:dialog", "Please choose another name for it.") + "\n"
         }
         
         return ""
