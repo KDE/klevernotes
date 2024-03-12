@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:35+0000\n"
-"PO-Revision-Date: 2024-03-07 12:17+0100\n"
+"POT-Creation-Date: 2024-03-12 01:35+0000\n"
+"PO-Revision-Date: 2024-03-11 10:36+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -24,34 +24,22 @@ msgid "Color Picker"
 msgstr "Kleurenkiezer"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "Are you sure you want to delete this category ?"
-msgstr "Wilt u deze %1 echt verwijderen?"
+msgstr "Wilt u deze categorie verwijderen?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Are you sure you want to delete this group ?"
-msgstr "Wilt u deze %1 echt verwijderen?"
+msgstr "Wilt u deze groep verwijderen?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Are you sure you want to delete this note ?"
-msgstr "Wilt u deze %1 echt verwijderen?"
+msgstr "Wilt u deze notitie verwijderen?"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -186,40 +174,28 @@ msgid "Header:"
 msgstr "Kop:"
 
 #: contents/ui/dialogs/MoveDialog.qml:20
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "Where do you want to move this category ?"
-msgstr "Wilt u deze %1 echt verwijderen?"
+msgstr "Waar wilt u deze categorie naar verplaatsen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Where do you want to move this group ?"
-msgstr "Wilt u deze %1 echt verwijderen?"
+msgstr "Waar wilt u deze groep naar verplaatsen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr "Wilt u deze %1 echt verwijderen?"
+msgstr "Waar wilt u deze notitie naar verplaatsen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:26
 #, kde-format
 msgctxt "@title:dialog, to move a group/note"
 msgid "Move"
-msgstr ""
+msgstr "Verplaatsen"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -237,19 +213,19 @@ msgstr "Naam:"
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "This category already exists."
-msgstr ""
+msgstr "Deze categorie bestaat al."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:12
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr ""
+msgstr "Deze groep bestaat al."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr ""
+msgstr "Deze notitie bestaat al."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:20
 #, kde-format
@@ -266,26 +242,20 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
+"Deze naam begint met een punt, dit kan problemen veroorzaken en is daarom "
+"niet toegestaan."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr ""
+msgstr "Verwijder de punt of kies een andere naam."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:38
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid ""
-#| "This %1 already exist.\n"
-#| "Please choose another name for it.\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
-msgstr ""
-"Deze %1 bestaat al.\n"
-"Kies een andere naam voor.\n"
+msgstr "Kies er een andere naam voor."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -628,7 +598,7 @@ msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr "Lettertype van codeblok:"
 
-#: contents/ui/settings/GeneralTab.qml:21
+#: contents/ui/settings/GeneralTab.qml:27
 #, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
@@ -636,54 +606,72 @@ msgctxt ""
 msgid "Storage"
 msgstr "Opslag"
 
-#: contents/ui/settings/GeneralTab.qml:32
+#: contents/ui/settings/GeneralTab.qml:38
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "Opslagpad:"
 
-#: contents/ui/settings/GeneralTab.qml:50
+#: contents/ui/settings/GeneralTab.qml:56
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "Zijbalk"
 
-#: contents/ui/settings/GeneralTab.qml:64
+#: contents/ui/settings/GeneralTab.qml:70
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Nieuwe categorienaam:"
 
-#: contents/ui/settings/GeneralTab.qml:94
+#: contents/ui/settings/GeneralTab.qml:100
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "Nieuwe groepsnaam:"
 
-#: contents/ui/settings/GeneralTab.qml:124
+#: contents/ui/settings/GeneralTab.qml:130
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Nieuwe notitienaam:"
 
-#: contents/ui/settings/GeneralTab.qml:147
+#: contents/ui/settings/GeneralTab.qml:153
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Bewerker"
 
-#: contents/ui/settings/GeneralTab.qml:157
+#: contents/ui/settings/GeneralTab.qml:163
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
 msgstr "Spaties voor tabs gebruiken"
 
-#: contents/ui/settings/GeneralTab.qml:169
+#: contents/ui/settings/GeneralTab.qml:175
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
 msgstr "Aantal spaties"
+
+#: contents/ui/settings/GeneralTab.qml:192
+#, kde-format
+msgctxt "@title, general text toolbar settings"
+msgid "Toolbar"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:200
+#, kde-format
+msgctxt "@title, list of visible toolbar actions"
+msgid "Visible"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:261
+#, kde-format
+msgctxt "@title, list of invisible toolbar actions"
+msgid "Invisible"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -875,6 +863,178 @@ msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
 msgstr "Plug-ins"
 
+#: contents/ui/sharedComponents/ActionsList.qml:14
+#: contents/ui/sharedComponents/ActionsList.qml:16
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Headers"
+msgstr "Koppen"
+
+#: contents/ui/sharedComponents/ActionsList.qml:16
+#, kde-format
+msgctxt "@tooltip, short form of 'number'"
+msgid "num"
+msgstr "num"
+
+#: contents/ui/sharedComponents/ActionsList.qml:20
+#: contents/ui/sharedComponents/ActionsList.qml:23
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 1"
+msgstr "Kop 1"
+
+#: contents/ui/sharedComponents/ActionsList.qml:27
+#: contents/ui/sharedComponents/ActionsList.qml:30
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 2"
+msgstr "Kop 2"
+
+#: contents/ui/sharedComponents/ActionsList.qml:34
+#: contents/ui/sharedComponents/ActionsList.qml:37
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 3"
+msgstr "Kop 3"
+
+#: contents/ui/sharedComponents/ActionsList.qml:41
+#: contents/ui/sharedComponents/ActionsList.qml:44
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 4"
+msgstr "Kop 4"
+
+#: contents/ui/sharedComponents/ActionsList.qml:48
+#: contents/ui/sharedComponents/ActionsList.qml:51
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 5"
+msgstr "Kop 5"
+
+#: contents/ui/sharedComponents/ActionsList.qml:55
+#: contents/ui/sharedComponents/ActionsList.qml:58
+#, kde-format
+msgctxt "@tooltip, text format header level, will be followed by the shortcut"
+msgid "Header 6"
+msgstr "Kop 6"
+
+#: contents/ui/sharedComponents/ActionsList.qml:63
+#: contents/ui/sharedComponents/ActionsList.qml:65
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Bold"
+msgstr "Vet"
+
+#: contents/ui/sharedComponents/ActionsList.qml:70
+#: contents/ui/sharedComponents/ActionsList.qml:72
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Italic"
+msgstr "Cursief"
+
+#: contents/ui/sharedComponents/ActionsList.qml:77
+#: contents/ui/sharedComponents/ActionsList.qml:79
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Strikethrough"
+msgstr "Doorstrepen"
+
+#: contents/ui/sharedComponents/ActionsList.qml:84
+#: contents/ui/sharedComponents/ActionsList.qml:86
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Code"
+msgstr "Code"
+
+#: contents/ui/sharedComponents/ActionsList.qml:91
+#: contents/ui/sharedComponents/ActionsList.qml:93
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Quote"
+msgstr "Citaat"
+
+#: contents/ui/sharedComponents/ActionsList.qml:98
+#: contents/ui/sharedComponents/ActionsList.qml:100
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Image"
+msgstr "Afbeelding"
+
+#: contents/ui/sharedComponents/ActionsList.qml:105
+#: contents/ui/sharedComponents/ActionsList.qml:107
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link"
+msgstr "Koppeling"
+
+#: contents/ui/sharedComponents/ActionsList.qml:112
+#: contents/ui/sharedComponents/ActionsList.qml:114
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Table"
+msgstr "Tabel"
+
+#: contents/ui/sharedComponents/ActionsList.qml:119
+#, fuzzy, kde-format
+#| msgid "Ordered list"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Ordered List"
+msgstr "Geordende lijst"
+
+#: contents/ui/sharedComponents/ActionsList.qml:121
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Ordered list"
+msgstr "Geordende lijst"
+
+#: contents/ui/sharedComponents/ActionsList.qml:126
+#, fuzzy, kde-format
+#| msgid "Unordered list"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Unordered List"
+msgstr "Ongeordende lijst"
+
+#: contents/ui/sharedComponents/ActionsList.qml:128
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Unordered list"
+msgstr "Ongeordende lijst"
+
+#: contents/ui/sharedComponents/ActionsList.qml:133
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Highlight"
+msgstr "Accentuering"
+
+#: contents/ui/sharedComponents/ActionsList.qml:135
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Text highlight"
+msgstr "Accentuering van tekst"
+
+#: contents/ui/sharedComponents/ActionsList.qml:140
+#: contents/ui/sharedComponents/ActionsList.qml:142
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Emoji"
+msgstr ""
+
+#: contents/ui/sharedComponents/ActionsList.qml:147
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Link note"
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link Note"
+msgstr "Notitie koppelen"
+
+#: contents/ui/sharedComponents/ActionsList.qml:149
+#, kde-format
+msgctxt "@tooltip, text format, will be followed by the shortcut"
+msgid "Link note"
+msgstr "Notitie koppelen"
+
 #: contents/ui/sideBar/ActionBar.qml:50
 #, kde-format
 msgctxt "as in 'A note category'"
@@ -934,7 +1094,7 @@ msgstr "Nieuwe notitie"
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "Verplaatsen"
 
 #: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
@@ -942,26 +1102,21 @@ msgid "Delete"
 msgstr "Verwijderen"
 
 #: contents/ui/sideBar/SearchBar.qml:72
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note category'"
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "Category"
-msgstr "categorie"
+msgstr "Categorie"
 
 #: contents/ui/sideBar/SearchBar.qml:73
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note group'"
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "Group"
-msgstr "groep"
+msgstr "Groep"
 
 #: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
-#, fuzzy, kde-format
-#| msgid "From : "
+#, kde-format
 msgid "From"
-msgstr "Van : "
+msgstr "Van"
 
 #: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
@@ -1303,132 +1458,11 @@ msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr "%1 bestaat niet"
 
-#: contents/ui/textEditor/TextToolBar.qml:36
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Headers"
-msgstr "Koppen"
-
-#: contents/ui/textEditor/TextToolBar.qml:36
-#, kde-format
-msgctxt "@tooltip, short form of 'number'"
-msgid "num"
-msgstr "num"
-
-#: contents/ui/textEditor/TextToolBar.qml:42
-#, kde-format
-msgctxt "@tooltip, text format header level, will be followed by the shortcut"
-msgid "Header 1"
-msgstr "Kop 1"
-
-#: contents/ui/textEditor/TextToolBar.qml:54
-#, kde-format
-msgctxt "@tooltip, text format header level, will be followed by the shortcut"
-msgid "Header 2"
-msgstr "Kop 2"
-
-#: contents/ui/textEditor/TextToolBar.qml:66
-#, kde-format
-msgctxt "@tooltip, text format header level, will be followed by the shortcut"
-msgid "Header 3"
-msgstr "Kop 3"
-
-#: contents/ui/textEditor/TextToolBar.qml:78
-#, kde-format
-msgctxt "@tooltip, text format header level, will be followed by the shortcut"
-msgid "Header 4"
-msgstr "Kop 4"
-
-#: contents/ui/textEditor/TextToolBar.qml:90
-#, kde-format
-msgctxt "@tooltip, text format header level, will be followed by the shortcut"
-msgid "Header 5"
-msgstr "Kop 5"
-
-#: contents/ui/textEditor/TextToolBar.qml:102
-#, kde-format
-msgctxt "@tooltip, text format header level, will be followed by the shortcut"
-msgid "Header 6"
-msgstr "Kop 6"
-
-#: contents/ui/textEditor/TextToolBar.qml:116
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Bold"
-msgstr "Vet"
-
-#: contents/ui/textEditor/TextToolBar.qml:127
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Italic"
-msgstr "Cursief"
-
-#: contents/ui/textEditor/TextToolBar.qml:138
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Strikethrough"
-msgstr "Doorstrepen"
-
-#: contents/ui/textEditor/TextToolBar.qml:149
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Code"
-msgstr "Code"
-
-#: contents/ui/textEditor/TextToolBar.qml:160
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Quote"
-msgstr "Citaat"
-
-#: contents/ui/textEditor/TextToolBar.qml:171
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Image"
-msgstr "Afbeelding"
-
-#: contents/ui/textEditor/TextToolBar.qml:180
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Link"
-msgstr "Koppeling"
-
-#: contents/ui/textEditor/TextToolBar.qml:189
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Table"
-msgstr "Tabel"
-
-#: contents/ui/textEditor/TextToolBar.qml:198
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Ordered list"
-msgstr "Geordende lijst"
-
-#: contents/ui/textEditor/TextToolBar.qml:211
-#: contents/ui/textEditor/TextToolBar.qml:235
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Unordered list"
-msgstr "Ongeordende lijst"
-
-#: contents/ui/textEditor/TextToolBar.qml:224
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Text highlight"
-msgstr "Accentuering van tekst"
-
-#: contents/ui/textEditor/TextToolBar.qml:247
-#, kde-format
-msgctxt "@tooltip, text format, will be followed by the shortcut"
-msgid "Link note"
-msgstr "Notitie koppelen"
-
-#: contents/ui/textEditor/TextToolBar.qml:327
-#: contents/ui/textEditor/TextToolBar.qml:328
-#: contents/ui/textEditor/TextToolBar.qml:329
-#: contents/ui/textEditor/TextToolBar.qml:331
-#: contents/ui/textEditor/TextToolBar.qml:332
+#: contents/ui/textEditor/TextToolBar.qml:181
+#: contents/ui/textEditor/TextToolBar.qml:182
+#: contents/ui/textEditor/TextToolBar.qml:183
+#: contents/ui/textEditor/TextToolBar.qml:185
+#: contents/ui/textEditor/TextToolBar.qml:186
 #, kde-format
 msgid "Header"
 msgstr "Kop"
@@ -1528,48 +1562,47 @@ msgstr "Aangepast"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Er is een fout opgetreden bij de poging deze pdf te kopiëren."
 
-#: logic/treeview/noteTreeModel.cpp:287
+#: logic/treeview/noteTreeModel.cpp:291
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Er is een fout opgetreden bij de poging de demo-notitie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:422
+#: logic/treeview/noteTreeModel.cpp:426
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Er is een fout opgetreden bij de poging dit item aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:461
+#: logic/treeview/noteTreeModel.cpp:465
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te verwijderen."
 
-#: logic/treeview/noteTreeModel.cpp:515
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to remove this item."
+#: logic/treeview/noteTreeModel.cpp:519
+#, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr "Er is een fout opgetreden bij de poging dit item te verwijderen."
+msgstr "Er is een fout opgetreden bij de poging dit item te verplaatsen."
 
-#: logic/treeview/noteTreeModel.cpp:538
+#: logic/treeview/noteTreeModel.cpp:542
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te hernoemen."
 
-#: logic/treeview/noteTreeModel.cpp:636
+#: logic/treeview/noteTreeModel.cpp:640
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Er is een fout opgetreden bij de poging deze notitie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:647
+#: logic/treeview/noteTreeModel.cpp:651
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Er is een fout opgetreden bij de poging deze groep aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:657
+#: logic/treeview/noteTreeModel.cpp:661
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Er is een fout opgetreden bij de poging deze categorie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:665
+#: logic/treeview/noteTreeModel.cpp:669
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Er is een fout opgetreden bij de poging deze opslag aan te maken."
