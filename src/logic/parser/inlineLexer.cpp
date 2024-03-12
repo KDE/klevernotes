@@ -400,6 +400,19 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             out += Renderer::subscript(outputed);
             continue;
         }
+
+        // superscript
+        cap = inline_superscript.match(src);
+        if (cap.hasMatch()) {
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+
+            cap1 = cap.captured(1);
+            outputed = output(cap1);
+
+            out += Renderer::superscript(outputed);
+            continue;
+        }
+
         // text
         cap = inline_text.match(src);
         if (cap.hasMatch()) {
