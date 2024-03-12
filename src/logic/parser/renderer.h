@@ -29,6 +29,7 @@ public:
     static QString codeSpan(const QString &text);
     static QString br();
     static QString del(const QString &text);
+    static QString subscript(const QString &text);
     static QString mark(const QString &text);
     static QString wikilink(const QString &href, const QString &title, const QString &text);
     static QString link(QString &href, const QString &title, const QString &text);

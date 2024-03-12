@@ -125,6 +125,11 @@ QString Renderer::del(const QString &text)
     return QStringLiteral("<del>") + text + QStringLiteral("</del>");
 }
 
+QString Renderer::subscript(const QString &text)
+{
+    return QStringLiteral("<sub>") + text + QStringLiteral("</sub>");
+}
+
 QString Renderer::mark(const QString &text)
 {
     return QStringLiteral("<mark>") + text + QStringLiteral("</mark>");

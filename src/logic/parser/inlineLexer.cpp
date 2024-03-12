@@ -389,6 +389,17 @@ QString InlineLexer::output(QString &src, bool useInlineText)
             }
         }
 
+        // subscript
+        cap = inline_subscript.match(src);
+        if (cap.hasMatch()) {
+            src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+
+            cap1 = cap.captured(1);
+            outputed = output(cap1);
+
+            out += Renderer::subscript(outputed);
+            continue;
+        }
         // text
         cap = inline_text.match(src);
         if (cap.hasMatch()) {
