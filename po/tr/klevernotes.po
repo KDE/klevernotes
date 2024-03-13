@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-12 01:35+0000\n"
-"PO-Revision-Date: 2024-03-11 15:09+0300\n"
+"PO-Revision-Date: 2024-03-12 13:21+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -659,19 +659,19 @@ msgstr "Boşluk sayısı"
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr ""
+msgstr "Araç Çubuğu"
 
 #: contents/ui/settings/GeneralTab.qml:200
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr ""
+msgstr "Görünür"
 
 #: contents/ui/settings/GeneralTab.qml:261
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr ""
+msgstr "Görünmez"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -937,7 +937,7 @@ msgstr "Yatık"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr "Üzeri Çizili"
+msgstr "Üzeri çizili"
 
 #: contents/ui/sharedComponents/ActionsList.qml:84
 #: contents/ui/sharedComponents/ActionsList.qml:86
@@ -975,8 +975,7 @@ msgid "Table"
 msgstr "Tablı"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "Sıralı liste"
@@ -985,11 +984,10 @@ msgstr "Sıralı liste"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr "Sıralı Liste"
+msgstr "Sıralı liste"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
-#, fuzzy, kde-format
-#| msgid "Unordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
 msgstr "Sırasız liste"
@@ -998,15 +996,13 @@ msgstr "Sırasız liste"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr "Sırasız Liste"
+msgstr "Sırasız liste"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "Vurgulayıcı"
+msgstr "Vurgu"
 
 #: contents/ui/sharedComponents/ActionsList.qml:135
 #, kde-format
@@ -1019,12 +1015,10 @@ msgstr "Metin vurgusu"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Emoji"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Link note"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
 msgstr "Notu bağlantıla"

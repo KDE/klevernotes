@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-12 01:35+0000\n"
-"PO-Revision-Date: 2024-03-08 09:08+0100\n"
+"PO-Revision-Date: 2024-03-11 10:36+0100\n"
 "Last-Translator: xavier <xyz@yahoo.com>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -217,7 +217,7 @@ msgstr "Voulez-vous vraiment supprimer %1 ?"
 #, kde-format
 msgctxt "@title:dialog, to move a group/note"
 msgid "Move"
-msgstr ""
+msgstr "Déplacer"
 
 #: contents/ui/dialogs/NamingDialog.qml:23
 #, kde-format
@@ -1125,7 +1125,7 @@ msgstr "Nouvelle note"
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "Déplacer"
 
 #: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
@@ -1133,17 +1133,13 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #: contents/ui/sideBar/SearchBar.qml:72
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note category'"
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "Category"
 msgstr "Catégorie"
 
 #: contents/ui/sideBar/SearchBar.qml:73
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note group'"
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "Group"
 msgstr "Groupe"
@@ -1620,12 +1616,10 @@ msgstr ""
 "élément."
 
 #: logic/treeview/noteTreeModel.cpp:519
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to remove this item."
+#, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr ""
-"Une erreur a été rencontrée lors de la tentative de suppression de cet "
-"élément."
+"Une erreur est survenue lors de la tentative de déplacement de cet élément."
 
 #: logic/treeview/noteTreeModel.cpp:542
 #, kde-format
