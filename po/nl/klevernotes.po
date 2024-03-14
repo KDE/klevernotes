@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-12 01:35+0000\n"
-"PO-Revision-Date: 2024-03-11 10:36+0100\n"
+"PO-Revision-Date: 2024-03-12 09:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -659,19 +659,19 @@ msgstr "Aantal spaties"
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr ""
+msgstr "Werkbalk"
 
 #: contents/ui/settings/GeneralTab.qml:200
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr ""
+msgstr "Zichtbaar"
 
 #: contents/ui/settings/GeneralTab.qml:261
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr ""
+msgstr "Onzichtbaar"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -975,8 +975,7 @@ msgid "Table"
 msgstr "Tabel"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "Geordende lijst"
@@ -988,8 +987,7 @@ msgid "Ordered list"
 msgstr "Geordende lijst"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
-#, fuzzy, kde-format
-#| msgid "Unordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
 msgstr "Ongeordende lijst"
@@ -1001,9 +999,7 @@ msgid "Unordered list"
 msgstr "Ongeordende lijst"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
 msgstr "Accentuering"
@@ -1019,12 +1015,10 @@ msgstr "Accentuering van tekst"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Emoji"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Link note"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
 msgstr "Notitie koppelen"
