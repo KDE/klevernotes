@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-12 01:35+0000\n"
-"PO-Revision-Date: 2024-03-12 09:26+0100\n"
-"Last-Translator: xavier <xyz@yahoo.com>\n"
+"PO-Revision-Date: 2024-03-13 14:05+0100\n"
+"Last-Translator: xavier <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -661,19 +661,19 @@ msgstr "Nombre d'espaces"
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr ""
+msgstr "Barre d'outils"
 
 #: contents/ui/settings/GeneralTab.qml:200
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr ""
+msgstr "Visible"
 
 #: contents/ui/settings/GeneralTab.qml:261
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr ""
+msgstr "Invisible"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -976,8 +976,7 @@ msgid "Table"
 msgstr "Table"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "Liste triée"
@@ -989,8 +988,7 @@ msgid "Ordered list"
 msgstr "Liste triée"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
-#, fuzzy, kde-format
-#| msgid "Unordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
 msgstr "Liste non triée"
@@ -1002,12 +1000,10 @@ msgid "Unordered list"
 msgstr "Liste non triée"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "Coloration"
+msgstr "Surlignement"
 
 #: contents/ui/sharedComponents/ActionsList.qml:135
 #, kde-format
@@ -1020,12 +1016,10 @@ msgstr "Coloration du texte"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Émoticône"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Link note"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
 msgstr "Lier une note"
