@@ -192,7 +192,7 @@ Kirigami.ActionToolBar {
             }
             columnsAlignments += "\n"
 
-            const result = "\n" + headers + columnsAlignments + cells.repeat(tableMakerDialog.rowCount-1)
+            const result = "\n" + headers + columnsAlignments + cells.repeat(tableMakerDialog.rowCount)
 
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, result)
         }
