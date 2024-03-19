@@ -372,11 +372,13 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
 
 QStringList BlockLexer::splitCells(QString &tableRow, const int count) const
 {
-    static const QRegularExpression cellReg = QRegularExpression(QStringLiteral("([^\\\\])\\|"));
-    static const QRegularExpression cellSplitterReg = QRegularExpression(QStringLiteral(" +\\| *"));
-    QStringList cells = tableRow.replace(cellReg, QStringLiteral("\\1 |")).split(cellSplitterReg);
-    if (cells.last().isEmpty())
+    static const QString pipeUni = QStringLiteral("&#124");
+    static const QString pipeEscape = QStringLiteral("\\|");
+    static const QRegularExpression cellSplitterReg = QRegularExpression(QStringLiteral(" *\\| *"));
+    QStringList cells = tableRow.replace(pipeEscape, pipeUni).split(cellSplitterReg);
+    if (cells.last().isEmpty()) {
         cells.removeLast();
+    }
 
     if (cells.length() > count && count > -1) {
         cells.erase(cells.end() - count, cells.end());
@@ -387,8 +389,7 @@ QStringList BlockLexer::splitCells(QString &tableRow, const int count) const
     }
 
     for (int i = 0; i < cells.length(); i++) {
-        static const QRegularExpression pipeReg = QRegularExpression(QStringLiteral("\\\\\\|"));
-        cells[i] = cells[i].replace(pipeReg, QStringLiteral("|"));
+        cells[i] = cells[i].replace(pipeUni, QStringLiteral("|"));
     }
 
     return cells;
