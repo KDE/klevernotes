@@ -102,7 +102,7 @@ ToolBar {
             ToolTip.visible: hovered
             ToolTip.text: (mainToolBar.sideBarWide 
                 ? i18n("Collapse sidebar")
-                : i18n("Expend sidebar")
+                : i18n("Expand sidebar")
             ) + " (" + closeAction.shortcut + ")"
             Layout.fillWidth: !mainToolBar.sideBarWide
         }
