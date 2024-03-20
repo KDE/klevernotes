@@ -190,22 +190,9 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         if (cap.hasMatch()) {
             src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            cap4 = cap.captured(4);
-            cap3 = cap.captured(3);
             cap2 = cap.captured(2);
-            cap1 = cap.captured(1);
 
-            QString toOutput;
-            if (!cap4.isEmpty())
-                toOutput = cap4;
-            else if (!cap3.isEmpty())
-                toOutput = cap3;
-            else if (!cap2.isEmpty())
-                toOutput = cap2;
-            else
-                toOutput = cap1;
-
-            outputed = output(toOutput);
+            outputed = output(cap2);
 
             out += Renderer::strong(outputed);
             continue;
@@ -216,28 +203,9 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         if (cap.hasMatch()) {
             src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const QString cap6 = cap.captured(6);
-            const QString cap5 = cap.captured(5);
-            cap4 = cap.captured(4);
-            cap3 = cap.captured(3);
             cap2 = cap.captured(2);
-            cap1 = cap.captured(1);
 
-            QString toOutput;
-            if (!cap6.isEmpty())
-                toOutput = cap6;
-            else if (!cap5.isEmpty())
-                toOutput = cap5;
-            else if (!cap4.isEmpty())
-                toOutput = cap4;
-            else if (!cap3.isEmpty())
-                toOutput = cap3;
-            else if (!cap2.isEmpty())
-                toOutput = cap2;
-            else
-                toOutput = cap1;
-
-            outputed = output(toOutput);
+            outputed = output(cap2);
 
             out += Renderer::em(outputed);
             continue;
@@ -270,8 +238,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         if (cap.hasMatch()) {
             src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            cap1 = cap.captured(1);
-            outputed = output(cap1);
+            cap2 = cap.captured(2);
+            outputed = output(cap2);
 
             out += Renderer::del(outputed);
 
@@ -282,8 +250,8 @@ QString InlineLexer::output(QString &src, bool useInlineText)
         if (cap.hasMatch()) {
             src.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            cap1 = cap.captured(1);
-            outputed = output(cap1);
+            cap2 = cap.captured(2);
+            outputed = output(cap2);
 
             out += Renderer::mark(outputed);
             continue;
