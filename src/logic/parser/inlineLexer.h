@@ -23,30 +23,30 @@ private:
     QString escapes(QString &text) const;
     QString outputLink(QRegularExpressionMatch &cap, QMap<QString, QString> linkInfo, bool useInlineText);
 
-    inline static const QRegularExpression inline_escape = QRegularExpression(QStringLiteral("^\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\]\\\\^_`{|}~~|])"));
+    inline static const QRegularExpression inline_escape = QRegularExpression(QStringLiteral("^\\\\([!\"#$%&'()*+,\\-./:;<=>?@\\[\\]\\\\^_`{|}~~|])"));
 
     inline static const QRegularExpression inline_autolink = QRegularExpression(
-        QStringLiteral("^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^\\s\\x00-\\x1f<>]*|[a-zA-Z0-9.!#$%&'*+/"
-                       "=?_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_]))>"));
+        QStringLiteral("^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^\\s\x00-\x1f<>]*|[a-zA-Z0-9.!#$%&'*+/"
+                       "=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_]))>"));
 
     inline static const QRegularExpression inline_url = QRegularExpression(
         QStringLiteral("^((?:ftp|https?):\\/\\/|www\\.)(?:[a-zA-Z0-9\\-]+\\.?)+[^\\s<]*|^[a-zA-Z0-9.!#$%&'*+/"
-                       "=?_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])"));
+                       "=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])"));
 
-    inline static const QRegularExpression inline_tag = QRegularExpression(QStringLiteral(
-        "^<!--(?!-?>)[\\s\\S]*?-->|^<\\/"
-        "[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:\\s+[a-zA-Z:_][\\w.:-]*(?:\\s*=\\s*\"[^\"]*\"|\\s*=\\s*'[^']*'|\\s*=\\s*[^\\s\"'=<>`]+)?)*?\\s*\\/"
-        ">|^<\\?[\\s\\S]*?\\?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>"));
+    inline static const QRegularExpression inline_tag =
+        QRegularExpression(QStringLiteral("^<!--(?!-?>)[\\s\\S]*?-->|^</"
+                                          "[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:\\s+[a-zA-Z:_][\\w.:-]*(?:\\s*=\\s*\"[^\"]*\"|\\s*=\\s*'[^']*'|\\s*=\\s*[^"
+                                          "\\s\"'=<>`]+)?)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>"));
 
-    inline static const QRegularExpression inline_link = QRegularExpression(QStringLiteral(
-        "^!?\\[((?:\\[[^\\[\\]]*\\]|\\\\[\\[\\]]?|`[^`]*`|[^\\[\\]\\\\])*?)\\]\\(\\s*(<(?:\\\\[<>]?|[^\\s<>\\\\])*>|(?:\\\\[()]?|\\([^\\s\\x00-\\x1f()\\\\]*\\)"
-        "|[^\\s\\x00-\\x1f()\\\\])*?)(?:\\s+(\"(?:\\\\\"?|[^\"\\\\])*\"|'(?:\\\\'?|[^'\\\\])*'|\\((?:\\\\\\)?|[^)\\\\])*\\)))?\\s*\\)"));
+    inline static const QRegularExpression inline_link = QRegularExpression(
+        QStringLiteral("^!?\\[((?:\\[[^\\[\\]]*\\]|[\\[\\]]?|`[^`]*`|[^\\[\\]])*?)\\]\\(\\s*(<(?:[<>]?|[^\\s<>])*>|(?:[()]?|\\([^\\s\\x00-\\x1f()]*\\)"
+                       "|[^\\s\\x00-\\x1f()])*?)(?:\\s+(\"(?:\"?|[^\"])*\"|'(?:'?|[^'])*'|\\((?:\\)?|[^)])*\\)))?\\s*\\)"));
 
-    inline static const QRegularExpression inline_reflink = QRegularExpression(
-        QStringLiteral("^!?\\[((?:\\[[^\\[\\]]*\\]|\\\\[\\[\\]]?|`[^`]*`|[^\\[\\]\\\\])*?)\\]\\[(?!\\s*\\])((?:\\[\\[\\]]?|[^\\[\\]\\\\])+)\\]"));
+    inline static const QRegularExpression inline_reflink =
+        QRegularExpression(QStringLiteral("^!?\\[((?:\\[[^\\[\\]]*\\]|[\\[\\]]?|`[^`]*`|[^\\[\\]])*?)\\]\\[(?!\\s*\\])((?:\\[\\[\\]]?|[^\\[\\]])+)\\]"));
 
     inline static const QRegularExpression inline_nolink =
-        QRegularExpression(QStringLiteral("^!?\\[(?!\\s*\\])((?:\\[[^\\[\\]]*\\]|\\\\[\\[\\]]|[^\\[\\]])*)\\](?:\\[\\])?"));
+        QRegularExpression(QStringLiteral("^!?\\[(?!\\s*\\])((?:\\[[^\\[\\]]*\\]|[\\[\\]]|[^\\[\\]])*)\\](?:\\[\\])?"));
 
     inline static const QRegularExpression inline_strong = QRegularExpression(
         QStringLiteral("^__([^\\s][\\s\\S]*?[^\\s])__(?!_)|^\\*\\*([^\\s][\\s\\S]*?[^\\s])\\*\\*(?!\\*)|^__([^\\s])__(?!_)|^\\*\\*([^\\s])\\*\\*(?!\\*)"));
@@ -63,8 +63,8 @@ private:
 
     inline static const QRegularExpression inline_highlight = QRegularExpression(QStringLiteral("^==(?=\\S)([\\s\\S]*?\\S)=="));
 
-    inline static const QRegularExpression inline_text = QRegularExpression(
-        QStringLiteral("^[\\s\\S]+?(?=[\\\\<!\\[`*~_=:\\^]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)"));
+    inline static const QRegularExpression inline_text =
+        QRegularExpression(QStringLiteral("^[\\s\\S]+?(?=[<!\\[`*~_=:\\^]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)"));
 
     inline static const QRegularExpression inline_subscript = QRegularExpression(QStringLiteral("^~(?=\\S)([\\s\\S]*?\\S)~"));
 
