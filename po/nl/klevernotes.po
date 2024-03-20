@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:35+0000\n"
+"POT-Creation-Date: 2024-03-20 01:41+0000\n"
 "PO-Revision-Date: 2024-03-12 09:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1063,8 +1063,9 @@ msgid "Collapse sidebar"
 msgstr "Zijbalk invouwen"
 
 #: contents/ui/sideBar/ActionBar.qml:105
-#, kde-format
-msgid "Expend sidebar"
+#, fuzzy, kde-format
+#| msgid "Expend sidebar"
+msgid "Expand sidebar"
 msgstr "Zijbalk uitvouwen"
 
 #: contents/ui/sideBar/ContextMenu.qml:18

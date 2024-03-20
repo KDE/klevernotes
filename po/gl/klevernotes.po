@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:35+0000\n"
+"POT-Creation-Date: 2024-03-20 01:41+0000\n"
 "PO-Revision-Date: 2024-03-16 23:26+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1056,8 +1056,9 @@ msgid "Collapse sidebar"
 msgstr "Pregar a barra lateral"
 
 #: contents/ui/sideBar/ActionBar.qml:105
-#, kde-format
-msgid "Expend sidebar"
+#, fuzzy, kde-format
+#| msgid "Expend sidebar"
+msgid "Expand sidebar"
 msgstr "Expandir a barra lateral"
 
 #: contents/ui/sideBar/ContextMenu.qml:18

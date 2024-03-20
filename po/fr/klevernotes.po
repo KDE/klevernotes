@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:35+0000\n"
+"POT-Creation-Date: 2024-03-20 01:41+0000\n"
 "PO-Revision-Date: 2024-03-13 14:05+0100\n"
 "Last-Translator: xavier <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -1064,8 +1064,9 @@ msgid "Collapse sidebar"
 msgstr "Réduire la barre latérale"
 
 #: contents/ui/sideBar/ActionBar.qml:105
-#, kde-format
-msgid "Expend sidebar"
+#, fuzzy, kde-format
+#| msgid "Expend sidebar"
+msgid "Expand sidebar"
 msgstr "Développer la barre latérale"
 
 #: contents/ui/sideBar/ContextMenu.qml:18

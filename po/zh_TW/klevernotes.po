@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:35+0000\n"
+"POT-Creation-Date: 2024-03-20 01:41+0000\n"
 "PO-Revision-Date: 2024-02-29 03:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1096,7 +1096,7 @@ msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
-msgid "Expend sidebar"
+msgid "Expand sidebar"
 msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:18

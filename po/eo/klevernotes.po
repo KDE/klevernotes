@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:35+0000\n"
-"PO-Revision-Date: 2024-03-10 18:27+0100\n"
+"POT-Creation-Date: 2024-03-20 01:41+0000\n"
+"PO-Revision-Date: 2024-03-19 07:25+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo.org>\n"
 "Language: eo\n"
@@ -951,11 +951,10 @@ msgstr "Ligo"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr "Tablo"
+msgstr "Tabelo"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "Ordigita listo"
@@ -967,51 +966,47 @@ msgid "Ordered list"
 msgstr "Ordigita listo"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
-msgstr "Ordigita listo"
+msgstr "Neordigita listo"
 
 #: contents/ui/sharedComponents/ActionsList.qml:128
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "Neordigita listo"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "Markilo"
+msgstr "Reliefigi"
 
 #: contents/ui/sharedComponents/ActionsList.qml:135
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr ""
+msgstr "Teksta reliefigo"
 
 #: contents/ui/sharedComponents/ActionsList.qml:140
 #: contents/ui/sharedComponents/ActionsList.qml:142
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Emoĝi"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
-#, fuzzy, kde-format
-#| msgid "Link"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
-msgstr "Ligo"
+msgstr "Lignoto"
 
 #: contents/ui/sharedComponents/ActionsList.qml:149
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr ""
+msgstr "Lignoto"
 
 #: contents/ui/sideBar/ActionBar.qml:50
 #, kde-format
@@ -1023,13 +1018,13 @@ msgstr "Krei novan kategorion"
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
-msgstr ""
+msgstr "Krei novan grupon"
 
 #: contents/ui/sideBar/ActionBar.qml:66
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr ""
+msgstr "Krei novan noton"
 
 #: contents/ui/sideBar/ActionBar.qml:74 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
@@ -1039,17 +1034,18 @@ msgstr "Alinomi"
 #: contents/ui/sideBar/ActionBar.qml:87
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Serĉi"
 
 #: contents/ui/sideBar/ActionBar.qml:104
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Malvastigi flankbreton"
 
 #: contents/ui/sideBar/ActionBar.qml:105
-#, kde-format
-msgid "Expend sidebar"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Collapse sidebar"
+msgid "Expand sidebar"
+msgstr "Malvastigi flankbreton"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -1092,10 +1088,9 @@ msgid "Group"
 msgstr "Grupo"
 
 #: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
-#, fuzzy, kde-format
-#| msgid "From :"
+#, kde-format
 msgid "From"
-msgstr "De :"
+msgstr "De"
 
 #: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
@@ -1613,15 +1608,3 @@ msgstr "Oliver Kellogg"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "okellogg@users.sourceforge.net"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "category"
-#~ msgstr "kategorio"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "group"
-#~ msgstr "grupo"
-
-#~ msgctxt "Name, as in 'A note'"
-#~ msgid "note"
-#~ msgstr "noto"
