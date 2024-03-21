@@ -38,40 +38,36 @@ private:
     inline static const QRegularExpression block_heading = QRegularExpression(QStringLiteral("^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)"));
 
     inline static const QRegularExpression block_nptable =
-        QRegularExpression(QStringLiteral("^ *([^|\n ].*\\|.*)\n *([-:]+ *\\|[-| :]*)(?:\n((?:.*[^&gt;\n ].*(?:\n|$))*)\n*|$)"));
+        QRegularExpression(QStringLiteral("^ *([^|\n ].*\\|.*)\n *([-:]+ *\\|[-| :]*)(?:\n((?:.*[^>\n ].*(?:\n|$))*)\n*|$)"));
 
     inline static const QRegularExpression block_hr = QRegularExpression(QStringLiteral("^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\n+|$)"));
 
     inline static const QRegularExpression block_blockquote = QRegularExpression(QStringLiteral(
-        "^( {0,3}> ?(([^\n]+(?:\n(?! {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\n+|$)| *(#{1,6}) *([^\\n]+?) *(?:#+ *)?(?:\n+|$)|([^\\n]+)\n *(=|-){2,} "
-        "*(?:\n+|$)| "
-        "{0,3}>|<\\/"
-        "?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|"
-        "form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|"
-        "summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: +|\\n|\\/?>)|<(?:script|pre|style|!--))[^\n]+)*)|[^\n]*)(?:\\n|$))+"));
+        "^( {0,3}> ?(^([^\n]+(?:\n(?!^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\n+|$)"
+        "|^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)|^([^\n]+)\n *(=|-){2,} *(?:\n+|$)| {0,3}>"
+        "|</?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption"
+        "|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option"
+        "|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)"
+        "(?: +|\n|/?>)|<(?:script|pre|style|!--))[^\n]+)*)"
+        "|[^\n]*)(?:\n|$))+"));
 
     inline static const QRegularExpression block_list = QRegularExpression(QStringLiteral(
         "^( *)((?:[\\*\\+\\-]|\\d+\\.)) [\\s\\S]+?(?:\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\n+|$))|\n+(?= "
-        "{0,3}\\[((?!\\s*\\])(?:\\\\[\\[\\]]|[^\\[\\]])+)\\]: *\n? *<!--?([^\\s\\-\\->]+)&gt;?(?:(?: +\n? *| *\n "
-        "*)((?:\"(?:\\\\\"?|[^\"\\\\])*\"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\\([^()]*\\))))? *(?:\n+|$))|\n{2,}(?! )(?!\1(?:[\\*\\+\\-]|\\d+\\.) )\n*|\\s*$)"));
+        "{0,3}\\[((?!\\s*\\])(?:\\\\[\\[\\]]|[^\\[\\]])+)\\]: *\n? *<!--?([^\\s\\-\\->]+)>?(?:(?: +\n? *| *\n "
+        "*)((?:\"(?:\\\\\"?|[^\"\\\\])*\"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\\([^()]*\\))))? *(?:\n+|$))|\n{2,}(?! )(?!\\1(?:[\\*\\+\\-]|\\d+\\.) )\n*|\\s*$)"));
 
     inline static const QRegularExpression block_item =
         QRegularExpression(QStringLiteral("^( *)((?:[*+-]|\\d+\\.)) [^\\n]*(?:\\n(?!\\1(?:[*+-]|\\d+\\.) )[^\\n]*)*"), QRegularExpression::MultilineOption);
 
     inline static const QRegularExpression block_html = QRegularExpression(
-        QStringLiteral(
-            "^ "
-            "{0,3}(?:&lt;(script|pre|style)[\\s&gt;][\\s\\S]*?(?:&lt;\\/"
-            "\1&gt;[^\n]*\n+|$)|<!--(?!-?>)[\\s\\S]*?-->[^\n]*(\n+|$)|&lt;\\?[\\s\\S]*?\\?&gt;\n*|<!--[A-Z][\\s\\S]*?-->\n*|<!--\\[CDATA\\[[\\s\\S]*?\\]\\]-->"
-            "\n*|&"
-            "lt;\\/"
-            "?(address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|"
-            "footer|"
-            "form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|"
-            "source|"
-            "summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: +|\n|\\/?&gt;)[\\s\\S]*?(?:\n{2,}|$)|&lt;(?!script|pre|style)([a-z][\\w-]*)(?: "
-            "+[a-zA-Z:_][\\w.:-]*(?: *= *\"[^\"\n]*\"| *= *'[^'\n]*'| *= *[^\\s\"'=&lt;&gt;`]+)?)*? "
-            "*\\/?&gt;(?=\\h*\n)[\\s\\S]*?(?:\n{2,}|$)|&lt;\\/(?!script|pre|style)[a-z][\\w-]*\\s*&gt;(?=\\h*\n)[\\s\\S]*?(?:\n{2,}|$))"),
+        QStringLiteral("'^ "
+                       "{0,3}(?:<(script|pre|style)[\\s>][\\s\\S]*?(?:</"
+                       "\\1>[^\n]*\n+|$)|<!--(?!-?>)[\\s\\S]*?-->[^\n]*(\n+|$)|<\\?[\\s\\S]*?\\?>\n*|<![A-Z][\\s\\S]*?>\n*|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>\n*|</"
+                       "?(address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|"
+                       "figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|"
+                       "option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: "
+                       "+|\n|/?>)[\\s\\S]*?(?:\n{2,}|$)|<(?!script|pre|style)([a-z][\\w-]*)(?: +[a-zA-Z:_][\\w.:-]*(?: *= *\"[^\"\n]*\"| *= *'[^'\n]*'| *= "
+                       "*[^\\s\"'=<>`]+)?)*? */?>(?=\\h*\n)[\\s\\S]*?(?:\n{2,}|$)|</(?!script|pre|style)[a-z][\\w-]*\\s*>(?=\\h*\n)[\\s\\S]*?(?:\n{2,}|$))'"),
         QRegularExpression::CaseInsensitiveOption);
 
     inline static const QRegularExpression block_def =
@@ -79,19 +75,19 @@ private:
                                           "*)((?:\"(?:\\\\\"?|[^\"\\\\])*\"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\\([^()]*\\))))? *(?:\\n+|$)"));
 
     inline static const QRegularExpression block_table =
-        QRegularExpression(QStringLiteral("^ *\\|(.+)\n *\\|?( *[-:]+[-| :]*)(?:\n((?: *[^&gt;\n ].*(?:\n|$))*)\n*|$)"));
+        QRegularExpression(QStringLiteral("^ *\\|(.+)\n *\\|?( *[-:]+[-| :]*)(?:\n((?: *[^>\n ].*(?:\n|$))*)\n*|$)"));
 
     inline static const QRegularExpression block_lheading = QRegularExpression(QStringLiteral("^([^\n]+)\n *(=|-){2,} *(?:\n+|$)"));
 
     inline static const QRegularExpression block_paragraph = QRegularExpression(QStringLiteral(
-        "^([^\\n]+(?:\\n(?! *(`{3,}|~{3,})[ \\.]*(\\S+)? *\\n([\\s\\S]*?)\\n? *\\2 *(?:\\n+|$)|( *)((?:[*+-]|\\d+\\.)) [\\s\\S]+?(?:\\n+(?=\\3?(?:(?:- "
-        "*){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))|\\n+(?= {0,3}\\[((?!\\s*\\])(?:\\\\[\\[\\]]|[^\\[\\]])+)\\]: *\\n? *<?([^\\s>]+)>?(?:(?: +\\n? *| *\\n "
-        "*)((?:\"(?:\\\\\"?|[^\"\\\\])*\"|'[^'\\n]*(?:\\n[^'\\n]+)*\\n?'|\\([^()]*\\))))? *(?:\\n+|$))|\\n{2,}(?! )(?!\\1(?:[*+-]|\\d+\\.) )\\n*|\\s*$)| "
-        "{0,3}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)| *(#{1,6}) *([^\\n]+?) *(?:#+ *)?(?:\\n+|$)|([^\\n]+)\\n *(=|-){2,} *(?:\\n+|$)| "
-        "{0,3}>|<\\/"
+        "^([^\n]+(?:\n(?! *(`{3,}|~{3,})[ \\.]*(\\S+)? *\n([\\s\\S]*?)\n? *\\2 *(?:\n+|$)|( *)((?:[*+-]|\\d+\\.)) [\\s\\S]+?(?:\n+(?=\\3?(?:(?:- "
+        "*){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\n+|$))|\n+(?= {0,3}\\[((?!\\s*\\])(?:\\\\[\\[\\]]|[^\\[\\]])+)\\]: *\n? *<?([^\\s>]+)>?(?:(?: +\n? *| *\n"
+        "*)((?:\"(?:\\\\\"?|[^\"\\\\])*\"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\\([^()]*\\))))? *(?:\n+|$))|\n{2,}(?! )(?!\\1(?:[*+-]|\\d+\\.) )\n*|\\s*$)| "
+        "{0,3}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\n+|$)| *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)|([^\n]+)\n *(=|-){2,} *(?:\n+|$)| "
+        "{0,3}>|</"
         "?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|"
         "form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|"
-        "summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: +|\\n|\\/?>)|<(?:script|pre|style|!--))[^\\n]+)*)"));
+        "summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: +|\n|/?>)|<(?:script|pre|style|!--))[^\n]+)*)"));
 
     inline static const QRegularExpression block_text = QRegularExpression(QStringLiteral("^[^\n]+"));
 
