@@ -60,21 +60,6 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             }
         }
 
-        cap = block_code.match(remaining);
-        if (cap.hasMatch()) {
-            remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
-
-            QString cap0 = cap.captured(0);
-            static const QRegularExpression fourSpaceBlockReg = QRegularExpression(QStringLiteral("^ {4}"), QRegularExpression::MultilineOption);
-            cap0.replace(fourSpaceBlockReg, emptyStr);
-            static const QRegularExpression newLineReg = QRegularExpression(QStringLiteral("\n+$"));
-            const QString text = cap0.replace(newLineReg, emptyStr);
-
-            const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("code")}, {QStringLiteral("text"), text}};
-            m_parser->tokens.append(tok);
-            continue;
-        }
-
         cap = block_fences.match(remaining);
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
