@@ -157,7 +157,7 @@ ColumnLayout {
     FormCard.FormCard {
         Layout.fillWidth: true
 
-        ExpendingFormSwitch {
+        ExpandingFormSwitch {
             id: spaceTabSwitch
 
             text: i18nc("@label:checkbox", "Use spaces for tab")

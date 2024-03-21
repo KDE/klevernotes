@@ -14,7 +14,7 @@ Kirigami.Dialog {
 
     property int rowCount: 1
     property int columnCount: 1
-    property string alignment: optionsColumn.isExpended ? alignmentBox.currentValue : "left"
+    property string alignment: optionsColumn.isExpanded ? alignmentBox.currentValue : "left"
     property int hoveredRow: 0
     property int hoveredColumn: 0
     property bool isHovered: false
@@ -64,7 +64,7 @@ Kirigami.Dialog {
 
             states: State {
                 name: "invisible"
-                when: optionsColumn.isExpended
+                when: optionsColumn.isExpanded
 
                 PropertyChanges { target: mainHolder; Layout.preferredHeight: 0 }
                 PropertyChanges { target: mainHolder; opacity: 0 }
@@ -153,16 +153,16 @@ Kirigami.Dialog {
             id: optionButton
 
             text: i18nc("@label:button", "More options")
-            arrowDirection: optionsColumn.isExpended ? Qt.DownArrow : Qt.UpArrow
+            arrowDirection: optionsColumn.isExpanded ? Qt.DownArrow : Qt.UpArrow
 
             Layout.fillWidth: true
             Layout.preferredHeight: Kirigami.Units.gridUnit * 3
-            Layout.alignment: optionsColumn.isExpended ? Qt.AlignTop : Qt.AlignBottom
-            Layout.bottomMargin: optionsColumn.isExpended ? 0 : -Kirigami.Units.smallSpacing
+            Layout.alignment: optionsColumn.isExpanded ? Qt.AlignTop : Qt.AlignBottom
+            Layout.bottomMargin: optionsColumn.isExpanded ? 0 : -Kirigami.Units.smallSpacing
 
 
             onClicked: {
-                optionsColumn.isExpended = !optionsColumn.isExpended
+                optionsColumn.isExpanded = !optionsColumn.isExpanded
 
                 if (scrollableDialog.rowCount > mainHolder.rows) scrollableDialog.rowCount = mainHolder.rows
                 if (scrollableDialog.columnCount > mainHolder.columns) scrollableDialog.columnCount = mainHolder.columns
@@ -172,13 +172,13 @@ Kirigami.Dialog {
         Kirigami.Separator {
             Layout.fillWidth: true
             Layout.bottomMargin: Kirigami.Units.smallSpacing
-            visible: optionsColumn.isExpended
+            visible: optionsColumn.isExpanded
         }
 
         Item {
             id: optionsColumn
 
-            property bool isExpended: false
+            property bool isExpanded: false
 
             Layout.fillWidth: true
             Layout.preferredHeight: 0
@@ -187,7 +187,7 @@ Kirigami.Dialog {
 
             states: State {
                 name: "visible"
-                when: optionsColumn.isExpended
+                when: optionsColumn.isExpanded
                 PropertyChanges { target: optionsColumn; Layout.preferredHeight: Kirigami.Units.gridUnit * 15 }
                 PropertyChanges { target: optionsColumn; opacity: 1 }
             }
@@ -253,6 +253,6 @@ Kirigami.Dialog {
     onClosed: {
         rowCount = 1
         columnCount = 1
-        optionsColumn.isExpended = false
+        optionsColumn.isExpanded = false
     }
 }

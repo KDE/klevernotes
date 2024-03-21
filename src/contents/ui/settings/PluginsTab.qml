@@ -40,11 +40,11 @@ ColumnLayout {
             }
         }
 
-        ExpendingFormSwitch {
+        ExpandingFormSwitch {
             id: pumlCheck
 
             text: i18nc("@label:checkbox", "Enable PlantUML")
-            description: i18nc("@description:checkbox", "PlantUML let's you create diagram.") 
+            description: i18nc("@description:checkbox", "PlantUML lets you create diagrams.")
                 + "\n" + i18nc("@description:checkbox", "Note: creating diagrams can be slow. If you have a large number of diagrams, displaying them as images would be easier.")
             checked: Config.pumlEnabled
 
@@ -76,7 +76,7 @@ ColumnLayout {
 
         Layout.fillWidth: true
 
-        ExpendingFormSwitch {
+        ExpandingFormSwitch {
             id: highlitingCheck
 
             text: i18nc("@label:checkbox", "Enable code syntax highlighting")
@@ -145,7 +145,7 @@ ColumnLayout {
     
         FormCard.FormDelegateSeparator { above: highlitingCheck; below: emojiCheck }
 
-        ExpendingFormSwitch {
+        ExpandingFormSwitch {
             id: emojiCheck
 
             text: i18nc("@label:checkbox", "Enable quick emoji")

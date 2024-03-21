@@ -57,7 +57,7 @@ Kirigami.PromptDialog {
             }
         }
 
-        ExpendingFormSwitch {
+        ExpandingFormSwitch {
             id: headerSwitch
 
             text: i18nc("@label:switch", "Search headers")

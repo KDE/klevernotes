@@ -62,7 +62,7 @@
         <file>contents/ui/settings/TabBar.qml</file>
 
         <file>contents/ui/sharedComponents/ActionsList.qml</file>
-        <file>contents/ui/sharedComponents/ExpendingFormSwitch.qml</file>
+        <file>contents/ui/sharedComponents/ExpandingFormSwitch.qml</file>
         <file>contents/ui/sharedComponents/KAction.qml</file>
 
         <file>contents/ui/sideBar/ActionBar.qml</file>
