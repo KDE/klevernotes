@@ -50,7 +50,8 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
 
     const KSharedConfigPtr schemeConfig = KSharedConfig::openConfig(schemePath, KConfig::SimpleConfig);
 
-    const KColorScheme activeView(QPalette::Active, KColorScheme::View, schemeConfig);
+    const KColorScheme activeView(QPalette::Active, KColorScheme::Window, schemeConfig);
+    const KColorScheme selectionView(QPalette::Active, KColorScheme::Selection, schemeConfig);
 
     const QString bodyColor = activeView.background(activeView.NormalBackground).color().name(QColor::HexRgb);
     const QString textColor = activeView.foreground(activeView.NormalText).color().name(QColor::HexRgb);
@@ -58,7 +59,7 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
     const QString linkColor = activeView.foreground(activeView.LinkText).color().name(QColor::HexRgb);
     const QString visitedLinkColor = activeView.foreground(activeView.VisitedText).color().name(QColor::HexRgb);
     const QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
-    const QString highlightColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
+    const QString highlightColor = selectionView.background().color().name(QColor::HexRgb);
 
     const QVariantMap res = {
         {QStringLiteral("--bodyColor"), bodyColor},
