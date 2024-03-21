@@ -26,11 +26,11 @@ private:
     inline static const QRegularExpression inline_escape = QRegularExpression(QStringLiteral("^\\\\([!\"#$%&'()*+,\\-./:;<=>?@\\[\\]\\\\^_`{|}~~|])"));
 
     inline static const QRegularExpression inline_autolink = QRegularExpression(
-        QStringLiteral("^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^\\s\x00-\x1f<>]*|[a-zA-Z0-9.!#$%&'*+/"
+        QStringLiteral("^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^\\s\\x00-\\x1f<>]*|[a-zA-Z0-9.!#$%&'*+/"
                        "=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_]))>"));
 
     inline static const QRegularExpression inline_url = QRegularExpression(
-        QStringLiteral("^((?:ftp|https?):\\/\\/|www\\.)(?:[a-zA-Z0-9\\-]+\\.?)+[^\\s<]*|^[a-zA-Z0-9.!#$%&'*+/"
+        QStringLiteral("^((?:ftp|https?)://|www\\.)(?:[a-zA-Z0-9\\-]+\\.?)+[^\\s<]*|^[a-zA-Z0-9.!#$%&'*+/"
                        "=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])"));
 
     inline static const QRegularExpression inline_tag =
@@ -61,7 +61,7 @@ private:
     inline static const QRegularExpression inline_highlight = QRegularExpression(QStringLiteral("^(==)(?=\\S)([\\s\\S]*?\\S)(==)"));
 
     inline static const QRegularExpression inline_text =
-        QRegularExpression(QStringLiteral("^[\\s\\S]+?(?=[<!\\[`*~_=:\\^]|https?:\\/\\/|ftp:\\/\\/|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\b_| {2,}\n|$)"));
+        QRegularExpression(QStringLiteral("^[\\s\\S]+?(?=[<!\\[`*~_=:\\^]|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&'*+/=?_`{\\|}~-]+@|\\b_| {2,}\n|$)"));
 
     inline static const QRegularExpression inline_subscript = QRegularExpression(QStringLiteral("^~(?=\\S)([\\s\\S]*?\\S)~"));
 
