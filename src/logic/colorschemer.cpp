@@ -46,26 +46,29 @@ QString ColorSchemer::nameForIndex(int index) const
 
 QVariantMap ColorSchemer::getUsefullColors(int index) const
 {
-    QString schemePath = c->model()->data(c->model()->index(index, 0), Qt::UserRole).toString();
+    const QString schemePath = c->model()->data(c->model()->index(index, 0), Qt::UserRole).toString();
 
-    KSharedConfigPtr schemeConfig = KSharedConfig::openConfig(schemePath, KConfig::SimpleConfig);
+    const KSharedConfigPtr schemeConfig = KSharedConfig::openConfig(schemePath, KConfig::SimpleConfig);
 
-    KColorScheme activeView(QPalette::Active, KColorScheme::View, schemeConfig);
+    const KColorScheme activeView(QPalette::Active, KColorScheme::View, schemeConfig);
 
-    QString bodyColor = activeView.background(activeView.NormalBackground).color().name(QColor::HexRgb);
-    QString textColor = activeView.foreground(activeView.NormalText).color().name(QColor::HexRgb);
-    QString titleColor = activeView.foreground(activeView.InactiveText).color().name(QColor::HexRgb);
-    QString linkColor = activeView.foreground(activeView.LinkText).color().name(QColor::HexRgb);
-    QString visitedLinkColor = activeView.foreground(activeView.VisitedText).color().name(QColor::HexRgb);
-    QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
+    const QString bodyColor = activeView.background(activeView.NormalBackground).color().name(QColor::HexRgb);
+    const QString textColor = activeView.foreground(activeView.NormalText).color().name(QColor::HexRgb);
+    const QString titleColor = activeView.foreground(activeView.InactiveText).color().name(QColor::HexRgb);
+    const QString linkColor = activeView.foreground(activeView.LinkText).color().name(QColor::HexRgb);
+    const QString visitedLinkColor = activeView.foreground(activeView.VisitedText).color().name(QColor::HexRgb);
+    const QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
+    const QString highlightColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
 
-    QVariantMap res;
-    res.insert(QStringLiteral("--bodyColor"), bodyColor);
-    res.insert(QStringLiteral("--textColor"), textColor);
-    res.insert(QStringLiteral("--titleColor"), titleColor);
-    res.insert(QStringLiteral("--linkColor"), linkColor);
-    res.insert(QStringLiteral("--visitedLinkColor"), visitedLinkColor);
-    res.insert(QStringLiteral("--codeColor"), codeColor);
+    const QVariantMap res = {
+        {QStringLiteral("--bodyColor"), bodyColor},
+        {QStringLiteral("--textColor"), textColor},
+        {QStringLiteral("--titleColor"), titleColor},
+        {QStringLiteral("--linkColor"), linkColor},
+        {QStringLiteral("--visitedLinkColor"), visitedLinkColor},
+        {QStringLiteral("--codeColor"), codeColor},
+        {QStringLiteral("--highlightColor"), highlightColor},
+    };
 
     return res;
 }
