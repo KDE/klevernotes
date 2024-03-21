@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-20 01:41+0000\n"
-"PO-Revision-Date: 2024-03-12 07:46+0100\n"
+"PO-Revision-Date: 2024-03-20 06:14+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1057,8 +1057,7 @@ msgid "Collapse sidebar"
 msgstr "Strni stransko letvico"
 
 #: contents/ui/sideBar/ActionBar.qml:105
-#, fuzzy, kde-format
-#| msgid "Expend sidebar"
+#, kde-format
 msgid "Expand sidebar"
 msgstr "Razširi stransko letvico"
 
