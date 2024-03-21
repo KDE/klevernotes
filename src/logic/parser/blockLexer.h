@@ -32,8 +32,7 @@ private:
 
     inline static const QRegularExpression block_code = QRegularExpression(QStringLiteral("^( {4}[^\n]+\n*)+"));
 
-    inline static const QRegularExpression block_fences =
-        QRegularExpression(QStringLiteral("^ *(\\`{3,}|~{3,})[ \\.]*(\\S+)? *\n([\\s\\S]*?)\n? *\\1 *(?:\n+|$)"));
+    inline static const QRegularExpression block_fences = QRegularExpression(QStringLiteral("^ *(`{3})[ \\.]*(\\S+)? *\n([\\s\\S]*?)\n? *(`{3}) *(?:\n+|$)"));
 
     inline static const QRegularExpression block_heading = QRegularExpression(QStringLiteral("^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)"));
 
