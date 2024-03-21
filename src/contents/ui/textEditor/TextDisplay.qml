@@ -246,6 +246,12 @@ RowLayout {
         let noBg
         let style = root.cssStyle
 
+        for (const key in defaultCSS) {
+            if (!styleDict[key]) {
+                styleDict[key] = defaultCSS[key]
+            }
+        }
+
         for (const [cssVar, value] of Object.entries(styleDict)) {
             noBg = cssVar === "--bodyColor" && !root.printBackground
 
