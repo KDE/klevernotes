@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-20 01:41+0000\n"
+"POT-Creation-Date: 2024-03-22 01:36+0000\n"
 "PO-Revision-Date: 2024-02-11 00:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -736,9 +736,11 @@ msgid "Enable PlantUML"
 msgstr "PlanetUML 활성화"
 
 #: contents/ui/settings/PluginsTab.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@description:checkbox"
+#| msgid "PlantUML let's you create diagram."
 msgctxt "@description:checkbox"
-msgid "PlantUML let's you create diagram."
+msgid "PlantUML lets you create diagrams."
 msgstr "PlanetUML을 사용하여 다이어그램을 만들 수 있습니다."
 
 #: contents/ui/settings/PluginsTab.qml:48
