@@ -16,6 +16,6 @@ FileDialog {
     nameFilters: [ "Image files (*.jpeg *.jpg *.png)" ]
 
     onAccepted: {
-        caller.path = fileDialog.fileUrl
+        caller.path = fileDialog.selectedFile
     }
 }

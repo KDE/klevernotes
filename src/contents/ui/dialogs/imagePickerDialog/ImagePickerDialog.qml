@@ -123,7 +123,7 @@ Kirigami.Dialog {
                     imagePickerDialog.paintClipRect = undefined
                     clearTmp()
                     storedImageChoosen = false
-                    filePickerDialog.folder = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+                    filePickerDialog.currentFolder = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
                     filePickerDialog.open()
                 }
             }
