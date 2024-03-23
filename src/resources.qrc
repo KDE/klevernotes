@@ -73,6 +73,7 @@
         <file>contents/ui/sideBar/TreeView.qml</file>
 
         <file>contents/ui/textEditor/components/CheatSheetEntry.qml</file>
+        <file>contents/ui/textEditor/components/ImprovedTextArea.qml</file>
         <file>contents/ui/textEditor/components/NotesMapEntry.qml</file>
         <file>contents/ui/textEditor/BottomToolBar.qml</file>
         <file>contents/ui/textEditor/CheatSheet.qml</file>

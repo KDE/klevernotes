@@ -23,6 +23,8 @@
 #include "logic/mdHandler.h"
 #include "logic/qmlLinker.h"
 
+#include "logic/editorHandler/vimHandler.h"
+
 #include "logic/treeview/noteTreeModel.h"
 
 #include "logic/painting/pressureequation.h"
@@ -126,6 +128,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     DocumentHandler documentHandler;
     qmlRegisterSingletonInstance<DocumentHandler>("org.kde.Klever", 1, 0, "DocumentHandler", &documentHandler);
+
+    qmlRegisterType<VimHandler>("org.kde.Klever", 1, 0, "VimHandler");
 
     MDHandler mdHandler;
     qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);

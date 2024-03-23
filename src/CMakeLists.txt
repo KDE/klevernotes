@@ -39,6 +39,8 @@ set(exec_SRCS
     logic/mdHandler.cpp
     logic/qmlLinker.cpp
 
+    logic/editorHandler/vimHandler.cpp
+
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp
     logic/painting/sketchview.cpp
