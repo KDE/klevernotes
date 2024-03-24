@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 01:36+0000\n"
-"PO-Revision-Date: 2024-03-20 12:43+0100\n"
+"PO-Revision-Date: 2024-03-23 11:17+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -704,9 +704,7 @@ msgid "Enable PlantUML"
 msgstr "Activar PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@description:checkbox"
-#| msgid "PlantUML let's you create diagram."
+#, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
 msgstr "PlantUML permite crear diagramas."
