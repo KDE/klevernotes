@@ -3,10 +3,9 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Dialogs as QtDialogs
 
 import org.kde.kirigami 2.19 as Kirigami
-
-import "qrc:/contents/ui/dialogs/colorDialog"
 
 Kirigami.ShadowedRectangle {
     id: root
@@ -56,8 +55,7 @@ Kirigami.ShadowedRectangle {
                 multicolor: true
 
                 onOpenColorPicker: {
-                    colorDialog.caller = secondaryButton
-                    colorDialog.open()
+                    colorWindowComponent.createObject(root, { caller: secondaryColor })
                 }
             }
             ColorButton {
@@ -76,8 +74,7 @@ Kirigami.ShadowedRectangle {
                 multicolor: true
 
                 onOpenColorPicker: {
-                    colorDialog.caller = primaryButton
-                    colorDialog.open()
+                    colorWindowComponent.createObject(root, { caller: primaryButton })
                 }
             }
         }
@@ -97,20 +94,36 @@ Kirigami.ShadowedRectangle {
         }
     }
 
-    ColorDialog {
-        id: colorDialog
+    Component {
+        id: colorWindowComponent
 
-        property QtObject caller
+        Window { // QTBUG-119055
+            id: window
 
-        selectedColor: caller ? caller.color : "black"
+            property var caller
 
-        onApplied: {
-            colorDialog.close()
-            if (caller.color === root.primaryColor) {
-                root.primaryColor = selectedColor
-                return
+            width: Kirigami.Units.gridUnit * 19
+            height: Kirigami.Units.gridUnit * 23
+            maximumWidth: width
+            maximumHeight: height
+            minimumWidth: width
+            minimumHeight: height
+            visible: true
+            QtDialogs.ColorDialog {
+                id: colorDialog
+                selectedColor: window.caller.color
+                onAccepted: {
+                if (caller.color === root.primaryColor) {
+                    root.primaryColor = selectedColor
+                } else {
+                    root.secondaryColor = selectedColor
+                }
+                    window.destroy();
+                }
+                onRejected: window.destroy()
             }
-            root.secondaryColor = selectedColor
+            onClosing: destroy()
+            Component.onCompleted: colorDialog.open()
         }
     }
 }
