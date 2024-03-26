@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 01:36+0000\n"
-"PO-Revision-Date: 2024-03-13 11:38+0100\n"
+"PO-Revision-Date: 2024-03-23 12:32+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
 #, kde-format
@@ -704,12 +704,10 @@ msgid "Enable PlantUML"
 msgstr "Abilita PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@description:checkbox"
-#| msgid "PlantUML let's you create diagram."
+#, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr "PlantUML ti consente di creare un diagramma."
+msgstr "PlantUML ti consente di creare diagrammi."
 
 #: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
@@ -1063,8 +1061,7 @@ msgid "Collapse sidebar"
 msgstr "Contrai la barra laterale"
 
 #: contents/ui/sideBar/ActionBar.qml:105
-#, fuzzy, kde-format
-#| msgid "Expend sidebar"
+#, kde-format
 msgid "Expand sidebar"
 msgstr "Espandi la barra laterale"
 
