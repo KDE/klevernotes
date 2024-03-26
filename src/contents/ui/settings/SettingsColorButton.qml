@@ -4,6 +4,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as Controls
+import QtQuick.Dialogs as QtDialogs
 
 import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
@@ -13,8 +14,8 @@ FormCard.AbstractFormDelegate {
 
     readonly property alias colorButton: colorButton
     required property string name
-    required property string color
 
+    property string color
     property alias title: title.text
 
     contentItem: ColumnLayout {
@@ -62,12 +63,37 @@ FormCard.AbstractFormDelegate {
         }
     }
 
+    Component {
+        id: colorWindowComponent
+
+        Window { // QTBUG-119055
+            id: window
+            width: Kirigami.Units.gridUnit * 19
+            height: Kirigami.Units.gridUnit * 23
+            maximumWidth: width
+            maximumHeight: height
+            minimumWidth: width
+            minimumHeight: height
+            visible: true
+            QtDialogs.ColorDialog {
+                id: colorDialog
+                selectedColor: root.color
+                onAccepted: {
+                    updateColor(root, selectedColor)
+                    window.destroy();
+                }
+                onRejected: window.destroy()
+            }
+            onClosing: destroy()
+            Component.onCompleted: colorDialog.open()
+        }
+    }
+
     onClicked: {
         callPicker()
     }
 
     function callPicker() {
-        colorPicker.caller = root
-        colorPicker.open()
+        colorWindowComponent.createObject(root)
     }
 }

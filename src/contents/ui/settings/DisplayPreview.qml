@@ -43,62 +43,86 @@ FormCard.FormCard {
 
     RowLayout {
         SettingsColorButton {
+            readonly property string configColor: Config.viewTextColor
+
             name: "text"
             title: i18nc("@label:button", "Text color:")
 
-            color: (Config.viewTextColor !== "None") ? Config.viewTextColor : Kirigami.Theme.textColor
-
             Layout.preferredWidth: displayer.width / 2
+
+            onConfigColorChanged: {
+                color = configColor !== "None" ? configColor : Kirigami.Theme.textColor
+            }
         }
 
         SettingsColorButton {
+            readonly property string configColor: Config.viewTitleColor
+
             name: "title"
             title: i18nc("@label:button", "Title color:")
 
-            color: (Config.viewTitleColor !== "None") ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor
-
             Layout.preferredWidth: displayer.width / 2
+
+            onConfigColorChanged: {
+                color = configColor !== "None" ? configColor : Kirigami.Theme.disabledTextColor
+            }
         }
     }
     RowLayout {
         SettingsColorButton {
+            readonly property string configColor: Config.viewLinkColor
+
             name: "link"
             title: i18nc("@label:button", "Link color:")
 
-            color: (Config.viewLinkColor !== "None") ? Config.viewLinkColor : Kirigami.Theme.linkColor
-
             Layout.preferredWidth: displayer.width / 2
+ 
+            onConfigColorChanged: {
+                color = configColor !== "None" ? configColor : Kirigami.Theme.linkColor
+            }
         }
 
         SettingsColorButton {
+            readonly property string configColor: Config.viewVisitedLinkColor
+
             name: "visitedLink"
             title: i18nc("@label:button", "Visited Link color:")
 
-            color: (Config.viewVisitedLinkColor !== "None") ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor
-
             Layout.preferredWidth: displayer.width / 2
+
+            onConfigColorChanged: {
+                color = configColor !== "None" ? configColor : Kirigami.Theme.visitedLinkColor
+            }
         }
     }
 
     RowLayout {
         SettingsColorButton {
+            readonly property string configColor: Config.viewCodeColor
+
             name: "code"
             title: i18nc("@label:button", "Code color:")
 
-            color: (Config.viewCodeColor !== "None") ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor
-
-            Layout.alignment: Qt.AlignHCenter
+            // Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: displayer.width / 2
+
+            onConfigColorChanged: {
+                color = configColor !== "None" ? configColor : Kirigami.Theme.alternateBackgroundColor
+            }
         }
 
        SettingsColorButton {
+            readonly property string configColor: Config.viewHighlightColor
+
             name: "highlight"
             title: i18nc("@label:button", "Highlight color:")
 
-            color: (Config.viewHighlightColor !== "None") ? Config.viewHighlightColor : Kirigami.Theme.highlightColor
-
-            Layout.alignment: Qt.AlignHCenter
+            // Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: displayer.width / 2
+
+            onConfigColorChanged: {
+                color = configColor !== "None" ? configColor : Kirigami.Theme.highlightColor
+            }
         } 
     }
 
