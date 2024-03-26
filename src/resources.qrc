@@ -21,11 +21,6 @@
         <file>contents/ui/dialogs/URLDialog.qml</file>
         <file>contents/ui/dialogs/WarningDialog.qml</file>
 
-        <file>contents/ui/dialogs/colorDialog/ColorDialog.qml</file>
-        <file>contents/ui/dialogs/colorDialog/ColorPicker.qml</file>
-        <file>contents/ui/dialogs/colorDialog/HSPicker.qml</file>
-        <file>contents/ui/dialogs/colorDialog/LightnessSlider.qml</file>
-
         <file>contents/ui/dialogs/emojiDialog/EmojiDelegate.qml</file>
         <file>contents/ui/dialogs/emojiDialog/EmojiDialog.qml</file>
         <file>contents/ui/dialogs/emojiDialog/EmojiGrid.qml</file>

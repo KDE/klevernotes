@@ -11,7 +11,6 @@ import org.kde.Klever 1.0
 
 import "qrc:/contents/ui/settings"
 import "qrc:/contents/ui/dialogs"
-import "qrc:/contents/ui/dialogs/colorDialog"
 
 FormCard.FormCardPage {
     id: settingsPage
@@ -35,22 +34,6 @@ FormCard.FormCardPage {
             useCase: ""
             parentPath: ""
             newItem: false
-        },
-        ColorDialog {
-            id: colorPicker
-
-            property var caller
-
-            onCallerChanged: if (caller) {
-                selectedColor = caller.color
-            }
-            onApplied: {
-                if (selectedColor != caller.color) updateColor(caller, selectedColor)
-                colorPicker.close()
-            }
-            onClosed: {
-                caller = undefined
-            }
         },
         FontPickerDialog{
             id: fontDialog
@@ -108,7 +91,7 @@ FormCard.FormCardPage {
         applicationWindow().currentPageName = "Main"
     }
 
-    function updateName(shownName,callingAction){
+    function updateName(shownName, callingAction){
         namingDialog.shownName = shownName
         namingDialog.callingAction = callingAction
         namingDialog.open()
