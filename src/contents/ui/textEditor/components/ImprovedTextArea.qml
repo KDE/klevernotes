@@ -68,6 +68,10 @@ TextArea {
         cursorPosition: root.cursorPosition
         selectionStart: root.selectionStart
         selectionEnd: root.selectionEnd
+
+        onCursorPositionChanged: (position) => {
+            root.cursorPosition = position
+        }
     }
 
     function handleTabPressed(backtab) {
