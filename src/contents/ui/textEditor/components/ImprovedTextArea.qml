@@ -20,7 +20,7 @@ TextArea {
         "Visual": 3,
     }
 
-    property int __currentMode: mode.Normal
+    property int __currentMode: vimHandler.mode
 
     font: Config.editorFont
     wrapMode: TextEdit.Wrap
@@ -29,13 +29,13 @@ TextArea {
     // NOTE: temporary solution
     background: Rectangle {
         border.color: switch (__currentMode) {
-            case 1:
+            case 257: //Qt::UserRole + 1
                 "#8CB039"
                 break
-            case 2:
+            case 258:
                 "#3B9DEF"
                 break
-            case 3:
+            case 259:
                 "#D7A656"
                 break                
         }
