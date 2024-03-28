@@ -55,6 +55,16 @@ TextArea {
         insert(selectionEnd, newString)
     }
 
+    VimHandler {
+        id: vimHandler
+
+        vimOn: root.vimModeOn
+        document: root.textDocument
+        cursorPosition: root.cursorPosition
+        selectionStart: root.selectionStart
+        selectionEnd: root.selectionEnd
+    }
+
     function handleTabPressed(backtab) {
         const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
         const chars = Config.useSpaceForTab ? " " : '\t'
@@ -72,10 +82,5 @@ TextArea {
         } else if (!backtab) {
             insert(selectionStart, Config.useSpaceForTab ? chars.repeat(Config.spacesForTab) : chars)
         }
-    }
-
-    VimHandler {
-        textArea: root
-        vimOn: root.vimModeOn
     }
 }
