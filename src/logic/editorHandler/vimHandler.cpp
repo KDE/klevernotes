@@ -14,6 +14,19 @@ VimHandler::VimHandler(QObject *parent)
     setMode(EditorMode::Normal);
 }
 
+bool VimHandler::earlyReturn(const int key)
+{
+    if (key == Qt::Key_Escape) {
+        setMode(EditorMode::Normal);
+
+        Q_EMIT deselect();
+    } else if (m_currentMode == EditorMode::Insert) {
+        return false;
+    }
+
+    return true;
+}
+
 bool VimHandler::handleNormalSwitch(const int key)
 {
     switch (key) {
@@ -32,17 +45,34 @@ bool VimHandler::handleNormalSwitch(const int key)
     return false;
 }
 
-bool VimHandler::earlyReturn(const int key)
+bool VimHandler::handleMove(const int key)
 {
-    if (key == Qt::Key_Escape) {
-        setMode(EditorMode::Normal);
-
-        Q_EMIT deselect();
-    } else if (m_currentMode == EditorMode::Insert) {
-        return false;
+    const bool isNormal = m_currentMode == EditorMode::Normal;
+    const bool isVisual = m_currentMode == EditorMode::Visual;
+    if (isNormal || isVisual) {
+        QTextCursor cursor = getCursor();
+        switch (key) {
+        case Qt::Key_H:
+            moveCursor(QTextCursor::Left);
+            return true;
+        case Qt::Key_L:
+            moveCursor(QTextCursor::Right);
+            return true;
+        case Qt::Key_J:
+            moveCursor(QTextCursor::Down);
+            return true;
+        case Qt::Key_K:
+            moveCursor(QTextCursor::Up);
+            return true;
+        case Qt::Key_Dollar:
+            moveCursor(QTextCursor::EndOfLine);
+            return true;
+        case Qt::Key_0:
+            moveCursor(QTextCursor::StartOfLine);
+            return true;
+        }
     }
-
-    return true;
+    return false;
 }
 
 bool VimHandler::handleKeyPress(const int key, const int modifiers)
@@ -51,6 +81,10 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
 
     if (!earlyReturn(key)) {
         return false;
+    }
+
+    if (handleMove(key)) {
+        return true;
     }
 
     if (m_currentMode == EditorMode::Normal) {
