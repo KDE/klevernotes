@@ -14,10 +14,76 @@ VimHandler::VimHandler(QObject *parent)
     setMode(EditorMode::Normal);
 }
 
-void VimHandler::handleKeyPress(const QKeyEvent &event)
+bool VimHandler::handleNormalSwitch(const int key)
 {
-    // TODO
-    Q_UNUSED(event);
+    switch (key) {
+    case Qt::Key_I:
+        setMode(EditorMode::Insert);
+        return true;
+    case Qt::Key_A: {
+        setMode(EditorMode::Insert);
+        moveCursor(QTextCursor::Right);
+        return true;
+    }
+    case Qt::Key_V:
+        setMode(EditorMode::Visual);
+        return true;
+    }
+    return false;
+}
+
+bool VimHandler::earlyReturn(const int key)
+{
+    if (key == Qt::Key_Escape) {
+        setMode(EditorMode::Normal);
+
+        Q_EMIT deselect();
+    } else if (m_currentMode == EditorMode::Insert) {
+        return false;
+    }
+
+    return true;
+}
+
+bool VimHandler::handleKeyPress(const int key, const int modifiers)
+{
+    Q_UNUSED(modifiers);
+
+    if (!earlyReturn(key)) {
+        return false;
+    }
+
+    if (m_currentMode == EditorMode::Normal) {
+        if (handleNormalSwitch(key)) {
+            return true;
+        }
+        return true;
+    }
+    return true;
+}
+
+QTextCursor VimHandler::getCursor() const
+{
+    if (!m_textDocument)
+        return QTextCursor();
+
+    QTextCursor cursor = QTextCursor(m_textDocument);
+    if (m_selectionStart != m_selectionEnd) {
+        cursor.setPosition(m_selectionStart);
+        cursor.setPosition(m_selectionEnd, QTextCursor::KeepAnchor);
+    } else {
+        cursor.setPosition(m_cursorPosition);
+    }
+    return cursor;
+}
+
+void VimHandler::moveCursor(const QTextCursor::MoveOperation moveOperation)
+{
+    QTextCursor cursor = getCursor();
+
+    cursor.movePosition(moveOperation);
+
+    setCursorPostion(cursor.position());
 }
 
 int VimHandler::getMode() const

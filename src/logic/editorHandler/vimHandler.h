@@ -29,7 +29,7 @@ class VimHandler : public QObject
 public:
     explicit VimHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE void handleKeyPress(const QKeyEvent &event);
+    Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers);
 
 Q_SIGNALS:
     void documentChanged();
@@ -40,6 +40,7 @@ Q_SIGNALS:
     void modifiedChanged();
 
     void modeChanged(const int mode) const;
+    void deselect() const;
 
 private:
     // VIM calculation
@@ -48,6 +49,12 @@ private:
         Insert,
         Visual,
     };
+
+    bool earlyReturn(const int key);
+    bool handleNormalSwitch(const int key);
+
+    QTextCursor getCursor() const;
+    void moveCursor(const QTextCursor::MoveOperation moveOperation);
 
     bool getVimOn() const;
     void setVimOn(const bool vimOn);

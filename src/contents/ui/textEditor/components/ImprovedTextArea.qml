@@ -43,6 +43,11 @@ TextArea {
         color: "transparent"
     }
 
+    Keys.onPressed: (event) => {
+        if (root.vimModeOn) {
+            event.accepted = vimHandler.handleKeyPress(event.key, event.modifiers)
+        }
+    }
     Keys.onTabPressed: {
         handleTabPressed(false)
     }
