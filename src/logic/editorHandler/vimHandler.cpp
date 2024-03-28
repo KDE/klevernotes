@@ -70,6 +70,40 @@ bool VimHandler::handleMove(const int key)
         case Qt::Key_0:
             moveCursor(QTextCursor::StartOfLine);
             return true;
+        case Qt::Key_W:
+            moveCursor(QTextCursor::NextWord);
+            return true;
+        case Qt::Key_B: {
+            moveCursor(QTextCursor::PreviousWord);
+
+            const QTextCursor cursor = getCursor();
+
+            // We went 1 line Up, we want the PreviousWord only if the line is not empty
+            if (cursor.atBlockEnd() && !cursor.atBlockStart()) {
+                moveCursor(QTextCursor::PreviousWord);
+            }
+
+            return true;
+        }
+        case Qt::Key_E:
+            const int previousPosition = cursorPosition();
+            moveCursor(QTextCursor::EndOfWord);
+
+            // Prevent it from being stuck at the end of the word
+            if (previousPosition == cursorPosition()) {
+                moveCursor(QTextCursor::WordRight);
+                moveCursor(QTextCursor::EndOfWord);
+
+                QString previousChar = QString(m_textDocument->characterAt(cursorPosition() - 1)).trimmed();
+                if (previousChar.isEmpty()) {
+                    // Skip all whiteSpace
+                    static const QRegularExpression nonWhiteSpace = QRegularExpression(QStringLiteral("\\S"));
+                    const QTextCursor cursor = m_textDocument->find(nonWhiteSpace, cursorPosition());
+                    setCursorPostion(cursor.position());
+                    moveCursor(QTextCursor::EndOfWord);
+                }
+            }
+            return true;
         }
     }
     return false;
