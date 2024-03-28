@@ -65,10 +65,10 @@ bool VimHandler::handleMove(const int key)
             moveCursor(QTextCursor::Up);
             return true;
         case Qt::Key_Dollar:
-            moveCursor(QTextCursor::EndOfLine);
+            moveCursor(QTextCursor::EndOfBlock);
             return true;
         case Qt::Key_0:
-            moveCursor(QTextCursor::StartOfLine);
+            moveCursor(QTextCursor::StartOfBlock);
             return true;
         case Qt::Key_W:
             moveCursor(QTextCursor::NextWord);
