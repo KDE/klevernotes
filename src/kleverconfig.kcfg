@@ -104,6 +104,11 @@
             <label>The default text view highlight color (if not specified default to system theme)</label>
             <default>None</default>
         </entry>
+
+        <entry name="cursorStyle" type="String">
+            <label>The default cursor style for the editor</label>
+            <default>beam</default>
+        </entry>
     </group>
 
     <group name="Plugins">

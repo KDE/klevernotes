@@ -102,6 +102,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::viewFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeFontChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::stylePathChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::cursorStyleChanged, config, &KleverConfig::save);
     // Plugins
     QObject::connect(config, &KleverConfig::codeSynthaxHighlightEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterChanged, config, &KleverConfig::save);

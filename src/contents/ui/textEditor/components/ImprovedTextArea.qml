@@ -26,6 +26,9 @@ TextArea {
     wrapMode: TextEdit.Wrap
     persistentSelection: true
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+    Kirigami.Theme.inherit: false
+
     // NOTE: temporary solution
     background: Rectangle {
         border.color: switch (__currentMode) {
@@ -40,7 +43,49 @@ TextArea {
                 break                
         }
         border.width: 3
-        color: "transparent"
+        color: Kirigami.Theme.backgroundColor
+    }
+
+    cursorDelegate: Config.cursorStyle !== "beam" ? customCursor : null
+    
+    Component {
+        id: customCursor
+        Rectangle {
+            id: cursorBackground
+            readonly property bool isBlock: Config.cursorStyle === "block"
+            color: isBlock ? Kirigami.Theme.textColor : Kirigami.Theme.backgroundColor
+            width: t_metrics.tightBoundingRect.width
+            height: t_metrics.tightBoundingRect.height
+
+            Rectangle {
+                id: underline
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+
+                y: parent.height - height
+                height: Math.round(parent.height / 10)
+                visible: !parent.isBlock
+            }
+
+            Text {
+                id: a_text
+                text: root.getText(root.cursorPosition, root.cursorPosition + 1)
+                color: cursorBackground.isBlock ? Kirigami.Theme.backgroundColor : Kirigami.Theme.textColor
+                font: root.font
+                anchors.centerIn: parent
+            }
+
+            TextMetrics {
+                id: t_metrics
+                font: root.font
+                // Workaround: One of the largest letter, in case a monospace font is not used
+                text: "W" 
+            }
+        }
     }
 
     Keys.onPressed: (event) => {

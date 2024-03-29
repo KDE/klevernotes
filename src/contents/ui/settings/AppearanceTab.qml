@@ -32,6 +32,27 @@ ColumnLayout {
                 Config.editorFont = newFont
             }
         } 
+
+        FormCard.FormComboBoxDelegate {
+            text: i18nc("@label:combobox", "Cursor style:")
+            description: i18nc("@description:combobox", "Advice: For styles other than I-Beam, it is recommended to use a monospaced font.")
+
+            model: [
+                { text: i18nc("@entry:combobox, cursor style", "Block"), value: "block" },
+                { text: i18nc("@entry:combobox, alignment name", "I-Beam"), value: "beam" },
+                { text: i18nc("@entry:combobox, alignment name", "Underline"), value: "underline" }
+            ]
+            textRole: "text"
+            valueRole: "value"
+
+            Component.onCompleted: {
+                currentIndex = indexOfValue(Config.cursorStyle)
+            }
+
+            onCurrentValueChanged: {
+                if (Config.cursorStyle !== currentValue) Config.cursorStyle = currentValue;
+            }
+        } 
     }
 
     FormCard.FormHeader {
