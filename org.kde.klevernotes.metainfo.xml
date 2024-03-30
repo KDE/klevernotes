@@ -80,6 +80,6 @@
     <p xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними для ваших мобільних пристроїв та робочих станцій. У ній використано мову markdown та передбачено можливість попереднього перегляду результатів.</p>
     <p xml:lang="x-test">xxKleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.xx</p>
   </description>
-  <launchable type="desktop-id">org.kde.klever.desktop</launchable>
+  <launchable type="desktop-id">org.kde.klevernotes.desktop</launchable>
   <content_rating type="oars-1.1"/>
 </component>
