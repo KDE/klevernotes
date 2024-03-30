@@ -3,12 +3,12 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "6.6",
     "sdk": "org.kde.Sdk",
-    "sdk-version": "6.6",
     "base": "io.qt.qtwebengine.BaseApp",
     "base-version": "6.6",
     "command": "klevernotes",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
+
     "finish-args": [
         "--share=ipc",
         "--share=network",
@@ -25,6 +25,20 @@
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]
+        },
+        {
+            "name": "kirigami-addons",
+            "config-opts": [
+                "-DBUILD_TESTING=OFF",
+                "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+            ],
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/libraries/kirigami-addons.git"
+                }
+            ]
         }
     ]
 }
