@@ -15,7 +15,8 @@
         "--socket=x11",
         "--socket=wayland",
         "--device=dri",
-        "--filesystem=home"
+        "--filesystem=home",
+        "--env=QML_IMPORT_PATH=/app/qml"
     ],
     "separate-locales": false,
 

@@ -6,8 +6,8 @@
 
 import QtQuick 2.2
 import QtQuick.Controls 2.2
-import QtWebChannel 1.0
-import QtWebEngine 1.10
+import QtWebChannel
+import QtWebEngine
 import QtQuick.Layouts 1.15
 import Qt.labs.platform 1.1
 
