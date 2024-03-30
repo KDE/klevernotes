@@ -56,6 +56,7 @@ private:
 
     QTextCursor getCursor() const;
     void moveCursor(const QTextCursor::MoveOperation moveOperation);
+    bool emptyBlock() const;
 
     bool getVimOn() const;
     void setVimOn(const bool vimOn);

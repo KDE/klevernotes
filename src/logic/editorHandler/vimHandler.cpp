@@ -52,49 +52,77 @@ bool VimHandler::handleMove(const int key)
     if (isNormal || isVisual) {
         QTextCursor cursor = getCursor();
         switch (key) {
+        case Qt::Key_Left:
+            moveCursor(QTextCursor::Left);
+            return true;
         case Qt::Key_H:
             moveCursor(QTextCursor::Left);
+            return true;
+
+        case Qt::Key_Right:
+            moveCursor(QTextCursor::Right);
             return true;
         case Qt::Key_L:
             moveCursor(QTextCursor::Right);
             return true;
+
+        case Qt::Key_Down:
+            moveCursor(QTextCursor::Down);
+            return true;
         case Qt::Key_J:
             moveCursor(QTextCursor::Down);
+            return true;
+
+        case Qt::Key_Up:
+            moveCursor(QTextCursor::Up);
             return true;
         case Qt::Key_K:
             moveCursor(QTextCursor::Up);
             return true;
+
         case Qt::Key_Dollar:
             moveCursor(QTextCursor::EndOfBlock);
             return true;
         case Qt::Key_0:
             moveCursor(QTextCursor::StartOfBlock);
             return true;
-        case Qt::Key_W:
+
+        case Qt::Key_W: {
+            const int lastBlockPosition = m_textDocument->lastBlock().position();
+            bool atLastBlock = lastBlockPosition <= cursorPosition();
+
             moveCursor(QTextCursor::NextWord);
+
+            QString currentChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
+            // We want to stop on empty line. Line with only whitespace should be skipped
+            while (currentChar.isEmpty() && !emptyBlock() && !atLastBlock) {
+                moveCursor(QTextCursor::NextWord);
+                currentChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
+                atLastBlock = lastBlockPosition <= cursorPosition();
+            }
             return true;
+        }
+
         case Qt::Key_B: {
             moveCursor(QTextCursor::PreviousWord);
-
-            const QTextCursor cursor = getCursor();
-
             // We went 1 line Up, we want the PreviousWord only if the line is not empty
-            if (cursor.atBlockEnd() && !cursor.atBlockStart()) {
+            if (!emptyBlock()) {
                 moveCursor(QTextCursor::PreviousWord);
             }
 
             return true;
         }
+
         case Qt::Key_E:
             const int previousPosition = cursorPosition();
             moveCursor(QTextCursor::EndOfWord);
 
             // Prevent it from being stuck at the end of the word
-            if (previousPosition == cursorPosition()) {
+            if (previousPosition == cursorPosition() - 1) {
                 moveCursor(QTextCursor::WordRight);
                 moveCursor(QTextCursor::EndOfWord);
 
-                QString previousChar = QString(m_textDocument->characterAt(cursorPosition() - 1)).trimmed();
+                const QString previousChar = QString(m_textDocument->characterAt(cursorPosition() - 1)).trimmed();
                 if (previousChar.isEmpty()) {
                     // Skip all whiteSpace
                     static const QRegularExpression nonWhiteSpace = QRegularExpression(QStringLiteral("\\S"));
@@ -103,6 +131,7 @@ bool VimHandler::handleMove(const int key)
                     moveCursor(QTextCursor::EndOfWord);
                 }
             }
+            setCursorPostion(cursorPosition() - 1); // The actual last char of the word
             return true;
         }
     }
@@ -152,6 +181,12 @@ void VimHandler::moveCursor(const QTextCursor::MoveOperation moveOperation)
     cursor.movePosition(moveOperation);
 
     setCursorPostion(cursor.position());
+}
+
+bool VimHandler::emptyBlock() const
+{
+    const QTextCursor cursor = getCursor();
+    return cursor.atBlockEnd() && cursor.atBlockStart();
 }
 
 int VimHandler::getMode() const
