@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-03-31 01:59+0000\n"
 "PO-Revision-Date: 2024-02-11 00:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -16,12 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 23.08.1\n"
-
-#: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
-#, kde-format
-msgctxt "@title:dialog"
-msgid "Color Picker"
-msgstr "색상 선택기"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #, fuzzy, kde-format
@@ -541,13 +535,13 @@ msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "배경"
 
-#: contents/ui/pages/SettingsPage.qml:19
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "설정"
 
-#: contents/ui/pages/SettingsPage.qml:25
+#: contents/ui/pages/SettingsPage.qml:24
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -580,49 +574,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "스타일: "
 
-#: contents/ui/settings/DisplayPreview.qml:47
+#: contents/ui/settings/DisplayPreview.qml:49
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "글자색:"
 
-#: contents/ui/settings/DisplayPreview.qml:56
+#: contents/ui/settings/DisplayPreview.qml:62
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "제목 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:66
+#: contents/ui/settings/DisplayPreview.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "링크 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:75
+#: contents/ui/settings/DisplayPreview.qml:89
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "방문한 링크 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:86
+#: contents/ui/settings/DisplayPreview.qml:104
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "코드 색:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "강조색:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:130
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "일반 글꼴:"
 
-#: contents/ui/settings/DisplayPreview.qml:117
+#: contents/ui/settings/DisplayPreview.qml:141
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1679,6 +1673,10 @@ msgstr "박신조"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
+
+#~ msgctxt "@title:dialog"
+#~ msgid "Color Picker"
+#~ msgstr "색상 선택기"
 
 #~ msgctxt "Name, as in 'A note category'"
 #~ msgid "category"

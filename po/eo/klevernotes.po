@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-03-31 01:59+0000\n"
 "PO-Revision-Date: 2024-03-24 10:34+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo.org>\n"
@@ -17,12 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
-#, kde-format
-msgctxt "@title:dialog"
-msgid "Color Picker"
-msgstr "Koloro Elektilo"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #, kde-format
@@ -498,13 +492,13 @@ msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Fono"
 
-#: contents/ui/pages/SettingsPage.qml:19
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Agordoj"
 
-#: contents/ui/pages/SettingsPage.qml:25
+#: contents/ui/pages/SettingsPage.qml:24
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -535,49 +529,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Stilo:"
 
-#: contents/ui/settings/DisplayPreview.qml:47
+#: contents/ui/settings/DisplayPreview.qml:49
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Teksta koloro:"
 
-#: contents/ui/settings/DisplayPreview.qml:56
+#: contents/ui/settings/DisplayPreview.qml:62
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Titolokoloro:"
 
-#: contents/ui/settings/DisplayPreview.qml:66
+#: contents/ui/settings/DisplayPreview.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Koloro de ligilo:"
 
-#: contents/ui/settings/DisplayPreview.qml:75
+#: contents/ui/settings/DisplayPreview.qml:89
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Vizitita Ligokoloro:"
 
-#: contents/ui/settings/DisplayPreview.qml:86
+#: contents/ui/settings/DisplayPreview.qml:104
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Kodokoloro:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Marki koloron:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:130
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Ĝenerala tiparo:"
 
-#: contents/ui/settings/DisplayPreview.qml:117
+#: contents/ui/settings/DisplayPreview.qml:141
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1607,3 +1601,7 @@ msgstr "Oliver Kellogg"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "okellogg@users.sourceforge.net"
+
+#~ msgctxt "@title:dialog"
+#~ msgid "Color Picker"
+#~ msgstr "Koloro Elektilo"

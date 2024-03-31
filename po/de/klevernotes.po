@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-03-31 01:59+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -18,13 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.07.70\n"
-
-#: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
-#, fuzzy, kde-format
-#| msgid "Color Picker"
-msgctxt "@title:dialog"
-msgid "Color Picker"
-msgstr "Farbauswahl"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #, kde-format
@@ -532,13 +525,13 @@ msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Hintergrundfarbe:"
 
-#: contents/ui/pages/SettingsPage.qml:19
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: contents/ui/pages/SettingsPage.qml:25
+#: contents/ui/pages/SettingsPage.qml:24
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -569,56 +562,56 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:47
+#: contents/ui/settings/DisplayPreview.qml:49
 #, fuzzy, kde-format
 #| msgid "Text color:"
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Textfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:56
+#: contents/ui/settings/DisplayPreview.qml:62
 #, fuzzy, kde-format
 #| msgid "Title color:"
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Titelfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:66
+#: contents/ui/settings/DisplayPreview.qml:76
 #, fuzzy, kde-format
 #| msgid "Link color:"
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Farbe für Verknüpfungen:"
 
-#: contents/ui/settings/DisplayPreview.qml:75
+#: contents/ui/settings/DisplayPreview.qml:89
 #, fuzzy, kde-format
 #| msgid "Visited Link color:"
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Farbe für besuchte Verknüpfungen:"
 
-#: contents/ui/settings/DisplayPreview.qml:86
+#: contents/ui/settings/DisplayPreview.qml:104
 #, fuzzy, kde-format
 #| msgid "Code color:"
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Quelltextfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:118
 #, fuzzy, kde-format
 #| msgid "Title color:"
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Titelfarbe:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:130
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Allgemein"
 
-#: contents/ui/settings/DisplayPreview.qml:117
+#: contents/ui/settings/DisplayPreview.qml:141
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1685,6 +1678,12 @@ msgstr "Deutsches KDE-Übersetzerteam"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
+
+#, fuzzy
+#~| msgid "Color Picker"
+#~ msgctxt "@title:dialog"
+#~ msgid "Color Picker"
+#~ msgstr "Farbauswahl"
 
 #, fuzzy
 #~| msgid "category"

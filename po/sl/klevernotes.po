@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-03-31 01:59+0000\n"
 "PO-Revision-Date: 2024-03-22 07:33+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -17,12 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 3.4.2\n"
-
-#: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
-#, kde-format
-msgctxt "@title:dialog"
-msgid "Color Picker"
-msgstr "Izbirnik barve"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #, kde-format
@@ -506,13 +500,13 @@ msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Ozadje"
 
-#: contents/ui/pages/SettingsPage.qml:19
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: contents/ui/pages/SettingsPage.qml:25
+#: contents/ui/pages/SettingsPage.qml:24
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -544,49 +538,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Slog:"
 
-#: contents/ui/settings/DisplayPreview.qml:47
+#: contents/ui/settings/DisplayPreview.qml:49
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Barva besedila:"
 
-#: contents/ui/settings/DisplayPreview.qml:56
+#: contents/ui/settings/DisplayPreview.qml:62
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Barva naslova:"
 
-#: contents/ui/settings/DisplayPreview.qml:66
+#: contents/ui/settings/DisplayPreview.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Barva povezave:"
 
-#: contents/ui/settings/DisplayPreview.qml:75
+#: contents/ui/settings/DisplayPreview.qml:89
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Barva obiskane povezave:"
 
-#: contents/ui/settings/DisplayPreview.qml:86
+#: contents/ui/settings/DisplayPreview.qml:104
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Barva kode:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Barva označevanja:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:130
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Splošna pisava:"
 
-#: contents/ui/settings/DisplayPreview.qml:117
+#: contents/ui/settings/DisplayPreview.qml:141
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1627,6 +1621,10 @@ msgstr "Matjaž Jeran, Martin Srebotnjak"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net, miles@filmsi.net"
+
+#~ msgctxt "@title:dialog"
+#~ msgid "Color Picker"
+#~ msgstr "Izbirnik barve"
 
 #~ msgctxt "Name, as in 'A note category'"
 #~ msgid "category"

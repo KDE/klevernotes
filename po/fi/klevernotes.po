@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-03-31 01:59+0000\n"
 "PO-Revision-Date: 2024-02-19 11:35+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -16,12 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.3\n"
-
-#: contents/ui/dialogs/colorDialog/ColorDialog.qml:11
-#, kde-format
-msgctxt "@title:dialog"
-msgid "Color Picker"
-msgstr "Värivalitsin"
 
 # *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
@@ -543,13 +537,13 @@ msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Tausta"
 
-#: contents/ui/pages/SettingsPage.qml:19
+#: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Asetukset"
 
-#: contents/ui/pages/SettingsPage.qml:25
+#: contents/ui/pages/SettingsPage.qml:24
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -580,49 +574,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Tyyli:"
 
-#: contents/ui/settings/DisplayPreview.qml:47
+#: contents/ui/settings/DisplayPreview.qml:49
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Tekstiväri:"
 
-#: contents/ui/settings/DisplayPreview.qml:56
+#: contents/ui/settings/DisplayPreview.qml:62
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Otsikkoväri:"
 
-#: contents/ui/settings/DisplayPreview.qml:66
+#: contents/ui/settings/DisplayPreview.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Linkkiväri:"
 
-#: contents/ui/settings/DisplayPreview.qml:75
+#: contents/ui/settings/DisplayPreview.qml:89
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Vieraillun linkin väri:"
 
-#: contents/ui/settings/DisplayPreview.qml:86
+#: contents/ui/settings/DisplayPreview.qml:104
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Koodiväri:"
 
-#: contents/ui/settings/DisplayPreview.qml:96
+#: contents/ui/settings/DisplayPreview.qml:118
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Korostusväri:"
 
-#: contents/ui/settings/DisplayPreview.qml:106
+#: contents/ui/settings/DisplayPreview.qml:130
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Yleisfontti:"
 
-#: contents/ui/settings/DisplayPreview.qml:117
+#: contents/ui/settings/DisplayPreview.qml:141
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1681,6 +1675,10 @@ msgstr "Tommi Nieminen"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "translator@legisign.org"
+
+#~ msgctxt "@title:dialog"
+#~ msgid "Color Picker"
+#~ msgstr "Värivalitsin"
 
 #~ msgctxt "Name, as in 'A note category'"
 #~ msgid "category"
