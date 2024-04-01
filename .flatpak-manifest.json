@@ -16,7 +16,8 @@
         "--socket=wayland",
         "--device=dri",
         "--filesystem=home",
-        "--env=QML_IMPORT_PATH=/app/qml"
+        "--env=QML_IMPORT_PATH=/app/qml",
+        "--talk-name=org.freedesktop.Flatpak"
     ],
     "separate-locales": false,
 
