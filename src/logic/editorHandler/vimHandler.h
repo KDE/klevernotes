@@ -66,6 +66,8 @@ private:
     void setMode(const int mode);
     int m_currentMode = EditorMode::Normal;
 
+    QList<int> m_keyBuffer;
+
     // Document manipulation
     QTextDocument *m_textDocument;
     QQuickTextDocument *m_document;

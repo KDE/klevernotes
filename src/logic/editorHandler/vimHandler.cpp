@@ -148,7 +148,7 @@ bool VimHandler::handleMove(const int key, const int modifiers)
             return true;
         }
 
-        case Qt::Key_E:
+        case Qt::Key_E: {
             const QTextBlock lastBlock = m_textDocument->lastBlock();
             const int endPosition = lastBlock.position() + lastBlock.length() - 1;
             const int previousPosition = cursorPosition();
@@ -188,14 +188,46 @@ bool VimHandler::handleMove(const int key, const int modifiers)
             }
             return true;
         }
+
+        case Qt::Key_G:
+            const int positionInBlock = getCursor().positionInBlock();
+            if (isShift) {
+                if (m_keyBuffer.isEmpty() || m_keyBuffer[0] != Qt::Key_G) {
+                    const QTextBlock lastBlock = m_textDocument->lastBlock();
+                    const int lastBlockLength = lastBlock.length() - 1;
+                    const int lastBlockPosition = lastBlock.position();
+
+                    const int futurePosition = lastBlockPosition + positionInBlock <= lastBlockLength ? positionInBlock : lastBlockLength;
+                    setCursorPostion(futurePosition);
+                } else {
+                    m_keyBuffer.clear();
+                }
+                return true;
+            }
+
+            if (m_keyBuffer.isEmpty()) {
+                m_keyBuffer.append(Qt::Key_G);
+                return true;
+            }
+            if (m_keyBuffer[0] == Qt::Key_G) {
+                const int firstBlockLength = m_textDocument->firstBlock().length() - 1;
+
+                if (positionInBlock <= firstBlockLength) {
+                    setCursorPostion(positionInBlock);
+                } else {
+                    setCursorPostion(0);
+                    moveCursor(QTextCursor::EndOfBlock);
+                }
+            }
+            m_keyBuffer.clear();
+            return true;
+        }
     }
     return false;
 }
 
 bool VimHandler::handleKeyPress(const int key, const int modifiers)
 {
-    Q_UNUSED(modifiers);
-
     if (!earlyReturn(key)) {
         return false;
     }
