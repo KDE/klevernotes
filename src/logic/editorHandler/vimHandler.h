@@ -51,8 +51,8 @@ private:
     };
 
     bool earlyReturn(const int key);
-    bool handleNormalSwitch(const int key);
-    bool handleMove(const int key);
+    bool handleNormalSwitch(const int key, const int modifiers);
+    bool handleMove(const int key, const int modifiers);
 
     QTextCursor getCursor() const;
     void moveCursor(const QTextCursor::MoveOperation moveOperation);
