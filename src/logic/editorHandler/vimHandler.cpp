@@ -16,7 +16,7 @@ VimHandler::VimHandler(QObject *parent)
 
 bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visualMove)
 {
-    const bool noModifier = modifiers == Qt::NoModifier;
+    const bool isShift = modifiers == Qt::ShiftModifier;
     switch (key) {
     case Qt::Key_Escape:
         setMode(EditorMode::Normal);
@@ -24,34 +24,41 @@ bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visu
         return true;
 
     // Allow us to disable Shift+Arrow select, while keeping the move
+    // We accept Shift+Arrow only while on visual mode
+    // The rest is transformed in a simple arrow operation
     case Qt::Key_Right:
-        if (noModifier || visualMove) {
+        if (visualMove && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Right);
+        moveCursorTo(m_tempCursorPosition);
         return true;
 
     case Qt::Key_Left:
-        if (noModifier || visualMove) {
+        if (visualMove && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Left);
+        moveCursorTo(m_tempCursorPosition);
         return true;
 
     case Qt::Key_Up:
-        if (noModifier || visualMove) {
+        if (visualMove && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Up);
+        moveCursorTo(m_tempCursorPosition);
         return true;
 
     case Qt::Key_Down:
-        if (noModifier || visualMove) {
+        if (visualMove && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Down);
+        moveCursorTo(m_tempCursorPosition);
         return true;
     }
+
     if (m_currentMode == EditorMode::Insert) {
         return true;
     }
@@ -260,10 +267,10 @@ bool VimHandler::handleMove(const int key, const int modifiers)
 bool VimHandler::handleKeyPress(const int key, const int modifiers, const bool visualMove)
 {
     if (earlyReturn(key, modifiers, visualMove)) {
-        if (!visualMove) {
-            moveCursorTo(m_tempCursorPosition);
+        if (visualMove && modifiers == Qt::ShiftModifier) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     if (handleMove(key, modifiers)) {
@@ -301,19 +308,37 @@ void VimHandler::moveCursorTo(const int newPosition)
     if (m_currentMode == EditorMode::Visual) {
         const Qt::KeyboardModifier modifier = Qt::ShiftModifier;
 
-        const int forwardPosition = newPosition - m_cursorPosition;
-        const int backwardPosition = m_cursorPosition - newPosition;
+        // Move the cursor vertically to reduce the amount of KeyEvent sent to the textArea
+        // ==============================================================================
+        // The cursor is positionned at the m_tempCursorPosition by default
+        auto cursor = getCursor();
+        cursor.setPosition(cursorPosition());
+
+        int currentBlockPosition = cursor.block().position();
+
+        const int futureBlockPosition = getCursor().block().position();
+
+        const int skipBlockKey = currentBlockPosition <= futureBlockPosition ? Qt::Key_Down : Qt::Key_Up;
+        const QTextCursor::MoveOperation skipBlockOpe = currentBlockPosition <= futureBlockPosition ? QTextCursor::Down : QTextCursor::Up;
+
+        while (currentBlockPosition != futureBlockPosition) {
+            cursor.movePosition(skipBlockOpe);
+            currentBlockPosition = cursor.block().position();
+            sendKeyEvent(skipBlockKey, modifier);
+        }
+        // ==============================================================================
+
+        const int forwardPosition = newPosition - cursor.position();
+        const int backwardPosition = cursor.position() - newPosition;
 
         const int key = 0 <= forwardPosition ? Qt::Key_Right : Qt::Key_Left;
         const int moveNumber = 0 <= forwardPosition ? forwardPosition : backwardPosition;
 
         // QML TextArea doesn't like backward selection to be done programmaticly
         // This is a far from perfect Workaround
-        // This could be optimized with some Key_Up/Key_Down to reduce the amount of moves
         for (int i = 0; i < moveNumber; i++) {
             sendKeyEvent(key, modifier);
         }
-
     } else {
         Q_EMIT cursorPositionChanged(m_tempCursorPosition);
     }

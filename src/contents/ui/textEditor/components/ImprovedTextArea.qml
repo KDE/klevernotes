@@ -112,6 +112,9 @@ TextArea {
         onCursorPositionChanged: (position) => {
             root.cursorPosition = position
         }
+        onDeselect: {
+            root.deselect()
+        }
     }
 
     function handleTabPressed(backtab) {
