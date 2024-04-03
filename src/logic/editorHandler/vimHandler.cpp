@@ -4,9 +4,9 @@
 // PARTIALLY BASED ON: https://code.qt.io/cgit/qt/qtdeclarative.git/tree/examples/quickcontrols2/texteditor?h=6.2.0
 
 #include "vimHandler.h"
+#include <QKeyEvent>
 #include <QRegularExpression>
 #include <QTextBlock>
-// #include <QDebug>
 
 VimHandler::VimHandler(QObject *parent)
     : QObject(parent)
@@ -14,20 +14,52 @@ VimHandler::VimHandler(QObject *parent)
     setMode(EditorMode::Normal);
 }
 
-bool VimHandler::earlyReturn(const int key)
+bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visualMove)
 {
-    if (key == Qt::Key_Escape) {
+    const bool noModifier = modifiers == Qt::NoModifier;
+    switch (key) {
+    case Qt::Key_Escape:
         setMode(EditorMode::Normal);
-
         Q_EMIT deselect();
-    } else if (m_currentMode == EditorMode::Insert) {
-        return false;
+        return true;
+
+    // Allow us to disable Shift+Arrow select, while keeping the move
+    case Qt::Key_Right:
+        if (noModifier || visualMove) {
+            return true;
+        }
+        moveCursor(QTextCursor::Right);
+        return true;
+
+    case Qt::Key_Left:
+        if (noModifier || visualMove) {
+            return true;
+        }
+        moveCursor(QTextCursor::Left);
+        return true;
+
+    case Qt::Key_Up:
+        if (noModifier || visualMove) {
+            return true;
+        }
+        moveCursor(QTextCursor::Up);
+        return true;
+
+    case Qt::Key_Down:
+        if (noModifier || visualMove) {
+            return true;
+        }
+        moveCursor(QTextCursor::Down);
+        return true;
+    }
+    if (m_currentMode == EditorMode::Insert) {
+        return true;
     }
 
-    return true;
+    return false;
 }
 
-bool VimHandler::handleNormalSwitch(const int key, const int modifiers)
+bool VimHandler::handleNormalMode(const int key, const int modifiers)
 {
     const bool isShift = modifiers == Qt::ShiftModifier;
     switch (key) {
@@ -35,17 +67,22 @@ bool VimHandler::handleNormalSwitch(const int key, const int modifiers)
         setMode(EditorMode::Insert);
         if (isShift) {
             moveCursor(QTextCursor::StartOfBlock);
+            moveCursorTo(m_tempCursorPosition);
         }
         return true;
+
     case Qt::Key_A: {
         setMode(EditorMode::Insert);
         if (isShift) {
             moveCursor(QTextCursor::EndOfBlock);
+            moveCursorTo(m_tempCursorPosition);
         } else {
             moveCursor(QTextCursor::Right);
+            moveCursorTo(m_tempCursorPosition);
         }
         return true;
     }
+
     case Qt::Key_V:
         setMode(EditorMode::Visual);
         return true;
@@ -60,40 +97,35 @@ bool VimHandler::handleMove(const int key, const int modifiers)
     if (isNormal || isVisual) {
         const bool isShift = modifiers == Qt::ShiftModifier;
         switch (key) {
-        case Qt::Key_Left:
+        case Qt::Key_H: {
             moveCursor(QTextCursor::Left);
             return true;
-        case Qt::Key_H:
-            moveCursor(QTextCursor::Left);
-            return true;
+        }
 
-        case Qt::Key_Right:
+        case Qt::Key_L: {
             moveCursor(QTextCursor::Right);
             return true;
-        case Qt::Key_L:
-            moveCursor(QTextCursor::Right);
-            return true;
+        }
 
-        case Qt::Key_Down:
+        case Qt::Key_J: {
             moveCursor(QTextCursor::Down);
             return true;
-        case Qt::Key_J:
-            moveCursor(QTextCursor::Down);
-            return true;
+        }
 
-        case Qt::Key_Up:
+        case Qt::Key_K: {
             moveCursor(QTextCursor::Up);
             return true;
-        case Qt::Key_K:
-            moveCursor(QTextCursor::Up);
-            return true;
+        }
 
-        case Qt::Key_Dollar:
+        case Qt::Key_Dollar: {
             moveCursor(QTextCursor::EndOfBlock);
             return true;
-        case Qt::Key_0:
+        }
+
+        case Qt::Key_0: {
             moveCursor(QTextCursor::StartOfBlock);
             return true;
+        }
 
         case Qt::Key_W: {
             const int lastBlockPosition = m_textDocument->lastBlock().position();
@@ -102,56 +134,53 @@ bool VimHandler::handleMove(const int key, const int modifiers)
                 static const QRegularExpression whiteSpace = QRegularExpression(QStringLiteral("\\s"));
 
                 const QString text = m_textDocument->toPlainText();
-                const auto capture = whiteSpace.match(text, cursorPosition());
+                const auto capture = whiteSpace.match(text, m_tempCursorPosition);
                 if (capture.hasMatch()) {
-                    setCursorPostion(capture.capturedStart());
+                    m_tempCursorPosition = capture.capturedStart();
                 }
             }
             moveCursor(QTextCursor::NextWord);
 
-            QString currentChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
+            QString currentChar = QString(m_textDocument->characterAt(m_tempCursorPosition)).trimmed();
             // We want to stop on empty line. Line with only whitespace should be skipped
             while (currentChar.isEmpty() && !emptyBlock() && !atLastBlock) {
                 moveCursor(QTextCursor::NextWord);
-                currentChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
-                atLastBlock = lastBlockPosition <= cursorPosition();
+                currentChar = QString(m_textDocument->characterAt(m_tempCursorPosition)).trimmed();
+                atLastBlock = lastBlockPosition <= m_tempCursorPosition;
             }
             return true;
         }
 
         case Qt::Key_B: {
-            const int previousPosition = cursorPosition();
+            const int previousPosition = m_tempCursorPosition;
             moveCursor(QTextCursor::StartOfWord);
             if (emptyBlock()) {
                 moveCursor(QTextCursor::PreviousWord);
                 moveCursor(QTextCursor::StartOfWord);
             }
 
-            int currentPosition = cursorPosition();
-            QString currentChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
-            while ((previousPosition == currentPosition || currentChar.isEmpty()) && currentPosition != 0 && !emptyBlock()) {
+            QString currentChar = QString(m_textDocument->characterAt(m_tempCursorPosition)).trimmed();
+            while ((previousPosition == m_tempCursorPosition || currentChar.isEmpty()) && m_tempCursorPosition != 0 && !emptyBlock()) {
                 moveCursor(QTextCursor::PreviousWord);
                 moveCursor(QTextCursor::StartOfWord);
-                currentChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
-                currentPosition = cursorPosition();
+                currentChar = QString(m_textDocument->characterAt(m_tempCursorPosition)).trimmed();
             }
 
             if (isShift) {
-                QString previousChar = QString(m_textDocument->characterAt(cursorPosition() - 1)).trimmed();
+                QString previousChar = QString(m_textDocument->characterAt(m_tempCursorPosition - 1)).trimmed();
 
-                while (cursorPosition() != 0 && !previousChar.isEmpty()) {
+                while (m_tempCursorPosition != 0 && !previousChar.isEmpty()) {
                     moveCursor(QTextCursor::PreviousWord);
-                    previousChar = QString(m_textDocument->characterAt(cursorPosition() - 1)).trimmed();
+                    previousChar = QString(m_textDocument->characterAt(m_tempCursorPosition - 1)).trimmed();
                 }
             }
-
             return true;
         }
 
         case Qt::Key_E: {
             const QTextBlock lastBlock = m_textDocument->lastBlock();
             const int endPosition = lastBlock.position() + lastBlock.length() - 1;
-            const int previousPosition = cursorPosition();
+            const int previousPosition = m_tempCursorPosition;
 
             if (previousPosition == endPosition) {
                 return true;
@@ -159,32 +188,32 @@ bool VimHandler::handleMove(const int key, const int modifiers)
             moveCursor(QTextCursor::EndOfWord);
 
             // Prevent it from being stuck at the end of the word
-            if (previousPosition == cursorPosition() - 1 || previousPosition == cursorPosition()) {
+            if (previousPosition == m_tempCursorPosition - 1 || previousPosition == m_tempCursorPosition) {
                 moveCursor(QTextCursor::WordRight);
 
-                if (cursorPosition() == endPosition) {
+                if (m_tempCursorPosition == endPosition) {
                     return true;
                 }
                 moveCursor(QTextCursor::EndOfWord);
 
-                const QString previousChar = QString(m_textDocument->characterAt(cursorPosition() - 1)).trimmed();
+                const QString previousChar = QString(m_textDocument->characterAt(m_tempCursorPosition - 1)).trimmed();
                 if (previousChar.isEmpty()) {
                     // Skip all whiteSpace
                     static const QRegularExpression nonWhiteSpace = QRegularExpression(QStringLiteral("\\S"));
-                    const QTextCursor cursor = m_textDocument->find(nonWhiteSpace, cursorPosition());
-                    setCursorPostion(cursor.position());
+                    const QTextCursor cursor = m_textDocument->find(nonWhiteSpace, m_tempCursorPosition);
+                    m_tempCursorPosition = cursor.position();
                     moveCursor(QTextCursor::EndOfWord);
                 }
                 if (isShift) {
-                    QString nextChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
-                    while (!nextChar.isEmpty() && !emptyBlock() && cursorPosition() != endPosition) {
+                    QString nextChar = QString(m_textDocument->characterAt(m_tempCursorPosition)).trimmed();
+                    while (!nextChar.isEmpty() && !emptyBlock() && m_tempCursorPosition != endPosition) {
                         moveCursor(QTextCursor::EndOfWord);
-                        nextChar = QString(m_textDocument->characterAt(cursorPosition())).trimmed();
+                        nextChar = QString(m_textDocument->characterAt(m_tempCursorPosition)).trimmed();
                     }
                 }
             }
-            if (cursorPosition() != endPosition) {
-                setCursorPostion(cursorPosition() - 1); // The actual last char of the word
+            if (m_tempCursorPosition != endPosition) {
+                m_tempCursorPosition--; // The actual last char of the word
             }
             return true;
         }
@@ -197,8 +226,10 @@ bool VimHandler::handleMove(const int key, const int modifiers)
                     const int lastBlockLength = lastBlock.length() - 1;
                     const int lastBlockPosition = lastBlock.position();
 
-                    const int futurePosition = lastBlockPosition + positionInBlock <= lastBlockLength ? positionInBlock : lastBlockLength;
-                    setCursorPostion(futurePosition);
+                    const int futurePosition = lastBlockPosition + positionInBlock;
+                    const int lastCharPosition = lastBlockPosition + lastBlockLength;
+
+                    m_tempCursorPosition = futurePosition <= lastCharPosition ? futurePosition : lastCharPosition;
                 } else {
                     m_keyBuffer.clear();
                 }
@@ -213,9 +244,9 @@ bool VimHandler::handleMove(const int key, const int modifiers)
                 const int firstBlockLength = m_textDocument->firstBlock().length() - 1;
 
                 if (positionInBlock <= firstBlockLength) {
-                    setCursorPostion(positionInBlock);
+                    m_tempCursorPosition = positionInBlock;
                 } else {
-                    setCursorPostion(0);
+                    m_tempCursorPosition = 0;
                     moveCursor(QTextCursor::EndOfBlock);
                 }
             }
@@ -226,20 +257,22 @@ bool VimHandler::handleMove(const int key, const int modifiers)
     return false;
 }
 
-bool VimHandler::handleKeyPress(const int key, const int modifiers)
+bool VimHandler::handleKeyPress(const int key, const int modifiers, const bool visualMove)
 {
-    if (!earlyReturn(key)) {
+    if (earlyReturn(key, modifiers, visualMove)) {
+        if (!visualMove) {
+            moveCursorTo(m_tempCursorPosition);
+        }
         return false;
     }
 
     if (handleMove(key, modifiers)) {
+        moveCursorTo(m_tempCursorPosition);
         return true;
     }
 
     if (m_currentMode == EditorMode::Normal) {
-        if (handleNormalSwitch(key, modifiers)) {
-            return true;
-        }
+        handleNormalMode(key, modifiers);
         return true;
     }
     return true;
@@ -251,22 +284,39 @@ QTextCursor VimHandler::getCursor() const
         return QTextCursor();
 
     QTextCursor cursor = QTextCursor(m_textDocument);
-    if (m_selectionStart != m_selectionEnd) {
-        cursor.setPosition(m_selectionStart);
-        cursor.setPosition(m_selectionEnd, QTextCursor::KeepAnchor);
-    } else {
-        cursor.setPosition(m_cursorPosition);
-    }
+    cursor.setPosition(m_tempCursorPosition);
     return cursor;
 }
 
 void VimHandler::moveCursor(const QTextCursor::MoveOperation moveOperation)
 {
     QTextCursor cursor = getCursor();
-
     cursor.movePosition(moveOperation);
 
-    setCursorPostion(cursor.position());
+    m_tempCursorPosition = cursor.position();
+}
+
+void VimHandler::moveCursorTo(const int newPosition)
+{
+    if (m_currentMode == EditorMode::Visual) {
+        const Qt::KeyboardModifier modifier = Qt::ShiftModifier;
+
+        const int forwardPosition = newPosition - m_cursorPosition;
+        const int backwardPosition = m_cursorPosition - newPosition;
+
+        const int key = 0 <= forwardPosition ? Qt::Key_Right : Qt::Key_Left;
+        const int moveNumber = 0 <= forwardPosition ? forwardPosition : backwardPosition;
+
+        // QML TextArea doesn't like backward selection to be done programmaticly
+        // This is a far from perfect Workaround
+        // This could be optimized with some Key_Up/Key_Down to reduce the amount of moves
+        for (int i = 0; i < moveNumber; i++) {
+            sendKeyEvent(key, modifier);
+        }
+
+    } else {
+        Q_EMIT cursorPositionChanged(m_tempCursorPosition);
+    }
 }
 
 bool VimHandler::emptyBlock() const
@@ -306,6 +356,24 @@ QQuickTextDocument *VimHandler::document() const
     return m_document;
 }
 
+void VimHandler::setTextArea(QQuickItem *textArea)
+{
+    if (textArea == m_textArea)
+        return;
+
+    m_textArea = textArea;
+
+    if (m_textArea)
+        m_textArea->installEventFilter(this);
+
+    Q_EMIT textAreaChanged();
+}
+
+QQuickItem *VimHandler::textArea() const
+{
+    return m_textArea;
+}
+
 void VimHandler::setDocument(QQuickTextDocument *document)
 {
     if (document == m_document)
@@ -326,13 +394,13 @@ int VimHandler::cursorPosition() const
     return m_cursorPosition;
 }
 
-void VimHandler::setCursorPostion(const int cursorPosition)
+void VimHandler::setCursorPosition(const int cursorPosition)
 {
     if (cursorPosition == m_cursorPosition)
         return;
 
     m_cursorPosition = cursorPosition;
-    Q_EMIT cursorPositionChanged(cursorPosition);
+    m_tempCursorPosition = cursorPosition;
 }
 
 int VimHandler::selectionStart() const
@@ -361,4 +429,10 @@ void VimHandler::setSelectionEnd(const int selectionEnd)
 
     m_selectionEnd = selectionEnd;
     Q_EMIT selectionEndChanged();
+}
+
+void VimHandler::sendKeyEvent(const int key, const Qt::KeyboardModifier modifiers)
+{
+    QKeyEvent *event = new QKeyEvent(QKeyEvent::KeyPress, key, modifiers);
+    QCoreApplication::postEvent(m_textArea, event);
 }

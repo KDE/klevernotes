@@ -13,13 +13,7 @@ TextArea {
 
     required property bool vimModeOn
 
-    // Enum wont work, don't know why
-    property var mode: {
-        "Normal": 1,
-        "Insert": 2,
-        "Visual": 3,
-    }
-
+    readonly property bool __isVisual: __currentMode === 259 
     property int __currentMode: vimHandler.mode
 
     font: Config.editorFont
@@ -90,7 +84,7 @@ TextArea {
 
     Keys.onPressed: (event) => {
         if (root.vimModeOn) {
-            event.accepted = vimHandler.handleKeyPress(event.key, event.modifiers)
+            event.accepted = vimHandler.handleKeyPress(event.key, event.modifiers, __isVisual) 
         }
     }
     Keys.onTabPressed: {
@@ -109,6 +103,7 @@ TextArea {
         id: vimHandler
 
         vimOn: root.vimModeOn
+        textArea: root
         document: root.textDocument
         cursorPosition: root.cursorPosition
         selectionStart: root.selectionStart

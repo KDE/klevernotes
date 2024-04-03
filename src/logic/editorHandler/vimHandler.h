@@ -19,9 +19,10 @@ class VimHandler : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QQuickTextDocument *document READ document WRITE setDocument NOTIFY documentChanged)
-    Q_PROPERTY(int cursorPosition READ cursorPosition WRITE setCursorPostion NOTIFY cursorPositionChanged)
+    Q_PROPERTY(int cursorPosition READ cursorPosition WRITE setCursorPosition NOTIFY cursorPositionChanged)
     Q_PROPERTY(int selectionStart READ selectionStart WRITE setSelectionStart NOTIFY selectionStartChanged)
     Q_PROPERTY(int selectionEnd READ selectionEnd WRITE setSelectionEnd NOTIFY selectionEndChanged)
+    Q_PROPERTY(QQuickItem *textArea READ textArea WRITE setTextArea NOTIFY textAreaChanged)
 
     Q_PROPERTY(bool vimOn READ getVimOn WRITE setVimOn)
     Q_PROPERTY(int mode MEMBER m_currentMode NOTIFY modeChanged FINAL)
@@ -29,18 +30,21 @@ class VimHandler : public QObject
 public:
     explicit VimHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers);
+    Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers, const bool visualMove);
 
 Q_SIGNALS:
+    void textAreaChanged();
     void documentChanged();
     void cursorPositionChanged(const int position);
     void selectionStartChanged();
     void selectionEndChanged();
+    void anchorsPositionChanged();
 
     void modifiedChanged();
 
     void modeChanged(const int mode) const;
     void deselect() const;
+    void cut() const;
 
 private:
     // VIM calculation
@@ -50,12 +54,16 @@ private:
         Visual,
     };
 
-    bool earlyReturn(const int key);
-    bool handleNormalSwitch(const int key, const int modifiers);
+    bool earlyReturn(const int key, const int modifiers, const bool visualMove);
+    bool m_isMoving = false;
+    bool handleNormalMode(const int key, const int modifiers);
     bool handleMove(const int key, const int modifiers);
 
     QTextCursor getCursor() const;
     void moveCursor(const QTextCursor::MoveOperation moveOperation);
+    void moveCursorTo(const int newPosition);
+    void sendKeyEvent(const int key, const Qt::KeyboardModifier modifiers);
+
     bool emptyBlock() const;
 
     bool getVimOn() const;
@@ -66,6 +74,7 @@ private:
     void setMode(const int mode);
     int m_currentMode = EditorMode::Normal;
 
+    int m_tempCursorPosition;
     QList<int> m_keyBuffer;
 
     // Document manipulation
@@ -74,8 +83,12 @@ private:
     QQuickTextDocument *document() const;
     void setDocument(QQuickTextDocument *document);
 
+    QQuickItem *m_textArea;
+    QQuickItem *textArea() const;
+    void setTextArea(QQuickItem *textArea);
+
     int cursorPosition() const;
-    void setCursorPostion(const int cursorPosition);
+    void setCursorPosition(const int cursorPosition);
 
     int selectionStart() const;
     void setSelectionStart(const int selectionStart);
