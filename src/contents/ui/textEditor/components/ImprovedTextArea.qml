@@ -111,6 +111,9 @@ TextArea {
         onCursorPositionChanged: (position) => {
             root.cursorPosition = position
         }
+        onMoveSelection: (position) => {
+            root.moveCursorSelection(position)
+        }
         onDeselect: {
             root.deselect()
         }

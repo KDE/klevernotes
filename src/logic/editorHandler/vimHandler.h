@@ -40,11 +40,11 @@ Q_SIGNALS:
     void selectionEndChanged();
     void anchorsPositionChanged();
 
+    void moveSelection(const int position);
     void modifiedChanged();
 
     void modeChanged(const int mode) const;
     void deselect() const;
-    void cut() const;
 
 private:
     // VIM calculation
@@ -54,7 +54,7 @@ private:
         Visual,
     };
 
-    bool earlyReturn(const int key, const bool isShift);
+    bool earlyReturn(const int key);
     bool handleNormalMode(const int key, const bool isShift);
     bool handleMove(const int key, const bool isShift);
 

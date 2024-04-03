@@ -14,7 +14,7 @@ VimHandler::VimHandler(QObject *parent)
     setMode(EditorMode::Normal);
 }
 
-bool VimHandler::earlyReturn(const int key, const bool isShift)
+bool VimHandler::earlyReturn(const int key)
 {
     switch (key) {
     case Qt::Key_Escape:
@@ -23,38 +23,20 @@ bool VimHandler::earlyReturn(const int key, const bool isShift)
         return true;
 
     // Allow us to disable Shift+Arrow select, while keeping the move
-    // We accept Shift+Arrow only while on visual mode
-    // The rest is transformed in a simple arrow operation
     case Qt::Key_Right:
-        if (m_isVisual && isShift) {
-            return true;
-        }
         moveCursor(QTextCursor::Right);
-        moveCursorTo(m_tempCursorPosition);
         return true;
 
     case Qt::Key_Left:
-        if (m_isVisual && isShift) {
-            return true;
-        }
         moveCursor(QTextCursor::Left);
-        moveCursorTo(m_tempCursorPosition);
         return true;
 
     case Qt::Key_Up:
-        if (m_isVisual && isShift) {
-            return true;
-        }
         moveCursor(QTextCursor::Up);
-        moveCursorTo(m_tempCursorPosition);
         return true;
 
     case Qt::Key_Down:
-        if (m_isVisual && isShift) {
-            return true;
-        }
         moveCursor(QTextCursor::Down);
-        moveCursorTo(m_tempCursorPosition);
         return true;
     }
 
@@ -263,10 +245,14 @@ bool VimHandler::handleMove(const int key, const bool isShift)
 bool VimHandler::handleKeyPress(const int key, const int modifiers)
 {
     const bool isShift = modifiers == Qt::ShiftModifier;
-    if (earlyReturn(key, isShift)) {
-        if (m_isVisual && modifiers == Qt::ShiftModifier) {
+    const bool isInsert = m_currentMode == EditorMode::Insert;
+    if (earlyReturn(key)) {
+        // Value from Key_Left to Key_Down
+        const bool isNotArrow = key < 16777234 || 16777237 < key;
+        if (isInsert && isNotArrow) {
             return false;
         }
+        moveCursorTo(m_tempCursorPosition);
         return true;
     }
 
@@ -279,6 +265,7 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
         handleNormalMode(key, isShift);
         return true;
     }
+
     return true;
 }
 
@@ -302,43 +289,7 @@ void VimHandler::moveCursor(const QTextCursor::MoveOperation moveOperation)
 
 void VimHandler::moveCursorTo(const int newPosition)
 {
-    if (m_isVisual) {
-        const Qt::KeyboardModifier modifier = Qt::ShiftModifier;
-
-        // Move the cursor vertically to reduce the amount of KeyEvent sent to the textArea
-        // ==============================================================================
-        // The cursor is positionned at the m_tempCursorPosition by default
-        auto cursor = getCursor();
-        cursor.setPosition(cursorPosition());
-
-        int currentBlockPosition = cursor.block().position();
-
-        const int futureBlockPosition = getCursor().block().position();
-
-        const int skipBlockKey = currentBlockPosition <= futureBlockPosition ? Qt::Key_Down : Qt::Key_Up;
-        const QTextCursor::MoveOperation skipBlockOpe = currentBlockPosition <= futureBlockPosition ? QTextCursor::Down : QTextCursor::Up;
-
-        while (currentBlockPosition != futureBlockPosition) {
-            cursor.movePosition(skipBlockOpe);
-            currentBlockPosition = cursor.block().position();
-            sendKeyEvent(skipBlockKey, modifier);
-        }
-        // ==============================================================================
-
-        const int forwardPosition = newPosition - cursor.position();
-        const int backwardPosition = cursor.position() - newPosition;
-
-        const int key = 0 <= forwardPosition ? Qt::Key_Right : Qt::Key_Left;
-        const int moveNumber = 0 <= forwardPosition ? forwardPosition : backwardPosition;
-
-        // QML TextArea doesn't like backward selection to be done programmaticly
-        // This is a far from perfect Workaround
-        for (int i = 0; i < moveNumber; i++) {
-            sendKeyEvent(key, modifier);
-        }
-    } else {
-        Q_EMIT cursorPositionChanged(m_tempCursorPosition);
-    }
+    Q_EMIT m_isVisual ? moveSelection(newPosition) : cursorPositionChanged(newPosition);
 }
 
 bool VimHandler::emptyBlock() const
