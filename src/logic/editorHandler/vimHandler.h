@@ -30,7 +30,7 @@ class VimHandler : public QObject
 public:
     explicit VimHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers, const bool visualMove);
+    Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers);
 
 Q_SIGNALS:
     void textAreaChanged();
@@ -54,10 +54,9 @@ private:
         Visual,
     };
 
-    bool earlyReturn(const int key, const int modifiers, const bool visualMove);
-    bool m_isMoving = false;
-    bool handleNormalMode(const int key, const int modifiers);
-    bool handleMove(const int key, const int modifiers);
+    bool earlyReturn(const int key, const bool isShift);
+    bool handleNormalMode(const int key, const bool isShift);
+    bool handleMove(const int key, const bool isShift);
 
     QTextCursor getCursor() const;
     void moveCursor(const QTextCursor::MoveOperation moveOperation);
@@ -73,6 +72,7 @@ private:
     int getMode() const;
     void setMode(const int mode);
     int m_currentMode = EditorMode::Normal;
+    bool m_isVisual = false;
 
     int m_tempCursorPosition;
     QList<int> m_keyBuffer;

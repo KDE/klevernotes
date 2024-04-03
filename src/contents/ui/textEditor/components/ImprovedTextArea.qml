@@ -13,8 +13,7 @@ TextArea {
 
     required property bool vimModeOn
 
-    readonly property bool __isVisual: __currentMode === 259 
-    property int __currentMode: vimHandler.mode
+    readonly property int __currentMode: vimHandler.mode
 
     font: Config.editorFont
     wrapMode: TextEdit.Wrap
@@ -84,7 +83,7 @@ TextArea {
 
     Keys.onPressed: (event) => {
         if (root.vimModeOn) {
-            event.accepted = vimHandler.handleKeyPress(event.key, event.modifiers, __isVisual) 
+            event.accepted = vimHandler.handleKeyPress(event.key, event.modifiers) 
         }
     }
     Keys.onTabPressed: {

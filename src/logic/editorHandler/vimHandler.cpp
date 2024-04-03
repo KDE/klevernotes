@@ -14,9 +14,8 @@ VimHandler::VimHandler(QObject *parent)
     setMode(EditorMode::Normal);
 }
 
-bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visualMove)
+bool VimHandler::earlyReturn(const int key, const bool isShift)
 {
-    const bool isShift = modifiers == Qt::ShiftModifier;
     switch (key) {
     case Qt::Key_Escape:
         setMode(EditorMode::Normal);
@@ -27,7 +26,7 @@ bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visu
     // We accept Shift+Arrow only while on visual mode
     // The rest is transformed in a simple arrow operation
     case Qt::Key_Right:
-        if (visualMove && isShift) {
+        if (m_isVisual && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Right);
@@ -35,7 +34,7 @@ bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visu
         return true;
 
     case Qt::Key_Left:
-        if (visualMove && isShift) {
+        if (m_isVisual && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Left);
@@ -43,7 +42,7 @@ bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visu
         return true;
 
     case Qt::Key_Up:
-        if (visualMove && isShift) {
+        if (m_isVisual && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Up);
@@ -51,7 +50,7 @@ bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visu
         return true;
 
     case Qt::Key_Down:
-        if (visualMove && isShift) {
+        if (m_isVisual && isShift) {
             return true;
         }
         moveCursor(QTextCursor::Down);
@@ -66,9 +65,8 @@ bool VimHandler::earlyReturn(const int key, const int modifiers, const bool visu
     return false;
 }
 
-bool VimHandler::handleNormalMode(const int key, const int modifiers)
+bool VimHandler::handleNormalMode(const int key, const bool isShift)
 {
-    const bool isShift = modifiers == Qt::ShiftModifier;
     switch (key) {
     case Qt::Key_I:
         setMode(EditorMode::Insert);
@@ -97,12 +95,10 @@ bool VimHandler::handleNormalMode(const int key, const int modifiers)
     return false;
 }
 
-bool VimHandler::handleMove(const int key, const int modifiers)
+bool VimHandler::handleMove(const int key, const bool isShift)
 {
     const bool isNormal = m_currentMode == EditorMode::Normal;
-    const bool isVisual = m_currentMode == EditorMode::Visual;
-    if (isNormal || isVisual) {
-        const bool isShift = modifiers == Qt::ShiftModifier;
+    if (isNormal || m_isVisual) {
         switch (key) {
         case Qt::Key_H: {
             moveCursor(QTextCursor::Left);
@@ -264,22 +260,23 @@ bool VimHandler::handleMove(const int key, const int modifiers)
     return false;
 }
 
-bool VimHandler::handleKeyPress(const int key, const int modifiers, const bool visualMove)
+bool VimHandler::handleKeyPress(const int key, const int modifiers)
 {
-    if (earlyReturn(key, modifiers, visualMove)) {
-        if (visualMove && modifiers == Qt::ShiftModifier) {
+    const bool isShift = modifiers == Qt::ShiftModifier;
+    if (earlyReturn(key, isShift)) {
+        if (m_isVisual && modifiers == Qt::ShiftModifier) {
             return false;
         }
         return true;
     }
 
-    if (handleMove(key, modifiers)) {
+    if (handleMove(key, isShift)) {
         moveCursorTo(m_tempCursorPosition);
         return true;
     }
 
     if (m_currentMode == EditorMode::Normal) {
-        handleNormalMode(key, modifiers);
+        handleNormalMode(key, isShift);
         return true;
     }
     return true;
@@ -305,7 +302,7 @@ void VimHandler::moveCursor(const QTextCursor::MoveOperation moveOperation)
 
 void VimHandler::moveCursorTo(const int newPosition)
 {
-    if (m_currentMode == EditorMode::Visual) {
+    if (m_isVisual) {
         const Qt::KeyboardModifier modifier = Qt::ShiftModifier;
 
         // Move the cursor vertically to reduce the amount of KeyEvent sent to the textArea
@@ -361,6 +358,7 @@ void VimHandler::setMode(const int mode)
         return;
 
     if (mode == EditorMode::Normal || mode == EditorMode::Insert || mode == EditorMode::Visual) {
+        m_isVisual = mode == EditorMode::Visual;
         m_currentMode = mode;
         Q_EMIT modeChanged(m_currentMode);
     }
