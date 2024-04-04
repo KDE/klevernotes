@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Controls 2.2
 
 import org.kde.kirigami 2.19 as Kirigami
@@ -14,6 +14,8 @@ TextArea {
     required property bool vimModeOn
 
     readonly property int __currentMode: vimHandler.mode
+    readonly property int __isVisual: __currentMode === 259
+    property string __cursorText
 
     font: Config.editorFont
     wrapMode: TextEdit.Wrap
@@ -39,45 +41,45 @@ TextArea {
         color: Kirigami.Theme.backgroundColor
     }
 
-    cursorDelegate: Config.cursorStyle !== "beam" ? customCursor : null
-    
-    Component {
-        id: customCursor
+    cursorDelegate: Rectangle {
+        id: cursorBackground
+        readonly property bool isBlock: Config.cursorStyle === "block"
+        color: root.__isVisual && root.vimModeOn
+            ? Kirigami.Theme.highlightColor
+            : isBlock 
+                ? Kirigami.Theme.textColor 
+                : Kirigami.Theme.backgroundColor
+        width: t_metrics.tightBoundingRect.width
+        height: t_metrics.tightBoundingRect.height
+
         Rectangle {
-            id: cursorBackground
-            readonly property bool isBlock: Config.cursorStyle === "block"
-            color: isBlock ? Kirigami.Theme.textColor : Kirigami.Theme.backgroundColor
-            width: t_metrics.tightBoundingRect.width
-            height: t_metrics.tightBoundingRect.height
+            id: underlineAndBeam
 
-            Rectangle {
-                id: underline
+            y: Config.cursorStyle === "beam" 
+                ? 0
+                : parent.height - height
+            width: Config.cursorStyle === "beam"
+                ? Math.round(parent.width / 10)
+                : parent.width
+            height: Config.cursorStyle === "beam"
+                ? parent.height
+                : Math.round(parent.height / 10)
+            visible: !parent.isBlock
+        }
 
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    bottom: parent.bottom
-                }
+        Text {
+            id: cursor_text
+            text: root.__cursorText
+            color: cursorBackground.isBlock ? Kirigami.Theme.backgroundColor : Kirigami.Theme.textColor
+            font: root.font
+            anchors.centerIn: parent
+        }
 
-                y: parent.height - height
-                height: Math.round(parent.height / 10)
-                visible: !parent.isBlock
-            }
-
-            Text {
-                id: a_text
-                text: root.getText(root.cursorPosition, root.cursorPosition + 1)
-                color: cursorBackground.isBlock ? Kirigami.Theme.backgroundColor : Kirigami.Theme.textColor
-                font: root.font
-                anchors.centerIn: parent
-            }
-
-            TextMetrics {
-                id: t_metrics
-                font: root.font
-                // Workaround: One of the largest letter, in case a monospace font is not used
-                text: "W" 
-            }
+        TextMetrics {
+            id: t_metrics
+            font: root.font
+            // Workaround: One of the largest letter, in case a monospace font is not used
+            text: "W" 
         }
     }
 
@@ -97,9 +99,16 @@ TextArea {
         const newString = MDHandler.getLineFromPrevious(getText(blockStart, blockEnd))
         insert(selectionEnd, newString)
     }
+    onCursorPositionChanged: {
+        setCursorText()
+    }
 
     VimHandler {
         id: vimHandler
+
+        property int visualStart
+        property int visualEnd
+        property bool selectLeft: false
 
         vimOn: root.vimModeOn
         textArea: root
@@ -108,14 +117,34 @@ TextArea {
         selectionStart: root.selectionStart
         selectionEnd: root.selectionEnd
 
+        onModeChanged: {
+            if (vimHandler.mode === 259) {
+                vimHandler.visualStart = root.cursorPosition
+                vimHandler.visualEnd = root.cursorPosition + 1 <= root.length
+                    ? root.cursorPosition + 1
+                    : root.cursorPosition
+            }
+        }
         onCursorPositionChanged: (position) => {
             root.cursorPosition = position
         }
         onMoveSelection: (position) => {
+            const goLeft = position < visualStart
+            if (goLeft && selectionEnd !== visualEnd) {
+                root.cursorPosition = visualEnd
+                vimHandler.selectLeft = true
+            } else if (!goLeft && vimHandler.selectLeft) {
+                root.cursorPosition = visualStart
+                vimHandler.selectLeft = false
+            }
             root.moveCursorSelection(position)
         }
         onDeselect: {
             root.deselect()
+        }
+        onCut: {
+            root.cut()
+            // cursor_text.text = 
         }
     }
 
@@ -136,5 +165,9 @@ TextArea {
         } else if (!backtab) {
             insert(selectionStart, Config.useSpaceForTab ? chars.repeat(Config.spacesForTab) : chars)
         }
+    }
+
+    function setCursorText() {
+        __cursorText = root.getText(root.cursorPosition, root.cursorPosition + 1)
     }
 }
