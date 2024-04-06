@@ -39,7 +39,12 @@ set(exec_SRCS
     logic/mdHandler.cpp
     logic/qmlLinker.cpp
 
+    logic/editorHandler/editorHandler.cpp
     logic/editorHandler/vimHandler.cpp
+    logic/editorHandler/vimMovement.cpp
+
+    # logic/editorHandler/vimActions/abstractVimAction.cpp
+    # logic/editorHandler/vimActions/insertAction.cpp
 
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp

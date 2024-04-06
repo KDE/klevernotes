@@ -13,8 +13,8 @@ TextArea {
 
     required property bool vimModeOn
 
-    readonly property int __currentMode: vimHandler.mode
     readonly property int __isVisual: __currentMode === 259
+    property int __currentMode: 257
     property string __cursorText
 
     font: Config.editorFont
@@ -85,7 +85,7 @@ TextArea {
 
     Keys.onPressed: (event) => {
         if (root.vimModeOn) {
-            event.accepted = vimHandler.handleKeyPress(event.key, event.modifiers) 
+            event.accepted = editorHandler.handleKeyPress(event.key, event.modifiers) 
         }
     }
     Keys.onTabPressed: {
@@ -103,21 +103,20 @@ TextArea {
         setCursorText()
     }
 
-    VimHandler {
-        id: vimHandler
+    EditorHandler {
+        id: editorHandler
 
         property int visualStart
         property int visualEnd
         property bool selectLeft: false
 
-        vimOn: root.vimModeOn
-        textArea: root
         document: root.textDocument
         cursorPosition: root.cursorPosition
         selectionStart: root.selectionStart
         selectionEnd: root.selectionEnd
 
-        onModeChanged: {
+        onModeChanged: (mode) => {
+            root.__currentMode = mode
             if (vimHandler.mode === 259) {
                 vimHandler.visualStart = root.cursorPosition
                 vimHandler.visualEnd = root.cursorPosition + 1 <= root.length
@@ -144,7 +143,7 @@ TextArea {
         }
         onCut: {
             root.cut()
-            // cursor_text.text = 
+            setCursorText()
         }
     }
 
