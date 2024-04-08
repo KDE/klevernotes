@@ -4,6 +4,7 @@
 #include "kleverUtility.h"
 #include "documentHandler.h"
 // #include <QDebug>
+#include <KSandbox>
 #include <QDir>
 #include <QFontInfo>
 #include <QStandardPaths>
@@ -137,4 +138,9 @@ QJsonObject KleverUtility::fontInfo(const QFont &font) const
     fontInfo[QStringLiteral("family")] = info.family();
     fontInfo[QStringLiteral("pointSize")] = info.pointSize();
     return fontInfo;
+}
+
+bool KleverUtility::isFlatpak() const
+{
+    return KSandbox::isFlatpak();
 }

@@ -40,6 +40,8 @@ ColumnLayout {
             tooltip: i18nc("@tooltip, Print action, will be followed by the shortcut", "Print") + " (" + shortcut + ")"
             icon.name: "pdftex-symbolic"
             
+            visible: !KleverUtility.isFlatpak()
+            enabled: visible
             onTriggered: {
                 applicationWindow().switchToPage('Printing')
             }

@@ -23,6 +23,7 @@ public:
     Q_INVOKABLE bool remove(const QString &path) const;
     Q_INVOKABLE QJsonObject getCssStylesList() const;
     Q_INVOKABLE QJsonObject fontInfo(const QFont &font) const;
+    Q_INVOKABLE bool isFlatpak() const;
     static bool create(const QString &path);
     static bool exists(const QString &path);
 };
