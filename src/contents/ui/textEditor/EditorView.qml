@@ -40,10 +40,8 @@ ColumnLayout {
             tooltip: i18nc("@tooltip, Print action, will be followed by the shortcut", "Print") + " (" + shortcut + ")"
             icon.name: "pdftex-symbolic"
             
-            visible: !KleverUtility.isFlatpak()
-            enabled: visible
             onTriggered: {
-                applicationWindow().switchToPage('Printing')
+                printingDialog.open()
             }
         },
         Kirigami.Action {
@@ -90,10 +88,26 @@ ColumnLayout {
     }
 
     FileSaverDialog {
-        id: pdfSaver
+        id: htmlSaver
 
-        caller: pdfPrinter
-        noteName: root.noteName ? root.noteName : ""
+        caller: printingDialog
+    }
+
+    PrintingDialog {
+        id: printingDialog
+
+        onPdf: {
+            applicationWindow().switchToPage('Printing')
+        }
+        onHtml: {
+            htmlSaver.open()
+        }
+        onPathChanged: if (path.length !== 0) {
+            display.view.runJavaScript("document.documentElement.innerHTML", function (result) {
+                DocumentHandler.writeFile(result, printingDialog.path.substring(7))
+                printingDialog.close()
+            })
+        }
     }
 
     TextToolBar {

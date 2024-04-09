@@ -10,12 +10,11 @@ FileDialog {
     id: fileDialog
 
     property QtObject caller
-    property string noteName
 
-    title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note")
+    title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note as html")
 
     folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-    currentFile: folder+"/"+noteName+".pdf"
+    nameFilters: [ "Html file (*.html)"]
     fileMode: FileDialog.SaveFile
 
     onAccepted: {

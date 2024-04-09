@@ -17,6 +17,7 @@
         <file>contents/ui/dialogs/MoveDialog.qml</file>
         <file>contents/ui/dialogs/NamingDialog.qml</file>
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
+        <file>contents/ui/dialogs/PrintingDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
         <file>contents/ui/dialogs/URLDialog.qml</file>
         <file>contents/ui/dialogs/WarningDialog.qml</file>
