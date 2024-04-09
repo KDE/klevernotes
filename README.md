@@ -7,7 +7,7 @@
 
 KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content. 
 
-Different Markdown flavors are supported thanks to [Marked.js](https://marked.js.org/#specifications) (more features will come). 
+Different Markdown flavors are supported thanks to its custom Markdown parser based [Marked.js](https://marked.js.org/#specifications), which make the integration of "[plugins](https://invent.kde.org/office/klevernotes#plugins)" and new features even easier. 
 
 **Get involved and join our Matrix channel: [klevernotes:kde.org](https://matrix.to/#/#klevernotes:kde.org)**
 
@@ -90,11 +90,18 @@ ___
 
 ## Get it
 
-Klevernotes is currently in [KDE incubator](https://community.kde.org/Incubator) 
+### Install the flatpak
+Klevernotes is currently in [KDE incubator](https://community.kde.org/Incubator), and will not be shipped on Flathub until its first stable release. 
 
-You'll need to build the app to test it ! 
+However, a Nightly Flatpak is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command to get it:
+```
+flatpak install --user --or-update https://cdn.kde.org/flatpak/klevernotes-nightly/org.kde.klevernotes.flatpakref
+```
 
-## Build
+Command based on [this tutorial](https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps)
+ 
+
+### Build
 
 **[kdesrc-build](https://invent.kde.org/sdk/kdesrc-build)** would be the best option to build klevernotes and its dependencies easily.
 
