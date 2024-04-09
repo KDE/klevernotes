@@ -5,8 +5,11 @@
 #include "documentHandler.h"
 // #include <QDebug>
 #include <KSandbox>
+#include <QApplication>
+#include <QClipboard>
 #include <QDir>
 #include <QFontInfo>
+#include <QMimeData>
 #include <QStandardPaths>
 #include <kio/global.h>
 #include <klocalizedstring.h>
@@ -143,4 +146,19 @@ QJsonObject KleverUtility::fontInfo(const QFont &font) const
 bool KleverUtility::isFlatpak() const
 {
     return KSandbox::isFlatpak();
+}
+
+bool KleverUtility::checkPaste(const QString &tempPath) const
+{
+    const QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+
+    if (mimeData->hasImage()) {
+        QFile file(tempPath);
+        file.open(QIODevice::WriteOnly);
+        QPixmap pixmap = qvariant_cast<QPixmap>(mimeData->imageData());
+        return pixmap.save(&file, "PNG");
+    }
+
+    return false;
 }

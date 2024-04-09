@@ -11,6 +11,8 @@ import org.kde.Klever 1.0
 ScrollView {
     id: view
 
+    signal openImageDialog(string image)
+
     readonly property TextArea textArea: textArea
 
     property string path
@@ -40,6 +42,15 @@ ScrollView {
             } else {
                 cursorPosition = length
                 tempBuff = false
+            }
+        }
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_V && (event.modifiers === Qt.ControlModifier || event.modifiers === Qt.ShiftModifier | Qt.ControlModifier)) {
+                const tempPath = path.slice(0, -7) + "tempImage.png"
+                if (!canPaste && KleverUtility.checkPaste(tempPath)) {
+
+                    openImageDialog(tempPath)
+                }
             }
         }
         Keys.onTabPressed: {

@@ -157,6 +157,14 @@ ColumnLayout {
                     : generalLayout.height
 
                 LayoutMirroring.enabled: generalLayout.isHorizontal
+
+                onOpenImageDialog: (imagePath) => {
+                    toolbar.imagePickerDialog.path = "file://" + imagePath
+                    toolbar.imagePickerDialog.clipboardImage = true
+                    toolbar.imagePickerDialog.storeCheckbox.checked = true
+                    toolbar.imagePickerDialog.storeCheckbox.enabled = false
+                    toolbar.imagePickerDialog.open()
+                }
             }
 
             Kirigami.Separator {

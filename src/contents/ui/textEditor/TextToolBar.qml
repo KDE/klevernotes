@@ -134,6 +134,8 @@ Kirigami.ActionToolBar {
 
                 if (wantedImageName.length === 0 && paintedImageChoosen) {
                     wantedImageName = "painting"
+                } else if (wantedImageName.length === 0 && clipboardImage) {
+                    wantedImageName = "clipboard"
                 } else if (!paintedImageChoosen) {
                     const fileName = KleverUtility.getName(path)
                     wantedImageName = fileName.substring(0,fileName.lastIndexOf("."))

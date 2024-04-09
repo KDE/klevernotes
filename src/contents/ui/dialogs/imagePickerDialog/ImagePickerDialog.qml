@@ -28,6 +28,7 @@ Kirigami.Dialog {
     property alias imageName: nameTextField.text
     property bool storedImageChoosen: false
     property bool paintedImageChoosen: false
+    property bool clipboardImage: false
     property bool storedImagesExist: !KleverUtility.isEmptyDir(noteImagesStoringPath)
 
     title: i18nc("@title:dialog", "Image selector")
@@ -268,10 +269,14 @@ Kirigami.Dialog {
     }
 
     function clearTmp() {
-        if (paintedImageChoosen) {
+        if (paintedImageChoosen || clipboardImage) {
             paintedImageChoosen = false
+            clipboardImage = false
             storeCheckbox.enabled = true
             storeCheckbox.checked = false
+        }
+        if (clipboardImage) {
+            KleverUtility.remove(path.substring(7)) // Clear the temp image
         }
     }
 }
