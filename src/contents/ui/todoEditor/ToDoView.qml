@@ -50,6 +50,8 @@ ColumnLayout {
                 }
             }
             saveTodos()
+        }
+        onClosed: {
             name = ""
             description = ""
             callerModelIndex = -1
