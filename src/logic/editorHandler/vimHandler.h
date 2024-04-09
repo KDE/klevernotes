@@ -3,13 +3,14 @@
 
 #pragma once
 
-#include "vimActions/abstractVimAction.h"
+#include "vimMovementOperator.h"
 #include <memory>
 #include <qnamespace.h>
+#include <tuple>
 #include <vector>
 
 class EditorHandler;
-class Movement;
+class AbstractVimAction;
 
 class VimHandler
 {
@@ -27,6 +28,8 @@ public:
 
     // Key handling
     bool handleKeyPress(const int key, const int modifiers);
+
+    VimMovementOperator *getMovementOperator() const;
 
 private:
     EditorHandler *m_editorHandler;
@@ -52,4 +55,8 @@ private:
     };
     std::vector<std::unique_ptr<AbstractVimAction>> m_actionsList;
     void doActions();
+
+    // Movement
+    void handleMovement(const int moveType, const int repeat = 1, const bool isShift = false);
+    VimMovementOperator *m_movementOperator;
 };

@@ -7,6 +7,7 @@
 
 #include <QObject>
 #include <QQuickTextDocument>
+#include <QTextCursor>
 #include <QTextDocument>
 
 Q_DECLARE_METATYPE(QQuickTextDocument);
@@ -25,6 +26,14 @@ public:
     explicit EditorHandler(QObject *parent = nullptr);
 
     Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers) const;
+
+    int cursorPosition() const;
+
+    QTextCursor getCursor() const;
+    void moveCursorTo(const int position, const bool visual = false);
+    int getLastBlockPosition() const;
+    int getCapturePosition(const QRegularExpression &reg, const int from = -1) const;
+    QString charAt(const int position) const;
 
 Q_SIGNALS:
     void documentChanged();
@@ -48,7 +57,6 @@ private:
     QQuickTextDocument *document() const;
     void setDocument(QQuickTextDocument *document);
 
-    int cursorPosition() const;
     void setCursorPosition(const int cursorPosition);
 
     int selectionStart() const;

@@ -5,6 +5,8 @@
 
 #include "editorHandler.h"
 #include "vimHandler.h"
+#include <QRegularExpression>
+#include <QTextBlock>
 
 EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
@@ -33,6 +35,39 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
 
     m_textDocument = m_document->textDocument();
     Q_EMIT documentChanged();
+}
+
+QTextCursor EditorHandler::getCursor() const
+{
+    if (!m_textDocument)
+        return QTextCursor();
+
+    QTextCursor cursor = QTextCursor(m_textDocument);
+    cursor.setPosition(m_cursorPosition);
+    return cursor;
+}
+
+void EditorHandler::moveCursorTo(const int position, const bool visual)
+{
+    Q_EMIT visual ? moveSelection(position) : cursorPositionChanged(position);
+}
+
+int EditorHandler::getLastBlockPosition() const
+{
+    return m_textDocument->lastBlock().position();
+}
+
+int EditorHandler::getCapturePosition(const QRegularExpression &reg, const int from) const
+{
+    const QString text = m_textDocument->toPlainText();
+    const auto capture = reg.match(text, from < 0 ? m_cursorPosition : from);
+
+    return capture.hasMatch() ? capture.capturedStart() : -1;
+}
+
+QString EditorHandler::charAt(const int position) const
+{
+    return QString(m_textDocument->characterAt(position)).trimmed();
 }
 
 // General Info

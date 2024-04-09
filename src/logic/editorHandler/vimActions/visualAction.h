@@ -5,22 +5,19 @@
 
 #include "abstractVimAction.h"
 
-class InsertAction : public AbstractVimAction
+class VisualAction : public AbstractVimAction
 {
 public:
-    InsertAction(VimHandler *vimHandler, bool ready = false)
+    VisualAction(VimHandler *vimHandler)
         : AbstractVimAction(vimHandler)
     {
-        setReady(ready);
+        setReady(true);
     }
 
     void trigger() const override
     {
-        m_vimHandler->setVimMode(VimHandler::EditorMode::Insert);
-
-        move();
+        m_vimHandler->setVimMode(VimHandler::EditorMode::Visual);
     }
 
 private:
-    VimHandler *m_vimHandler = nullptr;
 };

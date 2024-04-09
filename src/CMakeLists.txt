@@ -41,7 +41,7 @@ set(exec_SRCS
 
     logic/editorHandler/editorHandler.cpp
     logic/editorHandler/vimHandler.cpp
-    logic/editorHandler/vimMovement.cpp
+    logic/editorHandler/vimMovementOperator.cpp
 
     # logic/editorHandler/vimActions/abstractVimAction.cpp
     # logic/editorHandler/vimActions/insertAction.cpp

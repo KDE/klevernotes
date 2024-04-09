@@ -117,9 +117,9 @@ TextArea {
 
         onModeChanged: (mode) => {
             root.__currentMode = mode
-            if (vimHandler.mode === 259) {
-                vimHandler.visualStart = root.cursorPosition
-                vimHandler.visualEnd = root.cursorPosition + 1 <= root.length
+            if (mode === 259) {
+                visualStart = root.cursorPosition
+                visualEnd = root.cursorPosition + 1 <= root.length
                     ? root.cursorPosition + 1
                     : root.cursorPosition
             }
@@ -131,10 +131,10 @@ TextArea {
             const goLeft = position < visualStart
             if (goLeft && selectionEnd !== visualEnd) {
                 root.cursorPosition = visualEnd
-                vimHandler.selectLeft = true
-            } else if (!goLeft && vimHandler.selectLeft) {
+                editorHandler.selectLeft = true
+            } else if (!goLeft && editorHandler.selectLeft) {
                 root.cursorPosition = visualStart
-                vimHandler.selectLeft = false
+                editorHandler.selectLeft = false
             }
             root.moveCursorSelection(position)
         }
