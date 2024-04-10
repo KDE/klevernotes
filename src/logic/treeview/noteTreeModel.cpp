@@ -297,10 +297,8 @@ void NoteTreeModel::initModel()
             QFile::copy(QStringLiteral(":/demo_note.md"), mdPath);
 
             QFile demoNote(mdPath);
-            demoNote.setPermissions(QFile::ReadOwner|QFile::WriteOwner|
-                                    QFile::ReadUser|QFile::WriteUser|
-                                    QFile::ReadGroup|QFile::WriteGroup|
-                                    QFile::ReadOther|QFile::WriteOther);
+            demoNote.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser | QFile::WriteUser | QFile::ReadGroup | QFile::WriteGroup
+                                    | QFile::ReadOther | QFile::WriteOther);
 
             const QString imagePath = notePath + QStringLiteral("Images/");
             QDir().mkpath(imagePath);

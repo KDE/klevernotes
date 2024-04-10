@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QTextStream>
+#include <qstringliteral.h>
 
 DocumentHandler::DocumentHandler(QObject *parent)
     : QObject(parent)
@@ -29,6 +30,7 @@ QString DocumentHandler::readFile(const QString &path)
             line.remove(0, 1); // Remove the first \n
     }
     file.close();
+
     return line;
 }
 

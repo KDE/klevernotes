@@ -48,6 +48,10 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+/* For liting purpose */
+/* SPDX-License-Identifier: BSD-3-Clause */
+/* SPDX-FileCopyrightText: 2016 The Qt Company Ltd */
+/* SPDX-FileCopyrightText: 2014 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com, author Milian Wolff <milian.wolff@kdab.com> */
 
 "use strict";
 

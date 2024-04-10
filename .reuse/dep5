@@ -6,3 +6,15 @@ Source: https://invent.kde.org/office/klevernotes
 Files: .flatpak-manifest.json
 Copyright: Louis Schul <schul9louis@gmail.com>
 License: GPL-2.0-or-later
+
+Files: src/example/Demo/note.md
+Copyright: Louis Schul <schul9louis@gmail.com>
+License: GPL-2.0-or-later
+
+Files: logo.png
+Copyright:2023 Helden Hoierman 
+License: CC-BY-SA-4.0 
+
+Files: src/example/Demo/Images/logo.png 
+Copyright: 2023 Helden Hoierman
+License: CC-BY-SA-4.0 
