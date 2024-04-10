@@ -29,6 +29,7 @@ public:
 
 private:
     EditorHandler *m_editorHandler = nullptr;
+    void setCursor();
     QTextCursor m_cursor;
 
     int getNewPosition(const QTextCursor::MoveOperation operation);

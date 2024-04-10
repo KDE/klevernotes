@@ -32,8 +32,9 @@ public:
     QTextCursor getCursor() const;
     void moveCursorTo(const int position, const bool visual = false);
     int getLastBlockPosition() const;
+    int getLastCharPosition() const;
     int getCapturePosition(const QRegularExpression &reg, const int from = -1) const;
-    QString charAt(const int position) const;
+    QString trimmedCharAt(const int position) const;
 
 Q_SIGNALS:
     void documentChanged();

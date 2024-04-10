@@ -7,6 +7,7 @@
 #include "vimHandler.h"
 #include <QRegularExpression>
 #include <QTextBlock>
+#include <qlogging.h>
 
 EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
@@ -57,15 +58,21 @@ int EditorHandler::getLastBlockPosition() const
     return m_textDocument->lastBlock().position();
 }
 
+int EditorHandler::getLastCharPosition() const
+{
+    const QTextBlock lastBlock = m_textDocument->lastBlock();
+    return lastBlock.position() + lastBlock.length() - 1;
+}
+
 int EditorHandler::getCapturePosition(const QRegularExpression &reg, const int from) const
 {
     const QString text = m_textDocument->toPlainText();
     const auto capture = reg.match(text, from < 0 ? m_cursorPosition : from);
 
-    return capture.hasMatch() ? capture.capturedStart() : -1;
+    return capture.capturedStart();
 }
 
-QString EditorHandler::charAt(const int position) const
+QString EditorHandler::trimmedCharAt(const int position) const
 {
     return QString(m_textDocument->characterAt(position)).trimmed();
 }
