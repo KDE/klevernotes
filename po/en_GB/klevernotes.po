@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-09 01:44+0000\n"
+"POT-Creation-Date: 2024-04-10 01:45+0000\n"
 "PO-Revision-Date: 2023-06-17 12:18+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -53,11 +53,11 @@ msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Image picker"
 
-#: contents/ui/dialogs/FileSaverDialog.qml:15
+#: contents/ui/dialogs/FileSaverDialog.qml:14
 #, fuzzy, kde-format
 #| msgid "New note"
 msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note"
+msgid "Save note as html"
 msgstr "New note"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
@@ -67,42 +67,42 @@ msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Font selector"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:33
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:34
 #, fuzzy, kde-format
 #| msgid "Image selector"
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Image selector"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:81
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:82
 #, fuzzy, kde-format
 #| msgid "Web image"
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Web image"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:110
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:111
 #, fuzzy, kde-format
 #| msgid "Local image"
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Local image"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:141
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:142
 #, fuzzy, kde-format
 #| msgid "Paint an image"
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Paint an image"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:164
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:165
 #, fuzzy, kde-format
 #| msgid "Image selector"
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Image selector"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:236
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:237
 #, fuzzy, kde-format
 #| msgid ""
 #| "It seems that the image you select doesn't exist or is not supported."
@@ -110,14 +110,14 @@ msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "It seems that the image you select doesn't exist or is not supported."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:255
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:256
 #, fuzzy, kde-format
 #| msgid "Image text: "
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Image text: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:264
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:265
 #, fuzzy, kde-format
 #| msgid "Place this image inside the note folder"
 msgctxt "@label:checkbox"
@@ -264,6 +264,30 @@ msgstr ""
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
+msgstr ""
+
+#: contents/ui/dialogs/PrintingDialog.qml:20
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Printing Dialog"
+msgstr ""
+
+#: contents/ui/dialogs/PrintingDialog.qml:33
+#, kde-format
+msgctxt "@label:button"
+msgid "Print html"
+msgstr ""
+
+#: contents/ui/dialogs/PrintingDialog.qml:41
+#, kde-format
+msgctxt "@label:button"
+msgid "Print to pdf"
+msgstr ""
+
+#: contents/ui/dialogs/PrintingDialog.qml:42
+#, kde-format
+msgctxt "@label:button"
+msgid "Disable due to flatpak limitation."
 msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:16
@@ -1495,13 +1519,13 @@ msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:53
+#: contents/ui/textEditor/EditorView.qml:51
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:69
+#: contents/ui/textEditor/EditorView.qml:67
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
@@ -1534,11 +1558,11 @@ msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:181
-#: contents/ui/textEditor/TextToolBar.qml:182
 #: contents/ui/textEditor/TextToolBar.qml:183
+#: contents/ui/textEditor/TextToolBar.qml:184
 #: contents/ui/textEditor/TextToolBar.qml:185
-#: contents/ui/textEditor/TextToolBar.qml:186
+#: contents/ui/textEditor/TextToolBar.qml:187
+#: contents/ui/textEditor/TextToolBar.qml:188
 #, kde-format
 msgid "Header"
 msgstr "Header"
@@ -1550,7 +1574,7 @@ msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Clear checked"
 
-#: logic/kleverUtility.cpp:100
+#: logic/kleverUtility.cpp:103
 #, kde-format
 msgid ""
 "/*            \n"
