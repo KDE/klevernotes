@@ -8,7 +8,7 @@ project(klevernotes VERSION 0.1)
 include(FeatureSummary)
 
 set(QT_MIN_VERSION "6.5")
-set(KF_MIN_VERSION "5.240.0")
+set(KF_MIN_VERSION "6.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 
