@@ -57,7 +57,7 @@ add_subdirectory(src)
 
 ki18n_install(po)
 
-install(PROGRAMS org.kde.klevernotes.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.klevernotes.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.klevernotes.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES org.kde.klevernotes.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
 
