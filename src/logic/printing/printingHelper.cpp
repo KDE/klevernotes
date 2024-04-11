@@ -29,7 +29,7 @@ void PrintingUtility::writePdf(const QString &path) const
     document.print(&printer);
 }
 
-void PrintingUtility::copy(const QString &fromPath, const QString &toPath) const
+void PrintingUtility::copy(const QString &fromPath, const QString &toPath)
 {
     static const QString errorMessage = i18n("An error occurred while trying to copy this pdf.");
     if (QFile::exists(toPath)) {

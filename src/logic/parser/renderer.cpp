@@ -189,7 +189,10 @@ QString Renderer::text(const QString &text)
 
 QString Renderer::escape(QString &html, bool encode)
 {
-    const QRegularExpression encodedReplacement = !encode ? QRegularExpression(QStringLiteral("&(?!#?\\w+;)")) : QRegularExpression(QStringLiteral("&"));
+    static const QRegularExpression replace1 = QRegularExpression(QStringLiteral("&(?!#?\\w+;)"));
+    static const QRegularExpression replace2 = QRegularExpression(QStringLiteral("&"));
+
+    const QRegularExpression encodedReplacement = !encode ? replace1 : replace2;
 
     static const QRegularExpression leftBracketReg = QRegularExpression(QStringLiteral("<"));
     static const QRegularExpression rightBracketReg = QRegularExpression(QStringLiteral(">"));
@@ -212,7 +215,7 @@ QString Renderer::unescape(const QString &html)
     QRegularExpressionMatch match;
     while (i.hasNext()) {
         match = i.next();
-        const QString entity = match.captured(1).toLower();
+        QString entity = match.captured(1).toLower();
 
         if (entity == QStringLiteral("colon")) {
             result.replace(match.capturedStart(), match.capturedLength(), QStringLiteral(":"));
@@ -221,7 +224,7 @@ QString Renderer::unescape(const QString &html)
         if (entity.startsWith(QStringLiteral("#"))) {
             bool ok;
             // check for hexadecimal or numerical value
-            const int charCode = (entity.at(1) == QChar::fromLatin1('x')) ? entity.mid(2).toInt(&ok, 16) : entity.mid(1).toInt(&ok);
+            const int charCode = (entity.at(1) == QChar::fromLatin1('x')) ? entity.remove(0, 2).toInt(&ok, 16) : entity.remove(0, 1).toInt(&ok);
 
             result.replace(match.capturedStart(), match.capturedLength(), QChar(charCode));
             continue;

@@ -25,7 +25,7 @@ int EmojiModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     int total = 0;
-    for (const auto &category : _emojis) {
+    for (const auto &category : std::as_const(_emojis)) {
         total += category.count();
     }
     return total;
@@ -34,7 +34,7 @@ int EmojiModel::rowCount(const QModelIndex &parent) const
 QVariant EmojiModel::data(const QModelIndex &index, int role) const
 {
     auto row = index.row();
-    for (const auto &category : _emojis) {
+    for (const auto &category : std::as_const(_emojis)) {
         if (row >= category.count()) {
             row -= category.count();
             continue;
@@ -224,7 +224,7 @@ QVariantList EmojiModel::emojiHistory() const
 {
     QVariantList list;
     for (const auto &historicEmoji : lastUsedEmojis()) {
-        for (const auto &emojiCategory : _emojis) {
+        for (const auto &emojiCategory : std::as_const(_emojis)) {
             for (const auto &emoji : emojiCategory) {
                 if (qvariant_cast<Emoji>(emoji).shortName == historicEmoji) {
                     list.append(emoji);

@@ -83,9 +83,19 @@ QList<int> MDHandler::getPerLineInstructions(const QStringList &lines, const QSt
 
 QString MDHandler::getTabbedLine(const QString &line, const QString &givenChar, const int goalCharsRep, const bool remove) const
 {
-    const QString regexStr = QStringLiteral("^[") + givenChar + QStringLiteral("]*"); // puts it inside [] to avoid the need to escape \t
-    const QRegularExpression reg = QRegularExpression(regexStr);
-    const QRegularExpressionMatch match = reg.match(line);
+    QRegularExpressionMatch match;
+    static const QString tab = QStringLiteral("\t");
+    static const QString space = QStringLiteral(" ");
+
+    if (givenChar == tab) {
+        static const QRegularExpression tabReg = QRegularExpression(QStringLiteral("^[\t]*"));
+        match = tabReg.match(line);
+    } else if (givenChar == space) {
+        static const QRegularExpression spaceReg = QRegularExpression(QStringLiteral("^[ ]*"));
+        match = spaceReg.match(line);
+    } else {
+        qWarning() << "Wrong 'givenChar' passed to MDHandler::getTabbedLine";
+    }
 
     int charRep = goalCharsRep;
     if (match.hasMatch()) {

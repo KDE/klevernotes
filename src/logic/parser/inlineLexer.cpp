@@ -24,7 +24,7 @@ InlineLexer::InlineLexer(Parser *parser)
 QString InlineLexer::output(QString &src, bool useInlineText)
 {
     static const QString emptyStr = QLatin1String();
-    QString out = emptyStr, text, href, title, cap0, cap1, cap2, cap3, cap4, outputed;
+    QString out = emptyStr, text, href, title, cap0, cap1, cap2, cap3, outputed;
     QMap<QString, QString> linkInfo;
     QRegularExpressionMatch cap, secondCap;
 
