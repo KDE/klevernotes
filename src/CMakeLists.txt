@@ -8,7 +8,7 @@ set(lib_SRCS
 )
 
 add_library(klevernoteslib STATIC ${lib_SRCS})
-target_link_libraries(klevernoteslib
+target_link_libraries(klevernoteslib PUBLIC
     Qt::Core
     Qt::Gui
     Qt::Qml
@@ -75,7 +75,7 @@ set(exec_SRCS
 )
 
 add_executable(klevernotes ${exec_SRCS})
-target_link_libraries(klevernotes klevernoteslib)
+target_link_libraries(klevernotes PRIVATE klevernoteslib)
 
 kconfig_add_kcfg_files(klevernotes GENERATE_MOC kleverconfig.kcfgc)
 install(TARGETS klevernotes ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
