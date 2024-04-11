@@ -49,10 +49,6 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
 )
 
-if (ANDROID)
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
-endif()
-
 add_subdirectory(src)
 
 ki18n_install(po)

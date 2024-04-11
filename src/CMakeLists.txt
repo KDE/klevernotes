@@ -77,15 +77,6 @@ set(exec_SRCS
 add_executable(klevernotes ${exec_SRCS})
 target_link_libraries(klevernotes klevernoteslib)
 
-if (ANDROID)
-    kirigami_package_breeze_icons(ICONS
-        list-add
-        help-about
-        application-exit
-        applications-graphics
-    )
-endif()
-
 kconfig_add_kcfg_files(klevernotes GENERATE_MOC kleverconfig.kcfgc)
 install(TARGETS klevernotes ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
