@@ -16,7 +16,7 @@ target_link_libraries(klevernoteslib
     Qt::QuickControls2
     Qt::Svg
     Qt::WebChannel
-    Qt::WebEngineWidgets
+    Qt::PrintSupport
     Qt6::WebEngineQuick 
     KF6::I18n
     KF6::CoreAddons

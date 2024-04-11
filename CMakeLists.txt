@@ -36,7 +36,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Qml
     QuickControls2
     Svg
-    WebEngineWidgets
+    PrintSupport
     WebEngineQuick
 )
 
