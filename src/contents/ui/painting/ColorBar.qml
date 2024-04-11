@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Dialogs as QtDialogs
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import Qt.labs.platform
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
-Kirigami.ShadowedRectangle {
+ToolBar {
     id: root
 
     readonly property var colorsList: [
@@ -21,12 +22,9 @@ Kirigami.ShadowedRectangle {
     Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Kirigami.Theme.inherit: false
 
-    color: Kirigami.Theme.backgroundColor
-    radius: Kirigami.Units.smallSpacing
+    position: ToolBar.Footer
 
-    RowLayout {
-        anchors.fill: parent
-
+    contentItem: RowLayout {
         spacing: Kirigami.Units.smallSpacing
 
         Rectangle {
@@ -55,7 +53,8 @@ Kirigami.ShadowedRectangle {
                 multicolor: true
 
                 onOpenColorPicker: {
-                    colorWindowComponent.createObject(root, { caller: secondaryColor })
+                    colorDialog.caller = secondaryColor;
+                    colorDialog.open();
                 }
             }
             ColorButton {
@@ -74,7 +73,8 @@ Kirigami.ShadowedRectangle {
                 multicolor: true
 
                 onOpenColorPicker: {
-                    colorWindowComponent.createObject(root, { caller: primaryButton })
+                    colorDialog.caller = primaryColor;
+                    colorDialog.open();
                 }
             }
         }
@@ -94,36 +94,19 @@ Kirigami.ShadowedRectangle {
         }
     }
 
-    Component {
-        id: colorWindowComponent
+    ColorDialog {
+        id: colorDialog
 
-        Window { // QTBUG-119055
-            id: window
+        property var caller
 
-            property var caller
+        currentColor: caller ? caller.color : 'red'
 
-            width: Kirigami.Units.gridUnit * 19
-            height: Kirigami.Units.gridUnit * 23
-            maximumWidth: width
-            maximumHeight: height
-            minimumWidth: width
-            minimumHeight: height
-            visible: true
-            QtDialogs.ColorDialog {
-                id: colorDialog
-                selectedColor: window.caller.color
-                onAccepted: {
-                if (caller.color === root.primaryColor) {
-                    root.primaryColor = selectedColor
-                } else {
-                    root.secondaryColor = selectedColor
-                }
-                    window.destroy();
-                }
-                onRejected: window.destroy()
+        onAccepted: {
+            if (caller.color === root.primaryColor) {
+                root.primaryColor = color;
+            } else {
+                root.secondaryColor = color;
             }
-            onClosing: destroy()
-            Component.onCompleted: colorDialog.open()
         }
     }
 }

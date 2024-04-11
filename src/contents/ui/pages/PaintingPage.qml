@@ -28,6 +28,11 @@ Kirigami.Page {
 
     title: i18nc("@title:page", "Paint!")
 
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
+
     actions: [
         Kirigami.Action {
             text: i18nc("@label:button", "Save")
@@ -98,8 +103,8 @@ Kirigami.Page {
         }
     }
 
-    ColumnLayout {
-        anchors.fill: parent
+    contentItem: ColumnLayout {
+        spacing: 0
 
         Controls.ScrollView {
             Layout.fillWidth: true
@@ -108,14 +113,17 @@ Kirigami.Page {
             Flickable {
                 id: flickable
 
-                contentWidth: sketchContent.width
-                contentHeight: sketchContent.height
+                contentWidth: sketchContent.width + Kirigami.Units.largeSpacing * 2
+                contentHeight: sketchContent.height + Kirigami.Units.largeSpacing * 2
 
-                clip:true
+                clip: true
                 interactive: !mouseArea.isPress
 
                 Rectangle {
                     id: sketchContent
+
+                    x: Math.max(Kirigami.Units.largeSpacing, (root.width - width) / 2)
+                    y: Kirigami.Units.largeSpacing
 
                     width: 1024
                     height: 1024
@@ -177,16 +185,14 @@ Kirigami.Page {
             id: colorBar
 
             Layout.fillWidth: true
-            Layout.preferredHeight: 50
-            Layout.topMargin: Kirigami.Units.largeSpacing
         }
     }
 
     Rectangle {
         id: cursor
 
-        x: handler.point.x - width / 2
-        y: handler.point.y - height / 2
+        x: handler.point.x - width / 2 + sketchContent.x
+        y: handler.point.y - height / 2  + sketchContent.y
         width: height
         height: pressureEquation.width * 1.5
 
