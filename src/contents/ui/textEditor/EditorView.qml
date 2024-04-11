@@ -91,6 +91,8 @@ ColumnLayout {
         id: htmlSaver
 
         caller: printingDialog
+        title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note as html")
+        nameFilters: [ "Html file (*.html)"]
     }
 
     PrintingDialog {

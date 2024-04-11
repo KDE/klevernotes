@@ -100,7 +100,10 @@ Kirigami.Page {
         id: pdfSaver
 
         caller: saveAction
-        noteName: applicationWindow().pageStack.get(0).title
+
+        title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note as pdf")
+        currentFile: applicationWindow().pageStack.get(0).title
+        nameFilters: [ "PDF file (*.pdf)"]
     }
 
     PdfMultiPageView {
