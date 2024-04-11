@@ -24,6 +24,11 @@ Kirigami.Page {
 
     title: hasNote ? currentlySelected.text : i18nc("@title:page", "Welcome")
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.inherit: false
+
+    padding: 0
+
     actions: {
         if (hasNote) {
             // At first both Loaders item are "null"
@@ -64,11 +69,11 @@ Kirigami.Page {
         anchors.fill: parent
     }
 
-
     ColumnLayout {
         id: placeHolder
 
-        anchors.fill: parent
+        anchors.centerIn: parent
+        width: parent.width - Kirigami.Units.gridUnit * 4
         visible: !root.hasNote
 
         QQC2.Label {

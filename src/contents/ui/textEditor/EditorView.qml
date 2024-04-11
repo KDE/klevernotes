@@ -77,7 +77,7 @@ ColumnLayout {
         }
     ]
 
-    spacing: Kirigami.Units.gridUnit
+    spacing: 0
     
     onPathChanged: {
         focusEditor()
