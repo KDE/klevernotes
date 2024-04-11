@@ -24,8 +24,6 @@ target_link_libraries(klevernoteslib PUBLIC
     KF6::ConfigGui
     KF6::ConfigWidgets
     KF6::KIOCore 
-    KF6::KIOFileWidgets 
-    KF6::KIOWidgets
 )
 
 set(exec_SRCS
