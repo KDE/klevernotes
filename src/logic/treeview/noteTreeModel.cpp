@@ -411,22 +411,22 @@ QModelIndex NoteTreeModel::addRow(const QString &rowName, const QString &parentP
 
     bool rowCreated;
     switch (rowLevel) {
-        case 1:
-            rowCreated = makeCategory(parentPath, rowName);
-            break;
-        case 2:
-            rowCreated = makeGroup(parentPath, rowName);
-            break;
-        case 3:
-            rowCreated = makeNote(parentPath, rowName);
-            break;
-        default:
-            Q_EMIT errorOccurred(i18n("An error occurred while trying to create this item."));
-            rowCreated = false;
-            break;
+    case 1:
+        rowCreated = makeCategory(parentPath, rowName);
+        break;
+    case 2:
+        rowCreated = makeGroup(parentPath, rowName);
+        break;
+    case 3:
+        rowCreated = makeNote(parentPath, rowName);
+        break;
+    default:
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to create this item."));
+        rowCreated = false;
+        break;
     }
     if (!rowCreated)
-            return QModelIndex();
+        return QModelIndex();
 
     const QString rowPath = parentPath + QLatin1Char('/') + rowName;
     auto newRow = std::make_unique<TreeItem>(rowPath, rowLevel, this, parentRow);
@@ -527,35 +527,35 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
 
     const bool isBaseCategory = rowPath.endsWith(QStringLiteral(".BaseCategory"));
     if (isBaseCategory) {
-            KleverConfig::setCategoryDisplayName(newName);
+        KleverConfig::setCategoryDisplayName(newName);
     } else {
-            QDir dir(rowPath);
-            dir.cdUp();
+        QDir dir(rowPath);
+        dir.cdUp();
 
-            const QString newPath = dir.absolutePath() + QLatin1Char('/') + newName;
+        const QString newPath = dir.absolutePath() + QLatin1Char('/') + newName;
 
-            const bool renamed = QDir().rename(rowPath, newPath);
+        const bool renamed = QDir().rename(rowPath, newPath);
 
-            if (!renamed) {
+        if (!renamed) {
             Q_EMIT errorOccurred(i18n("An error occurred while trying to rename this item."));
             return;
-            }
+        }
     }
 
     row->setDisplayName(newName);
     if (!isBaseCategory) {
-            row->setRealName(newName);
+        row->setRealName(newName);
     }
     Q_EMIT dataChanged(rowModelIndex, rowModelIndex);
 }
 
-void NoteTreeModel::askForFocus(const QModelIndex& rowModelIndex)
+void NoteTreeModel::askForFocus(const QModelIndex &rowModelIndex)
 {
     const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
     row->askForFocus(rowModelIndex);
 }
 
-void NoteTreeModel::askForExpand(const QModelIndex& rowModelIndex)
+void NoteTreeModel::askForExpand(const QModelIndex &rowModelIndex)
 {
     const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
     row->askForExpand(rowModelIndex);

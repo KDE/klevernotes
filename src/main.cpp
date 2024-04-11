@@ -67,7 +67,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                         // i18nc("@info:credit", "Author Role"),
                         QStringLiteral("schul9louis@outlook.fr")
                         // QStringLiteral("https://yourwebsite.com")
-                        );
+    );
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     KAboutData::setApplicationData(aboutData);
     QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.klevernotes")));
