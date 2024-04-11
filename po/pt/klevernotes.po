@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
 "PO-Revision-Date: 2023-06-13 17:27+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -1669,43 +1669,43 @@ msgstr "Ocorreu um erro ao tentar criar este item."
 msgid "An error occurred while trying to create the demo note."
 msgstr "Ocorreu um erro ao tentar criar a nota."
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Ocorreu um erro ao tentar criar este item."
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Ocorreu um erro ao tentar remover este item."
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to remove this item."
 msgid "An error occurred while trying to move this item."
 msgstr "Ocorreu um erro ao tentar remover este item."
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Ocorreu um erro ao tentar mudar o nome deste item."
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Ocorreu um erro ao tentar criar a nota."
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Ocorreu um erro ao tentar criar o grupo."
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Ocorreu um erro ao tentar criar a categoria."
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Ocorreu um erro ao tentar criar o armazenamento."

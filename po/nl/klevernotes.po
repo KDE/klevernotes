@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
-"PO-Revision-Date: 2024-03-23 23:04+0100\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"PO-Revision-Date: 2024-04-10 11:14+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #, kde-format
@@ -52,12 +52,10 @@ msgid "Image picker"
 msgstr "Afbeeldingskiezer"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Notitie opslaan"
+msgstr "Notitie opslaan als html"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -257,27 +255,25 @@ msgstr "Kies er een andere naam voor."
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Dialog wordt afgedrukt"
 
 #: contents/ui/dialogs/PrintingDialog.qml:33
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Afdrukken"
+msgstr "In html afdrukken"
 
 #: contents/ui/dialogs/PrintingDialog.qml:41
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Afdrukken naar PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:42
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Uitschakelen vanwege beperking in flatpack."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -1583,42 +1579,42 @@ msgstr "Er is een fout opgetreden bij de poging deze pdf te kopiëren."
 msgid "An error occurred while trying to create the demo note."
 msgstr "Er is een fout opgetreden bij de poging de demo-notitie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Er is een fout opgetreden bij de poging dit item aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te verwijderen."
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te verplaatsen."
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Er is een fout opgetreden bij de poging dit item te hernoemen."
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Er is een fout opgetreden bij de poging deze notitie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Er is een fout opgetreden bij de poging deze groep aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Er is een fout opgetreden bij de poging deze categorie aan te maken."
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Er is een fout opgetreden bij de poging deze opslag aan te maken."

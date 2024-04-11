@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
 "PO-Revision-Date: 2024-03-17 20:46\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1551,42 +1551,42 @@ msgstr ""
 msgid "An error occurred while trying to create the demo note."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr ""
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr ""

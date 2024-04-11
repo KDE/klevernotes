@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
 "PO-Revision-Date: 2024-02-29 03:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1623,43 +1623,43 @@ msgstr "嘗試複製此 PDF 時發生錯誤。"
 msgid "An error occurred while trying to create the demo note."
 msgstr "建立範例筆記時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "建立此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "移除此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to remove this item."
 msgid "An error occurred while trying to move this item."
 msgstr "移除此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "重新命名此項目時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "建立筆記時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "建立群組時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "嘗試建立分類時發生錯誤。"
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "建立筆記儲存庫時發生錯誤。"

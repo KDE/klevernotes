@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
-"PO-Revision-Date: 2024-03-22 07:33+0100\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"PO-Revision-Date: 2024-04-10 07:08+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -53,12 +53,10 @@ msgid "Image picker"
 msgstr "Izbirnik slik"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Shrani zabeležko"
+msgstr "Shrani zabeležko kot html"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -254,27 +252,25 @@ msgstr "Izberite drugo ime za to."
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Pogovorno okno za tiskanje"
 
 #: contents/ui/dialogs/PrintingDialog.qml:33
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Natisni"
+msgstr "Natisni html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:41
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Natisni na pdf"
 
 #: contents/ui/dialogs/PrintingDialog.qml:42
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Onemogoči zaradi omejitve flatpaka."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -1576,42 +1572,42 @@ msgstr "Prišlo je do napake pri poskusu kopiranja te datoteke pdf."
 msgid "An error occurred while trying to create the demo note."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja vzorčne zabeležke."
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Prišlo je do napake pri poskusu odstranjevanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Prišlo je do napake pri poskusu premikanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Prišlo je do napake pri poskusu preimenovanja te postavke."
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja zabeležke."
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja skupine."
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja kategorije."
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja shrambe."

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
-"PO-Revision-Date: 2024-03-22 15:43+0100\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"PO-Revision-Date: 2024-04-10 11:18+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -54,12 +54,10 @@ msgid "Image picker"
 msgstr "Selector d'imatges"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Desa la nota"
+msgstr "Desa la nota com a HTML"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -258,27 +256,25 @@ msgstr "Trieu un altre nom per a ell."
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Diàleg d'impressió"
 
 #: contents/ui/dialogs/PrintingDialog.qml:33
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Imprimeix"
+msgstr "Imprimeix l'HTML"
 
 #: contents/ui/dialogs/PrintingDialog.qml:41
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Imprimeix a PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:42
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Desactiva per una limitació del Flatpak."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -1582,42 +1578,42 @@ msgstr "S'ha produït un error en intentar copiar aquest PDF."
 msgid "An error occurred while trying to create the demo note."
 msgstr "S'ha produït un error en intentar crear la nota de mostra."
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "S'ha produït un error en intentar crear aquest element."
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "S'ha produït un error en intentar eliminar aquest element."
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "S'ha produït un error en intentar moure aquest element."
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "S'ha produït un error en intentar canviar de nom aquest element."
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "S'ha produït un error en intentar crear la nota."
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "S'ha produït un error en intentar crear el grup."
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "S'ha produït un error en intentar crear la categoria."
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "S'ha produït un error en intentar crear l'emmagatzematge."

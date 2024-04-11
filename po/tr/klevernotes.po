@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 01:45+0000\n"
-"PO-Revision-Date: 2024-03-22 15:40+0300\n"
+"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"PO-Revision-Date: 2024-04-10 14:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
 #, kde-format
@@ -53,12 +53,10 @@ msgid "Image picker"
 msgstr "Görsel Seçicisi"
 
 #: contents/ui/dialogs/FileSaverDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Notu Kaydet"
+msgstr "Notu HTML Olarak Kaydet"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -256,27 +254,25 @@ msgstr "Lütfen başka bir ad seçin."
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Yazdırma İletişim Kutusu"
 
 #: contents/ui/dialogs/PrintingDialog.qml:33
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Yazdır"
+msgstr "HTML Olarak Yazdır"
 
 #: contents/ui/dialogs/PrintingDialog.qml:41
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "PDF Olarak Yazdır"
 
 #: contents/ui/dialogs/PrintingDialog.qml:42
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Flatpak sınırlamaları nedeniyle devre dışıdır."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -1584,42 +1580,42 @@ msgstr "Bu PDF kopyalanmaya çalışılırken bir hata oluştu."
 msgid "An error occurred while trying to create the demo note."
 msgstr "Tanıtım notu oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:426
+#: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
 msgstr "Bu öge oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:465
+#: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Bu öge kaldırılmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:519
+#: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Bu öge taşınmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:542
+#: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Bu öge yeniden adlandırılmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:640
+#: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Not oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:651
+#: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
 msgstr "Grup oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:661
+#: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
 msgstr "Kategori oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/noteTreeModel.cpp:669
+#: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Depolama oluşturulmaya çalışılırken bir hata oluştu."
