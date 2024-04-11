@@ -110,7 +110,6 @@ Kirigami.ApplicationWindow {
         if (!isMainPage()) return
 
         const mainPage = pageStack.get(0)
-        const editorView = mainPage.editorView
-        editorView.cheatSheet.open() 
+        mainPage.cheatSheet.open() 
     }
 }

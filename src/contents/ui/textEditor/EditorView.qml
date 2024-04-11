@@ -17,7 +17,6 @@ ColumnLayout {
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
-    readonly property QtObject cheatSheet: cheatSheet
 
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
@@ -203,10 +202,6 @@ ColumnLayout {
                     : generalLayout.height        
             }
         }
-    }
-
-    CheatSheet {
-        id: cheatSheet
     }
 
     Loader {

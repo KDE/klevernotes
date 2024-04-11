@@ -15,6 +15,7 @@ import org.kde.Klever 1.0
 Kirigami.Page {
     id: root
 
+    readonly property CheatSheet cheatSheet: cheatSheet
     readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
 
     property QtObject currentlySelected
@@ -95,5 +96,9 @@ Kirigami.Page {
         id: bottomToolBar
 
         visible: root.hasNote
+    }
+
+    CheatSheet {
+        id: cheatSheet
     }
 }
