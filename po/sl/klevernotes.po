@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"POT-Creation-Date: 2024-04-12 01:42+0000\n"
 "PO-Revision-Date: 2024-04-10 07:08+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -51,12 +51,6 @@ msgstr "Brez čustvenčkov"
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Izbirnik slik"
-
-#: contents/ui/dialogs/FileSaverDialog.qml:14
-#, kde-format
-msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as html"
-msgstr "Shrani zabeležko kot html"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -466,18 +460,18 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: contents/ui/pages/MainPage.qml:24
+#: contents/ui/pages/MainPage.qml:25
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Dobrodošli"
 
-#: contents/ui/pages/MainPage.qml:74
+#: contents/ui/pages/MainPage.qml:75
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Dobrodošli v KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:84
+#: contents/ui/pages/MainPage.qml:85
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Za pričetek z delom ustvarite ali izberite zabeležko!"
@@ -488,19 +482,19 @@ msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Slikaj!"
 
-#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Shrani"
 
-#: contents/ui/pages/PaintingPage.qml:41
+#: contents/ui/pages/PaintingPage.qml:46
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Počisti"
 
-#: contents/ui/pages/PaintingPage.qml:51
+#: contents/ui/pages/PaintingPage.qml:56
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -523,6 +517,14 @@ msgstr "Barvna tema"
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Ozadje"
+
+#: contents/ui/pages/PrintingPage.qml:104
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note as html"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as pdf"
+msgstr "Shrani zabeležko kot html"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -1414,30 +1416,36 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr "prikazano ime"
 
-#: contents/ui/textEditor/EditorView.qml:29
+#: contents/ui/textEditor/EditorView.qml:28
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "Povezane zabeležke"
 
-#: contents/ui/textEditor/EditorView.qml:40
+#: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Natisni"
 
-#: contents/ui/textEditor/EditorView.qml:51
+#: contents/ui/textEditor/EditorView.qml:50
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Ogled/skrij urejevalnik"
 
-#: contents/ui/textEditor/EditorView.qml:67
+#: contents/ui/textEditor/EditorView.qml:66
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "Ogled/skrij predogled"
+
+#: contents/ui/textEditor/EditorView.qml:93
+#, kde-format
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as html"
+msgstr "Shrani zabeležko kot html"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format

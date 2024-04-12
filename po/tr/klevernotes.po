@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"POT-Creation-Date: 2024-04-12 01:42+0000\n"
 "PO-Revision-Date: 2024-04-10 14:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -51,12 +51,6 @@ msgstr "Emoji yok"
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Görsel Seçicisi"
-
-#: contents/ui/dialogs/FileSaverDialog.qml:14
-#, kde-format
-msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as html"
-msgstr "Notu HTML Olarak Kaydet"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -470,18 +464,18 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "Akıllı Notlar"
 
-#: contents/ui/pages/MainPage.qml:24
+#: contents/ui/pages/MainPage.qml:25
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: contents/ui/pages/MainPage.qml:74
+#: contents/ui/pages/MainPage.qml:75
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Akıllı Notlar’a hoş geldiniz!"
 
-#: contents/ui/pages/MainPage.qml:84
+#: contents/ui/pages/MainPage.qml:85
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
@@ -493,19 +487,19 @@ msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Boya!"
 
-#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Kaydet"
 
-#: contents/ui/pages/PaintingPage.qml:41
+#: contents/ui/pages/PaintingPage.qml:46
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Temizle"
 
-#: contents/ui/pages/PaintingPage.qml:51
+#: contents/ui/pages/PaintingPage.qml:56
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -528,6 +522,14 @@ msgstr "Renk teması"
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Arka plan"
+
+#: contents/ui/pages/PrintingPage.qml:104
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note as html"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as pdf"
+msgstr "Notu HTML Olarak Kaydet"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -1420,30 +1422,36 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr "görüntülenen ad"
 
-#: contents/ui/textEditor/EditorView.qml:29
+#: contents/ui/textEditor/EditorView.qml:28
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "Bağlantılanan notlar"
 
-#: contents/ui/textEditor/EditorView.qml:40
+#: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Yazdır"
 
-#: contents/ui/textEditor/EditorView.qml:51
+#: contents/ui/textEditor/EditorView.qml:50
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Düzenleyiciyi görüntüle/gizle"
 
-#: contents/ui/textEditor/EditorView.qml:67
+#: contents/ui/textEditor/EditorView.qml:66
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "Önizlemeyi görüntüle/gizle"
+
+#: contents/ui/textEditor/EditorView.qml:93
+#, kde-format
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as html"
+msgstr "Notu HTML Olarak Kaydet"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format

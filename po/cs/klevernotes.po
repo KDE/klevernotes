@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"POT-Creation-Date: 2024-04-12 01:42+0000\n"
 "PO-Revision-Date: 2024-04-03 11:37+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -50,14 +50,6 @@ msgstr "Žádné emotikony"
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr ""
-
-#: contents/ui/dialogs/FileSaverDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
-msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as html"
-msgstr "Uložit poznámku"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -461,18 +453,18 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: contents/ui/pages/MainPage.qml:24
+#: contents/ui/pages/MainPage.qml:25
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Vítejte"
 
-#: contents/ui/pages/MainPage.qml:74
+#: contents/ui/pages/MainPage.qml:75
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr ""
 
-#: contents/ui/pages/MainPage.qml:84
+#: contents/ui/pages/MainPage.qml:85
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
@@ -483,19 +475,19 @@ msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Namalovat."
 
-#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Uložit"
 
-#: contents/ui/pages/PaintingPage.qml:41
+#: contents/ui/pages/PaintingPage.qml:46
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Vyprázdnit"
 
-#: contents/ui/pages/PaintingPage.qml:51
+#: contents/ui/pages/PaintingPage.qml:56
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -518,6 +510,14 @@ msgstr "Barevný motiv"
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Pozadí"
+
+#: contents/ui/pages/PrintingPage.qml:104
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as pdf"
+msgstr "Uložit poznámku"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -1402,30 +1402,38 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:29
+#: contents/ui/textEditor/EditorView.qml:28
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:40
+#: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Tisk"
 
-#: contents/ui/textEditor/EditorView.qml:51
+#: contents/ui/textEditor/EditorView.qml:50
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Zobrazit/skrýt editor"
 
-#: contents/ui/textEditor/EditorView.qml:67
+#: contents/ui/textEditor/EditorView.qml:66
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "Zobrazit/skrýt náhled"
+
+#: contents/ui/textEditor/EditorView.qml:93
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as html"
+msgstr "Uložit poznámku"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format

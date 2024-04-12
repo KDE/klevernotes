@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 01:43+0000\n"
+"POT-Creation-Date: 2024-04-12 01:42+0000\n"
 "PO-Revision-Date: 2024-03-23 12:32+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -50,14 +50,6 @@ msgstr "Nessuna emoji"
 msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Selettore di immagini"
-
-#: contents/ui/dialogs/FileSaverDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
-msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as html"
-msgstr "Salva la nota"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:17
 #, kde-format
@@ -473,18 +465,18 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: contents/ui/pages/MainPage.qml:24
+#: contents/ui/pages/MainPage.qml:25
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Benvenuto"
 
-#: contents/ui/pages/MainPage.qml:74
+#: contents/ui/pages/MainPage.qml:75
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Benvenuto in KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:84
+#: contents/ui/pages/MainPage.qml:85
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Crea o seleziona una nota per iniziare a lavorare!"
@@ -495,19 +487,19 @@ msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Disegna!"
 
-#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Salva"
 
-#: contents/ui/pages/PaintingPage.qml:41
+#: contents/ui/pages/PaintingPage.qml:46
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Pulisci"
 
-#: contents/ui/pages/PaintingPage.qml:51
+#: contents/ui/pages/PaintingPage.qml:56
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -530,6 +522,14 @@ msgstr "Tema di colori"
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Sfondo"
+
+#: contents/ui/pages/PrintingPage.qml:104
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as pdf"
+msgstr "Salva la nota"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -1422,30 +1422,38 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr "nome visualizzato"
 
-#: contents/ui/textEditor/EditorView.qml:29
+#: contents/ui/textEditor/EditorView.qml:28
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "Note collegate"
 
-#: contents/ui/textEditor/EditorView.qml:40
+#: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Stampa"
 
-#: contents/ui/textEditor/EditorView.qml:51
+#: contents/ui/textEditor/EditorView.qml:50
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Visualizza/Nascondi l'editor"
 
-#: contents/ui/textEditor/EditorView.qml:67
+#: contents/ui/textEditor/EditorView.qml:66
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "Visualizza/Nascondi l'anteprima"
+
+#: contents/ui/textEditor/EditorView.qml:93
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note"
+msgctxt "@title:dialog, choose the location of where the file will be saved"
+msgid "Save note as html"
+msgstr "Salva la nota"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
