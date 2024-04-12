@@ -12,15 +12,12 @@ public:
         : AbstractVimAction(vimHandler)
     {
         setReady(ready);
+        setType('i');
     }
 
     void trigger() const override
     {
         m_vimHandler->setVimMode(VimHandler::EditorMode::Insert);
-
         move();
     }
-
-private:
-    VimHandler *m_vimHandler = nullptr;
 };

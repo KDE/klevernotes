@@ -5,18 +5,18 @@
 
 #include "abstractVimAction.h"
 
-class VisualAction : public AbstractVimAction
+class GAction : public AbstractVimAction
 {
 public:
-    VisualAction(VimHandler *vimHandler)
+    GAction(VimHandler *vimHandler, bool ready = false)
         : AbstractVimAction(vimHandler)
     {
-        setReady(true);
-        setType('v');
+        setReady(ready);
+        setType('g');
     }
 
     void trigger() const override
     {
-        m_vimHandler->setVimMode(VimHandler::EditorMode::Visual);
+        move();
     }
 };

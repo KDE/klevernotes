@@ -3,11 +3,15 @@
 
 #include "vimHandler.h"
 #include "editorHandler.h"
+#include "logic/editorHandler/vimActions/gAction.h"
 #include "logic/editorHandler/vimMovementOperator.h"
 #include "vimActions/abstractVimAction.h"
 #include "vimActions/insertAction.h"
 #include "vimActions/visualAction.h"
+#include <qlogging.h>
 #include <tuple>
+
+#define LASTACTION() m_actionsList.at(m_actionsList.size() - 1)
 
 VimHandler::VimHandler(EditorHandler *editorHandler)
     : m_editorHandler(editorHandler)
@@ -102,7 +106,7 @@ bool VimHandler::handleArrows(const int key)
 // Actions
 void VimHandler::doActions()
 {
-    if (!m_actionsList.empty() && m_actionsList.at(m_actionsList.size() - 1)->isReady()) {
+    if (!m_actionsList.empty() && LASTACTION()->isReady()) {
         for (const auto &action : m_actionsList) {
             action->trigger();
         }
@@ -127,7 +131,7 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     }
 
     if (m_currentMode == EditorMode::Insert) {
-        return true;
+        return false;
     }
 
     if (handleNumber(key)) {
@@ -139,54 +143,85 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     case Qt::Key_H: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::Left, repeat);
-        return true;
+        break;
+        ;
     }
 
     case Qt::Key_L: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::Right, repeat);
-        return true;
+        break;
+        ;
     }
 
     case Qt::Key_J: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::Down, repeat);
-        return true;
+        break;
+        ;
     }
 
     case Qt::Key_K: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::Up, repeat);
-        return true;
+        break;
     }
 
     case Qt::Key_Dollar: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::EndOfBlock, repeat);
-        return true;
+        break;
+        ;
     }
 
     case Qt::Key_0: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::StartOfBlock, repeat);
-        return true;
+        break;
+        ;
     }
 
     case Qt::Key_W: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::W, repeat, isShift);
-        return true;
+        break;
+        ;
     }
 
     case Qt::Key_B: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::B, repeat, isShift);
-        return true;
+        break;
     }
 
     case Qt::Key_E: {
         const int repeat = getRepetition();
         handleMovement(VimMovementOperator::MoveType::E, repeat, isShift);
+        break;
+        ;
+    }
+
+    case Qt::Key_G: {
+        const int repeat = getRepetition();
+        const bool lastActionIsG = !m_actionsList.empty() && LASTACTION()->getType() == 'g';
+        if (lastActionIsG && isShift) {
+            m_actionsList.clear();
+            return true;
+        }
+        if (isShift) {
+            handleMovement(VimMovementOperator::MoveType::Bottom, repeat, isShift);
+            return true;
+        }
+        if (m_actionsList.empty()) {
+            auto action = std::make_unique<GAction>(this, false);
+            m_actionsList.push_back(std::move(action));
+            return true;
+        }
+        if (lastActionIsG) {
+            handleMovement(VimMovementOperator::MoveType::Top, repeat, isShift);
+            break;
+        }
+        m_actionsList.clear();
         return true;
     }
 
@@ -233,12 +268,18 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
 // Movement
 void VimHandler::handleMovement(const int moveType, const int repeat, const bool isShift)
 {
-    if (!m_actionsList.empty()) {
-        const auto movement = std::make_tuple(moveType, repeat, isShift);
-        m_actionsList.at(m_actionsList.size() - 1)->addMovement(movement);
+    if (m_actionsList.empty()) {
+        m_movementOperator->move(moveType, repeat, isShift);
         return;
     }
-    m_movementOperator->move(moveType, repeat, isShift);
+    if (moveType != VimMovementOperator::MoveType::Top && LASTACTION()->getType() == 'c') {
+        m_actionsList.clear();
+        return;
+    }
+    const auto movement = std::make_tuple(moveType, repeat, isShift);
+    LASTACTION()->addMovement(movement);
+    LASTACTION()->setReady(true);
+    return;
 }
 
 VimMovementOperator *VimHandler::getMovementOperator() const

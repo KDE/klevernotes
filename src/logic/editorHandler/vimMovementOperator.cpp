@@ -177,6 +177,31 @@ void VimMovementOperator::moveE(const bool isShift)
     return;
 }
 
+void VimMovementOperator::moveTop()
+{
+    const int inBlockPos = m_cursor.positionInBlock();
+    m_cursor.setPosition(0);
+
+    const int blockSize = m_cursor.block().length() - 1; // -1 to remove the \n
+    const int finalPos = inBlockPos <= blockSize ? inBlockPos : blockSize;
+
+    m_editorHandler->moveCursorTo(finalPos);
+    return;
+}
+
+void VimMovementOperator::moveBottom()
+{
+    const int inBlockPos = m_cursor.positionInBlock();
+
+    const int lastBlockPosition = m_editorHandler->getLastBlockPosition();
+    const int lastCharPosition = m_editorHandler->getLastCharPosition();
+
+    const int futureInBlockPos = lastBlockPosition + inBlockPos;
+    const int finalPos = futureInBlockPos <= lastCharPosition ? futureInBlockPos : lastCharPosition;
+    m_editorHandler->moveCursorTo(finalPos);
+    return;
+}
+
 void VimMovementOperator::move(const int type, const int repeat, const bool isShift)
 {
     Q_UNUSED(repeat);
@@ -207,6 +232,12 @@ void VimMovementOperator::move(const int type, const int repeat, const bool isSh
         break;
     case MoveType::E:
         moveE(isShift);
+        break;
+    case MoveType::Top:
+        moveTop();
+        break;
+    case MoveType::Bottom:
+        moveBottom();
         break;
     }
 }

@@ -22,6 +22,8 @@ public:
         W,
         B,
         E,
+        Top,
+        Bottom,
     };
 
     void resetCursor();
@@ -44,4 +46,6 @@ private:
     void moveW(const bool isShift);
     void moveB(const bool isShift);
     void moveE(const bool isShift);
+    void moveTop();
+    void moveBottom();
 };

@@ -49,9 +49,20 @@ public:
         m_ready = ready;
     }
 
+    virtual char getType() const
+    {
+        return m_type;
+    }
+
+    virtual void setType(const char type)
+    {
+        m_type = type;
+    }
+
     VimHandler *m_vimHandler = nullptr;
 
 private:
+    char m_type = '0';
     bool m_ready = false;
     std::vector<std::tuple<int, int, bool>> m_movementList;
 };
