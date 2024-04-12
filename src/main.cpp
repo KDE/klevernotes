@@ -36,6 +36,7 @@
 
 #include "logic/printing/printingHelper.h"
 
+#include "logic/wysiwyg/markdownHighlighter.h"
 // Plugins
 #include "logic/plugins/emoji/emojiModel.h"
 #include "logic/plugins/emoji/emoticonFilterModel.h"
@@ -166,6 +167,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<SketchSerializer>("WashiPad", 1, 0, "SketchSerializer");
     qmlRegisterType<StrokeItem>("WashiPad", 1, 0, "StrokeItem");
     qmlRegisterType<StrokeListItem>("WashiPad", 1, 0, "StrokeListItem");
+
+    qmlRegisterType<MarkdownHighlighter>("MarkdownHighlighter", 1, 0, "MarkdownHighlighter");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));

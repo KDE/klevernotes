@@ -52,6 +52,9 @@ set(exec_SRCS
     logic/printing/printingHelper.cpp
 
     logic/treeview/noteTreeModel.cpp
+
+    logic/wysiwyg/markdownHighlighter.cpp
+    logic/wysiwyg/qownlanguagedata.cpp
     
     # PLUGINS
     logic/plugins/cliHelper.cpp
