@@ -31,11 +31,6 @@
             <default>New Note</default>
         </entry>
 
-        <entry name="pdfWarningHidden" type="Bool">
-            <label>Whether or not the warning message for pdf background should be hidden</label>
-            <default>false</default>
-        </entry>
-
         <entry name="editorVisible" type="Bool">
             <label>Whether or not the editor is visible</label>
             <default>true</default>

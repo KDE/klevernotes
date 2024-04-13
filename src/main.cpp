@@ -80,7 +80,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::defaultCategoryNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultGroupNameChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::defaultNoteNameChanged, config, &KleverConfig::save);
-    QObject::connect(config, &KleverConfig::pdfWarningHiddenChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::editorVisibleChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::previewVisibleChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::useSpaceForTabChanged, config, &KleverConfig::save);

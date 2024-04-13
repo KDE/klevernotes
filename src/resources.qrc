@@ -20,7 +20,6 @@
         <file>contents/ui/dialogs/PrintingDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
         <file>contents/ui/dialogs/URLDialog.qml</file>
-        <file>contents/ui/dialogs/WarningDialog.qml</file>
 
         <file>contents/ui/dialogs/emojiDialog/EmojiDelegate.qml</file>
         <file>contents/ui/dialogs/emojiDialog/EmojiDialog.qml</file>

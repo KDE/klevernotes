@@ -3,15 +3,16 @@
 
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 import org.kde.Klever 1.0
 
-Kirigami.PromptDialog {
+FormCard.FormCardDialog {
     id: textPromptDialog
-    
+
     signal pdf()
     signal html()
 
@@ -19,7 +20,7 @@ Kirigami.PromptDialog {
 
     title: i18nc("@title:dialog", "Printing Dialog")
 
-    standardButtons: Kirigami.Dialog.Cancel
+    standardButtons: Dialog.Cancel
 
     onAccepted: {
         caller.path = urlField.text
@@ -28,24 +29,24 @@ Kirigami.PromptDialog {
         path = ""
     }
  
-    ColumnLayout {
-        FormCard.FormButtonDelegate {
-            text: i18nc("@label:button", "Print html")
-            Layout.fillWidth: true
-            onClicked: {
-                html()
-            }    
+    FormCard.FormButtonDelegate {
+        text: i18nc("@label:button", "Print html")
+        Layout.fillWidth: true
+        onClicked: {
+            html()
         }
+    }
 
-        FormCard.FormButtonDelegate {
-            text: i18nc("@label:button", "Print to pdf")
-            description: enabled ? "" : i18nc("@label:button", "Disable due to flatpak limitation.")
-            enabled: !KleverUtility.isFlatpak()
-            Layout.fillWidth: true
-            onClicked: {
-                pdf()
-                close()
-            }
+    FormCard.FormDelegateSeparator {}
+
+    FormCard.FormButtonDelegate {
+        text: i18nc("@label:button", "Print to pdf")
+        description: enabled ? "" : i18nc("@label:button", "Disable due to flatpak limitation.")
+        enabled: !KleverUtility.isFlatpak()
+        Layout.fillWidth: true
+        onClicked: {
+            pdf()
+            close()
         }
     }
 }

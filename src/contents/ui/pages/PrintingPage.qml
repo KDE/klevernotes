@@ -5,15 +5,17 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Michael Lang <criticaltemp@protonmail.com>
 
-import QtQuick 2.15
-import QtWebEngine 1.10
-import QtQuick.Controls 2.2
+import QtQuick
+import QtWebEngine
+import QtQuick.Controls as Controls
 import QtQuick.Pdf
-import Qt.labs.platform 1.1
+import QtQuick.Layouts
+import Qt.labs.platform
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 import "qrc:/contents/ui/dialogs"
 
@@ -30,7 +32,7 @@ Kirigami.Page {
 
     actions: [
         Kirigami.Action {
-            displayComponent: ComboBox {
+            displayComponent: Controls.ComboBox {
                 id: colorTheme
 
                 model: ColorSchemer.model
@@ -55,8 +57,11 @@ Kirigami.Page {
             icon.name: "backgroundtool-symbolic"
 
             onTriggered: {
-                requestPdf(checked)
-                if (!Config.pdfWarningHidden && checked) backgroundWarning.open()
+                if (!checked) {
+                    requestPdf(false)
+                } else {
+                    backgroundWarning.openDialog()
+                }
             }
         },
         Kirigami.Action {
@@ -70,6 +75,7 @@ Kirigami.Page {
 
             text: i18nc("@label:button", "Save")
             icon.name: "document-save-symbolic"
+
 
             onTriggered: {
                 pdfSaver.open()
@@ -88,11 +94,22 @@ Kirigami.Page {
         requestPdf(false)
     }
 
-    WarningDialog {
+    Components.MessageDialog {
         id: backgroundWarning
 
-        onClosed: {
-            Config.pdfWarningHidden = dontShow
+        dialogType: Components.MessageDialog.Warning
+        standardButtons: Controls.Dialog.Ok
+        dontShowAgainName: "pdfWarning"
+
+        onAccepted: {
+            close();
+            requestPdf(true)
+        }
+
+        Controls.Label {
+            text: i18n("This could cause visual artifact near the end of the pdf.")
+            wrapMode: Text.WordWrap
+            Layout.fillWidth: true
         }
     }
 
@@ -121,7 +138,7 @@ Kirigami.Page {
         }
     }
 
-    BusyIndicator {
+    Controls.BusyIndicator {
         id: busyIndicator
         
         width: Kirigami.Units.gridUnit * 5
