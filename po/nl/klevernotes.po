@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 01:42+0000\n"
-"PO-Revision-Date: 2024-04-10 11:14+0200\n"
+"PO-Revision-Date: 2024-04-12 12:00+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -524,12 +524,10 @@ msgid "Background"
 msgstr "Achtergrond"
 
 #: contents/ui/pages/PrintingPage.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as html"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "Notitie opslaan als html"
+msgstr "Notitie opslaan als pdf"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format

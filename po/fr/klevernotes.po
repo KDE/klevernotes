@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 01:42+0000\n"
-"PO-Revision-Date: 2024-03-23 09:07+0100\n"
+"PO-Revision-Date: 2024-04-11 09:06+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -247,27 +247,25 @@ msgstr "Veuillez sélectionner un autre nom pour lui."
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Boîte de dialogue d'impression"
 
 #: contents/ui/dialogs/PrintingDialog.qml:33
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Imprimer"
+msgstr "Imprimer en format « HTML »"
 
 #: contents/ui/dialogs/PrintingDialog.qml:41
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Imprimer vers un fichier « PDF »"
 
 #: contents/ui/dialogs/PrintingDialog.qml:42
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Désactivé en raison de la limitation de flatpak."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -1451,12 +1449,10 @@ msgid "View/Hide preview"
 msgstr "Afficher / Masquer l'aperçu"
 
 #: contents/ui/textEditor/EditorView.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Enregistrer une note"
+msgstr "Enregistrer une note au format « HTML »"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format

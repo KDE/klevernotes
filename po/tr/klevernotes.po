@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 01:42+0000\n"
-"PO-Revision-Date: 2024-04-10 14:07+0300\n"
+"PO-Revision-Date: 2024-04-12 07:12+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -524,12 +524,10 @@ msgid "Background"
 msgstr "Arka plan"
 
 #: contents/ui/pages/PrintingPage.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as html"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "Notu HTML Olarak Kaydet"
+msgstr "Notu PDF Olarak Kaydet"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format

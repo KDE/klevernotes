@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 01:42+0000\n"
-"PO-Revision-Date: 2024-04-10 11:18+0200\n"
+"PO-Revision-Date: 2024-04-12 09:19+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -525,12 +525,10 @@ msgid "Background"
 msgstr "Fons"
 
 #: contents/ui/pages/PrintingPage.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as html"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "Desa la nota com a HTML"
+msgstr "Desa la nota com a PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format

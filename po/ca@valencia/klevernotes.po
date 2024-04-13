@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-12 01:42+0000\n"
-"PO-Revision-Date: 2024-03-22 15:43+0100\n"
+"PO-Revision-Date: 2024-04-12 09:19+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -250,27 +250,25 @@ msgstr "Seleccioneu un altre nom per a ell."
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Diàleg d'impressió"
 
 #: contents/ui/dialogs/PrintingDialog.qml:33
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Imprimix"
+msgstr "Imprimix l'HTML"
 
 #: contents/ui/dialogs/PrintingDialog.qml:41
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Imprimix a PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:42
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Desactiva per una limitació de Flatpak."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -527,12 +525,10 @@ msgid "Background"
 msgstr "Fons"
 
 #: contents/ui/pages/PrintingPage.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "Guarda la nota"
+msgstr "Guarda la nota com a PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -1450,12 +1446,10 @@ msgid "View/Hide preview"
 msgstr "Mostra o oculta la vista prèvia"
 
 #: contents/ui/textEditor/EditorView.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Guarda la nota"
+msgstr "Guarda la nota com a HTML"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
@@ -1664,7 +1658,3 @@ msgstr "Josep M. Ferrer"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Color Picker"
-#~ msgstr "Selector de color"
