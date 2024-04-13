@@ -117,6 +117,7 @@ ColumnLayout {
         notePath: root.path
         editorTextArea: root.editor.textArea
         visible: editor.visible
+        Layout.margins: Kirigami.Units.largeSpacing
     }
 
     Item {
