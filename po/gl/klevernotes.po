@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-12 01:42+0000\n"
+"POT-Creation-Date: 2024-04-14 01:38+0000\n"
 "PO-Revision-Date: 2024-03-23 20:57+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -17,23 +17,35 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.02.0\n"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:11
-#, kde-format
-msgctxt "@subtitle:dialog, as in 'A note category'"
-msgid "Are you sure you want to delete this category ?"
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:14
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog, as in 'A note category'"
+#| msgid "Are you sure you want to delete this category ?"
+msgctxt "@title:dialog, as in 'A note category'"
+msgid "Are you sure you want to delete this category?"
 msgstr "Seguro que quere eliminar esta categoría?"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:12
-#, kde-format
-msgctxt "@subtitle:dialog, as in 'A note group'"
-msgid "Are you sure you want to delete this group ?"
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:15
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog, as in 'A note group'"
+#| msgid "Are you sure you want to delete this group ?"
+msgctxt "@title:dialog, as in 'A note group'"
+msgid "Are you sure you want to delete this group?"
 msgstr "Seguro que quere eliminar este grupo?"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:13
-#, kde-format
-msgctxt "@subtitle:dialog"
-msgid "Are you sure you want to delete this note ?"
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Are you sure you want to delete this note ?"
+msgctxt "@title:dialog"
+msgid "Are you sure you want to delete this note?"
 msgstr "Seguro que quere eliminar esta nota?"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
+#, kde-format
+msgctxt "@title:dialog"
+msgid "This action can not be reverted."
+msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -183,37 +195,37 @@ msgctxt "@title:dialog, to move a group/note"
 msgid "Move"
 msgstr "Mover"
 
-#: contents/ui/dialogs/NamingDialog.qml:23
+#: contents/ui/dialogs/NamingDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
 msgstr "Escolla un nome"
 
-#: contents/ui/dialogs/NamingDialog.qml:47
+#: contents/ui/dialogs/NamingDialog.qml:48
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Nome:"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:11
+#: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "This category already exists."
 msgstr "Esta categoría xa existe."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:12
+#: contents/ui/dialogs/NamingErrorDialog.qml:14
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
 msgstr "Este grupo xa existe."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
+#: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
 msgstr "Esta nota xa existe."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:20
+#: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
 msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
@@ -221,7 +233,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Almacenamento de KleverNotes"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:34
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -231,19 +243,19 @@ msgstr ""
 "Non se permite que os nomes comecen cun punto porque podería ser "
 "problemático."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:35
+#: contents/ui/dialogs/NamingErrorDialog.qml:38
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr "Borre o punto ou escolla outro nome."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
 msgstr "Escolla outro nome."
 
-#: contents/ui/dialogs/PrintingDialog.qml:20
+#: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
@@ -257,13 +269,13 @@ msgctxt "@label:button"
 msgid "Print html"
 msgstr "Imprimir"
 
-#: contents/ui/dialogs/PrintingDialog.qml:41
+#: contents/ui/dialogs/PrintingDialog.qml:43
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
 msgstr ""
 
-#: contents/ui/dialogs/PrintingDialog.qml:42
+#: contents/ui/dialogs/PrintingDialog.qml:44
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
@@ -440,23 +452,6 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Escolla un URL"
 
-#: contents/ui/dialogs/WarningDialog.qml:16
-#, kde-format
-msgctxt "@title:dialog"
-msgid "Warning"
-msgstr "Aviso"
-
-#: contents/ui/dialogs/WarningDialog.qml:21
-#, kde-format
-msgctxt "@label:checkbox"
-msgid "Do not show again"
-msgstr "Non amosar de novo."
-
-#: contents/ui/dialogs/WarningDialog.qml:29
-#, kde-format
-msgid "This could cause visual artifact near the end of the pdf."
-msgstr "Isto pode causar un defecto visual cara ao final do PDF."
-
 #: contents/ui/main.qml:18
 #, kde-format
 msgctxt "@title:ApplicationWindow"
@@ -469,12 +464,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Benvida"
 
-#: contents/ui/pages/MainPage.qml:75
+#: contents/ui/pages/MainPage.qml:80
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Benvida a KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:85
+#: contents/ui/pages/MainPage.qml:90
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Cree ou seleccione unha nota para comezar a traballar!"
@@ -485,7 +480,7 @@ msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Pintar!"
 
-#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:71
+#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
@@ -503,25 +498,30 @@ msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Recortar automaticamente"
 
-#: contents/ui/pages/PrintingPage.qml:29
+#: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
 msgstr "Imprimir"
 
-#: contents/ui/pages/PrintingPage.qml:39
+#: contents/ui/pages/PrintingPage.qml:41
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "Tema de cores"
 
-#: contents/ui/pages/PrintingPage.qml:53
+#: contents/ui/pages/PrintingPage.qml:55
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Fondo"
 
-#: contents/ui/pages/PrintingPage.qml:104
+#: contents/ui/pages/PrintingPage.qml:110
+#, kde-format
+msgid "This could cause visual artifact near the end of the pdf."
+msgstr "Isto pode causar un defecto visual cara ao final do PDF."
+
+#: contents/ui/pages/PrintingPage.qml:121
 #, fuzzy, kde-format
 #| msgctxt "@title:dialog, choose the location of where the file will be saved"
 #| msgid "Save note"
@@ -1657,6 +1657,14 @@ msgstr "Adrian Chaves (Gallaecio)"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adrian@chaves.io"
+
+#~ msgctxt "@title:dialog"
+#~ msgid "Warning"
+#~ msgstr "Aviso"
+
+#~ msgctxt "@label:checkbox"
+#~ msgid "Do not show again"
+#~ msgstr "Non amosar de novo."
 
 #~ msgctxt "@title:dialog"
 #~ msgid "Color Picker"
