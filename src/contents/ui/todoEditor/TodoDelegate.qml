@@ -1,132 +1,104 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as Controls
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as Controls
 
-import org.kde.kirigami 2.20 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
+import org.kde.kirigamiaddons.delegates as Delegates
 
-Kirigami.AbstractCard {
-    id: card
+Kirigami.FlexColumn {
+    id: root
 
+    signal saveTodos()
+
+    required property int index
+    required property bool todoChecked
+    required property string todoTitle
+    required property string todoDesc
+
+    width: ListView.view.width
+
+    maximumWidth: Kirigami.Units.gridUnit * 40
     padding: 0
-    implicitWidth: cardsView.width
 
-    contentItem: RowLayout {
-        spacing: 0
-        // Tried to used a FormCheckDelegate with a custom trailing, doesn't work :/
-        FormCard.AbstractFormDelegate {
-            id: check
-
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.preferredWidth: parent.width - editButton.width
-            Layout.alignment: Qt.AlignTop
-            Layout.margins: 0
-
-            contentItem: RowLayout {
-                Controls.CheckBox {
-                    id: checkbox
-
-                    checked: todoChecked
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-
-                    onCheckedChanged: {
-                        todoModel.setProperty(index, "todoChecked", checked)
-                        root.saveTodos()
-                    }
-                }
-
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    Kirigami.Heading {
-                        id: displayTitle
-
-                        text: todoTitle
-                        level: 1
-                        elide: Text.ElideRight
-
-                        Layout.fillWidth: true
-                    }
-
-                    Kirigami.Separator {
-                        id: centralSeperator
-
-                        Layout.fillWidth: true
-                    }
-
-                    Controls.Label {
-                        id: descriptionLabel
-
-                        text: todoDesc
-                        elide: Text.ElideRight
-                        wrapMode: Text.WrapAnywhere
-                        maximumLineCount: 1
-
-                        // Both are required the center part of the whole delegate goes crazy without this
-                        Layout.fillWidth: true
-
-                        Behavior on maximumLineCount {
-                            NumberAnimation { duration: Kirigami.Units.shortDuration }
-                        }
-                    }
-                }
-            }
-
-            onClicked: {
-                checkbox.checked = !checkbox.checked
-            }
-        }
-
-        FormCard.AbstractFormDelegate {
-            id: editButton
-
-            Layout.fillHeight: true
-            Layout.preferredWidth: Kirigami.Units.iconSizes.large
-
-            // Can't put the icon directly, won't let me change the size
-            contentItem: Item {
-                anchors.fill: parent
-                Kirigami.Icon {
-                    x: width / 2
-                    y: Math.round((parent.height - width) / 2)
-                    width: Math.round(parent.width / 2)
-                    height: Math.round(parent.width / 2)
-
-                    source: "edit-entry"
-                }
-            }
-
-            onClicked: {
-                todoDialog.callerModelIndex = index
-                todoDialog.name = displayTitle.text
-                todoDialog.description = descriptionLabel.text
-                todoDialog.open()
-            }
-        }
-    }
-
-    footer: FormCard.AbstractFormDelegate {
-        focusPolicy: Qt.StrongFocus
-        visible: descriptionLabel.truncated || descriptionLabel.maximumLineCount > 1
-
-        contentItem: RowLayout {
-            spacing: 0
-
-            FormCard.FormArrow {
-                direction: descriptionLabel.truncated ? Qt.DownArrow : Qt.UpArrow
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            }
-        }
-
-        Accessible.onPressAction: action ? action.trigger() : root.clicked()
+    Delegates.RoundedItemDelegate {
+        Layout.fillWidth: true
 
         onClicked: {
-            descriptionLabel.maximumLineCount = descriptionLabel.truncated
-                ? 12
-                : 1
+            checkbox.checked = !checkbox.checked
+        }
+
+        contentItem: RowLayout {
+            spacing: Kirigami.Units.smallSpacing
+
+            Controls.CheckBox {
+                id: checkbox
+
+                checked: todoChecked
+                Layout.alignment: root.todoDesc.length > 0 ? Qt.AlignTop : Qt.AlignVCenter
+
+                onCheckedChanged: {
+                    todoModel.setProperty(index, "todoChecked", checked)
+                    root.saveTodos()
+                }
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                Kirigami.Heading {
+                    id: displayTitle
+
+                    text: root.todoTitle
+                    elide: Text.ElideRight
+                    level: 2
+
+                    Layout.fillWidth: true
+                }
+
+                Controls.Label {
+                    id: descriptionLabel
+
+                    text: root.todoDesc
+                    elide: Text.ElideRight
+                    wrapMode: Text.WrapAnywhere
+                    maximumLineCount: 1
+                    visible: text.length > 0
+
+                    // Both are required the center part of the whole delegate goes crazy without this
+                    Layout.fillWidth: true
+
+                    Behavior on maximumLineCount {
+                        NumberAnimation { duration: Kirigami.Units.shortDuration }
+                    }
+                }
+            }
+
+            Controls.ToolButton {
+                enabled: descriptionLabel.truncated || descriptionLabel.maximumLineCount > 1
+                opacity: enabled ? 1 : 0
+                icon.name: checked ? "arrow-up" : "arrow-down"
+                checkable: true
+                onClicked: {
+                    descriptionLabel.maximumLineCount = descriptionLabel.truncated ? 12 : 1;
+                }
+
+                Layout.alignment: Qt.AlignTop
+            }
+
+            Controls.ToolButton {
+                icon.name: "edit-entry"
+                onClicked: {
+                    todoDialog.callerModelIndex = index
+                    todoDialog.name = displayTitle.text
+                    todoDialog.description = descriptionLabel.text
+                    todoDialog.open()
+                }
+
+                Layout.alignment: Qt.AlignTop
+            }
         }
     }
 }

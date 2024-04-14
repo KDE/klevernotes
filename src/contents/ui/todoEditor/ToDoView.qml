@@ -1,18 +1,19 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as Controls
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as Controls
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
+import org.kde.kirigamiaddons.components as Components
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 import "qrc:/contents/ui/dialogs/todoDialog"
 
-ColumnLayout {
+Controls.ScrollView {
     id: root
 
     property list<Kirigami.Action> actions: [
@@ -33,8 +34,10 @@ ColumnLayout {
         setTodos()
     }
 
-    ToDoDialog {
+    data: ToDoDialog {
         id: todoDialog
+
+        parent: applicationWindow().overlay
 
         onAccepted: {
             if (name.length > 0) {
@@ -58,42 +61,29 @@ ColumnLayout {
         }
     }
 
-    Kirigami.Card {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-
-        Kirigami.CardsListView {
-            id: cardsView
-
-            anchors.fill: parent
-
-            model: todoModel
-            delegate: TodoDelegate {}
-        }
-
-        ListModel {
+    ListView {
+        model: ListModel {
             id: todoModel
         }
-    }
-    
-    FormCard.AbstractFormDelegate {
-        Layout.fillWidth: true
 
-        contentItem: RowLayout {
-            spacing: 0
-
-            Kirigami.Icon {
-                width: Kirigami.Units.iconSizes.medium
-                height: Kirigami.Units.iconSizes.medium
-
-                source: "list-add-symbolic"
-
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            }
+        delegate: TodoDelegate {
+            onSaveTodos: root.saveTodos()
         }
 
-        onClicked: {
-            todoDialog.open()
+        Components.FloatingButton {
+            icon.name: "list-add-symbolic"
+            text: i18nc("@action:button", "Add new todo")
+
+            onClicked: {
+                todoDialog.open()
+            }
+
+            anchors {
+                right: parent.right
+                rightMargin: Kirigami.Units.largeSpacing + (root.contentItem.Controls.ScrollBar && root.contentItem.Controls.ScrollBar.vertical ? parent.contentItem.Controls.ScrollBar.vertical.width : 0)
+                bottom: parent.bottom
+                bottomMargin: Kirigami.Units.largeSpacing
+            }
         }
     }
 
