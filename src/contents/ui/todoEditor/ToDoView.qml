@@ -53,7 +53,9 @@ Controls.ScrollView {
                 }
             }
             saveTodos()
+            close();
         }
+        onRejected: close()
         onClosed: {
             name = ""
             description = ""
