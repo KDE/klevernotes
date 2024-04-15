@@ -50,7 +50,7 @@ QTextCursor EditorHandler::getCursor() const
 
 void EditorHandler::moveCursorTo(const int position, const bool visual)
 {
-    Q_EMIT visual ? moveSelection(position) : cursorPositionChanged(position);
+    Q_EMIT m_vimHandler->getVimMode() == VimHandler::EditorMode::Visual ? moveSelection(position) : cursorPositionChanged(position);
 }
 
 int EditorHandler::getLastBlockPosition() const

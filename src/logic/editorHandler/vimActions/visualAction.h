@@ -8,8 +8,8 @@
 class VisualAction : public AbstractVimAction
 {
 public:
-    VisualAction(VimHandler *vimHandler)
-        : AbstractVimAction(vimHandler)
+    VisualAction(VimHandler *vimHandler, EditorHandler *editorHandler)
+        : AbstractVimAction(vimHandler, editorHandler)
     {
         setReady(true);
         setType('v');

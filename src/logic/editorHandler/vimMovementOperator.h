@@ -27,7 +27,7 @@ public:
     };
 
     void resetCursor();
-    void move(const int moveType, const int repeat = 1, const bool isShift = false);
+    int move(const int moveType, const int repeat = 1, const bool isShift = false);
 
 private:
     EditorHandler *m_editorHandler = nullptr;
@@ -37,15 +37,9 @@ private:
     int getNewPosition(const QTextCursor::MoveOperation operation);
     bool emptyBlock() const;
 
-    void moveLeft();
-    void moveRight();
-    void moveUp();
-    void moveDown();
-    void moveStartOfBlock();
-    void moveEndOfBlock();
-    void moveW(const bool isShift);
-    void moveB(const bool isShift);
-    void moveE(const bool isShift);
-    void moveTop();
-    void moveBottom();
+    int moveW(const bool isShift);
+    int moveB(const bool isShift);
+    int moveE(const bool isShift);
+    int moveTop();
+    int moveBottom();
 };

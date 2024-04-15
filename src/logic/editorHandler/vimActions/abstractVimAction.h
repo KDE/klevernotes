@@ -4,6 +4,7 @@
 #pragma once
 
 #include "../vimHandler.h"
+#include "logic/editorHandler/editorHandler.h"
 #include <QDebug>
 #include <tuple>
 #include <vector>
@@ -11,8 +12,9 @@
 class AbstractVimAction
 {
 public:
-    AbstractVimAction(VimHandler *vimHandler)
+    AbstractVimAction(VimHandler *vimHandler, EditorHandler *editorHandler)
         : m_vimHandler(vimHandler)
+        , m_editorHandler(editorHandler)
     {
     }
 
@@ -30,7 +32,8 @@ public:
             int repeat;
             bool isShift;
             std::tie(moveType, repeat, isShift) = movement;
-            m_vimHandler->getMovementOperator()->move(moveType, repeat, isShift);
+            const int position = m_vimHandler->getMovementOperator()->move(moveType, repeat, isShift);
+            m_editorHandler->moveCursorTo(position);
         }
     }
 
@@ -60,6 +63,7 @@ public:
     }
 
     VimHandler *m_vimHandler = nullptr;
+    EditorHandler *m_editorHandler = nullptr;
 
 private:
     char m_type = '0';

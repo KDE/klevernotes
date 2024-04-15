@@ -8,11 +8,11 @@
 class InsertAction : public AbstractVimAction
 {
 public:
-    InsertAction(VimHandler *vimHandler, bool ready = false)
-        : AbstractVimAction(vimHandler)
+    InsertAction(VimHandler *vimHandler, EditorHandler *editorHandler, const char type, bool ready = false)
+        : AbstractVimAction(vimHandler, editorHandler)
     {
         setReady(ready);
-        setType('i');
+        setType(type);
     }
 
     void trigger() const override

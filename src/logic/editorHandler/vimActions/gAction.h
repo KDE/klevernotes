@@ -8,8 +8,8 @@
 class GAction : public AbstractVimAction
 {
 public:
-    GAction(VimHandler *vimHandler, bool ready = false)
-        : AbstractVimAction(vimHandler)
+    GAction(VimHandler *vimHandler, EditorHandler *editorHandler, bool ready = false)
+        : AbstractVimAction(vimHandler, editorHandler)
     {
         setReady(ready);
         setType('g');

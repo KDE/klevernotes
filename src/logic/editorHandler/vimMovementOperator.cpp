@@ -41,43 +41,7 @@ bool VimMovementOperator::emptyBlock() const
     return m_cursor.atBlockEnd() && m_cursor.atBlockStart();
 }
 
-void VimMovementOperator::moveLeft()
-{
-    const int position = getNewPosition(QTextCursor::Left);
-    m_editorHandler->moveCursorTo(position);
-}
-
-void VimMovementOperator::moveRight()
-{
-    const int position = getNewPosition(QTextCursor::Right);
-    m_editorHandler->moveCursorTo(position);
-}
-
-void VimMovementOperator::moveUp()
-{
-    const int position = getNewPosition(QTextCursor::Up);
-    m_editorHandler->moveCursorTo(position);
-}
-
-void VimMovementOperator::moveDown()
-{
-    const int position = getNewPosition(QTextCursor::Down);
-    m_editorHandler->moveCursorTo(position);
-}
-
-void VimMovementOperator::moveStartOfBlock()
-{
-    const int position = getNewPosition(QTextCursor::StartOfBlock);
-    m_editorHandler->moveCursorTo(position);
-}
-
-void VimMovementOperator::moveEndOfBlock()
-{
-    const int position = getNewPosition(QTextCursor::EndOfBlock);
-    m_editorHandler->moveCursorTo(position);
-}
-
-void VimMovementOperator::moveW(const bool isShift)
+int VimMovementOperator::moveW(const bool isShift)
 {
     const int lastBlockPosition = m_editorHandler->getLastBlockPosition();
     bool atLastBlock = lastBlockPosition <= m_editorHandler->cursorPosition();
@@ -94,8 +58,7 @@ void VimMovementOperator::moveW(const bool isShift)
         if (-1 < capturePosition) {
             const int currentBlockNumber = m_cursor.blockNumber();
             if (previousBlockNumber != currentBlockNumber && capturePosition != nextBlockPosition) {
-                m_editorHandler->moveCursorTo(nextBlockPosition);
-                return;
+                return nextBlockPosition;
             }
             m_cursor.setPosition(capturePosition);
         }
@@ -109,10 +72,10 @@ void VimMovementOperator::moveW(const bool isShift)
         currentChar = m_editorHandler->trimmedCharAt(tempCursorPosition);
         atLastBlock = lastBlockPosition <= tempCursorPosition;
     }
-    m_editorHandler->moveCursorTo(m_cursor.position());
+    return tempCursorPosition;
 }
 
-void VimMovementOperator::moveB(const bool isShift)
+int VimMovementOperator::moveB(const bool isShift)
 {
     const int previousPosition = m_cursor.position();
     int tempCursorPosition = getNewPosition(QTextCursor::StartOfWord);
@@ -136,11 +99,10 @@ void VimMovementOperator::moveB(const bool isShift)
             previousChar = m_editorHandler->trimmedCharAt(tempCursorPosition - 1);
         }
     }
-
-    m_editorHandler->moveCursorTo(tempCursorPosition);
+    return tempCursorPosition;
 }
 
-void VimMovementOperator::moveE(const bool isShift)
+int VimMovementOperator::moveE(const bool isShift)
 {
     if (isShift) {
         const int previousPosition = m_cursor.position();
@@ -166,18 +128,16 @@ void VimMovementOperator::moveE(const bool isShift)
             }
         }
 
-        m_editorHandler->moveCursorTo(m_cursor.position() - 1);
-        return;
+        return m_cursor.position() - 1;
     }
     moveW(false);
 
     int tempCursorPosition = getNewPosition(QTextCursor::EndOfWord);
     const int finalPos = emptyBlock() ? tempCursorPosition : tempCursorPosition - 1;
-    m_editorHandler->moveCursorTo(finalPos);
-    return;
+    return finalPos;
 }
 
-void VimMovementOperator::moveTop()
+int VimMovementOperator::moveTop()
 {
     const int inBlockPos = m_cursor.positionInBlock();
     m_cursor.setPosition(0);
@@ -185,11 +145,10 @@ void VimMovementOperator::moveTop()
     const int blockSize = m_cursor.block().length() - 1; // -1 to remove the \n
     const int finalPos = inBlockPos <= blockSize ? inBlockPos : blockSize;
 
-    m_editorHandler->moveCursorTo(finalPos);
-    return;
+    return finalPos;
 }
 
-void VimMovementOperator::moveBottom()
+int VimMovementOperator::moveBottom()
 {
     const int inBlockPos = m_cursor.positionInBlock();
 
@@ -198,46 +157,36 @@ void VimMovementOperator::moveBottom()
 
     const int futureInBlockPos = lastBlockPosition + inBlockPos;
     const int finalPos = futureInBlockPos <= lastCharPosition ? futureInBlockPos : lastCharPosition;
-    m_editorHandler->moveCursorTo(finalPos);
-    return;
+    return finalPos;
 }
 
-void VimMovementOperator::move(const int type, const int repeat, const bool isShift)
+int VimMovementOperator::move(const int type, const int repeat, const bool isShift)
 {
     Q_UNUSED(repeat);
     switch (type) {
     case MoveType::Left:
-        moveLeft();
-        break;
+        return getNewPosition(QTextCursor::Left);
     case MoveType::Right:
-        moveRight();
-        break;
+        return getNewPosition(QTextCursor::Right);
     case MoveType::Up:
-        moveUp();
-        break;
+        return getNewPosition(QTextCursor::Up);
     case MoveType::Down:
-        moveDown();
-        break;
+        return getNewPosition(QTextCursor::Down);
     case MoveType::StartOfBlock:
-        moveStartOfBlock();
-        break;
+        return getNewPosition(QTextCursor::StartOfBlock);
     case MoveType::EndOfBlock:
-        moveEndOfBlock();
-        break;
+        return getNewPosition(QTextCursor::EndOfBlock);
     case MoveType::W:
-        moveW(isShift);
-        break;
+        return moveW(isShift);
     case MoveType::B:
-        moveB(isShift);
-        break;
+        return moveB(isShift);
     case MoveType::E:
-        moveE(isShift);
-        break;
+        return moveE(isShift);
     case MoveType::Top:
-        moveTop();
-        break;
+        return moveTop();
     case MoveType::Bottom:
-        moveBottom();
-        break;
+        return moveBottom();
+    default:
+        Q_UNREACHABLE();
     }
 }
