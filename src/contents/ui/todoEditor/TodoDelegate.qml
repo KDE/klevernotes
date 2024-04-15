@@ -18,11 +18,13 @@ Kirigami.FlexColumn {
     required property bool todoChecked
     required property string todoTitle
     required property string todoDesc
+    required property bool visibleSep
 
     width: ListView.view.width
 
     maximumWidth: Kirigami.Units.gridUnit * 40
     padding: 0
+    spacing: Kirigami.Units.smallSpacing
 
     Delegates.RoundedItemDelegate {
         Layout.fillWidth: true
@@ -100,5 +102,12 @@ Kirigami.FlexColumn {
                 Layout.alignment: Qt.AlignTop
             }
         }
+    }
+
+    Kirigami.Separator {
+        id: sep
+        visible: root.visibleSep
+        Layout.fillWidth: true
+        Layout.bottomMargin: Kirigami.Units.smallSpacing
     }
 }

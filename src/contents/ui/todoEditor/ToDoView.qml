@@ -64,12 +64,14 @@ Controls.ScrollView {
     }
 
     ListView {
+        id: todoView
         model: ListModel {
             id: todoModel
         }
 
         delegate: TodoDelegate {
             onSaveTodos: root.saveTodos()
+            visibleSep: index < todoView.count - 1 
         }
 
         Components.FloatingButton {
