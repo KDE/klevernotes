@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-14 01:38+0000\n"
-"PO-Revision-Date: 2024-04-12 08:34+0300\n"
+"POT-Creation-Date: 2024-04-15 01:37+0000\n"
+"PO-Revision-Date: 2024-04-14 08:34+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -18,35 +18,53 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:14
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog, as in 'A note category'"
-#| msgid "Are you sure you want to delete this category ?"
-msgctxt "@title:dialog, as in 'A note category'"
-msgid "Are you sure you want to delete this category?"
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog, as in 'A note category'"
+#| msgid "Are you sure you want to delete this category?"
+msgctxt "@info, as in 'A note category'"
+msgid "Are you sure you want to delete the category <filename>%1</filename>?"
 msgstr "Ви справді хочете вилучити цю категорію?"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:15
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog, as in 'A note group'"
-#| msgid "Are you sure you want to delete this group ?"
-msgctxt "@title:dialog, as in 'A note group'"
-msgid "Are you sure you want to delete this group?"
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:18
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog, as in 'A note group'"
+#| msgid "Are you sure you want to delete this group?"
+msgctxt "@info, as in 'A note group'"
+msgid "Are you sure you want to delete the group <filename>%1</filename>?"
 msgstr "Ви справді хочете вилучити цю групу?"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:16
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Are you sure you want to delete this note ?"
-msgctxt "@title:dialog"
-msgid "Are you sure you want to delete this note?"
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:19
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog"
+#| msgid "Are you sure you want to delete this note?"
+msgctxt "@info"
+msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgstr "Ви справді хочете вилучити цю нотатку?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
+msgctxt "@title:dialog, as in 'A note category'"
+msgid "Delete Category Confirmation"
+msgstr ""
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
+#, kde-format
+msgctxt "@title:dialog, as in 'A note category'"
+msgid "Delete Note Confirmation"
+msgstr ""
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
+#, kde-format
+msgctxt "@title:dialog, as in 'A note category'"
+msgid "Delete Group Confirmation"
+msgstr ""
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:38
+#, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr ""
+msgstr "Наслідки цієї дії не може бути скасовано."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
