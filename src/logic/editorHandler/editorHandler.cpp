@@ -77,6 +77,16 @@ QString EditorHandler::trimmedCharAt(const int position) const
     return QString(m_textDocument->characterAt(position)).trimmed();
 }
 
+bool EditorHandler::sameBlockSelection() const
+{
+    QTextCursor cursor = getCursor();
+    const int startBlock = cursor.blockNumber();
+    cursor.setPosition(selectionEnd());
+    const int endBlock = cursor.blockNumber();
+
+    return startBlock == endBlock;
+}
+
 // General Info
 // ============
 

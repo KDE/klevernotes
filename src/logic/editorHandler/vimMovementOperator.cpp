@@ -41,6 +41,14 @@ bool VimMovementOperator::emptyBlock() const
     return m_cursor.atBlockEnd() && m_cursor.atBlockStart();
 }
 
+int VimMovementOperator::getBlockLastNonEmptyCharPosition() const
+{
+    const QTextBlock block = m_cursor.block();
+    const QRegularExpression traillingWhiteSpace = QRegularExpression(QStringLiteral("\\s+$"));
+    const int len = block.text().remove(traillingWhiteSpace).length() - 1;
+    return block.position() + (0 < len ? len : 0);
+}
+
 int VimMovementOperator::moveW(const bool isShift)
 {
     const int lastBlockPosition = m_editorHandler->getLastBlockPosition();
@@ -104,8 +112,8 @@ int VimMovementOperator::moveB(const bool isShift)
 
 int VimMovementOperator::moveE(const bool isShift)
 {
+    const int previousPosition = m_cursor.position();
     if (isShift) {
-        const int previousPosition = m_cursor.position();
         static const QRegularExpression whiteSpace = QRegularExpression(QStringLiteral("\\s"));
 
         const int capturePosition = m_editorHandler->getCapturePosition(whiteSpace, previousPosition);
@@ -130,10 +138,30 @@ int VimMovementOperator::moveE(const bool isShift)
 
         return m_cursor.position() - 1;
     }
-    moveW(false);
+
+    const int blockLastCharPosition = getBlockLastNonEmptyCharPosition();
+    const int docLastCharPosition = m_editorHandler->getLastCharPosition() - 1;
+
+    if (previousPosition == docLastCharPosition) {
+        return previousPosition;
+    }
 
     int tempCursorPosition = getNewPosition(QTextCursor::EndOfWord);
-    const int finalPos = emptyBlock() ? tempCursorPosition : tempCursorPosition - 1;
+    if (previousPosition == tempCursorPosition - 1 || previousPosition == tempCursorPosition) {
+        tempCursorPosition = moveW(false);
+        if (blockLastCharPosition < tempCursorPosition && blockLastCharPosition != previousPosition) {
+            return blockLastCharPosition;
+        }
+        if (emptyBlock()) {
+            moveW(true);
+            tempCursorPosition = getNewPosition(QTextCursor::EndOfWord);
+        }
+        if (m_editorHandler->trimmedCharAt(tempCursorPosition - 1).isEmpty()) {
+            tempCursorPosition = getNewPosition(QTextCursor::EndOfWord);
+        }
+    }
+
+    const int finalPos = emptyBlock() || tempCursorPosition == docLastCharPosition ? tempCursorPosition : tempCursorPosition - 1;
     return finalPos;
 }
 
@@ -164,14 +192,22 @@ int VimMovementOperator::move(const int type, const int repeat, const bool isShi
 {
     Q_UNUSED(repeat);
     switch (type) {
-    case MoveType::Left:
-        return getNewPosition(QTextCursor::Left);
-    case MoveType::Right:
-        return getNewPosition(QTextCursor::Right);
-    case MoveType::Up:
-        return getNewPosition(QTextCursor::Up);
-    case MoveType::Down:
-        return getNewPosition(QTextCursor::Down);
+    case MoveType::Left: {
+        getNewPosition(QTextCursor::Left);
+        return nonEOLPosition();
+    }
+    case MoveType::Right: {
+        getNewPosition(QTextCursor::Right);
+        return nonEOLPosition(false);
+    }
+    case MoveType::Up: {
+        getNewPosition(QTextCursor::Up);
+        return nonEOLPosition();
+    }
+    case MoveType::Down: {
+        getNewPosition(QTextCursor::Down);
+        return nonEOLPosition(false);
+    }
     case MoveType::StartOfBlock:
         return getNewPosition(QTextCursor::StartOfBlock);
     case MoveType::EndOfBlock:
@@ -187,6 +223,22 @@ int VimMovementOperator::move(const int type, const int repeat, const bool isShi
     case MoveType::Bottom:
         return moveBottom();
     default:
+        qDebug() << "Unreachable MoveType";
         Q_UNREACHABLE();
     }
+}
+
+void VimMovementOperator::setNotInsert(const bool notInsert)
+{
+    m_notInsert = notInsert;
+}
+
+int VimMovementOperator::nonEOLPosition(const bool goLeft) const
+{
+    int pos = m_cursor.position();
+    if (m_notInsert && m_cursor.atBlockEnd() && !emptyBlock()) {
+        pos += goLeft ? -1 : 1;
+    }
+
+    return pos;
 }

@@ -28,6 +28,8 @@ public:
     Q_INVOKABLE bool handleKeyPress(const int key, const int modifiers) const;
 
     int cursorPosition() const;
+    int selectionEnd() const;
+    int selectionStart() const;
 
     QTextCursor getCursor() const;
     void moveCursorTo(const int position, const bool visual = false);
@@ -35,6 +37,7 @@ public:
     int getLastCharPosition() const;
     int getCapturePosition(const QRegularExpression &reg, const int from = -1) const;
     QString trimmedCharAt(const int position) const;
+    bool sameBlockSelection() const;
 
 Q_SIGNALS:
     void documentChanged();
@@ -60,10 +63,8 @@ private:
 
     void setCursorPosition(const int cursorPosition);
 
-    int selectionStart() const;
     void setSelectionStart(const int selectionStart);
 
-    int selectionEnd() const;
     void setSelectionEnd(const int selectionEnd);
 
     int m_cursorPosition;

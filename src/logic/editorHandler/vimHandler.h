@@ -35,7 +35,7 @@ private:
     EditorHandler *m_editorHandler;
 
     // General info
-    int m_currentMode;
+    int m_currentMode = EditorMode::Normal;
     bool m_isVisual = false;
 
     // Key handling

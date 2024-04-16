@@ -17,9 +17,25 @@ public:
 
     void trigger() const override
     {
-        reposition();
+        const int selectionEnd = m_editorHandler->selectionEnd();
+        const bool sameBlockSelection = m_editorHandler->sameBlockSelection();
+        if (hasReposition()) {
+            m_vimHandler->setVimMode(VimHandler::EditorMode::Normal);
+
+            const int selectionStart = m_editorHandler->selectionStart();
+            m_editorHandler->moveCursorTo(selectionStart);
+            m_vimHandler->getMovementOperator()->resetCursor();
+
+            reposition();
+        }
         m_vimHandler->setVimMode(VimHandler::EditorMode::Visual);
+        if (!sameBlockSelection) {
+            m_editorHandler->moveCursorTo(selectionEnd);
+        }
+        m_vimHandler->getMovementOperator()->resetCursor();
+
         move();
+
         Q_EMIT m_editorHandler->cut();
         m_vimHandler->setVimMode(VimHandler::EditorMode::Normal);
     }
@@ -40,6 +56,11 @@ private:
             const int position = m_vimHandler->getMovementOperator()->move(moveType, repeat, isShift);
             m_editorHandler->moveCursorTo(position);
         }
+    }
+
+    bool hasReposition() const
+    {
+        return !m_repositionList.empty();
     }
     std::vector<std::tuple<int, int, bool>> m_repositionList;
 };

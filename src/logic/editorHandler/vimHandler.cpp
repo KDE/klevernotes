@@ -35,6 +35,7 @@ void VimHandler::setVimMode(const int mode)
 
     if (mode == EditorMode::Normal || mode == EditorMode::Insert || mode == EditorMode::Visual) {
         m_isVisual = mode == EditorMode::Visual;
+        m_movementOperator->setNotInsert(mode != EditorMode::Insert);
         m_currentMode = mode;
         Q_EMIT m_editorHandler->modeChanged(m_currentMode);
     }
@@ -122,6 +123,10 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     if (key == Qt::Key_Escape) {
         setVimMode(EditorMode::Normal);
         Q_EMIT m_editorHandler->deselect();
+        const int newPos = m_movementOperator->nonEOLPosition();
+        if (newPos != m_editorHandler->cursorPosition()) {
+            Q_EMIT m_editorHandler->moveCursorTo(newPos);
+        }
         return true;
     }
 
@@ -226,7 +231,7 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     }
 
     case Qt::Key_I: {
-        if (m_currentMode == EditorMode::Visual) {
+        if (m_currentMode == EditorMode::Visual || !m_actionsList.empty()) {
             return true;
         }
         // There's no point in repeating this action
@@ -240,7 +245,7 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
         break;
     }
     case Qt::Key_A: {
-        if (m_currentMode == EditorMode::Visual) {
+        if (m_currentMode == EditorMode::Visual || !m_actionsList.empty()) {
             return true;
         }
         // There's no point in repeating this action
@@ -254,6 +259,9 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     }
 
     case Qt::Key_V: {
+        if (!m_actionsList.empty()) {
+            return true;
+        }
         // There's no point in repeating this action
         getRepetition();
         m_actionsList.push_back(std::make_unique<VisualAction>(this, m_editorHandler));
@@ -268,6 +276,9 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
                 const auto reposition = std::make_tuple(VimMovementOperator::MoveType::StartOfBlock, repeat, isShift);
                 action->addRepositionning(reposition);
             }
+            const auto moveType = isShift ? VimMovementOperator::MoveType::EndOfBlock : VimMovementOperator::MoveType::Right;
+            const auto movement = std::make_tuple(moveType, repeat, isShift);
+            action->addMovement(movement);
             m_actionsList.push_back(std::move(action));
             break;
         }
@@ -280,6 +291,46 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
         action->addMovement(movement);
         m_actionsList.push_back(std::move(action));
         break;
+    }
+
+    case Qt::Key_D: {
+        const int repeat = getRepetition();
+        const bool lastActionIsD = !m_actionsList.empty() && LASTACTION()->getType() == 'd';
+
+        if (lastActionIsD && isShift) {
+            m_actionsList.clear();
+            return true;
+        }
+
+        auto action = std::make_unique<CutAction>(this, m_editorHandler, 'd', true);
+        if (m_currentMode == EditorMode::Visual) {
+            if (isShift) {
+                const auto reposition = std::make_tuple(VimMovementOperator::MoveType::StartOfBlock, repeat, isShift);
+                action->addRepositionning(reposition);
+            }
+            const auto moveType = isShift ? VimMovementOperator::MoveType::EndOfBlock : VimMovementOperator::MoveType::Right;
+            const auto movement = std::make_tuple(moveType, repeat, isShift);
+            action->addMovement(movement);
+            m_actionsList.push_back(std::move(action));
+            break;
+        }
+
+        if (isShift) {
+            handleMovement(VimMovementOperator::MoveType::EndOfBlock, repeat, isShift);
+            return true;
+        }
+        if (m_actionsList.empty()) {
+            auto action = std::make_unique<CutAction>(this, m_editorHandler, 'd', false);
+            m_actionsList.push_back(std::move(action));
+            return true;
+        }
+
+        if (lastActionIsD) {
+            handleMovement(VimMovementOperator::MoveType::EndOfBlock, repeat, isShift);
+            break;
+        }
+        m_actionsList.clear();
+        return true;
     }
     }
 
@@ -295,10 +346,10 @@ void VimHandler::handleMovement(const int moveType, const int repeat, const bool
         m_editorHandler->moveCursorTo(newPos);
         return;
     }
-    if (moveType != VimMovementOperator::MoveType::Top && LASTACTION()->getType() == 'c') {
-        m_actionsList.clear();
-        return;
-    }
+    // if (moveType != VimMovementOperator::MoveType::Top && LASTACTION()->getType() == 'c') {
+    //     m_actionsList.clear();
+    //     return;
+    // }
     const auto movement = std::make_tuple(moveType, repeat, isShift);
     LASTACTION()->addMovement(movement);
     LASTACTION()->setReady(true);
