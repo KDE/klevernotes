@@ -21,8 +21,8 @@ Components.MessageDialog {
 
     readonly property var useCaseTitleTrad: {
         "category": i18nc("@title:dialog, as in 'A note category'", "Delete Category Confirmation"),
-        "group": i18nc("@title:dialog, as in 'A note category'", "Delete Note Confirmation"),
-        "note": i18nc("@title:dialog, as in 'A note category'", "Delete Group Confirmation"),
+        "group": i18nc("@title:dialog, as in 'A note category'", "Delete Group Confirmation"),
+        "note": i18nc("@title:dialog, as in 'A note category'", "Delete Note Confirmation"),
     }
 
     dialogType: Components.MessageDialog.Warning

@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
 
-import org.kde.kitemmodels 1.0
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kitemmodels
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 import "qrc:/contents/ui/sharedComponents"
 
-Kirigami.PromptDialog {
+FormCard.FormCardDialog {
     id: linkNoteDialog
 
     property alias linkText: linkTextField.text
@@ -29,66 +29,67 @@ Kirigami.PromptDialog {
         headerSwitch.checked = false
         noteComboBox.currentIndex = 0
     }
+    onRejected: {
+        close()
+    }
 
-    ColumnLayout {
-        FormCard.FormComboBoxDelegate {
-            id: noteComboBox
+    FormCard.FormComboBoxDelegate {
+        id: noteComboBox
 
-            text: i18nc("@label:combobox, 'a note' (the noun)", "Note:")
-            model: KSortFilterProxyModel {
-                id: searchFilterProxyModel
+        text: i18nc("@label:combobox, 'a note' (the noun)", "Note:")
+        model: KSortFilterProxyModel {
+            id: searchFilterProxyModel
 
-                sourceModel: KDescendantsProxyModel {
-                    id: descendants
-                    model: linkNoteDialog.listModel 
-                }
-                filterRoleName: "useCase"
-                filterString: "Note"
+            sourceModel: KDescendantsProxyModel {
+                id: descendants
+                model: linkNoteDialog.listModel 
             }
-            textRole: "fullName"
-            valueRole: "path"
+            filterRoleName: "useCase"
+            filterString: "Note"
+        }
+        textRole: "fullName"
+        valueRole: "path"
+        displayMode: FormCard.FormComboBoxDelegate.Dialog
+
+        onCurrentValueChanged: if (headerSwitch.checked) {
+            headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+        }
+        Component.onCompleted: {
+            currentIndex = 0
+        }
+    }
+
+    ExpandingFormSwitch {
+        id: headerSwitch
+
+        text: i18nc("@label:switch", "Search headers")
+        checked: false
+
+        onCheckedChanged: if (checked) {
+            headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+        } else {
+            linkNoteDialog.headerString = ""
+        }
+
+        FormCard.FormComboBoxDelegate {
+            id: headerComboBox
+
+            text: i18nc("@label:textbox", "Header:")
+
+            textRole: "text"
+            valueRole: "value"
             displayMode: FormCard.FormComboBoxDelegate.Dialog
 
-            onCurrentValueChanged: if (headerSwitch.checked) {
-                headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
-            }
-            Component.onCompleted: {
-                currentIndex = 0
+            onCurrentValueChanged: {
+                linkNoteDialog.headerString = currentValue
             }
         }
+    }
 
-        ExpandingFormSwitch {
-            id: headerSwitch
+    FormCard.FormTextFieldDelegate {
+        id: linkTextField
 
-            text: i18nc("@label:switch", "Search headers")
-            checked: false
-
-            onCheckedChanged: if (checked) {
-                headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
-            } else {
-                linkNoteDialog.headerString = ""
-            }
-
-            FormCard.FormComboBoxDelegate {
-                id: headerComboBox
-
-                text: i18nc("@label:textbox", "Header:")
-
-                textRole: "text"
-                valueRole: "value"
-                displayMode: FormCard.FormComboBoxDelegate.Dialog
-
-                onCurrentValueChanged: {
-                    linkNoteDialog.headerString = currentValue
-                }
-            }
-        }
-
-        FormCard.FormTextFieldDelegate {
-            id: linkTextField
-
-            label: i18nc("@label:textbox, the displayed text of a link, in html: <a>This text</a> ", "Link text:")
-            Layout.fillWidth: true
-        }
+        label: i18nc("@label:textbox, the displayed text of a link, in html: <a>This text</a> ", "Link text:")
+        Layout.fillWidth: true
     }
 }

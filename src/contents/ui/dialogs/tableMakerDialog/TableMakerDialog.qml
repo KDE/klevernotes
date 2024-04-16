@@ -1,28 +1,26 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Templates 2.15
-import QtQuick.Controls 2.15 as Controls
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Templates
+import QtQuick.Controls as Controls
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.Dialog {
-    id: scrollableDialog
+FormCard.FormCardDialog {
+    id: root
 
     property int rowCount: 1
     property int columnCount: 1
     property string alignment: optionsColumn.isExpanded ? alignmentBox.currentValue : "left"
     property int hoveredRow: 0
     property int hoveredColumn: 0
-    property bool isHovered: false
 
     title: i18nc("@title:dialog, table => an html table", "Table creation")
 
-    width: Kirigami.Units.gridUnit * 15
-    padding: 0
+    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
     onRowCountChanged: if (rowCount !== rowSpin.value) {
         rowSpin.value = rowCount
@@ -30,13 +28,21 @@ Kirigami.Dialog {
     onColumnCountChanged: if (columnCount !== columnSpin.value) {
         columnSpin.value = columnCount
     }
+    onRejected: {
+        close()
+    }
+    onClosed: {
+        rowCount = 1
+        columnCount = 1
+        optionsColumn.isExpanded = false
+    }
 
-    ColumnLayout {
+    contentItem: ColumnLayout {
         id: itemLayout
 
         property int generalTiming: Kirigami.Units.longDuration
         
-        height: Kirigami.Units.gridUnit * 21
+        height: Kirigami.Units.gridUnit * 18
         spacing: 0
 
         Controls.Label {
@@ -44,20 +50,16 @@ Kirigami.Dialog {
 
             Layout.alignment: Qt.AlignTop
             Layout.preferredHeight: Kirigami.Units.gridUnit * 3
+            Layout.margins: 0
             Layout.leftMargin: Kirigami.Units.gridUnit
             Layout.rightMargin: Kirigami.Units.gridUnit
         }
 
-        GridLayout {
+        ItemDelegate {
             id: mainHolder
 
-            rows: 10
-            columns: 5
-            rowSpacing: 0
-            columnSpacing: 0
-
+            Layout.fillWidth: true
             Layout.preferredHeight: Kirigami.Units.gridUnit * 15
-            Layout.alignment: Qt.AlignTop || Qt.AlignHCenter
             Layout.margins: 0
             Layout.leftMargin: Kirigami.Units.largeSpacing * 3
             Layout.rightMargin: Kirigami.Units.largeSpacing * 3
@@ -77,68 +79,76 @@ Kirigami.Dialog {
                 NumberAnimation { duration: itemLayout.generalTiming - 20 }
             }
 
-            Repeater {
-                model: mainHolder.rows * mainHolder.columns
+            onHoveredChanged: {
+                root.hoveredRow = 0
+                root.hoveredColumn = 0
+            }
+            GridLayout {
+                id: holderLayout
+                rows: 10
+                columns: 5
+                rowSpacing: 0
+                columnSpacing: 0
 
-                delegate: ItemDelegate {
-                    id: box
+                anchors.fill: parent
 
-                    readonly property int visualColumn: (index % mainHolder.columns) + 1
-                    readonly property int visualRow: ((index - visualColumn + 1) / mainHolder.columns) + 1
+                Repeater {
+                    model: holderLayout.rows * holderLayout.columns
 
-                    property bool insideSelectedBound: visualRow <= scrollableDialog.rowCount && visualColumn <= scrollableDialog.columnCount
+                    delegate: ItemDelegate {
+                        id: box
 
-                    property bool insideHoveredBound: scrollableDialog.isHovered
-                        ? (visualRow <= scrollableDialog.hoveredRow && visualColumn <= scrollableDialog.hoveredColumn)
-                        : false
+                        readonly property int visualColumn: (index % holderLayout.columns) + 1
+                        readonly property int visualRow: ((index - visualColumn + 1) / holderLayout.columns) + 1
 
+                        property bool insideSelectedBound: visualRow <= root.rowCount && visualColumn <= root.columnCount
 
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
+                        property bool insideHoveredBound: visualRow <= root.hoveredRow && visualColumn <= root.hoveredColumn
 
-                    focusPolicy: Qt.StrongFocus
-                    hoverEnabled: true
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
 
-                    background: Rectangle {
-                        color: {
-                            let colorOpacity = 0.7;
-                            let selectedColor = Kirigami.Theme.textColor
+                        focusPolicy: Qt.StrongFocus
+                        hoverEnabled: true
 
-                            if (box.pressed ||
-                                box.insideSelectedBound && box.insideHoveredBound ||
-                                !scrollableDialog.isHovered && box.insideSelectedBound
-                            ) {
-                                selectedColor = Kirigami.Theme.highlightColor
-                                colorOpacity = 0.7;
-                            } else if (box.insideHoveredBound) {
-                                selectedColor = Kirigami.Theme.highlightColor
-                                colorOpacity = 0.5;
+                        background: Rectangle {
+                            color: {
+                                let colorOpacity = 0.7;
+                                let selectedColor = Kirigami.Theme.textColor
+
+                                if (box.pressed ||
+                                    box.insideSelectedBound && box.insideHoveredBound ||
+                                    !root.isHovered && box.insideSelectedBound
+                                ) {
+                                    selectedColor = Kirigami.Theme.highlightColor
+                                    colorOpacity = 0.7;
+                                } else if (box.insideHoveredBound) {
+                                    selectedColor = Kirigami.Theme.highlightColor
+                                    colorOpacity = 0.5;
+                                }
+
+                                return Qt.rgba(selectedColor.r, selectedColor.g, selectedColor.b, colorOpacity)
                             }
 
-                            return Qt.rgba(selectedColor.r, selectedColor.g, selectedColor.b, colorOpacity)
+                            border.width: 1
+                            border.color: Kirigami.Theme.backgroundColor
+
+                            Behavior on color {
+                                ColorAnimation { duration: Kirigami.Units.shortDuration }
+                            }
                         }
 
-                        border.width: 1
-                        border.color: Kirigami.Theme.backgroundColor
-
-                        Behavior on color {
-                            ColorAnimation { duration: Kirigami.Units.shortDuration }
+                        onHoveredChanged: {
+                            // root.isHovered = hovered
+                            if (hovered) {
+                                root.hoveredRow = visualRow
+                                root.hoveredColumn = visualColumn
+                            }
                         }
-                    }
-
-                    onHoveredChanged: {
-                        scrollableDialog.isHovered = hovered
-                        if (hovered) {
-                            scrollableDialog.hoveredRow = visualRow
-                            scrollableDialog.hoveredColumn = visualColumn
-                        } else {
-                            scrollableDialog.hoveredRow = 0
-                            scrollableDialog.hoveredColumn = 0
+                        onClicked: {
+                            root.rowCount = visualRow
+                            root.columnCount = visualColumn
                         }
-                    }
-                    onClicked: {
-                        scrollableDialog.rowCount = visualRow
-                        scrollableDialog.columnCount = visualColumn
                     }
                 }
             }
@@ -164,8 +174,8 @@ Kirigami.Dialog {
             onClicked: {
                 optionsColumn.isExpanded = !optionsColumn.isExpanded
 
-                if (scrollableDialog.rowCount > mainHolder.rows) scrollableDialog.rowCount = mainHolder.rows
-                if (scrollableDialog.columnCount > mainHolder.columns) scrollableDialog.columnCount = mainHolder.columns
+                if (root.rowCount > mainHolder.rows) root.rowCount = mainHolder.rows
+                if (root.columnCount > mainHolder.columns) root.columnCount = mainHolder.columns
             }
         }
 
@@ -212,7 +222,7 @@ Kirigami.Dialog {
                     Layout.fillWidth: true
                     Layout.preferredHeight: parent.height / 3
 
-                    onValueChanged: if (scrollableDialog.rowCount !== value) scrollableDialog.rowCount = value
+                    onValueChanged: if (root.rowCount !== value) root.rowCount = value
                 }
 
                 FormCard.FormSpinBoxDelegate {
@@ -224,7 +234,7 @@ Kirigami.Dialog {
                     Layout.fillWidth: true
                     Layout.preferredHeight: parent.height / 3
 
-                    onValueChanged: if (scrollableDialog.columnCount !== value) scrollableDialog.columnCount = value
+                    onValueChanged: if (root.columnCount !== value) root.columnCount = value
                 }
 
                 FormCard.FormComboBoxDelegate {
@@ -248,11 +258,4 @@ Kirigami.Dialog {
         }
     }
 
-    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
-
-    onClosed: {
-        rowCount = 1
-        columnCount = 1
-        optionsColumn.isExpanded = false
-    }
 }

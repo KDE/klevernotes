@@ -25,6 +25,7 @@ Kirigami.Page {
     property bool cantLeave: false
     property bool isEraser: false
     property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
+    property bool wantSave
 
     title: i18nc("@title:page", "Paint!")
 
@@ -96,9 +97,11 @@ Kirigami.Page {
 
         onAccepted: {
             root.saveImage()
+            leavingDialog.close()
         }
         onDiscarded: {
             leavingDialog.close()
+            root.wantSave = false
             root.closePage("", {})
         }
     }
@@ -290,11 +293,11 @@ Kirigami.Page {
         imagePickerDialog.paintClipRect = cropRect
         imagePickerDialog.path = imagePath
         imagePickerDialog.paintedImageChoosen = true
-        imagePickerDialog.storeCheckbox.checked = true
+        imagePickerDialog.storeCheckbox.checked = wantSave
         imagePickerDialog.storeCheckbox.enabled = false
     }
 
-    function closePage(imagePath, cropRect) {
+    function closePage(imagePath, cropRect, paintedImageChoosen) {
         root.cantLeave = false
         clearCanvas()
         applicationWindow().currentPageName = "Main"
@@ -313,6 +316,7 @@ Kirigami.Page {
 
             if (autoCropAction.checked) cropRect = serializer.getCropRect()
         }
+        root.wantSave = true
         closePage(filePath, cropRect)
     }
 }

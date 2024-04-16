@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.Dialog {
+FormCard.FormCardDialog {
     id: scrollableDialog
 
     property string checkedFamily
@@ -31,13 +31,18 @@ Kirigami.Dialog {
     onClosed: {
         caller = undefined
     }
+    onRejected: {
+        close()
+    }
 
-    GridLayout {
+    contentItem: GridLayout {
         rows: 1
         columns: 2
+        Layout.bottomMargin: Kirigami.Units.largeSpacing
         FormCard.FormComboBoxDelegate {
             id: fontBox
 
+            displayMode: FormCard.FormComboBoxDelegate.Dialog
             model: Qt.fontFamilies() 
 
             Layout.row: 0
@@ -51,6 +56,7 @@ Kirigami.Dialog {
         FormCard.FormComboBoxDelegate {
             id: sizeBox
 
+            displayMode: FormCard.FormComboBoxDelegate.Dialog
             model: [6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72]
 
             Layout.row: 0
@@ -67,10 +73,12 @@ Kirigami.Dialog {
             text: fontBox.currentValue ? fontBox.currentValue : "Note Sans"
             font.family: text
             font.pointSize: sizeBox.currentValue ? sizeBox.currentValue : 10
+            wrapMode: Text.NoWrap
 
             Layout.row: 1
             Layout.column: 0
             Layout.rowSpan: 2
+            Layout.fillWidth: true
         }
     }
 }

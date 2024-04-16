@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 import "qrc:/contents/ui/sideBar"
 
-Kirigami.PromptDialog {
+FormCard.FormCardDialog {
     id: textPromptDialog
 
     required property var treeView
     required property string useCase
     readonly property var useCaseTrad: {
-        "category": i18nc("@subtitle:dialog, as in 'A note category'", "Where do you want to move this category ?"),
         "group": i18nc("@subtitle:dialog, as in 'A note group'", "Where do you want to move this group ?"),
         "note": i18nc("@subtitle:dialog", "Where do you want to move this note ?") 
     }
@@ -34,13 +34,13 @@ Kirigami.PromptDialog {
         searchBar.text = ""
     }
 
-    ColumnLayout {
-        Kirigami.Heading {
-            text: useCase ? useCaseTrad[useCase.toLowerCase()] : ""
-            level: 4
+    padding: Kirigami.Units.largeSpacing * 2
 
+    contentItem: ColumnLayout {
+        spacing: Kirigami.Units.largeSpacing * 2
+        Label {
+            text: useCase && useCase !== "Category" ? useCaseTrad[useCase.toLowerCase()] : ""
             wrapMode: Text.WordWrap
-
             Layout.fillWidth: true
         }
 

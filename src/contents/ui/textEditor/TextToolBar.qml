@@ -172,6 +172,8 @@ Kirigami.ActionToolBar {
             storedImageChoosen = false
 
             applicationWindow().currentPageName = "Main"
+
+            imagePickerDialog.close()
         }
     }
 
@@ -197,6 +199,8 @@ Kirigami.ActionToolBar {
             const result = "\n" + headers + columnsAlignments + cells.repeat(tableMakerDialog.rowCount)
 
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, result)
+
+            tableMakerDialog.close()
         }
     }
 
@@ -206,6 +210,8 @@ Kirigami.ActionToolBar {
         onAccepted: {
             let linkString = '[' + linkText + '](' + urlText + ') '
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, linkString)
+
+            close()
         }
     }
 
@@ -225,6 +231,8 @@ Kirigami.ActionToolBar {
                 : ""
             const linkString = '[[' + notePath + headerPart + textPart + ']]'
             toolbar.editorTextArea.insert(toolbar.editorTextArea.cursorPosition, linkString)
+
+            close()
         }
     }
 

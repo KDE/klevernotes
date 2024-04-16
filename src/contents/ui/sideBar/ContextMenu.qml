@@ -77,6 +77,10 @@ Controls.Menu {
 
         onAccepted: {
             treeView.model.removeFromTree(actionBar.currentModelIndex)
+            close()
+        }
+        onRejected: {
+            close()
         }
         onClosed: {
             actionBar.useCurrentItem()
@@ -91,6 +95,9 @@ Controls.Menu {
 
         onApplied: if (clickedIndex && actionBar.currentModelIndex) {
             contextMenu.treeView.model.moveRow(actionBar.currentModelIndex, clickedIndex)
+            close()
+        }
+        onRejected: {
             close()
         }
     }

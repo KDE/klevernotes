@@ -1,19 +1,26 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 
-Kirigami.PromptDialog {
+Components.MessageDialog {
     title: i18nc("@title:dialog", "KleverNotes painting")
-    subtitle: i18n("You're about to leave without saving your drawing!\nDo you want to save it before leaving ?\n")
 
-    // Dirty workaround to prevent weird height
-    height: header.height + footer.height + topPadding + bottomPadding + mainItem.height
+    dialogType: Components.MessageDialog.Warning
 
-    showCloseButton: false
-    closePolicy: Controls.Popup.NoAutoClose
+    closePolicy: Popup.NoAutoClose
     standardButtons: Kirigami.Dialog.Save | Kirigami.Dialog.Discard
+
+    Label {
+        text: i18nc("@subtitle:dialog", "You're about to leave without saving your drawing!")
+            + "\n" + i18nc("@subtitle:dialog", "Do you want to save it before leaving ?") 
+
+        wrapMode: Text.WordWrap
+        Layout.fillWidth: true
+    }
 }

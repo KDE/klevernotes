@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Controls 2.3 as Controls
-import QtQuick.Layouts 1.15
-import Qt.labs.platform 1.1
+import QtQuick
+import QtQuick.Controls as Controls
+import QtQuick.Layouts
+import Qt.labs.platform
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 import "qrc:/contents/ui/dialogs"
 
 
-Kirigami.Dialog {
+FormCard.FormCardDialog {
     id: imagePickerDialog
 
     readonly property Image imageObject: displayImage
@@ -33,8 +33,6 @@ Kirigami.Dialog {
 
     title: i18nc("@title:dialog", "Image selector")
 
-    height: header.height + footer.height + topPadding + bottomPadding + mainItem.height
-
     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
     onPathChanged: {
@@ -45,6 +43,9 @@ Kirigami.Dialog {
         path = ""
         imageName = ""
         displayImage.height = undefined
+    }
+    onRejected: {
+        close()
     }
 
     FilePickerDialog {
@@ -60,7 +61,7 @@ Kirigami.Dialog {
     }
 
     // GridLayout was causing to much problem :/
-    ColumnLayout {
+    contentItem: ColumnLayout {
         id: mainItem
 
         property int iconSize: imageHolder.visible

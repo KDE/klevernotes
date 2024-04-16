@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Controls as Controls
+import QtQuick.Layouts
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
-Kirigami.Dialog {
+FormCard.FormCardDialog {
     id: setupPopup
 
     readonly property string newStorage: i18nc("Storage as in 'the folder where all the notes will be stored'; this text will be followed by the path to this folder", "Storage created at ")
@@ -23,53 +23,54 @@ Kirigami.Dialog {
 
     width: Kirigami.Units.gridUnit * 18
 
-    closePolicy: Controls.Popup.NoAutoClose
-    standardButtons: Kirigami.Dialog.NoButton
-    showCloseButton: !firstSetup
+    title: i18nc("@title:dialog, Storage as in 'the folder where all the notes will be stored'", "KleverNotes Storage")
+    closePolicy: firstSetup ? Controls.Popup.NoAutoClose : Controls.Popup.CloseOnReleaseOutside
+    standardButtons: firstSetup ? Kirigami.Dialog.NoButton : Kirigami.Dialog.Cancel
 
     onFolderChanged: {
         setupStorage()
     }
+    onRejected: {
+        close()
+    }
 
-    ColumnLayout{
-        Controls.Label {
-            text: subtitle
-            wrapMode: Text.Wrap
+    Controls.Label {
+        text: subtitle
+        wrapMode: Text.Wrap
 
-            Layout.margins: Kirigami.Units.smallSpacing
-            Layout.fillWidth: true
+        Layout.margins: Kirigami.Units.largeSpacing * 2
+        Layout.fillWidth: true
+    }
+
+    FormCard.FormButtonDelegate {
+        icon.name: "folder-sync-symbolic"
+        text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Existing storage")
+
+        Controls.ToolTip.text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Change the storage path")
+        Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+        Controls.ToolTip.visible: hovered
+
+        Layout.fillWidth: true
+
+        onClicked: {
+            setupPopup.userChoice = setupPopup.existingStorage
+            getFolder()
         }
+    }
 
-        FormCard.FormButtonDelegate {
-            icon.name: "folder-sync-symbolic"
-            text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Existing storage")
+    FormCard.FormButtonDelegate {
+        icon.name: "folder-new-symbolic"
+        text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Create storage")
 
-            Controls.ToolTip.text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Change the storage path")
-            Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
-            Controls.ToolTip.visible: hovered
+        Controls.ToolTip.text: i18nc("Storage as in 'the folder where all the notes will be stored'", "Create a new storage")
+        Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+        Controls.ToolTip.visible: hovered
 
-            Layout.fillWidth: true
+        Layout.fillWidth: true
 
-            onClicked: {
-                setupPopup.userChoice = setupPopup.existingStorage
-                getFolder()
-            }
-        }
-
-        FormCard.FormButtonDelegate {
-            icon.name: "folder-new-symbolic"
-            text: i18nc("@label:button, Storage as in 'the folder where all the notes will be stored'", "Create storage")
-
-            Controls.ToolTip.text: i18nc("Storage as in 'the folder where all the notes will be stored'", "Create a new storage")
-            Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
-            Controls.ToolTip.visible: hovered
-
-            Layout.fillWidth: true
-
-            onClicked: {
-                setupPopup.userChoice = setupPopup.newStorage
-                getFolder()
-            }
+        onClicked: {
+            setupPopup.userChoice = setupPopup.newStorage
+            getFolder()
         }
     }
 

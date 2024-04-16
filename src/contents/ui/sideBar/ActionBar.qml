@@ -30,6 +30,7 @@ ToolBar {
         id: namingDialog
 
         onRejected: {
+            close()
             useCurrentItem()
         }
     }

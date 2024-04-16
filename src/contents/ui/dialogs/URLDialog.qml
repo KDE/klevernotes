@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
+import QtQuick
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.PromptDialog {
+FormCard.FormCardDialog {
     id: textPromptDialog
 
     property QtObject caller
@@ -17,6 +17,13 @@ Kirigami.PromptDialog {
 
     onAccepted: {
         caller.path = urlField.text
+        close()
+    }
+    onRejected: {
+        close()
+    }
+    onClosed: {
+        urlField.clear()
     }
 
     FormCard.FormTextFieldDelegate {

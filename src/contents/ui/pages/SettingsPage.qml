@@ -35,7 +35,7 @@ FormCard.FormCardPage {
             parentPath: ""
             newItem: false
         },
-        FontPickerDialog{
+        FontPickerDialog {
             id: fontDialog
 
             onApplied: {
