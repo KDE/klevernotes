@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-15 01:37+0000\n"
+"POT-Creation-Date: 2024-04-16 01:49+0000\n"
 "PO-Revision-Date: 2024-02-29 03:09+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -468,25 +468,25 @@ msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "განრიგის დამატება"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:24
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
 msgstr "სათაური:"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:27
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:26
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "განრიგის სათაური (აუცილებელია)"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "აღწერა:"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:42
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:41
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
@@ -1549,11 +1549,19 @@ msgstr "%1 არ არსებობს"
 msgid "Header"
 msgstr "სათაური"
 
-#: contents/ui/todoEditor/ToDoView.qml:23
+#: contents/ui/todoEditor/ToDoView.qml:24
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "ჩართულის გასუფთავება"
+
+#: contents/ui/todoEditor/ToDoView.qml:79
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog"
+#| msgid "Add Todo"
+msgctxt "@action:button"
+msgid "Add new todo"
+msgstr "განრიგის დამატება"
 
 #: logic/kleverUtility.cpp:103
 #, kde-format

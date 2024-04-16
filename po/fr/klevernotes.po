@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-15 01:37+0000\n"
+"POT-Creation-Date: 2024-04-16 01:49+0000\n"
 "PO-Revision-Date: 2024-04-13 10:02+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -442,25 +442,25 @@ msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr "Ajouter une tâche à faire"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:24
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
 msgstr "Titre :"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:27
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:26
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr "Titre de tâche à faire (Obligatoire)"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr "Description :"
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:42
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:41
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
@@ -1504,11 +1504,19 @@ msgstr "%1 n'existe pas"
 msgid "Header"
 msgstr "En-tête"
 
-#: contents/ui/todoEditor/ToDoView.qml:23
+#: contents/ui/todoEditor/ToDoView.qml:24
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Effacement vérifié"
+
+#: contents/ui/todoEditor/ToDoView.qml:79
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog"
+#| msgid "Add Todo"
+msgctxt "@action:button"
+msgid "Add new todo"
+msgstr "Ajouter une tâche à faire"
 
 #: logic/kleverUtility.cpp:103
 #, kde-format

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-15 01:37+0000\n"
+"POT-Creation-Date: 2024-04-16 01:49+0000\n"
 "PO-Revision-Date: 2024-03-17 20:46\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -422,25 +422,25 @@ msgctxt "@title:dialog"
 msgid "Add Todo"
 msgstr ""
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:25
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:24
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
 msgstr ""
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:27
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:26
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
 msgstr ""
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:39
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
 msgstr ""
 
-#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:42
+#: contents/ui/dialogs/todoDialog/ToDoDialog.qml:41
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
@@ -1475,10 +1475,16 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: contents/ui/todoEditor/ToDoView.qml:23
+#: contents/ui/todoEditor/ToDoView.qml:24
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
+msgstr ""
+
+#: contents/ui/todoEditor/ToDoView.qml:79
+#, kde-format
+msgctxt "@action:button"
+msgid "Add new todo"
 msgstr ""
 
 #: logic/kleverUtility.cpp:103
