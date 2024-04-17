@@ -85,7 +85,9 @@ TextArea {
 
     Keys.onPressed: (event) => {
         if (root.vimModeOn) {
-            event.accepted = editorHandler.handleKeyPress(event.key, event.modifiers) 
+            if (event.modifiers === Qt.ShiftModifier | event.modifiers === Qt.NoModifier) {
+                event.accepted = editorHandler.handleKeyPress(event.key, event.modifiers) 
+            }
         }
     }
     Keys.onTabPressed: {
