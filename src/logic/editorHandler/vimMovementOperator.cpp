@@ -150,7 +150,7 @@ int VimMovementOperator::moveE(const bool isShift)
     if (previousPosition == tempCursorPosition - 1 || previousPosition == tempCursorPosition) {
         tempCursorPosition = moveW(false);
         if (blockLastCharPosition < tempCursorPosition && blockLastCharPosition != previousPosition) {
-            return blockLastCharPosition;
+            return blockLastCharPosition - 1;
         }
         if (emptyBlock()) {
             moveW(true);
@@ -162,6 +162,7 @@ int VimMovementOperator::moveE(const bool isShift)
     }
 
     const int finalPos = emptyBlock() || tempCursorPosition == docLastCharPosition ? tempCursorPosition : tempCursorPosition - 1;
+
     return finalPos;
 }
 
@@ -193,35 +194,132 @@ int VimMovementOperator::move(const int type, const int repeat, const bool isShi
     Q_UNUSED(repeat);
     switch (type) {
     case MoveType::Left: {
-        getNewPosition(QTextCursor::Left);
-        return nonEOLPosition();
+        int pos;
+        int i = 0;
+        while (i < repeat && pos != 0) {
+            getNewPosition(QTextCursor::Left);
+            pos = nonEOLPosition();
+            i++;
+        }
+        return pos;
     }
+
     case MoveType::Right: {
-        getNewPosition(QTextCursor::Right);
-        return nonEOLPosition(false);
+        int pos;
+        int i = 0;
+        const int docLastCharPosition = m_editorHandler->getLastCharPosition();
+        while (i < repeat && pos != docLastCharPosition) {
+            getNewPosition(QTextCursor::Right);
+            pos = nonEOLPosition(false);
+            i++;
+        }
+        return pos;
     }
+
     case MoveType::Up: {
-        getNewPosition(QTextCursor::Up);
-        return nonEOLPosition();
+        int previousPos = -1;
+        int pos = m_cursor.position();
+        int i = 0;
+        while (i < repeat && pos != previousPos) {
+            previousPos = pos;
+            getNewPosition(QTextCursor::Up);
+            pos = nonEOLPosition();
+            i++;
+        }
+        return pos;
     }
+
     case MoveType::Down: {
-        getNewPosition(QTextCursor::Down);
-        return nonEOLPosition(false);
+        int previousPos = -1;
+        int pos = m_cursor.position();
+        int i = 0;
+        while (i < repeat && pos != previousPos) {
+            previousPos = pos;
+            getNewPosition(QTextCursor::Down);
+            pos = nonEOLPosition(false);
+            i++;
+        }
+        return pos;
     }
+
     case MoveType::StartOfBlock:
         return getNewPosition(QTextCursor::StartOfBlock);
-    case MoveType::EndOfBlock:
+
+    case MoveType::EndOfBlock: {
+        int previousPos = -1;
+        int pos = m_cursor.position();
+        int i = 0;
+        while (i < repeat - 1 && pos != previousPos) {
+            previousPos = pos;
+            getNewPosition(QTextCursor::Down);
+            pos = nonEOLPosition(false);
+            i++;
+        }
         return getNewPosition(QTextCursor::EndOfBlock);
-    case MoveType::W:
-        return moveW(isShift);
-    case MoveType::B:
-        return moveB(isShift);
-    case MoveType::E:
-        return moveE(isShift);
-    case MoveType::Top:
-        return moveTop();
-    case MoveType::Bottom:
-        return moveBottom();
+    }
+
+    case MoveType::W: {
+        int previousPos = -1;
+        int pos = m_cursor.position();
+        int i = 0;
+        while (i < repeat && pos != previousPos) {
+            previousPos = pos;
+            pos = moveW(isShift);
+            i++;
+        }
+        return pos;
+    }
+
+    case MoveType::B: {
+        int previousPos = -1;
+        int pos = m_cursor.position();
+        int i = 0;
+        while (i < repeat && pos != previousPos) {
+            previousPos = pos;
+            pos = moveB(isShift);
+            i++;
+        }
+        return pos;
+    }
+
+    case MoveType::E: {
+        int previousPos = -1;
+        int pos = m_cursor.position();
+        int i = 0;
+        while (i < repeat && pos != previousPos) {
+            previousPos = pos;
+            pos = moveE(isShift);
+            i++;
+            // qDebug() << previousPos << pos;
+        }
+        return pos;
+    }
+
+    case MoveType::Top: {
+        int previousPos = m_cursor.position();
+        int pos = moveTop();
+        int i = 0;
+        while (i < repeat - 1 && pos != previousPos) {
+            previousPos = pos;
+            getNewPosition(QTextCursor::Down);
+            pos = nonEOLPosition(false);
+            i++;
+        }
+        return pos;
+    }
+
+    case MoveType::Bottom: {
+        int previousPos = m_cursor.position();
+        int pos = moveBottom();
+        int i = 0;
+        while (i < repeat - 1 && pos != previousPos) {
+            previousPos = pos;
+            getNewPosition(QTextCursor::Up);
+            pos = nonEOLPosition(false);
+            i++;
+        }
+        return pos;
+    }
     default:
         qDebug() << "Unreachable MoveType";
         Q_UNREACHABLE();

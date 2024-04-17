@@ -49,10 +49,6 @@ private:
     bool handleArrows(const int key);
 
     // Actions
-    enum ActionType {
-        DefaultType = Qt::UserRole + 1,
-        InsertType,
-    };
     std::vector<std::unique_ptr<AbstractVimAction>> m_actionsList;
     void doActions();
 

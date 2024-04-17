@@ -62,7 +62,7 @@ bool VimHandler::handleNumber(const int key)
 {
     // Range of 0-9 keys
     if (48 <= key && key <= 57) {
-        if (!m_repetitionBuffer) { // Doesn't grab 0 when the buffer is empty
+        if (!m_repetitionBuffer && key == 48) { // Doesn't grab 0 when the buffer is empty
             return false;
         }
         addToRepetition(key - 48);
@@ -77,7 +77,8 @@ bool VimHandler::handleArrows(const int key)
 {
     // Arrow range
     if (16777234 <= key && key <= 16777237) {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         switch (key) {
         case Qt::Key_Right: {
             handleMovement(VimMovementOperator::MoveType::Right, repeat);
@@ -146,68 +147,74 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     const bool isShift = modifiers == Qt::ShiftModifier;
     switch (key) {
     case Qt::Key_H: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::Left, repeat);
         break;
-        ;
     }
 
     case Qt::Key_L: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
+        qDebug() << repetition << repeat;
         handleMovement(VimMovementOperator::MoveType::Right, repeat);
         break;
-        ;
     }
 
     case Qt::Key_J: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::Down, repeat);
         break;
-        ;
     }
 
     case Qt::Key_K: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::Up, repeat);
         break;
     }
 
     case Qt::Key_Dollar: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::EndOfBlock, repeat);
         break;
         ;
     }
 
     case Qt::Key_0: {
-        const int repeat = getRepetition();
-        handleMovement(VimMovementOperator::MoveType::StartOfBlock, repeat);
+        handleMovement(VimMovementOperator::MoveType::StartOfBlock, 1);
         break;
-        ;
     }
 
     case Qt::Key_W: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::W, repeat, isShift);
         break;
         ;
     }
 
     case Qt::Key_B: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::B, repeat, isShift);
         break;
     }
 
     case Qt::Key_E: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
         handleMovement(VimMovementOperator::MoveType::E, repeat, isShift);
         break;
         ;
     }
 
     case Qt::Key_G: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
+
         const bool lastActionIsG = !m_actionsList.empty() && LASTACTION()->getType() == 'g';
         if (lastActionIsG && isShift) {
             m_actionsList.clear();
@@ -269,7 +276,9 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     }
 
     case Qt::Key_X: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
+
         auto action = std::make_unique<CutAction>(this, m_editorHandler, 'x', true);
         if (m_currentMode == EditorMode::Visual) {
             if (isShift) {
@@ -294,7 +303,9 @@ bool VimHandler::handleKeyPress(const int key, const int modifiers)
     }
 
     case Qt::Key_D: {
-        const int repeat = getRepetition();
+        const int repetition = getRepetition();
+        const int repeat = repetition ? repetition : 1;
+
         const bool lastActionIsD = !m_actionsList.empty() && LASTACTION()->getType() == 'd';
 
         if (lastActionIsD && isShift) {
