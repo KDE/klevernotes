@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-16 01:49+0000\n"
+"POT-Creation-Date: 2024-04-17 01:46+0000\n"
 "PO-Revision-Date: 2023-11-04 12:50+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -57,13 +57,13 @@ msgstr ""
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
-msgid "Delete Note Confirmation"
+msgid "Delete Group Confirmation"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
-msgid "Delete Group Confirmation"
+msgid "Delete Note Confirmation"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:38
@@ -102,63 +102,75 @@ msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Wybierak obrazu"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:82
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:83
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Obraz sieciowy"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:111
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:112
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Obraz miejscowy"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:142
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:143
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Namaluj obraz"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:165
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:166
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Zbiór obrazów"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:237
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr ""
 "Wygląda na to, że zaznaczony obraz nie istnieje lub jest nieobsługiwany."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:256
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Tekst obrazu: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:265
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
 msgstr "Umieść ten obraz wewnątrz katalogu notatek"
 
-#: contents/ui/dialogs/LeavePaintingDialog.qml:10
+#: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
 msgstr "Malowanie KleverNotes"
 
-#: contents/ui/dialogs/LeavePaintingDialog.qml:11
-#, kde-format
-msgid ""
-"You're about to leave without saving your drawing!\n"
-"Do you want to save it before leaving ?\n"
+#: contents/ui/dialogs/LeavePaintingDialog.qml:20
+#, fuzzy, kde-format
+#| msgid ""
+#| "You're about to leave without saving your drawing!\n"
+#| "Do you want to save it before leaving ?\n"
+msgctxt "@subtitle:dialog"
+msgid "You're about to leave without saving your drawing!"
 msgstr ""
 "Nastąpi wyjście bez zapisania rysunku!\n"
 "Zapisać go przed wyjściem?\n"
+
+#: contents/ui/dialogs/LeavePaintingDialog.qml:21
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+#| "group) or 'note' (a note)"
+#| msgid "Are you sure you want to delete this %1 ?"
+msgctxt "@subtitle:dialog"
+msgid "Do you want to save it before leaving ?"
+msgstr "Czy na pewno usunąć tę %1 ?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -167,21 +179,21 @@ msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "Utwórz swój odsyłacz"
 
-#: contents/ui/dialogs/LinkDialog.qml:32 contents/ui/dialogs/URLDialog.qml:25
+#: contents/ui/dialogs/LinkDialog.qml:34 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "Adres URL:"
 
-#: contents/ui/dialogs/LinkDialog.qml:39
-#: contents/ui/dialogs/LinkNoteDialog.qml:90
+#: contents/ui/dialogs/LinkDialog.qml:41
+#: contents/ui/dialogs/LinkNoteDialog.qml:92
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Tekst odsyłacza:"
 
-#: contents/ui/dialogs/LinkNoteDialog.qml:37
+#: contents/ui/dialogs/LinkNoteDialog.qml:39
 #, fuzzy, kde-format
 #| msgctxt "@label:button, as in 'A note'"
 #| msgid "Note"
@@ -189,28 +201,18 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "Notatka"
 
-#: contents/ui/dialogs/LinkNoteDialog.qml:63
+#: contents/ui/dialogs/LinkNoteDialog.qml:65
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
 msgstr ""
 
-#: contents/ui/dialogs/LinkNoteDialog.qml:75
+#: contents/ui/dialogs/LinkNoteDialog.qml:77
 #, fuzzy, kde-format
 #| msgid "Header"
 msgctxt "@label:textbox"
 msgid "Header:"
 msgstr "Nagłówek"
-
-#: contents/ui/dialogs/MoveDialog.qml:20
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
-msgctxt "@subtitle:dialog, as in 'A note category'"
-msgid "Where do you want to move this category ?"
-msgstr "Czy na pewno usunąć tę %1 ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:21
 #, fuzzy, kde-format
@@ -361,34 +363,45 @@ msgstr ""
 "\n"
 "Wybierz miejsce dla przyszłych danych KleverNotes lub wybierz już istniejące."
 
-#: contents/ui/dialogs/StorageDialog.qml:45
+#: contents/ui/dialogs/StorageDialog.qml:26
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@title:dialog, 'storage' as in 'the folder where all the notes will be "
+#| "stored'"
+#| msgid "KleverNotes Storage"
+msgctxt ""
+"@title:dialog, Storage as in 'the folder where all the notes will be stored'"
+msgid "KleverNotes Storage"
+msgstr "Pamięć KleverNotes"
+
+#: contents/ui/dialogs/StorageDialog.qml:47
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "Istniejącą pamięć"
 
-#: contents/ui/dialogs/StorageDialog.qml:47
+#: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "Zmień ścieżkę pamięci"
 
-#: contents/ui/dialogs/StorageDialog.qml:61
+#: contents/ui/dialogs/StorageDialog.qml:63
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "Utwórz pamięć"
 
-#: contents/ui/dialogs/StorageDialog.qml:63
+#: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "Utwórz nową pamięć"
 
-#: contents/ui/dialogs/StorageDialog.qml:95
+#: contents/ui/dialogs/StorageDialog.qml:96
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
@@ -403,13 +416,13 @@ msgstr ""
 "\n"
 "Wybierz miejsce dla przyszłych danych KleverNotes lub wybierz już istniejące."
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:22
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
 msgstr "Tworzenie tabeli"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:43
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
@@ -417,43 +430,43 @@ msgctxt ""
 msgid "Size: %1 x %2"
 msgstr "Rozmiar: %1 x %2"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:155
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:165
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
 msgstr "Więcej ustawień"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:209
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:219
 #, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
 msgstr "Wiersz"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:221
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:231
 #, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
 msgstr "Kolumna"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:233
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:243
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
 msgstr "Wyrównanie :"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:238
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:248
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
 msgstr "Do lewej"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:239
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:249
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
 msgstr "Do środka"
 
-#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:240
+#: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:250
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
@@ -523,25 +536,25 @@ msgstr "Witaj w KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Utwórz lub wybierz notatkę, aby zacząć pracować!"
 
-#: contents/ui/pages/PaintingPage.qml:29
+#: contents/ui/pages/PaintingPage.qml:30
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Maluj!"
 
-#: contents/ui/pages/PaintingPage.qml:38 contents/ui/pages/PrintingPage.qml:76
+#: contents/ui/pages/PaintingPage.qml:39 contents/ui/pages/PrintingPage.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Zapisz"
 
-#: contents/ui/pages/PaintingPage.qml:46
+#: contents/ui/pages/PaintingPage.qml:47
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: contents/ui/pages/PaintingPage.qml:56
+#: contents/ui/pages/PaintingPage.qml:57
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
@@ -1116,40 +1129,40 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "Tekst odsyłacza:"
 
-#: contents/ui/sideBar/ActionBar.qml:50
+#: contents/ui/sideBar/ActionBar.qml:51
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Utwórz nową kategorię"
 
-#: contents/ui/sideBar/ActionBar.qml:58
+#: contents/ui/sideBar/ActionBar.qml:59
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Utwórz nową grupę"
 
-#: contents/ui/sideBar/ActionBar.qml:66
+#: contents/ui/sideBar/ActionBar.qml:67
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Utwórz nową notatkę"
 
-#: contents/ui/sideBar/ActionBar.qml:74 contents/ui/sideBar/ContextMenu.qml:46
+#: contents/ui/sideBar/ActionBar.qml:75 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
 msgstr "Przemianuj"
 
-#: contents/ui/sideBar/ActionBar.qml:87
+#: contents/ui/sideBar/ActionBar.qml:88
 #, kde-format
 msgid "Search"
 msgstr ""
 
-#: contents/ui/sideBar/ActionBar.qml:104
+#: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Collapse sidebar"
 msgstr ""
 
-#: contents/ui/sideBar/ActionBar.qml:105
+#: contents/ui/sideBar/ActionBar.qml:106
 #, kde-format
 msgid "Expand sidebar"
 msgstr ""
@@ -1604,11 +1617,11 @@ msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr ""
 
-#: contents/ui/textEditor/TextToolBar.qml:183
-#: contents/ui/textEditor/TextToolBar.qml:184
 #: contents/ui/textEditor/TextToolBar.qml:185
+#: contents/ui/textEditor/TextToolBar.qml:186
 #: contents/ui/textEditor/TextToolBar.qml:187
-#: contents/ui/textEditor/TextToolBar.qml:188
+#: contents/ui/textEditor/TextToolBar.qml:189
+#: contents/ui/textEditor/TextToolBar.qml:190
 #, kde-format
 msgid "Header"
 msgstr "Nagłówek"
@@ -1796,6 +1809,15 @@ msgstr "Łukasz Wojniłowicz"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "lukasz.wojnilowicz@gmail.com"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a "
+#~| "note group) or 'note' (a note)"
+#~| msgid "Are you sure you want to delete this %1 ?"
+#~ msgctxt "@subtitle:dialog, as in 'A note category'"
+#~ msgid "Where do you want to move this category ?"
+#~ msgstr "Czy na pewno usunąć tę %1 ?"
 
 #~ msgctxt "@title:dialog"
 #~ msgid "Warning"
