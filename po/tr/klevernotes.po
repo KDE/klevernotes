@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-17 01:46+0000\n"
-"PO-Revision-Date: 2024-04-16 06:17+0300\n"
+"PO-Revision-Date: 2024-04-17 13:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -138,23 +138,16 @@ msgid "KleverNotes painting"
 msgstr "Akıllı Notlar Boyaması"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "You're about to leave without saving your drawing!\n"
-#| "Do you want to save it before leaving ?\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
-"Çiziminizi kaydetmeden ayrılmak üzeresiniz!\n"
-"Ayrılmadan önce kaydetmek istiyor musunuz?\n"
+msgstr "Çiziminizi kaydetmeden ayrılmak üzeresiniz!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "Bu notu nereye taşımak istiyorsunuz?"
+msgstr "Ayrılmadan önce kaydetmek istiyor musunuz?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -330,11 +323,7 @@ msgstr ""
 "olan bir tanesini seçin."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@title:dialog, 'storage' as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "KleverNotes Storage"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"

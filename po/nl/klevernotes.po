@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-17 01:46+0000\n"
-"PO-Revision-Date: 2024-04-16 11:15+0200\n"
+"PO-Revision-Date: 2024-04-17 10:42+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -138,23 +138,16 @@ msgid "KleverNotes painting"
 msgstr "Tekenen in KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "You're about to leave without saving your drawing!\n"
-#| "Do you want to save it before leaving ?\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
-"U staat op het punt uw tekening te verlaten zonder deze op te slaan!\n"
-"Wilt u het opslaan alvorens te verlaten?\n"
+msgstr "U staat op het punt uw tekening te verlaten zonder deze op te slaan!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "Waar wilt u deze notitie naar verplaatsen?"
+msgstr "Wilt u het opslaan alvorens te verlaten?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -330,11 +323,7 @@ msgstr ""
 "selecteer een bestaande."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@title:dialog, 'storage' as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "KleverNotes Storage"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"

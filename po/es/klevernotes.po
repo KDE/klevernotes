@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-17 01:46+0000\n"
-"PO-Revision-Date: 2024-04-15 17:10+0200\n"
+"PO-Revision-Date: 2024-04-18 01:03+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -138,23 +138,16 @@ msgid "KleverNotes painting"
 msgstr "Dibujo de KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "You're about to leave without saving your drawing!\n"
-#| "Do you want to save it before leaving ?\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
-"Está a punto de salir sin guardar el dibujo.\n"
-"¿Desea guardarlo antes de salir?\n"
+msgstr "Está a punto de salir sin guardar el dibujo."
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "¿Adónde quiere mover esta nota?"
+msgstr "¿Desea guardarlo antes de salir?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -330,11 +323,7 @@ msgstr ""
 "que ya exista."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@title:dialog, 'storage' as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "KleverNotes Storage"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
@@ -1517,12 +1506,10 @@ msgid "Clear checked"
 msgstr "Borrar marcadas"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Add Todo"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr "Añadir tarea pendiente"
+msgstr "Añadir nueva tarea pendiente"
 
 #: logic/kleverUtility.cpp:103
 #, kde-format
