@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <QList>
 #include <QRegularExpression>
 
 class Parser;
@@ -19,14 +20,16 @@ public:
     void lex(QString &src);
 
 private:
-    QString preprocess(QString &src) const;
+    QString preprocess(QString &src);
     void tokenize(QString &src, const bool top);
     QStringList splitCells(QString &tableRow, const int count = -1) const;
 
-    QMap<QString, QRegularExpression> preprocessRegex{{QStringLiteral("\n"), QRegularExpression(QStringLiteral("\r\n|\r|\u2424"))},
-                                                      {QStringLiteral("    "), QRegularExpression(QStringLiteral("\t"))},
-                                                      {QStringLiteral(" "), QRegularExpression(QStringLiteral("\u00a0"))},
-                                                      {QStringLiteral(""), QRegularExpression(QStringLiteral("^ +$"))}};
+    QMap<QString, QRegularExpression> preprocessRegex{
+        // {QStringLiteral("\n"), QRegularExpression(QStringLiteral("\r\n|\r|\u2424"))},
+        {QStringLiteral("    "), QRegularExpression(QStringLiteral("\t"))},
+        // {QStringLiteral(" "), QRegularExpression(QStringLiteral("\u00a0"))},
+        // {QStringLiteral(""), QRegularExpression(QStringLiteral("^ +$"))},
+    };
 
     inline static const QRegularExpression block_newline = QRegularExpression(QStringLiteral("^\n+"));
 
@@ -87,6 +90,16 @@ private:
         "summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?: +|\n|/?>)|<(?:script|pre|style|!--))[^\n]+)*)"));
 
     inline static const QRegularExpression block_text = QRegularExpression(QStringLiteral("^[^\n]+"));
+
+    void reset();
+    void setNextOffSetPos();
+    // void checkOffSet(const int capturedLength);
+    void checkOffSet(const int tokenStartPos);
+    int m_tokenEndPos = 0;
+    int m_offSetCounter = 0;
+
+    int m_currentOffSetPos;
+    QList<int> m_offSetPosHolder;
 
     Parser *m_parser;
 };
