@@ -172,7 +172,7 @@ QString InlineLexer::output(QString &src, bool useInlineText)
 
             const QString linkId = !cap2.isEmpty() ? cap2 : cap1;
 
-            linkInfo = m_parser->links[linkId.toLower()];
+            linkInfo = m_parser->getLink(linkId.toLower());
             if (linkInfo.isEmpty() || linkInfo[QStringLiteral("href")].isEmpty()) {
                 out += cap.captured(0).at(0);
                 src = cap.captured(0).mid(1) + src;

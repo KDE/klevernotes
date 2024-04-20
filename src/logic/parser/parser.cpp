@@ -9,6 +9,7 @@
 
 #include "renderer.h"
 #include <QJsonArray>
+#include <qlogging.h>
 
 using namespace std;
 
@@ -53,6 +54,26 @@ QString Parser::getNotePath() const
     return m_notePath;
 }
 
+void Parser::addToken(const QVariantMap &token)
+{
+    m_tokens.append(token);
+}
+
+bool Parser::tagExists(const QString &tag)
+{
+    return m_links.contains(tag);
+}
+
+void Parser::addLink(const QString &tag, const QMap<QString, QString> &link)
+{
+    m_links.insert(tag, link);
+}
+
+QMap<QString, QString> Parser::getLink(const QString &tag)
+{
+    return m_links.value(tag);
+}
+
 QString Parser::parse(QString src)
 {
     pluginHelper->clearPluginsInfo();
@@ -61,7 +82,7 @@ QString Parser::parse(QString src)
 
     pluginHelper->preTokChanges();
 
-    std::reverse(tokens.begin(), tokens.end());
+    std::reverse(m_tokens.begin(), m_tokens.end());
 
     QString out;
     while (getNextToken()) {
@@ -230,14 +251,14 @@ QString Parser::parseText()
 
 bool Parser::getNextToken()
 {
-    m_token = (tokens.isEmpty()) ? QVariantMap{} : tokens.takeLast();
+    m_token = (m_tokens.isEmpty()) ? QVariantMap{} : m_tokens.takeLast();
 
     return !m_token.isEmpty();
 }
 
 QString Parser::peekType() const
 {
-    return (!tokens.isEmpty()) ? tokens.last()[QStringLiteral("type")].toString() : QLatin1String();
+    return (!m_tokens.isEmpty()) ? m_tokens.last()[QStringLiteral("type")].toString() : QLatin1String();
 }
 
 // Syntax highlight

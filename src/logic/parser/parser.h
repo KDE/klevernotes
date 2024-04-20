@@ -9,6 +9,7 @@
 
 #include <QObject>
 #include <QSet>
+#include <qmap.h>
 
 #include "../plugins/pluginHelper.h"
 #include "blockLexer.h"
@@ -28,8 +29,11 @@ public:
 
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
-    QVector<QVariantMap> tokens;
-    QMap<QString, QMap<QString, QString>> links;
+
+    void addToken(const QVariantMap &token);
+    bool tagExists(const QString &tag);
+    void addLink(const QString &tag, const QMap<QString, QString> &link);
+    QMap<QString, QString> getLink(const QString &tag);
 
     PluginHelper *getPluginHelper() const;
 
@@ -60,4 +64,6 @@ private:
 
     QString m_notePath;
     QVariantMap m_token;
+    QVector<QVariantMap> m_tokens;
+    QMap<QString, QMap<QString, QString>> m_links;
 };
