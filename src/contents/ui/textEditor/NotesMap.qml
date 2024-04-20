@@ -14,7 +14,7 @@ import "qrc:/contents/ui/textEditor/components/"
 Kirigami.Dialog {
     id: noteMap
 
-    required property QtObject parser
+    required property QtObject __editorHandler
 
     title: i18nc("@window:title","Linked notes map")
 
@@ -50,7 +50,7 @@ Kirigami.Dialog {
                     height: Kirigami.Units.gridUnit * 3
                     onClicked: {
                         if (headerExists) {
-                            parser.headerInfo = [header, headerLevel.toString()]
+                            editorHandler.headerInfo = [header, headerLevel.toString()]
                         }
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
@@ -98,4 +98,3 @@ Kirigami.Dialog {
         }
     }
 }
-

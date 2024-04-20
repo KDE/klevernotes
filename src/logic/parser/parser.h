@@ -7,25 +7,24 @@
 
 #pragma once
 
-#include <QObject>
 #include <QSet>
-#include <qmap.h>
 
 #include "../plugins/pluginHelper.h"
 #include "blockLexer.h"
 #include "inlineLexer.h"
 
-class Parser : public QObject
+class EditorHandler;
+class Parser
 {
-    Q_OBJECT
-    Q_PROPERTY(QString notePath WRITE setNotePath)
-    // NoteMapper
-    Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
-    Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
 public:
-    explicit Parser(QObject *parent = nullptr);
+    Parser(EditorHandler *editorHandler = nullptr);
 
-    Q_INVOKABLE QString parse(QString src);
+    EditorHandler *getEditorHandler() const
+    {
+        return m_editorHandler;
+    }
+
+    QString parse(QString src);
 
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
@@ -34,25 +33,21 @@ public:
     bool tagExists(const QString &tag);
     void addLink(const QString &tag, const QMap<QString, QString> &link);
     QMap<QString, QString> getLink(const QString &tag);
+    void addHighlightToken(const std::tuple<QString, int, int> &token);
 
     PluginHelper *getPluginHelper() const;
 
     // NoteMapper
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
-
-Q_SIGNALS:
-    // NoteMapper
-    void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
-    void noteHeadersSent(const QString &notePath, const QStringList &noteHeaders);
-
-public Q_SLOTS:
     // Syntax highlight
     void newHighlightStyle();
     // PUML
     void pumlDarkChanged();
 
 private:
+    EditorHandler *m_editorHandler = nullptr;
+
     QString tok();
     QString parseText();
     QString peekType() const;

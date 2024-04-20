@@ -7,14 +7,14 @@
 
 #include "parser.h"
 
+#include "logic/editorHandler.h"
 #include "renderer.h"
 #include <QJsonArray>
-#include <qlogging.h>
 
 using namespace std;
 
-Parser::Parser(QObject *parent)
-    : QObject(parent)
+Parser::Parser(EditorHandler *editorHandler)
+    : m_editorHandler(editorHandler)
 {
 }
 
@@ -72,6 +72,11 @@ void Parser::addLink(const QString &tag, const QMap<QString, QString> &link)
 QMap<QString, QString> Parser::getLink(const QString &tag)
 {
     return m_links.value(tag);
+}
+
+void Parser::addHighlightToken(const std::tuple<QString, int, int> &token)
+{
+    m_highlighterTokens.append(token);
 }
 
 QString Parser::parse(QString src)

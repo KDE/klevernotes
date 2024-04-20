@@ -19,6 +19,7 @@
 
 #include "logic/colorschemer.h"
 #include "logic/documentHandler.h"
+#include "logic/editorHandler.h"
 #include "logic/kleverUtility.h"
 #include "logic/mdHandler.h"
 #include "logic/qmlLinker.h"
@@ -36,7 +37,6 @@
 
 #include "logic/printing/printingHelper.h"
 
-#include "logic/wysiwyg/markdownHighlighter.h"
 // Plugins
 #include "logic/plugins/emoji/emojiModel.h"
 #include "logic/plugins/emoji/emoticonFilterModel.h"
@@ -136,7 +136,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     qmlRegisterType<PrintingUtility>("org.kde.Klever", 1, 0, "PrintingUtility");
 
-    qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
+    qmlRegisterType<EditorHandler>("org.kde.Klever", 1, 0, "EditorHandler");
+
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     // === PLUGINS ===
@@ -167,8 +168,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<SketchSerializer>("WashiPad", 1, 0, "SketchSerializer");
     qmlRegisterType<StrokeItem>("WashiPad", 1, 0, "StrokeItem");
     qmlRegisterType<StrokeListItem>("WashiPad", 1, 0, "StrokeListItem");
-
-    qmlRegisterType<MarkdownHighlighter>("MarkdownHighlighter", 1, 0, "MarkdownHighlighter");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));

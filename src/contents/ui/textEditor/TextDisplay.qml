@@ -19,11 +19,11 @@ import qtMdEditor 1.0 as QtMdEditor
 RowLayout {
     id: root
 
-    readonly property var view: web_view
-
+    required property EditorHandler __editorHandler
     required property string path
     required property string text
     
+    readonly property var view: web_view
     // Syntax highlight
     readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
     readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
@@ -37,7 +37,6 @@ RowLayout {
     readonly property bool pumlEnabled: Config.pumlEnabled
     readonly property bool pumlDark: Config.pumlDark
 
-    readonly property Parser parser: parser
     readonly property string stylePath: Config.stylePath
     readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
     readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
@@ -67,7 +66,7 @@ RowLayout {
     spacing: 0
 
     onPathChanged: {
-        parser.notePath = path
+        __editorHandler.notePath = path
     }
     onTextChanged: {
         root.parseText()
@@ -76,7 +75,7 @@ RowLayout {
         root.parseText()
     }
     onHighlighterStyleChanged: {
-        parser.newHighlightStyle()
+        __editorHandler.newHighlightStyle()
         root.parseText()
     }
     onNoteMapEnabledChanged: {
@@ -92,7 +91,7 @@ RowLayout {
         root.parseText()
     }
     onPumlDarkChanged: {
-        parser.pumlDarkChanged()
+        __editorHandler.pumlDarkChanged()
         root.parseText()
     }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {
@@ -167,7 +166,7 @@ RowLayout {
                     const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
 
                     if (noteModelIndex.row !== -1) {
-                        if (header[1] !== 0) parser.headerInfo = headerInfo
+                        if (header[1] !== 0) __editorHandler.headerInfo = headerInfo
 
                         sidebar.askForFocus(noteModelIndex)
                     } 
@@ -211,17 +210,6 @@ RowLayout {
         }
     }
 
-    Parser { 
-        id: parser
-
-        onNewLinkedNotesInfos: function(linkedNotesInfos) {
-            noteMapper.addLinkedNotesInfos(linkedNotesInfos)
-        }
-        onNoteHeadersSent: function(notePath, noteHeaders) {
-            noteMapper.updatePathInfo(notePath, noteHeaders)
-        }
-    }
-
     function loadBaseHtml() {
         if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
 
@@ -230,7 +218,7 @@ RowLayout {
 
     function parseText() {
         if (web_view.loadProgress === 100) {
-            parsedHtml = parser.parse(text)
+            parsedHtml = __editorHandler.parse(text)
             contentLink.text = parsedHtml
         }
     }
@@ -280,11 +268,11 @@ RowLayout {
     }
 
     function scrollToHeader() {
-        if (parser.headerLevel !== "0") {
+        if (__editorHandler.headerLevel !== "0") {
             web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
                 if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
                     web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
-                    parser.headerInfo = ["", "0"]
+                    __editorHandler.headerInfo = ["", "0"]
                 }
             })
         }

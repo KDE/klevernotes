@@ -7,7 +7,6 @@ import QtQuick.Controls 2.2
 import org.kde.kirigami 2.19 as Kirigami
 
 import org.kde.Klever 1.0
-import MarkdownHighlighter 1.0
 
 ScrollView {
     id: view
@@ -84,11 +83,6 @@ ScrollView {
                 insert(selectionStart, Config.useSpaceForTab ? chars.repeat(Config.spacesForTab) : chars)
             }
         }
-    }
-
-    MarkdownHighlighter {
-        id: syntaxHighlighter
-        textDocument: textArea.textDocument
     }
 
     Timer {

@@ -183,6 +183,7 @@ ColumnLayout {
                     ? 2
                     : 1
 
+                __editorHandler: editorHandler
                 text: editor.text
                 path: root.path.replace("note.md", "")
                 visible: viewToggler.checked // make sure that the textEditor while correctly grow
@@ -204,13 +205,23 @@ ColumnLayout {
         }
     }
 
+    EditorHandler {
+        id: editorHandler
+
+        document: editor.textArea.textDocument
+        cursorPosition: editor.textArea.cursorPosition
+        selectionStart: editor.textArea.selectionStart
+        selectionEnd: editor.textArea.selectionEnd
+        notePath: display.path
+    }
+
     Loader {
         id: noteMapLoader
 
         sourceComponent: NotesMap {
             id: linkedNotesMap
 
-            parser: display.parser
+            __editorHandler: editorHandler
         }
         active: Config.noteMapEnabled
     }

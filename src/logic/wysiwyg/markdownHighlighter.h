@@ -39,15 +39,6 @@ QT_END_NAMESPACE
 
 class MarkdownHighlighter : public QSyntaxHighlighter
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QQuickTextDocument *textDocument READ textDocument WRITE setTextDocument NOTIFY textDocumentChanged)
-
-    QQuickTextDocument *m_quickDocument = nullptr;
-
-Q_SIGNALS:
-    void textDocumentChanged();
-
 public:
     inline QQuickTextDocument *textDocument() const
     {
@@ -59,13 +50,12 @@ public:
             return;
         m_quickDocument = textDocument;
         setDocument(m_quickDocument->textDocument());
-        Q_EMIT textDocumentChanged();
     };
 
     enum HighlightingOption { None = 0, FullyHighlightedBlockQuote = 0x01, Underline = 0x02 };
     Q_DECLARE_FLAGS(HighlightingOptions, HighlightingOption)
 
-    MarkdownHighlighter(QTextDocument *parent = nullptr, HighlightingOptions highlightingOptions = HighlightingOption::None);
+    MarkdownHighlighter(QTextDocument *parent = nullptr, HighlightingOptions highlightingOptions = HighlightingOption::FullyHighlightedBlockQuote);
 
     static inline QColor codeBlockBackgroundColor()
     {
@@ -222,6 +212,7 @@ protected Q_SLOTS:
     void timerTick();
 
 protected:
+    QQuickTextDocument *m_quickDocument = nullptr;
     struct HighlightingRule {
         explicit HighlightingRule(const HighlighterState state_)
             : state(state_)

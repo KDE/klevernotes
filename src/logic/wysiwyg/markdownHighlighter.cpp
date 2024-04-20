@@ -33,6 +33,7 @@
 #include <QRegularExpressionMatchIterator>
 #include <QTextDocument>
 #include <QTimer>
+#include <qlogging.h>
 #include <utility>
 
 #include "qownlanguagedata.h"
@@ -80,7 +81,7 @@ void MarkdownHighlighter::timerTick()
     // emit a signal every second if there was some highlighting done
     if (_highlightingFinished) {
         _highlightingFinished = false;
-        Q_EMIT highlightingFinished();
+        // Q_EMIT highlightingFinished();
     }
 }
 
@@ -205,27 +206,37 @@ void MarkdownHighlighter::initTextFormats(int defaultFontSize)
 
     // set character format for lists
     format = QTextCharFormat();
-    format.setForeground(QColor(163, 0, 123));
+    const auto listColor = QColor(163, 0, 123);
+    qDebug() << "listColor " << listColor.name();
+    format.setForeground(listColor);
     _formats[List] = format;
 
     // set character format for checkbox
     format = QTextCharFormat();
-    format.setForeground(QColor(123, 100, 223));
+    const auto checkboxColor = QColor(123, 100, 223);
+    qDebug() << "checkboxColor " << checkboxColor.name();
+    format.setForeground(checkboxColor);
     _formats[CheckBoxUnChecked] = std::move(format);
     // set character format for checked checkbox
     format = QTextCharFormat();
-    format.setForeground(QColor(223, 50, 123));
+    const auto checkedCheckboxColor = QColor(223, 50, 123);
+    qDebug() << "checkedCheckbox " << checkedCheckboxColor.name();
+    format.setForeground(checkedCheckboxColor);
     _formats[CheckBoxChecked] = std::move(format);
 
     // set character format for links
     format = QTextCharFormat();
-    format.setForeground(QColor(0, 128, 255));
+    const auto linksColor = QColor(0, 128, 255);
+    qDebug() << "linksColor" << linksColor.name();
+    format.setForeground(linksColor);
     format.setFontUnderline(true);
     _formats[Link] = std::move(format);
 
     // set character format for images
     format = QTextCharFormat();
-    format.setForeground(QColor(0, 191, 0));
+    const auto imageColor = QColor(0, 191, 0);
+    qDebug() << "imageColor" << imageColor.name();
+    format.setForeground(imageColor);
     format.setBackground(QColor(228, 255, 228));
     _formats[Image] = std::move(format);
 
@@ -259,18 +270,24 @@ void MarkdownHighlighter::initTextFormats(int defaultFontSize)
 
     // set character format for masked syntax
     format = QTextCharFormat();
-    format.setForeground(QColor(204, 204, 204));
+    const auto maskedColor = QColor(204, 204, 204);
+    qDebug() << "maskedColor " << maskedColor.name();
+    format.setForeground(maskedColor);
     _formats[MaskedSyntax] = std::move(format);
 
     // set character format for tables
     format = QTextCharFormat();
+    const auto tablesColor = QColor(100, 148, 73);
+    qDebug() << "tablesColor " << tablesColor.name();
     format.setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    format.setForeground(QColor(100, 148, 73));
+    format.setForeground(tablesColor);
     _formats[Table] = std::move(format);
 
     // set character format for block quotes
     format = QTextCharFormat();
-    format.setForeground(Qt::darkRed);
+    const auto blockquoteColor = QColor(Qt::darkRed);
+    qDebug() << "blockquoteColor " << blockquoteColor.name();
+    format.setForeground(blockquoteColor);
     _formats[BlockQuote] = std::move(format);
 
     format = QTextCharFormat();
@@ -278,7 +295,9 @@ void MarkdownHighlighter::initTextFormats(int defaultFontSize)
     _formats[NoState] = std::move(format);
 
     // set character format for trailing spaces
-    format.setBackground(QColor(252, 175, 62));
+    const auto trailingSpaceColor = QColor(252, 175, 62);
+    qDebug() << "trailingSpaceColor " << trailingSpaceColor.name();
+    format.setBackground(trailingSpaceColor);
     _formats[TrailingSpace] = std::move(format);
 
     /****************************************
@@ -473,8 +492,9 @@ void MarkdownHighlighter::highlightHeadline(const QString &text)
             // Set styling of the "#"s to "masked syntax", but with the size of
             // the heading
             auto maskedFormat = _formats[MaskedSyntax];
-            maskedFormat.setFontPointSize(_formats[state].fontPointSize());
-            setFormat(0, headingLevel, maskedFormat);
+            maskedFormat.setFontPointSize(1);
+            // maskedFormat.setFontPointSize(_formats[state].fontPointSize());
+            setFormat(0, headingLevel + 1, maskedFormat);
 
             // Set the styling of the rest of the heading
             setFormat(headingLevel + 1, text.length() - 1 - headingLevel, _formats[state]);
