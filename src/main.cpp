@@ -153,18 +153,22 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qRegisterMetaType<Event>();
 
     // Will complain about valueType names starting with capital letter, but changing it will break things and make CLazy angry
-    qmlRegisterUncreatableType<StrokeSample>("WashiPad", 1, 0, "StrokeSample", QStringLiteral("Use the createSample function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Stroke>("WashiPad", 1, 0, "Stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Event>("WashiPad", 1, 0, "Event", QStringLiteral("They are provided by the SketchViewHandler"));
+    qmlRegisterUncreatableType<StrokeSample>("WashiPadComponents",
+                                             1,
+                                             0,
+                                             "StrokeSample",
+                                             QStringLiteral("Use the createSample function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Stroke>("WashiPadComponents", 1, 0, "Stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
+    qmlRegisterUncreatableType<Event>("WashiPadComponents", 1, 0, "Event", QStringLiteral("They are provided by the SketchViewHandler"));
 
-    qmlRegisterType<PressureEquation>("WashiPad", 1, 0, "PressureEquation");
+    qmlRegisterType<PressureEquation>("WashiPadComponents", 1, 0, "PressureEquation");
 
-    qmlRegisterType<SketchViewHandler>("WashiPad", 1, 0, "SketchViewHandler");
+    qmlRegisterType<SketchViewHandler>("WashiPadComponents", 1, 0, "SketchViewHandler");
 
-    qmlRegisterType<SketchModel>("WashiPad", 1, 0, "SketchModel");
-    qmlRegisterType<SketchSerializer>("WashiPad", 1, 0, "SketchSerializer");
-    qmlRegisterType<StrokeItem>("WashiPad", 1, 0, "StrokeItem");
-    qmlRegisterType<StrokeListItem>("WashiPad", 1, 0, "StrokeListItem");
+    qmlRegisterType<SketchModel>("WashiPadComponents", 1, 0, "SketchModel");
+    qmlRegisterType<SketchSerializer>("WashiPadComponents", 1, 0, "SketchSerializer");
+    qmlRegisterType<StrokeItem>("WashiPadComponents", 1, 0, "StrokeItem");
+    qmlRegisterType<StrokeListItem>("WashiPadComponents", 1, 0, "StrokeListItem");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));

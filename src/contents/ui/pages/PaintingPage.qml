@@ -12,7 +12,7 @@ import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/painting"
 
 import org.kde.Klever 1.0
-import WashiPad 1.0
+import WashiPadComponents 1.0
 
 Kirigami.Page {
     id: root
