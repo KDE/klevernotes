@@ -6,8 +6,8 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.neochat
-import org.kde.Klever 1.0
+import neochatComponents
+import org.kde.Klever
 
 QQC2.ScrollView {
     id: root
