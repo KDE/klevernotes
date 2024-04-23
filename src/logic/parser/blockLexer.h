@@ -93,11 +93,11 @@ private:
 
     void reset();
     void setNextOffSetPos();
-    // void checkOffSet(const int capturedLength);
-    void checkOffSet(const int tokenStartPos);
-    int m_tokenEndPos = 0;
-    int m_offSetCounter = 0;
+    void checkOffSet(const int capturedLength);
 
+    static const int m_offSetSize = 3;
+    int m_tokenEndPos = 0;
+    int m_overallOffSetSize = 0;
     int m_currentOffSetPos;
     QList<int> m_offSetPosHolder;
 

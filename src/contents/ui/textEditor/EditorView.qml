@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 import "qrc:/contents/ui/dialogs"
 
@@ -122,6 +122,7 @@ ColumnLayout {
     Item {
         Layout.fillHeight: true
         Layout.fillWidth: true
+
         GridLayout {
             id: generalLayout
 
@@ -159,6 +160,9 @@ ColumnLayout {
 
                 LayoutMirroring.enabled: generalLayout.isHorizontal
 
+                onTextAreaInit: (document) => {
+                    editorHandler.document = document
+                }
                 onOpenImageDialog: (imagePath) => {
                     toolbar.imagePickerDialog.path = "file://" + imagePath
                     toolbar.imagePickerDialog.clipboardImage = true
@@ -208,11 +212,10 @@ ColumnLayout {
     EditorHandler {
         id: editorHandler
 
-        document: editor.textArea.textDocument
         cursorPosition: editor.textArea.cursorPosition
         selectionStart: editor.textArea.selectionStart
         selectionEnd: editor.textArea.selectionEnd
-        notePath: display.path
+        notePath: root.path;
     }
 
     Loader {

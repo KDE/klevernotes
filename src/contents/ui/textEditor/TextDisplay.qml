@@ -4,17 +4,17 @@
 // ORIGINALLY BASED ON : https://github.com/CrazyCxl/markdown-editor
 // SPDX-FileCopyrightText: 2019 CrazyCxl <chenxiaolong0001@gmail.com>
 
-import QtQuick 2.2
-import QtQuick.Controls 2.2
+import QtQuick
+import QtQuick.Controls
 import QtWebChannel
 import QtWebEngine
-import QtQuick.Layouts 1.15
-import Qt.labs.platform 1.1
+import QtQuick.Layouts
+import Qt.labs.platform
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
-import org.kde.Klever 1.0
-import qtMdEditor 1.0 as QtMdEditor
+import org.kde.Klever
+import qtMdEditor as QtMdEditor
 
 RowLayout {
     id: root
@@ -66,7 +66,8 @@ RowLayout {
     spacing: 0
 
     onPathChanged: {
-        __editorHandler.notePath = path
+        // __editorHandler.notePath = path
+        // console.log(path)
     }
     onTextChanged: {
         root.parseText()
@@ -75,7 +76,7 @@ RowLayout {
         root.parseText()
     }
     onHighlighterStyleChanged: {
-        __editorHandler.newHighlightStyle()
+        // __editorHandler.newHighlightStyle()
         root.parseText()
     }
     onNoteMapEnabledChanged: {
@@ -91,7 +92,7 @@ RowLayout {
         root.parseText()
     }
     onPumlDarkChanged: {
-        __editorHandler.pumlDarkChanged()
+        // __editorHandler.pumlDarkChanged()
         root.parseText()
     }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {
@@ -218,8 +219,8 @@ RowLayout {
 
     function parseText() {
         if (web_view.loadProgress === 100) {
-            parsedHtml = __editorHandler.parse(text)
-            contentLink.text = parsedHtml
+            // parsedHtml = __editorHandler.parse(text)
+            // contentLink.text = parsedHtml
         }
     }
 
@@ -272,7 +273,7 @@ RowLayout {
             web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
                 if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
                     web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
-                    __editorHandler.headerInfo = ["", "0"]
+                    // __editorHandler.headerInfo = ["", "0"]
                 }
             })
         }

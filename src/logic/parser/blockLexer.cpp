@@ -22,17 +22,17 @@ void BlockLexer::reset()
 {
     m_offSetPosHolder.clear();
     m_tokenEndPos = 0;
-    m_offSetCounter = 0;
+    m_overallOffSetSize = 0;
 }
 
 void BlockLexer::lex(QString &src)
 {
     reset();
     src = preprocess(src);
-    qDebug() << src.length();
+    // qDebug() << src.length();
     setNextOffSetPos();
     tokenize(src, true);
-    qDebug() << m_tokenEndPos;
+    // qDebug() << m_tokenEndPos;
 }
 
 void BlockLexer::setNextOffSetPos()
@@ -42,7 +42,6 @@ void BlockLexer::setNextOffSetPos()
 
 QString BlockLexer::preprocess(QString &src)
 {
-    static const int offSetSize = 3;
     int currentOffSet = 0;
     for (const auto &pat : preprocessRegex.toStdMap()) {
         int matchPos = src.indexOf(pat.second, 0);
@@ -50,7 +49,7 @@ QString BlockLexer::preprocess(QString &src)
             while (matchPos != -1) {
                 const int offSetPos = matchPos + currentOffSet;
                 m_offSetPosHolder.append(offSetPos);
-                currentOffSet += offSetSize;
+                currentOffSet += m_offSetSize;
 
                 matchPos = src.indexOf(pat.second, matchPos + 1);
             }
@@ -64,11 +63,13 @@ QString BlockLexer::preprocess(QString &src)
     return src;
 };
 
-void BlockLexer::checkOffSet(const int tokenStartPos)
+void BlockLexer::checkOffSet(const int capturedLength)
 {
-    while (tokenStartPos <= m_currentOffSetPos && m_currentOffSetPos + 3 < m_tokenEndPos) {
+    const int tokenStartPos = m_tokenEndPos;
+    m_tokenEndPos += capturedLength;
+    while (tokenStartPos <= m_currentOffSetPos && m_currentOffSetPos + m_offSetSize < m_tokenEndPos) {
         setNextOffSetPos();
-        m_offSetCounter++;
+        m_overallOffSetSize += m_offSetSize;
     }
 }
 
@@ -87,10 +88,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             if (cap.capturedLength() > 1) {
                 static const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("space")}};
@@ -103,10 +101,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             const QString text = cap.captured(3);
             const QString lang = cap.captured(2).trimmed();
@@ -128,21 +123,37 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
+            const int adjustedStartOfTag = m_tokenEndPos - m_overallOffSetSize;
 
-            checkOffSet(tokenStartPos);
+            // Take the leading spaces into account
+            const int tagLength = cap.capturedStart(1) + cap.capturedLength(1);
+            checkOffSet(tagLength);
 
-            if (KleverConfig::noteMapEnabled()) {
-                mapperParserUtils->addToNoteHeaders(cap.captured(0).trimmed());
-            }
+            static const QString headingTagStr = QStringLiteral("headingTag");
+            // The tagLength was is added to m_tokenEndPos in checkOffSet
+            const int adjustedEndOfTag = m_tokenEndPos - m_overallOffSetSize;
+            const auto tagHighlightInfo = std::make_tuple(headingTagStr, adjustedStartOfTag, adjustedEndOfTag);
+            m_parser->addHighlightToken(tagHighlightInfo);
+
+            const int endOfCap = cap.capturedLength() - tagLength;
+            checkOffSet(endOfCap);
+
+            static const QString headingStr = QStringLiteral("heading");
+            const int adjustedEndOfContent = m_tokenEndPos - m_overallOffSetSize;
+            const auto contentHighlightInfo = std::make_tuple(headingStr, adjustedEndOfTag, adjustedEndOfContent);
+            m_parser->addHighlightToken(contentHighlightInfo);
 
             const QVariantMap tok{
-                {QStringLiteral("type"), QStringLiteral("heading")},
+                {QStringLiteral("type"), headingStr},
                 {QStringLiteral("depth"), cap.capturedLength(1)},
                 {QStringLiteral("text"), cap.captured(2)},
             };
             m_parser->addToken(tok);
+
+            // PLUGIN
+            if (KleverConfig::noteMapEnabled()) {
+                mapperParserUtils->addToNoteHeaders(cap.captured(0).trimmed());
+            }
             continue;
         }
 
@@ -171,10 +182,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             if (headerSize == alignSize) {
                 remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-                const int tokenStartPos = m_tokenEndPos;
-                m_tokenEndPos += cap.capturedLength();
-
-                checkOffSet(tokenStartPos);
+                checkOffSet(cap.capturedLength());
 
                 for (int i = 0; i < alignSize; i++) {
                     static const QRegularExpression rightAlignReg = QRegularExpression(QStringLiteral("^ *-+: *$"));
@@ -209,10 +217,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             static const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("hr")}};
             m_parser->addToken(tok);
@@ -222,10 +227,6 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         cap = block_blockquote.match(remaining);
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
-
-            const int tokenStartPos = m_tokenEndPos;
-
-            // checkOffSet(tokenStartPos);
 
             static const QVariantMap startingTok{{QStringLiteral("type"), QStringLiteral("blockquote_start")}};
             m_parser->addToken(startingTok);
@@ -250,11 +251,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-
             QString bull = cap.captured(2);
-
-            // checkOffSet(tokenStartPos);
 
             const bool isOrdered = bull.length() > 1;
             static const QString dotStr = QStringLiteral(".");
@@ -339,10 +336,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             const bool pre =
                 (cap.captured(1) == QStringLiteral("pre") || cap.captured(1) == QStringLiteral("script") || cap.captured(1) == QStringLiteral("type"));
@@ -360,10 +354,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (top && cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             static const QRegularExpression whiteSpaceReg = QRegularExpression(QStringLiteral("\\s+"));
             const QString tag = cap.captured(1).toLower().replace(whiteSpaceReg, emptyStr);
@@ -378,10 +369,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (top && cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             static const QRegularExpression headerPipeReg = QRegularExpression(QStringLiteral("^ *| *$"));
             const QStringList headerList = splitCells(cap.captured(1).replace(headerPipeReg, emptyStr));
@@ -442,10 +430,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             const int depth = cap.captured(2) == QStringLiteral("=") ? 1 : 2;
 
@@ -462,10 +447,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (top && cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             const QString text = cap.captured(1).endsWith(QStringLiteral("\n")) ? cap.captured(1).left(cap.captured(1).length() - 1) : cap.captured(1);
 
@@ -481,10 +463,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            const int tokenStartPos = m_tokenEndPos;
-            m_tokenEndPos += cap.capturedLength();
-
-            checkOffSet(tokenStartPos);
+            checkOffSet(cap.capturedLength());
 
             const QVariantMap tok{
                 {QStringLiteral("type"), QStringLiteral("text")},

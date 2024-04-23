@@ -12,6 +12,7 @@ ScrollView {
     id: view
 
     signal openImageDialog(string image)
+    signal textAreaInit(QtObject document)
 
     readonly property TextArea textArea: textArea
 
@@ -36,6 +37,9 @@ ScrollView {
 
         background: Item {}
 
+        Component.onCompleted: {
+            textAreaInit(textArea.textDocument)
+        }    
         onTextChanged: {
             if (!tempBuff) {
                 modified = true

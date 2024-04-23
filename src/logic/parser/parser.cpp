@@ -76,7 +76,7 @@ QMap<QString, QString> Parser::getLink(const QString &tag)
 
 void Parser::addHighlightToken(const std::tuple<QString, int, int> &token)
 {
-    m_highlighterTokens.append(token);
+    m_editorHandler->addHighlightToken(token);
 }
 
 QString Parser::parse(QString src)
