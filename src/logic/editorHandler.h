@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "logic/wysiwyg/markdownHighlighter.h"
+#include "logic/wysiwyg/editorHighlighter.h"
 #include <QObject>
 #include <QQuickTextDocument>
 #include <QTextCursor>
@@ -69,6 +69,8 @@ private:
     int m_selectionStart;
     int m_selectionEnd;
 
+    // HIGHLIGHTER
+    void changeDocContent();
     QString m_notePath;
     Parser *m_parser = nullptr;
     MarkdownHighlighter *m_markdownHighlighter = nullptr;

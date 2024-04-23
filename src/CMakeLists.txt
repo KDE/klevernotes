@@ -54,8 +54,7 @@ set(exec_SRCS
 
     logic/treeview/noteTreeModel.cpp
 
-    logic/wysiwyg/markdownHighlighter.cpp
-    logic/wysiwyg/qownlanguagedata.cpp
+    logic/wysiwyg/editorHighlighter.cpp
     
     # PLUGINS
     logic/plugins/cliHelper.cpp

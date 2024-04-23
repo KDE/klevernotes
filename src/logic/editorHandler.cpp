@@ -35,6 +35,7 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
     if (m_document) {
         m_markdownHighlighter = new MarkdownHighlighter(m_document->textDocument(), this);
         connect(m_document->textDocument(), &QTextDocument::modificationChanged, this, &EditorHandler::modifiedChanged);
+        changeDocContent();
     }
 
     Q_EMIT documentChanged();
@@ -96,6 +97,8 @@ void EditorHandler::setNotePath(const QString &notePath)
     }
     m_notePath = notePath;
 
+    changeDocContent();
+
     QString parserNotePath = notePath;
     parserNotePath.replace(QStringLiteral("note.md"), QLatin1String());
     m_parser->setNotePath(parserNotePath);
@@ -125,3 +128,11 @@ void EditorHandler::addHighlightToken(const std::tuple<QString, int, int> &token
     m_markdownHighlighter->addHighlightToken(token);
 }
 
+void EditorHandler::changeDocContent()
+{
+    if (m_markdownHighlighter) {
+        m_markdownHighlighter->pathChanged = true;
+        const QString newContent = DocumentHandler::readFile(m_notePath);
+        m_markdownHighlighter->setNewContent(newContent);
+    }
+}

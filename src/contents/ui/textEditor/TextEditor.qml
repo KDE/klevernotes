@@ -22,7 +22,6 @@ ScrollView {
 
     onPathChanged: {
         textArea.tempBuff = true ;
-        textArea.text = DocumentHandler.readFile(path) ;
         modified = false ;
     }
 
