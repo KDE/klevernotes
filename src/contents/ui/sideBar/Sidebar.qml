@@ -20,6 +20,8 @@ import org.kde.Klever 1.0
 Kirigami.OverlayDrawer {
     id: drawer
 
+    required property color backgroundColor
+
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property NoteTreeModel treeModel: treeView.model
     readonly property string storagePath: Config.storagePath
@@ -45,8 +47,12 @@ Kirigami.OverlayDrawer {
     // Prevent it to being close while in wideScreen
     closePolicy: modal ? Controls.Popup.CloseOnReleaseOutside : Controls.Popup.NoAutoClose
 
-    contentItem: Item {
+    contentItem: Rectangle {
         id: column
+
+        Kirigami.Theme.backgroundColor: drawer.backgroundColor
+
+        color: Kirigami.Theme.backgroundColor
 
         ActionBar {
             id: actionBar
@@ -159,6 +165,8 @@ Kirigami.OverlayDrawer {
                     property var movingRowModelIndex
                     property var movingRowNewParentIndex
                     property var isActive: false
+
+                    Kirigami.Theme.backgroundColor: drawer.backgroundColor
 
                     model: NoteTreeModel {
                         id: noteTreeModel

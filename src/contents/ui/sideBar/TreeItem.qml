@@ -25,37 +25,6 @@ Delegates.RoundedTreeDelegate {
     icon.name: iconName
     highlighted: treeView.currentItem ? treeView.currentItem.path === path : false
 
-    background: Rectangle { // Forced to do it, without that, the first element is not using the correct Theme
-        Kirigami.Theme.colorSet: Kirigami.Theme.Window
-        Kirigami.Theme.inherit: false
-
-        radius: Kirigami.Units.smallSpacing
-
-        color: if (treeItem.highlighted || treeItem.checked || (treeItem.down && !treeItem.checked) || treeItem.visualFocus) {
-            const highlight = Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3);
-            if (treeItem.hovered) {
-                Kirigami.ColorUtils.tintWithAlpha(highlight, Kirigami.Theme.textColor, 0.10)
-            } else {
-                highlight
-            }
-        } else if (treeItem.hovered) {
-            Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, 0.10)
-        } else {
-           Kirigami.Theme.backgroundColor
-        }
-
-        border {
-            color: Kirigami.Theme.highlightColor
-            width: treeItem.visualFocus || treeItem.activeFocus ? 1 : 0
-        }
-
-        Behavior on color {
-            ColorAnimation {
-                duration: Kirigami.Units.shortDuration
-            }
-        }
-    }
-
     MouseArea {
         anchors.fill: parent
         enabled: !Kirigami.Settings.isMobile 

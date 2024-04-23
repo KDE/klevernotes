@@ -97,9 +97,10 @@ Kirigami.Page {
         }
     }
 
-    footer: BottomToolBar{
+    footer: BottomToolBar {
         id: bottomToolBar
 
+        Kirigami.Theme.backgroundColor: applicationWindow().sideBarColor
         visible: root.hasNote
     }
 

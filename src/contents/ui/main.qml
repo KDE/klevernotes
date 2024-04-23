@@ -12,6 +12,19 @@ import "qrc:/contents/ui/sideBar"
 Kirigami.ApplicationWindow {
     id: root
 
+    Item {
+        id: windowItem
+        Kirigami.Theme.inherit: false
+        Kirigami.Theme.colorSet: Kirigami.Theme.Window
+        property color windowBackground: Kirigami.Theme.backgroundColor
+    }
+    Item {
+        id: viewItem
+        Kirigami.Theme.inherit: false
+        Kirigami.Theme.colorSet: Kirigami.Theme.View
+        property color viewBackground: Kirigami.Theme.backgroundColor
+    }
+    readonly property color sideBarColor: Kirigami.ColorUtils.linearInterpolation(windowItem.windowBackground, viewItem.viewBackground, 0.6)
     readonly property NoteMapper noteMapper: noteMapper
     property string currentPageName: "Main"
 
@@ -70,6 +83,8 @@ Kirigami.ApplicationWindow {
 
     Sidebar { 
         id: sideBar 
+
+        backgroundColor: root.sideBarColor
     }
 
     NoteMapper { 

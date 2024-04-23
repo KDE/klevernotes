@@ -13,6 +13,8 @@ import org.kde.Klever 1.0
 Controls.ScrollView {
     id: scrollView
 
+    readonly property color backgroundColor: Kirigami.Theme.backgroundColor
+
     property alias model: descendantsModel.model
     property alias currentItem: treeView.currentItem
     property alias currentIndex: treeView.currentIndex
@@ -37,6 +39,9 @@ Controls.ScrollView {
 
         delegate: TreeItem {
             id: treeItem
+
+            // Without this the first item in the TreeView doesn't have the right color
+            Kirigami.Theme.backgroundColor: scrollView.backgroundColor
 
             onItemRightClicked: {
                 scrollView.itemRightClicked(treeItem)
