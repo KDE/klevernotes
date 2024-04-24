@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-17 01:46+0000\n"
+"POT-Creation-Date: 2024-04-24 01:56+0000\n"
 "PO-Revision-Date: 2024-04-21 10:20+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -466,7 +466,7 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Escolla un URL"
 
-#: contents/ui/main.qml:18
+#: contents/ui/main.qml:31
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
@@ -1144,22 +1144,22 @@ msgstr "De"
 msgid "No search results"
 msgstr "A busca non ten resultados."
 
-#: contents/ui/sideBar/Sidebar.qml:84
+#: contents/ui/sideBar/Sidebar.qml:90
 #, kde-format
 msgid "Show notes"
 msgstr "Amosar as notas"
 
-#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:218
+#: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
 msgid "Cheat sheet"
 msgstr "Apuntes"
 
-#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:230
+#: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
 #, kde-format
 msgid "Settings"
 msgstr "Configuración"
 
-#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:241
+#: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Sobre KleverNotes"

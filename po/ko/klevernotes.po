@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-17 01:46+0000\n"
+"POT-Creation-Date: 2024-04-24 01:56+0000\n"
 "PO-Revision-Date: 2024-02-11 00:08+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -511,7 +511,7 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "URL 선택"
 
-#: contents/ui/main.qml:18
+#: contents/ui/main.qml:31
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
@@ -1207,24 +1207,24 @@ msgstr "검색 위치: "
 msgid "No search results"
 msgstr "검색 결과 없음"
 
-#: contents/ui/sideBar/Sidebar.qml:84
+#: contents/ui/sideBar/Sidebar.qml:90
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
 msgid "Show notes"
 msgstr "새 메모"
 
-#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:218
+#: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
 msgid "Cheat sheet"
 msgstr "치트 시트"
 
-#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:230
+#: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
 #, kde-format
 msgid "Settings"
 msgstr "설정"
 
-#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:241
+#: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
 #, kde-format
 msgid "About KleverNotes"
 msgstr "KleverNotes 정보"

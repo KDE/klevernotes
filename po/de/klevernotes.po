@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-17 01:46+0000\n"
+"POT-Creation-Date: 2024-04-24 01:56+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -485,7 +485,7 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr ""
 
-#: contents/ui/main.qml:18
+#: contents/ui/main.qml:31
 #, fuzzy, kde-format
 #| msgid "KleverNotes"
 msgctxt "@title:ApplicationWindow"
@@ -1198,23 +1198,23 @@ msgstr ""
 msgid "No search results"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:84
+#: contents/ui/sideBar/Sidebar.qml:90
 #, fuzzy, kde-format
 #| msgid "note"
 msgid "Show notes"
 msgstr "Notiz"
 
-#: contents/ui/sideBar/Sidebar.qml:105 contents/ui/sideBar/Sidebar.qml:218
+#: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
 msgid "Cheat sheet"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:121 contents/ui/sideBar/Sidebar.qml:230
+#: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
 #, kde-format
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: contents/ui/sideBar/Sidebar.qml:136 contents/ui/sideBar/Sidebar.qml:241
+#: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
 #, fuzzy, kde-format
 #| msgid "About Klever"
 msgid "About KleverNotes"
