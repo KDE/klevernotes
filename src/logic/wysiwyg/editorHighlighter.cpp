@@ -47,6 +47,13 @@ void MarkdownHighlighter::nextToken()
 
 void MarkdownHighlighter::addHighlightToken(const std::tuple<QString, int, int> &token)
 {
+    const QString name = get<0>(token);
+    const int start = get<1>(token);
+    const int end = get<2>(token);
+    if (name.startsWith(QStringLiteral("lfj"))) {
+        qDebug() << name << start << end;
+    }
+
     m_highlighterTokens.append(token);
 }
 
@@ -89,14 +96,23 @@ void MarkdownHighlighter::highlightBlock(const QString &text)
         m_skipFirst = false;
         return;
     }
+    const QTextBlock block = currentBlock();
+    const int blockStart = block.position();
     // The first block is always an empty block of length 0
     // it doesn't matter if we run the parser at this time resulting in it
     // not being highlighted, it is actually pretty convenient
-    const bool isFirstBlock = currentBlock().blockNumber() == 0;
-    if (pathChanged && isFirstBlock) {
-        m_editorHandler->parse();
+    if (pathChanged && blockStart == 0) {
+        m_editorHandler->lex();
         pathChanged = false;
+        // New doc, we want the cursor at the end
+        const auto last = document()->lastBlock();
+        m_editorHandler->setCursorPosition(last.position());
         return;
     }
-    qDebug() << m_highlighterTokens.length();
+    const int blockEnd = blockStart + block.length();
+    const int cursorPos = m_editorHandler->cursorPosition();
+    if (blockStart <= cursorPos && cursorPos < blockEnd) {
+        m_editorHandler->parse();
+    }
+    // qDebug() << m_highlighterTokens.length();
 }

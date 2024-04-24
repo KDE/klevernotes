@@ -32,13 +32,17 @@ public:
     void setDocument(QQuickTextDocument *document);
 
     int cursorPosition() const;
-    int selectionEnd() const;
+    void setCursorPosition(const int cursorPosition);
     int selectionStart() const;
+    void setSelectionStart(const int selectionStart);
+    int selectionEnd() const;
+    void setSelectionEnd(const int selectionEnd);
 
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
 
-    QString parse();
+    void lex();
+    void parse();
 
     // HIGHLIGHTER
     void addHighlightToken(const std::tuple<QString, int, int> &token);
@@ -53,6 +57,8 @@ Q_SIGNALS:
     void noteHeadersSent(const QString &notePath, const QStringList &noteHeaders);
     void modifiedChanged(const bool changed);
 
+    void parsingFinished(const QString &content);
+
 public Q_SLOTS:
     // Code highlight
     void newHighlightStyle();
@@ -61,9 +67,6 @@ public Q_SLOTS:
 
 private:
     QQuickTextDocument *m_document = nullptr;
-    void setCursorPosition(const int cursorPosition);
-    void setSelectionStart(const int selectionStart);
-    void setSelectionEnd(const int selectionEnd);
 
     int m_cursorPosition;
     int m_selectionStart;

@@ -24,7 +24,8 @@ public:
         return m_editorHandler;
     }
 
-    QString parse(QString src);
+    QString parse();
+    void lex(QString src);
 
     QString getNotePath() const;
     void setNotePath(const QString &notePath);

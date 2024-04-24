@@ -216,6 +216,10 @@ ColumnLayout {
         selectionStart: editor.textArea.selectionStart
         selectionEnd: editor.textArea.selectionEnd
         notePath: root.path;
+
+        onParsingFinished: (content) => {
+            display.changeContent(content)
+        }
     }
 
     Loader {

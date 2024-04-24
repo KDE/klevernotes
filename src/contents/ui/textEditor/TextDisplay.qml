@@ -142,7 +142,10 @@ RowLayout {
             }
             onLoadProgressChanged: if (loadProgress === 100) {
                 loadStyle()
-                parseText()
+                if (0 < parsedHtml.length) {
+                    // console.log(parsedHtml)
+                    contentLink.text = parsedHtml
+                }
                 scrollToHeader()
             }
             onScrollPositionChanged: if (!vbar.active) {
@@ -221,6 +224,14 @@ RowLayout {
         if (web_view.loadProgress === 100) {
             // parsedHtml = __editorHandler.parse(text)
             // contentLink.text = parsedHtml
+        }
+    }
+
+    function changeContent(content) {
+        if (web_view.loadProgress === 100) {
+            contentLink.text = content
+        } else {
+            root.parsedHtml = content
         }
     }
 

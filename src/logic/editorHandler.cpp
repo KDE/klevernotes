@@ -105,11 +105,17 @@ void EditorHandler::setNotePath(const QString &notePath)
 }
 
 // PARSER
-QString EditorHandler::parse()
+void EditorHandler::lex()
 {
     m_markdownHighlighter->reset();
-    QString test = m_document->textDocument()->toPlainText();
-    return m_parser->parse(test);
+    QString content = m_document->textDocument()->toPlainText();
+    m_parser->lex(content);
+}
+
+void EditorHandler::parse()
+{
+    const QString content = m_parser->parse();
+    Q_EMIT parsingFinished(content);
 }
 
 void EditorHandler::newHighlightStyle()

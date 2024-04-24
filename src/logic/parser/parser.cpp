@@ -79,7 +79,7 @@ void Parser::addHighlightToken(const std::tuple<QString, int, int> &token)
     m_editorHandler->addHighlightToken(token);
 }
 
-QString Parser::parse(QString src)
+void Parser::lex(QString src)
 {
     pluginHelper->clearPluginsInfo();
 
@@ -88,7 +88,10 @@ QString Parser::parse(QString src)
     pluginHelper->preTokChanges();
 
     std::reverse(m_tokens.begin(), m_tokens.end());
+}
 
+QString Parser::parse()
+{
     QString out;
     while (getNextToken()) {
         out += tok();

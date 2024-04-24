@@ -40,12 +40,7 @@ ScrollView {
             textAreaInit(textArea.textDocument)
         }    
         onTextChanged: {
-            if (!tempBuff) {
-                modified = true
-            } else {
-                cursorPosition = length
-                tempBuff = false
-            }
+            modified = !tempBuff
         }
         Keys.onPressed: (event) => {
             if (event.key === Qt.Key_V && (event.modifiers === Qt.ControlModifier || event.modifiers === Qt.ShiftModifier | Qt.ControlModifier)) {
