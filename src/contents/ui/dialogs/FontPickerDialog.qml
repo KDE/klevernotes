@@ -35,18 +35,16 @@ FormCard.FormCardDialog {
         close()
     }
 
-    contentItem: GridLayout {
-        rows: 1
-        columns: 2
+    contentItem: ColumnLayout {
         Layout.bottomMargin: Kirigami.Units.largeSpacing
+
         FormCard.FormComboBoxDelegate {
             id: fontBox
 
             displayMode: FormCard.FormComboBoxDelegate.Dialog
             model: Qt.fontFamilies() 
 
-            Layout.row: 0
-            Layout.column: 0
+            Layout.fillWidth: true
 
             onCurrentValueChanged: {
                 scrollableDialog.checkedFamily = currentValue;
@@ -59,8 +57,7 @@ FormCard.FormCardDialog {
             displayMode: FormCard.FormComboBoxDelegate.Dialog
             model: [6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72]
 
-            Layout.row: 0
-            Layout.column: 1
+            Layout.fillWidth: true
 
             onCurrentValueChanged: {
                 scrollableDialog.checkedSize = currentValue
@@ -74,10 +71,8 @@ FormCard.FormCardDialog {
             font.family: text
             font.pointSize: sizeBox.currentValue ? sizeBox.currentValue : 10
             wrapMode: Text.NoWrap
+            elide: Text.ElideRight
 
-            Layout.row: 1
-            Layout.column: 0
-            Layout.rowSpan: 2
             Layout.fillWidth: true
         }
     }

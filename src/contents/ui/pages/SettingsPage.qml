@@ -34,6 +34,10 @@ FormCard.FormCardPage {
             useCase: ""
             parentPath: ""
             newItem: false
+
+            onRejected: {
+                close()
+            }
         },
         FontPickerDialog {
             id: fontDialog
@@ -91,11 +95,13 @@ FormCard.FormCardPage {
         applicationWindow().currentPageName = "Main"
     }
 
-    function updateName(shownName, callingAction){
+    function updateName(shownName, callingAction) {
         namingDialog.shownName = shownName
+        namingDialog.textFieldText = shownName
         namingDialog.callingAction = callingAction
         namingDialog.open()
-        namingDialog.nameField.selectAll()
+        // Can't use selectAll on FormTextFieldDelegate
+        // namingDialog.nameField.selectAll()
         namingDialog.nameField.forceActiveFocus()
     }
 

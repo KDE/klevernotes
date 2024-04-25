@@ -25,6 +25,9 @@ FormCard.FormCardDialog {
     onAccepted: {
         caller.path = urlField.text
     }
+    onRejected: {
+        close()
+    }
     onClosed: {
         path = ""
     }
