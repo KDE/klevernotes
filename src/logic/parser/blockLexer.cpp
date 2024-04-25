@@ -95,10 +95,16 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
+            static const QString spaceStr = QStringLiteral("space");
+            const int adjustedSpaceStart = m_tokenEndPos - m_overallOffSetSize;
             checkOffSet(cap.capturedLength());
 
+            const int adjustedSpaceEnd = m_tokenEndPos - m_overallOffSetSize;
+            const auto spaceHighlightInfo = std::make_tuple(spaceStr, adjustedSpaceStart, adjustedSpaceEnd);
+            m_parser->addHighlightToken(spaceHighlightInfo);
+
             if (cap.capturedLength() > 1) {
-                static const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("space")}};
+                static const QVariantMap tok{{QStringLiteral("type"), spaceStr}};
                 m_parser->addToken(tok);
             }
             continue;
@@ -108,7 +114,43 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            checkOffSet(cap.capturedLength());
+            static const QString codeStartTagStr = QStringLiteral("codeStartTag");
+            const int adjustedStartTagStart = m_tokenEndPos - m_overallOffSetSize;
+
+            // Take the leading spaces into account
+            const int startTagLength = cap.capturedStart(1) + cap.capturedLength(1);
+            checkOffSet(startTagLength);
+
+            const int adjustedStartTagEnd = m_tokenEndPos - m_overallOffSetSize;
+            const auto startTagHighlightInfo = std::make_tuple(codeStartTagStr, adjustedStartTagStart, adjustedStartTagEnd);
+            m_parser->addHighlightToken(startTagHighlightInfo);
+
+            static const QString codeLangTagStr = QStringLiteral("codeLangTag");
+            // We grab the new line
+            int langEnd = startTagLength + 1;
+            if (!cap.captured(2).isEmpty()) {
+                langEnd = cap.capturedStart(2) + cap.capturedLength(2) + 1;
+            }
+            const int langLength = langEnd - startTagLength;
+            checkOffSet(langLength);
+
+            const int adjustedLangEnd = m_tokenEndPos - m_overallOffSetSize;
+            const auto langTagHighlightInfo = std::make_tuple(codeLangTagStr, adjustedStartTagEnd, adjustedLangEnd);
+            m_parser->addHighlightToken(langTagHighlightInfo);
+
+            static const QString codeContentStr = QStringLiteral("codeContent");
+            checkOffSet(cap.capturedLength(3));
+            const int adjustedContentEnd = m_tokenEndPos - m_overallOffSetSize;
+            const auto contentHighlightInfo = std::make_tuple(codeContentStr, adjustedLangEnd, adjustedContentEnd);
+            m_parser->addHighlightToken(contentHighlightInfo);
+
+            static const QString codeEndTagStr = QStringLiteral("codeEndTag");
+            const int endTagLength = cap.capturedLength() - cap.capturedEnd(3);
+            checkOffSet(endTagLength);
+
+            const int adjustedEndTagEnd = m_tokenEndPos - m_overallOffSetSize;
+            const auto endTagHighlightInfo = std::make_tuple(codeEndTagStr, adjustedContentEnd, adjustedEndTagEnd);
+            m_parser->addHighlightToken(endTagHighlightInfo);
 
             const QString text = cap.captured(3);
             const QString lang = cap.captured(2).trimmed();
@@ -189,7 +231,13 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             if (headerSize == alignSize) {
                 remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
+                static const QString tableStr = QStringLiteral("table");
+                const int adjustedTableStart = m_tokenEndPos - m_overallOffSetSize;
                 checkOffSet(cap.capturedLength());
+
+                const int adjustedTableEnd = m_tokenEndPos - m_overallOffSetSize;
+                const auto tableHighlightInfo = std::make_tuple(tableStr, adjustedTableStart, adjustedTableEnd);
+                m_parser->addHighlightToken(tableHighlightInfo);
 
                 for (int i = 0; i < alignSize; i++) {
                     static const QRegularExpression rightAlignReg = QRegularExpression(QStringLiteral("^ *-+: *$"));
@@ -210,7 +258,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
                     cells.append(QJsonValue(cellsList));
                 }
                 const QVariantMap item{
-                    {QStringLiteral("type"), QStringLiteral("table")},
+                    {QStringLiteral("type"), tableStr},
                     {QStringLiteral("header"), headerList},
                     {QStringLiteral("align"), alignList},
                     {QStringLiteral("cells"), cells},
@@ -224,9 +272,15 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
+            static const QString hrStr = QStringLiteral("hr");
+            const int adjustedHrStart = m_tokenEndPos - m_overallOffSetSize;
             checkOffSet(cap.capturedLength());
 
-            static const QVariantMap tok{{QStringLiteral("type"), QStringLiteral("hr")}};
+            const int adjustedHrEnd = m_tokenEndPos - m_overallOffSetSize;
+            const auto hrHighlightInfo = std::make_tuple(hrStr, adjustedHrStart, adjustedHrEnd);
+            m_parser->addHighlightToken(hrHighlightInfo);
+
+            static const QVariantMap tok{{QStringLiteral("type"), hrStr}};
             m_parser->addToken(tok);
             continue;
         }
@@ -235,7 +289,8 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
 
-            static const QVariantMap startingTok{{QStringLiteral("type"), QStringLiteral("blockquote_start")}};
+            static const QString quoteStartStr = QStringLiteral("blockquote_start");
+            static const QVariantMap startingTok{{QStringLiteral("type"), quoteStartStr}};
             m_parser->addToken(startingTok);
 
             QString cap0 = cap.captured(0);
@@ -243,13 +298,23 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             static const QRegularExpression quoteBlockReg = QRegularExpression(QStringLiteral("^ *> ?"), QRegularExpression::MultilineOption);
             cap0.replace(quoteBlockReg, emptyStr);
 
+            const int adjustedStartPos = m_tokenEndPos - m_overallOffSetSize;
+            const auto quoteStartHighlightInfo = std::make_tuple(quoteStartStr, adjustedStartPos, adjustedStartPos);
+            m_parser->addHighlightToken(quoteStartHighlightInfo);
+
             const int preProcessSize = cap.capturedLength();
             const int postProcessSize = cap0.length();
-            m_tokenEndPos += preProcessSize - postProcessSize;
+
+            checkOffSet(preProcessSize - postProcessSize);
 
             tokenize(cap0, top);
 
-            static const QVariantMap endingTok{{QStringLiteral("type"), QStringLiteral("blockquote_end")}};
+            static const QString quoteEndStr = QStringLiteral("blockquote_end");
+            const int adjustedEndPos = m_tokenEndPos - m_overallOffSetSize;
+            const auto quoteEndHighlightInfo = std::make_tuple(quoteEndStr, adjustedEndPos, adjustedEndPos);
+            m_parser->addHighlightToken(quoteEndHighlightInfo);
+
+            static const QVariantMap endingTok{{QStringLiteral("type"), quoteEndStr}};
             m_parser->addToken(endingTok);
             continue;
         }
@@ -257,6 +322,11 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
         cap = block_list.match(remaining);
         if (cap.hasMatch()) {
             remaining.replace(cap.capturedStart(), cap.capturedLength(), emptyStr);
+
+            static const QString listStartStr = QStringLiteral("list_start");
+            const int adjustedStartPos = m_tokenEndPos - m_overallOffSetSize;
+            const auto listStartHighlightInfo = std::make_tuple(listStartStr, adjustedStartPos, adjustedStartPos);
+            m_parser->addHighlightToken(listStartHighlightInfo);
 
             QString bull = cap.captured(2);
 
@@ -267,7 +337,7 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
             }
 
             const QVariantMap tok{
-                {QStringLiteral("type"), QStringLiteral("list_start")},
+                {QStringLiteral("type"), listStartStr},
                 {QStringLiteral("ordered"), isOrdered},
                 {QStringLiteral("start"), isOrdered ? bull : emptyStr},
             };
@@ -283,21 +353,18 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
 
                 const auto matchedItem = globalCap.next();
                 QString item = matchedItem.captured();
+                // qDebug() << item;
 
                 const int preProcessSize = item.length();
 
-                int space = item.length();
                 static const QRegularExpression bulletReg = QRegularExpression(QStringLiteral("^ *([*+-]|\\d+\\.) +"));
                 const QRegularExpressionMatch firstBulletCatch = bulletReg.match(item);
                 item.replace(firstBulletCatch.capturedStart(), firstBulletCatch.capturedLength(), emptyStr);
 
-                if (item.indexOf(QStringLiteral("\n ")) != -1) {
-                    space -= item.length();
-                    // TODO rework this line to prevent static on a changing var (space is not static !!!)
-                    static const QRegularExpression multiSpaceBlockReg =
-                        QRegularExpression(QStringLiteral("^ {1,") + QString::number(space) + QStringLiteral("}"), QRegularExpression::MultilineOption);
-                    item.replace(multiSpaceBlockReg, emptyStr);
-                }
+                static const QString listBulletStr = QStringLiteral("listBullet");
+                const int adjustedBullStart = m_tokenEndPos - m_overallOffSetSize;
+                const int adjustedBullEnd = adjustedBullStart + firstBulletCatch.capturedLength();
+                const auto listBulletHighlightInfo = std::make_tuple(listBulletStr, adjustedBullStart, adjustedBullEnd);
 
                 static const QRegularExpression looseItemReg = QRegularExpression(QStringLiteral("\n\n(?!\\s*$)"));
                 bool loose = next || looseItemReg.match(item).hasMatch();
@@ -309,17 +376,23 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
                     }
                 }
 
-                static const QRegularExpression taskCatcherReg = QRegularExpression(QStringLiteral("(^\\[[ xX]\\] )"));
+                // TODO check out empty [] as valid task ??
+                static const QRegularExpression taskCatcherReg = QRegularExpression(QStringLiteral("^\\[([ xXoO])\\] "));
                 const QRegularExpressionMatch taskCatcher = taskCatcherReg.match(item);
+
                 const bool istask = taskCatcher.hasMatch();
                 bool ischecked = false;
                 if (istask) {
-                    ischecked = item[1] != QChar::fromLatin1(' ');
-                    item.replace(taskCatcher.capturedStart(1), taskCatcher.capturedLength(1), emptyStr);
+                    ischecked = item[1] != QLatin1Char(' ');
+                    item.replace(0, taskCatcher.capturedLength(), emptyStr);
+
+                    static const QString taskStr = QStringLiteral("task");
+                    const int adjustedTaskEnd = adjustedBullEnd + taskCatcher.capturedLength();
+                    const auto taskHighlightInfo = std::make_tuple(taskStr, adjustedBullEnd, adjustedTaskEnd);
                 }
 
                 const int postProcessSize = item.length();
-                m_tokenEndPos += preProcessSize - postProcessSize;
+                checkOffSet(preProcessSize - postProcessSize);
 
                 const QVariantMap startingTok{
                     {QStringLiteral("type"), loose ? QStringLiteral("loose_item_start") : QStringLiteral("list_item_start")},
@@ -328,12 +401,19 @@ void BlockLexer::tokenize(QString &remaining, const bool top)
                 };
                 m_parser->addToken(startingTok);
 
+                // No need to make other highlight tokens (itemStart/itemEnd), tokenize will give us enough info
                 tokenize(item, false);
 
                 static const QVariantMap endingTok{{QStringLiteral("type"), QStringLiteral("list_item_end")}};
                 m_parser->addToken(endingTok);
             }
-            static const QVariantMap endingTok{{QStringLiteral("type"), QStringLiteral("list_end")}};
+
+            static const QString listEndStr = QStringLiteral("list_end");
+            const int adjustedEndPos = m_tokenEndPos - m_overallOffSetSize;
+            const auto listEndHighlightInfo = std::make_tuple(listEndStr, adjustedEndPos, adjustedEndPos);
+            m_parser->addHighlightToken(listEndHighlightInfo);
+
+            static const QVariantMap endingTok{{QStringLiteral("type"), listEndStr}};
             m_parser->addToken(endingTok);
 
             continue;
