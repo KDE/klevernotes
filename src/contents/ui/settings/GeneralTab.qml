@@ -174,7 +174,7 @@ ColumnLayout {
 
                 label: i18nc("@label:combobox", "Number of spaces")
 
-                from: 1
+                from: 2
                 to: 8
 
                 Component.onCompleted: {

@@ -18,6 +18,7 @@ public:
     explicit BlockLexer(Parser *parser);
 
     void lex(QString &src);
+    void setOffSetSize();
 
 private:
     QString preprocess(QString &src);
@@ -95,7 +96,7 @@ private:
     void setNextOffSetPos();
     void checkOffSet(const int capturedLength);
 
-    static const int m_offSetSize = 3;
+    int m_offSetSize;
     int m_tokenEndPos = 0;
     int m_overallOffSetSize = 0;
     int m_currentOffSetPos;

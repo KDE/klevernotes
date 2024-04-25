@@ -4,6 +4,7 @@
 // PARTIALLY BASED ON: https://code.qt.io/cgit/qt/qtdeclarative.git/tree/examples/quickcontrols2/texteditor?h=6.2.0
 
 #include "editorHandler.h"
+#include "kleverconfig.h"
 #include "logic/documentHandler.h"
 #include "parser/parser.h"
 #include <QRegularExpression>
@@ -13,6 +14,9 @@ EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
 {
     m_parser = new Parser(this);
+
+    connect(KleverConfig::self(), &KleverConfig::useSpaceForTabChanged, this, &EditorHandler::spaceForTabChanged);
+    connect(KleverConfig::self(), &KleverConfig::spacesForTabChanged, this, &EditorHandler::spaceForTabChanged);
 }
 
 // Acces QTextDocument
@@ -105,6 +109,11 @@ void EditorHandler::setNotePath(const QString &notePath)
 }
 
 // PARSER
+void EditorHandler::spaceForTabChanged()
+{
+    m_parser->blockLexer()->setOffSetSize();
+}
+
 void EditorHandler::lex()
 {
     m_markdownHighlighter->reset();

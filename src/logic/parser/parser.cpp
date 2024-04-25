@@ -18,6 +18,11 @@ Parser::Parser(EditorHandler *editorHandler)
 {
 }
 
+BlockLexer *Parser::blockLexer() const
+{
+    return m_blockLexer;
+}
+
 PluginHelper *Parser::getPluginHelper() const
 {
     return pluginHelper;
@@ -83,7 +88,7 @@ void Parser::lex(QString src)
 {
     pluginHelper->clearPluginsInfo();
 
-    blockLexer.lex(src);
+    m_blockLexer->lex(src);
 
     pluginHelper->preTokChanges();
 
@@ -125,8 +130,8 @@ QString Parser::tok()
         const QString level = m_token[QStringLiteral("depth")].toString();
         mapperParserUtils->checkHeaderFound(text, level);
 
-        outputed = inlineLexer.output(text);
-        const QString outputedText = inlineLexer.output(text, true);
+        outputed = m_inlineLexer->output(text);
+        const QString outputedText = m_inlineLexer->output(text, true);
         const QString unescaped = Renderer::unescape(outputedText);
 
         return Renderer::heading(outputed, level, unescaped, mapperParserUtils->headerFound());
@@ -148,7 +153,7 @@ QString Parser::tok()
         const QStringList alignList = m_token[QStringLiteral("align")].toStringList();
         for (i = 0; i < headersList.size(); i++) {
             QString currentHeader = headersList[i];
-            outputed = inlineLexer.output(currentHeader);
+            outputed = m_inlineLexer->output(currentHeader);
 
             flags = {{QStringLiteral("header"), true}, {QStringLiteral("align"), alignList[i]}};
             cell += Renderer::tableCell(outputed, flags);
@@ -163,7 +168,7 @@ QString Parser::tok()
             cell = emptyStr;
             for (j = 0; j < row.size(); j++) {
                 QString currentCell = row[j].toString();
-                outputed = inlineLexer.output(currentCell);
+                outputed = m_inlineLexer->output(currentCell);
 
                 flags = {{QStringLiteral("header"), false}, {QStringLiteral("align"), alignList[j]}};
 
@@ -230,7 +235,7 @@ QString Parser::tok()
 
     if (type == QStringLiteral("paragraph")) {
         text = m_token[QStringLiteral("text")].toString();
-        outputed = inlineLexer.output(text);
+        outputed = m_inlineLexer->output(text);
 
         return Renderer::paragraph(outputed);
     }
@@ -254,7 +259,7 @@ QString Parser::parseText()
         body += QString::fromStdString("\n") + text;
     }
 
-    return inlineLexer.output(body);
+    return m_inlineLexer->output(body);
 }
 
 bool Parser::getNextToken()

@@ -44,6 +44,8 @@ public:
     void lex();
     void parse();
 
+    // PARSER
+    Parser *parser() const;
     // HIGHLIGHTER
     void addHighlightToken(const std::tuple<QString, int, int> &token);
 Q_SIGNALS:
@@ -64,6 +66,9 @@ public Q_SLOTS:
     void newHighlightStyle();
     // PUML
     void pumlDarkChanged();
+
+    // PARSER
+    void spaceForTabChanged();
 
 private:
     QQuickTextDocument *m_document = nullptr;

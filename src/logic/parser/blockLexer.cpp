@@ -16,6 +16,7 @@
 BlockLexer::BlockLexer(Parser *parser)
     : m_parser(parser)
 {
+    setOffSetSize();
 }
 
 void BlockLexer::reset()
@@ -29,10 +30,16 @@ void BlockLexer::lex(QString &src)
 {
     reset();
     src = preprocess(src);
-    // qDebug() << src.length();
+    qDebug() << src.length();
     setNextOffSetPos();
     tokenize(src, true);
-    // qDebug() << m_tokenEndPos;
+    qDebug() << m_tokenEndPos;
+}
+
+void BlockLexer::setOffSetSize()
+{
+    const int tabSize = KleverConfig::useSpaceForTab() ? KleverConfig::spacesForTab() : 4;
+    m_offSetSize = tabSize - 1;
 }
 
 void BlockLexer::setNextOffSetPos()

@@ -38,6 +38,8 @@ public:
 
     PluginHelper *getPluginHelper() const;
 
+    // PARSER
+    BlockLexer *blockLexer() const;
     // NoteMapper
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
@@ -54,8 +56,8 @@ private:
     QString peekType() const;
     bool getNextToken();
 
-    BlockLexer blockLexer = BlockLexer(this);
-    InlineLexer inlineLexer = InlineLexer(this);
+    BlockLexer *m_blockLexer = new BlockLexer(this);
+    InlineLexer *m_inlineLexer = new InlineLexer(this);
     PluginHelper *pluginHelper = new PluginHelper(this);
 
     QString m_notePath;
