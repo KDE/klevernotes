@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-24 01:56+0000\n"
+"POT-Creation-Date: 2024-04-26 01:38+0000\n"
 "PO-Revision-Date: 2024-02-29 03:09+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -307,7 +307,7 @@ msgctxt "@title:dialog"
 msgid "Printing Dialog"
 msgstr ""
 
-#: contents/ui/dialogs/PrintingDialog.qml:33
+#: contents/ui/dialogs/PrintingDialog.qml:36
 #, fuzzy, kde-format
 #| msgctxt "@title:page"
 #| msgid "Print"
@@ -315,13 +315,13 @@ msgctxt "@label:button"
 msgid "Print html"
 msgstr "დაბეჭდვა"
 
-#: contents/ui/dialogs/PrintingDialog.qml:43
+#: contents/ui/dialogs/PrintingDialog.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
 msgstr ""
 
-#: contents/ui/dialogs/PrintingDialog.qml:44
+#: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
