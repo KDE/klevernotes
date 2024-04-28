@@ -19,11 +19,9 @@ ___
 ![Screenshot of Klevernotes main page on desktop](https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png)
 ![Screenshot of Klevernotes main page on mobile](https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png)
 ### Todos for each note
-![Screenshot of Klevernotes todo](https://cdn.kde.org/screenshots/klevernotes/todo_mobile.png)
+![Screenshot of Klevernotes todo](https://cdn.kde.org/screenshots/klevernotes//todo_desktop.png)
 ### Draw your thoughts ! 
-![Screenshot of  Klevernotes drawing](https://cdn.kde.org/screenshots/klevernotes/painting.png)
-### Print your note ! 
-![Screenshot of  Klevernotes print page](https://cdn.kde.org/screenshots/klevernotes/printing.png)
+![Screenshot of  Klevernotes drawing](https://cdn.kde.org/screenshots/klevernotes//painting.png)
 
 ___
 
