@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-26 01:38+0000\n"
-"PO-Revision-Date: 2024-04-23 21:12+0100\n"
+"PO-Revision-Date: 2024-04-27 19:00+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo.org>\n"
 "Language: eo\n"
@@ -750,6 +750,8 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Rimarkigo: krei diagramojn povas esti malrapida. Se vi havas grandan nombron "
+"da diagramoj, montri ilin kiel bildoj estus pli facila."
 
 #: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
@@ -870,6 +872,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"La dialogo de emoĝio enigu la sintakson 'rapida emoĝio' anstataŭ la fakta "
+"emoĝio ene de la teksto."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
