@@ -2,10 +2,10 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Dialogs
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
 Kirigami.NavigationTabBar {
     id: tool

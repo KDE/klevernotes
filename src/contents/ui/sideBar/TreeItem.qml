@@ -4,10 +4,10 @@
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
+import QtQuick
 
-import org.kde.kirigami 2.19 as Kirigami
-import org.kde.kirigamiaddons.delegates 1 as Delegates
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 Delegates.RoundedTreeDelegate {
     id: treeItem

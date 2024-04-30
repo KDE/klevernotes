@@ -8,14 +8,14 @@
  * SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.15 as Controls
+import QtQuick 2.15 // Removing version break onCurrentItemChanged
+import QtQuick.Layouts
+import QtQuick.Controls as Controls
 
-import org.kde.kirigamiaddons.delegates 1.0 as Delegates
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
+import org.kde.kirigami as Kirigami
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 Kirigami.OverlayDrawer {
     id: drawer

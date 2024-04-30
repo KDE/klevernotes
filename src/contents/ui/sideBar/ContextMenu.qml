@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15 as Controls
+import QtQuick
+import QtQuick.Controls as Controls
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 import "qrc:/contents/ui/dialogs"
 
@@ -12,7 +12,7 @@ Controls.Menu {
     id: contextMenu
 
     required property ActionBar actionBar
-    required property TreeView treeView
+    required property QtObject treeView
 
     Controls.MenuItem {
         text: i18nc("as in 'A note category'", "New category")

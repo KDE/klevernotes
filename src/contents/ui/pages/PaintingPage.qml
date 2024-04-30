@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as Controls
-import Qt.labs.platform 1.1
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as Controls
+import Qt.labs.platform
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
 import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/painting"
 
-import org.kde.Klever 1.0
-import WashiPadComponents 1.0
+import org.kde.Klever
+import WashiPadComponents
 
 Kirigami.Page {
     id: root

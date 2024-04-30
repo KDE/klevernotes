@@ -4,17 +4,17 @@
 // ORIGINALLY BASED ON : https://github.com/CrazyCxl/markdown-editor
 // SPDX-FileCopyrightText: 2019 CrazyCxl <chenxiaolong0001@gmail.com>
 
-import QtQuick 2.2
-import QtQuick.Controls 2.2
+import QtQuick
+import QtQuick.Controls
 import QtWebChannel
 import QtWebEngine
-import QtQuick.Layouts 1.15
-import Qt.labs.platform 1.1
+import QtQuick.Layouts
+import Qt.labs.platform
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
-import org.kde.Klever 1.0
-import qtMdEditor 1.0 as QtMdEditor
+import org.kde.Klever
+import qtMdEditor as QtMdEditor
 
 RowLayout {
     id: root

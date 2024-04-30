@@ -2,13 +2,13 @@
 // SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
-import QtQuick.Controls 2 as Controls
+import QtQuick.Controls as Controls
 
-import org.kde.kirigamiaddons.delegates 1 as Delegates
-import org.kde.kirigami 2.5 as Kirigami
-import org.kde.kitemmodels 1
+import org.kde.kirigamiaddons.delegates as Delegates
+import org.kde.kirigami as Kirigami
+import org.kde.kitemmodels
 
-import org.kde.Klever 1.0
+import org.kde.Klever
 
 Controls.ScrollView {
     id: scrollView
