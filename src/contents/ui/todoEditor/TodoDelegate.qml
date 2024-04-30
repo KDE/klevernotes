@@ -21,11 +21,16 @@ Kirigami.FlexColumn {
     required property string reminder
     required property bool visibleSep
 
+    readonly property date reminderDate: new Date(reminder)
+    readonly property date today: new Date()
+
     width: ListView.view.width
 
     maximumWidth: Kirigami.Units.gridUnit * 40
     padding: 0
     spacing: Kirigami.Units.smallSpacing
+
+    Component.onCompleted: setDateRelativeInfos()
 
     Delegates.RoundedItemDelegate {
         Layout.fillWidth: true
@@ -36,6 +41,24 @@ Kirigami.FlexColumn {
 
         contentItem: RowLayout {
             spacing: Kirigami.Units.smallSpacing
+
+            // Make the ToolTip work more consistantly
+            Controls.Button {
+                id: buttonTest
+
+                property color iconColor: "#26AD5F"
+                flat: true
+                visible: 0 < reminder.length
+                icon {
+                    source: "view-calendar-symbolic"
+                    color: iconColor
+                }
+                Controls.ToolTip.text: i18nc("@label:button", "Date info goes here")
+                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+                Controls.ToolTip.visible: hovered
+
+                
+            }
 
             Controls.CheckBox {
                 id: checkbox
@@ -98,7 +121,7 @@ Kirigami.FlexColumn {
                     todoDialog.name = displayTitle.text
                     todoDialog.description = descriptionLabel.text
                     todoDialog.showReminder = 0 < reminder.length
-                    todoDialog.initialValue = new Date(reminder)
+                    todoDialog.initialValue = reminder
                     todoDialog.open()
                 }
 
@@ -112,5 +135,20 @@ Kirigami.FlexColumn {
         visible: root.visibleSep
         Layout.fillWidth: true
         Layout.bottomMargin: Kirigami.Units.smallSpacing
+    }
+
+    // TODO: get the diff in month, days, hours
+    function setDateRelativeInfos() {
+        // #D94453, #F67300, #26AD5F // Color coming from 'data-error/warning/succes" icon
+        const diff = root.reminder - root.today
+        if (diff < 0) {
+            // Overdue
+            iconColor = "#D94453"
+        } else if (0 < diff) {
+            // Still okay
+            iconColor = "#26AD5F" // Might be "#F67300"
+        } else {
+            // Osef
+        }
     }
 }
