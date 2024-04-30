@@ -45,11 +45,13 @@ Controls.ScrollView {
                     todoModel.append({
                         "todoTitle": name,
                         "todoDesc": description.trim(),
-                        "todoChecked": false
+                        "todoChecked": false,
+                        "reminder": reminder
                     })
                 } else {
                     todoModel.setProperty(callerModelIndex, "todoTitle", name)
                     todoModel.setProperty(callerModelIndex, "todoDesc", description)
+                    todoModel.setProperty(callerModelIndex, "reminder", reminder)
                 }
             }
             saveTodos()

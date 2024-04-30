@@ -18,6 +18,7 @@ Kirigami.FlexColumn {
     required property bool todoChecked
     required property string todoTitle
     required property string todoDesc
+    required property string reminder
     required property bool visibleSep
 
     width: ListView.view.width
@@ -96,6 +97,8 @@ Kirigami.FlexColumn {
                     todoDialog.callerModelIndex = index
                     todoDialog.name = displayTitle.text
                     todoDialog.description = descriptionLabel.text
+                    todoDialog.showReminder = 0 < reminder.length
+                    todoDialog.initialValue = new Date(reminder)
                     todoDialog.open()
                 }
 
