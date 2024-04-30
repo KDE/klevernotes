@@ -14,6 +14,9 @@ Kirigami.FlexColumn {
 
     signal saveTodos()
 
+    readonly property date today: new Date()
+    readonly property date reminderDate: new Date(reminder)
+
     required property int index
     required property bool todoChecked
     required property string todoTitle
@@ -21,16 +24,15 @@ Kirigami.FlexColumn {
     required property string reminder
     required property bool visibleSep
 
-    readonly property date reminderDate: new Date(reminder)
-    readonly property date today: new Date()
-
     width: ListView.view.width
 
     maximumWidth: Kirigami.Units.gridUnit * 40
     padding: 0
     spacing: Kirigami.Units.smallSpacing
 
-    Component.onCompleted: setDateRelativeInfos()
+    Component.onCompleted: {
+        setDateRelativeInfos()
+    }
 
     Delegates.RoundedItemDelegate {
         Layout.fillWidth: true
@@ -47,17 +49,16 @@ Kirigami.FlexColumn {
                 id: buttonTest
 
                 property color iconColor: "#26AD5F"
+                property string toolTipInfo: ""
                 flat: true
                 visible: 0 < reminder.length
                 icon {
                     source: "view-calendar-symbolic"
                     color: iconColor
                 }
-                Controls.ToolTip.text: i18nc("@label:button", "Date info goes here")
+                Controls.ToolTip.text: toolTipInfo
                 Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
                 Controls.ToolTip.visible: hovered
-
-                
             }
 
             Controls.CheckBox {
@@ -121,7 +122,7 @@ Kirigami.FlexColumn {
                     todoDialog.name = displayTitle.text
                     todoDialog.description = descriptionLabel.text
                     todoDialog.showReminder = 0 < reminder.length
-                    todoDialog.initialValue = reminder
+                    todoDialog.value = reminderDate 
                     todoDialog.open()
                 }
 
@@ -137,18 +138,54 @@ Kirigami.FlexColumn {
         Layout.bottomMargin: Kirigami.Units.smallSpacing
     }
 
-    // TODO: get the diff in month, days, hours
     function setDateRelativeInfos() {
         // #D94453, #F67300, #26AD5F // Color coming from 'data-error/warning/succes" icon
-        const diff = root.reminder - root.today
+        const diff = root.reminderDate - root.today
+        const absDiff = Math.abs(diff)
+        const mins = Math.floor(absDiff / (1000 * 60))
+        const hours = Math.floor(mins / 60)
+        const days = Math.floor(hours / 24)
         if (diff < 0) {
             // Overdue
-            iconColor = "#D94453"
+            buttonTest.iconColor = "#D94453"
+            if (30 < days) { // Completly arbitrary, but at this points, who cares ?
+                buttonTest.toolTipInfo = i18nc("@tooltip:button", "This task is long overdue")
+                return
+            }
+            if (0 < days) {
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is 1 day overdue", "This task is %1 days overdue", days)
+                return
+            }
+            if (0 < hours) {
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is 1 hour overdue", "This task is %1 hours overdue", hours)
+                return
+            }
+            if (15 < mins) { // Still arbitrary
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is 1 minute overdue", "This task is %1 minutes overdue", mins)
+                return 
+            }
         } else if (0 < diff) {
-            // Still okay
-            iconColor = "#26AD5F" // Might be "#F67300"
-        } else {
-            // Osef
+            buttonTest.iconColor = "#26AD5F"
+            if (2 < days) {
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is scheduled in 1 day", "This task is scheduled in %1 days", days)
+                return
+            }
+
+            buttonTest.iconColor = "#F67300" 
+            if (0 < days) {
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is scheduled in 1 day", "This task is scheduled in %1 days", days)
+                return
+            }
+            if (0 < hours) {
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is scheduled in 1 hour", "This task is scheduled in %1 hours", hours)
+                return
+            }
+            if (0 < mins) {
+                buttonTest.toolTipInfo = i18ncp("@tooltip:button", "This task is scheduled in 1 minute", "This task is scheduled in %1 minutes", mins)
+                return 
+            }
         }
+        buttonTest.iconColor = "#D94453"
+        buttonTest.toolTipInfo = i18nc("@tooltip:button", "This task is barely overdue")
     }
 }

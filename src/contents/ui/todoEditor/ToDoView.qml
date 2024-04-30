@@ -52,6 +52,7 @@ Controls.ScrollView {
                     todoModel.setProperty(callerModelIndex, "todoTitle", name)
                     todoModel.setProperty(callerModelIndex, "todoDesc", description)
                     todoModel.setProperty(callerModelIndex, "reminder", reminder)
+                    todoView.itemAtIndex(callerModelIndex).setDateRelativeInfos()
                 }
             }
             saveTodos()

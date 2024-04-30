@@ -15,7 +15,7 @@ FormCard.FormCardDialog {
     property int callerModelIndex: -1
     property alias name: nameField.text
     property alias description: descriptionField.text
-    property alias initialValue: calendar.initialValue
+    property alias value: calendar.value
     property alias showReminder: calendarSwitch.checked
     readonly property string reminder: calendarSwitch.checked ? calendar.value.toUTCString() : ""
 
