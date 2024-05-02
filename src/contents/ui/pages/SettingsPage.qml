@@ -25,7 +25,7 @@ FormCard.FormCardPage {
             firstSetup: false
 
             onClosed: {
-                storageField.text = Config.storagePath
+                generalLoader.item.displayedStoragePath = Config.storagePath
             }
         },
         NamingDialog {

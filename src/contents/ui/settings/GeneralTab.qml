@@ -18,6 +18,8 @@ import "qrc:/contents/ui/settings/components"
 ColumnLayout {
     id: root
 
+    property alias displayedStoragePath: storageField.text
+
     Layout.fillWidth: true
     Layout.fillHeight: true
 
