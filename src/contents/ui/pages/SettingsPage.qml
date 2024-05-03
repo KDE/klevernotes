@@ -42,8 +42,8 @@ FormCard.FormCardPage {
         FontPickerDialog {
             id: fontDialog
 
-            onApplied: {
-                caller.newFont = Qt.font({"family": checkedFamily, "pointSize": checkedSize})
+            onAccepted: {
+                caller.newFont = fontDialog.selectedFont
                 fontDialog.close()
             }
         }
