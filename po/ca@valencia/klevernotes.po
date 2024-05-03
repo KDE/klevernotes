@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 01:38+0000\n"
+"POT-Creation-Date: 2024-05-03 01:43+0000\n"
 "PO-Revision-Date: 2024-04-17 11:01+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -330,34 +330,34 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Emmagatzematge de KleverNotes"
 
-#: contents/ui/dialogs/StorageDialog.qml:47
+#: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "Emmagatzematge existent"
 
-#: contents/ui/dialogs/StorageDialog.qml:49
+#: contents/ui/dialogs/StorageDialog.qml:51
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "Canvia el camí de l'emmagatzematge"
 
-#: contents/ui/dialogs/StorageDialog.qml:63
+#: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "Crea un emmagatzematge"
 
-#: contents/ui/dialogs/StorageDialog.qml:65
+#: contents/ui/dialogs/StorageDialog.qml:67
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "Crea un emmagatzematge nou"
 
-#: contents/ui/dialogs/StorageDialog.qml:96
+#: contents/ui/dialogs/StorageDialog.qml:97
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
@@ -633,7 +633,7 @@ msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr "Lletra dels blocs de codi:"
 
-#: contents/ui/settings/GeneralTab.qml:27
+#: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
@@ -641,68 +641,68 @@ msgctxt ""
 msgid "Storage"
 msgstr "Emmagatzematge"
 
-#: contents/ui/settings/GeneralTab.qml:38
+#: contents/ui/settings/GeneralTab.qml:40
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "Camí d'emmagatzematge:"
 
-#: contents/ui/settings/GeneralTab.qml:56
+#: contents/ui/settings/GeneralTab.qml:58
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: contents/ui/settings/GeneralTab.qml:70
+#: contents/ui/settings/GeneralTab.qml:72
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Nom nou de la categoria:"
 
-#: contents/ui/settings/GeneralTab.qml:100
+#: contents/ui/settings/GeneralTab.qml:102
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "Nom nou del grup:"
 
-#: contents/ui/settings/GeneralTab.qml:130
+#: contents/ui/settings/GeneralTab.qml:132
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Nom nou de la nota:"
 
-#: contents/ui/settings/GeneralTab.qml:153
+#: contents/ui/settings/GeneralTab.qml:155
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Editor"
 
-#: contents/ui/settings/GeneralTab.qml:163
+#: contents/ui/settings/GeneralTab.qml:165
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
 msgstr "Utilitza espais per a la tabulació"
 
-#: contents/ui/settings/GeneralTab.qml:175
+#: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
 msgstr "Nombre d'espais"
 
-#: contents/ui/settings/GeneralTab.qml:192
+#: contents/ui/settings/GeneralTab.qml:194
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr "Barra d'eines"
 
-#: contents/ui/settings/GeneralTab.qml:200
+#: contents/ui/settings/GeneralTab.qml:202
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr "Visible"
 
-#: contents/ui/settings/GeneralTab.qml:261
+#: contents/ui/settings/GeneralTab.qml:263
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"

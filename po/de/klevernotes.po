@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 01:38+0000\n"
+"POT-Creation-Date: 2024-05-03 01:43+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -338,14 +338,14 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "KleverNotes"
 
-#: contents/ui/dialogs/StorageDialog.qml:47
+#: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr ""
 
-#: contents/ui/dialogs/StorageDialog.qml:49
+#: contents/ui/dialogs/StorageDialog.qml:51
 #, fuzzy, kde-format
 #| msgid "Change storage path"
 msgctxt ""
@@ -353,7 +353,7 @@ msgctxt ""
 msgid "Change the storage path"
 msgstr "Speicherpfad ändern"
 
-#: contents/ui/dialogs/StorageDialog.qml:63
+#: contents/ui/dialogs/StorageDialog.qml:65
 #, fuzzy, kde-format
 #| msgid "Change storage path"
 msgctxt ""
@@ -361,14 +361,14 @@ msgctxt ""
 msgid "Create storage"
 msgstr "Speicherpfad ändern"
 
-#: contents/ui/dialogs/StorageDialog.qml:65
+#: contents/ui/dialogs/StorageDialog.qml:67
 #, fuzzy, kde-format
 #| msgid "Create a new note"
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "Neue Notiz erstellen"
 
-#: contents/ui/dialogs/StorageDialog.qml:96
+#: contents/ui/dialogs/StorageDialog.qml:97
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
@@ -660,7 +660,7 @@ msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:27
+#: contents/ui/settings/GeneralTab.qml:29
 #, fuzzy, kde-format
 #| msgid "Stored image"
 msgctxt ""
@@ -669,7 +669,7 @@ msgctxt ""
 msgid "Storage"
 msgstr "Gespeichertes Bild"
 
-#: contents/ui/settings/GeneralTab.qml:38
+#: contents/ui/settings/GeneralTab.qml:40
 #, fuzzy, kde-format
 #| msgid "Storage path:"
 msgctxt ""
@@ -677,64 +677,64 @@ msgctxt ""
 msgid "Storage path:"
 msgstr "Speicherpfad:"
 
-#: contents/ui/settings/GeneralTab.qml:56
+#: contents/ui/settings/GeneralTab.qml:58
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:70
+#: contents/ui/settings/GeneralTab.qml:72
 #, fuzzy, kde-format
 #| msgid "New Category name:"
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "Neuer Kategorienname:"
 
-#: contents/ui/settings/GeneralTab.qml:100
+#: contents/ui/settings/GeneralTab.qml:102
 #, fuzzy, kde-format
 #| msgid "New Group name:"
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "Neuer Gruppenname:"
 
-#: contents/ui/settings/GeneralTab.qml:130
+#: contents/ui/settings/GeneralTab.qml:132
 #, fuzzy, kde-format
 #| msgid "New Note name:"
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Neuer Notizname:"
 
-#: contents/ui/settings/GeneralTab.qml:153
+#: contents/ui/settings/GeneralTab.qml:155
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:163
+#: contents/ui/settings/GeneralTab.qml:165
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:175
+#: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:192
+#: contents/ui/settings/GeneralTab.qml:194
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:200
+#: contents/ui/settings/GeneralTab.qml:202
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:261
+#: contents/ui/settings/GeneralTab.qml:263
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"

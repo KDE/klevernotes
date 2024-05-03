@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 01:38+0000\n"
+"POT-Creation-Date: 2024-05-03 01:43+0000\n"
 "PO-Revision-Date: 2024-02-29 03:09+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -370,34 +370,34 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "KleverNotes-ის საცავი"
 
-#: contents/ui/dialogs/StorageDialog.qml:47
+#: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
 msgstr "არსებული საცავი"
 
-#: contents/ui/dialogs/StorageDialog.qml:49
+#: contents/ui/dialogs/StorageDialog.qml:51
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
 msgstr "საცავის ბილიკის შეცვლა"
 
-#: contents/ui/dialogs/StorageDialog.qml:63
+#: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
 msgstr "საცავის შექმნა"
 
-#: contents/ui/dialogs/StorageDialog.qml:65
+#: contents/ui/dialogs/StorageDialog.qml:67
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "ახალი საცავის შექმნა"
 
-#: contents/ui/dialogs/StorageDialog.qml:96
+#: contents/ui/dialogs/StorageDialog.qml:97
 #, kde-format
 msgctxt ""
 "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
@@ -675,7 +675,7 @@ msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr "კოდის ბლოკის ფონტი:"
 
-#: contents/ui/settings/GeneralTab.qml:27
+#: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
@@ -683,68 +683,68 @@ msgctxt ""
 msgid "Storage"
 msgstr "საცავი"
 
-#: contents/ui/settings/GeneralTab.qml:38
+#: contents/ui/settings/GeneralTab.qml:40
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "საცავის ბილიკი:"
 
-#: contents/ui/settings/GeneralTab.qml:56
+#: contents/ui/settings/GeneralTab.qml:58
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "გვერდითი ზოლი"
 
-#: contents/ui/settings/GeneralTab.qml:70
+#: contents/ui/settings/GeneralTab.qml:72
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
 msgstr "ახალი კატეგორიის სახელი:"
 
-#: contents/ui/settings/GeneralTab.qml:100
+#: contents/ui/settings/GeneralTab.qml:102
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
 msgstr "ახალი ჯგუფის სახელი:"
 
-#: contents/ui/settings/GeneralTab.qml:130
+#: contents/ui/settings/GeneralTab.qml:132
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "ახალი შენიშვნის სახელი:"
 
-#: contents/ui/settings/GeneralTab.qml:153
+#: contents/ui/settings/GeneralTab.qml:155
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "რედაქტორი"
 
-#: contents/ui/settings/GeneralTab.qml:163
+#: contents/ui/settings/GeneralTab.qml:165
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
 msgstr "გამოტოვებების გამოყენება ტაბულაციისთვის"
 
-#: contents/ui/settings/GeneralTab.qml:175
+#: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
 msgstr "გამოტოვებების რაოდენობა"
 
-#: contents/ui/settings/GeneralTab.qml:192
+#: contents/ui/settings/GeneralTab.qml:194
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:200
+#: contents/ui/settings/GeneralTab.qml:202
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr ""
 
-#: contents/ui/settings/GeneralTab.qml:261
+#: contents/ui/settings/GeneralTab.qml:263
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
