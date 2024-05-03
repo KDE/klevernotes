@@ -51,6 +51,7 @@
   <summary xml:lang="tr">Not Alma ve Yönetme Uygulaması</summary>
   <summary xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними</summary>
   <summary xml:lang="x-test">xxKleverNotes is a note taking and management applicationxx</summary>
+  <summary xml:lang="zh-TW">KleverNotes 是一個筆記記錄與管理應用程式</summary>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <developer id="https://kde.org">
@@ -79,6 +80,7 @@
     <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi önizlemenize izin verir.</p>
     <p xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними для ваших мобільних пристроїв та робочих станцій. У ній використано мову markdown та передбачено можливість попереднього перегляду результатів.</p>
     <p xml:lang="x-test">xxKleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.xx</p>
+    <p xml:lang="zh-TW">KleverNotes 是一個桌面與行動裝置用的筆記記錄與管理應用程式。它利用 Markdown 格式，並讓您能夠預覽您的內容。</p>
   </description>
   <launchable type="desktop-id">org.kde.klevernotes.desktop</launchable>
   <content_rating type="oars-1.1"/>
