@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# SPDX-FileCopyrightText: 2023 Stefan Asserhäll <stefan.asserhall@bredband.net>
+# SPDX-FileCopyrightText: 2023, 2024 Stefan Asserhäll <stefan.asserhall@bredband.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 01:43+0000\n"
-"PO-Revision-Date: 2023-12-29 08:10+0100\n"
+"PO-Revision-Date: 2024-05-03 09:50+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -18,70 +18,57 @@ msgstr ""
 "X-Generator: Lokalize 23.08.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-kuit-format
 msgctxt "@info, as in 'A note category'"
 msgid "Are you sure you want to delete the category <filename>%1</filename>?"
-msgstr "Är du säker på att du vill ta bort %1?"
+msgstr "Är du säker på att du vill ta bort kategorin <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:18
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-kuit-format
 msgctxt "@info, as in 'A note group'"
 msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-msgstr "Är du säker på att du vill ta bort %1?"
+msgstr "Är du säker på att du vill ta bort gruppen <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:19
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the note <filename>%1</filename>?"
-msgstr "Är du säker på att du vill ta bort %1?"
+msgstr ""
+"Är du säker på att du vill ta bort anteckningen <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Category Confirmation"
-msgstr ""
+msgstr "Bekräfta borttagning av kategori"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Group Confirmation"
-msgstr ""
+msgstr "Bekräfta borttagning av grupp"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
-msgstr ""
+msgstr "Bekräfta borttagning av anteckning"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:38
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr ""
+msgstr "Åtgärden går inte att ångra"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Färghämtare"
+msgstr "Ingen klisterlapp"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "Inga emoji"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -150,25 +137,16 @@ msgid "KleverNotes painting"
 msgstr "KleverNotes målning"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "You're about to leave without saving your drawing!\n"
-#| "Do you want to save it before leaving ?\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
-"Du är på väg att avsluta utan att spara teckningen.\n"
-"Vill du spara den innan du avslutar?\n"
+msgstr "Du är på väg att avsluta utan att spara teckningen."
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "Är du säker på att du vill ta bort %1?"
+msgstr "Vill du spara den innan du avslutar?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -192,51 +170,40 @@ msgid "Link text:"
 msgstr "Länktext:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "Anteckning"
+msgstr "Anteckning:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:65
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr ""
+msgstr "Sök efter rubriker"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:77
-#, fuzzy, kde-format
-#| msgid "Header"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "Rubrik"
+msgstr "Rubrik:"
 
 #: contents/ui/dialogs/MoveDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Where do you want to move this group ?"
-msgstr "Är du säker på att du vill ta bort %1?"
+msgstr "Vart vill du flytta gruppen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr "Är du säker på att du vill ta bort %1?"
+msgstr "Vart vill du flytta anteckningen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:26
 #, kde-format
 msgctxt "@title:dialog, to move a group/note"
 msgid "Move"
-msgstr ""
+msgstr "Flytta"
 
 #: contents/ui/dialogs/NamingDialog.qml:24
 #, kde-format
@@ -254,19 +221,19 @@ msgstr "Namn:"
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "This category already exists."
-msgstr ""
+msgstr "Kategorin finns redan."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:14
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr ""
+msgstr "Gruppen finns redan."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr ""
+msgstr "Anteckningen finns redan."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
@@ -283,52 +250,44 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
+"Namnet börjar med en punkt. Det kan orsaka problem och är därför inte "
+"tillåtet."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:38
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr ""
+msgstr "Ta bort punkten eller välj ett annat namn."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid ""
-#| "This %1 already exist.\n"
-#| "Please choose another name for it.\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
-msgstr ""
-"%1 finns redan.\n"
-"Välj ett annat namn på den.\n"
+msgstr "Välj ett annat namn på den."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Utskriftsdialogruta"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Skriv ut"
+msgstr "Skriv ut HTML"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Skriv ut till PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Inaktivera på grund av begränsning i flatpak"
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -363,11 +322,7 @@ msgstr ""
 "plats."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@title:dialog, 'storage' as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "KleverNotes Storage"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
@@ -584,12 +539,10 @@ msgid "This could cause visual artifact near the end of the pdf."
 msgstr "Det kan orsaka visuella förvrängningar nära slutet på PDF:en."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "Spara anteckning"
+msgstr "Spara anteckning som PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -661,12 +614,10 @@ msgid "Code color:"
 msgstr "Kodfärg:"
 
 #: contents/ui/settings/DisplayPreview.qml:118
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Färgläggning"
+msgstr "Färgläggningsfärg:"
 
 #: contents/ui/settings/DisplayPreview.qml:130
 #, kde-format
@@ -720,9 +671,7 @@ msgid "New Note name:"
 msgstr "Nytt anteckningsnamn:"
 
 #: contents/ui/settings/GeneralTab.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Editor"
@@ -731,31 +680,31 @@ msgstr "Editor"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Använd mellanslag för tabulator"
 
 #: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "Antal mellanslag"
 
 #: contents/ui/settings/GeneralTab.qml:194
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr ""
+msgstr "Verktygsrad"
 
 #: contents/ui/settings/GeneralTab.qml:202
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr ""
+msgstr "Synlig"
 
 #: contents/ui/settings/GeneralTab.qml:263
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr ""
+msgstr "Osynlig"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -786,13 +735,13 @@ msgstr "Råd: starta om programmet när det är aktiverat."
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Aktivera PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr ""
+msgstr "PlantUML låter dig skapa diagram."
 
 #: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
@@ -801,18 +750,20 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Observera: det kan gå långsamt att skapa diagram. Om du har ett stort antal "
+"diagram, skulle det vara enklare att visa dem som bilder."
 
 #: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Aktivera mörk bakgrund"
 
 #: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "PlantUML-diagram har en mörk bakgrund."
 
 #: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
@@ -848,7 +799,7 @@ msgstr "Färgläggningsstil"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Aktivera snabb emoji"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
@@ -856,66 +807,63 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Skriv emoji snabbt med användning av följande syntax"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "Byt namn"
+msgstr "emojinamn"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "Förvald färgton för emoji"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Förval"
 
 #: contents/ui/settings/PluginsTab.qml:169
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Höger"
+msgstr "Ljus"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Mellanljus"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Normal"
 
 #: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Mellanmörk"
 
 #: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Mörk"
 
 #: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Aktivera dialogrutan för snabb emoji"
 
 #: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
@@ -924,6 +872,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"Emoji-dialogrutan infogar 'snabb emoji' syntax istället för en verklig emoji "
+"i texten."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -1057,8 +1007,7 @@ msgid "Table"
 msgstr "Tabell"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "Ordnad lista"
@@ -1070,8 +1019,7 @@ msgid "Ordered list"
 msgstr "Ordnad lista"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
-#, fuzzy, kde-format
-#| msgid "Unordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
 msgstr "Oordnad lista"
@@ -1083,43 +1031,35 @@ msgid "Unordered list"
 msgstr "Oordnad lista"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "Färgläggning"
+msgstr "Färglägg"
 
 #: contents/ui/sharedComponents/ActionsList.qml:135
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Färgläggning"
+msgstr "Textfärgläggning"
 
 #: contents/ui/sharedComponents/ActionsList.qml:140
 #: contents/ui/sharedComponents/ActionsList.qml:142
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Emoji"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, will be followed by the shortcut"
-#| msgid "Linked notes"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
-msgstr "Länkade anteckningar"
+msgstr "Länka anteckning"
 
 #: contents/ui/sharedComponents/ActionsList.qml:149
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, will be followed by the shortcut"
-#| msgid "Linked notes"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "Länkade anteckningar"
+msgstr "Länka anteckning"
 
 #: contents/ui/sideBar/ActionBar.qml:51
 #, kde-format
@@ -1147,17 +1087,17 @@ msgstr "Byt namn"
 #: contents/ui/sideBar/ActionBar.qml:88
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Sök"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Dra ihop sidorad"
 
 #: contents/ui/sideBar/ActionBar.qml:106
 #, kde-format
 msgid "Expand sidebar"
-msgstr ""
+msgstr "Expandera sidorad"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -1180,7 +1120,7 @@ msgstr "Ny anteckning"
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "Flytta"
 
 #: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
@@ -1188,26 +1128,21 @@ msgid "Delete"
 msgstr "Ta bort"
 
 #: contents/ui/sideBar/SearchBar.qml:72
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note category'"
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "Category"
-msgstr "kategori"
+msgstr "Kategori"
 
 #: contents/ui/sideBar/SearchBar.qml:73
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note group'"
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "Group"
-msgstr "grupp"
+msgstr "Grupp"
 
 #: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
-#, fuzzy, kde-format
-#| msgid "From : "
+#, kde-format
 msgid "From"
-msgstr "Från: "
+msgstr "Från"
 
 #: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
@@ -1215,11 +1150,9 @@ msgid "No search results"
 msgstr "Inga sökresultat"
 
 #: contents/ui/sideBar/Sidebar.qml:90
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
-msgstr "Ny anteckning"
+msgstr "Visa anteckningar"
 
 #: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
@@ -1527,12 +1460,10 @@ msgid "View/Hide preview"
 msgstr "Visa eller dölj förhandsgranskning"
 
 #: contents/ui/textEditor/EditorView.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Spara anteckning"
+msgstr "Spara anteckning som HTML"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
@@ -1575,12 +1506,10 @@ msgid "Clear checked"
 msgstr "Rensa markerade"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Add Todo"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr "Lägg till uppgift"
+msgstr "Lägg till ny uppgift"
 
 #: logic/kleverUtility.cpp:103
 #, kde-format
@@ -1603,67 +1532,67 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "Historik"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Smilisar"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Personer"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Natur"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Livsmedel"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Aktiviteter"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Resor"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Objekt"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Symboler"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Flaggor"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Egna"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
@@ -1686,10 +1615,9 @@ msgid "An error occurred while trying to remove this item."
 msgstr "Ett fel uppstod vid försök att ta bort objektet."
 
 #: logic/treeview/noteTreeModel.cpp:517
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to remove this item."
+#, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr "Ett fel uppstod vid försök att ta bort objektet."
+msgstr "Ett fel uppstod vid försök att flytta objektet."
 
 #: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
@@ -1725,7 +1653,7 @@ msgstr "KleverNotes"
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Antecknings- och administrationsprogram"
 
 #: main.cpp:65
 #, kde-format
