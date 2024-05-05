@@ -140,7 +140,7 @@ RowLayout {
 
                 printingPage.displayPdf()
             }
-            onLoadProgressChanged: if (loadProgress === 100) {
+            onLoadingChanged: if (!loading) {
                 loadStyle()
                 parseText()
                 scrollToHeader()
