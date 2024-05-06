@@ -127,6 +127,7 @@ Kirigami.Page {
         id: viewer
         width: Kirigami.Units.gridUnit * 15
         anchors.fill: parent
+        clip: true
         document: PdfDocument { 
             id: pdfDoc
 
