@@ -91,8 +91,9 @@ FormCard.FormCardPage {
         visible: active
     }
 
-    onBackRequested: {
-        applicationWindow().currentPageName = "Main"
+    onBackRequested: (event) => {
+        event.accepted = true;
+        applicationWindow().showMainPage()
     }
 
     function updateName(shownName, callingAction) {

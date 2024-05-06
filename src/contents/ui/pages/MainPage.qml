@@ -17,6 +17,7 @@ Kirigami.Page {
 
     readonly property CheatSheet cheatSheet: cheatSheet
     readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
+    readonly property bool isVisible: applicationWindow().isMainPage()
 
     property QtObject currentlySelected
     property QtObject editorView: editorLoader.item
@@ -32,8 +33,8 @@ Kirigami.Page {
     actions: {
         if (hasNote) {
             // At first both Loaders item are "null"
-            if (editorLoader.item && editorLoader.item.visible) { 
-                return editorLoader.item.actions
+            if (bottomToolBar.showNoteEditor) { 
+                return editorLoader.item ? editorLoader.item.actions : []
             }
             return todoLoader.item ? todoLoader.item.actions : []
         }
@@ -52,7 +53,7 @@ Kirigami.Page {
 
         sourceComponent: EditorView {
             path: currentlySelected.path + "/note.md"
-            visible: bottomToolBar.showNoteEditor
+            visible: bottomToolBar.showNoteEditor && root.isVisible
         }
         active: root.hasNote
         anchors.fill: parent
@@ -63,7 +64,7 @@ Kirigami.Page {
 
         sourceComponent: ToDoView {
             path: currentlySelected.path + "/todo.json"
-            visible: !bottomToolBar.showNoteEditor
+            visible: !bottomToolBar.showNoteEditor && root.isVisible
         }
         active: root.hasNote
         anchors.fill: parent

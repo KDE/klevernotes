@@ -34,17 +34,11 @@ Kirigami.ApplicationWindow {
     minimumHeight: Kirigami.Units.gridUnit * 30
 
     globalDrawer: sideBar
+    pageStack.initialPage: getPage("Main")
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
-
+    
     onCurrentPageNameChanged: {
-        if (!isMainPage()) {
-            sideBar.changeWidth = false
-            sideBar.close()
-        } else if (pageStack.depth > 1){
-            if (!sideBar.modal) sideBar.open()
-            pageStack.pop()
-            sideBar.changeWidth = true
-        }
+        pageTransitionTimer.start()
     }
     onClosing: {
         saveState() 
@@ -63,7 +57,6 @@ Kirigami.ApplicationWindow {
     }
     Component.onCompleted: {
         App.restoreWindowGeometry(root)
-        switchToPage('Main')
     }
 
     // This timer allows to batch update the window size change to reduce
@@ -91,11 +84,29 @@ Kirigami.ApplicationWindow {
         id: noteMapper 
     }
 
+    Timer {
+        id: pageTransitionTimer
+
+        repeat: false
+        interval: Kirigami.Units.longDuration
+        onTriggered: {
+            if (currentPageName !== "Main") {
+                sideBar.changeWidth = false
+                sideBar.close()
+            } else if (pageStack.depth > 1) {
+                pageStack.pop()
+            }
+        }
+    }
+
     function saveState() {
         App.saveWindowGeometry(root)
         const mainPage = pageStack.get(0)
-        const editor = mainPage.editorView.editor
-        editor.saveNote(editor.text, editor.path)
+        const editorView = mainPage.editorView
+        if (editorView) {
+            const editor = editorView.editor
+            editor.saveNote(editor.text, editor.path)
+        }
         if (Config.noteMapEnabled) noteMapper.saveMap()
     }
 
@@ -111,9 +122,7 @@ Kirigami.ApplicationWindow {
 
     function switchToPage(pageName) {
         const page = getPage(pageName)
-
         pageStack.push(page)
-
         currentPageName = pageName
     }
 
@@ -126,5 +135,11 @@ Kirigami.ApplicationWindow {
 
         const mainPage = pageStack.get(0)
         mainPage.cheatSheet.open() 
+    }
+
+    function showMainPage() {
+        sideBar.changeWidth = true
+        if (!sideBar.modal) sideBar.open()
+        currentPageName = "Main"
     }
 }

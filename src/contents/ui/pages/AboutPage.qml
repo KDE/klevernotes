@@ -10,7 +10,8 @@ import org.kde.Klever
 FormCard.AboutPage {
     aboutData: About
 
-    onBackRequested: {
-        applicationWindow().currentPageName = "Main"
+    onBackRequested: (event) => {
+        event.accepted = true
+        applicationWindow().showMainPage()
     }
 }
