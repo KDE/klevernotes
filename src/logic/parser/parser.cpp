@@ -7,6 +7,11 @@
 
 #include "parser.h"
 
+#define MD4QT_QT_SUPPORT
+#include "logic/md4qt/html.hpp"
+#include "logic/md4qt/parser.hpp"
+#include "logic/md4qt/traits.hpp"
+
 #include "renderer.h"
 #include <QJsonArray>
 
@@ -55,22 +60,31 @@ QString Parser::getNotePath() const
 
 QString Parser::parse(QString src)
 {
-    pluginHelper->clearPluginsInfo();
+    // pluginHelper->clearPluginsInfo();
+    //
+    // blockLexer.lex(src);
+    //
+    // pluginHelper->preTokChanges();
+    //
+    // std::reverse(tokens.begin(), tokens.end());
+    //
+    // QString out;
+    // while (getNextToken()) {
+    //     out += tok();
+    // }
+    //
+    // pluginHelper->postTokChanges();
+    MD::Parser<MD::QStringTrait> p;
+    QTextStream s(&src, QIODeviceBase::ReadOnly);
 
-    blockLexer.lex(src);
+    const auto doc = p.parse(s, QStringLiteral("local.md"));
+    // MD::Parser< MD::QStringTrait > p;
 
-    pluginHelper->preTokChanges();
+    // auto doc = p.parse( QStringLiteral("your_markdown.md") );
 
-    std::reverse(tokens.begin(), tokens.end());
+    const auto html = MD::toHtml(doc);
 
-    QString out;
-    while (getNextToken()) {
-        out += tok();
-    }
-
-    pluginHelper->postTokChanges();
-
-    return out;
+    return html;
 }
 
 QString Parser::tok()
