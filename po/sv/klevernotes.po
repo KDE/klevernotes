@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 01:43+0000\n"
+"POT-Creation-Date: 2024-05-07 01:44+0000\n"
 "PO-Revision-Date: 2024-05-03 09:50+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -76,7 +76,7 @@ msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Bildhämtare"
 
-#: contents/ui/dialogs/FontPickerDialog.qml:17
+#: contents/ui/dialogs/FontPickerDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
@@ -475,18 +475,18 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: contents/ui/pages/MainPage.qml:25
+#: contents/ui/pages/MainPage.qml:26
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Välkommen"
 
-#: contents/ui/pages/MainPage.qml:80
+#: contents/ui/pages/MainPage.qml:81
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Välkommen till KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:90
+#: contents/ui/pages/MainPage.qml:91
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Skapa eller välj en anteckning för att börja arbeta."

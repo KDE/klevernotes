@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 01:43+0000\n"
+"POT-Creation-Date: 2024-05-07 01:44+0000\n"
 "PO-Revision-Date: 2023-06-13 22:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -79,7 +79,7 @@ msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Bildauswahl"
 
-#: contents/ui/dialogs/FontPickerDialog.qml:17
+#: contents/ui/dialogs/FontPickerDialog.qml:14
 #, fuzzy, kde-format
 #| msgid "Font selector"
 msgctxt "@title:dialog"
@@ -492,19 +492,19 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: contents/ui/pages/MainPage.qml:25
+#: contents/ui/pages/MainPage.qml:26
 #, fuzzy, kde-format
 #| msgid "Welcome"
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: contents/ui/pages/MainPage.qml:80
+#: contents/ui/pages/MainPage.qml:81
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr ""
 
-#: contents/ui/pages/MainPage.qml:90
+#: contents/ui/pages/MainPage.qml:91
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""

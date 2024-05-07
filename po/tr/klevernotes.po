@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 01:43+0000\n"
+"POT-Creation-Date: 2024-05-07 01:44+0000\n"
 "PO-Revision-Date: 2024-04-17 13:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -77,7 +77,7 @@ msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Görsel Seçicisi"
 
-#: contents/ui/dialogs/FontPickerDialog.qml:17
+#: contents/ui/dialogs/FontPickerDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
@@ -476,18 +476,18 @@ msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "Akıllı Notlar"
 
-#: contents/ui/pages/MainPage.qml:25
+#: contents/ui/pages/MainPage.qml:26
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: contents/ui/pages/MainPage.qml:80
+#: contents/ui/pages/MainPage.qml:81
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Akıllı Notlar’a hoş geldiniz!"
 
-#: contents/ui/pages/MainPage.qml:90
+#: contents/ui/pages/MainPage.qml:91
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
