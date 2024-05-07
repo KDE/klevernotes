@@ -74,15 +74,13 @@ QString Parser::parse(QString src)
     // }
     //
     // pluginHelper->postTokChanges();
+    const QString path = m_notePath == QStringLiteral("qrc:") ? m_notePath : m_notePath.chopped(1);
+
     MD::Parser<MD::QStringTrait> p;
     QTextStream s(&src, QIODeviceBase::ReadOnly);
 
-    const auto doc = p.parse(s, QStringLiteral("local.md"));
-    // MD::Parser< MD::QStringTrait > p;
-
-    // auto doc = p.parse( QStringLiteral("your_markdown.md") );
-
-    const auto html = MD::toHtml(doc);
+    const auto doc = p.parse(s, path, QStringLiteral("local.md"));
+    const auto html = MD::toHtml(doc, path);
 
     return html;
 }

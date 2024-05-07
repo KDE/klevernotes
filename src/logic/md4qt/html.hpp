@@ -14,6 +14,10 @@
 #include <string>
 #include <utility>
 
+// Qt include
+// From KleverNotes
+#include <QDir>
+
 namespace MD
 {
 
@@ -133,10 +137,13 @@ public:
     HtmlVisitor() = default;
     ~HtmlVisitor() override = default;
 
-    typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc, const typename Trait::String &hrefForRefBackImage)
+    // notePath => added by KleverNotes
+    typename Trait::String
+    toHtml(std::shared_ptr<Document<Trait>> doc, const typename Trait::String &notePath, const typename Trait::String &hrefForRefBackImage)
     {
         html.clear();
         fns.clear();
+        m_notePath = notePath;
 
         this->process(doc);
 
@@ -499,8 +506,22 @@ protected:
         Image<Trait> *i) override
     {
         if (!justCollectFootnoteRefs) {
+            // Added by KleverNotes
+            // ====================
+            typename Trait::String url = i->url();
+            if (url.startsWith(QStringLiteral("./"))) {
+                url = m_notePath + url.mid(1);
+            }
+            if (url.startsWith(Trait::latin1ToString("~"))) {
+                url = QDir::homePath() + url.mid(1);
+            }
+            if (!(url.startsWith(Trait::latin1ToString("http")) || url.startsWith(Trait::latin1ToString("//"))
+                  || url.startsWith(Trait::latin1ToString("qrc:")))) {
+                url = Trait::latin1ToString("file:") + url;
+            }
+            // ====================
             html.push_back(Trait::latin1ToString("<img src=\""));
-            html.push_back(i->url());
+            html.push_back(url);
             html.push_back(Trait::latin1ToString("\" alt=\""));
             html.push_back(prepareTextForHtml<Trait>(i->text()));
             html.push_back(Trait::latin1ToString("\" style=\"max-width:100%;\" />"));
@@ -566,8 +587,9 @@ protected:
 
             if (i->isTaskList()) {
                 html.push_back(
-                    Trait::latin1ToString(" class=\"task-list-item\"><input "
-                                          "type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\""));
+                    Trait::latin1ToString(" class=\"task-list-item\">"
+                                          "<label class=\"form-control\">" // Added by KleverNotes
+                                          "<input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\""));
 
                 if (i->isChecked())
                     html.push_back(Trait::latin1ToString(" checked=\"\""));
@@ -584,6 +606,12 @@ protected:
 
         Visitor<Trait>::onListItem(i, first);
 
+        // Added by KleverNotes
+        // ====================
+        if (i->isTaskList()) {
+            html.push_back(Trait::latin1ToString("</label>"));
+        }
+        // ====================
         if (!justCollectFootnoteRefs)
             html.push_back(Trait::latin1ToString("</li>\n"));
     }
@@ -669,6 +697,10 @@ private:
     }
 
 private:
+    // Added by KleverNotes
+    // ====================
+    typename Trait::String m_notePath;
+    // ====================
     typename Trait::String html;
     //! Just collect footnote references?
     bool justCollectFootnoteRefs = false;
@@ -688,7 +720,11 @@ private:
 } /* namespace details */
 
 template<class Trait>
-typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc, bool wrapInBodyTag = true, const typename Trait::String &hrefForRefBackImage = {})
+// notePath => added by KleverNotes
+typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc,
+                              const typename Trait::String &notePath,
+                              bool wrapInBodyTag = true,
+                              const typename Trait::String &hrefForRefBackImage = {})
 {
     typename Trait::String html;
 
@@ -701,7 +737,7 @@ typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc, bool wrapInB
 
     details::HtmlVisitor<Trait> visitor;
 
-    html.push_back(visitor.toHtml(doc, hrefForRefBackImage));
+    html.push_back(visitor.toHtml(doc, notePath, hrefForRefBackImage));
 
     html.push_back(Trait::latin1ToString("</article>\n"));
 
