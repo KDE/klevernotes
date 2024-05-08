@@ -3570,6 +3570,14 @@ inline typename Trait::String removeLineBreak(const typename Trait::String &s)
 }
 
 template<class Trait>
+inline void initLastItemWithOpts(TextParsingOpts<Trait> &po, std::shared_ptr<ItemWithOpts<Trait>> item)
+{
+    item->openStyles() = po.openStyles;
+    po.openStyles.clear();
+    po.lastItemWithStyle = item;
+}
+
+template<class Trait>
 inline void makeTextObject(const typename Trait::String &text,
                            bool spaceBefore,
                            bool spaceAfter,
@@ -3606,9 +3614,8 @@ inline void makeTextObject(const typename Trait::String &text,
         t->setStartLine(po.fr.data.at(startLine).second.lineNumber);
         t->setEndColumn(po.fr.data.at(endLine).first.virginPos(endPos));
         t->setEndLine(po.fr.data.at(endLine).second.lineNumber);
-        t->openStyles() = po.openStyles;
-        po.openStyles.clear();
-        po.lastItemWithStyle = t;
+
+        initLastItemWithOpts<Trait>(po, t);
 
         po.parent->setEndColumn(po.fr.data.at(endLine).first.virginPos(endPos));
         po.parent->setEndLine(po.fr.data.at(endLine).second.lineNumber);
@@ -4802,6 +4809,8 @@ Parser<Trait>::checkForMath(typename Delims::const_iterator it, typename Delims:
                             po.fr.data[end->m_line].second.lineNumber});
             m->setFensedCode(false);
 
+            initLastItemWithOpts<Trait>(po, m);
+
             if (math.startsWith(Trait::latin1ToString("`")) && math.endsWith(Trait::latin1ToString("`")) && !math.endsWith(Trait::latin1ToString("\\`"))
                 && math.length() > 1)
                 math = math.sliced(1, math.length() - 2);
@@ -4930,9 +4939,8 @@ inline void Parser<Trait>::makeInlineCode(long long int startLine,
                  .first.virginPos(endDelimIt->m_pos + (endDelimIt->m_backslashed ? 1 : 0) + endDelimIt->m_len - 1 - (endDelimIt->m_backslashed ? 1 : 0)),
              po.fr.data.at(endDelimIt->m_line).second.lineNumber});
         code->setOpts(po.opts);
-        code->openStyles() = po.openStyles;
-        po.openStyles.clear();
-        po.lastItemWithStyle = code;
+
+        initLastItemWithOpts<Trait>(po, code);
 
         po.parent->appendItem(code);
     }
@@ -5264,9 +5272,8 @@ inline std::shared_ptr<Link<Trait>> Parser<Trait>::makeLink(const typename Trait
     link->setStartLine(po.fr.data.at(startLine).second.lineNumber);
     link->setEndColumn(po.fr.data.at(lastLine).first.virginPos(lastPos - 1));
     link->setEndLine(po.fr.data.at(lastLine).second.lineNumber);
-    link->openStyles() = po.openStyles;
-    po.openStyles.clear();
-    po.lastItemWithStyle = link;
+
+    initLastItemWithOpts<Trait>(po, link);
 
     return link;
 }
@@ -5379,6 +5386,8 @@ inline std::shared_ptr<Image<Trait>> Parser<Trait>::makeImage(const typename Tra
     img->setEndLine(po.fr.data.at(lastLine).second.lineNumber);
     img->setTextPos(textPos);
     img->setUrlPos(urlPos);
+
+    initLastItemWithOpts<Trait>(po, img);
 
     return img;
 }

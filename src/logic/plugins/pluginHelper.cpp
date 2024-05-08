@@ -29,9 +29,9 @@ void PluginHelper::clearPluginsInfo()
 
 void PluginHelper::clearPluginsPreviousInfo()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->clearPreviousInfo();
-    }
+    // if (KleverConfig::codeSynthaxHighlightEnabled()) {
+    //     m_highlightParserUtils->clearPreviousInfo();
+    // }
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearPreviousInfo();
     }
@@ -43,9 +43,9 @@ void PluginHelper::clearPluginsPreviousInfo()
 void PluginHelper::preTokChanges()
 {
     // Syntax highlight
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->preTok();
-    }
+    // if (KleverConfig::codeSynthaxHighlightEnabled()) {
+    // m_highlightParserUtils->preTok();
+    // }
     if (KleverConfig::pumlEnabled()) {
         m_pumlParserUtils->preTok();
     }
@@ -67,10 +67,7 @@ QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text
     if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
         returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark());
     } else {
-        const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
-        const bool highlight = highlightEnabled && !lang.isEmpty();
-
-        returnValue = m_highlightParserUtils->renderCode(highlight, _text, lang);
+        returnValue = m_highlightParserUtils->renderCode(_text, lang);
     }
 
     return returnValue;

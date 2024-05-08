@@ -44,8 +44,8 @@ set(exec_SRCS
     logic/painting/strokelistitem.cpp
     logic/painting/strokepainter.cpp
 
-    logic/parser/blockLexer.cpp
-    logic/parser/inlineLexer.cpp
+    # logic/parser/blockLexer.cpp
+    # logic/parser/inlineLexer.cpp
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
 

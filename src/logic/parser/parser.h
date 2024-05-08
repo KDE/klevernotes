@@ -11,8 +11,35 @@
 #include <QSet>
 
 #include "../plugins/pluginHelper.h"
-#include "blockLexer.h"
-#include "inlineLexer.h"
+
+#define MD4QT_QT_SUPPORT
+#include "logic/md4qt/html.hpp"
+#include "logic/md4qt/parser.hpp"
+#include "logic/md4qt/traits.hpp"
+
+class KleverNotesHtmlVisitor : public MD::details::HtmlVisitor<MD::QStringTrait>
+{
+public:
+    KleverNotesHtmlVisitor(const QString &notePath)
+        : MD::details::HtmlVisitor<MD::QStringTrait>()
+        , m_notePath(notePath){};
+    ~KleverNotesHtmlVisitor() override = default;
+
+    void setNotePath(const QString &notePath)
+    {
+        m_notePath = notePath;
+    }
+    void onImage(MD::Image<MD::QStringTrait> *i) override;
+
+    void onListItem(
+        //! List item.
+        MD::ListItem<MD::QStringTrait> *i,
+        //! Is this item first in the list?
+        bool first) override;
+
+private:
+    QString m_notePath;
+};
 
 class Parser : public QObject
 {
@@ -49,15 +76,12 @@ public Q_SLOTS:
     void pumlDarkChanged();
 
 private:
-    QString tok();
-    QString parseText();
-    QString peekType() const;
-    bool getNextToken();
-
-    BlockLexer blockLexer = BlockLexer(this);
-    InlineLexer inlineLexer = InlineLexer(this);
+    QString renderHtml();
     PluginHelper *pluginHelper = new PluginHelper(this);
 
     QString m_notePath;
-    QVariantMap m_token;
+
+    MD::Parser<MD::QStringTrait> m_md4qtParser;
+
+    KleverNotesHtmlVisitor *m_renderer = nullptr;
 };
