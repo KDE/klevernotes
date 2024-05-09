@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-04-29 14:24+0200\n"
+"PO-Revision-Date: 2024-05-07 07:37+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -227,7 +227,7 @@ msgstr "Cette catégorie existe déjà."
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr "Le groupe  existe déjà."
+msgstr "Le groupe existe déjà."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
@@ -250,7 +250,7 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
-"Ce nom commence par un point. Cela peut causer un problème et n’est donc pas "
+"Ce nom commence par un point. Cela peut causer un problème et n'est donc pas "
 "autorisé."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:38
@@ -1525,11 +1525,11 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
-"/*   \n"
+"/* \n"
 "Ce fichier est une copie du style « CSS » par défaut pour l'affichage des "
-"notes.   \n"
-"N'hésitez pas à le modifier ou à réaliser le votre.   \n"
-"Remarque : chaque style doit avoir un nom différent.   \n"
+"notes. \n"
+"N'hésitez pas à le modifier ou à réaliser le votre. \n"
+"Remarque : chaque style doit avoir un nom différent. \n"
 "*/\n"
 
 #: logic/plugins/emoji/emojiModel.cpp:152
