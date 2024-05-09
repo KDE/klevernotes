@@ -87,4 +87,28 @@
   </description>
   <launchable type="desktop-id">org.kde.klevernotes.desktop</launchable>
   <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0">
+      <description>
+        <p>
+          KleverNotes, KDE's Markdown note-taking and management application using Kirigami, is ready for its first release!
+        </p>
+        <p>
+          KleverNotes allows you to create and preview a Markdown note while giving you the freedom to customize the preview from settings or using a CSS theme.
+          You can organize your notes however you want with a combination of categories and groups, which will be directly reflected on your system in the 
+          hierarchy of your KleverNotes storage folders.
+          Simply choose your storage location and you're ready to write!
+        </p>
+        <p>
+          You can print your notes, add small sketches and even create specific tasks for each of them, all from the application!
+        </p>
+        <p>
+          Notes are saved as Markdown files in your KleverNotes storage for easy access. 
+          They support the entire CommonMark specification with extensive syntax. 
+          KleverNotes also introduces a small collection of opt-in “plugins” to extend basic markdown features, such as: 
+          code highlighting, note linking, quick emoji, etc.
+        </p>
+      </description>
+    </release>
+  </releases>
 </component>
