@@ -4,6 +4,7 @@
 */
 
 #include "parser.h"
+#include "kleverconfig.h"
 
 #include <QJsonArray>
 
@@ -58,14 +59,29 @@ void KleverNotesHtmlVisitor::onListItem(MD::ListItem<MD::QStringTrait> *i, bool 
     if (i->isTaskList()) {
         html.push_back(QStringLiteral("</label>"));
     }
-    if (!justCollectFootnoteRefs)
+    if (!justCollectFootnoteRefs) {
         html.push_back(QStringLiteral("</li>\n"));
+    }
+}
+
+void KleverNotesHtmlVisitor::onCode(MD::Code<MD::QStringTrait> *c)
+{
+    if (!justCollectFootnoteRefs) {
+        // TODO: check pluginHelper blockCodePlugins
+        const QString code = m_pluginHelper->getHighlightParserUtils()->renderCode(KleverConfig::codeSynthaxHighlightEnabled(), c->text(), c->syntax());
+        html.push_back(code);
+    }
+}
+
+void KleverNotesHtmlVisitor::setNotePath(const QString &notePath)
+{
+    m_notePath = notePath;
 }
 
 Parser::Parser(QObject *parent)
     : QObject(parent)
 {
-    m_renderer = new KleverNotesHtmlVisitor({});
+    m_renderer = new KleverNotesHtmlVisitor(getPluginHelper());
 }
 
 PluginHelper *Parser::getPluginHelper() const
@@ -107,27 +123,13 @@ QString Parser::getNotePath() const
 
 QString Parser::parse(QString src)
 {
-    // pluginHelper->clearPluginsInfo();
-    //
-    // blockLexer.lex(src);
-    //
-    // pluginHelper->preTokChanges();
-    //
-    // std::reverse(tokens.begin(), tokens.end());
-    //
-    // QString out;
-    // while (getNextToken()) {
-    //     out += tok();
-    // }
-    //
-    const QString path = m_notePath == QStringLiteral("qrc:") ? m_notePath : m_notePath.chopped(1);
+    pluginHelper->clearPluginsPreviousInfo();
 
     QTextStream s(&src, QIODeviceBase::ReadOnly);
 
-    const auto doc = m_md4qtParser.parse(s, path, QStringLiteral("local.md"));
-    const auto html = m_renderer->toHtml(doc, path);
+    const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("local.md"));
+    const auto html = m_renderer->toHtml(doc, m_notePath);
 
-    pluginHelper->postTokChanges();
     return html;
 }
 

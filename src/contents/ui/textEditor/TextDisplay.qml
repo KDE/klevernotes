@@ -24,6 +24,7 @@ RowLayout {
     required property string path
     required property string text
     
+    // TODO: move all of those to C++ connect
     // Syntax highlight
     readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
     readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
@@ -36,13 +37,16 @@ RowLayout {
     // PlantUML
     readonly property bool pumlEnabled: Config.pumlEnabled
     readonly property bool pumlDark: Config.pumlDark
+    // ======================================
 
+    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
+    readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
     readonly property Parser parser: parser
+
+    // TODO: Move to C++
     readonly property string stylePath: Config.stylePath
     readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
     readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
-    readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
-    readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
 
     readonly property var defaultCSS: {
         '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
@@ -57,6 +61,7 @@ RowLayout {
         '--codeFont': codeFontInfo.family,
         '--codeFontSize': codeFontInfo.pointSize + "px",
     }
+    // =================
 
     property string defaultHtml
     property string parsedHtml

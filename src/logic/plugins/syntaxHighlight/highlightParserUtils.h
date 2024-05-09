@@ -5,28 +5,19 @@
 
 #pragma once
 
-#include <QObject>
-#include <QSet>
+#include <QHash>
 
 class HighlightParserUtils
 {
 public:
-    void clearInfo();
-    // void clearPreviousInfo();
-    // void preTok();
+    void clearPreviousInfo();
 
-    // void addToNoteCodeBlocks(const QString &codeBlock);
+    QString renderCode(const bool highlight, const QString &_text, const QString &lang);
+
     void newHighlightStyle();
 
-    QString renderCode(const QString &_text, const QString &lang);
-
 private:
-    // bool m_newHighlightStyle = true;
-    // bool m_sameCodeBlocks = false;
-    // int m_currentBlockIndex = 0;
-    // QStringList m_noteCodeBlocks;
-    // QStringList m_previousHighlightedBlocks;
-    // QStringList m_previousNoteCodeBlocks;
+    bool m_newHighlightStyle = true;
 
     QHash<QString, QString> m_previousHighlightedBlocks;
     QHash<QString, QString> m_currentHighlightedBlocks;

@@ -16,9 +16,6 @@ PluginHelper::PluginHelper(Parser *parser)
 
 void PluginHelper::clearPluginsInfo()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->clearInfo();
-    }
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearInfo();
     }
@@ -29,9 +26,9 @@ void PluginHelper::clearPluginsInfo()
 
 void PluginHelper::clearPluginsPreviousInfo()
 {
-    // if (KleverConfig::codeSynthaxHighlightEnabled()) {
-    //     m_highlightParserUtils->clearPreviousInfo();
-    // }
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
+        m_highlightParserUtils->clearPreviousInfo();
+    }
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearPreviousInfo();
     }

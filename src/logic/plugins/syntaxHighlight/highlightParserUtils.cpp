@@ -4,41 +4,18 @@
 */
 
 #include "highlightParserUtils.h"
-#include "kleverconfig.h"
-#include "logic/plugins/syntaxHighlight/highlightHelper.h"
+#include "highlightHelper.h"
 
-void HighlightParserUtils::clearInfo()
+void HighlightParserUtils::clearPreviousInfo()
 {
     m_previousHighlightedBlocks = m_currentHighlightedBlocks;
     m_currentHighlightedBlocks.clear();
 }
 
-// void HighlightParserUtils::clearPreviousInfo()
-// {
-//     m_previousNoteCodeBlocks.clear();
-// }
-//
-// void HighlightParserUtils::addToNoteCodeBlocks(const QString &codeBlock)
-// {
-//     m_noteCodeBlocks.append(codeBlock);
-// }
-
 void HighlightParserUtils::newHighlightStyle()
 {
-    // m_newHighlightStyle = true;
+    m_newHighlightStyle = true;
 }
-
-// void HighlightParserUtils::preTok()
-// {
-//     m_sameCodeBlocks = m_previousNoteCodeBlocks == m_noteCodeBlocks && !m_noteCodeBlocks.isEmpty();
-//     if (!m_sameCodeBlocks || m_newHighlightStyle) {
-//         m_previousNoteCodeBlocks = m_noteCodeBlocks;
-//         m_previousHighlightedBlocks.clear();
-//         m_newHighlightStyle = false;
-//         m_sameCodeBlocks = false;
-//     }
-//     m_currentBlockIndex = 0;
-// }
 
 QString escape(QString &html, bool encode)
 {
@@ -58,19 +35,26 @@ QString escape(QString &html, bool encode)
         .replace(apostropheReg, QStringLiteral("&#39;"));
 }
 
-QString HighlightParserUtils::renderCode(const QString &_text, const QString &lang)
+QString HighlightParserUtils::renderCode(const bool highlight, const QString &_text, const QString &lang)
 {
-    if (!KleverConfig::codeSynthaxHighlightEnabled() && !lang.isEmpty()) {
-        QString returnValue = _text;
-        return escape(returnValue, true);
+    if (m_newHighlightStyle) {
+        m_previousHighlightedBlocks.clear();
+        m_newHighlightStyle = false;
     }
-
     QString code;
-    if (m_previousHighlightedBlocks.contains(_text)) {
-        code = m_previousHighlightedBlocks.value(_text);
+    if (!highlight && !lang.isEmpty()) {
+        QString text = _text;
+        code = escape(text, true);
     } else {
-        code = HighlightHelper::getHighlightedString(_text, lang);
+        if (m_previousHighlightedBlocks.contains(_text)) {
+            code = m_previousHighlightedBlocks.value(_text);
+        } else {
+            code = HighlightHelper::getHighlightedString(_text, lang);
+        }
+        m_currentHighlightedBlocks.insert(_text, code);
     }
-    m_currentHighlightedBlocks.insert(_text, code);
-    return code;
+    static const QString openingTags = QStringLiteral("\n<pre><code>");
+    static const QString closingTags = QStringLiteral("</code></pre>\n");
+
+    return openingTags + code + closingTags;
 }

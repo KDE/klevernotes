@@ -17,29 +17,26 @@
 #include "logic/md4qt/parser.hpp"
 #include "logic/md4qt/traits.hpp"
 
+// TODO: move to own file (like renderer)
 class KleverNotesHtmlVisitor : public MD::details::HtmlVisitor<MD::QStringTrait>
 {
 public:
-    KleverNotesHtmlVisitor(const QString &notePath)
+    KleverNotesHtmlVisitor(PluginHelper *pluginHelper)
         : MD::details::HtmlVisitor<MD::QStringTrait>()
-        , m_notePath(notePath){};
+        , m_pluginHelper(pluginHelper){};
     ~KleverNotesHtmlVisitor() override = default;
 
-    void setNotePath(const QString &notePath)
-    {
-        m_notePath = notePath;
-    }
+    void setNotePath(const QString &notePath);
+
     void onImage(MD::Image<MD::QStringTrait> *i) override;
+    void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
+    void onCode(MD::Code<MD::QStringTrait> *c) override;
 
-    void onListItem(
-        //! List item.
-        MD::ListItem<MD::QStringTrait> *i,
-        //! Is this item first in the list?
-        bool first) override;
-
-private:
+protected:
     QString m_notePath;
+    PluginHelper *m_pluginHelper;
 };
+// =====
 
 class Parser : public QObject
 {
