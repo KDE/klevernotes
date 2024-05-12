@@ -1375,7 +1375,7 @@ msgstr "Bloc de codi delimitat"
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr "Text d'exemple ací..."
+msgstr "Text d'exemple ací…"
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
