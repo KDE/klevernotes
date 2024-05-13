@@ -18,7 +18,6 @@ public:
     explicit PluginHelper(Parser *parser);
     void clearPluginsInfo();
     void clearPluginsPreviousInfo();
-    void preTokChanges();
     void postTokChanges();
 
     QString blockCodePlugins(const QString &lang, const QString &_text);

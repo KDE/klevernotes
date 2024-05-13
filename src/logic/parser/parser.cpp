@@ -7,8 +7,14 @@
 #include "kleverconfig.h"
 
 #include <QJsonArray>
+#include <qcontainerfwd.h>
 
 using namespace std;
+
+QString makeImageString(const QString &href, const QString &text)
+{
+    return QStringLiteral("<img src=\"") + href + QStringLiteral("\" alt=\"") + text + QStringLiteral("\">");
+}
 
 void KleverNotesHtmlVisitor::onImage(MD::Image<MD::QStringTrait> *i)
 {
@@ -23,11 +29,8 @@ void KleverNotesHtmlVisitor::onImage(MD::Image<MD::QStringTrait> *i)
         if (!(url.startsWith(QStringLiteral("http")) || url.startsWith(QStringLiteral("//")) || url.startsWith(QStringLiteral("qrc:")))) {
             url = QStringLiteral("file:") + url;
         }
-        html.push_back(QStringLiteral("<img src=\""));
-        html.push_back(url);
-        html.push_back(QStringLiteral("\" alt=\""));
-        html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(i->text()));
-        html.push_back(QStringLiteral("\" style=\"max-width:100%;\" />"));
+
+        html.push_back(makeImageString(url, i->text()));
     }
 }
 
@@ -67,9 +70,21 @@ void KleverNotesHtmlVisitor::onListItem(MD::ListItem<MD::QStringTrait> *i, bool 
 void KleverNotesHtmlVisitor::onCode(MD::Code<MD::QStringTrait> *c)
 {
     if (!justCollectFootnoteRefs) {
-        // TODO: check pluginHelper blockCodePlugins
-        const QString code = m_pluginHelper->getHighlightParserUtils()->renderCode(KleverConfig::codeSynthaxHighlightEnabled(), c->text(), c->syntax());
-        html.push_back(code);
+        static const QString pumlStr = QStringLiteral("puml");
+        static const QString plantUMLStr = QStringLiteral("plantuml");
+
+        const QString lang = c->syntax();
+        const QString _text = c->text();
+        QString returnValue;
+        if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
+            QPair<QString, QString> imageInfo = m_pluginHelper->getPUMLParserUtils()->renderCode(_text, KleverConfig::pumlDark());
+
+            returnValue = makeImageString(imageInfo.first, imageInfo.second);
+        } else {
+            returnValue = m_pluginHelper->getHighlightParserUtils()->renderCode(KleverConfig::codeSynthaxHighlightEnabled(), _text, lang);
+        }
+
+        html.push_back(returnValue);
     }
 }
 

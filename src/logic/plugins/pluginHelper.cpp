@@ -19,9 +19,6 @@ void PluginHelper::clearPluginsInfo()
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearInfo();
     }
-    if (KleverConfig::pumlEnabled()) {
-        m_pumlParserUtils->clearInfo();
-    }
 }
 
 void PluginHelper::clearPluginsPreviousInfo()
@@ -34,17 +31,6 @@ void PluginHelper::clearPluginsPreviousInfo()
     }
     if (KleverConfig::pumlEnabled()) {
         m_pumlParserUtils->clearPreviousInfo();
-    }
-}
-
-void PluginHelper::preTokChanges()
-{
-    // Syntax highlight
-    // if (KleverConfig::codeSynthaxHighlightEnabled()) {
-    // m_highlightParserUtils->preTok();
-    // }
-    if (KleverConfig::pumlEnabled()) {
-        m_pumlParserUtils->preTok();
     }
 }
 
@@ -64,7 +50,7 @@ QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text
     if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
         returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark());
     } else {
-        returnValue = m_highlightParserUtils->renderCode(_text, lang);
+        returnValue = m_highlightParserUtils->renderCode(KleverConfig::codeSynthaxHighlightEnabled(), _text, lang);
     }
 
     return returnValue;
