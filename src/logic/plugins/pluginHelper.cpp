@@ -6,6 +6,7 @@
 #include "pluginHelper.h"
 
 #include "kleverconfig.h"
+#include <qcontainerfwd.h>
 
 PluginHelper::PluginHelper(Parser *parser)
     : m_highlightParserUtils(new HighlightParserUtils)
@@ -39,21 +40,6 @@ void PluginHelper::postTokChanges()
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->postTok();
     }
-}
-
-QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text)
-{
-    static const QString pumlStr = QStringLiteral("puml");
-    static const QString plantUMLStr = QStringLiteral("plantuml");
-
-    QString returnValue;
-    if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-        returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark());
-    } else {
-        returnValue = m_highlightParserUtils->renderCode(KleverConfig::codeSynthaxHighlightEnabled(), _text, lang);
-    }
-
-    return returnValue;
 }
 
 // NoteMapper

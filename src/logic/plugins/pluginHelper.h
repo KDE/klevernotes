@@ -20,8 +20,6 @@ public:
     void clearPluginsPreviousInfo();
     void postTokChanges();
 
-    QString blockCodePlugins(const QString &lang, const QString &_text);
-
     // NoteMapper
     NoteMapperParserUtils *getMapperParserUtils() const;
 
