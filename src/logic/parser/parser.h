@@ -11,32 +11,10 @@
 #include <QSet>
 
 #include "../plugins/pluginHelper.h"
+#include "renderer.h"
 
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/html.hpp"
 #include "logic/md4qt/parser.hpp"
-#include "logic/md4qt/traits.hpp"
-
-// TODO: move to own file (like renderer)
-class KleverNotesHtmlVisitor : public MD::details::HtmlVisitor<MD::QStringTrait>
-{
-public:
-    KleverNotesHtmlVisitor(PluginHelper *pluginHelper)
-        : MD::details::HtmlVisitor<MD::QStringTrait>()
-        , m_pluginHelper(pluginHelper){};
-    ~KleverNotesHtmlVisitor() override = default;
-
-    void setNotePath(const QString &notePath);
-
-    void onImage(MD::Image<MD::QStringTrait> *i) override;
-    void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
-    void onCode(MD::Code<MD::QStringTrait> *c) override;
-
-protected:
-    QString m_notePath;
-    PluginHelper *m_pluginHelper;
-};
-// =====
 
 class Parser : public QObject
 {
@@ -74,11 +52,11 @@ public Q_SLOTS:
 
 private:
     QString renderHtml();
-    PluginHelper *pluginHelper = new PluginHelper(this);
+    PluginHelper *m_pluginHelper = nullptr;
 
     QString m_notePath;
 
     MD::Parser<MD::QStringTrait> m_md4qtParser;
 
-    KleverNotesHtmlVisitor *m_renderer = nullptr;
+    Renderer *m_renderer = nullptr;
 };

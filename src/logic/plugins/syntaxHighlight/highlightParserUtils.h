@@ -12,7 +12,7 @@ class HighlightParserUtils
 public:
     void clearPreviousInfo();
 
-    QString renderCode(const bool highlight, const QString &_text, const QString &lang);
+    QString getCode(const bool highlight, const QString &_text, const QString &lang);
 
     void newHighlightStyle();
 

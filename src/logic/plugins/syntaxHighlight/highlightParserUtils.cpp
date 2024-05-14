@@ -35,7 +35,7 @@ QString escape(QString &html, bool encode)
         .replace(apostropheReg, QStringLiteral("&#39;"));
 }
 
-QString HighlightParserUtils::renderCode(const bool highlight, const QString &_text, const QString &lang)
+QString HighlightParserUtils::getCode(const bool highlight, const QString &_text, const QString &lang)
 {
     if (m_newHighlightStyle) {
         m_previousHighlightedBlocks.clear();
@@ -53,8 +53,6 @@ QString HighlightParserUtils::renderCode(const bool highlight, const QString &_t
         }
         m_currentHighlightedBlocks.insert(_text, code);
     }
-    static const QString openingTags = QStringLiteral("\n<pre><code>");
-    static const QString closingTags = QStringLiteral("</code></pre>\n");
 
-    return openingTags + code + closingTags;
+    return code;
 }
