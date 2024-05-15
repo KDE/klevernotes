@@ -588,7 +588,7 @@ protected:
             html.push_back(Trait::latin1ToString("</li>\n"));
     }
 
-    void onHeading(
+    virtual void onHeading(
         //! Heading.
         Heading<Trait> *h,
         //! Heading tag.
@@ -682,7 +682,7 @@ protected:
 
     //! Vector of processed footnotes references.
     typename Trait::template Vector<FootnoteRefStuff> fns;
-}; // class Visitor
+}; // class HtmlVisitor
 
 } /* namespace details */
 
