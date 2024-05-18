@@ -579,6 +579,11 @@ public:
             m_items.erase(m_items.cbegin() + idx);
     }
 
+    ItemSharedPointer getItemAt(long long int idx) const
+    {
+        return m_items.at(idx);
+    }
+
     bool isEmpty() const
     {
         return m_items.empty();

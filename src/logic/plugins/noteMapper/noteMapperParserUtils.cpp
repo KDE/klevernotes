@@ -13,20 +13,23 @@ NoteMapperParserUtils::NoteMapperParserUtils(Parser *parser)
 {
 }
 
-void NoteMapperParserUtils::setPathsInfo(const QString &notePath)
+QString NoteMapperParserUtils::getGroupPath(const QString &notePath)
 {
     // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
-    m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
+    // TODO check the use of m_mapperNotePath
+    const QString mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
 
     // /Category/Group/Note => /Category/Group (no '/' at the end to make it easier for m_categPath)
-    const QString groupPath = m_mapperNotePath.chopped(m_mapperNotePath.size() - m_mapperNotePath.lastIndexOf(QStringLiteral("/")));
-    if (m_groupPath != groupPath) {
-        m_groupPath = groupPath + QStringLiteral("/"); // /Category/Group => /Category/Group/
-        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf(QStringLiteral("/")) - 1); // /Category/Group => /Category/
-    }
+    QString groupPath = mapperNotePath.chopped(mapperNotePath.size() - mapperNotePath.lastIndexOf(QStringLiteral("/")) - 1);
+
+    // const QString categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf(QStringLiteral("/")) - 1); // /Category/Group => /Category/
+
+    // groupPath = groupPath + QStringLiteral("/"); // /Category/Group => /Category/Group/
+
+    return groupPath;
 }
 
-QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path) const
+QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path, const QString &notePath)
 {
     static const QString slashStr = QStringLiteral("/");
     QStringList parts = _path.split(slashStr);
@@ -47,17 +50,20 @@ QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path) c
     if (leadingSlashRemnant)
         parts.removeAt(0);
 
-    if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue())
+    if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue() && 1 < parts.length()) {
         parts[0] = QStringLiteral(".BaseCategory");
+    }
+
+    const QString groupPath = getGroupPath(notePath);
 
     QString path = _path;
     switch (parts.count()) {
     case 1: // Note name only
-        path = m_groupPath + parts[0];
+        path = groupPath + parts[0];
         break;
     case 2:
         if (parts[0] == QStringLiteral(".")) { // Note name only
-            path = m_groupPath + parts[1];
+            path = groupPath + parts[1];
         } else { // Note inside category
             path = slashStr + parts[0] + QStringLiteral("/.BaseGroup/") + parts[1];
         }
@@ -70,6 +76,11 @@ QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path) c
     }
 
     return qMakePair(path, true);
+}
+
+void NoteMapperParserUtils::setNotePath(const QString &path)
+{
+    m_mapperNotePath = path.chopped(1).remove(KleverConfig::storagePath());
 }
 
 void NoteMapperParserUtils::setHeaderInfo(const QStringList &headerInfo)

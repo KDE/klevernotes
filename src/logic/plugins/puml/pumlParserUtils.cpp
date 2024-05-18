@@ -9,7 +9,7 @@
 #include <QStandardPaths>
 #include <QUuid>
 
-void PUMLParserUtils::clearPreviousInfo()
+void PUMLParserUtils::clearInfo()
 {
     m_previousPUMLBlocks = m_currentPUMLBlocks;
     m_currentPUMLBlocks.clear();

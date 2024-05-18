@@ -43,7 +43,7 @@ class NoteMapper : public QAbstractItemModel
     Q_PROPERTY(int count READ rowCount CONSTANT) // QML will handle the signal and change it for us
 public:
     explicit NoteMapper(QObject *parent = nullptr);
-
+    bool test = false;
     enum ExtraRoles {
         PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Category/Group/Note
         DisplayedPathRole, // To get a string with the name of the Category/Group/Note to be displayed instead of the hidden name

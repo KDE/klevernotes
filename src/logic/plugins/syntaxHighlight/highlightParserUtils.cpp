@@ -6,7 +6,7 @@
 #include "highlightParserUtils.h"
 #include "highlightHelper.h"
 
-void HighlightParserUtils::clearPreviousInfo()
+void HighlightParserUtils::clearInfo()
 {
     m_previousHighlightedBlocks = m_currentHighlightedBlocks;
     m_currentHighlightedBlocks.clear();

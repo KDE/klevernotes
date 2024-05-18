@@ -6,7 +6,6 @@
 #include "pluginHelper.h"
 
 #include "kleverconfig.h"
-#include <qcontainerfwd.h>
 
 PluginHelper::PluginHelper(Parser *parser)
     : m_highlightParserUtils(new HighlightParserUtils)
@@ -20,18 +19,18 @@ void PluginHelper::clearPluginsInfo()
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearInfo();
     }
+    if (KleverConfig::pumlEnabled()) {
+        m_pumlParserUtils->clearInfo();
+    }
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
+        m_highlightParserUtils->clearInfo();
+    }
 }
 
 void PluginHelper::clearPluginsPreviousInfo()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->clearPreviousInfo();
-    }
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearPreviousInfo();
-    }
-    if (KleverConfig::pumlEnabled()) {
-        m_pumlParserUtils->clearPreviousInfo();
     }
 }
 

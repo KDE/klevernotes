@@ -11,7 +11,7 @@
 class PUMLParserUtils
 {
 public:
-    void clearPreviousInfo();
+    void clearInfo();
 
     void pumlDarkChanged();
 

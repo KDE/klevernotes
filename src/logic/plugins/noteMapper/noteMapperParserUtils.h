@@ -7,6 +7,7 @@
 
 #include <QObject>
 #include <QSet>
+#include <tuple>
 
 class Parser;
 
@@ -15,8 +16,8 @@ class NoteMapperParserUtils
 public:
     explicit NoteMapperParserUtils(Parser *parser);
 
-    void setPathsInfo(const QString &path);
-    QPair<QString, bool> sanitizePath(const QString &_path) const;
+    static QPair<QString, bool> sanitizePath(const QString &_path, const QString &notePath);
+    void setNotePath(const QString &path);
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
     void addToLinkedNoteInfos(const QStringList &infos);
@@ -28,6 +29,7 @@ public:
     void clearPreviousInfo();
 
 private:
+    static QString getGroupPath(const QString &path);
     QString m_mapperNotePath;
     QString m_groupPath;
     QString m_categPath;

@@ -3,8 +3,6 @@
     SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 */
 
-// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
-
 #pragma once
 
 #include "../plugins/pluginHelper.h"
@@ -24,6 +22,8 @@ public:
     void onImage(MD::Image<MD::QStringTrait> *i) override;
     void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
     void onCode(MD::Code<MD::QStringTrait> *c) override;
+    void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
+    void onLink(MD::Link<MD::QStringTrait> *l) override;
 
     static QString code(QString &code, const bool highlight);
     static QString openListItem(const bool hasTask = false, const bool isChecked = false, const int startNumber = -1);

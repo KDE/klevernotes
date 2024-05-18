@@ -6,10 +6,12 @@
 #include "renderer.h"
 
 #include "kleverconfig.h"
+#include "logic/md4qt/traits.hpp"
 
 #include <QDir>
 #include <QRegularExpression>
 #include <QUrl>
+#include <qlogging.h>
 
 Renderer::Renderer(PluginHelper *pluginHelper)
     : MD::details::HtmlVisitor<MD::QStringTrait>()
@@ -17,6 +19,83 @@ Renderer::Renderer(PluginHelper *pluginHelper)
 
 // Overriding default
 // =========
+void Renderer::onHeading(
+    //! Heading.
+    MD::Heading<MD::QStringTrait> *h,
+    //! Heading tag.
+    const typename MD::QStringTrait::String &ht)
+{
+    if (!justCollectFootnoteRefs) {
+        html.push_back(QStringLiteral("<"));
+        html.push_back(ht);
+        html.push_back(MD::details::headingIdToHtml(h));
+        html.push_back(QStringLiteral(">"));
+    }
+
+    if (h->text().get())
+        onParagraph(h->text().get(), false);
+
+    if (!justCollectFootnoteRefs) {
+        html.push_back(QStringLiteral("</"));
+        html.push_back(ht);
+        html.push_back(QStringLiteral(">"));
+    }
+}
+
+void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
+{
+    QString url = l->url();
+
+    const QString wikilinkDelim = QStringLiteral("@HEADER@");
+    if (url.contains(wikilinkDelim)) {
+        auto linkedNoteInfo = url.split(wikilinkDelim);
+        linkedNoteInfo.append(l->text());
+        m_pluginHelper->getMapperParserUtils()->addToLinkedNoteInfos(linkedNoteInfo);
+    }
+
+    const auto lit = this->doc->labeledLinks().find(url);
+
+    if (lit != this->doc->labeledLinks().cend())
+        url = lit->second->url();
+
+    if (std::find(this->anchors.cbegin(), this->anchors.cend(), url) != this->anchors.cend())
+        url = QStringLiteral("#") + url;
+    else if (url.startsWith(QStringLiteral("#")) && this->doc->labeledHeadings().find(url) == this->doc->labeledHeadings().cend()) {
+        auto path = static_cast<MD::Anchor<MD::QStringTrait> *>(this->doc->items().at(0).get())->label();
+        const auto sp = path.lastIndexOf(QStringLiteral("/"));
+        path.remove(sp, path.length() - sp);
+        const auto p = url.indexOf(path) - 1;
+        url.remove(p, url.length() - p);
+    }
+
+    if (!justCollectFootnoteRefs) {
+        html.push_back(MD::details::openTextStyleToHtml<MD::QStringTrait>(l->opts()));
+
+        html.push_back(QStringLiteral("<a href=\""));
+        html.push_back(url);
+        html.push_back(QStringLiteral("\">"));
+    }
+
+    if (!l->img()->isEmpty()) {
+        if (!justCollectFootnoteRefs)
+            onImage(l->img().get());
+    } else if (l->p() && !l->p()->isEmpty())
+        onParagraph(l->p().get(), false);
+    else if (!l->text().isEmpty()) {
+        if (!justCollectFootnoteRefs)
+            html.push_back(MD::details::linkTextToHtml<MD::QStringTrait>(l->text(), l->opts()));
+    } else {
+        if (!justCollectFootnoteRefs)
+            html.push_back(MD::details::linkTextToHtml<MD::QStringTrait>(l->url(), l->opts()));
+    }
+
+    if (!justCollectFootnoteRefs) {
+        html.push_back(QStringLiteral("</a>"));
+
+        html.push_back(MD::details::closeTextStyleToHtml<MD::QStringTrait>(l->opts()));
+    }
+}
+
 void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
 {
     if (!justCollectFootnoteRefs) {

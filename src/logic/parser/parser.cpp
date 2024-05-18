@@ -4,6 +4,7 @@
 */
 
 #include "logic/parser/parser.h"
+#include "logic/plugins/noteMapper/wikilinkProcess.h"
 
 Parser::Parser(QObject *parent)
     : QObject(parent)
@@ -39,9 +40,9 @@ void Parser::setNotePath(const QString &notePath)
         return;
     }
     // We do this here because we're sure to be in another note
-    m_pluginHelper->clearPluginsInfo();
+    m_pluginHelper->clearPluginsPreviousInfo();
 
-    m_pluginHelper->getMapperParserUtils()->setPathsInfo(notePath);
+    m_pluginHelper->getMapperParserUtils()->setNotePath(notePath);
 }
 
 QString Parser::getNotePath() const
@@ -51,12 +52,16 @@ QString Parser::getNotePath() const
 
 QString Parser::parse(QString src)
 {
-    m_pluginHelper->clearPluginsPreviousInfo();
+    m_pluginHelper->clearPluginsInfo();
 
     QTextStream s(&src, QIODeviceBase::ReadOnly);
 
-    const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("local.md"));
+    m_md4qtParser.addTextPlugin(2, NoteMapperFunc::wikiLinkFunc, true);
+
+    const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
     const auto html = m_renderer->toHtml(doc, m_notePath);
+
+    m_pluginHelper->postTokChanges();
 
     return html;
 }
