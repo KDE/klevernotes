@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-04-17 09:41+0200\n"
+"PO-Revision-Date: 2024-05-20 10:49+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,19 +15,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
 msgctxt "@info, as in 'A note category'"
 msgid "Are you sure you want to delete the category <filename>%1</filename>?"
-msgstr ""
+msgstr "Opravdu si přejete smazat kategorii <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:18
 #, kde-kuit-format
 msgctxt "@info, as in 'A note group'"
 msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-msgstr ""
+msgstr "Opravdu si přejete smazat skupinu <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:19
 #, kde-kuit-format
