@@ -38,40 +38,6 @@ typename Trait::String headingIdToHtml(Heading<Trait> *h)
 }
 
 template<class Trait>
-typename Trait::String openTextStyleToHtml(int s)
-{
-    typename Trait::String html;
-
-    if (s & TextOption::BoldText)
-        html.push_back(Trait::latin1ToString("<strong>"));
-
-    if (s & TextOption::ItalicText)
-        html.push_back(Trait::latin1ToString("<em>"));
-
-    if (s & TextOption::StrikethroughText)
-        html.push_back(Trait::latin1ToString("<del>"));
-
-    return html;
-}
-
-template<class Trait>
-typename Trait::String closeTextStyleToHtml(int s)
-{
-    typename Trait::String html;
-
-    if (s & TextOption::StrikethroughText)
-        html.push_back(Trait::latin1ToString("</del>"));
-
-    if (s & TextOption::ItalicText)
-        html.push_back(Trait::latin1ToString("</em>"));
-
-    if (s & TextOption::BoldText)
-        html.push_back(Trait::latin1ToString("</strong>"));
-
-    return html;
-}
-
-template<class Trait>
 typename Trait::String prepareTextForHtml(const typename Trait::String &t)
 {
     auto tmp = t;
@@ -80,20 +46,6 @@ typename Trait::String prepareTextForHtml(const typename Trait::String &t)
     tmp.replace(Trait::latin1ToChar('>'), Trait::latin1ToString("&gt;"));
 
     return tmp;
-}
-
-template<class Trait>
-typename Trait::String linkTextToHtml(const typename Trait::String &text, int style)
-{
-    typename Trait::String html;
-
-    html.push_back(openTextStyleToHtml<Trait>(style));
-
-    html.push_back(prepareTextForHtml<Trait>(text));
-
-    html.push_back(closeTextStyleToHtml<Trait>(style));
-
-    return html;
 }
 
 template<class Trait>
@@ -146,6 +98,72 @@ public:
     }
 
 protected:
+    virtual void openStyle(const typename ItemWithOpts<Trait>::Styles &styles)
+    {
+        int tmp = 0;
+
+        for (const auto &s : styles) {
+            switch (s.style()) {
+            case TextOption::BoldText: {
+                if (!(tmp & TextOption::BoldText)) {
+                    html.push_back(Trait::latin1ToString("<strong>"));
+                    tmp |= TextOption::BoldText;
+                }
+            } break;
+
+            case TextOption::ItalicText: {
+                if (!(tmp & TextOption::ItalicText)) {
+                    html.push_back(Trait::latin1ToString("<em>"));
+                    tmp |= TextOption::ItalicText;
+                }
+            } break;
+
+            case TextOption::StrikethroughText: {
+                if (!(tmp & TextOption::StrikethroughText)) {
+                    html.push_back(Trait::latin1ToString("<del>"));
+                    tmp |= TextOption::StrikethroughText;
+                }
+            } break;
+
+            default:
+                break;
+            }
+        }
+    }
+
+    virtual void closeStyle(const typename ItemWithOpts<Trait>::Styles &styles)
+    {
+        int tmp = 0;
+
+        for (const auto &s : styles) {
+            switch (s.style()) {
+            case TextOption::BoldText: {
+                if (!(tmp & TextOption::BoldText)) {
+                    html.push_back(Trait::latin1ToString("</strong>"));
+                    tmp |= TextOption::BoldText;
+                }
+            } break;
+
+            case TextOption::ItalicText: {
+                if (!(tmp & TextOption::ItalicText)) {
+                    html.push_back(Trait::latin1ToString("</em>"));
+                    tmp |= TextOption::ItalicText;
+                }
+            } break;
+
+            case TextOption::StrikethroughText: {
+                if (!(tmp & TextOption::StrikethroughText)) {
+                    html.push_back(Trait::latin1ToString("</del>"));
+                    tmp |= TextOption::StrikethroughText;
+                }
+            } break;
+
+            default:
+                break;
+            }
+        }
+    }
+
     void onAddLineEnding() override
     {
         if (!justCollectFootnoteRefs)
@@ -157,7 +175,7 @@ protected:
         Text<Trait> *t) override
     {
         if (!justCollectFootnoteRefs) {
-            html.push_back(openTextStyleToHtml<Trait>(t->opts()));
+            openStyle(t->openStyles());
 
             if (t->isSpaceBefore())
                 html.push_back(Trait::latin1ToString(" "));
@@ -167,7 +185,7 @@ protected:
             if (t->isSpaceAfter())
                 html.push_back(Trait::latin1ToString(" "));
 
-            html.push_back(closeTextStyleToHtml<Trait>(t->opts()));
+            closeStyle(t->closeStyles());
         }
     }
 
@@ -176,9 +194,13 @@ protected:
         Math<Trait> *m) override
     {
         if (!justCollectFootnoteRefs) {
+            openStyle(m->openStyles());
+
             html.push_back(m->isInline() ? Trait::latin1ToString("$ ") : Trait::latin1ToString("$$ "));
             html.push_back(prepareTextForHtml<Trait>(m->expr()));
             html.push_back(m->isInline() ? Trait::latin1ToString(" $") : Trait::latin1ToString(" $$"));
+
+            closeStyle(m->closeStyles());
         }
     }
 
@@ -257,7 +279,7 @@ protected:
         Code<Trait> *c) override
     {
         if (!justCollectFootnoteRefs) {
-            html.push_back(openTextStyleToHtml<Trait>(c->opts()));
+            openStyle(c->openStyles());
 
             html.push_back(Trait::latin1ToString("<code>"));
 
@@ -265,7 +287,7 @@ protected:
 
             html.push_back(Trait::latin1ToString("</code>"));
 
-            html.push_back(closeTextStyleToHtml<Trait>(c->opts()));
+            closeStyle(c->closeStyles());
         }
     }
 
@@ -433,8 +455,13 @@ protected:
         //! Raw HTML.
         RawHtml<Trait> *h) override
     {
-        if (!justCollectFootnoteRefs)
+        if (!justCollectFootnoteRefs) {
+            openStyle(h->openStyles());
+
             html.push_back(h->text());
+
+            closeStyle(h->closeStyles());
+        }
     }
 
     void onHorizontalLine(
@@ -467,7 +494,7 @@ protected:
         }
 
         if (!justCollectFootnoteRefs) {
-            html.push_back(openTextStyleToHtml<Trait>(l->opts()));
+            openStyle(l->openStyles());
 
             html.push_back(Trait::latin1ToString("<a href=\""));
             html.push_back(url);
@@ -481,16 +508,16 @@ protected:
             onParagraph(l->p().get(), false);
         else if (!l->text().isEmpty()) {
             if (!justCollectFootnoteRefs)
-                html.push_back(linkTextToHtml<Trait>(l->text(), l->opts()));
+                html.push_back(prepareTextForHtml<Trait>(l->text()));
         } else {
             if (!justCollectFootnoteRefs)
-                html.push_back(linkTextToHtml<Trait>(l->url(), l->opts()));
+                html.push_back(prepareTextForHtml<Trait>(l->url()));
         }
 
         if (!justCollectFootnoteRefs) {
             html.push_back(Trait::latin1ToString("</a>"));
 
-            html.push_back(closeTextStyleToHtml<Trait>(l->opts()));
+            closeStyle(l->closeStyles());
         }
     }
 
@@ -499,11 +526,15 @@ protected:
         Image<Trait> *i) override
     {
         if (!justCollectFootnoteRefs) {
+            openStyle(i->openStyles());
+
             html.push_back(Trait::latin1ToString("<img src=\""));
             html.push_back(i->url());
             html.push_back(Trait::latin1ToString("\" alt=\""));
             html.push_back(prepareTextForHtml<Trait>(i->text()));
             html.push_back(Trait::latin1ToString("\" style=\"max-width:100%;\" />"));
+
+            closeStyle(i->closeStyles());
         }
     }
 
@@ -519,6 +550,8 @@ protected:
             });
 
             if (!justCollectFootnoteRefs) {
+                openStyle(ref->openStyles());
+
                 html.push_back(Trait::latin1ToString("<sup>"));
                 html.push_back(Trait::latin1ToString("<a href=\"#"));
                 html.push_back(ref->id());
@@ -549,8 +582,11 @@ protected:
             } else if (!justCollectFootnoteRefs)
                 html.push_back(Trait::latin1ToString(std::to_string(std::distance(fns.begin(), r) + 1).c_str()));
 
-            if (!justCollectFootnoteRefs)
+            if (!justCollectFootnoteRefs) {
                 html.push_back(Trait::latin1ToString("</a></sup>"));
+
+                closeStyle(ref->closeStyles());
+            }
         } else
             onText(static_cast<Text<Trait> *>(ref));
     }

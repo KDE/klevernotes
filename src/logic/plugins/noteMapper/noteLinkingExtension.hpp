@@ -9,6 +9,7 @@
 #include "logic/plugins/noteMapper/noteMapperParserUtils.h"
 
 #include <QRegularExpression>
+#include <qlogging.h>
 
 #define MD4QT_QT_SUPPORT
 #include "logic/md4qt/parser.hpp"
@@ -25,9 +26,9 @@ processWikiLinkExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragr
     auto textData = po.rawTextData[idx];
     QString src = textData.str;
 
-    const static QRegularExpression inline_wikilink =
+    static const QRegularExpression inline_wikilink =
         QRegularExpression(QStringLiteral("\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]"));
-    const static QString emptyStr = {};
+    static const QString emptyStr = {};
 
     while (src.length()) {
         QRegularExpressionMatch cap = inline_wikilink.match(src);
@@ -87,7 +88,7 @@ processWikiLinkExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragr
 
                         const QString textBeforeCap = src.mid(0, cap.capturedStart());
                         const QString textAfterCap = src.mid(cap.capturedEnd());
-                        if (textBeforeCap.trimmed().isEmpty()) {
+                        if (textBeforeCap.isEmpty()) {
                             // Change the OG paragraph for textAfterCap
                             textParagraph->setStartColumn(lineInfo.first.virginPos(textData.pos + cap.capturedEnd()));
                             // openStyles = paragraphTxt->openStyles();
@@ -101,7 +102,6 @@ processWikiLinkExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragr
                             textParagraph->setSpaceBefore(textAfterCap.front().isSpace());
                             textParagraph->setSpaceAfter(textData.pos < (long long int)po.rawTextData.size() - 1 ? lineInfo.first[textData.pos + 1].isSpace()
                                                                                                                  : true);
-
                             // We insert our link, just before the paragraph
                             paragraphsList->insertItem(paragraphIdx, link);
                         } else {
@@ -111,16 +111,15 @@ processWikiLinkExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragr
                             // closeStyles = paragraphTxt->closeStyles();
                             // paragraphTxt->closeStyles() = {};
                             po.rawTextData[idx].str = textBeforeCap;
-                            const bool spaceAfter = textBeforeCap.back().isSpace();
 
                             auto text = MD::replaceEntity<MD::QStringTrait>(textBeforeCap.simplified());
                             text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
                             textParagraph->setText(text);
 
-                            textParagraph->setSpaceAfter(spaceAfter);
-                            textParagraph->setSpaceBefore(textData.pos > 0 ? lineInfo.first[textData.pos - 1].isSpace() : true);
+                            textParagraph->setSpaceAfter(textBeforeCap.back().isSpace());
+                            textParagraph->setSpaceBefore(textBeforeCap.front().isSpace());
 
-                            if (!textAfterCap.trimmed().isEmpty()) {
+                            if (!textAfterCap.isEmpty()) {
                                 // Add a new paragraph
                                 ++idx;
                                 ++paragraphIdx;
@@ -132,18 +131,20 @@ processWikiLinkExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragr
                                 newTextParagraph->setStartLine(po.fr.data.at(textData.line).second.lineNumber);
                                 newTextParagraph->setEndLine(po.fr.data.at(textData.line).second.lineNumber);
                                 newTextParagraph->setEndColumn(po.fr.data.at(textData.line).first.virginPos(previousEnd));
+                                newTextParagraph->setOpts(opts);
 
                                 auto text = MD::replaceEntity<MD::QStringTrait>(textAfterCap);
                                 text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
                                 newTextParagraph->setText(text);
                                 newTextParagraph->setSpaceAfter(textData.spaceAfter);
+
                                 newTextParagraph->setSpaceBefore(textAfterCap.front().isSpace());
                                 // t->closeStyles() = closeStyles;
 
                                 // The link will be before the newTextParagraph
                                 paragraphsList->insertItem(paragraphIdx, newTextParagraph);
-                                paragraphsList->insertItem(paragraphIdx, link);
                             }
+                            paragraphsList->insertItem(paragraphIdx, link);
                         }
                     }
                 }
@@ -155,11 +156,10 @@ processWikiLinkExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragr
         }
         break;
     }
-    // We catched nothing, we just return the end of the paragraph to skip the loop
-    return (long long int)po.rawTextData.size();
+    return ++idx;
 }
 
-inline void wikiLinkFunc(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p, MD::TextParsingOpts<MD::QStringTrait> &po)
+inline void noteLinkingExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p, MD::TextParsingOpts<MD::QStringTrait> &po)
 {
     if (!KleverConfig::noteMapEnabled()) {
         return;
@@ -167,11 +167,11 @@ inline void wikiLinkFunc(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p, MD:
     if (!po.collectRefLinks) {
         long long int i = 0;
 
-        while (i >= 0 && i < (long long int)po.rawTextData.size()) {
+        while (0 <= i && i < (long long int)po.rawTextData.size()) {
             i = processWikiLinkExtension(p, po, i);
 
-            ++i;
+            /* ++i; */
         }
     }
 }
-}
+} // NoteMapperFunc

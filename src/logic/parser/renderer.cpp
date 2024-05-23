@@ -69,7 +69,7 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
     }
 
     if (!justCollectFootnoteRefs) {
-        html.push_back(MD::details::openTextStyleToHtml<MD::QStringTrait>(l->opts()));
+        openStyle(l->openStyles());
 
         html.push_back(QStringLiteral("<a href=\""));
         html.push_back(url);
@@ -77,22 +77,25 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
     }
 
     if (!l->img()->isEmpty()) {
-        if (!justCollectFootnoteRefs)
+        if (!justCollectFootnoteRefs) {
             onImage(l->img().get());
-    } else if (l->p() && !l->p()->isEmpty())
+        }
+    } else if (l->p() && !l->p()->isEmpty()) {
         onParagraph(l->p().get(), false);
-    else if (!l->text().isEmpty()) {
-        if (!justCollectFootnoteRefs)
-            html.push_back(MD::details::linkTextToHtml<MD::QStringTrait>(l->text(), l->opts()));
+    } else if (!l->text().isEmpty()) {
+        if (!justCollectFootnoteRefs) {
+            html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->text()));
+        }
     } else {
-        if (!justCollectFootnoteRefs)
-            html.push_back(MD::details::linkTextToHtml<MD::QStringTrait>(l->url(), l->opts()));
+        if (!justCollectFootnoteRefs) {
+            html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->url()));
+        }
     }
 
     if (!justCollectFootnoteRefs) {
         html.push_back(QStringLiteral("</a>"));
 
-        html.push_back(MD::details::closeTextStyleToHtml<MD::QStringTrait>(l->opts()));
+        closeStyle(l->closeStyles());
     }
 }
 
@@ -110,7 +113,11 @@ void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
             url = QStringLiteral("file:") + url;
         }
 
+        openStyle(i->openStyles());
+
         html.push_back(image(url, i->text()));
+
+        closeStyle(i->closeStyles());
     }
 }
 

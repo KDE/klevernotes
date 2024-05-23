@@ -184,7 +184,7 @@ enum TextOption {
 class StyleDelim final : public WithPosition
 {
 public:
-    StyleDelim(TextOption s, long long int startColumn, long long int startLine, long long int endColumn, long long int endLine)
+    StyleDelim(int s, long long int startColumn, long long int startLine, long long int endColumn, long long int endLine)
         : WithPosition(startColumn, startLine, endColumn, endLine)
         , m_style(s)
     {
@@ -192,18 +192,18 @@ public:
 
     ~StyleDelim() override = default;
 
-    TextOption style() const
+    int style() const
     {
         return m_style;
     }
 
-    void setStyle(TextOption t)
+    void setStyle(int t)
     {
         m_style = t;
     }
 
 private:
-    TextOption m_style = TextWithoutFormat;
+    int m_style = TextWithoutFormat;
 }; // class StyleDelim
 
 inline bool operator==(const StyleDelim &l, const StyleDelim &r)
@@ -372,7 +372,7 @@ private:
 
 //! Raw HTML.
 template<class Trait>
-class RawHtml final : public Item<Trait>
+class RawHtml final : public ItemWithOpts<Trait>
 {
 public:
     RawHtml() = default;
@@ -381,7 +381,7 @@ public:
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
         auto h = std::make_shared<RawHtml<Trait>>();
-        h->applyPositions(*this);
+        h->applyItemWithOpts(*this);
         h->setText(m_text);
         h->setFreeTag(m_isFreeTag);
 

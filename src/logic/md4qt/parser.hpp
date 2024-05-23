@@ -825,6 +825,90 @@ struct TextParsingOpts {
 }; // struct TextParsingOpts
 
 //
+// virginSubstr
+//
+
+//! \return Substring from fragment with given virgin positions.
+template<class Trait>
+inline typename Trait::String virginSubstr(const MdBlock<Trait> &fr, const WithPosition &virginPos)
+{
+    if (fr.data.empty())
+        return {};
+
+    long long int startLine = virginPos.startLine() < fr.data.at(0).second.lineNumber ? (virginPos.endLine() < fr.data.at(0).second.lineNumber ? -1 : 0)
+                                                                                      : virginPos.startLine() - fr.data.at(0).second.lineNumber;
+
+    if (startLine >= fr.data.size() || startLine < 0)
+        return {};
+
+    auto spos = virginPos.startColumn() - fr.data.at(startLine).first.virginPos(0);
+
+    if (spos < 0)
+        spos = 0;
+
+    long long int epos = 0;
+    long long int linesCount = virginPos.endLine() - virginPos.startLine()
+        - (virginPos.startLine() < fr.data.at(0).second.lineNumber ? fr.data.at(0).second.lineNumber - virginPos.startLine() : 0);
+
+    if (startLine + linesCount > fr.data.size()) {
+        linesCount = fr.data.size() - startLine - 1;
+        epos = fr.data.back().first.length();
+    } else
+        epos = virginPos.endColumn() - fr.data.at(linesCount + startLine).first.virginPos(0) + 1;
+
+    if (epos < 0)
+        epos = 0;
+
+    if (epos > fr.data.at(linesCount + startLine).first.length())
+        epos = fr.data.at(linesCount + startLine).first.length();
+
+    typename Trait::String str =
+        (linesCount ? fr.data.at(startLine).first.sliced(spos).asString() : fr.data.at(startLine).first.sliced(spos, epos - spos).asString());
+
+    long long int i = startLine + 1;
+
+    for (; i < startLine + linesCount; ++i) {
+        str.push_back(Trait::latin1ToString("\n"));
+        str.push_back(fr.data.at(i).first.asString());
+    }
+
+    if (linesCount) {
+        str.push_back(Trait::latin1ToString("\n"));
+        str.push_back(fr.data.at(i).first.sliced(0, epos).asString());
+    }
+
+    return str;
+}
+
+//
+// localPosFromVirgin
+//
+
+//! \return Local position ( { column, line } ) in fragment for given virgin position if exists.
+//! \return { -1, -1 } if there is no given position.
+template<class Trait>
+inline std::pair<long long int, long long int> localPosFromVirgin(const MdBlock<Trait> &fr, long long int virginColumn, long long int virginLine)
+{
+    if (fr.data.empty())
+        return {-1, -1};
+
+    if (fr.data.front().second.lineNumber > virginLine || fr.data.back().second.lineNumber < virginLine)
+        return {-1, -1};
+
+    auto line = virginLine - fr.data.front().second.lineNumber;
+
+    if (fr.data.at(line).first.isEmpty())
+        return {-1, -1};
+
+    const auto vzpos = fr.data.at(line).first.virginPos(0);
+
+    if (vzpos > virginColumn || virginColumn > vzpos + fr.data.at(line).first.length() - 1)
+        return {-1, -1};
+
+    return {virginColumn - vzpos, line};
+}
+
+//
 // GitHubAutolinkPlugin
 //
 
@@ -4264,6 +4348,10 @@ inline void eatRawHtml(long long int line,
                 po.parent->appendItem(po.html.html);
                 po.parent->setEndColumn(po.html.html->endColumn());
                 po.parent->setEndLine(po.html.html->endLine());
+                initLastItemWithOpts<Trait>(po, po.html.html);
+                po.html.html->setOpts(po.opts);
+                po.isSpaceBefore = false;
+                po.lastText = nullptr;
             } else
                 po.tmpHtml = po.html.html;
 
@@ -4821,6 +4909,8 @@ Parser<Trait>::checkForMath(typename Delims::const_iterator it, typename Delims:
 
             po.pos = end->m_pos + end->m_len;
             po.line = end->m_line;
+            po.isSpaceBefore = false;
+            po.lastText = nullptr;
         }
 
         return end;
@@ -4875,6 +4965,8 @@ Parser<Trait>::checkForAutolinkHtml(typename Delims::const_iterator it, typename
 
                 po.wasRefLink = false;
                 po.firstInParagraph = false;
+                po.isSpaceBefore = false;
+                po.lastText = nullptr;
 
                 if (updatePos) {
                     po.pos = nit->m_pos + nit->m_len;
@@ -4947,6 +5039,8 @@ inline void Parser<Trait>::makeInlineCode(long long int startLine,
 
     po.wasRefLink = false;
     po.firstInParagraph = false;
+    po.isSpaceBefore = false;
+    po.lastText = nullptr;
 }
 
 template<class Trait>
@@ -5275,6 +5369,9 @@ inline std::shared_ptr<Link<Trait>> Parser<Trait>::makeLink(const typename Trait
 
     initLastItemWithOpts<Trait>(po, link);
 
+    po.isSpaceBefore = false;
+    po.lastText = nullptr;
+
     return link;
 }
 
@@ -5388,6 +5485,9 @@ inline std::shared_ptr<Image<Trait>> Parser<Trait>::makeImage(const typename Tra
     img->setUrlPos(urlPos);
 
     initLastItemWithOpts<Trait>(po, img);
+
+    po.isSpaceBefore = false;
+    po.lastText = nullptr;
 
     return img;
 }
@@ -5868,8 +5968,12 @@ Parser<Trait>::checkForLink(typename Delims::const_iterator it, typename Delims:
                             std::shared_ptr<Link<Trait>> link(new Link<Trait>);
                             link->setStartColumn(po.fr.data.at(start->m_line).first.virginPos(start->m_pos));
                             link->setStartLine(po.fr.data.at(start->m_line).second.lineNumber);
-                            link->setEndColumn(po.fr.data.at(iit->m_line).first.virginPos(iit->m_pos + iit->m_len - 1));
-                            link->setEndLine(po.fr.data.at(iit->m_line).second.lineNumber);
+
+                            const auto endPos = prevPosition(po.fr, po.fr.data.at(po.line).first.virginPos(po.pos), po.fr.data.at(po.line).second.lineNumber);
+
+                            link->setEndColumn(endPos.first);
+                            link->setEndLine(endPos.second);
+
                             link->setTextPos(labelPos);
                             link->setUrlPos(urlPos);
 
@@ -6625,7 +6729,8 @@ inline std::shared_ptr<Text<Trait>> concatenateText(typename Block<Trait>::Items
     t->setSpaceBefore(std::static_pointer_cast<Text<Trait>>(*it)->isSpaceBefore());
     t->setStartColumn((*it)->startColumn());
     t->setStartLine((*it)->startLine());
-    t->openStyles() = std::static_pointer_cast<Text<Trait>>(*it)->openStyles();
+
+    typename ItemWithOpts<Trait>::Styles close;
 
     typename Trait::String data;
 
@@ -6639,6 +6744,12 @@ inline std::shared_ptr<Text<Trait>> concatenateText(typename Block<Trait>::Items
 
         if (tt->isSpaceAfter())
             data.push_back(Trait::latin1ToChar(' '));
+
+        if (!tt->openStyles().empty())
+            std::copy(tt->openStyles().cbegin(), tt->openStyles().cend(), std::back_inserter(t->openStyles()));
+
+        if (!tt->closeStyles().empty())
+            std::copy(tt->closeStyles().cbegin(), tt->closeStyles().cend(), std::back_inserter(close));
     }
 
     it = std::prev(it);
@@ -6647,7 +6758,7 @@ inline std::shared_ptr<Text<Trait>> concatenateText(typename Block<Trait>::Items
     t->setSpaceAfter(std::static_pointer_cast<Text<Trait>>(*it)->isSpaceAfter());
     t->setEndColumn((*it)->endColumn());
     t->setEndLine((*it)->endLine());
-    t->closeStyles() = std::static_pointer_cast<Text<Trait>>(*it)->closeStyles();
+    t->closeStyles() = close;
 
     return t;
 }

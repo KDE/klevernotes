@@ -73,6 +73,10 @@ public:
             for (auto it = doc->footnotesMap().cbegin(), last = doc->footnotesMap().cend(); it != last; ++it) {
                 onFootnote(it->second.get());
             }
+
+            for (auto it = doc->labeledLinks().cbegin(), last = doc->labeledLinks().cend(); it != last; ++it) {
+                onReferenceLink(it->second.get());
+            }
         }
     }
 
@@ -142,6 +146,15 @@ protected:
     }
 
 protected:
+    virtual void onReferenceLink(
+        //! Link.
+        Link<Trait> *l)
+    {
+        details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};
+
+        insertInCache(r, true);
+    }
+
     void onAddLineEnding() override
     {
     }
