@@ -128,8 +128,9 @@ inline bool validDelimsPairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> pa
     const auto openingStyles = openingParagraph->openStyles();
     const auto closingStyles = openingParagraph->closeStyles();
 
-    QList<QPair<StyleDelimInfo, StyleDelimInfo>> badStylesIdx;
-    for (const auto &stylesPair : openCloseStyles) {
+    long long int i = 0;
+    while (i < openCloseStyles.size()) {
+        const auto stylesPair = openCloseStyles[i];
         const int styleOpeningPos = stylesPair.first.delim.startColumn();
         const bool openInsideStyle = styleOpeningPos < openDelim.startColumn;
 
@@ -143,8 +144,13 @@ inline bool validDelimsPairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> pa
         } else if (!openInsideStyle && closeInsideStyle) {
             badStyles.append(stylesPair.first);
             badStyles.append(stylesPair.second);
+            openCloseStyles.removeAt(i);
+            continue;
         }
+
+        i++;
     }
+
     // TODO: remove 'Both', might not be usefull, will see
     /* closeDelim.type = TagType::Opening; */
     /* closeDelim.type = TagType::Closing; */
@@ -209,11 +215,60 @@ inline QList<QPair<DelimInfo, DelimInfo>> makePairs(std::shared_ptr<MD::Paragrap
     return pairs;
 }
 
-// TODO: remove bad style opts for each between opening/closing -> Careful with nested styles
-inline void removeBadStyles(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
-                            MD::TextParsingOpts<MD::QStringTrait> &po,
-                            QList<StyleDelimInfo> &badStyles,
-                            QList<long long int> &paraIdxToRawIdx)
+inline void removeBadStylesOpts(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+                                QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
+                                QList<StyleDelimInfo> &badStyles)
+{
+    for (int i = 0; i < badStyles.length(); i += 2) {
+        const auto &badOpening = badStyles[i];
+        auto openPara = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraphsList->getItemAt(badOpening.paraIdx));
+        auto &openStyles = openPara->openStyles();
+        for (long long int styleIdx = 0; styleIdx < openStyles.length(); i++) {
+            if (openStyles[styleIdx] == badOpening.delim) {
+                openStyles.remove(styleIdx);
+                break;
+            }
+        }
+
+        const auto &badClosing = badStyles[i + 1];
+        auto closePara = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraphsList->getItemAt(badClosing.paraIdx));
+        auto &closeStyles = closePara->closeStyles();
+        for (long long int styleIdx = 0; styleIdx < closeStyles.length(); i++) {
+            if (closeStyles[styleIdx] == badClosing.delim) {
+                closeStyles.remove(styleIdx);
+                break;
+            }
+        }
+
+        const auto style = badOpening.delim.style();
+
+        for (long long int idx = badOpening.paraIdx; idx <= badClosing.paraIdx; idx++) {
+            auto paragraph = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraphsList->getItemAt(idx));
+
+            const auto opts = paragraph->opts();
+
+            if (opts & style) {
+                bool inGoodStyle = false;
+                // All the bad ones have been removed in validDelims
+                for (const auto &goodStylePair : openCloseStyles) {
+                    if (goodStylePair.first.delim.style() == style && goodStylePair.first.delim.startColumn() < paragraph->startColumn()
+                        && paragraph->endColumn() < goodStylePair.second.delim.endColumn()) {
+                        inGoodStyle = true;
+                        break;
+                    }
+                }
+                if (!inGoodStyle) {
+                    paragraph->setOpts(opts - style);
+                }
+            }
+        }
+    }
+}
+
+inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+                                MD::TextParsingOpts<MD::QStringTrait> &po,
+                                QList<StyleDelimInfo> &badStyles,
+                                QList<long long int> &paraIdxToRawIdx)
 {
     long long int initialPreviousStyleParaIdx = -1;
     long long int modifiedPreviousStyleParaIdx = -1;
@@ -345,6 +400,22 @@ inline void removeBadStyles(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> par
     }
 }
 
+// TODO: remove bad style opts for each between opening/closing -> Careful with nested styles
+inline void removeBadStyles(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+                            MD::TextParsingOpts<MD::QStringTrait> &po,
+                            QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
+                            QList<StyleDelimInfo> &badStyles,
+                            QList<long long int> &paraIdxToRawIdx)
+{
+    removeBadStylesOpts(paragraphsList, openCloseStyles, badStyles);
+
+    std::sort(badStyles.begin(), badStyles.end(), [](const StyleDelimInfo &a, const StyleDelimInfo &b) {
+        return a.delim.startColumn() > b.delim.startColumn();
+    });
+
+    restoreBadStyleText(paragraphsList, po, badStyles, paraIdxToRawIdx);
+}
+
 inline void textHighlightExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList, MD::TextParsingOpts<MD::QStringTrait> &po)
 {
     if (!po.collectRefLinks) {
@@ -367,11 +438,7 @@ inline void textHighlightExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrai
         QList<StyleDelimInfo> badStyles;
         const auto pairs = makePairs(paragraphsList, openCloseStyles, badStyles, delimInfos);
 
-        std::sort(badStyles.begin(), badStyles.end(), [](const StyleDelimInfo &a, const StyleDelimInfo &b) {
-            return a.delim.startColumn() > b.delim.startColumn();
-        });
-
-        removeBadStyles(paragraphsList, po, badStyles, paraIdxToRawIdx);
+        removeBadStyles(paragraphsList, po, openCloseStyles, badStyles, paraIdxToRawIdx);
 
         // TODO: first remove style, than modify the para/rawTextData with the new delim
         // Careful about offset !!
