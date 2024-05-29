@@ -4,13 +4,39 @@
 */
 
 #include "logic/parser/parser.h"
-#include "logic/plugins/noteMapper/wikilinkProcess.h"
+#include "logic/extendedSyntax/textHighlightExtension.hpp"
+#include "logic/plugins/noteMapper/noteLinkingExtension.hpp"
 
 Parser::Parser(QObject *parent)
     : QObject(parent)
 {
     m_pluginHelper = new PluginHelper(this);
     m_renderer = new Renderer(m_pluginHelper);
+
+    addParsePlugins();
+}
+
+void Parser::addParsePlugins()
+{
+    static const auto extendedSyntaxsList = {
+        TextHighlightFunc::textHighlightExtension,
+    };
+
+    static const auto kleverPluginsList = {
+        NoteMapperFunc::noteLinkingExtension,
+    };
+
+    int extendedCount = 0;
+    for (auto &func : extendedSyntaxsList) {
+        m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + extendedCount, func, true);
+        extendedCount++;
+    }
+
+    /* int pluginCount = 0; */
+    /* for (auto &func : kleverPluginsList) { */
+    /*     m_md4qtParser.addTextPlugin(ExtensionID::KleverPlugins + pluginCount, func, false); */
+    /*     pluginCount++; */
+    /* } */
 }
 
 PluginHelper *Parser::getPluginHelper() const
@@ -55,8 +81,6 @@ QString Parser::parse(QString src)
     m_pluginHelper->clearPluginsInfo();
 
     QTextStream s(&src, QIODeviceBase::ReadOnly);
-
-    m_md4qtParser.addTextPlugin(2, NoteMapperFunc::wikiLinkFunc, true);
 
     const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
     const auto html = m_renderer->toHtml(doc, m_notePath);

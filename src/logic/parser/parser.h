@@ -51,6 +51,16 @@ public Q_SLOTS:
     void pumlDarkChanged();
 
 private:
+    enum ExtensionID : int {
+        /* Extended syntax
+         * ===============*/
+        ExtendedSyntax = MD::TextPlugin::UserDefinedPluginID + 1,
+        /* Plugins
+         * ===============*/
+        KleverPlugins = ExtendedSyntax + 20, // Keep some margin for other Extended syntax
+    };
+    void addParsePlugins();
+
     QString renderHtml();
     PluginHelper *m_pluginHelper = nullptr;
 
