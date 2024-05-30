@@ -50,7 +50,7 @@ struct DelimInfo {
  * Get the info of 'searchedDelim' and place them inside 'delimInfos'
  * Get the already applied styles opening/closing pairs and places them inside openCloseStyles
  */
-inline void getDelim(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+inline void getDelim(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p,
                      MD::TextParsingOpts<MD::QStringTrait> &po,
                      long long int idx,
                      QList<DelimInfo> &delimInfos,
@@ -59,12 +59,10 @@ inline void getDelim(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphs
                      QList<long long int> &paraIdxToRawIdx,
                      const QString &searchedDelim)
 {
-    const auto item = paragraphsList->getItemAt(idx);
-
     /* Collect the opening/closing style of the paragraph */
-    auto currentParagraph = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(item);
-    const auto openingStyles = currentParagraph->openStyles();
-    const auto closingStyles = currentParagraph->closeStyles();
+    auto currentItem = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(p->getItemAt(idx));
+    const auto openingStyles = currentItem->openStyles();
+    const auto closingStyles = currentItem->closeStyles();
 
     for (const auto &styleDelim : openingStyles) {
         waitingOpeningsStyles.append({idx, styleDelim, TagType::Opening});
@@ -73,11 +71,12 @@ inline void getDelim(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphs
         openCloseStyles.append({waitingOpeningsStyles.takeLast(), {idx, styleDelim, TagType::Closing}});
     }
     /* ================================================== */
-    if (item->type() != MD::ItemType::Text) {
+
+    if (currentItem->type() != MD::ItemType::Text) {
         return;
     }
 
-    const auto localPos = MD::localPosFromVirgin(po.fr, currentParagraph->startColumn(), currentParagraph->startLine());
+    const auto localPos = MD::localPosFromVirgin(po.fr, currentItem->startColumn(), currentItem->startLine());
     const auto lineInfo = po.fr.data.at(localPos.second);
 
     const QString src = po.rawTextData[paraIdxToRawIdx.length()].str;
@@ -118,23 +117,23 @@ inline void getDelim(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphs
  * Check if the openDelim/closeDelim pairs is a valid one
  * Add 'bad' style to the DelimInfo to revert them later
  */
-inline bool validDelimsPairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+inline bool validDelimsPairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p,
                              QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
                              QList<StyleDelimInfo> &badStyles,
                              DelimInfo &openDelim,
                              DelimInfo closeDelim)
 {
-    const auto openingParagraph = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraphsList->getItemAt(openDelim.paraIdx));
-    const auto openingStyles = openingParagraph->openStyles();
-    const auto closingStyles = openingParagraph->closeStyles();
+    const auto openingItem = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(p->getItemAt(openDelim.paraIdx));
+    const auto openingStyles = openingItem->openStyles();
+    const auto closingStyles = openingItem->closeStyles();
 
     long long int i = 0;
     while (i < openCloseStyles.size()) {
-        const auto stylesPair = openCloseStyles[i];
-        const int styleOpeningPos = stylesPair.first.delim.startColumn();
+        const auto stylePair = openCloseStyles[i];
+        const int styleOpeningPos = stylePair.first.delim.startColumn();
         const bool openInsideStyle = styleOpeningPos < openDelim.startColumn;
 
-        const int styleClosingPos = stylesPair.second.delim.startColumn();
+        const int styleClosingPos = stylePair.second.delim.startColumn();
 
         const bool closeInsideStyle = closeDelim.startColumn < styleClosingPos;
 
@@ -142,8 +141,8 @@ inline bool validDelimsPairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> pa
             // This opening is not good
             return false;
         } else if (!openInsideStyle && closeInsideStyle) {
-            badStyles.append(stylesPair.first);
-            badStyles.append(stylesPair.second);
+            badStyles.append(stylePair.first);
+            badStyles.append(stylePair.second);
             openCloseStyles.removeAt(i);
             continue;
         }
@@ -160,7 +159,7 @@ inline bool validDelimsPairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> pa
 /*
  * Transform the list of delimInfo into a list containing pairs of opening/closing delimInfo
  */
-inline QList<QPair<DelimInfo, DelimInfo>> makePairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+inline QList<QPair<DelimInfo, DelimInfo>> makePairs(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p,
                                                     QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
                                                     QList<StyleDelimInfo> &badStyles,
                                                     QList<DelimInfo> delimInfos)
@@ -177,7 +176,7 @@ inline QList<QPair<DelimInfo, DelimInfo>> makePairs(std::shared_ptr<MD::Paragrap
             while (0 <= i) {
                 auto opening = waitingOpenings.takeAt(i);
 
-                if (validDelimsPairs(paragraphsList, openCloseStyles, badStyles, opening, info)) {
+                if (validDelimsPairs(p, openCloseStyles, badStyles, opening, info)) {
                     opening.paired = true;
                     info.paired = true;
 
@@ -194,7 +193,7 @@ inline QList<QPair<DelimInfo, DelimInfo>> makePairs(std::shared_ptr<MD::Paragrap
                 while (0 <= i) {
                     auto opening = waitingOpenings[i]; // We can't consume it right away
 
-                    if (validDelimsPairs(paragraphsList, openCloseStyles, badStyles, opening, info)) {
+                    if (validDelimsPairs(p, openCloseStyles, badStyles, opening, info)) {
                         opening.paired = true;
                         info.paired = true;
                         waitingOpenings.removeAt(i);
@@ -215,27 +214,27 @@ inline QList<QPair<DelimInfo, DelimInfo>> makePairs(std::shared_ptr<MD::Paragrap
     return pairs;
 }
 
-inline void removeBadStylesOpts(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+inline void removeBadStylesOpts(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p,
                                 QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
                                 QList<StyleDelimInfo> &badStyles)
 {
     for (int i = 0; i < badStyles.length(); i += 2) {
         const auto &badOpening = badStyles[i];
-        auto openPara = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraphsList->getItemAt(badOpening.paraIdx));
-        auto &openStyles = openPara->openStyles();
-        for (long long int styleIdx = 0; styleIdx < openStyles.length(); i++) {
-            if (openStyles[styleIdx] == badOpening.delim) {
-                openStyles.remove(styleIdx);
+        auto openingItem = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(p->getItemAt(badOpening.paraIdx));
+        auto &openingStyles = openingItem->openStyles();
+        for (long long int styleIdx = 0; styleIdx < openingStyles.length(); i++) {
+            if (openingStyles[styleIdx] == badOpening.delim) {
+                openingStyles.remove(styleIdx);
                 break;
             }
         }
 
         const auto &badClosing = badStyles[i + 1];
-        auto closePara = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraphsList->getItemAt(badClosing.paraIdx));
-        auto &closeStyles = closePara->closeStyles();
-        for (long long int styleIdx = 0; styleIdx < closeStyles.length(); i++) {
-            if (closeStyles[styleIdx] == badClosing.delim) {
-                closeStyles.remove(styleIdx);
+        auto closingItem = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(p->getItemAt(badClosing.paraIdx));
+        auto &closingStyles = closingItem->closeStyles();
+        for (long long int styleIdx = 0; styleIdx < closingStyles.length(); i++) {
+            if (closingStyles[styleIdx] == badClosing.delim) {
+                closingStyles.remove(styleIdx);
                 break;
             }
         }
@@ -243,29 +242,29 @@ inline void removeBadStylesOpts(std::shared_ptr<MD::Paragraph<MD::QStringTrait>>
         const auto style = badOpening.delim.style();
 
         for (long long int idx = badOpening.paraIdx; idx <= badClosing.paraIdx; idx++) {
-            auto paragraph = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraphsList->getItemAt(idx));
+            auto currentItem = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(p->getItemAt(idx));
 
-            const auto opts = paragraph->opts();
+            const auto opts = currentItem->opts();
 
             if (opts & style) {
                 bool inGoodStyle = false;
                 // All the bad ones have been removed in validDelims
                 for (const auto &goodStylePair : openCloseStyles) {
-                    if (goodStylePair.first.delim.style() == style && goodStylePair.first.delim.startColumn() < paragraph->startColumn()
-                        && paragraph->endColumn() < goodStylePair.second.delim.endColumn()) {
+                    if (goodStylePair.first.delim.style() == style && goodStylePair.first.delim.startColumn() < currentItem->startColumn()
+                        && currentItem->endColumn() < goodStylePair.second.delim.endColumn()) {
                         inGoodStyle = true;
                         break;
                     }
                 }
                 if (!inGoodStyle) {
-                    paragraph->setOpts(opts - style);
+                    currentItem->setOpts(opts - style);
                 }
             }
         }
     }
 }
 
-inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> paragraphsList,
+inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>> p,
                                 MD::TextParsingOpts<MD::QStringTrait> &po,
                                 QList<StyleDelimInfo> &badStyles,
                                 QList<long long int> &paraIdxToRawIdx)
@@ -275,7 +274,7 @@ inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>>
     long long int previousStyleRawIdx = po.rawTextData.size();
 
     for (const auto &styleInfo : badStyles) {
-        // Deals with the offset coming from currentParagraph merging into previous para
+        // Deals with the offset coming from adding/removing Items from the Paragraph list
         long long int paraIdx;
         if (styleInfo.paraIdx == initialPreviousStyleParaIdx) {
             paraIdx = modifiedPreviousStyleParaIdx;
@@ -286,60 +285,60 @@ inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>>
             paraIdx = initialPreviousStyleParaIdx;
         }
 
-        const auto paraItem = paragraphsList->getItemAt(paraIdx);
+        const auto currentGenericItem = p->getItemAt(paraIdx);
         const QString delimText = MD::virginSubstr(po.fr, styleInfo.delim);
 
-        QString currentParaText = {};
+        QString currentItemText = {};
         QString currentRawText = {};
         long long int currentRawIdx = -1;
         bool reattached = false;
 
-        if (paraItem->type() == MD::ItemType::Text) {
+        if (currentGenericItem->type() == MD::ItemType::Text) {
             currentRawIdx = paraIdxToRawIdx.indexOf(paraIdx);
             previousStyleRawIdx = currentRawIdx;
 
-            auto currentParagraph = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paraItem);
-            currentParaText = currentParagraph->text();
+            auto currentTextItem = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(currentGenericItem);
+            currentItemText = currentTextItem->text();
             currentRawText = po.rawTextData[currentRawIdx].str;
 
-            if (styleInfo.delim.endColumn() + 1 == paraItem->startColumn()) {
-                currentParaText = delimText + currentParaText;
+            if (styleInfo.delim.endColumn() + 1 == currentGenericItem->startColumn()) {
+                currentItemText = delimText + currentItemText;
                 currentRawText = delimText + currentRawText;
                 reattached = true;
-            } else if (paraItem->endColumn() + 1 == styleInfo.delim.startColumn()) {
-                currentParaText = currentParaText + delimText;
+            } else if (currentGenericItem->endColumn() + 1 == styleInfo.delim.startColumn()) {
+                currentItemText = currentItemText + delimText;
                 currentRawText = currentRawText + delimText;
                 reattached = true;
             }
-            currentParagraph->setText(currentParaText);
+            currentTextItem->setText(currentItemText);
             po.rawTextData[currentRawIdx].str = currentRawText;
         }
 
-        if (styleInfo.paraIdx != paragraphsList->items().length() - 1) {
-            const long long int nextParaIdx = paraIdx + 1;
-            const auto nextItem = paragraphsList->getItemAt(nextParaIdx);
+        if (styleInfo.paraIdx != p->items().length() - 1) {
+            const long long int nextItemIdx = paraIdx + 1;
+            const auto nextGenericItem = p->getItemAt(nextItemIdx);
 
-            if (nextItem->type() == MD::ItemType::Text && styleInfo.delim.endColumn() + 1 == nextItem->startColumn()) {
-                const long long int nextRawIdx = paraIdxToRawIdx.indexOf(nextParaIdx);
-                auto nextParagraph = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(nextItem);
-                QString nextParaText = nextParagraph->text();
+            if (nextGenericItem->type() == MD::ItemType::Text && styleInfo.delim.endColumn() + 1 == nextGenericItem->startColumn()) {
+                const long long int nextRawIdx = paraIdxToRawIdx.indexOf(nextItemIdx);
+                auto nextTextItem = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(nextGenericItem);
+                QString nextItemText = nextTextItem->text();
                 QString nextRawText = po.rawTextData[nextRawIdx].str;
 
-                if (reattached) { // merge nextParagraph into currentParagraph
-                    currentParaText = currentParaText + nextParaText;
+                if (reattached) { // merge nextParagraph into currentItem
+                    currentItemText = currentItemText + nextItemText;
                     currentRawText = currentRawText + nextRawText;
 
-                    auto currentParagraph = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paraItem);
-                    currentParagraph->setText(currentParaText);
+                    auto currentItem = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(currentGenericItem);
+                    currentItem->setText(currentItemText);
                     po.rawTextData[currentRawIdx].str = currentRawText;
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + nextRawIdx);
-                    paragraphsList->removeItemAt(nextParaIdx);
+                    p->removeItemAt(nextItemIdx);
                 } else {
-                    nextParaText = delimText + nextParaText;
+                    nextItemText = delimText + nextItemText;
                     nextRawText = delimText + nextRawText;
 
-                    nextParagraph->setText(nextParaText);
+                    nextTextItem->setText(nextItemText);
                     po.rawTextData[nextRawIdx].str = nextRawText;
 
                     reattached = true;
@@ -348,31 +347,31 @@ inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>>
         }
 
         if (styleInfo.paraIdx != 0) {
-            const auto previousItem = paragraphsList->getItemAt(paraIdx - 1);
+            const auto previousGenericItem = p->getItemAt(paraIdx - 1);
 
-            if (previousItem->type() == MD::ItemType::Text && previousItem->startColumn() + 1 == styleInfo.delim.startColumn()) {
+            if (previousGenericItem->type() == MD::ItemType::Text && previousGenericItem->startColumn() + 1 == styleInfo.delim.startColumn()) {
                 const long long int previousRawIdx = paraIdxToRawIdx.indexOf(paraIdx - 1);
-                auto previousParagraph = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(previousItem);
-                QString previousParaText = previousParagraph->text();
+                auto previousTextItem = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(previousGenericItem);
+                QString previousItemText = previousTextItem->text();
                 QString previousRawText = po.rawTextData[previousRawIdx].str;
 
-                if (reattached) { // merge currentParagraph into previousParagraph
-                    previousParaText = previousParaText + currentParaText;
+                if (reattached) { // merge currentItem into previousItem
+                    previousItemText = previousItemText + currentItemText;
                     previousRawText = previousRawText + currentRawText;
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + currentRawIdx);
-                    paragraphsList->removeItemAt(paraIdx);
+                    p->removeItemAt(paraIdx);
 
                     paraIdxToRawIdx.remove(currentRawIdx);
                     modifiedPreviousStyleParaIdx--;
                 } else {
-                    previousParaText = previousParaText + delimText;
+                    previousItemText = previousItemText + delimText;
                     previousRawText = previousRawText + delimText;
 
                     reattached = true;
                 }
 
-                previousParagraph->setText(previousParaText);
+                previousTextItem->setText(previousItemText);
                 po.rawTextData[previousRawIdx].str = previousRawText;
             }
         }
@@ -382,19 +381,19 @@ inline void restoreBadStyleText(std::shared_ptr<MD::Paragraph<MD::QStringTrait>>
             MD::TextParsingOpts<MD::QStringTrait>::TextData newTextData;
             newTextData.str = delimText;
 
-            auto newTextParagraph = std::make_shared<MD::Text<MD::QStringTrait>>();
-            newTextParagraph->setText(delimText);
+            auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
+            newTextItem->setText(delimText);
 
             if (styleInfo.type == TagType::Opening) {
                 paraIdxToRawIdx.insert(previousStyleRawIdx, paraIdx);
 
                 po.rawTextData.insert(po.rawTextData.cbegin() + previousStyleRawIdx, newTextData);
-                paragraphsList->insertItem(paraIdx, newTextParagraph);
+                p->insertItem(paraIdx, newTextItem);
             } else {
                 paraIdxToRawIdx.insert(previousStyleRawIdx + 1, paraIdx);
 
                 po.rawTextData.insert(po.rawTextData.cbegin() + previousStyleRawIdx + 1, newTextData);
-                paragraphsList->insertItem(paraIdx + 1, newTextParagraph);
+                p->insertItem(paraIdx + 1, newTextItem);
             }
         }
     }
@@ -435,33 +434,11 @@ inline void textHighlightExtension(std::shared_ptr<MD::Paragraph<MD::QStringTrai
         while (!delimInfos.isEmpty() && delimInfos.at(0).type == TagType::Closing) {
             delimInfos.pop_front();
         }
+
         QList<StyleDelimInfo> badStyles;
         const auto pairs = makePairs(paragraphsList, openCloseStyles, badStyles, delimInfos);
 
         removeBadStyles(paragraphsList, po, openCloseStyles, badStyles, paraIdxToRawIdx);
-
-        // TODO: first remove style, than modify the para/rawTextData with the new delim
-        // Careful about offset !!
-        /*
-        for (const auto &pair : pairs) {
-            if (!pair.first.stylesToRemove.empty()) {
-                qDebug() << pair.first.startColumn << pair.second.startColumn << pair.first.rawLine;
-                for (const auto &openClose : pair.first.stylesToRemove) {
-
-                    const auto &opening = openClose.first;
-                    const auto openingPos = MD::localPosFromVirgin(po.fr, opening.delim.startColumn(), opening.delim.startLine());
-                    const auto &openingPara = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(p->getItemAt(opening.paraIdx));
-                    const auto &openingPosPara = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(p->getItemAt(openingPos.second));
-
-                    const auto &closing = openClose.second;
-                    const auto closingPos = MD::localPosFromVirgin(po.fr, opening.delim.startColumn(), opening.delim.startLine());
-                    const auto &closingPara = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(p->getItemAt(closing.paraIdx));
-                    const auto &closingPosPara = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(p->getItemAt(closingPos.second));
-
-                    qDebug() << openingPara->text() << openingPosPara->text() << closingPara->text() << closingPosPara->text();
-                }
-            }
-        }*/
 
         /* long long int overallIndexOffSet = 0; */
         /* while (!delimInfos.isEmpty()) { */
