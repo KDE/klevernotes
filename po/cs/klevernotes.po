@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-05-20 10:49+0200\n"
+"PO-Revision-Date: 2024-05-30 16:42+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -39,19 +39,19 @@ msgstr "Opravdu si přejete smazat poznámku <filename>%1</filename>?"
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Category Confirmation"
-msgstr ""
+msgstr "Potvrzení smazání kategorie"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Group Confirmation"
-msgstr ""
+msgstr "Potvrzení smazání skupiny"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
-msgstr ""
+msgstr "Potvrzení smazání poznámky"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:38
 #, kde-format
@@ -278,7 +278,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "Tisk do PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
@@ -319,7 +319,7 @@ msgstr ""
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
-msgstr ""
+msgstr "Úložiště KleverNotes"
 
 #: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
@@ -1414,7 +1414,7 @@ msgstr "hlavička"
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "zobrazený název"
 
 #: contents/ui/textEditor/EditorView.qml:28
 #, kde-format
@@ -1470,7 +1470,7 @@ msgstr "Chybějící poznámky"
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 neexistuje"
 
 #: contents/ui/textEditor/TextToolBar.qml:185
 #: contents/ui/textEditor/TextToolBar.qml:186
@@ -1594,7 +1594,7 @@ msgstr "Nastala chyba při pokusu o odstranění této položky."
 #: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr ""
+msgstr "Nastala chyba při pokusu o přesunutí této položky."
 
 #: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
