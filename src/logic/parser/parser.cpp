@@ -21,10 +21,10 @@ void Parser::addParsePlugins()
     static const auto extendedSyntaxsList = {
         TextHighlightFunc::textHighlightExtension,
     };
-
-    static const auto kleverPluginsList = {
-        NoteMapperFunc::noteLinkingExtension,
-    };
+    /**/
+    /* static const auto kleverPluginsList = { */
+    /*     NoteMapperFunc::noteLinkingExtension, */
+    /* }; */
 
     int extendedCount = 0;
     for (auto &func : extendedSyntaxsList) {

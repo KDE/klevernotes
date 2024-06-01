@@ -158,7 +158,7 @@ public:
     virtual std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const = 0;
 
 private:
-    DISABLE_COPY(Item)
+    MD_DISABLE_COPY(Item)
 }; // class Item
 
 //
@@ -271,7 +271,7 @@ private:
     Styles m_openStyles;
     Styles m_closeStyles;
 
-    DISABLE_COPY(ItemWithOpts)
+    MD_DISABLE_COPY(ItemWithOpts)
 }; // class ItemWithOpts
 
 //
@@ -293,11 +293,13 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         return std::make_shared<PageBreak<Trait>>();
     }
 
 private:
-    DISABLE_COPY(PageBreak)
+    MD_DISABLE_COPY(PageBreak)
 }; // class PageBreak
 
 //
@@ -319,6 +321,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto h = std::make_shared<HorizontalLine<Trait>>();
         h->applyPositions(*this);
 
@@ -326,7 +330,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(HorizontalLine)
+    MD_DISABLE_COPY(HorizontalLine)
 }; // class HorizontalLine
 
 //
@@ -347,6 +351,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         return std::make_shared<Anchor<Trait>>(m_label);
     }
 
@@ -361,7 +367,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(Anchor)
+    MD_DISABLE_COPY(Anchor)
 
     typename Trait::String m_label;
 }; // class Anchor
@@ -380,6 +386,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto h = std::make_shared<RawHtml<Trait>>();
         h->applyItemWithOpts(*this);
         h->setText(m_text);
@@ -424,7 +432,7 @@ private:
     typename Trait::String m_text;
     bool m_isFreeTag = true;
 
-    DISABLE_COPY(RawHtml)
+    MD_DISABLE_COPY(RawHtml)
 }; // class RawHtml
 
 //
@@ -451,6 +459,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto t = std::make_shared<Text<Trait>>();
         t->applyText(*this);
 
@@ -497,7 +507,7 @@ private:
     bool m_isSpaceBefore = false;
     bool m_isSpaceAfter = false;
 
-    DISABLE_COPY(Text)
+    MD_DISABLE_COPY(Text)
 }; // class Text
 
 //
@@ -514,6 +524,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto b = std::make_shared<LineBreak<Trait>>();
         b->applyText(*this);
 
@@ -526,7 +538,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(LineBreak)
+    MD_DISABLE_COPY(LineBreak)
 }; // class LineBreak
 
 //
@@ -592,7 +604,7 @@ public:
 private:
     Items m_items;
 
-    DISABLE_COPY(Block)
+    MD_DISABLE_COPY(Block)
 }; // class Block
 
 //
@@ -641,7 +653,7 @@ protected:
 private:
     bool m_dirty = false;
 
-    DISABLE_COPY(Paragraph)
+    MD_DISABLE_COPY(Paragraph)
 }; // class Paragraph
 
 //
@@ -733,7 +745,7 @@ private:
     typename Trait::String m_label;
     WithPosition m_delim;
 
-    DISABLE_COPY(Heading)
+    MD_DISABLE_COPY(Heading)
 }; // class Heading
 
 //
@@ -777,7 +789,7 @@ public:
 private:
     Delims m_delims;
 
-    DISABLE_COPY(Blockquote)
+    MD_DISABLE_COPY(Blockquote)
 }; // class Blockquote
 
 //
@@ -897,7 +909,7 @@ private:
     WithPosition m_delim = {};
     WithPosition m_taskDelim = {};
 
-    DISABLE_COPY(ListItem)
+    MD_DISABLE_COPY(ListItem)
 }; // class ListItem
 
 //
@@ -926,7 +938,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(List)
+    MD_DISABLE_COPY(List)
 }; // class List
 
 //
@@ -1021,7 +1033,7 @@ private:
     WithPosition m_textPos = {};
     WithPosition m_urlPos = {};
 
-    DISABLE_COPY(LinkBase)
+    MD_DISABLE_COPY(LinkBase)
 }; // class LinkBase
 
 //
@@ -1050,7 +1062,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(Image)
+    MD_DISABLE_COPY(Image)
 }; // class Image
 
 //
@@ -1099,7 +1111,7 @@ public:
 private:
     ImageSharedPointer m_img;
 
-    DISABLE_COPY(Link)
+    MD_DISABLE_COPY(Link)
 }; // class Link
 
 //
@@ -1137,6 +1149,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto c = std::make_shared<Code<Trait>>(m_text, m_fensed, m_inlined);
         c->applyCode(*this);
 
@@ -1227,7 +1241,7 @@ private:
     WithPosition m_endDelim = {};
     WithPosition m_syntaxPos = {};
 
-    DISABLE_COPY(Code)
+    MD_DISABLE_COPY(Code)
 }; // class Code
 
 //
@@ -1248,6 +1262,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto m = std::make_shared<Math<Trait>>();
         m->applyCode(*this);
 
@@ -1270,7 +1286,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(Math)
+    MD_DISABLE_COPY(Math)
 }; // class Math
 
 //
@@ -1299,7 +1315,7 @@ public:
     }
 
 private:
-    DISABLE_COPY(TableCell)
+    MD_DISABLE_COPY(TableCell)
 }; // class TableCell
 
 //
@@ -1319,7 +1335,7 @@ public:
         auto t = std::make_shared<TableRow<Trait>>();
         t->applyPositions(*this);
 
-        for (const auto c : cells())
+        for (const auto &c : cells())
             t->appendCell(std::static_pointer_cast<TableCell<Trait>>(c->clone(doc)));
 
         return t;
@@ -1351,7 +1367,7 @@ public:
 private:
     Cells m_cells;
 
-    DISABLE_COPY(TableRow)
+    MD_DISABLE_COPY(TableRow)
 }; // class TableRow
 
 //
@@ -1430,7 +1446,7 @@ private:
     Rows m_rows;
     ColumnsAlignments m_aligns;
 
-    DISABLE_COPY(Table)
+    MD_DISABLE_COPY(Table)
 }; // class Table
 
 //
@@ -1451,6 +1467,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto f = std::make_shared<FootnoteRef<Trait>>(m_id);
         f->applyText(*this);
         f->setIdPos(m_idPos);
@@ -1482,7 +1500,7 @@ private:
     typename Trait::String m_id;
     WithPosition m_idPos;
 
-    DISABLE_COPY(FootnoteRef)
+    MD_DISABLE_COPY(FootnoteRef)
 }; // class FootnoteRef
 
 //
@@ -1524,7 +1542,7 @@ public:
 private:
     WithPosition m_idPos = {};
 
-    DISABLE_COPY(Footnote)
+    MD_DISABLE_COPY(Footnote)
 }; // class Footnote
 
 //
@@ -1546,6 +1564,8 @@ public:
 
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
+        MD_UNUSED(doc)
+
         auto d = std::make_shared<Document<Trait>>();
         d->applyBlock(*this, d.get());
 
@@ -1602,7 +1622,7 @@ private:
     LabeledLinks m_labeledLinks;
     LabeledHeadings m_labeledHeadings;
 
-    DISABLE_COPY(Document)
+    MD_DISABLE_COPY(Document)
 }; // class Document;
 
 } /* namespace MD */
