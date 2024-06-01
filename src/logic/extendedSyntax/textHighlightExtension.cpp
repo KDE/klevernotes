@@ -379,13 +379,26 @@ void removeBadStyles(MDParagraphPtr p,
     restoreBadStyleText(p, po, badStyles, paraIdxToRawIdx);
 }
 
-void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> delimInfos, QList<long long int> &paraIdxToRawIdx)
+void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx)
 {
     Q_UNUSED(p);
-    Q_UNUSED(paraIdxToRawIdx);
-    for (const auto &delim : delimInfos) {
-        const auto localPos = MD::localPosFromVirgin(po.fr, delim.startColumn, delim.startLine);
-        const auto lineInfo = po.fr.data.at(localPos.second);
+    long long int rawIdx = paraIdxToRawIdx.length() - 1;
+    // delim.paraIdx may not be correct anymore due to adding/removing items, can't use it
+    auto currentTextItem = getSharedTextItem(p->getItemAt(paraIdxToRawIdx[rawIdx]));
+    auto currentRawTextData = po.rawTextData[rawIdx];
+    auto lineInfo = po.fr.data.at(currentRawTextData.line);
+    for (const auto &delim : pairs) {
+        Q_ASSERT(delim.startColumn < currentTextItem->endColumn());
+        while (delim.startColumn < currentTextItem->startColumn()) {
+            --rawIdx;
+            Q_ASSERT(0 <= rawIdx);
+            currentTextItem = getSharedTextItem(p->getItemAt(paraIdxToRawIdx[rawIdx]));
+            currentRawTextData = po.rawTextData[rawIdx];
+        }
+
+        const auto delimOffSet = delim.startColumn - currentRawTextData.pos;
+
+        qDebug() << currentRawTextData.str.mid(delimOffSet);
     }
 }
 
@@ -416,10 +429,7 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
 
         std::sort(pairs.begin(), pairs.end(), CompareByStartColumn{});
 
-        for (const auto &delim : pairs) {
-            qDebug() << delim.startColumn;
-        }
-        qDebug() << "\n";
+        addNewStyles(p, po, pairs, paraIdxToRawIdx);
     }
 }
 } // TextHighlightFunc
