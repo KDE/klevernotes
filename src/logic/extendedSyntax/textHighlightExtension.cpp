@@ -265,16 +265,24 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             previousStyleRawIdx = currentRawIdx;
 
             auto currentTextItem = getSharedTextItem(currentGenericItem);
+
             currentItemText = currentTextItem->text();
             currentRawText = po.rawTextData[currentRawIdx].str;
 
             if (styleInfo.delim.endColumn() + 1 == currentGenericItem->startColumn()) {
                 currentItemText = delimText + currentItemText;
                 currentRawText = delimText + currentRawText;
+
+                auto newStartColumn = currentTextItem->startColumn() - delimText.length();
+                currentTextItem->setStartColumn(newStartColumn);
+                po.rawTextData[currentRawIdx].pos = newStartColumn;
                 reattached = true;
             } else if (currentGenericItem->endColumn() + 1 == styleInfo.delim.startColumn()) {
                 currentItemText = currentItemText + delimText;
                 currentRawText = currentRawText + delimText;
+
+                auto newEndColumn = currentTextItem->endColumn() + delimText.length();
+                currentTextItem->setEndColumn(newEndColumn);
                 reattached = true;
             }
             currentTextItem->setText(currentItemText);
@@ -298,6 +306,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                     auto currentItem = getSharedTextItem(currentGenericItem);
                     currentItem->setText(currentItemText);
                     po.rawTextData[currentRawIdx].str = currentRawText;
+                    currentItem->setEndColumn(nextTextItem->endColumn());
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + nextRawIdx);
                     p->removeItemAt(nextItemIdx);
@@ -307,6 +316,10 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
 
                     nextTextItem->setText(nextItemText);
                     po.rawTextData[nextRawIdx].str = nextRawText;
+
+                    auto newStartColumn = nextTextItem->startColumn() - delimText.length();
+                    nextTextItem->setStartColumn(newStartColumn);
+                    po.rawTextData[nextRawIdx].pos = newStartColumn;
 
                     reattached = true;
                 }
@@ -326,6 +339,8 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                     previousItemText = previousItemText + currentItemText;
                     previousRawText = previousRawText + currentRawText;
 
+                    previousTextItem->setEndColumn(currentGenericItem->endColumn());
+
                     po.rawTextData.erase(po.rawTextData.cbegin() + currentRawIdx);
                     p->removeItemAt(paraIdx);
 
@@ -334,6 +349,9 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                 } else {
                     previousItemText = previousItemText + delimText;
                     previousRawText = previousRawText + delimText;
+
+                    auto newEndColumn = currentGenericItem->endColumn() + delimText.length();
+                    previousTextItem->setEndColumn(newEndColumn);
 
                     reattached = true;
                 }
@@ -344,12 +362,19 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
         }
 
         if (!reattached) {
-            // TODO: add pos and other things to both
             MDParsingOpts::TextData newTextData;
             newTextData.str = delimText;
+            newTextData.pos = styleInfo.delim.startColumn();
+            newTextData.line = styleInfo.delim.startLine();
 
             auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
             newTextItem->setText(delimText);
+            newTextItem->setSpaceAfter(true);
+            newTextItem->setSpaceBefore(true);
+            newTextItem->setStartLine(styleInfo.delim.startLine());
+            newTextItem->setStartColumn(styleInfo.delim.startColumn());
+            newTextItem->setEndLine(styleInfo.delim.endLine());
+            newTextItem->setEndColumn(styleInfo.delim.endColumn());
 
             if (styleInfo.type == TagType::Opening) {
                 paraIdxToRawIdx.insert(previousStyleRawIdx, paraIdx);
@@ -379,7 +404,7 @@ void removeBadStyles(MDParagraphPtr p,
     restoreBadStyleText(p, po, badStyles, paraIdxToRawIdx);
 }
 
-void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx)
+void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx, const QString &searchedDelim)
 {
     Q_UNUSED(p);
     long long int rawIdx = paraIdxToRawIdx.length() - 1;
@@ -396,9 +421,22 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
             currentRawTextData = po.rawTextData[rawIdx];
         }
 
-        const auto delimOffSet = delim.startColumn - currentRawTextData.pos;
+        const auto delimRawOffSet = delim.startColumn - currentRawTextData.pos;
 
-        qDebug() << currentRawTextData.str.mid(delimOffSet);
+        QString itemText = currentTextItem->text();
+        const int itemLen = itemText.length();
+
+        if (itemLen == searchedDelim.length()) {
+            // TODO: remove this item and the rawTextData
+        }
+
+        if (delimRawOffSet == 0) {
+            // TODO: Only thing left is the right part, nothing being added
+        }
+
+        if (currentTextItem->endColumn() == currentTextItem->startColumn() + delimRawOffSet + searchedDelim.length()) {
+            // TODO: Only thing left is the left part
+        }
     }
 }
 
@@ -412,10 +450,11 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
         QList<DelimInfo> delimInfos;
         QList<StyleDelimInfo> waitingOpeningsStyles;
         QList<QPair<StyleDelimInfo, StyleDelimInfo>> openCloseStyles;
+        static const QString searchedDelim = QStringLiteral("==");
 
         // Can't use std::foreach, we need the index
         for (long long int i = 0; i < p->items().size(); i++) {
-            getDelim(p, po, i, delimInfos, waitingOpeningsStyles, openCloseStyles, paraIdxToRawIdx, QStringLiteral("=="));
+            getDelim(p, po, i, delimInfos, waitingOpeningsStyles, openCloseStyles, paraIdxToRawIdx, searchedDelim);
         };
 
         while (!delimInfos.isEmpty() && delimInfos.at(0).type == TagType::Closing) {
@@ -429,7 +468,7 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
 
         std::sort(pairs.begin(), pairs.end(), CompareByStartColumn{});
 
-        addNewStyles(p, po, pairs, paraIdxToRawIdx);
+        addNewStyles(p, po, pairs, paraIdxToRawIdx, searchedDelim);
     }
 }
 } // TextHighlightFunc
