@@ -63,7 +63,7 @@ msgstr "Åtgärden går inte att ångra"
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No stickers"
-msgstr "Ingen klisterlapp"
+msgstr "Inga klistermärken"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
