@@ -64,32 +64,34 @@ void getDelim(MDParagraphPtr p,
 
     int delimIdx = src.indexOf(searchedDelim);
 
+    const int delimLength = searchedDelim.length();
+
     while (-1 < delimIdx) {
-        const QChar charBeforeDelim = (localPos.first == 0 && delimIdx == 0) ? QChar() : lineInfo.first[localPos.first + delimIdx];
+        const QChar charBeforeDelim = (localPos.first == 0 && delimIdx == 0) ? QChar() : lineInfo.first[localPos.first + delimIdx - 1];
         if (charBeforeDelim == QChar::fromLatin1('\\')) {
             delimIdx = src.indexOf(searchedDelim, delimIdx + 2);
             continue;
         }
         const bool spaceBeforeDelim = charBeforeDelim.isSpace();
         const bool charAfterDelimExist = localPos.first + delimIdx + 3 <= lineInfo.first.length() - 1;
-        const QChar charAfterDelim = !charAfterDelimExist ? QChar() : lineInfo.first[localPos.first + delimIdx + 3];
+        const QChar charAfterDelim = !charAfterDelimExist ? QChar() : lineInfo.first[localPos.first + delimIdx + delimLength];
         const bool spaceAfterDelim = charAfterDelim.isSpace();
 
         TagType type;
         if (!spaceBeforeDelim && !spaceAfterDelim) {
             type = TagType::Both;
-        } else if (!spaceBeforeDelim) {
+        } else if (spaceBeforeDelim && !spaceAfterDelim) {
             type = TagType::Opening;
-        } else if (!spaceAfterDelim) {
+        } else if (!spaceBeforeDelim && spaceAfterDelim) {
             type = TagType::Closing;
         } else {
-            delimIdx = src.indexOf(searchedDelim, delimIdx + 2);
+            delimIdx = src.indexOf(searchedDelim, delimIdx + delimLength);
             continue;
         }
 
         DelimInfo info = {idx, localPos.first + delimIdx, localPos.second, type, lineInfo.first.asString()};
         delimInfos.append(info);
-        delimIdx = src.indexOf(searchedDelim, delimIdx + 2);
+        delimIdx = src.indexOf(searchedDelim, delimIdx + delimLength);
     }
 }
 
@@ -107,10 +109,14 @@ bool validDelimsPairs(MDParagraphPtr p,
     while (i < openCloseStyles.size()) {
         const auto stylePair = openCloseStyles[i];
         const int styleOpeningPos = stylePair.first.delim.startColumn();
-        const bool openInsideStyle = styleOpeningPos < openDelim.startColumn;
-
         const int styleClosingPos = stylePair.second.delim.startColumn();
 
+        if (styleOpeningPos < openDelim.startColumn) {
+            i++;
+            continue;
+        }
+
+        const bool openInsideStyle = styleOpeningPos < openDelim.startColumn;
         const bool closeInsideStyle = closeDelim.startColumn < styleClosingPos;
 
         if (openInsideStyle && !closeInsideStyle) {
@@ -310,6 +316,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + nextRawIdx);
                     p->removeItemAt(nextItemIdx);
+                    paraIdxToRawIdx.remove(nextRawIdx);
                 } else {
                     nextItemText = delimText + nextItemText;
                     nextRawText = delimText + nextRawText;
@@ -406,10 +413,14 @@ void removeBadStyles(MDParagraphPtr p,
 
 void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx, const QString &searchedDelim)
 {
-    Q_UNUSED(p);
+    // TODO: add opts and style in open/close
+    // Split things into adding style and opts, then sort, then changing text, like `removeBadStyles`
+    const int delimLength = searchedDelim.length();
+
     long long int rawIdx = paraIdxToRawIdx.length() - 1;
+    long long int paraIdx = paraIdxToRawIdx.last();
     // delim.paraIdx may not be correct anymore due to adding/removing items, can't use it
-    auto currentTextItem = getSharedTextItem(p->getItemAt(paraIdxToRawIdx[rawIdx]));
+    auto currentTextItem = getSharedTextItem(p->getItemAt(paraIdx));
     auto currentRawTextData = po.rawTextData[rawIdx];
     auto lineInfo = po.fr.data.at(currentRawTextData.line);
     for (const auto &delim : pairs) {
@@ -417,26 +428,74 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
         while (delim.startColumn < currentTextItem->startColumn()) {
             --rawIdx;
             Q_ASSERT(0 <= rawIdx);
-            currentTextItem = getSharedTextItem(p->getItemAt(paraIdxToRawIdx[rawIdx]));
+            paraIdx = paraIdxToRawIdx[rawIdx];
+            currentTextItem = getSharedTextItem(p->getItemAt(paraIdx));
             currentRawTextData = po.rawTextData[rawIdx];
         }
 
         const auto delimRawOffSet = delim.startColumn - currentRawTextData.pos;
 
         QString itemText = currentTextItem->text();
-        const int itemLen = itemText.length();
+        QString rawText = currentRawTextData.str;
 
-        if (itemLen == searchedDelim.length()) {
-            // TODO: remove this item and the rawTextData
+        if (rawText.length() == searchedDelim.length()) {
+            po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+            p->removeItemAt(paraIdx);
+            continue;
         }
 
         if (delimRawOffSet == 0) {
-            // TODO: Only thing left is the right part, nothing being added
+            rawText.remove(0, delimLength);
+            currentRawTextData.str = rawText;
+            currentRawTextData.pos = currentRawTextData.pos + delimLength;
+
+            auto text = MD::replaceEntity<MD::QStringTrait>(rawText.simplified());
+            text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
+            currentTextItem->setText(text);
+            currentTextItem->setStartColumn(currentRawTextData.pos);
+            continue;
         }
 
-        if (currentTextItem->endColumn() == currentTextItem->startColumn() + delimRawOffSet + searchedDelim.length()) {
-            // TODO: Only thing left is the left part
+        if (rawText.length() == delimRawOffSet + delimLength) {
+            rawText.chop(delimLength);
+            currentRawTextData.str = rawText;
+
+            auto text = MD::replaceEntity<MD::QStringTrait>(rawText.simplified());
+            text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
+            currentTextItem->setText(text);
+            currentTextItem->setEndColumn(currentTextItem->endColumn() - delimLength);
+            continue;
         }
+
+        const long long int rightStartPos = delimRawOffSet + delimLength;
+        const QString rightRawText = rawText.mid(rightStartPos);
+        auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
+        auto rightText = MD::replaceEntity<MD::QStringTrait>(rightRawText.simplified());
+        rightText = MD::removeBackslashes<MD::QStringTrait>(rightText).asString();
+
+        MDParsingOpts::TextData newTextData;
+        newTextData.str = rightRawText;
+        newTextData.pos = rightStartPos;
+        newTextData.line = delim.startLine;
+        po.rawTextData.insert(po.rawTextData.cbegin() + rawIdx + 1, newTextData);
+
+        newTextItem->setText(rightText);
+        newTextItem->setStartLine(currentTextItem->startLine());
+        newTextItem->setStartColumn(rightStartPos);
+        newTextItem->setEndLine(currentTextItem->endLine());
+        newTextItem->setEndColumn(currentTextItem->endColumn());
+        newTextItem->setSpaceAfter(currentTextItem->isSpaceAfter());
+        newTextItem->setSpaceBefore(rawText[rightStartPos].isSpace()); // The delim could have a space, who knows ?!
+        p->insertItem(paraIdx + 1, newTextItem);
+
+        const QString leftRawText = rawText.left(delimRawOffSet);
+        auto leftText = MD::replaceEntity<MD::QStringTrait>(leftRawText.simplified());
+        leftText = MD::removeBackslashes<MD::QStringTrait>(leftText).asString();
+
+        currentRawTextData.str = leftRawText;
+        currentTextItem->setText(leftText);
+        currentTextItem->setEndColumn(delim.startColumn - 1);
+        currentTextItem->setSpaceAfter(rawText[delimRawOffSet].isSpace());
     }
 }
 
