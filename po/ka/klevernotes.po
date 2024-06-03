@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-02-29 03:09+0100\n"
+"PO-Revision-Date: 2024-06-02 22:50+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -19,58 +19,46 @@ msgstr ""
 "X-Generator: Poedit 3.3.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-kuit-format
 msgctxt "@info, as in 'A note category'"
 msgid "Are you sure you want to delete the category <filename>%1</filename>?"
-msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
+msgstr "მართლა გნებავთ, წაშალოთ კატეგორია <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:18
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-kuit-format
 msgctxt "@info, as in 'A note group'"
 msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
+msgstr "მართლა გნებავთ, წაშალოთ ჯგუფი <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:19
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the note <filename>%1</filename>?"
-msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
+msgstr "მართლა გნებავთ, წაშალოთ შენიშვნა <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Category Confirmation"
-msgstr ""
+msgstr "კატეგორიის წაშლის დადასტურება"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Group Confirmation"
-msgstr ""
+msgstr "ჯგუფის წაშლის დადასტურება"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
-msgstr ""
+msgstr "შენიშვნის წაშლის დადასტურება"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:38
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr ""
+msgstr "ეს ქმედება შეუქცევადია."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -150,25 +138,16 @@ msgid "KleverNotes painting"
 msgstr "KleverNotes-ის ხატვა"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "You're about to leave without saving your drawing!\n"
-#| "Do you want to save it before leaving ?\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
-"აპირებთ, თქვენი ნახატის გარეშე გახვიდეთ?\n"
-"თუ გნებავთ, შეინახოთ ის გასვლამდე?\n"
+msgstr "აპირებთ, თქვენი ნახატის გარეშე გახვიდეთ!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
+msgstr "გნებავთ შენახვა, სანამ გახვალთ?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -210,30 +189,22 @@ msgid "Header:"
 msgstr "თავსართი:"
 
 #: contents/ui/dialogs/MoveDialog.qml:21
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Where do you want to move this group ?"
-msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
+msgstr "სად გნებავთ, ეს ჯგუფი გადაიტანოთ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid "Are you sure you want to delete this %1 ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr "მართლა გნებავთ, ეს %1 წაშალოთ?"
+msgstr "სად გნებავთ, ეს შენიშვნა გადაიტანოთ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:26
 #, kde-format
 msgctxt "@title:dialog, to move a group/note"
 msgid "Move"
-msgstr ""
+msgstr "გადატანა"
 
 #: contents/ui/dialogs/NamingDialog.qml:24
 #, kde-format
@@ -251,19 +222,19 @@ msgstr "სახელი:"
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "This category already exists."
-msgstr ""
+msgstr "ეს კატეგორია უკვე არსებობს."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:14
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr ""
+msgstr "ეს ჯგუფი უკვე არსებობს."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr ""
+msgstr "ეს შენიშვნა უკვე არსებობს."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
@@ -280,52 +251,44 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
+"ეს სახელი იწყება წერტილით, რასაც პრობლემების გამოწვევა შეუძლია და ამიტომ "
+"დაშვებული არაა."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:38
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr ""
+msgstr "წაშალეთ წერტილი, ან სხვა სახელი აირჩიეთ."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#| "group) or 'note' (a note)"
-#| msgid ""
-#| "This %1 already exist.\n"
-#| "Please choose another name for it.\n"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
-msgstr ""
-"ეს %1 უკვე არსებობს.\n"
-"მისთვს სხვა სახელის არჩევა მოგიწევთ.\n"
+msgstr "მისთვის სხვა სახელის არჩევა მოგიწევთ."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "დაბეჭდვის დიალოგი"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "დაბეჭდვა"
+msgstr "HTML-ის დაბეჭდვა"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr ""
+msgstr "PDF-ში დაბეჭდვა"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "გათიშულია flatpak-ის შეზღუდვის გამო"
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -360,11 +323,7 @@ msgstr ""
 "აირჩიეთ უკვე არსებული."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@title:dialog, 'storage' as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "KleverNotes Storage"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
@@ -581,12 +540,10 @@ msgid "This could cause visual artifact near the end of the pdf."
 msgstr "ამან შეიძლება PDF ფაილის ბოლოში ვიზუალური არტეფაქტები გამოიწვიოს."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "შენიშვნის შენახვა"
+msgstr "შენიშვნის შენახვა PDF-ის სახით"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -736,19 +693,19 @@ msgstr "გამოტოვებების რაოდენობა"
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr ""
+msgstr "ხელსაწყოთა ზოლი"
 
 #: contents/ui/settings/GeneralTab.qml:202
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr ""
+msgstr "ხილული"
 
 #: contents/ui/settings/GeneralTab.qml:263
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr ""
+msgstr "უხილავი"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
@@ -783,9 +740,7 @@ msgid "Enable PlantUML"
 msgstr "PlantUML-ის ჩართვა"
 
 #: contents/ui/settings/PluginsTab.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@description:checkbox"
-#| msgid "PlantUML let's you create diagram."
+#, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
 msgstr "PlantUML დიაგრამების შექმნის საშუალებას გაძლევთ."
@@ -1055,8 +1010,7 @@ msgid "Table"
 msgstr "ცხრილი"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
-#, fuzzy, kde-format
-#| msgid "Ordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "დალაგებული სია"
@@ -1068,8 +1022,7 @@ msgid "Ordered list"
 msgstr "დალაგებული სია"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
-#, fuzzy, kde-format
-#| msgid "Unordered list"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
 msgstr "დაულაგებელი სია"
@@ -1081,12 +1034,10 @@ msgid "Unordered list"
 msgstr "დაულაგებელი სია"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "გამომკვეთი"
+msgstr "გამოკვეთა"
 
 #: contents/ui/sharedComponents/ActionsList.qml:135
 #, kde-format
@@ -1099,12 +1050,10 @@ msgstr "ტექსტის გამოკვეთა"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "ემოჯი"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Link note"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
 msgstr "შენიშვნის მიბმა"
@@ -1141,17 +1090,17 @@ msgstr "გადარქმევა"
 #: contents/ui/sideBar/ActionBar.qml:88
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "ძებნა"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "გვერდითი ზოლის ჩაკეცვა"
 
 #: contents/ui/sideBar/ActionBar.qml:106
 #, kde-format
 msgid "Expand sidebar"
-msgstr ""
+msgstr "გვერდითი ზოლის გაფართოება"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
@@ -1174,7 +1123,7 @@ msgstr "ახალი შენიშვნა"
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "გადატანა"
 
 #: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
@@ -1182,26 +1131,21 @@ msgid "Delete"
 msgstr "წაშლა"
 
 #: contents/ui/sideBar/SearchBar.qml:72
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note category'"
-#| msgid "category"
+#, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "Category"
 msgstr "კატეგორია"
 
 #: contents/ui/sideBar/SearchBar.qml:73
-#, fuzzy, kde-format
-#| msgctxt "Name, as in 'A note group'"
-#| msgid "group"
+#, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "Group"
 msgstr "ჯგუფი"
 
 #: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
-#, fuzzy, kde-format
-#| msgid "From : "
+#, kde-format
 msgid "From"
-msgstr "ვისგან : "
+msgstr "ვისგან"
 
 #: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
@@ -1209,11 +1153,9 @@ msgid "No search results"
 msgstr "ძებნის შედეგების გარეშე"
 
 #: contents/ui/sideBar/Sidebar.qml:90
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
-msgstr "ახალი შენიშვნა"
+msgstr "შენიშვნების ჩვენება"
 
 #: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
@@ -1521,12 +1463,10 @@ msgid "View/Hide preview"
 msgstr "მინიატურის ჩვენება/დამალვა"
 
 #: contents/ui/textEditor/EditorView.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "შენიშვნის შენახვა"
+msgstr "შენიშვნის შენახვა HTML-ის სახით"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
@@ -1569,9 +1509,7 @@ msgid "Clear checked"
 msgstr "ჩართულის გასუფთავება"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog"
-#| msgid "Add Todo"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
 msgstr "განრიგის დამატება"
@@ -1681,10 +1619,9 @@ msgid "An error occurred while trying to remove this item."
 msgstr "შეცდომა ამ ელემენტის წაშლისას."
 
 #: logic/treeview/noteTreeModel.cpp:517
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to remove this item."
+#, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr "შეცდომა ამ ელემენტის წაშლისას."
+msgstr "შეცდომა ამ ელემენტის გადატანისას."
 
 #: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
@@ -1720,7 +1657,7 @@ msgstr "KleverNotes"
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "შენიშვნების მართვის აპლიკაცია"
 
 #: main.cpp:65
 #, kde-format
