@@ -86,7 +86,16 @@ void removeBadStyles(MDParagraphPtr paragraphsList,
                      QList<StyleDelimInfo> &badStyles,
                      QList<long long int> &paraIdxToRawIdx);
 
-void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx);
+void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength);
+
+void removeDelimText(MDParagraphPtr p,
+                     MDParsingOpts &po,
+                     QList<DelimInfo> &pairs,
+                     QList<long long int> &paraIdxToRawIdx,
+                     const int newStyleOpt,
+                     const int delimLength);
+
+void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx, const int delimLength);
 
 void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po);
 

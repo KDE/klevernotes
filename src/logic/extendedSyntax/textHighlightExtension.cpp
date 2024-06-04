@@ -4,6 +4,7 @@
 */
 
 #include "textHighlightExtension.hpp"
+#include "logic/md4qt/doc.hpp"
 
 #include <qlogging.h>
 
@@ -246,6 +247,8 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
     long long int modifiedPreviousStyleParaIdx = -1;
     long long int previousStyleRawIdx = po.rawTextData.size();
 
+    // TODO: transfert style when merging items
+    // TODO: fix spacebefore/spaceAfter
     for (const auto &styleInfo : badStyles) {
         // Deals with the offset coming from adding/removing Items from the Paragraph list
         long long int paraIdx;
@@ -411,18 +414,44 @@ void removeBadStyles(MDParagraphPtr p,
     restoreBadStyleText(p, po, badStyles, paraIdxToRawIdx);
 }
 
-void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx, const QString &searchedDelim)
+void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength)
 {
-    // TODO: add opts and style in open/close
-    // Split things into adding style and opts, then sort, then changing text, like `removeBadStyles`
-    const int delimLength = searchedDelim.length();
+    for (int i = 0; i < pairs.length(); i += 2) {
+        const auto &opening = pairs[i];
 
+        auto openingTextItem = getSharedTextItem(p->getItemAt(opening.paraIdx));
+        const MD::StyleDelim openingStyle =
+            MD::StyleDelim(newStyleOpt, opening.startColumn, opening.startLine, opening.startColumn + delimLength, opening.startLine);
+        openingTextItem->openStyles().append(openingStyle);
+        openingTextItem->setOpts(openingTextItem->opts() + newStyleOpt);
+
+        const auto &closing = pairs[i + 1];
+        auto closingTextItem = getSharedTextItem(p->getItemAt(closing.paraIdx));
+        const MD::StyleDelim closingStyle =
+            MD::StyleDelim(newStyleOpt, closing.startColumn, closing.startLine, closing.startColumn + delimLength, closing.startLine);
+        closingTextItem->closeStyles().append(closingStyle);
+        closingTextItem->setOpts(closingTextItem->opts() + newStyleOpt);
+
+        for (long long int i = opening.paraIdx + 1; i < closing.paraIdx; i++) {
+            auto item = getSharedItemWithOpts(p->getItemAt(i));
+            item->setOpts(item->opts() + newStyleOpt);
+        }
+    }
+}
+
+void removeDelimText(MDParagraphPtr p,
+                     MDParsingOpts &po,
+                     QList<DelimInfo> &pairs,
+                     QList<long long int> &paraIdxToRawIdx,
+                     const int newStyleOpt,
+                     const int delimLength)
+{
+    // delim.paraIdx may not be correct anymore due to adding/removing items, can't use it
     long long int rawIdx = paraIdxToRawIdx.length() - 1;
     long long int paraIdx = paraIdxToRawIdx.last();
-    // delim.paraIdx may not be correct anymore due to adding/removing items, can't use it
     auto currentTextItem = getSharedTextItem(p->getItemAt(paraIdx));
     auto currentRawTextData = po.rawTextData[rawIdx];
-    auto lineInfo = po.fr.data.at(currentRawTextData.line);
+
     for (const auto &delim : pairs) {
         Q_ASSERT(delim.startColumn < currentTextItem->endColumn());
         while (delim.startColumn < currentTextItem->startColumn()) {
@@ -438,7 +467,14 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
         QString itemText = currentTextItem->text();
         QString rawText = currentRawTextData.str;
 
-        if (rawText.length() == searchedDelim.length()) {
+        if (rawText.length() == delimLength) {
+            if (delim.type == TagType::Opening) {
+                auto nextItem = getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+                nextItem->openStyles() << currentTextItem->openStyles();
+            } else {
+                auto previousItem = getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
+                previousItem->closeStyles() << currentTextItem->closeStyles();
+            }
             po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
             p->removeItemAt(paraIdx);
             continue;
@@ -453,6 +489,7 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
             text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
             currentTextItem->setText(text);
             currentTextItem->setStartColumn(currentRawTextData.pos);
+            currentTextItem->setSpaceBefore(rawText[0].isSpace());
             continue;
         }
 
@@ -464,6 +501,7 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
             text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
             currentTextItem->setText(text);
             currentTextItem->setEndColumn(currentTextItem->endColumn() - delimLength);
+            currentTextItem->setSpaceAfter(rawText.back().isSpace());
             continue;
         }
 
@@ -485,7 +523,8 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
         newTextItem->setEndLine(currentTextItem->endLine());
         newTextItem->setEndColumn(currentTextItem->endColumn());
         newTextItem->setSpaceAfter(currentTextItem->isSpaceAfter());
-        newTextItem->setSpaceBefore(rawText[rightStartPos].isSpace()); // The delim could have a space, who knows ?!
+        newTextItem->setSpaceBefore(rawText[rightStartPos].isSpace());
+        newTextItem->setOpts(currentTextItem->opts());
         p->insertItem(paraIdx + 1, newTextItem);
 
         const QString leftRawText = rawText.left(delimRawOffSet);
@@ -495,8 +534,27 @@ void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, 
         currentRawTextData.str = leftRawText;
         currentTextItem->setText(leftText);
         currentTextItem->setEndColumn(delim.startColumn - 1);
-        currentTextItem->setSpaceAfter(rawText[delimRawOffSet].isSpace());
+        currentTextItem->setSpaceAfter(rawText[delimRawOffSet - 1].isSpace());
+
+        if (delim.type == TagType::Opening) {
+            currentTextItem->setOpts(currentTextItem->opts() - newStyleOpt);
+
+            const auto &openingStyle = currentTextItem->openStyles().takeLast();
+            newTextItem->openStyles().append(openingStyle);
+        } else {
+            newTextItem->setOpts(newTextItem->opts() - newStyleOpt);
+        }
     }
+}
+
+void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx, const int delimLength)
+{
+    static const int TEMPOPTVALUE = 0;
+    addNewStyleOpt(p, pairs, TEMPOPTVALUE, delimLength);
+
+    std::sort(pairs.begin(), pairs.end(), CompareByStartColumn{});
+
+    removeDelimText(p, po, pairs, paraIdxToRawIdx, TEMPOPTVALUE, delimLength);
 }
 
 void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
@@ -520,14 +578,16 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
             delimInfos.pop_front();
         }
 
+        if (delimInfos.isEmpty()) {
+            return;
+        }
+
         QList<StyleDelimInfo> badStyles;
         auto pairs = pairDelims(p, openCloseStyles, badStyles, delimInfos);
 
+        addNewStyles(p, po, pairs, paraIdxToRawIdx, searchedDelim.length());
+
         removeBadStyles(p, po, openCloseStyles, badStyles, paraIdxToRawIdx);
-
-        std::sort(pairs.begin(), pairs.end(), CompareByStartColumn{});
-
-        addNewStyles(p, po, pairs, paraIdxToRawIdx, searchedDelim);
     }
 }
 } // TextHighlightFunc
