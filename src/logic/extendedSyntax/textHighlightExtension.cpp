@@ -198,7 +198,7 @@ void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDeli
         auto openingItem = getSharedItemWithOpts(p->getItemAt(badOpening.paraIdx));
         auto &openingStyles = openingItem->openStyles();
 
-        for (long long int styleIdx = 0; styleIdx < openingStyles.length(); i++) {
+        for (long long int styleIdx = 0; styleIdx < openingStyles.length(); styleIdx++) {
             if (openingStyles[styleIdx] == badOpening.delim) {
                 openingStyles.remove(styleIdx);
                 break;
@@ -209,7 +209,7 @@ void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDeli
         auto closingItem = getSharedItemWithOpts(p->getItemAt(badClosing.paraIdx));
         auto &closingStyles = closingItem->closeStyles();
 
-        for (long long int styleIdx = 0; styleIdx < closingStyles.length(); i++) {
+        for (long long int styleIdx = 0; styleIdx < closingStyles.length(); styleIdx++) {
             if (closingStyles[styleIdx] == badClosing.delim) {
                 closingStyles.remove(styleIdx);
                 break;
@@ -316,6 +316,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                     currentItem->setText(currentItemText);
                     po.rawTextData[currentRawIdx].str = currentRawText;
                     currentItem->setEndColumn(nextTextItem->endColumn());
+                    currentItem->closeStyles() << nextTextItem->closeStyles();
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + nextRawIdx);
                     p->removeItemAt(nextItemIdx);
@@ -350,6 +351,9 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                     previousRawText = previousRawText + currentRawText;
 
                     previousTextItem->setEndColumn(currentGenericItem->endColumn());
+
+                    auto currentItem = getSharedTextItem(currentGenericItem);
+                    previousTextItem->closeStyles() << currentItem->closeStyles();
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + currentRawIdx);
                     p->removeItemAt(paraIdx);
@@ -408,6 +412,7 @@ void removeBadStyles(MDParagraphPtr p,
                      QList<long long int> &paraIdxToRawIdx)
 {
     removeBadStylesOpts(p, openCloseStyles, badStyles);
+    qDebug() << "bad opts ok";
 
     std::sort(badStyles.begin(), badStyles.end(), CompareByStartColumn{});
 
@@ -421,14 +426,14 @@ void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyl
 
         auto openingTextItem = getSharedTextItem(p->getItemAt(opening.paraIdx));
         const MD::StyleDelim openingStyle =
-            MD::StyleDelim(newStyleOpt, opening.startColumn, opening.startLine, opening.startColumn + delimLength, opening.startLine);
+            MD::StyleDelim(newStyleOpt, opening.startColumn, opening.startLine, opening.startColumn + delimLength - 1, opening.startLine);
         openingTextItem->openStyles().append(openingStyle);
         openingTextItem->setOpts(openingTextItem->opts() + newStyleOpt);
 
         const auto &closing = pairs[i + 1];
         auto closingTextItem = getSharedTextItem(p->getItemAt(closing.paraIdx));
         const MD::StyleDelim closingStyle =
-            MD::StyleDelim(newStyleOpt, closing.startColumn, closing.startLine, closing.startColumn + delimLength, closing.startLine);
+            MD::StyleDelim(newStyleOpt, closing.startColumn, closing.startLine, closing.startColumn + delimLength - 1, closing.startLine);
         closingTextItem->closeStyles().append(closingStyle);
         closingTextItem->setOpts(closingTextItem->opts() + newStyleOpt);
 
@@ -574,6 +579,7 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
             getDelim(p, po, i, delimInfos, waitingOpeningsStyles, openCloseStyles, paraIdxToRawIdx, searchedDelim);
         };
 
+        qDebug() << "delim ok";
         while (!delimInfos.isEmpty() && delimInfos.at(0).type == TagType::Closing) {
             delimInfos.pop_front();
         }
@@ -585,9 +591,12 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
         QList<StyleDelimInfo> badStyles;
         auto pairs = pairDelims(p, openCloseStyles, badStyles, delimInfos);
 
+        qDebug() << "pairs ok";
         addNewStyles(p, po, pairs, paraIdxToRawIdx, searchedDelim.length());
 
+        qDebug() << "newstyle ok";
         removeBadStyles(p, po, openCloseStyles, badStyles, paraIdxToRawIdx);
+        qDebug() << "bad style ok";
     }
 }
 } // TextHighlightFunc
