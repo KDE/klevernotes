@@ -23,7 +23,7 @@ inline std::shared_ptr<MD::ItemWithOpts<MD::QStringTrait>> getSharedItemWithOpts
 }
 
 template<typename T>
-inline std::shared_ptr<MD::Text<MD::QStringTrait>> getSharedTextItem(const std::shared_ptr<T> &item)
+inline TextHighlightFunc::MDTextItem getSharedTextItem(const std::shared_ptr<T> &item)
 {
     return std::static_pointer_cast<MD::Text<MD::QStringTrait>>(item);
 }
@@ -247,7 +247,6 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
     long long int modifiedPreviousStyleParaIdx = -1;
     long long int previousStyleRawIdx = po.rawTextData.size();
 
-    // TODO: transfert style when merging items
     // TODO: fix spacebefore/spaceAfter
     for (const auto &styleInfo : badStyles) {
         // Deals with the offset coming from adding/removing Items from the Paragraph list
@@ -261,9 +260,13 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             paraIdx = initialPreviousStyleParaIdx;
         }
 
-        const auto currentGenericItem = p->getItemAt(paraIdx);
         const QString delimText = MD::virginSubstr(po.fr, styleInfo.delim);
+        const auto currentGenericItem = p->getItemAt(paraIdx);
 
+        MDTextItem currentTextItem = nullptr;
+
+        long long int currentTrailPos = currentGenericItem->startColumn();
+        long long int currentTailPos = currentGenericItem->endColumn();
         QString currentItemText = {};
         QString currentRawText = {};
         long long int currentRawIdx = -1;
@@ -273,7 +276,12 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             currentRawIdx = paraIdxToRawIdx.indexOf(paraIdx);
             previousStyleRawIdx = currentRawIdx;
 
-            auto currentTextItem = getSharedTextItem(currentGenericItem);
+            currentTextItem = getSharedTextItem(currentGenericItem);
+
+            const auto &openingStyles = currentTextItem->openStyles();
+            const auto &closingStyles = currentTextItem->closeStyles();
+            currentTrailPos = 0 < openingStyles.length() ? openingStyles.front().startColumn() : currentTrailPos;
+            currentTailPos = 0 < closingStyles.length() ? closingStyles.back().endColumn() : currentTailPos;
 
             currentItemText = currentTextItem->text();
             currentRawText = po.rawTextData[currentRawIdx].str;
@@ -298,32 +306,41 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             po.rawTextData[currentRawIdx].str = currentRawText;
         }
 
+        MDTextItem nextTextItem = nullptr;
         if (styleInfo.paraIdx != p->items().length() - 1) {
             const long long int nextItemIdx = paraIdx + 1;
             const auto nextGenericItem = p->getItemAt(nextItemIdx);
 
             if (nextGenericItem->type() == MD::ItemType::Text && styleInfo.delim.endColumn() + 1 == nextGenericItem->startColumn()) {
                 const long long int nextRawIdx = paraIdxToRawIdx.indexOf(nextItemIdx);
-                auto nextTextItem = getSharedTextItem(nextGenericItem);
+                nextTextItem = getSharedTextItem(nextGenericItem);
                 QString nextItemText = nextTextItem->text();
                 QString nextRawText = po.rawTextData[nextRawIdx].str;
 
                 if (reattached) { // merge nextTextItem into currentItem
-                    currentItemText = currentItemText + nextItemText;
                     currentRawText = currentRawText + nextRawText;
 
-                    auto currentItem = getSharedTextItem(currentGenericItem);
-                    currentItem->setText(currentItemText);
+                    currentItemText = MD::replaceEntity<MD::QStringTrait>(currentRawText.simplified());
+                    currentItemText = MD::removeBackslashes<MD::QStringTrait>(currentRawText).asString();
+
+                    currentTextItem->setText(currentItemText);
                     po.rawTextData[currentRawIdx].str = currentRawText;
-                    currentItem->setEndColumn(nextTextItem->endColumn());
-                    currentItem->closeStyles() << nextTextItem->closeStyles();
+                    currentTextItem->setEndColumn(nextTextItem->endColumn());
+                    currentTextItem->closeStyles() << nextTextItem->closeStyles();
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + nextRawIdx);
                     p->removeItemAt(nextItemIdx);
                     paraIdxToRawIdx.remove(nextRawIdx);
                 } else {
-                    nextItemText = delimText + nextItemText;
+                    if (currentTextItem && currentTailPos + 1 == styleInfo.startColumn) {
+                        currentTextItem->setSpaceAfter(false);
+                        nextTextItem->setSpaceBefore(false);
+                    }
+
                     nextRawText = delimText + nextRawText;
+
+                    nextItemText = MD::replaceEntity<MD::QStringTrait>(nextRawText.simplified());
+                    nextItemText = MD::removeBackslashes<MD::QStringTrait>(nextRawText).asString();
 
                     nextTextItem->setText(nextItemText);
                     po.rawTextData[nextRawIdx].str = nextRawText;
@@ -337,23 +354,25 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             }
         }
 
+        MDTextItem previousTextItem = nullptr;
         if (styleInfo.paraIdx != 0) {
             const auto previousGenericItem = p->getItemAt(paraIdx - 1);
 
             if (previousGenericItem->type() == MD::ItemType::Text && previousGenericItem->startColumn() + 1 == styleInfo.delim.startColumn()) {
                 const long long int previousRawIdx = paraIdxToRawIdx.indexOf(paraIdx - 1);
-                auto previousTextItem = getSharedTextItem(previousGenericItem);
+                previousTextItem = getSharedTextItem(previousGenericItem);
                 QString previousItemText = previousTextItem->text();
                 QString previousRawText = po.rawTextData[previousRawIdx].str;
 
                 if (reattached) { // merge currentItem into previousItem
-                    previousItemText = previousItemText + currentItemText;
                     previousRawText = previousRawText + currentRawText;
+
+                    previousItemText = MD::replaceEntity<MD::QStringTrait>(previousRawText.simplified());
+                    previousItemText = MD::removeBackslashes<MD::QStringTrait>(previousRawText).asString();
 
                     previousTextItem->setEndColumn(currentGenericItem->endColumn());
 
-                    auto currentItem = getSharedTextItem(currentGenericItem);
-                    previousTextItem->closeStyles() << currentItem->closeStyles();
+                    previousTextItem->closeStyles() << currentTextItem->closeStyles();
 
                     po.rawTextData.erase(po.rawTextData.cbegin() + currentRawIdx);
                     p->removeItemAt(paraIdx);
@@ -361,8 +380,15 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                     paraIdxToRawIdx.remove(currentRawIdx);
                     modifiedPreviousStyleParaIdx--;
                 } else {
-                    previousItemText = previousItemText + delimText;
+                    if (currentTextItem && styleInfo.delim.endColumn() == currentTrailPos - 1) {
+                        previousTextItem->setSpaceAfter(false);
+                        currentTextItem->setSpaceBefore(false);
+                    }
+
                     previousRawText = previousRawText + delimText;
+
+                    previousItemText = MD::replaceEntity<MD::QStringTrait>(previousRawText.simplified());
+                    previousItemText = MD::removeBackslashes<MD::QStringTrait>(previousRawText).asString();
 
                     auto newEndColumn = currentGenericItem->endColumn() + delimText.length();
                     previousTextItem->setEndColumn(newEndColumn);
@@ -375,6 +401,8 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             }
         }
 
+        // TODO: check the styles, currentTextItem might have to transfert open/close styles to it, and this would inherit some opts !
+        // TODO: figure out space before/after
         if (!reattached) {
             MDParsingOpts::TextData newTextData;
             newTextData.str = delimText;
@@ -383,8 +411,6 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
 
             auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
             newTextItem->setText(delimText);
-            newTextItem->setSpaceAfter(true);
-            newTextItem->setSpaceBefore(true);
             newTextItem->setStartLine(styleInfo.delim.startLine());
             newTextItem->setStartColumn(styleInfo.delim.startColumn());
             newTextItem->setEndLine(styleInfo.delim.endLine());
@@ -412,7 +438,7 @@ void removeBadStyles(MDParagraphPtr p,
                      QList<long long int> &paraIdxToRawIdx)
 {
     removeBadStylesOpts(p, openCloseStyles, badStyles);
-    qDebug() << "bad opts ok";
+    /* qDebug() << "bad opts ok"; */
 
     std::sort(badStyles.begin(), badStyles.end(), CompareByStartColumn{});
 
@@ -579,7 +605,7 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
             getDelim(p, po, i, delimInfos, waitingOpeningsStyles, openCloseStyles, paraIdxToRawIdx, searchedDelim);
         };
 
-        qDebug() << "delim ok";
+        /* qDebug() << "delim ok"; */
         while (!delimInfos.isEmpty() && delimInfos.at(0).type == TagType::Closing) {
             delimInfos.pop_front();
         }
@@ -591,12 +617,12 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
         QList<StyleDelimInfo> badStyles;
         auto pairs = pairDelims(p, openCloseStyles, badStyles, delimInfos);
 
-        qDebug() << "pairs ok";
+        /* qDebug() << "pairs ok"; */
         addNewStyles(p, po, pairs, paraIdxToRawIdx, searchedDelim.length());
 
-        qDebug() << "newstyle ok";
+        /* qDebug() << "newstyle ok"; */
         removeBadStyles(p, po, openCloseStyles, badStyles, paraIdxToRawIdx);
-        qDebug() << "bad style ok";
+        /* qDebug() << "bad style ok"; */
     }
 }
 } // TextHighlightFunc

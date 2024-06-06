@@ -16,6 +16,7 @@ namespace TextHighlightFunc
 
 using MDParagraphPtr = std::shared_ptr<MD::Paragraph<MD::QStringTrait>>;
 using MDParsingOpts = MD::TextParsingOpts<MD::QStringTrait>;
+using MDTextItem = std::shared_ptr<MD::Text<MD::QStringTrait>>;
 
 enum TagType {
     Opening = 0,
