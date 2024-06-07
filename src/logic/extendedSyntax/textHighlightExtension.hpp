@@ -39,10 +39,6 @@ struct DelimInfo {
     long long int startLine;
     TagType type;
 
-    /* WARNING: temp, for debug */
-    QString rawLine;
-    /* ======================== */
-
     /* For validDelims */
     bool paired = false;
     bool badOpening = false;
