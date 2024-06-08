@@ -19,6 +19,8 @@ public:
 
     void setNotePath(const QString &notePath);
 
+    void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
+    void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void onImage(MD::Image<MD::QStringTrait> *i) override;
     void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
     void onCode(MD::Code<MD::QStringTrait> *c) override;

@@ -17,6 +17,90 @@ Renderer::Renderer(PluginHelper *pluginHelper)
     : MD::details::HtmlVisitor<MD::QStringTrait>()
     , m_pluginHelper(pluginHelper){};
 
+void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
+{
+    int tmp = 0;
+
+    for (const auto &s : styles) {
+        switch (s.style()) {
+        case MD::TextOption::BoldText: {
+            if (!(tmp & MD::TextOption::BoldText)) {
+                html.push_back(QStringLiteral("<strong>"));
+                tmp |= MD::TextOption::BoldText;
+            }
+        } break;
+
+        case MD::TextOption::ItalicText: {
+            if (!(tmp & MD::TextOption::ItalicText)) {
+                html.push_back(QStringLiteral("<em>"));
+                tmp |= MD::TextOption::ItalicText;
+            }
+        } break;
+
+        case MD::TextOption::StrikethroughText: {
+            if (!(tmp & MD::TextOption::StrikethroughText)) {
+                html.push_back(QStringLiteral("<del>"));
+                tmp |= MD::TextOption::StrikethroughText;
+            }
+        } break;
+
+        // TODO: FIND A BETTER WAY TO PASS THIS
+        // Making the func entierely reusable
+        case MD::TextOption::StrikethroughText * 2: {
+            if (!(tmp & (MD::TextOption::StrikethroughText * 2))) {
+                html.push_back(QStringLiteral("<mark>"));
+                tmp |= MD::TextOption::StrikethroughText * 2;
+            }
+        } break;
+
+        default:
+            break;
+        }
+    }
+}
+
+void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
+{
+    int tmp = 0;
+
+    for (const auto &s : styles) {
+        switch (s.style()) {
+        case MD::TextOption::BoldText: {
+            if (!(tmp & MD::TextOption::BoldText)) {
+                html.push_back(QStringLiteral("</strong>"));
+                tmp |= MD::TextOption::BoldText;
+            }
+        } break;
+
+        case MD::TextOption::ItalicText: {
+            if (!(tmp & MD::TextOption::ItalicText)) {
+                html.push_back(QStringLiteral("</em>"));
+                tmp |= MD::TextOption::ItalicText;
+            }
+        } break;
+
+        case MD::TextOption::StrikethroughText: {
+            if (!(tmp & MD::TextOption::StrikethroughText)) {
+                html.push_back(QStringLiteral("</del>"));
+                tmp |= MD::TextOption::StrikethroughText;
+            }
+        } break;
+
+        // TODO: FIND A BETTER WAY TO PASS THIS
+        // Making the func entierely reusable
+        case MD::TextOption::StrikethroughText * 2: {
+            if (!(tmp & (MD::TextOption::StrikethroughText * 2))) {
+                html.push_back(QStringLiteral("</mark>"));
+                tmp |= MD::TextOption::StrikethroughText * 2;
+            }
+        } break;
+
+        default:
+            break;
+        }
+    }
+}
+
 // Overriding default
 // =========
 void Renderer::onHeading(

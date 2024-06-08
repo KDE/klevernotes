@@ -657,7 +657,10 @@ void removeDelimText(MDParagraphPtr p,
 
 void addNewStyles(MDParagraphPtr p, MDParsingOpts &po, QList<DelimInfo> &pairs, QList<long long int> &paraIdxToRawIdx, const int delimLength)
 {
-    static const int TEMPOPTVALUE = 0;
+    // TODO: FIND A BETTER WAY TO PASS THIS
+    // Making the func entierely reusable
+    static const int TEMPOPTVALUE = MD::TextOption::StrikethroughText * 2;
+
     addNewStyleOpt(p, pairs, TEMPOPTVALUE, delimLength);
 
     std::sort(pairs.begin(), pairs.end(), CompareByStartColumn{});
@@ -675,6 +678,9 @@ void textHighlightExtension(MDParagraphPtr p, MDParsingOpts &po)
         QList<DelimInfo> delimInfos;
         QList<StyleDelimInfo> waitingOpeningsStyles;
         QList<QPair<StyleDelimInfo, StyleDelimInfo>> openCloseStyles;
+
+        // TODO: FIND A BETTER WAY TO PASS THIS
+        // Making the func entierely reusable
         static const QString searchedDelim = QStringLiteral("==");
 
         // Can't use std::foreach, we need the index
