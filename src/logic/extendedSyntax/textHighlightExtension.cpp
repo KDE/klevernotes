@@ -242,6 +242,57 @@ void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDeli
     }
 }
 
+void transferStyles(const StyleDelimInfo &styleInfo, MDTextItem &existingItem, MDTextItem &newItem, const bool newBeforeExisting)
+{
+    auto &existingItemStyles = newBeforeExisting ? existingItem->openStyles() : existingItem->closeStyles();
+
+    int styleLimitIdx = newBeforeExisting ? 0 : existingItemStyles.length() - 1;
+    int validStyleIdx = styleLimitIdx;
+
+    if (newBeforeExisting) {
+        for (; validStyleIdx < existingItemStyles.length(); validStyleIdx++) {
+            if (styleInfo.startColumn < existingItemStyles[validStyleIdx].startColumn()) {
+                break;
+            }
+        }
+    } else {
+        for (; 0 <= validStyleIdx; validStyleIdx--) {
+            if (existingItemStyles[validStyleIdx].endColumn() < styleInfo.startColumn) {
+                break;
+            }
+        }
+    }
+
+    if (validStyleIdx != styleLimitIdx) {
+        const auto leftStyles = existingItemStyles.mid(0, validStyleIdx + 1);
+        const auto rightStyles = existingItemStyles.mid(validStyleIdx + 1);
+
+        auto &newItemStyles = newBeforeExisting ? newItem->openStyles() : newItem->closeStyles();
+
+        if (newBeforeExisting) {
+            newItemStyles = leftStyles;
+            existingItemStyles = rightStyles;
+
+            newItem->setSpaceAfter(false);
+            existingItem->setSpaceBefore(false);
+        } else {
+            existingItemStyles = leftStyles;
+            newItemStyles = rightStyles;
+
+            existingItem->setSpaceAfter(false);
+            newItem->setSpaceBefore(false);
+        }
+
+        int opts = newItem->opts();
+        for (const auto &styleDelim : newItemStyles) {
+            int style = styleDelim.style();
+            if (!(opts & style)) {
+                opts += style;
+            }
+        }
+    }
+}
+
 void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimInfo> &badStyles, QList<long long int> &paraIdxToRawIdx)
 {
     long long int initialPreviousStyleParaIdx = -1;
@@ -403,14 +454,13 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
             }
         }
 
-        // TODO: refector
         if (!reattached) {
             MDParsingOpts::TextData newTextData;
             newTextData.str = delimText;
             newTextData.pos = styleInfo.delim.startColumn();
             newTextData.line = styleInfo.delim.startLine();
 
-            auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
+            MDTextItem newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
             newTextItem->setText(delimText);
             nextTextItem->setSpaceBefore(true);
             nextTextItem->setSpaceAfter(true);
@@ -421,57 +471,11 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
 
             if (styleInfo.type == TagType::Opening) {
                 if (previousTextItem) {
-                    const auto previousItemClosingStyles = previousTextItem->closeStyles();
-
-                    int closingStyleLastIdx = previousItemClosingStyles.length() - 1;
-                    int validClosingStyleIdx = closingStyleLastIdx;
-                    for (; 0 <= validClosingStyleIdx; validClosingStyleIdx--) {
-                        if (previousItemClosingStyles[validClosingStyleIdx].endColumn() < styleInfo.startColumn) {
-                            break;
-                        }
-                    }
-                    if (validClosingStyleIdx != closingStyleLastIdx) {
-                        previousTextItem->closeStyles() = previousItemClosingStyles.mid(0, validClosingStyleIdx + 1);
-                        newTextItem->closeStyles() = previousItemClosingStyles.mid(validClosingStyleIdx + 1);
-
-                        for (const auto &styleDelim : newTextItem->closeStyles()) {
-                            int opts = newTextItem->opts();
-                            int style = styleDelim.style();
-                            if (!(opts & style)) {
-                                opts += style;
-                            }
-                        }
-
-                        previousTextItem->setSpaceAfter(false);
-                        newTextItem->setSpaceBefore(false);
-                    }
+                    transferStyles(styleInfo, previousTextItem, newTextItem, false);
                 }
 
                 if (currentTextItem) {
-                    const auto currentItemOpeningStyles = currentTextItem->openStyles();
-
-                    int openingStyleFirstIdx = 0;
-                    int validOpeningStyleIdx = openingStyleFirstIdx;
-                    for (; validOpeningStyleIdx < currentItemOpeningStyles.length(); validOpeningStyleIdx++) {
-                        if (styleInfo.startColumn < currentItemOpeningStyles[validOpeningStyleIdx].startColumn()) {
-                            break;
-                        }
-                    }
-                    if (validOpeningStyleIdx != openingStyleFirstIdx) {
-                        currentTextItem->openStyles() = currentItemOpeningStyles.mid(validOpeningStyleIdx + 1);
-                        newTextItem->openStyles() = currentItemOpeningStyles.mid(0, validOpeningStyleIdx + 1);
-
-                        for (const auto &styleDelim : newTextItem->openStyles()) {
-                            int opts = newTextItem->opts();
-                            int style = styleDelim.style();
-                            if (!(opts & style)) {
-                                opts += style;
-                            }
-                        }
-
-                        newTextItem->setSpaceAfter(false);
-                        currentTextItem->setSpaceBefore(false);
-                    }
+                    transferStyles(styleInfo, currentTextItem, newTextItem, true);
                 }
 
                 paraIdxToRawIdx.insert(previousStyleRawIdx, paraIdx);
@@ -479,58 +483,12 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
                 po.rawTextData.insert(po.rawTextData.cbegin() + previousStyleRawIdx, newTextData);
                 p->insertItem(paraIdx, newTextItem);
             } else {
-                if (currentTextItem && currentTailPos + 1 == styleInfo.startColumn) {
-                    const auto currentItemClosingStyles = previousTextItem->closeStyles();
-
-                    int closingStyleLastIdx = currentItemClosingStyles.length() - 1;
-                    int validClosingStyleIdx = closingStyleLastIdx;
-                    for (; 0 <= validClosingStyleIdx; validClosingStyleIdx--) {
-                        if (currentItemClosingStyles[validClosingStyleIdx].endColumn() < styleInfo.startColumn) {
-                            break;
-                        }
-                    }
-                    if (validClosingStyleIdx != closingStyleLastIdx) {
-                        previousTextItem->closeStyles() = currentItemClosingStyles.mid(0, validClosingStyleIdx + 1);
-                        newTextItem->closeStyles() = currentItemClosingStyles.mid(validClosingStyleIdx + 1);
-
-                        for (const auto &styleDelim : newTextItem->closeStyles()) {
-                            int opts = newTextItem->opts();
-                            int style = styleDelim.style();
-                            if (!(opts & style)) {
-                                opts += style;
-                            }
-                        }
-
-                        currentTextItem->setSpaceAfter(false);
-                        newTextItem->setSpaceBefore(false);
-                    }
+                if (currentTextItem) {
+                    transferStyles(styleInfo, currentTextItem, newTextItem, false);
                 }
 
                 if (nextTextItem) {
-                    const auto nextItemOpeningStyles = nextTextItem->openStyles();
-
-                    int openingStyleFirstIdx = 0;
-                    int validOpeningStyleIdx = openingStyleFirstIdx;
-                    for (; validOpeningStyleIdx < nextItemOpeningStyles.length(); validOpeningStyleIdx++) {
-                        if (styleInfo.startColumn < nextItemOpeningStyles[validOpeningStyleIdx].startColumn()) {
-                            break;
-                        }
-                    }
-                    if (validOpeningStyleIdx != openingStyleFirstIdx) {
-                        nextTextItem->openStyles() = nextItemOpeningStyles.mid(validOpeningStyleIdx + 1);
-                        newTextItem->openStyles() = nextItemOpeningStyles.mid(0, validOpeningStyleIdx + 1);
-
-                        for (const auto &styleDelim : newTextItem->openStyles()) {
-                            int opts = newTextItem->opts();
-                            int style = styleDelim.style();
-                            if (!(opts & style)) {
-                                opts += style;
-                            }
-                        }
-
-                        newTextItem->setSpaceAfter(false);
-                        nextTextItem->setSpaceBefore(false);
-                    }
+                    transferStyles(styleInfo, nextTextItem, newTextItem, true);
                 }
 
                 paraIdxToRawIdx.insert(previousStyleRawIdx + 1, paraIdx);

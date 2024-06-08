@@ -75,6 +75,8 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
 
 void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles, QList<StyleDelimInfo> &badStyles);
 
+void transferStyles(const StyleDelimInfo &styleInfo, MDTextItem &existingItem, MDTextItem &newItem, const bool newBeforeExisting);
+
 void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimInfo> &badStyles, QList<long long int> &paraIdxToRawIdx);
 
 void removeBadStyles(MDParagraphPtr paragraphsList,
