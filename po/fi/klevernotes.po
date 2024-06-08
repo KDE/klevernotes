@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-02-19 11:35+0200\n"
+"PO-Revision-Date: 2024-03-11 16:37+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -715,9 +715,7 @@ msgid "New Note name:"
 msgstr "Uuden muistiinpanon nimi:"
 
 #: contents/ui/settings/GeneralTab.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "Editor"
 msgstr "Muokkain"
@@ -726,13 +724,13 @@ msgstr "Muokkain"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Käytä sarkaimina välilyöntejä"
 
 #: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "Välilyöntien määrä"
 
 #: contents/ui/settings/GeneralTab.qml:194
 #, kde-format
@@ -1141,12 +1139,12 @@ msgstr "Muuta nimeä"
 #: contents/ui/sideBar/ActionBar.qml:88
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Supista sivupalkki"
 
 #: contents/ui/sideBar/ActionBar.qml:106
 #, kde-format
@@ -1210,11 +1208,9 @@ msgid "No search results"
 msgstr "Ei hakutuloksia"
 
 #: contents/ui/sideBar/Sidebar.qml:90
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
-msgstr "Uusi muistiinpano"
+msgstr "Näytä muistiinpanot"
 
 #: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
@@ -1720,7 +1716,7 @@ msgstr "KleverNotes"
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Muistiinpanojen hallintasovellus"
 
 #: main.cpp:65
 #, kde-format
