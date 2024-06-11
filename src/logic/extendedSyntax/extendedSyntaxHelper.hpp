@@ -54,7 +54,7 @@ struct DelimInfo {
  */
 void getDelim(MDParagraphPtr p,
               MDParsingOpts &po,
-              long long int idx,
+              const long long int idx,
               QList<DelimInfo> &delimInfos,
               QList<StyleDelimInfo> &waitingOpeningsStyles,
               QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
@@ -80,25 +80,22 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
 /**
  * Remove the opts and styleDelim of 'bad' styles found by validDelimsPairs
  */
-void removeBadStylesOpts(MDParagraphPtr p,
-                         QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
-                         QList<StyleDelimInfo> &badStyles,
-                         QList<long long int> &paraIdxToRawIdx);
+void removeBadStylesOpts(MDParagraphPtr p, const QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles, const QList<StyleDelimInfo> &badStyles);
 
 /**
  * Add the opts and styleDelim for the new style
  */
-void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength);
+void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength);
 
 /**
  * Regroups 'removeBadStylesOpts' and 'addNewStyleOpt'
  */
 void handleOptsAndStyles(MDParagraphPtr p,
-                         QList<DelimInfo> &pairs,
+                         const QList<DelimInfo> &pairs,
                          const int newStyleOpt,
                          const int delimLength,
-                         QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
-                         QList<StyleDelimInfo> &badStyles);
+                         const QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
+                         const QList<StyleDelimInfo> &badStyles);
 
 /**
  * Transfert the opening/closing style (depends on newBeforeExisting) from the existingItem to the newItem
@@ -109,14 +106,14 @@ void transferStyles(const StyleDelimInfo &styleInfo, MDItemWithOptsPtr &existing
 /**
  * Add back the 'bad' styles delim text
  */
-void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimInfo> &badStyles, QList<long long int> &paraIdxToRawIdx);
+void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleDelimInfo> &badStyles, QList<long long int> &paraIdxToRawIdx);
 
 /**
  * Remove the new style delim text from the paragraph and the rawTextData
  */
 void removeDelimText(MDParagraphPtr p,
                      MDParsingOpts &po,
-                     QList<DelimInfo> &pairs,
+                     const QList<DelimInfo> &pairs,
                      QList<long long int> &paraIdxToRawIdx,
                      const int newStyleOpt,
                      const int delimLength);

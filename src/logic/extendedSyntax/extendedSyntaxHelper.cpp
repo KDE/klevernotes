@@ -32,7 +32,7 @@ namespace ExtendedSyntaxHelper
 
 void getDelim(MDParagraphPtr p,
               MDParsingOpts &po,
-              long long int idx,
+              const long long int idx,
               QList<DelimInfo> &delimInfos,
               QList<StyleDelimInfo> &waitingOpeningsStyles,
               QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
@@ -192,7 +192,7 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
     return pairs;
 }
 
-void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles, QList<StyleDelimInfo> &badStyles)
+void removeBadStylesOpts(MDParagraphPtr p, const QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles, const QList<StyleDelimInfo> &badStyles)
 {
     for (int i = 0; i < badStyles.length(); i += 2) {
         const auto &badOpening = badStyles[i];
@@ -236,7 +236,7 @@ void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDeli
     }
 }
 
-void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength)
+void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength)
 {
     for (int i = 0; i < pairs.length(); i += 2) {
         const auto &opening = pairs[i];
@@ -273,11 +273,11 @@ void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyl
 }
 
 void handleOptsAndStyles(MDParagraphPtr p,
-                         QList<DelimInfo> &pairs,
+                         const QList<DelimInfo> &pairs,
                          const int newStyleOpt,
                          const int delimLength,
-                         QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
-                         QList<StyleDelimInfo> &badStyles)
+                         const QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles,
+                         const QList<StyleDelimInfo> &badStyles)
 {
     addNewStyleOpt(p, pairs, newStyleOpt, delimLength);
 
@@ -341,7 +341,7 @@ void transferStyles(const StyleDelimInfo &styleInfo, MDItemWithOptsPtr &existing
     }
 }
 
-void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimInfo> &badStyles, QList<long long int> &paraIdxToRawIdx)
+void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleDelimInfo> &badStyles, QList<long long int> &paraIdxToRawIdx)
 {
     long long int initialPreviousStyleParaIdx = -1;
     long long int modifiedPreviousStyleParaIdx = -1;
@@ -548,7 +548,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, QList<StyleDelimIn
 
 void removeDelimText(MDParagraphPtr p,
                      MDParsingOpts &po,
-                     QList<DelimInfo> &pairs,
+                     const QList<DelimInfo> &pairs,
                      QList<long long int> &paraIdxToRawIdx,
                      const int newStyleOpt,
                      const int delimLength)
