@@ -4,6 +4,7 @@
 */
 
 #include "logic/parser/parser.h"
+#include "logic/extendedSyntax/subScriptExtension.hpp"
 #include "logic/extendedSyntax/textHighlightExtension.hpp"
 #include "logic/plugins/noteMapper/noteLinkingExtension.hpp"
 
@@ -19,7 +20,8 @@ Parser::Parser(QObject *parent)
 void Parser::addParsePlugins()
 {
     static const auto extendedSyntaxsList = {
-        TextHighlightFunc::textHighlightExtension,
+        TextHighlightExtension::textHighlightExtensionFunc,
+        SubScriptExtension::subScriptExtensionFunc,
     };
     /**/
     /* static const auto kleverPluginsList = { */

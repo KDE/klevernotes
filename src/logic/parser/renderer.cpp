@@ -53,6 +53,15 @@ void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styl
             }
         } break;
 
+        // TODO: FIND A BETTER WAY TO PASS THIS
+        // Making the func entierely reusable
+        case MD::TextOption::StrikethroughText * 4: {
+            if (!(tmp & (MD::TextOption::StrikethroughText * 4))) {
+                html.push_back(QStringLiteral("<sub>"));
+                tmp |= MD::TextOption::StrikethroughText * 4;
+            }
+        } break;
+
         default:
             break;
         }
@@ -92,6 +101,15 @@ void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Sty
             if (!(tmp & (MD::TextOption::StrikethroughText * 2))) {
                 html.push_back(QStringLiteral("</mark>"));
                 tmp |= MD::TextOption::StrikethroughText * 2;
+            }
+        } break;
+
+        // TODO: FIND A BETTER WAY TO PASS THIS
+        // Making the func entierely reusable
+        case MD::TextOption::StrikethroughText * 4: {
+            if (!(tmp & (MD::TextOption::StrikethroughText * 4))) {
+                html.push_back(QStringLiteral("</sub>"));
+                tmp |= MD::TextOption::StrikethroughText * 4;
             }
         } break;
 

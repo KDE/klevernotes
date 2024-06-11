@@ -5,7 +5,7 @@
 
 #include "extendedSyntaxHelper.hpp"
 
-namespace TextHighlightExtension
+namespace SubScriptExtension
 {
-void textHighlightExtensionFunc(ExtendedSyntaxHelper::MDParagraphPtr p, ExtendedSyntaxHelper::MDParsingOpts &po);
+void subScriptExtensionFunc(ExtendedSyntaxHelper::MDParagraphPtr p, ExtendedSyntaxHelper::MDParsingOpts &po);
 }

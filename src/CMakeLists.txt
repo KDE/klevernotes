@@ -37,6 +37,8 @@ set(exec_SRCS
     logic/mdHandler.cpp
     logic/qmlLinker.cpp
 
+    logic/extendedSyntax/extendedSyntaxHelper.cpp
+    logic/extendedSyntax/subScriptExtension.cpp
     logic/extendedSyntax/textHighlightExtension.cpp
 
     logic/painting/pointMaker.cpp
