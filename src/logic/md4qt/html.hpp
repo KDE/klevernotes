@@ -501,12 +501,12 @@ protected:
             html.push_back(Trait::latin1ToString("\">"));
         }
 
-        if (!l->img()->isEmpty()) {
+        if (l->p() && !l->p()->isEmpty())
+            onParagraph(l->p().get(), false);
+        else if (!l->img()->isEmpty()) {
             if (!justCollectFootnoteRefs)
                 onImage(l->img().get());
-        } else if (l->p() && !l->p()->isEmpty())
-            onParagraph(l->p().get(), false);
-        else if (!l->text().isEmpty()) {
+        } else if (!l->text().isEmpty()) {
             if (!justCollectFootnoteRefs)
                 html.push_back(prepareTextForHtml<Trait>(l->text()));
         } else {

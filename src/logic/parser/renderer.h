@@ -6,6 +6,8 @@
 #pragma once
 
 #include "../plugins/pluginHelper.h"
+#include <qmap.h>
+#include <utility>
 
 #define MD4QT_QT_SUPPORT
 #include "logic/md4qt/html.hpp"
@@ -18,6 +20,7 @@ public:
     ~Renderer() override = default;
 
     void setNotePath(const QString &notePath);
+    void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
     void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
@@ -31,9 +34,6 @@ public:
     static QString openListItem(const bool hasTask = false, const bool isChecked = false, const int startNumber = -1);
     static QString closeListItem(const bool hasTask = false);
     static QString checkbox(bool checked);
-    static QString superscript(const QString &text);
-    static QString subscript(const QString &text);
-    static QString mark(const QString &text);
     static QString wikilink(const QString &href, const QString &title, const QString &text);
     static QString image(const QString &href, const QString &text);
     static QString text(const QString &text);
@@ -43,4 +43,6 @@ public:
 protected:
     QString m_notePath;
     PluginHelper *m_pluginHelper;
+
+    QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
 };

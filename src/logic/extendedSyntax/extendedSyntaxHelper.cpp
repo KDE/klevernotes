@@ -706,7 +706,7 @@ void handleText(MDParagraphPtr p,
     removeDelimText(p, po, pairs, paraIdxToRawIdx, newStyleOpt, delimLength);
 }
 
-void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QString &searchedDelim, const int newStyleOpt)
+void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &searchedDelim, const int newStyleOpt)
 {
     if (!po.collectRefLinks) {
         if (po.rawTextData.empty())
@@ -742,5 +742,10 @@ void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QString
 
         MD::optimizeParagraph(p, po);
     }
+}
+
+void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
+{
+    processExtendedSyntax(p, po, options[0], options[1].toInt());
 }
 } // ExtendedSyntaxHelper

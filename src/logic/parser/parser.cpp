@@ -4,9 +4,8 @@
 */
 
 #include "logic/parser/parser.h"
-#include "logic/extendedSyntax/subScriptExtension.hpp"
-#include "logic/extendedSyntax/textHighlightExtension.hpp"
-#include "logic/plugins/noteMapper/noteLinkingExtension.hpp"
+
+#include "logic/extendedSyntax/extendedSyntaxHelper.hpp"
 
 Parser::Parser(QObject *parent)
     : QObject(parent)
@@ -19,9 +18,10 @@ Parser::Parser(QObject *parent)
 
 void Parser::addParsePlugins()
 {
-    static const auto extendedSyntaxsList = {
-        TextHighlightExtension::textHighlightExtensionFunc,
-        SubScriptExtension::subScriptExtensionFunc,
+    static const QList<QStringList> extendedSyntaxsList = {
+        {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
+        {QStringLiteral("--"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
+        {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
     };
     /**/
     /* static const auto kleverPluginsList = { */
@@ -29,8 +29,12 @@ void Parser::addParsePlugins()
     /* }; */
 
     int extendedCount = 0;
-    for (auto &func : extendedSyntaxsList) {
-        m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + extendedCount, func, true);
+    for (const auto &syntaxInfo : extendedSyntaxsList) {
+        const long long int opts = MD::TextOption::StrikethroughText << extendedCount + 1;
+        m_renderer->addExtendedSyntax(opts, syntaxInfo[1], syntaxInfo[2]);
+
+        const QStringList options = {syntaxInfo[0], QString::number(opts)};
+        m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + extendedCount, ExtendedSyntaxHelper::extendedSyntaxHelperFunc, true, options);
         extendedCount++;
     }
 

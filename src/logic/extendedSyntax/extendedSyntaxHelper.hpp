@@ -132,5 +132,7 @@ void handleText(MDParagraphPtr p,
 /**
  * Provide a simple way to execute the whole parsing for a new style
  */
-void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QString &searchedDelim, const int newStyleOpt);
+void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &searchedDelim, const int newStyleOpt);
+
+void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options);
 } // ExtendedSyntaxHelper

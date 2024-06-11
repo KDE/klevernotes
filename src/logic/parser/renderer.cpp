@@ -22,7 +22,8 @@ void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styl
     int tmp = 0;
 
     for (const auto &s : styles) {
-        switch (s.style()) {
+        const long long int opts = s.style();
+        switch (opts) {
         case MD::TextOption::BoldText: {
             if (!(tmp & MD::TextOption::BoldText)) {
                 html.push_back(QStringLiteral("<strong>"));
@@ -44,25 +45,13 @@ void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styl
             }
         } break;
 
-        // TODO: FIND A BETTER WAY TO PASS THIS
-        // Making the func entierely reusable
-        case MD::TextOption::StrikethroughText * 2: {
-            if (!(tmp & (MD::TextOption::StrikethroughText * 2))) {
-                html.push_back(QStringLiteral("<mark>"));
-                tmp |= MD::TextOption::StrikethroughText * 2;
-            }
-        } break;
-
-        // TODO: FIND A BETTER WAY TO PASS THIS
-        // Making the func entierely reusable
-        case MD::TextOption::StrikethroughText * 4: {
-            if (!(tmp & (MD::TextOption::StrikethroughText * 4))) {
-                html.push_back(QStringLiteral("<sub>"));
-                tmp |= MD::TextOption::StrikethroughText * 4;
-            }
-        } break;
-
         default:
+            if (m_extendedSyntaxMap.contains(opts)) {
+                if (!(tmp & opts)) {
+                    html.push_back(m_extendedSyntaxMap[opts].first);
+                    tmp |= opts;
+                }
+            }
             break;
         }
     }
@@ -73,7 +62,8 @@ void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Sty
     int tmp = 0;
 
     for (const auto &s : styles) {
-        switch (s.style()) {
+        const long long int opts = s.style();
+        switch (opts) {
         case MD::TextOption::BoldText: {
             if (!(tmp & MD::TextOption::BoldText)) {
                 html.push_back(QStringLiteral("</strong>"));
@@ -95,25 +85,13 @@ void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Sty
             }
         } break;
 
-        // TODO: FIND A BETTER WAY TO PASS THIS
-        // Making the func entierely reusable
-        case MD::TextOption::StrikethroughText * 2: {
-            if (!(tmp & (MD::TextOption::StrikethroughText * 2))) {
-                html.push_back(QStringLiteral("</mark>"));
-                tmp |= MD::TextOption::StrikethroughText * 2;
-            }
-        } break;
-
-        // TODO: FIND A BETTER WAY TO PASS THIS
-        // Making the func entierely reusable
-        case MD::TextOption::StrikethroughText * 4: {
-            if (!(tmp & (MD::TextOption::StrikethroughText * 4))) {
-                html.push_back(QStringLiteral("</sub>"));
-                tmp |= MD::TextOption::StrikethroughText * 4;
-            }
-        } break;
-
         default:
+            if (m_extendedSyntaxMap.contains(opts)) {
+                if (!(tmp & opts)) {
+                    html.push_back(m_extendedSyntaxMap[opts].second);
+                    tmp |= opts;
+                }
+            }
             break;
         }
     }
@@ -272,6 +250,12 @@ void Renderer::setNotePath(const QString &notePath)
 {
     m_notePath = notePath;
 }
+
+void Renderer::addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML)
+{
+    m_extendedSyntaxMap[opts] = {openingHTML, closingHTML};
+}
+
 // Internal info
 // ==============
 
@@ -303,21 +287,6 @@ QString Renderer::checkbox(bool checked)
     const QString checkedString = checked ? QStringLiteral("checked=\"\" ") : QLatin1String();
 
     return QStringLiteral("<input ") + checkedString + QStringLiteral("disabled=\"\" type=\"checkbox\">");
-}
-
-QString Renderer::superscript(const QString &text)
-{
-    return QStringLiteral("<sup>") + text + QStringLiteral("</sup>");
-}
-
-QString Renderer::subscript(const QString &text)
-{
-    return QStringLiteral("<sub>") + text + QStringLiteral("</sub>");
-}
-
-QString Renderer::mark(const QString &text)
-{
-    return QStringLiteral("<mark>") + text + QStringLiteral("</mark>");
 }
 
 QString Renderer::wikilink(const QString &href, const QString &title, const QString &text)

@@ -740,14 +740,14 @@ struct TextParsingOpts;
 
 //! Functor type for text plugin.
 template<class Trait>
-using TextPluginFunc = std::function<void(std::shared_ptr<Paragraph<Trait>>, TextParsingOpts<Trait> &)>;
+using TextPluginFunc = std::function<void(std::shared_ptr<Paragraph<Trait>>, TextParsingOpts<Trait> &, const typename Trait::StringList &)>;
 
 //
-// TextPluginMap
+// TextPluginsMap
 //
 
 template<class Trait>
-using TextPluginsMap = std::map<int, std::pair<TextPluginFunc<Trait>, bool>>;
+using TextPluginsMap = std::map<int, std::tuple<TextPluginFunc<Trait>, bool, typename Trait::StringList>>;
 
 //
 // TextParsingOpts
@@ -1161,7 +1161,7 @@ inline long long int processGitHubAutolinkExtension(std::shared_ptr<Paragraph<Tr
 }
 
 template<class Trait>
-inline void githubAutolinkPlugin(std::shared_ptr<Paragraph<Trait>> p, TextParsingOpts<Trait> &po)
+inline void githubAutolinkPlugin(std::shared_ptr<Paragraph<Trait>> p, TextParsingOpts<Trait> &po, const typename Trait::StringList &)
 {
     if (!po.collectRefLinks) {
         long long int i = 0;
@@ -1185,7 +1185,7 @@ class Parser final
 public:
     Parser()
     {
-        addTextPlugin(GitHubAutoLinkPluginID, githubAutolinkPlugin<Trait>, false);
+        addTextPlugin(GitHubAutoLinkPluginID, githubAutolinkPlugin<Trait>, false, {});
     }
 
     ~Parser() = default;
@@ -1218,9 +1218,11 @@ public:
         //! Function of a plugin, that will be invoked to processs raw text.
         TextPluginFunc<Trait> plugin,
         //! Should this plugin be used in parsing of internals of links?
-        bool processInLinks)
+        bool processInLinks,
+        //! User data that will be passed to plugin function.
+        const typename Trait::StringList &userData)
     {
-        m_textPlugins.insert({id, {plugin, processInLinks}});
+        m_textPlugins.insert({id, {plugin, processInLinks, userData}});
     }
 
 private:
@@ -7078,10 +7080,10 @@ template<class Trait>
 inline void checkForTextPlugins(std::shared_ptr<Paragraph<Trait>> p, TextParsingOpts<Trait> &po, const TextPluginsMap<Trait> &textPlugins, bool inLink)
 {
     for (const auto &plugin : textPlugins) {
-        if (inLink && !plugin.second.second)
+        if (inLink && !std::get<bool>(plugin.second))
             continue;
 
-        plugin.second.first(p, po);
+        std::get<TextPluginFunc<Trait>>(plugin.second)(p, po, std::get<typename Trait::StringList>(plugin.second));
     }
 }
 
