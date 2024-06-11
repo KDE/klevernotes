@@ -114,7 +114,7 @@ bool validDelimsPairs(MDParagraphPtr p,
         const int styleClosingLine = stylePair.second.delim.startLine();
 
         if (styleClosingPos < openDelim.startColumn || styleClosingLine != openDelim.startLine) {
-            i++;
+            ++i;
             continue;
         }
 
@@ -131,7 +131,7 @@ bool validDelimsPairs(MDParagraphPtr p,
             continue;
         }
 
-        i++;
+        ++i;
     }
 
     openDelim.type = TagType::Opening;
@@ -161,7 +161,7 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
                     pairs << opening << info;
                     break;
                 }
-                i--;
+                --i;
             }
             break;
         }
@@ -179,7 +179,7 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
                         pairs << opening << info;
                         break;
                     }
-                    i--;
+                    --i;
                 }
             }
             if (!info.paired) {
@@ -198,26 +198,22 @@ void removeBadStylesOpts(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDeli
         const auto &badOpening = badStyles[i];
         auto &openingStyles = badOpening.itemPtr->openStyles();
 
-        for (long long int styleIdx = 0; styleIdx < openingStyles.length(); styleIdx++) {
-            if (openingStyles[styleIdx] == badOpening.delim) {
-                openingStyles.remove(styleIdx);
-                break;
-            }
+        const auto openStylesIt = std::find(openingStyles.cbegin(), openingStyles.cend(), badOpening.delim);
+        if (openStylesIt != openingStyles.cend()) {
+            openingStyles.removeAt(std::distance(openingStyles.cbegin(), openStylesIt));
         }
 
         const auto &badClosing = badStyles[i + 1];
         auto &closingStyles = badClosing.itemPtr->closeStyles();
 
-        for (long long int styleIdx = 0; styleIdx < closingStyles.length(); styleIdx++) {
-            if (closingStyles[styleIdx] == badClosing.delim) {
-                closingStyles.remove(styleIdx);
-                break;
-            }
+        const auto closeStylesIt = std::find(closingStyles.cbegin(), closingStyles.cend(), badClosing.delim);
+        if (closeStylesIt != closingStyles.cend()) {
+            closingStyles.removeAt(std::distance(closingStyles.cbegin(), closeStylesIt));
         }
 
         const auto style = badOpening.delim.style();
 
-        for (long long int idx = badOpening.paraIdx; idx <= badClosing.paraIdx; idx++) {
+        for (long long int idx = badOpening.paraIdx; idx <= badClosing.paraIdx; ++idx) {
             auto currentItem = getSharedItemWithOpts(p->getItemAt(idx));
 
             const auto opts = currentItem->opts();
@@ -266,7 +262,7 @@ void addNewStyleOpt(MDParagraphPtr p, QList<DelimInfo> &pairs, const int newStyl
             closingTextItem->setOpts(closingOpts + newStyleOpt);
         }
 
-        for (long long int i = opening.paraIdx + 1; i < closing.paraIdx; i++) {
+        for (long long int i = opening.paraIdx + 1; i < closing.paraIdx; ++i) {
             auto item = getSharedItemWithOpts(p->getItemAt(i));
             int opts = item->opts();
             if (!(opts & newStyleOpt)) {
@@ -296,13 +292,13 @@ void transferStyles(const StyleDelimInfo &styleInfo, MDItemWithOptsPtr &existing
     int validStyleIdx = styleLimitIdx;
 
     if (newBeforeExisting) {
-        for (; validStyleIdx < existingItemStyles.length(); validStyleIdx++) {
+        for (; validStyleIdx < existingItemStyles.length(); ++validStyleIdx) {
             if (styleInfo.startColumn < existingItemStyles[validStyleIdx].startColumn()) {
                 break;
             }
         }
     } else {
-        for (; 0 <= validStyleIdx; validStyleIdx--) {
+        for (; 0 <= validStyleIdx; --validStyleIdx) {
             if (existingItemStyles[validStyleIdx].endColumn() < styleInfo.startColumn) {
                 break;
             }
@@ -721,14 +717,15 @@ void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QString
         QList<StyleDelimInfo> waitingOpeningsStyles;
         QList<QPair<StyleDelimInfo, StyleDelimInfo>> openCloseStyles;
 
-        // Can't use std::foreach, we need the index
-        for (long long int i = 0; i < p->items().size(); i++) {
+        for (long long int i = 0; i < p->items().size(); ++i) {
             getDelim(p, po, i, delimInfos, waitingOpeningsStyles, openCloseStyles, paraIdxToRawIdx, searchedDelim);
         };
 
-        while (!delimInfos.isEmpty() && delimInfos.at(0).type == TagType::Closing) {
-            delimInfos.pop_front();
-        }
+        const auto firstNonClosingIt = std::find_if(delimInfos.cbegin(), delimInfos.cend(), [](const auto &d) {
+            return d.type != TagType::Closing;
+        });
+        const long long int firstNonClosingPos = std::distance(delimInfos.cbegin(), firstNonClosingIt);
+        delimInfos.remove(0, firstNonClosingPos);
 
         if (delimInfos.isEmpty()) {
             return;
