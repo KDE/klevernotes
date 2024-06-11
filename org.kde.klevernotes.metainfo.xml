@@ -88,6 +88,24 @@
     <p xml:lang="x-test">xxKleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.xx</p>
     <p xml:lang="zh-TW">KleverNotes 是一個桌面與行動裝置用的筆記記錄與管理應用程式。它利用 Markdown 格式，並讓您能夠預覽您的內容。</p>
   </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main page on desktop</caption>
+      <image>https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Main page on small form factor</caption>
+      <image>https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Todo page</caption>
+      <image>https://cdn.kde.org/screenshots/klevernotes/todo_desktop.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Drawing page</caption>
+      <image>https://cdn.kde.org/screenshots/klevernotes/painting.png</image>
+    </screenshot>
+  </screenshots>
   <launchable type="desktop-id">org.kde.klevernotes.desktop</launchable>
   <content_rating type="oars-1.1"/>
   <releases>
