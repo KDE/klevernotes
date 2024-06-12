@@ -828,32 +828,32 @@ msgstr "浅色"
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "稍亮"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "适中"
 
 #: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "中等暗"
 
 #: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "深色"
 
 #: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "启用快速表情对话框"
 
 #: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
@@ -861,13 +861,13 @@ msgctxt "@description:switch"
 msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
-msgstr ""
+msgstr "emoji 对话框插入快速表情语法而不是文本中的实际表情符号。"
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: contents/ui/settings/TabBar.qml:21
 #, kde-format
@@ -875,20 +875,20 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the general appearance "
 "of the app"
 msgid "Appearance"
-msgstr ""
+msgstr "外观"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "插件"
 
 #: contents/ui/sharedComponents/ActionsList.qml:14
 #: contents/ui/sharedComponents/ActionsList.qml:16
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
-msgstr ""
+msgstr "标题"
 
 #: contents/ui/sharedComponents/ActionsList.qml:16
 #, kde-format
@@ -901,279 +901,279 @@ msgstr ""
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr ""
+msgstr "标题1"
 
 #: contents/ui/sharedComponents/ActionsList.qml:27
 #: contents/ui/sharedComponents/ActionsList.qml:30
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr ""
+msgstr "标题 2"
 
 #: contents/ui/sharedComponents/ActionsList.qml:34
 #: contents/ui/sharedComponents/ActionsList.qml:37
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr ""
+msgstr "标题 3"
 
 #: contents/ui/sharedComponents/ActionsList.qml:41
 #: contents/ui/sharedComponents/ActionsList.qml:44
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr ""
+msgstr "标题 4"
 
 #: contents/ui/sharedComponents/ActionsList.qml:48
 #: contents/ui/sharedComponents/ActionsList.qml:51
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr ""
+msgstr "标题 5"
 
 #: contents/ui/sharedComponents/ActionsList.qml:55
 #: contents/ui/sharedComponents/ActionsList.qml:58
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr ""
+msgstr "标题 6"
 
 #: contents/ui/sharedComponents/ActionsList.qml:63
 #: contents/ui/sharedComponents/ActionsList.qml:65
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr ""
+msgstr "粗体"
 
 #: contents/ui/sharedComponents/ActionsList.qml:70
 #: contents/ui/sharedComponents/ActionsList.qml:72
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr ""
+msgstr "斜体"
 
 #: contents/ui/sharedComponents/ActionsList.qml:77
 #: contents/ui/sharedComponents/ActionsList.qml:79
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr ""
+msgstr "删除线"
 
 #: contents/ui/sharedComponents/ActionsList.qml:84
 #: contents/ui/sharedComponents/ActionsList.qml:86
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr ""
+msgstr "代码"
 
 #: contents/ui/sharedComponents/ActionsList.qml:91
 #: contents/ui/sharedComponents/ActionsList.qml:93
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr ""
+msgstr "引用"
 
 #: contents/ui/sharedComponents/ActionsList.qml:98
 #: contents/ui/sharedComponents/ActionsList.qml:100
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr ""
+msgstr "图像"
 
 #: contents/ui/sharedComponents/ActionsList.qml:105
 #: contents/ui/sharedComponents/ActionsList.qml:107
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr ""
+msgstr "链接"
 
 #: contents/ui/sharedComponents/ActionsList.qml:112
 #: contents/ui/sharedComponents/ActionsList.qml:114
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr ""
+msgstr "表格"
 
 #: contents/ui/sharedComponents/ActionsList.qml:119
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
-msgstr ""
+msgstr "顺序列表"
 
 #: contents/ui/sharedComponents/ActionsList.qml:121
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "有序列表"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
-msgstr ""
+msgstr "无序列表"
 
 #: contents/ui/sharedComponents/ActionsList.qml:128
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "无序列表"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr ""
+msgstr "高亮"
 
 #: contents/ui/sharedComponents/ActionsList.qml:135
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr ""
+msgstr "文本高亮"
 
 #: contents/ui/sharedComponents/ActionsList.qml:140
 #: contents/ui/sharedComponents/ActionsList.qml:142
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Emoji 表情"
 
 #: contents/ui/sharedComponents/ActionsList.qml:147
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
-msgstr ""
+msgstr "链接笔记"
 
 #: contents/ui/sharedComponents/ActionsList.qml:149
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr ""
+msgstr "链接笔记"
 
 #: contents/ui/sideBar/ActionBar.qml:51
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
-msgstr ""
+msgstr "新建类"
 
 #: contents/ui/sideBar/ActionBar.qml:59
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
-msgstr ""
+msgstr "新建组"
 
 #: contents/ui/sideBar/ActionBar.qml:67
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr ""
+msgstr "创建新笔记"
 
 #: contents/ui/sideBar/ActionBar.qml:75 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
-msgstr ""
+msgstr "重命名"
 
 #: contents/ui/sideBar/ActionBar.qml:88
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "折叠侧边栏"
 
 #: contents/ui/sideBar/ActionBar.qml:106
 #, kde-format
 msgid "Expand sidebar"
-msgstr ""
+msgstr "展开侧边栏"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
-msgstr ""
+msgstr "新建分类"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
-msgstr ""
+msgstr "新建组"
 
 #: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
-msgstr ""
+msgstr "新笔记"
 
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Move"
-msgstr ""
+msgstr "移动"
 
 #: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: contents/ui/sideBar/SearchBar.qml:72
 #, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 #: contents/ui/sideBar/SearchBar.qml:73
 #, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "Group"
-msgstr ""
+msgstr "分组"
 
 #: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "From"
-msgstr ""
+msgstr "来源"
 
 #: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
-msgstr ""
+msgstr "没有搜索结果"
 
 #: contents/ui/sideBar/Sidebar.qml:90
 #, kde-format
 msgid "Show notes"
-msgstr ""
+msgstr "显示注释"
 
 #: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "速查表"
 
 #: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
 #, kde-format
 msgid "About KleverNotes"
-msgstr ""
+msgstr "关于 KleverNotes"
 
 #: contents/ui/textEditor/BottomToolBar.qml:18
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
-msgstr ""
+msgstr "注记"
 
 #: contents/ui/textEditor/BottomToolBar.qml:26
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
-msgstr ""
+msgstr "待办事项"
 
 #: contents/ui/textEditor/CheatSheet.qml:18
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "Markdown速查表"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format

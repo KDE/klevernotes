@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-05-30 16:42+0200\n"
+"PO-Revision-Date: 2024-06-11 09:32+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -57,7 +57,7 @@ msgstr "Potvrzení smazání poznámky"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr ""
+msgstr "Tuto akci nelze vrátit."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -145,7 +145,7 @@ msgstr ""
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr ""
+msgstr "Přejete si uložit změny než odejdete?"
 
 #: contents/ui/dialogs/LinkDialog.qml:16
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -178,7 +178,7 @@ msgstr "Poznámka:"
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr ""
+msgstr "Prohledat hlavičky"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:77
 #, kde-format
@@ -190,13 +190,13 @@ msgstr "Hlavička:"
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Where do you want to move this group ?"
-msgstr ""
+msgstr "Kam si přejete přesunout tuto skupinu?"
 
 #: contents/ui/dialogs/MoveDialog.qml:22
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr ""
+msgstr "Kam si přejete přesunout tuto poznámku?"
 
 #: contents/ui/dialogs/MoveDialog.qml:26
 #, kde-format
@@ -226,13 +226,13 @@ msgstr "Tato kategorie již existuje."
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr ""
+msgstr "Tato skupina již existuje."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr ""
+msgstr "Tato poznámka již existuje."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
@@ -254,25 +254,25 @@ msgstr ""
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr ""
+msgstr "Prosím, odstraňte tečku a vyberte jiný název."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
-msgstr ""
+msgstr "Prosím, vyberte jiný název."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Dialog tisku"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
 #, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr ""
+msgstr "Vytisknout html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
 #, kde-format
@@ -284,7 +284,7 @@ msgstr "Tisk do PDF"
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Zakázáno kvůli omezením flatpaku."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
