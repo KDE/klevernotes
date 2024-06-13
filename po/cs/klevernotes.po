@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-07 01:44+0000\n"
-"PO-Revision-Date: 2024-06-11 09:32+0200\n"
+"PO-Revision-Date: 2024-06-12 10:05+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -73,7 +73,7 @@ msgstr "Žádné emotikony"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
-msgstr ""
+msgstr "Výběr obrázku"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:14
 #, kde-format
@@ -127,7 +127,7 @@ msgstr "Text obrázku: "
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr ""
+msgstr "Vložit tento obrázek do složky poznámek"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -139,7 +139,7 @@ msgstr "Malování KleverNotes"
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
+msgstr "Chcete odejít bez uložení vašeho nákresu."
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
 #, kde-format
@@ -249,6 +249,8 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
+"Tento název začíná tečkou. To by mohlo vést k problémům a proto to není "
+"povoleno."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:38
 #, kde-format
@@ -292,7 +294,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr ""
+msgstr "Úložiště bylo vytvořeno v"
 
 #: contents/ui/dialogs/StorageDialog.qml:17
 #, kde-format
@@ -300,7 +302,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr ""
+msgstr "Existující úložiště bylo vybráno v"
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -313,6 +315,10 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Vypadá to, že tuto aplikaci používáte poprvé.\n"
+"\n"
+"Prosím, vyberte místo, které bude sloužit jako úložiště pro KleverNotes nebo "
+"vyberte již existující."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
 #, kde-format
@@ -359,6 +365,10 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Vypadá to, že zvolená složka není úložiště KleverNote.\n"
+"\n"
+"Prosím, vyberte místo, které bude sloužit jako úložiště pro KleverNotes nebo "
+"vyberte již existující."
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
@@ -473,12 +483,12 @@ msgstr "Vítejte"
 #: contents/ui/pages/MainPage.qml:81
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr ""
+msgstr "Vítejte v KleverNotes!"
 
 #: contents/ui/pages/MainPage.qml:91
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr ""
+msgstr "Vytvořte nebo vyberte poznámku a začněte pracovat."
 
 #: contents/ui/pages/PaintingPage.qml:30
 #, kde-format
@@ -525,13 +535,13 @@ msgstr "Pozadí"
 #: contents/ui/pages/PrintingPage.qml:110
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Tohle by mohlo způsobovat vizuální artefakt na konci pdf."
 
 #: contents/ui/pages/PrintingPage.qml:121
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr ""
+msgstr "Uložit poznámku jako pdf"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -545,6 +555,8 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
+"Prosím, vyberte místo vašeho budoucího úložiště KleverNotes nebo vyberte již "
+"existující.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
 #, kde-format
@@ -562,7 +574,7 @@ msgstr "Písmo pro editor:"
 #, kde-format
 msgctxt "@title, where you can view the renderer note"
 msgid "Note preview"
-msgstr ""
+msgstr "Náhled poznámky"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -616,7 +628,7 @@ msgstr "Obecné písmo:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "Písmo bloku kódu"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -667,7 +679,7 @@ msgstr "Editor"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Použití mezer namísto Tab"
 
 #: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
@@ -697,37 +709,38 @@ msgstr "Neviditelný"
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Užitečné moduly"
 
 #: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "Propojování poznámek"
 
 #: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr ""
+"Propojování poznámek vám umožní vytvořit odkaz z jedné poznámky do jiné."
 
 #: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Rada: Pokud zapnuto, je potřeba restartovat aplikaci."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Povolit PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr ""
+msgstr "PlantUML vám umožní vytvářet diagramy."
 
 #: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
@@ -736,36 +749,38 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Poznámka: Vytváření diagramů může být pomalé. Pokud máte velký počet "
+"diagramů, může být snazší zobrazit je jako obrázky."
 
 #: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Povolit tmavé pozadí"
 
 #: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "Diagram PlantUML bude mít tmavé pozadí."
 
 #: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Kosmetické moduly"
 
 #: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Povolit zvýrazňování syntaxe"
 
 #: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "Seznam podporovaných zvýrazňovačů"
 
 #: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
@@ -777,13 +792,13 @@ msgstr "Zvýraznění"
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Styl zvýraznění"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Povolit rychlé emotikony"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
@@ -791,7 +806,7 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Rychle psát emotikony pomocí následující syntaxe"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
@@ -803,7 +818,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "Výchozí tón emotikonu"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
@@ -847,7 +862,7 @@ msgstr "Tmavé"
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Povolit dialog pro rychlé emotikony"
 
 #: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
@@ -998,7 +1013,7 @@ msgstr "Seřazený seznam"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "Seřazený seznam"
 
 #: contents/ui/sharedComponents/ActionsList.qml:126
 #, kde-format
@@ -1010,7 +1025,7 @@ msgstr "Neseřazený seznam"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "Neseřazený seznam"
 
 #: contents/ui/sharedComponents/ActionsList.qml:133
 #, kde-format
@@ -1139,7 +1154,7 @@ msgstr "Zobrazit poznámky"
 #: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "Nápověda syntaxe"
 
 #: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
 #, kde-format
@@ -1167,7 +1182,7 @@ msgstr "Úloha"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "Nápověda syntaxe pro Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
@@ -1227,14 +1242,14 @@ msgstr "Citát"
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Ordered list"
-msgstr ""
+msgstr "Seřazený seznam"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr ""
+msgstr "První položka"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
@@ -1246,7 +1261,7 @@ msgstr "Druhá položka"
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Unordered list"
-msgstr ""
+msgstr "Neseřazený seznam"
 
 #: contents/ui/textEditor/CheatSheet.qml:92
 #, kde-format
@@ -1257,7 +1272,7 @@ msgstr "Kód"
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr ""
+msgstr "Vložený kód"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
@@ -1291,7 +1306,7 @@ msgstr "Obrázek"
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "alt text"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
@@ -1303,7 +1318,7 @@ msgstr "obrázek"
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "Rozšířená syntaxe"
 
 #: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
@@ -1349,13 +1364,13 @@ msgstr "Buňka 3"
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Blok kódu"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr ""
+msgstr "Ukázkový text..."
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
@@ -1366,12 +1381,12 @@ msgstr "Přeškrtnutí"
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "Země je plochá."
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgid "Task list"
-msgstr ""
+msgstr "Seznam úkolů"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
@@ -1389,12 +1404,12 @@ msgstr ""
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr ""
+msgstr "Moduly KleverNotes"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
 #, kde-format
 msgid "Note link"
-msgstr ""
+msgstr "Odkazy poznámky"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1402,7 +1417,7 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "Kategorie/Skupina/Poznámka"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
@@ -1420,7 +1435,7 @@ msgstr "zobrazený název"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr ""
+msgstr "Propojené poznámky"
 
 #: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
@@ -1445,13 +1460,13 @@ msgstr "Zobrazit/skrýt náhled"
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr ""
+msgstr "Uložit poznámku jako html"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Mapa propojených poznámek"
 
 #: contents/ui/textEditor/NotesMap.qml:39
 #, kde-format
@@ -1503,6 +1518,12 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Tento soubor je kopií výchozího stylu CSS pro zobrazení "
+"poznámek.            \n"
+"Klidně si jej upravte nebo přisvojte.            \n"
+"Poznámka: Každý styl musí mít odlišný název.            \n"
+"*/\n"
 
 #: logic/plugins/emoji/emojiModel.cpp:152
 #: logic/plugins/emoji/emojiModel.cpp:210
@@ -1574,7 +1595,7 @@ msgstr "Vlastní"
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr ""
+msgstr "Nastala chyba při pokusu o zkopírování tohoto pdf."
 
 #: logic/treeview/noteTreeModel.cpp:291
 #, kde-format
@@ -1630,7 +1651,7 @@ msgstr "KleverNotes"
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Aplikace pro pořizování a správu poznámek"
 
 #: main.cpp:65
 #, kde-format
