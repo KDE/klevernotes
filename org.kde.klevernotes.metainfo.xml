@@ -92,6 +92,8 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main page on desktop</caption>
+      <caption xml:lang="ca">Pàgina principal a l'escriptori</caption>
+      <caption xml:lang="ca-valencia">Pàgina principal a l'escriptori</caption>
       <caption xml:lang="cs">Hlavní stránka na pracovní ploše</caption>
       <caption xml:lang="es">Página principal para el escritorio</caption>
       <caption xml:lang="he">עמוד ראשי בשולחן העבודה</caption>
@@ -106,6 +108,8 @@
     </screenshot>
     <screenshot>
       <caption>Main page on small form factor</caption>
+      <caption xml:lang="ca">Pàgina principal al factor de format petit</caption>
+      <caption xml:lang="ca-valencia">Pàgina principal al factor de format xicotet</caption>
       <caption xml:lang="es">Página principal para factor de forma pequeño</caption>
       <caption xml:lang="he">עמוד ראשי בדגם מוקטן</caption>
       <caption xml:lang="ka">მთავარი გვერდი პატარა ადგილას</caption>
@@ -119,6 +123,8 @@
     </screenshot>
     <screenshot>
       <caption>Todo page</caption>
+      <caption xml:lang="ca">Pàgina de tasques pendents</caption>
+      <caption xml:lang="ca-valencia">Pàgina de tasques pendents</caption>
       <caption xml:lang="cs">Stránka úkolů</caption>
       <caption xml:lang="es">Página de tareas pendientes</caption>
       <caption xml:lang="he">עמוד מטלות</caption>
@@ -133,6 +139,8 @@
     </screenshot>
     <screenshot>
       <caption>Drawing page</caption>
+      <caption xml:lang="ca">Pàgina de dibuix</caption>
+      <caption xml:lang="ca-valencia">Pàgina de dibuix</caption>
       <caption xml:lang="cs">Stránka pro kreslení</caption>
       <caption xml:lang="es">Página de dibujo</caption>
       <caption xml:lang="he">עמוד ציור</caption>
