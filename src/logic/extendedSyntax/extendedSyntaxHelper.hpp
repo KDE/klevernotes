@@ -41,6 +41,7 @@ struct DelimInfo {
     MDItemWithOptsPtr itemPtr;
     long long int startColumn;
     long long int startLine;
+    long long int endColumn;
     TagType type;
 
     /* For validDelims */

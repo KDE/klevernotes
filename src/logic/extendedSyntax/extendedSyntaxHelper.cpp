@@ -70,11 +70,11 @@ void getDelim(MDParagraphPtr p,
     while (-1 < delimIdx) {
         const QChar charBeforeDelim = (localPos.first == 0 && delimIdx == 0) ? QChar() : lineInfo.first[localPos.first + delimIdx - 1];
         if (charBeforeDelim == QChar::fromLatin1('\\')) {
-            delimIdx = src.indexOf(searchedDelim, delimIdx + 2);
+            delimIdx = src.indexOf(searchedDelim, delimIdx + delimLength);
             continue;
         }
         const bool spaceBeforeDelim = charBeforeDelim.isSpace();
-        const bool charAfterDelimExist = localPos.first + delimIdx + 3 <= lineInfo.first.length() - 1;
+        const bool charAfterDelimExist = localPos.first + delimIdx + delimLength <= lineInfo.first.length() - 1;
         const QChar charAfterDelim = !charAfterDelimExist ? QChar() : lineInfo.first[localPos.first + delimIdx + delimLength];
         const bool spaceAfterDelim = charAfterDelim.isSpace();
 
@@ -90,9 +90,11 @@ void getDelim(MDParagraphPtr p,
             continue;
         }
 
-        DelimInfo info = {idx, currentItem, localPos.first + delimIdx, currentItem->startLine(), type};
+        const long long int startColumn = localPos.first + delimIdx;
+        const long long int endColumn = startColumn + delimLength - 1;
+        DelimInfo info = {idx, currentItem, startColumn, currentItem->startLine(), endColumn, type};
         delimInfos.append(info);
-        delimIdx = src.indexOf(searchedDelim, delimIdx + delimLength);
+        delimIdx = src.indexOf(searchedDelim, endColumn + 1);
     }
 }
 
@@ -154,7 +156,7 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
             while (0 <= i) {
                 auto opening = waitingOpenings.takeAt(i);
 
-                if (validDelimsPairs(p, openCloseStyles, badStyles, opening, info)) {
+                if (opening.endColumn + 1 != info.startColumn && validDelimsPairs(p, openCloseStyles, badStyles, opening, info)) {
                     opening.paired = true;
                     info.paired = true;
 
@@ -171,7 +173,7 @@ pairDelims(MDParagraphPtr p, QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openC
                 while (0 <= i) {
                     auto opening = waitingOpenings[i]; // We can't consume it right away
 
-                    if (validDelimsPairs(p, openCloseStyles, badStyles, opening, info)) {
+                    if (opening.endColumn + 1 != info.startColumn && validDelimsPairs(p, openCloseStyles, badStyles, opening, info)) {
                         opening.paired = true;
                         info.paired = true;
                         waitingOpenings.removeAt(i);
