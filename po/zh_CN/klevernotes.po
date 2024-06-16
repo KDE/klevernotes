@@ -1178,126 +1178,126 @@ msgstr "Markdown速查表"
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
 msgid "Copied !"
-msgstr ""
+msgstr "已复制 !"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "基本语法"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
 #, kde-format
 msgid "Heading"
-msgstr ""
+msgstr "标题"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
 #, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr ""
+msgstr "标题1"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
 #, kde-format
 msgid "Bold"
-msgstr ""
+msgstr "粗体"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr ""
+msgstr "加粗文本"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgid "Italic"
-msgstr ""
+msgstr "斜体"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
 #, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr ""
+msgstr "斜体文本"
 
 #: contents/ui/textEditor/CheatSheet.qml:72
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "块引用"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr ""
+msgstr "引用"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Ordered list"
-msgstr ""
+msgstr "有序列表"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr ""
+msgstr "第一项"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr ""
+msgstr "第二项"
 
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Unordered list"
-msgstr ""
+msgstr "无序列表"
 
 #: contents/ui/textEditor/CheatSheet.qml:92
 #, kde-format
 msgid "Code"
-msgstr ""
+msgstr "代码"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr ""
+msgstr "内联代码"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr ""
+msgstr "规则"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
 msgid "Link"
-msgstr ""
+msgstr "链接"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr ""
+msgstr "标题"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "https://www.example.com"
-msgstr ""
+msgstr "https://www.example.com"
 
 #: contents/ui/textEditor/CheatSheet.qml:110
 #, kde-format
 msgid "Image"
-msgstr ""
+msgstr "图片"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "替代文字"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
