@@ -128,7 +128,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     DocumentHandler documentHandler;
     qmlRegisterSingletonInstance<DocumentHandler>("org.kde.Klever", 1, 0, "DocumentHandler", &documentHandler);
 
-    qmlRegisterType<MdEditor::EditorHandler>("org.kde.Klever", 1, 0, "EditorHandler");
+    MdEditor::EditorHandler editorHandler;
+    qmlRegisterSingletonInstance<MdEditor::EditorHandler>("org.kde.Klever", 1, 0, "EditorHandler", &editorHandler);
 
     MDHandler mdHandler;
     qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);

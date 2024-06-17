@@ -14,7 +14,6 @@ ScrollView {
     id: view
 
     signal openImageDialog(string image)
-    signal textAreaInit(QtObject document)
 
     readonly property TextArea textArea: textArea
 
@@ -30,12 +29,6 @@ ScrollView {
 
     ImprovedTextArea {
         id: textArea
-
-        property bool tempBuff
-
-        Component.onCompleted: {
-            textAreaInit(textArea.document)
-        }
     }
 
     Timer {

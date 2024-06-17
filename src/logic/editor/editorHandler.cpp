@@ -42,14 +42,14 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
     if (m_qQuickDocument) {
         m_qQuickDocument->textDocument()->disconnect(this);
     }
-    m_qQuickDocument = document;
 
-    if (m_qQuickDocument) {
-        connect(m_qQuickDocument->textDocument(), &QTextDocument::modificationChanged, this, &EditorHandler::parse);
+    if (document) {
+        m_qQuickDocument = document;
+        connect(m_qQuickDocument->textDocument(), &QTextDocument::contentsChanged, this, &EditorHandler::parse);
+        m_document = m_qQuickDocument->textDocument();
+        Q_EMIT documentChanged();
+        parse();
     }
-
-    m_document = m_qQuickDocument->textDocument();
-    Q_EMIT documentChanged();
 }
 // ===============
 
@@ -58,7 +58,6 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
 void EditorHandler::parse()
 {
     const QString content = m_parser->parse(m_document->toPlainText());
-    qDebug() << "Parsed from C++\n" << content;
     Q_EMIT parsingFinished(content);
 }
 

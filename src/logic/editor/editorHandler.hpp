@@ -37,7 +37,7 @@ class EditorHandler : public QObject
 public:
     explicit EditorHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE void parse();
+    void parse();
 
     void setDocument(QQuickTextDocument *document);
     QTextDocument *document() const;

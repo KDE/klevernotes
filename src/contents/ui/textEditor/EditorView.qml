@@ -81,6 +81,7 @@ ColumnLayout {
     
     onPathChanged: {
         focusEditor()
+        EditorHandler.notePath = path
     }
     Component.onCompleted: {
         focusEditor()
@@ -160,9 +161,6 @@ ColumnLayout {
 
                 LayoutMirroring.enabled: generalLayout.isHorizontal
 
-                onTextAreaInit: (document) => {
-                    editorHandler.document = document
-                }
                 onOpenImageDialog: (imagePath) => {
                     toolbar.imagePickerDialog.path = "file://" + imagePath
                     toolbar.imagePickerDialog.clipboardImage = true
@@ -187,7 +185,6 @@ ColumnLayout {
                     ? 2
                     : 1
 
-                __editorHandler: editorHandler
                 text: editor.text
                 path: root.path.replace("note.md", "")
                 visible: viewToggler.checked // make sure that the textEditor while correctly grow
@@ -209,25 +206,12 @@ ColumnLayout {
         }
     }
 
-    EditorHandler {
-        id: editorHandler
-
-        notePath: root.path
-
-        onParsingFinished: (content) => {
-            console.log("FROM QML", content)
-            display.changeContent(content)
-        }
-    }
 
     Loader {
         id: noteMapLoader
 
         sourceComponent: NotesMap {
             id: linkedNotesMap
-
-            __editorHandler: editorHandler
-            // parser: display.parser
         }
         active: Config.noteMapEnabled
     }

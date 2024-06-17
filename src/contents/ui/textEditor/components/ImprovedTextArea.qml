@@ -19,6 +19,9 @@ TextArea {
 
     background: Item {}
 
+    Component.onCompleted: {
+        EditorHandler.document = textDocument
+    }
     onTextChanged: {
         if (!tempBuff) {
             modified = true
@@ -45,12 +48,6 @@ TextArea {
         const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
         const newString = MDHandler.getLineFromPrevious(getText(blockStart, blockEnd))
         insert(selectionEnd, newString)
-    }
-
-    EditorHandler {
-        id: editorHandler
-
-        document: root.textDocument
     }
 
     function handleTabPressed(backtab) {

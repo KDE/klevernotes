@@ -9,12 +9,12 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 import org.kde.kitemmodels
 
+import org.kde.Klever
+
 import "qrc:/contents/ui/textEditor/components/"
 
 Kirigami.Dialog {
     id: noteMap
-
-    required property QtObject __editorHandler
 
     title: i18nc("@window:title","Linked notes map")
 
@@ -50,7 +50,7 @@ Kirigami.Dialog {
                     height: Kirigami.Units.gridUnit * 3
                     onClicked: {
                         if (headerExists) {
-                            __editorHandler.headerInfo = [header, headerLevel.toString()]
+                            EditorHandler.headerInfo = [header, headerLevel.toString()]
                         }
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
