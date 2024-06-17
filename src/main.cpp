@@ -23,6 +23,8 @@
 #include "logic/mdHandler.h"
 #include "logic/qmlLinker.h"
 
+#include "logic/editor/editorHandler.hpp"
+
 #include "logic/treeview/noteTreeModel.h"
 
 #include "logic/painting/pressureequation.h"
@@ -32,7 +34,7 @@
 #include "logic/painting/strokeitem.h"
 #include "logic/painting/strokelistitem.h"
 
-#include "logic/parser/parser.h"
+/* #include "logic/parser/parser.h" */
 
 #include "logic/printing/printingHelper.h"
 
@@ -126,6 +128,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     DocumentHandler documentHandler;
     qmlRegisterSingletonInstance<DocumentHandler>("org.kde.Klever", 1, 0, "DocumentHandler", &documentHandler);
 
+    qmlRegisterType<MdEditor::EditorHandler>("org.kde.Klever", 1, 0, "EditorHandler");
+
     MDHandler mdHandler;
     qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);
 
@@ -134,7 +138,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     qmlRegisterType<PrintingUtility>("org.kde.Klever", 1, 0, "PrintingUtility");
 
-    qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser");
+    /* qmlRegisterType<Parser>("org.kde.Klever", 1, 0, "Parser"); */
     qmlRegisterType<NoteTreeModel>("org.kde.Klever", 1, 0, "NoteTreeModel");
 
     // === PLUGINS ===

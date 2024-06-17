@@ -672,6 +672,8 @@ public:
 
     ~Heading() override = default;
 
+    using Delims = typename Trait::template Vector<WithPosition>;
+
     std::shared_ptr<Item<Trait>> clone(Document<Trait> *doc = nullptr) const override
     {
         auto h = std::make_shared<Heading<Trait>>();
@@ -679,7 +681,8 @@ public:
         h->setText(std::static_pointer_cast<Paragraph<Trait>>(m_text->clone(doc)));
         h->setLevel(m_level);
         h->setLabel(m_label);
-        h->setDelim(m_delim);
+        h->setDelims(m_delims);
+        h->setLabelPos(m_labelPos);
 
         if (doc && isLabeled())
             doc->insertLabeledHeading(m_label, h);
@@ -729,21 +732,32 @@ public:
         m_label = l;
     }
 
-    const WithPosition &delim() const
+    const Delims &delims() const
     {
-        return m_delim;
+        return m_delims;
     }
 
-    void setDelim(const WithPosition &d)
+    void setDelims(const Delims &d)
     {
-        m_delim = d;
+        m_delims = d;
+    }
+
+    const WithPosition &labelPos() const
+    {
+        return m_labelPos;
+    }
+
+    void setLabelPos(const WithPosition &p)
+    {
+        m_labelPos = p;
     }
 
 private:
     ParagraphSharedPointer m_text;
     int m_level = 0;
     typename Trait::String m_label;
-    WithPosition m_delim;
+    Delims m_delims;
+    WithPosition m_labelPos;
 
     MD_DISABLE_COPY(Heading)
 }; // class Heading

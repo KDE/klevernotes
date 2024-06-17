@@ -4,11 +4,14 @@
 */
 
 #include "logic/parser/parser.h"
-
+#include "logic/editor/editorHandler.hpp"
 #include "logic/extendedSyntax/extendedSyntaxHelper.hpp"
+#include "logic/plugins/pluginHelper.h"
 
-Parser::Parser(QObject *parent)
-    : QObject(parent)
+namespace MdEditor
+{
+Parser::Parser(EditorHandler *editorHandler)
+    : m_editorHandler(editorHandler)
 {
     m_pluginHelper = new PluginHelper(this);
     m_renderer = new Renderer(m_pluginHelper);
@@ -43,6 +46,11 @@ void Parser::addParsePlugins()
     /*     m_md4qtParser.addTextPlugin(ExtensionID::KleverPlugins + pluginCount, func, false); */
     /*     pluginCount++; */
     /* } */
+}
+
+EditorHandler *Parser::editorHandler() const
+{
+    return m_editorHandler;
 }
 
 PluginHelper *Parser::getPluginHelper() const
@@ -106,4 +114,5 @@ void Parser::newHighlightStyle()
 void Parser::pumlDarkChanged()
 {
     m_pluginHelper->getPUMLParserUtils()->pumlDarkChanged();
+}
 }

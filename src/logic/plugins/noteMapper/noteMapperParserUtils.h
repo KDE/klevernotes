@@ -9,12 +9,15 @@
 #include <QSet>
 #include <tuple>
 
+namespace MdEditor
+{
 class Parser;
+}
 
 class NoteMapperParserUtils
 {
 public:
-    explicit NoteMapperParserUtils(Parser *parser);
+    explicit NoteMapperParserUtils(MdEditor::Parser *parser);
 
     static QPair<QString, bool> sanitizePath(const QString &_path, const QString &notePath);
     void setNotePath(const QString &path);
@@ -48,5 +51,5 @@ private:
     bool m_linkedNotesChanged = false;
     bool m_notePathChanged = true;
 
-    Parser *m_parser = nullptr;
+    MdEditor::Parser *m_parser = nullptr;
 };

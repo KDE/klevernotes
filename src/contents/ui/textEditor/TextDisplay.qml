@@ -21,6 +21,7 @@ RowLayout {
 
     readonly property var view: web_view
 
+    required property EditorHandler __editorHandler
     required property string path
     required property string text
     
@@ -41,7 +42,7 @@ RowLayout {
 
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
     readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
-    readonly property Parser parser: parser
+    // readonly property Parser parser: parser
 
     // TODO: Move to C++
     readonly property string stylePath: Config.stylePath
@@ -72,7 +73,7 @@ RowLayout {
     spacing: 0
 
     onPathChanged: {
-        parser.notePath = path
+        // parser.notePath = path
     }
     onTextChanged: {
         root.parseText()
@@ -81,7 +82,7 @@ RowLayout {
         root.parseText()
     }
     onHighlighterStyleChanged: {
-        parser.newHighlightStyle()
+        // parser.newHighlightStyle()
         root.parseText()
     }
     onNoteMapEnabledChanged: {
@@ -97,7 +98,7 @@ RowLayout {
         root.parseText()
     }
     onPumlDarkChanged: {
-        parser.pumlDarkChanged()
+        // parser.pumlDarkChanged()
         root.parseText()
     }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {
@@ -172,7 +173,7 @@ RowLayout {
                     const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
 
                     if (noteModelIndex.row !== -1) {
-                        if (header[1] !== 0) parser.headerInfo = headerInfo
+                        if (header[1] !== 0) __editorHandler.headerInfo = headerInfo
 
                         sidebar.askForFocus(noteModelIndex)
                     } 
@@ -216,16 +217,16 @@ RowLayout {
         }
     }
 
-    Parser { 
-        id: parser
-
-        onNewLinkedNotesInfos: function(linkedNotesInfos) {
-            noteMapper.addLinkedNotesInfos(linkedNotesInfos)
-        }
-        onNoteHeadersSent: function(notePath, noteHeaders) {
-            noteMapper.updatePathInfo(notePath, noteHeaders)
-        }
-    }
+    // Parser { 
+    //     id: parser
+    //
+    //     onNewLinkedNotesInfos: function(linkedNotesInfos) {
+    //         noteMapper.addLinkedNotesInfos(linkedNotesInfos)
+    //     }
+    //     onNoteHeadersSent: function(notePath, noteHeaders) {
+    //         noteMapper.updatePathInfo(notePath, noteHeaders)
+    //     }
+    // }
 
     function loadBaseHtml() {
         if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
@@ -235,8 +236,17 @@ RowLayout {
 
     function parseText() {
         if (web_view.loadProgress === 100) {
-            parsedHtml = parser.parse(text)
-            contentLink.text = parsedHtml
+            // parsedHtml = parser.parse(text)
+            // contentLink.text = parsedHtml
+        }
+    }
+
+    function changeContent(content) {
+        console.log(content)
+        if (!web_view.loading) {
+            contentLink.text = content
+        } else {
+            root.parsedHtml = content
         }
     }
 
@@ -285,11 +295,11 @@ RowLayout {
     }
 
     function scrollToHeader() {
-        if (parser.headerLevel !== "0") {
+        if (__editorHandler.headerLevel !== "0") {
             web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
                 if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
                     web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
-                    parser.headerInfo = ["", "0"]
+                    // parser.headerInfo = ["", "0"]
                 }
             })
         }

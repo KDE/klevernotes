@@ -37,6 +37,10 @@ set(exec_SRCS
     logic/mdHandler.cpp
     logic/qmlLinker.cpp
 
+    logic/editor/colors.cpp
+    logic/editor/editorHandler.cpp
+    logic/editor/syntaxvisitor.cpp
+
     logic/extendedSyntax/extendedSyntaxHelper.cpp
 
     logic/painting/pointMaker.cpp

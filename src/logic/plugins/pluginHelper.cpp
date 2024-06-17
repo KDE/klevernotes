@@ -7,7 +7,7 @@
 
 #include "kleverconfig.h"
 
-PluginHelper::PluginHelper(Parser *parser)
+PluginHelper::PluginHelper(MdEditor::Parser *parser)
     : m_highlightParserUtils(new HighlightParserUtils)
     , m_pumlParserUtils(new PUMLParserUtils)
 {

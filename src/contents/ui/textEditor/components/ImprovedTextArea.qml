@@ -1,0 +1,74 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+
+import QtQuick
+import QtQuick.Controls
+
+import org.kde.kirigami as Kirigami
+
+import org.kde.Klever
+
+TextArea {
+    id: root
+
+    property bool tempBuff
+
+    font: Config.editorFont
+    wrapMode: TextEdit.Wrap
+    persistentSelection: true
+
+    background: Item {}
+
+    onTextChanged: {
+        if (!tempBuff) {
+            modified = true
+        } else {
+            cursorPosition = length
+            tempBuff = false
+        }
+    }
+    Keys.onPressed: (event) => {
+        if (event.key === Qt.Key_V && (event.modifiers === Qt.ControlModifier || event.modifiers === Qt.ShiftModifier | Qt.ControlModifier)) {
+            const tempPath = path.slice(0, -7) + "tempImage.png"
+            if (!canPaste && KleverUtility.checkPaste(tempPath)) {
+                openImageDialog(tempPath)
+            }
+        }
+    }
+    Keys.onTabPressed: {
+        handleTabPressed(false)
+    }
+    Keys.onBacktabPressed: {
+        handleTabPressed(true)
+    }
+    Keys.onReturnPressed: {
+        const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
+        const newString = MDHandler.getLineFromPrevious(getText(blockStart, blockEnd))
+        insert(selectionEnd, newString)
+    }
+
+    EditorHandler {
+        id: editorHandler
+
+        document: root.textDocument
+    }
+
+    function handleTabPressed(backtab) {
+        const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
+        const chars = Config.useSpaceForTab ? " " : '\t'
+
+        if (selectionStart !== selectionEnd) {
+            const goalCharsRep = Config.useSpaceForTab ? Config.spacesForTab : 1
+            const instruction = backtab ? 258 : 257 // Instructions::Remove and Instructions::Apply 
+
+            const selectedText = getText(blockStart, blockEnd)
+            const newString = MDHandler.getNewText(selectedText, chars, false, false, false, goalCharsRep, instruction)
+
+            remove(blockStart, blockEnd)
+            insert(blockStart, newString)
+            select(blockStart, blockStart + newString.length)
+        } else if (!backtab) {
+            insert(selectionStart, Config.useSpaceForTab ? chars.repeat(Config.spacesForTab) : chars)
+        }
+    }
+}

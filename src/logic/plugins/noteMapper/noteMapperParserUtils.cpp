@@ -4,11 +4,11 @@
 */
 
 #include "noteMapperParserUtils.h"
-
 #include "kleverconfig.h"
+#include "logic/editor/editorHandler.hpp"
 #include "logic/parser/parser.h"
 
-NoteMapperParserUtils::NoteMapperParserUtils(Parser *parser)
+NoteMapperParserUtils::NoteMapperParserUtils(MdEditor::Parser *parser)
     : m_parser(parser)
 {
 }
@@ -128,18 +128,18 @@ void NoteMapperParserUtils::postTok()
 
     // We try to not spam with signals
     if (m_linkedNotesChanged || !m_previousLinkedNotesInfos.isEmpty()) { // The previous is not empty, some links notes are no longer there
-        Q_EMIT m_parser->newLinkedNotesInfos(m_linkedNotesInfos);
+        Q_EMIT m_parser->editorHandler()->newLinkedNotesInfos(m_linkedNotesInfos);
     }
     m_previousLinkedNotesInfos = m_linkedNotesInfos;
     m_noteHeaders.removeDuplicates();
 
     if (m_noteHeadersChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
         m_emptyHeadersSent = false;
-        Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders);
+        Q_EMIT m_parser->editorHandler()->noteHeadersSent(m_mapperNotePath, m_noteHeaders);
     } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
         // This way the mapper can receive info about the note (the note has no header), and we still prevent spamming
         m_emptyHeadersSent = true;
-        Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, {});
+        Q_EMIT m_parser->editorHandler()->noteHeadersSent(m_mapperNotePath, {});
     }
     m_previousNoteHeaders = QSet(m_noteHeaders.begin(), m_noteHeaders.end());
 

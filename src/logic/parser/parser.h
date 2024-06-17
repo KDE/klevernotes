@@ -16,17 +16,23 @@
 #define MD4QT_QT_SUPPORT
 #include "logic/md4qt/parser.hpp"
 
+namespace MdEditor
+{
+
+class EditorHandler;
 class Parser : public QObject
 {
-    Q_OBJECT
-    Q_PROPERTY(QString notePath WRITE setNotePath)
-    // NoteMapper
-    Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
-    Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
+    /* Q_OBJECT */
+    /* Q_PROPERTY(QString notePath WRITE setNotePath) */
+    /* // NoteMapper */
+    /* Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo) */
+    /* Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT) */
 public:
-    explicit Parser(QObject *parent = nullptr);
+    explicit Parser(EditorHandler *editorHandler = nullptr);
 
-    Q_INVOKABLE QString parse(QString src);
+    EditorHandler *editorHandler() const;
+
+    QString parse(QString src);
 
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
@@ -51,17 +57,22 @@ public Q_SLOTS:
     void pumlDarkChanged();
 
 private:
+    void addParsePlugins();
+
+    QString renderHtml();
+
+private:
     enum ExtensionID : int {
         /* Extended syntax
          * ===============*/
         ExtendedSyntax = MD::TextPlugin::UserDefinedPluginID + 1,
         /* Plugins
          * ===============*/
-        KleverPlugins = ExtendedSyntax + 20, // Keep some margin for other Extended syntax
+        KleverPlugins = ExtendedSyntax + 64, // Keep some margin for other Extended syntax
     };
-    void addParsePlugins();
 
-    QString renderHtml();
+    EditorHandler *m_editorHandler = nullptr;
+
     PluginHelper *m_pluginHelper = nullptr;
 
     QString m_notePath;
@@ -70,3 +81,4 @@ private:
 
     Renderer *m_renderer = nullptr;
 };
+}
