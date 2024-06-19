@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
 
 // CREDIT TO ORIGINAL IDEA: https://marked.js.org/
@@ -22,24 +22,23 @@ namespace MdEditor
 class EditorHandler;
 class Parser : public QObject
 {
-    /* Q_OBJECT */
-    /* Q_PROPERTY(QString notePath WRITE setNotePath) */
-    /* // NoteMapper */
-    /* Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo) */
-    /* Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT) */
 public:
     explicit Parser(EditorHandler *editorHandler = nullptr);
 
-    EditorHandler *editorHandler() const;
-
     QString parse(QString src);
 
+    // Getters
+    EditorHandler *editorHandler() const;
     QString getNotePath() const;
-    void setNotePath(const QString &notePath);
-    QVector<QVariantMap> tokens;
-    QMap<QString, QMap<QString, QString>> links;
+    PluginHelper *pluginHelper() const;
 
-    PluginHelper *getPluginHelper() const;
+    // Setters
+    void setNotePath(const QString &notePath);
+    void addPluginHelper();
+    void addExtendedSyntax(const QStringList &details);
+    void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
+    void addPlugin();
+    void addPlugins();
 
     // NoteMapper
     void setHeaderInfo(const QStringList &headerInfo);
@@ -57,8 +56,6 @@ public Q_SLOTS:
     void pumlDarkChanged();
 
 private:
-    void addParsePlugins();
-
     QString renderHtml();
 
 private:
@@ -71,14 +68,16 @@ private:
         KleverPlugins = ExtendedSyntax + 64, // Keep some margin for other Extended syntax
     };
 
-    EditorHandler *m_editorHandler = nullptr;
-
+    // KleverNotes
+    QString m_notePath;
+    Renderer *m_renderer = nullptr;
     PluginHelper *m_pluginHelper = nullptr;
 
-    QString m_notePath;
-
+    // md4qt
     MD::Parser<MD::QStringTrait> m_md4qtParser;
+    int m_extendedSyntaxCount = 0;
+    int m_pluginCount = 0;
 
-    Renderer *m_renderer = nullptr;
+    EditorHandler *m_editorHandler = nullptr;
 };
 }

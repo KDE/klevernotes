@@ -42,19 +42,19 @@ void PluginHelper::postTokChanges()
 }
 
 // NoteMapper
-NoteMapperParserUtils *PluginHelper::getMapperParserUtils() const
+NoteMapperParserUtils *PluginHelper::mapperParserUtils() const
 {
     return m_mapperParserUtils;
 }
 
 // Syntax highlight
-HighlightParserUtils *PluginHelper::getHighlightParserUtils() const
+HighlightParserUtils *PluginHelper::highlightParserUtils() const
 {
     return m_highlightParserUtils;
 }
 
 // PUML
-PUMLParserUtils *PluginHelper::getPUMLParserUtils() const
+PUMLParserUtils *PluginHelper::pumlParserUtils() const
 {
     return m_pumlParserUtils;
 }

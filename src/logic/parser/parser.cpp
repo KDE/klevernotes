@@ -1,42 +1,114 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "logic/parser/parser.h"
 #include "logic/editor/editorHandler.hpp"
 #include "logic/extendedSyntax/extendedSyntaxHelper.hpp"
 #include "logic/plugins/pluginHelper.h"
+#include <qlogging.h>
 
 namespace MdEditor
 {
 Parser::Parser(EditorHandler *editorHandler)
     : m_editorHandler(editorHandler)
 {
-    m_pluginHelper = new PluginHelper(this);
-    m_renderer = new Renderer(m_pluginHelper);
-
-    addParsePlugins();
+    m_renderer = new Renderer();
 }
 
-void Parser::addParsePlugins()
+QString Parser::parse(QString src)
 {
-    static const QList<QStringList> extendedSyntaxsList = {
-        {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
-        {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
-        {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
-    };
-
-    int extendedCount = 0;
-    for (const auto &syntaxInfo : extendedSyntaxsList) {
-        const long long int opts = MD::TextOption::StrikethroughText << extendedCount + 1;
-        m_renderer->addExtendedSyntax(opts, syntaxInfo[1], syntaxInfo[2]);
-
-        const QStringList options = {syntaxInfo[0], QString::number(opts)};
-        m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + extendedCount, ExtendedSyntaxHelper::extendedSyntaxHelperFunc, true, options);
-        extendedCount++;
+    if (m_pluginHelper) {
+        m_pluginHelper->clearPluginsInfo();
     }
 
+    QTextStream s(&src, QIODeviceBase::ReadOnly);
+
+    const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
+    const auto html = m_renderer->toHtml(doc, m_notePath);
+
+    if (m_pluginHelper) {
+        m_pluginHelper->postTokChanges();
+    }
+
+    return html;
+}
+
+// Getters
+// =======
+EditorHandler *Parser::editorHandler() const
+{
+    return m_editorHandler;
+}
+
+PluginHelper *Parser::pluginHelper() const
+{
+    return m_pluginHelper;
+}
+
+QString Parser::getNotePath() const
+{
+    return m_notePath;
+}
+// !Getters
+
+// Setters
+// =======
+void Parser::setNotePath(const QString &notePath)
+{
+    if (notePath.isEmpty() || m_notePath == notePath) {
+        return;
+    }
+
+    m_notePath = notePath;
+
+    m_renderer->setNotePath(m_notePath);
+    if (notePath == QStringLiteral("qrc:")) {
+        return;
+    }
+
+    if (m_pluginHelper) {
+        // We do this here because we're sure to be in another note
+        m_pluginHelper->clearPluginsPreviousInfo();
+
+        m_pluginHelper->mapperParserUtils()->setNotePath(notePath);
+    }
+}
+
+void Parser::addPluginHelper()
+{
+    if (!m_pluginHelper) {
+        m_pluginHelper = new PluginHelper(this);
+
+        m_renderer->addPluginHelper(m_pluginHelper);
+        m_pluginHelper->mapperParserUtils()->setNotePath(m_notePath);
+    }
+}
+
+void Parser::addExtendedSyntax(const QStringList &details)
+{
+    const long long int opts = MD::TextOption::StrikethroughText << m_extendedSyntaxCount + 1;
+    m_renderer->addExtendedSyntax(opts, details[1], details[2]);
+
+    const QStringList options = {details[0], QString::number(opts)};
+    m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount, ExtendedSyntaxHelper::extendedSyntaxHelperFunc, true, options);
+    m_extendedSyntaxCount++;
+}
+
+void Parser::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
+{
+    for (const auto &details : syntaxsDetails) {
+        addExtendedSyntax(details);
+    }
+}
+
+void Parser::addPlugin()
+{
+}
+
+void Parser::addPlugins()
+{
     /**/
     /* static const auto kleverPluginsList = { */
     /*     NoteMapperFunc::noteLinkingExtension, */
@@ -48,72 +120,46 @@ void Parser::addParsePlugins()
     /*     pluginCount++; */
     /* } */
 }
+// !Setters
 
-EditorHandler *Parser::editorHandler() const
-{
-    return m_editorHandler;
-}
+// Plugins
+// =======
 
-PluginHelper *Parser::getPluginHelper() const
-{
-    return m_pluginHelper;
-}
-
+// NoteMapper
 void Parser::setHeaderInfo(const QStringList &headerInfo)
 {
-    m_pluginHelper->getMapperParserUtils()->setHeaderInfo(headerInfo);
+    if (m_pluginHelper) {
+        m_pluginHelper->mapperParserUtils()->setHeaderInfo(headerInfo);
+    }
 }
 
 QString Parser::headerLevel() const
 {
-    return m_pluginHelper->getMapperParserUtils()->headerLevel();
+    if (m_pluginHelper) {
+        return m_pluginHelper->mapperParserUtils()->headerLevel();
+    }
+    return QStringLiteral("0");
 };
+// !NoteMapper
 
-void Parser::setNotePath(const QString &notePath)
-{
-    if (notePath.isEmpty() || m_notePath == notePath) {
-        return;
-    }
-
-    m_notePath = notePath == QStringLiteral("qrc:") ? notePath : notePath.chopped(1);
-    m_renderer->setNotePath(m_notePath);
-    if (notePath == QStringLiteral("qrc:")) {
-        return;
-    }
-    // We do this here because we're sure to be in another note
-    m_pluginHelper->clearPluginsPreviousInfo();
-
-    m_pluginHelper->getMapperParserUtils()->setNotePath(notePath);
-}
-
-QString Parser::getNotePath() const
-{
-    return m_notePath;
-}
-
-QString Parser::parse(QString src)
-{
-    m_pluginHelper->clearPluginsInfo();
-
-    QTextStream s(&src, QIODeviceBase::ReadOnly);
-
-    const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
-    const auto html = m_renderer->toHtml(doc, m_notePath);
-
-    m_pluginHelper->postTokChanges();
-
-    return html;
-}
-
-// Syntax highlight
+// Code highlight
 void Parser::newHighlightStyle()
 {
-    m_pluginHelper->getHighlightParserUtils()->newHighlightStyle();
+    if (m_pluginHelper) {
+        m_pluginHelper->highlightParserUtils()->newHighlightStyle();
+    }
 }
+// !Code highlight
 
 // PUML
 void Parser::pumlDarkChanged()
 {
-    m_pluginHelper->getPUMLParserUtils()->pumlDarkChanged();
+    if (m_pluginHelper) {
+        m_pluginHelper->pumlParserUtils()->pumlDarkChanged();
+    }
 }
+// !PUML
+
+// !Plugins
+// ========
 }

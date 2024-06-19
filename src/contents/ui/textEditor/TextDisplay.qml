@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // ORIGINALLY BASED ON : https://github.com/CrazyCxl/markdown-editor
@@ -71,6 +71,9 @@ RowLayout {
 
     spacing: 0
 
+    onPathChanged: {
+        EditorHandler.notePath = path
+    }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {
         changeStyle({})
     }

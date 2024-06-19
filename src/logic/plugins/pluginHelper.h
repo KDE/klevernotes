@@ -21,13 +21,13 @@ public:
     void postTokChanges();
 
     // NoteMapper
-    NoteMapperParserUtils *getMapperParserUtils() const;
+    NoteMapperParserUtils *mapperParserUtils() const;
 
     // Syntax highlight
-    HighlightParserUtils *getHighlightParserUtils() const;
+    HighlightParserUtils *highlightParserUtils() const;
 
     // PUML
-    PUMLParserUtils *getPUMLParserUtils() const;
+    PUMLParserUtils *pumlParserUtils() const;
 
 private:
     // Synthax highlight

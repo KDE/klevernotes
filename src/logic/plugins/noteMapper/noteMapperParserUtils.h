@@ -20,7 +20,7 @@ public:
     explicit NoteMapperParserUtils(MdEditor::Parser *parser);
 
     static QPair<QString, bool> sanitizePath(const QString &_path, const QString &notePath);
-    void setNotePath(const QString &path);
+    void setNotePath(const QString &_path);
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
     void addToLinkedNoteInfos(const QStringList &infos);

@@ -17,8 +17,17 @@ namespace MdEditor
 EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
 {
-    m_parser = new Parser(this);
     m_syntaxvisitor = new SyntaxVisitor(this);
+
+    m_parser = new Parser(this);
+    m_parser->addPluginHelper();
+
+    static const QList<QStringList> extendedSyntaxsList = {
+        {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
+        {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
+        {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
+    };
+    m_parser->addExtendedSyntaxs(extendedSyntaxsList);
 }
 
 // Acces QTextDocument
@@ -45,19 +54,24 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
 
     if (document) {
         m_qQuickDocument = document;
-        connect(m_qQuickDocument->textDocument(), &QTextDocument::contentsChanged, this, &EditorHandler::parse);
+        connect(m_qQuickDocument->textDocument(), &QTextDocument::contentsChanged, this, &EditorHandler::parseDoc);
         m_document = m_qQuickDocument->textDocument();
         Q_EMIT documentChanged();
-        parse();
+        parseDoc();
     }
 }
-// ===============
+// !Acces QTextDocument
 
 // KleverNotes method
 // ==================
-void EditorHandler::parse()
+void EditorHandler::parseDoc()
 {
-    const QString content = m_parser->parse(m_document->toPlainText());
+    parse(m_document->toPlainText());
+}
+
+void EditorHandler::parse(const QString &src)
+{
+    const QString content = m_parser->parse(src);
     Q_EMIT parsingFinished(content);
 }
 
@@ -72,14 +86,29 @@ void EditorHandler::setNotePath(const QString &notePath)
         return;
     }
 
-    m_notePath = notePath;
-
     QString parserNotePath = notePath;
-    static const QString pathEnd = QStringLiteral("note.md");
-    parserNotePath.chop(pathEnd.length());
+    static const QString pathEnd = QStringLiteral("/");
+    if (notePath.endsWith(pathEnd)) {
+        parserNotePath.chop(pathEnd.length());
+    }
+
+    m_notePath = parserNotePath;
     m_parser->setNotePath(parserNotePath);
 }
-// ===============
+
+// NoteMapper method
+void EditorHandler::setHeaderInfo(const QStringList &headerInfo)
+{
+    m_parser->setHeaderInfo(headerInfo);
+}
+
+QString EditorHandler::headerLevel() const
+{
+    return m_parser->headerLevel();
+};
+// !NoteMapper method
+
+// !KleverNotes method
 
 // md-editor method
 // ================
@@ -101,7 +130,7 @@ SyntaxVisitor *EditorHandler::syntaxHighlighter() const
 {
     return m_syntaxvisitor;
 }
-// ===============
+// !md-editor method
 
 // KleverNotes slots
 // =================
@@ -114,6 +143,7 @@ void EditorHandler::pumlDarkChanged()
 {
     m_parser->pumlDarkChanged();
 }
+// !KleverNotes slots
 
 // md-editor slots
 // ===============
@@ -122,5 +152,5 @@ void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Do
 {
     m_syntaxvisitor->highlight(doc, colors);
 }
-// ===============
+// !md-editor slots
 }

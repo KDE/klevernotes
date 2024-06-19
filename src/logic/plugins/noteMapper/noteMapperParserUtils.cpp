@@ -78,9 +78,10 @@ QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path, c
     return qMakePair(path, true);
 }
 
-void NoteMapperParserUtils::setNotePath(const QString &path)
+void NoteMapperParserUtils::setNotePath(const QString &_path)
 {
-    m_mapperNotePath = path.chopped(1).remove(KleverConfig::storagePath());
+    QString path = _path;
+    m_mapperNotePath = path.remove(0, KleverConfig::storagePath().length());
 }
 
 void NoteMapperParserUtils::setHeaderInfo(const QStringList &headerInfo)

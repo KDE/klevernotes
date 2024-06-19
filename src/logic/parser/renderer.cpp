@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "renderer.h"
@@ -13,9 +13,8 @@
 #include <QUrl>
 #include <qlogging.h>
 
-Renderer::Renderer(PluginHelper *pluginHelper)
-    : MD::details::HtmlVisitor<MD::QStringTrait>()
-    , m_pluginHelper(pluginHelper){};
+Renderer::Renderer()
+    : MD::details::HtmlVisitor<MD::QStringTrait>(){};
 
 void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
 {
@@ -126,11 +125,13 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
 {
     QString url = l->url();
 
-    const QString wikilinkDelim = QStringLiteral("@HEADER@");
-    if (url.contains(wikilinkDelim)) {
-        auto linkedNoteInfo = url.split(wikilinkDelim);
-        linkedNoteInfo.append(l->text());
-        m_pluginHelper->getMapperParserUtils()->addToLinkedNoteInfos(linkedNoteInfo);
+    if (m_pluginHelper) {
+        const QString wikilinkDelim = QStringLiteral("@HEADER@");
+        if (url.contains(wikilinkDelim)) {
+            auto linkedNoteInfo = url.split(wikilinkDelim);
+            linkedNoteInfo.append(l->text());
+            m_pluginHelper->mapperParserUtils()->addToLinkedNoteInfos(linkedNoteInfo);
+        }
     }
 
     const auto lit = this->doc->labeledLinks().find(url);
@@ -227,22 +228,26 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
 
         const QString lang = c->syntax();
         const QString _text = c->text();
+        QString code = _text;
+        bool highlight = false;
+
         QString returnValue;
-        if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-            QPair<QString, QString> imageInfo = m_pluginHelper->getPUMLParserUtils()->renderCode(_text, KleverConfig::pumlDark());
+        if (m_pluginHelper && KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
+            QPair<QString, QString> imageInfo = m_pluginHelper->pumlParserUtils()->renderCode(_text, KleverConfig::pumlDark());
 
             returnValue = image(imageInfo.first, imageInfo.second);
         } else {
-            const bool highlight = KleverConfig::codeSynthaxHighlightEnabled();
-            QString code = m_pluginHelper->getHighlightParserUtils()->getCode(highlight, _text, lang);
+            if (m_pluginHelper) {
+                highlight = KleverConfig::codeSynthaxHighlightEnabled();
+                code = m_pluginHelper->highlightParserUtils()->getCode(highlight, _text, lang);
+            }
             returnValue = Renderer::code(code, highlight);
         }
 
         html.push_back(returnValue);
     }
 }
-// Overriding default
-// ===================
+// !Overriding default
 
 // Internal info
 // =============
@@ -256,8 +261,12 @@ void Renderer::addExtendedSyntax(const long long int opts, const QString &openin
     m_extendedSyntaxMap[opts] = {openingHTML, closingHTML};
 }
 
-// Internal info
-// ==============
+void Renderer::addPluginHelper(PluginHelper *pluginHelper)
+{
+    m_pluginHelper = pluginHelper;
+}
+
+// !Internal info
 
 // Rendering
 // =========
@@ -352,5 +361,4 @@ QString Renderer::unescape(const QString &html)
 
     return result;
 }
-// Rendering
-// =========
+// !Rendering

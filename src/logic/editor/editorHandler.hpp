@@ -7,6 +7,7 @@
 
 // KleverNotes include
 #include "colors.hpp"
+#include <qtmetamacros.h>
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -34,19 +35,26 @@ class EditorHandler : public QObject
     Q_PROPERTY(QQuickTextDocument *document READ qQuickDocument WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
 
+    // NoteMapper
+    Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
+    Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
+
 public:
     explicit EditorHandler(QObject *parent = nullptr);
-
-    void parse();
 
     void setDocument(QQuickTextDocument *document);
     QTextDocument *document() const;
     QQuickTextDocument *qQuickDocument() const;
 
+    void parseDoc();
+    Q_INVOKABLE void parse(const QString &src);
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
-
     Parser *parser() const;
+
+    // NoteMapper
+    void setHeaderInfo(const QStringList &headerInfo);
+    QString headerLevel() const;
 
     // md-editor
     std::shared_ptr<MD::Document<MD::QStringTrait>> currentDoc() const;

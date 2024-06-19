@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
 
 #pragma once
@@ -16,10 +16,11 @@
 class Renderer : public MD::details::HtmlVisitor<MD::QStringTrait>
 {
 public:
-    Renderer(PluginHelper *pluginHelper);
+    Renderer();
     ~Renderer() override = default;
 
     void setNotePath(const QString &notePath);
+    void addPluginHelper(PluginHelper *pluginHelper);
     void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
     void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
