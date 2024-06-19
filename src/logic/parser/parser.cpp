@@ -26,10 +26,6 @@ void Parser::addParsePlugins()
         {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
         {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
     };
-    /**/
-    /* static const auto kleverPluginsList = { */
-    /*     NoteMapperFunc::noteLinkingExtension, */
-    /* }; */
 
     int extendedCount = 0;
     for (const auto &syntaxInfo : extendedSyntaxsList) {
@@ -40,6 +36,11 @@ void Parser::addParsePlugins()
         m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + extendedCount, ExtendedSyntaxHelper::extendedSyntaxHelperFunc, true, options);
         extendedCount++;
     }
+
+    /**/
+    /* static const auto kleverPluginsList = { */
+    /*     NoteMapperFunc::noteLinkingExtension, */
+    /* }; */
 
     /* int pluginCount = 0; */
     /* for (auto &func : kleverPluginsList) { */

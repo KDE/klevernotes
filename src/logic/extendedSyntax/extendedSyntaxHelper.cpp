@@ -120,8 +120,8 @@ bool validDelimsPairs(MDParagraphPtr p,
             continue;
         }
 
-        const bool openInsideStyle = styleOpeningPos < openDelim.startColumn;
-        const bool closeInsideStyle = closeDelim.startColumn < styleClosingPos;
+        const bool openInsideStyle = styleOpeningPos < openDelim.startColumn && openDelim.startColumn < styleOpeningPos;
+        const bool closeInsideStyle = styleOpeningPos < closeDelim.startColumn && closeDelim.startColumn < styleClosingPos;
 
         if (openInsideStyle && !closeInsideStyle) {
             // This opening is not good
