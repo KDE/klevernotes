@@ -6,6 +6,7 @@
 #include "extendedSyntaxHelper.hpp"
 #include "logic/md4qt/doc.hpp"
 #include "logic/md4qt/parser.hpp"
+#include <qlogging.h>
 
 struct CompareByStartColumn {
     template<typename T>
@@ -68,6 +69,7 @@ void getDelim(MDParagraphPtr p,
     const int delimLength = searchedDelim.length();
 
     while (-1 < delimIdx) {
+        qDebug() << src << lineInfo.first.asString() << searchedDelim;
         const QChar charBeforeDelim = (localPos.first == 0 && delimIdx == 0) ? QChar() : lineInfo.first[localPos.first + delimIdx - 1];
         if (charBeforeDelim == QChar::fromLatin1('\\')) {
             delimIdx = src.indexOf(searchedDelim, delimIdx + delimLength);
@@ -362,6 +364,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
         }
 
         const QString delimText = MD::virginSubstr(po.fr, styleInfo.delim);
+        qDebug() << delimText << "DELIM !!!!!";
 
         MDTextItemPtr currentTextItem = nullptr;
         MDItemWithOptsPtr currentItem = styleInfo.itemPtr;
@@ -404,6 +407,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
                 reattached = true;
             }
             currentTextItem->setText(currentItemText);
+            qDebug() << currentRawText << "CURRENT RAW 409";
             po.rawTextData[currentRawIdx].str = currentRawText;
         }
 
@@ -422,12 +426,13 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
                 if (reattached) { // merge nextTextItem into currentItem
                     currentRawText = currentRawText + nextRawText;
+                    qDebug() << currentRawText << "CURRENT RAW 428";
+                    po.rawTextData[currentRawIdx].str = currentRawText;
 
-                    currentItemText = MD::replaceEntity<MD::QStringTrait>(currentRawText.simplified());
-                    currentItemText = MD::removeBackslashes<MD::QStringTrait>(currentRawText).asString();
+                    currentItemText = MD::replaceEntity<MD::QStringTrait>(QString(currentRawText).simplified());
+                    currentItemText = MD::removeBackslashes<MD::QStringTrait>(currentItemText).asString();
 
                     currentTextItem->setText(currentItemText);
-                    po.rawTextData[currentRawIdx].str = currentRawText;
                     currentTextItem->setEndColumn(nextTextItem->endColumn());
                     currentTextItem->closeStyles() << nextTextItem->closeStyles();
 
@@ -441,12 +446,13 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
                     }
 
                     nextRawText = delimText + nextRawText;
+                    qDebug() << nextRawText << "NEXT raw 448";
+                    po.rawTextData[nextRawIdx].str = nextRawText;
 
-                    nextItemText = MD::replaceEntity<MD::QStringTrait>(nextRawText.simplified());
-                    nextItemText = MD::removeBackslashes<MD::QStringTrait>(nextRawText).asString();
+                    nextItemText = MD::replaceEntity<MD::QStringTrait>(QString(nextRawText).simplified());
+                    nextItemText = MD::removeBackslashes<MD::QStringTrait>(nextItemText).asString();
 
                     nextTextItem->setText(nextItemText);
-                    po.rawTextData[nextRawIdx].str = nextRawText;
 
                     auto newStartColumn = nextTextItem->startColumn() - delimText.length();
                     nextTextItem->setStartColumn(newStartColumn);
@@ -471,9 +477,11 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
                 if (reattached) { // merge currentItem into previousItem
                     previousRawText = previousRawText + currentRawText;
+                    qDebug() << previousRawText << "PREVIOUS raw 479";
+                    po.rawTextData[previousRawIdx].str = previousRawText;
 
-                    previousItemText = MD::replaceEntity<MD::QStringTrait>(previousRawText.simplified());
-                    previousItemText = MD::removeBackslashes<MD::QStringTrait>(previousRawText).asString();
+                    previousItemText = MD::replaceEntity<MD::QStringTrait>(QString(previousRawText).simplified());
+                    previousItemText = MD::removeBackslashes<MD::QStringTrait>(previousItemText).asString();
 
                     previousTextItem->setEndColumn(currentItem->endColumn());
 
@@ -491,9 +499,11 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
                     }
 
                     previousRawText = previousRawText + delimText;
+                    qDebug() << previousRawText << "PREVIOUS raw 501";
+                    po.rawTextData[previousRawIdx].str = previousRawText;
 
-                    previousItemText = MD::replaceEntity<MD::QStringTrait>(previousRawText.simplified());
-                    previousItemText = MD::removeBackslashes<MD::QStringTrait>(previousRawText).asString();
+                    previousItemText = MD::replaceEntity<MD::QStringTrait>(QString(previousRawText).simplified());
+                    previousItemText = MD::removeBackslashes<MD::QStringTrait>(previousItemText).asString();
 
                     auto newEndColumn = currentItem->endColumn() + delimText.length();
                     previousTextItem->setEndColumn(newEndColumn);
@@ -502,12 +512,12 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
                 }
 
                 previousTextItem->setText(previousItemText);
-                po.rawTextData[previousRawIdx].str = previousRawText;
             }
         }
 
         if (!reattached) {
             MDParsingOpts::TextData newTextData;
+            qDebug() << delimText << "DELIM";
             newTextData.str = delimText;
             newTextData.pos = styleInfo.delim.startColumn();
             newTextData.line = styleInfo.delim.startLine();
@@ -577,10 +587,10 @@ void removeDelimText(MDParagraphPtr p,
         if (rawText.length() == delimLength) {
             if (delim.type == TagType::Opening) {
                 auto nextItem = getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-                nextItem->openStyles() << currentTextItem->openStyles();
+                // nextItem->openStyles() << currentTextItem->openStyles();
             } else {
                 auto previousItem = getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
-                previousItem->closeStyles() << currentTextItem->closeStyles();
+                // previousItem->closeStyles() << currentTextItem->closeStyles();
             }
             po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
             p->removeItemAt(paraIdx);
@@ -590,11 +600,12 @@ void removeDelimText(MDParagraphPtr p,
 
         if (delimRawOffSet == 0) {
             rawText.remove(0, delimLength);
+            qDebug() << rawText << "CURRENT RAW 602";
             currentRawTextData.str = rawText;
             currentRawTextData.pos = currentRawTextData.pos + delimLength;
             po.rawTextData[rawIdx] = currentRawTextData;
 
-            auto text = MD::replaceEntity<MD::QStringTrait>(rawText.simplified());
+            auto text = MD::replaceEntity<MD::QStringTrait>(QString(rawText).simplified());
             text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
             currentTextItem->setText(text);
             currentTextItem->setStartColumn(currentRawTextData.pos);
@@ -617,10 +628,11 @@ void removeDelimText(MDParagraphPtr p,
 
         if (rawText.length() == delimRawOffSet + delimLength) {
             rawText.chop(delimLength);
+            qDebug() << rawText << "CURRENT RAW 630";
             currentRawTextData.str = rawText;
             po.rawTextData[rawIdx] = currentRawTextData;
 
-            auto text = MD::replaceEntity<MD::QStringTrait>(rawText.simplified());
+            auto text = MD::replaceEntity<MD::QStringTrait>(QString(rawText).simplified());
             text = MD::removeBackslashes<MD::QStringTrait>(text).asString();
             currentTextItem->setText(text);
             currentTextItem->setEndColumn(currentTextItem->endColumn() - delimLength);
@@ -642,16 +654,18 @@ void removeDelimText(MDParagraphPtr p,
 
         const long long int rightStartPos = delimRawOffSet + delimLength;
         const QString rightRawText = rawText.mid(rightStartPos);
-        auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
-        auto rightText = MD::replaceEntity<MD::QStringTrait>(rightRawText.simplified());
-        rightText = MD::removeBackslashes<MD::QStringTrait>(rightText).asString();
 
         MDParsingOpts::TextData newTextData;
+        qDebug() << rightRawText << "right RAW 659";
         newTextData.str = rightRawText;
         newTextData.pos = rightStartPos;
         newTextData.line = delim.startLine;
         po.rawTextData.insert(po.rawTextData.cbegin() + rawIdx + 1, newTextData);
         paraIdxToRawIdx.insert(rawIdx + 1, paraIdx + 1);
+
+        auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
+        auto rightText = MD::replaceEntity<MD::QStringTrait>(QString(rightRawText).simplified());
+        rightText = MD::removeBackslashes<MD::QStringTrait>(rightText).asString();
 
         newTextItem->setText(rightText);
         newTextItem->setStartLine(currentTextItem->startLine());
@@ -664,11 +678,13 @@ void removeDelimText(MDParagraphPtr p,
         p->insertItem(paraIdx + 1, newTextItem);
 
         const QString leftRawText = rawText.left(delimRawOffSet);
-        auto leftText = MD::replaceEntity<MD::QStringTrait>(leftRawText.simplified());
-        leftText = MD::removeBackslashes<MD::QStringTrait>(leftText).asString();
-
+        qDebug() << leftRawText << "left RAW 680";
         currentRawTextData.str = leftRawText;
         po.rawTextData[rawIdx] = currentRawTextData;
+
+        auto leftText = MD::replaceEntity<MD::QStringTrait>(QString(leftRawText).simplified());
+        leftText = MD::removeBackslashes<MD::QStringTrait>(leftText).asString();
+
         currentTextItem->setText(leftText);
         currentTextItem->setEndColumn(delim.startColumn - 1);
         currentTextItem->setSpaceAfter(rawText[delimRawOffSet - 1].isSpace());
@@ -693,6 +709,17 @@ void removeDelimText(MDParagraphPtr p,
     }
 }
 
+void getParaIdxToRawIdx(MDParagraphPtr p, QList<long long int> &paraIdxToRawIdx)
+{
+    paraIdxToRawIdx.clear();
+
+    for (long long int i = 0; i < p->items().size(); ++i) {
+        if (p->getItemAt(i)->type() == MD::ItemType::Text) {
+            paraIdxToRawIdx.append(i);
+        }
+    }
+}
+
 void handleText(MDParagraphPtr p,
                 MDParsingOpts &po,
                 QList<DelimInfo> &pairs,
@@ -703,6 +730,8 @@ void handleText(MDParagraphPtr p,
 {
     std::sort(badStyles.begin(), badStyles.end(), CompareByStartColumn{});
     restoreBadStyleText(p, po, badStyles, paraIdxToRawIdx);
+
+    getParaIdxToRawIdx(p, paraIdxToRawIdx);
 
     std::sort(pairs.begin(), pairs.end(), CompareByStartColumn{});
     removeDelimText(p, po, pairs, paraIdxToRawIdx, newStyleOpt, delimLength);
@@ -742,6 +771,7 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
 
         handleText(p, po, pairs, paraIdxToRawIdx, delimLength, newStyleOpt, badStyles);
 
+        qDebug() << "\n";
         MD::optimizeParagraph(p, po);
     }
 }
