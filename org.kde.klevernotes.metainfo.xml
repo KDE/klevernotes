@@ -95,6 +95,7 @@
       <caption xml:lang="ca">Pàgina principal a l'escriptori</caption>
       <caption xml:lang="ca-valencia">Pàgina principal a l'escriptori</caption>
       <caption xml:lang="cs">Hlavní stránka na pracovní ploše</caption>
+      <caption xml:lang="en-GB">Main page on desktop</caption>
       <caption xml:lang="eo">Ĉefpaĝo en labortablo</caption>
       <caption xml:lang="es">Página principal para el escritorio</caption>
       <caption xml:lang="fr">Page principale sur le bureau</caption>
@@ -114,6 +115,7 @@
       <caption>Main page on small form factor</caption>
       <caption xml:lang="ca">Pàgina principal al factor de format petit</caption>
       <caption xml:lang="ca-valencia">Pàgina principal al factor de format xicotet</caption>
+      <caption xml:lang="en-GB">Main page on small form factor</caption>
       <caption xml:lang="eo">Ĉefpaĝo en malgranda formfaktoro</caption>
       <caption xml:lang="es">Página principal para factor de forma pequeño</caption>
       <caption xml:lang="fr">Page principale sur périphérique de petit format</caption>
@@ -134,6 +136,7 @@
       <caption xml:lang="ca">Pàgina de tasques pendents</caption>
       <caption xml:lang="ca-valencia">Pàgina de tasques pendents</caption>
       <caption xml:lang="cs">Stránka úkolů</caption>
+      <caption xml:lang="en-GB">To-do page</caption>
       <caption xml:lang="eo">Paĝo de farendoj</caption>
       <caption xml:lang="es">Página de tareas pendientes</caption>
       <caption xml:lang="fr">Page des tâches à faire</caption>
@@ -154,6 +157,7 @@
       <caption xml:lang="ca">Pàgina de dibuix</caption>
       <caption xml:lang="ca-valencia">Pàgina de dibuix</caption>
       <caption xml:lang="cs">Stránka pro kreslení</caption>
+      <caption xml:lang="en-GB">Drawing page</caption>
       <caption xml:lang="eo">Paĝo de desegnado</caption>
       <caption xml:lang="es">Página de dibujo</caption>
       <caption xml:lang="fr">Page de dessin</caption>
