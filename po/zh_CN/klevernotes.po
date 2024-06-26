@@ -894,7 +894,7 @@ msgstr "标题"
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr ""
+msgstr "数字键"
 
 #: contents/ui/sharedComponents/ActionsList.qml:20
 #: contents/ui/sharedComponents/ActionsList.qml:23
@@ -1303,36 +1303,36 @@ msgstr "替代文字"
 #, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr ""
+msgstr "图像"
 
 #: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "扩展语法"
 
 #: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
 msgid "Table"
-msgstr ""
+msgstr "表格"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
-msgstr ""
+msgstr "左对齐"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
-msgstr ""
+msgstr "中间对齐"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
-msgstr ""
+msgstr "右对齐"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
