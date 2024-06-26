@@ -5,9 +5,8 @@
 
 #include "logic/parser/parser.h"
 #include "logic/editor/editorHandler.hpp"
-#include "logic/extendedSyntax/extendedSyntaxHelper.hpp"
+#include "logic/extendedSyntax/extendedSyntaxMaker.hpp"
 #include "logic/plugins/pluginHelper.h"
-#include <qlogging.h>
 
 namespace MdEditor
 {
@@ -88,11 +87,11 @@ void Parser::addPluginHelper()
 
 void Parser::addExtendedSyntax(const QStringList &details)
 {
-    const long long int opts = MD::TextOption::StrikethroughText << m_extendedSyntaxCount + 1;
+    const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
     m_renderer->addExtendedSyntax(opts, details[1], details[2]);
 
     const QStringList options = {details[0], QString::number(opts)};
-    m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount, ExtendedSyntaxHelper::extendedSyntaxHelperFunc, true, options);
+    m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount, ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, options);
     m_extendedSyntaxCount++;
 }
 

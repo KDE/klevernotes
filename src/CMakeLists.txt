@@ -42,6 +42,8 @@ set(exec_SRCS
     logic/editor/syntaxvisitor.cpp
 
     logic/extendedSyntax/extendedSyntaxHelper.cpp
+    logic/extendedSyntax/extendedSyntaxMaker.cpp
+    logic/extendedSyntax/md4qtHelperFunc.cpp
 
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp
@@ -50,8 +52,6 @@ set(exec_SRCS
     logic/painting/strokelistitem.cpp
     logic/painting/strokepainter.cpp
 
-    # logic/parser/blockLexer.cpp
-    # logic/parser/inlineLexer.cpp
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
 
