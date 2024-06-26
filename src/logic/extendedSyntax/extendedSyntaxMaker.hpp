@@ -104,9 +104,9 @@ void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int n
 void setSpacesBack(const long long int fromParaIdx, const long long int toParaIdx, MDParagraphPtr p, MDParsingOpts &po);
 
 /**
- * Set back all the spaces (of Paragraph Items and RawTextData) based on the found pairs (pairs should be sorted)
+ * Set back all the spaces (of Paragraph Items and RawTextData) based on the found pairs/badStyles (pairs should be sorted)
  */
-void setSpacesBack(const QList<DelimInfo> &pairs, MDParagraphPtr p, MDParsingOpts &po);
+void setSpacesBack(const QList<DelimInfo> &pairs, const QList<StyleDelimInfo> &badStyles, MDParagraphPtr p, MDParsingOpts &po);
 
 /**
  * Provide a simple way to execute the whole parsing for a new style

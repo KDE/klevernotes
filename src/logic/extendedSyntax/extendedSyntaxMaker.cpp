@@ -335,10 +335,10 @@ void addSpace(MDTextItemPtr item, MDParsingOpts &po, const bool spaceBefore)
 
 void setSpacesBack(const long long int fromParaIdx, const long long int toParaIdx, MDParagraphPtr p, MDParsingOpts &po)
 {
-    const MDItemWithOptsPtr item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(0));
-    if (item->type() == MD::ItemType::Text) {
-        const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(item, po);
-        MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
+    const MDItemWithOptsPtr fromItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(fromParaIdx));
+    if (fromItem->type() == MD::ItemType::Text) {
+        const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(fromItem, po);
+        MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(fromItem);
 
         if (fromParaIdx == 0) {
             textItem->setSpaceBefore(true);
@@ -352,11 +352,17 @@ void setSpacesBack(const long long int fromParaIdx, const long long int toParaId
                 addSpace(previousTextItem, po, false);
             }
         }
+    }
+
+    const MDItemWithOptsPtr toItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(toParaIdx));
+    if (toItem->type() == MD::ItemType::Text) {
+        const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(toItem, po);
+        MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(toItem);
 
         const long long int lastParaIdx = p->items().length() - 1;
         if (toParaIdx == lastParaIdx) {
             textItem->setSpaceAfter(true);
-            po.rawTextData[0].spaceAfter = true;
+            po.rawTextData[rawIdx].spaceAfter = true;
         } else {
             addSpace(textItem, po, false);
 
@@ -379,13 +385,26 @@ void setSpacesBack(const long long int fromParaIdx, const long long int toParaId
     }
 }
 
-void setSpacesBack(const QList<DelimInfo> &pairs, MDParagraphPtr p, MDParsingOpts &po)
+void setSpacesBack(const QList<DelimInfo> &pairs, const QList<StyleDelimInfo> &badStyles, MDParagraphPtr p, MDParsingOpts &po)
 {
-    const auto &first = pairs.first();
-    const auto &last = pairs.last();
+    const auto &firstNewDelim = pairs.first();
+    const auto &lastNewDelim = pairs.last();
 
-    long long int firstParaIdx = md4qtHelperFunc::paraIdxFromPos(first.startColumn(), first.startLine(), p) + 1;
-    long long int lastParaIdx = md4qtHelperFunc::paraIdxFromPos(last.startColumn(), last.startLine(), p);
+    const long long int firstNewDelimParaIdx = md4qtHelperFunc::paraIdxFromPos(firstNewDelim.startColumn(), firstNewDelim.startLine(), p) + 1;
+    const long long int lastNewDelimParaIdx = md4qtHelperFunc::paraIdxFromPos(lastNewDelim.startColumn(), lastNewDelim.startLine(), p);
+
+    long long int firstParaIdx = firstNewDelimParaIdx;
+    long long int lastParaIdx = lastNewDelimParaIdx;
+    if (!badStyles.isEmpty()) {
+        const auto &firstBadStyle = badStyles.first();
+        const auto &lastBadStyle = badStyles.last();
+
+        const long long int firstBadStyleParaIdx = md4qtHelperFunc::paraIdxFromPos(firstBadStyle.startColumn, firstBadStyle.startLine, p) + 1;
+        const long long int lastBadStyleParaIdx = md4qtHelperFunc::paraIdxFromPos(lastBadStyle.startColumn, lastBadStyle.startLine, p);
+
+        firstParaIdx = firstBadStyleParaIdx < firstParaIdx ? firstNewDelimParaIdx : firstParaIdx;
+        lastParaIdx = lastParaIdx < lastBadStyleParaIdx ? lastBadStyleParaIdx : lastParaIdx;
+    }
 
     setSpacesBack(firstParaIdx, lastParaIdx, p, po);
 }
@@ -421,6 +440,7 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
         if (pairs.length() < 2) {
             return;
         }
+
         const int delimLength = searchedDelim.length();
 
         removeBadStylesOptsAndDelims(p, openCloseStyles, badStyles);
@@ -436,7 +456,10 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
 
         addNewStyleOpt(p, pairs, newStyleOpt);
 
-        setSpacesBack(orderedPairs, p, po);
+        if (po.fr.data.at(0).second.lineNumber == 4) {
+            qDebug() << "inspect";
+        }
+        setSpacesBack(orderedPairs, badStyles, p, po);
 
         MD::optimizeParagraph(p, po);
     }
