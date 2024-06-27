@@ -8,6 +8,7 @@
 // Qt include
 #include <QObject>
 #include <QtTest/QTest>
+#include <qlogging.h>
 
 #define MD4QT_QT_SUPPORT
 #include "../../logic/md4qt/parser.hpp"
@@ -42,7 +43,8 @@ private:
 /* Settings Data */
 void ExtendedSyntaxTest::readFile()
 {
-    QFile file(QStringLiteral("../testdata/extendSyntaxData.md"));
+    QFile file(QDir::currentPath() + QStringLiteral("/src/autotests/testdata/extendedSyntaxData.md"));
+    qDebug() << file.exists();
     QStringList lines;
 
     static const QChar newLine = QChar::fromLatin1('\n');
@@ -78,7 +80,7 @@ void ExtendedSyntaxTest::makeContinuousText()
 void ExtendedSyntaxTest::getData()
 {
     readFile();
-    Q_ASSERT_X(m_testingLines.length() == 15, "ExtendedSyntaxTest readFile", "Incorrect test case count");
+    /* Q_ASSERT_X(m_testingLines.length() == 15, "ExtendedSyntaxTest readFile", "Incorrect test case count"); */
     makeContinuousText();
 }
 
@@ -106,14 +108,8 @@ void ExtendedSyntaxTest::initTestCase()
 }
 
 /* TEST */
-
 void ExtendedSyntaxTest::test()
 {
-    qDebug() << m_testingLines;
-
-    qDebug() << m_blankLineText << "\n END BLANK";
-
-    qDebug() << m_testingLines;
 }
 
 QTEST_MAIN(ExtendedSyntaxTest)

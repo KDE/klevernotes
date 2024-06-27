@@ -12,9 +12,13 @@ Copyright: Louis Schul <schul9louis@gmail.com>
 License: GPL-2.0-or-later
 
 Files: logo.png
-Copyright:2023 Helden Hoierman 
+Copyright: 2023 Helden Hoierman 
 License: CC-BY-SA-4.0 
 
 Files: src/example/Demo/Images/logo.png 
 Copyright: 2023 Helden Hoierman
 License: CC-BY-SA-4.0 
+
+Files: src/autotests/testdata/extendedSyntaxData.md
+Copyright: Louis Schul <schul9louis@gmail.com>
+License: GPL-2.0-or-later
