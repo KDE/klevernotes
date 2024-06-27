@@ -92,7 +92,7 @@ void Parser::addExtendedSyntax(const QStringList &details)
 
     const QStringList options = {details[0], QString::number(opts)};
     m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount, ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, options);
-    m_extendedSyntaxCount++;
+    ++m_extendedSyntaxCount;
 }
 
 void Parser::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)

@@ -8,9 +8,9 @@
 #include <QObject>
 #include <QSet>
 
-#include "logic/plugins/noteMapper/noteMapperParserUtils.h"
-#include "logic/plugins/puml/pumlParserUtils.h"
-#include "logic/plugins/syntaxHighlight/highlightParserUtils.h"
+#include "./noteMapper/noteMapperParserUtils.h"
+#include "./puml/pumlParserUtils.h"
+#include "./syntaxHighlight/highlightParserUtils.h"
 
 class PluginHelper
 {

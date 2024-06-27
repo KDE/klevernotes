@@ -8,8 +8,8 @@
 #include <QList>
 
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/doc.hpp"
-#include "logic/md4qt/parser.hpp"
+#include "../md4qt/doc.hpp"
+#include "../md4qt/parser.hpp"
 
 using MDParagraphPtr = std::shared_ptr<MD::Paragraph<MD::QStringTrait>>;
 using MDParsingOpts = MD::TextParsingOpts<MD::QStringTrait>;

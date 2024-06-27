@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+
+add_definitions(-DDATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/testdata" )
+
+ecm_add_test(./parser/extendedSyntaxTest.cpp
+    TEST_NAME extendedSyntax
+    LINK_LIBRARIES klevernoteslib Qt::Test
+    NAME_PREFIX "klevernotes-"
+)

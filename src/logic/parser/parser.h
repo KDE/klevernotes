@@ -14,7 +14,7 @@
 #include "renderer.h"
 
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/parser.hpp"
+#include "../md4qt/parser.hpp"
 
 namespace MdEditor
 {

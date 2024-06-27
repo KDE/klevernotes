@@ -10,8 +10,8 @@
 #include <utility>
 
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/html.hpp"
-#include "logic/md4qt/traits.hpp"
+#include "../md4qt/html.hpp"
+#include "../md4qt/traits.hpp"
 
 class Renderer : public MD::details::HtmlVisitor<MD::QStringTrait>
 {
