@@ -294,7 +294,7 @@ void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int n
         const auto &closing = pairs[i + 1];
 
         const long long int openParaIdx = md4qtHelperFunc::paraIdxFromPos(opening.startColumn(), opening.startLine(), p) + 1;
-        const long long int closeParaIdx = md4qtHelperFunc::paraIdxFromPos(closing.startColumn(), closing.startLine(), p);
+        const long long int closeParaIdx = md4qtHelperFunc::paraIdxFromPos(closing.startColumn(), closing.startLine(), p) + 1;
 
         for (long long int i = openParaIdx; i < closeParaIdx; ++i) {
             auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(i));
