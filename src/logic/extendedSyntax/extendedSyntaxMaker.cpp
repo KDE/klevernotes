@@ -317,16 +317,14 @@ void addSpace(MDTextItemPtr item, MDParsingOpts &po, const bool spaceBefore)
     MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
     if (spaceBefore) {
         const long long int currentTrailingPos = item->openStyles().isEmpty() ? item->startColumn() : item->openStyles().first().startColumn();
-        const auto localTrailingPos = MD::localPosFromVirgin(po.fr, currentTrailingPos, item->startLine());
 
-        const bool hasSpaceBefore = localTrailingPos.first == 0 ? true : lineStr.at(localTrailingPos.first).isSpace();
+        const bool hasSpaceBefore = currentTrailingPos == 0 ? true : lineStr.at(currentTrailingPos).isSpace();
         textItem->setSpaceBefore(hasSpaceBefore);
         po.rawTextData[rawIdx].spaceBefore = hasSpaceBefore;
     } else {
         const long long int currentTailingPos = item->closeStyles().isEmpty() ? item->endColumn() : item->closeStyles().last().endColumn();
-        const auto localTailingPos = MD::localPosFromVirgin(po.fr, currentTailingPos, item->startLine());
 
-        const bool hasSpaceAfter = localTailingPos.first == lineStr.length() - 1 ? true : lineStr.at(localTailingPos.first).isSpace();
+        const bool hasSpaceAfter = currentTailingPos == lineStr.length() - 1 ? true : lineStr.at(currentTailingPos).isSpace();
         textItem->setSpaceAfter(hasSpaceAfter);
         po.rawTextData[rawIdx].spaceAfter = hasSpaceAfter;
     }
@@ -336,15 +334,11 @@ void setSpacesBack(const long long int fromParaIdx, const long long int toParaId
 {
     const MDItemWithOptsPtr fromItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(fromParaIdx));
     if (fromItem->type() == MD::ItemType::Text) {
-        const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(fromItem, po);
         MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(fromItem);
 
-        if (fromParaIdx == 0) {
-            textItem->setSpaceBefore(true);
-            po.rawTextData[rawIdx].spaceBefore = true;
-        } else {
-            addSpace(textItem, po, true);
-
+        addSpace(textItem, po, true);
+        addSpace(textItem, po, false);
+        if (fromParaIdx != 0) {
             const MDItemWithOptsPtr previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(fromParaIdx - 1));
             if (previousItem->type() == MD::ItemType::Text) {
                 const MDTextItemPtr previousTextItem = md4qtHelperFunc::getSharedTextItem(previousItem);
@@ -355,16 +349,12 @@ void setSpacesBack(const long long int fromParaIdx, const long long int toParaId
 
     const MDItemWithOptsPtr toItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(toParaIdx));
     if (toItem->type() == MD::ItemType::Text) {
-        const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(toItem, po);
         MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(toItem);
 
+        addSpace(textItem, po, true);
+        addSpace(textItem, po, false);
         const long long int lastParaIdx = p->items().length() - 1;
-        if (toParaIdx == lastParaIdx) {
-            textItem->setSpaceAfter(true);
-            po.rawTextData[rawIdx].spaceAfter = true;
-        } else {
-            addSpace(textItem, po, false);
-
+        if (toParaIdx != lastParaIdx) {
             const MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(toParaIdx + 1));
             if (nextItem->type() == MD::ItemType::Text) {
                 const MDTextItemPtr nextTextItem = md4qtHelperFunc::getSharedTextItem(nextItem);
@@ -455,9 +445,6 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
 
         addNewStyleOpt(p, pairs, newStyleOpt);
 
-        if (po.fr.data.at(0).second.lineNumber == 4) {
-            qDebug() << "inspect";
-        }
         setSpacesBack(orderedPairs, badStyles, p, po);
 
         MD::optimizeParagraph(p, po);
