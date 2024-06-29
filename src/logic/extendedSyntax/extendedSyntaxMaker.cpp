@@ -219,7 +219,6 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
         const long long int itemStartPos = currentItemPtr->startColumn();
         const long long int itemEndPos = currentItemPtr->endColumn();
 
-        const bool opening = badStyleInfo.type == TagType::Opening;
         const long long int delimStartPos = badStyleInfo.startColumn;
         const long long int delimEndPos = badStyleInfo.delim.endColumn();
         const QString delimText = MD::virginSubstr(po.fr, badStyleInfo.delim);
@@ -232,7 +231,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
         const long long int previousParaIdx = paraIdx - 1;
         MDItemWithOptsPtr previousItem = (0 <= previousParaIdx) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(previousParaIdx)) : nullptr;
-        if (opening && previousItem && (previousItem->endColumn() == delimStartPos - 1)) {
+        if (previousItem && (previousItem->endColumn() == delimStartPos - 1)) {
             if (reattached) {
                 ExtendedSyntaxHelper::mergeFromIndex(previousParaIdx, p, po);
                 continue;
@@ -242,7 +241,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
         const long long int nextParaIdx = paraIdx + 1;
         MDItemWithOptsPtr nextItem = (nextParaIdx < p->items().length()) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(nextParaIdx)) : nullptr;
-        if (!opening && nextItem && (delimEndPos + 1 == nextItem->startColumn())) {
+        if (nextItem && (delimEndPos + 1 == nextItem->startColumn())) {
             if (reattached) {
                 ExtendedSyntaxHelper::mergeFromIndex(paraIdx, p, po);
                 continue;
