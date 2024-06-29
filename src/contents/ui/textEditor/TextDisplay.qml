@@ -152,30 +152,32 @@ RowLayout {
                 const url = request.url.toString()
                 if (url.startsWith("http")) {
                     Qt.openUrlExternally(request.url)
-                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    request.reject()
                     return
                 }
                 if (url.startsWith("file:///")) {
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                    const header = notePath.substring(delimiterIndex + 8)
-                    
-                    notePath = notePath.substring(0, delimiterIndex)
+                    if (delimiterIndex != -1) {
+                        const header = notePath.substring(delimiterIndex + 8)
+                        
+                        notePath = notePath.substring(0, delimiterIndex)
 
-                    const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
-                    const sidebar = applicationWindow().globalDrawer
-                    const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+                        const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+                        const sidebar = applicationWindow().globalDrawer
+                        const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
 
-                    if (noteModelIndex.row !== -1) {
-                        if (header[1] !== 0) parser.headerInfo = headerInfo
+                        if (noteModelIndex.row !== -1) {
+                            if (header[1] !== 0) parser.headerInfo = headerInfo
 
-                        sidebar.askForFocus(noteModelIndex)
-                    } 
-                    else {
-                        notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
-                        showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
+                            sidebar.askForFocus(noteModelIndex)
+                        } 
+                        else {
+                            notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
+                            showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
+                        }
                     }
-                    request.action = WebEngineNavigationRequest.IgnoreRequest
+                    request.reject()
                     return
                 }
             }
