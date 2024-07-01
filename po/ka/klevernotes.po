@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-30 00:39+0000\n"
-"PO-Revision-Date: 2024-06-02 22:50+0200\n"
+"PO-Revision-Date: 2024-06-30 07:22+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -288,7 +288,7 @@ msgstr "PDF-ში დაბეჭდვა"
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr "გათიშულია flatpak-ის შეზღუდვის გამო"
+msgstr "გათიშულია flatpak-ის შეზღუდვის გამო."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
