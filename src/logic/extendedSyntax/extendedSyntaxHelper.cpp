@@ -265,6 +265,16 @@ void splitItem(MDParagraphPtr p,
 
     // Clean
     if (removeCurrent) {
+        if (paraIdx < p->items().length() - 1) {
+            MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+            transferStyle(currentItem, nextItem, true);
+            transferStyle(nextItem, currentItem, false);
+        }
+        if (0 < paraIdx) {
+            MDItemWithOptsPtr previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
+            transferStyle(currentItem, previousItem, true);
+            transferStyle(previousItem, currentItem, false);
+        }
         p->removeItemAt(paraIdx);
         po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
     }
