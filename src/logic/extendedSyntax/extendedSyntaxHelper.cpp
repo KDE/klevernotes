@@ -152,7 +152,7 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
     po.rawTextData[currentRawIdx] = currentRawData;
 
     // Clean
-    po.rawTextData.erase(po.rawTextData.cbegin() + from + 1);
+    po.rawTextData.erase(po.rawTextData.cbegin() + currentRawIdx + 1);
     p->removeItemAt(from + 1);
 }
 
