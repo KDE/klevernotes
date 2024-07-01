@@ -128,7 +128,8 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
             while (0 <= i) {
                 auto opening = waitingOpenings.takeAt(i);
 
-                if (opening.endColumn + 1 != info.startColumn() && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
+                if (opening.endColumn + 1 != info.startColumn() && opening.startLine() == info.startLine()
+                    && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
                     opening.paired = true;
                     info.paired = true;
 
@@ -145,7 +146,8 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
                 while (0 <= i) {
                     auto opening = waitingOpenings[i]; // We can't consume it right away
 
-                    if (opening.endColumn + 1 != info.startColumn() && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
+                    if (opening.endColumn + 1 != info.startColumn() && opening.startLine() == info.startLine()
+                        && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
                         opening.paired = true;
                         info.paired = true;
                         waitingOpenings.removeAt(i);
@@ -231,7 +233,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
         const long long int previousParaIdx = paraIdx - 1;
         MDItemWithOptsPtr previousItem = (0 <= previousParaIdx) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(previousParaIdx)) : nullptr;
-        if (previousItem && (previousItem->endColumn() == delimStartPos - 1)) {
+        if (previousItem && (previousItem->endLine() == badStyleInfo.startLine) && (previousItem->endColumn() == delimStartPos - 1)) {
             if (reattached) {
                 ExtendedSyntaxHelper::mergeFromIndex(previousParaIdx, p, po);
                 continue;
@@ -241,7 +243,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
         const long long int nextParaIdx = paraIdx + 1;
         MDItemWithOptsPtr nextItem = (nextParaIdx < p->items().length()) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(nextParaIdx)) : nullptr;
-        if (nextItem && (delimEndPos + 1 == nextItem->startColumn())) {
+        if (nextItem && (nextItem->startLine() == badStyleInfo.startLine) && (delimEndPos + 1 == nextItem->startColumn())) {
             if (reattached) {
                 ExtendedSyntaxHelper::mergeFromIndex(paraIdx, p, po);
                 continue;
@@ -282,6 +284,9 @@ void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo>
 
         // Can't use indexOf, the itemPtr could have been changed to much/merged
         const long long int paraIdx = md4qtHelperFunc::paraIdxFromPos(startPos, delim.startLine(), p);
+        if (delim.startLine() == 14) { // && delim.startColumn() == 23) {
+            qDebug() << "here";
+        }
 
         ExtendedSyntaxHelper::splitItem(p, po, paraIdx, startPos, delimLength, (delim.type == TagType::Opening), newStyleOpt);
     }
@@ -303,6 +308,23 @@ void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int n
                 item->setOpts(opts + newStyleOpt);
             }
         }
+    }
+}
+
+void removeEmpty(MDParagraphPtr p, MDParsingOpts &po)
+{
+    long long int rawIdx = 0;
+    long long int paraIdx = 0;
+    while (paraIdx < p->items().length()) {
+        if (p->getItemAt(paraIdx)->type() == MD::ItemType::Text) {
+            if (po.rawTextData[rawIdx].str.trimmed().isEmpty()) {
+                po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+                p->removeItemAt(paraIdx);
+                continue;
+            }
+            ++rawIdx;
+        }
+        ++paraIdx;
     }
 }
 
@@ -446,6 +468,8 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
         addNewStyleOpt(p, pairs, newStyleOpt);
 
         setSpacesBack(orderedPairs, badStyles, p, po);
+
+        removeEmpty(p, po);
 
         MD::optimizeParagraph(p, po);
     }

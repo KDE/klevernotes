@@ -104,6 +104,11 @@ void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int n
 void setSpacesBack(const long long int fromParaIdx, const long long int toParaIdx, MDParagraphPtr p, MDParsingOpts &po);
 
 /**
+ * Remove all empty Text Item and their corresponding rawData
+ */
+void removeEmpty(MDParagraphPtr p, MDParsingOpts &po);
+
+/**
  * Set back all the spaces (of Paragraph Items and RawTextData) based on the found pairs/badStyles (pairs should be sorted)
  */
 void setSpacesBack(const QList<DelimInfo> &pairs, const QList<StyleDelimInfo> &badStyles, MDParagraphPtr p, MDParsingOpts &po);
