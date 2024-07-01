@@ -284,9 +284,6 @@ void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo>
 
         // Can't use indexOf, the itemPtr could have been changed to much/merged
         const long long int paraIdx = md4qtHelperFunc::paraIdxFromPos(startPos, delim.startLine(), p);
-        if (delim.startLine() == 14) { // && delim.startColumn() == 23) {
-            qDebug() << "here";
-        }
 
         ExtendedSyntaxHelper::splitItem(p, po, paraIdx, startPos, delimLength, (delim.type == TagType::Opening), newStyleOpt);
     }

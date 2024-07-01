@@ -43,7 +43,7 @@ private Q_SLOTS:
     void multiLineMix();
     void cancellingPart();
     void blankLineText();
-    // void continuousText();
+    void continuousText();
 
 private:
     // md4qt
@@ -388,12 +388,12 @@ void ExtendedSyntaxTest::untouched2()
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
 
     if (doc->items().length() != 2) {
-        QFAIL("untouched1: Incorrect items count in the doc");
+        QFAIL("untouched2: Incorrect items count in the doc");
     }
 
     MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
-        QFAIL("untouched1: Incorrect items count in the paragraph");
+        QFAIL("untouched2: Incorrect items count in the paragraph");
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
@@ -414,12 +414,12 @@ void ExtendedSyntaxTest::untouched3()
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
 
     if (doc->items().length() != 2) {
-        QFAIL("untouched1: Incorrect items count in the doc");
+        QFAIL("untouched3: Incorrect items count in the doc");
     }
 
     MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
-        QFAIL("untouched1: Incorrect items count in the paragraph");
+        QFAIL("untouched3: Incorrect items count in the paragraph");
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
@@ -440,12 +440,12 @@ void ExtendedSyntaxTest::untouched4()
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
 
     if (doc->items().length() != 2) {
-        QFAIL("untouched1: Incorrect items count in the doc");
+        QFAIL("untouched4: Incorrect items count in the doc");
     }
 
     MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
-        QFAIL("untouched1: Incorrect items count in the paragraph");
+        QFAIL("untouched4: Incorrect items count in the paragraph");
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
@@ -466,12 +466,12 @@ void ExtendedSyntaxTest::unaffected1()
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
 
     if (doc->items().length() != 2) {
-        QFAIL("untouched1: Incorrect items count in the doc");
+        QFAIL("unaffected1: Incorrect items count in the doc");
     }
 
     MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
-        QFAIL("untouched1: Incorrect items count in the paragraph");
+        QFAIL("unaffected1: Incorrect items count in the paragraph");
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
@@ -499,6 +499,31 @@ void ExtendedSyntaxTest::unaffected2()
 {
     QTextStream s(&m_testingLines[12], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+
+    if (doc->items().length() != 2) {
+        QFAIL("unaffected2: Incorrect items count in the doc");
+    }
+
+    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 2) {
+        QFAIL("unaffected2: Incorrect items count in the paragraph");
+    }
+
+    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    QCOMPARE_EQ(item1->openStyles().length(), 0);
+    QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    QCOMPARE_EQ(item1->opts(), 0);
+    QCOMPARE(item1->text(), QStringLiteral("^Unaffected"));
+    QVERIFY(item1->isSpaceBefore());
+    QVERIFY(item1->isSpaceAfter());
+
+    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    QCOMPARE_EQ(item2->openStyles().length(), 0);
+    QCOMPARE_EQ(item2->closeStyles().length(), 0);
+    QCOMPARE_EQ(item2->opts(), 0);
+    QCOMPARE(item2->text(), QStringLiteral("^"));
+    QVERIFY(item2->isSpaceBefore());
+    QVERIFY(item2->isSpaceAfter());
 };
 
 /*
@@ -508,15 +533,146 @@ void ExtendedSyntaxTest::newStyleMix()
 {
     QTextStream s(&m_testingLines[13], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+
+    if (doc->items().length() != 2) {
+        QFAIL("newStyleMix: Incorrect items count in the doc");
+    }
+
+    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 5) {
+        QFAIL("newStyleMix: Incorrect items count in the paragraph");
+    }
+
+    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    QCOMPARE_EQ(item1->openStyles().length(), 0);
+    QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    QCOMPARE_EQ(item1->opts(), 0);
+    QCOMPARE(item1->text(), QStringLiteral("New style mix"));
+    QVERIFY(item1->isSpaceBefore());
+    QVERIFY(!item1->isSpaceAfter());
+
+    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    QCOMPARE_EQ(item2->openStyles().length(), 1);
+    QCOMPARE_EQ(item2->closeStyles().length(), 1);
+    QCOMPARE_EQ(item2->opts(), 16);
+    QCOMPARE(item2->text(), QStringLiteral("==="));
+    QVERIFY(!item2->isSpaceBefore());
+    QVERIFY(!item2->isSpaceAfter());
+
+    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    QCOMPARE_EQ(item3->openStyles().length(), 0);
+    QCOMPARE_EQ(item3->closeStyles().length(), 0);
+    QCOMPARE_EQ(item3->opts(), 0);
+    QCOMPARE(item3->text(), QStringLiteral("=="));
+    QVERIFY(!item3->isSpaceBefore());
+    QVERIFY(!item3->isSpaceAfter());
+
+    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    QCOMPARE_EQ(item4->openStyles().length(), 1);
+    QCOMPARE_EQ(item4->closeStyles().length(), 1);
+    QCOMPARE_EQ(item4->opts(), 16);
+    QCOMPARE(item4->text(), QStringLiteral("=="));
+    QVERIFY(!item4->isSpaceBefore());
+    QVERIFY(!item4->isSpaceAfter());
+
+    const auto item5 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(4));
+    QCOMPARE_EQ(item5->openStyles().length(), 0);
+    QCOMPARE_EQ(item5->closeStyles().length(), 0);
+    QCOMPARE_EQ(item5->opts(), 0);
+    QCOMPARE(item5->text(), QStringLiteral("=="));
+    QVERIFY(!item5->isSpaceBefore());
+    QVERIFY(item5->isSpaceAfter());
 };
 
 /*
-Multi__*line*__ ==*mix*== --of--\n^new^ --====and==-- original
+Multi__*line*__ ==*mix*== --of--
+^new^ --====and==-- original
 */
 void ExtendedSyntaxTest::multiLineMix()
 {
     QTextStream s(&m_testingLines[14], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+
+    if (doc->items().length() != 2) {
+        QFAIL("multiLineMix: Incorrect items count in the doc");
+    }
+
+    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 9) {
+        QFAIL("multiLineMix: Incorrect items count in the paragraph");
+    }
+
+    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    QCOMPARE_EQ(item1->openStyles().length(), 0);
+    QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    QCOMPARE_EQ(item1->opts(), 0);
+    QCOMPARE(item1->text(), QStringLiteral("Multi__"));
+    QVERIFY(item1->isSpaceBefore());
+    QVERIFY(!item1->isSpaceAfter());
+
+    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    QCOMPARE_EQ(item2->openStyles().length(), 1);
+    QCOMPARE_EQ(item2->closeStyles().length(), 1);
+    QCOMPARE_EQ(item2->opts(), 2);
+    QCOMPARE(item2->text(), QStringLiteral("line"));
+    QVERIFY(!item2->isSpaceBefore());
+    QVERIFY(!item2->isSpaceAfter());
+
+    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    QCOMPARE_EQ(item3->openStyles().length(), 0);
+    QCOMPARE_EQ(item3->closeStyles().length(), 0);
+    QCOMPARE_EQ(item3->opts(), 0);
+    QCOMPARE(item3->text(), QStringLiteral("__"));
+    QVERIFY(!item3->isSpaceBefore());
+    QVERIFY(item3->isSpaceAfter());
+
+    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    QCOMPARE_EQ(item4->openStyles().length(), 2);
+    QCOMPARE_EQ(item4->closeStyles().length(), 2);
+    QCOMPARE_EQ(item4->opts(), 10);
+    QCOMPARE(item4->text(), QStringLiteral("mix"));
+    QVERIFY(item4->isSpaceBefore());
+    QVERIFY(item4->isSpaceAfter());
+
+    const auto item5 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(4));
+    QCOMPARE_EQ(item5->openStyles().length(), 2);
+    QCOMPARE_EQ(item5->closeStyles().length(), 2);
+    QCOMPARE_EQ(item5->opts(), 16);
+    QCOMPARE(item5->text(), QStringLiteral("of"));
+    QVERIFY(item5->isSpaceBefore());
+    QVERIFY(item5->isSpaceAfter());
+
+    const auto item6 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(5));
+    QCOMPARE_EQ(item6->openStyles().length(), 1);
+    QCOMPARE_EQ(item6->closeStyles().length(), 1);
+    QCOMPARE_EQ(item6->opts(), 32);
+    QCOMPARE(item6->text(), QStringLiteral("new"));
+    QVERIFY(item6->isSpaceBefore());
+    QVERIFY(item6->isSpaceAfter());
+
+    const auto item7 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(6));
+    QCOMPARE_EQ(item7->openStyles().length(), 2);
+    QCOMPARE_EQ(item7->closeStyles().length(), 0);
+    QCOMPARE_EQ(item7->opts(), 16);
+    QCOMPARE(item7->text(), QStringLiteral("=="));
+    QVERIFY(!item7->isSpaceBefore());
+    QVERIFY(!item7->isSpaceAfter());
+
+    const auto item8 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(7));
+    QCOMPARE_EQ(item8->openStyles().length(), 1);
+    QCOMPARE_EQ(item8->closeStyles().length(), 3);
+    QCOMPARE_EQ(item8->opts(), 24);
+    QCOMPARE(item8->text(), QStringLiteral("and"));
+    QVERIFY(item8->isSpaceBefore());
+    QVERIFY(item8->isSpaceAfter());
+
+    const auto item9 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(8));
+    QCOMPARE_EQ(item9->openStyles().length(), 0);
+    QCOMPARE_EQ(item9->closeStyles().length(), 0);
+    QCOMPARE_EQ(item9->opts(), 0);
+    QCOMPARE(item9->text(), QStringLiteral("original"));
+    QVERIFY(item9->isSpaceBefore());
+    QVERIFY(item9->isSpaceAfter());
 };
 
 /*
@@ -526,24 +682,53 @@ void ExtendedSyntaxTest::cancellingPart()
 {
     QTextStream s(&m_testingLines[15], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+
+    if (doc->items().length() != 2) {
+        QFAIL("cancellingPart: Incorrect items count in the doc");
+    }
+
+    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 3) {
+        QFAIL("cancellingPart: Incorrect items count in the paragraph");
+    }
+
+    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    QCOMPARE_EQ(item1->openStyles().length(), 1);
+    QCOMPARE_EQ(item1->closeStyles().length(), 1);
+    QCOMPARE_EQ(item1->opts(), 8);
+    QCOMPARE(item1->text(), QStringLiteral("Cancelling part of"));
+    QVERIFY(item1->isSpaceBefore());
+    QVERIFY(item1->isSpaceAfter());
+
+    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    QCOMPARE_EQ(item2->openStyles().length(), 1);
+    QCOMPARE_EQ(item2->closeStyles().length(), 1);
+    QCOMPARE_EQ(item2->opts(), 1);
+    QCOMPARE(item2->text(), QStringLiteral("original style"));
+    QVERIFY(item2->isSpaceBefore());
+    QVERIFY(!item2->isSpaceAfter());
+
+    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    QCOMPARE_EQ(item3->openStyles().length(), 0);
+    QCOMPARE_EQ(item3->closeStyles().length(), 0);
+    QCOMPARE_EQ(item3->opts(), 0);
+    QCOMPARE(item3->text(), QStringLiteral("*"));
+    QVERIFY(!item3->isSpaceBefore());
+    QVERIFY(item3->isSpaceAfter());
 };
 
+// If those don;t crash that already a good things just need to check if the item count is correct
 void ExtendedSyntaxTest::blankLineText()
 {
     QTextStream s(&m_blankLineText, QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
 };
 
-/* WARNING: CRASH ??????? */
-/*
 void ExtendedSyntaxTest::continuousText()
 {
     QTextStream s(&m_continuousText, QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
-    // QCOMPARE_EQ(doc->items().length(), 17);
 };
-*/
 
 QTEST_MAIN(ExtendedSyntaxTest)
 #include "extendedSyntaxTest.moc"
