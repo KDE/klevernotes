@@ -99,19 +99,19 @@ void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo>
 void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int newStyleOpt);
 
 /**
+ * Add space to the item
+ */
+void addSpace(MDTextItemPtr item, const long long int paraIdx, const bool spaceBefore, MDParagraphPtr p, MDParsingOpts &po);
+
+/**
  * Set back all the spaces (of Paragraph Items and RawTextData) between 'fromParaIdx' and 'toParaIdx'
  */
-void setSpacesBack(const long long int fromParaIdx, const long long int toParaIdx, MDParagraphPtr p, MDParsingOpts &po);
+void setSpacesBack(MDParagraphPtr p, MDParsingOpts &po);
 
 /**
  * Remove all empty Text Item and their corresponding rawData
  */
 void removeEmpty(MDParagraphPtr p, MDParsingOpts &po);
-
-/**
- * Set back all the spaces (of Paragraph Items and RawTextData) based on the found pairs/badStyles (pairs should be sorted)
- */
-void setSpacesBack(const QList<DelimInfo> &pairs, const QList<StyleDelimInfo> &badStyles, MDParagraphPtr p, MDParsingOpts &po);
 
 /**
  * Provide a simple way to execute the whole parsing for a new style
