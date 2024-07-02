@@ -69,6 +69,9 @@ private:
         QStringLiteral("New style mix-===-==-==-=="),
         QStringLiteral("Multi__*line*__ ==*mix*== --of--\n^new^ --====and==-- original"),
         QStringLiteral("==*Cancelling part of== **original style***"),
+        QStringLiteral("==*With `non text in the middle` and cancelling==*\\n\\n==Untouched "
+                       "`code`\n\\n\\nUntouched==\\n\\n==Untouched\\==\\n\\n\\==Untouched==\\n\\n*==Unaffected*==\\n\\n^Unaffected\\n^\\n\\nNew style "
+                       "mix-===-==-==-==\\n\\nMulti__*line*__ ==*mix*== --of--\\n^new^ --====and==-- original\\n\\n"),
     };
     QString m_blankLineText;
     QString m_continuousText;
@@ -655,7 +658,7 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item7->closeStyles().length(), 0);
     QCOMPARE_EQ(item7->opts(), 16);
     QCOMPARE(item7->text(), QStringLiteral("=="));
-    QVERIFY(!item7->isSpaceBefore());
+    QVERIFY(item7->isSpaceBefore());
     QVERIFY(!item7->isSpaceAfter());
 
     const auto item8 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(7));
@@ -663,7 +666,7 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item8->closeStyles().length(), 3);
     QCOMPARE_EQ(item8->opts(), 24);
     QCOMPARE(item8->text(), QStringLiteral("and"));
-    QVERIFY(item8->isSpaceBefore());
+    QVERIFY(!item8->isSpaceBefore());
     QVERIFY(item8->isSpaceAfter());
 
     const auto item9 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(8));
@@ -696,7 +699,7 @@ void ExtendedSyntaxTest::cancellingPart()
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 1);
     QCOMPARE_EQ(item1->opts(), 8);
-    QCOMPARE(item1->text(), QStringLiteral("Cancelling part of"));
+    QCOMPARE(item1->text(), QStringLiteral("*Cancelling part of"));
     QVERIFY(item1->isSpaceBefore());
     QVERIFY(item1->isSpaceAfter());
 
@@ -722,12 +725,16 @@ void ExtendedSyntaxTest::blankLineText()
 {
     QTextStream s(&m_blankLineText, QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+
+    qDebug() << m_blankLineText;
 };
 
 void ExtendedSyntaxTest::continuousText()
 {
     QTextStream s(&m_continuousText, QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+
+    qDebug() << m_continuousText;
 };
 
 QTEST_MAIN(ExtendedSyntaxTest)

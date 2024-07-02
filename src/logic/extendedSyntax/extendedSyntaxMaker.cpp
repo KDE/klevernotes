@@ -434,7 +434,7 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
 
         removeEmpty(p, po);
 
-        MD::optimizeParagraph(p, po);
+        // MD::optimizeParagraph(p, po);
     }
 }
 
