@@ -27,6 +27,8 @@ FormCard.FormCardDialog {
 
     standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
+    width: Kirigami.Units.gridUnit * 20
+
     onOpened: {
         searchBar.forceActiveFocus()
     }

@@ -25,8 +25,12 @@ Components.MessageDialog {
         "note": i18nc("@title:dialog, as in 'A note category'", "Delete Note Confirmation"),
     }
 
+    width: Kirigami.Units.gridUnit * 20
+
     dialogType: Components.MessageDialog.Warning
     title: useCase ? useCaseTitleTrad[useCase.toLowerCase()] : ""
+
+    standardButtons: Dialog.Ok | Dialog.Cancel
 
     Label {
         text: useCase ? useCaseTrad[useCase.toLowerCase()] : ""
@@ -39,6 +43,4 @@ Components.MessageDialog {
         wrapMode: Text.WordWrap
         Layout.fillWidth: true
     }
-
-    standardButtons: Dialog.Ok | Dialog.Cancel
 }

@@ -25,6 +25,8 @@ FormCard.FormCardDialog {
 
     standardButtons: Dialog.Apply | Dialog.Cancel
 
+    width: Kirigami.Units.gridUnit * 20
+
     onApplied: {
         const error = checkName()
         if (error === "") {
