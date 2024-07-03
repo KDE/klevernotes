@@ -69,9 +69,9 @@ private:
         QStringLiteral("New style mix-===-==-==-=="),
         QStringLiteral("Multi__*line*__ ==*mix*== --of--\n^new^ --====and==-- original"),
         QStringLiteral("==*Cancelling part of== **original style***"),
-        QStringLiteral("==*With `non text in the middle` and cancelling==*\\n\\n==Untouched "
-                       "`code`\n\\n\\nUntouched==\\n\\n==Untouched\\==\\n\\n\\==Untouched==\\n\\n*==Unaffected*==\\n\\n^Unaffected\\n^\\n\\nNew style "
-                       "mix-===-==-==-==\\n\\nMulti__*line*__ ==*mix*== --of--\\n^new^ --====and==-- original\\n\\n"),
+        QStringLiteral("==*With `non text in the middle` and cancelling==*text==Untouched "
+                       "`code`\ntextUntouched==text==Untouched\\==text\\==Untouched==text*==Unaffected*==text^Unaffected^text New style "
+                       "mix-===-==-==-== Multi__*line*__ ==*mix*== --of--text^new^ --====and==-- original"),
     };
     QString m_blankLineText;
     QString m_continuousText;
@@ -720,21 +720,17 @@ void ExtendedSyntaxTest::cancellingPart()
     QVERIFY(item3->isSpaceAfter());
 };
 
-// If those don;t crash that already a good things just need to check if the item count is correct
+// If those don't crash that already a good things
 void ExtendedSyntaxTest::blankLineText()
 {
     QTextStream s(&m_blankLineText, QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
-    qDebug() << m_blankLineText;
 };
 
 void ExtendedSyntaxTest::continuousText()
 {
     QTextStream s(&m_continuousText, QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
-    qDebug() << m_continuousText;
 };
 
 QTEST_MAIN(ExtendedSyntaxTest)

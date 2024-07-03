@@ -433,13 +433,15 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
         setSpacesBack(p, po);
 
         removeEmpty(p, po);
-
-        // MD::optimizeParagraph(p, po);
     }
 }
 
 void extendedSyntaxHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
 {
     processExtendedSyntax(p, po, options[0], options[1].toInt());
+
+    if (std::get<2>(po.textPlugins.rbegin()->second).at(1) == options[1]) {
+        MD::optimizeParagraph(p, po);
+    }
 }
 } // !ExtendedSyntaxMaker
