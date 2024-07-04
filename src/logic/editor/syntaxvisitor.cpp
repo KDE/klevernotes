@@ -32,21 +32,9 @@ struct SyntaxVisitorPrivate {
 
     void clearFormats()
     {
-        auto b = editor->document()->firstBlock();
-
-        while (b.isValid()) {
-            b.layout()->clearFormats();
-
-            b = b.next();
-        }
-
-        formats.clear();
-    }
-
-    void applyFormats()
-    {
-        for (const auto &f : std::as_const(formats))
-            f.block.layout()->setFormats(f.format);
+        auto c = editor->textCursor();
+        c.select(QTextCursor::Document);
+        c.setCharFormat({});
     }
 
     void setFormat(const QTextCharFormat &format, const MD::WithPosition &pos)
@@ -56,16 +44,18 @@ struct SyntaxVisitorPrivate {
 
     void setFormat(const QTextCharFormat &format, long long int startLine, long long int startColumn, long long int endLine, long long int endColumn)
     {
-        for (auto i = startLine; i <= endLine; ++i) {
-            formats[i].block = editor->document()->findBlockByNumber(i);
+        if (colors.enabled) {
+            for (auto i = startLine; i <= endLine; ++i) {
+                auto b = editor->document()->findBlockByNumber(i);
+                auto c = QTextCursor(b);
 
-            QTextLayout::FormatRange r;
-            r.format = format;
-            r.start = (i == startLine ? startColumn : 0);
-            r.length = (i == startLine ? (i == endLine ? endColumn - startColumn + 1 : formats[i].block.length() - startColumn)
-                                       : (i == endLine ? endColumn + 1 : formats[i].block.length()));
-
-            formats[i].format.push_back(r);
+                c.setPosition(c.position() + (i == startLine ? startColumn : 0), QTextCursor::MoveAnchor);
+                c.setPosition(c.position()
+                                  + (i == startLine ? (i == endLine ? endColumn - startColumn + 1 : b.length() - startColumn)
+                                                    : (i == endLine ? endColumn + 1 : b.length())),
+                              QTextCursor::KeepAnchor);
+                c.setCharFormat(format);
+            }
         }
     }
 
@@ -91,19 +81,12 @@ struct SyntaxVisitorPrivate {
     std::shared_ptr<MD::Document<MD::QStringTrait>> doc;
     //! Colors.
     Colors colors;
-
-    struct Format {
-        QTextBlock block;
-        QList<QTextLayout::FormatRange> format;
-    };
-
-    //! Formats.
-    QMap<int, Format> formats;
     //! Default font.
     QFont font;
     //! Additional style that should be applied for any item.
     int additionalStyle = 0;
 }; // struct SyntaxVisitorPrivate
+; // struct SyntaxVisitorPrivate
 
 //
 // SyntaxVisitor
@@ -130,17 +113,15 @@ void SyntaxVisitor::clearHighlighting()
 
 void SyntaxVisitor::highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const Colors &colors)
 {
+    auto c = d->editor->textCursor();
+    c.beginEditBlock();
     d->clearFormats();
 
     d->doc = doc;
     d->colors = colors;
 
     MD::PosCache<MD::QStringTrait>::initialize(d->doc);
-
-    if (colors.enabled)
-        d->applyFormats();
-    else
-        d->formats.clear();
+    c.endEditBlock();
 }
 
 void SyntaxVisitor::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)

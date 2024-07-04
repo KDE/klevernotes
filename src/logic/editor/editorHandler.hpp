@@ -33,6 +33,8 @@ class EditorHandler : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QQuickTextDocument *document READ qQuickDocument WRITE setDocument NOTIFY documentChanged)
+    Q_PROPERTY(int cursorPosition READ cursorPosition WRITE setCursorPosition NOTIFY cursorPositionChanged)
+
     Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
 
     // NoteMapper
@@ -45,6 +47,8 @@ public:
     void setDocument(QQuickTextDocument *document);
     QTextDocument *document() const;
     QQuickTextDocument *qQuickDocument() const;
+    QTextCursor textCursor() const;
+    int cursorPosition() const;
 
     void parseDoc();
     Q_INVOKABLE void parse(const QString &src);
@@ -63,6 +67,7 @@ public:
 
 Q_SIGNALS:
     void documentChanged();
+    void cursorPositionChanged(const int position);
 
     void parsingFinished(const QString &content);
 
@@ -94,9 +99,12 @@ private:
     void addExtendedSyntax(const QStringList &details);
     void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
 
+    void setCursorPosition(const int cursorPosition);
+
 private:
     QQuickTextDocument *m_qQuickDocument = nullptr;
     QTextDocument *m_document = nullptr;
+    int m_cursorPosition;
 
     enum ExtensionID : int {
         /* Plugins

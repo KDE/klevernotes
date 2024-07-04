@@ -22,6 +22,9 @@ TextArea {
     Component.onCompleted: {
         EditorHandler.document = textDocument
     }
+    onCursorPositionChanged: {
+        EditorHandler.cursorPosition = cursorPosition
+    }
     onTextChanged: {
         if (!tempBuff) {
             modified = true

@@ -31,8 +31,8 @@ EditorHandler::EditorHandler(QObject *parent)
     /* addExtendedSyntaxs(extendedSyntaxsList); */
 }
 
-// Acces QTextDocument
-// ===================
+// QTextDocument Info
+// ==================
 
 QTextDocument *EditorHandler::document() const
 {
@@ -61,7 +61,33 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
         parseDoc();
     }
 }
-// !Acces QTextDocument
+
+QTextCursor EditorHandler::textCursor() const
+{
+    if (!m_document) {
+        return QTextCursor();
+    }
+
+    QTextCursor cursor = QTextCursor(m_document);
+    cursor.setPosition(m_cursorPosition);
+    return cursor;
+}
+
+int EditorHandler::cursorPosition() const
+{
+    return m_cursorPosition;
+}
+
+void EditorHandler::setCursorPosition(const int cursorPosition)
+{
+    if (cursorPosition == m_cursorPosition) {
+        return;
+    }
+
+    m_cursorPosition = cursorPosition;
+}
+
+// !QTextDocument Info
 
 // KleverNotes method
 // ==================
@@ -77,7 +103,7 @@ void EditorHandler::parse(const QString &src)
     const auto doc = m_parser->parse(src);
     const auto html = m_renderer->toHtml(doc, m_notePath);
 
-    /* highlightSyntax(colors, doc); */
+    highlightSyntax(colors, doc);
 
     if (m_parser->pluginHelper()) {
         m_parser->pluginHelper()->postTokChanges();
