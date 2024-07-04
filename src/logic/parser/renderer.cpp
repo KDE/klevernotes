@@ -6,12 +6,11 @@
 #include "renderer.h"
 
 #include "kleverconfig.h"
-#include "logic/md4qt/traits.hpp"
+#include "md4qt/traits.hpp"
 
 #include <QDir>
 #include <QRegularExpression>
 #include <QUrl>
-#include <qlogging.h>
 
 Renderer::Renderer()
     : MD::details::HtmlVisitor<MD::QStringTrait>(){};

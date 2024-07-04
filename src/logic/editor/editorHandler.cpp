@@ -77,7 +77,7 @@ void EditorHandler::parse(const QString &src)
     const auto doc = m_parser->parse(src);
     const auto html = m_renderer->toHtml(doc, m_notePath);
 
-    highlightSyntax(colors, doc);
+    /* highlightSyntax(colors, doc); */
 
     if (m_parser->pluginHelper()) {
         m_parser->pluginHelper()->postTokChanges();

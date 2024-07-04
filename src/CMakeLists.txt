@@ -16,11 +16,6 @@ set(lib_SRCS
     logic/editor/editorHandler.cpp
     logic/editor/syntaxvisitor.cpp
 
-    # Extended Syntax
-    logic/extendedSyntax/extendedSyntaxHelper.cpp
-    logic/extendedSyntax/extendedSyntaxMaker.cpp
-    logic/extendedSyntax/md4qtHelperFunc.cpp
-
     # PAINTING
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp
@@ -32,33 +27,36 @@ set(lib_SRCS
     logic/painting/sketchmodel.cpp
     logic/painting/stroke.cpp
 
-    # PARSER
-    logic/parser/parser.cpp
-    logic/parser/renderer.cpp
-
     # Printing
     logic/printing/printingHelper.cpp
 
     # Treeview
     logic/treeview/noteTreeModel.cpp
-    
+
+    # ==== PARSER ====
+    logic/parser/parser.cpp
+    logic/parser/renderer.cpp
+    # Extended Syntax
+    logic/parser/extendedSyntax/extendedSyntaxHelper.cpp
+    logic/parser/extendedSyntax/extendedSyntaxMaker.cpp
+    logic/parser/extendedSyntax/md4qtHelperFunc.cpp
     # PLUGINS
-    logic/plugins/cliHelper.cpp
-    logic/plugins/pluginHelper.cpp
+    logic/parser/plugins/cliHelper.cpp
+    logic/parser/plugins/pluginHelper.cpp
 
-    logic/plugins/emoji/emoticonFilterModel.cpp
-    logic/plugins/emoji/emojiModel.cpp
-    logic/plugins/emoji/emojiTones.cpp
+    logic/parser/plugins/emoji/emoticonFilterModel.cpp
+    logic/parser/plugins/emoji/emojiModel.cpp
+    logic/parser/plugins/emoji/emojiTones.cpp
 
-    logic/plugins/noteMapper/noteMapper.cpp
-    logic/plugins/noteMapper/noteMapperParserUtils.cpp
-    logic/plugins/noteMapper/noteMapperUtils.cpp
+    logic/parser/plugins/noteMapper/noteMapper.cpp
+    logic/parser/plugins/noteMapper/noteMapperParserUtils.cpp
+    logic/parser/plugins/noteMapper/noteMapperUtils.cpp
 
-    logic/plugins/puml/pumlHelper.cpp
-    logic/plugins/puml/pumlParserUtils.cpp
+    logic/parser/plugins/puml/pumlHelper.cpp
+    logic/parser/plugins/puml/pumlParserUtils.cpp
 
-    logic/plugins/syntaxHighlight/highlightHelper.cpp
-    logic/plugins/syntaxHighlight/highlightParserUtils.cpp
+    logic/parser/plugins/syntaxHighlight/highlightHelper.cpp
+    logic/parser/plugins/syntaxHighlight/highlightParserUtils.cpp
 )
 
 add_library(klevernoteslib STATIC ${lib_SRCS})

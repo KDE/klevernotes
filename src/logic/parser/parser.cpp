@@ -3,10 +3,10 @@
     SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
 
-#include "logic/parser/parser.h"
+#include "parser.h"
+#include "extendedSyntax/extendedSyntaxMaker.hpp"
 #include "logic/editor/editorHandler.hpp"
-#include "logic/extendedSyntax/extendedSyntaxMaker.hpp"
-#include "logic/plugins/pluginHelper.h"
+#include "plugins/pluginHelper.h"
 
 namespace MdEditor
 {

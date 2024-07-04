@@ -5,7 +5,7 @@
 
 #include "pumlParserUtils.h"
 
-#include "logic/plugins/puml/pumlHelper.h"
+#include "pumlHelper.h"
 #include <QStandardPaths>
 #include <QUuid>
 

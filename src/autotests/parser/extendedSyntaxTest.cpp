@@ -3,9 +3,7 @@
     SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 */
 
-#include "../../logic/extendedSyntax/extendedSyntaxMaker.hpp"
-#include "logic/md4qt/doc.hpp"
-#include "logic/md4qt/traits.hpp"
+#include "logic/parser/extendedSyntax/extendedSyntaxMaker.hpp"
 
 // Qt include
 #include <QObject>
@@ -13,7 +11,9 @@
 #include <QtTest/QTest>
 
 #define MD4QT_QT_SUPPORT
-#include "../../logic/md4qt/parser.hpp"
+#include "logic/parser/md4qt/doc.hpp"
+#include "logic/parser/md4qt/parser.hpp"
+#include "logic/parser/md4qt/traits.hpp"
 
 class ExtendedSyntaxTest : public QObject
 {

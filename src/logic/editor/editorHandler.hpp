@@ -11,8 +11,8 @@
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/doc.hpp"
-#include "logic/md4qt/traits.hpp"
+#include "logic/parser/md4qt/doc.hpp"
+#include "logic/parser/md4qt/traits.hpp"
 
 // Qt include
 #include <QObject>

@@ -5,13 +5,13 @@
 
 #pragma once
 
-#include "../plugins/pluginHelper.h"
+#include "plugins/pluginHelper.h"
 #include <qmap.h>
 #include <utility>
 
 #define MD4QT_QT_SUPPORT
-#include "../md4qt/html.hpp"
-#include "../md4qt/traits.hpp"
+#include "md4qt/html.hpp"
+#include "md4qt/traits.hpp"
 
 class Renderer : public MD::details::HtmlVisitor<MD::QStringTrait>
 {

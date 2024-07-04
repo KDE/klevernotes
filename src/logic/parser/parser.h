@@ -10,13 +10,13 @@
 #include <QObject>
 #include <QSet>
 
-#include "../plugins/pluginHelper.h"
+#include "plugins/pluginHelper.h"
 #include "renderer.h"
 
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/doc.hpp"
-#include "logic/md4qt/parser.hpp"
-#include "logic/md4qt/traits.hpp"
+#include "md4qt/doc.hpp"
+#include "md4qt/parser.hpp"
+#include "md4qt/traits.hpp"
 
 namespace MdEditor
 {

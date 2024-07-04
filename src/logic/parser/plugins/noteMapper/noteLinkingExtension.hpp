@@ -6,13 +6,13 @@
 #pragma once
 
 #include "kleverconfig.h"
-#include "logic/plugins/noteMapper/noteMapperParserUtils.h"
+#include "noteMapperParserUtils.h"
 
 #include <QRegularExpression>
 #include <qlogging.h>
 
 #define MD4QT_QT_SUPPORT
-#include "logic/md4qt/parser.hpp"
+#include "logic/parser/md4qt/parser.hpp"
 
 namespace NoteMapperFunc
 {
