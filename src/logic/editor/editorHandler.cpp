@@ -28,7 +28,7 @@ EditorHandler::EditorHandler(QObject *parent)
         {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
         {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
     };
-    addExtendedSyntaxs(extendedSyntaxsList);
+    /* addExtendedSyntaxs(extendedSyntaxsList); */
 }
 
 // Acces QTextDocument

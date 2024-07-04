@@ -192,7 +192,7 @@ protected:
         insertInCache(r);
     }
 
-    void onLineBreak(LineBreak<Trait> *b) override
+    void onLineBreak(LineBreak<Trait> *) override
     {
     }
 
@@ -305,7 +305,7 @@ protected:
         }
     }
 
-    void onAnchor(Anchor<Trait> *a) override
+    void onAnchor(Anchor<Trait> *) override
     {
     }
 
