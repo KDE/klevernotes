@@ -13,7 +13,7 @@ TextArea {
 
     property bool tempBuff
 
-    font: Config.editorFont
+    // font: Config.editorFont
     wrapMode: TextEdit.Wrap
     persistentSelection: true
 

@@ -7,7 +7,7 @@
 
 // KleverNotes include
 #include "colors.hpp"
-#include <qtmetamacros.h>
+#include "logic/parser/renderer.h"
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -91,16 +91,31 @@ protected:
     int lineNumber(const QPoint &p);
 
 private:
+    void addExtendedSyntax(const QStringList &details);
+    void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
+
+private:
     QQuickTextDocument *m_qQuickDocument = nullptr;
     QTextDocument *m_document = nullptr;
 
+    enum ExtensionID : int {
+        /* Plugins
+         * ===============*/
+        KleverPlugins = 256,
+        /* Extended syntax
+         * ===============*/
+        ExtendedSyntax = KleverPlugins + 64,
+    };
+    int m_extendedSyntaxCount = 0;
     QString m_notePath;
+    Renderer *m_renderer = nullptr;
     Parser *m_parser = nullptr;
 
     std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
     Colors colors;
 
     SyntaxVisitor *m_syntaxvisitor = nullptr;
+    bool m_highlighting = false;
 
     // md-editor
     /* friend struct EditorPrivate; */

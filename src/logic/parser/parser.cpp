@@ -16,7 +16,7 @@ Parser::Parser(EditorHandler *editorHandler)
     m_renderer = new Renderer();
 }
 
-QString Parser::parse(QString src)
+std::shared_ptr<MD::Document<MD::QStringTrait>> Parser::parse(QString src)
 {
     if (m_pluginHelper) {
         m_pluginHelper->clearPluginsInfo();
@@ -24,14 +24,7 @@ QString Parser::parse(QString src)
 
     QTextStream s(&src, QIODeviceBase::ReadOnly);
 
-    const auto doc = m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
-    const auto html = m_renderer->toHtml(doc, m_notePath);
-
-    if (m_pluginHelper) {
-        m_pluginHelper->postTokChanges();
-    }
-
-    return html;
+    return m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
 }
 
 // Getters
@@ -62,7 +55,6 @@ void Parser::setNotePath(const QString &notePath)
 
     m_notePath = notePath;
 
-    m_renderer->setNotePath(m_notePath);
     if (notePath == QStringLiteral("qrc:")) {
         return;
     }
@@ -77,29 +69,18 @@ void Parser::setNotePath(const QString &notePath)
 
 void Parser::addPluginHelper()
 {
-    if (!m_pluginHelper) {
-        m_pluginHelper = new PluginHelper(this);
-
-        m_renderer->addPluginHelper(m_pluginHelper);
-        m_pluginHelper->mapperParserUtils()->setNotePath(m_notePath);
-    }
+    /* if (!m_pluginHelper) { */
+    /*     m_pluginHelper = new PluginHelper(this); */
+    /**/
+    /*     m_renderer->addPluginHelper(m_pluginHelper); */
+    /*     m_pluginHelper->mapperParserUtils()->setNotePath(m_notePath); */
+    /* } */
 }
 
 void Parser::addExtendedSyntax(const QStringList &details)
 {
-    const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
-    m_renderer->addExtendedSyntax(opts, details[1], details[2]);
-
-    const QStringList options = {details[0], QString::number(opts)};
-    m_md4qtParser.addTextPlugin(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount, ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, options);
+    m_md4qtParser.addTextPlugin(details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
     ++m_extendedSyntaxCount;
-}
-
-void Parser::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
-{
-    for (const auto &details : syntaxsDetails) {
-        addExtendedSyntax(details);
-    }
 }
 
 void Parser::addPlugin()

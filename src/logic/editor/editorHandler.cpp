@@ -17,6 +17,7 @@ namespace MdEditor
 EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
 {
+    m_renderer = new Renderer();
     m_syntaxvisitor = new SyntaxVisitor(this);
 
     m_parser = new Parser(this);
@@ -27,7 +28,7 @@ EditorHandler::EditorHandler(QObject *parent)
         {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
         {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
     };
-    m_parser->addExtendedSyntaxs(extendedSyntaxsList);
+    addExtendedSyntaxs(extendedSyntaxsList);
 }
 
 // Acces QTextDocument
@@ -66,13 +67,22 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
 // ==================
 void EditorHandler::parseDoc()
 {
-    parse(m_document->toPlainText());
+    if (!m_highlighting) {
+        parse(m_document->toPlainText());
+    }
 }
 
 void EditorHandler::parse(const QString &src)
 {
-    const QString content = m_parser->parse(src);
-    Q_EMIT parsingFinished(content);
+    const auto doc = m_parser->parse(src);
+    const auto html = m_renderer->toHtml(doc, m_notePath);
+
+    highlightSyntax(colors, doc);
+
+    if (m_parser->pluginHelper()) {
+        m_parser->pluginHelper()->postTokChanges();
+    }
+    Q_EMIT parsingFinished(html);
 }
 
 QString EditorHandler::getNotePath() const
@@ -94,6 +104,24 @@ void EditorHandler::setNotePath(const QString &notePath)
 
     m_notePath = parserNotePath;
     m_parser->setNotePath(parserNotePath);
+    m_renderer->setNotePath(m_notePath);
+}
+
+void EditorHandler::addExtendedSyntax(const QStringList &details)
+{
+    const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
+    m_renderer->addExtendedSyntax(opts, details[1], details[2]);
+
+    const QStringList options = {details[0], QString::number(opts), QString::number(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount)};
+    m_parser->addExtendedSyntax(options);
+    ++m_extendedSyntaxCount;
+}
+
+void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
+{
+    for (const auto &details : syntaxsDetails) {
+        addExtendedSyntax(details);
+    }
 }
 
 // NoteMapper method
@@ -150,7 +178,9 @@ void EditorHandler::pumlDarkChanged()
 
 void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
 {
+    m_highlighting = true;
     m_syntaxvisitor->highlight(doc, colors);
+    m_highlighting = false;
 }
 // !md-editor slots
 }

@@ -14,7 +14,9 @@
 #include "renderer.h"
 
 #define MD4QT_QT_SUPPORT
-#include "../md4qt/parser.hpp"
+#include "logic/md4qt/doc.hpp"
+#include "logic/md4qt/parser.hpp"
+#include "logic/md4qt/traits.hpp"
 
 namespace MdEditor
 {
@@ -25,7 +27,7 @@ class Parser : public QObject
 public:
     explicit Parser(EditorHandler *editorHandler = nullptr);
 
-    QString parse(QString src);
+    std::shared_ptr<MD::Document<MD::QStringTrait>> parse(QString src);
 
     // Getters
     EditorHandler *editorHandler() const;
@@ -36,7 +38,6 @@ public:
     void setNotePath(const QString &notePath);
     void addPluginHelper();
     void addExtendedSyntax(const QStringList &details);
-    void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
     void addPlugin();
     void addPlugins();
 
@@ -54,9 +55,6 @@ public Q_SLOTS:
     void newHighlightStyle();
     // PUML
     void pumlDarkChanged();
-
-private:
-    QString renderHtml();
 
 private:
     enum ExtensionID : int {
