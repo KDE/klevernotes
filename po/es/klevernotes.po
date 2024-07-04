@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-30 00:39+0000\n"
+"POT-Creation-Date: 2024-07-04 00:38+0000\n"
 "PO-Revision-Date: 2024-04-18 01:03+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -55,7 +55,7 @@ msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
 msgstr "Confirmación de borrado de nota"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:38
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:42
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
@@ -212,7 +212,7 @@ msgctxt "@title:dialog"
 msgid "Choose a name"
 msgstr "Escoja un nombre"
 
-#: contents/ui/dialogs/NamingDialog.qml:48
+#: contents/ui/dialogs/NamingDialog.qml:50
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
