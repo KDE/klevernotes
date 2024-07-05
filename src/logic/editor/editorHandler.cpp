@@ -3,6 +3,7 @@
 
 // KleverNotes include
 #include "editorHandler.hpp"
+#include "kleverconfig.h"
 #include "logic/parser/parser.h"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "syntaxvisitor.hpp"
@@ -25,6 +26,8 @@ EditorHandler::EditorHandler(QObject *parent)
     m_pluginHelper = new PluginHelper(this);
     m_renderer->addPluginHelper(m_pluginHelper);
 
+    connectPlugins();
+
     static const QList<QStringList> extendedSyntaxsList = {
         {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
         {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
@@ -33,9 +36,26 @@ EditorHandler::EditorHandler(QObject *parent)
     /* addExtendedSyntaxs(extendedSyntaxsList); */
 }
 
+// Connections
+// ===========
+void EditorHandler::connectPlugins()
+{
+    // Code Highlight
+    connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlightEnabledChanged, this, &EditorHandler::codeHighlightEnabledChanged);
+    codeHighlightEnabledChanged();
+    connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlighterStyleChanged, this, &EditorHandler::newHighlightStyle);
+    newHighlightStyle();
+
+    // Puml
+    connect(KleverConfig::self(), &KleverConfig::pumlEnabledChanged, this, &EditorHandler::pumlEnabledChanged);
+    pumlEnabledChanged();
+    connect(KleverConfig::self(), &KleverConfig::pumlDarkChanged, this, &EditorHandler::pumlDarkChanged);
+    pumlDarkChanged();
+}
+// !Connections
+
 // QTextDocument Info
 // ==================
-
 QTextDocument *EditorHandler::document() const
 {
     return m_document;
@@ -88,11 +108,11 @@ void EditorHandler::setCursorPosition(const int cursorPosition)
 
     m_cursorPosition = cursorPosition;
 }
-
 // !QTextDocument Info
 
 // KleverNotes method
 // ==================
+// Parser
 void EditorHandler::parseDoc()
 {
     if (!m_highlighting) {
@@ -106,15 +126,10 @@ void EditorHandler::parse(const QString &src)
         m_pluginHelper->clearPluginsInfo();
     }
 
-    const auto doc = m_parser->parse(src);
-    const auto html = m_renderer->toHtml(doc, m_notePath);
+    m_currentMdDoc = m_parser->parse(src);
+    highlightSyntax(colors, m_currentMdDoc);
 
-    highlightSyntax(colors, doc);
-
-    if (m_pluginHelper) {
-        m_pluginHelper->postTokChanges();
-    }
-    Q_EMIT parsingFinished(html);
+    renderDoc();
 }
 
 QString EditorHandler::getNotePath() const
@@ -145,7 +160,23 @@ void EditorHandler::setNotePath(const QString &notePath)
         m_pluginHelper->mapperParserUtils()->setNotePath(notePath);
     }
 }
+// !Parser
 
+// Rendering
+void EditorHandler::renderDoc()
+{
+    if (m_currentMdDoc) {
+        const auto html = m_renderer->toHtml(m_currentMdDoc, m_notePath);
+
+        if (m_pluginHelper) {
+            m_pluginHelper->postTokChanges();
+        }
+        Q_EMIT parsingFinished(html);
+    }
+}
+// !Rendering
+
+// ExtendedSyntax
 void EditorHandler::addExtendedSyntax(const QStringList &details)
 {
     const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
@@ -162,6 +193,7 @@ void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
         addExtendedSyntax(details);
     }
 }
+// !ExtendedSyntax
 
 // NoteMapper method
 void EditorHandler::setHeaderInfo(const QStringList &headerInfo)
@@ -201,14 +233,28 @@ SyntaxVisitor *EditorHandler::syntaxHighlighter() const
 
 // KleverNotes slots
 // =================
+void EditorHandler::codeHighlightEnabledChanged()
+{
+    m_renderer->setCodeHighlightEnable(KleverConfig::codeSynthaxHighlightEnabled());
+    renderDoc();
+}
+
 void EditorHandler::newHighlightStyle()
 {
     m_pluginHelper->highlightParserUtils()->newHighlightStyle();
+    renderDoc();
+}
+
+void EditorHandler::pumlEnabledChanged()
+{
+    m_renderer->setPUMLenable(KleverConfig::pumlEnabled());
+    renderDoc();
 }
 
 void EditorHandler::pumlDarkChanged()
 {
-    m_pluginHelper->pumlParserUtils()->pumlDarkChanged();
+    m_renderer->setPUMLdark(KleverConfig::pumlDark());
+    renderDoc();
 }
 // !KleverNotes slots
 

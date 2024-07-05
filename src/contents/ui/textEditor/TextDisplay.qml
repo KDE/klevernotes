@@ -25,18 +25,12 @@ RowLayout {
     required property string text
     
     // TODO: move all of those to C++ connect
-    // Syntax highlight
-    readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
-    readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
     // NoteMapper
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
     readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     // Emoji
     readonly property bool emojiEnabled: Config.quickEmojiEnabled
     readonly property string emojiTone: Config.emojiTone
-    // PlantUML
-    readonly property bool pumlEnabled: Config.pumlEnabled
-    readonly property bool pumlDark: Config.pumlDark
     // ======================================
 
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"

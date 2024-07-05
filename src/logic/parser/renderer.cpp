@@ -5,7 +5,6 @@
 
 #include "renderer.h"
 
-#include "kleverconfig.h"
 #include "md4qt/traits.hpp"
 
 #include <QDir>
@@ -228,19 +227,17 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
         const QString lang = c->syntax();
         const QString _text = c->text();
         QString code = _text;
-        bool highlight = false;
 
         QString returnValue;
-        if (m_pluginHelper && KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-            QPair<QString, QString> imageInfo = m_pluginHelper->pumlParserUtils()->renderCode(_text, KleverConfig::pumlDark());
+        if (m_pluginHelper && m_pumlEnable && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
+            QPair<QString, QString> imageInfo = m_pluginHelper->pumlParserUtils()->renderCode(_text, m_pumlDark);
 
             returnValue = image(imageInfo.first, imageInfo.second);
         } else {
             if (m_pluginHelper) {
-                highlight = KleverConfig::codeSynthaxHighlightEnabled();
-                code = m_pluginHelper->highlightParserUtils()->getCode(highlight, _text, lang);
+                code = m_pluginHelper->highlightParserUtils()->getCode(m_codeHighlight, _text, lang);
             }
-            returnValue = Renderer::code(code, highlight);
+            returnValue = Renderer::code(code);
         }
 
         html.push_back(returnValue);
@@ -265,13 +262,30 @@ void Renderer::addPluginHelper(PluginHelper *pluginHelper)
     m_pluginHelper = pluginHelper;
 }
 
+// Plugins
+void Renderer::setPUMLenable(const bool enable)
+{
+    m_pumlEnable = enable;
+}
+
+void Renderer::setPUMLdark(const bool dark)
+{
+    m_pumlDark = dark;
+    m_pluginHelper->pumlParserUtils()->pumlDarkChanged();
+}
+
+void Renderer::setCodeHighlightEnable(const bool enable)
+{
+    m_codeHighlight = enable;
+}
+// !Plugins
 // !Internal info
 
 // Rendering
 // =========
-QString Renderer::code(QString &code, const bool highlight)
+QString Renderer::code(QString &code)
 {
-    return QStringLiteral("<pre><code>") + (highlight ? code : escape(code, true)) + QStringLiteral("</code></pre>\n");
+    return QStringLiteral("<pre><code>") + code + QStringLiteral("</code></pre>\n");
 }
 
 QString Renderer::openListItem(const bool hasTask, const bool isChecked, const int startNumber)

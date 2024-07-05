@@ -45,12 +45,16 @@ class EditorHandler : public QObject
 public:
     explicit EditorHandler(QObject *parent = nullptr);
 
-    void setDocument(QQuickTextDocument *document);
+    // Connections
+    void connectPlugins();
+
+    // QTextDocument info
     QTextDocument *document() const;
     QQuickTextDocument *qQuickDocument() const;
     QTextCursor textCursor() const;
     int cursorPosition() const;
 
+    // Parser
     void parseDoc();
     Q_INVOKABLE void parse(const QString &src);
     QString getNotePath() const;
@@ -83,9 +87,11 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     // Code highlight
+    void codeHighlightEnabledChanged();
     void newHighlightStyle();
 
     // PUML
+    void pumlEnabledChanged();
     void pumlDarkChanged();
 
     // md-editor
@@ -97,16 +103,35 @@ protected:
     int lineNumber(const QPoint &p);
 
 private:
+    // QTextDocument info
+    void setDocument(QQuickTextDocument *document);
+    void setCursorPosition(const int cursorPosition);
+
+    // Render
+    void renderDoc();
+
+    // ExtendedSyntax
     void addExtendedSyntax(const QStringList &details);
     void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
 
-    void setCursorPosition(const int cursorPosition);
-
 private:
+    // QTextDocument info
     QQuickTextDocument *m_qQuickDocument = nullptr;
     QTextDocument *m_document = nullptr;
     int m_cursorPosition;
 
+    // Parsing
+    QString m_notePath;
+    Parser *m_parser = nullptr;
+    std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
+
+    // Rendering
+    Renderer *m_renderer = nullptr;
+
+    // Plugins
+    PluginHelper *m_pluginHelper = nullptr;
+
+    // Extended syntax
     enum ExtensionID : int {
         /* Plugins
          * ===============*/
@@ -116,21 +141,12 @@ private:
         ExtendedSyntax = KleverPlugins + 64,
     };
     int m_extendedSyntaxCount = 0;
-    QString m_notePath;
-    Parser *m_parser = nullptr;
-    Renderer *m_renderer = nullptr;
-    PluginHelper *m_pluginHelper = nullptr;
 
-    std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
+    // Editor highlight
+    SyntaxVisitor *m_syntaxvisitor = nullptr;
+    bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
     Colors colors;
 
-    SyntaxVisitor *m_syntaxvisitor = nullptr;
-    bool m_highlighting = false;
-
-    // md-editor
-    /* friend struct EditorPrivate; */
-
     Q_DISABLE_COPY(EditorHandler)
-    /* QScopedPointer< EditorPrivate > d; */
 };
 }

@@ -19,10 +19,17 @@ public:
     Renderer();
     ~Renderer() override = default;
 
+    // General info
     void setNotePath(const QString &notePath);
     void addPluginHelper(PluginHelper *pluginHelper);
     void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
+    // Plugins
+    void setPUMLenable(const bool enable);
+    void setPUMLdark(const bool dark);
+    void setCodeHighlightEnable(const bool enable);
+
+    // md4qt
     void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void onImage(MD::Image<MD::QStringTrait> *i) override;
@@ -31,7 +38,7 @@ public:
     void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
     void onLink(MD::Link<MD::QStringTrait> *l) override;
 
-    static QString code(QString &code, const bool highlight);
+    static QString code(QString &code);
     static QString openListItem(const bool hasTask = false, const bool isChecked = false, const int startNumber = -1);
     static QString closeListItem(const bool hasTask = false);
     static QString checkbox(bool checked);
@@ -43,7 +50,14 @@ public:
 
 protected:
     QString m_notePath;
-    PluginHelper *m_pluginHelper;
 
     QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
+
+    // Plugins
+    PluginHelper *m_pluginHelper;
+
+    bool m_pumlEnable = false;
+    bool m_pumlDark = false;
+
+    bool m_codeHighlight = false;
 };
