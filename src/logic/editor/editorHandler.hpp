@@ -7,6 +7,7 @@
 
 // KleverNotes include
 #include "colors.hpp"
+#include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
 
 // md4qt include.
@@ -116,8 +117,9 @@ private:
     };
     int m_extendedSyntaxCount = 0;
     QString m_notePath;
-    Renderer *m_renderer = nullptr;
     Parser *m_parser = nullptr;
+    Renderer *m_renderer = nullptr;
+    PluginHelper *m_pluginHelper = nullptr;
 
     std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
     Colors colors;

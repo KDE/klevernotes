@@ -7,11 +7,11 @@
 
 #include "kleverconfig.h"
 
-PluginHelper::PluginHelper(MdEditor::Parser *parser)
+PluginHelper::PluginHelper(MdEditor::EditorHandler *editorHandler)
     : m_highlightParserUtils(new HighlightParserUtils)
     , m_pumlParserUtils(new PUMLParserUtils)
 {
-    m_mapperParserUtils = new NoteMapperParserUtils(parser);
+    m_mapperParserUtils = new NoteMapperParserUtils(editorHandler);
 }
 
 void PluginHelper::clearPluginsInfo()

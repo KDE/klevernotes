@@ -11,13 +11,13 @@
 
 namespace MdEditor
 {
-class Parser;
+class EditorHandler;
 }
 
 class NoteMapperParserUtils
 {
 public:
-    explicit NoteMapperParserUtils(MdEditor::Parser *parser);
+    explicit NoteMapperParserUtils(MdEditor::EditorHandler *editorHandler);
 
     static QPair<QString, bool> sanitizePath(const QString &_path, const QString &notePath);
     void setNotePath(const QString &_path);
@@ -51,5 +51,5 @@ private:
     bool m_linkedNotesChanged = false;
     bool m_notePathChanged = true;
 
-    MdEditor::Parser *m_parser = nullptr;
+    MdEditor::EditorHandler *m_editorHandler = nullptr;
 };

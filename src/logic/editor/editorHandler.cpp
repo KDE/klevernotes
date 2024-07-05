@@ -4,6 +4,7 @@
 // KleverNotes include
 #include "editorHandler.hpp"
 #include "logic/parser/parser.h"
+#include "logic/parser/plugins/pluginHelper.h"
 #include "syntaxvisitor.hpp"
 
 // Qt include
@@ -20,8 +21,9 @@ EditorHandler::EditorHandler(QObject *parent)
     m_renderer = new Renderer();
     m_syntaxvisitor = new SyntaxVisitor(this);
 
-    m_parser = new Parser(this);
-    m_parser->addPluginHelper();
+    m_parser = new Parser();
+    m_pluginHelper = new PluginHelper(this);
+    m_renderer->addPluginHelper(m_pluginHelper);
 
     static const QList<QStringList> extendedSyntaxsList = {
         {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
@@ -100,13 +102,17 @@ void EditorHandler::parseDoc()
 
 void EditorHandler::parse(const QString &src)
 {
+    if (m_pluginHelper) {
+        m_pluginHelper->clearPluginsInfo();
+    }
+
     const auto doc = m_parser->parse(src);
     const auto html = m_renderer->toHtml(doc, m_notePath);
 
     highlightSyntax(colors, doc);
 
-    if (m_parser->pluginHelper()) {
-        m_parser->pluginHelper()->postTokChanges();
+    if (m_pluginHelper) {
+        m_pluginHelper->postTokChanges();
     }
     Q_EMIT parsingFinished(html);
 }
@@ -131,6 +137,13 @@ void EditorHandler::setNotePath(const QString &notePath)
     m_notePath = parserNotePath;
     m_parser->setNotePath(parserNotePath);
     m_renderer->setNotePath(m_notePath);
+
+    if (m_notePath == QStringLiteral("qrc:") && m_pluginHelper) {
+        // We do this here because we're sure to be in another note
+        m_pluginHelper->clearPluginsPreviousInfo();
+
+        m_pluginHelper->mapperParserUtils()->setNotePath(notePath);
+    }
 }
 
 void EditorHandler::addExtendedSyntax(const QStringList &details)
@@ -153,12 +166,12 @@ void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
 // NoteMapper method
 void EditorHandler::setHeaderInfo(const QStringList &headerInfo)
 {
-    m_parser->setHeaderInfo(headerInfo);
+    m_pluginHelper->mapperParserUtils()->setHeaderInfo(headerInfo);
 }
 
 QString EditorHandler::headerLevel() const
 {
-    return m_parser->headerLevel();
+    return m_pluginHelper->mapperParserUtils()->headerLevel();
 };
 // !NoteMapper method
 
@@ -190,12 +203,12 @@ SyntaxVisitor *EditorHandler::syntaxHighlighter() const
 // =================
 void EditorHandler::newHighlightStyle()
 {
-    m_parser->newHighlightStyle();
+    m_pluginHelper->highlightParserUtils()->newHighlightStyle();
 }
 
 void EditorHandler::pumlDarkChanged()
 {
-    m_parser->pumlDarkChanged();
+    m_pluginHelper->pumlParserUtils()->pumlDarkChanged();
 }
 // !KleverNotes slots
 

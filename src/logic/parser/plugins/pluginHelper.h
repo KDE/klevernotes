@@ -15,7 +15,7 @@
 class PluginHelper
 {
 public:
-    explicit PluginHelper(MdEditor::Parser *parser);
+    explicit PluginHelper(MdEditor::EditorHandler *editorHandler);
     void clearPluginsInfo();
     void clearPluginsPreviousInfo();
     void postTokChanges();
