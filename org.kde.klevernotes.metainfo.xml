@@ -149,6 +149,7 @@
       <caption xml:lang="tr">Yapılacaklar sayfası</caption>
       <caption xml:lang="uk">Сторінка завдань</caption>
       <caption xml:lang="x-test">xxTodo pagexx</caption>
+      <caption xml:lang="zh-CN">待办页</caption>
       <caption xml:lang="zh-TW">待辦事項頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/todo_desktop.png</image>
     </screenshot>
@@ -170,6 +171,7 @@
       <caption xml:lang="tr">Çizim sayfası</caption>
       <caption xml:lang="uk">Сторінка малювання</caption>
       <caption xml:lang="x-test">xxDrawing pagexx</caption>
+      <caption xml:lang="zh-CN">绘画页</caption>
       <caption xml:lang="zh-TW">繪圖頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/painting.png</image>
     </screenshot>
