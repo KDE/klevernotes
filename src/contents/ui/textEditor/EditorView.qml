@@ -84,6 +84,17 @@ ColumnLayout {
     }
     Component.onCompleted: {
         focusEditor()
+        // Not perfect but easier then pulling those color from C++
+        const defaultColor = [
+            Kirigami.Theme.backgroundColor,
+            Kirigami.Theme.textColor,
+            Kirigami.Theme.disabledTextColor,
+            Kirigami.Theme.linkColor,
+            Kirigami.Theme.visitedLinkColor,
+            Kirigami.Theme.alternateBackgroundColor,
+            Kirigami.Theme.highlightColor,
+        ]
+        StyleHandler.setDefault(defaultColor)
     }
 
     FileSaverDialog {
@@ -204,7 +215,6 @@ ColumnLayout {
             }
         }
     }
-
 
     Loader {
         id: noteMapLoader

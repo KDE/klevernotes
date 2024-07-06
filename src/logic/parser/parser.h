@@ -21,7 +21,7 @@ namespace MdEditor
 {
 
 class EditorHandler;
-class Parser : public QObject
+class Parser
 {
 public:
     std::shared_ptr<MD::Document<MD::QStringTrait>> parse(QString src);

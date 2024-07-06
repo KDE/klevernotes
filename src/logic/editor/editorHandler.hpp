@@ -28,7 +28,6 @@ namespace MdEditor
 
 class Parser;
 class SyntaxVisitor;
-/* struct EditorPrivate; */
 class EditorHandler : public QObject
 {
     Q_OBJECT
@@ -47,6 +46,7 @@ public:
 
     // Connections
     void connectPlugins();
+    void connectStyles();
 
     // QTextDocument info
     QTextDocument *document() const;

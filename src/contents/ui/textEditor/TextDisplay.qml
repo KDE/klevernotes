@@ -35,47 +35,18 @@ RowLayout {
 
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
     readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
-    // readonly property Parser parser: parser
-
-    // TODO: Move to C++
-    readonly property string stylePath: Config.stylePath
-    readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
-    readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
-
-    readonly property var defaultCSS: {
-        '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
-        '--font': viewFontInfo.family,
-        '--fontSize': viewFontInfo.pointSize + "px",
-        '--textColor': Config.viewTextColor !== "None" ? Config.viewTextColor : Kirigami.Theme.textColor,
-        '--titleColor': Config.viewTitleColor !== "None" ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor,
-        '--linkColor': Config.viewLinkColor !== "None" ? Config.viewLinkColor : Kirigami.Theme.linkColor,
-        '--visitedLinkColor': Config.viewVisitedLinkColor !== "None" ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
-        '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
-        '--highlightColor': Config.viewHighlightColor !== "None" ? Config.viewHighlightColor : Kirigami.Theme.highlightColor,
-        '--codeFont': codeFontInfo.family,
-        '--codeFontSize': codeFontInfo.pointSize + "px",
-    }
-    // =================
 
     property string defaultHtml
-    property string parsedHtml
-    property string cssStyle
-    property string completCss
-    property bool printBackground: true
+    property string css
 
     spacing: 0
 
     onPathChanged: {
         EditorHandler.notePath = path
     }
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) {
-        changeStyle({})
-    }
-    onStylePathChanged: if (web_view.loadProgress === 100) {
-        loadStyle()
-    }
     Component.onCompleted: {
         loadBaseHtml()
+        StyleHandler.loadStyle()
     }
 
     // WARNING, HACK: 
@@ -114,7 +85,7 @@ RowLayout {
                 printingPage.displayPdf()
             }
             onLoadingChanged: if (!loading) {
-                loadStyle()
+                loadCss()
                 scrollToHeader()
             }
             onScrollPositionChanged: if (!vbar.active) {
@@ -196,50 +167,24 @@ RowLayout {
         }
     }
 
+    Connections {
+        id: styleHandlerConnections
+        target: StyleHandler 
+
+        function onNewCss(css) {
+            root.css = css
+            loadCss()
+        }
+    }
+
     function loadBaseHtml() {
         if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
 
         web_view.loadHtml(root.defaultHtml, "file:/")
     }
 
-    function changeStyle(styleDict) {
-        if (!styleDict) return
-        const emptyDict = Object.keys(styleDict).length === 0;
-        styleDict = emptyDict ? defaultCSS : styleDict
-
-        let varStartIndex
-        let varEndIndex
-        let newCssVar = ""
-        let noBg
-        let style = root.cssStyle
-
-        for (const key in defaultCSS) {
-            if (!styleDict[key]) {
-                styleDict[key] = defaultCSS[key]
-            }
-        }
-
-        for (const [cssVar, value] of Object.entries(styleDict)) {
-            noBg = cssVar === "--bodyColor" && !root.printBackground
-
-            varStartIndex = style.indexOf(cssVar)
-            if (-1 < varStartIndex) {
-                varEndIndex = style.indexOf(";", varStartIndex)
-
-                newCssVar = noBg
-                    ? cssVar + ": " + "undefined" + ";\n"
-                    : cssVar + ": " + value + ";\n"
-
-                style = style.substring(0, varStartIndex) + newCssVar + style.substring(varEndIndex)
-            }
-        }
-
-        cssLink.text = style
-    }
-
-    function loadStyle() {
-        root.cssStyle = DocumentHandler.getCssStyle(root.stylePath)
-        changeStyle({})
+    function loadCss() {
+        cssLink.text = root.css
     }
 
     function makePdf() {

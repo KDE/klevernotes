@@ -11,7 +11,6 @@
 // Qt include
 #include <QRegularExpression>
 #include <QTextBlock>
-#include <qlogging.h>
 
 namespace MdEditor
 {

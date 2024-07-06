@@ -189,14 +189,14 @@ Kirigami.Page {
     }
 
     function requestPdf(changeBackground) {
-        textDisplay.printBackground = changeBackground
-        textDisplay.changeStyle(colors)
+        StyleHandler.printBackground = changeBackground
+        StyleHandler.changeStyles(colors)
         applyingCssTimer.start()
     }
 
     function closePage() {
-        textDisplay.printBackground = true
-        textDisplay.changeStyle(textDisplay.defaultCSS)
+        StyleHandler.printBackground = true
+        StyleHandler.changeStyles()
         applicationWindow().showMainPage()
     }
 }

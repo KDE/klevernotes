@@ -33,6 +33,9 @@ set(lib_SRCS
     # Treeview
     logic/treeview/noteTreeModel.cpp
 
+    # Preview
+    logic/preview/styleHandler.cpp
+
     # ==== PARSER ====
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
