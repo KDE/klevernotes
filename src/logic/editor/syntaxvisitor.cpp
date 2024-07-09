@@ -18,6 +18,7 @@
 
 // C++ include.
 #include <algorithm>
+#include <qlogging.h>
 
 namespace MdEditor
 {
@@ -49,14 +50,25 @@ struct SyntaxVisitorPrivate {
             for (auto i = startLine; i <= endLine; ++i) {
                 auto b = editor->document()->findBlockByNumber(i);
                 auto c = QTextCursor(b);
-                auto oldFormat = c.blockCharFormat();
 
                 c.setPosition(c.position() + (i == startLine ? startColumn : 0), QTextCursor::MoveAnchor);
                 c.setPosition(c.position()
                                   + (i == startLine ? (i == endLine ? endColumn - startColumn + 1 : b.length() - startColumn)
                                                     : (i == endLine ? endColumn + 1 : b.length())),
                               QTextCursor::KeepAnchor);
-                c.setCharFormat(format);
+
+                auto composedFormat = format;
+                auto oldFormat = c.charFormat();
+
+                if (oldFormat.foreground() == colors.titleColor && format.foreground() == colors.textColor) {
+                    composedFormat.setForeground(colors.titleColor);
+                }
+                const auto oldSize = oldFormat.fontPointSize();
+                if (oldSize != 0 && oldSize != font.pointSize()) {
+                    composedFormat.setFontPointSize(oldSize);
+                }
+
+                c.setCharFormat(composedFormat);
             }
         }
     }
@@ -191,26 +203,6 @@ void SyntaxVisitor::onMath(MD::Math<MD::QStringTrait> *m)
 
 void SyntaxVisitor::onHeading(MD::Heading<MD::QStringTrait> *h)
 {
-    const auto tmp = d->additionalStyle;
-
-    d->additionalStyle |= MD::BoldText;
-
-    MD::PosCache<MD::QStringTrait>::onHeading(h);
-
-    d->additionalStyle = tmp;
-
-    QTextCharFormat special;
-    special.setForeground(d->colors.titleColor);
-    special.setFont(d->styleFont(MD::TextWithoutFormat));
-
-    if (!h->delims().empty()) {
-        for (const auto &delim : h->delims())
-            d->setFormat(special, delim);
-    }
-
-    if (h->labelPos().startColumn() != -1)
-        d->setFormat(special, h->labelPos());
-
     QTextCharFormat baseFormat;
     baseFormat.setForeground(d->colors.titleColor);
     QFont baseFont = d->styleFont(MD::BoldText);
@@ -236,15 +228,35 @@ void SyntaxVisitor::onHeading(MD::Heading<MD::QStringTrait> *h)
 
     baseFont.setPointSize(size);
     baseFormat.setFont(baseFont);
-
     d->setFormat(baseFormat, h->startLine(), h->startColumn() + h->level() + 1, h->endLine(), h->endColumn());
+
+    const auto tmp = d->additionalStyle;
+
+    d->additionalStyle |= MD::BoldText;
+
+    MD::PosCache<MD::QStringTrait>::onHeading(h);
+
+    d->additionalStyle = tmp;
+
+    QTextCharFormat special;
+    special.setForeground(d->colors.specialColor);
+    special.setFont(d->styleFont(MD::TextWithoutFormat));
+
+    if (!h->delims().empty()) {
+        for (const auto &delim : h->delims())
+            d->setFormat(special, delim);
+    }
+
+    if (h->labelPos().startColumn() != -1) {
+        d->setFormat(special, h->labelPos());
+    }
 }
 
 void SyntaxVisitor::onCode(MD::Code<MD::QStringTrait> *c)
 {
     QTextCharFormat format;
-    format.setBackground(d->colors.codeColor);
-    format.setForeground(d->colors.titleColor);
+    format.setBackground(d->colors.codeBgColor);
+    format.setForeground(d->colors.codeColor);
     format.setFont(d->styleFont(d->additionalStyle));
 
     d->setFormat(format, c->startLine(), c->startColumn(), c->endLine(), c->endColumn());
@@ -259,8 +271,11 @@ void SyntaxVisitor::onCode(MD::Code<MD::QStringTrait> *c)
     if (c->endDelim().startColumn() != -1)
         d->setFormat(special, c->endDelim());
 
+    QTextCharFormat syntax;
+    syntax.setForeground(d->colors.highlightColor);
+    syntax.setFont(d->styleFont(d->additionalStyle));
     if (c->syntaxPos().startColumn() != -1)
-        d->setFormat(special, c->syntaxPos());
+        d->setFormat(syntax, c->syntaxPos());
 
     onItemWithOpts(c);
 
@@ -270,8 +285,8 @@ void SyntaxVisitor::onCode(MD::Code<MD::QStringTrait> *c)
 void SyntaxVisitor::onInlineCode(MD::Code<MD::QStringTrait> *c)
 {
     QTextCharFormat format;
-    format.setBackground(d->colors.codeColor);
-    format.setForeground(d->colors.titleColor);
+    format.setBackground(d->colors.codeBgColor);
+    format.setForeground(d->colors.codeColor);
     format.setFont(d->styleFont(d->additionalStyle));
 
     d->setFormat(format, c->startLine(), c->startColumn(), c->endLine(), c->endColumn());
@@ -320,7 +335,7 @@ void SyntaxVisitor::onListItem(MD::ListItem<MD::QStringTrait> *l, bool first)
 void SyntaxVisitor::onTable(MD::Table<MD::QStringTrait> *t)
 {
     QTextCharFormat format;
-    format.setForeground(d->colors.codeColor);
+    format.setForeground(d->colors.highlightColor);
     format.setFont(d->styleFont(d->additionalStyle));
 
     d->setFormat(format, t->startLine(), t->startColumn(), t->endLine(), t->endColumn());
@@ -407,7 +422,7 @@ void SyntaxVisitor::onFootnoteRef(MD::FootnoteRef<MD::QStringTrait> *ref)
 void SyntaxVisitor::onFootnote(MD::Footnote<MD::QStringTrait> *f)
 {
     QTextCharFormat format;
-    format.setForeground(d->colors.referenceColor);
+    format.setForeground(d->colors.linkColor);
     format.setFont(d->styleFont(d->additionalStyle));
 
     d->setFormat(format, f->startLine(), f->startColumn(), f->endLine(), f->endColumn());

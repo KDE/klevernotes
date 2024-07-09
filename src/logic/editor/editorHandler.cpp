@@ -220,12 +220,13 @@ void EditorHandler::changeStyles(const QStringList &styles)
     m_colors.textColor = QColor(styles[5]);
     m_colors.titleColor = QColor(styles[6]);
     m_colors.linkColor = QColor(styles[7]);
-    m_colors.codeColor = QColor(styles[9]);
+    m_colors.codeBgColor = QColor(styles[9]);
+    m_colors.codeColor = QColor(styles[5]).darker(125);
     m_colors.highlightColor = QColor(styles[10]);
 
     const QColor backgroundColor(styles[4]);
     if (backgroundColor.value() < 128) {
-        m_colors.specialColor = backgroundColor.lighter(200);
+        m_colors.specialColor = backgroundColor.lighter(300);
     } else {
         m_colors.specialColor = backgroundColor.darker(300);
     }

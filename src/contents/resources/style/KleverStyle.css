@@ -279,11 +279,6 @@ pre {
     word-wrap: break-word;
 }
 
-pre code {
-    background-color: transparent;
-    border: none;
-}
-
 sup {
     font-size: 0.83em;
     vertical-align: super;
