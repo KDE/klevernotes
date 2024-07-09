@@ -128,8 +128,20 @@ void ExtendedSyntaxTest::simpleHighlight()
 
     const auto item = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
 
-    QCOMPARE_EQ(item->openStyles().length(), 1);
-    QCOMPARE_EQ(item->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles = item->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 1);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
+    const auto &closeStyles = item->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 1);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 18);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 19);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item->opts(), 8);
     QVERIFY(item->isSpaceBefore());
     QVERIFY(item->isSpaceAfter());
@@ -154,8 +166,28 @@ void ExtendedSyntaxTest::originalAndNew()
 
     const auto item = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
 
-    QCOMPARE_EQ(item->openStyles().length(), 2);
-    QCOMPARE_EQ(item->closeStyles().length(), 2);
+    // Check delims
+    const auto &openStyles = item->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 2);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
+    QCOMPARE_EQ(openStyles[1].startColumn(), 2);
+    QCOMPARE_EQ(openStyles[1].endColumn(), 2);
+    QCOMPARE_EQ(openStyles[1].startLine(), 0);
+    QCOMPARE_EQ(openStyles[1].endLine(), 0);
+    const auto &closeStyles = item->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 2);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 25);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 25);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    QCOMPARE_EQ(closeStyles[1].startColumn(), 26);
+    QCOMPARE_EQ(closeStyles[1].endColumn(), 27);
+    QCOMPARE_EQ(closeStyles[1].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[1].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item->opts(), 10);
     QVERIFY(item->isSpaceBefore());
     QVERIFY(item->isSpaceAfter());
@@ -179,8 +211,20 @@ void ExtendedSyntaxTest::cancellingPrevious()
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
-    QCOMPARE_EQ(item1->openStyles().length(), 1);
-    QCOMPARE_EQ(item1->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles = item1->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 1);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
+    const auto &closeStyles = item1->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 1);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 28);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 29);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*Cancelling previous style"));
     QVERIFY(item1->isSpaceBefore());
@@ -212,9 +256,28 @@ void ExtendedSyntaxTest::newAndOriginal()
     }
 
     const auto item = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
-
-    QCOMPARE_EQ(item->openStyles().length(), 2);
-    QCOMPARE_EQ(item->closeStyles().length(), 2);
+    // Check delims
+    const auto &openStyles = item->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 2);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
+    QCOMPARE_EQ(openStyles[1].startColumn(), 1);
+    QCOMPARE_EQ(openStyles[1].endColumn(), 2);
+    QCOMPARE_EQ(openStyles[1].startLine(), 0);
+    QCOMPARE_EQ(openStyles[1].endLine(), 0);
+    const auto &closeStyles = item->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 2);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 25);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 26);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    QCOMPARE_EQ(closeStyles[1].startColumn(), 27);
+    QCOMPARE_EQ(closeStyles[1].endColumn(), 27);
+    QCOMPARE_EQ(closeStyles[1].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[1].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item->opts(), 10);
     QVERIFY(item->isSpaceBefore());
     QVERIFY(item->isSpaceAfter());
@@ -238,8 +301,15 @@ void ExtendedSyntaxTest::withNonText()
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
-    QCOMPARE_EQ(item1->openStyles().length(), 1);
+    // Check delims
+    const auto &openStyles = item1->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 1);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    // !Check delims
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("With"));
     QVERIFY(item1->isSpaceBefore());
@@ -252,8 +322,15 @@ void ExtendedSyntaxTest::withNonText()
     QCOMPARE_EQ(item2->type(), MD::ItemType::Code);
 
     const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    // Check delims
     QCOMPARE_EQ(item3->openStyles().length(), 0);
-    QCOMPARE_EQ(item3->closeStyles().length(), 1);
+    const auto &closeStyles = item3->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 1);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 31);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 32);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item3->opts(), 8);
     QCOMPARE(item3->text(), QStringLiteral("middle"));
     QVERIFY(item3->isSpaceBefore());
@@ -277,8 +354,19 @@ void ExtendedSyntaxTest::withNonTextAndOriginal()
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
-    QCOMPARE_EQ(item1->openStyles().length(), 2);
+    // Check delims
+    const auto &openStyles = item1->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 2);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
+    QCOMPARE_EQ(openStyles[1].startColumn(), 2);
+    QCOMPARE_EQ(openStyles[1].endColumn(), 2);
+    QCOMPARE_EQ(openStyles[1].startLine(), 0);
+    QCOMPARE_EQ(openStyles[1].endLine(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    // !Check delims
     QCOMPARE_EQ(item1->opts(), 10);
     QCOMPARE(item1->text(), QStringLiteral("With"));
     QVERIFY(item1->isSpaceBefore());
@@ -291,8 +379,19 @@ void ExtendedSyntaxTest::withNonTextAndOriginal()
     QCOMPARE_EQ(item2->type(), MD::ItemType::Code);
 
     const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    // Check delims
     QCOMPARE_EQ(item3->openStyles().length(), 0);
-    QCOMPARE_EQ(item3->closeStyles().length(), 2);
+    const auto &closeStyles = item3->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 2);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 51);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 51);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    QCOMPARE_EQ(closeStyles[1].startColumn(), 52);
+    QCOMPARE_EQ(closeStyles[1].endColumn(), 53);
+    QCOMPARE_EQ(closeStyles[1].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[1].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item3->opts(), 10);
     QCOMPARE(item3->text(), QStringLiteral("and original style"));
     QVERIFY(item3->isSpaceBefore());
@@ -316,8 +415,15 @@ void ExtendedSyntaxTest::withNonTextAndCancelling()
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
-    QCOMPARE_EQ(item1->openStyles().length(), 1);
+    // Check delims
+    const auto &openStyles = item1->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 1);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    // !Check delims
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*With"));
     QVERIFY(item1->isSpaceBefore());
@@ -330,8 +436,15 @@ void ExtendedSyntaxTest::withNonTextAndCancelling()
     QCOMPARE_EQ(item2->type(), MD::ItemType::Code);
 
     const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    // Check delims
     QCOMPARE_EQ(item3->openStyles().length(), 0);
-    QCOMPARE_EQ(item3->closeStyles().length(), 1);
+    const auto &closeStyles = item3->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 1);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 47);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 48);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item3->opts(), 8);
     QCOMPARE(item3->text(), QStringLiteral("and cancelling"));
     QVERIFY(item3->isSpaceBefore());
@@ -465,6 +578,20 @@ void ExtendedSyntaxTest::unaffected1()
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles = item1->openStyles();
+    QCOMPARE_EQ(openStyles.length(), 1);
+    QCOMPARE_EQ(openStyles[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].endColumn(), 0);
+    QCOMPARE_EQ(openStyles[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles[0].endLine(), 0);
+    const auto &closeStyles = item1->closeStyles();
+    QCOMPARE_EQ(closeStyles.length(), 1);
+    QCOMPARE_EQ(closeStyles[0].startColumn(), 13);
+    QCOMPARE_EQ(closeStyles[0].endColumn(), 13);
+    QCOMPARE_EQ(closeStyles[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item1->opts(), 2);
     QCOMPARE(item1->text(), QStringLiteral("==Unaffected"));
     QVERIFY(item1->isSpaceBefore());
@@ -538,8 +665,20 @@ void ExtendedSyntaxTest::newStyleMix()
     QVERIFY(!item1->isSpaceAfter());
 
     const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
-    QCOMPARE_EQ(item2->openStyles().length(), 1);
-    QCOMPARE_EQ(item2->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles2 = item2->openStyles();
+    QCOMPARE_EQ(openStyles2.length(), 1);
+    QCOMPARE_EQ(openStyles2[0].startColumn(), 13);
+    QCOMPARE_EQ(openStyles2[0].endColumn(), 13);
+    QCOMPARE_EQ(openStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles2[0].endLine(), 0);
+    const auto &closeStyles2 = item2->closeStyles();
+    QCOMPARE_EQ(closeStyles2.length(), 1);
+    QCOMPARE_EQ(closeStyles2[0].startColumn(), 17);
+    QCOMPARE_EQ(closeStyles2[0].endColumn(), 17);
+    QCOMPARE_EQ(closeStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles2[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item2->opts(), 16);
     QCOMPARE(item2->text(), QStringLiteral("==="));
     QVERIFY(!item2->isSpaceBefore());
@@ -554,8 +693,20 @@ void ExtendedSyntaxTest::newStyleMix()
     QVERIFY(!item3->isSpaceAfter());
 
     const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
-    QCOMPARE_EQ(item4->openStyles().length(), 1);
-    QCOMPARE_EQ(item4->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles4 = item4->openStyles();
+    QCOMPARE_EQ(openStyles4.length(), 1);
+    QCOMPARE_EQ(openStyles4[0].startColumn(), 20);
+    QCOMPARE_EQ(openStyles4[0].endColumn(), 20);
+    QCOMPARE_EQ(openStyles4[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles4[0].endLine(), 0);
+    const auto &closeStyles4 = item4->closeStyles();
+    QCOMPARE_EQ(closeStyles4.length(), 1);
+    QCOMPARE_EQ(closeStyles4[0].startColumn(), 23);
+    QCOMPARE_EQ(closeStyles4[0].endColumn(), 23);
+    QCOMPARE_EQ(closeStyles4[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles4[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item4->opts(), 16);
     QCOMPARE(item4->text(), QStringLiteral("=="));
     QVERIFY(!item4->isSpaceBefore());
@@ -596,8 +747,20 @@ void ExtendedSyntaxTest::multiLineMix()
     QVERIFY(!item1->isSpaceAfter());
 
     const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
-    QCOMPARE_EQ(item2->openStyles().length(), 1);
-    QCOMPARE_EQ(item2->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles2 = item2->openStyles();
+    QCOMPARE_EQ(openStyles2.length(), 1);
+    QCOMPARE_EQ(openStyles2[0].startColumn(), 7);
+    QCOMPARE_EQ(openStyles2[0].endColumn(), 7);
+    QCOMPARE_EQ(openStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles2[0].endLine(), 0);
+    const auto &closeStyles2 = item2->closeStyles();
+    QCOMPARE_EQ(closeStyles2.length(), 1);
+    QCOMPARE_EQ(closeStyles2[0].startColumn(), 12);
+    QCOMPARE_EQ(closeStyles2[0].endColumn(), 12);
+    QCOMPARE_EQ(closeStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles2[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item2->opts(), 2);
     QCOMPARE(item2->text(), QStringLiteral("line"));
     QVERIFY(!item2->isSpaceBefore());
@@ -612,40 +775,123 @@ void ExtendedSyntaxTest::multiLineMix()
     QVERIFY(item3->isSpaceAfter());
 
     const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
-    QCOMPARE_EQ(item4->openStyles().length(), 2);
-    QCOMPARE_EQ(item4->closeStyles().length(), 2);
+    // Check delims
+    const auto &openStyles4 = item4->openStyles();
+    QCOMPARE_EQ(openStyles4.length(), 2);
+    QCOMPARE_EQ(openStyles4[0].startColumn(), 16);
+    QCOMPARE_EQ(openStyles4[0].endColumn(), 17);
+    QCOMPARE_EQ(openStyles4[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles4[0].endLine(), 0);
+    QCOMPARE_EQ(openStyles4[1].startColumn(), 18);
+    QCOMPARE_EQ(openStyles4[1].endColumn(), 18);
+    QCOMPARE_EQ(openStyles4[1].startLine(), 0);
+    QCOMPARE_EQ(openStyles4[1].endLine(), 0);
+    const auto &closeStyles4 = item4->closeStyles();
+    QCOMPARE_EQ(closeStyles4.length(), 2);
+    QCOMPARE_EQ(closeStyles4[0].startColumn(), 22);
+    QCOMPARE_EQ(closeStyles4[0].endColumn(), 22);
+    QCOMPARE_EQ(closeStyles4[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles4[0].endLine(), 0);
+    QCOMPARE_EQ(closeStyles4[1].startColumn(), 23);
+    QCOMPARE_EQ(closeStyles4[1].endColumn(), 24);
+    QCOMPARE_EQ(closeStyles4[1].startLine(), 0);
+    QCOMPARE_EQ(closeStyles4[1].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item4->opts(), 10);
     QCOMPARE(item4->text(), QStringLiteral("mix"));
     QVERIFY(item4->isSpaceBefore());
     QVERIFY(item4->isSpaceAfter());
 
     const auto item5 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(4));
-    QCOMPARE_EQ(item5->openStyles().length(), 2);
-    QCOMPARE_EQ(item5->closeStyles().length(), 2);
+    // Check delims
+    const auto &openStyles5 = item5->openStyles();
+    QCOMPARE_EQ(openStyles5.length(), 2);
+    QCOMPARE_EQ(openStyles5[0].startColumn(), 26);
+    QCOMPARE_EQ(openStyles5[0].endColumn(), 26);
+    QCOMPARE_EQ(openStyles5[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles5[0].endLine(), 0);
+    QCOMPARE_EQ(openStyles5[1].startColumn(), 27);
+    QCOMPARE_EQ(openStyles5[1].endColumn(), 27);
+    QCOMPARE_EQ(openStyles5[1].startLine(), 0);
+    QCOMPARE_EQ(openStyles5[1].endLine(), 0);
+    const auto &closeStyles5 = item5->closeStyles();
+    QCOMPARE_EQ(closeStyles5.length(), 2);
+    QCOMPARE_EQ(closeStyles5[0].startColumn(), 30);
+    QCOMPARE_EQ(closeStyles5[0].endColumn(), 30);
+    QCOMPARE_EQ(closeStyles5[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles5[0].endLine(), 0);
+    QCOMPARE_EQ(closeStyles5[1].startColumn(), 31);
+    QCOMPARE_EQ(closeStyles5[1].endColumn(), 31);
+    QCOMPARE_EQ(closeStyles5[1].startLine(), 0);
+    QCOMPARE_EQ(closeStyles5[1].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item5->opts(), 16);
     QCOMPARE(item5->text(), QStringLiteral("of"));
     QVERIFY(item5->isSpaceBefore());
     QVERIFY(item5->isSpaceAfter());
 
     const auto item6 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(5));
-    QCOMPARE_EQ(item6->openStyles().length(), 1);
-    QCOMPARE_EQ(item6->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles6 = item6->openStyles();
+    QCOMPARE_EQ(openStyles6.length(), 1);
+    QCOMPARE_EQ(openStyles6[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles6[0].endColumn(), 0);
+    QCOMPARE_EQ(openStyles6[0].startLine(), 1);
+    QCOMPARE_EQ(openStyles6[0].endLine(), 1);
+    const auto &closeStyles6 = item6->closeStyles();
+    QCOMPARE_EQ(closeStyles6.length(), 1);
+    QCOMPARE_EQ(closeStyles6[0].startColumn(), 4);
+    QCOMPARE_EQ(closeStyles6[0].endColumn(), 4);
+    QCOMPARE_EQ(closeStyles6[0].startLine(), 1);
+    QCOMPARE_EQ(closeStyles6[0].endLine(), 1);
+    // !Check delims
     QCOMPARE_EQ(item6->opts(), 32);
     QCOMPARE(item6->text(), QStringLiteral("new"));
     QVERIFY(item6->isSpaceBefore());
     QVERIFY(item6->isSpaceAfter());
 
     const auto item7 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(6));
-    QCOMPARE_EQ(item7->openStyles().length(), 2);
+    // Check delims
+    const auto &openStyles7 = item7->openStyles();
+    QCOMPARE_EQ(openStyles7.length(), 2);
+    QCOMPARE_EQ(openStyles7[0].startColumn(), 6);
+    QCOMPARE_EQ(openStyles7[0].endColumn(), 6);
+    QCOMPARE_EQ(openStyles7[0].startLine(), 1);
+    QCOMPARE_EQ(openStyles7[0].endLine(), 1);
+    QCOMPARE_EQ(openStyles7[1].startColumn(), 7);
+    QCOMPARE_EQ(openStyles7[1].endColumn(), 7);
+    QCOMPARE_EQ(openStyles7[1].startLine(), 1);
+    QCOMPARE_EQ(openStyles7[1].endLine(), 1);
     QCOMPARE_EQ(item7->closeStyles().length(), 0);
+    // !Check delims
     QCOMPARE_EQ(item7->opts(), 16);
     QCOMPARE(item7->text(), QStringLiteral("=="));
     QVERIFY(item7->isSpaceBefore());
     QVERIFY(!item7->isSpaceAfter());
 
     const auto item8 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(7));
-    QCOMPARE_EQ(item8->openStyles().length(), 1);
-    QCOMPARE_EQ(item8->closeStyles().length(), 3);
+    // Check delims
+    const auto &openStyles8 = item8->openStyles();
+    QCOMPARE_EQ(openStyles8.length(), 1);
+    QCOMPARE_EQ(openStyles8[0].startColumn(), 10);
+    QCOMPARE_EQ(openStyles8[0].endColumn(), 11);
+    QCOMPARE_EQ(openStyles8[0].startLine(), 1);
+    QCOMPARE_EQ(openStyles8[0].endLine(), 1);
+    const auto &closeStyles8 = item8->closeStyles();
+    QCOMPARE_EQ(closeStyles8.length(), 3);
+    QCOMPARE_EQ(closeStyles8[0].startColumn(), 15);
+    QCOMPARE_EQ(closeStyles8[0].endColumn(), 16);
+    QCOMPARE_EQ(closeStyles8[0].startLine(), 1);
+    QCOMPARE_EQ(closeStyles8[0].endLine(), 1);
+    QCOMPARE_EQ(closeStyles8[1].startColumn(), 17);
+    QCOMPARE_EQ(closeStyles8[1].endColumn(), 17);
+    QCOMPARE_EQ(closeStyles8[1].startLine(), 1);
+    QCOMPARE_EQ(closeStyles8[1].endLine(), 1);
+    QCOMPARE_EQ(closeStyles8[2].startColumn(), 18);
+    QCOMPARE_EQ(closeStyles8[2].endColumn(), 18);
+    QCOMPARE_EQ(closeStyles8[2].startLine(), 1);
+    QCOMPARE_EQ(closeStyles8[2].endLine(), 1);
+    // !Check delims
     QCOMPARE_EQ(item8->opts(), 24);
     QCOMPARE(item8->text(), QStringLiteral("and"));
     QVERIFY(!item8->isSpaceBefore());
@@ -677,16 +923,40 @@ void ExtendedSyntaxTest::cancellingPart()
     }
 
     const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
-    QCOMPARE_EQ(item1->openStyles().length(), 1);
-    QCOMPARE_EQ(item1->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles1 = item1->openStyles();
+    QCOMPARE_EQ(openStyles1.length(), 1);
+    QCOMPARE_EQ(openStyles1[0].startColumn(), 0);
+    QCOMPARE_EQ(openStyles1[0].endColumn(), 1);
+    QCOMPARE_EQ(openStyles1[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles1[0].endLine(), 0);
+    const auto &closeStyles1 = item1->closeStyles();
+    QCOMPARE_EQ(closeStyles1.length(), 1);
+    QCOMPARE_EQ(closeStyles1[0].startColumn(), 21);
+    QCOMPARE_EQ(closeStyles1[0].endColumn(), 22);
+    QCOMPARE_EQ(closeStyles1[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles1[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*Cancelling part of"));
     QVERIFY(item1->isSpaceBefore());
     QVERIFY(item1->isSpaceAfter());
 
     const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
-    QCOMPARE_EQ(item2->openStyles().length(), 1);
-    QCOMPARE_EQ(item2->closeStyles().length(), 1);
+    // Check delims
+    const auto &openStyles2 = item2->openStyles();
+    QCOMPARE_EQ(openStyles2.length(), 1);
+    QCOMPARE_EQ(openStyles2[0].startColumn(), 24);
+    QCOMPARE_EQ(openStyles2[0].endColumn(), 25);
+    QCOMPARE_EQ(openStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles2[0].endLine(), 0);
+    const auto &closeStyles2 = item2->closeStyles();
+    QCOMPARE_EQ(closeStyles2.length(), 1);
+    QCOMPARE_EQ(closeStyles2[0].startColumn(), 40);
+    QCOMPARE_EQ(closeStyles2[0].endColumn(), 41);
+    QCOMPARE_EQ(closeStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles2[0].endLine(), 0);
+    // !Check delims
     QCOMPARE_EQ(item2->opts(), 1);
     QCOMPARE(item2->text(), QStringLiteral("original style"));
     QVERIFY(item2->isSpaceBefore());
