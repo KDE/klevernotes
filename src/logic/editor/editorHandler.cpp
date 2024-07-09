@@ -228,7 +228,7 @@ void EditorHandler::changeStyles(const QStringList &styles)
     if (backgroundColor.value() < 128) {
         m_colors.specialColor = backgroundColor.lighter(300);
     } else {
-        m_colors.specialColor = backgroundColor.darker(300);
+        m_colors.specialColor = backgroundColor.darker(200);
     }
 
     highlightSyntax(m_colors, m_currentMdDoc);

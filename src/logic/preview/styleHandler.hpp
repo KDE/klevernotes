@@ -38,6 +38,7 @@ private:
     QString m_style;
 
     QStringList m_defaultStyle;
+    bool m_defaultSet = false;
     QStringList m_styleInfo;
 
     bool m_printBackground = true;

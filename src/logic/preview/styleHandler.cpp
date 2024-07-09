@@ -50,6 +50,10 @@ void StyleHandler::setPrintBackground(const bool printBackground)
 void StyleHandler::setDefault(const QStringList &defaultStyle)
 {
     m_defaultStyle = defaultStyle;
+    if (!m_defaultSet) {
+        m_defaultSet = true;
+    }
+    changeStyle();
 }
 
 // Utility
@@ -61,6 +65,9 @@ void StyleHandler::loadStyle()
 
 void StyleHandler::changeStyles(const QStringList &_styleInfo)
 {
+    if (!m_defaultSet) {
+        return;
+    }
     const QFontInfo viewFontInfo(KleverConfig::viewFont());
     const QString viewFontFamily = viewFontInfo.family();
     const QString viewFontSize = QString::number(viewFontInfo.pointSize());
