@@ -4729,9 +4729,6 @@ inline int Parser<Trait>::htmlTagRule(typename Delims::const_iterator it, typena
 
     tag = tag.toLower();
 
-    if (tag.isEmpty())
-        return -1;
-
     static const typename Trait::String c_validHtmlTagLetters = Trait::latin1ToString("abcdefghijklmnopqrstuvwxyz0123456789-");
 
     bool closing = false;
@@ -4743,6 +4740,9 @@ inline int Parser<Trait>::htmlTagRule(typename Delims::const_iterator it, typena
 
     if (tag.endsWith(Trait::latin1ToString("/")))
         tag.remove(tag.size() - 1, 1);
+
+    if (tag.isEmpty())
+        return -1;
 
     if (!tag.startsWith(Trait::latin1ToString("!")) && !tag.startsWith(Trait::latin1ToString("?")) && !(tag[0].unicode() >= 97 && tag[0].unicode() <= 122))
         return -1;
