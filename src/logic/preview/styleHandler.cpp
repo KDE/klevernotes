@@ -9,6 +9,7 @@
 
 // Qt includes
 #include <QFontInfo>
+#include <qlogging.h>
 
 StyleHandler::StyleHandler(QObject *parent)
     : QObject(parent)
@@ -60,13 +61,11 @@ void StyleHandler::loadStyle()
 
 void StyleHandler::changeStyles(const QStringList &_styleInfo)
 {
-    QFont viewFont = KleverConfig::viewFont();
-    const QFontInfo viewFontInfo(viewFont);
+    const QFontInfo viewFontInfo(KleverConfig::viewFont());
     const QString viewFontFamily = viewFontInfo.family();
     const QString viewFontSize = QString::number(viewFontInfo.pointSize());
 
-    QFont codeFont = KleverConfig::codeFont();
-    const QFontInfo codeFontInfo(codeFont);
+    const QFontInfo codeFontInfo(KleverConfig::codeFont());
     const QString codeFontFamily = codeFontInfo.family();
     const QString codeFontSize = QString::number(codeFontInfo.pointSize());
 
@@ -99,7 +98,18 @@ void StyleHandler::changeStyles(const QStringList &_styleInfo)
 
         m_styleInfo << originalStyleInfo;
 
-        Q_EMIT styleChanged(m_styleInfo);
+        const QFontInfo editorFontInfo(KleverConfig::editorFont());
+        const QString editorFontFamily = editorFontInfo.family();
+        const QString editorFontSize = QString::number(editorFontInfo.pointSize());
+        QStringList editorStyleInfo = {
+            editorFontFamily,
+            editorFontSize,
+            codeFontFamily,
+            codeFontSize,
+        };
+        editorStyleInfo << originalStyleInfo;
+
+        Q_EMIT styleChanged(editorStyleInfo);
     } else {
         m_styleInfo << _styleInfo;
     }

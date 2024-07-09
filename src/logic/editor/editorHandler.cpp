@@ -11,6 +11,8 @@
 // Qt include
 #include <QRegularExpression>
 #include <QTextBlock>
+#include <qcolor.h>
+#include <qlogging.h>
 
 namespace MdEditor
 {
@@ -126,7 +128,7 @@ void EditorHandler::parse(const QString &src)
     }
 
     m_currentMdDoc = m_parser->parse(src);
-    highlightSyntax(colors, m_currentMdDoc);
+    highlightSyntax(m_colors, m_currentMdDoc);
 
     renderDoc();
 }
@@ -206,6 +208,32 @@ QString EditorHandler::headerLevel() const
 };
 // !NoteMapper method
 
+// Colors
+
+void EditorHandler::changeStyles(const QStringList &styles)
+{
+    const QFont editorFont(styles[0], styles[1].toUInt());
+    m_syntaxvisitor->setFont(editorFont);
+
+    const QFont codeFont(styles[2], styles[3].toUInt());
+
+    m_colors.textColor = QColor(styles[5]);
+    m_colors.titleColor = QColor(styles[6]);
+    m_colors.linkColor = QColor(styles[7]);
+    m_colors.codeColor = QColor(styles[9]);
+    m_colors.highlightColor = QColor(styles[10]);
+
+    const QColor backgroundColor(styles[4]);
+    if (backgroundColor.value() < 128) {
+        m_colors.specialColor = backgroundColor.lighter(200);
+    } else {
+        m_colors.specialColor = backgroundColor.darker(300);
+    }
+
+    highlightSyntax(m_colors, m_currentMdDoc);
+}
+// !Colors
+
 // !KleverNotes method
 
 // md-editor method
@@ -221,7 +249,7 @@ void EditorHandler::applyFont(const QFont &f)
 
     /* d->syntax.setFont( f ); */
 
-    highlightSyntax(colors, m_currentMdDoc);
+    highlightSyntax(m_colors, m_currentMdDoc);
 }
 
 SyntaxVisitor *EditorHandler::syntaxHighlighter() const

@@ -46,7 +46,6 @@ public:
 
     // Connections
     void connectPlugins();
-    void connectStyles();
 
     // QTextDocument info
     QTextDocument *document() const;
@@ -64,6 +63,9 @@ public:
     // NoteMapper
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
+
+    // Colors
+    Q_INVOKABLE void changeStyles(const QStringList &styles);
 
     // md-editor
     std::shared_ptr<MD::Document<MD::QStringTrait>> currentDoc() const;
@@ -145,7 +147,7 @@ private:
     // Editor highlight
     SyntaxVisitor *m_syntaxvisitor = nullptr;
     bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
-    Colors colors;
+    Colors m_colors;
 
     Q_DISABLE_COPY(EditorHandler)
 };

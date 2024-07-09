@@ -225,6 +225,15 @@ ColumnLayout {
         active: Config.noteMapEnabled
     }
 
+    Connections {
+        id: styleHandlerConnections
+
+        target: StyleHandler
+        function onStyleChanged(styles) {
+            EditorHandler.changeStyles(styles)
+        }
+    }
+
     function focusEditor() {
         if (editor.visible) {
             editor.textArea.forceActiveFocus()

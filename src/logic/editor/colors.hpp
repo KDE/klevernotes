@@ -7,6 +7,7 @@
 
 // Qt include.
 #include <QColor>
+#include <qcolor.h>
 
 namespace MdEditor
 {
@@ -26,6 +27,9 @@ struct Colors {
     QColor referenceColor = QColor(128, 0, 0);
     QColor specialColor = QColor(128, 0, 0);
     bool enabled = true;
+    // KleverNotes colors
+    QColor titleColor = QColor(0, 0, 128);
+    QColor highlightColor = Qt::cyan;
 }; // struct Colors
 
 bool operator!=(const Colors &c1, const Colors &c2);
