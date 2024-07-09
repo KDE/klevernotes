@@ -116,14 +116,12 @@ void ExtendedSyntaxTest::initTestCase()
 void ExtendedSyntaxTest::simpleHighlight()
 {
     QTextStream s(&m_testingLines[0], QIODeviceBase::ReadOnly);
-    const std::shared_ptr<MD::Document<MD::QStringTrait>> doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
+    const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
     if (doc->items().length() != 2) {
         QFAIL("simpleHighlight: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
-    ;
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("simpleHighlight: Incorrect items count in the paragraph");
     }
@@ -145,13 +143,11 @@ void ExtendedSyntaxTest::originalAndNew()
 {
     QTextStream s(&m_testingLines[1], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("originalAndNew: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
-    ;
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("originalAndNew: Incorrect items count in the paragraph");
     }
@@ -173,12 +169,11 @@ void ExtendedSyntaxTest::cancellingPrevious()
 {
     QTextStream s(&m_testingLines[2], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("cancellingPrevious: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("cancellingPrevious: Incorrect items count in the paragraph");
     }
@@ -207,13 +202,11 @@ void ExtendedSyntaxTest::newAndOriginal()
 {
     QTextStream s(&m_testingLines[3], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("newAndOriginal: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
-    ;
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("newAndOriginal: Incorrect items count in the paragraph");
     }
@@ -235,12 +228,11 @@ void ExtendedSyntaxTest::withNonText()
 {
     QTextStream s(&m_testingLines[4], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("withNonText: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 3) {
         QFAIL("withNonText: Incorrect items count in the paragraph");
     }
@@ -275,12 +267,11 @@ void ExtendedSyntaxTest::withNonTextAndOriginal()
 {
     QTextStream s(&m_testingLines[5], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("withNonTextAndOriginal: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 3) {
         QFAIL("withNonTextAndOriginal: Incorrect items count in the paragraph");
     }
@@ -315,12 +306,11 @@ void ExtendedSyntaxTest::withNonTextAndCancelling()
 {
     QTextStream s(&m_testingLines[6], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("withNonTextAndCancelling: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 4) {
         QFAIL("withNonTextAndCancelling: Incorrect items count in the paragraph");
     }
@@ -363,12 +353,11 @@ void ExtendedSyntaxTest::untouched1()
 {
     QTextStream s(&m_testingLines[7], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("untouched1: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("untouched1: Incorrect items count in the paragraph");
     }
@@ -389,12 +378,11 @@ void ExtendedSyntaxTest::untouched2()
 {
     QTextStream s(&m_testingLines[8], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("untouched2: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("untouched2: Incorrect items count in the paragraph");
     }
@@ -415,12 +403,11 @@ void ExtendedSyntaxTest::untouched3()
 {
     QTextStream s(&m_testingLines[9], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("untouched3: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("untouched3: Incorrect items count in the paragraph");
     }
@@ -441,12 +428,11 @@ void ExtendedSyntaxTest::untouched4()
 {
     QTextStream s(&m_testingLines[10], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("untouched4: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("untouched4: Incorrect items count in the paragraph");
     }
@@ -467,12 +453,11 @@ void ExtendedSyntaxTest::unaffected1()
 {
     QTextStream s(&m_testingLines[11], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("unaffected1: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("unaffected1: Incorrect items count in the paragraph");
     }
@@ -502,12 +487,11 @@ void ExtendedSyntaxTest::unaffected2()
 {
     QTextStream s(&m_testingLines[12], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("unaffected2: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("unaffected2: Incorrect items count in the paragraph");
     }
@@ -536,12 +520,11 @@ void ExtendedSyntaxTest::newStyleMix()
 {
     QTextStream s(&m_testingLines[13], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("newStyleMix: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 5) {
         QFAIL("newStyleMix: Incorrect items count in the paragraph");
     }
@@ -595,12 +578,11 @@ void ExtendedSyntaxTest::multiLineMix()
 {
     QTextStream s(&m_testingLines[14], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("multiLineMix: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 9) {
         QFAIL("multiLineMix: Incorrect items count in the paragraph");
     }
@@ -685,12 +667,11 @@ void ExtendedSyntaxTest::cancellingPart()
 {
     QTextStream s(&m_testingLines[15], QIODeviceBase::ReadOnly);
     const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
-
     if (doc->items().length() != 2) {
         QFAIL("cancellingPart: Incorrect items count in the doc");
     }
 
-    MD::Paragraph<MD::QStringTrait> *paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
     if (paragraph->items().length() != 3) {
         QFAIL("cancellingPart: Incorrect items count in the paragraph");
     }
