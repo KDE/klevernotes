@@ -1,7 +1,5 @@
-/*
-    SPDX-FileCopyrightText: 2024 Igor Mironchik <igor.mironchik@gmail.com>
-    SPDX-License-Identifier: GPL-3.0-or-later
-*/
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
 #pragma once
 
@@ -39,6 +37,8 @@ public:
     void highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const Colors &colors);
     void setFont(const QFont &f);
     void clearHighlighting();
+
+    void addExtendedSyntax(const long long int opts, const QStringList &info);
 
 protected:
     void onReferenceLink(MD::Link<MD::QStringTrait> *l) override;

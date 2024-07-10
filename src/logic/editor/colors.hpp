@@ -19,8 +19,6 @@ namespace MdEditor
 struct Colors {
     QColor textColor = QColor(0, 0, 128);
     QColor linkColor = QColor(0, 128, 0);
-    QColor inlineColor = Qt::black;
-    QColor htmlColor = QColor(128, 0, 0);
     QColor mathColor = QColor(128, 0, 0);
     QColor specialColor = QColor(128, 0, 0);
     QColor titleColor = QColor(0, 0, 128);

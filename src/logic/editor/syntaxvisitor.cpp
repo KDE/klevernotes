@@ -1,7 +1,5 @@
-/*
-    SPDX-FileCopyrightText: 2024 Igor Mironchik <igor.mironchik@gmail.com>
-    SPDX-License-Identifier: GPL-3.0-or-later
-*/
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
 // KleverNotes includes
 #include "logic/editor/editorHandler.hpp"
@@ -18,7 +16,9 @@
 
 // C++ include.
 #include <algorithm>
-#include <qlogging.h>
+#include <qtextformat.h>
+
+using namespace Qt::Literals::StringLiterals;
 
 namespace MdEditor
 {
@@ -60,11 +60,11 @@ struct SyntaxVisitorPrivate {
                 auto composedFormat = format;
                 auto oldFormat = c.charFormat();
 
-                if (oldFormat.foreground() == colors.titleColor && format.foreground() == colors.textColor) {
+                if (oldFormat.foreground().color() == colors.titleColor && format.foreground().color() == colors.textColor) {
                     composedFormat.setForeground(colors.titleColor);
                 }
                 const auto oldSize = oldFormat.fontPointSize();
-                if (oldSize != 0 && oldSize != font.pointSize()) {
+                if (oldSize != 0 && oldSize != font.pointSize() && format.foreground().color() != colors.specialColor) {
                     composedFormat.setFontPointSize(oldSize);
                 }
 
@@ -89,6 +89,139 @@ struct SyntaxVisitorPrivate {
         return f;
     }
 
+    // KleverNotes
+    QColor getColor(const QString &info)
+    {
+        const int specialColorIdx = colorsName.indexOf(info);
+        if (specialColorIdx != -1) {
+            switch (specialColorIdx) {
+            case 0:
+                return colors.textColor;
+            case 1:
+                return colors.linkColor;
+            case 2:
+                return colors.specialColor;
+            case 3:
+                return colors.titleColor;
+            case 4:
+                return colors.highlightColor;
+            case 5:
+                return colors.codeColor;
+            }
+        } else if (QColor::isValidColorName(info)) {
+            return QColor(info);
+        }
+        return QColor().convertTo(QColor::Spec::Invalid);
+    }
+
+    QTextCharFormat makeFormat(const long long int opts)
+    {
+        QTextCharFormat format;
+        format.setForeground(colors.textColor);
+        format.setFont(styleFont(opts));
+        for (auto i = modifications.cbegin(), end = modifications.cend(); i != end; ++i) {
+            const long long int modifOpts = i.key();
+
+            if (opts & modifOpts) {
+                const QStringList &info = i.value();
+
+                float sizeScale = 1;
+                if (!info[3].isEmpty()) {
+                    bool ok;
+                    float scale = info[3].toFloat(&ok);
+                    sizeScale = ok ? scale : 1;
+                }
+                const int size = font.pointSize() * sizeScale;
+                format.setFontPointSize(size);
+
+                const QColor foreground = getColor(info[4]);
+                if (foreground.isValid()) {
+                    format.setForeground(foreground);
+                }
+
+                const QColor background = getColor(info[5]);
+                if (background.isValid()) {
+                    format.setBackground(background);
+                }
+
+                if (!info[6].isEmpty()) {
+                    bool ok;
+                    int alignmentValue = info[6].toInt(&ok);
+                    if (ok && 0 < alignmentValue && alignmentValue < 7) {
+                        QTextCharFormat::VerticalAlignment alignment;
+                        switch (alignmentValue) {
+                        case 1:
+                            alignment = QTextCharFormat::VerticalAlignment::AlignSuperScript;
+                            break;
+                        case 2:
+                            alignment = QTextCharFormat::VerticalAlignment::AlignSubScript;
+                            break;
+                        case 3:
+                            alignment = QTextCharFormat::VerticalAlignment::AlignMiddle;
+                            break;
+                        case 4:
+                            alignment = QTextCharFormat::VerticalAlignment::AlignBottom;
+                            break;
+                        case 5:
+                            alignment = QTextCharFormat::VerticalAlignment::AlignTop;
+                            break;
+                        case 6:
+                            alignment = QTextCharFormat::VerticalAlignment::AlignBaseline;
+                            break;
+                        }
+                        format.setVerticalAlignment(alignment);
+                    }
+                }
+
+                if (!info[7].isEmpty()) {
+                    format.setFontWeight(700);
+                }
+                if (!info[8].isEmpty()) {
+                    format.setFontItalic(true);
+                }
+                if (!info[9].isEmpty()) {
+                    format.setFontStrikeOut(true);
+                }
+                if (!info[10].isEmpty()) {
+                    format.setFontUnderline(true);
+                }
+                if (!info[11].isEmpty()) {
+                    bool ok;
+                    int underlineStyleValue = info[11].toInt(&ok);
+                    if (ok && 0 < underlineStyleValue && underlineStyleValue < 8) {
+                        // Apply to format
+                        QTextCharFormat::UnderlineStyle underlineStyle;
+                        switch (underlineStyleValue) {
+                        case 1:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::SingleUnderline;
+                            break;
+                        case 2:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::DashUnderline;
+                            break;
+                        case 3:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::DotLine;
+                            break;
+                        case 4:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::DashDotLine;
+                            break;
+                        case 5:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::DashDotDotLine;
+                            break;
+                        case 6:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::WaveUnderline;
+                            break;
+                        case 7:
+                            underlineStyle = QTextCharFormat::UnderlineStyle::SpellCheckUnderline;
+                            break;
+                        }
+                        format.setUnderlineStyle(underlineStyle);
+                    }
+                }
+            }
+        }
+        return format;
+    }
+
     //! Editor.
     EditorHandler *editor = nullptr;
     //! Document.
@@ -99,13 +232,15 @@ struct SyntaxVisitorPrivate {
     QFont font;
     //! Additional style that should be applied for any item.
     int additionalStyle = 0;
+
+    // KleverNotes
+    QMap<int, QStringList> modifications;
+    inline static const QStringList colorsName = {u"text"_s, u"link"_s, u"special"_s, u"title"_s, u"highlight"_s, u"code"_s};
 }; // struct SyntaxVisitorPrivate
-; // struct SyntaxVisitorPrivate
 
 //
 // SyntaxVisitor
 //
-
 SyntaxVisitor::SyntaxVisitor(EditorHandler *editor)
     : d(new SyntaxVisitorPrivate(editor))
 {
@@ -138,6 +273,11 @@ void SyntaxVisitor::highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> do
     c.endEditBlock();
 }
 
+void SyntaxVisitor::addExtendedSyntax(const long long int opts, const QStringList &info)
+{
+    d->modifications[opts] = info;
+}
+
 void SyntaxVisitor::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
 {
     QTextCharFormat special;
@@ -164,9 +304,7 @@ void SyntaxVisitor::onReferenceLink(MD::Link<MD::QStringTrait> *l)
 
 void SyntaxVisitor::onText(MD::Text<MD::QStringTrait> *t)
 {
-    QTextCharFormat format;
-    format.setForeground(d->colors.textColor);
-    format.setFont(d->styleFont(t->opts() | d->additionalStyle));
+    QTextCharFormat format = d->makeFormat(t->opts());
 
     d->setFormat(format, t->startLine(), t->startColumn(), t->endLine(), t->endColumn());
 
@@ -228,7 +366,7 @@ void SyntaxVisitor::onHeading(MD::Heading<MD::QStringTrait> *h)
 
     baseFont.setPointSize(size);
     baseFormat.setFont(baseFont);
-    d->setFormat(baseFormat, h->startLine(), h->startColumn() + h->level() + 1, h->endLine(), h->endColumn());
+    d->setFormat(baseFormat, h->startLine(), h->text()->startColumn(), h->endLine(), h->endColumn());
 
     const auto tmp = d->additionalStyle;
 
@@ -255,13 +393,19 @@ void SyntaxVisitor::onHeading(MD::Heading<MD::QStringTrait> *h)
 void SyntaxVisitor::onCode(MD::Code<MD::QStringTrait> *c)
 {
     QTextCharFormat format;
+    QTextCharFormat special;
     format.setBackground(d->colors.codeBgColor);
-    format.setForeground(d->colors.codeColor);
     format.setFont(d->styleFont(d->additionalStyle));
+
+    QColor foregroundColor = d->colors.codeColor;
+    if (c->opts() & 8) {
+        special.setBackground(d->colors.highlightColor);
+        foregroundColor = d->colors.highlightColor;
+    }
+    format.setForeground(foregroundColor);
 
     d->setFormat(format, c->startLine(), c->startColumn(), c->endLine(), c->endColumn());
 
-    QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
     special.setFont(d->styleFont(d->additionalStyle));
 
@@ -285,13 +429,19 @@ void SyntaxVisitor::onCode(MD::Code<MD::QStringTrait> *c)
 void SyntaxVisitor::onInlineCode(MD::Code<MD::QStringTrait> *c)
 {
     QTextCharFormat format;
+    QTextCharFormat special;
     format.setBackground(d->colors.codeBgColor);
-    format.setForeground(d->colors.codeColor);
     format.setFont(d->styleFont(d->additionalStyle));
+
+    QColor foregroundColor = d->colors.codeColor;
+    if (c->opts() & 8) {
+        special.setBackground(d->colors.highlightColor);
+        foregroundColor = d->colors.highlightColor;
+    }
+    format.setForeground(foregroundColor);
 
     d->setFormat(format, c->startLine(), c->startColumn(), c->endLine(), c->endColumn());
 
-    QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
     special.setFont(d->styleFont(d->additionalStyle));
 

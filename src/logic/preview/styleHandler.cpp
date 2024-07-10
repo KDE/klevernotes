@@ -9,7 +9,6 @@
 
 // Qt includes
 #include <QFontInfo>
-#include <qlogging.h>
 
 StyleHandler::StyleHandler(QObject *parent)
     : QObject(parent)
