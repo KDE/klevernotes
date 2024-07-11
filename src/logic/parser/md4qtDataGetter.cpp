@@ -3,7 +3,7 @@
     SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 */
 
-#include "md4qtHelperFunc.hpp"
+#include "md4qtDataGetter.hpp"
 
 namespace md4qtHelperFunc
 {

@@ -3,9 +3,9 @@
     SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 */
 
-#include "extendedSyntaxHelper.hpp"
+#include "md4qtDataManip.hpp"
 
-namespace ExtendedSyntaxHelper
+namespace md4qtHelperFunc
 {
 // Style manip
 void mergeStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b)

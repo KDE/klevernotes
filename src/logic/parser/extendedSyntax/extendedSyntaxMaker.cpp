@@ -4,7 +4,7 @@
 */
 
 #include "extendedSyntaxMaker.hpp"
-#include "extendedSyntaxHelper.hpp"
+#include "../md4qtDataManip.hpp"
 
 namespace ExtendedSyntaxMaker
 {
@@ -228,27 +228,27 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
         bool reattached = false;
         const bool atStart = (delimEndPos + 1 == itemStartPos);
         if (atStart || (itemEndPos == delimStartPos - 1)) {
-            reattached = ExtendedSyntaxHelper::addStringTo(currentItemPtr, atStart, delimText, po);
+            reattached = md4qtHelperFunc::addStringTo(currentItemPtr, atStart, delimText, po);
         }
 
         const long long int previousParaIdx = paraIdx - 1;
         MDItemWithOptsPtr previousItem = (0 <= previousParaIdx) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(previousParaIdx)) : nullptr;
         if (previousItem && (previousItem->endLine() == badStyleInfo.startLine) && (previousItem->endColumn() == delimStartPos - 1)) {
             if (reattached) {
-                ExtendedSyntaxHelper::mergeFromIndex(previousParaIdx, p, po);
+                md4qtHelperFunc::mergeFromIndex(previousParaIdx, p, po);
                 continue;
             }
-            reattached = ExtendedSyntaxHelper::addStringTo(previousItem, false, delimText, po);
+            reattached = md4qtHelperFunc::addStringTo(previousItem, false, delimText, po);
         }
 
         const long long int nextParaIdx = paraIdx + 1;
         MDItemWithOptsPtr nextItem = (nextParaIdx < p->items().length()) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(nextParaIdx)) : nullptr;
         if (nextItem && (nextItem->startLine() == badStyleInfo.startLine) && (delimEndPos + 1 == nextItem->startColumn())) {
             if (reattached) {
-                ExtendedSyntaxHelper::mergeFromIndex(paraIdx, p, po);
+                md4qtHelperFunc::mergeFromIndex(paraIdx, p, po);
                 continue;
             }
-            reattached = ExtendedSyntaxHelper::addStringTo(nextItem, true, delimText, po);
+            reattached = md4qtHelperFunc::addStringTo(nextItem, true, delimText, po);
         }
 
         if (!reattached) { // create new one
@@ -285,7 +285,7 @@ void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo>
         // Can't use indexOf, the itemPtr could have been changed to much/merged
         const long long int paraIdx = md4qtHelperFunc::paraIdxFromPos(startPos, delim.startLine(), p);
 
-        ExtendedSyntaxHelper::splitItem(p, po, paraIdx, startPos, delimLength, (delim.type == TagType::Opening), newStyleOpt);
+        md4qtHelperFunc::splitItem(p, po, paraIdx, startPos, delimLength, (delim.type == TagType::Opening), newStyleOpt);
     }
 }
 

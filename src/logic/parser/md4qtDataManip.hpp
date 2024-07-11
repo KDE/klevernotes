@@ -5,9 +5,9 @@
 
 #pragma once
 
-#include "md4qtHelperFunc.hpp"
+#include "md4qtDataGetter.hpp"
 
-namespace ExtendedSyntaxHelper
+namespace md4qtHelperFunc
 {
 // Styles
 void mergeStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b);

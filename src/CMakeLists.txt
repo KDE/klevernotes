@@ -39,10 +39,10 @@ set(lib_SRCS
     # ==== PARSER ====
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
+    logic/parser/md4qtDataGetter.cpp
+    logic/parser/md4qtDataManip.cpp
     # Extended Syntax
-    logic/parser/extendedSyntax/extendedSyntaxHelper.cpp
     logic/parser/extendedSyntax/extendedSyntaxMaker.cpp
-    logic/parser/extendedSyntax/md4qtHelperFunc.cpp
     # PLUGINS
     logic/parser/plugins/cliHelper.cpp
     logic/parser/plugins/pluginHelper.cpp

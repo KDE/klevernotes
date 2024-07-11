@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "md4qtHelperFunc.hpp"
+#include "../md4qtDataGetter.hpp"
 
 namespace ExtendedSyntaxMaker
 {
