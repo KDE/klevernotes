@@ -58,6 +58,7 @@ public:
     Q_INVOKABLE void parse(const QString &src);
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
+    Q_INVOKABLE void usePreviousPath();
     Parser *parser() const;
 
     // NoteMapper
@@ -120,9 +121,10 @@ private:
     // QTextDocument info
     QQuickTextDocument *m_qQuickDocument = nullptr;
     QTextDocument *m_document = nullptr;
-    int m_cursorPosition;
+    int m_cursorPosition = 0;
 
     // Parsing
+    QString m_previousPath;
     QString m_notePath;
     Parser *m_parser = nullptr;
     std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;

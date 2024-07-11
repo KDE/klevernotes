@@ -122,6 +122,9 @@ Kirigami.ApplicationWindow {
 
     function switchToPage(pageName) {
         const page = getPage(pageName)
+        if (pageName === "Settings") {
+            EditorHandler.notePath = "qrc:"
+        }
         pageStack.push(page)
         currentPageName = pageName
     }
@@ -140,6 +143,7 @@ Kirigami.ApplicationWindow {
     function showMainPage() {
         sideBar.changeWidth = true
         if (!sideBar.modal) sideBar.open()
+        EditorHandler.usePreviousPath()
         currentPageName = "Main"
     }
 }

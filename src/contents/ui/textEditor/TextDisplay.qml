@@ -21,9 +21,6 @@ RowLayout {
 
     readonly property var view: web_view
 
-    required property string path
-    required property string text
-    
     // TODO: move all of those to C++ connect
     // NoteMapper
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
@@ -41,9 +38,6 @@ RowLayout {
 
     spacing: 0
 
-    onPathChanged: {
-        EditorHandler.notePath = path
-    }
     Component.onCompleted: {
         loadBaseHtml()
         StyleHandler.loadStyle()

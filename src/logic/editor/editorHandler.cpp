@@ -122,13 +122,17 @@ void EditorHandler::setCursorPosition(const int cursorPosition)
 // Parser
 void EditorHandler::parseDoc()
 {
-    if (!m_highlighting) {
+    if (!m_highlighting && m_notePath != QStringLiteral("qrc:")) {
         parse(m_document->toPlainText());
     }
 }
 
 void EditorHandler::parse(const QString &src)
 {
+    static const QString qrcStr = QStringLiteral("qrc:");
+    if (m_notePath != qrcStr && !m_notePath.endsWith(QStringLiteral(".md"))) {
+        return;
+    }
     if (m_pluginHelper) {
         m_pluginHelper->clearPluginsInfo();
     }
@@ -149,23 +153,39 @@ void EditorHandler::setNotePath(const QString &notePath)
     if (notePath == m_notePath) {
         return;
     }
+    static const QString pathEnd = QStringLiteral("/note.md");
+    static const QString qrcStr = QStringLiteral("qrc:");
+    if (notePath == qrcStr) {
+        m_previousPath = m_notePath;
+        m_notePath = notePath;
+    } else if (!notePath.endsWith(pathEnd)) {
+        m_notePath = QLatin1String();
+        return;
+    } else {
+        m_previousPath = notePath;
+    }
+    m_notePath = notePath;
+    m_parser->setNotePath(notePath);
 
-    QString parserNotePath = notePath;
-    static const QString pathEnd = QStringLiteral("/");
-    if (notePath.endsWith(pathEnd)) {
-        parserNotePath.chop(pathEnd.length());
+    QString rendererNotePath = notePath;
+    if (notePath != qrcStr) {
+        rendererNotePath.chop(pathEnd.length());
     }
 
-    m_notePath = parserNotePath;
-    m_parser->setNotePath(parserNotePath);
-    m_renderer->setNotePath(m_notePath);
+    m_renderer->setNotePath(rendererNotePath);
 
-    if (m_notePath == QStringLiteral("qrc:") && m_pluginHelper) {
+    if (notePath != qrcStr && m_pluginHelper) {
         // We do this here because we're sure to be in another note
         m_pluginHelper->clearPluginsPreviousInfo();
 
-        m_pluginHelper->mapperParserUtils()->setNotePath(notePath);
+        m_pluginHelper->mapperParserUtils()->setNotePath(rendererNotePath);
     }
+}
+
+void EditorHandler::usePreviousPath()
+{
+    setNotePath(m_previousPath);
+    parseDoc();
 }
 // !Parser
 
@@ -254,10 +274,6 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() cons
 
 void EditorHandler::applyFont(const QFont &f)
 {
-    /* setFont( f ); */
-
-    /* d->syntax.setFont( f ); */
-
     highlightSyntax(m_colors, m_currentMdDoc);
 }
 
@@ -299,9 +315,11 @@ void EditorHandler::pumlDarkChanged()
 
 void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
 {
-    m_highlighting = true;
-    m_syntaxvisitor->highlight(doc, colors);
-    m_highlighting = false;
+    if (!m_notePath.isEmpty() && m_notePath != QStringLiteral("qrc:")) {
+        m_highlighting = true;
+        m_syntaxvisitor->highlight(doc, colors);
+        m_highlighting = false;
+    }
 }
 // !md-editor slots
 }

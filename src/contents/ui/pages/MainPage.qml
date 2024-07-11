@@ -50,7 +50,7 @@ Kirigami.Page {
 
     EditorView {
         id: editorView
-        path: currentlySelected ? currentlySelected.path + "/note.md" : ""
+        path: hasNote ? currentlySelected.path + "/note.md" : ""
         visible: bottomToolBar.showNoteEditor && root.isVisible && root.hasNote
         anchors.fill: parent
     }
