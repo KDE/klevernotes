@@ -19,11 +19,11 @@ bool addStringTo(const MDItemWithOptsPtr item, const bool atStart, const QString
 
 void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &po);
 
-void splitItem(MDParagraphPtr p,
-               MDParsingOpts &po,
-               long long int paraIdx,
-               const long long int from,
-               const long long int length,
-               const bool opening,
-               const long long int newStyleOpt);
+int splitItem(MDParagraphPtr p,
+              MDParsingOpts &po,
+              long long int paraIdx,
+              const long long int from,
+              const long long int length,
+              const bool opening,
+              const long long int newStyleOpt);
 }

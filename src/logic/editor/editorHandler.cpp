@@ -29,7 +29,6 @@ EditorHandler::EditorHandler(QObject *parent)
 
     connectPlugins();
 
-    static const QString def = QLatin1String();
     static const QList<QStringList> extendedSyntaxsList = {
         // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
         // 4. foreground, 5. background, 6. vertical alignment, 7. bold enabled,
@@ -40,7 +39,8 @@ EditorHandler::EditorHandler(QObject *parent)
         {u"-"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
         {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
     };
-    addExtendedSyntaxs(extendedSyntaxsList);
+    /* m_parser->addPlugin(); */
+    /* addExtendedSyntaxs(extendedSyntaxsList); */
 }
 
 // Connections

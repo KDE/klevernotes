@@ -24,6 +24,7 @@ class EditorHandler;
 class Parser
 {
 public:
+    Parser();
     std::shared_ptr<MD::Document<MD::QStringTrait>> parse(QString src);
 
     // Getters

@@ -5,9 +5,17 @@
 
 #include "parser.h"
 #include "extendedSyntax/extendedSyntaxMaker.hpp"
+#include "md4qtDataCleaner.hpp"
+#include "plugins/noteMapper/noteLinkingExtension.hpp"
 
 namespace MdEditor
 {
+Parser::Parser()
+{
+    // Random ID
+    m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
+}
+
 std::shared_ptr<MD::Document<MD::QStringTrait>> Parser::parse(QString src)
 {
     QTextStream s(&src, QIODeviceBase::ReadOnly);
@@ -40,6 +48,8 @@ void Parser::addExtendedSyntax(const QStringList &details)
 
 void Parser::addPlugin()
 {
+    // TODO: move this
+    /* m_md4qtParser.addTextPlugin(256, NoteLinkingExtension::noteLinkingHelperFunc, true, {}); */
 }
 // !Setters
 }

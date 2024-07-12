@@ -156,18 +156,18 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
     p->removeItemAt(from + 1);
 }
 
-void splitItem(MDParagraphPtr p,
-               MDParsingOpts &po,
-               long long int paraIdx,
-               const long long int from,
-               const long long int length,
-               const bool opening,
-               const long long int newStyleOpt)
+int splitItem(MDParagraphPtr p,
+              MDParsingOpts &po,
+              long long int paraIdx,
+              const long long int from,
+              const long long int length,
+              const bool opening,
+              const long long int newStyleOpt)
 {
     MDItemWithOptsPtr currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
 
     if (currentItem->type() != MD::ItemType::Text) {
-        return;
+        return 0;
     }
 
     const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(currentItem, po);
@@ -182,8 +182,6 @@ void splitItem(MDParagraphPtr p,
     const long long int relativeStartSplit = from - startPos;
     const long long int relativeEndSplit = relativeStartSplit + length - 1;
     const long long int endSplit = startPos + relativeEndSplit;
-
-    MD::StyleDelim styleDelim = MD::StyleDelim(newStyleOpt, from, currentItem->startLine(), (from + length - 1), currentItem->endLine());
 
     const QString src = rawData.str;
     const bool removeCurrent = length == rawData.str.length();
@@ -244,23 +242,27 @@ void splitItem(MDParagraphPtr p,
     }
 
     // Add new styles
-    if (opening) {
-        MDItemWithOptsPtr item = (newAdded || endSplit == endPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1))
-                                                                  : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+    if (newStyleOpt) {
+        MD::StyleDelim styleDelim = MD::StyleDelim(newStyleOpt, from, currentItem->startLine(), (from + length - 1), currentItem->endLine());
+        if (opening) {
+            MDItemWithOptsPtr item = (newAdded || endSplit == endPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1))
+                                                                      : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
 
-        item->openStyles() << styleDelim;
-        std::sort(item->openStyles().begin(), item->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
-    } else {
-        MDItemWithOptsPtr item = (from == startPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1))
-                                                    : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-        item->closeStyles() << styleDelim;
-        std::sort(item->closeStyles().begin(), item->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
+            item->openStyles() << styleDelim;
+            std::sort(item->openStyles().begin(), item->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
+        } else {
+            MDItemWithOptsPtr item = (from == startPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1))
+                                                        : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+            item->closeStyles() << styleDelim;
+            std::sort(item->closeStyles().begin(), item->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
+        }
     }
 
     // Transfer styles
     if (newAdded) {
         MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
         transferStyle(currentItem, nextItem, true);
+        return 1;
     }
 
     // Clean
@@ -277,7 +279,9 @@ void splitItem(MDParagraphPtr p,
         }
         p->removeItemAt(paraIdx);
         po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+        return -1;
     }
+    return 0;
 }
 // !String manip
-} // !ExtendedSyntaxHelper
+} // md4qtHelperFunc!

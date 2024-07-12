@@ -519,14 +519,25 @@ void SyntaxVisitor::onHorizontalLine(MD::HorizontalLine<MD::QStringTrait> *l)
 
 void SyntaxVisitor::onLink(MD::Link<MD::QStringTrait> *l)
 {
-    QTextCharFormat format;
-    format.setForeground(d->colors.linkColor);
-    format.setFont(d->styleFont(l->opts() | d->additionalStyle));
+    QTextCharFormat generalFormat;
+    generalFormat.setForeground(d->colors.specialColor);
+    generalFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
 
-    d->setFormat(format, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
+    d->setFormat(generalFormat, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
 
     const auto tmp = d->additionalStyle;
     d->additionalStyle |= l->opts();
+
+    QTextCharFormat urlFormat;
+    urlFormat.setForeground(d->colors.linkColor);
+    urlFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
+    urlFormat.setFontUnderline(true);
+    d->setFormat(urlFormat, l->urlPos());
+
+    QTextCharFormat textFormat;
+    textFormat.setForeground(d->colors.textColor);
+    textFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
+    d->setFormat(textFormat, l->textPos());
 
     MD::PosCache<MD::QStringTrait>::onLink(l);
 

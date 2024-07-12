@@ -39,6 +39,7 @@ set(lib_SRCS
     # ==== PARSER ====
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
+    logic/parser/md4qtDataCleaner.cpp
     logic/parser/md4qtDataGetter.cpp
     logic/parser/md4qtDataManip.cpp
     # Extended Syntax
@@ -54,6 +55,7 @@ set(lib_SRCS
     logic/parser/plugins/noteMapper/noteMapper.cpp
     logic/parser/plugins/noteMapper/noteMapperParserUtils.cpp
     logic/parser/plugins/noteMapper/noteMapperUtils.cpp
+    logic/parser/plugins/noteMapper/noteLinkingExtension.cpp
 
     logic/parser/plugins/puml/pumlHelper.cpp
     logic/parser/plugins/puml/pumlParserUtils.cpp
