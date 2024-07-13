@@ -4,6 +4,7 @@
 */
 
 #include "logic/parser/extendedSyntax/extendedSyntaxMaker.hpp"
+#include "logic/parser/md4qtDataCleaner.hpp"
 
 // Qt include
 #include <QObject>
@@ -104,6 +105,7 @@ void ExtendedSyntaxTest::addExtendedSyntaxs()
 
 void ExtendedSyntaxTest::initTestCase()
 {
+    m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
     addExtendedSyntaxs();
     makeTexts();
 }

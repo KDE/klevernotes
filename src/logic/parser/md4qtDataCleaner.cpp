@@ -4,6 +4,7 @@
 */
 
 #include "md4qtDataCleaner.hpp"
+#include "logic/parser/md4qtDataGetter.hpp"
 
 namespace md4qtDataCleaner
 {
@@ -24,49 +25,93 @@ void removeEmpty(MDParagraphPtr p, MDParsingOpts &po)
     }
 }
 
-void addSpace(MDTextItemPtr item, const long long int paraIdx, const bool spaceBefore, MDParagraphPtr p, MDParsingOpts &po)
+std::pair<long long, long long> getAbsoluteColumns(MDItemWithOptsPtr item)
 {
+    long long int absoluteStart;
+    long long int absoluteEnd;
+    switch (item->type()) {
+    case MD::ItemType::Math: {
+        const auto mathItem = std::static_pointer_cast<MD::Math<MD::QStringTrait>>(item);
+
+        const long long int delimStart = mathItem->startDelim().startColumn();
+        absoluteStart = delimStart != -1 ? delimStart : mathItem->startColumn();
+
+        const long long int delimEnd = mathItem->endDelim().endColumn();
+        absoluteEnd = delimEnd != -1 ? delimEnd : mathItem->endColumn();
+        break;
+    }
+    case MD::ItemType::Code: {
+        const auto codeItem = std::static_pointer_cast<MD::Code<MD::QStringTrait>>(item);
+        const long long int delimStart = codeItem->startDelim().startColumn();
+        absoluteStart = delimStart != -1 ? delimStart : codeItem->startColumn();
+
+        const long long int delimEnd = codeItem->endDelim().endColumn();
+        absoluteEnd = delimEnd != -1 ? delimEnd : codeItem->endColumn();
+        break;
+    }
+    default: {
+        absoluteStart = item->startColumn();
+        absoluteEnd = item->endColumn();
+    } break;
+    }
+
+    absoluteStart = item->openStyles().isEmpty() ? absoluteStart : item->openStyles().first().startColumn();
+    absoluteEnd = item->closeStyles().isEmpty() ? absoluteEnd : item->closeStyles().last().endColumn();
+
+    return std::make_pair(absoluteStart, absoluteEnd);
+}
+
+void addSpace(MDItemWithOptsPtr item, const long long int paraIdx, MDParagraphPtr p, MDParsingOpts &po)
+{
+    MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
     const auto itemLocalPos = MD::localPosFromVirgin(po.fr, item->startColumn(), item->startLine());
     const long long int rawIdx = md4qtHelperFunc::rawIdxFromPos(itemLocalPos.first, itemLocalPos.second, po);
+    const auto [absoluteStart, absoluteEnd] = getAbsoluteColumns(item);
 
-    const auto lineInfo = po.fr.data.at(itemLocalPos.second);
-    const QString lineStr = lineInfo.first.asString();
-    static const QString space = QStringLiteral(" ");
-
-    MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
-    if (spaceBefore) {
-        const long long int currentTrailingPos = item->startColumn();
-        const long long int absoluteTrailingPos = item->openStyles().isEmpty() ? currentTrailingPos : item->openStyles().first().startColumn();
-
-        bool hasSpaceBefore;
-        if (paraIdx == 0 || absoluteTrailingPos == 0) {
-            hasSpaceBefore = true;
-        } else {
-            const auto previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
-            const long long int previousTailingPos = previousItem->endColumn();
-
-            const long long int spaceIdx = lineStr.indexOf(space, previousTailingPos - 1);
-            hasSpaceBefore = spaceIdx != -1 && spaceIdx <= currentTrailingPos;
-        }
-        textItem->setSpaceBefore(hasSpaceBefore);
-        po.rawTextData[rawIdx].spaceBefore = hasSpaceBefore;
+    // Space before
+    bool hasSpaceBefore;
+    if (paraIdx == 0) {
+        hasSpaceBefore = true;
     } else {
-        const long long int currentTailingPos = item->endColumn();
-        const long long int absoluteTailingPos = item->closeStyles().isEmpty() ? currentTailingPos : item->closeStyles().last().endColumn();
+        const auto previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
+        const auto [previousAbsoluteStart, previousAbsoluteEnd] = getAbsoluteColumns(previousItem);
 
-        bool hasSpaceAfter;
-        if (paraIdx == p->items().length() - 1 || absoluteTailingPos == lineStr.length() - 1) {
-            hasSpaceAfter = true;
-        } else {
-            const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-            const long long int nextTrailingPos = nextItem->startColumn();
-
-            const long long int spaceIdx = lineStr.indexOf(space, currentTailingPos - 1);
-            hasSpaceAfter = spaceIdx != -1 && spaceIdx <= nextTrailingPos;
+        hasSpaceBefore = previousItem->startLine() != item->startLine();
+        if (!hasSpaceBefore) {
+            hasSpaceBefore = previousAbsoluteEnd + 1 < absoluteStart;
         }
-        textItem->setSpaceAfter(hasSpaceAfter);
-        po.rawTextData[rawIdx].spaceAfter = hasSpaceAfter;
+        if (!hasSpaceBefore) {
+            hasSpaceBefore = po.rawTextData[rawIdx].str.front().isSpace();
+        }
+        if (!hasSpaceBefore && previousItem->type() == MD::ItemType::Text) {
+            hasSpaceBefore = po.rawTextData[rawIdx - 1].str.back().isSpace();
+        }
     }
+    textItem->setSpaceBefore(hasSpaceBefore);
+    po.rawTextData[rawIdx].spaceBefore = hasSpaceBefore;
+
+    // Space after
+    bool hasSpaceAfter;
+    if (paraIdx == p->items().length() - 1) {
+        hasSpaceAfter = true;
+    } else {
+        const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+
+        const auto [nextAbsoluteStart, nextAbsoluteEnd] = getAbsoluteColumns(nextItem);
+
+        hasSpaceAfter = item->startLine() != nextItem->startLine();
+        if (!hasSpaceAfter) {
+            hasSpaceAfter = absoluteEnd + 1 < nextAbsoluteStart;
+        }
+        if (!hasSpaceAfter) {
+            hasSpaceAfter = po.rawTextData[rawIdx].str.back().isSpace();
+        }
+        if (!hasSpaceAfter && nextItem->type() == MD::ItemType::Text) {
+            hasSpaceAfter = po.rawTextData[rawIdx + 1].str.front().isSpace();
+        }
+    }
+    textItem->setSpaceAfter(hasSpaceAfter);
+    po.rawTextData[rawIdx].spaceAfter = hasSpaceAfter;
 }
 
 void setSpacesBack(MDParagraphPtr p, MDParsingOpts &po)
@@ -75,10 +120,7 @@ void setSpacesBack(MDParagraphPtr p, MDParsingOpts &po)
     for (long long int i = 0; i < p->items().length(); ++i) {
         const MDItemWithOptsPtr item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(i));
         if (item->type() == MD::ItemType::Text) {
-            MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
-
-            addSpace(textItem, i, true, p, po);
-            addSpace(textItem, i, false, p, po);
+            addSpace(item, i, p, po);
         }
     }
 }
@@ -90,6 +132,6 @@ void dataCleaningFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &op
 
     removeEmpty(p, po);
 
-    /* MD::optimizeParagraph(p, po); */
+    MD::optimizeParagraph(p, po);
 }
 }
