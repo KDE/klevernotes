@@ -16,7 +16,6 @@
 
 // C++ include.
 #include <algorithm>
-#include <qtextformat.h>
 
 using namespace Qt::Literals::StringLiterals;
 

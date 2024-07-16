@@ -68,7 +68,7 @@ void getDelims(MDParagraphPtr p,
             continue;
         }
 
-        const long long int startColumn = localPos.first + delimIdx;
+        const long long int startColumn = currentItem->startColumn() + delimIdx;
         const long long int endColumn = startColumn + delimLength - 1;
         DelimInfo info = {idx, startColumn, currentItem->startLine(), endColumn, type};
         delimInfos.append(info);
@@ -253,11 +253,13 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
         if (!reattached) { // create new one
             const auto localPos = MD::localPosFromVirgin(po.fr, delimStartPos, badStyleInfo.startLine);
+            const long long int virginToLocalDelta = delimStartPos - localPos.first;
+
             const long long int nextRawDataIdx = md4qtHelperFunc::rawIdxFromPos(localPos.first, localPos.second, po) + 1;
 
             MDParsingOpts::TextData newTextData;
             newTextData.str = delimText;
-            newTextData.pos = delimStartPos;
+            newTextData.pos = delimStartPos - virginToLocalDelta;
             newTextData.line = localPos.second;
 
             auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();

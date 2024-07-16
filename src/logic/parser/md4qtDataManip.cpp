@@ -176,17 +176,21 @@ int splitItem(MDParagraphPtr p,
     auto rawData = po.rawTextData[rawIdx];
     MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(currentItem);
 
-    const long long int startPos = rawData.pos;
-    const long long int endPos = textItem->endColumn();
+    const long long int virginStartPos = currentItem->startColumn();
+    const long long int virginEndPos = textItem->endColumn();
+    const long long int localStartPos = rawData.pos;
+    const long long int virginToLocalDelta = virginStartPos - localStartPos;
 
-    const long long int relativeStartSplit = from - startPos;
+    // Relative to the rawData.str
+    const long long int relativeStartSplit = from - virginToLocalDelta - localStartPos;
     const long long int relativeEndSplit = relativeStartSplit + length - 1;
-    const long long int endSplit = startPos + relativeEndSplit;
+
+    const long long int virginEndSplit = virginStartPos + relativeEndSplit;
 
     const QString src = rawData.str;
     const bool removeCurrent = length == rawData.str.length();
     bool newAdded = false;
-    if (!removeCurrent && from != startPos && endSplit != endPos) {
+    if (!removeCurrent && from != virginStartPos && virginEndSplit != virginEndPos) {
         const QString leftRawText = src.mid(0, relativeStartSplit);
         rawData.str = leftRawText;
         po.rawTextData[rawIdx] = rawData;
@@ -197,11 +201,11 @@ int splitItem(MDParagraphPtr p,
         textItem->setEndColumn(from - 1);
 
         // Add new things
-        const long long int newStartingPos = endSplit + 1;
+        const long long int newStartingPos = virginEndSplit + 1;
         const QString rightRawText = src.mid(relativeEndSplit + 1);
         MDParsingOpts::TextData newTextData;
         newTextData.str = rightRawText;
-        newTextData.pos = newStartingPos;
+        newTextData.pos = newStartingPos - virginToLocalDelta;
         newTextData.line = rawData.line;
 
         auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
@@ -220,14 +224,14 @@ int splitItem(MDParagraphPtr p,
         newAdded = true;
     } else if (!removeCurrent) {
         QString newText;
-        if (from == startPos) {
+        if (from == virginStartPos) {
             newText = src.mid(length);
 
             rawData.pos += length;
-            textItem->setStartColumn(rawData.pos);
+            textItem->setStartColumn(currentItem->startColumn() + length);
         }
 
-        if (endSplit == endPos) {
+        if (virginEndSplit == virginEndPos) {
             newText = src.chopped(length);
 
             textItem->setEndColumn(textItem->endColumn() - length);
@@ -245,14 +249,14 @@ int splitItem(MDParagraphPtr p,
     if (newStyleOpt) {
         MD::StyleDelim styleDelim = MD::StyleDelim(newStyleOpt, from, currentItem->startLine(), (from + length - 1), currentItem->endLine());
         if (opening) {
-            MDItemWithOptsPtr item = (newAdded || endSplit == endPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1))
-                                                                      : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+            MDItemWithOptsPtr item = (newAdded || virginEndSplit == virginEndPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1))
+                                                                                  : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
 
             item->openStyles() << styleDelim;
             std::sort(item->openStyles().begin(), item->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
         } else {
-            MDItemWithOptsPtr item = (from == startPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1))
-                                                        : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+            MDItemWithOptsPtr item = (from == virginStartPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1))
+                                                              : md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
             item->closeStyles() << styleDelim;
             std::sort(item->closeStyles().begin(), item->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
         }

@@ -43,6 +43,7 @@ private Q_SLOTS:
     void newStyleMix();
     void multiLineMix();
     void cancellingPart();
+    void cancellingPartInTitle();
     void blankLineText();
     void continuousText();
 
@@ -70,6 +71,7 @@ private:
         QStringLiteral("New style mix-===-==-==-=="),
         QStringLiteral("Multi__*line*__ ==*mix*== --of--\n^new^ --====and==-- original"),
         QStringLiteral("==*Cancelling part of== **original style***"),
+        QStringLiteral("# ==*Cancelling part of== **original style in title***"),
         QStringLiteral("==*With `non text in the middle` and cancelling==*text==Untouched "
                        "`code`\ntextUntouched==text==Untouched\\==text\\==Untouched==text*==Unaffected*==text^Unaffected^text New style "
                        "mix-===-==-==-== Multi__*line*__ ==*mix*== --of--text^new^ --====and==-- original"),
@@ -961,6 +963,72 @@ void ExtendedSyntaxTest::cancellingPart()
     // !Check delims
     QCOMPARE_EQ(item2->opts(), 1);
     QCOMPARE(item2->text(), QStringLiteral("original style"));
+    QVERIFY(item2->isSpaceBefore());
+    QVERIFY(!item2->isSpaceAfter());
+
+    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    QCOMPARE_EQ(item3->openStyles().length(), 0);
+    QCOMPARE_EQ(item3->closeStyles().length(), 0);
+    QCOMPARE_EQ(item3->opts(), 0);
+    QCOMPARE(item3->text(), QStringLiteral("*"));
+    QVERIFY(!item3->isSpaceBefore());
+    QVERIFY(item3->isSpaceAfter());
+};
+
+/*
+# ==*Cancelling part of== **original style in title***
+*/
+void ExtendedSyntaxTest::cancellingPartInTitle()
+{
+    QTextStream s(&m_testingLines[16], QIODeviceBase::ReadOnly);
+    const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+    if (doc->items().length() != 2) {
+        QFAIL("cancellingPart: Incorrect items count in the doc");
+    }
+
+    const auto heading = static_cast<MD::Heading<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = heading->text();
+    if (paragraph->items().length() != 3) {
+        QFAIL("cancellingPart: Incorrect items count in the paragraph");
+    }
+
+    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    // Check delims
+    const auto &openStyles1 = item1->openStyles();
+    QCOMPARE_EQ(openStyles1.length(), 1);
+    QCOMPARE_EQ(openStyles1[0].startColumn(), 2);
+    QCOMPARE_EQ(openStyles1[0].endColumn(), 3);
+    QCOMPARE_EQ(openStyles1[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles1[0].endLine(), 0);
+    const auto &closeStyles1 = item1->closeStyles();
+    QCOMPARE_EQ(closeStyles1.length(), 1);
+    QCOMPARE_EQ(closeStyles1[0].startColumn(), 23);
+    QCOMPARE_EQ(closeStyles1[0].endColumn(), 24);
+    QCOMPARE_EQ(closeStyles1[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles1[0].endLine(), 0);
+    // !Check delims
+    QCOMPARE_EQ(item1->opts(), 8);
+    QCOMPARE(item1->text(), QStringLiteral("*Cancelling part of"));
+    QVERIFY(item1->isSpaceBefore());
+    QVERIFY(item1->isSpaceAfter());
+
+    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    // Check delims
+    const auto &openStyles2 = item2->openStyles();
+    QCOMPARE_EQ(openStyles2.length(), 1);
+    QCOMPARE_EQ(openStyles2[0].startColumn(), 26);
+    QCOMPARE_EQ(openStyles2[0].endColumn(), 27);
+    QCOMPARE_EQ(openStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles2[0].endLine(), 0);
+    const auto &closeStyles2 = item2->closeStyles();
+    QCOMPARE_EQ(closeStyles2.length(), 1);
+    QCOMPARE_EQ(closeStyles2[0].startColumn(), 51);
+    QCOMPARE_EQ(closeStyles2[0].endColumn(), 52);
+    QCOMPARE_EQ(closeStyles2[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles2[0].endLine(), 0);
+    // !Check delims
+    QCOMPARE_EQ(item2->opts(), 1);
+    QCOMPARE(item2->text(), QStringLiteral("original style in title"));
     QVERIFY(item2->isSpaceBefore());
     QVERIFY(!item2->isSpaceAfter());
 
