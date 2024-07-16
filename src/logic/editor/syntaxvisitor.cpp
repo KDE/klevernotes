@@ -56,25 +56,37 @@ struct SyntaxVisitorPrivate {
                                                     : (i == endLine ? endColumn + 1 : b.length())),
                               QTextCursor::KeepAnchor);
 
-                auto composedFormat = format;
-                auto oldFormat = c.charFormat();
-
-                if (oldFormat.foreground().color() == colors.titleColor && format.foreground().color() == colors.textColor) {
-                    composedFormat.setForeground(colors.titleColor);
-                }
-                const auto oldSize = oldFormat.fontPointSize();
-                if (oldSize != 0 && oldSize != font.pointSize() && format.foreground().color() != colors.specialColor) {
-                    composedFormat.setFontPointSize(oldSize);
-                }
-
-                c.setCharFormat(composedFormat);
+                c.setCharFormat(format);
             }
         }
     }
 
-    QFont styleFont(int opts) const
+    QFont styleFont(int opts, bool adjustSize = true) const
     {
         auto f = font;
+        if (adjustSize) {
+            // Base on KleverStyle.css
+            auto size = f.pointSize();
+            switch (headingLevel) {
+            case 1:
+                size += 12;
+                break;
+            case 2:
+                size += 8;
+                break;
+            case 3:
+                size += 2;
+                break;
+            case 5:
+                size -= 2;
+                break;
+            case 6:
+                size -= 3;
+                break;
+            }
+
+            f.setPointSize(size);
+        }
 
         if (opts & MD::ItalicText)
             f.setItalic(true);
@@ -116,7 +128,7 @@ struct SyntaxVisitorPrivate {
     QTextCharFormat makeFormat(const long long int opts)
     {
         QTextCharFormat format;
-        format.setForeground(colors.textColor);
+        format.setForeground(headingLevel ? colors.titleColor : colors.textColor);
         format.setFont(styleFont(opts));
         for (auto i = modifications.cbegin(), end = modifications.cend(); i != end; ++i) {
             const long long int modifOpts = i.key();
@@ -130,7 +142,7 @@ struct SyntaxVisitorPrivate {
                     float scale = info[3].toFloat(&ok);
                     sizeScale = ok ? scale : 1;
                 }
-                const int size = font.pointSize() * sizeScale;
+                const int size = format.font().pointSize() * sizeScale;
                 format.setFontPointSize(size);
 
                 const QColor foreground = getColor(info[4]);
@@ -232,6 +244,7 @@ struct SyntaxVisitorPrivate {
     //! Additional style that should be applied for any item.
     int additionalStyle = 0;
 
+    int headingLevel = 0;
     // KleverNotes
     QMap<int, QStringList> modifications;
     inline static const QStringList colorsName = {u"text"_s, u"link"_s, u"special"_s, u"title"_s, u"highlight"_s, u"code"_s};
@@ -281,7 +294,8 @@ void SyntaxVisitor::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
 {
     QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
-    special.setFont(d->styleFont(d->additionalStyle));
+    // TODO: add settings for `adjustSize` on/off
+    special.setFont(d->styleFont(d->additionalStyle, false));
 
     for (const auto &s : i->openStyles())
         d->setFormat(special, s);
@@ -340,40 +354,21 @@ void SyntaxVisitor::onMath(MD::Math<MD::QStringTrait> *m)
 
 void SyntaxVisitor::onHeading(MD::Heading<MD::QStringTrait> *h)
 {
+    d->headingLevel = h->level(); // Remove this for RAII
+
+    // Uncomment this for RAII
+    /* QScopedValueRollback headingLevel(d->headingLevel, h->level()); */
+
     QTextCharFormat baseFormat;
     baseFormat.setForeground(d->colors.titleColor);
-    QFont baseFont = d->styleFont(MD::BoldText);
-    // Base on KleverStyle.css
-    auto size = baseFont.pointSize();
-    switch (h->level()) {
-    case 1:
-        size += 12;
-        break;
-    case 2:
-        size += 8;
-        break;
-    case 3:
-        size += 2;
-        break;
-    case 5:
-        size -= 2;
-        break;
-    case 6:
-        size -= 3;
-        break;
-    }
-
-    baseFont.setPointSize(size);
-    baseFormat.setFont(baseFont);
+    baseFormat.setFont(d->styleFont(MD::BoldText));
     d->setFormat(baseFormat, h->startLine(), h->text()->startColumn(), h->endLine(), h->endColumn());
 
-    const auto tmp = d->additionalStyle;
-
-    d->additionalStyle |= MD::BoldText;
+    QScopedValueRollback style(d->additionalStyle, d->additionalStyle | MD::BoldText);
 
     MD::PosCache<MD::QStringTrait>::onHeading(h);
 
-    d->additionalStyle = tmp;
+    d->headingLevel = 0; // Remove this for RAII
 
     QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
