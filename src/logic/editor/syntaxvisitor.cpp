@@ -354,21 +354,17 @@ void SyntaxVisitor::onMath(MD::Math<MD::QStringTrait> *m)
 
 void SyntaxVisitor::onHeading(MD::Heading<MD::QStringTrait> *h)
 {
-    d->headingLevel = h->level(); // Remove this for RAII
+    {
+        QScopedValueRollback headingLevel(d->headingLevel, h->level());
+        QScopedValueRollback style(d->additionalStyle, d->additionalStyle | MD::BoldText);
 
-    // Uncomment this for RAII
-    /* QScopedValueRollback headingLevel(d->headingLevel, h->level()); */
+        QTextCharFormat baseFormat;
+        baseFormat.setForeground(d->colors.titleColor);
+        baseFormat.setFont(d->styleFont(MD::BoldText));
+        d->setFormat(baseFormat, h->startLine(), h->text()->startColumn(), h->endLine(), h->endColumn());
 
-    QTextCharFormat baseFormat;
-    baseFormat.setForeground(d->colors.titleColor);
-    baseFormat.setFont(d->styleFont(MD::BoldText));
-    d->setFormat(baseFormat, h->startLine(), h->text()->startColumn(), h->endLine(), h->endColumn());
-
-    QScopedValueRollback style(d->additionalStyle, d->additionalStyle | MD::BoldText);
-
-    MD::PosCache<MD::QStringTrait>::onHeading(h);
-
-    d->headingLevel = 0; // Remove this for RAII
+        MD::PosCache<MD::QStringTrait>::onHeading(h);
+    }
 
     QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
