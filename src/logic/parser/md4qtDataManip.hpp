@@ -21,9 +21,8 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
 
 int splitItem(MDParagraphPtr p,
               MDParsingOpts &po,
-              long long int paraIdx,
+              const long long int paraIdx,
+              const long long int rawIdx,
               const long long int from,
-              const long long int length,
-              const bool opening,
-              const long long int newStyleOpt);
+              const long long int length);
 }

@@ -5,6 +5,7 @@
 
 #include "extendedSyntaxMaker.hpp"
 #include "../md4qtDataManip.hpp"
+#include "logic/parser/md4qtDataGetter.hpp"
 
 namespace ExtendedSyntaxMaker
 {
@@ -281,13 +282,59 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo> &pairs, const int newStyleOpt, const int delimLength)
 {
     for (long long int i = pairs.length() - 1; 0 <= i; --i) {
+        // Delim info
         const auto &delim = pairs[i];
-        const long long int startPos = delim.startColumn();
+        const long long int delimStartPos = delim.startColumn();
+        const long long int delimEndPos = delim.endColumn;
 
-        // Can't use indexOf, the itemPtr could have been changed to much/merged
-        const long long int paraIdx = md4qtHelperFunc::paraIdxFromPos(startPos, delim.startLine(), p);
+        // Item info
+        const long long int paraIdx = md4qtHelperFunc::paraIdxFromPos(delimStartPos, delim.startLine(), p);
+        const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+        const long long int itemStartPos = currentItem->startColumn();
+        const long long int itemEndPos = currentItem->endColumn();
 
-        md4qtHelperFunc::splitItem(p, po, paraIdx, startPos, delimLength, (delim.type == TagType::Opening), newStyleOpt);
+        // Raw Data info
+        const long long int rawIdx = md4qtHelperFunc::rawIdxFromItem(currentItem, po);
+
+        // Data manip
+        const int addedItemCount = md4qtHelperFunc::splitItem(p, po, paraIdx, rawIdx, delimStartPos, delimLength);
+
+        // Add style
+        MD::StyleDelim styleDelim = MD::StyleDelim(newStyleOpt, delimStartPos, delim.startLine(), delimEndPos, delim.startLine());
+        if (delim.type == TagType::Opening) {
+            MDItemWithOptsPtr item =
+                (addedItemCount == 1 || delimEndPos == itemEndPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1)) : currentItem;
+
+            item->openStyles() << styleDelim;
+            std::sort(item->openStyles().begin(), item->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
+        } else {
+            MDItemWithOptsPtr item = (delimStartPos == itemStartPos) ? md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1)) : currentItem;
+            item->closeStyles() << styleDelim;
+            std::sort(item->closeStyles().begin(), item->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
+        }
+
+        // Handle: item split in half
+        if (addedItemCount == 1) {
+            const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+            md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
+            continue;
+        }
+
+        // Handle: item == delim
+        if (addedItemCount == -1) {
+            if (paraIdx < p->items().length() - 1) {
+                MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+                md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
+                md4qtHelperFunc::transferStyle(nextItem, currentItem, false);
+            }
+            if (0 < paraIdx) {
+                MDItemWithOptsPtr previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
+                md4qtHelperFunc::transferStyle(currentItem, previousItem, true);
+                md4qtHelperFunc::transferStyle(previousItem, currentItem, false);
+            }
+            p->removeItemAt(paraIdx);
+            po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+        }
     }
 }
 
