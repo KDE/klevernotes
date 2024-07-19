@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 
 // ORIGINALLY BASED ON : https://github.com/CrazyCxl/markdown-editor
 // SPDX-FileCopyrightText: 2019 CrazyCxl <chenxiaolong0001@gmail.com>
@@ -150,15 +150,10 @@ RowLayout {
             }
             onNavigationRequested: function(request) {
                 const url = request.url.toString()
-                if (url.startsWith("http")) {
-                    Qt.openUrlExternally(request.url)
-                    request.reject()
-                    return
-                }
-                if (url.startsWith("file:///")) {
+                if (url.startsWith("http") || url.startsWith("file://")) { // Seems silly but prevent errors when loading pages
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                    if (delimiterIndex != -1) {
+                    if (delimiterIndex != -1 && Config.noteMapEnabled) {
                         const header = notePath.substring(delimiterIndex + 8)
                         
                         notePath = notePath.substring(0, delimiterIndex)
@@ -176,9 +171,10 @@ RowLayout {
                             notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
                             showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
                         }
+                    } else {
+                        Qt.openUrlExternally(request.url)
                     }
                     request.reject()
-                    return
                 }
             }
             QtMdEditor.QmlLinker{
