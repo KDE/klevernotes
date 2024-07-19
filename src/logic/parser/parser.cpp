@@ -49,7 +49,7 @@ void Parser::addExtendedSyntax(const QStringList &details)
 void Parser::addPlugin()
 {
     // TODO: move this
-    /* m_md4qtParser.addTextPlugin(256, NoteLinkingExtension::noteLinkingHelperFunc, true, {}); */
+    m_md4qtParser.addTextPlugin(256, NoteLinkingExtension::noteLinkingHelperFunc, true, {});
 }
 // !Setters
 }

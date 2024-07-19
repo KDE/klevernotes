@@ -324,13 +324,13 @@ void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo>
         if (addedItemCount == -1) {
             if (paraIdx < p->items().length() - 1) {
                 MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-                md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
-                md4qtHelperFunc::transferStyle(nextItem, currentItem, false);
+                nextItem->openStyles() << currentItem->openStyles();
+                std::sort(nextItem->openStyles().begin(), nextItem->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
             }
             if (0 < paraIdx) {
                 MDItemWithOptsPtr previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx - 1));
-                md4qtHelperFunc::transferStyle(currentItem, previousItem, true);
-                md4qtHelperFunc::transferStyle(previousItem, currentItem, false);
+                previousItem->closeStyles() << currentItem->closeStyles();
+                std::sort(previousItem->closeStyles().begin(), previousItem->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
             }
             p->removeItemAt(paraIdx);
             po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);

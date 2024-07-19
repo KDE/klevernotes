@@ -39,7 +39,7 @@ EditorHandler::EditorHandler(QObject *parent)
         {u"-"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
         {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
     };
-    /* m_parser->addPlugin(); */
+    m_parser->addPlugin();
     addExtendedSyntaxs(extendedSyntaxsList);
 }
 

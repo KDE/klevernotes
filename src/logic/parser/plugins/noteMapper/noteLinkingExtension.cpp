@@ -16,18 +16,9 @@
 namespace NoteLinkingExtension
 {
 
-inline void checkSpace(MDParagraphPtr p, const long long int linkParaIdx, const long long int captureStart)
-{
-    if (captureStart) {
-        auto previousItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(linkParaIdx - 1));
-        if (previousItem->type() == MD::ItemType::Text) { }
-        return;
-    }
-}
-
 inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx)
 {
-    if (rawIdx < 0 || rawIdx >= (long long int)po.rawTextData.size()) {
+    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.rawTextData.size())) {
         return rawIdx;
     }
 
@@ -35,55 +26,80 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
     QString src = textData.str;
 
     static const QRegularExpression inline_wikilink =
-        QRegularExpression(QStringLiteral("\\[\\[([^:\\]\\|\\r\\n]*)(:)?([^:\\]\\|\\r\\n]*)(\\|)?([^:\\]\\|\\r\\n]*)\\]\\]"));
+        QRegularExpression(QStringLiteral("\\[\\[ *([^:\\]\\|\\r\\n]*)( *: *)?([^:\\]\\|\\r\\n]*)( *\\| *)?([^:\\]\\|\\r\\n]*) *\\]\\]"));
 
     int offSet = 0;
     while (offSet != src.length()) {
         QRegularExpressionMatch cap = inline_wikilink.matchView(src, offSet);
-        bool t = cap.hasMatch();
-        if (t) {
-            QString u = cap.captured(1).trimmed();
-            if (!u.isEmpty()) {
-                QString href = cap.captured(1).trimmed();
+        if (cap.hasMatch()) {
+            const QString href = cap.captured(1).trimmed();
+            if (!href.isEmpty()) {
                 const QPair<QString, bool> sanitizedHref = NoteMapperParserUtils::sanitizePath(href, po.workingPath);
 
-                QString cap3 = cap.captured(3).trimmed();
+                const QString header = cap.captured(3).trimmed();
 
                 const bool hasPipe = !cap.captured(4).isEmpty();
 
                 const QString potentitalTitle = cap.captured(5).trimmed();
-                QString title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
+                const QString title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
                 if (sanitizedHref.second) {
                     auto lineInfo = po.fr.data.at(textData.line);
-                    auto paragraphIdx = textAtIdx(p, rawIdx);
-                    const auto opts = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paragraphIdx))->opts();
+                    auto paraIdx = textAtIdx(p, rawIdx);
+                    const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+                    const auto opts = item->opts();
 
-                    const long long int startPos = textData.pos + cap.capturedStart();
+                    const long long int virginStartPos = item->startColumn() + cap.capturedStart();
+                    const long long int virginEndPos = item->startColumn() + cap.capturedEnd() - 1;
                     std::shared_ptr<MD::Link<MD::QStringTrait>> link(new MD::Link<MD::QStringTrait>);
-                    link->setStartColumn(lineInfo.first.virginPos(startPos));
-                    link->setStartLine(lineInfo.second.lineNumber);
-                    link->setEndColumn(lineInfo.first.virginPos(textData.pos + cap.capturedEnd() - 1));
-                    link->setEndLine(lineInfo.second.lineNumber);
+                    link->setStartColumn(virginStartPos);
+                    link->setStartLine(item->startLine());
+                    link->setEndColumn(virginEndPos);
+                    link->setEndLine(item->endLine());
 
-                    const int urlStart = lineInfo.first.virginPos(textData.pos + cap.capturedStart(1));
-                    const int urlEnd = lineInfo.first.virginPos(textData.pos + cap.capturedEnd(3) - 1);
+                    const int urlStart = item->startColumn() + cap.capturedStart(1);
+                    const int urlEnd = (header.isEmpty() ? urlStart + href.length() : item->startColumn() + cap.capturedEnd(2) + header.length()) - 1;
                     link->setUrlPos({urlStart, link->startLine(), urlEnd, link->endLine()});
                     // This hopefuly, is enough to separate the 2 without collinding with user input
-                    QString fullUrl = sanitizedHref.first + QStringLiteral("@HEADER@") + cap3; // <Note path>@HEADER@<header ref>
+                    const QString fullUrl = sanitizedHref.first + QStringLiteral("@HEADER@") + header; // <Note path>@HEADER@<header ref>
                     link->setUrl(fullUrl);
 
-                    const int textStart = lineInfo.first.virginPos(textData.pos + cap.capturedStart(5));
-                    const int textEnd = lineInfo.first.virginPos(textData.pos + cap.capturedEnd(5) - 1);
+                    const int textStart = item->startColumn() + cap.capturedStart(5);
+                    const int textEnd = textStart + potentitalTitle.length() - 1;
                     link->setTextPos({textStart, link->startLine(), textEnd, link->endLine()});
                     link->setText(title);
 
                     link->setOpts(opts);
 
-                    const int addedData = md4qtHelperFunc::splitItem(p, po, paragraphIdx, startPos, cap.capturedLength(), false, 0);
+                    const int addedData = md4qtHelperFunc::splitItem(p, po, paraIdx, rawIdx, virginStartPos, cap.capturedLength());
 
-                    const long long int linkParaIdx = cap.capturedStart() ? paragraphIdx + 1 : paragraphIdx;
+                    if (addedData == -1) {
+                        link->openStyles() << item->openStyles();
+                        link->closeStyles() << item->closeStyles();
+                        p->removeItemAt(paraIdx);
+                        po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+                    } else if (addedData == 1) {
+                        const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+                        const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+                        md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
+                    }
+
+                    const long long int totalOffSet = offSet + cap.capturedStart();
+                    // If capture start at 0, then we stay on the same index
+                    const long long int linkParaIdx = totalOffSet ? paraIdx + 1 : paraIdx;
                     p->insertItem(linkParaIdx, link);
+
+                    if (addedData == 0) {
+                        const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
+                        const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
+                        if (totalOffSet) {
+                            md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
+                            md4qtHelperFunc::transferStyle(currentItem, nextItem, false);
+                        } else {
+                            md4qtHelperFunc::transferStyle(nextItem, currentItem, true);
+                            md4qtHelperFunc::transferStyle(nextItem, currentItem, false);
+                        }
+                    }
 
                     return addedData < 0 ? rawIdx : ++rawIdx;
                 }
@@ -109,8 +125,6 @@ void noteLinkingHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringLis
 
         while (0 <= i && i < (long long int)po.rawTextData.size()) {
             i = processNoteLinking(p, po, i);
-
-            /* ++i; */
         }
     }
 }

@@ -1622,6 +1622,8 @@ private:
 
     std::pair<bool, size_t> checkEmphasisSequence(const std::vector<std::pair<std::pair<long long int, bool>, int>> &s, size_t idx);
 
+    std::vector<std::pair<std::pair<long long int, bool>, int>> fixSequence(const std::vector<std::pair<std::pair<long long int, bool>, int>> &s);
+
     std::vector<std::vector<std::pair<std::pair<long long int, bool>, int>>>
     closedSequences(const std::vector<std::vector<std::pair<std::pair<long long int, bool>, int>>> &vars, size_t idx);
 
@@ -6151,25 +6153,29 @@ inline void closeStyle(std::vector<std::pair<Style, long long int>> &styles, Sty
         styles.erase(it.base() - 1);
 }
 
-inline void setStyle(int &opts, Style s, bool on)
+inline void applyStyles(int &opts, const std::vector<std::pair<Style, long long int>> &styles)
 {
-    switch (s) {
-    case Style::Strikethrough:
-        (on ? opts |= StrikethroughText : opts &= ~StrikethroughText);
-        break;
+    opts = 0;
 
-    case Style::Italic1:
-    case Style::Italic2:
-        (on ? opts |= ItalicText : opts &= ~ItalicText);
-        break;
+    for (const auto &s : styles) {
+        switch (s.first) {
+        case Style::Strikethrough:
+            opts |= StrikethroughText;
+            break;
 
-    case Style::Bold1:
-    case Style::Bold2:
-        (on ? opts |= BoldText : opts &= ~BoldText);
-        break;
+        case Style::Italic1:
+        case Style::Italic2:
+            opts |= ItalicText;
+            break;
 
-    default:
-        break;
+        case Style::Bold1:
+        case Style::Bold2:
+            opts |= BoldText;
+            break;
+
+        default:
+            break;
+        }
     }
 }
 
@@ -6359,6 +6365,28 @@ inline std::pair<bool, size_t> Parser<Trait>::checkEmphasisSequence(const std::v
 }
 
 template<class Trait>
+inline std::vector<std::pair<std::pair<long long int, bool>, int>>
+Parser<Trait>::fixSequence(const std::vector<std::pair<std::pair<long long int, bool>, int>> &s)
+{
+    std::vector<std::pair<std::pair<long long int, bool>, int>> tmp;
+    std::map<int, long long int> length;
+
+    for (const auto &p : s) {
+        if (p.first.first < 0 && length[p.second] + p.first.first < 0) {
+            tmp.push_back({{-length[p.second], p.first.second}, p.second});
+
+            length[p.second] = 0;
+        } else {
+            tmp.push_back(p);
+
+            length[p.second] += p.first.first;
+        }
+    }
+
+    return tmp;
+}
+
+template<class Trait>
 inline std::vector<std::vector<std::pair<std::pair<long long int, bool>, int>>>
 Parser<Trait>::closedSequences(const std::vector<std::vector<std::pair<std::pair<long long int, bool>, int>>> &vars, size_t idx)
 {
@@ -6372,7 +6400,7 @@ Parser<Trait>::closedSequences(const std::vector<std::vector<std::pair<std::pair
             std::tie(closed, std::ignore) = checkEmphasisSequence(v, idx);
 
             if (closed)
-                tmp.push_back(v);
+                tmp.push_back(fixSequence(v));
         }
     }
 
@@ -6654,15 +6682,6 @@ inline typename Parser<Trait>::Delims::const_iterator Parser<Trait>::checkForSty
                     appendCloseStyle(po, {StrikethroughText, pos, line, pos + len - 1, line});
                     pos += len;
                 }
-
-                if (std::find_if(po.styles.cbegin(),
-                                 po.styles.cend(),
-                                 [](const auto &p) {
-                                     return (p.first == Style::Strikethrough);
-                                 })
-                    == po.styles.cend()) {
-                    setStyle(po.opts, Style::Strikethrough, false);
-                }
             } else {
                 if (count % 2 == 1) {
                     const auto st = (it->m_type == Delimiter::Emphasis1 ? Style::Italic1 : Style::Italic2);
@@ -6670,14 +6689,6 @@ inline typename Parser<Trait>::Delims::const_iterator Parser<Trait>::checkForSty
                     closeStyle(po.styles, st);
                     appendCloseStyle(po, {ItalicText, pos, line, pos, line});
                     ++pos;
-
-                    if (std::find_if(po.styles.cbegin(),
-                                     po.styles.cend(),
-                                     [&](const auto &p) {
-                                         return (p.first == st);
-                                     })
-                        == po.styles.cend())
-                        setStyle(po.opts, st, false);
                 }
 
                 if (count >= 2) {
@@ -6688,16 +6699,10 @@ inline typename Parser<Trait>::Delims::const_iterator Parser<Trait>::checkForSty
                         appendCloseStyle(po, {BoldText, pos, line, pos + 1, line});
                         pos += 2;
                     }
-
-                    if (std::find_if(po.styles.cbegin(),
-                                     po.styles.cend(),
-                                     [&](const auto &p) {
-                                         return (p.first == st);
-                                     })
-                        == po.styles.cend())
-                        setStyle(po.opts, st, false);
                 }
             }
+
+            applyStyles(po.opts, po.styles);
 
             const auto j = incrementIterator(it, last, count - 1);
 
@@ -6730,8 +6735,6 @@ inline typename Parser<Trait>::Delims::const_iterator Parser<Trait>::checkForSty
                 const auto line = po.fr.data.at(it->m_line).second.lineNumber;
 
                 for (const auto &p : styles) {
-                    setStyle(po.opts, p.first, true);
-
                     po.styles.push_back({p.first, p.second});
 
                     if (!po.collectRefLinks)
@@ -6744,6 +6747,8 @@ inline typename Parser<Trait>::Delims::const_iterator Parser<Trait>::checkForSty
                 po.line = it->m_line;
 
                 po.isSpaceBefore = (it->m_pos > 0 ? po.fr.data[it->m_line].first[it->m_pos - 1].isSpace() : true) || po.isSpaceBefore;
+
+                applyStyles(po.opts, po.styles);
             } else if (!po.collectRefLinks)
                 makeText(it->m_line, it->m_pos + len, po);
         } break;
@@ -6805,8 +6810,20 @@ inline std::shared_ptr<Text<Trait>> concatenateText(typename Block<Trait>::Items
     return t;
 }
 
+//! Type of the paragraph's optimization.
+enum class OptimizeParagraphType {
+    //! Full optimization.
+    Full,
+    //! Semi optimization, optimization won't concatenate text
+    //! items if style delimiters will be in the middle.
+    Semi,
+    //! Full optimization, but raw text data won't be concatenated (will be untouched).
+    FullWithoutRawData
+};
+
 template<class Trait>
-inline void optimizeParagraph(std::shared_ptr<Paragraph<Trait>> &p, TextParsingOpts<Trait> &po)
+inline std::shared_ptr<Paragraph<Trait>>
+optimizeParagraph(std::shared_ptr<Paragraph<Trait>> &p, TextParsingOpts<Trait> &po, OptimizeParagraphType type = OptimizeParagraphType::Full)
 {
     std::shared_ptr<Paragraph<Trait>> np(new Paragraph<Trait>);
     np->setStartColumn(p->startColumn());
@@ -6815,11 +6832,10 @@ inline void optimizeParagraph(std::shared_ptr<Paragraph<Trait>> &p, TextParsingO
     np->setEndLine(p->endLine());
 
     int opts = TextWithoutFormat;
-
     auto start = p->items().cend();
-    long long int auxStart = 0, auxIt = 0;
-
     long long int line = -1;
+    long long int auxStart = 0, auxIt = 0;
+    bool finished = false;
 
     for (auto it = p->items().cbegin(), last = p->items().cend(); it != last; ++it) {
         if ((*it)->type() == ItemType::Text) {
@@ -6829,22 +6845,36 @@ inline void optimizeParagraph(std::shared_ptr<Paragraph<Trait>> &p, TextParsingO
                 start = it;
                 opts = t->opts();
                 line = t->endLine();
-            } else if (opts != t->opts() || t->startLine() != line) {
-                po.concatenateAuxText(auxStart, auxIt);
-                auxIt = auxIt - (auxIt - auxStart) + 1;
-                auxStart = auxIt;
-                np->appendItem(concatenateText<Trait>(start, it));
-                start = it;
-                opts = t->opts();
-                line = t->endLine();
+                finished = (type == OptimizeParagraphType::Semi && !t->closeStyles().empty());
+            } else {
+                if (opts != t->opts() || t->startLine() != line || finished) {
+                    if (type != OptimizeParagraphType::FullWithoutRawData) {
+                        po.concatenateAuxText(auxStart, auxIt);
+                        auxIt = auxIt - (auxIt - auxStart) + 1;
+                        auxStart = auxIt;
+                    }
+
+                    np->appendItem(concatenateText<Trait>(start, it));
+                    start = it;
+                    opts = t->opts();
+                    line = t->endLine();
+                }
+
+                finished = (type == OptimizeParagraphType::Semi && !t->closeStyles().empty());
             }
 
-            ++auxIt;
+            if (type != OptimizeParagraphType::FullWithoutRawData)
+                ++auxIt;
         } else {
+            finished = false;
+
             if (start != last) {
-                po.concatenateAuxText(auxStart, auxIt);
-                auxIt = auxIt - (auxIt - auxStart) + 1;
-                auxStart = auxIt;
+                if (type != OptimizeParagraphType::FullWithoutRawData) {
+                    po.concatenateAuxText(auxStart, auxIt);
+                    auxIt = auxIt - (auxIt - auxStart) + 1;
+                    auxStart = auxIt;
+                }
+
                 np->appendItem(concatenateText<Trait>(start, it));
                 start = last;
                 opts = TextWithoutFormat;
@@ -6857,10 +6887,14 @@ inline void optimizeParagraph(std::shared_ptr<Paragraph<Trait>> &p, TextParsingO
 
     if (start != p->items().cend()) {
         np->appendItem(concatenateText<Trait>(start, p->items().cend()));
-        po.concatenateAuxText(auxStart, po.rawTextData.size());
+
+        if (type != OptimizeParagraphType::FullWithoutRawData)
+            po.concatenateAuxText(auxStart, po.rawTextData.size());
     }
 
     p = np;
+
+    return p;
 }
 
 template<class Trait>
@@ -7007,7 +7041,7 @@ splitParagraphsAndFreeHtml(std::shared_ptr<Block<Trait>> parent, std::shared_ptr
 
             if (!collectRefLinks) {
                 if (!p->isEmpty())
-                    concatenateParagraphsIfNeededOrAppend(parent, p);
+                    concatenateParagraphsIfNeededOrAppend(parent, optimizeParagraph<Trait>(p, po, OptimizeParagraphType::FullWithoutRawData));
 
                 parent->appendItem(*it);
             }
@@ -7279,7 +7313,7 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
                     auto h2 = isH2<Trait>(withoutSpaces);
 
                     if (!p->isEmpty()) {
-                        optimizeParagraph<Trait>(p, po);
+                        optimizeParagraph<Trait>(p, po, OptimizeParagraphType::Semi);
 
                         checkForTextPlugins<Trait>(p, po, m_textPlugins, inLink);
 
@@ -7299,7 +7333,7 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
                                 } else {
                                     makeHeading(parent,
                                                 doc,
-                                                p,
+                                                optimizeParagraph<Trait>(p, po),
                                                 fr.data[it->m_line].first.virginPos(it->m_pos + it->m_len - 1),
                                                 fr.data[it->m_line].second.lineNumber,
                                                 2,
@@ -7347,7 +7381,7 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
                     po.wasRefLink = false;
                     po.firstInParagraph = false;
 
-                    optimizeParagraph<Trait>(p, po);
+                    optimizeParagraph<Trait>(p, po, OptimizeParagraphType::Semi);
 
                     checkForTextPlugins<Trait>(p, po, m_textPlugins, inLink);
 
@@ -7361,7 +7395,7 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
                     if (!p->isEmpty() && !((p->items().size() == 1 && p->items().front()->type() == ItemType::LineBreak))) {
                         makeHeading(parent,
                                     doc,
-                                    p,
+                                    optimizeParagraph<Trait>(p, po),
                                     fr.data[it->m_line].first.virginPos(it->m_pos + it->m_len - 1),
                                     fr.data[it->m_line].second.lineNumber,
                                     it->m_type == Delimiter::H1 ? 1 : 2,
@@ -7456,7 +7490,7 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
     }
 
     if (!p->isEmpty()) {
-        optimizeParagraph<Trait>(p, po);
+        optimizeParagraph<Trait>(p, po, OptimizeParagraphType::Semi);
 
         checkForTextPlugins<Trait>(p, po, m_textPlugins, inLink);
 
@@ -7466,7 +7500,7 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
             UnprotectedDocsMethods<Trait>::setDirty(p, true);
 
         if (!p->isEmpty() && !collectRefLinks)
-            concatenateParagraphsIfNeededOrAppend(parent, p);
+            concatenateParagraphsIfNeededOrAppend(parent, optimizeParagraph<Trait>(p, po));
 
         po.rawTextData.clear();
     }
