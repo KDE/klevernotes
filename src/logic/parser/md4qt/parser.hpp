@@ -6847,7 +6847,7 @@ optimizeParagraph(std::shared_ptr<Paragraph<Trait>> &p, TextParsingOpts<Trait> &
                 line = t->endLine();
                 finished = (type == OptimizeParagraphType::Semi && !t->closeStyles().empty());
             } else {
-                if (opts != t->opts() || t->startLine() != line || finished) {
+                if (opts != t->opts() || t->startLine() != line || finished || (!t->openStyles().empty() && type == OptimizeParagraphType::Semi)) {
                     if (type != OptimizeParagraphType::FullWithoutRawData) {
                         po.concatenateAuxText(auxStart, auxIt);
                         auxIt = auxIt - (auxIt - auxStart) + 1;

@@ -38,87 +38,54 @@ void transferStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b, const bool transfer
         return;
     }
 
-    if (transferClose) {
-        const auto aEnd = a->endColumn();
-        const auto bEnd = b->endColumn();
-        MD::QStringTrait::Vector<MD::StyleDelim> aNewCloses;
-        MD::QStringTrait::Vector<MD::StyleDelim> bNewCloses;
+    MD::QStringTrait::Vector<MD::StyleDelim> aNewDelim;
+    MD::QStringTrait::Vector<MD::StyleDelim> bNewDelim;
 
-        auto closingStyles = a->closeStyles();
-        while (closingStyles.length()) {
-            const auto &closingStyle = closingStyles.takeLast();
-            const auto delimStartPos = closingStyle.startColumn();
-            const auto aDelta = delimStartPos - aEnd;
-            const auto bDelta = delimStartPos - bEnd;
+    const auto aPos = transferClose ? a->endColumn() : a->startColumn();
+    const auto bPos = transferClose ? b->endColumn() : b->startColumn();
 
-            if (bDelta < 0) {
-                aNewCloses.append(closingStyle);
-                continue;
-            }
-            if (aDelta < 0) {
-                bNewCloses.append(closingStyle);
-                break;
-            }
-            if (bDelta < aDelta) {
-                bNewCloses.append(closingStyle);
-            } else {
-                aNewCloses.append(closingStyle);
-            }
+    auto styleDelims = transferClose ? a->closeStyles() : a->openStyles();
+    while (styleDelims.length()) {
+        const auto &styleDelim = styleDelims.takeLast();
+        const auto delimPos = transferClose ? styleDelim.startColumn() : styleDelim.endColumn();
+        // Can't use abs because we want to know if there's a negative number
+        const auto aDelta = transferClose ? delimPos - aPos : aPos - delimPos;
+        const auto bDelta = transferClose ? delimPos - bPos : bPos - delimPos;
+
+        if (bDelta < 0) {
+            aNewDelim.append(styleDelim);
+            continue;
         }
-        a->closeStyles() = aNewCloses;
-        b->closeStyles() = bNewCloses;
+        if (aDelta < 0) {
+            bNewDelim.append(styleDelim);
+            continue;
+        }
+        if (bDelta < aDelta) {
+            bNewDelim.append(styleDelim);
+        } else {
+            aNewDelim.append(styleDelim);
+        }
+    }
+    if (transferClose) {
+        a->closeStyles() = aNewDelim;
+        b->closeStyles() = bNewDelim;
         std::sort(a->closeStyles().begin(), a->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
         std::sort(b->closeStyles().begin(), b->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
-
-        long long int opts = b->opts();
-        for (const auto &styleDelim : b->closeStyles()) {
-            int style = styleDelim.style();
-            if (!(opts & style)) {
-                opts += style;
-            }
-        }
-        b->setOpts(opts);
     } else {
-        const auto aStart = a->startColumn();
-        const auto bStart = b->startColumn();
-        MD::QStringTrait::Vector<MD::StyleDelim> aNewOpens;
-        MD::QStringTrait::Vector<MD::StyleDelim> bNewOpens;
-
-        auto openingStyles = a->openStyles();
-        while (openingStyles.length()) {
-            const auto &openingStyle = openingStyles.takeLast();
-            const auto delimEndPos = openingStyle.endColumn();
-            const auto aDelta = aStart - delimEndPos;
-            const auto bDelta = bStart - delimEndPos;
-
-            if (bDelta < 0) {
-                aNewOpens.append(openingStyle);
-                continue;
-            }
-            if (aDelta < 0) {
-                bNewOpens.append(openingStyle);
-                break;
-            }
-            if (bDelta < aDelta) {
-                bNewOpens.append(openingStyle);
-            } else {
-                aNewOpens.append(openingStyle);
-            }
-        }
-        a->openStyles() = aNewOpens;
-        b->openStyles() = bNewOpens;
+        a->openStyles() = aNewDelim;
+        b->openStyles() = bNewDelim;
         std::sort(a->openStyles().begin(), a->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
         std::sort(b->openStyles().begin(), b->openStyles().end(), md4qtHelperFunc::StartColumnOrder{});
-
-        long long int opts = b->opts();
-        for (const auto &styleDelim : b->openStyles()) {
-            int style = styleDelim.style();
-            if (!(opts & style)) {
-                opts += style;
-            }
-        }
-        b->setOpts(opts);
     }
+
+    long long int opts = b->opts();
+    for (const auto &styleDelim : transferClose ? b->closeStyles() : b->openStyles()) {
+        int style = styleDelim.style();
+        if (!(opts & style)) {
+            opts += style;
+        }
+    }
+    b->setOpts(opts);
 }
 // !Style manip
 
