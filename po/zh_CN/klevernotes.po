@@ -33,7 +33,7 @@ msgstr "您确定要删除 <filename>%1</filename>组吗？"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the note <filename>%1</filename>?"
-msgstr "你确认要删记事帖 <filename> %1 </filename> 吗？"
+msgstr "您确定要删除笔记 <filename> %1 </filename> 吗？"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
@@ -1338,69 +1338,69 @@ msgstr "右对齐"
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr ""
+msgstr "单元格1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr ""
+msgstr "单元格2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr ""
+msgstr "单元格3"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "围栏代码块"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr ""
+msgstr "示例文本..."
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgid "Strikethrough"
-msgstr ""
+msgstr "删除线"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "世界是平坦的。"
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgid "Task list"
-msgstr ""
+msgstr "任务列表"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr ""
+msgstr "制造混乱"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
-msgstr ""
+msgstr "搞得一团糟"
 
 #: contents/ui/textEditor/CheatSheet.qml:156
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr ""
+msgstr "KleverNotes 插件"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
 #, kde-format
 msgid "Note link"
-msgstr ""
+msgstr "链接笔记"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1408,75 +1408,75 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "分类/分组/笔记"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr ""
+msgstr "标题"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr ""
+msgstr "显示名称"
 
 #: contents/ui/textEditor/EditorView.qml:28
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr ""
+msgstr "链接笔记"
 
 #: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
-msgstr ""
+msgstr "打印"
 
 #: contents/ui/textEditor/EditorView.qml:50
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "显示/隐藏编辑器"
 
 #: contents/ui/textEditor/EditorView.qml:66
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "显示/隐藏预览"
 
 #: contents/ui/textEditor/EditorView.qml:93
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr ""
+msgstr "将笔记另存为 HTML"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "链接的笔记映射"
 
 #: contents/ui/textEditor/NotesMap.qml:39
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr ""
+msgstr "已存在的笔记"
 
 #: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "缺失笔记"
 
 #: contents/ui/textEditor/NotesMap.qml:77
 #: contents/ui/textEditor/TextDisplay.qml:177
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 不存在"
 
 #: contents/ui/textEditor/TextToolBar.qml:185
 #: contents/ui/textEditor/TextToolBar.qml:186
@@ -1485,19 +1485,19 @@ msgstr ""
 #: contents/ui/textEditor/TextToolBar.qml:190
 #, kde-format
 msgid "Header"
-msgstr ""
+msgstr "标题"
 
 #: contents/ui/todoEditor/ToDoView.qml:24
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr ""
+msgstr "清除已选"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
 #, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr ""
+msgstr "添加新待办"
 
 #: logic/kleverUtility.cpp:103
 #, kde-format
@@ -1509,154 +1509,159 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"此文件是默认笔记显示的CSS样式备份。            \n"
+"欢迎编辑它或者自己创作。            \n"
+"注：每个样式需要使用不同的名称。            \n"
+"*/\n"
 
 #: logic/plugins/emoji/emojiModel.cpp:152
 #: logic/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "历史"
 
 #: logic/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "表情"
 
 #: logic/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "人物"
 
 #: logic/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "自然"
 
 #: logic/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "食物"
 
 #: logic/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "活动"
 
 #: logic/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "旅行"
 
 #: logic/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "物品"
 
 #: logic/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "符号"
 
 #: logic/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "标志"
 
 #: logic/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "定制"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr ""
+msgstr "尝试复制PDF文件时发生错误。"
 
 #: logic/treeview/noteTreeModel.cpp:291
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr ""
+msgstr "试图创建演示笔记时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "创建该项时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "试图移除该项时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr ""
+msgstr "移动该项时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "试图重命名该项时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "创建笔记时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "试图创建分组时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "创建类别时出错。"
 
 #: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "创建存储时出错。"
 
 #: main.cpp:57
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr ""
+msgstr "KleverNotes"
 
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "笔记和管理应用程序"
 
 #: main.cpp:65
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr ""
+msgstr "(c) 2022-2023"
 
 #: main.cpp:66
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
-msgstr ""
+msgstr "Louis Schul"
 
 #: main.cpp:71
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "KDE China, Guo Yunhe, dqfamily"
 
 #: main.cpp:71
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "kde-china@kde.org, i@guoyunhe.me, yanluping2009@outlook.com"
