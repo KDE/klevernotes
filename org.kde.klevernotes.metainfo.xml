@@ -31,6 +31,7 @@
   <name xml:lang="tr">Akıllı Notlar</name>
   <name xml:lang="uk">KleverNotes</name>
   <name xml:lang="x-test">xxKleverNotesxx</name>
+  <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>KleverNotes is a note taking and management application</summary>
   <summary xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes</summary>
@@ -56,6 +57,7 @@
   <summary xml:lang="tr">Not Alma ve Yönetme Uygulaması</summary>
   <summary xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними</summary>
   <summary xml:lang="x-test">xxKleverNotes is a note taking and management applicationxx</summary>
+  <summary xml:lang="zh-CN">KleverNotes 是一个记录和管理笔记的应用程序</summary>
   <summary xml:lang="zh-TW">KleverNotes 是一個筆記記錄與管理應用程式</summary>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -87,6 +89,7 @@
     <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi önizlemenize izin verir.</p>
     <p xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними для ваших мобільних пристроїв та робочих станцій. У ній використано мову markdown та передбачено можливість попереднього перегляду результатів.</p>
     <p xml:lang="x-test">xxKleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.xx</p>
+    <p xml:lang="zh-CN">KleverNotes 是您移动设备和桌面设备的记录和管理笔记应用程序。它使用Markdown并允许您预览您的内容。</p>
     <p xml:lang="zh-TW">KleverNotes 是一個桌面與行動裝置用的筆記記錄與管理應用程式。它利用 Markdown 格式，並讓您能夠預覽您的內容。</p>
   </description>
   <screenshots>
@@ -110,6 +113,7 @@
       <caption xml:lang="tr">Masaüstünde ana sayfa</caption>
       <caption xml:lang="uk">Основна сторінка на робочій станції</caption>
       <caption xml:lang="x-test">xxMain page on desktopxx</caption>
+      <caption xml:lang="zh-CN">桌面模式的主页面</caption>
       <caption xml:lang="zh-TW">桌面模式的主頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png</image>
     </screenshot>
@@ -132,6 +136,7 @@
       <caption xml:lang="tr">Küçük biçimde ana sayfa</caption>
       <caption xml:lang="uk">Основна сторінка з малим форм-фактором</caption>
       <caption xml:lang="x-test">xxMain page on small form factorxx</caption>
+      <caption xml:lang="zh-CN">小屏幕模式的主页面</caption>
       <caption xml:lang="zh-TW">小螢幕模式的主頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png</image>
     </screenshot>
