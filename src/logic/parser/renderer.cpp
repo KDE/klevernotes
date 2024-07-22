@@ -16,80 +16,58 @@ Renderer::Renderer()
 
 void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
 {
-    int tmp = 0;
-
     for (const auto &s : styles) {
         const long long int opts = s.style();
         switch (opts) {
         case MD::TextOption::BoldText: {
-            if (!(tmp & MD::TextOption::BoldText)) {
-                html.push_back(QStringLiteral("<strong>"));
-                tmp |= MD::TextOption::BoldText;
-            }
-        } break;
+            html.push_back(QStringLiteral("<strong>"));
+            break;
+        }
 
         case MD::TextOption::ItalicText: {
-            if (!(tmp & MD::TextOption::ItalicText)) {
-                html.push_back(QStringLiteral("<em>"));
-                tmp |= MD::TextOption::ItalicText;
-            }
-        } break;
+            html.push_back(QStringLiteral("<em>"));
+            break;
+        }
 
         case MD::TextOption::StrikethroughText: {
-            if (!(tmp & MD::TextOption::StrikethroughText)) {
-                html.push_back(QStringLiteral("<del>"));
-                tmp |= MD::TextOption::StrikethroughText;
-            }
-        } break;
+            html.push_back(QStringLiteral("<del>"));
+            break;
+        }
 
         default:
             if (m_extendedSyntaxMap.contains(opts)) {
-                if (!(tmp & opts)) {
-                    html.push_back(m_extendedSyntaxMap[opts].first);
-                    tmp |= opts;
-                }
+                html.push_back(m_extendedSyntaxMap[opts].first);
+                break;
             }
-            break;
         }
     }
 }
 
 void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
 {
-    int tmp = 0;
-
     for (const auto &s : styles) {
         const long long int opts = s.style();
         switch (opts) {
         case MD::TextOption::BoldText: {
-            if (!(tmp & MD::TextOption::BoldText)) {
-                html.push_back(QStringLiteral("</strong>"));
-                tmp |= MD::TextOption::BoldText;
-            }
-        } break;
+            html.push_back(QStringLiteral("</strong>"));
+            break;
+        }
 
         case MD::TextOption::ItalicText: {
-            if (!(tmp & MD::TextOption::ItalicText)) {
-                html.push_back(QStringLiteral("</em>"));
-                tmp |= MD::TextOption::ItalicText;
-            }
-        } break;
+            html.push_back(QStringLiteral("</em>"));
+            break;
+        }
 
         case MD::TextOption::StrikethroughText: {
-            if (!(tmp & MD::TextOption::StrikethroughText)) {
-                html.push_back(QStringLiteral("</del>"));
-                tmp |= MD::TextOption::StrikethroughText;
-            }
-        } break;
+            html.push_back(QStringLiteral("</del>"));
+            break;
+        }
 
         default:
             if (m_extendedSyntaxMap.contains(opts)) {
-                if (!(tmp & opts)) {
-                    html.push_back(m_extendedSyntaxMap[opts].second);
-                    tmp |= opts;
-                }
+                html.push_back(m_extendedSyntaxMap[opts].second);
+                break;
             }
-            break;
         }
     }
 }
