@@ -8,3 +8,9 @@ ecm_add_test(./parser/extendedSyntaxTest.cpp
     LINK_LIBRARIES klevernoteslib Qt::Test
     NAME_PREFIX "klevernotes-"
 )
+
+ecm_add_test(./parser/noteLinkingTest.cpp
+    TEST_NAME noteLinking
+    LINK_LIBRARIES klevernoteslib Qt::Test
+    NAME_PREFIX "klevernotes-"
+)
