@@ -39,7 +39,6 @@ EditorHandler::EditorHandler(QObject *parent)
         {u"-"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
         {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
     };
-    m_parser->addPlugin();
     addExtendedSyntaxs(extendedSyntaxsList);
 }
 
@@ -237,7 +236,6 @@ QString EditorHandler::headerLevel() const
 // !NoteMapper method
 
 // Colors
-
 void EditorHandler::changeStyles(const QStringList &styles)
 {
     const QFont editorFont(styles[0], styles[1].toUInt());
@@ -270,11 +268,6 @@ void EditorHandler::changeStyles(const QStringList &styles)
 std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() const
 {
     return m_currentMdDoc;
-}
-
-void EditorHandler::applyFont(const QFont &f)
-{
-    highlightSyntax(m_colors, m_currentMdDoc);
 }
 
 SyntaxVisitor *EditorHandler::syntaxHighlighter() const

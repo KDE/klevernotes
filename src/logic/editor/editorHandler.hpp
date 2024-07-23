@@ -70,7 +70,6 @@ public:
 
     // md-editor
     std::shared_ptr<MD::Document<MD::QStringTrait>> currentDoc() const;
-    void applyFont(const QFont &f);
     SyntaxVisitor *syntaxHighlighter() const;
 
 Q_SIGNALS:
@@ -86,7 +85,6 @@ Q_SIGNALS:
     // md-editor
     void lineHovered(int lineNumber, const QPoint &pos);
     void hoverLeaved();
-    /* void ready(); */
 
 private Q_SLOTS:
     // Code highlight
@@ -98,7 +96,6 @@ private Q_SLOTS:
     void pumlDarkChanged();
 
     // md-editor
-    /* void highlightCurrentLine(); */
     void highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
 
 protected:
@@ -134,8 +131,7 @@ private:
 
     // Plugins
     PluginHelper *m_pluginHelper = nullptr;
-
-    // Extended syntax
+    // md4qt plugins
     enum ExtensionID : int {
         /* Plugins
          * ===============*/

@@ -6,13 +6,15 @@
 #include "parser.h"
 #include "extendedSyntax/extendedSyntaxMaker.hpp"
 #include "md4qtDataCleaner.hpp"
-#include "plugins/noteMapper/noteLinkingExtension.hpp"
+
+#include "kleverconfig.h"
 
 namespace MdEditor
 {
-Parser::Parser()
+Parser::Parser(QObject *parent)
+    : QObject(parent)
 {
-    // Random ID
+    connectPlugins();
     m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
 }
 
@@ -22,6 +24,16 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> Parser::parse(QString src)
 
     return m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
 }
+
+// Connections
+// ===========
+void Parser::connectPlugins()
+{
+    // Note Linking
+    connect(KleverConfig::self(), &KleverConfig::noteMapEnabledChanged, this, &Parser::noteLinkindEnabledChanged);
+    noteLinkindEnabledChanged();
+}
+// !Connections
 
 // Getters
 // =======
@@ -46,10 +58,21 @@ void Parser::addExtendedSyntax(const QStringList &details)
     m_md4qtParser.addTextPlugin(details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
 }
 
-void Parser::addPlugin()
+void Parser::addRemovePlugin(const int pluginId, const bool add)
 {
-    // TODO: move this
-    m_md4qtParser.addTextPlugin(256, NoteLinkingExtension::noteLinkingHelperFunc, true, {});
+    if (add) {
+        m_md4qtParser.addTextPlugin(pluginId, m_kleverPlugins.at(pluginId), true, {});
+    } else {
+        m_md4qtParser.removeTextPlugin(pluginId);
+    }
 }
 // !Setters
+
+// KleverNotes slots
+// =================
+void Parser::noteLinkindEnabledChanged()
+{
+    addRemovePlugin(PluginsId::NoteLinkingExtension, KleverConfig::noteMapEnabled());
+}
+// !KleverNotes slots
 }

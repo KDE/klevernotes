@@ -7,11 +7,14 @@
 
 #pragma once
 
+// Qt include
 #include <QObject>
 #include <QSet>
 
-#include "plugins/pluginHelper.h"
+// KleverNotes include
+#include "plugins/noteMapper/noteLinkingExtension.hpp"
 
+// md4qt include
 #define MD4QT_QT_SUPPORT
 #include "md4qt/doc.hpp"
 #include "md4qt/parser.hpp"
@@ -20,26 +23,38 @@
 namespace MdEditor
 {
 
-class EditorHandler;
-class Parser
+class Parser : public QObject
 {
 public:
-    Parser();
+    explicit Parser(QObject *parent = nullptr);
     std::shared_ptr<MD::Document<MD::QStringTrait>> parse(QString src);
 
+    // Connections
+    void connectPlugins();
+
     // Getters
-    EditorHandler *editorHandler() const;
     QString getNotePath() const;
-    PluginHelper *pluginHelper() const;
 
     // Setters
     void setNotePath(const QString &notePath);
     void addExtendedSyntax(const QStringList &details);
-    void addPlugin();
+    void addRemovePlugin(const int pluginId, const bool add);
+
+private Q_SLOTS:
+    // Note Linking
+    void noteLinkindEnabledChanged();
 
 private:
     // KleverNotes
     QString m_notePath;
+
+    enum PluginsId : int {
+        NoteLinkingExtension = 256, // EditorHandler::ExtensionID::KleverPlugins
+    };
+
+    const std::map<int, MD::TextPluginFunc<MD::QStringTrait>> m_kleverPlugins = {
+        {PluginsId::NoteLinkingExtension, NoteLinkingExtension::noteLinkingHelperFunc},
+    };
 
     // md4qt
     MD::Parser<MD::QStringTrait> m_md4qtParser;
