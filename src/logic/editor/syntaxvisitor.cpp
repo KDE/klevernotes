@@ -24,7 +24,6 @@ namespace MdEditor
 //
 // SyntaxVisitorPrivate
 //
-
 struct SyntaxVisitorPrivate {
     SyntaxVisitorPrivate(EditorHandler *e)
         : editor(e)
@@ -33,9 +32,25 @@ struct SyntaxVisitorPrivate {
 
     void clearFormats()
     {
-        auto c = editor->textCursor();
-        c.select(QTextCursor::Document);
-        c.setCharFormat({});
+        auto b = editor->document()->firstBlock();
+
+        while (b.isValid()) {
+            b.layout()->clearFormats();
+
+            b = b.next();
+        }
+
+        formats.clear();
+    }
+
+    void applyFormats()
+    {
+        for (const auto &f : std::as_const(formats)) {
+            currentBlock = f.block;
+            formatChanges = f.formats;
+
+            applyFormatChanges();
+        }
     }
 
     void setFormat(const QTextCharFormat &format, const MD::WithPosition &pos)
@@ -47,17 +62,76 @@ struct SyntaxVisitorPrivate {
     {
         if (colors.enabled) {
             for (auto i = startLine; i <= endLine; ++i) {
-                auto b = editor->document()->findBlockByNumber(i);
-                auto c = QTextCursor(b);
+                formats[i].block = editor->document()->findBlockByNumber(i);
 
-                c.setPosition(c.position() + (i == startLine ? startColumn : 0), QTextCursor::MoveAnchor);
-                c.setPosition(c.position()
-                                  + (i == startLine ? (i == endLine ? endColumn - startColumn + 1 : b.length() - startColumn)
-                                                    : (i == endLine ? endColumn + 1 : b.length())),
-                              QTextCursor::KeepAnchor);
+                if (formats[i].formats.isEmpty())
+                    formats[i].formats.fill(QTextCharFormat(), formats[i].block.length() - 1);
 
-                c.setCharFormat(format);
+                int start = (i == startLine ? startColumn : 0);
+                int length = (i == startLine ? (i == endLine ? endColumn - startColumn + 1 : formats[i].block.length() - 1 - startColumn)
+                                             : (i == endLine ? endColumn + 1 : formats[i].block.length() - 1));
+
+                for (int j = start; j < start + length; ++j)
+                    formats[i].formats[j] = format;
             }
+        }
+    }
+
+    void applyFormatChanges()
+    {
+        bool formatsChanged = false;
+
+        QTextLayout *layout = currentBlock.layout();
+
+        QList<QTextLayout::FormatRange> ranges = layout->formats();
+
+        const int preeditAreaStart = layout->preeditAreaPosition();
+        const int preeditAreaLength = layout->preeditAreaText().size();
+
+        if (preeditAreaLength != 0) {
+            auto isOutsidePreeditArea = [=](const QTextLayout::FormatRange &range) {
+                return range.start < preeditAreaStart || range.start + range.length > preeditAreaStart + preeditAreaLength;
+            };
+            if (ranges.removeIf(isOutsidePreeditArea) > 0)
+                formatsChanged = true;
+        } else if (!ranges.isEmpty()) {
+            ranges.clear();
+            formatsChanged = true;
+        }
+
+        int i = 0;
+        while (i < formatChanges.size()) {
+            QTextLayout::FormatRange r;
+
+            while (i < formatChanges.size() && formatChanges.at(i) == r.format)
+                ++i;
+
+            if (i == formatChanges.size())
+                break;
+
+            r.start = i;
+            r.format = formatChanges.at(i);
+
+            while (i < formatChanges.size() && formatChanges.at(i) == r.format)
+                ++i;
+
+            Q_ASSERT(i <= formatChanges.size());
+            r.length = i - r.start;
+
+            if (preeditAreaLength != 0) {
+                if (r.start >= preeditAreaStart)
+                    r.start += preeditAreaLength;
+                else if (r.start + r.length >= preeditAreaStart)
+                    r.length += preeditAreaLength;
+            }
+
+            ranges << r;
+            formatsChanged = true;
+        }
+
+        if (formatsChanged) {
+            layout->setFormats(ranges);
+            editor->document()->markContentsDirty(currentBlock.position(), currentBlock.length());
         }
     }
 
@@ -243,7 +317,18 @@ struct SyntaxVisitorPrivate {
     QFont font;
     //! Additional style that should be applied for any item.
     int additionalStyle = 0;
+    //! Current text block.
+    QTextBlock currentBlock;
+    //! Formats for current block.
+    QList<QTextCharFormat> formatChanges;
 
+    struct Format {
+        QTextBlock block;
+        QList<QTextCharFormat> formats;
+    };
+
+    //! Formats.
+    QMap<int, Format> formats;
     int headingLevel = 0;
     // KleverNotes
     QMap<int, QStringList> modifications;
@@ -282,6 +367,7 @@ void SyntaxVisitor::highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> do
     d->colors = colors;
 
     MD::PosCache<MD::QStringTrait>::initialize(d->doc);
+    d->applyFormats();
     c.endEditBlock();
 }
 
@@ -515,8 +601,7 @@ void SyntaxVisitor::onLink(MD::Link<MD::QStringTrait> *l)
 
     d->setFormat(generalFormat, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
 
-    const auto tmp = d->additionalStyle;
-    d->additionalStyle |= l->opts();
+    QScopedValueRollback style(d->additionalStyle, d->additionalStyle | l->opts());
 
     QTextCharFormat urlFormat;
     urlFormat.setForeground(d->colors.linkColor);
@@ -532,8 +617,6 @@ void SyntaxVisitor::onLink(MD::Link<MD::QStringTrait> *l)
     MD::PosCache<MD::QStringTrait>::onLink(l);
 
     onItemWithOpts(l);
-
-    d->additionalStyle = tmp;
 }
 
 void SyntaxVisitor::onImage(MD::Image<MD::QStringTrait> *i)
