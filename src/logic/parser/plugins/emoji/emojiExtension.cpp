@@ -76,19 +76,25 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             bool variantFound = false;
             if (!defaultToneGiven) { // Check for tones, but will also gives tones + variant
                 const QVariantList tonedEmojis = emojiModel->tones(emojiName);
-                for (auto it = tonedEmojis.begin(); it != tonedEmojis.end(); it++) {
+                for (auto it = tonedEmojis.begin(); it != tonedEmojis.end(); ++it) {
                     const Emoji currentEmoji = it->value<Emoji>();
                     const QString tonedEmojiName = currentEmoji.shortName;
                     if (tonedEmojiName.contains(QStringLiteral(" ") + tone)) {
-                        uniEmoji = currentEmoji.unicode;
+                        // The first result are the "closest" to the search term
+                        // This ensure a "sain" default if the perfect match is not found
+                        if (uniEmoji.isEmpty()) {
+                            uniEmoji = currentEmoji.unicode;
+                        }
 
                         // looking for tone + variant
                         if (!givenVariant.isEmpty() && tonedEmojiName.endsWith(givenVariant)) {
+                            uniEmoji = currentEmoji.unicode;
                             variantFound = true;
                             break;
                         }
                         // A tone can also come from config
                         if (toneGiven) {
+                            uniEmoji = currentEmoji.unicode;
                             variantFound = true;
                             break;
                         }
@@ -98,9 +104,21 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
                 const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(searchTerm);
                 for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
                     const Emoji currentEmoji = it->value<Emoji>();
+                    const QString tonedEmojiName = currentEmoji.shortName;
                     if (currentEmoji.shortName == searchTerm) {
                         uniEmoji = currentEmoji.unicode;
                         variantFound = !givenVariant.isEmpty() || defaultToneGiven;
+                        break;
+                    }
+                }
+            }
+
+            if (uniEmoji.isEmpty()) { // Last try to find one
+                const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(emojiName);
+                for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
+                    const Emoji currentEmoji = it->value<Emoji>();
+                    if (currentEmoji.shortName == emojiName) {
+                        uniEmoji = currentEmoji.unicode;
                         break;
                     }
                 }
@@ -117,7 +135,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             auto paraIdx = textAtIdx(p, rawIdx);
             const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
 
-            const long long int splitLength = variantFound ? cap.capturedLength() : firstPartCap;
+            const long long int splitLength = variantFound || toneGiven ? cap.capturedLength() : firstPartCap;
             const long long int virginStartPos = item->startColumn() + cap.capturedStart();
             const long long int virginEndPos = item->startColumn() + cap.capturedStart() + splitLength - 1;
 
