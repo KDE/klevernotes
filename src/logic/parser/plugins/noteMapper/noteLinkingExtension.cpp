@@ -5,8 +5,6 @@
 
 #include "noteLinkingExtension.hpp"
 
-#include "kleverconfig.h"
-#include "logic/parser/md4qtDataGetter.hpp"
 #include "logic/parser/md4qtDataManip.hpp"
 #include "noteMapperParserUtils.h"
 
@@ -115,10 +113,6 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
 
 void noteLinkingHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
 {
-    // TODO: make this useless with removeTextPluginh
-    /* if (!KleverConfig::noteMapEnabled()) { */
-    /*     return; */
-    /* } */
     Q_UNUSED(options);
     if (!po.collectRefLinks) {
         long long int i = 0;

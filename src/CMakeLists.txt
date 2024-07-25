@@ -51,6 +51,7 @@ set(lib_SRCS
     logic/parser/plugins/emoji/emoticonFilterModel.cpp
     logic/parser/plugins/emoji/emojiModel.cpp
     logic/parser/plugins/emoji/emojiTones.cpp
+    logic/parser/plugins/emoji/emojiExtension.cpp
 
     logic/parser/plugins/noteMapper/noteMapper.cpp
     logic/parser/plugins/noteMapper/noteMapperParserUtils.cpp

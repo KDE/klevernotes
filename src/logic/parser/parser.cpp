@@ -32,6 +32,10 @@ void Parser::connectPlugins()
     // Note Linking
     connect(KleverConfig::self(), &KleverConfig::noteMapEnabledChanged, this, &Parser::noteLinkindEnabledChanged);
     noteLinkindEnabledChanged();
+
+    // Emoji
+    connect(KleverConfig::self(), &KleverConfig::quickEmojiEnabledChanged, this, &Parser::quickEmojiEnabledChanged);
+    quickEmojiEnabledChanged();
 }
 // !Connections
 
@@ -73,6 +77,11 @@ void Parser::addRemovePlugin(const int pluginId, const bool add)
 void Parser::noteLinkindEnabledChanged()
 {
     addRemovePlugin(PluginsId::NoteLinkingExtension, KleverConfig::noteMapEnabled());
+}
+
+void Parser::quickEmojiEnabledChanged()
+{
+    addRemovePlugin(PluginsId::EmojiExtension, KleverConfig::quickEmojiEnabled());
 }
 // !KleverNotes slots
 }
