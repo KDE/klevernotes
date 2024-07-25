@@ -130,7 +130,9 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
 
         html.push_back(QStringLiteral("<a href=\""));
         html.push_back(url);
-        html.push_back(QStringLiteral("\">"));
+
+        const QString end = url.startsWith(QStringLiteral("copy:")) ? QStringLiteral("\" style=\"text-decoration:none\">") : QStringLiteral("\">");
+        html.push_back(end);
     }
 
     if (!l->img()->isEmpty()) {

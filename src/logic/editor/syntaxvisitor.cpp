@@ -603,16 +603,16 @@ void SyntaxVisitor::onLink(MD::Link<MD::QStringTrait> *l)
 
     QScopedValueRollback style(d->additionalStyle, d->additionalStyle | l->opts());
 
-    QTextCharFormat urlFormat;
-    urlFormat.setForeground(d->colors.linkColor);
-    urlFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
-    urlFormat.setFontUnderline(true);
-    d->setFormat(urlFormat, l->urlPos());
-
     QTextCharFormat textFormat;
     textFormat.setForeground(d->colors.textColor);
     textFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
     d->setFormat(textFormat, l->textPos());
+
+    QTextCharFormat urlFormat;
+    urlFormat.setForeground(d->colors.linkColor);
+    urlFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
+    urlFormat.setFontUnderline(!l->url().startsWith(QStringLiteral("copy:")));
+    d->setFormat(urlFormat, l->urlPos());
 
     MD::PosCache<MD::QStringTrait>::onLink(l);
 

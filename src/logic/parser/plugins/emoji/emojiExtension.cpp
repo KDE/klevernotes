@@ -121,22 +121,16 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             const long long int virginStartPos = item->startColumn() + cap.capturedStart();
             const long long int virginEndPos = item->startColumn() + cap.capturedStart() + splitLength - 1;
 
-            // If capture start at 0, then we stay on the same index
-            const long long int emojiParaIdx = cap.capturedStart() ? paraIdx + 1 : paraIdx;
-            const long long int emojiRawIdx = cap.capturedStart() ? rawIdx + 1 : rawIdx;
-
-            MDParsingOpts::TextData newTextData;
-            newTextData.str = uniEmoji;
-            newTextData.pos = textData.pos + cap.capturedStart();
-            newTextData.line = textData.line;
-
-            auto emojiItem = std::make_shared<MD::Text<MD::QStringTrait>>();
+            std::shared_ptr<MD::Link<MD::QStringTrait>> emojiItem(new MD::Link<MD::QStringTrait>);
             emojiItem->setStartColumn(virginStartPos);
             emojiItem->setStartLine(item->startLine());
             emojiItem->setEndColumn(virginEndPos);
             emojiItem->setEndLine(item->endLine());
             emojiItem->setOpts(item->opts());
             emojiItem->setText(uniEmoji);
+            emojiItem->setTextPos({virginStartPos, emojiItem->startLine(), virginEndPos, emojiItem->endLine()});
+            emojiItem->setUrl(QStringLiteral("copy:") + uniEmoji);
+            emojiItem->setUrlPos({virginStartPos, emojiItem->startLine(), virginEndPos, emojiItem->endLine()});
 
             const int addedData = md4qtHelperFunc::splitItem(p, po, paraIdx, rawIdx, virginStartPos, splitLength);
             if (addedData == -1) {
@@ -150,7 +144,8 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
                 md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
             }
 
-            po.rawTextData.insert(po.rawTextData.cbegin() + emojiRawIdx, newTextData);
+            // If capture start at 0, then we stay on the same index
+            const long long int emojiParaIdx = cap.capturedStart() ? paraIdx + 1 : paraIdx;
             p->insertItem(emojiParaIdx, emojiItem);
 
             if (addedData == 0) {

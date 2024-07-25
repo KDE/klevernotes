@@ -131,7 +131,5 @@ void dataCleaningFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &op
     setSpacesBack(p, po);
 
     removeEmpty(p, po);
-
-    MD::optimizeParagraph(p, po);
 }
 }
