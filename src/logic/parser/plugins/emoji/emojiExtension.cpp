@@ -98,7 +98,6 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
     while (offSet != src.length()) {
         QRegularExpressionMatch cap = inline_emoji.matchView(src, offSet);
         if (cap.hasMatch()) {
-            const int capStart = cap.capturedStart();
             const QString emojiName = cap.captured(1).trimmed();
             const QString possibleOptions = cap.captured(3).trimmed();
 
@@ -164,7 +163,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
                     const Emoji currentEmoji = it->value<Emoji>();
                     if (currentEmoji.shortName == searchTerm) {
                         uniEmoji = currentEmoji.unicode;
-                        variantFound = !givenVariant.isEmpty() || defaultToneGiven;
+                        variantFound = !givenVariant.isEmpty() || (defaultToneGiven && toneGiven);
                         break;
                     }
                 }
@@ -192,7 +191,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             auto paraIdx = textAtIdx(p, rawIdx);
             const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
 
-            const long long int splitLength = variantFound || toneGiven ? cap.capturedLength() : firstPartCapLength;
+            const long long int splitLength = variantFound || (toneGiven && defaultToneGiven) ? cap.capturedLength() : firstPartCapLength;
             const long long int virginStartPos = item->startColumn() + cap.capturedStart();
             const long long int virginEndPos = item->startColumn() + cap.capturedStart() + splitLength - 1;
 
@@ -205,8 +204,8 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             const long long int nameEnd = item->startColumn() + cap.capturedEnd(1) - 1;
             emojiItem->setEmojiNamePos({nameStart, emojiItem->startLine(), nameEnd, emojiItem->endLine()});
 
-            const long long int optionsStart = variantFound || toneGiven ? item->startColumn() + cap.capturedStart(3) : nameStart;
-            const long long int optionsEnd = variantFound || toneGiven ? item->startColumn() + cap.capturedEnd(3) - 1 : nameEnd;
+            const long long int optionsStart = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedStart(3) : nameStart;
+            const long long int optionsEnd = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedEnd(3) - 1 : nameEnd;
             emojiItem->setOptionsPos({optionsStart, emojiItem->startLine(), optionsEnd, emojiItem->endLine()});
 
             const int addedData = md4qtHelperFunc::splitItem(p, po, paraIdx, rawIdx, virginStartPos, splitLength);

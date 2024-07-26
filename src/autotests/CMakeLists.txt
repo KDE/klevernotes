@@ -14,3 +14,9 @@ ecm_add_test(./parser/noteLinkingTest.cpp
     LINK_LIBRARIES klevernoteslib Qt::Test
     NAME_PREFIX "klevernotes-"
 )
+
+ecm_add_test(./parser/emojiTest.cpp
+    TEST_NAME emoji
+    LINK_LIBRARIES klevernoteslib Qt::Test
+    NAME_PREFIX "klevernotes-"
+)
