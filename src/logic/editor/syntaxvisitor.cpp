@@ -611,7 +611,7 @@ void SyntaxVisitor::onLink(MD::Link<MD::QStringTrait> *l)
     QTextCharFormat urlFormat;
     urlFormat.setForeground(d->colors.linkColor);
     urlFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
-    urlFormat.setFontUnderline(!l->url().startsWith(QStringLiteral("copy:")));
+    urlFormat.setFontUnderline(true);
     d->setFormat(urlFormat, l->urlPos());
 
     MD::PosCache<MD::QStringTrait>::onLink(l);
@@ -664,4 +664,43 @@ void SyntaxVisitor::onFootnote(MD::Footnote<MD::QStringTrait> *f)
     MD::PosCache<MD::QStringTrait>::onFootnote(f);
 }
 
+void SyntaxVisitor::onEmoji(EmojiExtension::EmojiItem *e)
+{
+    QTextCharFormat generalFormat;
+    generalFormat.setForeground(d->colors.specialColor);
+    generalFormat.setFont(d->styleFont(e->opts() | d->additionalStyle));
+
+    d->setFormat(generalFormat, e->startLine(), e->startColumn(), e->endLine(), e->endColumn());
+
+    QScopedValueRollback style(d->additionalStyle, d->additionalStyle | e->opts());
+
+    QTextCharFormat emojiFormat;
+    emojiFormat.setForeground(QColor(QStringLiteral("magenta")));
+    emojiFormat.setFont(d->styleFont(e->opts() | d->additionalStyle));
+    d->setFormat(emojiFormat, e->emojiNamePos());
+
+    QTextCharFormat optionsFormat;
+    optionsFormat.setForeground(QColor(QStringLiteral("yellow")));
+    optionsFormat.setFont(d->styleFont(e->opts() | d->additionalStyle));
+
+    d->setFormat(optionsFormat, e->optionsPos());
+
+    onItemWithOpts(e);
+}
+
+void SyntaxVisitor::onUserDefined(MD::Item<MD::QStringTrait> *item)
+{
+    static const int userDefinedType = static_cast<int>(MD::ItemType::UserDefined);
+    const int itemType = static_cast<int>(item->type());
+    switch (itemType) {
+    case userDefinedType + 1: {
+        auto emoji = static_cast<EmojiExtension::EmojiItem *>(item);
+        onEmoji(emoji);
+        break;
+    }
+    default:
+        qWarning() << "Unsupported custom item";
+        return;
+    }
+}
 } /* namespace MdEditor */

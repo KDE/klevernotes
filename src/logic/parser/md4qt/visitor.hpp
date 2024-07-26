@@ -46,45 +46,49 @@ public:
         }
 
         for (auto it = doc->items().cbegin(), last = doc->items().cend(); it != last; ++it) {
-            switch ((*it)->type()) {
-            case ItemType::Heading:
-                onHeading(static_cast<Heading<Trait> *>(it->get()));
-                break;
+            if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
+                onUserDefined(it->get());
+            } else {
+                switch ((*it)->type()) {
+                case ItemType::Heading:
+                    onHeading(static_cast<Heading<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Paragraph:
-                onParagraph(static_cast<Paragraph<Trait> *>(it->get()), true);
-                break;
+                case ItemType::Paragraph:
+                    onParagraph(static_cast<Paragraph<Trait> *>(it->get()), true);
+                    break;
 
-            case ItemType::Code:
-                onCode(static_cast<Code<Trait> *>(it->get()));
-                break;
+                case ItemType::Code:
+                    onCode(static_cast<Code<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Blockquote:
-                onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
-                break;
+                case ItemType::Blockquote:
+                    onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::List:
-                onList(static_cast<List<Trait> *>(it->get()));
-                break;
+                case ItemType::List:
+                    onList(static_cast<List<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Table:
-                onTable(static_cast<Table<Trait> *>(it->get()));
-                break;
+                case ItemType::Table:
+                    onTable(static_cast<Table<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Anchor:
-                onAnchor(static_cast<Anchor<Trait> *>(it->get()));
-                break;
+                case ItemType::Anchor:
+                    onAnchor(static_cast<Anchor<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::RawHtml:
-                onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
-                break;
+                case ItemType::RawHtml:
+                    onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::HorizontalLine:
-                onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
-                break;
+                case ItemType::HorizontalLine:
+                    onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+                }
             }
         }
     }
@@ -93,6 +97,14 @@ protected:
     //! For some generator it's important to keep line endings like they were in Markdown.
     //! So onParagraph() method invokes this method when necessary to add line ending.
     virtual void onAddLineEnding() = 0;
+
+    //! Handle user-defined item.
+    virtual void onUserDefined(
+        //! Item.
+        Item<Trait> *item)
+    {
+        MD_UNUSED(item)
+    }
 
     virtual void onText(
         //! Text.
@@ -123,41 +135,45 @@ protected:
 
             l = (*it)->endLine();
 
-            switch ((*it)->type()) {
-            case ItemType::Text:
-                onText(static_cast<Text<Trait> *>(it->get()));
-                break;
+            if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
+                onUserDefined(it->get());
+            } else {
+                switch ((*it)->type()) {
+                case ItemType::Text:
+                    onText(static_cast<Text<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Code:
-                onInlineCode(static_cast<Code<Trait> *>(it->get()));
-                break;
+                case ItemType::Code:
+                    onInlineCode(static_cast<Code<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Link:
-                onLink(static_cast<Link<Trait> *>(it->get()));
-                break;
+                case ItemType::Link:
+                    onLink(static_cast<Link<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Image:
-                onImage(static_cast<Image<Trait> *>(it->get()));
-                break;
+                case ItemType::Image:
+                    onImage(static_cast<Image<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Math:
-                onMath(static_cast<Math<Trait> *>(it->get()));
-                break;
+                case ItemType::Math:
+                    onMath(static_cast<Math<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::LineBreak:
-                onLineBreak(static_cast<LineBreak<Trait> *>(it->get()));
-                break;
+                case ItemType::LineBreak:
+                    onLineBreak(static_cast<LineBreak<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::FootnoteRef:
-                onFootnoteRef(static_cast<FootnoteRef<Trait> *>(it->get()));
-                break;
+                case ItemType::FootnoteRef:
+                    onFootnoteRef(static_cast<FootnoteRef<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::RawHtml:
-                onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
-                break;
+                case ItemType::RawHtml:
+                    onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+                }
             }
         }
     }
@@ -179,41 +195,45 @@ protected:
         Blockquote<Trait> *b)
     {
         for (auto it = b->items().cbegin(), last = b->items().cend(); it != last; ++it) {
-            switch ((*it)->type()) {
-            case ItemType::Heading:
-                onHeading(static_cast<Heading<Trait> *>(it->get()));
-                break;
+            if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
+                onUserDefined(it->get());
+            } else {
+                switch ((*it)->type()) {
+                case ItemType::Heading:
+                    onHeading(static_cast<Heading<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Paragraph:
-                onParagraph(static_cast<Paragraph<Trait> *>(it->get()), true);
-                break;
+                case ItemType::Paragraph:
+                    onParagraph(static_cast<Paragraph<Trait> *>(it->get()), true);
+                    break;
 
-            case ItemType::Code:
-                onCode(static_cast<Code<Trait> *>(it->get()));
-                break;
+                case ItemType::Code:
+                    onCode(static_cast<Code<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Blockquote:
-                onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
-                break;
+                case ItemType::Blockquote:
+                    onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::List:
-                onList(static_cast<List<Trait> *>(it->get()));
-                break;
+                case ItemType::List:
+                    onList(static_cast<List<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Table:
-                onTable(static_cast<Table<Trait> *>(it->get()));
-                break;
+                case ItemType::Table:
+                    onTable(static_cast<Table<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::HorizontalLine:
-                onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
-                break;
+                case ItemType::HorizontalLine:
+                    onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::RawHtml:
-                onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
-                break;
+                case ItemType::RawHtml:
+                    onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+                }
             }
         }
     }
@@ -259,41 +279,45 @@ protected:
         MD_UNUSED(first)
 
         for (auto it = i->items().cbegin(), last = i->items().cend(); it != last; ++it) {
-            switch ((*it)->type()) {
-            case ItemType::Heading:
-                onHeading(static_cast<Heading<Trait> *>(it->get()));
-                break;
+            if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
+                onUserDefined(it->get());
+            } else {
+                switch ((*it)->type()) {
+                case ItemType::Heading:
+                    onHeading(static_cast<Heading<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Paragraph:
-                onParagraph(static_cast<Paragraph<Trait> *>(it->get()), (i->items().size() > 1 && i->items().at(1)->type() != ItemType::List));
-                break;
+                case ItemType::Paragraph:
+                    onParagraph(static_cast<Paragraph<Trait> *>(it->get()), (i->items().size() > 1 && i->items().at(1)->type() != ItemType::List));
+                    break;
 
-            case ItemType::Code:
-                onCode(static_cast<Code<Trait> *>(it->get()));
-                break;
+                case ItemType::Code:
+                    onCode(static_cast<Code<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Blockquote:
-                onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
-                break;
+                case ItemType::Blockquote:
+                    onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::List:
-                onList(static_cast<List<Trait> *>(it->get()));
-                break;
+                case ItemType::List:
+                    onList(static_cast<List<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Table:
-                onTable(static_cast<Table<Trait> *>(it->get()));
-                break;
+                case ItemType::Table:
+                    onTable(static_cast<Table<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::RawHtml:
-                onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
-                break;
+                case ItemType::RawHtml:
+                    onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::HorizontalLine:
-                onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
-                break;
+                case ItemType::HorizontalLine:
+                    onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+                }
             }
         }
     }
@@ -303,36 +327,40 @@ protected:
         TableCell<Trait> *c)
     {
         for (auto it = c->items().cbegin(), last = c->items().cend(); it != last; ++it) {
-            switch ((*it)->type()) {
-            case ItemType::Text:
-                onText(static_cast<Text<Trait> *>(it->get()));
-                break;
+            if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
+                onUserDefined(it->get());
+            } else {
+                switch ((*it)->type()) {
+                case ItemType::Text:
+                    onText(static_cast<Text<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Code:
-                onInlineCode(static_cast<Code<Trait> *>(it->get()));
-                break;
+                case ItemType::Code:
+                    onInlineCode(static_cast<Code<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Link:
-                onLink(static_cast<Link<Trait> *>(it->get()));
-                break;
+                case ItemType::Link:
+                    onLink(static_cast<Link<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Image:
-                onImage(static_cast<Image<Trait> *>(it->get()));
-                break;
+                case ItemType::Image:
+                    onImage(static_cast<Image<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::FootnoteRef:
-                onFootnoteRef(static_cast<FootnoteRef<Trait> *>(it->get()));
-                break;
+                case ItemType::FootnoteRef:
+                    onFootnoteRef(static_cast<FootnoteRef<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::RawHtml:
-                onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
-                break;
+                case ItemType::RawHtml:
+                    onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Math:
-                onMath(static_cast<Math<Trait> *>(it->get()));
+                case ItemType::Math:
+                    onMath(static_cast<Math<Trait> *>(it->get()));
 
-            default:
-                break;
+                default:
+                    break;
+                }
             }
         }
     }
@@ -342,41 +370,45 @@ protected:
         Footnote<Trait> *f)
     {
         for (auto it = f->items().cbegin(), last = f->items().cend(); it != last; ++it) {
-            switch ((*it)->type()) {
-            case ItemType::Heading:
-                onHeading(static_cast<Heading<Trait> *>(it->get()));
-                break;
+            if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
+                onUserDefined(it->get());
+            } else {
+                switch ((*it)->type()) {
+                case ItemType::Heading:
+                    onHeading(static_cast<Heading<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Paragraph:
-                onParagraph(static_cast<Paragraph<Trait> *>(it->get()), true);
-                break;
+                case ItemType::Paragraph:
+                    onParagraph(static_cast<Paragraph<Trait> *>(it->get()), true);
+                    break;
 
-            case ItemType::Code:
-                onCode(static_cast<Code<Trait> *>(it->get()));
-                break;
+                case ItemType::Code:
+                    onCode(static_cast<Code<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Blockquote:
-                onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
-                break;
+                case ItemType::Blockquote:
+                    onBlockquote(static_cast<Blockquote<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::List:
-                onList(static_cast<List<Trait> *>(it->get()));
-                break;
+                case ItemType::List:
+                    onList(static_cast<List<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::Table:
-                onTable(static_cast<Table<Trait> *>(it->get()));
-                break;
+                case ItemType::Table:
+                    onTable(static_cast<Table<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::RawHtml:
-                onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
-                break;
+                case ItemType::RawHtml:
+                    onRawHtml(static_cast<RawHtml<Trait> *>(it->get()));
+                    break;
 
-            case ItemType::HorizontalLine:
-                onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
-                break;
+                case ItemType::HorizontalLine:
+                    onHorizontalLine(static_cast<HorizontalLine<Trait> *>(it->get()));
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+                }
             }
         }
     }

@@ -53,6 +53,14 @@ protected:
     {
     }
 
+    void onUserDefined(Item<Trait> *i) override
+    {
+        IncrementNestingLevel inc(currentNestingLevel, maxNestingLevel, types);
+
+        if (inc.allowed(i->type()))
+            func(i);
+    }
+
     void onText(Text<Trait> *t) override
     {
         IncrementNestingLevel inc(currentNestingLevel, maxNestingLevel, types);

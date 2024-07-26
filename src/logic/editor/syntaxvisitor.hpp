@@ -5,6 +5,7 @@
 
 // KleverNotes include
 #include "logic/editor/colors.hpp"
+#include "logic/parser/plugins/emoji/emojiExtension.hpp"
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -56,9 +57,12 @@ protected:
     void onFootnoteRef(MD::FootnoteRef<MD::QStringTrait> *ref) override;
     void onFootnote(MD::Footnote<MD::QStringTrait> *f) override;
     void onListItem(MD::ListItem<MD::QStringTrait> *l, bool first) override;
+    void onUserDefined(MD::Item<MD::QStringTrait> *item) override;
 
 private:
     void onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i);
+
+    void onEmoji(EmojiExtension::EmojiItem *e);
 
 private:
     Q_DISABLE_COPY(SyntaxVisitor)

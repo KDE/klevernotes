@@ -5,6 +5,7 @@
 
 #include "renderer.h"
 
+#include "logic/parser/plugins/emoji/emojiExtension.hpp"
 #include "md4qt/traits.hpp"
 
 #include <QDir>
@@ -223,7 +224,38 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
         html.push_back(returnValue);
     }
 }
+
+void Renderer::onUserDefined(MD::Item<MD::QStringTrait> *item)
+{
+    static const int userDefinedType = static_cast<int>(MD::ItemType::UserDefined);
+    const int itemType = static_cast<int>(item->type());
+    switch (itemType) {
+    case userDefinedType + 1: {
+        auto emoji = static_cast<EmojiExtension::EmojiItem *>(item);
+        onEmoji(emoji);
+
+        break;
+    }
+    default:
+        qWarning() << "Unsupported custom item";
+        return;
+    }
+}
 // !Overriding default
+// Custom
+void Renderer::onEmoji(EmojiExtension::EmojiItem *e)
+{
+    if (!justCollectFootnoteRefs) {
+        openStyle(e->openStyles());
+        const QString emoji = e->emoji();
+        html.push_back(QStringLiteral("<a href=\"copy:") + emoji);
+        html.push_back(QStringLiteral("\" style=\"text-decoration:none\">"));
+        html.push_back(emoji);
+        html.push_back(QStringLiteral("</a>"));
+        closeStyle(e->closeStyles());
+    }
+}
+// !Custom
 
 // Internal info
 // =============
