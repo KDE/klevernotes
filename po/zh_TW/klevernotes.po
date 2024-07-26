@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-04 00:38+0000\n"
+"POT-Creation-Date: 2024-07-26 00:39+0000\n"
 "PO-Revision-Date: 2024-05-03 03:10+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -151,20 +151,28 @@ msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
 msgstr "您要在離開前先儲存嗎？"
 
-#: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkDialog.qml:17
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "建立您的連結"
 
-#: contents/ui/dialogs/LinkDialog.qml:34 contents/ui/dialogs/URLDialog.qml:32
+#: contents/ui/dialogs/LinkDialog.qml:46
+#, fuzzy, kde-format
+#| msgctxt "label:button, Image from the local file system"
+#| msgid "Local image"
+msgctxt "@label:checkbox"
+msgid "Link local file"
+msgstr "本機影像"
+
+#: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "網址："
 
-#: contents/ui/dialogs/LinkDialog.qml:41
+#: contents/ui/dialogs/LinkDialog.qml:75
 #: contents/ui/dialogs/LinkNoteDialog.qml:92
 #, kde-format
 msgctxt ""
@@ -1480,7 +1488,7 @@ msgid "Missing notes"
 msgstr "缺乏的筆記"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:177
+#: contents/ui/textEditor/TextDisplay.qml:172
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"

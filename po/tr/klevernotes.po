@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-04 00:38+0000\n"
+"POT-Creation-Date: 2024-07-26 00:39+0000\n"
 "PO-Revision-Date: 2024-04-17 13:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -149,20 +149,28 @@ msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
 msgstr "Ayrılmadan önce kaydetmek istiyor musunuz?"
 
-#: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkDialog.qml:17
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "Bağlantını Oluştur"
 
-#: contents/ui/dialogs/LinkDialog.qml:34 contents/ui/dialogs/URLDialog.qml:32
+#: contents/ui/dialogs/LinkDialog.qml:46
+#, fuzzy, kde-format
+#| msgctxt "label:button, Image from the local file system"
+#| msgid "Local image"
+msgctxt "@label:checkbox"
+msgid "Link local file"
+msgstr "Yerel Görsel"
+
+#: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr "URL:"
 
-#: contents/ui/dialogs/LinkDialog.qml:41
+#: contents/ui/dialogs/LinkDialog.qml:75
 #: contents/ui/dialogs/LinkNoteDialog.qml:92
 #, kde-format
 msgctxt ""
@@ -1487,7 +1495,7 @@ msgid "Missing notes"
 msgstr "Eksik notlar"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:177
+#: contents/ui/textEditor/TextDisplay.qml:172
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"

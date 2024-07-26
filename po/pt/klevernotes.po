@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-04 00:38+0000\n"
+"POT-Creation-Date: 2024-07-26 00:39+0000\n"
 "PO-Revision-Date: 2023-06-13 17:27+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -174,7 +174,7 @@ msgstr ""
 "Está prestes a sair sem gravar o seu desenho!\n"
 "Deseja gravá-lo antes de sair ?\n"
 
-#: contents/ui/dialogs/LinkDialog.qml:16
+#: contents/ui/dialogs/LinkDialog.qml:17
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, fuzzy, kde-format
 #| msgid "Create storage"
@@ -182,13 +182,20 @@ msgctxt "@title:dialog"
 msgid "Create your link"
 msgstr "Criar um armazenamento"
 
-#: contents/ui/dialogs/LinkDialog.qml:34 contents/ui/dialogs/URLDialog.qml:32
+#: contents/ui/dialogs/LinkDialog.qml:46
+#, fuzzy, kde-format
+#| msgid "Local image"
+msgctxt "@label:checkbox"
+msgid "Link local file"
+msgstr "Imagem local"
+
+#: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
 msgstr ""
 
-#: contents/ui/dialogs/LinkDialog.qml:41
+#: contents/ui/dialogs/LinkDialog.qml:75
 #: contents/ui/dialogs/LinkNoteDialog.qml:92
 #, kde-format
 msgctxt ""
@@ -1591,7 +1598,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:177
+#: contents/ui/textEditor/TextDisplay.qml:172
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
