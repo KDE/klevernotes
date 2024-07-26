@@ -82,7 +82,7 @@ Kirigami.Dialog {
         KSortFilterProxyModel {
             id: missingLinks
 
-            sourceModel: applicationWindow().noteMapper
+            sourceModel: NoteMapper
             filterRoleName: "exists"
             filterString: "No"
             filterCaseSensitivity: Qt.CaseInsensitive
@@ -91,7 +91,7 @@ Kirigami.Dialog {
         KSortFilterProxyModel {
             id: existingLinks
 
-            sourceModel: applicationWindow().noteMapper
+            sourceModel: NoteMapper
             filterRoleName: "exists"
             filterString: "Yes"
             filterCaseSensitivity: Qt.CaseInsensitive

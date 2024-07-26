@@ -24,7 +24,6 @@ RowLayout {
     // TODO: move all of those to C++ connect
     // NoteMapper
     readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
-    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     // Emoji
     readonly property bool emojiEnabled: Config.quickEmojiEnabled
     readonly property string emojiTone: Config.emojiTone
@@ -99,7 +98,7 @@ RowLayout {
                         
                         notePath = notePath.substring(0, delimiterIndex)
 
-                        const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+                        const headerInfo = NoteMapper.getCleanedHeaderAndLevel(header)
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
 
@@ -190,7 +189,7 @@ RowLayout {
 
     function scrollToHeader() {
         if (EditorHandler.headerLevel !== "0") {
-            web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
+            web_view.runJavaScript("document.getElementById('noteMapperScrollTo')", function(result) { 
                 if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
                     web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
                     // parser.headerInfo = ["", "0"]

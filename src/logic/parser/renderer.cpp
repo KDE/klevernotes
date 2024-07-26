@@ -96,6 +96,8 @@ void Renderer::onHeading(
         html.push_back(ht);
         html.push_back(QStringLiteral(">"));
     }
+
+    m_pluginHelper->mapperParserUtils();
 }
 
 void Renderer::onLink(MD::Link<MD::QStringTrait> *l)

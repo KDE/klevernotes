@@ -22,7 +22,6 @@ Kirigami.OverlayDrawer {
 
     required property color backgroundColor
 
-    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
     readonly property NoteTreeModel treeModel: treeView.model
     readonly property string storagePath: Config.storagePath
     readonly property int narrowWidth: Kirigami.Units.gridUnit * 3
@@ -174,16 +173,16 @@ Kirigami.OverlayDrawer {
                         noteMapEnabled: Config.noteMapEnabled
 
                         onNewGlobalPathFound: function (path) {
-                            drawer.noteMapper.addGlobalPath(path)
+                            NoteMapper.addGlobalPath(path)
                         }
                         onGlobalPathUpdated: function (oldPath, newPath) {
-                            drawer.noteMapper.updateGlobalPath(oldPath, newPath)
+                            NoteMapper.updateGlobalPath(oldPath, newPath)
                         }
                         onGlobalPathRemoved: function (path) {
-                            drawer.noteMapper.removeGlobalPath(path)
+                            NoteMapper.removeGlobalPath(path)
                         }
                         onInitialGlobalPathsSent: function (initialGlobalPaths) {
-                            drawer.noteMapper.addInitialGlobalPaths(initialGlobalPaths)
+                            NoteMapper.addInitialGlobalPaths(initialGlobalPaths)
                         }
                         onErrorOccurred: function (errorMessage) {
                             applicationWindow().showPassiveNotification(errorMessage)
