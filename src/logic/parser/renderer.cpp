@@ -14,6 +14,64 @@ Renderer::Renderer()
 
 // Overriding default
 // =========
+void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
+{
+    for (const auto &s : styles) {
+        const long long int opts = s.style();
+        switch (opts) {
+        case MD::TextOption::BoldText: {
+            html.push_back(QStringLiteral("<strong>"));
+            break;
+        }
+
+        case MD::TextOption::ItalicText: {
+            html.push_back(QStringLiteral("<em>"));
+            break;
+        }
+
+        case MD::TextOption::StrikethroughText: {
+            html.push_back(QStringLiteral("<del>"));
+            break;
+        }
+
+        default:
+            if (m_extendedSyntaxMap.contains(opts)) {
+                html.push_back(m_extendedSyntaxMap[opts].first);
+                break;
+            }
+        }
+    }
+}
+
+void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
+{
+    for (const auto &s : styles) {
+        const long long int opts = s.style();
+        switch (opts) {
+        case MD::TextOption::BoldText: {
+            html.push_back(QStringLiteral("</strong>"));
+            break;
+        }
+
+        case MD::TextOption::ItalicText: {
+            html.push_back(QStringLiteral("</em>"));
+            break;
+        }
+
+        case MD::TextOption::StrikethroughText: {
+            html.push_back(QStringLiteral("</del>"));
+            break;
+        }
+
+        default:
+            if (m_extendedSyntaxMap.contains(opts)) {
+                html.push_back(m_extendedSyntaxMap[opts].second);
+                break;
+            }
+        }
+    }
+}
+
 void Renderer::onHeading(
     //! Heading.
     MD::Heading<MD::QStringTrait> *h,
@@ -141,6 +199,11 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
 void Renderer::setNotePath(const QString &notePath)
 {
     m_notePath = notePath;
+}
+
+void Renderer::addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML)
+{
+    m_extendedSyntaxMap[opts] = {openingHTML, closingHTML};
 }
 // !Internal info
 

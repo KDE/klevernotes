@@ -19,8 +19,11 @@ public:
 
     // General info
     void setNotePath(const QString &notePath);
+    void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
     // md4qt
+    void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
+    void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void onImage(MD::Image<MD::QStringTrait> *i) override;
     void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
     void onCode(MD::Code<MD::QStringTrait> *c) override;
@@ -39,4 +42,6 @@ public:
 
 protected:
     QString m_notePath;
+
+    QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
 };

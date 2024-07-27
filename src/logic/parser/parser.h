@@ -31,6 +31,8 @@ public:
 
     // Setters
     void setNotePath(const QString &notePath);
+    void addExtendedSyntax(const QStringList &details);
+    void addRemovePlugin(const int pluginId, const bool add);
 
 private:
     // KleverNotes

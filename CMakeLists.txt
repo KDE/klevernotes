@@ -24,11 +24,16 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
+include(ECMAddTests)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX KLEVER
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/version-klevernotes.h"
 )
+
+if (BUILD_TESTING)
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Test)
+endif()
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Core

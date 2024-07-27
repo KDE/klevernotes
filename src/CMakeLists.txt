@@ -37,6 +37,11 @@ add_library(klevernoteslib STATIC
     # === PARSER ===
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
+    logic/parser/md4qtDataCleaner.cpp
+    logic/parser/md4qtDataGetter.cpp
+    logic/parser/md4qtDataManip.cpp
+    # Extended Syntax
+    logic/parser/extendedSyntax/extendedSyntaxMaker.cpp
 
     # plugins
     # logic/parser/plugins/cliHelper.cpp
@@ -79,5 +84,9 @@ target_link_libraries(klevernoteslib PUBLIC
 
 add_executable(klevernotes main.cpp resources.qrc)
 target_link_libraries(klevernotes PRIVATE klevernoteslib)
+
+if (BUILD_TESTING)
+    add_subdirectory(autotests)
+endif()
 
 install(TARGETS klevernotes ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

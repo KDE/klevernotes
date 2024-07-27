@@ -5,11 +5,15 @@
 
 #include "parser.h"
 
+#include "extendedSyntax/extendedSyntaxMaker.hpp"
+#include "md4qtDataCleaner.hpp"
+
 namespace MdEditor
 {
 Parser::Parser(QObject *parent)
     : QObject(parent)
 {
+    m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
 }
 
 std::shared_ptr<MD::Document<MD::QStringTrait>> Parser::parse(QString src)
@@ -35,6 +39,11 @@ void Parser::setNotePath(const QString &notePath)
         return;
     }
     m_notePath = notePath;
+}
+
+void Parser::addExtendedSyntax(const QStringList &details)
+{
+    m_md4qtParser.addTextPlugin(details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
 }
 // !Setters
 }

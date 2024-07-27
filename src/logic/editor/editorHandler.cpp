@@ -21,6 +21,18 @@ EditorHandler::EditorHandler(QObject *parent)
     m_renderer = new Renderer();
 
     m_parser = new Parser();
+
+    static const QList<QStringList> extendedSyntaxsList = {
+        // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
+        // 4. foreground, 5. background, 6. vertical alignment, 7. bold enabled,
+        // 8. italic enabled, 9. strikethrough enabled, 10. underline enabled, 11. underline style
+        // if empty for bool value => false, if empty for other => default value
+        // TODO: make documentation about this
+        {u"=="_s, u"<mark>"_s, u"</mark>"_s, u""_s, u""_s, u"highlight"_s, u""_s, u""_s, u""_s, u""_s, u""_s, u""_s}, // Highlight
+        {u"-"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
+        {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
+    };
+    addExtendedSyntaxs(extendedSyntaxsList);
 }
 
 // QTextDocument Info
@@ -150,6 +162,26 @@ void EditorHandler::renderDoc()
     }
 }
 // !Rendering
+
+// ExtendedSyntax
+void EditorHandler::addExtendedSyntax(const QStringList &details)
+{
+    const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
+    m_renderer->addExtendedSyntax(opts, details[1], details[2]);
+
+    const QStringList options = {details[0], QString::number(opts), QString::number(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount)};
+    m_parser->addExtendedSyntax(options);
+    ++m_extendedSyntaxCount;
+}
+
+void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
+{
+    for (const auto &details : syntaxsDetails) {
+        addExtendedSyntax(details);
+    }
+}
+// !ExtendedSyntax
+
 // !KleverNotes method
 
 // md-editor method

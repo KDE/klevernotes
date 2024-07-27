@@ -70,6 +70,10 @@ private:
     // Render
     void renderDoc();
 
+    // ExtendedSyntax
+    void addExtendedSyntax(const QStringList &details);
+    void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
+
 private:
     // QTextDocument info
     QQuickTextDocument *m_qQuickDocument = nullptr;
@@ -87,6 +91,16 @@ private:
 
     // Plugins
     PluginHelper *m_pluginHelper = nullptr;
+    // md4qt plugins
+    enum ExtensionID : int {
+        /* Extended syntax
+         * ===============*/
+        ExtendedSyntax = 256, // MD::TextPlugin::UserDefinedPluginID + 1
+        /* Plugins
+         * ===============*/
+        KleverPlugins = ExtendedSyntax + 64,
+    };
+    int m_extendedSyntaxCount = 0;
 
     Q_DISABLE_COPY(EditorHandler)
 };
