@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-26 00:39+0000\n"
-"PO-Revision-Date: 2024-04-17 08:01+0300\n"
+"PO-Revision-Date: 2024-07-26 08:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,12 +157,10 @@ msgid "Create your link"
 msgstr "Створення посилання"
 
 #: contents/ui/dialogs/LinkDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "label:button, Image from the local file system"
-#| msgid "Local image"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr "Локальне зображення"
+msgstr "Пов'язати локальний файл"
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format

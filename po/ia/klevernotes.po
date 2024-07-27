@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# giovanni <g.sora@tiscali.it>, 2024.
+# SPDX-FileCopyrightText: 2024 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-26 00:39+0000\n"
-"PO-Revision-Date: 2024-06-04 12:37+0200\n"
+"PO-Revision-Date: 2024-07-26 12:08+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -57,7 +57,7 @@ msgstr "Confirmation de deler Nota"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr ""
+msgstr "Iste action nonpote esser revertite."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -116,6 +116,7 @@ msgstr "Collection de Imagine"
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr ""
+"Ilsembla que le imagine que tu ha seligite non existe o non es supportate."
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
@@ -127,25 +128,25 @@ msgstr "Texto de Imagine: "
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr ""
+msgstr "Placia iste imagine intra le dossier de nota"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr ""
+msgstr "Pictura de KleverNotes "
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
+msgstr "Tu es per lassar sin salveguardar tu dessino!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr ""
+msgstr "Tu vole salveguardar lo ante lassar?"
 
 #: contents/ui/dialogs/LinkDialog.qml:17
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
@@ -155,12 +156,10 @@ msgid "Create your link"
 msgstr "Crea tu ligamine"
 
 #: contents/ui/dialogs/LinkDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "label:button, Image from the local file system"
-#| msgid "Local image"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr "Imagine local"
+msgstr "Liga file local"
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
@@ -198,13 +197,13 @@ msgstr "Capite:"
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Where do you want to move this group ?"
-msgstr ""
+msgstr "Ubi tu vole mover iste gruppo?"
 
 #: contents/ui/dialogs/MoveDialog.qml:22
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr ""
+msgstr "Ubi tu vole mover iste nota?"
 
 #: contents/ui/dialogs/MoveDialog.qml:26
 #, kde-format
@@ -216,7 +215,7 @@ msgstr "Move"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr ""
+msgstr "Selige un nomine"
 
 #: contents/ui/dialogs/NamingDialog.qml:50
 #, kde-format
@@ -228,19 +227,19 @@ msgstr "Nomine:"
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "This category already exists."
-msgstr ""
+msgstr "Iste categoria jam existe"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:14
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr ""
+msgstr "Iste gruppo jam existe."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr ""
+msgstr "Iste nota jam existe"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
@@ -248,7 +247,7 @@ msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr ""
+msgstr "Immagazinage de KleverNotes"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -257,24 +256,26 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
+"Iste nomini initia con un puncto, isto pote causar problema e dunque non es "
+"permittite."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:38
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr ""
+msgstr "Profavor tu remove lepuncto o selige un altere nomine."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
-msgstr ""
+msgstr "Pro favor tu selige un altere nomine per illo."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Dialogo de Imprimer"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
 #, kde-format
@@ -292,7 +293,7 @@ msgstr "Imprime a PDF..."
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr ""
+msgstr "Impedite debite a limitationes de flatpack"
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -300,7 +301,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr ""
+msgstr "Immagazinate create a "
 
 #: contents/ui/dialogs/StorageDialog.qml:17
 #, kde-format
@@ -308,7 +309,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr ""
+msgstr "Immagazinage existente seligite a "
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -321,40 +322,44 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Il sembla como si isto es le prime vice que tu usa iste app\n"
+"\n"
+"Pro favor tu selige un location per tu immagazinage future de KleverNotes o "
+"selige un existente."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
 #, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
-msgstr ""
+msgstr "Immagazinage de KleverNotes"
 
 #: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr ""
+msgstr "Immagazinage existente"
 
 #: contents/ui/dialogs/StorageDialog.qml:51
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr ""
+msgstr "Cambia le percurso de immagazinage"
 
 #: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr ""
+msgstr "Crea immagazinage"
 
 #: contents/ui/dialogs/StorageDialog.qml:67
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr ""
+msgstr "Crea un nove immagazinage"
 
 #: contents/ui/dialogs/StorageDialog.qml:97
 #, kde-format
@@ -367,12 +372,16 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Il sembla como si le dossier seligite non es un immagazinage de KleverNotes\n"
+"\n"
+"Pro favor tu selige un location per tu immagazinage future de KleverNotes o "
+"selige un existente."
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "Creation de Tabella"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:49
 #, kde-format
@@ -446,7 +455,7 @@ msgstr "Titulo:"
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr ""
+msgstr "Titulo de Facer (Todo) (requiirite)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
@@ -481,12 +490,12 @@ msgstr "Benvenite"
 #: contents/ui/pages/MainPage.qml:81
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr ""
+msgstr "Benvenite a KleverNotes!"
 
 #: contents/ui/pages/MainPage.qml:91
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr ""
+msgstr "Crea o selige un niota per startar a laborar!"
 
 #: contents/ui/pages/PaintingPage.qml:30
 #, kde-format
@@ -510,7 +519,7 @@ msgstr "Netta"
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
-msgstr ""
+msgstr "Auto crop (Talia automaticamente)"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -533,13 +542,13 @@ msgstr "Fundo"
 #: contents/ui/pages/PrintingPage.qml:110
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr ""
+msgstr "Isto poterea causar disordine vicin alfin del pdf."
 
 #: contents/ui/pages/PrintingPage.qml:121
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr ""
+msgstr "Salveguarda nota como pdf"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -553,6 +562,8 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
+"Pro favor tu selige un location per tu immagazinage future de KleverNotes o "
+"selige un existente.\n"
 
 #: contents/ui/settings/AppearanceTab.qml:18
 #, kde-format
@@ -723,19 +734,19 @@ msgstr "Ligar nota te permitte crear un ligamine ex un noita a un altere."
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Aviso: restarta leapp aliquando activate."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Habilita PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr ""
+msgstr "PlantUML te permitte crear diagrammas."
 
 #: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
@@ -744,36 +755,38 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Nota: crear diagrammas pote esser lente.Si tu ha un grande numero de "
+"diagrammas, monstrar los como images esserea plus facile."
 
 #: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Habilita fundo obscur"
 
 #: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "Diagramam de PlantUML habera un fundo obscur."
 
 #: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Plugins cosmetic"
 
 #: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Habilita evidentia de syntaxe de codice"
 
 #: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "Lista de evidentiatores supportate"
 
 #: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
@@ -785,13 +798,13 @@ msgstr "Evidentiator"
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Stilo de Evidentiator"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Habilita emoji rapide"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
@@ -799,19 +812,19 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Scribe rapidemente emoji usante le sequente syntaxe"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr ""
+msgstr "nomine de emoji"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "Tono predefinite de emoji"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
@@ -855,7 +868,7 @@ msgstr "Obscur"
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Habilita dialogo de emoji rapide"
 
 #: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
@@ -864,6 +877,8 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"Le dialogo de emoji  inserta le syntaxe de 'emoji rapide' in loco del emoji "
+"currente intra le texto."
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
@@ -1147,7 +1162,7 @@ msgstr "Monstra notas"
 #: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "Folietto (Cheat Sheet)"
 
 #: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
 #, kde-format
@@ -1175,7 +1190,7 @@ msgstr "DE FACER"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr ""
+msgstr "Folietto (Cheat sheet) de Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #, kde-format
@@ -1299,7 +1314,7 @@ msgstr "Imagine"
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr ""
+msgstr "alt text"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
@@ -1311,7 +1326,7 @@ msgstr "imagine"
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "Syntaxe extendite"
 
 #: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
@@ -1357,7 +1372,7 @@ msgstr "Cella 3"
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Bloco de codice palate"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
@@ -1410,7 +1425,7 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr ""
+msgstr "Categoria/Gruppo/Nota"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
@@ -1428,7 +1443,7 @@ msgstr "nomine monstrate"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr ""
+msgstr "Notas ligate"
 
 #: contents/ui/textEditor/EditorView.qml:39
 #, kde-format
@@ -1440,45 +1455,45 @@ msgstr "Imprime"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "Vide/Cela editor"
 
 #: contents/ui/textEditor/EditorView.qml:66
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "Vide/Cela Vista preliminar"
 
 #: contents/ui/textEditor/EditorView.qml:93
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr ""
+msgstr "Salveguarda nota como html"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Mappa de notas ligate"
 
 #: contents/ui/textEditor/NotesMap.qml:39
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr ""
+msgstr "Notas existente"
 
 #: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr ""
+msgstr "Notas mancante"
 
 #: contents/ui/textEditor/NotesMap.qml:77
 #: contents/ui/textEditor/TextDisplay.qml:172
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 non existe"
 
 #: contents/ui/textEditor/TextToolBar.qml:185
 #: contents/ui/textEditor/TextToolBar.qml:186
@@ -1493,13 +1508,13 @@ msgstr "Capite"
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr ""
+msgstr "Clar marcate"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
 #, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr ""
+msgstr "Adde nove De facer"
 
 #: logic/kleverUtility.cpp:103
 #, kde-format
@@ -1511,6 +1526,12 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Iste file es un copia del stilo de CSS predefinite per le monstrator de "
+"nota.            \n"
+"Tu senti te libere de editar lo o facer un tu proprie.            \n"
+"Nota: cfata stilo necessita un nomine differente.            \n"
+"*/\n"
 
 #: logic/plugins/emoji/emojiModel.cpp:152
 #: logic/plugins/emoji/emojiModel.cpp:210
@@ -1582,52 +1603,52 @@ msgstr "Personalisate"
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava copiar iste pdf."
 
 #: logic/treeview/noteTreeModel.cpp:291
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava crear le nota de demo."
 
 #: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava crear iste elemento."
 
 #: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava remover  iste elemento."
 
 #: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava mover  iste elemento."
 
 #: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava renominar  iste elemento."
 
 #: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava crear le nota."
 
 #: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava crear le gruppo."
 
 #: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava crear le categoria."
 
 #: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Un error occurreva durante que il tentava crear le immagazinage."
 
 #: main.cpp:57
 #, kde-format
@@ -1638,7 +1659,7 @@ msgstr "KleverNotes"
 #: main.cpp:61
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Application per prender e gerer nota"
 
 #: main.cpp:65
 #, kde-format

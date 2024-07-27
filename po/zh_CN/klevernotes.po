@@ -155,12 +155,10 @@ msgid "Create your link"
 msgstr "创建您的链接"
 
 #: contents/ui/dialogs/LinkDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "label:button, Image from the local file system"
-#| msgid "Local image"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr "本地图像"
+msgstr ""
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
