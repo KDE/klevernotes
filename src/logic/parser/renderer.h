@@ -1,41 +1,42 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
-
-// CREDIT TO ORIGINAL IDEA: https://marked.js.org/
 
 #pragma once
 
-#include <QVariantMap>
+#include <utility>
 
-class Renderer
+#define MD4QT_QT_SUPPORT
+#include "md4qt/html.hpp"
+#include "md4qt/traits.hpp"
+
+class Renderer : public MD::details::HtmlVisitor<MD::QStringTrait>
 {
 public:
-    static QString code(QString &code, const QString &lang, const bool highlight);
-    static QString blockquote(const QString &quote);
-    static QString html(const QString &html);
-    static QString heading(const QString &text, const QString &lvl, const QString &raw, const bool scrollTo = false);
-    static QString hr();
-    static QString list(const QString &body, bool ordered, const QString &start);
-    static QString listItem(const QString &text, const bool hasCheck = false);
+    Renderer();
+    ~Renderer() override = default;
+
+    // General info
+    void setNotePath(const QString &notePath);
+
+    // md4qt
+    void onImage(MD::Image<MD::QStringTrait> *i) override;
+    void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
+    void onCode(MD::Code<MD::QStringTrait> *c) override;
+    void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
+    void onLink(MD::Link<MD::QStringTrait> *l) override;
+
+    static QString code(QString &code);
+    static QString openListItem(const bool hasTask = false, const bool isChecked = false, const int startNumber = -1);
+    static QString closeListItem(const bool hasTask = false);
     static QString checkbox(bool checked);
-    static QString paragraph(const QString &text);
-    static QString table(const QString &header, QString &body);
-    static QString tableRow(const QString &content);
-    static QString tableCell(const QString &content, const QVariantMap &flags);
-    static QString strong(const QString &text);
-    static QString em(const QString &text);
-    static QString codeSpan(const QString &text);
-    static QString br();
-    static QString del(const QString &text);
-    static QString superscript(const QString &text);
-    static QString subscript(const QString &text);
-    static QString mark(const QString &text);
     static QString wikilink(const QString &href, const QString &title, const QString &text);
-    static QString link(QString &href, const QString &title, const QString &text);
-    static QString image(const QString &href, const QString &title, const QString &text);
+    static QString image(const QString &href, const QString &text);
     static QString text(const QString &text);
     static QString escape(QString &html, bool encode);
     static QString unescape(const QString &html);
+
+protected:
+    QString m_notePath;
 };

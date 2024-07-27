@@ -20,6 +20,7 @@ ScrollView {
     property bool modified : false
 
     onPathChanged: {
+        EditorHandler.notePath = path
         textArea.tempBuff = true ;
         textArea.text = DocumentHandler.readFile(path) ;
         modified = false ;
@@ -36,6 +37,12 @@ ScrollView {
 
         background: Item {}
 
+        Component.onCompleted: {
+            EditorHandler.document = textDocument
+        }
+        onCursorPositionChanged: {
+            EditorHandler.cursorPosition = cursorPosition
+        }
         onTextChanged: {
             if (!tempBuff) {
                 modified = true

@@ -1,63 +1,42 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 */
 
 // CREDIT TO ORIGINAL IDEA: https://marked.js.org/
 
 #pragma once
 
+// Qt include
 #include <QObject>
 #include <QSet>
 
-#include "blockLexer.h"
-#include "inlineLexer.h"
-#include "plugins/pluginHelper.h"
+// md4qt include
+#define MD4QT_QT_SUPPORT
+#include "md4qt/doc.hpp"
+#include "md4qt/parser.hpp"
+#include "md4qt/traits.hpp"
+
+namespace MdEditor
+{
 
 class Parser : public QObject
 {
-    Q_OBJECT
-    Q_PROPERTY(QString notePath WRITE setNotePath)
-    // NoteMapper
-    Q_PROPERTY(QStringList headerInfo WRITE setHeaderInfo)
-    Q_PROPERTY(QString headerLevel READ headerLevel CONSTANT)
 public:
     explicit Parser(QObject *parent = nullptr);
+    std::shared_ptr<MD::Document<MD::QStringTrait>> parse(QString src);
 
-    Q_INVOKABLE QString parse(QString src);
-
+    // Getters
     QString getNotePath() const;
+
+    // Setters
     void setNotePath(const QString &notePath);
-    QVector<QVariantMap> tokens;
-    QMap<QString, QMap<QString, QString>> links;
-
-    PluginHelper *getPluginHelper() const;
-
-    // NoteMapper
-    void setHeaderInfo(const QStringList &headerInfo);
-    QString headerLevel() const;
-
-Q_SIGNALS:
-    // NoteMapper
-    void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
-    void noteHeadersSent(const QString &notePath, const QStringList &noteHeaders);
-
-public Q_SLOTS:
-    // Syntax highlight
-    void newHighlightStyle();
-    // PUML
-    void pumlDarkChanged();
 
 private:
-    QString tok();
-    QString parseText();
-    QString peekType() const;
-    bool getNextToken();
-
-    BlockLexer blockLexer = BlockLexer(this);
-    InlineLexer inlineLexer = InlineLexer(this);
-    PluginHelper *pluginHelper = new PluginHelper(this);
-
+    // KleverNotes
     QString m_notePath;
-    QVariantMap m_token;
+
+    // md4qt
+    MD::Parser<MD::QStringTrait> m_md4qtParser;
 };
+}

@@ -20,7 +20,7 @@ Kirigami.Page {
     readonly property bool isVisible: applicationWindow().isMainPage()
 
     property QtObject currentlySelected
-    property QtObject editorView: editorLoader.item
+    property QtObject editorView: editorView
     property QtObject todoView: todoLoader.item
 
     title: hasNote ? currentlySelected.text : i18nc("@title:page", "Welcome")
@@ -34,7 +34,7 @@ Kirigami.Page {
         if (hasNote) {
             // At first both Loaders item are "null"
             if (bottomToolBar.showNoteEditor) { 
-                return editorLoader.item ? editorLoader.item.actions : []
+                return editorView.actions
             }
             return todoLoader.item ? todoLoader.item.actions : []
         }
@@ -48,14 +48,11 @@ Kirigami.Page {
         editor.saveNote(text, oldPath)
     }
 
-    Loader {
-        id: editorLoader
-
-        sourceComponent: EditorView {
-            path: currentlySelected.path + "/note.md"
-            visible: bottomToolBar.showNoteEditor && root.isVisible
-        }
-        active: root.hasNote
+    // Using a Loader make the acces to QTextDocument unstable
+    EditorView {
+        id: editorView
+        path: hasNote ? currentlySelected.path + "/note.md" : ""
+        visible: bottomToolBar.showNoteEditor && root.isVisible && root.hasNote
         anchors.fill: parent
     }
 

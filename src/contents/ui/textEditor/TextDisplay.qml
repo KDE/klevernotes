@@ -21,9 +21,6 @@ RowLayout {
 
     readonly property var view: web_view
 
-    required property string path
-    required property string text
-    
     // Syntax highlight
     readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
     readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
@@ -37,7 +34,6 @@ RowLayout {
     readonly property bool pumlEnabled: Config.pumlEnabled
     readonly property bool pumlDark: Config.pumlDark
 
-    readonly property Parser parser: parser
     readonly property string stylePath: Config.stylePath
     readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
     readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
@@ -66,35 +62,35 @@ RowLayout {
 
     spacing: 0
 
-    onPathChanged: {
-        parser.notePath = path
-    }
-    onTextChanged: {
-        root.parseText()
-    }
-    onHighlightEnabledChanged: {
-        root.parseText()
-    }
-    onHighlighterStyleChanged: {
-        parser.newHighlightStyle()
-        root.parseText()
-    }
-    onNoteMapEnabledChanged: {
-        root.parseText()
-    }
-    onEmojiEnabledChanged: {
-        root.parseText()
-    }
-    onEmojiToneChanged: {
-        root.parseText()
-    }
-    onPumlEnabledChanged: {
-        root.parseText()
-    }
-    onPumlDarkChanged: {
-        parser.pumlDarkChanged()
-        root.parseText()
-    }
+    // onPathChanged: {
+    //     parser.notePath = path
+    // }
+    // onTextChanged: {
+    //     root.parseText()
+    // }
+    // onHighlightEnabledChanged: {
+    //     root.parseText()
+    // }
+    // onHighlighterStyleChanged: {
+    //     parser.newHighlightStyle()
+    //     root.parseText()
+    // }
+    // onNoteMapEnabledChanged: {
+    //     root.parseText()
+    // }
+    // onEmojiEnabledChanged: {
+    //     root.parseText()
+    // }
+    // onEmojiToneChanged: {
+    //     root.parseText()
+    // }
+    // onPumlEnabledChanged: {
+    //     root.parseText()
+    // }
+    // onPumlDarkChanged: {
+    //     parser.pumlDarkChanged()
+    //     root.parseText()
+    // }
     onDefaultCSSChanged: if (web_view.loadProgress === 100) {
         changeStyle({})
     }
@@ -142,7 +138,6 @@ RowLayout {
             }
             onLoadingChanged: if (!loading) {
                 loadStyle()
-                parseText()
                 scrollToHeader()
             }
             onScrollPositionChanged: if (!vbar.active) {
@@ -209,14 +204,16 @@ RowLayout {
         }
     }
 
-    Parser { 
-        id: parser
+    Connections {
+        id: editorHandlerConnections
+        target: EditorHandler
 
-        onNewLinkedNotesInfos: function(linkedNotesInfos) {
-            noteMapper.addLinkedNotesInfos(linkedNotesInfos)
-        }
-        onNoteHeadersSent: function(notePath, noteHeaders) {
-            noteMapper.updatePathInfo(notePath, noteHeaders)
+        function onParsingFinished(content) {
+            if (!web_view.loading) {
+                contentLink.text = content
+            } else {
+                root.parsedHtml = content
+            }
         }
     }
 
@@ -224,13 +221,6 @@ RowLayout {
         if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
 
         web_view.loadHtml(root.defaultHtml, "file:/")
-    }
-
-    function parseText() {
-        if (web_view.loadProgress === 100) {
-            parsedHtml = parser.parse(text)
-            contentLink.text = parsedHtml
-        }
     }
 
     function changeStyle(styleDict) {
@@ -278,13 +268,13 @@ RowLayout {
     }
 
     function scrollToHeader() {
-        if (parser.headerLevel !== "0") {
-            web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
-                if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
-                    web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
-                    parser.headerInfo = ["", "0"]
-                }
-            })
-        }
+        return
+        // if (parser.headerLevel !== "0") {
+        //     web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
+        //         if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
+        //             web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
+        //         }
+        //     })
+        // }
     }
 }

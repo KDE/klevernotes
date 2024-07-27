@@ -184,8 +184,6 @@ ColumnLayout {
                     ? 2
                     : 1
 
-                text: editor.text
-                path: root.path.replace("note.md", "")
                 visible: viewToggler.checked // make sure that the textEditor while correctly grow
                 
                 Layout.fillWidth: visible
@@ -210,8 +208,6 @@ ColumnLayout {
 
         sourceComponent: NotesMap {
             id: linkedNotesMap
-
-            parser: display.parser
         }
         active: Config.noteMapEnabled
     }

@@ -11,6 +11,7 @@
 #include "visitor.hpp"
 
 // C++ include.
+#include <algorithm>
 #include <string>
 #include <utility>
 
