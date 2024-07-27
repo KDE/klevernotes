@@ -1,58 +1,39 @@
 # SPDX-License-Identifier: BSD-3-Clause
-# SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+# SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 
-set(lib_SRCS
-    logic/painting/pressureequation.cpp
-    logic/painting/sketchmodel.cpp
-    logic/painting/stroke.cpp
-)
-
-add_library(klevernoteslib STATIC ${lib_SRCS})
-target_link_libraries(klevernoteslib PUBLIC
-    Qt::Core
-    Qt::Gui
-    Qt::Qml
-    Qt::Quick
-    Qt::QuickControls2
-    Qt::Svg
-    Qt::WebChannel
-    Qt::PrintSupport
-    Qt6::WebEngineQuick 
-    KF6::I18n
-    KF6::CoreAddons
-    KF6::ConfigCore
-    KF6::ConfigGui
-    KF6::ConfigWidgets
-    KF6::KIOCore 
-)
-
-set(exec_SRCS
+add_library(klevernoteslib STATIC
     app.cpp
-    main.cpp
-    resources.qrc
 
+    # General utility
     logic/colorschemer.cpp
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
     logic/mdHandler.cpp
     logic/qmlLinker.cpp
 
+    # Painting
     logic/painting/pointMaker.cpp
     logic/painting/sketchserializer.cpp
     logic/painting/sketchview.cpp
     logic/painting/strokeitem.cpp
     logic/painting/strokelistitem.cpp
     logic/painting/strokepainter.cpp
+    logic/painting/pressureequation.cpp
+    logic/painting/sketchmodel.cpp
+    logic/painting/stroke.cpp
 
+    # Printing
+    logic/printing/printingHelper.cpp
+
+    # Treeview
+    logic/treeview/noteTreeModel.cpp
+
+    # === PARSER ===
     logic/parser/blockLexer.cpp
     logic/parser/inlineLexer.cpp
     logic/parser/parser.cpp
     logic/parser/renderer.cpp
 
-    logic/printing/printingHelper.cpp
-
-    logic/treeview/noteTreeModel.cpp
-    
     # plugins
     logic/parser/plugins/cliHelper.cpp
     logic/parser/plugins/pluginHelper.cpp
@@ -72,9 +53,27 @@ set(exec_SRCS
     logic/parser/plugins/syntaxHighlight/highlightParserUtils.cpp
 )
 
-add_executable(klevernotes ${exec_SRCS})
+kconfig_add_kcfg_files(klevernoteslib GENERATE_MOC kleverconfig.kcfgc)
+
+target_link_libraries(klevernoteslib PUBLIC
+    Qt::Core
+    Qt::Gui
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Svg
+    Qt::WebChannel
+    Qt::PrintSupport
+    Qt6::WebEngineQuick 
+    KF6::I18n
+    KF6::CoreAddons
+    KF6::ConfigCore
+    KF6::ConfigGui
+    KF6::ConfigWidgets
+    KF6::KIOCore 
+)
+
+add_executable(klevernotes main.cpp resources.qrc)
 target_link_libraries(klevernotes PRIVATE klevernoteslib)
 
-kconfig_add_kcfg_files(klevernotes GENERATE_MOC kleverconfig.kcfgc)
 install(TARGETS klevernotes ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
-
