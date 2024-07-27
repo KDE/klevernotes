@@ -12,7 +12,7 @@
 #include <QRandomGenerator>
 
 #include "kleverconfig.h"
-#include "logic/plugins/emoji/emojiModel.h"
+#include "logic/parser/plugins/emoji/emojiModel.h"
 #include "parser.h"
 #include "renderer.h"
 

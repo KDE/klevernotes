@@ -6,7 +6,7 @@
 #include "pumlParserUtils.h"
 
 #include "logic/parser/renderer.h"
-#include "logic/plugins/puml/pumlHelper.h"
+#include "pumlHelper.h"
 #include <QStandardPaths>
 
 void PUMLParserUtils::clearInfo()

@@ -53,23 +53,23 @@ set(exec_SRCS
 
     logic/treeview/noteTreeModel.cpp
     
-    # PLUGINS
-    logic/plugins/cliHelper.cpp
-    logic/plugins/pluginHelper.cpp
+    # plugins
+    logic/parser/plugins/cliHelper.cpp
+    logic/parser/plugins/pluginHelper.cpp
 
-    logic/plugins/emoji/emoticonFilterModel.cpp
-    logic/plugins/emoji/emojiModel.cpp
-    logic/plugins/emoji/emojiTones.cpp
+    logic/parser/plugins/emoji/emoticonFilterModel.cpp
+    logic/parser/plugins/emoji/emojiModel.cpp
+    logic/parser/plugins/emoji/emojiTones.cpp
 
-    logic/plugins/noteMapper/noteMapper.cpp
-    logic/plugins/noteMapper/noteMapperParserUtils.cpp
-    logic/plugins/noteMapper/noteMapperUtils.cpp
+    logic/parser/plugins/noteMapper/noteMapper.cpp
+    logic/parser/plugins/noteMapper/noteMapperParserUtils.cpp
+    logic/parser/plugins/noteMapper/noteMapperUtils.cpp
 
-    logic/plugins/puml/pumlHelper.cpp
-    logic/plugins/puml/pumlParserUtils.cpp
+    logic/parser/plugins/puml/pumlHelper.cpp
+    logic/parser/plugins/puml/pumlParserUtils.cpp
 
-    logic/plugins/syntaxHighlight/highlightHelper.cpp
-    logic/plugins/syntaxHighlight/highlightParserUtils.cpp
+    logic/parser/plugins/syntaxHighlight/highlightHelper.cpp
+    logic/parser/plugins/syntaxHighlight/highlightParserUtils.cpp
 )
 
 add_executable(klevernotes ${exec_SRCS})

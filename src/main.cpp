@@ -37,10 +37,10 @@
 #include "logic/printing/printingHelper.h"
 
 // Plugins
-#include "logic/plugins/emoji/emojiModel.h"
-#include "logic/plugins/emoji/emoticonFilterModel.h"
-#include "logic/plugins/noteMapper/noteMapper.h"
-#include "logic/plugins/syntaxHighlight/highlightHelper.h"
+#include "logic/parser/plugins/emoji/emojiModel.h"
+#include "logic/parser/plugins/emoji/emoticonFilterModel.h"
+#include "logic/parser/plugins/noteMapper/noteMapper.h"
+#include "logic/parser/plugins/syntaxHighlight/highlightHelper.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {

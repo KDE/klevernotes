@@ -10,9 +10,9 @@
 #include <QObject>
 #include <QSet>
 
-#include "../plugins/pluginHelper.h"
 #include "blockLexer.h"
 #include "inlineLexer.h"
+#include "plugins/pluginHelper.h"
 
 class Parser : public QObject
 {
