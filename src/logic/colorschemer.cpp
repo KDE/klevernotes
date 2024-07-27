@@ -44,7 +44,7 @@ QString ColorSchemer::nameForIndex(int index) const
     return c->model()->data(c->model()->index(index, 0), Qt::DisplayRole).toString();
 }
 
-QVariantMap ColorSchemer::getUsefullColors(int index) const
+QStringList ColorSchemer::getUsefullColors(int index) const
 {
     const QString schemePath = c->model()->data(c->model()->index(index, 0), Qt::UserRole).toString();
 
@@ -61,14 +61,14 @@ QVariantMap ColorSchemer::getUsefullColors(int index) const
     const QString codeColor = activeView.background(activeView.AlternateBackground).color().name(QColor::HexRgb);
     const QString highlightColor = selectionView.background().color().name(QColor::HexRgb);
 
-    const QVariantMap res = {
-        {QStringLiteral("--bodyColor"), bodyColor},
-        {QStringLiteral("--textColor"), textColor},
-        {QStringLiteral("--titleColor"), titleColor},
-        {QStringLiteral("--linkColor"), linkColor},
-        {QStringLiteral("--visitedLinkColor"), visitedLinkColor},
-        {QStringLiteral("--codeColor"), codeColor},
-        {QStringLiteral("--highlightColor"), highlightColor},
+    const QStringList res = {
+        bodyColor,
+        textColor,
+        titleColor,
+        linkColor,
+        visitedLinkColor,
+        codeColor,
+        highlightColor,
     };
 
     return res;

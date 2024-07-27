@@ -241,6 +241,8 @@ Kirigami.OverlayDrawer {
                     Layout.fillWidth: true
 
                     onClicked: {
+                        EditorHandler.notePath = "qrc:"
+                        StyleHandler.isMain = false
                         applicationWindow().switchToPage('Settings')
                     }
                 }

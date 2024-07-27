@@ -32,13 +32,19 @@ FormCard.FormCard {
     TextDisplay {
         id: displayer
 
-        path: "qrc:"
-        text: DocumentHandler.readFile(":/demo_note.md")
+        property string demoText
 
         visible: true
 
         Layout.fillWidth: true
         Layout.preferredHeight: Kirigami.Units.gridUnit * 20
+
+        Component.onCompleted: {
+            displayer.demoText = DocumentHandler.readFile(":/demo_note.md")
+        }
+        onVisibleChanged: if (visible) {
+            EditorHandler.parse(displayer.demoText)
+        }
     }
 
     RowLayout {

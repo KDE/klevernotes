@@ -28,6 +28,9 @@ add_library(klevernoteslib STATIC
     # Printing
     logic/printing/printingHelper.cpp
 
+    # Preview
+    logic/preview/styleHandler.cpp
+
     # Treeview
     logic/treeview/noteTreeModel.cpp
 

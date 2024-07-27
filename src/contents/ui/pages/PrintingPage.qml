@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 
 // LOOSELY BASED ON : https://invent.kde.org/network/angelfish/-/blob/master/lib/contents/ui/PrintPreview.qml
 // SPDX-License-Identifier: GPL-2.0-or-later
@@ -189,14 +189,14 @@ Kirigami.Page {
     }
 
     function requestPdf(changeBackground) {
-        textDisplay.printBackground = changeBackground
-        textDisplay.changeStyle(colors)
+        StyleHandler.printBackground = changeBackground
+        StyleHandler.changeStyles(colors)
         applyingCssTimer.start()
     }
 
     function closePage() {
-        textDisplay.printBackground = true
-        textDisplay.changeStyle(textDisplay.defaultCSS)
+        StyleHandler.printBackground = true
+        StyleHandler.changeStyles()
         applicationWindow().showMainPage()
     }
 }

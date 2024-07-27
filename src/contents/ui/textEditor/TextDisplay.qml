@@ -21,84 +21,17 @@ RowLayout {
 
     readonly property var view: web_view
 
-    // Syntax highlight
-    readonly property bool highlightEnabled: Config.codeSynthaxHighlightEnabled // give us acces to a "Changed" signal
-    readonly property string highlighterStyle: Config.codeSynthaxHighlighterStyle // This will also be triggered when the highlighter itself is changed
-    // NoteMapper
-    readonly property bool noteMapEnabled: Config.noteMapEnabled // give us acces to a "Changed" signal
-    readonly property NoteMapper noteMapper: applicationWindow().noteMapper
-    // Emoji
-    readonly property bool emojiEnabled: Config.quickEmojiEnabled
-    readonly property string emojiTone: Config.emojiTone
-    // PlantUML
-    readonly property bool pumlEnabled: Config.pumlEnabled
-    readonly property bool pumlDark: Config.pumlDark
-
-    readonly property string stylePath: Config.stylePath
-    readonly property var codeFontInfo: KleverUtility.fontInfo(Config.codeFont)
-    readonly property var viewFontInfo: KleverUtility.fontInfo(Config.viewFont)
     readonly property string previewLocation: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
     readonly property string emptyPreview: (StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf").substring(7)
 
-    readonly property var defaultCSS: {
-        '--bodyColor': Config.viewBodyColor !== "None" ? Config.viewBodyColor : Kirigami.Theme.backgroundColor,
-        '--font': viewFontInfo.family,
-        '--fontSize': viewFontInfo.pointSize + "px",
-        '--textColor': Config.viewTextColor !== "None" ? Config.viewTextColor : Kirigami.Theme.textColor,
-        '--titleColor': Config.viewTitleColor !== "None" ? Config.viewTitleColor : Kirigami.Theme.disabledTextColor,
-        '--linkColor': Config.viewLinkColor !== "None" ? Config.viewLinkColor : Kirigami.Theme.linkColor,
-        '--visitedLinkColor': Config.viewVisitedLinkColor !== "None" ? Config.viewVisitedLinkColor : Kirigami.Theme.visitedLinkColor,
-        '--codeColor': Config.viewCodeColor !== "None" ? Config.viewCodeColor : Kirigami.Theme.alternateBackgroundColor,
-        '--highlightColor': Config.viewHighlightColor !== "None" ? Config.viewHighlightColor : Kirigami.Theme.highlightColor,
-        '--codeFont': codeFontInfo.family,
-        '--codeFontSize': codeFontInfo.pointSize + "px",
-    }
-
     property string defaultHtml
-    property string parsedHtml
-    property string cssStyle
-    property string completCss
-    property bool printBackground: true
+    property string css
 
     spacing: 0
 
-    // onPathChanged: {
-    //     parser.notePath = path
-    // }
-    // onTextChanged: {
-    //     root.parseText()
-    // }
-    // onHighlightEnabledChanged: {
-    //     root.parseText()
-    // }
-    // onHighlighterStyleChanged: {
-    //     parser.newHighlightStyle()
-    //     root.parseText()
-    // }
-    // onNoteMapEnabledChanged: {
-    //     root.parseText()
-    // }
-    // onEmojiEnabledChanged: {
-    //     root.parseText()
-    // }
-    // onEmojiToneChanged: {
-    //     root.parseText()
-    // }
-    // onPumlEnabledChanged: {
-    //     root.parseText()
-    // }
-    // onPumlDarkChanged: {
-    //     parser.pumlDarkChanged()
-    //     root.parseText()
-    // }
-    onDefaultCSSChanged: if (web_view.loadProgress === 100) {
-        changeStyle({})
-    }
-    onStylePathChanged: if (web_view.loadProgress === 100) {
-        loadStyle()
-    }
     Component.onCompleted: {
         loadBaseHtml()
+        StyleHandler.loadStyle()
     }
 
     // WARNING, HACK: 
@@ -137,7 +70,7 @@ RowLayout {
                 printingPage.displayPdf()
             }
             onLoadingChanged: if (!loading) {
-                loadStyle()
+                loadCss()
                 scrollToHeader()
             }
             onScrollPositionChanged: if (!vbar.active) {
@@ -209,11 +142,17 @@ RowLayout {
         target: EditorHandler
 
         function onParsingFinished(content) {
-            if (!web_view.loading) {
-                contentLink.text = content
-            } else {
-                root.parsedHtml = content
-            }
+            contentLink.text = content
+        }
+    }
+
+    Connections {
+        id: styleHandlerConnections
+        target: StyleHandler 
+
+        function onNewCss(css) {
+            root.css = css
+            loadCss()
         }
     }
 
@@ -223,44 +162,8 @@ RowLayout {
         web_view.loadHtml(root.defaultHtml, "file:/")
     }
 
-    function changeStyle(styleDict) {
-        if (!styleDict) return
-        const emptyDict = Object.keys(styleDict).length === 0;
-        styleDict = emptyDict ? defaultCSS : styleDict
-
-        let varStartIndex
-        let varEndIndex
-        let newCssVar = ""
-        let noBg
-        let style = root.cssStyle
-
-        for (const key in defaultCSS) {
-            if (!styleDict[key]) {
-                styleDict[key] = defaultCSS[key]
-            }
-        }
-
-        for (const [cssVar, value] of Object.entries(styleDict)) {
-            noBg = cssVar === "--bodyColor" && !root.printBackground
-
-            varStartIndex = style.indexOf(cssVar)
-            if (-1 < varStartIndex) {
-                varEndIndex = style.indexOf(";", varStartIndex)
-
-                newCssVar = noBg
-                    ? cssVar + ": " + "undefined" + ";\n"
-                    : cssVar + ": " + value + ";\n"
-
-                style = style.substring(0, varStartIndex) + newCssVar + style.substring(varEndIndex)
-            }
-        }
-
-        cssLink.text = style
-    }
-
-    function loadStyle() {
-        root.cssStyle = DocumentHandler.getCssStyle(root.stylePath)
-        changeStyle({})
+    function loadCss() {
+        cssLink.text = root.css
     }
 
     function makePdf() {
@@ -269,12 +172,5 @@ RowLayout {
 
     function scrollToHeader() {
         return
-        // if (parser.headerLevel !== "0") {
-        //     web_view.runJavaScript("document.getElementById('noteMapperScrollTo')",function(result) { 
-        //         if (result) { // Seems redundant but it's mandatory due to the way the wayview handle loadProgress
-        //             web_view.runJavaScript("document.getElementById('noteMapperScrollTo').scrollIntoView()")
-        //         }
-        //     })
-        // }
     }
 }

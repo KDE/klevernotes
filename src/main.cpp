@@ -36,6 +36,8 @@
 
 #include "logic/printing/printingHelper.h"
 
+#include "logic/preview/styleHandler.hpp"
+
 // Plugins
 #include "logic/parser/plugins/emoji/emojiModel.h"
 #include "logic/parser/plugins/emoji/emoticonFilterModel.h"
@@ -134,6 +136,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
+
+    StyleHandler styleHandler;
+    qmlRegisterSingletonInstance<StyleHandler>("org.kde.Klever", 1, 0, "StyleHandler", &styleHandler);
 
     qmlRegisterType<PrintingUtility>("org.kde.Klever", 1, 0, "PrintingUtility");
 

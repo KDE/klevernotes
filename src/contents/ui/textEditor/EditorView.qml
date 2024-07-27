@@ -17,6 +17,16 @@ ColumnLayout {
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
+    // Not perfect but easier then pulling those color from C++
+    readonly property var defaultColors: [
+        Kirigami.Theme.backgroundColor,
+        Kirigami.Theme.textColor,
+        Kirigami.Theme.disabledTextColor,
+        Kirigami.Theme.linkColor,
+        Kirigami.Theme.visitedLinkColor,
+        Kirigami.Theme.alternateBackgroundColor,
+        Kirigami.Theme.highlightColor,
+    ]
 
     property list<Kirigami.Action> actions: [
         Kirigami.Action {
@@ -82,6 +92,9 @@ ColumnLayout {
     onPathChanged: {
         focusEditor()
     }
+    onDefaultColorsChanged: if (EditorHandler.notePath != "qrc:") {
+        StyleHandler.setDefault(root.defaultColors)
+    }
     Component.onCompleted: {
         focusEditor()
     }
@@ -98,6 +111,7 @@ ColumnLayout {
         id: printingDialog
 
         onPdf: {
+            StyleHandler.inMain = false
             applicationWindow().switchToPage('Printing')
         }
         onHtml: {
