@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "plugins/pluginHelper.h"
 #include <utility>
 
 #define MD4QT_QT_SUPPORT
@@ -19,6 +20,7 @@ public:
 
     // General info
     void setNotePath(const QString &notePath);
+    void addPluginHelper(PluginHelper *pluginHelper);
     void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
     // md4qt
@@ -42,6 +44,9 @@ public:
 
 protected:
     QString m_notePath;
+
+    // Plugins
+    PluginHelper *m_pluginHelper;
 
     QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
 };

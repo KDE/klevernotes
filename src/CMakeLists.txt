@@ -45,7 +45,7 @@ add_library(klevernoteslib STATIC
 
     # plugins
     # logic/parser/plugins/cliHelper.cpp
-    # logic/parser/plugins/pluginHelper.cpp
+    logic/parser/plugins/pluginHelper.cpp
 
     logic/parser/plugins/emoji/emoticonFilterModel.cpp
     logic/parser/plugins/emoji/emojiModel.cpp
@@ -54,6 +54,7 @@ add_library(klevernoteslib STATIC
     logic/parser/plugins/noteMapper/noteMapper.cpp
     logic/parser/plugins/noteMapper/noteMapperParserUtils.cpp
     logic/parser/plugins/noteMapper/noteMapperUtils.cpp
+    logic/parser/plugins/noteMapper/noteLinkingPlugin.cpp
     #
     # logic/parser/plugins/puml/pumlHelper.cpp
     # logic/parser/plugins/puml/pumlParserUtils.cpp

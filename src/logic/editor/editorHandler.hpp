@@ -62,6 +62,9 @@ Q_SIGNALS:
 
     void parsingFinished(const QString &content);
 
+    // NoteMapper
+    void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
+
 private:
     // QTextDocument info
     void setDocument(QQuickTextDocument *document);

@@ -7,48 +7,48 @@
 
 #include "kleverconfig.h"
 
-PluginHelper::PluginHelper(Parser *parser)
-    : m_highlightParserUtils(new HighlightParserUtils)
-    , m_pumlParserUtils(new PUMLParserUtils)
+PluginHelper::PluginHelper(MdEditor::EditorHandler *editorHandler)
+/* : m_pumlParserUtils(new PUMLParserUtils) */
+/* , m_highlightParserUtils(new HighlightParserUtils) */
 {
-    m_mapperParserUtils = new NoteMapperParserUtils(parser);
+    m_mapperParserUtils = new NoteMapperParserUtils(editorHandler);
 }
 
 void PluginHelper::clearPluginsInfo()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->clearInfo();
-    }
+    /* if (KleverConfig::codeSynthaxHighlightEnabled()) { */
+    /*     m_highlightParserUtils->clearInfo(); */
+    /* } */
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearInfo();
     }
-    if (KleverConfig::pumlEnabled()) {
-        m_pumlParserUtils->clearInfo();
-    }
+    /* if (KleverConfig::pumlEnabled()) { */
+    /*     m_pumlParserUtils->clearInfo(); */
+    /* } */
 }
 
 void PluginHelper::clearPluginsPreviousInfo()
 {
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->clearPreviousInfo();
-    }
+    /* if (KleverConfig::codeSynthaxHighlightEnabled()) { */
+    /*     m_highlightParserUtils->clearPreviousInfo(); */
+    /* } */
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearPreviousInfo();
     }
-    if (KleverConfig::pumlEnabled()) {
-        m_pumlParserUtils->clearPreviousInfo();
-    }
+    /* if (KleverConfig::pumlEnabled()) { */
+    /*     m_pumlParserUtils->clearPreviousInfo(); */
+    /* } */
 }
 
 void PluginHelper::preTokChanges()
 {
     // Syntax highlight
-    if (KleverConfig::codeSynthaxHighlightEnabled()) {
-        m_highlightParserUtils->preTok();
-    }
-    if (KleverConfig::pumlEnabled()) {
-        m_pumlParserUtils->preTok();
-    }
+    /* if (KleverConfig::codeSynthaxHighlightEnabled()) { */
+    /*     m_highlightParserUtils->preTok(); */
+    /* } */
+    /* if (KleverConfig::pumlEnabled()) { */
+    /*     m_pumlParserUtils->preTok(); */
+    /* } */
 }
 
 void PluginHelper::postTokChanges()
@@ -64,32 +64,32 @@ QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text
     static const QString plantUMLStr = QStringLiteral("plantuml");
 
     QString returnValue;
-    if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-        returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark());
-    } else {
-        const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled();
-        const bool highlight = highlightEnabled && !lang.isEmpty();
-
-        returnValue = m_highlightParserUtils->renderCode(highlight, _text, lang);
-    }
+    /* if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) { */
+    /*     returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark()); */
+    /* } else { */
+    /*     const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled(); */
+    /*     const bool highlight = highlightEnabled && !lang.isEmpty(); */
+    /**/
+    /*     returnValue = m_highlightParserUtils->renderCode(highlight, _text, lang); */
+    /* } */
 
     return returnValue;
 }
 
 // NoteMapper
-NoteMapperParserUtils *PluginHelper::getMapperParserUtils() const
+NoteMapperParserUtils *PluginHelper::mapperParserUtils() const
 {
     return m_mapperParserUtils;
 }
 
 // Syntax highlight
-HighlightParserUtils *PluginHelper::getHighlightParserUtils() const
-{
-    return m_highlightParserUtils;
-}
+/* HighlightParserUtils *PluginHelper::getHighlightParserUtils() const */
+/* { */
+/*     return m_highlightParserUtils; */
+/* } */
 
 // PUML
-PUMLParserUtils *PluginHelper::getPUMLParserUtils() const
-{
-    return m_pumlParserUtils;
-}
+/* PUMLParserUtils *PluginHelper::getPUMLParserUtils() const */
+/* { */
+/*     return m_pumlParserUtils; */
+/* } */

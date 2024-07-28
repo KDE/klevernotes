@@ -9,12 +9,12 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 import org.kde.kitemmodels
 
+import org.kde.Klever
+
 import "qrc:/contents/ui/textEditor/components/"
 
 Kirigami.Dialog {
     id: noteMap
-
-    required property QtObject parser
 
     title: i18nc("@window:title","Linked notes map")
 
@@ -50,7 +50,7 @@ Kirigami.Dialog {
                     height: Kirigami.Units.gridUnit * 3
                     onClicked: {
                         if (headerExists) {
-                            parser.headerInfo = [header, headerLevel.toString()]
+                            EditorHandler.headerInfo = [header, headerLevel.toString()]
                         }
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
@@ -82,7 +82,7 @@ Kirigami.Dialog {
         KSortFilterProxyModel {
             id: missingLinks
 
-            sourceModel: applicationWindow().noteMapper
+            sourceModel: NoteMapper
             filterRoleName: "exists"
             filterString: "No"
             filterCaseSensitivity: Qt.CaseInsensitive
@@ -91,7 +91,7 @@ Kirigami.Dialog {
         KSortFilterProxyModel {
             id: existingLinks
 
-            sourceModel: applicationWindow().noteMapper
+            sourceModel: NoteMapper
             filterRoleName: "exists"
             filterString: "Yes"
             filterCaseSensitivity: Qt.CaseInsensitive

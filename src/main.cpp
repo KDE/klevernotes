@@ -148,7 +148,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<EmoticonFilterModel>("neochatComponents", 1, 0, "EmoticonFilterModel");
     qmlRegisterSingletonInstance("neochatComponents", 1, 0, "EmojiModel", &EmojiModel::instance());
 
-    qmlRegisterType<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper");
+    NoteMapper noteMapper;
+    qmlRegisterSingletonInstance<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper", &noteMapper);
 
     /* HighlightHelper highlightHelper; */
     /* qmlRegisterSingletonInstance<HighlightHelper>("org.kde.Klever", 1, 0, "HighlightHelper", &highlightHelper); */

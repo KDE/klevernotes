@@ -99,6 +99,15 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
 {
     QString url = l->url();
 
+    if (m_pluginHelper) {
+        const QString wikilinkDelim = QStringLiteral("@HEADER@");
+        if (url.contains(wikilinkDelim)) {
+            auto linkedNoteInfo = url.split(wikilinkDelim);
+            linkedNoteInfo.append(l->text());
+            m_pluginHelper->mapperParserUtils()->addToLinkedNoteInfos(linkedNoteInfo);
+        }
+    }
+
     const auto lit = this->doc->labeledLinks().find(url);
 
     if (lit != this->doc->labeledLinks().cend())
@@ -199,6 +208,11 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
 void Renderer::setNotePath(const QString &notePath)
 {
     m_notePath = notePath;
+}
+
+void Renderer::addPluginHelper(PluginHelper *pluginHelper)
+{
+    m_pluginHelper = pluginHelper;
 }
 
 void Renderer::addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML)

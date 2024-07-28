@@ -4,29 +4,26 @@
 */
 
 #include "noteMapperParserUtils.h"
-
 #include "kleverconfig.h"
-#include "logic/parser/parser.h"
+#include "logic/editor/editorHandler.hpp"
 
-NoteMapperParserUtils::NoteMapperParserUtils(Parser *parser)
-    : m_parser(parser)
+NoteMapperParserUtils::NoteMapperParserUtils(MdEditor::EditorHandler *editorHandler)
+    : m_editorHandler(editorHandler)
 {
 }
 
-void NoteMapperParserUtils::setPathsInfo(const QString &notePath)
+QString NoteMapperParserUtils::getGroupPath(const QString &notePath)
 {
     // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
-    m_mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
+    const QString mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
 
     // /Category/Group/Note => /Category/Group (no '/' at the end to make it easier for m_categPath)
-    const QString groupPath = m_mapperNotePath.chopped(m_mapperNotePath.size() - m_mapperNotePath.lastIndexOf(QStringLiteral("/")));
-    if (m_groupPath != groupPath) {
-        m_groupPath = groupPath + QStringLiteral("/"); // /Category/Group => /Category/Group/
-        m_categPath = groupPath.chopped(groupPath.size() - groupPath.lastIndexOf(QStringLiteral("/")) - 1); // /Category/Group => /Category/
-    }
+    QString groupPath = mapperNotePath.chopped(mapperNotePath.size() - mapperNotePath.lastIndexOf(QStringLiteral("/")) - 1);
+
+    return groupPath;
 }
 
-QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path) const
+QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path, const QString &notePath)
 {
     static const QString slashStr = QStringLiteral("/");
     QStringList parts = _path.split(slashStr);
@@ -47,17 +44,20 @@ QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path) c
     if (leadingSlashRemnant)
         parts.removeAt(0);
 
-    if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue())
+    if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue() && 1 < parts.length()) {
         parts[0] = QStringLiteral(".BaseCategory");
+    }
+
+    const QString groupPath = getGroupPath(notePath);
 
     QString path = _path;
     switch (parts.count()) {
     case 1: // Note name only
-        path = m_groupPath + parts[0];
+        path = groupPath + parts[0];
         break;
     case 2:
         if (parts[0] == QStringLiteral(".")) { // Note name only
-            path = m_groupPath + parts[1];
+            path = groupPath + parts[1];
         } else { // Note inside category
             path = slashStr + parts[0] + QStringLiteral("/.BaseGroup/") + parts[1];
         }
@@ -72,6 +72,14 @@ QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path) c
     return qMakePair(path, true);
 }
 
+void NoteMapperParserUtils::setNotePath(const QString &_path)
+{
+    QString path = _path;
+    m_mapperNotePath = path.remove(0, KleverConfig::storagePath().length());
+}
+
+// Not used due to issue: https://invent.kde.org/office/klevernotes/-/issues/17
+// =====
 void NoteMapperParserUtils::setHeaderInfo(const QStringList &headerInfo)
 {
     m_header = headerInfo[0];
@@ -94,6 +102,7 @@ bool NoteMapperParserUtils::headerFound() const
 {
     return m_headerFound;
 }
+// =====
 
 void NoteMapperParserUtils::addToLinkedNoteInfos(const QStringList &infos)
 {
@@ -111,27 +120,29 @@ void NoteMapperParserUtils::addToNoteHeaders(const QString &header)
     m_noteHeaders.append(header);
 }
 
+// Signal about headers not used due to issue: https://invent.kde.org/office/klevernotes/-/issues/17
 void NoteMapperParserUtils::postTok()
 {
     m_notePathChanged = false;
 
     // We try to not spam with signals
     if (m_linkedNotesChanged || !m_previousLinkedNotesInfos.isEmpty()) { // The previous is not empty, some links notes are no longer there
-        /* Q_EMIT m_parser->newLinkedNotesInfos(m_linkedNotesInfos); */
+        Q_EMIT m_editorHandler->newLinkedNotesInfos(m_linkedNotesInfos);
     }
     m_previousLinkedNotesInfos = m_linkedNotesInfos;
     m_noteHeaders.removeDuplicates();
 
     if (m_noteHeadersChanged || !m_previousNoteHeaders.isEmpty()) { // The previous is not empty, some headers are no longer there
         m_emptyHeadersSent = false;
-        /* Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, m_noteHeaders); */
+        /* Q_EMIT m_editorHandler->noteHeadersSent(m_mapperNotePath, m_noteHeaders); */
     } else if (m_noteHeaders.isEmpty() && !m_emptyHeadersSent) {
         // This way the mapper can receive info about the note (the note has no header), and we still prevent spamming
         m_emptyHeadersSent = true;
-        /* Q_EMIT m_parser->noteHeadersSent(m_mapperNotePath, {}); */
+        /* Q_EMIT m_editorHandler->noteHeadersSent(m_mapperNotePath, {}); */
     }
     m_previousNoteHeaders = QSet(m_noteHeaders.begin(), m_noteHeaders.end());
 
+    // Not used due to issue: https://invent.kde.org/office/klevernotes/-/issues/17
     if (!m_headerFound) { // Prevent the TextDisplay.qml scrollToHeader to search an unexisting header
         m_headerLevel = QStringLiteral("0");
         m_header = QLatin1String();

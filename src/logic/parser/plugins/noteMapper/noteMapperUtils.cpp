@@ -4,7 +4,6 @@
 */
 
 #include "noteMapperUtils.h"
-// #include <QDebug>
 
 NoteMapperUtils::NoteMapperUtils(QObject *parent)
     : QObject(parent)

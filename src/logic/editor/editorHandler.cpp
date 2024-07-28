@@ -4,7 +4,6 @@
 // KleverNotes include
 #include "editorHandler.hpp"
 #include "logic/parser/parser.h"
-#include "logic/parser/plugins/pluginHelper.h"
 
 // Qt include
 #include <QColor>
@@ -21,6 +20,8 @@ EditorHandler::EditorHandler(QObject *parent)
     m_renderer = new Renderer();
 
     m_parser = new Parser();
+    m_pluginHelper = new PluginHelper(this);
+    m_renderer->addPluginHelper(m_pluginHelper);
 
     static const QList<QStringList> extendedSyntaxsList = {
         // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
@@ -143,6 +144,13 @@ void EditorHandler::setNotePath(const QString &notePath)
     }
 
     m_renderer->setNotePath(rendererNotePath);
+
+    if (notePath != qrcStr && m_pluginHelper) {
+        // We do this here because we're sure to be in another note
+        m_pluginHelper->clearPluginsPreviousInfo();
+
+        m_pluginHelper->mapperParserUtils()->setNotePath(rendererNotePath);
+    }
 }
 
 void EditorHandler::usePreviousPath()
@@ -158,6 +166,9 @@ void EditorHandler::renderDoc()
     if (m_currentMdDoc) {
         const auto html = m_renderer->toHtml(m_currentMdDoc, m_notePath);
 
+        if (m_pluginHelper) {
+            m_pluginHelper->postTokChanges();
+        }
         Q_EMIT parsingFinished(html);
     }
 }

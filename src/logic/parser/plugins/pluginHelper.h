@@ -8,14 +8,14 @@
 #include <QObject>
 #include <QSet>
 
-#include "logic/parser/plugins/noteMapper/noteMapperParserUtils.h"
-#include "logic/parser/plugins/puml/pumlParserUtils.h"
-#include "logic/parser/plugins/syntaxHighlight/highlightParserUtils.h"
+#include "noteMapper/noteMapperParserUtils.h"
+/* #include "logic/parser/plugins/puml/pumlParserUtils.h" */
+/* #include "logic/parser/plugins/syntaxHighlight/highlightParserUtils.h" */
 
 class PluginHelper
 {
 public:
-    explicit PluginHelper(Parser *parser);
+    explicit PluginHelper(MdEditor::EditorHandler *editorHandler);
     void clearPluginsInfo();
     void clearPluginsPreviousInfo();
     void preTokChanges();
@@ -24,21 +24,21 @@ public:
     QString blockCodePlugins(const QString &lang, const QString &_text);
 
     // NoteMapper
-    NoteMapperParserUtils *getMapperParserUtils() const;
+    NoteMapperParserUtils *mapperParserUtils() const;
 
-    // Syntax highlight
-    HighlightParserUtils *getHighlightParserUtils() const;
-
-    // PUML
-    PUMLParserUtils *getPUMLParserUtils() const;
+    /* // Syntax highlight */
+    /* HighlightParserUtils *getHighlightParserUtils() const; */
+    /**/
+    /* // PUML */
+    /* PUMLParserUtils *getPUMLParserUtils() const; */
 
 private:
-    // Synthax highlight
-    HighlightParserUtils *m_highlightParserUtils = nullptr;
+    /* // Synthax highlight */
+    /* HighlightParserUtils *m_highlightParserUtils = nullptr; */
 
     // NoteMapper
     NoteMapperParserUtils *m_mapperParserUtils = nullptr;
 
-    // PUML
-    PUMLParserUtils *m_pumlParserUtils = nullptr;
+    /* // PUML */
+    /* PUMLParserUtils *m_pumlParserUtils = nullptr; */
 };

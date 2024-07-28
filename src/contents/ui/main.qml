@@ -25,7 +25,6 @@ Kirigami.ApplicationWindow {
         property color viewBackground: Kirigami.Theme.backgroundColor
     }
     readonly property color sideBarColor: Kirigami.ColorUtils.linearInterpolation(windowItem.windowBackground, viewItem.viewBackground, 0.6)
-    readonly property NoteMapper noteMapper: noteMapper
     property string currentPageName: "Main"
 
     title: i18nc("@title:ApplicationWindow", "KleverNotes")
@@ -80,10 +79,6 @@ Kirigami.ApplicationWindow {
         backgroundColor: root.sideBarColor
     }
 
-    NoteMapper { 
-        id: noteMapper 
-    }
-
     Timer {
         id: pageTransitionTimer
 
@@ -107,7 +102,7 @@ Kirigami.ApplicationWindow {
             const editor = editorView.editor
             editor.saveNote(editor.text, editor.path)
         }
-        if (Config.noteMapEnabled) noteMapper.saveMap()
+        if (Config.noteMapEnabled) NoteMapper.saveMap()
     }
 
     function getPage(name) {

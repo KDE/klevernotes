@@ -82,16 +82,16 @@ RowLayout {
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
                     if (delimiterIndex != -1 && Config.noteMapEnabled) {
-                        const header = notePath.substring(delimiterIndex + 8)
+                        // const header = notePath.substring(delimiterIndex + 8)
                         
                         notePath = notePath.substring(0, delimiterIndex)
 
-                        const headerInfo = applicationWindow().noteMapper.getCleanedHeaderAndLevel(header)
+                        const headerInfo = NoteMapper.getCleanedHeaderAndLevel(header)
                         const sidebar = applicationWindow().globalDrawer
                         const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
 
                         if (noteModelIndex.row !== -1) {
-                            if (header[1] !== 0) parser.headerInfo = headerInfo
+                            // if (header[1] !== 0) parser.headerInfo = headerInfo
 
                             sidebar.askForFocus(noteModelIndex)
                         } 

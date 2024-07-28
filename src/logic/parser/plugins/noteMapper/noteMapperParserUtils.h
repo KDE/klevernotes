@@ -7,16 +7,20 @@
 
 #include <QObject>
 #include <QSet>
+#include <tuple>
 
-class Parser;
+namespace MdEditor
+{
+class EditorHandler;
+}
 
 class NoteMapperParserUtils
 {
 public:
-    explicit NoteMapperParserUtils(Parser *parser);
+    explicit NoteMapperParserUtils(MdEditor::EditorHandler *editorHandler);
 
-    void setPathsInfo(const QString &path);
-    QPair<QString, bool> sanitizePath(const QString &_path) const;
+    static QPair<QString, bool> sanitizePath(const QString &_path, const QString &notePath);
+    void setNotePath(const QString &_path);
     void setHeaderInfo(const QStringList &headerInfo);
     QString headerLevel() const;
     void addToLinkedNoteInfos(const QStringList &infos);
@@ -28,6 +32,7 @@ public:
     void clearPreviousInfo();
 
 private:
+    static QString getGroupPath(const QString &path);
     QString m_mapperNotePath;
     QString m_groupPath;
     QString m_categPath;
@@ -46,5 +51,5 @@ private:
     bool m_linkedNotesChanged = false;
     bool m_notePathChanged = true;
 
-    Parser *m_parser = nullptr;
+    MdEditor::EditorHandler *m_editorHandler = nullptr;
 };

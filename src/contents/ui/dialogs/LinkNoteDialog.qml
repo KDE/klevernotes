@@ -52,7 +52,7 @@ FormCard.FormCardDialog {
         displayMode: FormCard.FormComboBoxDelegate.Dialog
 
         onCurrentValueChanged: if (headerSwitch.checked) {
-            headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+            headerComboBox.model = NoteMapper.getNoteHeaders(noteComboBox.currentValue)
         }
         Component.onCompleted: {
             currentIndex = 0
@@ -66,7 +66,7 @@ FormCard.FormCardDialog {
         checked: false
 
         onCheckedChanged: if (checked) {
-            headerComboBox.model = applicationWindow().noteMapper.getNoteHeaders(noteComboBox.currentValue)
+            headerComboBox.model = NoteMapper.getNoteHeaders(noteComboBox.currentValue)
         } else {
             linkNoteDialog.headerString = ""
         }
