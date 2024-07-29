@@ -8,17 +8,17 @@
 #include "kleverconfig.h"
 
 PluginHelper::PluginHelper(MdEditor::EditorHandler *editorHandler)
+    : m_highlightParserUtils(new HighlightParserUtils)
 /* : m_pumlParserUtils(new PUMLParserUtils) */
-/* , m_highlightParserUtils(new HighlightParserUtils) */
 {
     m_mapperParserUtils = new NoteMapperParserUtils(editorHandler);
 }
 
 void PluginHelper::clearPluginsInfo()
 {
-    /* if (KleverConfig::codeSynthaxHighlightEnabled()) { */
-    /*     m_highlightParserUtils->clearInfo(); */
-    /* } */
+    if (KleverConfig::codeSynthaxHighlightEnabled()) {
+        m_highlightParserUtils->clearInfo();
+    }
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearInfo();
     }
@@ -29,9 +29,6 @@ void PluginHelper::clearPluginsInfo()
 
 void PluginHelper::clearPluginsPreviousInfo()
 {
-    /* if (KleverConfig::codeSynthaxHighlightEnabled()) { */
-    /*     m_highlightParserUtils->clearPreviousInfo(); */
-    /* } */
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearPreviousInfo();
     }
@@ -42,10 +39,6 @@ void PluginHelper::clearPluginsPreviousInfo()
 
 void PluginHelper::preTokChanges()
 {
-    // Syntax highlight
-    /* if (KleverConfig::codeSynthaxHighlightEnabled()) { */
-    /*     m_highlightParserUtils->preTok(); */
-    /* } */
     /* if (KleverConfig::pumlEnabled()) { */
     /*     m_pumlParserUtils->preTok(); */
     /* } */
@@ -83,10 +76,10 @@ NoteMapperParserUtils *PluginHelper::mapperParserUtils() const
 }
 
 // Syntax highlight
-/* HighlightParserUtils *PluginHelper::getHighlightParserUtils() const */
-/* { */
-/*     return m_highlightParserUtils; */
-/* } */
+HighlightParserUtils *PluginHelper::highlightParserUtils() const
+{
+    return m_highlightParserUtils;
+}
 
 // PUML
 /* PUMLParserUtils *PluginHelper::getPUMLParserUtils() const */

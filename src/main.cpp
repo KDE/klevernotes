@@ -42,7 +42,7 @@
 #include "logic/parser/plugins/emoji/emojiModel.h"
 #include "logic/parser/plugins/emoji/emoticonFilterModel.h"
 #include "logic/parser/plugins/noteMapper/noteMapper.h"
-/* #include "logic/parser/plugins/syntaxHighlight/highlightHelper.h" */
+#include "logic/parser/plugins/syntaxHighlight/highlightHelper.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -151,8 +151,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     NoteMapper noteMapper;
     qmlRegisterSingletonInstance<NoteMapper>("org.kde.Klever", 1, 0, "NoteMapper", &noteMapper);
 
-    /* HighlightHelper highlightHelper; */
-    /* qmlRegisterSingletonInstance<HighlightHelper>("org.kde.Klever", 1, 0, "HighlightHelper", &highlightHelper); */
+    HighlightHelper highlightHelper;
+    qmlRegisterSingletonInstance<HighlightHelper>("org.kde.Klever", 1, 0, "HighlightHelper", &highlightHelper);
     // === === === ===
 
     qRegisterMetaType<StrokeSample>();

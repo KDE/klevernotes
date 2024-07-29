@@ -10,7 +10,7 @@
 
 #include "noteMapper/noteMapperParserUtils.h"
 /* #include "logic/parser/plugins/puml/pumlParserUtils.h" */
-/* #include "logic/parser/plugins/syntaxHighlight/highlightParserUtils.h" */
+#include "logic/parser/plugins/syntaxHighlight/highlightParserUtils.h"
 
 class PluginHelper
 {
@@ -26,15 +26,15 @@ public:
     // NoteMapper
     NoteMapperParserUtils *mapperParserUtils() const;
 
-    /* // Syntax highlight */
-    /* HighlightParserUtils *getHighlightParserUtils() const; */
-    /**/
+    // Syntax highlight
+    HighlightParserUtils *highlightParserUtils() const;
+
     /* // PUML */
     /* PUMLParserUtils *getPUMLParserUtils() const; */
 
 private:
-    /* // Synthax highlight */
-    /* HighlightParserUtils *m_highlightParserUtils = nullptr; */
+    // Synthax highlight
+    HighlightParserUtils *m_highlightParserUtils = nullptr;
 
     // NoteMapper
     NoteMapperParserUtils *m_mapperParserUtils = nullptr;

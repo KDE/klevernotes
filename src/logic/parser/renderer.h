@@ -24,6 +24,9 @@ public:
     void addPluginHelper(PluginHelper *pluginHelper);
     void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
+    // Plugins
+    void setCodeHighlightEnable(const bool enable);
+
     // md4qt
     void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
@@ -50,8 +53,10 @@ public:
 protected:
     QString m_notePath;
 
+    QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
+
     // Plugins
     PluginHelper *m_pluginHelper;
 
-    QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
+    bool m_codeHighlight = false;
 };

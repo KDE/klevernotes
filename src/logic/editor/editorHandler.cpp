@@ -3,6 +3,7 @@
 
 // KleverNotes include
 #include "editorHandler.hpp"
+#include "kleverconfig.h"
 #include "logic/parser/parser.h"
 
 // Qt include
@@ -23,6 +24,8 @@ EditorHandler::EditorHandler(QObject *parent)
     m_pluginHelper = new PluginHelper(this);
     m_renderer->addPluginHelper(m_pluginHelper);
 
+    connectPlugins();
+
     static const QList<QStringList> extendedSyntaxsList = {
         // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
         // 4. foreground, 5. background, 6. vertical alignment, 7. bold enabled,
@@ -35,6 +38,18 @@ EditorHandler::EditorHandler(QObject *parent)
     };
     addExtendedSyntaxs(extendedSyntaxsList);
 }
+
+// Connections
+// ===========
+void EditorHandler::connectPlugins()
+{
+    // Code Highlight
+    connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlightEnabledChanged, this, &EditorHandler::codeHighlightEnabledChanged);
+    codeHighlightEnabledChanged();
+    connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlighterStyleChanged, this, &EditorHandler::newHighlightStyle);
+    newHighlightStyle();
+}
+// !Connections
 
 // QTextDocument Info
 // ==================
@@ -192,7 +207,6 @@ void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
     }
 }
 // !ExtendedSyntax
-
 // !KleverNotes method
 
 // md-editor method
@@ -202,4 +216,18 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() cons
     return m_currentMdDoc;
 }
 // !md-editor method
+
+// KleverNotes slots
+// =================
+void EditorHandler::codeHighlightEnabledChanged()
+{
+    m_renderer->setCodeHighlightEnable(KleverConfig::codeSynthaxHighlightEnabled());
+    renderDoc();
+}
+
+void EditorHandler::newHighlightStyle()
+{
+    m_pluginHelper->highlightParserUtils()->newHighlightStyle();
+    renderDoc();
+}
 }

@@ -44,7 +44,7 @@ add_library(klevernoteslib STATIC
     logic/parser/extendedSyntax/extendedSyntaxMaker.cpp
 
     # plugins
-    # logic/parser/plugins/cliHelper.cpp
+    logic/parser/plugins/cliHelper.cpp
     logic/parser/plugins/pluginHelper.cpp
 
     logic/parser/plugins/emoji/emoticonFilterModel.cpp
@@ -56,12 +56,12 @@ add_library(klevernoteslib STATIC
     logic/parser/plugins/noteMapper/noteMapperParserUtils.cpp
     logic/parser/plugins/noteMapper/noteMapperUtils.cpp
     logic/parser/plugins/noteMapper/noteLinkingPlugin.cpp
-    #
+
     # logic/parser/plugins/puml/pumlHelper.cpp
     # logic/parser/plugins/puml/pumlParserUtils.cpp
-    #
-    # logic/parser/plugins/syntaxHighlight/highlightHelper.cpp
-    # logic/parser/plugins/syntaxHighlight/highlightParserUtils.cpp
+
+    logic/parser/plugins/syntaxHighlight/highlightHelper.cpp
+    logic/parser/plugins/syntaxHighlight/highlightParserUtils.cpp
 )
 
 kconfig_add_kcfg_files(klevernoteslib GENERATE_MOC kleverconfig.kcfgc)

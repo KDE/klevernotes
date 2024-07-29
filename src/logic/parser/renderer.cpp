@@ -196,7 +196,16 @@ void Renderer::onListItem(MD::ListItem<MD::QStringTrait> *i, bool first)
 void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
 {
     if (!justCollectFootnoteRefs) {
-        QString code = c->text();
+        static const QString pumlStr = QStringLiteral("puml");
+        static const QString plantUMLStr = QStringLiteral("plantuml");
+
+        const QString lang = c->syntax();
+        const QString _text = c->text();
+        QString code = _text;
+
+        if (m_pluginHelper) {
+            code = m_pluginHelper->highlightParserUtils()->getCode(m_codeHighlight, _text, lang);
+        }
 
         html.push_back(Renderer::code(code));
     }
@@ -250,6 +259,13 @@ void Renderer::addExtendedSyntax(const long long int opts, const QString &openin
 {
     m_extendedSyntaxMap[opts] = {openingHTML, closingHTML};
 }
+
+// Plugins
+void Renderer::setCodeHighlightEnable(const bool enable)
+{
+    m_codeHighlight = enable;
+}
+// !Plugins
 // !Internal info
 
 // Rendering

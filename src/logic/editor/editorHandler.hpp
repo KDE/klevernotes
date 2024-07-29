@@ -39,6 +39,9 @@ class EditorHandler : public QObject
 public:
     explicit EditorHandler(QObject *parent = nullptr);
 
+    // Connections
+    void connectPlugins();
+
     // QTextDocument info
     QTextDocument *document() const;
     QQuickTextDocument *qQuickDocument() const;
@@ -64,6 +67,11 @@ Q_SIGNALS:
 
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
+
+private Q_SLOTS:
+    // Code highlight
+    void codeHighlightEnabledChanged();
+    void newHighlightStyle();
 
 private:
     // QTextDocument info

@@ -4,7 +4,6 @@
 #include "highlightHelper.h"
 #include "../cliHelper.h"
 #include "kleverconfig.h"
-// #include <QDebug>
 
 HighlightHelper::HighlightHelper(QObject *parent)
     : QObject(parent)
