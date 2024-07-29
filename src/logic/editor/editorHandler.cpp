@@ -48,6 +48,12 @@ void EditorHandler::connectPlugins()
     codeHighlightEnabledChanged();
     connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlighterStyleChanged, this, &EditorHandler::newHighlightStyle);
     newHighlightStyle();
+
+    // Puml
+    connect(KleverConfig::self(), &KleverConfig::pumlEnabledChanged, this, &EditorHandler::pumlEnabledChanged);
+    pumlEnabledChanged();
+    connect(KleverConfig::self(), &KleverConfig::pumlDarkChanged, this, &EditorHandler::pumlDarkChanged);
+    pumlDarkChanged();
 }
 // !Connections
 
@@ -230,4 +236,17 @@ void EditorHandler::newHighlightStyle()
     m_pluginHelper->highlightParserUtils()->newHighlightStyle();
     renderDoc();
 }
+
+void EditorHandler::pumlEnabledChanged()
+{
+    m_renderer->setPUMLenable(KleverConfig::pumlEnabled());
+    renderDoc();
+}
+
+void EditorHandler::pumlDarkChanged()
+{
+    m_renderer->setPUMLdark(KleverConfig::pumlDark());
+    renderDoc();
+}
+// !KleverNotes slots
 }

@@ -203,11 +203,19 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
         const QString _text = c->text();
         QString code = _text;
 
-        if (m_pluginHelper) {
-            code = m_pluginHelper->highlightParserUtils()->getCode(m_codeHighlight, _text, lang);
+        QString returnValue;
+        if (m_pluginHelper && m_pumlEnable && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
+            QPair<QString, QString> imageInfo = m_pluginHelper->pumlParserUtils()->renderCode(_text, m_pumlDark);
+
+            returnValue = image(imageInfo.first, imageInfo.second);
+        } else {
+            if (m_pluginHelper) {
+                code = m_pluginHelper->highlightParserUtils()->getCode(m_codeHighlight, _text, lang);
+            }
+            returnValue = Renderer::code(code);
         }
 
-        html.push_back(Renderer::code(code));
+        html.push_back(returnValue);
     }
 }
 
@@ -261,6 +269,17 @@ void Renderer::addExtendedSyntax(const long long int opts, const QString &openin
 }
 
 // Plugins
+void Renderer::setPUMLenable(const bool enable)
+{
+    m_pumlEnable = enable;
+}
+
+void Renderer::setPUMLdark(const bool dark)
+{
+    m_pumlDark = dark;
+    m_pluginHelper->pumlParserUtils()->pumlDarkChanged();
+}
+
 void Renderer::setCodeHighlightEnable(const bool enable)
 {
     m_codeHighlight = enable;

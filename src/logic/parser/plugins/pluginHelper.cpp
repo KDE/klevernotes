@@ -9,7 +9,7 @@
 
 PluginHelper::PluginHelper(MdEditor::EditorHandler *editorHandler)
     : m_highlightParserUtils(new HighlightParserUtils)
-/* : m_pumlParserUtils(new PUMLParserUtils) */
+    , m_pumlParserUtils(new PUMLParserUtils)
 {
     m_mapperParserUtils = new NoteMapperParserUtils(editorHandler);
 }
@@ -22,9 +22,9 @@ void PluginHelper::clearPluginsInfo()
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearInfo();
     }
-    /* if (KleverConfig::pumlEnabled()) { */
-    /*     m_pumlParserUtils->clearInfo(); */
-    /* } */
+    if (KleverConfig::pumlEnabled()) {
+        m_pumlParserUtils->clearInfo();
+    }
 }
 
 void PluginHelper::clearPluginsPreviousInfo()
@@ -32,16 +32,6 @@ void PluginHelper::clearPluginsPreviousInfo()
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->clearPreviousInfo();
     }
-    /* if (KleverConfig::pumlEnabled()) { */
-    /*     m_pumlParserUtils->clearPreviousInfo(); */
-    /* } */
-}
-
-void PluginHelper::preTokChanges()
-{
-    /* if (KleverConfig::pumlEnabled()) { */
-    /*     m_pumlParserUtils->preTok(); */
-    /* } */
 }
 
 void PluginHelper::postTokChanges()
@@ -49,24 +39,6 @@ void PluginHelper::postTokChanges()
     if (KleverConfig::noteMapEnabled()) {
         m_mapperParserUtils->postTok();
     }
-}
-
-QString PluginHelper::blockCodePlugins(const QString &lang, const QString &_text)
-{
-    static const QString pumlStr = QStringLiteral("puml");
-    static const QString plantUMLStr = QStringLiteral("plantuml");
-
-    QString returnValue;
-    /* if (KleverConfig::pumlEnabled() && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) { */
-    /*     returnValue = m_pumlParserUtils->renderCode(_text, KleverConfig::pumlDark()); */
-    /* } else { */
-    /*     const bool highlightEnabled = KleverConfig::codeSynthaxHighlightEnabled(); */
-    /*     const bool highlight = highlightEnabled && !lang.isEmpty(); */
-    /**/
-    /*     returnValue = m_highlightParserUtils->renderCode(highlight, _text, lang); */
-    /* } */
-
-    return returnValue;
 }
 
 // NoteMapper
@@ -82,7 +54,7 @@ HighlightParserUtils *PluginHelper::highlightParserUtils() const
 }
 
 // PUML
-/* PUMLParserUtils *PluginHelper::getPUMLParserUtils() const */
-/* { */
-/*     return m_pumlParserUtils; */
-/* } */
+PUMLParserUtils *PluginHelper::pumlParserUtils() const
+{
+    return m_pumlParserUtils;
+}

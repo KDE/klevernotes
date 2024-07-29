@@ -57,8 +57,8 @@ add_library(klevernoteslib STATIC
     logic/parser/plugins/noteMapper/noteMapperUtils.cpp
     logic/parser/plugins/noteMapper/noteLinkingPlugin.cpp
 
-    # logic/parser/plugins/puml/pumlHelper.cpp
-    # logic/parser/plugins/puml/pumlParserUtils.cpp
+    logic/parser/plugins/puml/pumlHelper.cpp
+    logic/parser/plugins/puml/pumlParserUtils.cpp
 
     logic/parser/plugins/syntaxHighlight/highlightHelper.cpp
     logic/parser/plugins/syntaxHighlight/highlightParserUtils.cpp

@@ -9,8 +9,8 @@
 #include <QSet>
 
 #include "noteMapper/noteMapperParserUtils.h"
-/* #include "logic/parser/plugins/puml/pumlParserUtils.h" */
-#include "logic/parser/plugins/syntaxHighlight/highlightParserUtils.h"
+#include "puml/pumlParserUtils.h"
+#include "syntaxHighlight/highlightParserUtils.h"
 
 class PluginHelper
 {
@@ -18,10 +18,7 @@ public:
     explicit PluginHelper(MdEditor::EditorHandler *editorHandler);
     void clearPluginsInfo();
     void clearPluginsPreviousInfo();
-    void preTokChanges();
     void postTokChanges();
-
-    QString blockCodePlugins(const QString &lang, const QString &_text);
 
     // NoteMapper
     NoteMapperParserUtils *mapperParserUtils() const;
@@ -29,8 +26,8 @@ public:
     // Syntax highlight
     HighlightParserUtils *highlightParserUtils() const;
 
-    /* // PUML */
-    /* PUMLParserUtils *getPUMLParserUtils() const; */
+    // PUML
+    PUMLParserUtils *pumlParserUtils() const;
 
 private:
     // Synthax highlight
@@ -39,6 +36,6 @@ private:
     // NoteMapper
     NoteMapperParserUtils *m_mapperParserUtils = nullptr;
 
-    /* // PUML */
-    /* PUMLParserUtils *m_pumlParserUtils = nullptr; */
+    // PUML
+    PUMLParserUtils *m_pumlParserUtils = nullptr;
 };

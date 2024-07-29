@@ -73,6 +73,10 @@ private Q_SLOTS:
     void codeHighlightEnabledChanged();
     void newHighlightStyle();
 
+    // PUML
+    void pumlEnabledChanged();
+    void pumlDarkChanged();
+
 private:
     // QTextDocument info
     void setDocument(QQuickTextDocument *document);

@@ -5,26 +5,21 @@
 
 #pragma once
 
+#include <QHash>
 #include <QObject>
-#include <QSet>
 
 class PUMLParserUtils
 {
 public:
     void clearInfo();
-    void clearPreviousInfo();
-    void preTok();
 
-    void addToNotePUMLBlock(const QString &pumlBlock);
     void pumlDarkChanged();
 
-    QString renderCode(const QString &_text, const bool pumlDark);
+    QPair<QString, QString> renderCode(const QString &_text, const bool pumlDark);
 
 private:
     bool m_pumlDarkChanged = true;
-    bool m_samePUMLBlocks = false;
-    int m_currentPUMLBlockIndex = 0;
-    QStringList m_notePUMLBlocks;
-    QStringList m_previousNotePUMLBlocks;
-    QStringList m_previousPUMLDiag;
+
+    QHash<QString, QPair<QString, QString>> m_previousPUMLBlocks;
+    QHash<QString, QPair<QString, QString>> m_currentPUMLBlocks;
 };

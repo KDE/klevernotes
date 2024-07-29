@@ -110,6 +110,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::emojiToneChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::quickEmojiDialogEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::pumlEnabledChanged, config, &KleverConfig::save);
+    QObject::connect(config, &KleverConfig::pumlDarkChanged, config, &KleverConfig::save);
 
     qmlRegisterType<QmlLinker>("qtMdEditor", 1, 0, "QmlLinker");
 

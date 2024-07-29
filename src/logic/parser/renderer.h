@@ -25,6 +25,8 @@ public:
     void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
     // Plugins
+    void setPUMLenable(const bool enable);
+    void setPUMLdark(const bool dark);
     void setCodeHighlightEnable(const bool enable);
 
     // md4qt
@@ -57,6 +59,9 @@ protected:
 
     // Plugins
     PluginHelper *m_pluginHelper;
+
+    bool m_pumlEnable = false;
+    bool m_pumlDark = false;
 
     bool m_codeHighlight = false;
 };
