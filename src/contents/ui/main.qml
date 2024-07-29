@@ -135,7 +135,8 @@ Kirigami.ApplicationWindow {
     function showMainPage() {
         sideBar.changeWidth = true
         if (!sideBar.modal) sideBar.open()
-        StyleHandler.m_inMain = true
+        StyleHandler.inMain = true
+        EditorHandler.usePreviousPath()
         currentPageName = "Main"
     }
 }
