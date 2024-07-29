@@ -129,7 +129,10 @@ void EditorHandler::parse(const QString &src)
     if (m_notePath != qrcStr && !m_notePath.endsWith(QStringLiteral(".md"))) {
         return;
     }
-
+    if (m_pluginHelper) {
+        m_pluginHelper->clearPluginsInfo();
+    }
+    
     m_currentMdDoc = m_parser->parse(src);
 
     renderDoc();
