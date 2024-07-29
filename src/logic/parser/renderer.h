@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "plugins/emoji/emojiPlugin.hpp"
 #include "plugins/pluginHelper.h"
 #include <utility>
 
@@ -31,6 +32,10 @@ public:
     void onCode(MD::Code<MD::QStringTrait> *c) override;
     void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
     void onLink(MD::Link<MD::QStringTrait> *l) override;
+    void onUserDefined(MD::Item<MD::QStringTrait> *item) override;
+
+    // Custom
+    void onEmoji(EmojiPlugin::EmojiItem *e);
 
     static QString code(QString &code);
     static QString openListItem(const bool hasTask = false, const bool isChecked = false, const int startNumber = -1);

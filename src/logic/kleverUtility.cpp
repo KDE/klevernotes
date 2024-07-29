@@ -162,3 +162,12 @@ bool KleverUtility::checkPaste(const QString &tempPath) const
 
     return false;
 }
+
+void KleverUtility::copyToClipboard(const QString &toCopy) const
+{
+    if (toCopy.isEmpty()) {
+        return;
+    }
+    QClipboard *clipboard = QApplication::clipboard();
+    clipboard->setText(toCopy);
+}

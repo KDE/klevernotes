@@ -78,7 +78,11 @@ RowLayout {
             }
             onNavigationRequested: function(request) {
                 const url = request.url.toString()
-                if (url.startsWith("http") || url.startsWith("file://")) { // Seems silly but prevent errors when loading pages
+                if (url.startsWith("copy:")) {
+                    KleverUtility.copyToClipboard(url.substring("copy:".length))
+                    showPassiveNotification(i18n("Copied !"))
+                    request.reject()
+                } else if (url.startsWith("http") || url.startsWith("file://")) { // Seems silly but prevent errors when loading pages
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
                     if (delimiterIndex != -1 && Config.noteMapEnabled) {

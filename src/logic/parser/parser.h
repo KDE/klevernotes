@@ -10,6 +10,7 @@
 #include <QSet>
 
 // KleverNotes include
+#include "plugins/emoji/emojiPlugin.hpp"
 #include "plugins/noteMapper/noteLinkingPlugin.hpp"
 
 // md4qt include
@@ -42,16 +43,21 @@ private Q_SLOTS:
     // Note Linking
     void noteLinkindEnabledChanged();
 
+    // Emoji
+    void quickEmojiEnabledChanged();
+
 private:
     // KleverNotes
     QString m_notePath;
 
     enum PluginsId : int {
         NoteLinkingPlugin = 320, // EditorHandler::ExtensionID::KleverPlugins
+        EmojiPlugin,
     };
 
     const std::map<int, MD::TextPluginFunc<MD::QStringTrait>> m_kleverPlugins = {
         {PluginsId::NoteLinkingPlugin, NoteLinkingPlugin::noteLinkingHelperFunc},
+        {PluginsId::EmojiPlugin, EmojiPlugin::emojiHelperFunc},
     };
 
     // md4qt

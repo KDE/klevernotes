@@ -24,7 +24,9 @@ public:
     Q_INVOKABLE QJsonObject getCssStylesList() const;
     Q_INVOKABLE QJsonObject fontInfo(const QFont &font) const;
     Q_INVOKABLE bool isFlatpak() const;
+    // TODO: make Clipboard helper singleton
     Q_INVOKABLE bool checkPaste(const QString &tempPath) const;
+    Q_INVOKABLE void copyToClipboard(const QString &toCopy) const;
     static bool create(const QString &path);
     static bool exists(const QString &path);
 };

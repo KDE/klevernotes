@@ -201,7 +201,38 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
         html.push_back(Renderer::code(code));
     }
 }
+
+void Renderer::onUserDefined(MD::Item<MD::QStringTrait> *item)
+{
+    static const int userDefinedType = static_cast<int>(MD::ItemType::UserDefined);
+    const int itemType = static_cast<int>(item->type());
+    switch (itemType) {
+    case userDefinedType + 1: {
+        auto emoji = static_cast<EmojiPlugin::EmojiItem *>(item);
+        onEmoji(emoji);
+        break;
+    }
+    default:
+        qWarning() << "Unsupported custom item";
+        return;
+    }
+}
 // !Overriding default
+
+// Custom
+void Renderer::onEmoji(EmojiPlugin::EmojiItem *e)
+{
+    if (!justCollectFootnoteRefs) {
+        openStyle(e->openStyles());
+        const QString emoji = e->emoji();
+        html.push_back(QStringLiteral("<a href=\"copy:") + emoji);
+        html.push_back(QStringLiteral("\" style=\"text-decoration:none\">"));
+        html.push_back(emoji);
+        html.push_back(QStringLiteral("</a>"));
+        closeStyle(e->closeStyles());
+    }
+}
+// !Custom
 
 // Internal info
 // =============
