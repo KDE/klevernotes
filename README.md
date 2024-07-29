@@ -7,7 +7,8 @@
 
 KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content. 
 
-Different Markdown flavors are supported thanks to its custom Markdown parser based [Marked.js](https://marked.js.org/#specifications), which make the integration of "[plugins](https://invent.kde.org/office/klevernotes#plugins)" and new features even easier. 
+Different versions of Markdown are supported thanks to the [md4qt](https://github.com/igormironchik/md4qt) parser with which the project works closely (many thanks to the author: igormironchik).
+This parser allows text plugins to extend Markdown parsing, enabling the creation of KleverNotes "[plugins](https://invent.kde.org/office/klevernotes#plugins)". 
 
 **Get involved and join our Matrix channel: [klevernotes:kde.org](https://matrix.to/#/#klevernotes:kde.org)**
 
