@@ -273,7 +273,7 @@ void EmojiTest::darkSkinEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏿‍♀️"));
     MD::WithPosition namePos = {17, 0, 21, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {23, 0, 36, 0};
+    MD::WithPosition optionsPos = {22, 0, 36, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -308,7 +308,7 @@ void EmojiTest::mediumDarkSkinEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏾‍♀️"));
     MD::WithPosition namePos = {24, 0, 28, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {30, 0, 50, 0};
+    MD::WithPosition optionsPos = {29, 0, 50, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -343,7 +343,7 @@ void EmojiTest::mediumSkinEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏽‍♀️"));
     MD::WithPosition namePos = {19, 0, 23, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {25, 0, 40, 0};
+    MD::WithPosition optionsPos = {24, 0, 40, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -378,7 +378,7 @@ void EmojiTest::mediumLightSkinEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏼‍♀️"));
     MD::WithPosition namePos = {25, 0, 29, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {31, 0, 52, 0};
+    MD::WithPosition optionsPos = {30, 0, 52, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -413,7 +413,7 @@ void EmojiTest::lightSkinEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏻‍♀️"));
     MD::WithPosition namePos = {18, 0, 22, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {24, 0, 38, 0};
+    MD::WithPosition optionsPos = {23, 0, 38, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -448,7 +448,7 @@ void EmojiTest::defaultSkinEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👩"));
     MD::WithPosition namePos = {20, 0, 24, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {26, 0, 42, 0};
+    MD::WithPosition optionsPos = {25, 0, 42, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -525,7 +525,7 @@ void EmojiTest::variantEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👩‍🦰"));
     MD::WithPosition namePos = {15, 0, 19, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {21, 0, 28, 0};
+    MD::WithPosition optionsPos = {20, 0, 28, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -602,7 +602,7 @@ void EmojiTest::toneAndVariantEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏻‍♀️"));
     MD::WithPosition namePos = {22, 0, 26, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {28, 0, 52, 0};
+    MD::WithPosition optionsPos = {27, 0, 52, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -637,7 +637,7 @@ void EmojiTest::wrongToneAndVariantEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👩‍🦰"));
     MD::WithPosition namePos = {28, 0, 32, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {34, 0, 59, 0};
+    MD::WithPosition optionsPos = {33, 0, 59, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 
@@ -672,7 +672,7 @@ void EmojiTest::toneAndWrongVariantEmoji()
     QCOMPARE(item2->emoji(), QStringLiteral("👱🏿‍♀️"));
     MD::WithPosition namePos = {28, 0, 32, 0};
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
-    MD::WithPosition optionsPos = {34, 0, 60, 0};
+    MD::WithPosition optionsPos = {33, 0, 60, 0};
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 }
 

@@ -204,7 +204,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             const long long int nameEnd = item->startColumn() + cap.capturedEnd(1) - 1;
             emojiItem->setEmojiNamePos({nameStart, emojiItem->startLine(), nameEnd, emojiItem->endLine()});
 
-            const long long int optionsStart = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedStart(3) : nameStart;
+            const long long int optionsStart = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedStart(2) : nameStart;
             const long long int optionsEnd = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedEnd(3) - 1 : nameEnd;
             emojiItem->setOptionsPos({optionsStart, emojiItem->startLine(), optionsEnd, emojiItem->endLine()});
 
