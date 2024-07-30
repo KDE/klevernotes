@@ -49,6 +49,7 @@
         <file>contents/ui/settings/components/ClickableIcon.qml</file>
         <file>contents/ui/settings/components/ActionListViewDelegate.qml</file>
         <file>contents/ui/settings/DisplayPreview.qml</file>
+        <file>contents/ui/settings/EditorTab.qml</file>
         <file>contents/ui/settings/FontPicker.qml</file>
         <file>contents/ui/settings/GeneralTab.qml</file>
         <file>contents/ui/settings/NotePreviewTab.qml</file>

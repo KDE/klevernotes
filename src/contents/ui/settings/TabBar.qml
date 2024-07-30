@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 
 import org.kde.kirigami as Kirigami
 
@@ -23,6 +23,14 @@ Kirigami.NavigationTabBar {
             checked: root.currentTab === "preview"
             onTriggered: {
                 root.currentTab = "preview"
+            }
+        },
+        Kirigami.Action {
+            text: i18nc("@label, tab (inside tab bar), all settings related to the text editor", "Editor")
+            icon.name: "accessories-text-editor"
+            checked: root.currentTab === "editor"
+            onTriggered: {
+                root.currentTab = "editor"
             }
         },
         Kirigami.Action {

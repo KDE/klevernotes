@@ -80,6 +80,18 @@ FormCard.FormCardPage {
     }
 
     Loader {
+        id: editorLoader
+
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+ 
+        sourceComponent: EditorTab {}
+
+        active: tabBar.currentTab === "editor" 
+        visible: active
+    }
+
+    Loader {
         id: pluginsLoader
 
         Layout.fillWidth: true
