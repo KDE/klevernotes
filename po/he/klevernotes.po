@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-26 00:39+0000\n"
+"POT-Creation-Date: 2024-07-30 00:41+0000\n"
 "PO-Revision-Date: 2024-07-26 09:03+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -471,7 +471,7 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "בחירת כתובת"
 
-#: contents/ui/main.qml:31
+#: contents/ui/main.qml:30
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
@@ -483,12 +483,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "ברוך בואך"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:78
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "ברוך בואך ל־KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:88
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "אפשר ליצור או לבחור פתקית כדי להתחיל לעבוד!"
@@ -583,49 +583,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "סגנון:"
 
-#: contents/ui/settings/DisplayPreview.qml:49
+#: contents/ui/settings/DisplayPreview.qml:55
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "צבע כתב:"
 
-#: contents/ui/settings/DisplayPreview.qml:62
+#: contents/ui/settings/DisplayPreview.qml:68
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "צבע כותרת:"
 
-#: contents/ui/settings/DisplayPreview.qml:76
+#: contents/ui/settings/DisplayPreview.qml:82
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "צבע קישור:"
 
-#: contents/ui/settings/DisplayPreview.qml:89
+#: contents/ui/settings/DisplayPreview.qml:95
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "צבע קישור שביקרת בו:"
 
-#: contents/ui/settings/DisplayPreview.qml:104
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "צבע קוד:"
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:124
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "צבע הדגשה:"
 
-#: contents/ui/settings/DisplayPreview.qml:130
+#: contents/ui/settings/DisplayPreview.qml:136
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "גופן כללי:"
 
-#: contents/ui/settings/DisplayPreview.qml:141
+#: contents/ui/settings/DisplayPreview.qml:147
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1147,22 +1147,22 @@ msgstr "מ־"
 msgid "No search results"
 msgstr "אין תוצאות לחיפוש"
 
-#: contents/ui/sideBar/Sidebar.qml:90
+#: contents/ui/sideBar/Sidebar.qml:89
 #, kde-format
 msgid "Show notes"
 msgstr "הצגת הפתקיות"
 
-#: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
+#: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:225
 #, kde-format
 msgid "Cheat sheet"
 msgstr "שליף"
 
-#: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
+#: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:237
 #, kde-format
 msgid "Settings"
 msgstr "הגדרות"
 
-#: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:250
 #, kde-format
 msgid "About KleverNotes"
 msgstr "על KleverNotes"
@@ -1186,6 +1186,7 @@ msgid "Markdown Cheat Sheet"
 msgstr "שליף Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
+#: contents/ui/textEditor/TextDisplay.qml:83
 #, kde-format
 msgid "Copied !"
 msgstr "הועתק!"
@@ -1432,32 +1433,32 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr "שם גלוי"
 
-#: contents/ui/textEditor/EditorView.qml:28
+#: contents/ui/textEditor/EditorView.qml:38
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "פתקיות מקושרות"
 
-#: contents/ui/textEditor/EditorView.qml:39
+#: contents/ui/textEditor/EditorView.qml:49
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "הדפסה"
 
-#: contents/ui/textEditor/EditorView.qml:50
+#: contents/ui/textEditor/EditorView.qml:60
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "הצגת/הסתרת עורך"
 
-#: contents/ui/textEditor/EditorView.qml:66
+#: contents/ui/textEditor/EditorView.qml:76
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "הצגת/הסתרת תצוגה מקדימה"
 
-#: contents/ui/textEditor/EditorView.qml:93
+#: contents/ui/textEditor/EditorView.qml:106
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
@@ -1482,7 +1483,7 @@ msgid "Missing notes"
 msgstr "פתקיות חסרות"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:104
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1525,68 +1526,68 @@ msgstr ""
 "לתשומת ליבך: לכל סגנון חייב להיות שם ייחודי.            \n"
 "*/\n"
 
-#: logic/plugins/emoji/emojiModel.cpp:152
-#: logic/plugins/emoji/emojiModel.cpp:210
+#: logic/parser/plugins/emoji/emojiModel.cpp:152
+#: logic/parser/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
 msgstr "היסטוריה"
 
-#: logic/plugins/emoji/emojiModel.cpp:157
+#: logic/parser/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
 msgstr "חייכנים"
 
-#: logic/plugins/emoji/emojiModel.cpp:162
+#: logic/parser/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
 msgstr "אנשים"
 
-#: logic/plugins/emoji/emojiModel.cpp:167
+#: logic/parser/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
 msgstr "טבע"
 
-#: logic/plugins/emoji/emojiModel.cpp:172
+#: logic/parser/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
 msgstr "מזון"
 
-#: logic/plugins/emoji/emojiModel.cpp:177
+#: logic/parser/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
 msgstr "פעילויות"
 
-#: logic/plugins/emoji/emojiModel.cpp:182
+#: logic/parser/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
 msgstr "נסיעות"
 
-#: logic/plugins/emoji/emojiModel.cpp:187
+#: logic/parser/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
 msgstr "פריטים"
 
-#: logic/plugins/emoji/emojiModel.cpp:192
+#: logic/parser/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
 msgstr "סמלים"
 
-#: logic/plugins/emoji/emojiModel.cpp:197
+#: logic/parser/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
 msgstr "דגלים"
 
-#: logic/plugins/emoji/emojiModel.cpp:216
+#: logic/parser/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
@@ -1642,35 +1643,35 @@ msgstr "אירעה שגיאה במהלך הניסיון ליצור את הקטג
 msgid "An error occurred while trying to create the storage."
 msgstr "אירעה שגיאה במהלך הניסיון ליצור את האחסון."
 
-#: main.cpp:57
+#: main.cpp:59
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:61
+#: main.cpp:63
 #, kde-format
 msgid "Note taking and management application"
 msgstr "יישום לכתיבת וניהול פתקיות"
 
-#: main.cpp:65
+#: main.cpp:67
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:66
+#: main.cpp:68
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "לואיס שול"
 
-#: main.cpp:71
+#: main.cpp:73
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "צוות התרגום של KDE ישראל"
 
-#: main.cpp:71
+#: main.cpp:73
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

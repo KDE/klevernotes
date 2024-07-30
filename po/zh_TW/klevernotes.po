@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-26 00:39+0000\n"
+"POT-Creation-Date: 2024-07-30 00:41+0000\n"
 "PO-Revision-Date: 2024-05-03 03:10+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -478,7 +478,7 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "選擇網址"
 
-#: contents/ui/main.qml:31
+#: contents/ui/main.qml:30
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
@@ -490,12 +490,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "歡迎"
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:78
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "歡迎來到 KleverNotes 筆記！"
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:88
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "建立或選取一個筆記來開始工作吧！"
@@ -590,49 +590,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "風格："
 
-#: contents/ui/settings/DisplayPreview.qml:49
+#: contents/ui/settings/DisplayPreview.qml:55
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "文字顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:62
+#: contents/ui/settings/DisplayPreview.qml:68
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "標題顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:76
+#: contents/ui/settings/DisplayPreview.qml:82
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "連結顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:89
+#: contents/ui/settings/DisplayPreview.qml:95
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "造訪過的連結顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:104
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "程式碼顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:124
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "突顯顏色："
 
-#: contents/ui/settings/DisplayPreview.qml:130
+#: contents/ui/settings/DisplayPreview.qml:136
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "一般字型："
 
-#: contents/ui/settings/DisplayPreview.qml:141
+#: contents/ui/settings/DisplayPreview.qml:147
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1153,22 +1153,22 @@ msgstr "從"
 msgid "No search results"
 msgstr "沒有搜尋結果"
 
-#: contents/ui/sideBar/Sidebar.qml:90
+#: contents/ui/sideBar/Sidebar.qml:89
 #, kde-format
 msgid "Show notes"
 msgstr "顯示筆記"
 
-#: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
+#: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:225
 #, kde-format
 msgid "Cheat sheet"
 msgstr "小抄"
 
-#: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
+#: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:237
 #, kde-format
 msgid "Settings"
 msgstr "設定"
 
-#: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:250
 #, kde-format
 msgid "About KleverNotes"
 msgstr "關於 KleverNotes 筆記"
@@ -1192,6 +1192,7 @@ msgid "Markdown Cheat Sheet"
 msgstr "Markdown 小抄"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
+#: contents/ui/textEditor/TextDisplay.qml:83
 #, kde-format
 msgid "Copied !"
 msgstr "已複製！"
@@ -1438,32 +1439,32 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr "顯示名稱"
 
-#: contents/ui/textEditor/EditorView.qml:28
+#: contents/ui/textEditor/EditorView.qml:38
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "已連結的筆記"
 
-#: contents/ui/textEditor/EditorView.qml:39
+#: contents/ui/textEditor/EditorView.qml:49
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "列印"
 
-#: contents/ui/textEditor/EditorView.qml:50
+#: contents/ui/textEditor/EditorView.qml:60
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "檢視/隱藏編輯器"
 
-#: contents/ui/textEditor/EditorView.qml:66
+#: contents/ui/textEditor/EditorView.qml:76
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "檢視/隱藏預覽"
 
-#: contents/ui/textEditor/EditorView.qml:93
+#: contents/ui/textEditor/EditorView.qml:106
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
@@ -1488,7 +1489,7 @@ msgid "Missing notes"
 msgstr "缺乏的筆記"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:104
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1531,68 +1532,68 @@ msgstr ""
 "請注意：每一個樣式都需要有不同的名稱。            \n"
 "*/\n"
 
-#: logic/plugins/emoji/emojiModel.cpp:152
-#: logic/plugins/emoji/emojiModel.cpp:210
+#: logic/parser/plugins/emoji/emojiModel.cpp:152
+#: logic/parser/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
 msgstr "歷史"
 
-#: logic/plugins/emoji/emojiModel.cpp:157
+#: logic/parser/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
 msgstr "微笑"
 
-#: logic/plugins/emoji/emojiModel.cpp:162
+#: logic/parser/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
 msgstr "人們"
 
-#: logic/plugins/emoji/emojiModel.cpp:167
+#: logic/parser/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
 msgstr "自然"
 
-#: logic/plugins/emoji/emojiModel.cpp:172
+#: logic/parser/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
 msgstr "食物"
 
-#: logic/plugins/emoji/emojiModel.cpp:177
+#: logic/parser/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
 msgstr "活動"
 
-#: logic/plugins/emoji/emojiModel.cpp:182
+#: logic/parser/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
 msgstr "旅行"
 
-#: logic/plugins/emoji/emojiModel.cpp:187
+#: logic/parser/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
 msgstr "物體"
 
-#: logic/plugins/emoji/emojiModel.cpp:192
+#: logic/parser/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
 msgstr "符號"
 
-#: logic/plugins/emoji/emojiModel.cpp:197
+#: logic/parser/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
 msgstr "旗幟"
 
-#: logic/plugins/emoji/emojiModel.cpp:216
+#: logic/parser/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
@@ -1648,35 +1649,35 @@ msgstr "嘗試建立分類時發生錯誤。"
 msgid "An error occurred while trying to create the storage."
 msgstr "建立筆記儲存庫時發生錯誤。"
 
-#: main.cpp:57
+#: main.cpp:59
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes 筆記"
 
-#: main.cpp:61
+#: main.cpp:63
 #, kde-format
 msgid "Note taking and management application"
 msgstr "筆記記錄與管理應用程式"
 
-#: main.cpp:65
+#: main.cpp:67
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:66
+#: main.cpp:68
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:71
+#: main.cpp:73
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kisaragi Hiu"
 
-#: main.cpp:71
+#: main.cpp:73
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"

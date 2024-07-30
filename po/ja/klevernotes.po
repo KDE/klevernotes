@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-26 00:39+0000\n"
+"POT-Creation-Date: 2024-07-30 00:41+0000\n"
 "PO-Revision-Date: 2023-04-28 09:19-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -461,7 +461,7 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr ""
 
-#: contents/ui/main.qml:31
+#: contents/ui/main.qml:30
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
@@ -473,12 +473,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr ""
 
-#: contents/ui/pages/MainPage.qml:81
+#: contents/ui/pages/MainPage.qml:78
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr ""
 
-#: contents/ui/pages/MainPage.qml:91
+#: contents/ui/pages/MainPage.qml:88
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
@@ -573,49 +573,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:49
+#: contents/ui/settings/DisplayPreview.qml:55
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:62
+#: contents/ui/settings/DisplayPreview.qml:68
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:76
+#: contents/ui/settings/DisplayPreview.qml:82
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:89
+#: contents/ui/settings/DisplayPreview.qml:95
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:104
+#: contents/ui/settings/DisplayPreview.qml:110
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:118
+#: contents/ui/settings/DisplayPreview.qml:124
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:130
+#: contents/ui/settings/DisplayPreview.qml:136
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:141
+#: contents/ui/settings/DisplayPreview.qml:147
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1134,22 +1134,22 @@ msgstr ""
 msgid "No search results"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:90
+#: contents/ui/sideBar/Sidebar.qml:89
 #, kde-format
 msgid "Show notes"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:111 contents/ui/sideBar/Sidebar.qml:226
+#: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:225
 #, kde-format
 msgid "Cheat sheet"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:127 contents/ui/sideBar/Sidebar.qml:238
+#: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:237
 #, kde-format
 msgid "Settings"
 msgstr ""
 
-#: contents/ui/sideBar/Sidebar.qml:142 contents/ui/sideBar/Sidebar.qml:249
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:250
 #, kde-format
 msgid "About KleverNotes"
 msgstr ""
@@ -1173,6 +1173,7 @@ msgid "Markdown Cheat Sheet"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:40
+#: contents/ui/textEditor/TextDisplay.qml:83
 #, kde-format
 msgid "Copied !"
 msgstr ""
@@ -1419,32 +1420,32 @@ msgctxt "exemple"
 msgid "displayed name"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:28
+#: contents/ui/textEditor/EditorView.qml:38
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:39
+#: contents/ui/textEditor/EditorView.qml:49
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:50
+#: contents/ui/textEditor/EditorView.qml:60
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:66
+#: contents/ui/textEditor/EditorView.qml:76
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr ""
 
-#: contents/ui/textEditor/EditorView.qml:93
+#: contents/ui/textEditor/EditorView.qml:106
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
@@ -1469,7 +1470,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:172
+#: contents/ui/textEditor/TextDisplay.qml:104
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1507,68 +1508,68 @@ msgid ""
 "*/\n"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:152
-#: logic/plugins/emoji/emojiModel.cpp:210
+#: logic/parser/plugins/emoji/emojiModel.cpp:152
+#: logic/parser/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:157
+#: logic/parser/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:162
+#: logic/parser/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:167
+#: logic/parser/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:172
+#: logic/parser/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:177
+#: logic/parser/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:182
+#: logic/parser/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:187
+#: logic/parser/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:192
+#: logic/parser/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:197
+#: logic/parser/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
 msgstr ""
 
-#: logic/plugins/emoji/emojiModel.cpp:216
+#: logic/parser/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
@@ -1624,35 +1625,35 @@ msgstr ""
 msgid "An error occurred while trying to create the storage."
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:59
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr ""
 
-#: main.cpp:61
+#: main.cpp:63
 #, kde-format
 msgid "Note taking and management application"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:67
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr ""
 
-#: main.cpp:66
+#: main.cpp:68
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr ""
 
-#: main.cpp:71
+#: main.cpp:73
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: main.cpp:71
+#: main.cpp:73
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
