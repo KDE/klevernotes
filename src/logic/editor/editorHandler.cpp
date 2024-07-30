@@ -13,6 +13,7 @@
 #include <QColor>
 #include <QRegularExpression>
 #include <QTextBlock>
+#include <qlogging.h>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -203,6 +204,7 @@ void EditorHandler::renderDoc()
 // !Rendering
 
 // Highlight
+// =========
 void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
 {
     if (!m_notePath.isEmpty() && m_notePath != QStringLiteral("qrc:")) {
@@ -211,16 +213,10 @@ void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Do
         m_highlighting = false;
     }
 }
-// !Highlight
 
 // Colors
 void EditorHandler::changeStyles(const QStringList &styles)
 {
-    const QFont editorFont(styles[0], styles[1].toUInt());
-    m_editorHighlighter->setFont(editorFont);
-
-    const QFont codeFont(styles[2], styles[3].toUInt());
-
     m_colors.textColor = QColor(styles[5]);
     m_colors.titleColor = QColor(styles[6]);
     m_colors.linkColor = QColor(styles[7]);
@@ -238,6 +234,14 @@ void EditorHandler::changeStyles(const QStringList &styles)
     highlightSyntax(m_colors, m_currentMdDoc);
 }
 // !Colors
+
+// Font
+void EditorHandler::editorFontChanged()
+{
+    m_editorHighlighter->setFont(KleverConfig::editorFont());
+}
+// !Font
+// !Highlight
 
 // ExtendedSyntax
 void EditorHandler::addExtendedSyntax(const QStringList &details)

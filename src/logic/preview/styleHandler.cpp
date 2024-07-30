@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-// KleverNotes includes
 #include "styleHandler.hpp"
 
-#include "kleverconfig.h"
+// KleverNotes includes
 #include "logic/documentHandler.h"
 
 // Qt includes
@@ -12,23 +11,26 @@
 
 StyleHandler::StyleHandler(QObject *parent)
     : QObject(parent)
+    , m_config(KleverConfig::self())
 {
     connectStyles();
 }
 
 void StyleHandler::connectStyles()
 {
-    connect(KleverConfig::self(), &KleverConfig::stylePathChanged, this, &StyleHandler::loadStyle);
+    connect(m_config, &KleverConfig::stylePathChanged, this, &StyleHandler::loadStyle);
 
-    connect(KleverConfig::self(), &KleverConfig::viewBodyColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewFontChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewTextColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewTitleColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewLinkColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewVisitedLinkColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewCodeColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::viewHighlightColorChanged, this, &StyleHandler::changeStyle);
-    connect(KleverConfig::self(), &KleverConfig::codeFontChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewBodyColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewFontChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewTextColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewTitleColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewLinkColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewVisitedLinkColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewCodeColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::viewHighlightColorChanged, this, &StyleHandler::changeStyle);
+    connect(m_config, &KleverConfig::codeFontChanged, this, &StyleHandler::changeStyle);
+
+    connect(m_config, &KleverConfig::editorFontChanged, this, &StyleHandler::newEditorFont);
 }
 
 // Setter/getter
@@ -96,6 +98,8 @@ void StyleHandler::changeStyles(const QStringList &_styleInfo)
     };
 
     if (_styleInfo.isEmpty()) {
+        m_config->save();
+
         static const QString noneStr = QStringLiteral("None");
         const QString bodyColor = KleverConfig::viewBodyColor();
         const QString textColor = KleverConfig::viewTextColor();
@@ -117,18 +121,7 @@ void StyleHandler::changeStyles(const QStringList &_styleInfo)
 
         m_styleInfo << originalStyleInfo;
 
-        const QFontInfo editorFontInfo(KleverConfig::editorFont());
-        const QString editorFontFamily = editorFontInfo.family();
-        const QString editorFontSize = QString::number(editorFontInfo.pointSize());
-        QStringList editorStyleInfo = {
-            editorFontFamily,
-            editorFontSize,
-            codeFontFamily,
-            codeFontSize,
-        };
-        editorStyleInfo << originalStyleInfo;
-
-        Q_EMIT styleChanged(editorStyleInfo);
+        Q_EMIT styleChanged(m_styleInfo);
     } else {
         m_styleInfo << _styleInfo;
     }
@@ -184,4 +177,10 @@ void StyleHandler::changeStyle()
     if (m_inMain) {
         changeStyles();
     }
+}
+
+void StyleHandler::newEditorFont()
+{
+    m_config->save();
+    Q_EMIT editorFontChanged();
 }

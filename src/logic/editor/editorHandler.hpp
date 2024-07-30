@@ -9,6 +9,7 @@
 #include "colors.hpp"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
+#include <qtmetamacros.h>
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -74,6 +75,10 @@ Q_SIGNALS:
 
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
+
+public Q_SLOTS:
+    // Font
+    void editorFontChanged();
 
 private Q_SLOTS:
     // Code highlight
