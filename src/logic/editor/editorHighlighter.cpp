@@ -387,17 +387,6 @@ void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
         d->setFormat(special, s);
 }
 
-void EditorHighlighter::onReferenceLink(MD::Link<MD::QStringTrait> *l)
-{
-    QTextCharFormat format;
-    format.setForeground(d->colors.linkColor);
-    format.setFont(d->styleFont(d->additionalStyle));
-
-    d->setFormat(format, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
-
-    MD::PosCache<MD::QStringTrait>::onReferenceLink(l);
-}
-
 void EditorHighlighter::onText(MD::Text<MD::QStringTrait> *t)
 {
     QTextCharFormat format = d->makeFormat(t->opts());
@@ -617,13 +606,41 @@ void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
     onItemWithOpts(l);
 }
 
+void EditorHighlighter::onReferenceLink(MD::Link<MD::QStringTrait> *l)
+{
+    QTextCharFormat generalFormat;
+    generalFormat.setForeground(d->colors.specialColor);
+    generalFormat.setFont(d->styleFont(d->additionalStyle));
+
+    d->setFormat(generalFormat, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
+
+    QTextCharFormat urlFormat;
+    urlFormat.setForeground(d->colors.linkColor);
+    urlFormat.setFont(d->styleFont(d->additionalStyle));
+    urlFormat.setFontUnderline(true);
+    d->setFormat(urlFormat, l->urlPos());
+
+    MD::PosCache<MD::QStringTrait>::onReferenceLink(l);
+}
+
 void EditorHighlighter::onImage(MD::Image<MD::QStringTrait> *i)
 {
-    QTextCharFormat format;
-    format.setForeground(d->colors.linkColor);
-    format.setFont(d->styleFont(d->additionalStyle));
+    QTextCharFormat generalFormat;
+    generalFormat.setForeground(d->colors.specialColor);
+    generalFormat.setFont(d->styleFont(d->additionalStyle));
 
-    d->setFormat(format, i->startLine(), i->startColumn(), i->endLine(), i->endColumn());
+    d->setFormat(generalFormat, i->startLine(), i->startColumn(), i->endLine(), i->endColumn());
+
+    QTextCharFormat urlFormat;
+    urlFormat.setForeground(d->colors.linkColor);
+    urlFormat.setFont(d->styleFont(d->additionalStyle));
+    urlFormat.setFontUnderline(true);
+    d->setFormat(urlFormat, i->urlPos());
+
+    QTextCharFormat textFormat;
+    textFormat.setForeground(d->colors.highlightColor);
+    textFormat.setFont(d->styleFont(d->additionalStyle));
+    d->setFormat(textFormat, i->textPos());
 
     MD::PosCache<MD::QStringTrait>::onImage(i);
 
