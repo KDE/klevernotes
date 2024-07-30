@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "kleverconfig.h"
+
 // Qt include
 #include <QObject>
 
@@ -27,11 +29,14 @@ public:
     void setInMain(const bool inMain);
 
 Q_SIGNALS:
+    void editorFontChanged();
     void styleChanged(const QStringList styleInfo);
     void newCss(const QString &css);
 
 private Q_SLOTS:
     void changeStyle();
+
+    void newEditorFont();
 
 private:
     void connectStyles();
@@ -39,6 +44,7 @@ private:
     void makeCss();
 
 private:
+    KleverConfig *m_config;
     QString m_style;
 
     QStringList m_defaultStyle;
