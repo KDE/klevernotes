@@ -152,45 +152,6 @@ ColumnLayout {
     }
 
     FormCard.FormHeader {
-        title: i18nc("@title, general text editor settings", "Editor")
-        Layout.fillWidth: true
-    }
-
-    FormCard.FormCard {
-        Layout.fillWidth: true
-
-        ExpandingFormSwitch {
-            id: spaceTabSwitch
-
-            text: i18nc("@label:checkbox", "Use spaces for tab")
-            checked: Config.useSpaceForTab
-
-            onCheckedChanged: if (checked != Config.useSpaceForTab) {
-                Config.useSpaceForTab = checked
-            }
-
-            FormCard.FormSpinBoxDelegate {
-                id: spaceSpinBox
-
-                property bool isInit: false
-
-                label: i18nc("@label:combobox", "Number of spaces")
-
-                from: 1
-                to: 8
-
-                Component.onCompleted: {
-                    value = Config.spacesForTab
-                    isInit = true
-                }
-                onValueChanged: {
-                    if (value != Config.spacesForTab && isInit) Config.spacesForTab = value
-                }
-            }
-        }
-    }
-
-    FormCard.FormHeader {
         title: i18nc("@title, general text toolbar settings", "Toolbar")
         Layout.fillWidth: true
     }
