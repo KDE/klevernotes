@@ -672,12 +672,12 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
     QScopedValueRollback style(d->additionalStyle, d->additionalStyle | e->opts());
 
     QTextCharFormat emojiFormat;
-    emojiFormat.setForeground(QColor(QStringLiteral("magenta")));
+    emojiFormat.setForeground(d->colors.linkColor);
     emojiFormat.setFont(d->styleFont(e->opts() | d->additionalStyle));
     d->setFormat(emojiFormat, e->emojiNamePos());
 
     QTextCharFormat optionsFormat;
-    optionsFormat.setForeground(QColor(QStringLiteral("yellow")));
+    optionsFormat.setForeground(d->colors.highlightColor);
     optionsFormat.setFont(d->styleFont(e->opts() | d->additionalStyle));
 
     d->setFormat(optionsFormat, e->optionsPos());
