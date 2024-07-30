@@ -9,6 +9,8 @@ import org.kde.kirigamiaddons.formcard as FormCard
 
 import org.kde.Klever
 
+import "qrc:/contents/ui/sharedComponents"
+
 ColumnLayout {
     id: root
 
@@ -29,5 +31,27 @@ ColumnLayout {
                 Config.editorFont = newFont
             }
         } 
+    }
+
+    FormCard.FormHeader {
+        title: i18nc("@title", "Editor highlighting")
+        Layout.fillWidth: true
+    }
+
+    FormCard.FormCard {
+        id: highlighterCard
+
+        Layout.fillWidth: true
+
+        ExpandingFormSwitch {
+            id: editorHighlightCheck
+
+            text: i18nc("@label:checkbox", "Enable editor highlighting")
+            checked: Config.editorHighlightEnabled
+
+            onCheckedChanged: if (checked != Config.editorHighlightEnabled) {
+                Config.editorHighlightEnabled = checked
+            }
+        }
     }
 }

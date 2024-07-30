@@ -7,9 +7,9 @@
 
 // KleverNotes include
 #include "colors.hpp"
+#include "kleverconfig.h"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
-#include <qtmetamacros.h>
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -41,8 +41,9 @@ class EditorHandler : public QObject
 public:
     explicit EditorHandler(QObject *parent = nullptr);
 
-    // Connections
+    // Config Connections
     void connectPlugins();
+    void connectHighlight();
 
     // QTextDocument info
     QTextDocument *document() const;
@@ -89,6 +90,9 @@ private Q_SLOTS:
     void pumlEnabledChanged();
     void pumlDarkChanged();
 
+    // Highlight
+    void editorHighlightEnabledChanged();
+
 private:
     // QTextDocument info
     void setDocument(QQuickTextDocument *document);
@@ -105,6 +109,9 @@ private:
     void highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
 
 private:
+    // Config Connections
+    KleverConfig *m_config;
+
     // QTextDocument info
     QQuickTextDocument *m_qQuickDocument = nullptr;
     QTextDocument *m_document = nullptr;
