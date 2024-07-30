@@ -6,6 +6,7 @@
 #pragma once
 
 // KleverNotes include
+#include "colors.hpp"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
 
@@ -26,7 +27,7 @@ namespace MdEditor
 {
 
 class Parser;
-class SyntaxVisitor;
+class EditorHighlighter;
 class EditorHandler : public QObject
 {
     Q_OBJECT
@@ -59,6 +60,9 @@ public:
     // md-editor
     std::shared_ptr<MD::Document<MD::QStringTrait>> currentDoc() const;
 
+    // Highlight
+    EditorHighlighter *editorHighlighter() const;
+
 Q_SIGNALS:
     void documentChanged();
     void cursorPositionChanged(const int position);
@@ -89,6 +93,9 @@ private:
     void addExtendedSyntax(const QStringList &details);
     void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
 
+    // Highlight
+    void highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
+
 private:
     // QTextDocument info
     QQuickTextDocument *m_qQuickDocument = nullptr;
@@ -116,6 +123,11 @@ private:
         KleverPlugins = ExtendedSyntax + 64,
     };
     int m_extendedSyntaxCount = 0;
+
+    // Editor highlight
+    EditorHighlighter *m_editorHighlighter = nullptr;
+    bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
+    Colors m_colors;
 
     Q_DISABLE_COPY(EditorHandler)
 };
