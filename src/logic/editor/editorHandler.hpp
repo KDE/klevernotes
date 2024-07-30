@@ -63,6 +63,9 @@ public:
     // Highlight
     EditorHighlighter *editorHighlighter() const;
 
+    // Colors
+    Q_INVOKABLE void changeStyles(const QStringList &styles);
+
 Q_SIGNALS:
     void documentChanged();
     void cursorPositionChanged(const int position);
