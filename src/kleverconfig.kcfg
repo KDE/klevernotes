@@ -62,9 +62,6 @@
             <label>Path to the note display css style</label>
             <default>:/KleverStyle.css</default>
         </entry>
-        <entry name="editorFont" type="Font">
-            <label>The default text editor font (if not specified default to system theme)</label>
-        </entry>
         <entry name="codeFont" type="Font">
             <label>The default code block font</label>
         </entry>
@@ -98,6 +95,12 @@
         <entry name="viewHighlightColor" type="String">
             <label>The default text view highlight color (if not specified default to system theme)</label>
             <default>None</default>
+        </entry>
+    </group>
+
+    <group name="Editor">
+        <entry name="editorFont" type="Font">
+            <label>The default text editor font (if not specified default to system theme)</label>
         </entry>
     </group>
 
