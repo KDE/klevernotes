@@ -213,6 +213,32 @@ void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Do
 }
 // !Highlight
 
+// Colors
+void EditorHandler::changeStyles(const QStringList &styles)
+{
+    const QFont editorFont(styles[0], styles[1].toUInt());
+    m_editorHighlighter->setFont(editorFont);
+
+    const QFont codeFont(styles[2], styles[3].toUInt());
+
+    m_colors.textColor = QColor(styles[5]);
+    m_colors.titleColor = QColor(styles[6]);
+    m_colors.linkColor = QColor(styles[7]);
+    m_colors.codeBgColor = QColor(styles[9]);
+    m_colors.codeColor = QColor(styles[5]).darker(125);
+    m_colors.highlightColor = QColor(styles[10]);
+
+    const QColor backgroundColor(styles[4]);
+    if (backgroundColor.value() < 128) {
+        m_colors.specialColor = backgroundColor.lighter(300);
+    } else {
+        m_colors.specialColor = backgroundColor.darker(200);
+    }
+
+    highlightSyntax(m_colors, m_currentMdDoc);
+}
+// !Colors
+
 // ExtendedSyntax
 void EditorHandler::addExtendedSyntax(const QStringList &details)
 {
