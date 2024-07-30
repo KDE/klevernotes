@@ -444,7 +444,8 @@ void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
         QTextCharFormat baseFormat;
         baseFormat.setForeground(d->colors.titleColor);
         baseFormat.setFont(d->styleFont(MD::BoldText));
-        d->setFormat(baseFormat, h->startLine(), h->text()->startColumn(), h->endLine(), h->endColumn());
+        const long long int formatStart = 0 <= h->text()->startColumn() ? h->text()->startColumn() : h->startColumn();
+        d->setFormat(baseFormat, h->startLine(), formatStart, h->endLine(), h->endColumn());
 
         MD::PosCache<MD::QStringTrait>::onHeading(h);
     }
