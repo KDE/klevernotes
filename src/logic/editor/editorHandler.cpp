@@ -5,7 +5,6 @@
 
 // KleverNotes include
 #include "editorHighlighter.hpp"
-#include "kleverconfig.h"
 #include "logic/parser/parser.h"
 #include "logic/parser/renderer.h"
 
@@ -21,6 +20,7 @@ namespace MdEditor
 
 EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
+    , m_config(KleverConfig::self())
     , m_parser(new Parser())
     , m_renderer(new Renderer())
     , m_pluginHelper(new PluginHelper(this))
@@ -29,6 +29,7 @@ EditorHandler::EditorHandler(QObject *parent)
     m_renderer->addPluginHelper(m_pluginHelper);
 
     connectPlugins();
+    connectHighlight();
 
     static const QList<QStringList> extendedSyntaxsList = {
         // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
@@ -48,16 +49,21 @@ EditorHandler::EditorHandler(QObject *parent)
 void EditorHandler::connectPlugins()
 {
     // Code Highlight
-    connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlightEnabledChanged, this, &EditorHandler::codeHighlightEnabledChanged);
+    connect(m_config, &KleverConfig::codeSynthaxHighlightEnabledChanged, this, &EditorHandler::codeHighlightEnabledChanged);
     codeHighlightEnabledChanged();
-    connect(KleverConfig::self(), &KleverConfig::codeSynthaxHighlighterStyleChanged, this, &EditorHandler::newHighlightStyle);
+    connect(m_config, &KleverConfig::codeSynthaxHighlighterStyleChanged, this, &EditorHandler::newHighlightStyle);
     newHighlightStyle();
 
     // Puml
-    connect(KleverConfig::self(), &KleverConfig::pumlEnabledChanged, this, &EditorHandler::pumlEnabledChanged);
+    connect(m_config, &KleverConfig::pumlEnabledChanged, this, &EditorHandler::pumlEnabledChanged);
     pumlEnabledChanged();
-    connect(KleverConfig::self(), &KleverConfig::pumlDarkChanged, this, &EditorHandler::pumlDarkChanged);
+    connect(m_config, &KleverConfig::pumlDarkChanged, this, &EditorHandler::pumlDarkChanged);
     pumlDarkChanged();
+}
+
+void EditorHandler::connectHighlight()
+{
+    connect(m_config, &KleverConfig::editorHighlightEnabledChanged, this, &EditorHandler::editorHighlightEnabledChanged);
 }
 // !Connections
 
@@ -138,7 +144,9 @@ void EditorHandler::parse(const QString &src)
     }
     
     m_currentMdDoc = m_parser->parse(src);
-    highlightSyntax(m_colors, m_currentMdDoc);
+    if (m_config->editorHighlightEnabled()) {
+        highlightSyntax(m_colors, m_currentMdDoc);
+    }
 
     renderDoc();
 }
@@ -275,26 +283,34 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() cons
 // =================
 void EditorHandler::codeHighlightEnabledChanged()
 {
+    m_config->save();
     m_renderer->setCodeHighlightEnable(KleverConfig::codeSynthaxHighlightEnabled());
-    renderDoc();
 }
 
 void EditorHandler::newHighlightStyle()
 {
+    m_config->save();
     m_pluginHelper->highlightParserUtils()->newHighlightStyle();
-    renderDoc();
 }
 
 void EditorHandler::pumlEnabledChanged()
 {
+    m_config->save();
     m_renderer->setPUMLenable(KleverConfig::pumlEnabled());
-    renderDoc();
 }
 
 void EditorHandler::pumlDarkChanged()
 {
+    m_config->save();
     m_renderer->setPUMLdark(KleverConfig::pumlDark());
-    renderDoc();
+}
+
+void EditorHandler::editorHighlightEnabledChanged()
+{
+    m_config->save();
+    if (!m_config->editorHighlightEnabled()) {
+        m_editorHighlighter->clearHighlighting();
+    }
 }
 // !KleverNotes slots
 }

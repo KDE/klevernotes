@@ -102,6 +102,10 @@
         <entry name="editorFont" type="Font">
             <label>The default text editor font (if not specified default to system theme)</label>
         </entry>
+        <entry name="editorHighlightEnabled" type="Bool">
+            <label>Wether or not the editor highlighter is enabled</label>
+            <default>true</default>
+        </entry>
     </group>
 
     <group name="Plugins">

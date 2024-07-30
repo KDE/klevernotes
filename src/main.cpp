@@ -91,15 +91,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // Appearence
     QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
     // Plugins
-    QObject::connect(config, &KleverConfig::codeSynthaxHighlightEnabledChanged, config, &KleverConfig::save);
+    // TODO move a maximum of this to plugin helper or editorHandler
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterChanged, config, &KleverConfig::save);
-    QObject::connect(config, &KleverConfig::codeSynthaxHighlighterStyleChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::noteMapEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::quickEmojiEnabledChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::emojiToneChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::quickEmojiDialogEnabledChanged, config, &KleverConfig::save);
-    QObject::connect(config, &KleverConfig::pumlEnabledChanged, config, &KleverConfig::save);
-    QObject::connect(config, &KleverConfig::pumlDarkChanged, config, &KleverConfig::save);
 
     qmlRegisterType<QmlLinker>("qtMdEditor", 1, 0, "QmlLinker");
 
