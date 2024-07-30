@@ -12,7 +12,9 @@ add_library(klevernoteslib STATIC
     logic/qmlLinker.cpp
 
     # Editor
+    logic/editor/colors.cpp
     logic/editor/editorHandler.cpp
+    logic/editor/editorHighlighter.cpp
 
     # Painting
     logic/painting/pointMaker.cpp

@@ -1,10 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-// KleverNotes include
 #include "editorHandler.hpp"
+
+// KleverNotes include
+#include "editorHighlighter.hpp"
 #include "kleverconfig.h"
 #include "logic/parser/parser.h"
+#include "logic/parser/renderer.h"
 
 // Qt include
 #include <QColor>
@@ -17,11 +20,11 @@ namespace MdEditor
 
 EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
+    , m_parser(new Parser())
+    , m_renderer(new Renderer())
+    , m_pluginHelper(new PluginHelper(this))
+    , m_editorHighlighter(new EditorHighlighter(this))
 {
-    m_renderer = new Renderer();
-
-    m_parser = new Parser();
-    m_pluginHelper = new PluginHelper(this);
     m_renderer->addPluginHelper(m_pluginHelper);
 
     connectPlugins();
@@ -118,7 +121,7 @@ void EditorHandler::setCursorPosition(const int cursorPosition)
 // Parser
 void EditorHandler::parseDoc()
 {
-    if (m_notePath != QStringLiteral("qrc:")) {
+    if (!m_highlighting && m_notePath != QStringLiteral("qrc:")) {
         parse(m_document->toPlainText());
     }
 }
@@ -134,6 +137,7 @@ void EditorHandler::parse(const QString &src)
     }
     
     m_currentMdDoc = m_parser->parse(src);
+    highlightSyntax(m_colors, m_currentMdDoc);
 
     renderDoc();
 }
@@ -197,6 +201,17 @@ void EditorHandler::renderDoc()
     }
 }
 // !Rendering
+
+// Highlight
+void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
+{
+    if (!m_notePath.isEmpty() && m_notePath != QStringLiteral("qrc:")) {
+        m_highlighting = true;
+        m_editorHighlighter->highlight(doc, colors);
+        m_highlighting = false;
+    }
+}
+// !Highlight
 
 // ExtendedSyntax
 void EditorHandler::addExtendedSyntax(const QStringList &details)
