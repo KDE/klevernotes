@@ -18,11 +18,11 @@ Kirigami.NavigationTabBar {
             }
         },
         Kirigami.Action {
-            text: i18nc("@label, tab (inside tab bar), all settings related to the general appearance of the app", "Appearance")
+            text: i18nc("@label, tab (inside tab bar), all settings related to the rendered preview of the note", "Note preview")
             icon.name: "preferences-desktop-theme-global-symbolic"
-            checked: root.currentTab === "appearance"
+            checked: root.currentTab === "preview"
             onTriggered: {
-                root.currentTab = "appearance"
+                root.currentTab = "preview"
             }
         },
         Kirigami.Action {

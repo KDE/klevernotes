@@ -68,14 +68,14 @@ FormCard.FormCardPage {
     }
 
     Loader {
-        id: appearanceLoader
+        id: notePreviewLoader
 
         Layout.fillWidth: true
         Layout.fillHeight: true
  
-        sourceComponent: AppearanceTab {}
+        sourceComponent: NotePreviewTab {}
 
-        active: tabBar.currentTab === "appearance" 
+        active: tabBar.currentTab === "preview" 
         visible: active
     }
 
