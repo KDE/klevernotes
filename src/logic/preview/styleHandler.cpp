@@ -29,8 +29,6 @@ void StyleHandler::connectStyles()
     connect(m_config, &KleverConfig::viewCodeColorChanged, this, &StyleHandler::changeStyle);
     connect(m_config, &KleverConfig::viewHighlightColorChanged, this, &StyleHandler::changeStyle);
     connect(m_config, &KleverConfig::codeFontChanged, this, &StyleHandler::changeStyle);
-
-    connect(m_config, &KleverConfig::editorFontChanged, this, &StyleHandler::newEditorFont);
 }
 
 // Setter/getter
@@ -177,10 +175,4 @@ void StyleHandler::changeStyle()
     if (m_inMain) {
         changeStyles();
     }
-}
-
-void StyleHandler::newEditorFont()
-{
-    m_config->save();
-    Q_EMIT editorFontChanged();
 }

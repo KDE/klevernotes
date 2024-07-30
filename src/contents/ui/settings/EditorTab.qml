@@ -90,6 +90,10 @@ ColumnLayout {
             onCheckedChanged: if (checked != Config.editorHighlightEnabled) {
                 Config.editorHighlightEnabled = checked
             }
+
+            EditorHighlightPreview {
+                id: editorHighlightPreview
+            }
         }
     }
 }

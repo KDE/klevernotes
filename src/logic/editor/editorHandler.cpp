@@ -63,7 +63,16 @@ void EditorHandler::connectPlugins()
 
 void EditorHandler::connectHighlight()
 {
+    connect(m_config, &KleverConfig::editorFontChanged, this, &EditorHandler::editorFontChanged);
+    editorFontChanged();
+
     connect(m_config, &KleverConfig::editorHighlightEnabledChanged, this, &EditorHandler::editorHighlightEnabledChanged);
+
+    connect(m_config, &KleverConfig::adaptiveTagSizeEnabledChanged, this, &EditorHandler::adaptiveTagSizeChanged);
+    adaptiveTagSizeChanged();
+
+    connect(m_config, &KleverConfig::tagSizeScaleChanged, this, &EditorHandler::tagScaleChanged);
+    tagScaleChanged();
 }
 // !Connections
 
@@ -281,6 +290,7 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() cons
 
 // KleverNotes slots
 // =================
+// Plugins
 void EditorHandler::codeHighlightEnabledChanged()
 {
     m_config->save();
@@ -304,7 +314,9 @@ void EditorHandler::pumlDarkChanged()
     m_config->save();
     m_renderer->setPUMLdark(KleverConfig::pumlDark());
 }
+// !Plugins
 
+// Highlight
 void EditorHandler::editorHighlightEnabledChanged()
 {
     m_config->save();
@@ -312,5 +324,18 @@ void EditorHandler::editorHighlightEnabledChanged()
         m_editorHighlighter->clearHighlighting();
     }
 }
+
+void EditorHandler::adaptiveTagSizeChanged()
+{
+    m_config->save();
+    m_editorHighlighter->changeAdaptiveTagSize(m_config->adaptiveTagSizeEnabled());
+}
+
+void EditorHandler::tagScaleChanged()
+{
+    m_config->save();
+    m_editorHighlighter->changeTagScale(m_config->tagSizeScale());
+}
+// !Highlight
 // !KleverNotes slots
 }
