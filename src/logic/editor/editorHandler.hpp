@@ -92,6 +92,8 @@ private Q_SLOTS:
 
     // Highlight
     void editorHighlightEnabledChanged();
+    void adaptiveTagSizeChanged();
+    void tagScaleChanged();
 
 private:
     // QTextDocument info

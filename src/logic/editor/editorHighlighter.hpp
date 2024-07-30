@@ -37,6 +37,9 @@ public:
 
     void addExtendedSyntax(const long long int opts, const QStringList &info);
 
+    void changeAdaptiveTagSize(const bool adaptive);
+    void changeTagScale(const int tagSizeScale);
+
 protected:
     void onReferenceLink(MD::Link<MD::QStringTrait> *l) override;
     void onText(MD::Text<MD::QStringTrait> *t) override;

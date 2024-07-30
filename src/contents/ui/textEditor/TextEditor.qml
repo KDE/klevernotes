@@ -102,15 +102,6 @@ ScrollView {
         }
     }
 
-    Connections {
-        id: styleHandlerConnections
-        target: StyleHandler 
-
-        function onEditorFontChanged() {
-            EditorHandler.editorFontChanged()
-        }
-    }
-
     function saveNote (text, path) {
         if (modified) {
             DocumentHandler.writeFile(text, path)

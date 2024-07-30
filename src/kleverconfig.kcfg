@@ -106,6 +106,14 @@
             <label>Wether or not the editor highlighter is enabled</label>
             <default>true</default>
         </entry>
+        <entry name="adaptiveTagSizeEnabled" type="Bool">
+            <label>Wether or not the tag size should change based on its surroundings</label>
+            <default>false</default>
+        </entry>
+        <entry name="tagSizeScale" type="Int">
+            <label>The scale, in percente, applied to the tag size</label>
+            <default>50</default>
+        </entry>
     </group>
 
     <group name="Plugins">

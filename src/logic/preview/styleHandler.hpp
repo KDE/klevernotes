@@ -29,14 +29,11 @@ public:
     void setInMain(const bool inMain);
 
 Q_SIGNALS:
-    void editorFontChanged();
     void styleChanged(const QStringList styleInfo);
     void newCss(const QString &css);
 
 private Q_SLOTS:
     void changeStyle();
-
-    void newEditorFont();
 
 private:
     void connectStyles();

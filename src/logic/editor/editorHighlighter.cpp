@@ -134,12 +134,12 @@ struct EditorHighlighterPrivate {
         }
     }
 
-    QFont styleFont(int opts, bool adjustSize = true) const
+    QFont styleFont(int opts, bool isSpecial = false) const
     {
         auto f = font;
-        if (adjustSize) {
+        auto size = f.pointSize();
+        if (!isSpecial || adaptiveTagSize) {
             // Base on KleverStyle.css
-            auto size = f.pointSize();
             switch (headingLevel) {
             case 1:
                 size += 12;
@@ -157,9 +157,14 @@ struct EditorHighlighterPrivate {
                 size -= 3;
                 break;
             }
-
-            f.setPointSize(size);
         }
+        if (isSpecial) {
+            size = size * tagSizeScale / 100;
+        }
+        if (size < 1) {
+            size = 1;
+        }
+        f.setPointSize(size);
 
         if (opts & MD::ItalicText)
             f.setItalic(true);
@@ -306,19 +311,19 @@ struct EditorHighlighterPrivate {
         return format;
     }
 
-    //! Editor.
+    // Editor.
     EditorHandler *editor = nullptr;
-    //! Document.
+    // Document.
     std::shared_ptr<MD::Document<MD::QStringTrait>> doc;
-    //! Colors.
+    // Colors.
     Colors colors;
-    //! Default font.
+    // Default font.
     QFont font;
-    //! Additional style that should be applied for any item.
+    // Additional style that should be applied for any item.
     int additionalStyle = 0;
-    //! Current text block.
+    // Current text block.
     QTextBlock currentBlock;
-    //! Formats for current block.
+    // Formats for current block.
     QList<QTextCharFormat> formatChanges;
 
     struct Format {
@@ -326,12 +331,16 @@ struct EditorHighlighterPrivate {
         QList<QTextCharFormat> formats;
     };
 
-    //! Formats.
+    // Formats.
     QMap<int, Format> formats;
     int headingLevel = 0;
+
     // KleverNotes
     QMap<int, QStringList> modifications;
     inline static const QStringList colorsName = {u"text"_s, u"link"_s, u"special"_s, u"title"_s, u"highlight"_s, u"code"_s};
+
+    int tagSizeScale = 100;
+    bool adaptiveTagSize = false;
 }; // !EditorHighlighterPrivate
 
 // EditorHighlighter
@@ -373,12 +382,24 @@ void EditorHighlighter::addExtendedSyntax(const long long int opts, const QStrin
     d->modifications[opts] = info;
 }
 
+void EditorHighlighter::changeAdaptiveTagSize(const bool adaptive)
+{
+    d->adaptiveTagSize = adaptive;
+}
+
+void EditorHighlighter::changeTagScale(const int tagSizeScale)
+{
+    if (tagSizeScale < 1 || 100 < tagSizeScale) {
+        return;
+    }
+    d->tagSizeScale = tagSizeScale;
+}
+
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
 {
     QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
-    // TODO: add settings for `adjustSize` on/off
-    special.setFont(d->styleFont(d->additionalStyle, false));
+    special.setFont(d->styleFont(d->additionalStyle, true));
 
     for (const auto &s : i->openStyles())
         d->setFormat(special, s);
@@ -408,7 +429,7 @@ void EditorHighlighter::onMath(MD::Math<MD::QStringTrait> *m)
 
     QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
-    special.setFont(d->styleFont(d->additionalStyle));
+    special.setFont(d->styleFont(d->additionalStyle, true));
 
     if (m->startDelim().startColumn() != -1)
         d->setFormat(special, m->startDelim());
@@ -426,22 +447,20 @@ void EditorHighlighter::onMath(MD::Math<MD::QStringTrait> *m)
 
 void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
 {
-    {
-        QScopedValueRollback headingLevel(d->headingLevel, h->level());
-        QScopedValueRollback style(d->additionalStyle, d->additionalStyle | MD::BoldText);
+    QScopedValueRollback headingLevel(d->headingLevel, h->level());
+    QScopedValueRollback style(d->additionalStyle, d->additionalStyle | MD::BoldText);
 
-        QTextCharFormat baseFormat;
-        baseFormat.setForeground(d->colors.titleColor);
-        baseFormat.setFont(d->styleFont(MD::BoldText));
-        const long long int formatStart = 0 <= h->text()->startColumn() ? h->text()->startColumn() : h->startColumn();
-        d->setFormat(baseFormat, h->startLine(), formatStart, h->endLine(), h->endColumn());
+    QTextCharFormat baseFormat;
+    baseFormat.setForeground(d->colors.titleColor);
+    baseFormat.setFont(d->styleFont(MD::BoldText));
+    const long long int formatStart = 0 <= h->text()->startColumn() ? h->text()->startColumn() : h->startColumn();
+    d->setFormat(baseFormat, h->startLine(), formatStart, h->endLine(), h->endColumn());
 
-        MD::PosCache<MD::QStringTrait>::onHeading(h);
-    }
+    MD::PosCache<MD::QStringTrait>::onHeading(h);
 
     QTextCharFormat special;
     special.setForeground(d->colors.specialColor);
-    special.setFont(d->styleFont(MD::TextWithoutFormat));
+    special.setFont(d->styleFont(MD::TextWithoutFormat, true));
 
     if (!h->delims().empty()) {
         for (const auto &delim : h->delims())
@@ -470,7 +489,7 @@ void EditorHighlighter::onCode(MD::Code<MD::QStringTrait> *c)
     d->setFormat(format, c->startLine(), c->startColumn(), c->endLine(), c->endColumn());
 
     special.setForeground(d->colors.specialColor);
-    special.setFont(d->styleFont(d->additionalStyle));
+    special.setFont(d->styleFont(d->additionalStyle, true));
 
     if (c->startDelim().startColumn() != -1)
         d->setFormat(special, c->startDelim());
@@ -506,7 +525,7 @@ void EditorHighlighter::onInlineCode(MD::Code<MD::QStringTrait> *c)
     d->setFormat(format, c->startLine(), c->startColumn(), c->endLine(), c->endColumn());
 
     special.setForeground(d->colors.specialColor);
-    special.setFont(d->styleFont(d->additionalStyle));
+    special.setFont(d->styleFont(d->additionalStyle, true));
 
     if (c->startDelim().startColumn() != -1)
         d->setFormat(special, c->startDelim());
@@ -683,7 +702,7 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
 {
     QTextCharFormat generalFormat;
     generalFormat.setForeground(d->colors.specialColor);
-    generalFormat.setFont(d->styleFont(e->opts() | d->additionalStyle));
+    generalFormat.setFont(d->styleFont(e->opts() | d->additionalStyle, true));
 
     d->setFormat(generalFormat, e->startLine(), e->startColumn(), e->endLine(), e->endColumn());
 
