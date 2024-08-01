@@ -2,6 +2,8 @@
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
 #include "editorHighlighterPrivate.hpp"
+#include "logic/parser/md4qt/doc.hpp"
+#include <utility>
 
 using namespace Qt::Literals::StringLiterals;
 
@@ -23,6 +25,7 @@ void EditorHighlighterPrivate::clearFormats()
     }
 
     formats.clear();
+    cachedFormats.clear();
 }
 
 void EditorHighlighterPrivate::applyFormats()
@@ -67,9 +70,6 @@ void EditorHighlighterPrivate::setFormat(const QTextCharFormat &format,
 
 void EditorHighlighterPrivate::applyFormatChanges()
 {
-    if (editor->textCursor().block() == currentBlock) {
-        return;
-    }
     bool formatsChanged = false;
 
     QTextLayout *layout = currentBlock.layout();
@@ -301,5 +301,31 @@ QTextCharFormat EditorHighlighterPrivate::makeFormat(const long long int opts)
         }
     }
     return format;
+}
+
+void EditorHighlighterPrivate::revertFormat(const MD::WithPosition &withPosition)
+{
+    for (int j = withPosition.startColumn(); j < withPosition.endColumn() + 1; ++j) {
+        const auto line = withPosition.startLine();
+        if (!cachedFormats.contains(line)) {
+            cachedFormats[line] = formats[line];
+        }
+        auto &t = formats[line];
+        QTextCharFormat defaultFormat;
+        defaultFormat.setForeground(colors.specialColor);
+        defaultFormat.setFont(styleFont(0));
+
+        t.formats[j] = defaultFormat;
+    }
+}
+
+void EditorHighlighterPrivate::revertFormats(const QList<std::pair<MD::WithPosition, MD::WithPosition>> delims)
+{
+    if (!delims.isEmpty()) {
+        for (const auto &pair : delims) {
+            revertFormat(pair.first);
+            revertFormat(pair.second);
+        }
+    }
 }
 } // !namespace MdEditor

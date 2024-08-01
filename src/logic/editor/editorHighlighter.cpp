@@ -8,6 +8,7 @@
 
 // md-editor include.
 #include "logic/parser/md4qt/doc.hpp"
+#include "logic/parser/md4qt/traits.hpp"
 
 // Qt include.
 #include <QTextBlock>
@@ -18,8 +19,11 @@
 // C++ include.
 #include <algorithm>
 #include <memory>
+#include <qlogging.h>
 
 using namespace Qt::Literals::StringLiterals;
+
+static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
 
 namespace MdEditor
 {
@@ -53,6 +57,7 @@ void EditorHighlighter::highlight(std::shared_ptr<MD::Document<MD::QStringTrait>
     d->colors = colors;
 
     MD::PosCache<MD::QStringTrait>::initialize(d->doc);
+    showDelimAroundCursor();
     d->applyFormats();
     c.endEditBlock();
 }
@@ -73,6 +78,179 @@ void EditorHighlighter::changeTagScale(const int tagSizeScale)
         return;
     }
     d->tagSizeScale = tagSizeScale;
+}
+
+void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
+               QList<MD::WithPosition> &waitingOpeningDelims,
+               QList<std::pair<MD::WithPosition, MD::WithPosition>> &openCloseDelims)
+{
+    for (const MD::WithPosition &openStyle : item->openStyles()) { // Need the cast into MD::WithPosition
+        waitingOpeningDelims.append(openStyle);
+    }
+
+    for (const MD::WithPosition &closeStyle : item->closeStyles()) {
+        std::pair<MD::WithPosition, MD::WithPosition> newPair = std::make_pair(waitingOpeningDelims.takeLast(), closeStyle);
+        openCloseDelims.append(newPair);
+    }
+}
+
+void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
+                        QList<MD::WithPosition> &waitingOpeningDelims,
+                        QList<std::pair<MD::WithPosition, MD::WithPosition>> &openCloseDelims)
+{
+    switch (item->type()) {
+    case MD::ItemType::Text:
+    case MD::ItemType::Link:
+    case MD::ItemType::Image: {
+        const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item);
+        return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims);
+    }
+    case MD::ItemType::Code: {
+        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item);
+        openCloseDelims.append({codeItem->startDelim(), codeItem->endDelim()});
+        return makePairs(codeItem, waitingOpeningDelims, openCloseDelims);
+    }
+    default:
+        // Find a better way to do this with futur user defined
+        const int itemType = static_cast<int>(item->type());
+
+        if (itemType == USERDEFINEDINT + 1) {
+            const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item);
+            return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims);
+        } else {
+            qDebug() << "Item not handled" << static_cast<int>(item->type());
+            return;
+        }
+    }
+}
+
+bool isItemWithOpts(MD::Item<MD::QStringTrait> *item)
+{
+    bool isItemWithOpts =
+        item->type() == MD::ItemType::Text || item->type() == MD::ItemType::Link || item->type() == MD::ItemType::Image || item->type() == MD::ItemType::Code;
+
+    if (!isItemWithOpts) {
+        const int itemType = static_cast<int>(item->type());
+        isItemWithOpts = itemType == USERDEFINEDINT + 1;
+    }
+
+    return isItemWithOpts;
+}
+
+using Items = typename MD::QStringTrait::template Vector<std::shared_ptr<MD::Item<MD::QStringTrait>>>;
+Items getInnerItems(MD::Item<MD::QStringTrait> *item)
+{
+    switch (item->type()) {
+    case MD::ItemType::Heading: {
+        const auto h = static_cast<MD::Heading<MD::QStringTrait> *>(item);
+        return h->text().get()->items();
+    }
+    case MD::ItemType::Paragraph: {
+        return static_cast<MD::Paragraph<MD::QStringTrait> *>(item)->items();
+    }
+    case MD::ItemType::Blockquote:
+    case MD::ItemType::List:
+    case MD::ItemType::ListItem: {
+        // Those block are "useless" in this case, but no need for an error message,
+        // we already know that they're not supported, not a bug
+        break;
+    }
+    default:
+        qWarning() << "getInnerItems: Unsupported block item" << static_cast<int>(item->type());
+    }
+    return {};
+}
+
+QList<std::pair<MD::WithPosition, MD::WithPosition>>
+EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const long long startColumn, const long long endColumn, const long long line)
+{
+    auto items = getInnerItems(item);
+
+    QList<MD::WithPosition> waitingOpeningDelims;
+    QList<std::pair<MD::WithPosition, MD::WithPosition>> openCloseDelims;
+
+    for (const auto &item : items) {
+        getOpenCloseDelims(item.get(), waitingOpeningDelims, openCloseDelims);
+    }
+
+    if (!waitingOpeningDelims.isEmpty()) {
+        qWarning() << "Error in processing open/close style for unhighlight";
+        return {};
+    }
+
+    QList<std::pair<MD::WithPosition, MD::WithPosition>> surroundingDelimsPairs;
+    for (const auto &pair : openCloseDelims) {
+        const auto &open = pair.first;
+        const auto &close = pair.second;
+        if (open.startLine() == line && open.startColumn() <= startColumn && endColumn <= close.endColumn()) {
+            surroundingDelimsPairs.append(pair);
+        }
+    }
+
+    return surroundingDelimsPairs;
+}
+
+void EditorHighlighter::showDelimAroundCursor()
+{
+    const auto c = d->editor->textCursor();
+    const auto line = c.blockNumber();
+    const auto column = c.positionInBlock();
+
+    const auto startColumn = column ? column - 1 : column;
+    const auto endColumn = column;
+
+    const auto blockItems = findFirstInCache({startColumn, line, endColumn, line});
+
+    if (blockItems.isEmpty()) {
+        return;
+    }
+
+    const auto &first = blockItems.first(); // Usefull for heading
+
+    const int cacheLen = blockItems.length();
+    if (2 <= cacheLen) {
+        const auto &secondToLast = blockItems.at(cacheLen - 2);
+
+        const auto surroundingDelimsPairs = getSurroundingDelimsPairs(secondToLast, startColumn, endColumn, line);
+
+        if (first->type() == MD::ItemType::Heading) {
+            const auto &h = static_cast<MD::Heading<MD::QStringTrait> *>(first);
+            d->headingLevel = h->level();
+
+            for (const auto &delim : h->delims()) {
+                d->revertFormat(delim);
+            }
+        }
+
+        d->revertFormats(surroundingDelimsPairs);
+
+        d->headingLevel = 0;
+
+        return;
+    }
+
+    switch (first->type()) {
+    case MD::ItemType::Code: {
+        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(first);
+        if (codeItem->isFensedCode()) {
+            d->revertFormat(codeItem->startDelim());
+            d->revertFormat(codeItem->endDelim());
+        }
+        break;
+    }
+    case MD::ItemType::Heading:
+    case MD::ItemType::Blockquote:
+    case MD::ItemType::List:
+    case MD::ItemType::ListItem: {
+        // Those block are "useless" in this case, but no need for an error message,
+        // we already know that they're not supported, not a bug
+        break;
+    }
+    default:
+        qWarning() << "showDelimAroundCursor: Unsupported block item" << static_cast<int>(first->type());
+    }
+
+    // TODO: cache the original format > set the unhighlight in place of it > reset the og when cursor move (with timer)
 }
 
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
@@ -406,10 +584,9 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
 
 void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
 {
-    static const int userDefinedType = static_cast<int>(MD::ItemType::UserDefined);
     const int itemType = static_cast<int>(item->type());
     switch (itemType) {
-    case userDefinedType + 1: {
+    case USERDEFINEDINT + 1: {
         auto emoji = static_cast<EmojiPlugin::EmojiItem *>(item);
         onEmoji(emoji);
         break;
@@ -418,6 +595,7 @@ void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
         qWarning() << "Unsupported custom item";
         return;
     }
+    MD::PosCache<MD::QStringTrait>::onUserDefined(item);
 }
 // !EditorHighlighter
-} // !namespace MdEditor
+} // !namespace M

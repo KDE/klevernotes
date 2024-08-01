@@ -36,6 +36,10 @@ public:
 
     QTextCharFormat makeFormat(const long long int opts);
 
+    void revertFormat(const MD::WithPosition &withPosition);
+
+    void revertFormats(const QList<std::pair<MD::WithPosition, MD::WithPosition>> delimsPairs);
+
     // Editor.
     EditorHandler *editor = nullptr;
     // Document.
@@ -58,6 +62,7 @@ public:
 
     // Formats.
     QMap<int, Format> formats;
+    QMap<int, Format> cachedFormats;
     int headingLevel = 0;
 
     // KleverNotes

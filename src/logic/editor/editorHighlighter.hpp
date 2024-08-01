@@ -61,6 +61,11 @@ private:
 
     void onEmoji(EmojiPlugin::EmojiItem *e);
 
+    QList<std::pair<MD::WithPosition, MD::WithPosition>>
+    getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const long long startColumn, const long long endColumn, const long long line);
+
+    void showDelimAroundCursor();
+
 private:
     Q_DISABLE_COPY(EditorHighlighter)
 

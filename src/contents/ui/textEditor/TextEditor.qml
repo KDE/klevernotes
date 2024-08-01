@@ -22,7 +22,7 @@ ScrollView {
     onPathChanged: {
         EditorHandler.notePath = path
         textArea.tempBuff = true ;
-        textArea.text = DocumentHandler.readFile(path) ;
+        textArea.text = DocumentHandler.readFile(path);
         modified = false ;
     }
 

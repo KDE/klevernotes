@@ -23,7 +23,7 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> Parser::parse(QString src)
 {
     QTextStream s(&src, QIODeviceBase::ReadOnly);
 
-    return m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"));
+    return m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"), false);
 }
 
 // Connections

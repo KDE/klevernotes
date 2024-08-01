@@ -145,6 +145,7 @@ private:
     EditorHighlighter *m_editorHighlighter = nullptr;
     bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
     Colors m_colors;
+    bool m_noteFirstHighlight = true;
 
     Q_DISABLE_COPY(EditorHandler)
 };
