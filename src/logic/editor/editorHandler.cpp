@@ -102,7 +102,6 @@ void EditorHandler::setDocument(QQuickTextDocument *document)
         connect(m_qQuickDocument->textDocument(), &QTextDocument::contentsChanged, this, &EditorHandler::parseDoc);
         m_document = m_qQuickDocument->textDocument();
         Q_EMIT documentChanged();
-        parseDoc();
     }
 }
 
@@ -148,6 +147,10 @@ void EditorHandler::parse(const QString &src)
     if (m_notePath != qrcStr && !m_notePath.endsWith(QStringLiteral(".md"))) {
         return;
     }
+    if (m_noteFirstHighlight) { // Important for textCursor(), QML is to slow to transfer this info
+        m_cursorPosition = src.length();
+        m_noteFirstHighlight = false;
+    }
     if (m_pluginHelper) {
         m_pluginHelper->clearPluginsInfo();
     }
@@ -183,6 +186,7 @@ void EditorHandler::setNotePath(const QString &notePath)
     }
     m_notePath = notePath;
     m_parser->setNotePath(notePath);
+    m_noteFirstHighlight = true;
 
     QString rendererNotePath = notePath;
     if (notePath != qrcStr) {

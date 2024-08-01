@@ -53,6 +53,7 @@ void EditorHighlighter::highlight(std::shared_ptr<MD::Document<MD::QStringTrait>
     d->colors = colors;
 
     MD::PosCache<MD::QStringTrait>::initialize(d->doc);
+    setUnhighlitedPos();
     d->applyFormats();
     c.endEditBlock();
 }
@@ -73,6 +74,70 @@ void EditorHighlighter::changeTagScale(const int tagSizeScale)
         return;
     }
     d->tagSizeScale = tagSizeScale;
+}
+
+void EditorHighlighter::setUnhighlitedPos()
+{
+    const auto &test = d->doc; // WARNING: For debug
+    auto c = d->editor->textCursor();
+    const auto lineNumber = c.blockNumber();
+    const auto column = c.columnNumber();
+
+    const auto startColumn = column ? column - 1 : column;
+    const auto endColumn = column;
+
+    const auto items = findFirstInCache({startColumn, lineNumber, endColumn, lineNumber});
+
+    if (items.isEmpty()) {
+        return;
+    }
+    auto &first = items.at(0);
+    switch (first->type()) {
+    case MD::ItemType::Heading: {
+        qDebug() << "Start with a Heading!" << items.length();
+        // Unhighlight TAG and specific item
+        const auto h = static_cast<MD::Heading<MD::QStringTrait> *>(first);
+        h->text().get();
+        break;
+    }
+    case MD::ItemType::Paragraph: {
+        qDebug() << "Start with a Paragraph!" << items.length();
+        // Unhighlight specific item
+        static_cast<MD::Paragraph<MD::QStringTrait> *>(first);
+        break;
+    }
+    case MD::ItemType::Code: {
+        qDebug() << "Start with a Code!" << items.length();
+        const auto c = static_cast<MD::Code<MD::QStringTrait> *>(first);
+        // Unhighlight from startDelim to endDelim
+        break;
+    }
+    case MD::ItemType::Blockquote: {
+        qDebug() << "Start with a Blockquote!" << items.length();
+        // Unhighlight specific item
+        const auto q = static_cast<MD::Blockquote<MD::QStringTrait> *>(first);
+        q->items();
+        break;
+    }
+    case MD::ItemType::List: {
+        qDebug() << "Start with a List!" << items.length();
+        // Unhighlight specific item
+        const auto l = static_cast<MD::List<MD::QStringTrait> *>(first);
+        l->items();
+        break;
+    }
+    case MD::ItemType::HorizontalLine: {
+        qDebug() << "Start with a HorizontalLine!" << items.length();
+        // Do nothing, here just for testing
+        break;
+    }
+    case MD::ItemType::Text:
+        qDebug() << "Start with a Text!" << items.length();
+        break;
+    default:
+        qDebug() << "Start with unknown" << static_cast<int>(first->type());
+        return;
+    }
 }
 
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)

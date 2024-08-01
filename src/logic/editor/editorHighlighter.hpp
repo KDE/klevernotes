@@ -61,6 +61,8 @@ private:
 
     void onEmoji(EmojiPlugin::EmojiItem *e);
 
+    void setUnhighlitedPos();
+
 private:
     Q_DISABLE_COPY(EditorHighlighter)
 
