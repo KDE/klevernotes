@@ -4,6 +4,7 @@
 #pragma once
 
 // KleverNotes include
+#include "editorHighlighterPrivate.hpp"
 #include "logic/editor/colors.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
 
@@ -21,9 +22,6 @@
 
 namespace MdEditor
 {
-class EditorHandler;
-struct EditorHighlighterPrivate;
-
 //! Markdown syntax highlighter.
 class EditorHighlighter : public MD::PosCache<MD::QStringTrait>
 {
@@ -68,5 +66,4 @@ private:
 
     QScopedPointer<EditorHighlighterPrivate> d;
 }; // !EditorHighlighter
-
 } // !namespace MdEditor
