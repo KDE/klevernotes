@@ -57,7 +57,7 @@ msgstr "Confirmation de deler Nota"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr "Iste action nonpote esser revertite."
+msgstr "Iste action non pote esser revertite."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
