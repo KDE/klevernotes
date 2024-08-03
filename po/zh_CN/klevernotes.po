@@ -158,7 +158,7 @@ msgstr "创建您的链接"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr ""
+msgstr "链接本地文件"
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
