@@ -103,6 +103,7 @@
       <caption xml:lang="es">Página principal para el escritorio</caption>
       <caption xml:lang="eu">Orri nagusia mahaigainean</caption>
       <caption xml:lang="fr">Page principale sur le bureau</caption>
+      <caption xml:lang="gl">Páxina principal no escritorio.</caption>
       <caption xml:lang="he">עמוד ראשי בשולחן העבודה</caption>
       <caption xml:lang="ia">PAgina principal sur scriptorio</caption>
       <caption xml:lang="it">Pagina principale su desktop</caption>
@@ -127,6 +128,7 @@
       <caption xml:lang="es">Página principal para factor de forma pequeño</caption>
       <caption xml:lang="eu">Orri nagusia forma txikiko faktorean</caption>
       <caption xml:lang="fr">Page principale sur périphérique de petit format</caption>
+      <caption xml:lang="gl">Páxina principal nunha pantalla pequena.</caption>
       <caption xml:lang="he">עמוד ראשי בדגם מוקטן</caption>
       <caption xml:lang="ia">Pagina principal sur parve factor de forma</caption>
       <caption xml:lang="it">Pagine principale su fattore di forma piccolo</caption>
@@ -152,6 +154,7 @@
       <caption xml:lang="es">Página de tareas pendientes</caption>
       <caption xml:lang="eu">Zereginen orria</caption>
       <caption xml:lang="fr">Page des tâches à faire</caption>
+      <caption xml:lang="gl">Páxina de tarefas.</caption>
       <caption xml:lang="he">עמוד מטלות</caption>
       <caption xml:lang="ia">Pagina de De Facer (Agenda)</caption>
       <caption xml:lang="it">Pagina Da fare</caption>
@@ -177,6 +180,7 @@
       <caption xml:lang="es">Página de dibujo</caption>
       <caption xml:lang="eu">Marrazteko orria</caption>
       <caption xml:lang="fr">Page de dessin</caption>
+      <caption xml:lang="gl">Páxina de debuxo.</caption>
       <caption xml:lang="he">עמוד ציור</caption>
       <caption xml:lang="ia">Pagina de Dessino</caption>
       <caption xml:lang="it">Pagina di disegno</caption>
