@@ -108,6 +108,7 @@
       <caption xml:lang="ia">PAgina principal sur scriptorio</caption>
       <caption xml:lang="it">Pagina principale su desktop</caption>
       <caption xml:lang="ka">მთავარი გვერდი სამუშაო მაგიდაზე</caption>
+      <caption xml:lang="ko">데스크톱의 주 페이지</caption>
       <caption xml:lang="nl">Hoofdpagina op bureaublad</caption>
       <caption xml:lang="pl">Główna strona na komputerze biurkowym</caption>
       <caption xml:lang="sl">Glavna stran na namizju</caption>
@@ -133,6 +134,7 @@
       <caption xml:lang="ia">Pagina principal sur parve factor de forma</caption>
       <caption xml:lang="it">Pagine principale su fattore di forma piccolo</caption>
       <caption xml:lang="ka">მთავარი გვერდი პატარა ადგილას</caption>
+      <caption xml:lang="ko">작은 화면에서의 주 페이지</caption>
       <caption xml:lang="nl">Hoofdpagina op kleine vormfactor</caption>
       <caption xml:lang="pl">Główna strona na urządzeniu przenośnym</caption>
       <caption xml:lang="sl">Glavna stran v majhni obliki</caption>
@@ -159,6 +161,7 @@
       <caption xml:lang="ia">Pagina de De Facer (Agenda)</caption>
       <caption xml:lang="it">Pagina Da fare</caption>
       <caption xml:lang="ka">განრიგის გვერდი</caption>
+      <caption xml:lang="ko">할 일 페이지</caption>
       <caption xml:lang="nl">Pagina te-doen</caption>
       <caption xml:lang="pl">Strona zadań</caption>
       <caption xml:lang="sl">Stran stvari za še narediti</caption>
@@ -185,6 +188,7 @@
       <caption xml:lang="ia">Pagina de Dessino</caption>
       <caption xml:lang="it">Pagina di disegno</caption>
       <caption xml:lang="ka">ხატვის გვერდი</caption>
+      <caption xml:lang="ko">그리기 페이지</caption>
       <caption xml:lang="nl">Pagina om op te tekenen</caption>
       <caption xml:lang="pl">Strona rysowania</caption>
       <caption xml:lang="sl">Stran risanja</caption>
