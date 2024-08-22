@@ -183,7 +183,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             static const QString surroundingStr = QStringLiteral("::");
             const int firstPartCapLength = cap.capturedLength(1) + surroundingStr.length();
             if (uniEmoji.isEmpty()) {
-                offSet = firstPartCapLength;
+                offSet += firstPartCapLength;
                 continue;
             }
 
