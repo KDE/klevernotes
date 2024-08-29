@@ -5,11 +5,13 @@
 
 #include "logic/parser/extendedSyntax/extendedSyntaxMaker.hpp"
 #include "logic/parser/md4qtDataCleaner.hpp"
+#include "logic/parser/md4qtDataGetter.hpp"
 
 // Qt include
 #include <QObject>
 #include <QTextStream>
 #include <QtTest/QTest>
+#include <vector>
 
 #define MD4QT_QT_SUPPORT
 #include "logic/parser/md4qt/doc.hpp"
@@ -44,6 +46,7 @@ private Q_SLOTS:
     void multiLineMix();
     void cancellingPart();
     void cancellingPartInTitle();
+    void checkOpenCloseStylesParity();
     void blankLineText();
     void continuousText();
 
@@ -1040,6 +1043,36 @@ void ExtendedSyntaxTest::cancellingPartInTitle()
     QVERIFY(!item3->isSpaceBefore());
     QVERIFY(item3->isSpaceAfter());
 };
+
+/*
+==*With `non text in the middle` and cancelling==*text==Untouched `code`
+textUntouched==text==Untouched\==text\==Untouched==text*==Unaffected*==text^Unaffected^text New style mix-===-==-==-== Multi__*line*__ ==*mix*== --of--text^new^
+--====and==-- original
+*/
+void ExtendedSyntaxTest::checkOpenCloseStylesParity()
+{
+    QTextStream s(&m_testingLines[17], QIODeviceBase::ReadOnly);
+    const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+    if (doc->items().length() != 2) {
+        QFAIL("cancellingPart: Incorrect items count in the doc");
+    }
+
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 27) {
+        QFAIL("cancellingPart: Incorrect items count in the paragraph");
+    }
+
+    QList<MD::StyleDelim> openStyles;
+    QList<MD::StyleDelim> closeStyles;
+    for (const auto &item : paragraph->items()) {
+        const auto itemWithOpts = md4qtHelperFunc::getSharedItemWithOpts(item);
+
+        openStyles << itemWithOpts->openStyles();
+        closeStyles << itemWithOpts->closeStyles();
+    }
+
+    QCOMPARE_EQ(openStyles.length(), closeStyles.length());
+}
 
 // If those don't crash that already a good things
 void ExtendedSyntaxTest::blankLineText()

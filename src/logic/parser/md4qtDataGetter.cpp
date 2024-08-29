@@ -45,4 +45,18 @@ long long int rawIdxFromItem(const MDItemWithOptsPtr item, MDParsingOpts &po)
     const auto localPos = MD::localPosFromVirgin(po.fr, item->startColumn(), item->startLine());
     return rawIdxFromPos(localPos.first, localPos.second, po);
 }
+
+bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start, const MD::WithPosition end)
+{
+    // Note: since we're dealing with delims, it's fine to assume that, within a delim: startLine() == endLine()
+    const bool betweenLine = start.startLine() <= value.startLine() && value.startLine() <= end.startLine();
+    if (betweenLine) {
+        const bool afterStart = start.startLine() < value.startLine() ? true : start.startColumn() <= value.startColumn();
+        const bool beforeEnd = value.startLine() < end.startLine() ? true : value.endColumn() <= end.endColumn();
+
+        return afterStart && beforeEnd;
+    }
+
+    return false;
+}
 } // !md4qtHelperFunc

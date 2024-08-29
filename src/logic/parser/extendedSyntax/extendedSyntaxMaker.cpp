@@ -85,17 +85,12 @@ bool validDelimsPairs(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseSty
     long long int i = 0;
     while (i < openCloseStyles.size()) {
         const auto stylePair = openCloseStyles[i];
-        const int styleOpeningPos = stylePair.first.delim.startColumn();
-        const int styleClosingPos = stylePair.second.delim.startColumn();
-        const int styleClosingLine = stylePair.second.delim.startLine();
 
-        if (styleClosingPos < openDelim.startColumn() || styleClosingLine != openDelim.startLine()) {
-            ++i;
-            continue;
-        }
+        const MD::WithPosition openDelimPos = {openDelim.startColumn(), openDelim.startLine(), openDelim.endColumn, openDelim.startLine()};
+        const MD::WithPosition closeDelimPos = {closeDelim.startColumn(), closeDelim.startLine(), closeDelim.endColumn, closeDelim.startLine()};
 
-        const bool openInsideStyle = styleOpeningPos < openDelim.startColumn() && openDelim.startColumn() < styleClosingPos;
-        const bool closeInsideStyle = styleOpeningPos < closeDelim.startColumn() && closeDelim.startColumn() < styleClosingPos;
+        const bool openInsideStyle = md4qtHelperFunc::isBetweenDelims(openDelimPos, stylePair.first.delim, stylePair.second.delim);
+        const bool closeInsideStyle = md4qtHelperFunc::isBetweenDelims(closeDelimPos, stylePair.first.delim, stylePair.second.delim);
 
         if (openInsideStyle && !closeInsideStyle) {
             // This opening is not good
@@ -129,7 +124,7 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
             while (0 <= i) {
                 auto opening = waitingOpenings.takeAt(i);
 
-                if (opening.endColumn + 1 != info.startColumn() && opening.startLine() == info.startLine()
+                if ((opening.startLine() < info.startLine() || (opening.startLine() == info.startLine() && opening.endColumn + 1 != info.startColumn()))
                     && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
                     opening.paired = true;
                     info.paired = true;
@@ -147,7 +142,7 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
                 while (0 <= i) {
                     auto opening = waitingOpenings[i]; // We can't consume it right away
 
-                    if (opening.endColumn + 1 != info.startColumn() && opening.startLine() == info.startLine()
+                    if ((opening.startLine() < info.startLine() || (opening.startLine() == info.startLine() && opening.endColumn + 1 != info.startColumn()))
                         && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
                         opening.paired = true;
                         info.paired = true;
