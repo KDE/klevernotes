@@ -303,6 +303,15 @@ QTextCharFormat EditorHighlighterPrivate::makeFormat(const long long int opts)
     return format;
 }
 
+void EditorHighlighterPrivate::restoreCachedFormats()
+{
+    for (const auto &[line, value] : cachedFormats.asKeyValueRange()) {
+        formats[line] = value;
+    }
+
+    cachedFormats.clear();
+}
+
 void EditorHighlighterPrivate::revertFormat(const MD::WithPosition &withPosition)
 {
     for (int j = withPosition.startColumn(); j < withPosition.endColumn() + 1; ++j) {

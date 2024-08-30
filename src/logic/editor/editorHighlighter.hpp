@@ -30,6 +30,7 @@ public:
     ~EditorHighlighter() override;
 
     void highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const Colors &colors);
+    void showDelimAroundCursor(const bool clearCache = true);
     void setFont(const QFont &f);
     void clearHighlighting();
 
@@ -61,10 +62,9 @@ private:
 
     void onEmoji(EmojiPlugin::EmojiItem *e);
 
-    QList<std::pair<MD::WithPosition, MD::WithPosition>>
-    getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const long long startColumn, const long long endColumn, const long long line);
+    QList<std::pair<MD::WithPosition, MD::WithPosition>> getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const MD::WithPosition &cursorPos);
 
-    void showDelimAroundCursor();
+    void revertDelimsStyle();
 
 private:
     Q_DISABLE_COPY(EditorHighlighter)

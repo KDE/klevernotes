@@ -9,6 +9,7 @@
 // md-editor include.
 #include "logic/parser/md4qt/doc.hpp"
 #include "logic/parser/md4qt/traits.hpp"
+#include "logic/parser/md4qtDataGetter.hpp"
 
 // Qt include.
 #include <QTextBlock>
@@ -57,9 +58,8 @@ void EditorHighlighter::highlight(std::shared_ptr<MD::Document<MD::QStringTrait>
     d->colors = colors;
 
     MD::PosCache<MD::QStringTrait>::initialize(d->doc);
-    showDelimAroundCursor();
-    d->applyFormats();
     c.endEditBlock();
+    showDelimAroundCursor();
 }
 
 void EditorHighlighter::addExtendedSyntax(const long long int opts, const QStringList &info)
@@ -124,19 +124,6 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
     }
 }
 
-bool isItemWithOpts(MD::Item<MD::QStringTrait> *item)
-{
-    bool isItemWithOpts =
-        item->type() == MD::ItemType::Text || item->type() == MD::ItemType::Link || item->type() == MD::ItemType::Image || item->type() == MD::ItemType::Code;
-
-    if (!isItemWithOpts) {
-        const int itemType = static_cast<int>(item->type());
-        isItemWithOpts = itemType == USERDEFINEDINT + 1;
-    }
-
-    return isItemWithOpts;
-}
-
 using Items = typename MD::QStringTrait::template Vector<std::shared_ptr<MD::Item<MD::QStringTrait>>>;
 Items getInnerItems(MD::Item<MD::QStringTrait> *item)
 {
@@ -161,8 +148,8 @@ Items getInnerItems(MD::Item<MD::QStringTrait> *item)
     return {};
 }
 
-QList<std::pair<MD::WithPosition, MD::WithPosition>>
-EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const long long startColumn, const long long endColumn, const long long line)
+QList<std::pair<MD::WithPosition, MD::WithPosition>> EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item,
+                                                                                                  const MD::WithPosition &cursorPos)
 {
     auto items = getInnerItems(item);
 
@@ -174,7 +161,10 @@ EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, c
     }
 
     if (!waitingOpeningDelims.isEmpty()) {
-        qWarning() << "Error in processing open/close style for unhighlight";
+        qWarning() << "Error in processing open/close style for unhighlight, remaining open delims:";
+        for (const auto &delim : waitingOpeningDelims) {
+            qWarning() << delim.startColumn() << delim.startLine() << delim.endColumn() << delim.endLine();
+        }
         return {};
     }
 
@@ -182,7 +172,8 @@ EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, c
     for (const auto &pair : openCloseDelims) {
         const auto &open = pair.first;
         const auto &close = pair.second;
-        if (open.startLine() == line && open.startColumn() <= startColumn && endColumn <= close.endColumn()) {
+
+        if (md4qtHelperFunc::isBetweenDelims(cursorPos, open, close)) {
             surroundingDelimsPairs.append(pair);
         }
     }
@@ -190,7 +181,7 @@ EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, c
     return surroundingDelimsPairs;
 }
 
-void EditorHighlighter::showDelimAroundCursor()
+void EditorHighlighter::revertDelimsStyle()
 {
     const auto c = d->editor->textCursor();
     const auto line = c.blockNumber();
@@ -211,7 +202,8 @@ void EditorHighlighter::showDelimAroundCursor()
     if (2 <= cacheLen) {
         const auto &secondToLast = blockItems.at(cacheLen - 2);
 
-        const auto surroundingDelimsPairs = getSurroundingDelimsPairs(secondToLast, startColumn, endColumn, line);
+        const MD::WithPosition cursorPos = {startColumn, line, endColumn, line};
+        const auto surroundingDelimsPairs = getSurroundingDelimsPairs(secondToLast, cursorPos);
 
         if (first->type() == MD::ItemType::Heading) {
             const auto &h = static_cast<MD::Heading<MD::QStringTrait> *>(first);
@@ -247,10 +239,23 @@ void EditorHighlighter::showDelimAroundCursor()
         break;
     }
     default:
-        qWarning() << "showDelimAroundCursor: Unsupported block item" << static_cast<int>(first->type());
+        qWarning() << "revertDelimsStyle: Unsupported block item" << static_cast<int>(first->type());
     }
+}
 
-    // TODO: cache the original format > set the unhighlight in place of it > reset the og when cursor move (with timer)
+void EditorHighlighter::showDelimAroundCursor(const bool clearCache)
+{
+    if (clearCache) {
+        d->cachedFormats.clear();
+    } else {
+        d->restoreCachedFormats();
+    }
+    auto c = d->editor->textCursor();
+
+    c.joinPreviousEditBlock();
+    revertDelimsStyle();
+    d->applyFormats();
+    c.endEditBlock();
 }
 
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)

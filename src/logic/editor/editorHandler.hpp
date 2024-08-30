@@ -20,6 +20,7 @@
 #include <QObject>
 #include <QQuickTextDocument>
 #include <QTextDocument>
+#include <QTimer>
 #include <QtQml>
 
 Q_DECLARE_METATYPE(QQuickTextDocument);
@@ -40,10 +41,6 @@ class EditorHandler : public QObject
 
 public:
     explicit EditorHandler(QObject *parent = nullptr);
-
-    // Config Connections
-    void connectPlugins();
-    void connectHighlight();
 
     // QTextDocument info
     QTextDocument *document() const;
@@ -94,8 +91,14 @@ private Q_SLOTS:
     void editorHighlightEnabledChanged();
     void adaptiveTagSizeChanged();
     void tagScaleChanged();
+    void cursorMovedTimeOut();
 
 private:
+    // Config Connections
+    void connectPlugins();
+    void connectHighlight();
+    void connectTimer();
+
     // QTextDocument info
     void setDocument(QQuickTextDocument *document);
     void setCursorPosition(const int cursorPosition);
@@ -146,6 +149,8 @@ private:
     bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
     Colors m_colors;
     bool m_noteFirstHighlight = true;
+    bool m_textChanged = false;
+    QTimer *m_cursorMoveTimer = nullptr;
 
     Q_DISABLE_COPY(EditorHandler)
 };

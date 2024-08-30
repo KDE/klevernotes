@@ -25,11 +25,13 @@ EditorHandler::EditorHandler(QObject *parent)
     , m_renderer(new Renderer())
     , m_pluginHelper(new PluginHelper(this))
     , m_editorHighlighter(new EditorHighlighter(this))
+    , m_cursorMoveTimer(new QTimer(this))
 {
     m_renderer->addPluginHelper(m_pluginHelper);
 
     connectPlugins();
     connectHighlight();
+    connectTimer();
 
     static const QList<QStringList> extendedSyntaxsList = {
         // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
@@ -73,6 +75,14 @@ void EditorHandler::connectHighlight()
 
     connect(m_config, &KleverConfig::tagSizeScaleChanged, this, &EditorHandler::tagScaleChanged);
     tagScaleChanged();
+}
+
+void EditorHandler::connectTimer()
+{
+    m_cursorMoveTimer->setSingleShot(true);
+    m_cursorMoveTimer->setInterval(200);
+
+    connect(m_cursorMoveTimer, &QTimer::timeout, this, &EditorHandler::cursorMovedTimeOut);
 }
 // !Connections
 
@@ -128,6 +138,10 @@ void EditorHandler::setCursorPosition(const int cursorPosition)
     }
 
     m_cursorPosition = cursorPosition;
+
+    if (m_cursorMoveTimer) {
+        m_cursorMoveTimer->start();
+    }
 }
 // !QTextDocument Info
 
@@ -138,6 +152,7 @@ void EditorHandler::parseDoc()
 {
     if (!m_highlighting && m_notePath != QStringLiteral("qrc:")) {
         parse(m_document->toPlainText());
+        m_textChanged = true;
     }
 }
 
@@ -270,6 +285,8 @@ void EditorHandler::addExtendedSyntax(const QStringList &details)
     const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
     m_renderer->addExtendedSyntax(opts, details[1], details[2]);
 
+    m_editorHighlighter->addExtendedSyntax(opts, details);
+
     const QStringList options = {details[0], QString::number(opts), QString::number(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount)};
     m_parser->addExtendedSyntax(options);
     ++m_extendedSyntaxCount;
@@ -339,6 +356,15 @@ void EditorHandler::tagScaleChanged()
 {
     m_config->save();
     m_editorHighlighter->changeTagScale(m_config->tagSizeScale());
+}
+
+void EditorHandler::cursorMovedTimeOut()
+{
+    if (!m_textChanged) {
+        m_editorHighlighter->showDelimAroundCursor(m_textChanged);
+    }
+
+    m_textChanged = false;
 }
 // !Highlight
 // !KleverNotes slots

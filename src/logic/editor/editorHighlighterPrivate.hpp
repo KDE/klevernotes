@@ -36,6 +36,8 @@ public:
 
     QTextCharFormat makeFormat(const long long int opts);
 
+    void restoreCachedFormats();
+
     void revertFormat(const MD::WithPosition &withPosition);
 
     void revertFormats(const QList<std::pair<MD::WithPosition, MD::WithPosition>> delimsPairs);
