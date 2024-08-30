@@ -39,7 +39,7 @@ EditorHandler::EditorHandler(QObject *parent)
         // 8. italic enabled, 9. strikethrough enabled, 10. underline enabled, 11. underline style
         // if empty for bool value => false, if empty for other => default value
         // TODO: make documentation about this
-        {u"=="_s, u"<mark>"_s, u"</mark>"_s, u""_s, u""_s, u"highlight"_s, u""_s, u""_s, u""_s, u""_s, u""_s, u""_s}, // Highlight
+        {u"=="_s, u"<mark>"_s, u"</mark>"_s, u""_s, u"background"_s, u"highlight"_s, u""_s, u""_s, u""_s, u""_s, u""_s, u""_s}, // Highlight
         {u"-"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
         {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
     };
@@ -152,7 +152,6 @@ void EditorHandler::parseDoc()
 {
     if (!m_highlighting && m_notePath != QStringLiteral("qrc:")) {
         parse(m_document->toPlainText());
-        m_textChanged = true;
     }
 }
 
@@ -162,6 +161,8 @@ void EditorHandler::parse(const QString &src)
     if (m_notePath != qrcStr && !m_notePath.endsWith(QStringLiteral(".md"))) {
         return;
     }
+
+    m_textChanged = !m_noteFirstHighlight;
     if (m_noteFirstHighlight) { // Important for textCursor(), QML is to slow to transfer this info
         m_cursorPosition = src.length();
         m_noteFirstHighlight = false;
@@ -253,6 +254,7 @@ void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Do
 // Colors
 void EditorHandler::changeStyles(const QStringList &styles)
 {
+    m_colors.backgroundColor = QColor(styles[4]);
     m_colors.textColor = QColor(styles[5]);
     m_colors.titleColor = QColor(styles[6]);
     m_colors.linkColor = QColor(styles[7]);
@@ -260,11 +262,10 @@ void EditorHandler::changeStyles(const QStringList &styles)
     m_colors.codeColor = QColor(styles[5]).darker(125);
     m_colors.highlightColor = QColor(styles[10]);
 
-    const QColor backgroundColor(styles[4]);
-    if (backgroundColor.value() < 128) {
-        m_colors.specialColor = backgroundColor.lighter(300);
+    if (m_colors.backgroundColor.value() < 128) {
+        m_colors.specialColor = m_colors.backgroundColor.lighter(300);
     } else {
-        m_colors.specialColor = backgroundColor.darker(200);
+        m_colors.specialColor = m_colors.backgroundColor.darker(200);
     }
 
     highlightSyntax(m_colors, m_currentMdDoc);

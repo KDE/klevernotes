@@ -69,7 +69,7 @@ public:
 
     // KleverNotes
     QMap<int, QStringList> modifications;
-    inline static const QStringList colorsName = {u"text"_s, u"link"_s, u"special"_s, u"title"_s, u"highlight"_s, u"code"_s};
+    inline static const QStringList colorsName = {u"background"_s, u"text"_s, u"link"_s, u"special"_s, u"title"_s, u"highlight"_s, u"code"_s};
 
     int tagSizeScale = 100;
     bool adaptiveTagSize = false;

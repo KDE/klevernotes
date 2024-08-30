@@ -177,16 +177,18 @@ QColor EditorHighlighterPrivate::getColor(const QString &info)
     if (specialColorIdx != -1) {
         switch (specialColorIdx) {
         case 0:
-            return colors.textColor;
+            return colors.backgroundColor;
         case 1:
-            return colors.linkColor;
+            return colors.textColor;
         case 2:
-            return colors.specialColor;
+            return colors.linkColor;
         case 3:
-            return colors.titleColor;
+            return colors.specialColor;
         case 4:
-            return colors.highlightColor;
+            return colors.titleColor;
         case 5:
+            return colors.highlightColor;
+        case 6:
             return colors.codeColor;
         }
     } else if (QColor::isValidColorName(info)) {

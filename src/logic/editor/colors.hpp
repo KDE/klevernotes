@@ -11,6 +11,7 @@
 namespace MdEditor
 {
 struct Colors {
+    QColor backgroundColor = Qt::white;
     QColor textColor = QColor(64, 128, 255);
     QColor linkColor = QColor(0, 128, 0);
     QColor mathColor = QColor(128, 0, 0);

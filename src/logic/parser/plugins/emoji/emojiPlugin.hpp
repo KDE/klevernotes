@@ -32,10 +32,18 @@ public:
     const MD::WithPosition &optionsPos() const;
     void setOptionsPos(const MD::WithPosition &pos);
 
+    const MD::WithPosition &startDelim() const;
+    void setStartDelim(const MD::WithPosition &pos);
+
+    const MD::WithPosition &endDelim() const;
+    void setEndDelim(const MD::WithPosition &pos);
+
 private:
     QString m_emoji;
-    WithPosition m_emojiNamePos = {};
-    WithPosition m_optionsPos = {};
+    MD::WithPosition m_emojiNamePos = {};
+    MD::WithPosition m_optionsPos = {};
+    MD::WithPosition m_startDelim = {};
+    MD::WithPosition m_endDelim = {};
 };
 
 inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx);

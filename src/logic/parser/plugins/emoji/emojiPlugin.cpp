@@ -71,6 +71,26 @@ void EmojiItem::setOptionsPos(const MD::WithPosition &pos)
 {
     m_optionsPos = pos;
 }
+
+const MD::WithPosition &EmojiItem::startDelim() const
+{
+    return m_startDelim;
+}
+
+void EmojiItem::setStartDelim(const MD::WithPosition &pos)
+{
+    m_startDelim = pos;
+}
+
+const MD::WithPosition &EmojiItem::endDelim() const
+{
+    return m_endDelim;
+}
+
+void EmojiItem::setEndDelim(const MD::WithPosition &pos)
+{
+    m_endDelim = pos;
+}
 // !EmojiItem
 
 inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx)
@@ -197,6 +217,8 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
 
             auto emojiItem = std::make_shared<EmojiItem>();
             emojiItem->applyPositions({virginStartPos, item->startLine(), virginEndPos, item->endLine()});
+            emojiItem->setStartDelim({virginStartPos, item->startLine(), virginStartPos, item->startLine()});
+            emojiItem->setEndDelim({virginEndPos, item->endLine(), virginEndPos, item->endLine()});
             emojiItem->setOpts(item->opts());
             emojiItem->setEmoji(uniEmoji);
 

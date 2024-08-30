@@ -115,8 +115,9 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
         const int itemType = static_cast<int>(item->type());
 
         if (itemType == USERDEFINEDINT + 1) {
-            const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item);
-            return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims);
+            const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item);
+            openCloseDelims.append({emojiItem->startDelim(), emojiItem->endDelim()});
+            return makePairs(emojiItem, waitingOpeningDelims, openCloseDelims);
         } else {
             qDebug() << "Item not handled" << static_cast<int>(item->type());
             return;
