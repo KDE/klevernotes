@@ -339,4 +339,12 @@ void EditorHighlighterPrivate::revertFormats(const QList<std::pair<MD::WithPosit
         }
     }
 }
+
+// Simple workaround to prevent the TextArea from auto scrolling to put the cursor line at the bottom
+void EditorHighlighterPrivate::preventAutoScroll()
+{
+    const auto &f = formats.last();
+
+    editor->document()->markContentsDirty(f.block.position() + f.block.length() - 1, f.block.length());
+}
 } // !namespace MdEditor

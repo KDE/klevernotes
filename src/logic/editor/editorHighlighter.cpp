@@ -256,6 +256,7 @@ void EditorHighlighter::showDelimAroundCursor(const bool clearCache)
     c.joinPreviousEditBlock();
     revertDelimsStyle();
     d->applyFormats();
+    d->preventAutoScroll();
     c.endEditBlock();
 }
 

@@ -42,6 +42,8 @@ public:
 
     void revertFormats(const QList<std::pair<MD::WithPosition, MD::WithPosition>> delimsPairs);
 
+    void preventAutoScroll();
+
     // Editor.
     EditorHandler *editor = nullptr;
     // Document.
