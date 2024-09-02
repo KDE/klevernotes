@@ -12,7 +12,6 @@
 #include <QColor>
 #include <QRegularExpression>
 #include <QTextBlock>
-#include <qlogging.h>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -254,19 +253,14 @@ void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Do
 // Colors
 void EditorHandler::changeStyles(const QStringList &styles)
 {
-    m_colors.backgroundColor = QColor(styles[4]);
-    m_colors.textColor = QColor(styles[5]);
-    m_colors.titleColor = QColor(styles[6]);
-    m_colors.linkColor = QColor(styles[7]);
-    m_colors.codeBgColor = QColor(styles[9]);
-    m_colors.codeColor = QColor(styles[5]).darker(125);
-    m_colors.highlightColor = QColor(styles[10]);
-
-    if (m_colors.backgroundColor.value() < 128) {
-        m_colors.specialColor = m_colors.backgroundColor.lighter(300);
-    } else {
-        m_colors.specialColor = m_colors.backgroundColor.darker(200);
-    }
+    m_colors.backgroundColor = QColor(styles[0]);
+    m_colors.textColor = QColor(styles[1]);
+    m_colors.titleColor = QColor(styles[2]);
+    m_colors.linkColor = QColor(styles[3]);
+    m_colors.codeBgColor = QColor(styles[5]);
+    m_colors.codeColor = QColor(styles[1]).darker(125);
+    m_colors.highlightColor = QColor(styles[6]);
+    m_colors.specialColor = QColor(styles[7]);
 
     highlightSyntax(m_colors, m_currentMdDoc);
 }

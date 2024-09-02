@@ -107,7 +107,8 @@ void StyleHandler::changeStyles(const QStringList &_styleInfo)
         const QString codeColor = KleverConfig::viewCodeColor();
         const QString highlightColor = KleverConfig::viewHighlightColor();
 
-        const QStringList originalStyleInfo = {
+        // For css
+        QStringList originalStyleInfo = {
             bodyColor == noneStr ? m_defaultStyle[0] : bodyColor,
             textColor == noneStr ? m_defaultStyle[1] : textColor,
             titleColor == noneStr ? m_defaultStyle[2] : titleColor,
@@ -116,10 +117,15 @@ void StyleHandler::changeStyles(const QStringList &_styleInfo)
             codeColor == noneStr ? m_defaultStyle[5] : codeColor,
             highlightColor == noneStr ? m_defaultStyle[6] : highlightColor,
         };
-
         m_styleInfo << originalStyleInfo;
 
-        Q_EMIT styleChanged(m_styleInfo);
+        // For editorHighlighter
+        originalStyleInfo[0] = m_defaultStyle[0];
+        const QColor background = QColor::fromString(m_defaultStyle[0]);
+        const QString special = (background.value() < 128 ? background.lighter(300) : background.darker(200)).name();
+        originalStyleInfo.append(special);
+
+        Q_EMIT styleChanged(originalStyleInfo);
     } else {
         m_styleInfo << _styleInfo;
     }
