@@ -32,7 +32,7 @@ long long int rawIdxFromPos(const long long int startColumn, const long long int
 
 long long int rawIdxFromItem(const MDItemWithOptsPtr item, MDParsingOpts &po);
 
-bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start, const MD::WithPosition end);
+bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start, const MD::WithPosition end, const bool isCursor = false);
 
 struct StartColumnOrder {
     template<typename T>

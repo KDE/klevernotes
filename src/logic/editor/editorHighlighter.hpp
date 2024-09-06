@@ -62,6 +62,8 @@ private:
 
     void onEmoji(EmojiPlugin::EmojiItem *e);
 
+    void revertHeadingDelims(MD::Item<MD::QStringTrait> *item);
+
     QList<std::pair<MD::WithPosition, MD::WithPosition>> getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const MD::WithPosition &cursorPos);
 
     void revertDelimsStyle();

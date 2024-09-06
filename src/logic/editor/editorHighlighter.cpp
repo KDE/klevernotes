@@ -154,6 +154,16 @@ Items getInnerItems(MD::Item<MD::QStringTrait> *item)
     return {};
 }
 
+void EditorHighlighter::revertHeadingDelims(MD::Item<MD::QStringTrait> *item)
+{
+    const auto &h = static_cast<MD::Heading<MD::QStringTrait> *>(item);
+    d->headingLevel = h->level();
+
+    for (const auto &delim : h->delims()) {
+        d->revertFormat(delim);
+    }
+}
+
 QList<std::pair<MD::WithPosition, MD::WithPosition>> EditorHighlighter::getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item,
                                                                                                   const MD::WithPosition &cursorPos)
 {
@@ -179,7 +189,7 @@ QList<std::pair<MD::WithPosition, MD::WithPosition>> EditorHighlighter::getSurro
         const auto &open = pair.first;
         const auto &close = pair.second;
 
-        if (md4qtHelperFunc::isBetweenDelims(cursorPos, open, close)) {
+        if (md4qtHelperFunc::isBetweenDelims(cursorPos, open, close, true)) {
             surroundingDelimsPairs.append(pair);
         }
     }
@@ -212,12 +222,7 @@ void EditorHighlighter::revertDelimsStyle()
         const auto surroundingDelimsPairs = getSurroundingDelimsPairs(secondToLast, cursorPos);
 
         if (first->type() == MD::ItemType::Heading) {
-            const auto &h = static_cast<MD::Heading<MD::QStringTrait> *>(first);
-            d->headingLevel = h->level();
-
-            for (const auto &delim : h->delims()) {
-                d->revertFormat(delim);
-            }
+            revertHeadingDelims(first);
         }
 
         d->revertFormats(surroundingDelimsPairs);
@@ -228,15 +233,19 @@ void EditorHighlighter::revertDelimsStyle()
     }
 
     switch (first->type()) {
+    case MD::ItemType::Heading: {
+        revertHeadingDelims(first);
+        d->headingLevel = 0;
+        return;
+    }
     case MD::ItemType::Code: {
         const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(first);
         if (codeItem->isFensedCode()) {
             d->revertFormat(codeItem->startDelim());
             d->revertFormat(codeItem->endDelim());
         }
-        break;
+        return;
     }
-    case MD::ItemType::Heading:
     case MD::ItemType::Paragraph:
     case MD::ItemType::Blockquote:
     case MD::ItemType::List:

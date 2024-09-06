@@ -46,13 +46,17 @@ long long int rawIdxFromItem(const MDItemWithOptsPtr item, MDParsingOpts &po)
     return rawIdxFromPos(localPos.first, localPos.second, po);
 }
 
-bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start, const MD::WithPosition end)
+bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start, const MD::WithPosition end, const bool isCursor)
 {
     // Note: since we're dealing with delims, it's fine to assume that, within a delim: startLine() == endLine()
     const bool betweenLine = start.startLine() <= value.startLine() && value.startLine() <= end.startLine();
     if (betweenLine) {
-        const bool afterStart = start.startLine() < value.startLine() ? true : start.startColumn() <= value.startColumn();
-        const bool beforeEnd = value.startLine() < end.startLine() ? true : value.endColumn() <= end.endColumn();
+        // To be less strict with cursor
+        const long long veryStart = isCursor ? start.startColumn() - 1 : start.startColumn();
+        const long long veryEnd = isCursor ? end.endColumn() + 1 : end.endColumn();
+
+        const bool afterStart = start.startLine() < value.startLine() ? true : veryStart <= value.startColumn();
+        const bool beforeEnd = value.startLine() < end.startLine() ? true : value.endColumn() <= veryEnd;
 
         return afterStart && beforeEnd;
     }
