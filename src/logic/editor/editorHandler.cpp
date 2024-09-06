@@ -355,7 +355,7 @@ void EditorHandler::tagScaleChanged()
 
 void EditorHandler::cursorMovedTimeOut()
 {
-    if (!m_textChanged) {
+    if (!m_textChanged && m_notePath.endsWith(QStringLiteral(".md"))) {
         m_editorHighlighter->showDelimAroundCursor(m_textChanged);
     }
 

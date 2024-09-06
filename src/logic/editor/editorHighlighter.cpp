@@ -110,6 +110,11 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
         openCloseDelims.append({codeItem->startDelim(), codeItem->endDelim()});
         return makePairs(codeItem, waitingOpeningDelims, openCloseDelims);
     }
+    case MD::ItemType::LineBreak: {
+        // "useless" in this case, but no need for an error message,
+        // we already it is not supported, not a bug
+        break;
+    }
     default:
         // Find a better way to do this with futur user defined
         const int itemType = static_cast<int>(item->type());
@@ -232,9 +237,12 @@ void EditorHighlighter::revertDelimsStyle()
         break;
     }
     case MD::ItemType::Heading:
+    case MD::ItemType::Paragraph:
     case MD::ItemType::Blockquote:
     case MD::ItemType::List:
-    case MD::ItemType::ListItem: {
+    case MD::ItemType::ListItem:
+    case MD::ItemType::HorizontalLine:
+    case MD::ItemType::RawHtml: {
         // Those block are "useless" in this case, but no need for an error message,
         // we already know that they're not supported, not a bug
         break;
