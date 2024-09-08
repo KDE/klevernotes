@@ -10,6 +10,7 @@
 
 // C++ include.
 #include <algorithm>
+#include <cassert>
 #include <vector>
 
 namespace MD
@@ -30,6 +31,11 @@ struct PosRange {
     long long int endLine = -1;
     Item<Trait> *item = nullptr;
     std::vector<PosRange<Trait>> children = {};
+
+    inline bool isValidPos() const
+    {
+        return startColumn > -1 && startLine > -1 && endColumn > -1 && endLine > -1;
+    }
 };
 
 // Look at this equality operator like on rectangles intersection.
@@ -127,6 +133,8 @@ protected:
     void insertInCache(const details::PosRange<Trait> &item, bool sort = false)
     {
         if (!skipInCache) {
+            assert(item.isValidPos());
+
             auto pos = findInCache(cache, item);
 
             if (pos)
@@ -146,6 +154,13 @@ protected:
     }
 
 protected:
+    void onUserDefined(Item<Trait> *i) override
+    {
+        details::PosRange<Trait> r{i->startColumn(), i->startLine(), i->endColumn(), i->endLine(), i};
+
+        insertInCache(r);
+    }
+
     virtual void onReferenceLink(
         //! Link.
         Link<Trait> *l)
@@ -219,8 +234,8 @@ protected:
     {
         auto startColumn = c->isFensedCode() ? c->startDelim().startColumn() : c->startColumn();
         auto startLine = c->isFensedCode() ? c->startDelim().startLine() : c->startLine();
-        auto endColumn = c->isFensedCode() ? c->endDelim().endColumn() : c->endColumn();
-        auto endLine = c->isFensedCode() ? c->endDelim().endLine() : c->endLine();
+        auto endColumn = c->isFensedCode() && c->endDelim().endColumn() > -1 ? c->endDelim().endColumn() : c->endColumn();
+        auto endLine = c->isFensedCode() && c->endDelim().endLine() > -1 ? c->endDelim().endLine() : c->endLine();
 
         details::PosRange<Trait> r{startColumn, startLine, endColumn, endLine, c};
 

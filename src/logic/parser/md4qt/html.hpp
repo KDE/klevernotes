@@ -11,7 +11,6 @@
 #include "visitor.hpp"
 
 // C++ include.
-#include <algorithm>
 #include <string>
 #include <utility>
 
@@ -321,17 +320,6 @@ protected:
                             html.push_back(Trait::latin1ToString(">\n"));
                         }
                     }
-                } else {
-                    if (item->listType() != type) {
-                        if (!justCollectFootnoteRefs) {
-                            if (type == ListItem<Trait>::Ordered)
-                                html.push_back(Trait::latin1ToString("</ol><ul>\n"));
-                            else
-                                html.push_back(Trait::latin1ToString("</ul><ol>\n"));
-                        }
-
-                        type = item->listType();
-                    }
                 }
 
                 onListItem(item, first);
@@ -379,7 +367,7 @@ protected:
             }
 
             if (!justCollectFootnoteRefs)
-                html.push_back(Trait::latin1ToString("</thead><tbody>\n"));
+                html.push_back(Trait::latin1ToString("</tr></thead><tbody>\n"));
 
             for (auto r = std::next(t->rows().cbegin()), rlast = t->rows().cend(); r != rlast; ++r) {
                 if (!justCollectFootnoteRefs)
