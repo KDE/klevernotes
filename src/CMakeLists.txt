@@ -16,6 +16,7 @@ add_library(klevernoteslib STATIC
     logic/editor/editorHandler.cpp
     logic/editor/editorHighlighter.cpp
     logic/editor/editorHighlighterPrivate.cpp
+    logic/editor/posCacheUtils.cpp
 
     # Painting
     logic/painting/pointMaker.cpp

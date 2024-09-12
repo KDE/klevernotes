@@ -6,6 +6,7 @@
 // KleverNotes include
 #include "editorHighlighterPrivate.hpp"
 #include "logic/editor/colors.hpp"
+#include "logic/editor/posCacheUtils.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
 
 // md4qt include.
@@ -64,7 +65,13 @@ private:
 
     void revertHeadingDelims(MD::Item<MD::QStringTrait> *item);
 
-    QList<std::pair<MD::WithPosition, MD::WithPosition>> getSurroundingDelimsPairs(MD::Item<MD::QStringTrait> *item, const MD::WithPosition &cursorPos);
+    void addBlockDelims(QList<posCacheUtils::DelimsInfo> &delims,
+                        const QTextBlock &block,
+                        const MD::WithPosition &pos,
+                        const MD::WithPosition &selectStartPos = {},
+                        const MD::WithPosition &selectEndPos = {});
+
+    QList<posCacheUtils::DelimsInfo> getDelimsFromCursor();
 
     void revertDelimsStyle();
 

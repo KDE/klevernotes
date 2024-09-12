@@ -52,10 +52,9 @@ bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start,
     const bool betweenLine = start.startLine() <= value.startLine() && value.startLine() <= end.startLine();
     if (betweenLine) {
         // To be less strict with cursor
-        const long long veryStart = isCursor ? start.startColumn() - 1 : start.startColumn();
         const long long veryEnd = isCursor ? end.endColumn() + 1 : end.endColumn();
 
-        const bool afterStart = start.startLine() < value.startLine() ? true : veryStart <= value.startColumn();
+        const bool afterStart = start.startLine() < value.startLine() ? true : start.startColumn() <= value.startColumn();
         const bool beforeEnd = value.startLine() < end.startLine() ? true : value.endColumn() <= veryEnd;
 
         return afterStart && beforeEnd;

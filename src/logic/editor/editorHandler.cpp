@@ -142,6 +142,38 @@ void EditorHandler::setCursorPosition(const int cursorPosition)
         m_cursorMoveTimer->start();
     }
 }
+
+int EditorHandler::selectionStart() const
+{
+    return m_selectionStart;
+}
+
+void EditorHandler::setSelectionStart(const int position)
+{
+    if (position == m_selectionStart) {
+        return;
+    }
+
+    m_selectionStart = position;
+
+    if (m_cursorMoveTimer) {
+        m_cursorMoveTimer->start();
+    }
+}
+
+int EditorHandler::selectionEnd() const
+{
+    return m_selectionEnd;
+}
+
+void EditorHandler::setSelectionEnd(const int position)
+{
+    if (position == m_selectionEnd) {
+        return;
+    }
+
+    m_selectionEnd = position;
+}
 // !QTextDocument Info
 
 // KleverNotes method

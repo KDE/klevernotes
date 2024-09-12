@@ -36,6 +36,8 @@ class EditorHandler : public QObject
 
     Q_PROPERTY(QQuickTextDocument *document READ qQuickDocument WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(int cursorPosition READ cursorPosition WRITE setCursorPosition NOTIFY cursorPositionChanged)
+    Q_PROPERTY(int selectionStart READ selectionStart WRITE setSelectionStart NOTIFY selectionStartChanged)
+    Q_PROPERTY(int selectionEnd READ selectionEnd WRITE setSelectionEnd NOTIFY selectionEndChanged)
 
     Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
 
@@ -47,6 +49,8 @@ public:
     QQuickTextDocument *qQuickDocument() const;
     QTextCursor textCursor() const;
     int cursorPosition() const;
+    int selectionStart() const;
+    int selectionEnd() const;
 
     // Parser
     void parseDoc();
@@ -68,6 +72,8 @@ public:
 Q_SIGNALS:
     void documentChanged();
     void cursorPositionChanged(const int position);
+    void selectionStartChanged(const int position);
+    void selectionEndChanged(const int position);
 
     void parsingFinished(const QString &content);
 
@@ -102,6 +108,8 @@ private:
     // QTextDocument info
     void setDocument(QQuickTextDocument *document);
     void setCursorPosition(const int cursorPosition);
+    void setSelectionStart(const int position);
+    void setSelectionEnd(const int position);
 
     // Render
     void renderDoc();
@@ -121,6 +129,8 @@ private:
     QQuickTextDocument *m_qQuickDocument = nullptr;
     QTextDocument *m_document = nullptr;
     int m_cursorPosition = 0;
+    int m_selectionStart = 0;
+    int m_selectionEnd = 0;
 
     // Parsing
     QString m_previousPath;

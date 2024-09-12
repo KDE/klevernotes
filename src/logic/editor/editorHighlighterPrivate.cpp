@@ -330,13 +330,12 @@ void EditorHighlighterPrivate::revertFormat(const MD::WithPosition &withPosition
     }
 }
 
-void EditorHighlighterPrivate::revertFormats(const QList<std::pair<MD::WithPosition, MD::WithPosition>> delims)
+void EditorHighlighterPrivate::revertFormats(const posCacheUtils::DelimsInfo &delimInfo)
 {
-    if (!delims.isEmpty()) {
-        for (const auto &pair : delims) {
-            revertFormat(pair.first);
-            revertFormat(pair.second);
-        }
+    QScopedValueRollback tmpHeadingLevel(headingLevel, delimInfo.headingLevel);
+    revertFormat(delimInfo.opening);
+    if (delimInfo.closing.endColumn() != -1) {
+        revertFormat(delimInfo.closing);
     }
 }
 

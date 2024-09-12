@@ -43,6 +43,12 @@ ScrollView {
         onCursorPositionChanged: {
             EditorHandler.cursorPosition = cursorPosition
         }
+        onSelectionStartChanged: {
+            EditorHandler.selectionStart = selectionStart
+        }
+        onSelectionEndChanged: {
+            EditorHandler.selectionEnd = selectionEnd
+        }
         onTextChanged: {
             if (!tempBuff) {
                 modified = true

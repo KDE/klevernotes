@@ -3,6 +3,7 @@
 
 // KleverNotes includes
 #include "logic/editor/editorHandler.hpp"
+#include "logic/editor/posCacheUtils.hpp"
 
 // Qt include.
 #include <QTextBlock>
@@ -40,7 +41,7 @@ public:
 
     void revertFormat(const MD::WithPosition &withPosition);
 
-    void revertFormats(const QList<std::pair<MD::WithPosition, MD::WithPosition>> delimsPairs);
+    void revertFormats(const posCacheUtils::DelimsInfo &delimInfo);
 
     void preventAutoScroll();
 
