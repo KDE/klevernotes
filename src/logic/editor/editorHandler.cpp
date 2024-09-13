@@ -156,7 +156,7 @@ void EditorHandler::setSelectionStart(const int position)
 
     m_selectionStart = position;
 
-    if (m_cursorMoveTimer) {
+    if (m_cursorMoveTimer && m_selectionStart == m_selectionEnd) {
         m_cursorMoveTimer->start();
     }
 }
@@ -173,6 +173,10 @@ void EditorHandler::setSelectionEnd(const int position)
     }
 
     m_selectionEnd = position;
+
+    if (m_cursorMoveTimer && m_selectionStart == m_selectionEnd) {
+        m_cursorMoveTimer->start();
+    }
 }
 // !QTextDocument Info
 
