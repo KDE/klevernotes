@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-30 00:41+0000\n"
+"POT-Creation-Date: 2024-09-13 00:40+0000\n"
 "PO-Revision-Date: 2024-08-02 23:21+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -567,24 +567,6 @@ msgstr ""
 "Mesedez, aukeratu zure etorkizuneko «KleverNotes» biltegiratzerako kokaleku "
 "bat edo aurrez dagoen bat aukeratu.\n"
 
-#: contents/ui/settings/AppearanceTab.qml:18
-#, kde-format
-msgctxt "@title, as in text editor"
-msgid "Editor"
-msgstr "Editorea"
-
-#: contents/ui/settings/AppearanceTab.qml:29
-#, kde-format
-msgctxt "@label:textbox, the font used in the text editor"
-msgid "Editor font:"
-msgstr "Editorearen letra-tipoa:"
-
-#: contents/ui/settings/AppearanceTab.qml:38
-#, kde-format
-msgctxt "@title, where you can view the renderer note"
-msgid "Note preview"
-msgstr "Oharra aurreikusi"
-
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
 msgctxt "@label:combobox"
@@ -639,6 +621,98 @@ msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr "Kode-blokearen letra-tipoa:"
 
+#: contents/ui/settings/EditorHighlightPreview.qml:26
+#, kde-format
+msgctxt ""
+"@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
+"header`, similar concept as an html tag `<h1>`"
+msgid "Enable adaptive tag size"
+msgstr ""
+
+#: contents/ui/settings/EditorHighlightPreview.qml:27
+#, kde-format
+msgctxt ""
+"@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
+"header`, similar concept as an html tag `<h1>`"
+msgid "The adaptive size will scale the tag size based on its surrounding."
+msgstr ""
+
+#: contents/ui/settings/EditorHighlightPreview.qml:28
+#, kde-format
+msgctxt ""
+"@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
+"header`, similar concept as an html tag `<h1>`"
+msgid ""
+"Example: a tag inside a header will be as large as the rest of the header "
+"text."
+msgstr ""
+
+#: contents/ui/settings/EditorHighlightPreview.qml:42
+#, kde-format
+msgctxt ""
+"@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
+"header`, similar concept as an html tag `<h1>`"
+msgid "Tag scale"
+msgstr ""
+
+#: contents/ui/settings/EditorHighlightPreview.qml:84
+#, kde-format
+msgctxt ""
+"@exemple, the rest of the sentence is 'italic text and its tags', the second "
+"part is provided by another string"
+msgid "A title with a preview of"
+msgstr ""
+
+#: contents/ui/settings/EditorHighlightPreview.qml:108
+#, kde-format
+msgctxt ""
+"@exemple, the first part of the sentence is 'A title with a preview of ', "
+"the first part is provided by another string"
+msgid "italic text and its tags"
+msgstr ""
+
+#: contents/ui/settings/EditorTab.qml:21
+#, fuzzy, kde-format
+#| msgctxt "@label, tab (inside tab bar), general settings of the app"
+#| msgid "General"
+msgctxt "@title, general text editor settings"
+msgid "General"
+msgstr "Orokorra"
+
+#: contents/ui/settings/EditorTab.qml:32
+#, kde-format
+msgctxt "@label:textbox, the font used in the text editor"
+msgid "Editor font:"
+msgstr "Editorearen letra-tipoa:"
+
+#: contents/ui/settings/EditorTab.qml:46
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Use spaces for tab"
+msgstr "Erabili zuriuneak tabulazioetarako"
+
+#: contents/ui/settings/EditorTab.qml:58
+#, kde-format
+msgctxt "@label:combobox"
+msgid "Number of spaces"
+msgstr "Zuriune kopurua"
+
+#: contents/ui/settings/EditorTab.qml:75
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Text highlight"
+msgctxt "@title"
+msgid "Editor highlighting"
+msgstr "Testua nabarmendu"
+
+#: contents/ui/settings/EditorTab.qml:87
+#, fuzzy, kde-format
+#| msgctxt "@label:checkbox"
+#| msgid "Enable code syntax highlighting"
+msgctxt "@label:checkbox"
+msgid "Enable editor highlighting"
+msgstr "Gaitu kodearen sintaxia nabarmentzea"
+
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
 msgctxt ""
@@ -680,35 +754,17 @@ msgstr "Ohar-izen berria:"
 
 #: contents/ui/settings/GeneralTab.qml:155
 #, kde-format
-msgctxt "@title, general text editor settings"
-msgid "Editor"
-msgstr "Editorea"
-
-#: contents/ui/settings/GeneralTab.qml:165
-#, kde-format
-msgctxt "@label:checkbox"
-msgid "Use spaces for tab"
-msgstr "Erabili zuriuneak tabulazioetarako"
-
-#: contents/ui/settings/GeneralTab.qml:177
-#, kde-format
-msgctxt "@label:combobox"
-msgid "Number of spaces"
-msgstr "Zuriune kopurua"
-
-#: contents/ui/settings/GeneralTab.qml:194
-#, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr "Tresna-barra"
 
-#: contents/ui/settings/GeneralTab.qml:202
+#: contents/ui/settings/GeneralTab.qml:163
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr "Ikusgai"
 
-#: contents/ui/settings/GeneralTab.qml:263
+#: contents/ui/settings/GeneralTab.qml:224
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
@@ -891,14 +947,24 @@ msgid "General"
 msgstr "Orokorra"
 
 #: contents/ui/settings/TabBar.qml:21
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title, where you can view the renderer note"
+#| msgid "Note preview"
 msgctxt ""
-"@label, tab (inside tab bar), all settings related to the general appearance "
-"of the app"
-msgid "Appearance"
-msgstr "Itxura"
+"@label, tab (inside tab bar), all settings related to the rendered preview "
+"of the note"
+msgid "Note preview"
+msgstr "Oharra aurreikusi"
 
 #: contents/ui/settings/TabBar.qml:29
+#, fuzzy, kde-format
+#| msgctxt "@title, as in text editor"
+#| msgid "Editor"
+msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
+msgid "Editor"
+msgstr "Editorea"
+
+#: contents/ui/settings/TabBar.qml:37
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
@@ -1688,6 +1754,16 @@ msgstr "Iñigo Salvador Azurmendi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
+
+#~ msgctxt "@title, general text editor settings"
+#~ msgid "Editor"
+#~ msgstr "Editorea"
+
+#~ msgctxt ""
+#~ "@label, tab (inside tab bar), all settings related to the general "
+#~ "appearance of the app"
+#~ msgid "Appearance"
+#~ msgstr "Itxura"
 
 #, fuzzy
 #~| msgctxt ""
