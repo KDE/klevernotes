@@ -227,6 +227,16 @@ ColumnLayout {
     }
 
     Connections {
+        id: editorHandlerConnections
+        target: EditorHandler
+
+        function onSurroundingDelimsChanged(delimsTypes) {
+            toolbar.checkSourrindingDelimsActions(delimsTypes)
+        }
+    }
+
+
+    Connections {
         id: styleHandlerConnections
 
         target: StyleHandler

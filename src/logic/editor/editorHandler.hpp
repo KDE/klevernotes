@@ -77,6 +77,8 @@ Q_SIGNALS:
 
     void parsingFinished(const QString &content);
 
+    void surroundingDelimsChanged(const QList<int> &delimsTypes);
+
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
 

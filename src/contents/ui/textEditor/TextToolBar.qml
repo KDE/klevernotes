@@ -92,6 +92,8 @@ Kirigami.ActionToolBar {
     }
     readonly property list<int> visibleTools: Config.visibleTools
 
+    property var actionPositionMap;
+
     // This 'replicate' the DefaultCardBackground and just change the background color
     //(https://api.kde.org/frameworks/kirigami/html/DefaultCardBackground_8qml_source.html)
     background: Kirigami.ShadowedRectangle{
@@ -236,6 +238,76 @@ Kirigami.ActionToolBar {
         }
     }
 
+    function checkSourrindingDelimsActions(delimsTypes) {
+        for (let i = 0 ; i < toolbar.actions.length ; i++) {
+            let currentAction = toolbar.actions[i]
+            for (let j = 0 ; j < currentAction.children.length ; j++) {
+                const actionChild = currentAction.children[j].checked = false
+            }
+            currentAction.checked = false
+        }
+
+        for (let i = 0 ; i < delimsTypes.length ; i++) {
+            let actionIndex = undefined;
+            let headingLevel = 0;
+            switch (delimsTypes[i]) {
+                case 1:
+                    actionIndex = toolbar.actionPositionMap["bold"]
+                    break;
+                case 2:
+                    actionIndex = toolbar.actionPositionMap["italic"]
+                    break;
+                case 4:
+                    actionIndex = toolbar.actionPositionMap["strikethrough"]
+                    break;
+                case -10:
+                    actionIndex = toolbar.actionPositionMap["h"]
+                    headingLevel = 1
+                    break;
+                case -9:
+                    actionIndex = toolbar.actionPositionMap["h"]
+                    headingLevel = 2
+                    break;
+                case -8:
+                    actionIndex = toolbar.actionPositionMap["h"]
+                    headingLevel = 3
+                    break;
+                case -7:
+                    actionIndex = toolbar.actionPositionMap["h"]
+                    headingLevel = 4
+                    break;
+                case -6:
+                    actionIndex = toolbar.actionPositionMap["h"]
+                    headingLevel = 5
+                    break;
+                case -5:
+                    actionIndex = toolbar.actionPositionMap["h"]
+                    headingLevel = 6
+                    break;
+                case -4:
+                    actionIndex = toolbar.actionPositionMap["codeBlock"]
+                    break;
+                case -3:
+                    actionIndex = toolbar.actionPositionMap["quote"]
+                    break;
+                case -2:
+                    actionIndex = toolbar.actionPositionMap["orderedList"]
+                    break;
+                case -1:
+                    actionIndex = toolbar.actionPositionMap["unorderedList"]
+                    break;
+            }
+            if (actionIndex !== undefined) {
+                if (headingLevel) {
+                    // TODO: rework toolbar to better show when this is checked
+                    toolbar.actions[actionIndex].children[headingLevel - 1].checked = true
+                } else {
+                    toolbar.actions[actionIndex].checked = true
+                }
+            }
+        }
+    }
+
     function handleAction(selectionStart, selectionEnd, specialChars,
                           multiPlaceApply, applyIncrement, checkByBlock) {
 
@@ -296,6 +368,13 @@ Kirigami.ActionToolBar {
         }
 
         const finalList = visibleActions.concat(unknownActions)
+        
+        let actionPosition = {}
+        for (let i = 0 ; i < finalList.length ; i++) {
+            const currentAction = finalList[i]
+            actionPosition[currentAction.actionName] = i
+        }
+        toolbar.actionPositionMap = actionPosition
 
         if (finalList.length !== visibleIndexes.length) {
             Config.visibleTools = visibleIndexes.concat(unknownIndexes) 

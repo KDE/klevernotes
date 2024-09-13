@@ -18,9 +18,25 @@ namespace posCacheUtils
 {
 struct DelimsInfo {
     int headingLevel = 0;
+    int delimType = MD::TextOption::TextWithoutFormat;
     MD::WithPosition opening = {};
     MD::WithPosition closing = {};
 };
+
+// Use negative values since positive are for style delims
+enum BlockDelimTypes {
+    Heading1 = -10,
+    Heading2,
+    Heading3,
+    Heading4,
+    Heading5,
+    Heading6,
+    CodeBlock,
+    BlockQuote,
+    OrderedList,
+    UnorderedList,
+};
+
 bool operator==(const DelimsInfo &d1, const DelimsInfo &d2);
 
 void addDelimsFromItems(QList<DelimsInfo> &delims,

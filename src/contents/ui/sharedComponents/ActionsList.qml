@@ -10,7 +10,7 @@ import org.kde.Klever
 Item {
     readonly property list<QtObject> actions: [ 
         KAction {
-            actionName: "𝐇"
+            actionName: "h"
 			description: i18nc("@tooltip, text format, will be followed by the shortcut", "Headers")
             text: "𝐇"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Headers") + " (Ctrl+" + i18nc("@tooltip, short form of 'number'", "num") + ")"
@@ -21,6 +21,8 @@ Item {
                 text: "𝐇𝟏"
                 shortcut: "Ctrl+1"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 1") + " (" + shortcut + ")"
+                checkable: true
+                checked: false
             }
             KAction {
                 actionName: "h2"
@@ -28,6 +30,8 @@ Item {
                 text: "𝐇𝟐"
                 shortcut: "Ctrl+2"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 2") + " (" + shortcut + ")"
+                checkable: true
+                checked: false
             }
             KAction {
                 actionName: "h3"
@@ -35,6 +39,8 @@ Item {
                 text: "𝐇𝟑"
                 shortcut: "Ctrl+3"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 3") + " (" + shortcut + ")"
+                checkable: true
+                checked: false
             }
             KAction {
                 actionName: "h4"
@@ -42,6 +48,8 @@ Item {
                 text: "𝐇𝟒"
                 shortcut: "Ctrl+4"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 4") + " (" + shortcut + ")"
+                checkable: true
+                checked: false
             }
             KAction {
                 actionName: "h5"
@@ -49,6 +57,8 @@ Item {
                 text: "𝐇𝟓"
                 shortcut: "Ctrl+5"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 5") + " (" + shortcut + ")"
+                checkable: true
+                checked: false
             }
             KAction {
                 actionName: "h6"
@@ -56,6 +66,8 @@ Item {
                 text: "𝐇𝟔"
                 shortcut: "Ctrl+6"
                 tooltip: i18nc("@tooltip, text format header level, will be followed by the shortcut", "Header 6") + " (" + shortcut + ")"
+                checkable: true
+                checked: false
             }
         },
         KAction {
@@ -64,6 +76,8 @@ Item {
             shortcut: "Ctrl+B"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Bold") + " (" + shortcut + ")"
             icon.name: "format-text-bold-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "italic"
@@ -71,6 +85,8 @@ Item {
             shortcut: "Ctrl+I"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Italic") + " (" + shortcut + ")"
             icon.name: "format-text-italic-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "strikethrough"
@@ -78,6 +94,8 @@ Item {
             shortcut: "Alt+Shift+S"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Strikethrough") + " (" + shortcut + ")"
             icon.name: "format-text-strikethrough-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "codeBlock"
@@ -85,6 +103,8 @@ Item {
             shortcut: "Ctrl+Shift+K"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Code") + " (" + shortcut + ")"
             icon.name: "format-text-code-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "quote"
@@ -92,6 +112,8 @@ Item {
             shortcut: "Ctrl+Shift+Q"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Quote") + " (" + shortcut + ")"
             icon.name: "format-text-blockquote-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "image"
@@ -120,6 +142,8 @@ Item {
             shortcut: "Ctrl+Shift+O"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Ordered list") + " (" + shortcut + ")"
             icon.name: "format-list-ordered-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "unorderedList"
@@ -127,6 +151,8 @@ Item {
             shortcut: "Ctrl+Shift+U"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Unordered list") + " (" + shortcut + ")"
             icon.name: "format-list-unordered-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "highlight"

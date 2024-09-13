@@ -17,33 +17,37 @@ static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
 
 void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
                QList<MD::WithPosition> &waitingOpeningDelims,
-               QList<std::pair<MD::WithPosition, MD::WithPosition>> &openCloseDelims)
+               QList<posCacheUtils::DelimsInfo> &openCloseDelims,
+               const int headingLevel)
 {
     for (const MD::WithPosition &openStyle : item->openStyles()) { // Need the cast into MD::WithPosition
         waitingOpeningDelims.append(openStyle);
     }
 
-    for (const MD::WithPosition &closeStyle : item->closeStyles()) {
-        std::pair<MD::WithPosition, MD::WithPosition> newPair = std::make_pair(waitingOpeningDelims.takeLast(), closeStyle);
-        openCloseDelims.append(newPair);
+    for (const auto &closeStyle : item->closeStyles()) {
+        const posCacheUtils::DelimsInfo pairInfo = {headingLevel, closeStyle.style(), waitingOpeningDelims.takeLast(), closeStyle};
+        openCloseDelims.append(pairInfo);
     }
 }
 
 void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
                         QList<MD::WithPosition> &waitingOpeningDelims,
-                        QList<std::pair<MD::WithPosition, MD::WithPosition>> &openCloseDelims)
+                        QList<posCacheUtils::DelimsInfo> &openCloseDelims,
+                        const int headingLevel)
 {
     switch (item->type()) {
     case MD::ItemType::Text:
     case MD::ItemType::Link:
     case MD::ItemType::Image: {
         const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item);
-        return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims);
+        return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims, headingLevel);
     }
     case MD::ItemType::Code: {
         const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item);
-        openCloseDelims.append({codeItem->startDelim(), codeItem->endDelim()});
-        return makePairs(codeItem, waitingOpeningDelims, openCloseDelims);
+        const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, codeItem->startDelim(), codeItem->endDelim()};
+        openCloseDelims.append(outerDelims);
+
+        return makePairs(codeItem, waitingOpeningDelims, openCloseDelims, headingLevel);
     }
     case MD::ItemType::LineBreak: {
         // "useless" in this case, but no need for an error message,
@@ -56,8 +60,10 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
 
         if (itemType == USERDEFINEDINT + 1) {
             const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item);
-            openCloseDelims.append({emojiItem->startDelim(), emojiItem->endDelim()});
-            return makePairs(emojiItem, waitingOpeningDelims, openCloseDelims);
+            const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, emojiItem->startDelim(), emojiItem->endDelim()};
+            openCloseDelims.append(outerDelims);
+
+            return makePairs(emojiItem, waitingOpeningDelims, openCloseDelims, headingLevel);
         } else {
             qWarning() << "Item not handled" << static_cast<int>(item->type());
             return;
@@ -94,10 +100,81 @@ void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QSt
     headingLevel = h->level();
 
     for (const auto &delim : h->delims()) {
-        const posCacheUtils::DelimsInfo delimInfo = {headingLevel, delim};
+        int delimType = 0;
+        switch (headingLevel) {
+        case 1:
+            delimType = posCacheUtils::BlockDelimTypes::Heading1;
+            break;
+        case 2:
+            delimType = posCacheUtils::BlockDelimTypes::Heading2;
+            break;
+        case 3:
+            delimType = posCacheUtils::BlockDelimTypes::Heading3;
+            break;
+        case 4:
+            delimType = posCacheUtils::BlockDelimTypes::Heading4;
+            break;
+        case 5:
+            delimType = posCacheUtils::BlockDelimTypes::Heading5;
+            break;
+        case 6:
+            delimType = posCacheUtils::BlockDelimTypes::Heading6;
+            break;
+        }
+        const posCacheUtils::DelimsInfo delimInfo = {headingLevel, delimType, delim};
         if (!delims.contains(delimInfo)) {
             delims.append(delimInfo);
         }
+    }
+}
+
+void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QStringTrait> *item, const MD::WithPosition &pos, int &headingLevel)
+{
+    posCacheUtils::DelimsInfo delimInfo;
+    switch (item->type()) {
+    case MD::ItemType::Heading: { // Happens when hovering a heading delim
+        int headingLevel = 0;
+        addHeadingDelims(delims, item, headingLevel);
+        return;
+    }
+    case MD::ItemType::Code: {
+        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item);
+        if (codeItem->isFensedCode()) {
+            delimInfo = {0, posCacheUtils::BlockDelimTypes::CodeBlock, codeItem->startDelim(), codeItem->endDelim()};
+        }
+        break;
+    }
+    case MD::ItemType::Blockquote: {
+        const auto quoteItem = static_cast<MD::Blockquote<MD::QStringTrait> *>(item);
+        for (const auto &delim : quoteItem->delims()) {
+            if (delim.startLine() == pos.startLine()) {
+                delimInfo = {headingLevel, posCacheUtils::BlockDelimTypes::BlockQuote, delim};
+                break;
+            }
+        }
+        break;
+    }
+    case MD::ItemType::ListItem: {
+        const auto listItem = static_cast<MD::ListItem<MD::QStringTrait> *>(item);
+        int delimType = listItem->listType() == MD::ListItem<MD::QStringTrait>::ListType::Ordered ? posCacheUtils::BlockDelimTypes::OrderedList
+                                                                                                  : posCacheUtils::BlockDelimTypes::UnorderedList;
+        delimInfo = {headingLevel, delimType, listItem->delim()};
+        break;
+    }
+    case MD::ItemType::List:
+    case MD::ItemType::Paragraph:
+    case MD::ItemType::HorizontalLine:
+    case MD::ItemType::RawHtml: {
+        // Those block are "useless" in this case, but no need for an error message,
+        // we already know that they're not supported, not a bug
+        break;
+    }
+    default:
+        qWarning() << "addBlockItemDelims: Unsupported block item" << static_cast<int>(item->type());
+    }
+
+    if (delimInfo.opening.startLine() != -1 && !delims.contains(delimInfo)) {
+        delims.append(delimInfo);
     }
 }
 
@@ -111,10 +188,10 @@ void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
     auto items = getInnerItems(item);
 
     QList<MD::WithPosition> waitingOpeningDelims;
-    QList<std::pair<MD::WithPosition, MD::WithPosition>> openCloseDelims;
+    QList<posCacheUtils::DelimsInfo> openCloseDelims;
 
     for (const auto &item : items) {
-        getOpenCloseDelims(item.get(), waitingOpeningDelims, openCloseDelims);
+        getOpenCloseDelims(item.get(), waitingOpeningDelims, openCloseDelims, headingLevel);
     }
 
     if (!waitingOpeningDelims.isEmpty()) {
@@ -125,9 +202,9 @@ void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
         return;
     }
 
-    for (const auto &pair : openCloseDelims) {
-        const auto &openDelim = pair.first;
-        const auto &closeDelim = pair.second;
+    for (const auto &delimInfo : openCloseDelims) {
+        const auto &openDelim = delimInfo.opening;
+        const auto &closeDelim = delimInfo.closing;
 
         bool addPair = md4qtHelperFunc::isBetweenDelims(cursorPos, openDelim, closeDelim, true);
         if (!addPair && selectStartPos.startColumn() != -1 && selectEndPos.startColumn() != -1) {
@@ -136,7 +213,6 @@ void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
         }
 
         if (addPair) {
-            const posCacheUtils::DelimsInfo delimInfo = {headingLevel, openDelim, closeDelim};
             if (!delims.contains(delimInfo)) {
                 delims.append(delimInfo);
             }
@@ -158,49 +234,16 @@ void addDelimsFromItems(QList<posCacheUtils::DelimsInfo> &delims,
                         const MD::WithPosition &selectStartPos,
                         const MD::WithPosition &selectEndPos)
 {
-    const auto &first = items.first();
+    int headingLevel = 0;
     const int cacheLen = items.length();
+    MD::Item<MD::QStringTrait> *blockItem = 3 <= cacheLen ? items.at(cacheLen - 3) : items.first();
+
+    addBlockItemDelims(delims, blockItem, pos, headingLevel);
+
     if (2 <= cacheLen) {
         const auto &secondToLast = items.at(cacheLen - 2);
 
-        int headingLevel = 0;
-        if (first->type() == MD::ItemType::Heading) {
-            addHeadingDelims(delims, first, headingLevel);
-        }
-
         addSurroundingDelimsPairs(delims, secondToLast, pos, selectStartPos, selectEndPos, headingLevel);
-
-        return;
-    }
-
-    switch (first->type()) {
-    case MD::ItemType::Heading: {
-        int headingLevel = 0;
-        addHeadingDelims(delims, first, headingLevel);
-        return;
-    }
-    case MD::ItemType::Code: {
-        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(first);
-        if (codeItem->isFensedCode()) {
-            const posCacheUtils::DelimsInfo delimInfo = {0, codeItem->startDelim(), codeItem->endDelim()};
-            if (!delims.contains(delimInfo)) {
-                delims.append(delimInfo);
-            }
-        }
-        return;
-    }
-    case MD::ItemType::Paragraph:
-    case MD::ItemType::Blockquote:
-    case MD::ItemType::List:
-    case MD::ItemType::ListItem:
-    case MD::ItemType::HorizontalLine:
-    case MD::ItemType::RawHtml: {
-        // Those block are "useless" in this case, but no need for an error message,
-        // we already know that they're not supported, not a bug
-        break;
-    }
-    default:
-        qWarning() << "revertDelimsStyle: Unsupported block item" << static_cast<int>(first->type());
     }
 }
 }

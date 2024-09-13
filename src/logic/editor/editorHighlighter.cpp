@@ -132,17 +132,17 @@ QList<posCacheUtils::DelimsInfo> EditorHighlighter::getDelimsFromCursor()
     return delims;
 }
 
-void EditorHighlighter::revertDelimsStyle()
+QList<posCacheUtils::DelimsInfo> EditorHighlighter::revertDelimsStyle()
 {
     const auto delims = getDelimsFromCursor();
 
     for (const auto &delimInfo : delims) {
         d->revertFormats(delimInfo);
     }
-    return;
+    return delims;
 }
 
-void EditorHighlighter::showDelimAroundCursor(const bool clearCache)
+QList<posCacheUtils::DelimsInfo> EditorHighlighter::showDelimAroundCursor(const bool clearCache)
 {
     if (clearCache) {
         d->cachedFormats.clear();
@@ -152,10 +152,12 @@ void EditorHighlighter::showDelimAroundCursor(const bool clearCache)
     auto c = d->editor->textCursor();
 
     c.joinPreviousEditBlock();
-    revertDelimsStyle();
+    const auto delims = revertDelimsStyle();
     d->applyFormats();
     d->preventAutoScroll();
     c.endEditBlock();
+
+    return delims;
 }
 
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)

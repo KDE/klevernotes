@@ -392,7 +392,15 @@ void EditorHandler::tagScaleChanged()
 void EditorHandler::cursorMovedTimeOut()
 {
     if (!m_textChanged && m_notePath.endsWith(QStringLiteral(".md"))) {
-        m_editorHighlighter->showDelimAroundCursor(m_textChanged);
+        const auto delims = m_editorHighlighter->showDelimAroundCursor(m_textChanged);
+
+        QList<int> delimsTypes;
+        for (const auto &delimInfo : delims) {
+            if (!delimsTypes.contains(delimInfo.delimType)) {
+                delimsTypes.append(delimInfo.delimType);
+            }
+        }
+        Q_EMIT surroundingDelimsChanged(delimsTypes);
     }
 
     m_textChanged = false;

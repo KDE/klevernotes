@@ -31,7 +31,7 @@ public:
     ~EditorHighlighter() override;
 
     void highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const Colors &colors);
-    void showDelimAroundCursor(const bool clearCache = true);
+    QList<posCacheUtils::DelimsInfo> showDelimAroundCursor(const bool clearCache = true);
     void setFont(const QFont &f);
     void clearHighlighting();
 
@@ -73,7 +73,7 @@ private:
 
     QList<posCacheUtils::DelimsInfo> getDelimsFromCursor();
 
-    void revertDelimsStyle();
+    QList<posCacheUtils::DelimsInfo> revertDelimsStyle();
 
 private:
     Q_DISABLE_COPY(EditorHighlighter)
