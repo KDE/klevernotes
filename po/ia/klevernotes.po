@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-13 00:40+0000\n"
-"PO-Revision-Date: 2024-07-26 12:08+0200\n"
+"PO-Revision-Date: 2024-09-13 18:23+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -625,7 +625,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Habilita grandor de etiquetta adaptative"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -634,6 +634,7 @@ msgctxt ""
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
 msgstr ""
+"Le grandor adaptative scalara le grandor de etiquetta basate sur su ambiente"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -644,6 +645,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Exemplo: un etiquetta intra un capite essera tanto grande quanto le resto dl "
+"texto del capite."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -651,7 +654,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Scala de etiquetta"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -659,7 +662,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Un titulo con vista preliminar de"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -667,12 +670,10 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "Texto italic e su etiquetta"
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "General"
@@ -696,20 +697,16 @@ msgid "Number of spaces"
 msgstr "Numero de spatios"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Evidentia texto"
+msgstr "Evidentiar de editor"
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Habilita evidentia de syntaxe de codice"
+msgstr "Habilita evidentiar de editor"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -943,9 +940,7 @@ msgid "General"
 msgstr "General"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
@@ -953,12 +948,10 @@ msgid "Note preview"
 msgstr "Vista preliminar de nota"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
-msgstr "Redactor (Editor)"
+msgstr "Editor"
 
 #: contents/ui/settings/TabBar.qml:37
 #, kde-format
