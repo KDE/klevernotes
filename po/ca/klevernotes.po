@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-13 00:40+0000\n"
-"PO-Revision-Date: 2024-07-26 07:43+0200\n"
+"PO-Revision-Date: 2024-09-14 13:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -627,7 +627,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Activa la mida adaptativa d'etiquetes"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -636,6 +636,7 @@ msgctxt ""
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
 msgstr ""
+"La mida adaptativa escalarà la mida de l'etiqueta en funció del seu entorn."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -646,6 +647,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Exemple: una etiqueta dins una capçalera serà tan gran com la resta del text "
+"de la capçalera."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -653,7 +656,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Escala de les etiquetes"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -661,7 +664,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Un títol amb una vista prèvia de"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -669,12 +672,10 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "text en cursiva i les seves etiquetes"
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "General"
@@ -698,20 +699,16 @@ msgid "Number of spaces"
 msgstr "Nombre d'espais"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Ressaltat de text"
+msgstr "Ressaltat de l'editor"
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Activa el ressaltat de sintaxi del codi"
+msgstr "Activa el ressaltat de l'editor"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -945,9 +942,7 @@ msgid "General"
 msgstr "General"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
@@ -955,9 +950,7 @@ msgid "Note preview"
 msgstr "Vista prèvia de notes"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
 msgstr "Editor"
