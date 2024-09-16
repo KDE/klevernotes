@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-13 00:40+0000\n"
-"PO-Revision-Date: 2024-07-27 14:20+0200\n"
+"PO-Revision-Date: 2024-09-15 04:00+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -671,9 +671,7 @@ msgid "italic text and its tags"
 msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "Ĝenerala"
@@ -697,20 +695,16 @@ msgid "Number of spaces"
 msgstr "Nombro da spacoj"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Teksta reliefigo"
+msgstr "Redaktila reliefigo"
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Ebligi kodan sintaksreliefigon"
+msgstr "Ebligi redaktilan sintaksreliefigon"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -944,9 +938,7 @@ msgid "General"
 msgstr "Ĝenerala"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
@@ -954,9 +946,7 @@ msgid "Note preview"
 msgstr "Nota antaŭrigardo"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
 msgstr "Redaktilo"
@@ -1751,13 +1741,3 @@ msgstr "Oliver Kellogg"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "olivermkellogg@gmail.com"
-
-#~ msgctxt "@title, general text editor settings"
-#~ msgid "Editor"
-#~ msgstr "Redaktilo"
-
-#~ msgctxt ""
-#~ "@label, tab (inside tab bar), all settings related to the general "
-#~ "appearance of the app"
-#~ msgid "Appearance"
-#~ msgstr "Aspekto"
