@@ -30,6 +30,7 @@
 
 // C++ include.
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <fstream>
 #include <functional>
@@ -155,15 +156,44 @@ isOrderedList(const typename Trait::String &s, int *num = nullptr, int *len = nu
 template<class Trait>
 struct RawHtmlBlock {
     std::shared_ptr<RawHtml<Trait>> html = {};
+    std::shared_ptr<Block<Trait>> parent = {};
+    std::shared_ptr<Block<Trait>> topParent = {};
+    using SequenceOfBlock = std::vector<std::pair<std::shared_ptr<Block<Trait>>, long long int>>;
+    SequenceOfBlock blocks = {};
+    std::map<std::shared_ptr<Block<Trait>>, SequenceOfBlock> toAdjustLastPos = {};
     int htmlBlockType = -1;
     bool continueHtml = false;
     bool onLine = false;
+
+    RawHtmlBlock<Trait> &operator=(const RawHtmlBlock<Trait> &other)
+    {
+        if (this != &other) {
+            html = other.html;
+            parent = other.parent;
+            htmlBlockType = other.htmlBlockType;
+            continueHtml = other.continueHtml;
+            onLine = other.onLine;
+        }
+
+        return *this;
+    }
+
+    std::shared_ptr<Block<Trait>> findParent(long long int indent) const
+    {
+        for (auto it = blocks.crbegin(), last = blocks.crend(); it != last; ++it) {
+            if (indent >= it->second)
+                return it->first;
+        }
+
+        return nullptr;
+    }
 }; // struct RawHtmlBlock
 
 template<class Trait>
 inline void resetHtmlTag(RawHtmlBlock<Trait> &html)
 {
     html.html.reset();
+    html.parent.reset();
     html.htmlBlockType = -1;
     html.continueHtml = false;
     html.onLine = false;
@@ -1297,14 +1327,14 @@ private:
                             bool emptyLinePreceded = false,
                             bool calcIndent = false,
                             const std::vector<long long int> *indents = nullptr);
-    void parseFragment(MdBlock<Trait> &fr,
-                       std::shared_ptr<Block<Trait>> parent,
-                       std::shared_ptr<Document<Trait>> doc,
-                       typename Trait::StringList &linksToParse,
-                       const typename Trait::String &workingPath,
-                       const typename Trait::String &fileName,
-                       bool collectRefLinks,
-                       RawHtmlBlock<Trait> &html);
+    long long int parseFragment(MdBlock<Trait> &fr,
+                                std::shared_ptr<Block<Trait>> parent,
+                                std::shared_ptr<Document<Trait>> doc,
+                                typename Trait::StringList &linksToParse,
+                                const typename Trait::String &workingPath,
+                                const typename Trait::String &fileName,
+                                bool collectRefLinks,
+                                RawHtmlBlock<Trait> &html);
     void parseText(MdBlock<Trait> &fr,
                    std::shared_ptr<Block<Trait>> parent,
                    std::shared_ptr<Document<Trait>> doc,
@@ -1321,14 +1351,14 @@ private:
                          const typename Trait::String &fileName,
                          bool collectRefLinks,
                          RawHtmlBlock<Trait> &html);
-    void parseList(MdBlock<Trait> &fr,
-                   std::shared_ptr<Block<Trait>> parent,
-                   std::shared_ptr<Document<Trait>> doc,
-                   typename Trait::StringList &linksToParse,
-                   const typename Trait::String &workingPath,
-                   const typename Trait::String &fileName,
-                   bool collectRefLinks,
-                   RawHtmlBlock<Trait> &html);
+    long long int parseList(MdBlock<Trait> &fr,
+                            std::shared_ptr<Block<Trait>> parent,
+                            std::shared_ptr<Document<Trait>> doc,
+                            typename Trait::StringList &linksToParse,
+                            const typename Trait::String &workingPath,
+                            const typename Trait::String &fileName,
+                            bool collectRefLinks,
+                            RawHtmlBlock<Trait> &html);
     void parseCode(MdBlock<Trait> &fr, std::shared_ptr<Block<Trait>> parent, bool collectRefLinks);
     void parseCodeIndentedBySpaces(MdBlock<Trait> &fr,
                                    std::shared_ptr<Block<Trait>> parent,
@@ -1341,14 +1371,15 @@ private:
                                    const WithPosition &startDelim = {},
                                    const WithPosition &endDelim = {},
                                    const WithPosition &syntaxPos = {});
-    void parseListItem(MdBlock<Trait> &fr,
-                       std::shared_ptr<Block<Trait>> parent,
-                       std::shared_ptr<Document<Trait>> doc,
-                       typename Trait::StringList &linksToParse,
-                       const typename Trait::String &workingPath,
-                       const typename Trait::String &fileName,
-                       bool collectRefLinks,
-                       RawHtmlBlock<Trait> &html);
+    long long int parseListItem(MdBlock<Trait> &fr,
+                                std::shared_ptr<Block<Trait>> parent,
+                                std::shared_ptr<Document<Trait>> doc,
+                                typename Trait::StringList &linksToParse,
+                                const typename Trait::String &workingPath,
+                                const typename Trait::String &fileName,
+                                bool collectRefLinks,
+                                RawHtmlBlock<Trait> &html,
+                                std::shared_ptr<ListItem<Trait>> *resItem = nullptr);
     void parseHeading(MdBlock<Trait> &fr,
                       std::shared_ptr<Block<Trait>> parent,
                       std::shared_ptr<Document<Trait>> doc,
@@ -1390,14 +1421,15 @@ private:
                                        RawHtmlBlock<Trait> &html,
                                        bool inLink);
 
-    void parse(StringListStream<Trait> &stream,
-               std::shared_ptr<Block<Trait>> parent,
-               std::shared_ptr<Document<Trait>> doc,
-               typename Trait::StringList &linksToParse,
-               const typename Trait::String &workingPath,
-               const typename Trait::String &fileName,
-               bool collectRefLinks,
-               bool top = false);
+    RawHtmlBlock<Trait> parse(StringListStream<Trait> &stream,
+                              std::shared_ptr<Block<Trait>> parent,
+                              std::shared_ptr<Document<Trait>> doc,
+                              typename Trait::StringList &linksToParse,
+                              const typename Trait::String &workingPath,
+                              const typename Trait::String &fileName,
+                              bool collectRefLinks,
+                              bool top = false,
+                              bool dontProcessLastFreeHtml = false);
 
     struct ParserContext {
         typename Trait::template Vector<MdBlock<Trait>> splitted;
@@ -1435,7 +1467,12 @@ private:
                      const typename Trait::String &fileName,
                      bool collectRefLinks);
 
-    void finishHtml(ParserContext &ctx, std::shared_ptr<Block<Trait>> parent, std::shared_ptr<Document<Trait>> doc, bool collectRefLinks, bool top);
+    void finishHtml(ParserContext &ctx,
+                    std::shared_ptr<Block<Trait>> parent,
+                    std::shared_ptr<Document<Trait>> doc,
+                    bool collectRefLinks,
+                    bool top,
+                    bool dontProcessLastFreeHtml);
 
     void makeLineMain(ParserContext &ctx,
                       const typename Trait::InternalString &line,
@@ -1989,7 +2026,30 @@ inline void Parser<Trait>::parseFragment(typename Parser<Trait>::ParserContext &
 
         ctx.splitted.push_back(block);
 
-        parseFragment(block, parent, doc, linksToParse, workingPath, fileName, collectRefLinks, ctx.html);
+        long long int line = 0;
+
+        while (line >= 0) {
+            line = parseFragment(block, parent, doc, linksToParse, workingPath, fileName, collectRefLinks, ctx.html);
+
+            assert(line != 0);
+
+            if (line > 0) {
+                if (ctx.html.html) {
+                    if (!collectRefLinks)
+                        ctx.html.parent->appendItem(ctx.html.html);
+
+                    resetHtmlTag<Trait>(ctx.html);
+                }
+
+                const auto it = std::find_if(ctx.fragment.cbegin(), ctx.fragment.cend(), [line](const auto &d) {
+                    return (d.second.lineNumber == line);
+                });
+
+                block.data.clear();
+                std::copy(it, ctx.fragment.cend(), std::back_inserter(block.data));
+                block.emptyLinesBefore = 0;
+            }
+        }
 
         ctx.fragment.clear();
     }
@@ -2088,13 +2148,24 @@ inline void Parser<Trait>::eatFootnote(typename Parser<Trait>::ParserContext &ct
 }
 
 template<class Trait>
-inline void
-Parser<Trait>::finishHtml(ParserContext &ctx, std::shared_ptr<Block<Trait>> parent, std::shared_ptr<Document<Trait>> doc, bool collectRefLinks, bool top)
+inline void Parser<Trait>::finishHtml(ParserContext &ctx,
+                                      std::shared_ptr<Block<Trait>> parent,
+                                      std::shared_ptr<Document<Trait>> doc,
+                                      bool collectRefLinks,
+                                      bool top,
+                                      bool dontProcessLastFreeHtml)
 {
     if (!collectRefLinks || top) {
-        if (ctx.html.html->isFreeTag())
-            parent->appendItem(ctx.html.html);
-        else {
+        if (ctx.html.html->isFreeTag()) {
+            if (!dontProcessLastFreeHtml) {
+                if (ctx.html.parent) {
+                    ctx.html.parent->appendItem(ctx.html.html);
+
+                    updateLastPosInList(ctx.html);
+                } else
+                    parent->appendItem(ctx.html.html);
+            }
+        } else {
             if (parent->items().back()->type() == ItemType::Paragraph) {
                 auto p = static_cast<Paragraph<Trait> *>(parent->items().back().get());
 
@@ -2123,7 +2194,8 @@ Parser<Trait>::finishHtml(ParserContext &ctx, std::shared_ptr<Block<Trait>> pare
         }
     }
 
-    resetHtmlTag(ctx.html);
+    if (!dontProcessLastFreeHtml)
+        resetHtmlTag(ctx.html);
 }
 
 template<class Trait>
@@ -2213,14 +2285,15 @@ typename Trait::InternalString Parser<Trait>::readLine(typename Parser<Trait>::P
 }
 
 template<class Trait>
-inline void Parser<Trait>::parse(StringListStream<Trait> &stream,
-                                 std::shared_ptr<Block<Trait>> parent,
-                                 std::shared_ptr<Document<Trait>> doc,
-                                 typename Trait::StringList &linksToParse,
-                                 const typename Trait::String &workingPath,
-                                 const typename Trait::String &fileName,
-                                 bool collectRefLinks,
-                                 bool top)
+inline RawHtmlBlock<Trait> Parser<Trait>::parse(StringListStream<Trait> &stream,
+                                                std::shared_ptr<Block<Trait>> parent,
+                                                std::shared_ptr<Document<Trait>> doc,
+                                                typename Trait::StringList &linksToParse,
+                                                const typename Trait::String &workingPath,
+                                                const typename Trait::String &fileName,
+                                                bool collectRefLinks,
+                                                bool top,
+                                                bool dontProcessLastFreeHtml)
 {
     ParserContext ctx;
 
@@ -2483,18 +2556,42 @@ inline void Parser<Trait>::parse(StringListStream<Trait> &stream,
         resetHtmlTag(ctx.html);
 
         for (long long int i = 0; i < (long long int)ctx.splitted.size(); ++i) {
-            parseFragment(ctx.splitted[i], parent, doc, linksToParse, workingPath, fileName, false, ctx.html);
+            long long int line = 0;
+
+            auto &data = ctx.splitted[i];
+
+            while (line >= 0) {
+                line = parseFragment(data, parent, doc, linksToParse, workingPath, fileName, false, ctx.html);
+
+                assert(line != 0);
+
+                if (line > 0) {
+                    if (ctx.html.html) {
+                        ctx.html.parent->appendItem(ctx.html.html);
+
+                        resetHtmlTag<Trait>(ctx.html);
+                    }
+
+                    const auto it = std::find_if(data.data.cbegin(), data.data.cend(), [line](const auto &d) {
+                        return (d.second.lineNumber == line);
+                    });
+
+                    data.data.erase(data.data.cbegin(), it);
+                }
+            }
 
             if (ctx.html.htmlBlockType >= 6)
                 ctx.html.continueHtml = (!ctx.splitted[i].emptyLineAfter);
 
             if (ctx.html.html.get() && !ctx.html.continueHtml)
-                finishHtml(ctx, parent, doc, collectRefLinks, top);
+                finishHtml(ctx, parent, doc, collectRefLinks, top, dontProcessLastFreeHtml);
         }
     }
 
     if (ctx.html.html.get())
-        finishHtml(ctx, parent, doc, collectRefLinks, top);
+        finishHtml(ctx, parent, doc, collectRefLinks, top, dontProcessLastFreeHtml);
+
+    return ctx.html;
 }
 
 #ifdef MD4QT_QT_SUPPORT
@@ -2824,14 +2921,14 @@ inline typename Parser<Trait>::BlockType Parser<Trait>::whatIsTheLine(typename T
 }
 
 template<class Trait>
-inline void Parser<Trait>::parseFragment(MdBlock<Trait> &fr,
-                                         std::shared_ptr<Block<Trait>> parent,
-                                         std::shared_ptr<Document<Trait>> doc,
-                                         typename Trait::StringList &linksToParse,
-                                         const typename Trait::String &workingPath,
-                                         const typename Trait::String &fileName,
-                                         bool collectRefLinks,
-                                         RawHtmlBlock<Trait> &html)
+inline long long int Parser<Trait>::parseFragment(MdBlock<Trait> &fr,
+                                                  std::shared_ptr<Block<Trait>> parent,
+                                                  std::shared_ptr<Document<Trait>> doc,
+                                                  typename Trait::StringList &linksToParse,
+                                                  const typename Trait::String &workingPath,
+                                                  const typename Trait::String &fileName,
+                                                  bool collectRefLinks,
+                                                  RawHtmlBlock<Trait> &html)
 {
     if (html.continueHtml)
         parseText(fr, parent, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
@@ -2875,13 +2972,14 @@ inline void Parser<Trait>::parseFragment(MdBlock<Trait> &fr,
 
         case BlockType::List:
         case BlockType::ListWithFirstEmptyLine:
-            parseList(fr, parent, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
-            break;
+            return parseList(fr, parent, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
 
         default:
             break;
         }
     }
+
+    return -1;
 }
 
 template<class Trait>
@@ -4711,6 +4809,9 @@ inline void Parser<Trait>::finishRule6HtmlTag(typename Delims::const_iterator it
         if (nit != last && !isNewBlockIn(po.fr, it->m_line, nit->m_line))
             eatRawHtml(po.line, po.pos, nit->m_line, nit->m_pos + nit->m_len, po, true, 6, false);
     }
+
+    if (po.fr.emptyLineAfter && po.html.html)
+        po.html.continueHtml = false;
 }
 
 template<class Trait>
@@ -7268,6 +7369,17 @@ inline void checkForTextPlugins(std::shared_ptr<Paragraph<Trait>> p, TextParsing
 }
 
 template<class Trait>
+inline void makeHorLine(const typename MdBlock<Trait>::Line &line, std::shared_ptr<Block<Trait>> parent)
+{
+    std::shared_ptr<Item<Trait>> hr(new HorizontalLine<Trait>);
+    hr->setStartColumn(line.first.virginPos(skipSpaces<Trait>(0, line.first.asString())));
+    hr->setStartLine(line.second.lineNumber);
+    hr->setEndColumn(line.first.virginPos(line.first.length() - 1));
+    hr->setEndLine(line.second.lineNumber);
+    parent->appendItem(hr);
+}
+
+template<class Trait>
 inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
                                                          std::shared_ptr<Block<Trait>> parent,
                                                          std::shared_ptr<Document<Trait>> doc,
@@ -7426,14 +7538,8 @@ inline void Parser<Trait>::parseFormattedTextLinksImages(MdBlock<Trait> &fr,
                     po.line = it->m_line;
                     po.pos = it->m_pos + it->m_len;
 
-                    if (!h2 && !collectRefLinks) {
-                        std::shared_ptr<Item<Trait>> hr(new HorizontalLine<Trait>);
-                        hr->setStartColumn(fr.data.at(it->m_line).first.virginPos(it->m_pos));
-                        hr->setStartLine(fr.data.at(it->m_line).second.lineNumber);
-                        hr->setEndColumn(fr.data.at(it->m_line).first.virginPos(it->m_pos + it->m_len - 1));
-                        hr->setEndLine(fr.data.at(it->m_line).second.lineNumber);
-                        parent->appendItem(hr);
-                    }
+                    if (!h2 && !collectRefLinks)
+                        makeHorLine<Trait>(fr.data[it->m_line], parent);
                 } break;
 
                 case Delimiter::H1:
@@ -7744,7 +7850,7 @@ inline void Parser<Trait>::parseBlockquote(MdBlock<Trait> &fr,
 
         parse(stream, bq, doc, linksToParse, workingPath, fileName, collectRefLinks);
 
-        if (!bq->isEmpty() && !collectRefLinks)
+        if (!collectRefLinks)
             parent->appendItem(bq);
 
         if (i < (long long int)fr.data.size()) {
@@ -7833,27 +7939,55 @@ inline std::tuple<bool, long long int, typename Trait::Char, bool> listItemData(
 }
 
 template<class Trait>
-inline void Parser<Trait>::parseList(MdBlock<Trait> &fr,
-                                     std::shared_ptr<Block<Trait>> parent,
-                                     std::shared_ptr<Document<Trait>> doc,
-                                     typename Trait::StringList &linksToParse,
-                                     const typename Trait::String &workingPath,
-                                     const typename Trait::String &fileName,
-                                     bool collectRefLinks,
-                                     RawHtmlBlock<Trait> &html)
+inline void setLastPos(std::shared_ptr<Item<Trait>> item, long long int pos, long long int line)
 {
+    item->setEndColumn(pos);
+    item->setEndLine(line);
+}
+
+template<class Trait>
+inline void updateLastPosInList(const RawHtmlBlock<Trait> &html)
+{
+    if (html.parent != html.topParent) {
+        const auto it = html.toAdjustLastPos.find(html.parent);
+
+        if (it != html.toAdjustLastPos.end()) {
+            for (auto &i : it->second) {
+                i.first->setEndColumn(html.html->endColumn());
+                i.first->setEndLine(html.html->endLine());
+            }
+        }
+    }
+}
+
+template<class Trait>
+inline long long int Parser<Trait>::parseList(MdBlock<Trait> &fr,
+                                              std::shared_ptr<Block<Trait>> parent,
+                                              std::shared_ptr<Document<Trait>> doc,
+                                              typename Trait::StringList &linksToParse,
+                                              const typename Trait::String &workingPath,
+                                              const typename Trait::String &fileName,
+                                              bool collectRefLinks,
+                                              RawHtmlBlock<Trait> &html)
+{
+    bool resetTopParent = false;
+    long long int line = -1;
+
+    if (!html.topParent) {
+        html.topParent = parent;
+        resetTopParent = true;
+    }
+
     const auto p = skipSpaces<Trait>(0, fr.data.front().first.asString());
 
     if (p != fr.data.front().first.length()) {
         std::shared_ptr<List<Trait>> list(new List<Trait>);
-        list->setStartColumn(fr.data.front().first.virginPos(p));
-        list->setStartLine(fr.data.front().second.lineNumber);
-        list->setEndColumn(fr.data.back().first.virginPos(fr.data.back().first.length() ? fr.data.back().first.length() - 1 : 0));
-        list->setEndLine(fr.data.back().second.lineNumber);
 
         typename MdBlock<Trait>::Data listItem;
         auto it = fr.data.begin();
         listItem.push_back(*it);
+        list->setStartColumn(it->first.virginPos(p));
+        list->setStartLine(it->second.lineNumber);
         ++it;
 
         long long int indent = 0;
@@ -7861,11 +7995,66 @@ inline void Parser<Trait>::parseList(MdBlock<Trait> &fr,
 
         std::tie(std::ignore, indent, marker, std::ignore) = listItemData<Trait>(listItem.front().first.asString(), false);
 
+        html.blocks.push_back({list, list->startColumn() + indent});
+
+        if (!collectRefLinks)
+            html.toAdjustLastPos.insert({list, html.blocks});
+
         bool updateIndent = false;
+
+        auto addListMakeNew = [&]() {
+            if (!list->isEmpty() && !collectRefLinks)
+                parent->appendItem(list);
+
+            html.blocks.pop_back();
+
+            list.reset(new List<Trait>);
+
+            html.blocks.push_back({list, indent});
+
+            if (!collectRefLinks)
+                html.toAdjustLastPos.insert({list, html.blocks});
+        };
+
+        auto processLastHtml = [&](std::shared_ptr<ListItem<Trait>> resItem) {
+            if (html.html && resItem) {
+                auto htmlParent = (resItem->startLine() == html.html->startLine() || html.html->startColumn() >= resItem->startColumn() + indent
+                                       ? resItem
+                                       : html.findParent(html.html->startColumn()));
+
+                if (!htmlParent)
+                    htmlParent = html.topParent;
+
+                if (htmlParent != resItem)
+                    addListMakeNew();
+
+                if (!collectRefLinks) {
+                    htmlParent->appendItem(html.html);
+                    updateLastPosInList<Trait>(html);
+                }
+
+                resetHtmlTag<Trait>(html);
+            }
+        };
+
+        auto processListItem = [&]() {
+            MdBlock<Trait> block = {listItem, 0};
+
+            std::shared_ptr<ListItem<Trait>> resItem;
+
+            line = parseListItem(block, list, doc, linksToParse, workingPath, fileName, collectRefLinks, html, &resItem);
+            listItem.clear();
+
+            processLastHtml(resItem);
+        };
 
         for (auto last = fr.data.end(); it != last; ++it) {
             if (updateIndent) {
                 std::tie(std::ignore, indent, marker, std::ignore) = listItemData<Trait>(it->first.asString(), false);
+
+                if (!collectRefLinks)
+                    html.blocks.back().second = indent;
+
                 updateIndent = false;
             }
 
@@ -7878,70 +8067,71 @@ inline void Parser<Trait>::parseList(MdBlock<Trait> &fr,
             } else if (isHorizontalLine<Trait>(it->first.asString().sliced(ns)) && ns < indent && !listItem.empty()) {
                 updateIndent = true;
 
-                MdBlock<Trait> block = {listItem, 0};
-
-                parseListItem(block, list, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
-                listItem.clear();
+                processListItem();
 
                 if (!list->isEmpty())
-                    parent->appendItem(list);
-
-                list.reset(new List<Trait>);
+                    addListMakeNew();
 
                 if (!collectRefLinks)
-                    parent->appendItem(std::shared_ptr<Item<Trait>>(new HorizontalLine<Trait>));
+                    makeHorLine<Trait>(*it, parent);
 
                 continue;
             } else if (isListItemAndNotNested<Trait>(it->first.asString(), indent) && !listItem.empty()) {
                 typename Trait::Char tmpMarker;
                 std::tie(std::ignore, indent, tmpMarker, std::ignore) = listItemData<Trait>(it->first.asString(), false);
 
-                MdBlock<Trait> block = {listItem, 0};
-
-                parseListItem(block, list, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
-                const auto lastColumn = listItem.back().first.virginPos(listItem.back().first.length() ? listItem.back().first.length() - 1 : 0);
-                const auto lastLine = listItem.back().second.lineNumber;
-                listItem.clear();
+                processListItem();
 
                 if (tmpMarker != marker) {
-                    if (!list->isEmpty()) {
-                        parent->appendItem(list);
-                        list->setEndColumn(lastColumn);
-                        list->setEndLine(lastLine);
-                    }
-
-                    list.reset(new List<Trait>);
-                    list->setStartColumn(it->first.virginPos(0));
-                    list->setStartLine(it->second.lineNumber);
-                    list->setEndColumn(fr.data.back().first.virginPos(fr.data.back().first.length() ? fr.data.back().first.length() - 1 : 0));
-                    list->setEndLine(fr.data.back().second.lineNumber);
+                    if (!list->isEmpty())
+                        addListMakeNew();
 
                     marker = tmpMarker;
                 }
             }
 
+            if (line > 0)
+                break;
+
             listItem.push_back(*it);
+
+            if (list->startColumn() == -1) {
+                list->setStartColumn(
+                    it->first.virginPos(std::min(it->first.length() ? it->first.length() - 1 : 0, skipSpaces<Trait>(0, it->first.asString()))));
+                list->setStartLine(it->second.lineNumber);
+
+                if (!collectRefLinks)
+                    html.blocks.back().second += list->startColumn();
+            }
         }
 
         if (!listItem.empty()) {
             MdBlock<Trait> block = {listItem, 0};
-            parseListItem(block, list, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
+            line = parseListItem(block, list, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
         }
 
-        if (!list->isEmpty())
+        if (!list->isEmpty() && !collectRefLinks)
             parent->appendItem(list);
+
+        html.blocks.pop_back();
     }
+
+    if (resetTopParent)
+        html.topParent.reset();
+
+    return line;
 }
 
 template<class Trait>
-inline void Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
-                                         std::shared_ptr<Block<Trait>> parent,
-                                         std::shared_ptr<Document<Trait>> doc,
-                                         typename Trait::StringList &linksToParse,
-                                         const typename Trait::String &workingPath,
-                                         const typename Trait::String &fileName,
-                                         bool collectRefLinks,
-                                         RawHtmlBlock<Trait> &html)
+inline long long int Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
+                                                  std::shared_ptr<Block<Trait>> parent,
+                                                  std::shared_ptr<Document<Trait>> doc,
+                                                  typename Trait::StringList &linksToParse,
+                                                  const typename Trait::String &workingPath,
+                                                  const typename Trait::String &fileName,
+                                                  bool collectRefLinks,
+                                                  RawHtmlBlock<Trait> &html,
+                                                  std::shared_ptr<ListItem<Trait>> *resItem)
 {
     {
         const auto it = (std::find_if(fr.data.rbegin(), fr.data.rend(), [](const auto &s) {
@@ -7955,10 +8145,9 @@ inline void Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
     const auto p = skipSpaces<Trait>(0, fr.data.front().first.asString());
 
     std::shared_ptr<ListItem<Trait>> item(new ListItem<Trait>);
+
     item->setStartColumn(fr.data.front().first.virginPos(p));
     item->setStartLine(fr.data.front().second.lineNumber);
-    item->setEndColumn(fr.data.back().first.virginPos(fr.data.back().first.length() - 1));
-    item->setEndLine(fr.data.back().second.lineNumber);
 
     int i = 0, len = 0;
 
@@ -7985,6 +8174,11 @@ inline void Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
     bool wasText = false;
 
     std::tie(std::ignore, indent, std::ignore, wasText) = listItemData<Trait>(fr.data.front().first.asString(), wasText);
+
+    html.blocks.push_back({item, item->startColumn() + indent});
+
+    if (!collectRefLinks)
+        html.toAdjustLastPos.insert({item, html.blocks});
 
     const auto firstNonSpacePos = calculateIndent<Trait>(fr.data.front().first.asString(), indent).second;
     if (firstNonSpacePos - indent < 4)
@@ -8036,6 +8230,9 @@ inline void Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
     typename Trait::String startOfCode;
     bool wasEmptyLine = false;
 
+    std::vector<std::pair<RawHtmlBlock<Trait>, long long int>> htmlToAdd;
+    long long int line = -1;
+
     for (auto last = fr.data.end(); it != last; ++it, ++pos) {
         if (!fensedCode) {
             fensedCode = isCodeFences<Trait>(it->first.asString().startsWith(typename Trait::String(indent, Trait::latin1ToChar(' ')))
@@ -8065,52 +8262,83 @@ inline void Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
             if (ok) {
                 StringListStream<Trait> stream(data);
 
-                parse(stream, item, doc, linksToParse, workingPath, fileName, collectRefLinks);
+                html = parse(stream, item, doc, linksToParse, workingPath, fileName, collectRefLinks, false, true);
 
                 data.clear();
 
-                typename MdBlock<Trait>::Data nestedList;
-                nestedList.push_back(*it);
-                ++it;
+                if (html.html.get()) {
+                    html.parent = html.findParent(html.html->startColumn());
 
-                wasEmptyLine = false;
+                    if (!html.parent)
+                        html.parent = html.topParent;
 
-                for (; it != last; ++it) {
-                    const auto ns = skipSpaces<Trait>(0, it->first.asString());
-                    std::tie(ok, std::ignore, std::ignore, wasText) =
-                        listItemData<Trait>((ns >= indent ? it->first.asString().sliced(indent) : it->first.asString()), wasText);
+                    if (html.continueHtml) {
+                        MdBlock<Trait> tmp;
+                        tmp.emptyLineAfter = fr.emptyLineAfter;
+                        std::copy(it, last, std::back_inserter(tmp.data));
 
-                    if (ok)
-                        wasEmptyLine = false;
+                        parseText(tmp, html.parent, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
 
-                    if (ok || ns >= indent + newIndent || ns == it->first.length() || !wasEmptyLine)
-                        nestedList.push_back(*it);
-                    else
+                        break;
+                    }
+
+                    htmlToAdd.push_back({html, html.parent->items().size()});
+                    htmlToAdd.back().first.blocks = html.blocks;
+                    updateLastPosInList<Trait>(html);
+                    resetHtmlTag<Trait>(html);
+                }
+
+                if (!htmlToAdd.empty() && htmlToAdd.back().first.parent == html.topParent) {
+                    line = it->second.lineNumber;
+
+                    break;
+                } else {
+                    typename MdBlock<Trait>::Data nestedList;
+                    nestedList.push_back(*it);
+                    ++it;
+
+                    wasEmptyLine = false;
+
+                    for (; it != last; ++it) {
+                        const auto ns = skipSpaces<Trait>(0, it->first.asString());
+                        std::tie(ok, std::ignore, std::ignore, wasText) =
+                            listItemData<Trait>((ns >= indent ? it->first.asString().sliced(indent) : it->first.asString()), wasText);
+
+                        if (ok)
+                            wasEmptyLine = false;
+
+                        if (ok || ns >= indent + newIndent || ns == it->first.length() || !wasEmptyLine)
+                            nestedList.push_back(*it);
+                        else
+                            break;
+
+                        wasEmptyLine = (ns == it->first.length());
+
+                        wasText = (wasEmptyLine ? false : wasText);
+                    }
+
+                    for (auto it = nestedList.begin(), last = nestedList.end(); it != last; ++it)
+                        it->first = it->first.sliced(std::min(skipSpaces<Trait>(0, it->first.asString()), indent));
+
+                    while (!nestedList.empty() && nestedList.back().first.asString().simplified().isEmpty())
+                        nestedList.pop_back();
+
+                    MdBlock<Trait> block = {nestedList, 0};
+
+                    line = parseList(block, item, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
+
+                    if (line >= 0)
                         break;
 
-                    wasEmptyLine = (ns == it->first.length());
+                    for (; it != last; ++it) {
+                        if (it->first.asString().startsWith(typename Trait::String(indent, Trait::latin1ToChar(' '))))
+                            it->first = it->first.sliced(indent);
 
-                    wasText = (wasEmptyLine ? false : wasText);
+                        data.push_back(*it);
+                    }
+
+                    break;
                 }
-
-                for (auto it = nestedList.begin(), last = nestedList.end(); it != last; ++it)
-                    it->first = it->first.sliced(std::min(skipSpaces<Trait>(0, it->first.asString()), indent));
-
-                while (!nestedList.empty() && nestedList.back().first.asString().simplified().isEmpty())
-                    nestedList.pop_back();
-
-                MdBlock<Trait> block = {nestedList, 0};
-
-                parseList(block, item, doc, linksToParse, workingPath, fileName, collectRefLinks, html);
-
-                for (; it != last; ++it) {
-                    if (it->first.asString().startsWith(typename Trait::String(indent, Trait::latin1ToChar(' '))))
-                        it->first = it->first.sliced(indent);
-
-                    data.push_back(*it);
-                }
-
-                break;
             } else {
                 if (it->first.asString().startsWith(typename Trait::String(indent, Trait::latin1ToChar(' '))))
                     it->first = it->first.sliced(indent);
@@ -8132,11 +8360,65 @@ inline void Parser<Trait>::parseListItem(MdBlock<Trait> &fr,
     if (!data.empty()) {
         StringListStream<Trait> stream(data);
 
-        parse(stream, item, doc, linksToParse, workingPath, fileName, collectRefLinks);
+        html = parse(stream, item, doc, linksToParse, workingPath, fileName, collectRefLinks, false, true);
+
+        if (html.html) {
+            html.parent = html.findParent(html.html->startColumn());
+
+            if (!html.parent)
+                html.parent = html.topParent;
+        }
     }
 
-    if (!item->isEmpty() && !collectRefLinks)
+    if (!collectRefLinks) {
         parent->appendItem(item);
+
+        long long int i = 0;
+
+        for (auto &h : htmlToAdd) {
+            if (h.first.parent != h.first.topParent) {
+                h.first.parent->insertItem(h.second + i, h.first.html);
+
+                ++i;
+
+                updateLastPosInList(h.first);
+            } else {
+                html = h.first;
+
+                break;
+            }
+        }
+
+        long long int htmlStartColumn = -1;
+        long long int htmlStartLine = -1;
+
+        if (html.html) {
+            std::tie(htmlStartColumn, htmlStartLine) = localPosFromVirgin<Trait>(fr, html.html->startColumn(), html.html->startLine());
+        }
+
+        long long int localLine = (html.html ? htmlStartLine : fr.data.size() - 1);
+
+        if (html.html) {
+            if (skipSpaces<Trait>(0, fr.data[localLine].first.asString()) >= htmlStartColumn)
+                --localLine;
+        }
+
+        const auto lastLine = fr.data[localLine].second.lineNumber;
+
+        const auto lastColumn = fr.data[localLine].first.virginPos(fr.data[localLine].first.length() ? fr.data[localLine].first.length() - 1 : 0);
+
+        item->setEndColumn(lastColumn);
+        item->setEndLine(lastLine);
+        parent->setEndColumn(lastColumn);
+        parent->setEndLine(lastLine);
+    }
+
+    if (resItem)
+        *resItem = item;
+
+    html.blocks.pop_back();
+
+    return line;
 }
 
 template<class Trait>
