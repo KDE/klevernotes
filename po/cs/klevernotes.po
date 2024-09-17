@@ -669,12 +669,10 @@ msgid "italic text and its tags"
 msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
-msgstr "Obecné"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:32
 #, kde-format
@@ -695,20 +693,16 @@ msgid "Number of spaces"
 msgstr "Počet mezer"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Zvýraznění textu"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Povolit zvýrazňování syntaxe"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -941,22 +935,18 @@ msgid "General"
 msgstr "Obecné"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
 msgid "Note preview"
-msgstr "Náhled poznámky"
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
-msgstr "Editor"
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:37
 #, kde-format
@@ -1748,13 +1738,3 @@ msgstr "Vít Pelčák"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
-
-#~ msgctxt "@title, general text editor settings"
-#~ msgid "Editor"
-#~ msgstr "Editor"
-
-#~ msgctxt ""
-#~ "@label, tab (inside tab bar), all settings related to the general "
-#~ "appearance of the app"
-#~ msgid "Appearance"
-#~ msgstr "Vzhled"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-13 00:40+0000\n"
-"PO-Revision-Date: 2024-08-03 14:15+0900\n"
+"PO-Revision-Date: 2024-09-17 08:08+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -624,7 +624,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "啟用適應性標籤大小"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -632,7 +632,7 @@ msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
-msgstr ""
+msgstr "標籤會依週遭內容調整大小。"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -642,7 +642,7 @@ msgctxt ""
 msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
-msgstr ""
+msgstr "範例：位於標頭內的標籤會與標頭內其他文字一樣大。"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -650,7 +650,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "標籤縮放"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -658,7 +658,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "一個標題其中包含"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -666,12 +666,10 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "斜體文字和它的標籤"
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "一般"
@@ -695,20 +693,16 @@ msgid "Number of spaces"
 msgstr "空格數量"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "文字突顯"
+msgstr "編輯器語法突顯"
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "啟用語法突顯"
+msgstr "啟用編輯器語法突顯"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -940,9 +934,7 @@ msgid "General"
 msgstr "一般"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
@@ -950,9 +942,7 @@ msgid "Note preview"
 msgstr "筆記預覽"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
 msgstr "編輯器"

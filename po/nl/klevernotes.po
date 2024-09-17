@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-13 00:40+0000\n"
-"PO-Revision-Date: 2024-09-14 00:19+0200\n"
+"PO-Revision-Date: 2024-09-16 12:23+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -635,6 +635,7 @@ msgctxt ""
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
 msgstr ""
+"De aanpasbare grootte zal de taggrootte schalen gebaseerd op zijn omgeving."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -645,6 +646,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Voorbeeld: een tag in een header zal zo groot zijn als de rest van de header-"
+"tekst."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -652,7 +655,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Tagschaal"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -660,7 +663,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Een titel met een voorbeeld van"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -668,7 +671,7 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "cursieve tekst en zijn tags"
 
 #: contents/ui/settings/EditorTab.qml:21
 #, kde-format
