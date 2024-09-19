@@ -9,5 +9,5 @@ Action {
 
     property var triggerFunction: function(){}
 
-    onTriggered: triggerFunction()
+    onTriggered: triggerFunction(checked)
 }

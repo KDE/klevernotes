@@ -8,6 +8,7 @@
 // KleverNotes include
 #include "colors.hpp"
 #include "kleverconfig.h"
+#include "logic/editor/posCacheUtils.hpp"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
 
@@ -69,6 +70,9 @@ public:
     // Colors
     Q_INVOKABLE void changeStyles(const QStringList &styles);
 
+    // Toolbar
+    Q_INVOKABLE void removeDelims(const int delimType);
+
 Q_SIGNALS:
     void documentChanged();
     void cursorPositionChanged(const int position);
@@ -77,7 +81,9 @@ Q_SIGNALS:
 
     void parsingFinished(const QString &content);
 
+    // Toolbar
     void surroundingDelimsChanged(const QList<int> &delimsTypes);
+    void focusEditor();
 
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);
@@ -158,11 +164,12 @@ private:
 
     // Editor highlight
     EditorHighlighter *m_editorHighlighter = nullptr;
+    QTimer *m_cursorMoveTimer = nullptr;
     bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
     Colors m_colors;
     bool m_noteFirstHighlight = true;
     bool m_textChanged = false;
-    QTimer *m_cursorMoveTimer = nullptr;
+    QList<posCacheUtils::DelimsInfo> m_surroundingDelims;
 
     Q_DISABLE_COPY(EditorHandler)
 };

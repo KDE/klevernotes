@@ -12,6 +12,7 @@
 #include <QColor>
 #include <QRegularExpression>
 #include <QTextBlock>
+#include <qtmetamacros.h>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -198,10 +199,6 @@ void EditorHandler::parse(const QString &src)
     }
 
     m_textChanged = !m_noteFirstHighlight;
-    if (m_noteFirstHighlight) { // Important for textCursor(), QML is to slow to transfer this info
-        m_cursorPosition = src.length();
-        m_noteFirstHighlight = false;
-    }
     if (m_pluginHelper) {
         m_pluginHelper->clearPluginsInfo();
     }
@@ -209,6 +206,10 @@ void EditorHandler::parse(const QString &src)
     m_currentMdDoc = m_parser->parse(src);
     if (m_config->editorHighlightEnabled()) {
         highlightSyntax(m_colors, m_currentMdDoc);
+    }
+    if (m_noteFirstHighlight) {
+        m_noteFirstHighlight = false;
+        Q_EMIT focusEditor();
     }
 
     renderDoc();
@@ -330,6 +331,38 @@ void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
     }
 }
 // !ExtendedSyntax
+
+// Toolbar
+void EditorHandler::removeDelims(const int delimType)
+{
+    QList<MD::WithPosition> toRemove;
+    for (const auto &delimInfo : m_surroundingDelims) {
+        if (delimInfo.delimType == delimType) {
+            toRemove.append(delimInfo.opening);
+            if (delimInfo.closing.startLine() != -1) {
+                toRemove.append(delimInfo.closing);
+            }
+        }
+    }
+
+    std::sort(toRemove.begin(), toRemove.end(), md4qtHelperFunc::StartColumnOrder{});
+
+    QTextCursor cursor = textCursor();
+
+    cursor.beginEditBlock();
+    for (auto it = toRemove.rbegin(); it != toRemove.rend(); ++it) {
+        const QTextBlock line = m_document->findBlockByNumber(it->startLine());
+        const int startPos = line.position() + it->startColumn();
+        const int endPos = line.position() + it->endColumn() + 1;
+
+        cursor.setPosition(startPos, QTextCursor::MoveAnchor);
+        cursor.setPosition(endPos, QTextCursor::KeepAnchor);
+        cursor.removeSelectedText();
+    }
+    cursor.endEditBlock();
+
+    Q_EMIT focusEditor();
+}
 // !KleverNotes method
 
 // md-editor method
@@ -392,10 +425,10 @@ void EditorHandler::tagScaleChanged()
 void EditorHandler::cursorMovedTimeOut()
 {
     if (!m_textChanged && m_notePath.endsWith(QStringLiteral(".md"))) {
-        const auto delims = m_editorHighlighter->showDelimAroundCursor(m_textChanged);
+        m_surroundingDelims = m_editorHighlighter->showDelimAroundCursor(m_textChanged);
 
         QList<int> delimsTypes;
-        for (const auto &delimInfo : delims) {
+        for (const auto &delimInfo : m_surroundingDelims) {
             if (!delimsTypes.contains(delimInfo.delimType)) {
                 delimsTypes.append(delimInfo.delimType);
             }

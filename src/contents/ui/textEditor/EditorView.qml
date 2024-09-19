@@ -233,6 +233,10 @@ ColumnLayout {
         function onSurroundingDelimsChanged(delimsTypes) {
             toolbar.checkSourrindingDelimsActions(delimsTypes)
         }
+
+        function onFocusEditor() {
+            editor.textArea.forceActiveFocus()
+        }
     }
 
 
