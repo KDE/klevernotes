@@ -28,95 +28,78 @@ Kirigami.ActionToolBar {
                 if (!checked) {
                     EditorHandler.removeDelims(-10)
                 } else {
-
+                    EditorHandler.addDelims(-10)
                 }
-                // const [blockStart, blockEnd] = getBlockLimits()
-                // handleAction(blockStart, blockEnd, ["# "], false, false, false)
             },
             "h2": function (checked) {
                 if (!checked) {
                     EditorHandler.removeDelims(-9)
                 } else {
-
+                    EditorHandler.addDelims(-9)
                 }
-                // const [blockStart, blockEnd] = getBlockLimits()
-                // handleAction(blockStart, blockEnd, ["## "], false, false, false)
             },
             "h3": function (checked) {
                 if (!checked) {
                     EditorHandler.removeDelims(-8)
                 } else {
-
+                    EditorHandler.addDelims(-8)
                 }
-                // const [blockStart, blockEnd] = getBlockLimits()
-                // handleAction(blockStart, blockEnd, ["### "], false, false, false)
             },
             "h4": function (checked) {
                 if (!checked) {
                     EditorHandler.removeDelims(-7)
                 } else {
-
+                    EditorHandler.addDelims(-7)
                 }
-                // const [blockStart, blockEnd] = getBlockLimits()
-                // handleAction(blockStart, blockEnd, ["#### "], false, false, false)
             },
             "h5": function (checked) {
                 if (!checked) {
                     EditorHandler.removeDelims(-6)
                 } else {
-
+                    EditorHandler.addDelims(-6)
                 }
-                // const [blockStart, blockEnd] = getBlockLimits()
-                // handleAction(blockStart, blockEnd, ["###### "], false, false, false)
             },
             "h6": function (checked) {
                 if (!checked) {
                     EditorHandler.removeDelims(-5)
                 } else {
-
+                    EditorHandler.addDelims(-5)
                 }
-                // const [blockStart, blockEnd] = getBlockLimits()
-                // handleAction(blockStart, blockEnd, ["####### "], false, false, false)
             },
         "bold": function (checked) {
                 if (!checked) {
                     EditorHandler.removeDelims(1)
                 } else {
-
+                    EditorHandler.addDelims(1)
                 }
-            // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["**","__"], true, false, false)
         },
         "italic": function (checked) {
             if (!checked) {
                 EditorHandler.removeDelims(2)
             } else {
-
+                EditorHandler.addDelims(2)
             }
-            // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["_","*"], true, false, false)
         },
         "strikethrough": function (checked) {
             if (!checked) {
                 EditorHandler.removeDelims(4)
             } else {
-
+                EditorHandler.addDelims(4)
             }
-            // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["~~"], true, false, false)
         },
         "codeBlock": function (checked) {
             if (!checked) {
                 EditorHandler.removeDelims(-4)
             } else {
-
+                EditorHandler.addDelims(-4)
             }
-            // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["\n```\n"], true, false, true)
         },
         "quote": function () {
             if (!checked) {
                 EditorHandler.removeDelims(-3)
             } else {
-
+                EditorHandler.addDelims(-3)
             }
-            // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["> "], false, false, false)
         },
         "image": function () {
             imagePickerDialog.open()
@@ -131,19 +114,15 @@ Kirigami.ActionToolBar {
             if (!checked) {
                 EditorHandler.removeDelims(-2)
             } else {
-
+                EditorHandler.addDelims(-2)
             }
-            // const [blockStart, blockEnd] = getBlockLimits()
-            // handleAction(blockStart, blockEnd, [". "], false, true, false)
         },
         "unorderedList": function (checked) {
             if (!checked) {
                 EditorHandler.removeDelims(-1)
             } else {
-
+                EditorHandler.addDelims(-1)
             }
-            // const [blockStart, blockEnd] = getBlockLimits()
-            // handleAction(blockStart, blockEnd, ["- "], false, false, false)
         },
         "highlight": function () {
             // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["=="], true, false, false)
