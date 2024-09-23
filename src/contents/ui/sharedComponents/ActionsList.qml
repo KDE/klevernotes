@@ -160,6 +160,8 @@ Item {
             shortcut: "Ctrl+Alt+H"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Text highlight") + " (" + shortcut + ")"
             icon.name: "draw-highlight-symbolic"
+            checkable: true
+            checked: false
         },
         KAction {
             actionName: "emoji"

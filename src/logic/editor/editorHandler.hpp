@@ -11,7 +11,6 @@
 #include "logic/editor/posCacheUtils.hpp"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
-#include <vector>
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -72,8 +71,8 @@ public:
     Q_INVOKABLE void changeStyles(const QStringList &styles);
 
     // Toolbar
-    Q_INVOKABLE void removeDelims(const int delimType);
-    Q_INVOKABLE void addDelims(const int delimType);
+    QList<posCacheUtils::DelimsInfo> getSurroundingDelims() const;
+    Q_INVOKABLE void handleDelims(const bool addDelims, const int delimType);
 
 Q_SIGNALS:
     void documentChanged();
@@ -131,9 +130,6 @@ private:
     // Highlight
     void highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
 
-    // Toolbar
-    std::vector<int> getFuturDelimsPositions(const bool wrapSelection = false, const bool isBlockItemDelim = false);
-
 private:
     // Config Connections
     KleverConfig *m_config;
@@ -174,6 +170,8 @@ private:
     Colors m_colors;
     bool m_noteFirstHighlight = true;
     bool m_textChanged = false;
+
+    // Toolbar
     QList<posCacheUtils::DelimsInfo> m_surroundingDelims;
 
     Q_DISABLE_COPY(EditorHandler)

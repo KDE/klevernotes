@@ -25,81 +25,37 @@ Kirigami.ActionToolBar {
 
     readonly property var actionsTrigger: {
             "h1": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(-10)
-                } else {
-                    EditorHandler.addDelims(-10)
-                }
+                EditorHandler.handleDelims(checked, -10)
             },
             "h2": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(-9)
-                } else {
-                    EditorHandler.addDelims(-9)
-                }
+                EditorHandler.handleDelims(checked, -9)
             },
             "h3": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(-8)
-                } else {
-                    EditorHandler.addDelims(-8)
-                }
+                EditorHandler.handleDelims(checked, -8)
             },
             "h4": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(-7)
-                } else {
-                    EditorHandler.addDelims(-7)
-                }
+                EditorHandler.handleDelims(checked, -7)
             },
             "h5": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(-6)
-                } else {
-                    EditorHandler.addDelims(-6)
-                }
+                EditorHandler.handleDelims(checked, -6)
             },
             "h6": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(-5)
-                } else {
-                    EditorHandler.addDelims(-5)
-                }
+                EditorHandler.handleDelims(checked, -5)
             },
         "bold": function (checked) {
-                if (!checked) {
-                    EditorHandler.removeDelims(1)
-                } else {
-                    EditorHandler.addDelims(1)
-                }
+            EditorHandler.handleDelims(checked, 1)
         },
         "italic": function (checked) {
-            if (!checked) {
-                EditorHandler.removeDelims(2)
-            } else {
-                EditorHandler.addDelims(2)
-            }
+            EditorHandler.handleDelims(checked, 2)
         },
         "strikethrough": function (checked) {
-            if (!checked) {
-                EditorHandler.removeDelims(4)
-            } else {
-                EditorHandler.addDelims(4)
-            }
+            EditorHandler.handleDelims(checked, 4)
         },
         "codeBlock": function (checked) {
-            if (!checked) {
-                EditorHandler.removeDelims(-4)
-            } else {
-                EditorHandler.addDelims(-4)
-            }
+            EditorHandler.handleDelims(checked, -4)
         },
         "quote": function () {
-            if (!checked) {
-                EditorHandler.removeDelims(-3)
-            } else {
-                EditorHandler.addDelims(-3)
-            }
+            EditorHandler.handleDelims(checked, -3)
         },
         "image": function () {
             imagePickerDialog.open()
@@ -111,21 +67,13 @@ Kirigami.ActionToolBar {
             tableMakerDialog.open()
         },
         "orderedList": function (checked) {
-            if (!checked) {
-                EditorHandler.removeDelims(-2)
-            } else {
-                EditorHandler.addDelims(-2)
-            }
+            EditorHandler.handleDelims(checked, -2)
         },
         "unorderedList": function (checked) {
-            if (!checked) {
-                EditorHandler.removeDelims(-1)
-            } else {
-                EditorHandler.addDelims(-1)
-            }
+            EditorHandler.handleDelims(checked, -1)
         },
-        "highlight": function () {
-            // handleAction(editorTextArea.selectionStart, editorTextArea.selectionEnd, ["=="], true, false, false)
+        "highlight": function (checked) {
+            EditorHandler.handleDelims(checked, 8)
         },
         "emoji": function () {
             emojiDialog.open()
@@ -339,6 +287,9 @@ Kirigami.ActionToolBar {
                     break;
                 case 4:
                     actionIndex = toolbar.actionPositionMap["strikethrough"]
+                    break;
+                case 8:
+                    actionIndex = toolbar.actionPositionMap["highlight"]
                     break;
             }
             if (actionIndex !== undefined) {

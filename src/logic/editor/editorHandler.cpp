@@ -5,6 +5,7 @@
 
 // KleverNotes include
 #include "editorHighlighter.hpp"
+#include "logic/editor/toolbarUtils.hpp"
 #include "logic/parser/parser.h"
 #include "logic/parser/renderer.h"
 
@@ -12,8 +13,6 @@
 #include <QColor>
 #include <QRegularExpression>
 #include <QTextBlock>
-#include <qlogging.h>
-#include <vector>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -334,209 +333,20 @@ void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
 // !ExtendedSyntax
 
 // Toolbar
-void EditorHandler::removeDelims(const int delimType)
+QList<posCacheUtils::DelimsInfo> EditorHandler::getSurroundingDelims() const
 {
-    std::vector<MD::WithPosition> toRemove;
-    for (const auto &delimInfo : m_surroundingDelims) {
-        if (delimInfo.delimType == delimType) {
-            toRemove.push_back(delimInfo.opening);
-            if (delimInfo.closing.startLine() != -1) {
-                toRemove.push_back(delimInfo.closing);
-            }
-        }
+    return m_surroundingDelims;
+}
+
+void EditorHandler::handleDelims(const bool addDelims, const int delimType)
+{
+    if (addDelims) {
+        toolbarUtils::addDelims(this, delimType);
+    } else {
+        toolbarUtils::removeDelims(this, delimType);
     }
-
-    std::sort(toRemove.begin(), toRemove.end(), md4qtHelperFunc::StartColumnOrder{});
-
-    QTextCursor cursor = textCursor();
-
-    cursor.beginEditBlock();
-    for (auto it = toRemove.rbegin(); it != toRemove.rend(); ++it) {
-        const QTextBlock line = m_document->findBlockByNumber(it->startLine());
-        const int startPos = line.position() + it->startColumn();
-        const int endPos = line.position() + it->endColumn() + 1;
-
-        cursor.setPosition(startPos, QTextCursor::MoveAnchor);
-        cursor.setPosition(endPos, QTextCursor::KeepAnchor);
-        cursor.removeSelectedText();
-    }
-    cursor.endEditBlock();
 
     Q_EMIT focusEditor();
-}
-
-void EditorHandler::addDelims(const int delimType)
-{
-    bool increment = false;
-    QString delimText;
-    std::vector<int> delimsPos;
-    switch (delimType) {
-    case posCacheUtils::BlockDelimTypes::Heading1:
-        delimsPos = getFuturDelimsPositions(false, true);
-        delimText = QStringLiteral("# ");
-        break;
-    case posCacheUtils::BlockDelimTypes::Heading2:
-        delimsPos = getFuturDelimsPositions(false, true);
-        delimText = QStringLiteral("## ");
-        break;
-    case posCacheUtils::BlockDelimTypes::Heading3:
-        delimsPos = getFuturDelimsPositions(false, true);
-        delimText = QStringLiteral("### ");
-        break;
-    case posCacheUtils::BlockDelimTypes::Heading4:
-        delimsPos = getFuturDelimsPositions(false, true);
-        delimText = QStringLiteral("#### ");
-        break;
-    case posCacheUtils::BlockDelimTypes::Heading5:
-        delimsPos = getFuturDelimsPositions(false, true);
-        delimText = QStringLiteral("##### ");
-        break;
-    case posCacheUtils::BlockDelimTypes::Heading6:
-        delimsPos = getFuturDelimsPositions(false, true);
-        delimText = QStringLiteral("###### ");
-        break;
-    case posCacheUtils::BlockDelimTypes::CodeBlock:
-        delimText = QStringLiteral("\n```\n");
-        delimsPos = getFuturDelimsPositions(true);
-        break;
-    case posCacheUtils::BlockDelimTypes::BlockQuote:
-        delimText = QStringLiteral("> ");
-        delimsPos = getFuturDelimsPositions(false, true);
-        break;
-    case posCacheUtils::BlockDelimTypes::OrderedList:
-        increment = true;
-        delimText = QStringLiteral(". ");
-        delimsPos = getFuturDelimsPositions(false, true);
-        break;
-    case posCacheUtils::BlockDelimTypes::UnorderedList:
-        delimText = QStringLiteral("- ");
-        delimsPos = getFuturDelimsPositions(false, true);
-        break;
-    case MD::TextOption::BoldText:
-        delimText = QStringLiteral("**");
-        delimsPos = getFuturDelimsPositions();
-        break;
-    case MD::TextOption::ItalicText:
-        delimText = QStringLiteral("_");
-        delimsPos = getFuturDelimsPositions();
-        break;
-    case MD::TextOption::StrikethroughText:
-        delimText = QStringLiteral("~~");
-        delimsPos = getFuturDelimsPositions();
-        break;
-    }
-
-    QTextCursor cursor = textCursor();
-    cursor.beginEditBlock();
-    int pos = delimsPos.size();
-    for (auto it = delimsPos.rbegin(); it != delimsPos.rend(); ++it) {
-        cursor.setPosition(*it);
-        cursor.insertText(increment ? QString::number(pos) + delimText : delimText);
-    }
-    cursor.endEditBlock();
-
-    Q_EMIT focusEditor();
-}
-
-// Credit to: https://stackoverflow.com/a/8216059
-QString rstrip(const QString &str)
-{
-    int n = str.size() - 1;
-    for (; n >= 0; --n) {
-        if (!str.at(n).isSpace()) {
-            return str.left(n + 1);
-        }
-    }
-    return {};
-}
-
-int getLastInBlockNonEmptyPos(const QTextBlock &block)
-{
-    return rstrip(block.text()).length();
-}
-
-int getFirstInBlockNonEmptyPos(const QTextBlock &block)
-{
-    return getLastInBlockNonEmptyPos(block) - block.text().trimmed().length();
-}
-
-bool isEmptyBlock(const QTextBlock &block)
-{
-    // This way we also avoid line that only contains white space
-    return getLastInBlockNonEmptyPos(block) == 0;
-}
-
-bool nextNonEmptyBlock(QTextBlock &block, const int finalPos)
-{
-    block = block.next();
-    while (block.isValid() && isEmptyBlock(block) && !block.contains(finalPos)) {
-        block = block.next();
-    }
-    return block.isValid();
-}
-
-std::vector<int> EditorHandler::getFuturDelimsPositions(const bool wrapSelection, const bool isBlockItemDelim)
-{
-    auto cursor = textCursor();
-    if (cursor.position() != m_selectionStart) {
-        cursor.setPosition(m_selectionStart);
-    }
-    auto block = cursor.block();
-
-    std::vector<int> positions;
-    if (wrapSelection) {
-        const int blockStart = cursor.block().position();
-        positions.push_back(blockStart);
-
-        cursor.setPosition(m_selectionEnd);
-
-        const int blockEnd = block.position() + block.length() - 1;
-        positions.push_back(blockEnd);
-
-        return positions;
-    }
-
-    QTextBlock lastNonEmptyBlock;
-    if (!isEmptyBlock(block)) {
-        lastNonEmptyBlock = block;
-        positions.push_back(isBlockItemDelim ? block.position() : m_selectionStart);
-    }
-
-    int currentBlockNum = block.blockNumber();
-    if (!block.contains(m_selectionEnd)) {
-        while (nextNonEmptyBlock(block, m_selectionEnd) && !block.contains(m_selectionEnd)) {
-            if (isBlockItemDelim) {
-                positions.push_back(block.position());
-            } else if (1 < block.blockNumber() - currentBlockNum) { // Blank line
-                // Avoid the white space at the start and the end
-                if (lastNonEmptyBlock.isValid()) {
-                    positions.push_back(lastNonEmptyBlock.position() + getLastInBlockNonEmptyPos(lastNonEmptyBlock));
-                }
-                positions.push_back(block.position() + getFirstInBlockNonEmptyPos(block));
-            }
-
-            lastNonEmptyBlock = block;
-            currentBlockNum = block.blockNumber();
-        }
-    }
-
-    if (!block.isValid() && !lastNonEmptyBlock.isValid()) {
-        return {};
-    } else if (!block.isValid() && !isBlockItemDelim) {
-        block = lastNonEmptyBlock;
-    } else if (!block.isValid()) {
-        return positions;
-    }
-
-    if (1 < block.blockNumber() - currentBlockNum) { // Blank line
-        if (lastNonEmptyBlock.isValid()) {
-            positions.push_back(lastNonEmptyBlock.position() + lastNonEmptyBlock.length() - 1);
-        }
-        positions.push_back(block.position());
-    }
-
-    positions.push_back(isBlockItemDelim ? block.position() : m_selectionEnd);
-    return positions;
 }
 // !KleverNotes method
 
