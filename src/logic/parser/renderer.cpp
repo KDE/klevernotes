@@ -20,23 +20,23 @@ void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styl
         const long long int opts = s.style();
         switch (opts) {
         case MD::TextOption::BoldText: {
-            html.push_back(QStringLiteral("<strong>"));
+            m_html.push_back(QStringLiteral("<strong>"));
             break;
         }
 
         case MD::TextOption::ItalicText: {
-            html.push_back(QStringLiteral("<em>"));
+            m_html.push_back(QStringLiteral("<em>"));
             break;
         }
 
         case MD::TextOption::StrikethroughText: {
-            html.push_back(QStringLiteral("<del>"));
+            m_html.push_back(QStringLiteral("<del>"));
             break;
         }
 
         default:
             if (m_extendedSyntaxMap.contains(opts)) {
-                html.push_back(m_extendedSyntaxMap[opts].first);
+                m_html.push_back(m_extendedSyntaxMap[opts].first);
                 break;
             }
         }
@@ -49,23 +49,23 @@ void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Sty
         const long long int opts = s.style();
         switch (opts) {
         case MD::TextOption::BoldText: {
-            html.push_back(QStringLiteral("</strong>"));
+            m_html.push_back(QStringLiteral("</strong>"));
             break;
         }
 
         case MD::TextOption::ItalicText: {
-            html.push_back(QStringLiteral("</em>"));
+            m_html.push_back(QStringLiteral("</em>"));
             break;
         }
 
         case MD::TextOption::StrikethroughText: {
-            html.push_back(QStringLiteral("</del>"));
+            m_html.push_back(QStringLiteral("</del>"));
             break;
         }
 
         default:
             if (m_extendedSyntaxMap.contains(opts)) {
-                html.push_back(m_extendedSyntaxMap[opts].second);
+                m_html.push_back(m_extendedSyntaxMap[opts].second);
                 break;
             }
         }
@@ -78,20 +78,20 @@ void Renderer::onHeading(
     //! Heading tag.
     const typename MD::QStringTrait::String &ht)
 {
-    if (!justCollectFootnoteRefs) {
-        html.push_back(QStringLiteral("<"));
-        html.push_back(ht);
-        html.push_back(MD::details::headingIdToHtml(h));
-        html.push_back(QStringLiteral(">"));
+    if (!m_justCollectFootnoteRefs) {
+        m_html.push_back(QStringLiteral("<"));
+        m_html.push_back(ht);
+        m_html.push_back(MD::details::headingIdToHtml(h));
+        m_html.push_back(QStringLiteral(">"));
     }
 
     if (h->text().get())
         onParagraph(h->text().get(), false);
 
-    if (!justCollectFootnoteRefs) {
-        html.push_back(QStringLiteral("</"));
-        html.push_back(ht);
-        html.push_back(QStringLiteral(">"));
+    if (!m_justCollectFootnoteRefs) {
+        m_html.push_back(QStringLiteral("</"));
+        m_html.push_back(ht);
+        m_html.push_back(QStringLiteral(">"));
     }
 }
 
@@ -108,46 +108,46 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
         }
     }
 
-    const auto lit = this->doc->labeledLinks().find(url);
+    const auto lit = this->m_doc->labeledLinks().find(url);
 
-    if (lit != this->doc->labeledLinks().cend())
+    if (lit != this->m_doc->labeledLinks().cend())
         url = lit->second->url();
 
-    if (std::find(this->anchors.cbegin(), this->anchors.cend(), url) != this->anchors.cend())
+    if (std::find(this->m_anchors.cbegin(), this->m_anchors.cend(), url) != this->m_anchors.cend())
         url = QStringLiteral("#") + url;
-    else if (url.startsWith(QStringLiteral("#")) && this->doc->labeledHeadings().find(url) == this->doc->labeledHeadings().cend()) {
-        auto path = static_cast<MD::Anchor<MD::QStringTrait> *>(this->doc->items().at(0).get())->label();
+    else if (url.startsWith(QStringLiteral("#")) && this->m_doc->labeledHeadings().find(url) == this->m_doc->labeledHeadings().cend()) {
+        auto path = static_cast<MD::Anchor<MD::QStringTrait> *>(this->m_doc->items().at(0).get())->label();
         const auto sp = path.lastIndexOf(QStringLiteral("/"));
         path.remove(sp, path.length() - sp);
         const auto p = url.indexOf(path) - 1;
         url.remove(p, url.length() - p);
     }
 
-    if (!justCollectFootnoteRefs) {
+    if (!m_justCollectFootnoteRefs) {
         openStyle(l->openStyles());
 
-        html.push_back(QStringLiteral("<a href=\""));
-        html.push_back(url);
-        html.push_back(QStringLiteral("\">"));
+        m_html.push_back(QStringLiteral("<a href=\""));
+        m_html.push_back(url);
+        m_html.push_back(QStringLiteral("\">"));
     }
     if (l->p() && !l->p()->isEmpty()) {
         onParagraph(l->p().get(), false);
     } else if (!l->img()->isEmpty()) {
-        if (!justCollectFootnoteRefs) {
+        if (!m_justCollectFootnoteRefs) {
             onImage(l->img().get());
         }
     } else if (!l->text().isEmpty()) {
-        if (!justCollectFootnoteRefs) {
-            html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->text()));
+        if (!m_justCollectFootnoteRefs) {
+            m_html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->text()));
         }
     } else {
-        if (!justCollectFootnoteRefs) {
-            html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->url()));
+        if (!m_justCollectFootnoteRefs) {
+            m_html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->url()));
         }
     }
 
-    if (!justCollectFootnoteRefs) {
-        html.push_back(QStringLiteral("</a>"));
+    if (!m_justCollectFootnoteRefs) {
+        m_html.push_back(QStringLiteral("</a>"));
 
         closeStyle(l->closeStyles());
     }
@@ -155,7 +155,7 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
 
 void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
 {
-    if (!justCollectFootnoteRefs) {
+    if (!m_justCollectFootnoteRefs) {
         QString url = i->url();
         if (url.startsWith(QStringLiteral("./"))) {
             url = m_notePath + url.mid(1);
@@ -169,7 +169,7 @@ void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
 
         openStyle(i->openStyles());
 
-        html.push_back(image(url, i->text()));
+        m_html.push_back(image(url, i->text()));
 
         closeStyle(i->closeStyles());
     }
@@ -181,21 +181,21 @@ void Renderer::onListItem(MD::ListItem<MD::QStringTrait> *i, bool first)
     const bool isChecked = i->isChecked();
     const int startNum = i->listType() == MD::ListItem<MD::QStringTrait>::Ordered && first ? i->startNumber() : -1;
 
-    if (!justCollectFootnoteRefs) {
-        html.push_back(openListItem(hasTask, isChecked, startNum));
+    if (!m_justCollectFootnoteRefs) {
+        m_html.push_back(openListItem(hasTask, isChecked, startNum));
     }
 
     // Add the text
     Visitor<MD::QStringTrait>::onListItem(i, first);
 
-    if (!justCollectFootnoteRefs) {
-        html.push_back(closeListItem(hasTask));
+    if (!m_justCollectFootnoteRefs) {
+        m_html.push_back(closeListItem(hasTask));
     }
 }
 
 void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
 {
-    if (!justCollectFootnoteRefs) {
+    if (!m_justCollectFootnoteRefs) {
         static const QString pumlStr = QStringLiteral("puml");
         static const QString plantUMLStr = QStringLiteral("plantuml");
 
@@ -215,7 +215,7 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
             returnValue = Renderer::code(code);
         }
 
-        html.push_back(returnValue);
+        m_html.push_back(returnValue);
     }
 }
 
@@ -239,13 +239,13 @@ void Renderer::onUserDefined(MD::Item<MD::QStringTrait> *item)
 // Custom
 void Renderer::onEmoji(EmojiPlugin::EmojiItem *e)
 {
-    if (!justCollectFootnoteRefs) {
+    if (!m_justCollectFootnoteRefs) {
         openStyle(e->openStyles());
         const QString emoji = e->emoji();
-        html.push_back(QStringLiteral("<a href=\"copy:") + emoji);
-        html.push_back(QStringLiteral("\" style=\"text-decoration:none\">"));
-        html.push_back(emoji);
-        html.push_back(QStringLiteral("</a>"));
+        m_html.push_back(QStringLiteral("<a href=\"copy:") + emoji);
+        m_html.push_back(QStringLiteral("\" style=\"text-decoration:none\">"));
+        m_html.push_back(emoji);
+        m_html.push_back(QStringLiteral("</a>"));
         closeStyle(e->closeStyles());
     }
 }

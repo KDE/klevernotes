@@ -95,12 +95,12 @@ void EmojiItem::setEndDelim(const MD::WithPosition &pos)
 
 inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx)
 {
-    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.rawTextData.size())) {
+    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.m_rawTextData.size())) {
         return rawIdx;
     }
 
-    auto textData = po.rawTextData[rawIdx];
-    QString src = textData.str;
+    auto textData = po.m_rawTextData[rawIdx];
+    QString src = textData.m_str;
 
     static const auto emojiModel = &EmojiModel::instance();
     static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral(":(?=\\S)([^:]*)(:?)([^:]*):"));
@@ -207,7 +207,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
                 continue;
             }
 
-            auto lineInfo = po.fr.data.at(textData.line);
+            auto lineInfo = po.m_fr.m_data.at(textData.m_line);
             auto paraIdx = textAtIdx(p, rawIdx);
             const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
 
@@ -235,7 +235,7 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
                 emojiItem->openStyles() << item->openStyles();
                 emojiItem->closeStyles() << item->closeStyles();
                 p->removeItemAt(paraIdx);
-                po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+                po.m_rawTextData.erase(po.m_rawTextData.cbegin() + rawIdx);
             } else if (addedData == 1) {
                 const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
                 const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
@@ -268,10 +268,10 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
 void emojiHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
 {
     Q_UNUSED(options);
-    if (!po.collectRefLinks) {
+    if (!po.m_collectRefLinks) {
         long long int i = 0;
 
-        while (0 <= i && i < (long long int)po.rawTextData.size()) {
+        while (0 <= i && i < (long long int)po.m_rawTextData.size()) {
             i = processEmoji(p, po, i);
         }
     }

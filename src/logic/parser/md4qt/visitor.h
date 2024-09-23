@@ -7,8 +7,8 @@
 #define MD4QT_MD_VISITOR_HPP_INCLUDED
 
 // md4qt include.
-#include "doc.hpp"
-#include "utils.hpp"
+#include "doc.h"
+#include "utils.h"
 
 // C++ include.
 #include <string>
@@ -31,13 +31,13 @@ public:
 
     void process(std::shared_ptr<Document<Trait>> d)
     {
-        anchors.clear();
-        doc = d;
+        m_anchors.clear();
+        m_doc = d;
 
-        for (auto it = doc->items().cbegin(), last = doc->items().cend(); it != last; ++it) {
+        for (auto it = m_doc->items().cbegin(), last = m_doc->items().cend(); it != last; ++it) {
             switch ((*it)->type()) {
             case ItemType::Anchor:
-                anchors.push_back(static_cast<Anchor<Trait> *>(it->get())->label());
+                m_anchors.push_back(static_cast<Anchor<Trait> *>(it->get())->label());
                 break;
 
             default:
@@ -45,7 +45,7 @@ public:
             }
         }
 
-        for (auto it = doc->items().cbegin(), last = doc->items().cend(); it != last; ++it) {
+        for (auto it = m_doc->items().cbegin(), last = m_doc->items().cend(); it != last; ++it) {
             if (static_cast<int>((*it)->type()) >= static_cast<int>(ItemType::UserDefined)) {
                 onUserDefined(it->get());
             } else {
@@ -130,8 +130,9 @@ protected:
         long long int l = (!p->items().empty() ? p->items().at(0)->startLine() : -1);
 
         for (auto it = p->items().begin(), last = p->items().end(); it != last; ++it) {
-            if ((*it)->startLine() != l)
+            if ((*it)->startLine() != l) {
                 onAddLineEnding();
+            }
 
             l = (*it)->endLine();
 
@@ -414,10 +415,10 @@ protected:
     }
 
 protected:
-    //! All available anchors in the document.
-    typename Trait::template Vector<typename Trait::String> anchors;
+    //! All available m_anchors in the document.
+    typename Trait::template Vector<typename Trait::String> m_anchors;
     //! Document.
-    std::shared_ptr<Document<Trait>> doc;
+    std::shared_ptr<Document<Trait>> m_doc;
 }; // class Visitor
 
 } /* namespace MD */

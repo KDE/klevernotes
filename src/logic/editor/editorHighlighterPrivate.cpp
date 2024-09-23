@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
 #include "editorHighlighterPrivate.hpp"
-#include "logic/parser/md4qt/doc.hpp"
+#include "logic/parser/md4qt/doc.h"
 #include <utility>
 
 using namespace Qt::Literals::StringLiterals;

@@ -35,12 +35,12 @@ void getDelims(MDParagraphPtr p,
         return;
     }
 
-    const auto localPos = MD::localPosFromVirgin(po.fr, currentItem->startColumn(), currentItem->startLine());
-    const auto lineInfo = po.fr.data.at(localPos.second);
+    const auto localPos = MD::localPosFromVirgin(po.m_fr, currentItem->startColumn(), currentItem->startLine());
+    const auto lineInfo = po.m_fr.m_data.at(localPos.second);
 
     const long long int rawIdx = md4qtHelperFunc::rawIdxFromPos(localPos.first, localPos.second, po);
-    auto s = po.rawTextData[rawIdx];
-    const QString src = s.str;
+    auto s = po.m_rawTextData[rawIdx];
+    const QString src = s.m_str;
 
     int delimIdx = src.indexOf(searchedDelim);
 
@@ -219,7 +219,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
 
         const long long int delimStartPos = badStyleInfo.startColumn;
         const long long int delimEndPos = badStyleInfo.delim.endColumn();
-        const QString delimText = MD::virginSubstr(po.fr, badStyleInfo.delim);
+        const QString delimText = MD::virginSubstr(po.m_fr, badStyleInfo.delim);
 
         bool reattached = false;
         const bool atStart = (delimEndPos + 1 == itemStartPos);
@@ -248,15 +248,15 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
         }
 
         if (!reattached) { // create new one
-            const auto localPos = MD::localPosFromVirgin(po.fr, delimStartPos, badStyleInfo.startLine);
+            const auto localPos = MD::localPosFromVirgin(po.m_fr, delimStartPos, badStyleInfo.startLine);
             const long long int virginToLocalDelta = delimStartPos - localPos.first;
 
             const long long int nextRawDataIdx = md4qtHelperFunc::rawIdxFromPos(localPos.first, localPos.second, po) + 1;
 
             MDParsingOpts::TextData newTextData;
-            newTextData.str = delimText;
-            newTextData.pos = delimStartPos - virginToLocalDelta;
-            newTextData.line = localPos.second;
+            newTextData.m_str = delimText;
+            newTextData.m_pos = delimStartPos - virginToLocalDelta;
+            newTextData.m_line = localPos.second;
 
             auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
             newTextItem->setStartLine(badStyleInfo.startLine);
@@ -268,7 +268,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
             finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
             newTextItem->setText(finalSimplifiedText);
 
-            po.rawTextData.insert(po.rawTextData.cbegin() + nextRawDataIdx, newTextData);
+            po.m_rawTextData.insert(po.m_rawTextData.cbegin() + nextRawDataIdx, newTextData);
             p->insertItem(nextParaIdx, newTextItem);
         }
     }
@@ -328,7 +328,7 @@ void removeDelimText(MDParagraphPtr p, MDParsingOpts &po, const QList<DelimInfo>
                 std::sort(previousItem->closeStyles().begin(), previousItem->closeStyles().end(), md4qtHelperFunc::StartColumnOrder{});
             }
             p->removeItemAt(paraIdx);
-            po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+            po.m_rawTextData.erase(po.m_rawTextData.cbegin() + rawIdx);
         }
     }
 }
@@ -354,8 +354,8 @@ void addNewStyleOpt(MDParagraphPtr p, const QList<DelimInfo> &pairs, const int n
 
 void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &searchedDelim, const int newStyleOpt)
 {
-    if (!po.collectRefLinks) {
-        if (po.rawTextData.empty()) {
+    if (!po.m_collectRefLinks) {
+        if (po.m_rawTextData.empty()) {
             return;
         }
 

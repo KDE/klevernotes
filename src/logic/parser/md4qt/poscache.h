@@ -6,7 +6,7 @@
 #ifndef MD4QT_MD_POSCACHE_HPP_INCLUDED
 #define MD4QT_MD_POSCACHE_HPP_INCLUDED
 
-#include "visitor.hpp"
+#include "visitor.h"
 
 // C++ include.
 #include <algorithm>
@@ -25,16 +25,16 @@ namespace details
 
 template<class Trait>
 struct PosRange {
-    long long int startColumn = -1;
-    long long int startLine = -1;
-    long long int endColumn = -1;
-    long long int endLine = -1;
-    Item<Trait> *item = nullptr;
-    std::vector<PosRange<Trait>> children = {};
+    long long int m_startColumn = -1;
+    long long int m_startLine = -1;
+    long long int m_endColumn = -1;
+    long long int m_endLine = -1;
+    Item<Trait> *m_item = nullptr;
+    std::vector<PosRange<Trait>> m_children = {};
 
     inline bool isValidPos() const
     {
-        return startColumn > -1 && startLine > -1 && endColumn > -1 && endLine > -1;
+        return m_startColumn > -1 && m_startLine > -1 && m_endColumn > -1 && m_endLine > -1;
     }
 };
 
@@ -43,14 +43,14 @@ struct PosRange {
 template<class Trait>
 bool operator==(const PosRange<Trait> &l, const PosRange<Trait> &r)
 {
-    return (l.startLine <= r.endLine && l.endLine >= r.startLine
-            && (l.startLine == r.endLine && l.endLine == r.startLine ? l.endColumn >= r.startColumn && l.startColumn <= r.endColumn : true));
+    return (l.m_startLine <= r.m_endLine && l.m_endLine >= r.m_startLine
+            && (l.m_startLine == r.m_endLine && l.m_endLine == r.m_startLine ? l.m_endColumn >= r.m_startColumn && l.m_startColumn <= r.m_endColumn : true));
 }
 
 template<class Trait>
 bool operator<(const PosRange<Trait> &l, const PosRange<Trait> &r)
 {
-    return (l.endLine < r.startLine || (l.endLine == r.startLine && l.endColumn < r.startColumn));
+    return (l.m_endLine < r.m_startLine || (l.m_endLine == r.m_startLine && l.m_endColumn < r.m_startColumn));
 }
 
 } /* namespace details */
@@ -67,11 +67,11 @@ public:
     PosCache() = default;
     ~PosCache() override = default;
 
-    //! Initialize cache with the give document.
+    //! Initialize m_cache with the give document.
     //! \note Document should not be recursive.
     virtual void initialize(std::shared_ptr<MD::Document<Trait>> doc)
     {
-        cache.clear();
+        m_cache.clear();
 
         if (doc) {
             Visitor<Trait>::process(doc);
@@ -97,7 +97,7 @@ public:
 
         details::PosRange<Trait> tmp{pos.startColumn(), pos.startLine(), pos.endColumn(), pos.endLine()};
 
-        findFirstInCache(cache, tmp, res);
+        findFirstInCache(m_cache, tmp, res);
 
         return res;
     }
@@ -108,14 +108,16 @@ protected:
         const auto it = std::lower_bound(vec.begin(), vec.end(), pos);
 
         if (it != vec.end() && *it == pos) {
-            if (!it->children.empty()) {
-                auto nested = findInCache(it->children, pos);
+            if (!it->m_children.empty()) {
+                auto nested = findInCache(it->m_children, pos);
 
                 return (nested ? nested : &(*it));
-            } else
+            } else {
                 return &(*it);
-        } else
+            }
+        } else {
             return nullptr;
+        }
     }
 
     void findFirstInCache(const std::vector<details::PosRange<Trait>> &vec, const details::PosRange<Trait> &pos, Items &res) const
@@ -123,32 +125,35 @@ protected:
         const auto it = std::lower_bound(vec.begin(), vec.end(), pos);
 
         if (it != vec.end() && *it == pos) {
-            res.push_back(it->item);
+            res.push_back(it->m_item);
 
-            if (!it->children.empty())
-                findFirstInCache(it->children, pos, res);
+            if (!it->m_children.empty()) {
+                findFirstInCache(it->m_children, pos, res);
+            }
         }
     }
 
     void insertInCache(const details::PosRange<Trait> &item, bool sort = false)
     {
-        if (!skipInCache) {
+        if (!m_skipInCache) {
             assert(item.isValidPos());
 
-            auto pos = findInCache(cache, item);
+            auto pos = findInCache(m_cache, item);
 
-            if (pos)
-                pos->children.push_back(item);
-            else {
+            if (pos) {
+                pos->m_children.push_back(item);
+            } else {
                 if (sort) {
-                    const auto it = std::upper_bound(cache.begin(), cache.end(), item);
+                    const auto it = std::upper_bound(m_cache.begin(), m_cache.end(), item);
 
-                    if (it != cache.end())
-                        cache.insert(it, item);
-                    else
-                        cache.push_back(item);
-                } else
-                    cache.push_back(item);
+                    if (it != m_cache.end()) {
+                        m_cache.insert(it, item);
+                    } else {
+                        m_cache.push_back(item);
+                    }
+                } else {
+                    m_cache.push_back(item);
+                }
             }
         }
     }
@@ -226,8 +231,9 @@ protected:
 
         insertInCache(r);
 
-        if (h->text() && !h->text()->isEmpty())
+        if (h->text() && !h->text()->isEmpty()) {
             onParagraph(h->text().get(), false);
+        }
     }
 
     void onCode(Code<Trait> *c) override
@@ -313,8 +319,9 @@ protected:
 
                     ++i;
 
-                    if (i == columns)
+                    if (i == columns) {
                         break;
+                    }
                 }
             }
         }
@@ -360,9 +367,9 @@ protected:
         insertInCache(r);
 
         if (l->p()) {
-            skipInCache = true;
+            m_skipInCache = true;
             onParagraph(l->p().get(), true);
-            skipInCache = false;
+            m_skipInCache = false;
         }
     }
 
@@ -388,9 +395,9 @@ protected:
         insertInCache(r);
 
         if (i->p()) {
-            skipInCache = true;
+            m_skipInCache = true;
             onParagraph(i->p().get(), true);
-            skipInCache = false;
+            m_skipInCache = false;
         }
     }
 
@@ -436,9 +443,9 @@ protected:
 
 protected:
     //! Cache.
-    std::vector<details::PosRange<Trait>> cache;
+    std::vector<details::PosRange<Trait>> m_cache;
     //! Skip adding in cache.
-    bool skipInCache = false;
+    bool m_skipInCache = false;
 }; // class PosCache
 
 } /* namespace MD */

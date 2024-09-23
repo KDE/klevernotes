@@ -29,9 +29,9 @@ long long int paraIdxFromPos(const long long int startColumn, const long long in
 
 long long int rawIdxFromPos(const long long int startColumn, const long long int startLine, MDParsingOpts &po)
 {
-    const auto &rawDatas = po.rawTextData;
+    const auto &rawDatas = po.m_rawTextData;
     const auto nextDataIt = std::find_if(rawDatas.cbegin(), rawDatas.cend(), [startColumn, startLine](const auto &d) {
-        return (startLine == d.line && startColumn < d.pos) || startLine < d.line;
+        return (startLine == d.m_line && startColumn < d.m_pos) || startLine < d.m_line;
     });
 
     return std::distance(rawDatas.cbegin(), nextDataIt) - 1;
@@ -42,7 +42,7 @@ long long int rawIdxFromItem(const MDItemWithOptsPtr item, MDParsingOpts &po)
     if (item->type() != MD::ItemType::Text) {
         return -1;
     }
-    const auto localPos = MD::localPosFromVirgin(po.fr, item->startColumn(), item->startLine());
+    const auto localPos = MD::localPosFromVirgin(po.m_fr, item->startColumn(), item->startLine());
     return rawIdxFromPos(localPos.first, localPos.second, po);
 }
 

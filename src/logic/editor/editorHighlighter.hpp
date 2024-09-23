@@ -11,8 +11,8 @@
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/poscache.hpp"
-#include "logic/parser/md4qt/traits.hpp"
+#include "logic/parser/md4qt/poscache.h"
+#include "logic/parser/md4qt/traits.h"
 
 // Qt include.
 #include <QColor>

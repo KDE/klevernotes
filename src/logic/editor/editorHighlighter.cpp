@@ -7,8 +7,8 @@
 #include "logic/editor/editorHandler.hpp"
 
 // md-editor include.
-#include "logic/parser/md4qt/doc.hpp"
-#include "logic/parser/md4qt/traits.hpp"
+#include "logic/parser/md4qt/doc.h"
+#include "logic/parser/md4qt/traits.h"
 
 // Qt include.
 #include <QTextBlock>

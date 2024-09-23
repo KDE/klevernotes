@@ -16,12 +16,12 @@ namespace NoteLinkingPlugin
 
 inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx)
 {
-    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.rawTextData.size())) {
+    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.m_rawTextData.size())) {
         return rawIdx;
     }
 
-    auto textData = po.rawTextData[rawIdx];
-    QString src = textData.str;
+    auto textData = po.m_rawTextData[rawIdx];
+    QString src = textData.m_str;
 
     static const QRegularExpression inline_wikilink =
         QRegularExpression(QStringLiteral("\\[\\[ *([^:\\]\\|\\r\\n]*)( *: *)?([^:\\]\\|\\r\\n]*)( *\\| *)?([^:\\]\\|\\r\\n]*) *\\]\\]"));
@@ -32,7 +32,7 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
         if (cap.hasMatch()) {
             const QString href = cap.captured(1).trimmed();
             if (!href.isEmpty()) {
-                const QPair<QString, bool> sanitizedHref = NoteMapperParserUtils::sanitizePath(href, po.workingPath);
+                const QPair<QString, bool> sanitizedHref = NoteMapperParserUtils::sanitizePath(href, po.m_workingPath);
 
                 const QString header = cap.captured(3).trimmed();
 
@@ -42,7 +42,7 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
                 const QString title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
 
                 if (sanitizedHref.second) {
-                    auto lineInfo = po.fr.data.at(textData.line);
+                    auto lineInfo = po.m_fr.m_data.at(textData.m_line);
                     auto paraIdx = textAtIdx(p, rawIdx);
                     const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
                     const auto opts = item->opts();
@@ -75,7 +75,7 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
                         link->openStyles() << item->openStyles();
                         link->closeStyles() << item->closeStyles();
                         p->removeItemAt(paraIdx);
-                        po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+                        po.m_rawTextData.erase(po.m_rawTextData.cbegin() + rawIdx);
                     } else if (addedData == 1) {
                         const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
                         const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
@@ -114,10 +114,10 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
 void noteLinkingHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
 {
     Q_UNUSED(options);
-    if (!po.collectRefLinks) {
+    if (!po.m_collectRefLinks) {
         long long int i = 0;
 
-        while (0 <= i && i < (long long int)po.rawTextData.size()) {
+        while (0 <= i && i < (long long int)po.m_rawTextData.size()) {
             i = processNoteLinking(p, po, i);
         }
     }

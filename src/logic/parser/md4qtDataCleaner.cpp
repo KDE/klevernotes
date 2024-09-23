@@ -14,8 +14,8 @@ void removeEmpty(MDParagraphPtr p, MDParsingOpts &po)
     long long int paraIdx = 0;
     while (paraIdx < p->items().length()) {
         if (p->getItemAt(paraIdx)->type() == MD::ItemType::Text) {
-            if (po.rawTextData[rawIdx].str.trimmed().isEmpty()) {
-                po.rawTextData.erase(po.rawTextData.cbegin() + rawIdx);
+            if (po.m_rawTextData[rawIdx].m_str.trimmed().isEmpty()) {
+                po.m_rawTextData.erase(po.m_rawTextData.cbegin() + rawIdx);
                 p->removeItemAt(paraIdx);
                 continue;
             }
@@ -64,7 +64,7 @@ std::pair<long long, long long> getAbsoluteColumns(MDItemWithOptsPtr item)
 void addSpace(MDItemWithOptsPtr item, const long long int paraIdx, MDParagraphPtr p, MDParsingOpts &po)
 {
     MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
-    const auto itemLocalPos = MD::localPosFromVirgin(po.fr, item->startColumn(), item->startLine());
+    const auto itemLocalPos = MD::localPosFromVirgin(po.m_fr, item->startColumn(), item->startLine());
     const long long int rawIdx = md4qtHelperFunc::rawIdxFromPos(itemLocalPos.first, itemLocalPos.second, po);
     const auto [absoluteStart, absoluteEnd] = getAbsoluteColumns(item);
 
@@ -81,14 +81,14 @@ void addSpace(MDItemWithOptsPtr item, const long long int paraIdx, MDParagraphPt
             hasSpaceBefore = previousAbsoluteEnd + 1 < absoluteStart;
         }
         if (!hasSpaceBefore) {
-            hasSpaceBefore = po.rawTextData[rawIdx].str.front().isSpace();
+            hasSpaceBefore = po.m_rawTextData[rawIdx].m_str.front().isSpace();
         }
         if (!hasSpaceBefore && previousItem->type() == MD::ItemType::Text) {
-            hasSpaceBefore = po.rawTextData[rawIdx - 1].str.back().isSpace();
+            hasSpaceBefore = po.m_rawTextData[rawIdx - 1].m_str.back().isSpace();
         }
     }
     textItem->setSpaceBefore(hasSpaceBefore);
-    po.rawTextData[rawIdx].spaceBefore = hasSpaceBefore;
+    po.m_rawTextData[rawIdx].m_spaceBefore = hasSpaceBefore;
 
     // Space after
     bool hasSpaceAfter;
@@ -104,14 +104,14 @@ void addSpace(MDItemWithOptsPtr item, const long long int paraIdx, MDParagraphPt
             hasSpaceAfter = absoluteEnd + 1 < nextAbsoluteStart;
         }
         if (!hasSpaceAfter) {
-            hasSpaceAfter = po.rawTextData[rawIdx].str.back().isSpace();
+            hasSpaceAfter = po.m_rawTextData[rawIdx].m_str.back().isSpace();
         }
         if (!hasSpaceAfter && nextItem->type() == MD::ItemType::Text) {
-            hasSpaceAfter = po.rawTextData[rawIdx + 1].str.front().isSpace();
+            hasSpaceAfter = po.m_rawTextData[rawIdx + 1].m_str.front().isSpace();
         }
     }
     textItem->setSpaceAfter(hasSpaceAfter);
-    po.rawTextData[rawIdx].spaceAfter = hasSpaceAfter;
+    po.m_rawTextData[rawIdx].m_spaceAfter = hasSpaceAfter;
 }
 
 void setSpacesBack(MDParagraphPtr p, MDParsingOpts &po)

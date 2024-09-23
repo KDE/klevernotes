@@ -57,35 +57,38 @@ public:
     {
     }
     InternalStringT(const String &s)
-        : str(s)
-        , virginStr(s)
+        : m_str(s)
+        , m_virginStr(s)
     {
     }
 
     String &asString()
     {
-        return str;
+        return m_str;
     }
     const String &asString() const
     {
-        return str;
+        return m_str;
     }
 
     String virginString(long long int pos = 0, long long int len = -1) const
     {
-        if (pos < 0)
+        if (pos < 0) {
             pos = 0;
+        }
 
-        if (pos + len > str.length() || len < 0)
-            len = str.length() - pos;
+        if (pos + len > m_str.length() || len < 0) {
+            len = m_str.length() - pos;
+        }
 
-        if (len == 0)
-            return (str.isEmpty() ? virginStr : String());
+        if (len == 0) {
+            return (m_str.isEmpty() ? m_virginStr : String());
+        }
 
         auto virginStartPos = virginPos(pos);
         String startStr, endStr;
 
-        if (virginStr[virginStartPos] == Latin1Char('\t')) {
+        if (m_virginStr[virginStartPos] == Latin1Char('\t')) {
             const auto spaces = countOfSpacesForTab(virginStartPos);
 
             for (long long int i = 1; i < spaces; ++i) {
@@ -100,7 +103,7 @@ public:
         if (len > 1) {
             auto virginEndPos = virginPos(pos + len - 1);
 
-            if (virginStr[virginEndPos] == Latin1Char('\t')) {
+            if (m_virginStr[virginEndPos] == Latin1Char('\t')) {
                 const auto spaces = countOfSpacesForTab(virginEndPos);
 
                 for (long long int i = 1; i < spaces; ++i) {
@@ -112,34 +115,36 @@ public:
                 }
             }
 
-            return startStr + virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1) + endStr;
-        } else
-            return (startStr.isEmpty() ? String(1, virginStr[virginStartPos]) : String(1, Latin1Char(' ')));
+            return startStr + m_virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1) + endStr;
+        } else {
+            return (startStr.isEmpty() ? String(1, m_virginStr[virginStartPos]) : String(1, Latin1Char(' ')));
+        }
     }
 
     long long int virginPos(long long int pos) const
     {
-        for (auto it = changedPos.crbegin(), last = changedPos.crend(); it != last; ++it)
+        for (auto it = m_changedPos.crbegin(), last = m_changedPos.crend(); it != last; ++it) {
             pos = virginPosImpl(pos, *it);
+        }
 
         return pos;
     }
 
     Char operator[](long long int position) const
     {
-        return str[position];
+        return m_str[position];
     }
 
     InternalStringT &replaceOne(long long int pos, long long int size, const String &with)
     {
-        const auto len = str.length();
+        const auto len = m_str.length();
 
-        str.remove(pos, size);
-        str.insert(pos, with);
+        m_str.remove(pos, size);
+        m_str.insert(pos, with);
 
         if (with.length() != size) {
-            changedPos.push_back({{0, len}, {}});
-            changedPos.back().second.push_back({pos, size, with.size()});
+            m_changedPos.push_back({{0, len}, {}});
+            m_changedPos.back().second.push_back({pos, size, with.size()});
         }
 
         return *this;
@@ -149,67 +154,68 @@ public:
     {
         String tmp;
         bool init = false;
-        const auto len = str.length();
+        const auto len = m_str.length();
 
-        for (long long int i = 0; i < str.size();) {
-            long long int p = str.indexOf(what, i);
+        for (long long int i = 0; i < m_str.size();) {
+            long long int p = m_str.indexOf(what, i);
 
             if (p != -1) {
-                tmp.push_back(str.sliced(i, p - i));
+                tmp.push_back(m_str.sliced(i, p - i));
                 tmp.push_back(with);
 
                 i = p + what.size();
 
                 if (what.size() != with.size()) {
                     if (!init) {
-                        changedPos.push_back({{0, len}, {}});
+                        m_changedPos.push_back({{0, len}, {}});
                         init = true;
                     }
 
-                    changedPos.back().second.push_back({p, what.size(), with.size()});
+                    m_changedPos.back().second.push_back({p, what.size(), with.size()});
                 }
             } else {
-                tmp.push_back(str.sliced(i));
+                tmp.push_back(m_str.sliced(i));
 
-                i = str.size();
+                i = m_str.size();
             }
         }
 
-        std::swap(str, tmp);
+        std::swap(m_str, tmp);
 
         return *this;
     }
 
     InternalStringT &remove(long long int pos, long long int size)
     {
-        const auto len = str.length();
+        const auto len = m_str.length();
 
-        str.remove(pos, size);
+        m_str.remove(pos, size);
 
-        changedPos.push_back({{0, len}, {}});
-        changedPos.back().second.push_back({pos, size, 0});
+        m_changedPos.push_back({{0, len}, {}});
+        m_changedPos.back().second.push_back({pos, size, 0});
 
         return *this;
     }
 
     bool isEmpty() const
     {
-        return str.isEmpty();
+        return m_str.isEmpty();
     }
     long long int length() const
     {
-        return str.length();
+        return m_str.length();
     }
 
     InternalStringT simplified() const
     {
-        if (isEmpty())
+        if (isEmpty()) {
             return *this;
+        }
 
-        const auto len = str.length();
+        const auto len = m_str.length();
 
         InternalStringT result = *this;
-        result.str.clear();
+        result.m_str.clear();
         long long int i = 0;
         bool init = false;
         bool first = true;
@@ -218,41 +224,45 @@ public:
         while (true) {
             long long tmp = i;
 
-            while (i < length() && str[i].isSpace())
+            while (i < length() && m_str[i].isSpace()) {
                 ++i;
+            }
 
             spaces = i - tmp;
 
             if (i != tmp) {
                 if (!init) {
-                    result.changedPos.push_back({{0, len}, {}});
+                    result.m_changedPos.push_back({{0, len}, {}});
                     init = true;
                 }
 
-                if (i - tmp > 1 || first)
-                    result.changedPos.back().second.push_back({tmp, i - tmp, (first ? 0 : 1)});
+                if (i - tmp > 1 || first) {
+                    result.m_changedPos.back().second.push_back({tmp, i - tmp, (first ? 0 : 1)});
+                }
             }
 
             first = false;
 
-            while (i != length() && !str[i].isSpace()) {
-                result.str.push_back(str[i]);
+            while (i != length() && !m_str[i].isSpace()) {
+                result.m_str.push_back(m_str[i]);
                 ++i;
             }
 
-            if (i == length())
+            if (i == length()) {
                 break;
+            }
 
-            result.str.push_back(Latin1Char(' '));
+            result.m_str.push_back(Latin1Char(' '));
         }
 
-        if (!result.isEmpty() && result.str[result.length() - 1] == Latin1Char(' ')) {
-            result.str.remove(result.length() - 1, 1);
+        if (!result.isEmpty() && result.m_str[result.length() - 1] == Latin1Char(' ')) {
+            result.m_str.remove(result.length() - 1, 1);
 
-            if (spaces > 1)
-                result.changedPos.back().second.back().len = 0;
-            else if (spaces == 1)
-                result.changedPos.back().second.push_back({str.length() - spaces, spaces, 0});
+            if (spaces > 1) {
+                result.m_changedPos.back().second.back().m_len = 0;
+            } else if (spaces == 1) {
+                result.m_changedPos.back().second.push_back({m_str.length() - spaces, spaces, 0});
+            }
         }
 
         return result;
@@ -261,13 +271,13 @@ public:
     std::vector<InternalStringT> split(const InternalStringT &sep) const
     {
         std::vector<InternalStringT> result;
-        const auto len = str.length();
+        const auto len = m_str.length();
 
         if (sep.isEmpty()) {
-            for (long long int i = 0; i < str.length(); ++i) {
+            for (long long int i = 0; i < m_str.length(); ++i) {
                 auto is = *this;
-                is.str = str[i];
-                is.changedPos.push_back({{i, len}, {}});
+                is.m_str = m_str[i];
+                is.m_changedPos.push_back({{i, len}, {}});
 
                 result.push_back(is);
             }
@@ -278,11 +288,11 @@ public:
         long long int pos = 0;
         long long int fpos = 0;
 
-        while ((fpos = str.indexOf(sep.asString(), pos)) != -1 && fpos < length()) {
+        while ((fpos = m_str.indexOf(sep.asString(), pos)) != -1 && fpos < length()) {
             if (fpos - pos > 0) {
                 auto is = *this;
-                is.str = str.sliced(pos, fpos - pos);
-                is.changedPos.push_back({{pos, len}, {}});
+                is.m_str = m_str.sliced(pos, fpos - pos);
+                is.m_changedPos.push_back({{pos, len}, {}});
 
                 result.push_back(is);
             }
@@ -290,10 +300,10 @@ public:
             pos = fpos + sep.length();
         }
 
-        if (pos < str.length()) {
+        if (pos < m_str.length()) {
             auto is = *this;
-            is.str = str.sliced(pos, str.length() - pos);
-            is.changedPos.push_back({{pos, len}, {}});
+            is.m_str = m_str.sliced(pos, m_str.length() - pos);
+            is.m_changedPos.push_back({{pos, len}, {}});
 
             result.push_back(is);
         }
@@ -304,11 +314,12 @@ public:
     InternalStringT sliced(long long int pos, long long int len = -1) const
     {
         InternalStringT tmp = *this;
-        const auto oldLen = str.length();
-        tmp.str = tmp.str.sliced(pos, (len == -1 ? tmp.str.length() - pos : len));
-        tmp.changedPos.push_back({{pos, oldLen}, {}});
-        if (len != -1 && len < length() - pos)
-            tmp.changedPos.back().second.push_back({pos + len, length() - pos - len, 0});
+        const auto oldLen = m_str.length();
+        tmp.m_str = tmp.m_str.sliced(pos, (len == -1 ? tmp.m_str.length() - pos : len));
+        tmp.m_changedPos.push_back({{pos, oldLen}, {}});
+        if (len != -1 && len < length() - pos) {
+            tmp.m_changedPos.back().second.push_back({pos + len, length() - pos - len, 0});
+        }
 
         return tmp;
     }
@@ -316,9 +327,9 @@ public:
     InternalStringT right(long long int n) const
     {
         InternalStringT tmp = *this;
-        const auto len = str.length();
-        tmp.str = tmp.str.right(n);
-        tmp.changedPos.push_back({{length() - n, len}, {}});
+        const auto len = m_str.length();
+        tmp.m_str = tmp.m_str.right(n);
+        tmp.m_changedPos.push_back({{length() - n, len}, {}});
 
         return tmp;
     }
@@ -330,33 +341,33 @@ public:
 
     InternalStringT &insert(long long int pos, const String &s)
     {
-        const auto len = str.length();
+        const auto len = m_str.length();
         const auto ilen = s.length();
 
-        str.insert(pos, s);
+        m_str.insert(pos, s);
 
-        changedPos.push_back({{0, len}, {}});
-        changedPos.back().second.push_back({pos, 1, ilen + 1});
+        m_changedPos.push_back({{0, len}, {}});
+        m_changedPos.back().second.push_back({pos, 1, ilen + 1});
 
         return *this;
     }
 
 private:
-    String str;
-    String virginStr;
+    String m_str;
+    String m_virginStr;
 
     struct ChangedPos {
-        long long int pos = -1;
-        long long int oldLen = -1;
-        long long int len = -1;
+        long long int m_pos = -1;
+        long long int m_oldLen = -1;
+        long long int m_len = -1;
     };
 
     struct LengthAndStartPos {
-        long long int firstPos = 0;
-        long long int length = 0;
+        long long int m_firstPos = 0;
+        long long int m_length = 0;
     };
 
-    std::vector<std::pair<LengthAndStartPos, std::vector<ChangedPos>>> changedPos;
+    std::vector<std::pair<LengthAndStartPos, std::vector<ChangedPos>>> m_changedPos;
 
 private:
     long long int virginPosImpl(long long int pos, const std::pair<LengthAndStartPos, std::vector<ChangedPos>> &changed) const
@@ -364,41 +375,46 @@ private:
         long long int p = 0;
 
         for (const auto &c : changed.second) {
-            if (c.pos + std::min(c.oldLen, c.len) <= pos + p) {
-                if (c.oldLen < c.len) {
-                    if (c.len - c.oldLen >= pos)
+            if (c.m_pos + std::min(c.m_oldLen, c.m_len) <= pos + p) {
+                if (c.m_oldLen < c.m_len) {
+                    if (c.m_len - c.m_oldLen >= pos) {
                         p -= pos;
-                    else if (c.pos - p + changed.first.firstPos > changed.first.length)
-                        p -= (pos + p + changed.first.firstPos - changed.first.length + (pos >= changed.first.length - p + (c.len - c.oldLen) ? 0 : 1));
-                    else {
-                        const auto tmp = c.len - c.oldLen;
+                    } else if (c.m_pos - p + changed.first.m_firstPos > changed.first.m_length) {
+                        p -= (pos + p + changed.first.m_firstPos - changed.first.m_length
+                              + (pos >= changed.first.m_length - p + (c.m_len - c.m_oldLen) ? 0 : 1));
+                    } else {
+                        const auto tmp = c.m_len - c.m_oldLen;
 
-                        p -= tmp - (pos >= c.pos && pos < c.pos + tmp ? (tmp - pos + c.pos) : 0);
+                        p -= tmp - (pos >= c.m_pos && pos < c.m_pos + tmp ? (tmp - pos + c.m_pos) : 0);
                     }
-                } else
-                    p += (c.oldLen - c.len);
-            } else
+                } else {
+                    p += (c.m_oldLen - c.m_len);
+                }
+            } else {
                 break;
+            }
         }
 
-        return pos + p + changed.first.firstPos;
+        return pos + p + changed.first.m_firstPos;
     }
 
     long long int countOfSpacesForTab(long long int virginPos) const
     {
         long long int p = 0;
 
-        for (const auto &v : std::as_const(changedPos)) {
-            p += v.first.firstPos;
+        for (const auto &v : std::as_const(m_changedPos)) {
+            p += v.first.m_firstPos;
 
-            if (virginPos < p)
+            if (virginPos < p) {
                 break;
+            }
 
             for (const auto &c : std::as_const(v.second)) {
-                if (c.pos + p == virginPos)
-                    return c.len;
+                if (c.m_pos + p == virginPos) {
+                    return c.m_len;
+                }
 
-                virginPos += (virginPos > c.pos ? c.len - c.oldLen : 0);
+                virginPos += (virginPos > c.m_pos ? c.m_len - c.m_oldLen : 0);
             }
         }
 
@@ -617,15 +633,18 @@ public:
             std::string tmp;
             toUTF8String(tmp);
             const auto result = std::stoi(tmp, nullptr, base);
-            if (ok)
+            if (ok) {
                 *ok = true;
+            }
             return result;
         } catch (const std::invalid_argument &) {
-            if (ok)
+            if (ok) {
                 *ok = false;
+            }
         } catch (const std::out_of_range &) {
-            if (ok)
+            if (ok) {
                 *ok = false;
+            }
         }
 
         return 0;
@@ -643,29 +662,33 @@ public:
 
     UnicodeString simplified() const
     {
-        if (isEmpty())
+        if (isEmpty()) {
             return *this;
+        }
 
         UnicodeString result;
         int32_t i = 0;
 
         while (true) {
-            while (i < length() && UnicodeChar(char32At(i)).isSpace())
+            while (i < length() && UnicodeChar(char32At(i)).isSpace()) {
                 ++i;
+            }
 
             while (i != length() && !UnicodeChar(char32At(i)).isSpace()) {
                 result.append(UnicodeChar(char32At(i)));
                 ++i;
             }
 
-            if (i == length())
+            if (i == length()) {
                 break;
+            }
 
             result.append(UnicodeChar(' '));
         }
 
-        if (!result.isEmpty() && result[result.size() - 1] == UnicodeChar(' '))
+        if (!result.isEmpty() && result[result.size() - 1] == UnicodeChar(' ')) {
             result.remove(result.size() - 1, 1);
+        }
 
         return result;
     }
@@ -703,16 +726,18 @@ public:
 
     UnicodeString &replace(const UnicodeChar &before, const UnicodeString &after)
     {
-        for (int32_t pos = 0; (pos = indexOf(before, pos)) != -1; pos += after.size())
+        for (int32_t pos = 0; (pos = indexOf(before, pos)) != -1; pos += after.size()) {
             icu::UnicodeString::replace(pos, 1, after);
+        }
 
         return *this;
     }
 
     UnicodeString &replace(const UnicodeString &before, const UnicodeString &after)
     {
-        for (int32_t pos = 0; (pos = indexOf(before, pos)) != -1; pos += after.size())
+        for (int32_t pos = 0; (pos = indexOf(before, pos)) != -1; pos += after.size()) {
             icu::UnicodeString::replace(pos, before.length(), after);
+        }
 
         return *this;
     }
@@ -782,11 +807,13 @@ public:
             m_valid = true;
             m_relative = !(uri.scheme.first && uri.scheme.afterLast);
 
-            if (!m_relative)
+            if (!m_relative) {
                 m_scheme = UnicodeString(std::string(uri.scheme.first, uri.scheme.afterLast - uri.scheme.first).c_str());
+            }
 
-            if (uri.hostText.first && uri.hostText.afterLast)
+            if (uri.hostText.first && uri.hostText.afterLast) {
                 m_host = UnicodeString(std::string(uri.hostText.first, uri.hostText.afterLast - uri.hostText.first).c_str());
+            }
 
             uriFreeUriMembersA(&uri);
         }
@@ -854,12 +881,13 @@ struct UnicodeStringTrait {
     {
         const auto c = ch.unicode();
 
-        if (u_charType(c) == U_SPACE_SEPARATOR)
+        if (u_charType(c) == U_SPACE_SEPARATOR) {
             return true;
-        else if (c == 0x09 || c == 0x0A || c == 0x0C || c == 0x0D)
+        } else if (c == 0x09 || c == 0x0A || c == 0x0C || c == 0x0D) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     //! Convert UTF-16 into trait's string.
@@ -878,6 +906,12 @@ struct UnicodeStringTrait {
     static Char latin1ToChar(char latin1)
     {
         return UnicodeChar(latin1);
+    }
+
+    //! Convert UTF8 into trait's string.
+    static String utf8ToString(const char *utf8)
+    {
+        return UnicodeString(utf8);
     }
 
     //! \return Does file exist.
@@ -961,12 +995,13 @@ struct QStringTrait {
     {
         const auto c = ch.unicode();
 
-        if (ch.category() == QChar::Separator_Space)
+        if (ch.category() == QChar::Separator_Space) {
             return true;
-        else if (c == 0x09 || c == 0x0A || c == 0x0C || c == 0x0D)
+        } else if (c == 0x09 || c == 0x0A || c == 0x0C || c == 0x0D) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     //! Convert UTF-16 into trait's string.
@@ -985,6 +1020,12 @@ struct QStringTrait {
     static Char latin1ToChar(char latin1)
     {
         return QLatin1Char(latin1);
+    }
+
+    //! Convert UTF8 into trait's string.
+    static String utf8ToString(const char *utf8)
+    {
+        return QString::fromUtf8(utf8, -1);
     }
 
     //! \return Does file exist.

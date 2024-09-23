@@ -8,7 +8,7 @@
 #include "logic/parser/md4qtDataGetter.hpp"
 
 // md4qt include
-#include "logic/parser/md4qt/doc.hpp"
+#include "logic/parser/md4qt/doc.h"
 
 namespace EmojiPlugin
 {

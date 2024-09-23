@@ -3,11 +3,11 @@
     SPDX-License-Identifier: MIT
 */
 
-#ifndef MD4QT_MD_DOC_HPP_INCLUDED
-#define MD4QT_MD_DOC_HPP_INCLUDED
+#ifndef MD4QT_MD_DOC_H_INCLUDED
+#define MD4QT_MD_DOC_H_INCLUDED
 
 // md4qt include.
-#include "utils.hpp"
+#include "utils.h"
 
 // C++ include.
 #include <memory>
@@ -88,8 +88,9 @@ public:
 
     void applyPositions(const WithPosition &other)
     {
-        if (this != &other)
+        if (this != &other) {
             *this = other;
+        }
     }
 
     long long int startColumn() const
@@ -589,7 +590,7 @@ public:
 
     void removeItemAt(long long int idx)
     {
-        if (idx >= 0 && idx < m_items.size())
+        if (idx >= 0 && idx < static_cast<long long int>(m_items.size()))
             m_items.erase(m_items.cbegin() + idx);
     }
 
@@ -1351,8 +1352,9 @@ public:
         auto t = std::make_shared<TableRow<Trait>>();
         t->applyPositions(*this);
 
-        for (const auto &c : cells())
+        for (const auto &c : cells()) {
             t->appendCell(std::static_pointer_cast<TableCell<Trait>>(c->clone(doc)));
+        }
 
         return t;
     }
@@ -1403,11 +1405,13 @@ public:
         auto t = std::make_shared<Table<Trait>>();
         t->applyPositions(*this);
 
-        for (const auto &r : rows())
+        for (const auto &r : rows()) {
             t->appendRow(std::static_pointer_cast<TableRow<Trait>>(r->clone(doc)));
+        }
 
-        for (int i = 0; i < columnsCount(); ++i)
+        for (int i = 0; i < columnsCount(); ++i) {
             t->setColumnAlignment(i, columnAlignment(i));
+        }
 
         return t;
     }
@@ -1442,10 +1446,11 @@ public:
 
     void setColumnAlignment(int idx, Alignment a)
     {
-        if (idx + 1 > columnsCount())
+        if (idx + 1 > columnsCount()) {
             m_aligns.push_back(a);
-        else
+        } else {
             m_aligns[idx] = a;
+        }
     }
 
     int columnsCount() const
@@ -1585,11 +1590,13 @@ public:
         auto d = std::make_shared<Document<Trait>>();
         d->applyBlock(*this, d.get());
 
-        for (auto it = m_footnotes.cbegin(), last = m_footnotes.cend(); it != last; ++it)
+        for (auto it = m_footnotes.cbegin(), last = m_footnotes.cend(); it != last; ++it) {
             d->insertFootnote(it->first, std::static_pointer_cast<Footnote<Trait>>(it->second->clone(d.get())));
+        }
 
-        for (auto it = m_labeledLinks.cbegin(), last = m_labeledLinks.cend(); it != last; ++it)
+        for (auto it = m_labeledLinks.cbegin(), last = m_labeledLinks.cend(); it != last; ++it) {
             d->insertLabeledLink(it->first, std::static_pointer_cast<Link<Trait>>(it->second->clone(d.get())));
+        }
 
         return d;
     }
@@ -1643,4 +1650,4 @@ private:
 
 } /* namespace MD */
 
-#endif // MD4QT_MD_DOC_HPP_INCLUDED
+#endif // MD4QT_MD_DOC_H_INCLUDED

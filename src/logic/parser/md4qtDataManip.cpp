@@ -99,26 +99,26 @@ bool addStringTo(const MDItemWithOptsPtr item, const bool atStart, const QString
     Q_ASSERT(rawIdx != -1);
 
     MDTextItemPtr textItem = md4qtHelperFunc::getSharedTextItem(item);
-    auto rawData = po.rawTextData[rawIdx];
+    auto rawData = po.m_rawTextData[rawIdx];
 
-    const QString text = rawData.str;
+    const QString text = rawData.m_str;
     QString newText;
     if (atStart) {
         newText = str + text;
         const long long int newStart = textItem->startColumn() - str.length();
         textItem->setStartColumn(newStart);
-        rawData.pos = newStart;
+        rawData.m_pos = newStart;
     } else {
         newText = text + str;
         textItem->setEndColumn(textItem->endColumn() + str.length());
     }
-    rawData.str = newText;
+    rawData.m_str = newText;
 
     auto newSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText.simplified());
     newSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(newSimplifiedText).asString();
     textItem->setText(newSimplifiedText);
 
-    po.rawTextData[rawIdx] = rawData;
+    po.m_rawTextData[rawIdx] = rawData;
 
     return true;
 }
@@ -140,13 +140,13 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
 
     // Merge text
     const long long int currentRawIdx = md4qtHelperFunc::rawIdxFromItem(currentItem, po);
-    Q_ASSERT(currentRawIdx < static_cast<long long int>(po.rawTextData.size()) - 1);
+    Q_ASSERT(currentRawIdx < static_cast<long long int>(po.m_rawTextData.size()) - 1);
 
-    auto currentRawData = po.rawTextData[currentRawIdx];
-    auto nextRawData = po.rawTextData[currentRawIdx + 1];
+    auto currentRawData = po.m_rawTextData[currentRawIdx];
+    auto nextRawData = po.m_rawTextData[currentRawIdx + 1];
 
-    const QString finalText = currentRawData.str + nextRawData.str;
-    currentRawData.str = finalText;
+    const QString finalText = currentRawData.m_str + nextRawData.m_str;
+    currentRawData.m_str = finalText;
 
     auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(finalText.simplified());
     finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
@@ -156,10 +156,10 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
     currentTextItem->setEndColumn(nextTextItem->endColumn());
 
     // Set rawData back
-    po.rawTextData[currentRawIdx] = currentRawData;
+    po.m_rawTextData[currentRawIdx] = currentRawData;
 
     // Clean
-    po.rawTextData.erase(po.rawTextData.cbegin() + currentRawIdx + 1);
+    po.m_rawTextData.erase(po.m_rawTextData.cbegin() + currentRawIdx + 1);
     p->removeItemAt(from + 1);
 }
 
@@ -182,9 +182,9 @@ int splitItem(MDParagraphPtr p,
     const long long int virginEndPos = textItem->endColumn();
 
     // Raw Data info
-    auto rawData = po.rawTextData[rawIdx];
-    const long long int localStartPos = rawData.pos;
-    const QString src = rawData.str;
+    auto rawData = po.m_rawTextData[rawIdx];
+    const long long int localStartPos = rawData.m_pos;
+    const QString src = rawData.m_str;
 
     // Relative to the rawData.str
     const long long int virginToLocalDelta = virginStartPos - localStartPos;
@@ -194,15 +194,15 @@ int splitItem(MDParagraphPtr p,
     const long long int virginEndSplit = virginStartPos + relativeEndSplit;
 
     // Item == delim
-    if (length == rawData.str.length()) {
+    if (length == rawData.m_str.length()) {
         return -1;
     }
 
     // Item split in half
     if (from != virginStartPos && virginEndSplit != virginEndPos) {
         const QString leftRawText = src.mid(0, relativeStartSplit);
-        rawData.str = leftRawText;
-        po.rawTextData[rawIdx] = rawData;
+        rawData.m_str = leftRawText;
+        po.m_rawTextData[rawIdx] = rawData;
 
         auto simplifiedLeftText = MD::replaceEntity<MD::QStringTrait>(leftRawText.simplified());
         simplifiedLeftText = MD::removeBackslashes<MD::QStringTrait>(simplifiedLeftText).asString();
@@ -213,9 +213,9 @@ int splitItem(MDParagraphPtr p,
         const long long int newStartingPos = virginEndSplit + 1;
         const QString rightRawText = src.mid(relativeEndSplit + 1);
         MDParsingOpts::TextData newTextData;
-        newTextData.str = rightRawText;
-        newTextData.pos = newStartingPos - virginToLocalDelta;
-        newTextData.line = rawData.line;
+        newTextData.m_str = rightRawText;
+        newTextData.m_pos = newStartingPos - virginToLocalDelta;
+        newTextData.m_line = rawData.m_line;
 
         auto newTextItem = std::make_shared<MD::Text<MD::QStringTrait>>();
         newTextItem->setStartLine(textItem->startLine());
@@ -227,7 +227,7 @@ int splitItem(MDParagraphPtr p,
         finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
         newTextItem->setText(finalSimplifiedText);
 
-        po.rawTextData.insert(po.rawTextData.cbegin() + rawIdx + 1, newTextData);
+        po.m_rawTextData.insert(po.m_rawTextData.cbegin() + rawIdx + 1, newTextData);
         p->insertItem(paraIdx + 1, newTextItem);
 
         return 1;
@@ -236,7 +236,7 @@ int splitItem(MDParagraphPtr p,
     QString newText;
     if (from == virginStartPos) { // delim at the start
         newText = src.mid(length);
-        rawData.pos += length;
+        rawData.m_pos += length;
         textItem->setStartColumn(currentItem->startColumn() + length);
     }
 
@@ -245,8 +245,8 @@ int splitItem(MDParagraphPtr p,
         textItem->setEndColumn(textItem->endColumn() - length);
     }
 
-    rawData.str = newText;
-    po.rawTextData[rawIdx] = rawData;
+    rawData.m_str = newText;
+    po.m_rawTextData[rawIdx] = rawData;
 
     auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText.simplified());
     finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
