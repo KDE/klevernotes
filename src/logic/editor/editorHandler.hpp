@@ -85,6 +85,7 @@ Q_SIGNALS:
     // Toolbar
     void surroundingDelimsChanged(const QList<int> &delimsTypes);
     void focusEditor();
+    void uncheckAction(const int delimType);
 
     // NoteMapper
     void newLinkedNotesInfos(const QSet<QStringList> &linkedNotesInfos);

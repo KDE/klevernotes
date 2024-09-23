@@ -157,7 +157,7 @@ void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
     cursor.endEditBlock();
 }
 
-void addDelims(const MdEditor::EditorHandler *editor, const int delimType)
+bool addDelims(const MdEditor::EditorHandler *editor, const int delimType)
 {
     bool increment = false;
     QString delimText;
@@ -222,6 +222,10 @@ void addDelims(const MdEditor::EditorHandler *editor, const int delimType)
         break;
     }
 
+    if (delimsPos.empty()) {
+        return false;
+    }
+
     auto cursor = editor->textCursor();
     cursor.beginEditBlock();
     int pos = delimsPos.size();
@@ -231,5 +235,7 @@ void addDelims(const MdEditor::EditorHandler *editor, const int delimType)
         --pos;
     }
     cursor.endEditBlock();
+
+    return true;
 }
 }

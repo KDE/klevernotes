@@ -230,6 +230,62 @@ Kirigami.ActionToolBar {
         }
     }
 
+    function getDelimInfo(delimType) {
+        let actionIndex = undefined;
+        let headingLevel = 0;
+        switch (delimType) {
+            case -10:
+                actionIndex = toolbar.actionPositionMap["h"]
+                headingLevel = 1
+                break;
+            case -9:
+                actionIndex = toolbar.actionPositionMap["h"]
+                headingLevel = 2
+                break;
+            case -8:
+                actionIndex = toolbar.actionPositionMap["h"]
+                headingLevel = 3
+                break;
+            case -7:
+                actionIndex = toolbar.actionPositionMap["h"]
+                headingLevel = 4
+                break;
+            case -6:
+                actionIndex = toolbar.actionPositionMap["h"]
+                headingLevel = 5
+                break;
+            case -5:
+                actionIndex = toolbar.actionPositionMap["h"]
+                headingLevel = 6
+                break;
+            case -4:
+                actionIndex = toolbar.actionPositionMap["codeBlock"]
+                break;
+            case -3:
+                actionIndex = toolbar.actionPositionMap["quote"]
+                break;
+            case -2:
+                actionIndex = toolbar.actionPositionMap["orderedList"]
+                break;
+            case -1:
+                actionIndex = toolbar.actionPositionMap["unorderedList"]
+                break;
+            case 1:
+                actionIndex = toolbar.actionPositionMap["bold"]
+                break;
+            case 2:
+                actionIndex = toolbar.actionPositionMap["italic"]
+                break;
+            case 4:
+                actionIndex = toolbar.actionPositionMap["strikethrough"]
+                break;
+            case 8:
+                actionIndex = toolbar.actionPositionMap["highlight"]
+                break;
+        }
+        return [actionIndex, headingLevel]
+    }
+
     function checkSourrindingDelimsActions(delimsTypes) {
         for (let i = 0 ; i < toolbar.actions.length ; i++) {
             let currentAction = toolbar.actions[i]
@@ -240,58 +296,7 @@ Kirigami.ActionToolBar {
         }
 
         for (let i = 0 ; i < delimsTypes.length ; i++) {
-            let actionIndex = undefined;
-            let headingLevel = 0;
-            switch (delimsTypes[i]) {
-                case -10:
-                    actionIndex = toolbar.actionPositionMap["h"]
-                    headingLevel = 1
-                    break;
-                case -9:
-                    actionIndex = toolbar.actionPositionMap["h"]
-                    headingLevel = 2
-                    break;
-                case -8:
-                    actionIndex = toolbar.actionPositionMap["h"]
-                    headingLevel = 3
-                    break;
-                case -7:
-                    actionIndex = toolbar.actionPositionMap["h"]
-                    headingLevel = 4
-                    break;
-                case -6:
-                    actionIndex = toolbar.actionPositionMap["h"]
-                    headingLevel = 5
-                    break;
-                case -5:
-                    actionIndex = toolbar.actionPositionMap["h"]
-                    headingLevel = 6
-                    break;
-                case -4:
-                    actionIndex = toolbar.actionPositionMap["codeBlock"]
-                    break;
-                case -3:
-                    actionIndex = toolbar.actionPositionMap["quote"]
-                    break;
-                case -2:
-                    actionIndex = toolbar.actionPositionMap["orderedList"]
-                    break;
-                case -1:
-                    actionIndex = toolbar.actionPositionMap["unorderedList"]
-                    break;
-                case 1:
-                    actionIndex = toolbar.actionPositionMap["bold"]
-                    break;
-                case 2:
-                    actionIndex = toolbar.actionPositionMap["italic"]
-                    break;
-                case 4:
-                    actionIndex = toolbar.actionPositionMap["strikethrough"]
-                    break;
-                case 8:
-                    actionIndex = toolbar.actionPositionMap["highlight"]
-                    break;
-            }
+            const [actionIndex, headingLevel] = getDelimInfo(delimsTypes[i])
             if (actionIndex !== undefined) {
                 if (headingLevel) {
                     // TODO: rework toolbar to better show when this is checked
@@ -301,6 +306,19 @@ Kirigami.ActionToolBar {
                 }
             }
         }
+    }
+
+    function uncheckAction(delimType) {
+        const [actionIndex, headingLevel] = getDelimInfo(delimType)
+        if (actionIndex !== undefined) {
+            if (headingLevel) {
+                // TODO: rework toolbar to better show when this is checked
+                toolbar.actions[actionIndex].children[headingLevel - 1].checked = false
+            } else {
+                toolbar.actions[actionIndex].checked = false
+            }
+        }
+
     }
 
     function handleAction(selectionStart, selectionEnd, specialChars,

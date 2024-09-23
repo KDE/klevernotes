@@ -16,5 +16,5 @@ namespace toolbarUtils
 {
 void removeDelims(const MdEditor::EditorHandler *editor, const int delimType);
 
-void addDelims(const MdEditor::EditorHandler *editor, const int delimType);
+bool addDelims(const MdEditor::EditorHandler *editor, const int delimType);
 }

@@ -13,6 +13,7 @@
 #include <QColor>
 #include <QRegularExpression>
 #include <QTextBlock>
+#include <qtmetamacros.h>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -341,7 +342,10 @@ QList<posCacheUtils::DelimsInfo> EditorHandler::getSurroundingDelims() const
 void EditorHandler::handleDelims(const bool addDelims, const int delimType)
 {
     if (addDelims) {
-        toolbarUtils::addDelims(this, delimType);
+        const bool succes = toolbarUtils::addDelims(this, delimType);
+        if (!succes) {
+            Q_EMIT uncheckAction(delimType);
+        }
     } else {
         toolbarUtils::removeDelims(this, delimType);
     }

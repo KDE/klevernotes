@@ -234,6 +234,10 @@ ColumnLayout {
             toolbar.checkSourrindingDelimsActions(delimsTypes)
         }
 
+        function onUncheckAction(delimType) {
+            toolbar.uncheckAction(delimType)
+        }
+
         function onFocusEditor() {
             editor.textArea.forceActiveFocus()
         }
