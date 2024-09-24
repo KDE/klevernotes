@@ -12,9 +12,11 @@ namespace MdEditor
 class EditorHandler;
 }
 
-namespace toolbarUtils
+namespace editorTextManipulation
 {
 void removeDelims(const MdEditor::EditorHandler *editor, const int delimType);
 
 bool addDelims(const MdEditor::EditorHandler *editor, const int delimType);
+
+void handleTabPressed(const MdEditor::EditorHandler *editor, const bool useSpaceForTab, const int spaceForTab, const bool backtab);
 }

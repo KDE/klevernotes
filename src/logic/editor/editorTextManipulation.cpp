@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-#include "toolbarUtils.hpp"
+#include "editorTextManipulation.hpp"
 
 // KleverNotes includes
 #include "logic/editor/editorHandler.hpp"
@@ -22,6 +22,28 @@ QString rstrip(const QString &str)
         }
     }
     return {};
+}
+
+QTextCursor getProperCursor(const MdEditor::EditorHandler *editor)
+{
+    auto cursor = editor->textCursor();
+    if (cursor.position() != editor->selectionStart()) {
+        cursor.setPosition(editor->selectionStart());
+    }
+    return cursor;
+}
+
+void insertText(QTextCursor &cursor, const int pos, const QString &text)
+{
+    cursor.setPosition(pos);
+    cursor.insertText(text);
+}
+
+void removeText(QTextCursor &cursor, const int start, const int end)
+{
+    cursor.setPosition(start, QTextCursor::MoveAnchor);
+    cursor.setPosition(end, QTextCursor::KeepAnchor);
+    cursor.removeSelectedText();
 }
 
 int getLastInBlockNonEmptyPos(const QTextBlock &block)
@@ -51,15 +73,10 @@ bool nextNonEmptyBlock(QTextBlock &block, const int finalPos)
 
 std::vector<int> getWrappedPositions(const MdEditor::EditorHandler *editor)
 {
-    auto cursor = editor->textCursor();
-    if (cursor.position() != editor->selectionStart()) {
-        cursor.setPosition(editor->selectionStart());
-    }
+    auto cursor = getProperCursor(editor);
 
     const int blockStart = cursor.block().position();
-
     cursor.setPosition(editor->selectionEnd());
-
     const int blockEnd = cursor.block().position() + cursor.block().length() - 1;
 
     return {blockStart, blockEnd};
@@ -71,10 +88,7 @@ std::vector<int> getByBlockPositions(const MdEditor::EditorHandler *editor, cons
         return {};
     }
 
-    auto cursor = editor->textCursor();
-    if (cursor.position() != editor->selectionStart()) {
-        cursor.setPosition(editor->selectionStart());
-    }
+    auto cursor = getProperCursor(editor);
     auto block = cursor.block();
 
     std::vector<int> positions;
@@ -126,7 +140,18 @@ std::vector<int> getFuturDelimsPositions(const MdEditor::EditorHandler *editor, 
     return wrapSelection ? getWrappedPositions(editor) : getByBlockPositions(editor, isBlockItemDelim);
 }
 
-namespace toolbarUtils
+int getCharRepetition(const QTextBlock &block, const QString c, const int maxRep)
+{
+    const auto text = block.text();
+
+    int rep;
+    for (rep = 0; rep < maxRep && text[rep] == c; ++rep)
+        ;
+
+    return rep;
+}
+
+namespace editorTextManipulation
 {
 void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
 {
@@ -150,9 +175,7 @@ void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
         const int startPos = line.position() + it->startColumn();
         const int endPos = line.position() + it->endColumn() + 1;
 
-        cursor.setPosition(startPos, QTextCursor::MoveAnchor);
-        cursor.setPosition(endPos, QTextCursor::KeepAnchor);
-        cursor.removeSelectedText();
+        removeText(cursor, startPos, endPos);
     }
     cursor.endEditBlock();
 }
@@ -230,12 +253,43 @@ bool addDelims(const MdEditor::EditorHandler *editor, const int delimType)
     cursor.beginEditBlock();
     int pos = delimsPos.size();
     for (auto it = delimsPos.rbegin(); it != delimsPos.rend(); ++it) {
-        cursor.setPosition(*it);
-        cursor.insertText(increment ? QString::number(pos) + delimText : delimText);
+        insertText(cursor, *it, increment ? QString::number(pos) + delimText : delimText);
         --pos;
     }
     cursor.endEditBlock();
 
     return true;
+}
+
+void handleTabPressed(const MdEditor::EditorHandler *editor, const bool useSpaceForTab, const int spacesForTab, const bool backtab)
+{
+    auto cursor = getProperCursor(editor);
+
+    const int startBlockNumber = cursor.blockNumber();
+    cursor.setPosition(editor->selectionEnd());
+    const int endBlockNumber = cursor.blockNumber();
+
+    const QString c = useSpaceForTab ? QStringLiteral(" ") : QStringLiteral("\t");
+    const int goalCharsRep = useSpaceForTab ? spacesForTab : 1;
+
+    cursor.beginEditBlock();
+    if (editor->selectionStart() != editor->selectionEnd()) {
+        for (int i = startBlockNumber; i < endBlockNumber + 1; ++i) {
+            QTextBlock block = editor->document()->findBlockByNumber(i);
+
+            if (backtab) {
+                int repToRemove = getCharRepetition(block, c, goalCharsRep);
+
+                if (repToRemove) {
+                    removeText(cursor, block.position(), block.position() + repToRemove);
+                }
+            } else {
+                insertText(cursor, block.position(), c.repeated(goalCharsRep));
+            }
+        }
+    } else if (!backtab) {
+        insertText(cursor, editor->cursorPosition(), c.repeated(goalCharsRep));
+    }
+    cursor.endEditBlock();
 }
 }

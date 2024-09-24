@@ -5,7 +5,7 @@
 
 // KleverNotes include
 #include "editorHighlighter.hpp"
-#include "logic/editor/toolbarUtils.hpp"
+#include "logic/editor/editorTextManipulation.hpp"
 #include "logic/parser/parser.h"
 #include "logic/parser/renderer.h"
 
@@ -13,7 +13,6 @@
 #include <QColor>
 #include <QRegularExpression>
 #include <QTextBlock>
-#include <qtmetamacros.h>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -342,16 +341,24 @@ QList<posCacheUtils::DelimsInfo> EditorHandler::getSurroundingDelims() const
 void EditorHandler::handleDelims(const bool addDelims, const int delimType)
 {
     if (addDelims) {
-        const bool succes = toolbarUtils::addDelims(this, delimType);
+        const bool succes = editorTextManipulation::addDelims(this, delimType);
         if (!succes) {
             Q_EMIT uncheckAction(delimType);
         }
     } else {
-        toolbarUtils::removeDelims(this, delimType);
+        editorTextManipulation::removeDelims(this, delimType);
     }
 
     Q_EMIT focusEditor();
 }
+// !Toolbar
+
+// Editor nice to have
+void EditorHandler::handleTabPressed(const bool backtab)
+{
+    editorTextManipulation::handleTabPressed(this, m_config->useSpaceForTab(), m_config->spacesForTab(), backtab);
+}
+// !Editor nice to have
 // !KleverNotes method
 
 // md-editor method

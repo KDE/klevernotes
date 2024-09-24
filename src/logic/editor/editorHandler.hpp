@@ -74,6 +74,9 @@ public:
     QList<posCacheUtils::DelimsInfo> getSurroundingDelims() const;
     Q_INVOKABLE void handleDelims(const bool addDelims, const int delimType);
 
+    // Editor nice to have
+    Q_INVOKABLE void handleTabPressed(const bool backtab);
+
 Q_SIGNALS:
     void documentChanged();
     void cursorPositionChanged(const int position);
