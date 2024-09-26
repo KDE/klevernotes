@@ -24,11 +24,11 @@ QString rstrip(const QString &str)
     return {};
 }
 
-QTextCursor getProperCursor(const MdEditor::EditorHandler *editor)
+QTextCursor getProperCursor(const MdEditor::EditorHandler *editor, const int useStart = true)
 {
     auto cursor = editor->textCursor();
-    if (cursor.position() != editor->selectionStart()) {
-        cursor.setPosition(editor->selectionStart());
+    if (useStart ? cursor.position() != editor->selectionStart() : cursor.position() != editor->selectionEnd()) {
+        cursor.setPosition(useStart ? editor->selectionStart() : editor->selectionEnd());
     }
     return cursor;
 }
@@ -291,5 +291,30 @@ void handleTabPressed(const MdEditor::EditorHandler *editor, const bool useSpace
         insertText(cursor, editor->cursorPosition(), c.repeated(goalCharsRep));
     }
     cursor.endEditBlock();
+}
+
+void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListItem<MD::QStringTrait> *listItem, const bool useSpaceForTab, const int modifier)
+{
+    auto cursor = getProperCursor(editor, false);
+
+    if (modifier == keyModif::AltModifier) {
+        const int pos = cursor.block().position() + cursor.block().length() - 1;
+        insertText(cursor, pos, QStringLiteral("\n\n__________\n\n"));
+        return;
+    }
+
+    QString str = modifier == keyModif::ShiftModifer ? QStringLiteral("<br>\n") : QStringLiteral("\n");
+    if (listItem) {
+        const int indent = listItem->delim().startColumn();
+        str += useSpaceForTab ? QStringLiteral(" ").repeated(indent) : QStringLiteral("\t").repeated(indent);
+
+        if (listItem->listType() == MD::ListItem<MD::QStringTrait>::Ordered) {
+            str += QString::number(listItem->startNumber() + 1) + QStringLiteral(". ");
+        } else {
+            str += QStringLiteral("- ");
+        }
+    }
+
+    insertText(cursor, editor->cursorPosition(), str);
 }
 }

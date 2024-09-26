@@ -160,6 +160,20 @@ QList<posCacheUtils::DelimsInfo> EditorHighlighter::showDelimAroundCursor(const 
     return delims;
 }
 
+MD::ListItem<MD::QStringTrait> *EditorHighlighter::searchListItem(const int line, const int pos)
+{
+    const Items blockItems = findFirstInCache({pos, line, pos, line});
+
+    for (int i = blockItems.size() - 1; -1 != i; --i) {
+        const auto item = blockItems.at(i);
+        if (item->type() == MD::ItemType::ListItem) {
+            return static_cast<MD::ListItem<MD::QStringTrait> *>(item);
+        }
+    }
+
+    return nullptr;
+}
+
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
 {
     QTextCharFormat special;

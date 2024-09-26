@@ -18,9 +18,6 @@
 #include <QColor>
 #include <QScopedPointer>
 
-// C++ include.
-#include <vector>
-
 namespace MdEditor
 {
 //! Markdown syntax highlighter.
@@ -39,6 +36,8 @@ public:
 
     void changeAdaptiveTagSize(const bool adaptive);
     void changeTagScale(const int tagSizeScale);
+
+    MD::ListItem<MD::QStringTrait> *searchListItem(const int line, const int pos);
 
 protected:
     void onReferenceLink(MD::Link<MD::QStringTrait> *l) override;

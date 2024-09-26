@@ -10,7 +10,6 @@
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
 
 // C++ include.
-#include <algorithm>
 #include <memory>
 
 static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
@@ -49,6 +48,7 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
 
         return makePairs(codeItem, waitingOpeningDelims, openCloseDelims, headingLevel);
     }
+    case MD::ItemType::RawHtml:
     case MD::ItemType::LineBreak: {
         // "useless" in this case, but no need for an error message,
         // we already it is not supported, not a bug

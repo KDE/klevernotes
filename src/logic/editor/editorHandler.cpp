@@ -358,6 +358,19 @@ void EditorHandler::handleTabPressed(const bool backtab)
 {
     editorTextManipulation::handleTabPressed(this, m_config->useSpaceForTab(), m_config->spacesForTab(), backtab);
 }
+
+void EditorHandler::handleReturnPressed(const int modifier)
+{
+    const auto cursor = textCursor();
+    const int pos = cursor.block().length() - 2;
+    const int line = cursor.blockNumber();
+
+    const MD::ListItem<MD::QStringTrait> *listItem = m_editorHighlighter->searchListItem(line, pos);
+
+    editorTextManipulation::handleReturnPressed(this, listItem, m_config->useSpaceForTab(), modifier);
+
+    Q_EMIT focusEditor();
+}
 // !Editor nice to have
 // !KleverNotes method
 

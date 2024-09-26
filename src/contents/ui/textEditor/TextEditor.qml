@@ -72,10 +72,14 @@ ScrollView {
         Keys.onBacktabPressed: {
             handleTabPressed(true)
         }
-        Keys.onReturnPressed: {
-            const [blockStart, blockEnd] = MDHandler.getBlockLimits(selectionStart, selectionEnd, text)
-            const newString = MDHandler.getLineFromPrevious(getText(blockStart, blockEnd))
-            insert(selectionEnd, newString)
+        Keys.onReturnPressed: (event) => {
+            let modifier = 0
+            if (event.modifiers === Qt.ShiftModifier) {
+                modifier = 1
+            } else if (event.modifiers === Qt.AltModifier) {
+                modifier = 2
+            }
+            EditorHandler.handleReturnPressed(modifier)
         }
 
         function handleTabPressed(backtab) {

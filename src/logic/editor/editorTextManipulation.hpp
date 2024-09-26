@@ -5,7 +5,17 @@
 
 #pragma once
 
+// md4qt include.
+#define MD4QT_QT_SUPPORT
+#include "logic/parser/md4qt/doc.hpp"
+#include "logic/parser/md4qt/traits.hpp"
+
 #define HighlightDelim 8
+
+enum keyModif {
+    ShiftModifer = 1,
+    AltModifier,
+};
 
 namespace MdEditor
 {
@@ -19,4 +29,6 @@ void removeDelims(const MdEditor::EditorHandler *editor, const int delimType);
 bool addDelims(const MdEditor::EditorHandler *editor, const int delimType);
 
 void handleTabPressed(const MdEditor::EditorHandler *editor, const bool useSpaceForTab, const int spaceForTab, const bool backtab);
+
+void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListItem<MD::QStringTrait> *listItem, const bool useSpaceForTab, const int modifier);
 }

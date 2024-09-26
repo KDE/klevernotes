@@ -76,6 +76,7 @@ public:
 
     // Editor nice to have
     Q_INVOKABLE void handleTabPressed(const bool backtab);
+    Q_INVOKABLE void handleReturnPressed(const int modifier);
 
 Q_SIGNALS:
     void documentChanged();
