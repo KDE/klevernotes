@@ -321,22 +321,6 @@ Kirigami.ActionToolBar {
 
     }
 
-    function handleAction(selectionStart, selectionEnd, specialChars,
-                          multiPlaceApply, applyIncrement, checkByBlock) {
-
-        const selectedText = editorTextArea.getText(selectionStart, selectionEnd)
-        const newString = MDHandler.getNewText(selectedText, specialChars, multiPlaceApply, applyIncrement, checkByBlock)
-
-        editorTextArea.remove(selectionStart, selectionEnd)
-        editorTextArea.insert(selectionStart, newString)
-        editorTextArea.select(selectionStart, selectionStart + newString.length)
-    }
-
-    function getBlockLimits() {
-        return MDHandler.getBlockLimits(editorTextArea.selectionStart, 
-            editorTextArea.selectionEnd, editorTextArea.text);
-    }
-
     function addActionTrigger(currentAction) {
         const currentActionName = currentAction.actionName
 

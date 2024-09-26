@@ -8,7 +8,6 @@ add_library(klevernoteslib STATIC
     logic/colorschemer.cpp
     logic/documentHandler.cpp
     logic/kleverUtility.cpp
-    logic/mdHandler.cpp
     logic/qmlLinker.cpp
 
     # Editor

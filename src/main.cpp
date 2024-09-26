@@ -20,7 +20,6 @@
 #include "logic/colorschemer.h"
 #include "logic/documentHandler.h"
 #include "logic/kleverUtility.h"
-#include "logic/mdHandler.h"
 #include "logic/qmlLinker.h"
 
 #include "logic/editor/editorHandler.hpp"
@@ -117,9 +116,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     MdEditor::EditorHandler editorHandler;
     qmlRegisterSingletonInstance<MdEditor::EditorHandler>("org.kde.Klever", 1, 0, "EditorHandler", &editorHandler);
-
-    MDHandler mdHandler;
-    qmlRegisterSingletonInstance<MDHandler>("org.kde.Klever", 1, 0, "MDHandler", &mdHandler);
 
     ColorSchemer colorScheme;
     qmlRegisterSingletonInstance<ColorSchemer>("org.kde.Klever", 1, 0, "ColorSchemer", &colorScheme);
