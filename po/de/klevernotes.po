@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-13 00:40+0000\n"
-"PO-Revision-Date: 2024-09-15 11:23+0200\n"
+"PO-Revision-Date: 2024-09-15 15:17+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -245,13 +245,12 @@ msgid "This note already exists."
 msgstr "Diese Notiz ist bereits vorhanden."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotes"
+msgstr "KleverNotes-Speicher"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -300,13 +299,12 @@ msgid "Disable due to flatpak limitation."
 msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:16
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "Speicherpfad:"
+msgstr "Speicher erstellt unter "
 
 #: contents/ui/dialogs/StorageDialog.qml:17
 #, kde-format
@@ -314,7 +312,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr ""
+msgstr "Vorhandener Speicher ausgewählt unter "
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -327,44 +325,44 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Es scheint als würde diese Anwendung erstmalig gestartet werden.\n"
+"\n"
+"Bitte einen neuen Speicherort für den KleverNotes angeben oder einen "
+"vorhandenen auswählen."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotes"
+msgstr "KleverNotes-Speicher"
 
 #: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr ""
+msgstr "Vorhandener Speicher"
 
 #: contents/ui/dialogs/StorageDialog.qml:51
-#, fuzzy, kde-format
-#| msgid "Change storage path"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr "Speicherpfad ändern"
+msgstr "Speicherort ändern"
 
 #: contents/ui/dialogs/StorageDialog.qml:65
-#, fuzzy, kde-format
-#| msgid "Change storage path"
+#, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr "Speicherpfad ändern"
+msgstr "Speicher erstellen"
 
 #: contents/ui/dialogs/StorageDialog.qml:67
-#, fuzzy, kde-format
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr "Neue Notiz erstellen"
+msgstr "Einen neuen Speicher erstellen"
 
 #: contents/ui/dialogs/StorageDialog.qml:97
 #, kde-format
@@ -377,6 +375,10 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"Es scheint als würde der ausgewählte Ordner kein KleverNotes-Speicher sein.\n"
+"\n"
+"Bitte einen neuen Speicherort für den KleverNotes angeben oder einen "
+"vorhandenen auswählen."
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
@@ -491,12 +493,13 @@ msgstr "Willkommen"
 #: contents/ui/pages/MainPage.qml:78
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Willkommen zu KleverNotes"
+msgstr "Willkommen zu KleverNotes."
 
 #: contents/ui/pages/MainPage.qml:88
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
+"Bitte eine Notiz erstellen oder auswählen, um mit der Arbeit zu beginnen."
 
 #: contents/ui/pages/PaintingPage.qml:30
 #, kde-format
@@ -563,6 +566,8 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
+"Bitte einen neuen Speicherort für den KleverNotes angeben oder einen "
+"vorhandenen auswählen.\n"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -705,21 +710,19 @@ msgid "Enable editor highlighting"
 msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:29
-#, fuzzy, kde-format
-#| msgid "Stored image"
+#, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Gespeichertes Bild"
+msgstr "Speicher"
 
 #: contents/ui/settings/GeneralTab.qml:40
-#, fuzzy, kde-format
-#| msgid "Storage path:"
+#, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr "Speicherpfad:"
+msgstr "Speicherort:"
 
 #: contents/ui/settings/GeneralTab.qml:58
 #, kde-format
@@ -788,6 +791,7 @@ msgstr ""
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr ""
+"Empfehlung: Die Anwendung sollte nach dem Aktivieren neu gestartet werden."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -1477,10 +1481,9 @@ msgid "KleverNotes plugins"
 msgstr "KleverNotes-Module"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
-#, fuzzy, kde-format
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
-msgstr "Notiz"
+msgstr "Notizverknüpfung"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1518,21 +1521,20 @@ msgstr "Drucken"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "Editor umschalten"
 
 #: contents/ui/textEditor/EditorView.qml:76
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "Vorschau umschalten"
 
 #: contents/ui/textEditor/EditorView.qml:106
-#, fuzzy, kde-format
-#| msgid "note"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Notiz"
+msgstr "Notiz als HTML speichern"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
