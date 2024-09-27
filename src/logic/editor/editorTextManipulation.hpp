@@ -24,6 +24,8 @@ class EditorHandler;
 
 namespace editorTextManipulation
 {
+QString rstrip(const QString &str);
+
 void removeDelims(const MdEditor::EditorHandler *editor, const int delimType);
 
 bool addDelims(const MdEditor::EditorHandler *editor, const int delimType);

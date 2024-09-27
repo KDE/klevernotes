@@ -5,10 +5,7 @@
 
 // KleverNotes includes
 #include "logic/editor/editorHandler.hpp"
-
-// md-editor include.
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/traits.h"
+#include "logic/editor/editorTextManipulation.hpp"
 
 // Qt include.
 #include <QTextBlock>
@@ -19,6 +16,7 @@
 // C++ include.
 #include <algorithm>
 #include <memory>
+#include <qlogging.h>
 
 using namespace Qt::Literals::StringLiterals;
 
@@ -89,10 +87,11 @@ void EditorHighlighter::addBlockDelims(QList<posCacheUtils::DelimsInfo> &delims,
                                        const MD::WithPosition &selectStartPos,
                                        const MD::WithPosition &selectEndPos)
 {
-    const auto blockLen = block.length() - 2;
-    if (blockLen) {
+    const auto blockLen = editorTextManipulation::rstrip(block.text()).length();
+    const auto blockEnd = 1 < blockLen ? blockLen - 1 : blockLen;
+    if (blockEnd) {
         const auto line = block.blockNumber();
-        const Items blockItems = findFirstInCache({blockLen, line, blockLen, line});
+        Items blockItems = findFirstInCache({blockEnd, line, blockEnd, line});
 
         if (!blockItems.isEmpty()) {
             posCacheUtils::addDelimsFromItems(delims, blockItems, pos, selectStartPos, selectEndPos);
@@ -116,7 +115,9 @@ QList<posCacheUtils::DelimsInfo> EditorHighlighter::getDelimsFromCursor()
     if (!block.contains(selectionEnd)) {
         block = block.next();
         while (block.isValid() && !block.contains(selectionEnd)) {
-            const MD::WithPosition blockPos(block.length() - 1, block.blockNumber(), block.length() - 1, block.blockNumber());
+            const auto blockLen = editorTextManipulation::rstrip(block.text()).length();
+            const auto blockEnd = 1 < blockLen ? blockLen - 1 : blockLen;
+            const MD::WithPosition blockPos(blockEnd, block.blockNumber(), blockEnd, block.blockNumber());
             addBlockDelims(delims, block, blockPos);
 
             block = block.next();

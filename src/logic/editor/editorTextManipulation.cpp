@@ -12,18 +12,6 @@
 // C++ includes
 #include <vector>
 
-// Credit to: https://stackoverflow.com/a/8216059
-QString rstrip(const QString &str)
-{
-    int n = str.size() - 1;
-    for (; n >= 0; --n) {
-        if (!str.at(n).isSpace()) {
-            return str.left(n + 1);
-        }
-    }
-    return {};
-}
-
 QTextCursor getProperCursor(const MdEditor::EditorHandler *editor, const int useStart = true)
 {
     auto cursor = editor->textCursor();
@@ -48,7 +36,7 @@ void removeText(QTextCursor &cursor, const int start, const int end)
 
 int getLastInBlockNonEmptyPos(const QTextBlock &block)
 {
-    return rstrip(block.text()).length();
+    return editorTextManipulation::rstrip(block.text()).length();
 }
 
 int getFirstInBlockNonEmptyPos(const QTextBlock &block)
@@ -153,6 +141,18 @@ int getCharRepetition(const QTextBlock &block, const QString c, const int maxRep
 
 namespace editorTextManipulation
 {
+// Credit to: https://stackoverflow.com/a/8216059
+QString rstrip(const QString &str)
+{
+    int n = str.size() - 1;
+    for (; n >= 0; --n) {
+        if (!str.at(n).isSpace()) {
+            return str.left(n + 1);
+        }
+    }
+    return {};
+}
+
 void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
 {
     std::vector<MD::WithPosition> toRemove;

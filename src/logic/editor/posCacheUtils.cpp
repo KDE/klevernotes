@@ -206,9 +206,10 @@ void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
         const auto &openDelim = delimInfo.opening;
         const auto &closeDelim = delimInfo.closing;
 
-        bool addPair = md4qtHelperFunc::isBetweenDelims(cursorPos, openDelim, closeDelim, true);
-        if (!addPair && selectStartPos.startColumn() != -1 && selectEndPos.startColumn() != -1) {
-            addPair = md4qtHelperFunc::isBetweenDelims(openDelim, selectStartPos, selectEndPos)
+        bool addPair = true;
+        if (selectStartPos.startColumn() != -1 && selectEndPos.startColumn() != -1) {
+            addPair = md4qtHelperFunc::isBetweenDelims(cursorPos, openDelim, closeDelim, true)
+                || md4qtHelperFunc::isBetweenDelims(openDelim, selectStartPos, selectEndPos)
                 || md4qtHelperFunc::isBetweenDelims(closeDelim, selectStartPos, selectEndPos);
         }
 

@@ -1096,13 +1096,11 @@ void ExtendedSyntaxTest::continuousDelims()
 
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
-    qDebug() << item1->text();
 
     const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
 
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
-    qDebug() << item1->text();
 }
 
 // If those don't crash that already a good things
