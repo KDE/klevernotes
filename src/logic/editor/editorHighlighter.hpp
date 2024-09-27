@@ -27,10 +27,12 @@ public:
     explicit EditorHighlighter(EditorHandler *editor);
     ~EditorHighlighter() override;
 
-    void highlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const Colors &colors);
+    void cacheAndHighlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const bool highlight);
     QList<posCacheUtils::DelimsInfo> showDelimAroundCursor(const bool clearCache = true);
     void setFont(const QFont &f);
     void clearHighlighting();
+
+    void setColors(const Colors &colors);
 
     void addExtendedSyntax(const long long int opts, const QStringList &info);
 
@@ -72,10 +74,12 @@ private:
 
     QList<posCacheUtils::DelimsInfo> getDelimsFromCursor();
 
-    QList<posCacheUtils::DelimsInfo> revertDelimsStyle();
+    void revertDelimsStyle(const QList<posCacheUtils::DelimsInfo> &delims);
 
 private:
     Q_DISABLE_COPY(EditorHighlighter)
+
+    bool m_highlightEnabled = false;
 
     QScopedPointer<EditorHighlighterPrivate> d;
 }; // !EditorHighlighter

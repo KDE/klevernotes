@@ -204,9 +204,8 @@ void EditorHandler::parse(const QString &src)
     }
     
     m_currentMdDoc = m_parser->parse(src);
-    if (m_config->editorHighlightEnabled()) {
-        highlightSyntax(m_colors, m_currentMdDoc);
-    }
+    cacheAndHighlightSyntax(m_currentMdDoc);
+
     if (m_noteFirstHighlight) {
         m_noteFirstHighlight = false;
         Q_EMIT focusEditor();
@@ -278,11 +277,11 @@ void EditorHandler::renderDoc()
 
 // Highlight
 // =========
-void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
+void EditorHandler::cacheAndHighlightSyntax(std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
 {
     if (!m_notePath.isEmpty() && m_notePath != QStringLiteral("qrc:")) {
         m_highlighting = true;
-        m_editorHighlighter->highlight(doc, colors);
+        m_editorHighlighter->cacheAndHighlight(doc, m_config->editorHighlightEnabled());
         m_highlighting = false;
     }
 }
@@ -290,16 +289,21 @@ void EditorHandler::highlightSyntax(const Colors &colors, std::shared_ptr<MD::Do
 // Colors
 void EditorHandler::changeStyles(const QStringList &styles)
 {
-    m_colors.backgroundColor = QColor(styles[0]);
-    m_colors.textColor = QColor(styles[1]);
-    m_colors.titleColor = QColor(styles[2]);
-    m_colors.linkColor = QColor(styles[3]);
-    m_colors.codeBgColor = QColor(styles[5]);
-    m_colors.codeColor = QColor(styles[1]).darker(125);
-    m_colors.highlightColor = QColor(styles[6]);
-    m_colors.specialColor = QColor(styles[7]);
+    Colors colors;
+    colors.backgroundColor = QColor(styles[0]);
+    colors.textColor = QColor(styles[1]);
+    colors.titleColor = QColor(styles[2]);
+    colors.linkColor = QColor(styles[3]);
+    colors.codeBgColor = QColor(styles[5]);
+    colors.codeColor = QColor(styles[1]).darker(125);
+    colors.highlightColor = QColor(styles[6]);
+    colors.specialColor = QColor(styles[7]);
 
-    highlightSyntax(m_colors, m_currentMdDoc);
+    m_editorHighlighter->setColors(colors);
+
+    if (m_config->editorHighlightEnabled()) {
+        cacheAndHighlightSyntax(m_currentMdDoc);
+    }
 }
 // !Colors
 

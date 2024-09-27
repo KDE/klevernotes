@@ -133,7 +133,7 @@ private:
     void addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails);
 
     // Highlight
-    void highlightSyntax(const Colors &colors, std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
+    void cacheAndHighlightSyntax(std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
 
 private:
     // Config Connections
@@ -172,7 +172,6 @@ private:
     EditorHighlighter *m_editorHighlighter = nullptr;
     QTimer *m_cursorMoveTimer = nullptr;
     bool m_highlighting = false; // Used as a switch to prevent the highlighting from retriggering the parsing
-    Colors m_colors;
     bool m_noteFirstHighlight = true;
     bool m_textChanged = false;
 
