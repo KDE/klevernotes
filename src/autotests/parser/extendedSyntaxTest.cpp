@@ -11,7 +11,6 @@
 #include <QObject>
 #include <QTextStream>
 #include <QtTest/QTest>
-#include <vector>
 
 #define MD4QT_QT_SUPPORT
 #include "logic/parser/md4qt/doc.h"
@@ -47,6 +46,7 @@ private Q_SLOTS:
     void cancellingPart();
     void cancellingPartInTitle();
     void checkOpenCloseStylesParity();
+    void continuousDelims();
     void blankLineText();
     void continuousText();
 
@@ -78,6 +78,8 @@ private:
         QStringLiteral("==*With `non text in the middle` and cancelling==*text==Untouched "
                        "`code`\ntextUntouched==text==Untouched\\==text\\==Untouched==text*==Unaffected*==text^Unaffected^text New style "
                        "mix-===-==-==-== Multi__*line*__ ==*mix*== --of--text^new^ --====and==-- original"),
+        QStringLiteral("Same delims next to each other on multiple lines ^^^^^^^^^^^^\n"
+                       "^^^^^^^^^^^^"),
     };
     QString m_blankLineText;
     QString m_continuousText;
@@ -1072,6 +1074,35 @@ void ExtendedSyntaxTest::checkOpenCloseStylesParity()
     }
 
     QCOMPARE_EQ(openStyles.length(), closeStyles.length());
+}
+/*
+Same delims next to each other on multiple lines ^^^^^^^^^^^^
+^^^^^^^^^^^^
+*/
+void ExtendedSyntaxTest::continuousDelims()
+{
+    QTextStream s(&m_testingLines[18], QIODeviceBase::ReadOnly);
+    const auto doc = m_md4qtParser.parse(s, {}, QStringLiteral("note.md"));
+    if (doc->items().length() != 2) {
+        QFAIL("cancellingPart: Incorrect items count in the doc");
+    }
+
+    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 2) {
+        QFAIL("cancellingPart: Incorrect items count in the paragraph");
+    }
+
+    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+
+    QCOMPARE_EQ(item1->openStyles().length(), 0);
+    QCOMPARE_EQ(item1->closeStyles().length(), 0);
+    qDebug() << item1->text();
+
+    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+
+    QCOMPARE_EQ(item2->openStyles().length(), 0);
+    QCOMPARE_EQ(item2->closeStyles().length(), 0);
+    qDebug() << item1->text();
 }
 
 // If those don't crash that already a good things

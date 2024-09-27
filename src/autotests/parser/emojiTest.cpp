@@ -116,7 +116,6 @@ void EmojiTest::simpleEmojiMiddle()
     QCOMPARE_EQ(item2->emojiNamePos(), namePos);
     MD::WithPosition optionsPos = namePos;
     auto t = item2->optionsPos();
-    qDebug() << t.startColumn() << t.endColumn();
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 
     const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));

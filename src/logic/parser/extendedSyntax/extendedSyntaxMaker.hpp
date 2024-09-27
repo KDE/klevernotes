@@ -32,6 +32,7 @@ struct DelimInfo {
     long long int m_startLine;
     long long int endColumn;
     TagType type;
+    bool atLineEnd;
 
     /* For validDelims */
     bool paired = false;

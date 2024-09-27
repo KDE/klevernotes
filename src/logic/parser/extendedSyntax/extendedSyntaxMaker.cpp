@@ -71,7 +71,8 @@ void getDelims(MDParagraphPtr p,
 
         const long long int startColumn = currentItem->startColumn() + delimIdx;
         const long long int endColumn = startColumn + delimLength - 1;
-        DelimInfo info = {idx, startColumn, currentItem->startLine(), endColumn, type};
+        const bool atLineEnd = endColumn == lineInfo.first.length() - 1;
+        DelimInfo info = {idx, startColumn, currentItem->startLine(), endColumn, type, atLineEnd};
         delimInfos.append(info);
         delimIdx = src.indexOf(searchedDelim, delimIdx + delimLength);
     }
@@ -110,6 +111,13 @@ bool validDelimsPairs(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseSty
     return true;
 }
 
+bool areNextToEachOther(const DelimInfo &a, const DelimInfo &b)
+{
+    const bool nextToEachOtherAccrossLines = a.atLineEnd && a.startLine() + 1 == b.startLine() && b.startColumn() == 0;
+    const bool nextToEachOtherInsideLine = a.startLine() == b.startLine() && a.endColumn + 1 == b.startColumn();
+    return nextToEachOtherAccrossLines || nextToEachOtherInsideLine;
+}
+
 QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles, QList<StyleDelimInfo> &badStyles, QList<DelimInfo> &delimInfos)
 {
     QList<DelimInfo> pairs;
@@ -124,8 +132,7 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
             while (0 <= i) {
                 auto opening = waitingOpenings.takeAt(i);
 
-                if ((opening.startLine() < info.startLine() || (opening.startLine() == info.startLine() && opening.endColumn + 1 != info.startColumn()))
-                    && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
+                if (!areNextToEachOther(opening, info) && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
                     opening.paired = true;
                     info.paired = true;
 
@@ -142,8 +149,11 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
                 while (0 <= i) {
                     auto opening = waitingOpenings[i]; // We can't consume it right away
 
-                    if ((opening.startLine() < info.startLine() || (opening.startLine() == info.startLine() && opening.endColumn + 1 != info.startColumn()))
-                        && validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
+                    if (areNextToEachOther(opening, info)) {
+                        break;
+                    }
+
+                    if (validDelimsPairs(openCloseStyles, badStyles, opening, info)) {
                         opening.paired = true;
                         info.paired = true;
                         waitingOpenings.removeAt(i);
@@ -162,6 +172,20 @@ QList<DelimInfo> pairDelims(QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCl
     }
 
     return pairs;
+}
+
+bool checkDelimsNextToEachOther(const QList<DelimInfo> &delimInfos)
+{
+    DelimInfo previous = delimInfos.at(0);
+
+    for (int i = 1; i < delimInfos.length(); ++i) {
+        const auto &info = delimInfos.at(i);
+        if (!areNextToEachOther(previous, info)) {
+            return false;
+        }
+        previous = info;
+    }
+    return true;
 }
 
 void removeBadStylesOptsAndDelims(MDParagraphPtr p, const QList<QPair<StyleDelimInfo, StyleDelimInfo>> &openCloseStyles, const QList<StyleDelimInfo> &badStyles)
@@ -373,7 +397,7 @@ void processExtendedSyntax(MDParagraphPtr p, MDParsingOpts &po, const QString &s
         const long long int firstNonClosingPos = std::distance(delimInfos.cbegin(), firstNonClosingIt);
         delimInfos.remove(0, firstNonClosingPos);
 
-        if (delimInfos.isEmpty()) {
+        if (delimInfos.length() < 2 || checkDelimsNextToEachOther(delimInfos)) {
             return;
         }
 
