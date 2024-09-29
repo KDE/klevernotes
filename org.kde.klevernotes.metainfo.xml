@@ -59,12 +59,28 @@
   <summary xml:lang="x-test">xxKleverNotes is a note taking and management applicationxx</summary>
   <summary xml:lang="zh-CN">KleverNotes 是一个记录和管理笔记的应用程序</summary>
   <summary xml:lang="zh-TW">KleverNotes 是一個筆記記錄與管理應用程式</summary>
+  <url type="homepage">https://invent.kde.org/office/klevernotes</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=KleverNotes</url>
+  <url type="vcs-browser">https://invent.kde.org/office/klevernotes</url>
+  <url type="contribute">https://community.kde.org/Get_Involved/</url>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-  <developer id="https://kde.org">
-    <name>The KDE Community</name>
+  <content_rating type="oars-1.1"/>
+  <categories>
+    <category>Office</category>
+  </categories>
+  <keywords>
+    <keyword>Markdown</keyword>
+    <keyword>Kirigami</keyword>
+    <keyword>Qt</keyword>
+  </keywords>
+  <provides>
+    <binary>klevernotes</binary>
+  </provides>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+    <url>https://kde.org</url>
   </developer>
-  <url type="homepage">https://invent.kde.org/office/klevernotes</url>
   <description>
     <p>KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
@@ -204,7 +220,10 @@
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">org.kde.klevernotes.desktop</launchable>
-  <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#8AD1D3</color>
+    <color type="primary" scheme_preference="dark">#254545</color>
+  </branding>
   <releases>
     <release version="1.0.0" date="2024-06-05">
       <description>
