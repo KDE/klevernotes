@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-13 00:40+0000\n"
+"POT-Creation-Date: 2024-09-30 00:39+0000\n"
 "PO-Revision-Date: 2024-09-20 11:20+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -975,147 +975,147 @@ msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
 msgstr "Cabeceira 1"
 
-#: contents/ui/sharedComponents/ActionsList.qml:27
-#: contents/ui/sharedComponents/ActionsList.qml:30
+#: contents/ui/sharedComponents/ActionsList.qml:29
+#: contents/ui/sharedComponents/ActionsList.qml:32
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
 msgstr "Cabeceira 2"
 
-#: contents/ui/sharedComponents/ActionsList.qml:34
-#: contents/ui/sharedComponents/ActionsList.qml:37
+#: contents/ui/sharedComponents/ActionsList.qml:38
+#: contents/ui/sharedComponents/ActionsList.qml:41
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
 msgstr "Cabeceira 3"
 
-#: contents/ui/sharedComponents/ActionsList.qml:41
-#: contents/ui/sharedComponents/ActionsList.qml:44
+#: contents/ui/sharedComponents/ActionsList.qml:47
+#: contents/ui/sharedComponents/ActionsList.qml:50
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
 msgstr "Cabeceira 4"
 
-#: contents/ui/sharedComponents/ActionsList.qml:48
-#: contents/ui/sharedComponents/ActionsList.qml:51
+#: contents/ui/sharedComponents/ActionsList.qml:56
+#: contents/ui/sharedComponents/ActionsList.qml:59
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
 msgstr "Cabeceira 5"
 
-#: contents/ui/sharedComponents/ActionsList.qml:55
-#: contents/ui/sharedComponents/ActionsList.qml:58
+#: contents/ui/sharedComponents/ActionsList.qml:65
+#: contents/ui/sharedComponents/ActionsList.qml:68
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
 msgstr "Cabeceira 6"
 
-#: contents/ui/sharedComponents/ActionsList.qml:63
-#: contents/ui/sharedComponents/ActionsList.qml:65
+#: contents/ui/sharedComponents/ActionsList.qml:75
+#: contents/ui/sharedComponents/ActionsList.qml:77
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
 msgstr "Grosa"
 
-#: contents/ui/sharedComponents/ActionsList.qml:70
-#: contents/ui/sharedComponents/ActionsList.qml:72
+#: contents/ui/sharedComponents/ActionsList.qml:84
+#: contents/ui/sharedComponents/ActionsList.qml:86
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
 msgstr "Cursiva"
 
-#: contents/ui/sharedComponents/ActionsList.qml:77
-#: contents/ui/sharedComponents/ActionsList.qml:79
+#: contents/ui/sharedComponents/ActionsList.qml:93
+#: contents/ui/sharedComponents/ActionsList.qml:95
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
 msgstr "Riscar"
 
-#: contents/ui/sharedComponents/ActionsList.qml:84
-#: contents/ui/sharedComponents/ActionsList.qml:86
+#: contents/ui/sharedComponents/ActionsList.qml:102
+#: contents/ui/sharedComponents/ActionsList.qml:104
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
 msgstr "Código"
 
-#: contents/ui/sharedComponents/ActionsList.qml:91
-#: contents/ui/sharedComponents/ActionsList.qml:93
+#: contents/ui/sharedComponents/ActionsList.qml:111
+#: contents/ui/sharedComponents/ActionsList.qml:113
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
 msgstr "Cita"
 
-#: contents/ui/sharedComponents/ActionsList.qml:98
-#: contents/ui/sharedComponents/ActionsList.qml:100
+#: contents/ui/sharedComponents/ActionsList.qml:120
+#: contents/ui/sharedComponents/ActionsList.qml:122
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
 msgstr "Imaxe"
 
-#: contents/ui/sharedComponents/ActionsList.qml:105
-#: contents/ui/sharedComponents/ActionsList.qml:107
+#: contents/ui/sharedComponents/ActionsList.qml:127
+#: contents/ui/sharedComponents/ActionsList.qml:129
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
 msgstr "Ligazón"
 
-#: contents/ui/sharedComponents/ActionsList.qml:112
-#: contents/ui/sharedComponents/ActionsList.qml:114
+#: contents/ui/sharedComponents/ActionsList.qml:134
+#: contents/ui/sharedComponents/ActionsList.qml:136
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
 msgstr "Táboa"
 
-#: contents/ui/sharedComponents/ActionsList.qml:119
+#: contents/ui/sharedComponents/ActionsList.qml:141
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
 msgstr "Lista ordenada"
 
-#: contents/ui/sharedComponents/ActionsList.qml:121
+#: contents/ui/sharedComponents/ActionsList.qml:143
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
 msgstr "Lista ordenada"
 
-#: contents/ui/sharedComponents/ActionsList.qml:126
+#: contents/ui/sharedComponents/ActionsList.qml:150
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
 msgstr "Lista desordenada"
 
-#: contents/ui/sharedComponents/ActionsList.qml:128
+#: contents/ui/sharedComponents/ActionsList.qml:152
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
 msgstr "Lista desordenada"
 
-#: contents/ui/sharedComponents/ActionsList.qml:133
+#: contents/ui/sharedComponents/ActionsList.qml:159
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
 msgstr "Realzar"
 
-#: contents/ui/sharedComponents/ActionsList.qml:135
+#: contents/ui/sharedComponents/ActionsList.qml:161
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
 msgstr "Realce do texto"
 
-#: contents/ui/sharedComponents/ActionsList.qml:140
-#: contents/ui/sharedComponents/ActionsList.qml:142
+#: contents/ui/sharedComponents/ActionsList.qml:168
+#: contents/ui/sharedComponents/ActionsList.qml:170
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
 msgstr "Expresión"
 
-#: contents/ui/sharedComponents/ActionsList.qml:147
+#: contents/ui/sharedComponents/ActionsList.qml:175
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
 msgstr "Nota de ligazón"
 
-#: contents/ui/sharedComponents/ActionsList.qml:149
+#: contents/ui/sharedComponents/ActionsList.qml:177
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
@@ -1551,11 +1551,11 @@ msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr "%1 non existe"
 
-#: contents/ui/textEditor/TextToolBar.qml:185
-#: contents/ui/textEditor/TextToolBar.qml:186
-#: contents/ui/textEditor/TextToolBar.qml:187
-#: contents/ui/textEditor/TextToolBar.qml:189
-#: contents/ui/textEditor/TextToolBar.qml:190
+#: contents/ui/textEditor/TextToolBar.qml:179
+#: contents/ui/textEditor/TextToolBar.qml:180
+#: contents/ui/textEditor/TextToolBar.qml:181
+#: contents/ui/textEditor/TextToolBar.qml:183
+#: contents/ui/textEditor/TextToolBar.qml:184
 #, kde-format
 msgid "Header"
 msgstr "Cabeceira"
@@ -1706,35 +1706,35 @@ msgstr "Produciuse un erro ao intentar crear esta categoría."
 msgid "An error occurred while trying to create the storage."
 msgstr "Produciuse un erro ao intentar crear este almacenamento."
 
-#: main.cpp:59
+#: main.cpp:58
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:63
+#: main.cpp:62
 #, kde-format
 msgid "Note taking and management application"
 msgstr "Aplicación para escribir e xestionar notas"
 
-#: main.cpp:67
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "© 2022-2023"
 
-#: main.cpp:68
+#: main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:73
+#: main.cpp:72
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Adrian Chaves (Gallaecio)"
 
-#: main.cpp:73
+#: main.cpp:72
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
