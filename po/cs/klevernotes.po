@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-30 00:39+0000\n"
-"PO-Revision-Date: 2024-09-17 15:11+0200\n"
+"PO-Revision-Date: 2024-09-19 07:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -624,7 +624,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Povolit adaptivní velikost značky"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -650,7 +650,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Škálování značek"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -658,7 +658,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Titulek s náhledem "
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -666,7 +666,7 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "text kurzívy a jeho značky"
 
 #: contents/ui/settings/EditorTab.qml:21
 #, kde-format
@@ -696,13 +696,13 @@ msgstr "Počet mezer"
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr ""
+msgstr "Zvýrazňování editoru"
 
 #: contents/ui/settings/EditorTab.qml:87
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr ""
+msgstr "Povolit zvýrazňování editoru"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -940,7 +940,7 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
 msgid "Note preview"
-msgstr ""
+msgstr "Náhled poznámky"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
