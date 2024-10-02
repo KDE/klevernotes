@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-30 00:39+0000\n"
-"PO-Revision-Date: 2024-08-02 23:21+0200\n"
+"PO-Revision-Date: 2024-10-01 17:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -627,7 +627,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Gaitu neurri moldakorreko etiketa"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -636,6 +636,7 @@ msgctxt ""
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
 msgstr ""
+"Neurri moldakorrak etiketaren neurria bere inguruaren arabera eskalatuko du."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -646,6 +647,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Adibidea: goiburu baten barruko etiketa bat, goiburuko gainontzeko testua "
+"bezain luzea izango da."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -653,7 +656,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Etiketen eskala"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -661,7 +664,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Titulu bat aurreikuspegi batekin,"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -669,12 +672,10 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "testu etzanarena eta bere etiketena"
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "Orokorra"
@@ -698,20 +699,16 @@ msgid "Number of spaces"
 msgstr "Zuriune kopurua"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Testua nabarmendu"
+msgstr "Editoreak nabarmentzea"
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Gaitu kodearen sintaxia nabarmentzea"
+msgstr "Gaitu editoreak nabarmentzea"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -947,19 +944,15 @@ msgid "General"
 msgstr "Orokorra"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
 msgid "Note preview"
-msgstr "Oharra aurreikusi"
+msgstr "Oharraren aurreikuspegia"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
 msgstr "Editorea"
