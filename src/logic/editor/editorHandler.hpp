@@ -79,6 +79,9 @@ public:
     Q_INVOKABLE void handleTabPressed(const bool backtab);
     Q_INVOKABLE void handleReturnPressed(const int modifier);
 
+    // Render
+    Q_INVOKABLE void changeRenderPreviewState(const bool enabled = false);
+
 Q_SIGNALS:
     void documentChanged();
     void cursorPositionChanged(const int position);
@@ -114,6 +117,9 @@ private Q_SLOTS:
     void adaptiveTagSizeChanged();
     void tagScaleChanged();
     void cursorMovedTimeOut();
+
+    // Render
+    void renderPreviewStateChanged();
 
     // markdown-tools editor
     void onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>>, unsigned long long int);
@@ -161,6 +167,7 @@ private:
     std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
 
     // Rendering
+    bool m_renderEnabled = true;
     Renderer *m_renderer = nullptr;
 
     // Plugins

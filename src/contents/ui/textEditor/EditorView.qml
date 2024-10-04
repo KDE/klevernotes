@@ -50,6 +50,7 @@ ColumnLayout {
             icon.name: "pdftex-symbolic"
             
             onTriggered: {
+                EditorHandler.changeRenderPreviewState(true)
                 printingDialog.open()
             }
         },
@@ -122,6 +123,9 @@ ColumnLayout {
                 DocumentHandler.writeFile(result, printingDialog.path.substring(7))
                 printingDialog.close()
             })
+        }
+        onClosed: {
+            EditorHandler.changeRenderPreviewState(false)
         }
     }
 

@@ -31,6 +31,10 @@ EditorHandler::EditorHandler(QObject *parent)
     m_renderer->addPluginHelper(m_pluginHelper);
 
     connectParser();
+
+    connect(m_config, &KleverConfig::previewVisibleChanged, this, &EditorHandler::renderPreviewStateChanged);
+    changeRenderPreviewState();
+
     connectPlugins();
     connectHighlight();
     connectTimer();
@@ -286,6 +290,18 @@ void EditorHandler::renderDoc()
         Q_EMIT renderingFinished(html);
     }
 }
+
+void EditorHandler::changeRenderPreviewState(const bool _enabled)
+{
+    // If we close the PrintingDialog (!enabled) but the preview is still visible
+    const bool enabled = _enabled || m_config->previewVisible();
+    if (m_renderEnabled != enabled) {
+        m_renderEnabled = enabled;
+        if (m_renderEnabled) {
+            renderDoc();
+        }
+    }
+}
 // !Rendering
 
 // Highlight
@@ -413,11 +429,20 @@ void EditorHandler::onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>
             Q_EMIT focusEditor();
         }
 
-        renderDoc();
+        if (m_renderEnabled) {
+            renderDoc();
+        }
     }
 }
-
 // !Parsing
+
+// Rendering
+void EditorHandler::renderPreviewStateChanged()
+{
+    changeRenderPreviewState(m_config->previewVisible());
+}
+// !Rendering
+
 // Plugins
 void EditorHandler::codeHighlightEnabledChanged()
 {
