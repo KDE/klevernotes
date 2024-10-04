@@ -12,18 +12,11 @@
 
 namespace MdEditor
 {
-Parser::Parser(QObject *parent)
-    : QObject(parent)
+Parser::Parser()
 {
+    connect(this, &Parser::newData, this, &Parser::onParse, Qt::QueuedConnection);
     connectPlugins();
     m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
-}
-
-std::shared_ptr<MD::Document<MD::QStringTrait>> Parser::parse(QString src)
-{
-    QTextStream s(&src, QIODeviceBase::ReadOnly);
-
-    return m_md4qtParser.parse(s, m_notePath, QStringLiteral("note.md"), false);
 }
 
 // Connections
@@ -40,24 +33,8 @@ void Parser::connectPlugins()
 }
 // !Connections
 
-// Getters
-// =======
-QString Parser::getNotePath() const
-{
-    return m_notePath;
-}
-// !Getters
-
 // Setters
 // =======
-void Parser::setNotePath(const QString &notePath)
-{
-    if (notePath.isEmpty() || m_notePath == notePath) {
-        return;
-    }
-    m_notePath = notePath;
-}
-
 void Parser::addExtendedSyntax(const QStringList &details)
 {
     m_md4qtParser.addTextPlugin(details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
@@ -85,4 +62,29 @@ void Parser::quickEmojiEnabledChanged()
     addRemovePlugin(PluginsId::EmojiPlugin, KleverConfig::quickEmojiEnabled());
 }
 // !KleverNotes slots
+
+// markdown-tools editor slots
+void Parser::onData(const QString &md, const QString &notePath, unsigned long long int counter)
+{
+    m_data.clear();
+    m_data.push_back(md);
+    m_notePath = notePath;
+    m_counter = counter;
+
+    Q_EMIT newData();
+}
+
+void Parser::onParse()
+{
+    if (!m_data.isEmpty()) {
+        QTextStream stream(&m_data.back());
+
+        const auto doc = m_md4qtParser.parse(stream, m_notePath, QStringLiteral("note.md"), false);
+
+        m_data.clear();
+
+        Q_EMIT done(doc, m_counter);
+    }
+}
+// !markdown-tools editor slots
 }

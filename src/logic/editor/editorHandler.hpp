@@ -44,6 +44,7 @@ class EditorHandler : public QObject
 
 public:
     explicit EditorHandler(QObject *parent = nullptr);
+    ~EditorHandler();
 
     // QTextDocument info
     QTextDocument *document() const;
@@ -84,7 +85,8 @@ Q_SIGNALS:
     void selectionStartChanged(const int position);
     void selectionEndChanged(const int position);
 
-    void parsingFinished(const QString &content);
+    void askForParsing(const QString &md, const QString &notePath, unsigned long long int counter);
+    void renderingFinished(const QString &content);
 
     // Toolbar
     void surroundingDelimsChanged(const QList<int> &delimsTypes);
@@ -113,8 +115,12 @@ private Q_SLOTS:
     void tagScaleChanged();
     void cursorMovedTimeOut();
 
+    // markdown-tools editor
+    void onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>>, unsigned long long int);
+
 private:
-    // Config Connections
+    // Connections
+    void connectParser();
     void connectPlugins();
     void connectHighlight();
     void connectTimer();
@@ -150,6 +156,8 @@ private:
     QString m_previousPath;
     QString m_notePath;
     Parser *m_parser = nullptr;
+    unsigned long long int m_parseCount;
+    QThread *m_parsingThread = nullptr;
     std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
 
     // Rendering

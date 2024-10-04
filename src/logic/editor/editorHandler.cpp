@@ -22,6 +22,7 @@ EditorHandler::EditorHandler(QObject *parent)
     : QObject(parent)
     , m_config(KleverConfig::self())
     , m_parser(new Parser())
+    , m_parsingThread(new QThread(this))
     , m_renderer(new Renderer())
     , m_pluginHelper(new PluginHelper(this))
     , m_editorHighlighter(new EditorHighlighter(this))
@@ -29,6 +30,7 @@ EditorHandler::EditorHandler(QObject *parent)
 {
     m_renderer->addPluginHelper(m_pluginHelper);
 
+    connectParser();
     connectPlugins();
     connectHighlight();
     connectTimer();
@@ -46,8 +48,22 @@ EditorHandler::EditorHandler(QObject *parent)
     addExtendedSyntaxs(extendedSyntaxsList);
 }
 
+EditorHandler::~EditorHandler()
+{
+    m_parsingThread->quit();
+    m_parsingThread->wait();
+}
+
 // Connections
 // ===========
+void EditorHandler::connectParser()
+{
+    m_parser->moveToThread(m_parsingThread);
+    connect(this, &EditorHandler::askForParsing, m_parser, &Parser::onData, Qt::QueuedConnection);
+    connect(m_parser, &Parser::done, this, &EditorHandler::onParsingDone, Qt::QueuedConnection);
+    m_parsingThread->start();
+}
+
 void EditorHandler::connectPlugins()
 {
     // Code Highlight
@@ -202,16 +218,14 @@ void EditorHandler::parse(const QString &src)
     if (m_pluginHelper) {
         m_pluginHelper->clearPluginsInfo();
     }
-    
-    m_currentMdDoc = m_parser->parse(src);
-    cacheAndHighlightSyntax(m_currentMdDoc);
 
-    if (m_noteFirstHighlight) {
-        m_noteFirstHighlight = false;
-        Q_EMIT focusEditor();
+    if (m_parseCount == std::numeric_limits<unsigned long long int>::max()) {
+        m_parseCount = 0;
     }
 
-    renderDoc();
+    ++m_parseCount;
+
+    Q_EMIT askForParsing(src, m_notePath, m_parseCount);
 }
 
 QString EditorHandler::getNotePath() const
@@ -236,7 +250,6 @@ void EditorHandler::setNotePath(const QString &notePath)
         m_previousPath = notePath;
     }
     m_notePath = notePath;
-    m_parser->setNotePath(notePath);
     m_noteFirstHighlight = true;
 
     QString rendererNotePath = notePath;
@@ -270,7 +283,7 @@ void EditorHandler::renderDoc()
         if (m_pluginHelper) {
             m_pluginHelper->postTokChanges();
         }
-        Q_EMIT parsingFinished(html);
+        Q_EMIT renderingFinished(html);
     }
 }
 // !Rendering
@@ -388,6 +401,23 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() cons
 
 // KleverNotes slots
 // =================
+// Parsing
+void EditorHandler::onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>> mdDoc, unsigned long long int parseCount)
+{
+    if (parseCount == m_parseCount) {
+        m_currentMdDoc = mdDoc;
+        cacheAndHighlightSyntax(m_currentMdDoc);
+
+        if (m_noteFirstHighlight) {
+            m_noteFirstHighlight = false;
+            Q_EMIT focusEditor();
+        }
+
+        renderDoc();
+    }
+}
+
+// !Parsing
 // Plugins
 void EditorHandler::codeHighlightEnabledChanged()
 {
@@ -438,7 +468,9 @@ void EditorHandler::tagScaleChanged()
 void EditorHandler::cursorMovedTimeOut()
 {
     if (!m_textChanged && m_notePath.endsWith(QStringLiteral(".md"))) {
+        m_highlighting = true;
         m_surroundingDelims = m_editorHighlighter->showDelimAroundCursor(m_textChanged);
+        m_highlighting = false;
 
         QList<int> delimsTypes;
         for (const auto &delimInfo : m_surroundingDelims) {

@@ -24,20 +24,25 @@ namespace MdEditor
 
 class Parser : public QObject
 {
+    Q_OBJECT
+
 public:
-    explicit Parser(QObject *parent = nullptr);
-    std::shared_ptr<MD::Document<MD::QStringTrait>> parse(QString src);
+    explicit Parser();
 
     // Connections
     void connectPlugins();
 
-    // Getters
-    QString getNotePath() const;
-
     // Setters
-    void setNotePath(const QString &notePath);
     void addExtendedSyntax(const QStringList &details);
     void addRemovePlugin(const int pluginId, const bool add);
+
+Q_SIGNALS:
+    void newData();
+    void done(std::shared_ptr<MD::Document<MD::QStringTrait>> mdDoc, unsigned long long int parseCount);
+
+public Q_SLOTS:
+    // markdown-tools editor
+    void onData(const QString &md, const QString &notePath, unsigned long long int counter);
 
 private Q_SLOTS:
     // Note Linking
@@ -46,10 +51,10 @@ private Q_SLOTS:
     // Emoji
     void quickEmojiEnabledChanged();
 
-private:
-    // KleverNotes
-    QString m_notePath;
+    // markdown-tools editor
+    void onParse();
 
+private:
     enum PluginsId : int {
         NoteLinkingPlugin = 320, // EditorHandler::ExtensionID::KleverPlugins
         EmojiPlugin,
@@ -60,7 +65,10 @@ private:
         {PluginsId::EmojiPlugin, EmojiPlugin::emojiHelperFunc},
     };
 
-    // md4qt
+    // markdown-tools editor
+    QStringList m_data; // Using a QStringList enable us to make the difference between no data and empty data !!
+    QString m_notePath;
+    unsigned long long int m_counter;
     MD::Parser<MD::QStringTrait> m_md4qtParser;
 };
 }

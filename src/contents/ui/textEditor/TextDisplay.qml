@@ -145,7 +145,7 @@ RowLayout {
         id: editorHandlerConnections
         target: EditorHandler
 
-        function onParsingFinished(content) {
+        function onRenderingFinished(content) {
             contentLink.text = content
         }
     }
