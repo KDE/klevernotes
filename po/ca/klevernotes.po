@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-30 00:39+0000\n"
+"POT-Creation-Date: 2024-10-05 00:40+0000\n"
 "PO-Revision-Date: 2024-09-14 13:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1513,20 +1513,20 @@ msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Imprimeix"
 
-#: contents/ui/textEditor/EditorView.qml:60
+#: contents/ui/textEditor/EditorView.qml:61
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Mostra/oculta l'editor"
 
-#: contents/ui/textEditor/EditorView.qml:76
+#: contents/ui/textEditor/EditorView.qml:77
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "Mostra/oculta la vista prèvia"
 
-#: contents/ui/textEditor/EditorView.qml:106
+#: contents/ui/textEditor/EditorView.qml:107
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"

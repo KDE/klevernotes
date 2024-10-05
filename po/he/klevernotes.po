@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-30 00:39+0000\n"
+"POT-Creation-Date: 2024-10-05 00:40+0000\n"
 "PO-Revision-Date: 2024-09-13 05:39+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1501,20 +1501,20 @@ msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "הדפסה"
 
-#: contents/ui/textEditor/EditorView.qml:60
+#: contents/ui/textEditor/EditorView.qml:61
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "הצגת/הסתרת עורך"
 
-#: contents/ui/textEditor/EditorView.qml:76
+#: contents/ui/textEditor/EditorView.qml:77
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "הצגת/הסתרת תצוגה מקדימה"
 
-#: contents/ui/textEditor/EditorView.qml:106
+#: contents/ui/textEditor/EditorView.qml:107
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
