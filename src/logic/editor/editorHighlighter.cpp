@@ -235,9 +235,11 @@ void EditorHighlighter::onMath(MD::Math<MD::QStringTrait> *m)
 
 void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
 {
+    const int inititalHeadingLevel = d->headingLevel;
+    const int inititalAdditionalStyle = d->additionalStyle;
     if (m_highlightEnabled) {
-        QScopedValueRollback headingLevel(d->headingLevel, h->level());
-        QScopedValueRollback style(d->additionalStyle, d->additionalStyle | MD::BoldText);
+        d->headingLevel = h->level();
+        d->additionalStyle = d->additionalStyle | MD::BoldText;
 
         QTextCharFormat baseFormat;
         baseFormat.setForeground(d->colors.titleColor);
@@ -247,6 +249,9 @@ void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
     }
 
     MD::PosCache<MD::QStringTrait>::onHeading(h);
+
+    d->headingLevel = inititalHeadingLevel;
+    d->additionalStyle = inititalAdditionalStyle;
 
     if (m_highlightEnabled) {
         QTextCharFormat special;
@@ -402,6 +407,7 @@ void EditorHighlighter::onHorizontalLine(MD::HorizontalLine<MD::QStringTrait> *l
 
 void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
 {
+    const int inititalAdditionalStyle = d->additionalStyle;
     if (m_highlightEnabled) {
         QTextCharFormat generalFormat;
         generalFormat.setForeground(d->colors.specialColor);
@@ -409,7 +415,7 @@ void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
 
         d->setFormat(generalFormat, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
 
-        QScopedValueRollback style(d->additionalStyle, d->additionalStyle | l->opts());
+        d->additionalStyle = d->additionalStyle | l->opts();
 
         QTextCharFormat textFormat;
         textFormat.setForeground(d->colors.textColor);
@@ -425,6 +431,8 @@ void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
     MD::PosCache<MD::QStringTrait>::onLink(l);
 
     onItemWithOpts(l);
+
+    d->additionalStyle = inititalAdditionalStyle;
 }
 
 void EditorHighlighter::onReferenceLink(MD::Link<MD::QStringTrait> *l)
@@ -506,6 +514,7 @@ void EditorHighlighter::onFootnote(MD::Footnote<MD::QStringTrait> *f)
 
 void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
 {
+    const int inititalAdditionalStyle = d->additionalStyle;
     if (m_highlightEnabled) {
         QTextCharFormat generalFormat;
         generalFormat.setForeground(d->colors.specialColor);
@@ -513,7 +522,7 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
 
         d->setFormat(generalFormat, e->startLine(), e->startColumn(), e->endLine(), e->endColumn());
 
-        QScopedValueRollback style(d->additionalStyle, d->additionalStyle | e->opts());
+        d->additionalStyle = d->additionalStyle | e->opts();
 
         QTextCharFormat emojiFormat;
         emojiFormat.setForeground(d->colors.linkColor);
@@ -527,6 +536,8 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
         d->setFormat(optionsFormat, e->optionsPos());
     }
     onItemWithOpts(e);
+
+    d->additionalStyle = inititalAdditionalStyle;
 }
 
 void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
