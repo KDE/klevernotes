@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-05 00:40+0000\n"
-"PO-Revision-Date: 2024-07-27 09:38+0200\n"
+"PO-Revision-Date: 2024-10-05 12:51+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -624,7 +624,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Włącz dostosowujący się rozmiar znacznika"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -633,6 +633,7 @@ msgctxt ""
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
 msgstr ""
+"Dostosowujący się rozmiar przeskaluj rozmiar znacznika do jego otoczenia."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -643,6 +644,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Przykład: znacznik wewnątrz nagłówka będzie tak duży jak reszta tekstu "
+"nagłówka."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -650,7 +653,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Skala znacznika"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -658,7 +661,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Tytuł z podglądem na"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -666,12 +669,10 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "tekst pochylony i jego znaczniki"
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "Ogólne"
@@ -695,20 +696,16 @@ msgid "Number of spaces"
 msgstr "Liczba odstępów"
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Podświetlenie tekstu"
+msgstr "Podświetlenie edytora"
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Włącz podświetlanie składni kodu"
+msgstr "Włącz podświetlanie edytora"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -942,9 +939,7 @@ msgid "General"
 msgstr "Ogólne"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
@@ -952,9 +947,7 @@ msgid "Note preview"
 msgstr "Podgląd notatki"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
 msgstr "Edytor"
