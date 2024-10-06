@@ -94,6 +94,7 @@ Controls.Menu {
         useCase: actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
 
         onApplied: if (clickedIndex && actionBar.currentModelIndex) {
+            applicationWindow().saveState()
             contextMenu.treeView.model.moveRow(actionBar.currentModelIndex, clickedIndex)
             close()
         }

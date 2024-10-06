@@ -258,6 +258,7 @@ ToolBar {
         icon.name: "edit-rename-symbolic"
 
         onNameChanged: if (isActive) {
+            applicationWindow().saveState()
             treeView.model.rename(currentModelIndex, name)
             isActive = false
             useCurrentItem()
