@@ -226,6 +226,7 @@
   </branding>
   <releases>
     <release version="1.1.0" date="2024-10-07">
+      <description>
         <p>
           KleverNotes 1.1.0 is finally available! KleverNotes is the Markdown 
           note-taking app from KDE. For 3 months, I have been working hard to 
@@ -271,6 +272,7 @@
           Those tags will regain their normal sizes based on the cursor position/selected text.
           This way, you're able to see which tag is responsible for a style.
         </p>
+      </description>
     </release>
     <release version="1.0.0" date="2024-06-05">
       <description>
