@@ -90,9 +90,9 @@ ___
 ## Get it
 
 ### Install the flatpak
-Klevernotes is currently in [KDE incubator](https://community.kde.org/Incubator), and will not be shipped on Flathub until its first stable release. 
+Klevernotes is in the process to be added on flathub.
 
-However, a Nightly Flatpak is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command to get it:
+In the meantime, a Nightly Flatpak is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command to get it:
 ```
 flatpak install --user --or-update https://cdn.kde.org/flatpak/klevernotes-nightly/org.kde.klevernotes.flatpakref
 ```
