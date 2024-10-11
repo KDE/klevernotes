@@ -34,31 +34,6 @@
   <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>Take and manage your notes</summary>
-  <summary xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes</summary>
-  <summary xml:lang="ca-valencia">KleverNotes és una aplicació de presa i gestió de notes</summary>
-  <summary xml:lang="cs">KleverNotes ne aplikace pro pořizování a správu poznámek</summary>
-  <summary xml:lang="en-GB">KleverNotes is a note taking and management application</summary>
-  <summary xml:lang="eo">KleverNotes estas not-prena kaj -mastruma aplikaĵo</summary>
-  <summary xml:lang="es">KleverNotes es una aplicación para tomar notas y gestionarlas</summary>
-  <summary xml:lang="eu">«KleverNotes» oharrak hartzeko eta kudeatzeko aplikazio bat da</summary>
-  <summary xml:lang="fi">KleverNotes on muistiinpanojen kirjoitus- ja hallintasovellus</summary>
-  <summary xml:lang="fr">L'application KleverNotes est une application de prise de notes et pour leurs gestions.</summary>
-  <summary xml:lang="gl">KleverNotes é unha aplicación para tomar e xestionar notas.</summary>
-  <summary xml:lang="he">KleverNotes הוא יישום לכתיבת וניהול פתקיות</summary>
-  <summary xml:lang="ia">KleverNotes es un application per prender e gerer notas</summary>
-  <summary xml:lang="it">KleverNotes è un'applicazione per prendere appunti e gestire</summary>
-  <summary xml:lang="ka">KleverNotes ჩანიშვნისა და შენიშვნების მართვის აპლიკაციაა</summary>
-  <summary xml:lang="ko">KleverNotes는 메모 작성 및 관리 앱입니다</summary>
-  <summary xml:lang="nl">KleverNotes is een toepassing voor maken en beheren van notities </summary>
-  <summary xml:lang="pl">KleverNotes jest aplikacją do robienia i zarządzania notatkami</summary>
-  <summary xml:lang="pt">O KleverNotes é uma aplicação de gestão e registo de notas</summary>
-  <summary xml:lang="sl">KleverNotes je aplikacija za vnašanje opomb in upravljanje</summary>
-  <summary xml:lang="sv">KleverNotes är ett antecknings- och hanteringsprogram</summary>
-  <summary xml:lang="tr">Not Alma ve Yönetme Uygulaması</summary>
-  <summary xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними</summary>
-  <summary xml:lang="x-test">xxKleverNotes is a note taking and management applicationxx</summary>
-  <summary xml:lang="zh-CN">KleverNotes 是一个记录和管理笔记的应用程序</summary>
-  <summary xml:lang="zh-TW">KleverNotes 是一個筆記記錄與管理應用程式</summary>
   <url type="homepage">https://invent.kde.org/office/klevernotes</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=KleverNotes</url>
   <url type="vcs-browser">https://invent.kde.org/office/klevernotes</url>
