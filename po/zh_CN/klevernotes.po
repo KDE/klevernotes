@@ -663,9 +663,7 @@ msgid "italic text and its tags"
 msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@label, tab (inside tab bar), general settings of the app"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "常规"
@@ -689,20 +687,16 @@ msgid "Number of spaces"
 msgstr "空格数："
 
 #: contents/ui/settings/EditorTab.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Text highlight"
+#, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "文本高亮"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:87
-#, fuzzy, kde-format
-#| msgctxt "@label:checkbox"
-#| msgid "Enable code syntax highlighting"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "启用语法高亮"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -932,9 +926,7 @@ msgid "General"
 msgstr "常规"
 
 #: contents/ui/settings/TabBar.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title, where you can view the renderer note"
-#| msgid "Note preview"
+#, kde-format
 msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
@@ -942,9 +934,7 @@ msgid "Note preview"
 msgstr "笔记预览"
 
 #: contents/ui/settings/TabBar.qml:29
-#, fuzzy, kde-format
-#| msgctxt "@title, as in text editor"
-#| msgid "Editor"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
 msgstr "编辑器"
@@ -1738,13 +1728,3 @@ msgstr "KDE China, Guo Yunhe, dqfamily"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-china@kde.org, i@guoyunhe.me, yanluping2009@outlook.com"
-
-#~ msgctxt "@title, general text editor settings"
-#~ msgid "Editor"
-#~ msgstr "编辑器"
-
-#~ msgctxt ""
-#~ "@label, tab (inside tab bar), all settings related to the general "
-#~ "appearance of the app"
-#~ msgid "Appearance"
-#~ msgstr "外观"
