@@ -34,6 +34,15 @@
   <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>Take and manage your notes</summary>
+  <summary xml:lang="ca">Preeu i gestioneu les vostres notes</summary>
+  <summary xml:lang="he">כתיבת וניהול הפתקיות שלך</summary>
+  <summary xml:lang="it">Prendi e gestisci i tuoi appunti</summary>
+  <summary xml:lang="ka">შექმენით და მართეთ თქვენი შენიშვნები</summary>
+  <summary xml:lang="nl">Neem notities op en beheer ze</summary>
+  <summary xml:lang="sl">Vzemite in upravljajte svoje zapiske</summary>
+  <summary xml:lang="tr">Notlar alın ve yönetin</summary>
+  <summary xml:lang="uk">Записуйте ваші нотатки та керуйте ними</summary>
+  <summary xml:lang="x-test">xxTake and manage your notesxx</summary>
   <url type="homepage">https://invent.kde.org/office/klevernotes</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=KleverNotes</url>
   <url type="vcs-browser">https://invent.kde.org/office/klevernotes</url>
