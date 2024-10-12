@@ -12,15 +12,11 @@ import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/painting"
 
 import org.kde.Klever
-import WashiPadComponents
 
 Kirigami.Page {
     id: root
 
     readonly property QtObject editorView: pageStack.get(0).editorView
-    readonly property size size: Qt.size(sketchContent.width, sketchContent.height)
-    readonly property point cursorPos: Qt.point(handler.point.x, handler.point.y)
-    readonly property var penType: Stroke.Fill
 
     property bool cantLeave: false
     property bool isEraser: false
@@ -48,7 +44,7 @@ Kirigami.Page {
             icon.name: "edit-clear-symbolic"
             
             onTriggered: {
-                root.clearCanvas()
+                canvas.clear()
             }
         },
         Kirigami.Action {
@@ -67,7 +63,7 @@ Kirigami.Page {
             icon.name: "draw-brush-symbolic"
             
             onTriggered: {
-                handler.changePointer(0)
+                root.isEraser = false
             }
         },
         Kirigami.Action {
@@ -78,7 +74,7 @@ Kirigami.Page {
             icon.name: "draw-eraser-symbolic"
             
             onTriggered: {
-                handler.changePointer(1)
+                root.isEraser = true
             }
         }
     ]
@@ -116,69 +112,155 @@ Kirigami.Page {
             Flickable {
                 id: flickable
 
-                contentWidth: sketchContent.width + Kirigami.Units.largeSpacing * 2
-                contentHeight: sketchContent.height + Kirigami.Units.largeSpacing * 2
+                contentWidth: canvasBorder.width + Kirigami.Units.largeSpacing * 4
+                contentHeight: canvasBorder.height + Kirigami.Units.largeSpacing * 4
+                anchors.fill: parent
 
                 clip: true
                 interactive: !mouseArea.isPress
 
                 Rectangle {
-                    id: sketchContent
+                    id: canvasBorder
+                    width: canvas.width + 8
+                    height: canvas.width + 8 
+                    x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
+                    y: (Kirigami.Units.largeSpacing * 2) - 4
 
-                    x: Math.max(Kirigami.Units.largeSpacing, (root.width - width) / 2)
-                    y: Kirigami.Units.largeSpacing
-
-                    width: 1024
-                    height: 1024
-
-                    StrokeListItem {
-                        id: fillStrokes
-
-                        z: 0
-                        anchors.fill: parent
-
-                        type: Stroke.Fill
-                        model: sketchModel
-                    }
-
-                    StrokeItem {
-                        id: currentStroke
-
-                        z: Stroke.type === Stroke.Outline ? 1 : 0
-                        anchors.fill: parent
+                    Kirigami.Theme.inherit: false
+                    Kirigami.Theme.colorSet: Kirigami.Theme.View
+                    color: Kirigami.Theme.backgroundColor 
+                    radius: 5
+                    border {
+                        color: Kirigami.Theme.highlightColor
+                        width: 4
                     }
                 }
 
-                MouseArea {
-                    id: mouseArea
+                Canvas {
+                    id: canvas
 
-                    property var lastButton
-                    property bool isPress: false
+                    width: 1024
+                    height: 1024
+                    x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
+                    y: Kirigami.Units.largeSpacing * 2
 
-                    anchors.fill: sketchContent
+                    property real lastX
+                    property real lastY
+                    property int strokeWidth: 5 * (root.isEraser ? 2 : 1)
+                    property bool isInit: false
 
-                    enabled: true
-                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    onPaint: if (!isInit) {
+                        getContext("2d")
+                        isInit = true
+                    }
 
-                    onPositionChanged: function (mouse) {
-                        if (isPress) {
-                            handler.mouseMoved(mouse.x-flickable.contentX, mouse.y-flickable.contentY)
+                    // Make the eraser a bit easier to use
+                    Rectangle {
+                        id: eraserCursor
+
+                        x: canvas.lastX - width / 2
+                        y: canvas.lastY - height / 2
+                        width: height
+                        height: canvas.strokeWidth
+
+                        color: Qt.rgba(1, 0, 0, 0.75) 
+                        radius: height / 2
+                        visible: mouseArea.isPress && root.isEraser
+                    }
+
+                    MouseArea {
+                        id: mouseArea
+
+                        property var lastButton
+                        property bool isPress: false
+
+                        anchors.fill: parent
+
+                        enabled: true
+                        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+                        onPositionChanged: function (mouse) {
+                            if (isPress) {
+                                canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
+                                root.cantLeave = true
+                            }
+                            canvas.lastX = mouseX
+                            canvas.lastY = mouseY
+                        }
+                        onReleased: function (mouse) {
+                            if (mouse.button === lastButton) {
+                                isPress = false
+                            }
+                        }
+                        onPressed: function (mouse) {
+                            canvas.lastX = mouseX
+                            canvas.lastY = mouseY
+                            if (!isPress) {
+                                isPress = true
+                                lastButton = mouse.button
+                                canvas.drawPoint(mouseX, mouseY);
+                                root.cantLeave = true
+                            }
                         }
                     }
-                    onReleased: function (mouse) {
-                        if (mouse.button === lastButton) {
-                            isPress = false
 
-                            handler.changeMousePress(isPress)
-                        }
+                    function drawLine(x1, y1, x2, y2) {
+                        context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
+                        context.strokeStyle = root.penColor
+                        context.lineWidth = canvas.strokeWidth
+                        context.lineCap = "round"
+                        context.beginPath();
+                        context.moveTo(x1, y1);
+                        context.lineTo(x2, y2);
+                        context.stroke();
+                        markDirty()
                     }
-                    onPressed: function (mouse) {
-                        if (!isPress) {
-                            isPress = true
-                            lastButton = mouse.button
 
-                            handler.changeMousePress(isPress)
+                    function drawPoint(x, y) {
+                        context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
+                        const radius = canvas.strokeWidth / 1.5 // Arbitrary value, looks not to big and not to small
+                        context.fillStyle = root.penColor
+                        context.beginPath();
+                        context.moveTo(x, y);
+                        context.arc(x, y, radius, 0, Math.PI * 2, false);
+                        context.fill();
+                        markDirty()
+                    }
+
+                    function clear() {
+                        context.clearRect(0, 0, width, height);
+                        root.cantLeave = false
+                    }
+
+                    // Slightly modified version of: https://stackoverflow.com/a/22267731
+                    function cropImage() {
+                        let pix = {x:[], y:[]}
+                        let w = canvas.width
+                        let h = canvas.height
+                        let imageData = context.getImageData(0, 0, w, h)
+
+                        let dataStartIndex, dataEndIndex;
+                        for (let y = 0; y < h; y++) {
+                            for (let x = 0; x < w; x++) {
+                                // The data is stored in a single array
+                                // The data for a single pixel takes 4 slots in this array, for: RGBA
+                                // See: https://doc.qt.io/qt-6/qml-qtquick-canvasimagedata.html#data-prop
+                                dataStartIndex = (y * w + x) * 4;
+                                dataEndIndex = dataStartIndex + 3
+                                if (imageData.data[dataEndIndex] > 100) { // Arbitrary value
+                                    pix.x.push(x);
+                                    pix.y.push(y);
+                                } 
+                            }
                         }
+                        pix.x.sort(function(a,b){return a-b});
+                        pix.y.sort(function(a,b){return a-b});
+                        var n = pix.x.length-1;
+                      
+                        w = 1 + pix.x[n] - pix.x[0];
+                        h = 1 + pix.y[n] - pix.y[0];
+
+                        return Qt.rect(pix.x[0], pix.y[0], w, h)
                     }
                 }
             }
@@ -189,102 +271,6 @@ Kirigami.Page {
 
             Layout.fillWidth: true
         }
-    }
-
-    Rectangle {
-        id: cursor
-
-        x: handler.point.x - width / 2 + sketchContent.x
-        y: handler.point.y - height / 2  + sketchContent.y
-        width: height
-        height: pressureEquation.width * 1.5
-
-        color: "transparent"
-        border {
-            color: root.isEraser ? Qt.rgba(1, 0, 0, 0.75) : Qt.rgba(0, 0, 1, 0.75)
-            width: 10
-        }
-        radius: height / 2
-        visible: mouseArea.isPress
-    }
-
-    SketchViewHandler {
-        id: handler
-
-        onPointChanged: {
-            if (!pressed) return
-
-            if (!root.isEraser){
-                addSample()
-            } else {
-                eraseSamples()
-            }
-        }
-        onIsEraserChanged: function (sketchViewIsEraser) {
-            root.isEraser = sketchViewIsEraser
-        }
-        onPressedChanged: function (pressed) {
-            if (root.isEraser) return
-
-            if (!pressed && !isEmpty(currentStroke.stroke.boundingRect())) {
-                addSample()
-                fillStrokes.addStroke(currentStroke.stroke)
-                currentStroke.stroke = createStroke(penType, root.penColor)
-                return
-            }
-
-            currentStroke.stroke = createStroke(penType, root.penColor)
-        }
-
-        function isEmpty(rect) {
-            return rect.left === rect.right
-                && rect.top === rect.bottom
-        }
-
-        function createPoint() {
-            return Qt.vector2d(point.x + flickable.contentX,
-                        point.y + flickable.contentY)
-        }
-
-        function addSample() {
-            if (!root.cantLeave) root.cantLeave = true
-            var sample = createSample(createPoint(), pressureEquation.width)
-            currentStroke.addSample(sample)
-        }
-
-        function eraseSamples() {
-            var point = createPoint()
-            var radius = cursor.height / 2
-
-            fillStrokes.eraseArea(point, radius)
-        }
-    }
-
-    PressureEquation {
-        id: pressureEquation
-
-        readonly property real minFillWidth: 4
-        readonly property real maxFillWidth: 20
-        readonly property real minEraserWidth: 8
-        readonly property real maxEraserWidth: 80
-
-        pressure: handler.point.pressure
-        minWidth: root.isEraser ? minEraserWidth : minFillWidth
-        maxWidth: root.isEraser ? maxEraserWidth : maxFillWidth
-    }
-
-    SketchModel {
-        id: sketchModel
-    }
-
-    SketchSerializer {
-        id: serializer
-    }
-
-    function clearCanvas() {
-        const point = Qt.vector2d(512, 512)
-        fillStrokes.eraseArea(point, 1024)
-        root.cantLeave = false
     }
 
     function showImagePicker(imagePath, cropRect) {
@@ -299,9 +285,10 @@ Kirigami.Page {
 
     function closePage(imagePath, cropRect, paintedImageChoosen) {
         root.cantLeave = false
-        clearCanvas()
+        canvas.clear()
         applicationWindow().switchToPage("Main")
         showImagePicker(imagePath, cropRect)
+        canvas.isInit = false
     }
 
     function saveImage() {
@@ -310,11 +297,10 @@ Kirigami.Page {
         if (root.cantLeave) {
             let date = new Date().valueOf()
             const tmpFileName = "/KNtmpPaint"+date+".png"
+            filePath = (StandardPaths.writableLocation(StandardPaths.TempLocation) + tmpFileName)
 
-            filePath = StandardPaths.writableLocation(StandardPaths.TempLocation) + tmpFileName
-            serializer.serialize(sketchModel, Qt.size(1024, 1024), filePath)
-
-            if (autoCropAction.checked) cropRect = serializer.getCropRect()
+            if (autoCropAction.checked) cropRect = canvas.cropImage()
+            canvas.save(filePath.substring(7)) // removes "file://"
         }
         root.wantSave = true
         closePage(filePath, cropRect)
