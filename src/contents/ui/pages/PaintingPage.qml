@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -19,8 +19,9 @@ Kirigami.Page {
     readonly property QtObject editorView: pageStack.get(0).editorView
 
     property bool cantLeave: false
-    property bool isEraser: false
     property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
+    property bool isEraser: drawingToolBar.selectedTool === DrawingToolBar.Tool.Eraser
+    property bool canDraw: drawingToolBar.selectedTool === DrawingToolBar.Tool.Eraser || drawingToolBar.selectedTool === DrawingToolBar.Tool.Pen
     property bool wantSave
     property var cropRect
 
@@ -55,28 +56,6 @@ Kirigami.Page {
             checked: true
             checkable: true
             icon.name: "image-crop-symbolic"
-        },
-        Kirigami.Action {
-            id: penToggler
-
-            checked: !root.isEraser
-            checkable: true
-            icon.name: "draw-brush-symbolic"
-            
-            onTriggered: {
-                root.isEraser = false
-            }
-        },
-        Kirigami.Action {
-            id: eraserToggler
-
-            checked: root.isEraser
-            checkable: true
-            icon.name: "draw-eraser-symbolic"
-            
-            onTriggered: {
-                root.isEraser = true
-            }
         }
     ]
 
@@ -109,6 +88,12 @@ Kirigami.Page {
 
     contentItem: ColumnLayout {
         spacing: 0
+
+        DrawingToolBar {
+            id: drawingToolBar
+
+            Layout.fillWidth: true
+        }
 
         Controls.ScrollView {
             Layout.fillWidth: true
@@ -151,7 +136,7 @@ Kirigami.Page {
 
                     property real lastX
                     property real lastY
-                    property int strokeWidth: 5 * (root.isEraser ? 2 : 1)
+                    property int strokeWidth: drawingToolBar.lineWidth * (root.isEraser ? 2 : 1)
                     property bool isInit: false
 
                     onPaint: if (!isInit) {
@@ -185,7 +170,7 @@ Kirigami.Page {
                         acceptedButtons: Qt.LeftButton | Qt.RightButton
 
                         onPositionChanged: function (mouse) {
-                            if (isPress) {
+                            if (isPress && canDraw) {
                                 canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
                                 root.cantLeave = true
                             }
@@ -200,7 +185,7 @@ Kirigami.Page {
                         onPressed: function (mouse) {
                             canvas.lastX = mouseX
                             canvas.lastY = mouseY
-                            if (!isPress) {
+                            if (!isPress && canDraw) {
                                 isPress = true
                                 lastButton = mouse.button
                                 canvas.drawPoint(mouseX, mouseY);
