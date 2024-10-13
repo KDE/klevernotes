@@ -26,13 +26,6 @@
 
 #include "logic/treeview/noteTreeModel.h"
 
-#include "logic/painting/pressureequation.h"
-#include "logic/painting/sketchmodel.h"
-#include "logic/painting/sketchserializer.h"
-#include "logic/painting/sketchview.h"
-#include "logic/painting/strokeitem.h"
-#include "logic/painting/strokelistitem.h"
-
 #include "logic/printing/printingHelper.h"
 
 #include "logic/preview/styleHandler.hpp"
@@ -137,29 +130,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     HighlightHelper highlightHelper;
     qmlRegisterSingletonInstance<HighlightHelper>("org.kde.Klever", 1, 0, "HighlightHelper", &highlightHelper);
     // === === === ===
-
-    qRegisterMetaType<StrokeSample>();
-    qRegisterMetaType<Stroke>();
-    qRegisterMetaType<Stroke::Type>();
-    qRegisterMetaType<Event>();
-
-    // Will complain about valueType names starting with capital letter, but changing it will break things and make CLazy angry
-    qmlRegisterUncreatableType<StrokeSample>("WashiPadComponents",
-                                             1,
-                                             0,
-                                             "StrokeSample",
-                                             QStringLiteral("Use the createSample function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Stroke>("WashiPadComponents", 1, 0, "Stroke", QStringLiteral("Use the createStroke function on SketchViewHandler instead"));
-    qmlRegisterUncreatableType<Event>("WashiPadComponents", 1, 0, "Event", QStringLiteral("They are provided by the SketchViewHandler"));
-
-    qmlRegisterType<PressureEquation>("WashiPadComponents", 1, 0, "PressureEquation");
-
-    qmlRegisterType<SketchViewHandler>("WashiPadComponents", 1, 0, "SketchViewHandler");
-
-    qmlRegisterType<SketchModel>("WashiPadComponents", 1, 0, "SketchModel");
-    qmlRegisterType<SketchSerializer>("WashiPadComponents", 1, 0, "SketchSerializer");
-    qmlRegisterType<StrokeItem>("WashiPadComponents", 1, 0, "StrokeItem");
-    qmlRegisterType<StrokeListItem>("WashiPadComponents", 1, 0, "StrokeListItem");
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/contents/ui/main.qml")));

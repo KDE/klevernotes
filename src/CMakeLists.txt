@@ -18,17 +18,6 @@ add_library(klevernoteslib STATIC
     logic/editor/posCacheUtils.cpp
     logic/editor/editorTextManipulation.cpp
 
-    # Painting
-    logic/painting/pointMaker.cpp
-    logic/painting/sketchserializer.cpp
-    logic/painting/sketchview.cpp
-    logic/painting/strokeitem.cpp
-    logic/painting/strokelistitem.cpp
-    logic/painting/strokepainter.cpp
-    logic/painting/pressureequation.cpp
-    logic/painting/sketchmodel.cpp
-    logic/painting/stroke.cpp
-
     # Printing
     logic/printing/printingHelper.cpp
 
