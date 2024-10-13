@@ -35,11 +35,15 @@
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>Take and manage your notes</summary>
   <summary xml:lang="ca">Preeu i gestioneu les vostres notes</summary>
+  <summary xml:lang="es">Escriba y gestione sus notas</summary>
+  <summary xml:lang="eu">Zure oharrak hartu eta kudeatu</summary>
   <summary xml:lang="he">כתיבת וניהול הפתקיות שלך</summary>
   <summary xml:lang="it">Prendi e gestisci i tuoi appunti</summary>
   <summary xml:lang="ka">შექმენით და მართეთ თქვენი შენიშვნები</summary>
   <summary xml:lang="nl">Neem notities op en beheer ze</summary>
+  <summary xml:lang="pl">Sporządzaj i zarządzaj swoimi notatkami</summary>
   <summary xml:lang="sl">Vzemite in upravljajte svoje zapiske</summary>
+  <summary xml:lang="sv">Skriv och hantera anteckningar</summary>
   <summary xml:lang="tr">Notlar alın ve yönetin</summary>
   <summary xml:lang="uk">Записуйте ваші нотатки та керуйте ними</summary>
   <summary xml:lang="x-test">xxTake and manage your notesxx</summary>
