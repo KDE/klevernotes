@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Qt.labs.platform
+import QtQuick.Dialogs as QtDialogs
 
 import org.kde.kirigami as Kirigami
 
@@ -12,12 +12,14 @@ ToolBar {
     id: root
 
     readonly property var colorsList: [
-        "#000000", "#808080", "#FFFFFF", "#FF0000", "#FF8000",
-        "#FFFF00", "#00FF00", "#00FFFF", "#0000FF", "#FF00FF"
+        "#191A1C", "#FFFFFF", "#DD324C", "#F4885E",
+        "#F8E16E", "#94CE91", "#3699CB", "#9555A1"
     ]
 
-    property color primaryColor: "black"
-    property color secondaryColor: "white"
+    property color primaryColor: "#191A1C"
+    property color secondaryColor: "#FFFFFF"
+    property color pickerColor: caller ? caller.color : primaryColor
+    property var caller
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Kirigami.Theme.inherit: false
@@ -53,8 +55,8 @@ ToolBar {
                 multicolor: true
 
                 onOpenColorPicker: {
-                    colorDialog.caller = secondaryColor;
-                    colorDialog.open();
+                    root.caller = secondaryButton;
+                    callPicker()
                 }
             }
             ColorButton {
@@ -73,8 +75,8 @@ ToolBar {
                 multicolor: true
 
                 onOpenColorPicker: {
-                    colorDialog.caller = primaryColor;
-                    colorDialog.open();
+                    root.caller = primaryButton;
+                    callPicker()
                 }
             }
         }
@@ -94,19 +96,41 @@ ToolBar {
         }
     }
 
-    ColorDialog {
-        id: colorDialog
+    Component {
+        id: colorWindowComponent
 
-        property var caller
+        Window { // QTBUG-119055
+            id: window
+            width: Kirigami.Units.gridUnit * 19
+            height: Kirigami.Units.gridUnit * 23
+            maximumWidth: width
+            maximumHeight: height
+            minimumWidth: width
+            minimumHeight: height
+            visible: true
+            QtDialogs.ColorDialog {
+                id: colorDialog
+                selectedColor: root.pickerColor
+                onAccepted: {
+                    if (caller.color === root.primaryColor) {
+                        root.primaryColor = selectedColor;
+                    } else {
+                        root.secondaryColor = selectedColor;
+                    }
 
-        currentColor: caller ? caller.color : 'red'
-
-        onAccepted: {
-            if (caller.color === root.primaryColor) {
-                root.primaryColor = color;
-            } else {
-                root.secondaryColor = color;
+                    window.close();
+                }
+                onRejected: window.close()
             }
+            onClosing: {
+                destroy()
+                root.caller = undefined
+            }
+            Component.onCompleted: colorDialog.open()
         }
+    }
+
+    function callPicker() {
+        colorWindowComponent.createObject(root)
     }
 }
