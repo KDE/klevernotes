@@ -22,6 +22,7 @@ Kirigami.Page {
     property bool isEraser: false
     property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
     property bool wantSave
+    property var cropRect
 
     title: i18nc("@title:page", "Paint!")
 
@@ -80,12 +81,16 @@ Kirigami.Page {
     ]
 
     onBackRequested: (event) => {
+        canvas.cropImage()
+        
+        root.cantLeave = root.cropRect.width && root.cropRect.height 
         if (root.cantLeave) {
             event.accepted = true;
             leavingDialog.open();
             return
         }
-        closePage("", {})
+        root.wantSave = false
+        closePage("")
     }
 
     LeavePaintingDialog {
@@ -98,7 +103,7 @@ Kirigami.Page {
         onDiscarded: {
             leavingDialog.close()
             root.wantSave = false
-            root.closePage("", {})
+            root.closePage("")
         }
     }
 
@@ -229,6 +234,7 @@ Kirigami.Page {
 
                     function clear() {
                         context.clearRect(0, 0, width, height);
+                        markDirty()
                         root.cantLeave = false
                     }
 
@@ -260,7 +266,7 @@ Kirigami.Page {
                         w = 1 + pix.x[n] - pix.x[0];
                         h = 1 + pix.y[n] - pix.y[0];
 
-                        return Qt.rect(pix.x[0], pix.y[0], w, h)
+                        root.cropRect = Qt.rect(pix.x[0], pix.y[0], w, h)
                     }
                 }
             }
@@ -273,36 +279,37 @@ Kirigami.Page {
         }
     }
 
-    function showImagePicker(imagePath, cropRect) {
+    function showImagePicker(imagePath) {
         const imagePickerDialog = editorView.imagePickerDialog
         imagePickerDialog.open()
-        imagePickerDialog.paintClipRect = cropRect
+        if (autoCropAction.checked) {
+            imagePickerDialog.paintClipRect = root.cropRect
+        }
         imagePickerDialog.path = imagePath
         imagePickerDialog.paintedImageChoosen = true
         imagePickerDialog.storeCheckbox.checked = wantSave
         imagePickerDialog.storeCheckbox.enabled = false
     }
 
-    function closePage(imagePath, cropRect, paintedImageChoosen) {
+    function closePage(imagePath) {
         root.cantLeave = false
         canvas.clear()
         applicationWindow().switchToPage("Main")
-        showImagePicker(imagePath, cropRect)
+        showImagePicker(imagePath)
         canvas.isInit = false
+        root.cropRect = Qt.rect(0, 0, 0, 0)
     }
 
     function saveImage() {
         let filePath
-        let cropRect
         if (root.cantLeave) {
             let date = new Date().valueOf()
             const tmpFileName = "/KNtmpPaint"+date+".png"
             filePath = (StandardPaths.writableLocation(StandardPaths.TempLocation) + tmpFileName)
 
-            if (autoCropAction.checked) cropRect = canvas.cropImage()
             canvas.save(filePath.substring(7)) // removes "file://"
         }
         root.wantSave = true
-        closePage(filePath, cropRect)
+        closePage(filePath)
     }
 }
