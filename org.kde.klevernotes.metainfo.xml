@@ -34,9 +34,11 @@
   <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>Take and manage your notes</summary>
-  <summary xml:lang="ca">Preeu i gestioneu les vostres notes</summary>
+  <summary xml:lang="ca">Preneu i gestioneu les vostres notes</summary>
+  <summary xml:lang="ca-valencia">Preneu i gestioneu les vostres notes</summary>
   <summary xml:lang="es">Escriba y gestione sus notas</summary>
   <summary xml:lang="eu">Zure oharrak hartu eta kudeatu</summary>
+  <summary xml:lang="fr">Prendre et gérer vos notes</summary>
   <summary xml:lang="he">כתיבת וניהול הפתקיות שלך</summary>
   <summary xml:lang="it">Prendi e gestisci i tuoi appunti</summary>
   <summary xml:lang="ka">შექმენით და მართეთ თქვენი შენიშვნები</summary>
