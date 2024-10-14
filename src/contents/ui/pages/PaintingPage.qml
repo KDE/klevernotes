@@ -7,6 +7,7 @@ import QtQuick.Controls as Controls
 import Qt.labs.platform
 
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 
 import "qrc:/contents/ui/dialogs"
 import "qrc:/contents/ui/painting"
@@ -89,169 +90,196 @@ Kirigami.Page {
     contentItem: ColumnLayout {
         spacing: 0
 
-        DrawingToolBar {
-            id: drawingToolBar
+        DrawingToolBarOptions {
+            id: drawingToolBarOption
+
+            primaryColor: colorBar.primaryColor
+            secondaryColor: colorBar.secondaryColor
+            mode: switch(drawingToolBar.selectedTool) {
+                case DrawingToolBar.Tool.Pen:
+                case DrawingToolBar.Tool.Eraser:
+                    return "draw";
+                case DrawingToolBar.Tool.Text:
+                    return "text"
+                case DrawingToolBar.Tool.Rectangle:
+                case DrawingToolBar.Tool.Circle:
+                    return "shape"
+            }
 
             Layout.fillWidth: true
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 4 + Kirigami.Units.smallSpacing
         }
 
-        Controls.ScrollView {
+        RowLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            spacing: 0
+            
+            DrawingToolBar {
+                id: drawingToolBar
 
-            Flickable {
-                id: flickable
+                Layout.preferredHeight: Kirigami.Units.gridUnit * 12
+                Layout.margins: Kirigami.Units.largeSpacing
+            }
 
-                contentWidth: canvasBorder.width + Kirigami.Units.largeSpacing * 4
-                contentHeight: canvasBorder.height + Kirigami.Units.largeSpacing * 4
-                anchors.fill: parent
+            Controls.ScrollView {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
 
-                clip: true
-                interactive: !mouseArea.isPress
+                Flickable {
+                    id: flickable
 
-                Rectangle {
-                    id: canvasBorder
-                    width: canvas.width + 8
-                    height: canvas.width + 8 
-                    x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
-                    y: (Kirigami.Units.largeSpacing * 2) - 4
+                    contentWidth: canvasBorder.width + Kirigami.Units.largeSpacing * 4
+                    contentHeight: canvasBorder.height + Kirigami.Units.largeSpacing * 4
+                    anchors.fill: parent
 
-                    Kirigami.Theme.inherit: false
-                    Kirigami.Theme.colorSet: Kirigami.Theme.View
-                    color: Kirigami.Theme.backgroundColor 
-                    radius: 5
-                    border {
-                        color: Kirigami.Theme.highlightColor
-                        width: 4
-                    }
-                }
+                    clip: true
+                    interactive: !mouseArea.isPress
 
-                Canvas {
-                    id: canvas
-
-                    width: 1024
-                    height: 1024
-                    x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
-                    y: Kirigami.Units.largeSpacing * 2
-
-                    property real lastX
-                    property real lastY
-                    property int strokeWidth: drawingToolBar.lineWidth * (root.isEraser ? 2 : 1)
-                    property bool isInit: false
-
-                    onPaint: if (!isInit) {
-                        getContext("2d")
-                        isInit = true
-                    }
-
-                    // Make the eraser a bit easier to use
                     Rectangle {
-                        id: eraserCursor
+                        id: canvasBorder
+                        width: canvas.width + 8
+                        height: canvas.width + 8 
+                        x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
+                        y: (Kirigami.Units.largeSpacing * 2) - 4
 
-                        x: canvas.lastX - width / 2
-                        y: canvas.lastY - height / 2
-                        width: height
-                        height: canvas.strokeWidth
-
-                        color: Qt.rgba(1, 0, 0, 0.75) 
-                        radius: height / 2
-                        visible: mouseArea.isPress && root.isEraser
-                    }
-
-                    MouseArea {
-                        id: mouseArea
-
-                        property var lastButton
-                        property bool isPress: false
-
-                        anchors.fill: parent
-
-                        enabled: true
-                        acceptedButtons: Qt.LeftButton | Qt.RightButton
-
-                        onPositionChanged: function (mouse) {
-                            if (isPress && canDraw) {
-                                canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
-                                root.cantLeave = true
-                            }
-                            canvas.lastX = mouseX
-                            canvas.lastY = mouseY
-                        }
-                        onReleased: function (mouse) {
-                            if (mouse.button === lastButton) {
-                                isPress = false
-                            }
-                        }
-                        onPressed: function (mouse) {
-                            canvas.lastX = mouseX
-                            canvas.lastY = mouseY
-                            if (!isPress && canDraw) {
-                                isPress = true
-                                lastButton = mouse.button
-                                canvas.drawPoint(mouseX, mouseY);
-                                root.cantLeave = true
-                            }
+                        Kirigami.Theme.inherit: false
+                        Kirigami.Theme.colorSet: Kirigami.Theme.View
+                        color: Kirigami.Theme.backgroundColor 
+                        radius: 5
+                        border {
+                            color: Kirigami.Theme.highlightColor
+                            width: 4
                         }
                     }
 
-                    function drawLine(x1, y1, x2, y2) {
-                        context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
-                        context.strokeStyle = root.penColor
-                        context.lineWidth = canvas.strokeWidth
-                        context.lineCap = "round"
-                        context.beginPath();
-                        context.moveTo(x1, y1);
-                        context.lineTo(x2, y2);
-                        context.stroke();
-                        markDirty()
-                    }
+                    Canvas {
+                        id: canvas
 
-                    function drawPoint(x, y) {
-                        context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
-                        const radius = canvas.strokeWidth / 1.5 // Arbitrary value, looks not to big and not to small
-                        context.fillStyle = root.penColor
-                        context.beginPath();
-                        context.moveTo(x, y);
-                        context.arc(x, y, radius, 0, Math.PI * 2, false);
-                        context.fill();
-                        markDirty()
-                    }
+                        width: 1024
+                        height: 1024
+                        x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
+                        y: Kirigami.Units.largeSpacing * 2
 
-                    function clear() {
-                        context.clearRect(0, 0, width, height);
-                        markDirty()
-                        root.cantLeave = false
-                    }
+                        property real lastX
+                        property real lastY
+                        property int strokeWidth: drawingToolBarOption.lineWidth * (root.isEraser ? 2 : 1)
+                        property bool isInit: false
 
-                    // Slightly modified version of: https://stackoverflow.com/a/22267731
-                    function cropImage() {
-                        let pix = {x:[], y:[]}
-                        let w = canvas.width
-                        let h = canvas.height
-                        let imageData = context.getImageData(0, 0, w, h)
+                        onPaint: if (!isInit) {
+                            getContext("2d")
+                            isInit = true
+                        }
 
-                        let dataStartIndex, dataEndIndex;
-                        for (let y = 0; y < h; y++) {
-                            for (let x = 0; x < w; x++) {
-                                // The data is stored in a single array
-                                // The data for a single pixel takes 4 slots in this array, for: RGBA
-                                // See: https://doc.qt.io/qt-6/qml-qtquick-canvasimagedata.html#data-prop
-                                dataStartIndex = (y * w + x) * 4;
-                                dataEndIndex = dataStartIndex + 3
-                                if (imageData.data[dataEndIndex] > 100) { // Arbitrary value
-                                    pix.x.push(x);
-                                    pix.y.push(y);
-                                } 
+                        // Make the eraser a bit easier to use
+                        Rectangle {
+                            id: eraserCursor
+
+                            x: canvas.lastX - width / 2
+                            y: canvas.lastY - height / 2
+                            width: height
+                            height: canvas.strokeWidth
+
+                            color: Qt.rgba(1, 0, 0, 0.75) 
+                            radius: height / 2
+                            visible: mouseArea.isPress && root.isEraser
+                        }
+
+                        MouseArea {
+                            id: mouseArea
+
+                            property var lastButton
+                            property bool isPress: false
+
+                            anchors.fill: parent
+
+                            enabled: true
+                            acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+                            onPositionChanged: function (mouse) {
+                                if (isPress && canDraw) {
+                                    canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
+                                    root.cantLeave = true
+                                }
+                                canvas.lastX = mouseX
+                                canvas.lastY = mouseY
+                            }
+                            onReleased: function (mouse) {
+                                if (mouse.button === lastButton) {
+                                    isPress = false
+                                }
+                            }
+                            onPressed: function (mouse) {
+                                canvas.lastX = mouseX
+                                canvas.lastY = mouseY
+                                if (!isPress && canDraw) {
+                                    isPress = true
+                                    lastButton = mouse.button
+                                    canvas.drawPoint(mouseX, mouseY);
+                                    root.cantLeave = true
+                                }
                             }
                         }
-                        pix.x.sort(function(a,b){return a-b});
-                        pix.y.sort(function(a,b){return a-b});
-                        var n = pix.x.length-1;
-                      
-                        w = 1 + pix.x[n] - pix.x[0];
-                        h = 1 + pix.y[n] - pix.y[0];
 
-                        root.cropRect = Qt.rect(pix.x[0], pix.y[0], w, h)
+                        function drawLine(x1, y1, x2, y2) {
+                            context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
+                            context.strokeStyle = root.penColor
+                            context.lineWidth = canvas.strokeWidth
+                            context.lineCap = "round"
+                            context.beginPath();
+                            context.moveTo(x1, y1);
+                            context.lineTo(x2, y2);
+                            context.stroke();
+                            markDirty()
+                        }
+
+                        function drawPoint(x, y) {
+                            context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
+                            const radius = canvas.strokeWidth / 1.5 // Arbitrary value, looks not to big and not to small
+                            context.fillStyle = root.penColor
+                            context.beginPath();
+                            context.moveTo(x, y);
+                            context.arc(x, y, radius, 0, Math.PI * 2, false);
+                            context.fill();
+                            markDirty()
+                        }
+
+                        function clear() {
+                            context.clearRect(0, 0, width, height);
+                            markDirty()
+                            root.cantLeave = false
+                        }
+
+                        // Slightly modified version of: https://stackoverflow.com/a/22267731
+                        function cropImage() {
+                            let pix = {x:[], y:[]}
+                            let w = canvas.width
+                            let h = canvas.height
+                            let imageData = context.getImageData(0, 0, w, h)
+
+                            let dataStartIndex, dataEndIndex;
+                            for (let y = 0; y < h; y++) {
+                                for (let x = 0; x < w; x++) {
+                                    // The data is stored in a single array
+                                    // The data for a single pixel takes 4 slots in this array, for: RGBA
+                                    // See: https://doc.qt.io/qt-6/qml-qtquick-canvasimagedata.html#data-prop
+                                    dataStartIndex = (y * w + x) * 4;
+                                    dataEndIndex = dataStartIndex + 3
+                                    if (imageData.data[dataEndIndex] > 100) { // Arbitrary value
+                                        pix.x.push(x);
+                                        pix.y.push(y);
+                                    } 
+                                }
+                            }
+                            pix.x.sort(function(a,b){return a-b});
+                            pix.y.sort(function(a,b){return a-b});
+                            var n = pix.x.length-1;
+                          
+                            w = 1 + pix.x[n] - pix.x[0];
+                            h = 1 + pix.y[n] - pix.y[0];
+
+                            root.cropRect = Qt.rect(pix.x[0], pix.y[0], w, h)
+                        }
                     }
                 }
             }
