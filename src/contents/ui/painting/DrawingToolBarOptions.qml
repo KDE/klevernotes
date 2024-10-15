@@ -9,6 +9,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 import "qrc:/contents/ui/settings"
+import "qrc:/contents/ui/dialogs"
 
 import org.kde.Klever
 
@@ -17,97 +18,39 @@ ToolBar {
 
     required property color primaryColor
     required property color secondaryColor
-    required property string mode 
+    required property string toolMode 
 
-    property int lineWidth: mode === "text" 
-        ? sizeSpinBox.value // Replace by text...
-        : sizeSpinBox.value
+    readonly property int lineWidth: sizeSpinBox.value
+    readonly property bool isBold: boldToggler.checked
+    readonly property bool isItalic: italicToggler.checked
+    readonly property string shapeStyle: shapeStyleCombobox.currentValue
+    readonly property string fontFamily: fontPicker.fontFamily
+    readonly property int fontPointSize: fontPicker.fontPointSize
+    readonly property color fillColor: fillColorButton.fillColor
 
     padding: 0
     position: ToolBar.Header
 
-    ActionGroup {
-        id: textFormatGroup
+    FontPickerDialog {
+        id: fontDialog
 
-        exclusive: false
-
-        Kirigami.Action {
-            id: boldToggler
-
-            checkable: true
-            icon.name: "format-text-bold-symbolic"
-            
-            onTriggered: {
-            }
-        }
-        
-        Kirigami.Action {
-            id: italicToggler
-
-            checkable: true
-            icon.name: "format-text-italic-symbolic"
-            
-            onTriggered: {
-            }
-        }
-
-        Kirigami.Action {
-            id: underlineToggler
-
-            checkable: true
-            icon.name: "format-text-underline-symbolic"
-            
-            onTriggered: {
-            }
+        onAccepted: {
+            caller.newFont = fontDialog.selectedFont
+            fontDialog.close()
         }
     }
 
     contentItem: RowLayout {
-        spacing: 0
+        spacing: Kirigami.Units.largeSpacing
 
         Item {
             Layout.fillWidth: true
-        }
-
-        FontPicker {
-            label: i18nc("@label:textbox", "Font:")
-            configFont: Config.viewFont
-
-            visible: root.mode === "text"
-
-            Layout.fillWidth: false
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
-
-            onNewFontChanged: if (text !== newFont) {
-            }
-        }
-
-        ToolButton {
-            action: boldToggler
-            visible: root.mode === "text"
-            Layout.alignment: Qt.AlignBottom
-            Layout.bottomMargin: Kirigami.Units.largeSpacing + Math.round(Kirigami.Units.smallSpacing * 0.5)
-        }
-
-        ToolButton {
-            action: italicToggler
-            visible: root.mode === "text"
-            Layout.alignment: Qt.AlignBottom
-            Layout.bottomMargin: Kirigami.Units.largeSpacing + Math.round(Kirigami.Units.smallSpacing * 0.5)
-        }
-
-        ToolButton {
-            action: underlineToggler
-            visible: root.mode === "text"
-            Layout.alignment: Qt.AlignBottom
-            Layout.bottomMargin: Kirigami.Units.largeSpacing + Math.round(Kirigami.Units.smallSpacing * 0.5)
         }
 
         FormCard.FormSpinBoxDelegate {
             id: sizeSpinBox
 
             label: i18n("Width:")
-            visible: root.mode !== "text"
             from: 1
             to: 30
             value: 5
@@ -116,36 +59,87 @@ ToolBar {
                 return `${sizeSpinBox.value}px`
             }
 
+            horizontalPadding: 0
             Layout.fillWidth: false
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+            Layout.fillHeight: true
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 7
+            Layout.rightMargin: root.toolMode === "draw" || root.toolMode === "erase" ? Kirigami.Units.largeSpacing : 0
+            Layout.bottomMargin: Kirigami.Units.smallSpacing
+        }
+
+        FontPicker {
+            id: fontPicker
+
+            label: i18nc("@label:textbox", "Font:")
+            configFont: Config.viewFont
+
+            visible: root.toolMode === "text"
+
+            horizontalPadding: 0
+            Layout.fillWidth: false
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 7
+
+            Component.onCompleted: {
+                fontDialog.caller = fontPicker
+            }
+            onNewFontChanged: if (text !== newFont) {
+                configFont = newFont
+            }
+        }
+
+        ToolButton {
+            id: boldToggler
+
+            checkable: true
+            icon.name: "format-text-bold-symbolic"
+            visible: root.toolMode === "text"
+            Layout.alignment: Qt.AlignBottom
+            Layout.bottomMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
+        }
+
+        ToolButton {
+            id: italicToggler
+
+            checkable: true
+            icon.name: "format-text-italic-symbolic"
+            visible: root.toolMode === "text"
+            Layout.alignment: Qt.AlignBottom
+            Layout.bottomMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
         }
 
         ColumnLayout {
             spacing: Kirigami.Units.smallSpacing
 
-            visible: root.mode !== "draw"
+            visible: root.toolMode !== "draw"
 
             Layout.fillHeight: true
-            Layout.rightMargin: Kirigami.Units.gridUnit
-            Layout.leftMargin: root.mode === "text" ? Kirigami.Units.gridUnit : 0
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 7
 
             Label {
-                text: i18n("Fill mode:")
+                text: i18n("Fill toolMode:")
                 color: Kirigami.Theme.textColor
                 elide: Text.ElideRight
             }
 
             ComboBox {
-                model: ["Outline", "Fill", "Outline and fill"]
+                id: shapeStyleCombobox
+                textRole: "text"
+                valueRole: "value"
+                model: [
+                    { value: "fill", text: i18nc("@combobox:entry, shape style", "Fill") },
+                    { value: "outline", text: i18nc("@combobox:entry, shape style", "Outline") },
+                    { value: "both", text: i18nc("@combobox:entry, shape style", "Outline and fill") }
+                ]
             }
         }
 
         ColumnLayout {
             spacing: Kirigami.Units.smallSpacing
 
-            visible: root.mode !== "draw"
+            visible: root.toolMode !== "draw"
 
-            Layout.rightMargin: Kirigami.Units.gridUnit
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 7
+            Layout.rightMargin: Kirigami.Units.largeSpacing
 
             Label {
                 text: i18nc("@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'", "Fill color") 
@@ -156,7 +150,7 @@ ToolBar {
                 color: Kirigami.Theme.textColor
                 elide: Text.ElideRight
 
-                Layout.preferredWidth: Kirigami.Units.gridUnit * 8
+                Layout.preferredWidth: Kirigami.Units.gridUnit * 7
             }
 
             AbstractButton {
@@ -170,7 +164,7 @@ ToolBar {
                     radius: Kirigami.Units.smallSpacing
                 }
 
-                width: Kirigami.Units.gridUnit * 8
+                width: Kirigami.Units.gridUnit * 7
                 height: Math.round(Kirigami.Units.gridUnit * 1.6)
 
                 onClicked: usePrimary = !usePrimary
