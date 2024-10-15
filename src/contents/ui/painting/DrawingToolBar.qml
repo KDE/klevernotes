@@ -19,8 +19,19 @@ Components.FloatingToolBar {
         Circle
     }
 
-    property int selectedTool: DrawingToolBar.Tool.Pen
-   
+    property int _selectedTool: DrawingToolBar.Tool.Pen
+    readonly property string mode: switch(_selectedTool) {
+        case DrawingToolBar.Tool.Pen:
+            return "draw";
+        case DrawingToolBar.Tool.Eraser:
+            return "erase";
+        case DrawingToolBar.Tool.Text:
+            return "text"
+        case DrawingToolBar.Tool.Rectangle:
+        case DrawingToolBar.Tool.Circle:
+            return "shape"
+    }
+
     ActionGroup {
         id: mainToolsGroup 
 
@@ -32,7 +43,7 @@ Components.FloatingToolBar {
             icon.name: "draw-brush-symbolic"
             
             onTriggered: {
-                root.selectedTool = DrawingToolBar.Tool.Pen
+                root._selectedTool = DrawingToolBar.Tool.Pen
             }
         }
 
@@ -43,7 +54,7 @@ Components.FloatingToolBar {
             icon.name: "draw-eraser-symbolic"
             
             onTriggered: {
-                root.selectedTool = DrawingToolBar.Tool.Eraser
+                root._selectedTool = DrawingToolBar.Tool.Eraser
             }
         }
 
@@ -54,7 +65,7 @@ Components.FloatingToolBar {
             icon.name: "text-field-symbolic"
             
             onTriggered: {
-                root.selectedTool = DrawingToolBar.Tool.Text
+                root._selectedTool = DrawingToolBar.Tool.Text
             }
         }
 
@@ -65,7 +76,7 @@ Components.FloatingToolBar {
             icon.name: "draw-rectangle-symbolic"
             
             onTriggered: {
-                root.selectedTool = DrawingToolBar.Tool.Rectangle
+                root._selectedTool = DrawingToolBar.Tool.Rectangle
             }
         }
 
@@ -76,7 +87,7 @@ Components.FloatingToolBar {
             icon.name: "draw-circle-symbolic"
             
             onTriggered: {
-                root.selectedTool = DrawingToolBar.Tool.Circle
+                root._selectedTool = DrawingToolBar.Tool.Circle
             }
         }
     }

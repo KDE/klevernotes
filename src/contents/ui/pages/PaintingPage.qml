@@ -21,8 +21,6 @@ Kirigami.Page {
 
     property bool cantLeave: false
     property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
-    property bool isEraser: drawingToolBar.selectedTool === DrawingToolBar.Tool.Eraser
-    property bool canDraw: drawingToolBar.selectedTool === DrawingToolBar.Tool.Eraser || drawingToolBar.selectedTool === DrawingToolBar.Tool.Pen
     property bool wantSave
     property var cropRect
 
@@ -91,20 +89,11 @@ Kirigami.Page {
         spacing: 0
 
         DrawingToolBarOptions {
-            id: drawingToolBarOption
+            id: drawingToolBarOptions
 
             primaryColor: colorBar.primaryColor
             secondaryColor: colorBar.secondaryColor
-            mode: switch(drawingToolBar.selectedTool) {
-                case DrawingToolBar.Tool.Pen:
-                case DrawingToolBar.Tool.Eraser:
-                    return "draw";
-                case DrawingToolBar.Tool.Text:
-                    return "text"
-                case DrawingToolBar.Tool.Rectangle:
-                case DrawingToolBar.Tool.Circle:
-                    return "shape"
-            }
+            toolMode: drawingToolBar.mode
 
             Layout.fillWidth: true
             Layout.preferredHeight: Kirigami.Units.gridUnit * 4 + Kirigami.Units.smallSpacing
@@ -163,7 +152,7 @@ Kirigami.Page {
 
                         property real lastX
                         property real lastY
-                        property int strokeWidth: drawingToolBarOption.lineWidth * (root.isEraser ? 2 : 1)
+                        property int strokeWidth: drawingToolBarOptions.lineWidth * (drawingToolBar.mode === "erase" ? 2 : 1)
                         property bool isInit: false
 
                         onPaint: if (!isInit) {
@@ -179,10 +168,13 @@ Kirigami.Page {
                             y: canvas.lastY - height / 2
                             width: height
                             height: canvas.strokeWidth
-
-                            color: Qt.rgba(1, 0, 0, 0.75) 
+                            
+                            border {
+                                width: 5
+                                color: Qt.rgba(1, 0, 0, 0.75) 
+                            }
                             radius: height / 2
-                            visible: mouseArea.isPress && root.isEraser
+                            visible: mouseArea.isPress && drawingToolBar.mode === "erase" 
                         }
 
                         MouseArea {
@@ -197,12 +189,14 @@ Kirigami.Page {
                             acceptedButtons: Qt.LeftButton | Qt.RightButton
 
                             onPositionChanged: function (mouse) {
-                                if (isPress && canDraw) {
-                                    canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
-                                    root.cantLeave = true
+                                if (isPress) {
+                                    if (drawingToolBar.mode === "draw" || drawingToolBar.mode === "erase") {
+                                        canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
+                                        root.cantLeave = true
+                                    }
+                                    canvas.lastX = mouseX
+                                    canvas.lastY = mouseY
                                 }
-                                canvas.lastX = mouseX
-                                canvas.lastY = mouseY
                             }
                             onReleased: function (mouse) {
                                 if (mouse.button === lastButton) {
@@ -210,19 +204,25 @@ Kirigami.Page {
                                 }
                             }
                             onPressed: function (mouse) {
-                                canvas.lastX = mouseX
-                                canvas.lastY = mouseY
-                                if (!isPress && canDraw) {
+                                if (!isPress) {
                                     isPress = true
+                                    canvas.lastX = mouseX
+                                    canvas.lastY = mouseY
                                     lastButton = mouse.button
-                                    canvas.drawPoint(mouseX, mouseY);
-                                    root.cantLeave = true
+
+                                    if (drawingToolBar.mode === "draw" || drawingToolBar.mode === "erase") {
+                                        canvas.drawPoint(mouseX, mouseY);
+                                        root.cantLeave = true
+                                    } else if (drawingToolBar.mode === "text") {
+                                        isPress = false
+                                        canvas.drawText("", mouseX, mouseY)
+                                    }
                                 }
                             }
                         }
 
                         function drawLine(x1, y1, x2, y2) {
-                            context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
+                            context.globalCompositeOperation = drawingToolBar.mode === "erase" ? "destination-out" : "source-over"
                             context.strokeStyle = root.penColor
                             context.lineWidth = canvas.strokeWidth
                             context.lineCap = "round"
@@ -234,13 +234,31 @@ Kirigami.Page {
                         }
 
                         function drawPoint(x, y) {
-                            context.globalCompositeOperation = root.isEraser ? "destination-out" : "source-over"
+                            context.globalCompositeOperation = drawingToolBar.mode === "erase" ? "destination-out" : "source-over"
                             const radius = canvas.strokeWidth / 1.5 // Arbitrary value, looks not to big and not to small
                             context.fillStyle = root.penColor
                             context.beginPath();
                             context.moveTo(x, y);
                             context.arc(x, y, radius, 0, Math.PI * 2, false);
                             context.fill();
+                            markDirty()
+                        }
+
+                        function drawText(text, x, y) {
+                            const bold = drawingToolBarOptions.isBold ? "bold" : ""
+                            const italic = drawingToolBarOptions.isItalic ? "italic" : ""
+                            const fontInfo = drawingToolBarOptions.fontPointSize + "pt " + drawingToolBarOptions.fontFamily
+                            context.font = `${bold} ${italic} ${fontInfo}`;
+
+                            if (drawingToolBarOptions.shapeStyle !== "fill") {
+                                context.lineWidth = canvas.strokeWidth
+                                context.strokeStyle = root.penColor
+                                context.strokeText("Test", x, y);
+                            }
+                            if (drawingToolBarOptions.shapeStyle !== "outline") {
+                                context.fillStyle = drawingToolBarOptions.fillColor;
+                                context.fillText("Test", x, y);
+                            }
                             markDirty()
                         }
 
