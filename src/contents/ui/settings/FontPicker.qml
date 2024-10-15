@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -14,6 +14,9 @@ FormCard.FormTextFieldDelegate {
 
     property font newFont
     property var fontInfo
+
+    readonly property string fontFamily: fontInfo.family
+    readonly property int fontPointSize: fontInfo.pointSize
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
@@ -38,7 +41,6 @@ FormCard.FormTextFieldDelegate {
     function setInfo() {
         fontInfo = KleverUtility.fontInfo(configFont)
 
-        font.family = fontInfo.family
         text = fontInfo.family + " " + fontInfo.pointSize + "pt"
     }
 }
