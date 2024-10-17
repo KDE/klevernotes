@@ -58,10 +58,9 @@ ScrollView {
             }
         }
         Keys.onPressed: (event) => {
-            if (event.key === Qt.Key_V && (event.modifiers === Qt.ControlModifier || event.modifiers === Qt.ShiftModifier | Qt.ControlModifier)) {
+            if (event.key === Qt.Key_V && (event.modifiers === Qt.ControlModifier || event.modifiers === (Qt.ShiftModifier | Qt.ControlModifier))) {
                 const tempPath = path.slice(0, -7) + "tempImage.png"
                 if (!canPaste && KleverUtility.checkPaste(tempPath)) {
-
                     openImageDialog(tempPath)
                 }
             }
