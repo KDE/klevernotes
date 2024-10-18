@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -27,8 +27,7 @@ Components.MessageDialog {
     standardButtons: Kirigami.Dialog.Ok
 
     onAccepted: {
-        // can't use selectAll or select on FormTextFieldDelegate :/
-        // nameField.selectAll()
+        nameField.selectAll()
         close();
     }
 
@@ -36,9 +35,11 @@ Components.MessageDialog {
         if (error === "dot") {
             return i18nc("@subtitle:dialog", "This name starts with a dot, this may cause problem and is therefore not allowed.") 
                 + "\n" + i18nc("@subtitle:dialog", "Please remove the dot or choose another name.")
-        }
-        else if (error === "exist") {
+        } else if (error === "exist") {
             return useCaseTrad[useCase.toLowerCase()] + "\n" + i18nc("@subtitle:dialog", "Please choose another name for it.") + "\n"
+        } else if (error === "/") {
+            return i18nc("@subtitle:dialog", "This name contains '/', this may cause problem and is therefore not allowed.")
+                + "\n" + i18nc("@subtitle:dialog", "Please remove the '/' or choose another name.")
         }
 
         return ""

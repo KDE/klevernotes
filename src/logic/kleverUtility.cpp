@@ -64,8 +64,13 @@ bool KleverUtility::isEmptyDir(const QString &path) const
 
 QString KleverUtility::isProperPath(const QString &parentPath, const QString &name) const
 {
-    if (name.startsWith(QStringLiteral(".")))
+    if (name.startsWith(QStringLiteral("."))) {
         return QStringLiteral("dot");
+    }
+
+    if (name.contains(QStringLiteral("/"))) {
+        return QStringLiteral("/");
+    }
 
     const QString properName = KIO::encodeFileName(name);
 
