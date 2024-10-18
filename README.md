@@ -90,24 +90,27 @@ ___
 ## Get it
 
 ### Install the flatpak
-Klevernotes is in the process to be added on flathub.
+Get the latest release on flathub.<br>
+<a href='https://flathub.org/apps/org.kde.klevernotes'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
-In the meantime, a Nightly Flatpak is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command to get it:
+<br>
+A Nightly Flatpak, based on the master branch is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command (based on [this tutorial](https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps)) to get it:
+
 ```
 flatpak install --user --or-update https://cdn.kde.org/flatpak/klevernotes-nightly/org.kde.klevernotes.flatpakref
 ```
 
-Command based on [this tutorial](https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps)
- 
+#### ⚠️ Note: With the flatpak, if you want to use plugins relying on external software (e.g: code highlighting), you must enable `talk-name=org.freedesktop.Flatpak` for the app using:
+
+```
+flatpak override --talk-name=org.freedesktop.Flatpak org.kde.klevernotes
+```
+<br>
 
 ### Build
 
 **[kdesrc-build](https://invent.kde.org/sdk/kdesrc-build)** would be the best option to build klevernotes and its dependencies easily.
 
-
-### ⚠️  Note: This requires building with _QT6_, the default with kdesrc-build. ⚠️
-
-<br>
 
 Arch Linux dependencies:
 ```
