@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-05 00:40+0000\n"
+"POT-Creation-Date: 2024-10-19 00:40+0000\n"
 "PO-Revision-Date: 2023-12-08 20:05+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -249,7 +249,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr ""
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:37
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -257,16 +257,29 @@ msgid ""
 "allowed."
 msgstr ""
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr ""
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
+msgstr ""
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid ""
+"This name contains '/', this may cause problem and is therefore not allowed."
+msgstr ""
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:42
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid "Please remove the '/' or choose another name."
 msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
@@ -1591,7 +1604,7 @@ msgctxt "@action:button"
 msgid "Add new todo"
 msgstr ""
 
-#: logic/kleverUtility.cpp:103
+#: logic/kleverUtility.cpp:108
 #, kde-format
 msgid ""
 "/*            \n"

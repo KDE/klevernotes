@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-05 00:40+0000\n"
+"POT-Creation-Date: 2024-10-19 00:40+0000\n"
 "PO-Revision-Date: 2024-03-11 16:37+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -285,7 +285,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "KleverNotesin talletustila"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:37
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -293,13 +293,13 @@ msgid ""
 "allowed."
 msgstr ""
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr ""
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
@@ -309,6 +309,27 @@ msgstr ""
 #| "Please choose another name for it.\n"
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
+msgstr ""
+"%1 on jo olemassa.\n"
+"Valitse sille toinen nimi.\n"
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid ""
+"This name contains '/', this may cause problem and is therefore not allowed."
+msgstr ""
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:42
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
+#| "group) or 'note' (a note)"
+#| msgid ""
+#| "This %1 already exist.\n"
+#| "Please choose another name for it.\n"
+msgctxt "@subtitle:dialog"
+msgid "Please remove the '/' or choose another name."
 msgstr ""
 "%1 on jo olemassa.\n"
 "Valitse sille toinen nimi.\n"
@@ -1648,7 +1669,7 @@ msgctxt "@action:button"
 msgid "Add new todo"
 msgstr "Lisää tehtävä"
 
-#: logic/kleverUtility.cpp:103
+#: logic/kleverUtility.cpp:108
 #, kde-format
 msgid ""
 "/*            \n"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-05 00:40+0000\n"
+"POT-Creation-Date: 2024-10-19 00:40+0000\n"
 "PO-Revision-Date: 2024-09-16 12:23+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -250,7 +250,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Opslag van KleverNotes"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:37
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -260,17 +260,38 @@ msgstr ""
 "Deze naam begint met een punt, dit kan problemen veroorzaken en is daarom "
 "niet toegestaan."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr "Verwijder de punt of kies een andere naam."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
 msgstr "Kies er een andere naam voor."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid ""
+#| "This name starts with a dot, this may cause problem and is therefore not "
+#| "allowed."
+msgctxt "@subtitle:dialog"
+msgid ""
+"This name contains '/', this may cause problem and is therefore not allowed."
+msgstr ""
+"Deze naam begint met een punt, dit kan problemen veroorzaken en is daarom "
+"niet toegestaan."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:42
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please remove the dot or choose another name."
+msgctxt "@subtitle:dialog"
+msgid "Please remove the '/' or choose another name."
+msgstr "Verwijder de punt of kies een andere naam."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -1579,7 +1600,7 @@ msgctxt "@action:button"
 msgid "Add new todo"
 msgstr "Nieuwe te-doen toevoegen"
 
-#: logic/kleverUtility.cpp:103
+#: logic/kleverUtility.cpp:108
 #, kde-format
 msgid ""
 "/*            \n"

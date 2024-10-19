@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-05 00:40+0000\n"
+"POT-Creation-Date: 2024-10-19 00:40+0000\n"
 "PO-Revision-Date: 2024-10-05 12:51+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -250,7 +250,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Pamięć KleverNotes"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:37
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -260,17 +260,38 @@ msgstr ""
 "Nazwa zaczyna się od kropki, co może powodować kłopoty, więc nie jest "
 "zalecane."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr "Usuń kropkę lub nadaj inną nazwę."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
 msgstr "Nadaj jej inną nazwę."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid ""
+#| "This name starts with a dot, this may cause problem and is therefore not "
+#| "allowed."
+msgctxt "@subtitle:dialog"
+msgid ""
+"This name contains '/', this may cause problem and is therefore not allowed."
+msgstr ""
+"Nazwa zaczyna się od kropki, co może powodować kłopoty, więc nie jest "
+"zalecane."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:42
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please remove the dot or choose another name."
+msgctxt "@subtitle:dialog"
+msgid "Please remove the '/' or choose another name."
+msgstr "Usuń kropkę lub nadaj inną nazwę."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -1575,7 +1596,7 @@ msgctxt "@action:button"
 msgid "Add new todo"
 msgstr "Dodaj nowe zadanie"
 
-#: logic/kleverUtility.cpp:103
+#: logic/kleverUtility.cpp:108
 #, kde-format
 msgid ""
 "/*            \n"

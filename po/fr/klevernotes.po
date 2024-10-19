@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-05 00:40+0000\n"
+"POT-Creation-Date: 2024-10-19 00:40+0000\n"
 "PO-Revision-Date: 2024-09-16 09:44+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -249,7 +249,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Zone d'enregistrement de KleverNotes"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:37
+#: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -259,17 +259,38 @@ msgstr ""
 "Ce nom commence par un point. Cela peut causer un problème et n'est donc pas "
 "autorisé."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:38
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr "Veuillez supprimer le point ou sélectionner un autre nom."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
 msgstr "Veuillez sélectionner un autre nom pour lui."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid ""
+#| "This name starts with a dot, this may cause problem and is therefore not "
+#| "allowed."
+msgctxt "@subtitle:dialog"
+msgid ""
+"This name contains '/', this may cause problem and is therefore not allowed."
+msgstr ""
+"Ce nom commence par un point. Cela peut causer un problème et n'est donc pas "
+"autorisé."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:42
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please remove the dot or choose another name."
+msgctxt "@subtitle:dialog"
+msgid "Please remove the '/' or choose another name."
+msgstr "Veuillez supprimer le point ou sélectionner un autre nom."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -1582,7 +1603,7 @@ msgctxt "@action:button"
 msgid "Add new todo"
 msgstr "Ajouter une nouvelle tâche à faire"
 
-#: logic/kleverUtility.cpp:103
+#: logic/kleverUtility.cpp:108
 #, kde-format
 msgid ""
 "/*            \n"
