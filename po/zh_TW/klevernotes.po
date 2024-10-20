@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-19 00:40+0000\n"
-"PO-Revision-Date: 2024-09-17 08:08+0900\n"
+"PO-Revision-Date: 2024-10-20 00:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 # %1 是譯文，所以不加空格
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
@@ -275,23 +275,17 @@ msgid "Please choose another name for it."
 msgstr "請為它選擇另一個名稱。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
-msgstr "這個名稱以句點開頭，由於可能會造成問題這是不被允許的。"
+msgstr "這個名稱包含斜線「/」，由於可能會造成問題這是不被允許的。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "請移除該句點或換另一個名字。"
+msgstr "請移除該斜線「/」或換另一個名字。"
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format

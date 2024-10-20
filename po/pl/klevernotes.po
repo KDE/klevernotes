@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-19 00:40+0000\n"
-"PO-Revision-Date: 2024-10-05 12:51+0200\n"
+"PO-Revision-Date: 2024-10-19 12:42+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -273,25 +273,18 @@ msgid "Please choose another name for it."
 msgstr "Nadaj jej inną nazwę."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Nazwa zaczyna się od kropki, co może powodować kłopoty, więc nie jest "
-"zalecane."
+"Ta nazwa zawiera '/', co może powodować kłopoty, więc nie jest zalecane."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Usuń kropkę lub nadaj inną nazwę."
+msgstr "Usuń '/' lub nadaj inną nazwę."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format

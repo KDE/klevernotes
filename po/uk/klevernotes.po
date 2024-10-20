@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-19 00:40+0000\n"
-"PO-Revision-Date: 2024-09-13 17:41+0300\n"
+"PO-Revision-Date: 2024-10-19 09:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -273,25 +273,19 @@ msgid "Please choose another name for it."
 msgstr "Будь ласка, виберіть іншу назву."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Ця назва починається з крапки. Це може спричинити проблеми, тому такі назви "
+"Ця назва містить символ «/». Це може спричинити проблеми, тому такі назви "
 "заборонено."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Будь ласка, приберіть крапку або виберіть іншу назву."
+msgstr "Будь ласка, приберіть «/» або виберіть іншу назву."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format

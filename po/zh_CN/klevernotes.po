@@ -269,23 +269,17 @@ msgid "Please choose another name for it."
 msgstr "请使用其他名称。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
-msgstr "这个名称从 . 开始，可能引起问题，因此是不允许的。"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "请删除点或选择其他名称。"
+msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
