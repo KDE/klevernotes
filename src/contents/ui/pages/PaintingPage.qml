@@ -85,6 +85,19 @@ Kirigami.Page {
         }
     }
 
+    TextDialog {
+        id: textDialog
+
+        title: i18nc("@title:dialog", "Text to draw")
+
+        onAccepted: {
+            canvas.drawText(textDialog.text, canvas.lastX, canvas.lastY)
+        }
+        onClosed: {
+            clear()
+        }
+    }
+
     contentItem: ColumnLayout {
         spacing: 0
 
@@ -215,7 +228,7 @@ Kirigami.Page {
                                         root.cantLeave = true
                                     } else if (drawingToolBar.mode === "text") {
                                         isPress = false
-                                        canvas.drawText("", mouseX, mouseY)
+                                        textDialog.open()
                                     }
                                 }
                             }
@@ -253,11 +266,11 @@ Kirigami.Page {
                             if (drawingToolBarOptions.shapeStyle !== "fill") {
                                 context.lineWidth = canvas.strokeWidth
                                 context.strokeStyle = root.penColor
-                                context.strokeText("Test", x, y);
+                                context.strokeText(text, x, y);
                             }
                             if (drawingToolBarOptions.shapeStyle !== "outline") {
                                 context.fillStyle = drawingToolBarOptions.fillColor;
-                                context.fillText("Test", x, y);
+                                context.fillText(text, x, y);
                             }
                             markDirty()
                         }
