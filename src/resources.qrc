@@ -19,6 +19,7 @@
         <file>contents/ui/dialogs/NamingErrorDialog.qml</file>
         <file>contents/ui/dialogs/PrintingDialog.qml</file>
         <file>contents/ui/dialogs/StorageDialog.qml</file>
+        <file>contents/ui/dialogs/TextDialog.qml</file>
         <file>contents/ui/dialogs/URLDialog.qml</file>
 
         <file>contents/ui/dialogs/emojiDialog/EmojiDelegate.qml</file>
