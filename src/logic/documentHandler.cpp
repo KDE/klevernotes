@@ -17,7 +17,7 @@ QString DocumentHandler::readFile(const QString &path)
 {
     QFile file(path);
 
-    QString line = QStringLiteral("\n"); // The parser will still receive something even if the file is empty
+    QString line = {};
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream stream(&file);
         while (!stream.atEnd()) {
@@ -25,9 +25,6 @@ QString DocumentHandler::readFile(const QString &path)
         }
         if (line.length() > 3)
             line.remove(line.length() - 1, 1); // Remove the last \n
-
-        if (line.length() > 3)
-            line.remove(0, 1); // Remove the first \n
     }
     file.close();
 

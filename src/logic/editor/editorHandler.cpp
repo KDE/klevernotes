@@ -260,6 +260,7 @@ void EditorHandler::setNotePath(const QString &notePath)
 
         m_pluginHelper->mapperParserUtils()->setNotePath(rendererNotePath);
     }
+    Q_EMIT renderingFinished({});
 }
 // !Parser
 
