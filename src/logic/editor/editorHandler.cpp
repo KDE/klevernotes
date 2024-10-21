@@ -206,15 +206,14 @@ void EditorHandler::setSelectionEnd(const int position)
 // Parser
 void EditorHandler::parseDoc()
 {
-    if (!m_highlighting && m_notePath != QStringLiteral("qrc:")) {
+    if (!m_highlighting) {
         parse(m_document->toPlainText());
     }
 }
 
 void EditorHandler::parse(const QString &src)
 {
-    static const QString qrcStr = QStringLiteral("qrc:");
-    if (m_notePath != qrcStr && !m_notePath.endsWith(QStringLiteral(".md"))) {
+    if (!m_notePath.endsWith(QStringLiteral(".md"))) {
         return;
     }
 
@@ -243,38 +242,24 @@ void EditorHandler::setNotePath(const QString &notePath)
         return;
     }
     static const QString pathEnd = QStringLiteral("/note.md");
-    static const QString qrcStr = QStringLiteral("qrc:");
-    if (notePath == qrcStr) {
-        m_previousPath = m_notePath;
-        m_notePath = notePath;
-    } else if (!notePath.endsWith(pathEnd)) {
+    if (!notePath.endsWith(pathEnd)) {
         m_notePath = QLatin1String();
         return;
-    } else {
-        m_previousPath = notePath;
     }
     m_notePath = notePath;
     m_noteFirstHighlight = true;
 
     QString rendererNotePath = notePath;
-    if (notePath != qrcStr) {
-        rendererNotePath.chop(pathEnd.length());
-    }
+    rendererNotePath.chop(pathEnd.length());
 
     m_renderer->setNotePath(rendererNotePath);
 
-    if (notePath != qrcStr && m_pluginHelper) {
+    if (m_pluginHelper) {
         // We do this here because we're sure to be in another note
         m_pluginHelper->clearPluginsPreviousInfo();
 
         m_pluginHelper->mapperParserUtils()->setNotePath(rendererNotePath);
     }
-}
-
-void EditorHandler::usePreviousPath()
-{
-    setNotePath(m_previousPath);
-    parseDoc();
 }
 // !Parser
 
@@ -308,7 +293,7 @@ void EditorHandler::changeRenderPreviewState(const bool _enabled)
 // =========
 void EditorHandler::cacheAndHighlightSyntax(std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
 {
-    if (!m_notePath.isEmpty() && m_notePath != QStringLiteral("qrc:")) {
+    if (!m_notePath.isEmpty()) {
         m_highlighting = true;
         m_editorHighlighter->cacheAndHighlight(doc, m_config->editorHighlightEnabled());
         m_highlighting = false;

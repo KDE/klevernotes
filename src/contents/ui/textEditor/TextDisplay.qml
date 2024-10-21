@@ -70,7 +70,6 @@ RowLayout {
                 printingPage.displayPdf()
             }
             onLoadingChanged: if (!loading) {
-                loadCss()
                 scrollToHeader()
             }
             onScrollPositionChanged: if (!vbar.active) {
@@ -146,7 +145,9 @@ RowLayout {
         target: EditorHandler
 
         function onRenderingFinished(content) {
-            contentLink.text = content
+            if (applicationWindow().isMainPage()) {
+                contentLink.text = content
+            }
         }
     }
 
@@ -161,7 +162,9 @@ RowLayout {
     }
 
     function loadBaseHtml() {
-        if (!root.defaultHtml) root.defaultHtml = DocumentHandler.readFile(":/index.html")
+        if (!root.defaultHtml) {
+            root.defaultHtml = DocumentHandler.readFile(applicationWindow().isMainPage() ? ":/index.html" : ":/demo.html")
+        }
 
         web_view.loadHtml(root.defaultHtml, "file:/")
     }

@@ -59,7 +59,6 @@ public:
     Q_INVOKABLE void parse(const QString &src);
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
-    Q_INVOKABLE void usePreviousPath();
     Parser *parser() const;
 
     // md-editor
@@ -159,7 +158,6 @@ private:
     int m_selectionEnd = 0;
 
     // Parsing
-    QString m_previousPath;
     QString m_notePath;
     Parser *m_parser = nullptr;
     unsigned long long int m_parseCount;

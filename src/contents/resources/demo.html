@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- SPDX-License-Identifier: BSD-3-Clause -->
+    <!-- SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com> -->
+    <head>
+        <meta charset="utf-8">
+        <script src="qrc:/qwebchannel.js"></script>
+    </head>
+    <body>
+        <style id="css">
+        </style>
+
+        <div id="contentElem">
+            <h1 id="heading-level-1/"> Heading Level 1 </h1>
+
+            <h2 id="heading-level-2/"> Heading Level 2 </h2>
+
+            <h3 id="heading-level-3/"> Heading Level 3 </h3>
+
+            <h4 id="heading-level-4/"> Heading Level 4 </h4>
+
+            <h5 id="heading-level-5/"> Heading Level 5 </h5>
+
+            <h6 id="heading-level-6/"> Heading Level 6 </h6>
+
+            <hr>
+
+            <p><strong> Bold text </strong></p>
+            <p><em> Italic text</em>
+
+            <br>
+            <hr>
+
+            <ul>
+            <li> Item 1 
+            <ul>
+            <li> Sub-item 1.1 </li></ul>
+
+            <ul>
+            <li> Sub-item 1.2 </li></ul>
+            </li></ul>
+
+            <ul>
+            <li> Item 3 </li>
+            </ul>
+
+            <ol>
+            <li value="1"> First item </li><li> Second item 
+            <ol>
+            <li value="1"> Sub-item 2.1 </li><li> Sub-item 2.2 </li></ol>
+            </li><li> Third item </li></ol>
+
+            <hr>
+
+            <blockquote><p> First level of blockquote </p>
+            <blockquote><p> Second level of blockquote </p>
+            <blockquote><p> Third level of blockquote </p></blockquote>
+            </blockquote>
+            </blockquote>
+
+            <hr>
+
+            <pre><code>#include &lt;iostream&gt;
+int main() {
+    std::cout &lt;&lt; "Hello World!";
+    return 0;
+}</code></pre>
+
+            <hr>
+
+            <p><a href="https://invent.kde.org/office/klevernotes"> KleverNotes repository </a></p>
+
+            <p><img src="qrc:/Images/logo.png" alt="KleverNotes"></p> 
+
+            <hr>
+
+            <table><thead><tr>
+            <th align="left">
+             Header 1 
+            </th>
+            <th align="center">
+             Header 2 
+            </th>
+            <th align="right">
+             Header 3 
+            </th>
+            </tr></thead><tbody>
+            <tr>
+
+            <td align="left">
+             Left aligned 
+            </td>
+
+            <td align="center">
+             Center aligned 
+            </td>
+
+            <td align="right">
+             Right aligned 
+            </td>
+
+            </tr>
+            <tr>
+
+            <td align="left">
+             Left aligned 
+            </td>
+
+            <td align="center">
+             Center aligned 
+            </td>
+
+            <td align="right">
+             Right aligned 
+            </td>
+
+            </tr>
+            <tr>
+
+            <td align="left">
+             Left aligned 
+            </td>
+
+            <td align="center">
+             Center aligned 
+            </td>
+
+            <td align="right">
+             Right aligned 
+            </td>
+
+            </tr>
+            </tbody></table>
+        </div>
+
+        <script>
+            'use strict';
+
+            const contentElem = document.getElementById('contentElem');
+            const cssElem = document.getElementById('css');
+
+            const updateCss = function(css) {
+                cssElem.innerHTML = css
+            }
+            /**/
+            /* const updateText = function(text) { */
+            /*     contentElem.innerHTML = text */
+            /* } */
+
+            new QWebChannel(qt.webChannelTransport,
+                function(channel) {
+                    /* const contentLink = channel.objects.contentLink; */
+                    /* updateText(contentLink.text); */
+                    /* contentLink.textChanged.connect(updateText); */
+
+                    const cssLink = channel.objects.cssLink;
+                    updateCss(cssLink.text);
+                    cssLink.textChanged.connect(updateCss);
+                }
+            );
+        </script>
+    </body>
+</html>

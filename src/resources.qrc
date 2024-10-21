@@ -83,6 +83,7 @@
         <file>contents/ui/todoEditor/ToDoView.qml</file>
 
         <file alias="index.html">contents/resources/index.html</file>
+        <file alias="demo.html">contents/resources/demo.html</file>
         <file alias="qwebchannel.js">contents/resources/qwebchannel.js</file>
 
         <file alias="Avenir.css">contents/resources/style/Avenir.css</file>

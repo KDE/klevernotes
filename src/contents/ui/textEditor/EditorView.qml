@@ -93,7 +93,7 @@ ColumnLayout {
     onPathChanged: {
         focusEditor()
     }
-    onDefaultColorsChanged: if (EditorHandler.notePath != "qrc:") {
+    onDefaultColorsChanged: if (applicationWindow().isMainPage()) {
         StyleHandler.setDefault(root.defaultColors)
     }
     Component.onCompleted: {
