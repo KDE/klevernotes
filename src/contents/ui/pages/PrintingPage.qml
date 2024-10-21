@@ -197,6 +197,6 @@ Kirigami.Page {
     function closePage() {
         StyleHandler.printBackground = true
         StyleHandler.changeStyles()
-        applicationWindow().showMainPage()
+        applicationWindow().switchToPage("Main")
     }
 }

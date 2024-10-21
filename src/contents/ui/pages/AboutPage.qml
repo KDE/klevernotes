@@ -12,6 +12,6 @@ FormCard.AboutPage {
 
     onBackRequested: (event) => {
         event.accepted = true
-        applicationWindow().showMainPage()
+        applicationWindow().switchToPage("Main")
     }
 }

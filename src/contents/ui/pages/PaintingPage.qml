@@ -300,7 +300,7 @@ Kirigami.Page {
     function closePage(imagePath, cropRect, paintedImageChoosen) {
         root.cantLeave = false
         clearCanvas()
-        applicationWindow().showMainPage()
+        applicationWindow().switchToPage("Main")
         showImagePicker(imagePath, cropRect)
     }
 

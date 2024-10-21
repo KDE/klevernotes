@@ -37,6 +37,13 @@ Kirigami.ApplicationWindow {
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
     
     onCurrentPageNameChanged: {
+        if (currentPageName !== "Main") {
+            sideBar.changeWidth = false
+            sideBar.close()
+        } else {
+            pageStack.layers.pop()
+            StyleHandler.inMain = true
+        }
         pageTransitionTimer.start()
     }
     onClosing: {
@@ -86,10 +93,11 @@ Kirigami.ApplicationWindow {
         interval: Kirigami.Units.longDuration
         onTriggered: {
             if (currentPageName !== "Main") {
-                sideBar.changeWidth = false
-                sideBar.close()
-            } else if (pageStack.depth > 1) {
-                pageStack.pop()
+                const page = getPage(currentPageName)
+                pageStack.layers.push(page)
+            } else {
+                sideBar.changeWidth = true
+                if (!sideBar.modal) sideBar.open()
             }
         }
     }
@@ -116,8 +124,6 @@ Kirigami.ApplicationWindow {
     }
 
     function switchToPage(pageName) {
-        const page = getPage(pageName)
-        pageStack.push(page)
         currentPageName = pageName
     }
 
@@ -130,12 +136,5 @@ Kirigami.ApplicationWindow {
 
         const mainPage = pageStack.get(0)
         mainPage.cheatSheet.open() 
-    }
-
-    function showMainPage() {
-        sideBar.changeWidth = true
-        if (!sideBar.modal) sideBar.open()
-        StyleHandler.inMain = true
-        currentPageName = "Main"
     }
 }
