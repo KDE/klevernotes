@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-19 00:40+0000\n"
+"POT-Creation-Date: 2024-10-22 00:40+0000\n"
 "PO-Revision-Date: 2023-06-13 17:27+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -649,56 +649,56 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr ""
 
-#: contents/ui/settings/DisplayPreview.qml:55
+#: contents/ui/settings/DisplayPreview.qml:46
 #, fuzzy, kde-format
 #| msgid "Text color:"
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Cor do texto:"
 
-#: contents/ui/settings/DisplayPreview.qml:68
+#: contents/ui/settings/DisplayPreview.qml:59
 #, fuzzy, kde-format
 #| msgid "Title color:"
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Cor do título:"
 
-#: contents/ui/settings/DisplayPreview.qml:82
+#: contents/ui/settings/DisplayPreview.qml:73
 #, fuzzy, kde-format
 #| msgid "Link color:"
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Cor da ligação:"
 
-#: contents/ui/settings/DisplayPreview.qml:95
+#: contents/ui/settings/DisplayPreview.qml:86
 #, fuzzy, kde-format
 #| msgid "Visited Link color:"
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Cor da ligação visitada:"
 
-#: contents/ui/settings/DisplayPreview.qml:110
+#: contents/ui/settings/DisplayPreview.qml:101
 #, fuzzy, kde-format
 #| msgid "Code color:"
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Cor do código:"
 
-#: contents/ui/settings/DisplayPreview.qml:124
+#: contents/ui/settings/DisplayPreview.qml:115
 #, fuzzy, kde-format
 #| msgid "Title color:"
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Cor do título:"
 
-#: contents/ui/settings/DisplayPreview.qml:136
+#: contents/ui/settings/DisplayPreview.qml:127
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Geral"
 
-#: contents/ui/settings/DisplayPreview.qml:147
+#: contents/ui/settings/DisplayPreview.qml:138
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1334,7 +1334,7 @@ msgstr ""
 msgid "Settings"
 msgstr "Configuração"
 
-#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:250
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:249
 #, fuzzy, kde-format
 #| msgid "About Klever"
 msgid "About KleverNotes"
@@ -1361,7 +1361,7 @@ msgid "Markdown Cheat Sheet"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:40
-#: contents/ui/textEditor/TextDisplay.qml:83
+#: contents/ui/textEditor/TextDisplay.qml:82
 #, kde-format
 msgid "Copied !"
 msgstr ""
@@ -1669,7 +1669,7 @@ msgid "Missing notes"
 msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:104
+#: contents/ui/textEditor/TextDisplay.qml:103
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"

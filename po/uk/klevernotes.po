@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-19 00:40+0000\n"
+"POT-Creation-Date: 2024-10-22 00:40+0000\n"
 "PO-Revision-Date: 2024-10-19 09:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -587,49 +587,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Стиль:"
 
-#: contents/ui/settings/DisplayPreview.qml:55
+#: contents/ui/settings/DisplayPreview.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Колір тексту:"
 
-#: contents/ui/settings/DisplayPreview.qml:68
+#: contents/ui/settings/DisplayPreview.qml:59
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Колір заголовка:"
 
-#: contents/ui/settings/DisplayPreview.qml:82
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Колір посилань:"
 
-#: contents/ui/settings/DisplayPreview.qml:95
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Колір відвіданого гіперпосилання:"
 
-#: contents/ui/settings/DisplayPreview.qml:110
+#: contents/ui/settings/DisplayPreview.qml:101
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Колір коду:"
 
-#: contents/ui/settings/DisplayPreview.qml:124
+#: contents/ui/settings/DisplayPreview.qml:115
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Колір підсвічування:"
 
-#: contents/ui/settings/DisplayPreview.qml:136
+#: contents/ui/settings/DisplayPreview.qml:127
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Загальний шрифт:"
 
-#: contents/ui/settings/DisplayPreview.qml:147
+#: contents/ui/settings/DisplayPreview.qml:138
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1244,7 +1244,7 @@ msgstr "Аркуш підказок"
 msgid "Settings"
 msgstr "Параметри"
 
-#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:250
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:249
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Про KleverNotes"
@@ -1268,7 +1268,7 @@ msgid "Markdown Cheat Sheet"
 msgstr "Аркуш підказок з Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
-#: contents/ui/textEditor/TextDisplay.qml:83
+#: contents/ui/textEditor/TextDisplay.qml:82
 #, kde-format
 msgid "Copied !"
 msgstr "Скопійовано!"
@@ -1565,7 +1565,7 @@ msgid "Missing notes"
 msgstr "Пропущені нотатки"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:104
+#: contents/ui/textEditor/TextDisplay.qml:103
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-19 00:40+0000\n"
-"PO-Revision-Date: 2024-09-16 09:44+0200\n"
+"POT-Creation-Date: 2024-10-22 00:40+0000\n"
+"PO-Revision-Date: 2024-10-20 11:03+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -272,25 +272,19 @@ msgid "Please choose another name for it."
 msgstr "Veuillez sélectionner un autre nom pour lui."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Ce nom commence par un point. Cela peut causer un problème et n'est donc pas "
-"autorisé."
+"Ce nom contient un caractère « / ». Cela peut causer un problème et n'est "
+"donc pas autorisé."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Veuillez supprimer le point ou sélectionner un autre nom."
+msgstr "Veuillez supprimer le caractère « / » ou sélectionner un autre nom."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -596,49 +590,49 @@ msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Style :"
 
-#: contents/ui/settings/DisplayPreview.qml:55
+#: contents/ui/settings/DisplayPreview.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Couleur du texte :"
 
-#: contents/ui/settings/DisplayPreview.qml:68
+#: contents/ui/settings/DisplayPreview.qml:59
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Couleur de titre :"
 
-#: contents/ui/settings/DisplayPreview.qml:82
+#: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Couleur de lien :"
 
-#: contents/ui/settings/DisplayPreview.qml:95
+#: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Couleur de lien visité :"
 
-#: contents/ui/settings/DisplayPreview.qml:110
+#: contents/ui/settings/DisplayPreview.qml:101
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Couleur de code :"
 
-#: contents/ui/settings/DisplayPreview.qml:124
+#: contents/ui/settings/DisplayPreview.qml:115
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Couleur de coloration :"
 
-#: contents/ui/settings/DisplayPreview.qml:136
+#: contents/ui/settings/DisplayPreview.qml:127
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Police global :"
 
-#: contents/ui/settings/DisplayPreview.qml:147
+#: contents/ui/settings/DisplayPreview.qml:138
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
@@ -1255,7 +1249,7 @@ msgstr "Aide-mémoire"
 msgid "Settings"
 msgstr "Configuration"
 
-#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:250
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:249
 #, kde-format
 msgid "About KleverNotes"
 msgstr "À propos de KleverNotes"
@@ -1279,7 +1273,7 @@ msgid "Markdown Cheat Sheet"
 msgstr "Aide-mémoire pour Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
-#: contents/ui/textEditor/TextDisplay.qml:83
+#: contents/ui/textEditor/TextDisplay.qml:82
 #, kde-format
 msgid "Copied !"
 msgstr "Copié !"
@@ -1576,7 +1570,7 @@ msgid "Missing notes"
 msgstr "Notes manquantes"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:104
+#: contents/ui/textEditor/TextDisplay.qml:103
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
