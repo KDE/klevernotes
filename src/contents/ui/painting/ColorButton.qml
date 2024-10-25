@@ -17,11 +17,18 @@ AbstractButton {
     signal secondaryColorChanged
     signal openColorPicker
 
-    width: Kirigami.Units.gridUnit * 1.5
-    height: Kirigami.Units.gridUnit * 1.5
+    width: Kirigami.Units.gridUnit * 2
+    height: Kirigami.Units.gridUnit * 2
 
-    background: Rectangle {
+    background: Kirigami.ShadowedRectangle {
         id: colorRectangle
+
+        radius: Kirigami.Units.mediumSpacing
+        shadow {
+            size: Kirigami.Units.largeSpacing
+            color: Qt.rgba(0.0, 0.0, 0.0, 0.3)
+            yOffset: 2
+        }
     }
 
     TapHandler {

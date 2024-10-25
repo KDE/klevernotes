@@ -29,12 +29,17 @@ ToolBar {
     contentItem: RowLayout {
         spacing: Kirigami.Units.smallSpacing
 
-        Rectangle {
-            width: Kirigami.Units.gridUnit * 2.5
-            height: Kirigami.Units.gridUnit * 2.5
+        Kirigami.ShadowedRectangle {
+            width: Kirigami.Units.gridUnit * 3
+            height: Kirigami.Units.gridUnit * 3
 
             color: Qt.rgba(1, 1, 1, 0.2)
-            radius: Kirigami.Units.smallSpacing
+            radius: Kirigami.Units.mediumSpacing
+            shadow {
+                size: Kirigami.Units.largeSpacing
+                color: Qt.rgba(0.0, 0.0, 0.0, 0.3)
+                yOffset: 2
+            }
 
             Layout.leftMargin: Kirigami.Units.smallSpacing
 
@@ -43,15 +48,8 @@ ToolBar {
 
                 x: parent.width - width - Kirigami.Units.smallSpacing
                 y: parent.height - height - Kirigami.Units.smallSpacing
-                width: Kirigami.Units.gridUnit * 1.5
-                height: Kirigami.Units.gridUnit * 1.5
 
                 color: root.secondaryColor
-                border {
-                    color: "black"
-                    width: 1
-                }
-
                 multicolor: true
 
                 onOpenColorPicker: {
@@ -64,14 +62,8 @@ ToolBar {
 
                 x: Kirigami.Units.smallSpacing
                 y: Kirigami.Units.smallSpacing
-                width: Kirigami.Units.gridUnit * 1.5
-                height: Kirigami.Units.gridUnit * 1.5
 
                 color: root.primaryColor
-                border {
-                    color: "black"
-                    width: 1
-                }
                 multicolor: true
 
                 onOpenColorPicker: {
