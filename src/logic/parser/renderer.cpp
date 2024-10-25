@@ -302,12 +302,12 @@ QString Renderer::openListItem(const bool hasTask, const bool isChecked, const i
     }
 
     const QString checkboxStr = checkbox(isChecked);
-    return QStringLiteral("<li class=\"hasCheck\"> <label class=\"form-control\">\n") + checkboxStr;
+    return QStringLiteral("<li class=\"hasCheck\"> <label class=\"form-control\">\n") + checkboxStr + QStringLiteral("<span>");
 }
 
 QString Renderer::closeListItem(const bool hasTask)
 {
-    return hasTask ? QStringLiteral("</label></li>\n") : QLatin1String();
+    return hasTask ? QStringLiteral("</span></label></li>\n") : QStringLiteral("</li>\n");
 }
 
 QString Renderer::checkbox(bool checked)
