@@ -28,8 +28,9 @@ Components.FloatingToolBar {
         case DrawingToolBar.Tool.Text:
             return "text"
         case DrawingToolBar.Tool.Rectangle:
+            return "rectangle"
         case DrawingToolBar.Tool.Circle:
-            return "shape"
+            return "circle"
     }
 
     ActionGroup {

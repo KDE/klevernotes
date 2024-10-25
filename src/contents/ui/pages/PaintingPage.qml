@@ -120,6 +120,9 @@ Kirigami.Page {
             DrawingToolBar {
                 id: drawingToolBar
 
+                readonly property bool isBaseMode: (mode === "draw" || mode === "erase")
+                readonly property bool isShape: (mode === "rectangle" || mode === "circle")
+
                 Layout.preferredHeight: Kirigami.Units.gridUnit * 12
                 Layout.margins: Kirigami.Units.largeSpacing
             }
@@ -165,8 +168,11 @@ Kirigami.Page {
 
                         property real lastX
                         property real lastY
+                        property real startX: -1
+                        property real startY: -1
                         property int strokeWidth: drawingToolBarOptions.lineWidth * (drawingToolBar.mode === "erase" ? 2 : 1)
                         property bool isInit: false
+                        readonly property bool shapeIsStarted: canvas.startX !== -1 && canvas.startY !== -1
 
                         onPaint: if (!isInit) {
                             getContext("2d")
@@ -190,47 +196,100 @@ Kirigami.Page {
                             visible: mouseArea.isPress && drawingToolBar.mode === "erase" 
                         }
 
+                        Rectangle {
+                            id: shapeBox
+
+                            x: Math.min(canvas.startX, canvas.lastX)
+                            y: Math.min(canvas.startY, canvas.lastY)
+                            width: Math.abs(canvas.startX - canvas.lastX)
+                            height: Math.abs(canvas.startY - canvas.lastY)
+
+                            color: Qt.rgba(0.21, 0.6, 0.8, 0.05)
+                            border {
+                                width: 2
+                                color: "white"
+                            }
+
+                            visible: canvas.shapeIsStarted && drawingToolBar.isShape
+                        }
+
                         MouseArea {
                             id: mouseArea
 
                             property var lastButton
                             property bool isPress: false
 
-                            anchors.fill: parent
+                            anchors.fill: canvas
 
                             enabled: true
                             acceptedButtons: Qt.LeftButton | Qt.RightButton
-
+                            hoverEnabled: true
                             onPositionChanged: function (mouse) {
                                 if (isPress) {
-                                    if (drawingToolBar.mode === "draw" || drawingToolBar.mode === "erase") {
+                                    if (drawingToolBar.isBaseMode) {
                                         canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
                                         root.cantLeave = true
                                     }
-                                    canvas.lastX = mouseX
-                                    canvas.lastY = mouseY
+
+                                    canvas.lastX = getX()
+                                    canvas.lastY = getY()
                                 }
                             }
                             onReleased: function (mouse) {
-                                if (mouse.button === lastButton) {
+                                if (mouse.button === lastButton && !drawingToolBar.isShape) {
                                     isPress = false
                                 }
                             }
                             onPressed: function (mouse) {
                                 if (!isPress) {
                                     isPress = true
-                                    canvas.lastX = mouseX
-                                    canvas.lastY = mouseY
+                                    canvas.lastX = getX()
+                                    canvas.lastY = getY()
                                     lastButton = mouse.button
 
-                                    if (drawingToolBar.mode === "draw" || drawingToolBar.mode === "erase") {
-                                        canvas.drawPoint(mouseX, mouseY);
+                                    switch(drawingToolBar.mode) {
+                                    case "draw":
+                                    case "erase": {
+                                        canvas.drawPoint(canvas.lastX, canvas.lastY)
                                         root.cantLeave = true
-                                    } else if (drawingToolBar.mode === "text") {
+                                        break
+                                    }
+                                    case "text": {
                                         isPress = false
                                         textDialog.open()
+                                        break
                                     }
+                                    case "rectangle":
+                                    case "circle": {
+                                        canvas.startX = canvas.lastX 
+                                        canvas.startY = canvas.lastY 
+                                        break
+                                    }
+                                    }
+                                } else if (drawingToolBar.isShape) {
+                                    isPress = false
+                                    if (mouse.button === lastButton) {
+                                        if (drawingToolBar.mode === "rectangle") {
+                                            canvas.drawRect(shapeBox.x, shapeBox.y, shapeBox.width, shapeBox.height)
+                                        } else {
+                                            canvas.drawCircle(shapeBox.x, shapeBox.y, shapeBox.width, shapeBox.height)
+                                        }
+                                    }
+                                    canvas.startX = -1
+                                    canvas.startY = -1
                                 }
+                            }
+
+                            function getX() {
+                                if (mouseX < 0) return 0
+                                if (1024 < mouseX) return 1024
+                                return mouseX
+                            }
+
+                            function getY() {
+                                if (mouseY < 0) return 0
+                                if (1024 < mouseY) return 1024
+                                return mouseY
                             }
                         }
 
@@ -271,6 +330,34 @@ Kirigami.Page {
                             if (drawingToolBarOptions.shapeStyle !== "outline") {
                                 context.fillStyle = drawingToolBarOptions.fillColor;
                                 context.fillText(text, x, y);
+                            }
+                            markDirty()
+                        }
+
+                        function drawRect(x, y, w, h) {
+                            if (drawingToolBarOptions.shapeStyle !== "fill") {
+                                context.lineWidth = canvas.strokeWidth
+                                context.strokeStyle = root.penColor
+                                context.strokeRect(x, y, w, h)
+                            }
+                            if (drawingToolBarOptions.shapeStyle !== "outline") {
+                                context.fillStyle = drawingToolBarOptions.fillColor;
+                                context.fillRect(x, y, w, h)
+                            }
+                            markDirty()
+                        }
+
+                        function drawCircle(x, y, w, h) {
+                            context.beginPath();
+                            context.ellipse(x, y, w, h)
+                            if (drawingToolBarOptions.shapeStyle !== "fill") {
+                                context.lineWidth = canvas.strokeWidth
+                                context.strokeStyle = root.penColor
+                                context.stroke();
+                            }
+                            if (drawingToolBarOptions.shapeStyle !== "outline") {
+                                context.fillStyle = drawingToolBarOptions.fillColor;
+                                context.fill()
                             }
                             markDirty()
                         }
