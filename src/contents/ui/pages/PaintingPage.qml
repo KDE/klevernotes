@@ -204,10 +204,11 @@ Kirigami.Page {
                             width: Math.abs(canvas.startX - canvas.lastX)
                             height: Math.abs(canvas.startY - canvas.lastY)
 
-                            color: Qt.rgba(0.21, 0.6, 0.8, 0.05)
+                            color: Kirigami.Theme.highlightColor 
+                            opacity: 0.3
                             border {
                                 width: 2
-                                color: "white"
+                                color: Kirigami.Theme.textColor
                             }
 
                             visible: canvas.shapeIsStarted && drawingToolBar.isShape
