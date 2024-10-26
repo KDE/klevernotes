@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-22 00:40+0000\n"
-"PO-Revision-Date: 2024-09-13 19:08+0200\n"
+"POT-Creation-Date: 2024-10-26 00:40+0000\n"
+"PO-Revision-Date: 2024-10-19 13:09+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -271,25 +271,19 @@ msgid "Please choose another name for it."
 msgstr "Scegli un altro nome per questo."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Questo nome inizia con un punto, ciò potrebbe causare problemi e pertanto "
-"non è consentito."
+"Questo nome inizia con uno '/', ciò potrebbe causare problemi e pertanto non "
+"è consentito."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Rimuovi il punto o scegli un altro nome."
+msgstr "Rimuovi lo '/' o scegli un altro nome."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -517,29 +511,37 @@ msgstr "Benvenuto in KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Crea o seleziona una nota per iniziare a lavorare!"
 
-#: contents/ui/pages/PaintingPage.qml:30
+#: contents/ui/pages/PaintingPage.qml:27
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Disegna!"
 
-#: contents/ui/pages/PaintingPage.qml:39 contents/ui/pages/PrintingPage.qml:76
+#: contents/ui/pages/PaintingPage.qml:36 contents/ui/pages/PrintingPage.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Salva"
 
-#: contents/ui/pages/PaintingPage.qml:47
+#: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Pulisci"
 
-#: contents/ui/pages/PaintingPage.qml:57
+#: contents/ui/pages/PaintingPage.qml:54
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Ritaglio automatico"
+
+#: contents/ui/pages/PaintingPage.qml:91
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Text color:"
+msgctxt "@title:dialog"
+msgid "Text to draw"
+msgstr "Colore del testo:"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -584,6 +586,61 @@ msgid ""
 msgstr ""
 "Scegli una posizione per il tuo futuro spazio di archiviazione di "
 "KleverNotes o selezionane una esistente.\n"
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:53
+#, kde-format
+msgid "Width:"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:73
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Font:"
+msgstr "Carattere:"
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:119
+#, kde-format
+msgid "Fill toolMode:"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:129
+#, kde-format
+msgctxt "@combobox:entry, shape style"
+msgid "Fill"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:130
+#, kde-format
+msgctxt "@combobox:entry, shape style"
+msgid "Outline"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:131
+#, kde-format
+msgctxt "@combobox:entry, shape style"
+msgid "Outline and fill"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:145
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Title color:"
+msgctxt ""
+"@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
+msgid "Fill color"
+msgstr "Colore del titolo:"
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:148
+#, kde-format
+msgctxt "@label, as in 'the primary color'"
+msgid "Primary"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:149
+#, kde-format
+msgctxt "@label, as in 'the secondary color'"
+msgid "Secondary"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -1739,35 +1796,35 @@ msgstr "Si è verificato un errore durante il tentativo di creare la categoria."
 msgid "An error occurred while trying to create the storage."
 msgstr "Si è verificato un errore durante il tentativo di creare l'archivio."
 
-#: main.cpp:58
+#: main.cpp:51
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:62
+#: main.cpp:55
 #, kde-format
 msgid "Note taking and management application"
 msgstr "Applicazione per prendere e gestire appunti"
 
-#: main.cpp:66
+#: main.cpp:59
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:67
+#: main.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vincenzo Reale"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1831,10 +1888,6 @@ msgstr "smart2128vr@gmail.com"
 #~ msgctxt "@title"
 #~ msgid "KleverNotes plugins"
 #~ msgstr "Estensioni di KleverNotes"
-
-#~ msgctxt "@label:textbox"
-#~ msgid "Font:"
-#~ msgstr "Carattere:"
 
 #~ msgid "Your "
 #~ msgstr "Il tuo"

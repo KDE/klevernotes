@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-22 00:40+0000\n"
+"POT-Creation-Date: 2024-10-26 00:40+0000\n"
 "PO-Revision-Date: 2024-09-15 10:36+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -518,29 +518,37 @@ msgstr "Welcome to KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Create or select a note to start working !"
 
-#: contents/ui/pages/PaintingPage.qml:30
+#: contents/ui/pages/PaintingPage.qml:27
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Paint!"
 
-#: contents/ui/pages/PaintingPage.qml:39 contents/ui/pages/PrintingPage.qml:76
+#: contents/ui/pages/PaintingPage.qml:36 contents/ui/pages/PrintingPage.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Save"
 
-#: contents/ui/pages/PaintingPage.qml:47
+#: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Clear"
 
-#: contents/ui/pages/PaintingPage.qml:57
+#: contents/ui/pages/PaintingPage.qml:54
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Auto crop"
+
+#: contents/ui/pages/PaintingPage.qml:91
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Text color:"
+msgctxt "@title:dialog"
+msgid "Text to draw"
+msgstr "Text colour:"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -585,6 +593,62 @@ msgid ""
 msgstr ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:53
+#, kde-format
+msgid "Width:"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:73
+#, fuzzy, kde-format
+#| msgid "Font:"
+msgctxt "@label:textbox"
+msgid "Font:"
+msgstr "Font:"
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:119
+#, kde-format
+msgid "Fill toolMode:"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:129
+#, kde-format
+msgctxt "@combobox:entry, shape style"
+msgid "Fill"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:130
+#, kde-format
+msgctxt "@combobox:entry, shape style"
+msgid "Outline"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:131
+#, kde-format
+msgctxt "@combobox:entry, shape style"
+msgid "Outline and fill"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:145
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Title color:"
+msgctxt ""
+"@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
+msgid "Fill color"
+msgstr "Title colour:"
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:148
+#, kde-format
+msgctxt "@label, as in 'the primary color'"
+msgid "Primary"
+msgstr ""
+
+#: contents/ui/painting/DrawingToolBarOptions.qml:149
+#, kde-format
+msgctxt "@label, as in 'the secondary color'"
+msgid "Secondary"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -1730,35 +1794,35 @@ msgstr "An error occurred while trying to create the category."
 msgid "An error occurred while trying to create the storage."
 msgstr "An error occurred while trying to create the storage."
 
-#: main.cpp:58
+#: main.cpp:51
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:62
+#: main.cpp:55
 #, kde-format
 msgid "Note taking and management application"
 msgstr "Note taking and management application"
 
-#: main.cpp:66
+#: main.cpp:59
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:67
+#: main.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Steve Allewell"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1813,12 +1877,6 @@ msgstr "steve.allewell@gmail.com"
 #~ msgctxt "@title"
 #~ msgid "KleverNotes plugins"
 #~ msgstr "KleverNotes painting"
-
-#, fuzzy
-#~| msgid "Font:"
-#~ msgctxt "@label:textbox"
-#~ msgid "Font:"
-#~ msgstr "Font:"
 
 #~ msgid "Your "
 #~ msgstr "Your "
