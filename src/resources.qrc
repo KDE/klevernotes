@@ -41,13 +41,13 @@
         <file>contents/ui/pages/MainPage.qml</file>
         <file>contents/ui/pages/PaintingPage.qml</file>
         <file>contents/ui/pages/PrintingPage.qml</file>
-        <file>contents/ui/pages/SettingsPage.qml</file>
 
         <file>contents/ui/painting/ColorBar.qml</file>
         <file>contents/ui/painting/ColorButton.qml</file>
         <file>contents/ui/painting/DrawingToolBar.qml</file>
         <file>contents/ui/painting/DrawingToolBarOptions.qml</file>
 
+        <!--
         <file>contents/ui/settings/components/ClickableArrow.qml</file>
         <file>contents/ui/settings/components/ClickableIcon.qml</file>
         <file>contents/ui/settings/components/ActionListViewDelegate.qml</file>
@@ -60,6 +60,7 @@
         <file>contents/ui/settings/PluginsTab.qml</file>
         <file>contents/ui/settings/SettingsColorButton.qml</file>
         <file>contents/ui/settings/TabBar.qml</file>
+        -->
 
         <file>contents/ui/sharedComponents/ActionsList.qml</file>
         <file>contents/ui/sharedComponents/ExpandingFormSwitch.qml</file>

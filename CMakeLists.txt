@@ -25,6 +25,7 @@ include(ECMGenerateHeaders)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMAddTests)
+include(ECMQmlModule)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX KLEVER

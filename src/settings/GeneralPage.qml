@@ -13,7 +13,6 @@ import org.kde.Klever
 import "qrc:/contents/ui/sharedComponents"
 import "qrc:/contents/ui/textEditor"
 import "qrc:/contents/ui/dialogs/tableMakerDialog"
-import "qrc:/contents/ui/settings/components"
 
 ColumnLayout {
     id: root

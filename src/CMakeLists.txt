@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 
+add_subdirectory(settings)
+
 add_library(klevernoteslib STATIC
     app.cpp
 
@@ -78,7 +80,7 @@ target_link_libraries(klevernoteslib PUBLIC
 )
 
 add_executable(klevernotes main.cpp resources.qrc)
-target_link_libraries(klevernotes PRIVATE klevernoteslib)
+target_link_libraries(klevernotes PRIVATE klevernoteslib settings settingsplugin)
 
 if (BUILD_TESTING)
     add_subdirectory(autotests)

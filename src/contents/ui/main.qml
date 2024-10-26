@@ -6,6 +6,7 @@ import QtQuick
 import org.kde.kirigami as Kirigami
 
 import org.kde.Klever
+import org.kde.klevernotes.settings as Settings
 
 import "qrc:/contents/ui/sideBar"
 
@@ -92,7 +93,8 @@ Kirigami.ApplicationWindow {
         repeat: false
         interval: Kirigami.Units.longDuration
         onTriggered: {
-            if (currentPageName !== "Main") {
+            if (currentPageName !== "Settings") {
+            } else if (currentPageName !== "Main") {
                 const page = getPage(currentPageName)
                 pageStack.layers.push(page)
             } else {
@@ -116,7 +118,6 @@ Kirigami.ApplicationWindow {
     function getPage(name) {
         switch (name) {
             case "Main": return pagePool.loadPage("qrc:contents/ui/pages/MainPage.qml");
-            case "Settings": return pagePool.loadPage("qrc:contents/ui/pages/SettingsPage.qml");
             case "Painting": return pagePool.loadPage("qrc:contents/ui/pages/PaintingPage.qml");
             case "Printing": return pagePool.loadPage("qrc:contents/ui/pages/PrintingPage.qml");
             case "About": return pagePool.loadPage("qrc:contents/ui/pages/AboutPage.qml");
