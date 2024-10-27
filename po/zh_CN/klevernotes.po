@@ -530,12 +530,10 @@ msgid "Auto crop"
 msgstr "自动裁剪"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "文本颜色："
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -614,13 +612,11 @@ msgid "Outline and fill"
 msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "标题颜色"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format

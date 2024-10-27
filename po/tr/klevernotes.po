@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-26 00:40+0000\n"
-"PO-Revision-Date: 2024-10-19 12:50+0300\n"
+"PO-Revision-Date: 2024-10-26 13:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -538,12 +538,10 @@ msgid "Auto crop"
 msgstr "Kendiliğinden Kırp"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Metin rengi:"
+msgstr "Çizilecek Metin"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -592,7 +590,7 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Genişlik:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
@@ -603,46 +601,44 @@ msgstr "Yazıtipi:"
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "Dolgu aracı kipi:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "Dolgu"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "Ana hat"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "Ana hat ve dolgu"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Başlık rengi:"
+msgstr "Dolgu rengi"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "Ana"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "Yedek"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format

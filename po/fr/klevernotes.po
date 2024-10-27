@@ -598,7 +598,9 @@ msgid "Width:"
 msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Font:"
 msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Police :"
