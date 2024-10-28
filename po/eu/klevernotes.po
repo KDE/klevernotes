@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-26 00:40+0000\n"
-"PO-Revision-Date: 2024-10-01 17:50+0200\n"
+"PO-Revision-Date: 2024-10-27 08:58+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -258,7 +258,7 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
-"Izen hau puntu batekin hasten da, horrek arazoak sor ditzakeenez, ez da "
+"Izen hau puntu batekin hasten da, horrek arazoak sor dezakeenez, ez da "
 "onartzen."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
@@ -274,25 +274,17 @@ msgid "Please choose another name for it."
 msgstr "Mesedez, aukeratu harentzako beste izen bat."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
-msgstr ""
-"Izen hau puntu batekin hasten da, horrek arazoak sor ditzakeenez, ez da "
-"onartzen."
+msgstr "Izen onek '/' du, horrek arazoa sor dezakeenez, ez da onartzen."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Mesedez, puntua kendu edo aukeratu beste izen bat."
+msgstr "Mesedez, kendu '/'  edo aukeratu beste izen bat."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -545,12 +537,10 @@ msgid "Auto crop"
 msgstr "Mozketa automatikoa"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Testuaren kolorea:"
+msgstr "Marraztu beharreko testua"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -599,7 +589,7 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Zabalera:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
@@ -610,46 +600,44 @@ msgstr "Letra-tipoa:"
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "Betegarria tresnaren modua:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "Betegarria"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "Ingerada"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "Ingerada eta betegarria"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Tituluaren kolorea:"
+msgstr "Betegarriaren kolorea"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "Nagusia"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "Bigarren mailakoa"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
