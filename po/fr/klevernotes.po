@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-26 00:40+0000\n"
-"PO-Revision-Date: 2024-10-20 11:03+0200\n"
+"PO-Revision-Date: 2024-10-27 08:44+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -539,12 +539,10 @@ msgid "Auto crop"
 msgstr "Rogner automatiquement"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Couleur du texte :"
+msgstr "Texte à dessiner"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -595,7 +593,7 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Largeur :"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
@@ -606,46 +604,44 @@ msgstr "Police :"
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "Mode de l'outil de remplissage :"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "Remplir"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "Contour"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "Définir les contours et remplir"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Couleur de titre :"
+msgstr "Couleur de remplissage"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "Primaire"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "Secondaire"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
