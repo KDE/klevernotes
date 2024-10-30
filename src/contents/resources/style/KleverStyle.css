@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: BSD-3-Clause */
-/* SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com> */
+/* SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com> */
 
 :root {
     --bodyColor: ;
@@ -20,8 +20,11 @@ body {
     font-size: var(--fontSize); /* was 16, all other font-size are based on that*/
     line-height: 1.6;
     background-color: var(--bodyColor);
-    padding: 10px;
+    padding: 0px;
+    box-sizing: border-box;
     color: var(--textColor);
+    word-wrap: normal;
+    word-break: break-word;
 }
 
 a {
@@ -88,8 +91,6 @@ p, ul, ol, dl, li, table, pre {
     margin: 15px 0;
 }
 
-
-
 hr {
     margin: 0 0 19px;
     border: 0;
@@ -150,12 +151,12 @@ input[type="checkbox"]:disabled {
     margin: 0;
 
     font: inherit;
-
     color: var(--linkColor);
+    height: var(--fontSize);
+    max-height: var(--fontSize);
     border: 0.15em solid var(--linkColor);
     border-radius: 0.15em;
     cursor: not-allowed;
-
     display: grid;
     place-content: center;
 }
@@ -215,7 +216,7 @@ table tr {
     border-top: 1px solid var(--textColor);
     margin: 0;
     padding: 0;
-    color: var(--textColor)
+    color: var(--textColor);
     filter: brightness(130%);
     background-color: var(--codeColor);
 }
@@ -277,11 +278,6 @@ pre {
     line-height: 16px;
     white-space: pre-wrap;
     word-wrap: break-word;
-}
-
-pre code {
-    background-color: transparent;
-    border: none;
 }
 
 sup {
