@@ -245,10 +245,13 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
         const long long int delimEndPos = badStyleInfo.delim.endColumn();
         const QString delimText = MD::virginSubstr(po.m_fr, badStyleInfo.delim);
 
+        const bool atParagraphStart = paraIdx == 0;
+        const bool atParagraphEnd = paraIdx == p->items().length() - 1;
+
         bool reattached = false;
         const bool atStart = (delimEndPos + 1 == itemStartPos);
         if (atStart || (itemEndPos == delimStartPos - 1)) {
-            reattached = md4qtHelperFunc::addStringTo(currentItemPtr, atStart, delimText, po);
+            reattached = md4qtHelperFunc::addStringTo(currentItemPtr, atStart, delimText, po, atParagraphStart, atParagraphEnd);
         }
 
         const long long int previousParaIdx = paraIdx - 1;
@@ -258,7 +261,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
                 md4qtHelperFunc::mergeFromIndex(previousParaIdx, p, po);
                 continue;
             }
-            reattached = md4qtHelperFunc::addStringTo(previousItem, false, delimText, po);
+            reattached = md4qtHelperFunc::addStringTo(previousItem, false, delimText, po, atParagraphStart, atParagraphEnd);
         }
 
         const long long int nextParaIdx = paraIdx + 1;
@@ -268,7 +271,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
                 md4qtHelperFunc::mergeFromIndex(paraIdx, p, po);
                 continue;
             }
-            reattached = md4qtHelperFunc::addStringTo(nextItem, true, delimText, po);
+            reattached = md4qtHelperFunc::addStringTo(nextItem, true, delimText, po, atParagraphStart, atParagraphEnd);
         }
 
         if (!reattached) { // create new one
@@ -288,8 +291,8 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
             newTextItem->setStartColumn(delimStartPos);
             newTextItem->setEndColumn(badStyleInfo.delim.endColumn());
 
-            auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(delimText.simplified());
-            finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
+            auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(delimText);
+            finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
             newTextItem->setText(finalSimplifiedText);
 
             po.m_rawTextData.insert(po.m_rawTextData.cbegin() + nextRawDataIdx, newTextData);

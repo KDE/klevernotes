@@ -5,6 +5,28 @@
 
 #include "md4qtDataManip.hpp"
 
+// Credit to: https://stackoverflow.com/a/8216059
+QString rstrip(const QString &str)
+{
+    int n = str.size() - 1;
+    for (; n >= 0; --n) {
+        if (!str.at(n).isSpace()) {
+            return str.left(n + 1);
+        }
+    }
+    return {};
+}
+
+QString lstrip(const QString &str)
+{
+    for (int n = 0; n < str.length(); ++n) {
+        if (!str.at(n).isSpace()) {
+            return str.mid(n);
+        }
+    }
+    return {};
+}
+
 namespace md4qtHelperFunc
 {
 // Style manip
@@ -90,7 +112,12 @@ void transferStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b, const bool transfer
 // !Style manip
 
 // String manip
-bool addStringTo(const MDItemWithOptsPtr item, const bool atStart, const QString &str, MDParsingOpts &po)
+bool addStringTo(const MDItemWithOptsPtr item,
+                 const bool atStart,
+                 const QString &str,
+                 MDParsingOpts &po,
+                 const bool atParagraphStart,
+                 const bool atParagraphEnd)
 {
     if (item->type() != MD::ItemType::Text) {
         return false;
@@ -114,8 +141,14 @@ bool addStringTo(const MDItemWithOptsPtr item, const bool atStart, const QString
     }
     rawData.m_str = newText;
 
-    auto newSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText.simplified());
-    newSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(newSimplifiedText).asString();
+    if (atParagraphStart) {
+        newText = lstrip(newText);
+    }
+    if (atParagraphEnd) {
+        newText = rstrip(newText);
+    }
+    auto newSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText);
+    newSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(newSimplifiedText);
     textItem->setText(newSimplifiedText);
 
     po.m_rawTextData[rawIdx] = rawData;
@@ -126,7 +159,8 @@ bool addStringTo(const MDItemWithOptsPtr item, const bool atStart, const QString
 void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &po)
 {
     MDItemWithOptsPtr currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(from));
-    MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(from + 1));
+    const long long int to = from + 1;
+    MDItemWithOptsPtr nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(to));
 
     if (currentItem->type() != MD::ItemType::Text || nextItem->type() != MD::ItemType::Text) {
         return;
@@ -145,11 +179,17 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
     auto currentRawData = po.m_rawTextData[currentRawIdx];
     auto nextRawData = po.m_rawTextData[currentRawIdx + 1];
 
-    const QString finalText = currentRawData.m_str + nextRawData.m_str;
+    // Paragraph info
+    const bool atParagraphStart = from == 0;
+    const bool atParagraphEnd = to == p->items().length() - 1;
+
+    const QString fromText = atParagraphStart ? lstrip(currentRawData.m_str) : currentRawData.m_str;
+    const QString toText = atParagraphEnd ? rstrip(nextRawData.m_str) : nextRawData.m_str;
+    const QString finalText = fromText + toText;
     currentRawData.m_str = finalText;
 
-    auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(finalText.simplified());
-    finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
+    auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(finalText);
+    finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
     currentTextItem->setText(finalSimplifiedText);
 
     // Others var
@@ -198,14 +238,19 @@ int splitItem(MDParagraphPtr p,
         return -1;
     }
 
+    // Paragraph info
+    const bool atParagraphStart = paraIdx == 0;
+    const bool atParagraphEnd = paraIdx == p->items().length() - 1;
+
     // Item split in half
     if (from != virginStartPos && virginEndSplit != virginEndPos) {
         const QString leftRawText = src.mid(0, relativeStartSplit);
         rawData.m_str = leftRawText;
         po.m_rawTextData[rawIdx] = rawData;
 
-        auto simplifiedLeftText = MD::replaceEntity<MD::QStringTrait>(leftRawText.simplified());
-        simplifiedLeftText = MD::removeBackslashes<MD::QStringTrait>(simplifiedLeftText).asString();
+        auto simplifiedLeftText = atParagraphStart ? lstrip(leftRawText) : leftRawText;
+        simplifiedLeftText = MD::replaceEntity<MD::QStringTrait>(simplifiedLeftText);
+        simplifiedLeftText = MD::removeBackslashes<QString, MD::QStringTrait>(simplifiedLeftText);
         textItem->setText(simplifiedLeftText);
         textItem->setEndColumn(from - 1);
 
@@ -223,8 +268,9 @@ int splitItem(MDParagraphPtr p,
         newTextItem->setStartColumn(newStartingPos);
         newTextItem->setEndColumn(newStartingPos + rightRawText.length() - 1);
 
-        auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(rightRawText.simplified());
-        finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
+        auto finalSimplifiedText = atParagraphEnd ? rstrip(rightRawText) : rightRawText;
+        finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(finalSimplifiedText);
+        finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
         newTextItem->setText(finalSimplifiedText);
 
         po.m_rawTextData.insert(po.m_rawTextData.cbegin() + rawIdx + 1, newTextData);
@@ -245,11 +291,18 @@ int splitItem(MDParagraphPtr p,
         textItem->setEndColumn(textItem->endColumn() - length);
     }
 
+    if (atParagraphStart) {
+        newText = lstrip(newText);
+    }
+    if (atParagraphEnd) {
+        newText = rstrip(newText);
+    }
+
     rawData.m_str = newText;
     po.m_rawTextData[rawIdx] = rawData;
 
-    auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText.simplified());
-    finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText).asString();
+    auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText);
+    finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
     textItem->setText(finalSimplifiedText);
 
     return 0;

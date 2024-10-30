@@ -93,9 +93,8 @@ void NoteLinkingTest::linkBeginningWithOpenClose()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 1);
     QCOMPARE_EQ(item2->opts(), 2);
-    QVERIFY(item2->isSpaceBefore());
-    QVERIFY(item2->isSpaceAfter());
-    QCOMPARE(item2->text(), QStringLiteral("text after with closing"));
+
+    QCOMPARE(item2->text(), QStringLiteral(" text after with closing"));
     QCOMPARE_EQ(item2->startColumn(), 57);
     QCOMPARE_EQ(item2->endColumn(), 80);
 }
@@ -129,8 +128,7 @@ void NoteLinkingTest::linkBeginningWithOpen()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 1);
     QCOMPARE_EQ(item2->opts(), 2);
-    QVERIFY(item2->isSpaceBefore());
-    QVERIFY(item2->isSpaceAfter());
+
     QCOMPARE(item2->text(), QStringLiteral("text after with closing"));
     QCOMPARE_EQ(item2->startColumn(), 43);
     QCOMPARE_EQ(item2->endColumn(), 66);
@@ -156,9 +154,8 @@ void NoteLinkingTest::linkMiddleWithClose()
     QCOMPARE_EQ(item1->openStyles().length(), 2);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
-    QCOMPARE(item1->text(), QStringLiteral("Text before"));
+
+    QCOMPARE(item1->text(), QStringLiteral("Text before "));
     QCOMPARE_EQ(item1->startColumn(), 2);
     QCOMPARE_EQ(item1->endColumn(), 13);
 
@@ -175,9 +172,8 @@ void NoteLinkingTest::linkMiddleWithClose()
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
-    QVERIFY(item3->isSpaceBefore());
-    QVERIFY(item3->isSpaceAfter());
-    QCOMPARE(item3->text(), QStringLiteral("text outside with closing"));
+
+    QCOMPARE(item3->text(), QStringLiteral(" text outside with closing"));
     QCOMPARE_EQ(item3->startColumn(), 57);
     QCOMPARE_EQ(item3->endColumn(), 82);
 }
@@ -202,9 +198,8 @@ void NoteLinkingTest::linkMiddleWithOpen()
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
-    QCOMPARE(item1->text(), QStringLiteral("Text before"));
+
+    QCOMPARE(item1->text(), QStringLiteral("Text before "));
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 11);
 
@@ -221,9 +216,8 @@ void NoteLinkingTest::linkMiddleWithOpen()
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
-    QVERIFY(item3->isSpaceBefore());
-    QVERIFY(item3->isSpaceAfter());
-    QCOMPARE(item3->text(), QStringLiteral("text after with closing"));
+
+    QCOMPARE(item3->text(), QStringLiteral(" text after with closing"));
     QCOMPARE_EQ(item3->startColumn(), 43);
     QCOMPARE_EQ(item3->endColumn(), 66);
 }
@@ -248,9 +242,8 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
-    QCOMPARE(item1->text(), QStringLiteral("Text before with opening"));
+
+    QCOMPARE(item1->text(), QStringLiteral("Text before with opening "));
     QCOMPARE_EQ(item1->startColumn(), 1);
     QCOMPARE_EQ(item1->endColumn(), 25);
 
@@ -267,9 +260,8 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
-    QVERIFY(item3->isSpaceBefore());
-    QVERIFY(item3->isSpaceAfter());
-    QCOMPARE(item3->text(), QStringLiteral("and text after with closing"));
+
+    QCOMPARE(item3->text(), QStringLiteral(" and text after with closing"));
     QCOMPARE_EQ(item3->startColumn(), 55);
     QCOMPARE_EQ(item3->endColumn(), 82);
 
@@ -277,9 +269,8 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE_EQ(item4->openStyles().length(), 0);
     QCOMPARE_EQ(item4->closeStyles().length(), 0);
     QCOMPARE_EQ(item4->opts(), 0);
-    QVERIFY(item4->isSpaceBefore());
-    QVERIFY(item4->isSpaceAfter());
-    QCOMPARE(item4->text(), QStringLiteral("text outside"));
+
+    QCOMPARE(item4->text(), QStringLiteral(" text outside"));
     QCOMPARE_EQ(item4->startColumn(), 84);
     QCOMPARE_EQ(item4->endColumn(), 96);
 }
@@ -304,9 +295,8 @@ void NoteLinkingTest::linkNoHeader()
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
-    QCOMPARE(item1->text(), QStringLiteral("My"));
+
+    QCOMPARE(item1->text(), QStringLiteral("My "));
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 2);
 
@@ -323,9 +313,8 @@ void NoteLinkingTest::linkNoHeader()
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
-    QVERIFY(item3->isSpaceBefore());
-    QVERIFY(item3->isSpaceAfter());
-    QCOMPARE(item3->text(), QStringLiteral("with no header in the URL"));
+
+    QCOMPARE(item3->text(), QStringLiteral(" with no header in the URL"));
     QCOMPARE_EQ(item3->startColumn(), 21);
     QCOMPARE_EQ(item3->endColumn(), 46);
 }
@@ -350,9 +339,8 @@ void NoteLinkingTest::linkNoSpecificTitle()
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
-    QCOMPARE(item1->text(), QStringLiteral("My"));
+
+    QCOMPARE(item1->text(), QStringLiteral("My "));
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 2);
 
@@ -369,9 +357,8 @@ void NoteLinkingTest::linkNoSpecificTitle()
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
-    QVERIFY(item3->isSpaceBefore());
-    QVERIFY(item3->isSpaceAfter());
-    QCOMPARE(item3->text(), QStringLiteral("with no specific text"));
+
+    QCOMPARE(item3->text(), QStringLiteral(" with no specific text"));
     QCOMPARE_EQ(item3->startColumn(), 12);
     QCOMPARE_EQ(item3->endColumn(), 33);
 }
@@ -396,8 +383,7 @@ void NoteLinkingTest::badUrl()
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
+
     QCOMPARE(item1->text(), QStringLiteral("Bad URL [[ | link]]"));
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 18);
@@ -423,8 +409,7 @@ void NoteLinkingTest::illFormed1()
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
+
     QCOMPARE(item1->text(), QStringLiteral("Ill-formed [[URL | link]"));
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 23);
@@ -450,8 +435,7 @@ void NoteLinkingTest::illFormed2()
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
+
     QCOMPARE(item1->text(), QStringLiteral("Ill-formed [URL | link]]"));
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 23);
@@ -478,9 +462,8 @@ void NoteLinkingTest::inTitle()
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
-    QVERIFY(item1->isSpaceBefore());
-    QVERIFY(item1->isSpaceAfter());
-    QCOMPARE(item1->text(), QStringLiteral("Text before with opening"));
+
+    QCOMPARE(item1->text(), QStringLiteral("Text before with opening "));
     QCOMPARE_EQ(item1->startColumn(), 3);
     QCOMPARE_EQ(item1->endColumn(), 27);
 
@@ -497,9 +480,8 @@ void NoteLinkingTest::inTitle()
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
-    QVERIFY(item3->isSpaceBefore());
-    QVERIFY(item3->isSpaceAfter());
-    QCOMPARE(item3->text(), QStringLiteral("and text after with closing"));
+
+    QCOMPARE(item3->text(), QStringLiteral(" and text after with closing"));
     QCOMPARE_EQ(item3->startColumn(), 57);
     QCOMPARE_EQ(item3->endColumn(), 84);
 
@@ -507,9 +489,8 @@ void NoteLinkingTest::inTitle()
     QCOMPARE_EQ(item4->openStyles().length(), 0);
     QCOMPARE_EQ(item4->closeStyles().length(), 0);
     QCOMPARE_EQ(item4->opts(), 0);
-    QVERIFY(item4->isSpaceBefore());
-    QVERIFY(item4->isSpaceAfter());
-    QCOMPARE(item4->text(), QStringLiteral("text outside in header"));
+
+    QCOMPARE(item4->text(), QStringLiteral(" text outside in header"));
     QCOMPARE_EQ(item4->startColumn(), 86);
     QCOMPARE_EQ(item4->endColumn(), 108);
 }

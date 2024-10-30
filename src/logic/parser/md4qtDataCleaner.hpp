@@ -11,11 +11,5 @@ namespace md4qtDataCleaner
 {
 void removeEmpty(MDParagraphPtr p, MDParsingOpts &po);
 
-std::pair<long long, long long> getAbsoluteColumns(MDItemWithOptsPtr item);
-
-void addSpace(MDItemWithOptsPtr item, const long long int paraIdx, MDParagraphPtr p, MDParsingOpts &po);
-
-void setSpacesBack(MDParagraphPtr p, MDParsingOpts &po);
-
 void dataCleaningFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options);
 }

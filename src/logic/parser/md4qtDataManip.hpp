@@ -15,7 +15,12 @@ void mergeStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b);
 void transferStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b, const bool transferClose);
 
 // String manip
-bool addStringTo(const MDItemWithOptsPtr item, const bool atStart, const QString &str, MDParsingOpts &po);
+bool addStringTo(const MDItemWithOptsPtr item,
+                 const bool atStart,
+                 const QString &str,
+                 MDParsingOpts &po,
+                 const bool atParagraphStart,
+                 const bool atParagraphEnd);
 
 void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &po);
 

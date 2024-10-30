@@ -104,7 +104,7 @@ void EmojiTest::simpleEmojiMiddle()
     QCOMPARE_EQ(item1->endColumn(), 6);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Simple"));
+    QCOMPARE(item1->text(), QStringLiteral("Simple "));
 
     const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
     QCOMPARE_EQ(item2->startColumn(), 7);
@@ -123,7 +123,7 @@ void EmojiTest::simpleEmojiMiddle()
     QCOMPARE_EQ(item3->endColumn(), 33);
     QCOMPARE_EQ(item3->startLine(), 0);
     QCOMPARE_EQ(item3->endLine(), 0);
-    QCOMPARE(item3->text(), QStringLiteral("emoji in the middle"));
+    QCOMPARE(item3->text(), QStringLiteral(" emoji in the middle"));
 }
 
 /*
@@ -217,7 +217,7 @@ void EmojiTest::simpleEmojiWithStyle()
     QCOMPARE_EQ(item1->endColumn(), 6);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Simple"));
+    QCOMPARE(item1->text(), QStringLiteral("Simple "));
 
     const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
     QCOMPARE_EQ(item2->startColumn(), 8);
@@ -238,7 +238,7 @@ void EmojiTest::simpleEmojiWithStyle()
     QCOMPARE_EQ(item3->endColumn(), 32);
     QCOMPARE_EQ(item3->startLine(), 0);
     QCOMPARE_EQ(item3->endLine(), 0);
-    QCOMPARE(item3->text(), QStringLiteral("emoji with style"));
+    QCOMPARE(item3->text(), QStringLiteral(" emoji with style"));
 }
 
 /*
@@ -472,7 +472,7 @@ void EmojiTest::wrongSkinEmoji()
     QCOMPARE_EQ(item1->endColumn(), 27);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Wrong given skin tone emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Wrong given skin tone emoji "));
 
     const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
     QCOMPARE_EQ(item2->startColumn(), 28);
@@ -549,7 +549,7 @@ void EmojiTest::wrongVariantEmoji()
     QCOMPARE_EQ(item1->endColumn(), 19);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Wrong variant emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Wrong variant emoji "));
 
     const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
     QCOMPARE_EQ(item2->startColumn(), 20);
@@ -567,7 +567,7 @@ void EmojiTest::wrongVariantEmoji()
     QCOMPARE_EQ(item3->endColumn(), 38);
     QCOMPARE_EQ(item3->startLine(), 0);
     QCOMPARE_EQ(item3->endLine(), 0);
-    QCOMPARE(item3->text(), QStringLiteral("wrong hair:"));
+    QCOMPARE(item3->text(), QStringLiteral(" wrong hair:"));
 }
 
 /*
@@ -696,7 +696,7 @@ void EmojiTest::wrongToneAndWrongVariantEmoji()
     QCOMPARE_EQ(item1->endColumn(), 32);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Wrong tone + wrong variant emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Wrong tone + wrong variant emoji "));
 
     const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
     QCOMPARE_EQ(item2->startColumn(), 33);
@@ -714,7 +714,7 @@ void EmojiTest::wrongToneAndWrongVariantEmoji()
     QCOMPARE_EQ(item3->endColumn(), 68);
     QCOMPARE_EQ(item3->startLine(), 0);
     QCOMPARE_EQ(item3->endLine(), 0);
-    QCOMPARE(item3->text(), QStringLiteral("wrong skin tone, wrong hair:"));
+    QCOMPARE(item3->text(), QStringLiteral(" wrong skin tone, wrong hair:"));
 }
 
 /*

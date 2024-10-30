@@ -1,13 +1,13 @@
 <!--
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 -->
 
 # Klevernotes 
 
 KleverNotes is a note taking and management application. It uses markdown and allow you to preview your content. 
 
-Different versions of Markdown are supported thanks to the [md4qt](https://github.com/igormironchik/md4qt) parser with which the project works closely (many thanks to the author: igormironchik).
+Different versions of Markdown are supported thanks to the [md4qt](https://invent.kde.org/libraries/md4qt) parser with which the project works closely (many thanks to the author: igormironchik).
 This parser allows text plugins to extend Markdown parsing, enabling the creation of KleverNotes "[plugins](https://invent.kde.org/office/klevernotes#plugins)". 
 
 **Get involved and join our Matrix channel: [klevernotes:kde.org](https://matrix.to/#/#klevernotes:kde.org)**

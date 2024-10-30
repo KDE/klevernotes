@@ -15,6 +15,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 // ICU include.
@@ -71,7 +72,12 @@ public:
         return m_str;
     }
 
-    String virginString(long long int pos = 0, long long int len = -1) const
+    const String &fullVirginString() const
+    {
+        return m_virginStr;
+    }
+
+    String virginSubString(long long int pos = 0, long long int len = -1) const
     {
         if (pos < 0) {
             pos = 0;
@@ -100,31 +106,27 @@ public:
             }
         }
 
-        if (len > 1) {
-            auto virginEndPos = virginPos(pos + len - 1);
+        auto virginEndPos = virginPos(pos + len - 1, true);
 
-            if (m_virginStr[virginEndPos] == Latin1Char('\t')) {
-                const auto spaces = countOfSpacesForTab(virginEndPos);
+        if (m_virginStr[virginEndPos] == Latin1Char('\t')) {
+            const auto spaces = countOfSpacesForTab(virginEndPos);
 
-                for (long long int i = 1; i < spaces; ++i) {
-                    if (virginPos(pos + len - 1 - i) != virginEndPos) {
-                        endStr = String(i, Latin1Char(' '));
-                        --virginEndPos;
-                        break;
-                    }
+            for (long long int i = 1; i < spaces; ++i) {
+                if (virginPos(pos + len - 1 - i) != virginEndPos) {
+                    endStr = String(i, Latin1Char(' '));
+                    --virginEndPos;
+                    break;
                 }
             }
-
-            return startStr + m_virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1) + endStr;
-        } else {
-            return (startStr.isEmpty() ? String(1, m_virginStr[virginStartPos]) : String(1, Latin1Char(' ')));
         }
+
+        return startStr + m_virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1) + endStr;
     }
 
-    long long int virginPos(long long int pos) const
+    long long int virginPos(long long int pos, bool end = false) const
     {
         for (auto it = m_changedPos.crbegin(), last = m_changedPos.crend(); it != last; ++it) {
-            pos = virginPosImpl(pos, *it);
+            pos = virginPosImpl(pos, *it, end);
         }
 
         return pos;
@@ -370,32 +372,30 @@ private:
     std::vector<std::pair<LengthAndStartPos, std::vector<ChangedPos>>> m_changedPos;
 
 private:
-    long long int virginPosImpl(long long int pos, const std::pair<LengthAndStartPos, std::vector<ChangedPos>> &changed) const
+    long long int virginPosImpl(long long int pos, const std::pair<LengthAndStartPos, std::vector<ChangedPos>> &changed, bool end) const
     {
-        long long int p = 0;
-
         for (const auto &c : changed.second) {
-            if (c.m_pos + std::min(c.m_oldLen, c.m_len) <= pos + p) {
-                if (c.m_oldLen < c.m_len) {
-                    if (c.m_len - c.m_oldLen >= pos) {
-                        p -= pos;
-                    } else if (c.m_pos - p + changed.first.m_firstPos > changed.first.m_length) {
-                        p -= (pos + p + changed.first.m_firstPos - changed.first.m_length
-                              + (pos >= changed.first.m_length - p + (c.m_len - c.m_oldLen) ? 0 : 1));
-                    } else {
-                        const auto tmp = c.m_len - c.m_oldLen;
+            const auto startPos = c.m_pos;
+            const auto endPos = startPos + c.m_len - 1;
 
-                        p -= tmp - (pos >= c.m_pos && pos < c.m_pos + tmp ? (tmp - pos + c.m_pos) : 0);
-                    }
+            if (pos >= startPos && pos <= endPos) {
+                const auto oldEndPos = startPos + c.m_oldLen - 1;
+
+                if (pos > oldEndPos || end) {
+                    return oldEndPos + changed.first.m_firstPos;
                 } else {
-                    p += (c.m_oldLen - c.m_len);
+                    return pos + changed.first.m_firstPos;
                 }
+            } else if (pos > endPos) {
+                pos += c.m_oldLen - c.m_len;
             } else {
                 break;
             }
         }
 
-        return pos + p + changed.first.m_firstPos;
+        pos += changed.first.m_firstPos;
+
+        return (pos > changed.first.m_length ? changed.first.m_length : pos);
     }
 
     long long int countOfSpacesForTab(long long int virginPos) const

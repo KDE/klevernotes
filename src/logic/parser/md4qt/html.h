@@ -159,15 +159,7 @@ protected:
         if (!m_justCollectFootnoteRefs) {
             openStyle(t->openStyles());
 
-            if (t->isSpaceBefore()) {
-                m_html.push_back(Trait::latin1ToString(" "));
-            }
-
             m_html.push_back(prepareTextForHtml<Trait>(t->text()));
-
-            if (t->isSpaceAfter()) {
-                m_html.push_back(Trait::latin1ToString(" "));
-            }
 
             closeStyle(t->closeStyles());
         }
@@ -180,9 +172,9 @@ protected:
         if (!m_justCollectFootnoteRefs) {
             openStyle(m->openStyles());
 
-            m_html.push_back(m->isInline() ? Trait::latin1ToString("$ ") : Trait::latin1ToString("$$ "));
+            m_html.push_back(m->isInline() ? Trait::latin1ToString("$") : Trait::latin1ToString("$$"));
             m_html.push_back(prepareTextForHtml<Trait>(m->expr()));
-            m_html.push_back(m->isInline() ? Trait::latin1ToString(" $") : Trait::latin1ToString(" $$"));
+            m_html.push_back(m->isInline() ? Trait::latin1ToString("$") : Trait::latin1ToString("$$"));
 
             closeStyle(m->closeStyles());
         }
@@ -205,7 +197,7 @@ protected:
         bool wrap) override
     {
         if (wrap && !m_justCollectFootnoteRefs) {
-            m_html.push_back(Trait::latin1ToString("<p>"));
+            m_html.push_back(Trait::latin1ToString("<p dir=\"auto\">"));
         }
 
         Visitor<Trait>::onParagraph(p, wrap);
@@ -321,7 +313,7 @@ protected:
                                 m_html.push_back(Trait::latin1ToString(" class=\"contains-task-list\""));
                             }
 
-                            m_html.push_back(Trait::latin1ToString(">\n"));
+                            m_html.push_back(Trait::latin1ToString(" dir=\"auto\">\n"));
                         }
                     } else {
                         if (!m_justCollectFootnoteRefs) {
@@ -331,7 +323,7 @@ protected:
                                 m_html.push_back(Trait::latin1ToString(" class=\"contains-task-list\""));
                             }
 
-                            m_html.push_back(Trait::latin1ToString(">\n"));
+                            m_html.push_back(Trait::latin1ToString(" dir=\"auto\">\n"));
                         }
                     }
                 }
@@ -372,7 +364,7 @@ protected:
                 if (!m_justCollectFootnoteRefs) {
                     m_html.push_back(Trait::latin1ToString("<th"));
                     m_html.push_back(tableAlignmentToHtml<Trait>(t->columnAlignment(columns)));
-                    m_html.push_back(Trait::latin1ToString(">\n"));
+                    m_html.push_back(Trait::latin1ToString(" dir=\"auto\">\n"));
                 }
 
                 this->onTableCell(th->get());
@@ -399,7 +391,7 @@ protected:
                     if (!m_justCollectFootnoteRefs) {
                         m_html.push_back(Trait::latin1ToString("\n<td"));
                         m_html.push_back(tableAlignmentToHtml<Trait>(t->columnAlignment(i)));
-                        m_html.push_back(Trait::latin1ToString(">\n"));
+                        m_html.push_back(Trait::latin1ToString(" dir=\"auto\">\n"));
                     }
 
                     this->onTableCell(c->get());
@@ -417,7 +409,7 @@ protected:
 
                 if (!m_justCollectFootnoteRefs) {
                     for (; i < columns; ++i) {
-                        m_html.push_back(Trait::latin1ToString("<td></td>"));
+                        m_html.push_back(Trait::latin1ToString("<td dir=\"auto\"></td>"));
                     }
 
                     m_html.push_back(Trait::latin1ToString("\n</tr>\n"));
@@ -640,7 +632,7 @@ protected:
             m_html.push_back(Trait::latin1ToString("<"));
             m_html.push_back(ht);
             m_html.push_back(headingIdToHtml(h));
-            m_html.push_back(Trait::latin1ToString(">"));
+            m_html.push_back(Trait::latin1ToString(" dir=\"auto\">"));
         }
 
         if (h->text().get()) {
@@ -657,7 +649,7 @@ protected:
     virtual void onFootnotes(const typename Trait::String &hrefForRefBackImage)
     {
         if (!m_fns.empty()) {
-            m_html.push_back(Trait::latin1ToString("<section class=\"footnotes\"><ol>"));
+            m_html.push_back(Trait::latin1ToString("<section class=\"footnotes\"><ol dir=\"auto\">"));
         }
 
         int i = 1;
