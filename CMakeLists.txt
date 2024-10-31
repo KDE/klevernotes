@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-3-Clause
-# SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+# SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -51,6 +51,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     I18n
     ConfigWidgets
+    IconThemes
     KIO
 )
 

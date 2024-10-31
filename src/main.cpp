@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 */
 
 #include <QApplication>
@@ -14,6 +14,7 @@
 #include "app.h"
 #include "kleverconfig.h"
 #include <KAboutData>
+#include <KIconTheme>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -39,6 +40,10 @@
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QtWebEngineQuick::initialize();
+
+    KIconTheme::initTheme();
+    QIcon::setFallbackThemeName(QStringLiteral("breeze"));
+
     QApplication app(argc, argv);
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
 

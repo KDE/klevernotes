@@ -74,7 +74,8 @@ target_link_libraries(klevernoteslib PUBLIC
     KF6::ConfigCore
     KF6::ConfigGui
     KF6::ConfigWidgets
-    KF6::KIOCore 
+    KF6::KIOCore
+    KF6::IconThemes
 )
 
 add_executable(klevernotes main.cpp resources.qrc)
