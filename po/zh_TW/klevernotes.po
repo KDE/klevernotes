@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-26 00:40+0000\n"
+"POT-Creation-Date: 2024-11-01 00:40+0000\n"
 "PO-Revision-Date: 2024-10-20 00:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1779,35 +1779,35 @@ msgstr "嘗試建立分類時發生錯誤。"
 msgid "An error occurred while trying to create the storage."
 msgstr "建立筆記儲存庫時發生錯誤。"
 
-#: main.cpp:51
+#: main.cpp:56
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes 筆記"
 
-#: main.cpp:55
+#: main.cpp:60
 #, kde-format
 msgid "Note taking and management application"
 msgstr "筆記記錄與管理應用程式"
 
-#: main.cpp:59
+#: main.cpp:64
 #, kde-format
 msgid "(c) 2022-2023"
 msgstr "(c) 2022-2023"
 
-#: main.cpp:60
+#: main.cpp:65
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:65
+#: main.cpp:70
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kisaragi Hiu"
 
-#: main.cpp:65
+#: main.cpp:70
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
