@@ -273,13 +273,13 @@ msgstr "请使用其他名称。"
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
-msgstr ""
+msgstr "这个名称包含“/”，可能引起问题，因此是不允许的。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr ""
+msgstr "请删除“/”或选择其他名称。"
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -533,7 +533,7 @@ msgstr "自动裁剪"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr ""
+msgstr "绘制文本"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -580,13 +580,13 @@ msgstr "请为您未来的 KleverNotes 存储选择一个位置，或选择一�
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "宽度："
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr ""
+msgstr "字体："
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
