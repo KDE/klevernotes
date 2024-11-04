@@ -52,6 +52,7 @@
   <summary xml:lang="tr">Not Alma Uygulaması</summary>
   <summary xml:lang="uk">Записуйте ваші нотатки та керуйте ними</summary>
   <summary xml:lang="x-test">xxTake and manage your notesxx</summary>
+  <summary xml:lang="zh-CN">记下并管理您的笔记</summary>
   <summary xml:lang="zh-TW">寫下或管理筆記</summary>
   <url type="homepage">https://invent.kde.org/office/klevernotes</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=KleverNotes</url>
