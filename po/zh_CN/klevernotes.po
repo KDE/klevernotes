@@ -591,44 +591,44 @@ msgstr "字体："
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "填充工具模式："
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "填充"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "描边"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "描边并填充"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
 #, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr ""
+msgstr "填充颜色"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "首选"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "次要"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -690,7 +690,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "启用自适应标签大小"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -698,7 +698,7 @@ msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
-msgstr ""
+msgstr "自适应尺寸将根据其周围范围缩放标签大小。"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -708,7 +708,7 @@ msgctxt ""
 msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
-msgstr ""
+msgstr "示例：页眉中的标签将与页眉文本的其余部分一样大。"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -716,7 +716,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "标签比例"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -724,7 +724,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "标题预览"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -732,7 +732,7 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "斜体文本及其标签"
 
 #: contents/ui/settings/EditorTab.qml:21
 #, kde-format
@@ -762,13 +762,13 @@ msgstr "空格数："
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr ""
+msgstr "编辑器高亮"
 
 #: contents/ui/settings/EditorTab.qml:87
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr ""
+msgstr "启用编辑器高亮"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
