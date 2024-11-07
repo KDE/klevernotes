@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -20,8 +20,8 @@ Kirigami.Page {
     readonly property bool isVisible: applicationWindow().isMainPage()
 
     property QtObject currentlySelected
-    property QtObject editorView: editorView
-    property QtObject todoView: todoLoader.item
+    property alias editorView: editorView
+    property alias todoView: todoView
 
     title: hasNote ? currentlySelected.text : i18nc("@title:page", "Welcome")
 
@@ -30,17 +30,12 @@ Kirigami.Page {
 
     padding: 0
 
-    actions: {
-        if (hasNote) {
-            // At first both Loaders item are "null"
-            if (bottomToolBar.showNoteEditor) { 
-                return editorView.actions
-            }
-            return todoLoader.item ? todoLoader.item.actions : []
-        }
-        return []
-    }
-
+    actions: !hasNote 
+                ? []
+                : bottomToolBar.showNoteEditor 
+                    ? editorView.actions 
+                    : todoView.actions
+    
     onCurrentlySelectedChanged: if (root.hasNote) {
         const editor = editorView.editor
         const oldPath = editorView.path
@@ -48,23 +43,71 @@ Kirigami.Page {
         editor.saveNote(text, oldPath)
     }
 
-    // Using a Loader make the acces to QTextDocument unstable
-    EditorView {
-        id: editorView
-        path: hasNote ? currentlySelected.path + "/note.md" : ""
-        visible: bottomToolBar.showNoteEditor && root.hasNote
+    RowLayout {
+        id: viewLayout
         anchors.fill: parent
-    }
+        readonly property int transitionTime: Kirigami.Units.longDuration + Kirigami.Units.shortDuration * 1
 
-    Loader {
-        id: todoLoader
+        EditorView {
+            id: editorView
+            path: hasNote ? currentlySelected.path + "/note.md" : ""
+            visible: 0.5 < opacity
+            opacity: 0
+            Layout.fillHeight: true
 
-        sourceComponent: ToDoView {
-            path: currentlySelected.path + "/todo.json"
-            visible: !bottomToolBar.showNoteEditor
+            states: [
+                State {
+                    name: "visible"
+                    when: bottomToolBar.showNoteEditor && root.hasNote
+                    PropertyChanges { target: editorView; Layout.preferredWidth: viewLayout.width }
+                    PropertyChanges { target: editorView; opacity: 1 }
+                },
+                State {
+                    name: "invisible"
+                    when: !bottomToolBar.showNoteEditor && root.hasNote
+                    PropertyChanges { target: editorView; Layout.preferredWidth: 0 }
+                    PropertyChanges { target: editorView; opacity: 0 }
+                }
+            ]
+
+            Behavior on Layout.preferredWidth {
+                NumberAnimation { duration: viewLayout.transitionTime ; easing.type: Easing.InOutCubic }
+            }
+            Behavior on opacity {
+                NumberAnimation { duration: viewLayout.transitionTime }
+            }
         }
-        active: root.hasNote
-        anchors.fill: parent
+
+        ToDoView {
+            id: todoView
+            path: hasNote ? currentlySelected.path + "/todo.json" : ""
+            visible: 0.5 < opacity
+            opacity: 0
+            Layout.fillHeight: true
+            Layout.alignment: Qt.AlignRight
+
+            states: [
+                State {
+                    name: "visible"
+                    when: !bottomToolBar.showNoteEditor 
+                    PropertyChanges { target: todoView; Layout.preferredWidth: viewLayout.width }
+                    PropertyChanges { target: todoView; opacity: 1 }
+                },
+                State {
+                    name: "invisible"
+                    when: bottomToolBar.showNoteEditor 
+                    PropertyChanges { target: todoView; Layout.preferredWidth: 0 }
+                    PropertyChanges { target: todoView; opacity: 0 }
+                }
+            ]
+
+            Behavior on Layout.preferredWidth {
+                NumberAnimation { duration: viewLayout.transitionTime ; easing.type: Easing.InOutCubic }
+            }
+            Behavior on opacity {
+                NumberAnimation { duration: viewLayout.transitionTime }
+            }
+        }
     }
 
     ColumnLayout {
@@ -92,6 +135,14 @@ Kirigami.Page {
 
             Layout.margins: Kirigami.Units.largeSpacing * 2
             Layout.fillWidth: true
+        }
+    }
+
+    Kirigami.Separator {
+        anchors {
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
         }
     }
 

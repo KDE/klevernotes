@@ -8,7 +8,7 @@ project(klevernotes VERSION "1.1.1")
 include(FeatureSummary)
 
 set(QT_MIN_VERSION "6.5")
-set(KF_MIN_VERSION "6.0")
+set(KF_MIN_VERSION "6.4")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 
@@ -50,7 +50,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
     I18n
-    ConfigWidgets
+    ColorScheme
     IconThemes
     KIO
 )

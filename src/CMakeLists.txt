@@ -73,7 +73,7 @@ target_link_libraries(klevernoteslib PUBLIC
     KF6::CoreAddons
     KF6::ConfigCore
     KF6::ConfigGui
-    KF6::ConfigWidgets
+    KF6::ColorScheme
     KF6::KIOCore
     KF6::IconThemes
 )
