@@ -206,6 +206,9 @@ FormCard.FormCardDialog {
                 property int idealWidth
                 property int idealHeight
 
+                height: Kirigami.Units.iconSizes.huge * 3
+                width: imageHolder.width
+
                 anchors.centerIn: parent
 
                 source: path
@@ -213,9 +216,9 @@ FormCard.FormCardDialog {
                 fillMode: Image.PreserveAspectFit
                 sourceClipRect: imagePickerDialog.paintClipRect
 
-                onStatusChanged: if (status == Image.Ready){
+                onStatusChanged: if (status === Image.Ready){
                     // If the image is placed inside the note folder, we want it to be max 1024x1024
-                    if (Math.max(implicitWidth, implicitHeight, 1024) == 1024) {
+                    if (Math.max(implicitWidth, implicitHeight, 1024) === 1024) {
                         idealWidth = implicitWidth
                         idealHeight = implicitHeight
                     } else {
@@ -226,7 +229,7 @@ FormCard.FormCardDialog {
                         idealWidth = Math.round(implicitWidth / divider)
                         idealHeight = Math.round(implicitHeight / divider)
                     }
-                    height = Kirigami.Units.iconSizes.huge * 3
+
                 }
             }
 
