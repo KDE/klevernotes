@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-01 00:40+0000\n"
+"POT-Creation-Date: 2024-11-08 00:40+0000\n"
 "PO-Revision-Date: 2024-09-19 07:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -507,12 +507,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Vítejte"
 
-#: contents/ui/pages/MainPage.qml:78
+#: contents/ui/pages/MainPage.qml:121
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Vítejte v KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:88
+#: contents/ui/pages/MainPage.qml:131
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Vytvořte nebo vyberte poznámku a začněte pracovat."
@@ -1312,17 +1312,17 @@ msgstr "Nastavení"
 msgid "About KleverNotes"
 msgstr "O aplikaci KleverNotes"
 
-#: contents/ui/textEditor/BottomToolBar.qml:18
-#, kde-format
-msgctxt "@label:button, as in 'A note'"
-msgid "Note"
-msgstr "Poznámka"
-
-#: contents/ui/textEditor/BottomToolBar.qml:26
+#: contents/ui/textEditor/BottomToolBar.qml:51
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
 msgstr "Úloha"
+
+#: contents/ui/textEditor/BottomToolBar.qml:87
+#, kde-format
+msgctxt "@label:button, as in 'A note'"
+msgid "Note"
+msgstr "Poznámka"
 
 #: contents/ui/textEditor/CheatSheet.qml:18
 #, kde-format
