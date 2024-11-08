@@ -31,7 +31,7 @@ ColumnLayout {
             configFont: Config.editorFont
             label: i18nc("@label:textbox, the font used in the text editor", "Editor font:")
 
-            onNewFontChanged: if (text !== newFont) {
+            onNewFontChanged: if (configFont !== newFont) {
                 Config.editorFont = newFont
             }
         } 

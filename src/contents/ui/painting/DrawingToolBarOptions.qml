@@ -82,7 +82,7 @@ ToolBar {
             Component.onCompleted: {
                 fontDialog.caller = fontPicker
             }
-            onNewFontChanged: if (text !== newFont) {
+            onNewFontChanged: if (configFont !== newFont) {
                 configFont = newFont
             }
         }

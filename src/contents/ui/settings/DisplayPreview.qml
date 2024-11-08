@@ -129,7 +129,7 @@ FormCard.FormCard {
 
         Layout.fillWidth: true
 
-        onNewFontChanged: if (text !== newFont) {
+        onNewFontChanged: if (configFont !== newFont) {
             Config.viewFont = newFont 
         }
     }
@@ -140,7 +140,7 @@ FormCard.FormCard {
 
         Layout.fillWidth: true
 
-        onNewFontChanged: if (text !== newFont) {
+        onNewFontChanged: if (configFont !== newFont) {
             Config.codeFont = newFont 
         }
     }
