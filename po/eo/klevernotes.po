@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-08 00:40+0000\n"
+"POT-Creation-Date: 2024-11-09 00:40+0000\n"
 "PO-Revision-Date: 2024-09-15 04:00+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -77,7 +77,7 @@ msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "Bild-elektilo"
 
-#: contents/ui/dialogs/FontPickerDialog.qml:14
+#: contents/ui/dialogs/FontPickerDialog.qml:34
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
@@ -113,19 +113,19 @@ msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Bildkolekto"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:241
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Ŝajnas ke la bildo kiun vi elektis ne ekzistas aŭ ne etsas subtenata."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:260
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Bilda teksto:"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:269
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"

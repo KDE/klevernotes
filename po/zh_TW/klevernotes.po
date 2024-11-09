@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-08 00:40+0000\n"
+"POT-Creation-Date: 2024-11-09 00:40+0000\n"
 "PO-Revision-Date: 2024-10-20 00:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -78,7 +78,7 @@ msgctxt "@title:dialog"
 msgid "Image picker"
 msgstr "影像選取工具"
 
-#: contents/ui/dialogs/FontPickerDialog.qml:14
+#: contents/ui/dialogs/FontPickerDialog.qml:34
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
@@ -114,19 +114,19 @@ msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "影像收藏"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:241
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "您選取的影像看來不存在或不支援。"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:260
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "影像文字："
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:269
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
