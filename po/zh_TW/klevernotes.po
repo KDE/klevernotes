@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-09 00:40+0000\n"
-"PO-Revision-Date: 2024-10-20 00:09+0900\n"
+"PO-Revision-Date: 2024-12-02 17:13+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 # %1 是譯文，所以不加空格
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
@@ -536,12 +536,10 @@ msgid "Auto crop"
 msgstr "自動裁剪"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "文字顏色："
+msgstr "要繪製的文字"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -588,7 +586,7 @@ msgstr "請選擇新的筆記儲存庫的路徑或是一個既存的筆記儲存
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "寬度："
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
@@ -599,46 +597,44 @@ msgstr "字型："
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "填滿工具模式："
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "填滿"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "外框"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "外框與填滿"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "標題顏色："
+msgstr "填滿顏色"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "主要"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "次要"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
