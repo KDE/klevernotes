@@ -94,6 +94,7 @@ Get the latest release on flathub.<br>
 <a href='https://flathub.org/apps/org.kde.klevernotes'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
 <br>
+
 A Nightly Flatpak, based on the master branch is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command (based on [this tutorial](https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps)) to get it:
 
 ```
@@ -122,16 +123,16 @@ base-devel extra-cmake-modules cmake qt6-base qt6-declarative qt6-quickcontrols2
 Once kdesrc-build is correctly installed on your system:
 
 1. Let's make sure KleverNotes will look good by running:
-```
-kdesrc-build kirigami kcoreaddons ki18n breeze plasma-integration qqc2-desktop-style
-```
+    ```
+    kdesrc-build kirigami kcoreaddons ki18n breeze plasma-integration qqc2-desktop-style
+    ```
 
 2. Let's build KleverNotes:
-```
-kdesrc-build klevernotes
-```
+    ```
+    kdesrc-build klevernotes
+    ```
 
 3. Start it with:
-```
-kdesrc-run klevernotes
-```
+    ```
+    kdesrc-run klevernotes
+    ```
