@@ -25,6 +25,7 @@
   <name xml:lang="nl">KleverNotes</name>
   <name xml:lang="pl">KleverNotes</name>
   <name xml:lang="pt">KleverNotes</name>
+  <name xml:lang="sa">क्लेवरनोट्स</name>
   <name xml:lang="sk">KleverNotes</name>
   <name xml:lang="sl">KleverNotes</name>
   <name xml:lang="sv">KleverNotes</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="ka">შექმენით და მართეთ თქვენი შენიშვნები</summary>
   <summary xml:lang="nl">Neem notities op en beheer ze</summary>
   <summary xml:lang="pl">Sporządzaj i zarządzaj swoimi notatkami</summary>
+  <summary xml:lang="sa">स्वस्य टिप्पणीं गृहीत्वा प्रबन्धयन्तु</summary>
   <summary xml:lang="sl">Vzemite in upravljajte svoje zapiske</summary>
   <summary xml:lang="sv">Skriv och hantera anteckningar</summary>
   <summary xml:lang="tr">Not Alma Uygulaması</summary>
@@ -97,6 +99,7 @@
     <p xml:lang="nl">KleverNotes is een toepassing voor maken en beheren van notities voor mobiele en bureaublad apparaten. Het gebruikt markdown en biedt u het bekijken van een voorbeeld van uw inhoud.</p>
     <p xml:lang="pl">KleverNotes jest aplikacją do robienia i zarządzania notatkami dla urządzeń przenośnych i biurkowych. Używa markdown i umożliwia podgląd treści.</p>
     <p xml:lang="pt">O KleverNotes é uma aplicação para tirar e gerir notas no seu telemóvel e no seu computador. Use o Markdown e permite-lhe antever o seu conteúdo.</p>
+    <p xml:lang="sa">KleverNotes भवतः मोबाईल-डेस्कटॉप-उपकरणानाम् कृते टिप्पणी-ग्रहणं प्रबन्धन-अनुप्रयोगः अस्ति । एतत् markdown इत्यस्य उपयोगं करोति तथा च भवतः सामग्रीं पूर्वावलोकनं कर्तुं शक्नोति ।</p>
     <p xml:lang="sl">KleverNotes je aplikacija za vnos opomb in upravljanje za vaše mobilne in namizne naprave. Uporablja markdown in dovoljuje predogled vaše vsebine.</p>
     <p xml:lang="sv">KleverNotes är ett antecknings- och hanteringsprogram för mobil och skrivbord. Det använder Markdown och låter dig förhandsgranska innehållet.</p>
     <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi önizlemenize izin verir.</p>
@@ -125,6 +128,7 @@
       <caption xml:lang="ko">데스크톱의 주 페이지</caption>
       <caption xml:lang="nl">Hoofdpagina op bureaublad</caption>
       <caption xml:lang="pl">Główna strona na komputerze biurkowym</caption>
+      <caption xml:lang="sa">डेस्कटॉप् इत्यत्र मुख्यपृष्ठम्</caption>
       <caption xml:lang="sl">Glavna stran na namizju</caption>
       <caption xml:lang="sv">Huvudsida på skrivbord</caption>
       <caption xml:lang="tr">Masaüstünde ana sayfa</caption>
@@ -152,6 +156,7 @@
       <caption xml:lang="ko">작은 화면에서의 주 페이지</caption>
       <caption xml:lang="nl">Hoofdpagina op kleine vormfactor</caption>
       <caption xml:lang="pl">Główna strona na urządzeniu przenośnym</caption>
+      <caption xml:lang="sa">लघु रूप कारक पर मुख्य पृष्ठ</caption>
       <caption xml:lang="sl">Glavna stran v majhni obliki</caption>
       <caption xml:lang="sv">Huvudsida på liten formfaktor</caption>
       <caption xml:lang="tr">Küçük biçimde ana sayfa</caption>
@@ -181,6 +186,7 @@
       <caption xml:lang="ko">할 일 페이지</caption>
       <caption xml:lang="nl">Pagina te-doen</caption>
       <caption xml:lang="pl">Strona zadań</caption>
+      <caption xml:lang="sa">सर्वं पृष्ठम्</caption>
       <caption xml:lang="sl">Stran stvari za še narediti</caption>
       <caption xml:lang="sv">Uppgiftssida</caption>
       <caption xml:lang="tr">Yapılacaklar sayfası</caption>
@@ -210,6 +216,7 @@
       <caption xml:lang="ko">그리기 페이지</caption>
       <caption xml:lang="nl">Pagina om op te tekenen</caption>
       <caption xml:lang="pl">Strona rysowania</caption>
+      <caption xml:lang="sa">रेखाचित्र पृष्ठ</caption>
       <caption xml:lang="sl">Stran risanja</caption>
       <caption xml:lang="sv">Teckningssida</caption>
       <caption xml:lang="tr">Çizim sayfası</caption>
