@@ -1,170 +1,170 @@
-# Copyright (C) 2023 This file is copyright:
+# Hindi translations for klevernotes package.
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# SPDX-FileCopyrightText: 2023, 2024 Adrián Chaves (Gallaecio)
+# Kali <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-09 00:40+0000\n"
-"PO-Revision-Date: 2024-12-16 00:33+0100\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
-"Language: gl\n"
+"PO-Revision-Date: 2024-12-15 19:24+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Poedit 3.5\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
 msgctxt "@info, as in 'A note category'"
 msgid "Are you sure you want to delete the category <filename>%1</filename>?"
-msgstr "Seguro que quere eliminar a categoría <filename>%1</filename>?"
+msgstr "क्या आप वाकई <filename>%1</filename> श्रेणी को हटाना चाहते हैं?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:18
 #, kde-kuit-format
 msgctxt "@info, as in 'A note group'"
 msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-msgstr "Seguro que quere eliminar o grupo <filename>%1</filename>?"
+msgstr "क्या आप वाकई समूह <filename>%1</filename> को हटाना चाहते हैं?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:19
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the note <filename>%1</filename>?"
-msgstr "Seguro que quere eliminar a nota <filename>%1</filename>?"
+msgstr "क्या आप वाकई नोट <filename>%1</filename> को हटाना चाहते हैं?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Category Confirmation"
-msgstr "Confirmación de eliminación de categoría"
+msgstr "श्रेणी हटाने की पुष्टि"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Group Confirmation"
-msgstr "Confirmación de eliminación de grupo"
+msgstr "समूह हटाने की पुष्टि"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
-msgstr "Confirmación de eliminación de nota"
+msgstr "नोट हटाने की पुष्टि"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:42
 #, kde-format
 msgctxt "@title:dialog"
 msgid "This action can not be reverted."
-msgstr "Esta acción non pode reverterse."
+msgstr "इस कार्रवाई को पूर्ववत नहीं किया जा सकता."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No stickers"
-msgstr "Non hai adhesivos"
+msgstr "कोई स्टिकर नहीं"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr "Non hai expresións"
+msgstr "कोई इमोजी नहीं"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
-msgstr "Selector de imaxe"
+msgstr "छवि चयनकर्ता"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:34
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
-msgstr "Selector de tipos de letra"
+msgstr "फ़ॉन्ट चयनकर्ता"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:34
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr "Selector de imaxe"
+msgstr "छवि चयनकर्ता"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:83
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
-msgstr "Imaxe web"
+msgstr "वेब छवि"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:112
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
-msgstr "Imaxe local"
+msgstr "स्थानीय छवि"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:143
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr "Pintar unha imaxe"
+msgstr "एक चित्र पेंट करें"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:166
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr "Colección de imaxes"
+msgstr "छवि संग्रह"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:241
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
-msgstr "Parece que a imaxe seleccionada non existe ou non é compatíbel."
+msgstr "ऐसा प्रतीत होता है कि आपके द्वारा चयनित छवि मौजूद नहीं है या समर्थित नहीं है।"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:260
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
-msgstr "Texto da imaxe: "
+msgstr "छवि पाठ: "
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:269
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr "Coloque esta imaxe no cartafol de notas."
+msgstr "इस छवि को नोट फ़ोल्डर के अंदर रखें"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr "Pintar con KleverNotes"
+msgstr "क्लेवरनोट्स पेंटिंग"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr "Está a piques de saír sen gardar o debuxo!"
+msgstr "आप अपना चित्र सहेजे बिना ही जाने वाले हैं!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "Quere gardalo antes de saír?"
+msgstr "क्या आप जाने से पहले इसे सहेजना चाहते हैं?"
 
 #: contents/ui/dialogs/LinkDialog.qml:17
 #: contents/ui/dialogs/LinkNoteDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr "Crear a súa ligazón"
+msgstr "अपना लिंक बनाएं"
 
 #: contents/ui/dialogs/LinkDialog.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr "Ligar o ficheiro local."
+msgstr "स्थानीय फ़ाइल लिंक करें"
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
-msgstr "URL:"
+msgstr "यूआरएल:"
 
 #: contents/ui/dialogs/LinkDialog.qml:75
 #: contents/ui/dialogs/LinkNoteDialog.qml:92
@@ -172,73 +172,73 @@ msgstr "URL:"
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr "Texto da ligazón:"
+msgstr "लिंक पाठ:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:39
 #, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "Nota:"
+msgstr "टिप्पणी:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:65
 #, kde-format
 msgctxt "@label:switch"
 msgid "Search headers"
-msgstr "Buscar nas cabeceiras"
+msgstr "खोज शीर्षलेख"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:77
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "Cabeceira:"
+msgstr "हेडर:"
 
 #: contents/ui/dialogs/MoveDialog.qml:21
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "Where do you want to move this group ?"
-msgstr "Seguro que quere mover este grupo?"
+msgstr "आप इस समूह को कहां ले जाना चाहते हैं?"
 
 #: contents/ui/dialogs/MoveDialog.qml:22
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr "Seguro que quere mover esta nota?"
+msgstr "आप इस नोट को कहां ले जाना चाहते हैं?"
 
 #: contents/ui/dialogs/MoveDialog.qml:26
 #, kde-format
 msgctxt "@title:dialog, to move a group/note"
 msgid "Move"
-msgstr "Mover"
+msgstr "कदम"
 
 #: contents/ui/dialogs/NamingDialog.qml:24
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "Escolla un nome"
+msgstr "एक नाम चुनो"
 
 #: contents/ui/dialogs/NamingDialog.qml:50
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr "Nome:"
+msgstr "नाम:"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:13
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note category'"
 msgid "This category already exists."
-msgstr "Esta categoría xa existe."
+msgstr "यह श्रेणी पहले से मौजूद है."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:14
 #, kde-format
 msgctxt "@subtitle:dialog, as in 'A note group'"
 msgid "This group already exists."
-msgstr "Este grupo xa existe."
+msgstr "यह समूह पहले से मौजूद है."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:15
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr "Esta nota xa existe."
+msgstr "यह नोट पहले से मौजूद है."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:22
 #, kde-format
@@ -246,7 +246,7 @@ msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr "Almacenamento de KleverNotes"
+msgstr "क्लेवरनोट्स भंडारण"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:36
 #, kde-format
@@ -254,59 +254,56 @@ msgctxt "@subtitle:dialog"
 msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
-msgstr ""
-"Non se permite que os nomes comecen cun punto porque podería ser "
-"problemático."
+msgstr "यह नाम बिंदु से शुरू होता है, इससे समस्या हो सकती है और इसलिए इसकी अनुमति नहीं है।"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr "Retire o punto ou escolla outro nome."
+msgstr "कृपया बिंदु हटा दें या कोई अन्य नाम चुनें."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
-msgstr "Escolla outro nome."
+msgstr "कृपया इसके लिए कोई दूसरा नाम चुनें."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
-msgstr ""
-"Non se permite que os nomes conteñan «/» porque podería ser problemático."
+msgstr "इस नाम में '/' है, इससे समस्या हो सकती है और इसलिए इसकी अनुमति नहीं है।"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Retire o «/» ou escolla outro nome."
+msgstr "कृपया '/' हटा दें या कोई अन्य नाम चुनें."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr "Diálogo de impresión"
+msgstr "मुद्रण संवाद"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
 #, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Imprimir o HTML"
+msgstr "प्रिंट html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to pdf"
-msgstr "Imprimir en PDF"
+msgstr "पीडीएफ में प्रिंट करें"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
-msgstr "Desactivar pola limitación de flatpak."
+msgstr "फ्लैटपैक सीमा के कारण अक्षम."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -314,7 +311,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "Almacenamento creado en "
+msgstr "संग्रहण बनाया गया"
 
 #: contents/ui/dialogs/StorageDialog.qml:17
 #, kde-format
@@ -322,7 +319,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr "Almacenamento existente escollido en "
+msgstr "मौजूदा संग्रहण चुना गया"
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -335,43 +332,43 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Parece que é a primeira vez que usa a aplicación.\n"
+"ऐसा लगता है कि आप इस ऐप का पहली बार उपयोग कर रहे हैं!\n"
 "\n"
-"Escolla onde ten ou quere o almacenamento de KleverNotes."
+"कृपया अपने भविष्य के क्लेवरनोट्स स्टोरेज के लिए कोई स्थान चुनें या कोई मौजूदा स्थान चुनें।"
 
 #: contents/ui/dialogs/StorageDialog.qml:26
 #, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
-msgstr "Almacenamento de KleverNotes"
+msgstr "क्लेवरनोट्स भंडारण"
 
 #: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr "Almacenamento existente"
+msgstr "मौजूदा भंडारण"
 
 #: contents/ui/dialogs/StorageDialog.qml:51
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr "Cambiar a ruta de almacenamento"
+msgstr "संग्रहण पथ बदलें"
 
 #: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr "Crear un almacenamento"
+msgstr "भंडारण बनाएं"
 
 #: contents/ui/dialogs/StorageDialog.qml:67
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr "Crear un novo almacenamento."
+msgstr "नया स्टोरेज बनाएं"
 
 #: contents/ui/dialogs/StorageDialog.qml:97
 #, kde-format
@@ -384,15 +381,15 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Parece que o cartafol seleccionado non é un almacenamento de Klever Notes.\n"
+"ऐसा लगता है कि चयनित फ़ोल्डर KleverNotes संग्रहण नहीं है।\n"
 "\n"
-"Escolla onde ten ou quere o almacenamento de KleverNotes."
+"कृपया अपने भविष्य के KleverNotes संग्रहण के लिए कोई स्थान चुनें या कोई मौजूदा स्थान चुनें।"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr "Creación de táboas"
+msgstr "तालिका निर्माण"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:49
 #, kde-format
@@ -400,49 +397,49 @@ msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
 "the number of column"
 msgid "Size: %1 x %2"
-msgstr "Tamaño: %1 × %2"
+msgstr "आकारः %1 x %2"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:165
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr "Máis opcións"
+msgstr "अधिक विकल्प"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:219
 #, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
-msgstr "Fila"
+msgstr "पंक्ति"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:231
 #, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
-msgstr "Columna"
+msgstr "स्तंभ"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:243
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr "Aliñamento:"
+msgstr "संरेखण :"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:248
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
-msgstr "Esquerda"
+msgstr "बाएं"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:249
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
-msgstr "Centro"
+msgstr "केंद्र"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:250
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
-msgstr "Dereita"
+msgstr "सही"
 
 #: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:166
 #, kde-format
@@ -454,124 +451,124 @@ msgstr "%1/%2"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
-msgstr "Engadir unha tarefa"
+msgstr "टोडो जोड़ें"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:24
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
-msgstr "Título:"
+msgstr "शीर्षक:"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:26
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr "Título da tarefa (obrigatorio)"
+msgstr "टोडो शीर्षक (आवश्यक)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
-msgstr "Descrición:"
+msgstr "विवरण:"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:41
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
-msgstr "Opcional"
+msgstr "वैकल्पिक"
 
 #: contents/ui/dialogs/URLDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
-msgstr "Escolla un URL"
+msgstr "एक यूआरएल चुनें"
 
 #: contents/ui/main.qml:30
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr "चतुर नोट्स"
 
 #: contents/ui/pages/MainPage.qml:26
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
-msgstr "Benvida"
+msgstr "स्वागत"
 
 #: contents/ui/pages/MainPage.qml:121
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Benvida a KleverNotes!"
+msgstr "क्लेवरनोट्स में आपका स्वागत है!"
 
 #: contents/ui/pages/MainPage.qml:131
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr "Cree ou seleccione unha nota para comezar a traballar!"
+msgstr "काम शुरू करने के लिए एक नोट बनाएं या चुनें!"
 
 #: contents/ui/pages/PaintingPage.qml:27
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
-msgstr "Pintar!"
+msgstr "रँगना!"
 
 #: contents/ui/pages/PaintingPage.qml:36 contents/ui/pages/PrintingPage.qml:76
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
-msgstr "Gardar"
+msgstr "बचाना"
 
 #: contents/ui/pages/PaintingPage.qml:44
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
-msgstr "Borrar"
+msgstr "स्पष्ट"
 
 #: contents/ui/pages/PaintingPage.qml:54
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
-msgstr "Recortar automaticamente"
+msgstr "ऑटो क्रॉप"
 
 #: contents/ui/pages/PaintingPage.qml:91
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Texto para debuxar"
+msgstr "चित्र बनाने के लिए पाठ"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "छाप"
 
 #: contents/ui/pages/PrintingPage.qml:41
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
-msgstr "Tema de cores"
+msgstr "रंग थीम"
 
 #: contents/ui/pages/PrintingPage.qml:55
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
-msgstr "Fondo"
+msgstr "पृष्ठभूमि"
 
 #: contents/ui/pages/PrintingPage.qml:110
 #, kde-format
 msgid "This could cause visual artifact near the end of the pdf."
-msgstr "Isto pode causar un defecto visual cara ao final do PDF."
+msgstr "इससे पीडीएफ के अंत में दृश्य विरूपण उत्पन्न हो सकता है।"
 
 #: contents/ui/pages/PrintingPage.qml:121
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as pdf"
-msgstr "Gardar a nota como PDF"
+msgstr "नोट को pdf के रूप में सहेजें"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
-msgstr "Configuración"
+msgstr "सेटिंग्स"
 
 #: contents/ui/pages/SettingsPage.qml:24
 #, kde-format
@@ -579,114 +576,114 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
-"Escolla a localización onde ten ou quere o almacenamento de KleverNotes.\n"
+"कृपया अपने भविष्य के क्लेवरनोट्स संग्रहण के लिए कोई स्थान चुनें या कोई मौजूदा स्थान चुनें।\n"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr "Anchura:"
+msgstr "चौड़ाई:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr "Fonte:"
+msgstr "फ़ॉन्ट:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr "Modo de ferramenta de enchemento:"
+msgstr "टूल मोड भरें:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr "Enchemento"
+msgstr "भरना"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr "Contorno"
+msgstr "रूपरेखा"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr "Contorno e enchemento"
+msgstr "रूपरेखा बनाएं और भरें"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
 #, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Cor de enchemento"
+msgstr "रंग भरना"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr "Principal"
+msgstr "प्राथमिक"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr "Secundaria"
+msgstr "माध्यमिक"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
-msgstr "Estilo:"
+msgstr "शैली:"
 
 #: contents/ui/settings/DisplayPreview.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
-msgstr "Cor do texto:"
+msgstr "पाठ का रंग:"
 
 #: contents/ui/settings/DisplayPreview.qml:59
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
-msgstr "Cor do título:"
+msgstr "शीर्षक रंग:"
 
 #: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
-msgstr "Cor das ligazóns:"
+msgstr "लिंक रंग:"
 
 #: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
-msgstr "Cor das ligazóns visitadas:"
+msgstr "देखे गए लिंक का रंग:"
 
 #: contents/ui/settings/DisplayPreview.qml:101
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
-msgstr "Cor do código:"
+msgstr "कोड रंग:"
 
 #: contents/ui/settings/DisplayPreview.qml:115
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Cor de realce:"
+msgstr "हाइलाइट रंग:"
 
 #: contents/ui/settings/DisplayPreview.qml:127
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "Fonte xeral:"
+msgstr "सामान्य फ़ॉन्ट:"
 
 #: contents/ui/settings/DisplayPreview.qml:138
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr "Fonte de bloques de códigos:"
+msgstr "कोड ब्लॉक फ़ॉन्ट:"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:26
 #, kde-format
@@ -694,7 +691,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr "Activar o tamaño adaptativo de etiquetas."
+msgstr "अनुकूली टैग आकार सक्षम करें"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:27
 #, kde-format
@@ -702,8 +699,7 @@ msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
-msgstr ""
-"O tamaño adaptativo axusta o tamaño das etiquetas segundo os seus arredores."
+msgstr "अनुकूली आकार, टैग के आकार को उसके आस-पास के वातावरण के आधार पर निर्धारित करेगा।"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:28
 #, kde-format
@@ -713,9 +709,7 @@ msgctxt ""
 msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
-msgstr ""
-"Exemplo: unha etiqueta dentro dunha cabeceira é tan grande como o resto do "
-"texto da cabeceira."
+msgstr "उदाहरण: हेडर के अंदर टैग, हेडर के शेष पाठ जितना ही बड़ा होगा।"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:42
 #, kde-format
@@ -723,7 +717,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr "Axuste de etiquetas"
+msgstr "टैग स्केल"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
 #, kde-format
@@ -731,7 +725,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr "Un título cunha vista previa de"
+msgstr "एक पूर्वावलोकन के साथ एक शीर्षक"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -739,43 +733,43 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr "texto en cursiva e as súas etiquetas"
+msgstr "इटैलिक पाठ और उसके टैग"
 
 #: contents/ui/settings/EditorTab.qml:21
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
-msgstr "Xeral"
+msgstr "सामान्य"
 
 #: contents/ui/settings/EditorTab.qml:32
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr "Fonte do editor:"
+msgstr "संपादक फ़ॉन्ट:"
 
 #: contents/ui/settings/EditorTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr "Usar espazos para tabulacións."
+msgstr "टैब के लिए रिक्त स्थान का उपयोग करें"
 
 #: contents/ui/settings/EditorTab.qml:58
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr "Número de espazos"
+msgstr "रिक्त स्थानों की संख्या"
 
 #: contents/ui/settings/EditorTab.qml:75
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Realce do editor"
+msgstr "संपादक हाइलाइटिंग"
 
 #: contents/ui/settings/EditorTab.qml:87
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Activar o realce do editor."
+msgstr "संपादक हाइलाइटिंग सक्षम करें"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -783,92 +777,92 @@ msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Almacenamento"
+msgstr "भंडारण"
 
 #: contents/ui/settings/GeneralTab.qml:40
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr "Ruta de almacenamento:"
+msgstr "भंडारण पथ:"
 
 #: contents/ui/settings/GeneralTab.qml:58
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr "Barra lateral"
+msgstr "साइड बार"
 
 #: contents/ui/settings/GeneralTab.qml:72
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
-msgstr "Nome da nova categoría:"
+msgstr "नई श्रेणी का नाम:"
 
 #: contents/ui/settings/GeneralTab.qml:102
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
-msgstr "Nome do novo grupo:"
+msgstr "नये समूह का नाम:"
 
 #: contents/ui/settings/GeneralTab.qml:132
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
-msgstr "Nome da nova nota:"
+msgstr "नये नोट का नाम:"
 
 #: contents/ui/settings/GeneralTab.qml:155
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr "Barra de ferramentas"
+msgstr "उपकरण पट्टी"
 
 #: contents/ui/settings/GeneralTab.qml:163
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr "Visíbel"
+msgstr "दृश्यमान"
 
 #: contents/ui/settings/GeneralTab.qml:224
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr "Invisíbel"
+msgstr "अदृश्य"
 
 #: contents/ui/settings/PluginsTab.qml:21
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr "Complementos de utilidades"
+msgstr "उपयोगिता प्लगइन्स"
 
 #: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr "Activar a ligazón de notas"
+msgstr "नोट लिंकिंग सक्षम करें"
 
 #: contents/ui/settings/PluginsTab.qml:34
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
-msgstr "A ligazón de notas permite crear unha ligazón dunha nota a outra."
+msgstr "नोट लिंकिंग आपको एक नोट से दूसरे नोट तक लिंक बनाने की अनुमति देता है।"
 
 #: contents/ui/settings/PluginsTab.qml:35
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr "Consello: reinicie a aplicación despois de activalo."
+msgstr "सलाह: एक बार सक्रिय होने के बाद ऐप को पुनः आरंभ करें।"
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr "Activar PlantUML."
+msgstr "प्लांटयूएमएल सक्षम करें"
 
 #: contents/ui/settings/PluginsTab.qml:47
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr "PlantUML permítelle crear diagramas."
+msgstr "PlantUML आपको आरेख बनाने की सुविधा देता है।"
 
 #: contents/ui/settings/PluginsTab.qml:48
 #, kde-format
@@ -877,56 +871,56 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
-"Nota: crear diagramas pode levar tempo. Se ten moitos diagramas, amosalos "
-"como imaxes sería máis doado."
+"ध्यान दें: आरेख बनाना धीमा हो सकता है। यदि आपके पास बड़ी संख्या में आरेख हैं, तो उन्हें छवियों "
+"के रूप में प्रदर्शित करना आसान होगा।"
 
 #: contents/ui/settings/PluginsTab.qml:58
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr "Activar o fondo escuro."
+msgstr "गहरे रंग की पृष्ठभूमि सक्षम करें"
 
 #: contents/ui/settings/PluginsTab.qml:59
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr "O diagrama de PlantUML terá un fondo escuro."
+msgstr "PlantUML आरेख की पृष्ठभूमि गहरी होगी।"
 
 #: contents/ui/settings/PluginsTab.qml:70
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr "Complementos cosméticos"
+msgstr "कॉस्मेटिक प्लगइन्स"
 
 #: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr "Activar o realce de sintaxe de código"
+msgstr "कोड सिंटैक्स हाइलाइटिंग सक्षम करें"
 
 #: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr "Lista de realzadores permitidos"
+msgstr "समर्थित हाइलाइटर्स की सूची"
 
 #: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr "Realzador"
+msgstr "हाइलाइटर"
 
 #: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr "Estilo do realzador"
+msgstr "हाइलाइटर शैली"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr "Activar as expresións rápidas"
+msgstr "त्वरित इमोजी सक्षम करें"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
@@ -934,63 +928,63 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr "Escribir rapidamente expresións mediante a seguinte sintaxe:"
+msgstr "निम्नलिखित सिंटैक्स का उपयोग करके जल्दी से इमोजी लिखें"
 
 #: contents/ui/settings/PluginsTab.qml:153
 #, kde-format
 msgctxt "@exemple, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "nome_da_expresion"
+msgstr "इमोजी_नाम"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr "Ton predeterminado das expresións"
+msgstr "डिफ़ॉल्ट इमोजी टोन"
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr "Predeterminado"
+msgstr "गलती करना"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Claro"
+msgstr "रोशनी"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr "Medio claro"
+msgstr "मध्यम प्रकाश"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr "Medio"
+msgstr "मध्यम"
 
 #: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr "Medio escuro"
+msgstr "मध्यम गहरा"
 
 #: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr "Escuro"
+msgstr "अँधेरा"
 
 #: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr "Activar o diálogo de expresións rápidas"
+msgstr "त्वरित इमोजी संवाद सक्षम करें"
 
 #: contents/ui/settings/PluginsTab.qml:188
 #, kde-format
@@ -999,14 +993,14 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
-"O diálogo de expresións insire a sintaxe de «expresión rápida» en vez de a "
-"expresión real dentro do texto."
+"इमोजी संवाद पाठ के अंदर वास्तविक इमोजी के स्थान पर 'त्वरित इमोजी' वाक्यविन्यास "
+"सम्मिलित करता है।"
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
-msgstr "Xeral"
+msgstr "सामान्य"
 
 #: contents/ui/settings/TabBar.qml:21
 #, kde-format
@@ -1014,419 +1008,419 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
 msgid "Note preview"
-msgstr "Vista previa de nota"
+msgstr "नोट पूर्वावलोकन"
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
-msgstr "Editor"
+msgstr "संपादक"
 
 #: contents/ui/settings/TabBar.qml:37
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr "Complementos"
+msgstr "प्लग-इन"
 
 #: contents/ui/sharedComponents/ActionsList.qml:14
 #: contents/ui/sharedComponents/ActionsList.qml:16
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
-msgstr "Cabeceiras"
+msgstr "हेडर"
 
 #: contents/ui/sharedComponents/ActionsList.qml:16
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr "núm."
+msgstr "में एक"
 
 #: contents/ui/sharedComponents/ActionsList.qml:20
 #: contents/ui/sharedComponents/ActionsList.qml:23
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "Cabeceira 1"
+msgstr "हेडर 1"
 
 #: contents/ui/sharedComponents/ActionsList.qml:29
 #: contents/ui/sharedComponents/ActionsList.qml:32
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "Cabeceira 2"
+msgstr "हेडर 2"
 
 #: contents/ui/sharedComponents/ActionsList.qml:38
 #: contents/ui/sharedComponents/ActionsList.qml:41
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "Cabeceira 3"
+msgstr "हेडर 3"
 
 #: contents/ui/sharedComponents/ActionsList.qml:47
 #: contents/ui/sharedComponents/ActionsList.qml:50
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "Cabeceira 4"
+msgstr "हेडर 4"
 
 #: contents/ui/sharedComponents/ActionsList.qml:56
 #: contents/ui/sharedComponents/ActionsList.qml:59
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "Cabeceira 5"
+msgstr "हेडर 5"
 
 #: contents/ui/sharedComponents/ActionsList.qml:65
 #: contents/ui/sharedComponents/ActionsList.qml:68
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "Cabeceira 6"
+msgstr "हेडर 6"
 
 #: contents/ui/sharedComponents/ActionsList.qml:75
 #: contents/ui/sharedComponents/ActionsList.qml:77
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr "Grosa"
+msgstr "बोल्ड"
 
 #: contents/ui/sharedComponents/ActionsList.qml:84
 #: contents/ui/sharedComponents/ActionsList.qml:86
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr "Cursiva"
+msgstr "तिरछा"
 
 #: contents/ui/sharedComponents/ActionsList.qml:93
 #: contents/ui/sharedComponents/ActionsList.qml:95
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr "Riscar"
+msgstr "स्ट्राइकथ्रू"
 
 #: contents/ui/sharedComponents/ActionsList.qml:102
 #: contents/ui/sharedComponents/ActionsList.qml:104
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr "Código"
+msgstr "कोड"
 
 #: contents/ui/sharedComponents/ActionsList.qml:111
 #: contents/ui/sharedComponents/ActionsList.qml:113
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr "Cita"
+msgstr "उद्धरण"
 
 #: contents/ui/sharedComponents/ActionsList.qml:120
 #: contents/ui/sharedComponents/ActionsList.qml:122
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr "Imaxe"
+msgstr "छवि"
 
 #: contents/ui/sharedComponents/ActionsList.qml:127
 #: contents/ui/sharedComponents/ActionsList.qml:129
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr "Ligazón"
+msgstr "जोड़ना"
 
 #: contents/ui/sharedComponents/ActionsList.qml:134
 #: contents/ui/sharedComponents/ActionsList.qml:136
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr "Táboa"
+msgstr "मेज़"
 
 #: contents/ui/sharedComponents/ActionsList.qml:141
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
-msgstr "Lista ordenada"
+msgstr "आदेशित सूची"
 
 #: contents/ui/sharedComponents/ActionsList.qml:143
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr "Lista ordenada"
+msgstr "आदेशित सूची"
 
 #: contents/ui/sharedComponents/ActionsList.qml:150
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
-msgstr "Lista desordenada"
+msgstr "अव्यवस्थित सूची"
 
 #: contents/ui/sharedComponents/ActionsList.qml:152
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr "Lista desordenada"
+msgstr "अव्यवस्थित सूची"
 
 #: contents/ui/sharedComponents/ActionsList.qml:159
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "Realzar"
+msgstr "प्रमुखता से दिखाना"
 
 #: contents/ui/sharedComponents/ActionsList.qml:161
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Realce do texto"
+msgstr "पाठ हाइलाइट"
 
 #: contents/ui/sharedComponents/ActionsList.qml:168
 #: contents/ui/sharedComponents/ActionsList.qml:170
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr "Expresión"
+msgstr "इमोजी"
 
 #: contents/ui/sharedComponents/ActionsList.qml:175
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
-msgstr "Nota de ligazón"
+msgstr "लिंक नोट"
 
 #: contents/ui/sharedComponents/ActionsList.qml:177
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "Nota de ligazón"
+msgstr "लिंक नोट"
 
 #: contents/ui/sideBar/ActionBar.qml:51
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
-msgstr "Crear unha categoría nova"
+msgstr "एक नई श्रेणी बनाएं"
 
 #: contents/ui/sideBar/ActionBar.qml:59
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
-msgstr "Crear un novo grupo"
+msgstr "नया समूह बनाएं"
 
 #: contents/ui/sideBar/ActionBar.qml:67
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
-msgstr "Crear unha nova nota"
+msgstr "नया नोट बनाएं"
 
 #: contents/ui/sideBar/ActionBar.qml:75 contents/ui/sideBar/ContextMenu.qml:46
 #, kde-format
 msgid "Rename"
-msgstr "Renomear"
+msgstr "नाम बदलें"
 
 #: contents/ui/sideBar/ActionBar.qml:88
 #, kde-format
 msgid "Search"
-msgstr "Buscar"
+msgstr "खोज"
 
 #: contents/ui/sideBar/ActionBar.qml:105
 #, kde-format
 msgid "Collapse sidebar"
-msgstr "Pregar a barra lateral"
+msgstr "साइडबार संक्षिप्त करें"
 
 #: contents/ui/sideBar/ActionBar.qml:106
 #, kde-format
 msgid "Expand sidebar"
-msgstr "Expandir a barra lateral"
+msgstr "साइडबार विस्तृत करें"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "as in 'A note category'"
 msgid "New category"
-msgstr "Nova categoría"
+msgstr "नई श्रेणी"
 
 #: contents/ui/sideBar/ContextMenu.qml:28
 #, kde-format
 msgctxt "as in 'A note group'"
 msgid "New group"
-msgstr "Novo grupo"
+msgstr "नया समूह"
 
 #: contents/ui/sideBar/ContextMenu.qml:37
 #, kde-format
 msgctxt "as in 'A note'"
 msgid "New note"
-msgstr "Nova nota"
+msgstr "नया नोट"
 
 #: contents/ui/sideBar/ContextMenu.qml:55
 #, kde-format
 msgid "Move"
-msgstr "Mover"
+msgstr "कदम"
 
 #: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "मिटाना"
 
 #: contents/ui/sideBar/SearchBar.qml:72
 #, kde-format
 msgctxt "Name, as in 'A note category'"
 msgid "Category"
-msgstr "Categoría"
+msgstr "वर्ग"
 
 #: contents/ui/sideBar/SearchBar.qml:73
 #, kde-format
 msgctxt "Name, as in 'A note group'"
 msgid "Group"
-msgstr "Grupo"
+msgstr "समूह"
 
 #: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
 #, kde-format
 msgid "From"
-msgstr "De"
+msgstr "से"
 
 #: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
-msgstr "A busca non ten resultados."
+msgstr "कोई खोज परिणाम नहीं"
 
 #: contents/ui/sideBar/Sidebar.qml:89
 #, kde-format
 msgid "Show notes"
-msgstr "Amosar as notas"
+msgstr "नोद्स दिखाएं"
 
 #: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:225
 #, kde-format
 msgid "Cheat sheet"
-msgstr "Apuntes"
+msgstr "प्रवंचक पत्रक"
 
 #: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:237
 #, kde-format
 msgid "Settings"
-msgstr "Configuración"
+msgstr "सेटिंग्स"
 
 #: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:249
 #, kde-format
 msgid "About KleverNotes"
-msgstr "Sobre KleverNotes"
+msgstr "क्लेवरनोट्स के बारे में"
 
 #: contents/ui/textEditor/BottomToolBar.qml:51
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
-msgstr "PENDENTE"
+msgstr "सभी"
 
 #: contents/ui/textEditor/BottomToolBar.qml:87
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
-msgstr "Nota"
+msgstr "टिप्पणी"
 
 #: contents/ui/textEditor/CheatSheet.qml:18
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr "Apuntes de Markdown"
+msgstr "मार्कडाउन चीट शीट"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #: contents/ui/textEditor/TextDisplay.qml:82
 #, kde-format
 msgid "Copied !"
-msgstr "Copiouse!"
+msgstr "कॉपी किया गया !"
 
 #: contents/ui/textEditor/CheatSheet.qml:47
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr "Sintaxe básica"
+msgstr "मूल वाक्यविन्यास"
 
 #: contents/ui/textEditor/CheatSheet.qml:54
 #, kde-format
 msgid "Heading"
-msgstr "Cabeceira"
+msgstr "शीर्षक"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
 #, kde-format
 msgctxt "exemple"
 msgid "Heading1"
-msgstr "Cabeceira 1"
+msgstr "शीर्षक 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:60
 #, kde-format
 msgid "Bold"
-msgstr "Grosa"
+msgstr "बोल्ड"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
 #, kde-format
 msgctxt "exemple"
 msgid "Bold text"
-msgstr "Letra grosa"
+msgstr "मोटा पाठ्यांश"
 
 #: contents/ui/textEditor/CheatSheet.qml:66
 #, kde-format
 msgid "Italic"
-msgstr "Cursiva"
+msgstr "तिरछा"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
 #, kde-format
 msgctxt "exemple"
 msgid "Italic text"
-msgstr "Letra cursiva"
+msgstr "इटैलिक पाठ"
 
 #: contents/ui/textEditor/CheatSheet.qml:72
 #, kde-format
 msgid "Blockquote"
-msgstr "Bloque de cita"
+msgstr "ब्लॉककोट"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
 #, kde-format
 msgctxt "exemple"
 msgid "Quote"
-msgstr "Cita"
+msgstr "उद्धरण"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
 msgid "Ordered list"
-msgstr "Lista ordenada"
+msgstr "आदेशित सूची"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
 #, kde-format
 msgctxt "exemple"
 msgid "First item"
-msgstr "Primeiro elemento"
+msgstr "पहला आइटम"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
 #, kde-format
 msgctxt "exemple"
 msgid "Second item"
-msgstr "Segundo elemento"
+msgstr "दूसरा आइटम"
 
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgid "Unordered list"
-msgstr "Lista desordenada"
+msgstr "अव्यवस्थित सूची"
 
 #: contents/ui/textEditor/CheatSheet.qml:92
 #, kde-format
 msgid "Code"
-msgstr "Código"
+msgstr "कोड"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
 #, kde-format
 msgctxt "exemple"
 msgid "Inline code"
-msgstr "Código in situ"
+msgstr "इनलाइन कोड"
 
 #: contents/ui/textEditor/CheatSheet.qml:98
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr "Regra"
+msgstr "नियम"
 
 #: contents/ui/textEditor/CheatSheet.qml:104
 #, kde-format
 msgid "Link"
-msgstr "Ligazón"
+msgstr "जोड़ना"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
 msgctxt "exemple"
 msgid "title"
-msgstr "título"
+msgstr "शीर्षक"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
 #, kde-format
@@ -1437,116 +1431,116 @@ msgstr "https://www.example.com"
 #: contents/ui/textEditor/CheatSheet.qml:110
 #, kde-format
 msgid "Image"
-msgstr "Imaxe"
+msgstr "छवि"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "alt text"
-msgstr "texto alternativo"
+msgstr "सभी पाठ"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
 #, kde-format
 msgctxt "exemple"
 msgid "image"
-msgstr "imaxe"
+msgstr "छवि"
 
 #: contents/ui/textEditor/CheatSheet.qml:118
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr "Sintaxe avanzada"
+msgstr "विस्तारित वाक्यविन्यास"
 
 #: contents/ui/textEditor/CheatSheet.qml:125
 #, kde-format
 msgid "Table"
-msgstr "Táboa"
+msgstr "मेज़"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
-msgstr "Esquerda"
+msgstr "बाएं"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
-msgstr "Centro"
+msgstr "केंद्र"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
-msgstr "Dereita"
+msgstr "सही"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 1"
-msgstr "Cela 1"
+msgstr "सेल 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 2"
-msgstr "Cela 2"
+msgstr "सेल 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
 #, kde-format
 msgctxt "exemple"
 msgid "Cell 3"
-msgstr "Cela 3"
+msgstr "सेल 3"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgid "Fenced code block"
-msgstr "Bloque de código encadrado"
+msgstr "फेंस्ड कोड ब्लॉक"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
 #, kde-format
 msgctxt "exemple"
 msgid "Sample text here..."
-msgstr "Texto de exemplo…"
+msgstr "नमूना पाठ यहां..."
 
 #: contents/ui/textEditor/CheatSheet.qml:141
 #, kde-format
 msgid "Strikethrough"
-msgstr "Riscar"
+msgstr "स्ट्राइकथ्रू"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
 #, kde-format
 msgctxt "exemple, something wrong"
 msgid "The world is flat."
-msgstr "A Terra é plana."
+msgstr "दुनिया चपटी है."
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgid "Task list"
-msgstr "Lista de tarefas"
+msgstr "कार्य सूची"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
 msgctxt "exemple"
 msgid "Make more foo"
-msgstr "Facer máis a"
+msgstr "अधिक फ़ू बनाओ"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
 msgctxt "exemple"
 msgid "Make more bar"
-msgstr "Facer máis b"
+msgstr "अधिक बार बनाएं"
 
 #: contents/ui/textEditor/CheatSheet.qml:156
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "Complementos de KleverNotes"
+msgstr "क्लेवरनोट्स प्लगइन्स"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
 #, kde-format
 msgid "Note link"
-msgstr "Ligazón de nota"
+msgstr "नोट लिंक"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1554,75 +1548,75 @@ msgctxt ""
 "exemple, a note path ('/' are important), Category as in 'a category, Group "
 "'a group', Note 'a note'"
 msgid "Category/Group/Note"
-msgstr "Categoría/Grupo/Nota"
+msgstr "श्रेणी/समूह/नोट"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
 msgctxt "exemple"
 msgid "header"
-msgstr "cabeceira"
+msgstr "हैडर"
 
 #: contents/ui/textEditor/CheatSheet.qml:168
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
-msgstr "nome amosado"
+msgstr "प्रदर्शित नाम"
 
 #: contents/ui/textEditor/EditorView.qml:38
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "Notas ligadas"
+msgstr "लिंक किए गए नोट्स"
 
 #: contents/ui/textEditor/EditorView.qml:49
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "छाप"
 
 #: contents/ui/textEditor/EditorView.qml:61
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr "Amosar ou agochar o editor"
+msgstr "संपादक देखें/छिपाएं"
 
 #: contents/ui/textEditor/EditorView.qml:77
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr "Amosar ou agochar a vista previa"
+msgstr "पूर्वावलोकन देखें/छिपाएं"
 
 #: contents/ui/textEditor/EditorView.qml:107
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Gardar a nota como HTML"
+msgstr "नोट को HTML के रूप में सहेजें"
 
 #: contents/ui/textEditor/NotesMap.qml:19
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr "Mapa de notas ligadas"
+msgstr "लिंक किए गए नोट्स मानचित्र"
 
 #: contents/ui/textEditor/NotesMap.qml:39
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "Notas existentes"
+msgstr "मौजूदा नोट्स"
 
 #: contents/ui/textEditor/NotesMap.qml:65
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr "Notas que faltan"
+msgstr "गुम हुए नोट्स"
 
 #: contents/ui/textEditor/NotesMap.qml:77
 #: contents/ui/textEditor/TextDisplay.qml:103
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr "%1 non existe"
+msgstr "%1 मौजूद नहीं है"
 
 #: contents/ui/textEditor/TextToolBar.qml:179
 #: contents/ui/textEditor/TextToolBar.qml:180
@@ -1631,20 +1625,19 @@ msgstr "%1 non existe"
 #: contents/ui/textEditor/TextToolBar.qml:184
 #, kde-format
 msgid "Header"
-msgstr "Cabeceira"
+msgstr "हैडर"
 
-# skip-rule: proposta-en-clear
 #: contents/ui/todoEditor/ToDoView.qml:24
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr "Borrar o marcado"
+msgstr "साफ़ चेक किया गया"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
 #, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr "Engadir unha nova tarefa"
+msgstr "नया कार्य जोड़ें"
 
 #: logic/kleverUtility.cpp:108
 #, kde-format
@@ -1657,9 +1650,9 @@ msgid ""
 "*/\n"
 msgstr ""
 "/*\n"
-"Este ficheiro é unha copia do estilo visual predeterminado en CSS da nota.\n"
-"Pode editalo ou personalizalo.\n"
-"Nota: cada estilo ten que ter un nome de seu.\n"
+"यह फ़ाइल नोट डिस्प्ले के लिए डिफ़ॉल्ट CSS स्टाइल की एक प्रति है।\n"
+"आप इसे संपादित करने या अपना खुद का बनाने के लिए स्वतंत्र हैं।\n"
+"ध्यान दें: प्रत्येक स्टाइल का एक अलग नाम होना चाहिए।\n"
 "*/\n"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:152
@@ -1667,219 +1660,148 @@ msgstr ""
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr "Historial"
+msgstr "इतिहास"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr "Cariñas"
+msgstr "स्माइलीज"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr "Xente"
+msgstr "लोग"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr "Natureza"
+msgstr "प्रकृति"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr "Comida"
+msgstr "खाना"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr "Actividades"
+msgstr "गतिविधियाँ"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr "Viaxe"
+msgstr "यात्रा"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr "Obxectos"
+msgstr "वस्तुओं"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr "Símbolos"
+msgstr "प्रतीक"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr "Bandeiras"
+msgstr "झंडे"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr "Personalizadas"
+msgstr "रिवाज़"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this pdf."
-msgstr "Produciuse un erro ao intentar copiar o PDF."
+msgstr "इस पीडीएफ को कॉपी करने का प्रयास करते समय एक त्रुटि हुई।"
 
 #: logic/treeview/noteTreeModel.cpp:291
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Produciuse un erro ao intentar crear a nota de demostración."
+msgstr "डेमो नोट बनाने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:424
 #, kde-format
 msgid "An error occurred while trying to create this item."
-msgstr "Produciuse un erro ao intentar crear este elemento."
+msgstr "इस आइटम को बनाने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:463
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr "Produciuse un erro ao intentar retirar este elemento."
+msgstr "इस आइटम को हटाने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:517
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr "Produciuse un erro ao intentar mover este elemento."
+msgstr "इस आइटम को स्थानांतरित करने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:540
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr "Produciuse un erro ao intentar renomear este elemento."
+msgstr "इस आइटम का नाम बदलने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:638
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr "Produciuse un erro ao intentar crear esta nota."
+msgstr "नोट बनाने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:649
 #, kde-format
 msgid "An error occurred while trying to create the group."
-msgstr "Produciuse un erro ao intentar crear este grupo."
+msgstr "समूह बनाते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:659
 #, kde-format
 msgid "An error occurred while trying to create the category."
-msgstr "Produciuse un erro ao intentar crear esta categoría."
+msgstr "श्रेणी बनाने का प्रयास करते समय एक त्रुटि हुई."
 
 #: logic/treeview/noteTreeModel.cpp:667
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr "Produciuse un erro ao intentar crear este almacenamento."
+msgstr "संग्रहण बनाने का प्रयास करते समय एक त्रुटि हुई."
 
 #: main.cpp:56
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr "चतुर नोट्स"
 
 #: main.cpp:60
 #, kde-format
 msgid "Note taking and management application"
-msgstr "Aplicación para tomar e xestionar notas"
+msgstr "नोट लेने और प्रबंधन अनुप्रयोग"
 
 #: main.cpp:64
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr "© 2022-2023"
+msgstr "(सी) 2022-2023"
 
 #: main.cpp:65
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
-msgstr "Louis Schul"
+msgstr "लुई शूल"
 
 #: main.cpp:70
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Adrian Chaves (Gallaecio)"
+msgstr "तुम्हारे नाम"
 
 #: main.cpp:70
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "adrian@chaves.io"
-
-#~ msgctxt "@title, general text editor settings"
-#~ msgid "Editor"
-#~ msgstr "Editor"
-
-#~ msgctxt ""
-#~ "@label, tab (inside tab bar), all settings related to the general "
-#~ "appearance of the app"
-#~ msgid "Appearance"
-#~ msgstr "Aparencia"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note category'"
-#~ msgid "Where do you want to move this category ?"
-#~ msgstr "Seguro que quere mover esta categoría?"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Warning"
-#~ msgstr "Aviso"
-
-#~ msgctxt "@label:checkbox"
-#~ msgid "Do not show again"
-#~ msgstr "Non amosar de novo."
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Color Picker"
-#~ msgstr "Selector de cores"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "category"
-#~ msgstr "categoría"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "group"
-#~ msgstr "grupo"
-
-#~ msgctxt "Name, as in 'A note'"
-#~ msgid "note"
-#~ msgstr "nota"
-
-#~ msgctxt ""
-#~ "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#~ "group) or 'note' (a note)"
-#~ msgid "Your %1 name starts with a dot, "
-#~ msgstr "O nome de %1 comeza cun punto, "
-
-#~ msgid "Application Description"
-#~ msgstr "Descrición da aplicación"
-
-#~ msgid "Name, as in 'A note'"
-#~ msgstr "Nome, como «Unha nota»"
-
-#~ msgctxt ""
-#~ "@title, display as in 'the note display' where you can visualize the note"
-#~ msgid "Display"
-#~ msgstr "Visualización"
-
-#~ msgctxt "@title"
-#~ msgid "KleverNotes plugins"
-#~ msgstr "Complementos de KleverNotes"
-
-#~ msgid "Your "
-#~ msgstr "Súa "
-
-#~ msgid "This "
-#~ msgstr "Isto "
-
-#~ msgid "Select Number"
-#~ msgstr "Seleccionar un número"
-
-#~ msgid "Change storage path"
-#~ msgstr "Cambiar a ruta de almacenamento"
+msgstr "आपके ईमेल"
