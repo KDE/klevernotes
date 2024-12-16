@@ -18,6 +18,7 @@
   <name xml:lang="fr">KleverNotes</name>
   <name xml:lang="gl">KleverNotes</name>
   <name xml:lang="he">KleverNotes</name>
+  <name xml:lang="hi">चतुर नोट्स</name>
   <name xml:lang="ia">KleverNotes</name>
   <name xml:lang="it">KleverNotes</name>
   <name xml:lang="ka">KleverNotes</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="fr">Prendre et gérer vos notes</summary>
   <summary xml:lang="gl">Tome e xestione notas.</summary>
   <summary xml:lang="he">כתיבת וניהול הפתקיות שלך</summary>
+  <summary xml:lang="hi">अपने नोट्स लें और उनका प्रबंधन करें</summary>
   <summary xml:lang="ia">Prende e gere tu notas</summary>
   <summary xml:lang="it">Prendi e gestisci i tuoi appunti</summary>
   <summary xml:lang="ka">შექმენით და მართეთ თქვენი შენიშვნები</summary>
@@ -92,6 +94,7 @@
     <p xml:lang="fr">L'application KleverNotes est une application de prises et de gestions de notes pour les périphériques mobiles et de bureau. Elle utilise le langage Markdown et vous permet d'avoir un aperçu de votre contenu.</p>
     <p xml:lang="gl">KleverNotes é unha aplicación para tomar e xestionar notas en dispositivos móbiles e de escritorio. Usa Markdown e ofrece unha vista previa do contido.</p>
     <p xml:lang="he">KleverNotes הוא יישום לכתיבת וניהול פתקיות למכשיר הנייד ולמחשב שלך. הוא משתמש ב־markdown ומאפשר לך לצפות בתוכן שלך בתצוגה מקדימה.</p>
+    <p xml:lang="hi">क्लेवरनोट्स आपके मोबाइल और डेस्कटॉप डिवाइस के लिए एक नोट लेने और प्रबंधन एप्लिकेशन है। यह मार्कडाउन का उपयोग करता है और आपको अपनी सामग्री का पूर्वावलोकन करने की अनुमति देता है।</p>
     <p xml:lang="ia">KleverNotes es un application per prender e gerer notas per tu dispositivos mobile e de scriptorio. Illo usa markdown e te permitte vider preliminarmente tu contento.</p>
     <p xml:lang="it">KleverNotes è un'applicazione per prendere appunti e gestire i tuoi dispositivi mobili e desktop. Utilizza markdown e ti consente di visualizzare in anteprima i tuoi contenuti.</p>
     <p xml:lang="ka">KleverNotes ჩანიშვნისა და შენიშვნების მართვის აპლიკაციაა თქვენი მობილურისა და სახლის კომპიუტერისთვის. ის მარკდაუნს იყენებს და საშუალებას გაძლევთ, გადახედოთ შემცველობას, რომელიც თქვენ გეკუთვნით.</p>
@@ -122,6 +125,7 @@
       <caption xml:lang="fr">Page principale sur le bureau</caption>
       <caption xml:lang="gl">Páxina principal no escritorio.</caption>
       <caption xml:lang="he">עמוד ראשי בשולחן העבודה</caption>
+      <caption xml:lang="hi">डेस्कटॉप पर मुख्य पृष्ठ</caption>
       <caption xml:lang="ia">PAgina principal sur scriptorio</caption>
       <caption xml:lang="it">Pagina principale su desktop</caption>
       <caption xml:lang="ka">მთავარი გვერდი სამუშაო მაგიდაზე</caption>
@@ -150,6 +154,7 @@
       <caption xml:lang="fr">Page principale sur périphérique de petit format</caption>
       <caption xml:lang="gl">Páxina principal nunha pantalla pequena.</caption>
       <caption xml:lang="he">עמוד ראשי בדגם מוקטן</caption>
+      <caption xml:lang="hi">छोटे फॉर्म फैक्टर पर मुख्य पृष्ठ</caption>
       <caption xml:lang="ia">Pagina principal sur parve factor de forma</caption>
       <caption xml:lang="it">Pagine principale su fattore di forma piccolo</caption>
       <caption xml:lang="ka">მთავარი გვერდი პატარა ადგილას</caption>
@@ -180,6 +185,7 @@
       <caption xml:lang="fr">Page des tâches à faire</caption>
       <caption xml:lang="gl">Páxina de tarefas.</caption>
       <caption xml:lang="he">עמוד מטלות</caption>
+      <caption xml:lang="hi">सभी पेज</caption>
       <caption xml:lang="ia">Pagina de De Facer (Agenda)</caption>
       <caption xml:lang="it">Pagina Da fare</caption>
       <caption xml:lang="ka">განრიგის გვერდი</caption>
@@ -210,6 +216,7 @@
       <caption xml:lang="fr">Page de dessin</caption>
       <caption xml:lang="gl">Páxina de debuxo.</caption>
       <caption xml:lang="he">עמוד ציור</caption>
+      <caption xml:lang="hi">ड्राइंग पेज</caption>
       <caption xml:lang="ia">Pagina de Dessino</caption>
       <caption xml:lang="it">Pagina di disegno</caption>
       <caption xml:lang="ka">ხატვის გვერდი</caption>
