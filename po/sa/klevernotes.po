@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-09 00:40+0000\n"
-"PO-Revision-Date: 2024-12-19 21:42+0530\n"
+"PO-Revision-Date: 2024-12-20 21:52+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -176,7 +176,7 @@ msgstr "URL: 1.1."
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr "लिङ्क पाठः १."
+msgstr "लिङ्क पाठः"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:39
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "शीर्षकं अन्वेष्टुम्"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Header:"
-msgstr "शीर्षकम् : १."
+msgstr "शीर्षकम् :"
 
 #: contents/ui/dialogs/MoveDialog.qml:21
 #, kde-format
@@ -425,7 +425,7 @@ msgstr "स्तम्भ"
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr "संरेखणम् : १."
+msgstr "संरेखणम् :"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:248
 #, kde-format
@@ -467,7 +467,7 @@ msgstr "शीर्षक:"
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr "तोडो उपाधि (आवश्यक) २."
+msgstr "तोडो उपाधि (आवश्यक)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
@@ -591,7 +591,7 @@ msgstr "विस्तार:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr "फन्ट् : १."
+msgstr "फन्ट् :"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
@@ -645,49 +645,49 @@ msgstr "शैली:"
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
-msgstr "पाठवर्णः : १."
+msgstr "पाठवर्णः :"
 
 #: contents/ui/settings/DisplayPreview.qml:59
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
-msgstr "शीर्षकवर्णः : १."
+msgstr "शीर्षकवर्णः :"
 
 #: contents/ui/settings/DisplayPreview.qml:73
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
-msgstr "लिङ्कस्य वर्णः : १."
+msgstr "लिङ्कस्य वर्णः :"
 
 #: contents/ui/settings/DisplayPreview.qml:86
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
-msgstr "विजिट् लिङ्क् वर्णः : १."
+msgstr "विजिट् लिङ्क् वर्णः :"
 
 #: contents/ui/settings/DisplayPreview.qml:101
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
-msgstr "कोडवर्णः : १."
+msgstr "कोडवर्णः :"
 
 #: contents/ui/settings/DisplayPreview.qml:115
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "वर्णः प्रकाशयन्तु : १."
+msgstr "वर्णः प्रकाशयन्तु :"
 
 #: contents/ui/settings/DisplayPreview.qml:127
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "सामान्य फ़ॉन्ट् : १."
+msgstr "सामान्य फ़ॉन्ट् :"
 
 #: contents/ui/settings/DisplayPreview.qml:138
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr "कोड ब्लॉक फॉन्ट : १."
+msgstr "कोड ब्लॉक फॉन्ट :"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:26
 #, kde-format
@@ -749,7 +749,7 @@ msgstr "सामान्य"
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr "सम्पादक फ़ॉन्ट् : १."
+msgstr "सम्पादक फ़ॉन्ट् :"
 
 #: contents/ui/settings/EditorTab.qml:46
 #, kde-format
@@ -788,7 +788,7 @@ msgstr "संग्रहण"
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr "भण्डारणमार्गः : १."
+msgstr "भण्डारणमार्गः :"
 
 #: contents/ui/settings/GeneralTab.qml:58
 #, kde-format
@@ -800,19 +800,19 @@ msgstr "पार्श्वपट्टिका"
 #, kde-format
 msgctxt "@label:textbox, the default note category name"
 msgid "New Category name:"
-msgstr "नवीन श्रेणी नाम : १."
+msgstr "नवीन श्रेणी नाम :"
 
 #: contents/ui/settings/GeneralTab.qml:102
 #, kde-format
 msgctxt "@label:textbox, the default note group name"
 msgid "New Group name:"
-msgstr "नवीनं समूहनाम : १."
+msgstr "नवीनं समूहनाम :"
 
 #: contents/ui/settings/GeneralTab.qml:132
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
-msgstr "नवीनं टिप्पणं नाम : १."
+msgstr "नवीनं टिप्पणं नाम :"
 
 #: contents/ui/settings/GeneralTab.qml:155
 #, kde-format
