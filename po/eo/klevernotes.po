@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-09 00:40+0000\n"
-"PO-Revision-Date: 2024-09-15 04:00+0200\n"
+"PO-Revision-Date: 2024-12-27 17:40+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -273,25 +273,18 @@ msgid "Please choose another name for it."
 msgstr "Bonvolu elektu alian nomon por ĝi."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Ĉi tiu nomo komenciĝas per punkto, tio povas kaŭzi problemon kaj tial ne "
-"estas permesita."
+"Ĉi nomo enhavas '/', tio povas kaŭzi problemon kaj tial ne estas permesita."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Bonvolu forigi la punkton aŭ elekti alian nomon."
+msgstr "Bonvolu forigi la '/' aŭ elekti alian nomon."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -417,7 +410,7 @@ msgstr "Grando: %1 x %2"
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr "Pliaj opcioj"
+msgstr "Pliaj elektebloj"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:219
 #, kde-format
@@ -544,12 +537,10 @@ msgid "Auto crop"
 msgstr "Aŭtomata tondado"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Teksta koloro:"
+msgstr "Teksto desegnenda"
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -598,57 +589,55 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Larĝeco:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr ""
+msgstr "Tiparo:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:119
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "Pleniga toolMode:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:129
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "Plenigi"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "Konturo"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:131
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "Konturigi kaj plenigi"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Titolokoloro:"
+msgstr "Pleniga koloro"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "Unuaranga"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "Duaranga"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
