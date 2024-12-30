@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-09 00:40+0000\n"
-"PO-Revision-Date: 2024-09-15 15:17+0200\n"
+"PO-Revision-Date: 2024-12-29 11:48+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
 #, kde-kuit-format
@@ -62,15 +62,14 @@ msgid "This action can not be reverted."
 msgstr "Diese Aktion kann nicht rückgängig gemacht werden."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgid "No stickers"
-msgstr "Farbauswahl"
+msgstr "Keine Sticker"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "Keine Emoji"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -133,11 +132,10 @@ msgid "Place this image inside the note folder"
 msgstr ""
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
-#, fuzzy, kde-format
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr "KleverNotes"
+msgstr "KleverNotes-Malen"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
 #, kde-format
@@ -275,25 +273,20 @@ msgid "Please choose another name for it."
 msgstr "Bitte einen anderen Namen dafür wählen."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Dieser Name beginnt mit einem Punkt. Dies kann zu Problemen führen und wird "
-"deshalb nicht unterstützt."
+"Dieser Name enthält Schrägstriche („/“). Dies kann zu Problemen führen und "
+"wird deshalb nicht unterstützt."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Bitte den Punkt entfernen oder einen anderen Namen wählen."
+msgstr ""
+"Bitte den Schrägstriche („/“) entfernen oder einen anderen Namen wählen."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -601,11 +594,10 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Breite:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
-#, fuzzy, kde-format
-#| msgid "Font:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Schriftart:"
@@ -619,7 +611,7 @@ msgstr ""
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "Füllen"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:130
 #, kde-format
@@ -634,25 +626,23 @@ msgid "Outline and fill"
 msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Farbe für Titel:"
+msgstr "Füllfarbe"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "Primär"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:149
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundär"
 
 #: contents/ui/settings/DisplayPreview.qml:20
 #, kde-format
@@ -748,7 +738,7 @@ msgctxt ""
 "@exemple, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "Ein Titel samt Vorschau"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
@@ -756,7 +746,7 @@ msgctxt ""
 "@exemple, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "Kursiver Text und seine Markierungen"
 
 #: contents/ui/settings/EditorTab.qml:21
 #, kde-format
@@ -786,13 +776,13 @@ msgstr "Anzahl der Leerzeichen"
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr ""
+msgstr "Editor-Hervorhebung"
 
 #: contents/ui/settings/EditorTab.qml:87
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr ""
+msgstr "Editor-Hervorhebung aktivieren"
 
 #: contents/ui/settings/GeneralTab.qml:29
 #, kde-format
@@ -916,31 +906,31 @@ msgstr "Das PlantUML-Diagramm mit einem dunklen Hintergrund anzeigen."
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Kosmetische Module"
 
 #: contents/ui/settings/PluginsTab.qml:82
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Quelltext-Syntaxhervorhebung aktivieren"
 
 #: contents/ui/settings/PluginsTab.qml:83
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "Liste unterstützter Hervorhebungen"
 
 #: contents/ui/settings/PluginsTab.qml:93
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "Hervorhebung"
 
 #: contents/ui/settings/PluginsTab.qml:121
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Hervorhebungsart"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -979,33 +969,33 @@ msgstr "Standard"
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr ""
+msgstr "Hell"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Mittelhell"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Mittel"
 
 #: contents/ui/settings/PluginsTab.qml:172
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Mitteldunkel"
 
 #: contents/ui/settings/PluginsTab.qml:173
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Dunkel"
 
 #: contents/ui/settings/PluginsTab.qml:187
 #, kde-format
@@ -1214,22 +1204,19 @@ msgid "Link note"
 msgstr "Notiz verknüpfen"
 
 #: contents/ui/sideBar/ActionBar.qml:51
-#, fuzzy, kde-format
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "as in 'A note category'"
 msgid "Create a new category"
 msgstr "Neue Kategorie erstellen"
 
 #: contents/ui/sideBar/ActionBar.qml:59
-#, fuzzy, kde-format
-#| msgid "Create a new group"
+#, kde-format
 msgctxt "as in 'A note group'"
 msgid "Create a new group"
 msgstr "Neue Gruppe erstellen"
 
 #: contents/ui/sideBar/ActionBar.qml:67
-#, fuzzy, kde-format
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "as in 'A note'"
 msgid "Create a new note"
 msgstr "Neue Notiz erstellen"
@@ -1809,7 +1796,7 @@ msgstr ""
 #: main.cpp:64
 #, kde-format
 msgid "(c) 2022-2023"
-msgstr ""
+msgstr "© 2022-2023"
 
 #: main.cpp:65
 #, kde-format
