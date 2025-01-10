@@ -596,7 +596,7 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Šířka:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
