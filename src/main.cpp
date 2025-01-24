@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include <QApplication>
@@ -25,7 +25,8 @@
 
 #include "logic/editor/editorHandler.hpp"
 
-#include "logic/treeview/noteTreeModel.h"
+// #include "logic/treeview/noteTreeModel.h"
+#include "logic/treeview/treeModel.h"
 
 #include "logic/printing/printingHelper.h"
 

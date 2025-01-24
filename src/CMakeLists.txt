@@ -25,7 +25,11 @@ add_library(klevernoteslib STATIC
     logic/preview/styleHandler.cpp
 
     # Treeview
-    logic/treeview/noteTreeModel.cpp
+    # logic/treeview/noteTreeModel.cpp
+    logic/treeview/treeItem.cpp
+    logic/treeview/treeModel.cpp
+    logic/treeview/oldModelConverter.cpp
+    logic/treeview/fileSystemHelper.cpp
 
     # === PARSER ===
     logic/parser/parser.cpp
