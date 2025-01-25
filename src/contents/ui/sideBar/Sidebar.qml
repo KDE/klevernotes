@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 /*
  * BASED ON :
@@ -14,6 +14,8 @@ import QtQuick.Controls as Controls
 
 import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigami as Kirigami
+
+import "qrc:/contents/ui/dialogs"
 
 import org.kde.Klever
 
@@ -187,6 +189,9 @@ Kirigami.OverlayDrawer {
                         onErrorOccurred: function (errorMessage) {
                             applicationWindow().showPassiveNotification(errorMessage)
                         }
+                        onOldStorageStructure: function () {
+                            oldStructureWarning.open()
+                        }
                         onMoveError: function (rowModelIndex, newParentIndex, useCase, shownName, parentPath) {
                             treeView.isActive = true
                             treeView.movingRowModelIndex = rowModelIndex
@@ -283,6 +288,18 @@ Kirigami.OverlayDrawer {
 
         treeView: treeView
         actionBar: actionBar
+    }
+
+    StorageConversionDialog {
+        id: oldStructureWarning
+
+        onApplied: {
+            noteTreeModel.initModel(true)
+            close()
+        }
+        onRejected: {
+            close()
+        }
     }
 
     Timer {
