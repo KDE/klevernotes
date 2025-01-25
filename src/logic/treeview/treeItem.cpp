@@ -4,6 +4,7 @@
 // KleverNotes includes
 #include "treeItem.h"
 
+#include "logic/documentHandler.h"
 #include "logic/treeview/fileSystemHelper.h"
 #include "treeModel.h"
 
@@ -11,6 +12,37 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QIcon>
+#include <QJsonArray>
+
+namespace
+{
+void correctMetaData(QJsonObject &metadata)
+{
+    const QString contentStr = QStringLiteral("content");
+    if (!metadata[contentStr].isArray()) {
+        metadata[contentStr] = QJsonArray();
+    }
+}
+
+QList<QString> getChildrenNames(const QJsonArray &children)
+{
+    QList<QString> childrenNames;
+    for (int i = 0; i < children.size(); i++) {
+        const auto nameRef = children[i].toObject()[QStringLiteral("name")];
+        if (nameRef.isString()) {
+            childrenNames.append(nameRef.toString());
+        }
+    }
+    return childrenNames;
+}
+
+void setFromMetadata(const QJsonObject &metadata, const QString &key, QString &value)
+{
+    if (metadata[key].isString()) {
+        value = metadata[key].toString();
+    }
+}
+}
 
 TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
@@ -26,11 +58,10 @@ TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model,
     m_isNote = fileInfo.isFile();
     m_path = fileInfo.absoluteFilePath();
 
-    const QString metadataPath = m_path + QStringLiteral("/") + QStringLiteral("/.klevernotesFolder.metadata.json");
-
-    if (!m_isNote && !QFile(metadataPath).exists()) {
-        fileSystemHelper::createFile(metadataPath);
+    if (!m_isNote) {
+        setTempMetaData();
     }
+
     if (m_isNote) {
         const QString todoPath = m_path + QStringLiteral("/") + m_name + QStringLiteral(".todo.json");
         if (!QFile(todoPath).exists()) {
@@ -47,12 +78,83 @@ TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model,
             continue;
         }
 
-        auto subTree = std::make_unique<TreeItem>(file.absoluteFilePath(), file.isFile(), m_model, this);
+        auto node = std::make_unique<TreeItem>(file.absoluteFilePath(), file.isFile(), m_model, this);
 
-        appendChild(std::move(subTree));
+        const int nameIdx = m_tempChildrenNames.indexOf(node->m_name);
+        if (nameIdx != -1) {
+            node->place = nameIdx;
+            const auto refChild = m_tempChildrenInfo[nameIdx].toObject();
+
+            setFromMetadata(refChild, QStringLiteral("icon"), node->m_icon);
+            setFromMetadata(refChild, QStringLiteral("color"), node->m_color);
+        }
+
+        appendChild(std::move(node));
     }
 
-    // check out metadata and deal with them
+    m_tempChildrenNames = {}; // Node need to keep it
+    m_tempChildrenInfo = {}; // Node need to keep it
+    std::sort(m_children.begin(), m_children.end(), [](auto const &a, auto const &b) {
+        if (a->place == -1)
+            return false;
+        if (b->place == -1)
+            return true;
+        return a->place < b->place;
+    });
+
+    saveMetaData();
+}
+
+void TreeItem::setTempMetaData()
+{
+    QJsonObject metadata;
+
+    const QString metadataPath = m_path + QStringLiteral("/.klevernotesFolder.metadata.json");
+    if (!QFile(metadataPath).exists()) {
+        fileSystemHelper::createFile(metadataPath);
+        metadata = QJsonObject();
+    } else {
+        metadata = DocumentHandler::getJson(metadataPath);
+    }
+
+    correctMetaData(metadata);
+
+    setFromMetadata(metadata, QStringLiteral("icon"), m_icon);
+    setFromMetadata(metadata, QStringLiteral("color"), m_color);
+
+    m_tempChildrenInfo = metadata[QStringLiteral("content")].toArray();
+    m_tempChildrenNames = getChildrenNames(m_tempChildrenInfo);
+}
+
+void TreeItem::saveMetaData()
+{
+    QJsonObject metadata;
+    if (!m_icon.isEmpty()) {
+        metadata[QStringLiteral("icon")] = m_icon;
+    }
+    if (!m_color.isEmpty()) {
+        metadata[QStringLiteral("color")] = m_color;
+    }
+    QJsonArray content;
+    for (const auto &child : m_children) {
+        if (!child->m_isNote) {
+            child->saveMetaData();
+        }
+        QJsonObject childMetadata;
+        if (!child->m_icon.isEmpty()) {
+            childMetadata[QStringLiteral("icon")] = child->m_icon;
+        }
+        if (!child->m_color.isEmpty()) {
+            childMetadata[QStringLiteral("color")] = child->m_color;
+        }
+        childMetadata[QStringLiteral("name")] = child->m_name;
+
+        content.append(childMetadata);
+    }
+    metadata[QStringLiteral("content")] = content;
+
+    const QString metadataPath = m_path + QStringLiteral("/.klevernotesFolder.metadata.json");
+    DocumentHandler::saveJson(metadata, metadataPath);
 }
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
@@ -69,45 +171,45 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
     if (item->getParentItem() != this) {
         item->setParentItem(this);
     }
-    m_childItems.push_back(std::move(item));
+    m_children.push_back(std::move(item));
 }
 
 TreeItem *TreeItem::child(int row) const
 {
-    if (row < 0 || row >= static_cast<int>(m_childItems.size())) {
+    if (row < 0 || row >= static_cast<int>(m_children.size())) {
         return nullptr;
     }
-    return m_childItems.at(row).get();
+    return m_children.at(row).get();
 }
 
 std::unique_ptr<TreeItem> TreeItem::takeUniqueChildAt(int row)
 {
-    if (row < 0 || row >= static_cast<int>(m_childItems.size())) {
+    if (row < 0 || row >= static_cast<int>(m_children.size())) {
         return nullptr;
     }
 
-    auto item = std::move(m_childItems.at(row));
+    auto item = std::move(m_children.at(row));
 
-    m_childItems.erase(m_childItems.begin() + row);
+    m_children.erase(m_children.begin() + row);
 
     return item;
 }
 
 int TreeItem::childCount() const
 {
-    return m_childItems.size();
+    return m_children.size();
 }
 
 int TreeItem::row() const
 {
     if (m_parentItem) {
-        const auto it = std::find_if(m_parentItem->m_childItems.cbegin(), m_parentItem->m_childItems.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
+        const auto it = std::find_if(m_parentItem->m_children.cbegin(), m_parentItem->m_children.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
             return treeItem.get() == const_cast<TreeItem *>(this);
         });
 
-        Q_ASSERT(it != m_parentItem->m_childItems.cend());
+        Q_ASSERT(it != m_parentItem->m_children.cend());
 
-        return std::distance(m_parentItem->m_childItems.cbegin(), it);
+        return std::distance(m_parentItem->m_children.cbegin(), it);
     }
 
     return 0;
@@ -116,10 +218,8 @@ int TreeItem::row() const
 QVariant TreeItem::data(int role) const
 {
     switch (role) {
-    case NoteTreeModel::PathRole: {
+    case NoteTreeModel::PathRole:
         return m_path;
-    }
-
     case Qt::DisplayRole:
     case NoteTreeModel::DisplayNameRole:
         return m_name;
@@ -128,7 +228,7 @@ QVariant TreeItem::data(int role) const
         return QIcon::fromTheme(QStringLiteral("document-edit-sign"));
 
     case NoteTreeModel::IconNameRole:
-        return m_isNote ? QStringLiteral("document-open-symbolic") : QStringLiteral("document-edit-sign-symbolic");
+        return m_icon.isEmpty() ? m_isNote ? QStringLiteral("document-edit-sign-symbolic") : QStringLiteral("folder-symbolic") : m_icon;
 
     case NoteTreeModel::UseCaseRole:
         return m_isNote ? QStringLiteral("Note") : QStringLiteral("Category");
@@ -177,10 +277,10 @@ void TreeItem::remove()
     if (m_model->noteMapEnabled())
         Q_EMIT m_model->globalPathRemoved(data(NoteTreeModel::PathRole).toString());
 
-    const auto it = std::find_if(m_parentItem->m_childItems.cbegin(), m_parentItem->m_childItems.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
+    const auto it = std::find_if(m_parentItem->m_children.cbegin(), m_parentItem->m_children.cend(), [this](const std::unique_ptr<TreeItem> &treeItem) {
         return treeItem.get() == const_cast<TreeItem *>(this);
     });
-    m_parentItem->m_childItems.erase(it);
+    m_parentItem->m_children.erase(it);
 }
 
 void TreeItem::setDisplayName(const QString &name)

@@ -54,6 +54,11 @@ void NoteTreeModel::initModel(bool convert)
     }
 }
 
+void NoteTreeModel::saveMetaData()
+{
+    m_rootItem->saveMetaData();
+}
+
 QModelIndex NoteTreeModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (!hasIndex(row, column, parent)) {

@@ -4,6 +4,7 @@
 #pragma once
 
 // Qt includes
+#include <QJsonArray>
 #include <QVariant>
 
 // C++ includes
@@ -31,18 +32,32 @@ public:
     void askForFocus(const QModelIndex &itemIndex);
     void askForExpand(const QModelIndex &itemIndex);
     int getDepth() const;
+    void saveMetaData();
+
+public:
+    // Metadata
+    int place = -1;
+
+private:
+    void setTempMetaData();
 
 private:
     // Position in tree
-    std::vector<std::unique_ptr<TreeItem>> m_childItems;
+    std::vector<std::unique_ptr<TreeItem>> m_children;
     TreeItem *m_parentItem;
 
     NoteTreeModel *m_model;
+
+    // Temp Metadata
+    QList<QString> m_tempChildrenNames;
+    QJsonArray m_tempChildrenInfo;
 
     // Content
     bool m_isNote;
     QString m_name;
     QString m_path;
+    QString m_icon;
+    QString m_color;
     bool m_wantFocus = false;
     bool m_wantExpand = false;
 };
