@@ -20,7 +20,7 @@ NoteTreeModel::NoteTreeModel(QObject *parent)
 {
 }
 
-void NoteTreeModel::initModel()
+void NoteTreeModel::initModel(bool convert)
 {
     if (KleverConfig::storagePath().isEmpty()) {
         return;
@@ -37,7 +37,10 @@ void NoteTreeModel::initModel()
     const QString storagePath = KleverConfig::storagePath();
     const QString metadataPath = storagePath + QStringLiteral("/.klevernotesFolder.metadata.json");
     if (KleverConfig::storagePath().toLower().endsWith(QStringLiteral("klevernotes")) && !QFile(metadataPath).exists()) {
-        // TODO: ask before doing it
+        if (!convert) {
+            Q_EMIT oldStorageStructure();
+            return;
+        }
         treeModelConverter::convertFileStructure(KleverConfig::storagePath());
     }
 

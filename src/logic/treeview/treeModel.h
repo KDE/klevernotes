@@ -42,7 +42,7 @@ public:
     Q_INVOKABLE void rename(const QModelIndex &rowModelIndex, const QString &newName);
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
-    Q_INVOKABLE void initModel();
+    Q_INVOKABLE void initModel(bool convert = false);
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
     Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName = QLatin1String());
 
@@ -61,6 +61,8 @@ Q_SIGNALS:
     void globalPathUpdated(const QString &oldPath, const QString &newPath);
     void globalPathRemoved(const QString &path);
     void initialGlobalPathsSent(const QStringList &initialGlobalPaths);
+
+    void oldStorageStructure();
 
 private:
     // Storage Handler

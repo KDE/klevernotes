@@ -26,10 +26,9 @@ TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model,
     m_isNote = fileInfo.isFile();
     m_path = fileInfo.absoluteFilePath();
 
-    const QString metadataPath =
-        m_path + QStringLiteral("/") + (m_isNote ? m_name : QStringLiteral("/.klevernotesFolder.metadata.json")) + QStringLiteral(".metadata.json");
+    const QString metadataPath = m_path + QStringLiteral("/") + QStringLiteral("/.klevernotesFolder.metadata.json");
 
-    if (!QFile(metadataPath).exists()) {
+    if (!m_isNote && !QFile(metadataPath).exists()) {
         fileSystemHelper::createFile(metadataPath);
     }
     if (m_isNote) {
