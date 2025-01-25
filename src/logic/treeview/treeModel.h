@@ -45,6 +45,7 @@ public:
     Q_INVOKABLE void initModel(bool convert = false);
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
     Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName = QLatin1String());
+    Q_INVOKABLE void saveMetaData();
 
     // NoteMapper
     void setNoteMapEnabled(const bool noteMapEnabled);
