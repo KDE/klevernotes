@@ -51,7 +51,7 @@ msgstr "确认删除分组"
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
-msgstr "确认删除记事帖"
+msgstr "确认删除笔记"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:42
 #, kde-format
@@ -214,7 +214,7 @@ msgstr "移动"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "选择名称。"
+msgstr "起个名字"
 
 #: contents/ui/dialogs/NamingDialog.qml:50
 #, kde-format
