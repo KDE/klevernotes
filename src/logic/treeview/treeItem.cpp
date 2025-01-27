@@ -39,7 +39,14 @@ QList<QString> getChildrenNames(const QJsonArray &children)
 void setFromMetadata(const QJsonObject &metadata, const QString &key, QString &value)
 {
     if (metadata[key].isString()) {
-        value = metadata[key].toString();
+        const QString metadataValue = metadata[key].toString();
+
+        const bool isValid = (key == QStringLiteral("icon") && QIcon::fromTheme(metadataValue).availableSizes().length() > 0)
+            || (key == QStringLiteral("color") && QColor(metadataValue).isValid());
+
+        if (isValid) {
+            value = metadataValue;
+        }
     }
 }
 }
@@ -227,9 +234,9 @@ QVariant TreeItem::data(int role) const
     case Qt::DecorationRole:
         return QIcon::fromTheme(QStringLiteral("document-edit-sign"));
 
-    case NoteTreeModel::IconNameRole:
+    case NoteTreeModel::IconNameRole: {
         return m_icon.isEmpty() ? m_isNote ? QStringLiteral("document-edit-sign-symbolic") : QStringLiteral("folder-symbolic") : m_icon;
-
+    }
     case NoteTreeModel::UseCaseRole:
         return m_isNote ? QStringLiteral("Note") : QStringLiteral("Category");
 
