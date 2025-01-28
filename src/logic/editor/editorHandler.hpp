@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 
 // In part based on: https://github.com/igormironchik/markdown-tools/tree/main 'md-editor'
 
@@ -41,6 +41,7 @@ class EditorHandler : public QObject
     Q_PROPERTY(int selectionEnd READ selectionEnd WRITE setSelectionEnd NOTIFY selectionEndChanged)
 
     Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
+    Q_PROPERTY(QString noteDir READ getNoteDir WRITE setNoteDir)
 
 public:
     explicit EditorHandler(QObject *parent = nullptr);
@@ -59,6 +60,9 @@ public:
     Q_INVOKABLE void parse(const QString &src);
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
+    QString getNoteDir() const;
+    void setNoteDir(const QString &noteDir);
+
     Parser *parser() const;
 
     // md-editor

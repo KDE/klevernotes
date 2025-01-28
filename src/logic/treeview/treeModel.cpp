@@ -85,8 +85,9 @@ QHash<int, QByteArray> NoteTreeModel::roleNames() const
     return {
         {DisplayNameRole, "displayName"},
         {PathRole, "path"},
+        {DirRole, "dir"},
         {IconNameRole, "iconName"},
-        {UseCaseRole, "useCase"},
+        {IsNote, "isNote"},
         {NoteNameRole, "noteName"},
         {BranchNameRole, "branchName"},
         {FullNameRole, "fullName"},
@@ -223,7 +224,7 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
     dest += finalName;
 
     if (QDir(dest).exists()) {
-        Q_EMIT moveError(rowModelIndex, newParentIndex, row->data(NoteTreeModel::UseCaseRole).toString(), row->getRealName(), parentPath);
+        Q_EMIT moveError(rowModelIndex, newParentIndex, row->data(NoteTreeModel::IsNote).toString(), row->getRealName(), parentPath);
         return;
     }
 
