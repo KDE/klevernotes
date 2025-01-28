@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Controls as Controls
@@ -37,6 +37,8 @@ Controls.ScrollView {
             id: descendantsModel
         } 
 
+        property bool _hasBeenClicked: false
+
         delegate: TreeItem {
             id: treeItem
 
@@ -55,6 +57,7 @@ Controls.ScrollView {
                 }
             }
             onClicked: {
+                treeView._hasBeenClicked = true
                 descendantsModel.toggleChildren(index)
                 forceActiveFocus()
                 const mainWindow = applicationWindow()

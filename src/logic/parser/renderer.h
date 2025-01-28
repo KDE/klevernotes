@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #pragma once
@@ -20,7 +20,8 @@ public:
     ~Renderer() override = default;
 
     // General info
-    void setNotePath(const QString &notePath);
+    QString getNoteDir() const;
+    void setNoteDir(const QString &notePath);
     void addPluginHelper(PluginHelper *pluginHelper);
     void addExtendedSyntax(const long long int opts, const QString &openingHTML, const QString &closingHTML);
 
@@ -53,7 +54,7 @@ public:
     static QString unescape(const QString &html);
 
 protected:
-    QString m_notePath;
+    QString m_noteDir;
 
     QMap<long long int, std::pair<QString, QString>> m_extendedSyntaxMap;
 

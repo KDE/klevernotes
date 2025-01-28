@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 
 #include "editorHandler.hpp"
 
@@ -241,26 +241,32 @@ void EditorHandler::setNotePath(const QString &notePath)
     if (notePath == m_notePath) {
         return;
     }
-    static const QString pathEnd = QStringLiteral("/note.md");
-    if (!notePath.endsWith(pathEnd)) {
+    if (!notePath.endsWith(QStringLiteral(".md"))) {
         m_notePath = QLatin1String();
         return;
     }
     m_notePath = notePath;
     m_noteFirstHighlight = true;
 
-    QString rendererNotePath = notePath;
-    rendererNotePath.chop(pathEnd.length());
+    Q_EMIT renderingFinished({});
+    parseDoc();
+}
 
-    m_renderer->setNotePath(rendererNotePath);
+QString EditorHandler::getNoteDir() const
+{
+    return m_renderer->getNoteDir();
+}
+
+void EditorHandler::setNoteDir(const QString &noteDir)
+{
+    m_renderer->setNoteDir(noteDir);
 
     if (m_pluginHelper) {
         // We do this here because we're sure to be in another note
         m_pluginHelper->clearPluginsPreviousInfo();
 
-        m_pluginHelper->mapperParserUtils()->setNotePath(rendererNotePath);
+        m_pluginHelper->mapperParserUtils()->setNotePath(noteDir);
     }
-    Q_EMIT renderingFinished({});
 }
 // !Parser
 

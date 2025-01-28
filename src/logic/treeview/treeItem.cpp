@@ -63,14 +63,15 @@ TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model,
 
     m_name = fileInfo.isFile() ? fileName.chopped(3) : fileName;
     m_isNote = fileInfo.isFile();
-    m_path = fileInfo.absoluteFilePath();
+    m_path = fileInfo.absoluteFilePath(); // Should be the same as 'path'
+    m_dir = fileInfo.dir().path();
 
     if (!m_isNote) {
         setTempMetaData();
     }
 
     if (m_isNote) {
-        const QString todoPath = m_path + QStringLiteral("/") + m_name + QStringLiteral(".todo.json");
+        const QString todoPath = m_dir + QStringLiteral("/") + m_name + QStringLiteral(".todo.json");
         if (!QFile(todoPath).exists()) {
             fileSystemHelper::createFile(todoPath);
         }
@@ -227,6 +228,10 @@ QVariant TreeItem::data(int role) const
     switch (role) {
     case NoteTreeModel::PathRole:
         return m_path;
+
+    case NoteTreeModel::DirRole:
+        return m_dir;
+
     case Qt::DisplayRole:
     case NoteTreeModel::DisplayNameRole:
         return m_name;
@@ -237,8 +242,8 @@ QVariant TreeItem::data(int role) const
     case NoteTreeModel::IconNameRole: {
         return m_icon.isEmpty() ? m_isNote ? QStringLiteral("document-edit-sign-symbolic") : QStringLiteral("folder-symbolic") : m_icon;
     }
-    case NoteTreeModel::UseCaseRole:
-        return m_isNote ? QStringLiteral("Note") : QStringLiteral("Category");
+    case NoteTreeModel::IsNote:
+        return m_isNote;
 
     case NoteTreeModel::NoteNameRole:
         return data(NoteTreeModel::DisplayNameRole);

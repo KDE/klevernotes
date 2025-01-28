@@ -1,4 +1,8 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
+
 /*
+ * BASED ON:
  *  SPDX-FileCopyrightText: 2020 Marco Martin <notmart@gmail.com>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
@@ -13,7 +17,8 @@ Delegates.RoundedTreeDelegate {
     id: treeItem
 
     required property string path
-    required property string useCase
+    required property string dir
+    required property bool isNote
     required property string displayName
     required property string iconName
     required property bool wantExpand
@@ -23,7 +28,7 @@ Delegates.RoundedTreeDelegate {
 
     text: displayName
     icon.name: iconName
-    highlighted: treeView.currentItem ? treeView.currentItem.path === path : false
+    highlighted: treeView._hasBeenClicked && treeView.currentItem ? treeView.currentItem.path === path : false
 
     MouseArea {
         anchors.fill: parent

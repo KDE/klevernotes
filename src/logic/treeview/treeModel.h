@@ -20,10 +20,11 @@ public:
     explicit NoteTreeModel(QObject *parent = nullptr);
 
     enum ExtraRoles {
-        PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Category/Group/Note
+        PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Note/Folder
+        DirRole, // To get a string with the fullPath the folder or the folder containing the note
         DisplayNameRole, // To get a string with the name of the Category/Group/Note to be displayed instead of the hidden name
         IconNameRole, // To get a string with the icon name associated with the Category/Group/Note
-        UseCaseRole, // To get a string to know if the item is a Category/Group/Note
+        IsNote, // To know if the item is a Note (else it's a folder)
         NoteNameRole, // For only filtering between notes in the searchBar
         BranchNameRole, // To get the name of the category + group of a note
         FullNameRole, // To get the "full" name of the category + group + note of a note

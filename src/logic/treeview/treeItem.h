@@ -56,6 +56,7 @@ private:
     bool m_isNote;
     QString m_name;
     QString m_path;
+    QString m_dir;
     QString m_icon;
     QString m_color;
     bool m_wantFocus = false;

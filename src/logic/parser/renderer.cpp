@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "renderer.h"
@@ -158,7 +158,7 @@ void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
     if (!m_justCollectFootnoteRefs) {
         QString url = i->url();
         if (url.startsWith(QStringLiteral("./"))) {
-            url = m_notePath + url.mid(1);
+            url = m_noteDir + url.mid(1);
         }
         if (url.startsWith(QStringLiteral("~"))) {
             url = QDir::homePath() + url.mid(1);
@@ -253,9 +253,15 @@ void Renderer::onEmoji(EmojiPlugin::EmojiItem *e)
 
 // Internal info
 // =============
-void Renderer::setNotePath(const QString &notePath)
+QString Renderer::getNoteDir() const
 {
-    m_notePath = notePath;
+    return m_noteDir;
+}
+
+void Renderer::setNoteDir(const QString &noteDir)
+{
+    qDebug() << noteDir;
+    m_noteDir = noteDir;
 }
 
 void Renderer::addPluginHelper(PluginHelper *pluginHelper)
