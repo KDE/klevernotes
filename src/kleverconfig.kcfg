@@ -18,17 +18,11 @@
             <label>The default name shown in place of "./BaseCategory"</label>
             <default>Notes</default>
         </entry>
-        <entry name="defaultCategoryName" type="String">
+        <entry name="defaultFolderName" type="String">
             <label>The default name for a new Category</label>
-            <default>New Category</default>
-        </entry>
-        <entry name="defaultGroupName" type="String">
-            <label>The default name for a new Group</label>
-            <default>New Group</default>
         </entry>
         <entry name="defaultNoteName" type="String">
             <label>The default name for a new Note</label>
-            <default>New Note</default>
         </entry>
 
         <entry name="editorVisible" type="Bool">

@@ -45,7 +45,7 @@ void NoteTreeModel::initModel(bool convert)
     }
 
     beginResetModel();
-    m_rootItem = std::make_unique<TreeItem>(KleverConfig::storagePath(), 0, this);
+    m_rootItem = std::make_unique<TreeItem>(KleverConfig::storagePath(), this);
     endResetModel();
 
     if (m_noteMapEnabled) {
@@ -149,24 +149,18 @@ QVariant NoteTreeModel::data(const QModelIndex &index, int role) const
     return item->data(role);
 }
 
-QModelIndex NoteTreeModel::addRow(const QString &rowName, const QString &parentPath, const bool isNote, const QModelIndex &parentModelIndex)
+QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, const QModelIndex &parentModelIndex)
 {
     const auto parentRow = !parentModelIndex.isValid() ? m_rootItem.get() : static_cast<TreeItem *>(parentModelIndex.internalPointer());
+    const QString parentPath = parentRow->data(NoteTreeModel::PathRole).toString();
 
-    bool rowCreated;
-    if (isNote) {
-        rowCreated = fileSystemHelper::createFile(parentPath + QStringLiteral("/") + rowName + QStringLiteral(".md"));
-        rowCreated = fileSystemHelper::createFile(parentPath + QStringLiteral("/") + rowName + QStringLiteral(".todo.json"));
-    } else {
-        rowCreated = fileSystemHelper::createFolder(parentPath + QStringLiteral("/") + rowName);
-    }
+    const QString rowPath = isNote ? makeNote(parentPath, rowName) : makeFolder(parentPath, rowName);
 
-    if (!rowCreated) {
+    if (rowPath.isEmpty()) {
         return QModelIndex();
     }
 
-    const QString rowPath = parentPath + QLatin1Char('/') + rowName;
-    auto newRow = std::make_unique<TreeItem>(rowPath, isNote, this, parentRow);
+    auto newRow = std::make_unique<TreeItem>(rowPath, this, parentRow);
 
     const int childCount = parentRow->childCount();
     beginInsertRows(parentModelIndex, childCount, childCount);
@@ -354,28 +348,32 @@ void NoteTreeModel::addInitialGlobalPath(const QString &path)
 }
 
 // Storage Handler
-bool NoteTreeModel::makeNote(const QString &folderPath, const QString &noteName)
+QString NoteTreeModel::makeNote(const QString &parentPath, const QString &noteName)
 {
-    const QString notePath = folderPath + QLatin1Char('/') + noteName;
+    const QString generalNotePath = parentPath + QLatin1Char('/') + noteName;
+    const QString notePath = generalNotePath + QStringLiteral(".md");
 
-    bool creationSucces = fileSystemHelper::createFile(notePath + QStringLiteral(".md"));
+    bool creationSucces = fileSystemHelper::createFile(notePath);
     if (creationSucces) {
-        creationSucces = fileSystemHelper::createFile(notePath + QStringLiteral(".todo.json"));
+        creationSucces = fileSystemHelper::createFile(generalNotePath + QStringLiteral(".todo.json"));
     }
     if (!creationSucces) {
         Q_EMIT errorOccurred(i18n("An error occurred while trying to create the note."));
+        return {};
     }
 
-    return (creationSucces);
+    return notePath;
 }
 
-bool NoteTreeModel::makeFolder(const QString &folderPath)
+QString NoteTreeModel::makeFolder(const QString &parentPath, const QString &folderName)
 {
-    const bool folderCreated = fileSystemHelper::createFolder(folderPath);
-    if (!folderCreated) {
+    const QString folderPath = parentPath + QLatin1Char('/') + folderName;
+
+    if (!fileSystemHelper::createFolder(folderPath)) {
         Q_EMIT errorOccurred(i18n("An error occurred while trying to create this folder."));
+        return {};
     }
-    return folderCreated;
+    return folderPath;
 }
 
 bool NoteTreeModel::makeStorage(const QString &storagePath)
@@ -383,18 +381,18 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
     const QString storageErrorMessage = i18n("An error occurred while trying to create the storage.");
     const QString demoErrorMessage = i18n("An error occurred while trying to create the demo note.");
 
-    const QString mainFolderPath = storagePath + QStringLiteral("/") + i18nc("Main folder name, where all the notes will be stored by default", "Notes");
-    if (!makeFolder(mainFolderPath)) {
+    const QString mainFolderName = i18nc("Main folder name, where all the notes will be stored by default", "Notes");
+    if (makeFolder(storagePath, mainFolderName).isEmpty()) {
         Q_EMIT errorOccurred(storageErrorMessage);
         return false;
     }
 
+    const QString mainFolderPath = storagePath + QLatin1Char('/') + mainFolderName;
     const QString demoName = i18nc("The name for a demo note", "Demo");
-    const bool initDemoNote = makeNote(mainFolderPath, demoName);
-    if (!initDemoNote) {
+    const QString demoPath = makeNote(mainFolderPath, demoName);
+    if (demoPath.isEmpty()) {
         Q_EMIT errorOccurred(demoErrorMessage);
     } else {
-        const QString demoPath = mainFolderPath + QStringLiteral("/") + demoName + QStringLiteral(".md");
         if (QFile::copy(QStringLiteral(":/demo_note.md"), demoPath)) {
             QFile(demoPath).setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser | QFile::WriteUser | QFile::ReadGroup | QFile::WriteGroup
                                            | QFile::ReadOther | QFile::WriteOther);
@@ -403,9 +401,7 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
             Q_EMIT errorOccurred(demoErrorMessage);
         }
 
-        if (!makeFolder(storagePath + QStringLiteral("/Images/"))) {
-            Q_EMIT errorOccurred(demoErrorMessage);
-        } else if (!QFile::copy(QStringLiteral(":/Images/logo.png"), mainFolderPath + QStringLiteral("/Images/logo.png"))) {
+        if (!QFile::copy(QStringLiteral(":/Images/logo.png"), mainFolderPath + QStringLiteral("/logo.png"))) {
             Q_EMIT errorOccurred(demoErrorMessage);
         }
     }

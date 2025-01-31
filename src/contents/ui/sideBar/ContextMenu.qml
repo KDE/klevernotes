@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Controls as Controls
@@ -15,26 +15,17 @@ Controls.Menu {
     required property QtObject treeView
 
     Controls.MenuItem {
-        text: i18nc("as in 'A note category'", "New category")
-        icon.name: "journal-new-symbolic"
-
-        onTriggered: {
-            actionBar.createCategoryAction.triggered()
-        }
-    }
-
-    Controls.MenuItem {
         icon.name: "folder-new-symbolic"
-        text: i18nc("as in 'A note group'", "New group")
+        text: i18nc("@item:menu", "New folder")
 
         onTriggered: {
-            actionBar.createGroupAction.triggered()
+            actionBar.createFolderAction.triggered()
         }
     }
 
     Controls.MenuItem {
         icon.name: "document-new-symbolic"
-        text: i18nc("as in 'A note'", "New note")
+        text: i18nc("@item:menu", "New note")
 
         onTriggered: {
             actionBar.createNoteAction.triggered()
@@ -72,7 +63,7 @@ Controls.Menu {
     DeleteConfirmationDialog {
         id: deleteConfirmationDialog
 
-        useCase: actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
+        useCase: "note" //actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
         name: actionBar.currentClickedItem ? actionBar.currentClickedItem.text : ""
 
         onAccepted: {
@@ -91,7 +82,7 @@ Controls.Menu {
         id: moveDialog
 
         treeView: contextMenu.treeView.model
-        useCase: actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
+        useCase: "note"//actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
 
         onApplied: if (clickedIndex && actionBar.currentModelIndex) {
             applicationWindow().saveState()

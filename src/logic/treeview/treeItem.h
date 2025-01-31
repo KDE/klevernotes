@@ -14,7 +14,7 @@ class NoteTreeModel;
 class TreeItem
 {
 public:
-    explicit TreeItem(const QString &path, const bool isNote, NoteTreeModel *model, TreeItem *parentItem = nullptr);
+    explicit TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentItem = nullptr);
 
     void appendChild(std::unique_ptr<TreeItem> &&child);
 
