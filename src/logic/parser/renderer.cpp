@@ -260,7 +260,6 @@ QString Renderer::getNoteDir() const
 
 void Renderer::setNoteDir(const QString &noteDir)
 {
-    qDebug() << noteDir;
     m_noteDir = noteDir;
 }
 

@@ -39,7 +39,7 @@ public:
     int columnCount(const QModelIndex &parent = {}) const override;
     QHash<int, QByteArray> roleNames() const override;
     Q_INVOKABLE QModelIndex addRow(const QString &rowName, const bool isNote, const QModelIndex &parentModelIndex = QModelIndex());
-    Q_INVOKABLE void removeFromTree(const QModelIndex &index);
+    Q_INVOKABLE void removeFromTree(const QModelIndex &index, const bool permanent);
     Q_INVOKABLE void rename(const QModelIndex &rowModelIndex, const QString &newName);
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
@@ -67,6 +67,8 @@ Q_SIGNALS:
     void oldStorageStructure();
 
 private:
+    void handleRemoveItem(const QModelIndex &index, const bool succes);
+
     // Storage Handler
     bool makeStorage(const QString &storagePath);
     QString makeFolder(const QString &parentPath, const QString &folderName);
