@@ -32,7 +32,9 @@ public:
     void askForFocus(const QModelIndex &itemIndex);
     void askForExpand(const QModelIndex &itemIndex);
     int getDepth() const;
+
     void saveMetaData();
+    void setPath(const QString &path);
 
 public:
     // Metadata

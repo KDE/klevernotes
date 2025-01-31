@@ -15,6 +15,10 @@
 // Qt includes
 #include <QDir>
 
+#define slash QLatin1Char('/')
+#define mdEnding QStringLiteral(".md")
+#define todoEnding QStringLiteral(".todo.json")
+
 NoteTreeModel::NoteTreeModel(QObject *parent)
     : QAbstractItemModel(parent)
 {
@@ -198,7 +202,6 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index)
 
 void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName)
 {
-    static const QChar slash = QLatin1Char('/');
     auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
 
     const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
@@ -254,29 +257,43 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
 {
     const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
 
+    const auto currentDirPath = row->data(DirRole).toString();
     const QString rowPath = row->data(PathRole).toString();
 
-    const bool isBaseCategory = rowPath.endsWith(QStringLiteral(".BaseCategory"));
-    if (isBaseCategory) {
-        KleverConfig::setCategoryDisplayName(newName);
+    QString newPath;
+
+    bool renamed = false;
+    if (row->data(IsNote).toBool()) {
+        const QString newPartialPath = currentDirPath + slash + newName;
+        newPath = newPartialPath + mdEnding;
+
+        renamed = QFile(rowPath).rename(newPath);
+
+        if (renamed) {
+            const QString currentTodo = currentDirPath + slash + row->data(NoteNameRole).toString() + todoEnding;
+            const QString newTodo = newPartialPath + todoEnding;
+
+            renamed = QFile(currentTodo).rename(newTodo);
+        }
     } else {
         QDir dir(rowPath);
         dir.cdUp();
+        newPath = dir.path() + slash + newName;
 
-        const QString newPath = dir.absolutePath() + QLatin1Char('/') + newName;
-
-        const bool renamed = QDir().rename(rowPath, newPath);
-
-        if (!renamed) {
-            Q_EMIT errorOccurred(i18n("An error occurred while trying to rename this item."));
-            return;
-        }
+        renamed = QDir(rowPath).rename(rowPath, newPath);
     }
 
+    if (!renamed) {
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to rename this item."));
+        return;
+    }
+
+    row->setPath(newPath);
+
+    // Will change
     row->setDisplayName(newName);
-    if (!isBaseCategory) {
-        row->setRealName(newName);
-    }
+    row->setRealName(newName);
+
     Q_EMIT dataChanged(rowModelIndex, rowModelIndex);
 }
 
@@ -350,12 +367,12 @@ void NoteTreeModel::addInitialGlobalPath(const QString &path)
 // Storage Handler
 QString NoteTreeModel::makeNote(const QString &parentPath, const QString &noteName)
 {
-    const QString generalNotePath = parentPath + QLatin1Char('/') + noteName;
-    const QString notePath = generalNotePath + QStringLiteral(".md");
+    const QString generalNotePath = parentPath + slash + noteName;
+    const QString notePath = generalNotePath + mdEnding;
 
     bool creationSucces = fileSystemHelper::createFile(notePath);
     if (creationSucces) {
-        creationSucces = fileSystemHelper::createFile(generalNotePath + QStringLiteral(".todo.json"));
+        creationSucces = fileSystemHelper::createFile(generalNotePath + todoEnding);
     }
     if (!creationSucces) {
         Q_EMIT errorOccurred(i18n("An error occurred while trying to create the note."));
@@ -367,7 +384,7 @@ QString NoteTreeModel::makeNote(const QString &parentPath, const QString &noteNa
 
 QString NoteTreeModel::makeFolder(const QString &parentPath, const QString &folderName)
 {
-    const QString folderPath = parentPath + QLatin1Char('/') + folderName;
+    const QString folderPath = parentPath + slash + folderName;
 
     if (!fileSystemHelper::createFolder(folderPath)) {
         Q_EMIT errorOccurred(i18n("An error occurred while trying to create this folder."));
@@ -387,7 +404,7 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
         return false;
     }
 
-    const QString mainFolderPath = storagePath + QLatin1Char('/') + mainFolderName;
+    const QString mainFolderPath = storagePath + slash + mainFolderName;
     const QString demoName = i18nc("The name for a demo note", "Demo");
     const QString demoPath = makeNote(mainFolderPath, demoName);
     if (demoPath.isEmpty()) {
