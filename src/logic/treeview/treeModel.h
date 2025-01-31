@@ -38,7 +38,7 @@ public:
     int rowCount(const QModelIndex &parent = {}) const override;
     int columnCount(const QModelIndex &parent = {}) const override;
     QHash<int, QByteArray> roleNames() const override;
-    Q_INVOKABLE QModelIndex addRow(const QString &rowName, const QString &path, const bool isNote, const QModelIndex &parentModelIndex = QModelIndex());
+    Q_INVOKABLE QModelIndex addRow(const QString &rowName, const bool isNote, const QModelIndex &parentModelIndex = QModelIndex());
     Q_INVOKABLE void removeFromTree(const QModelIndex &index);
     Q_INVOKABLE void rename(const QModelIndex &rowModelIndex, const QString &newName);
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
@@ -69,8 +69,8 @@ Q_SIGNALS:
 private:
     // Storage Handler
     bool makeStorage(const QString &storagePath);
-    bool makeFolder(const QString &folderPath);
-    bool makeNote(const QString &groupPath, const QString &noteName);
+    QString makeFolder(const QString &parentPath, const QString &folderName);
+    QString makeNote(const QString &parentPath, const QString &noteName);
 
 private:
     // NoteMapper

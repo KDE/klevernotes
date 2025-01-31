@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Controls
@@ -20,8 +20,7 @@ ToolBar {
     required property bool sideBarWide
     readonly property QtObject renameAction: renameAction
     readonly property QtObject createNoteAction: createNoteAction
-    readonly property QtObject createGroupAction: createGroupAction
-    readonly property QtObject createCategoryAction: createCategoryAction
+    readonly property QtObject createFolderAction: createFolderAction
 
     property var currentModelIndex
     property var currentClickedItem
@@ -44,19 +43,11 @@ ToolBar {
         spacing: 0
 
         ToolButton {
-            action: createCategoryAction
+            action: createFolderAction
             visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered 
-            ToolTip.text: i18nc("as in 'A note category'", "Create a new category") + " (" + createCategoryAction.shortcut + ")"
-        }
-
-        ToolButton {
-            action: createGroupAction
-            visible: !barLayout.searching && mainToolBar.sideBarWide
-            ToolTip.delay: Kirigami.Units.toolTipDelay
-            ToolTip.visible: hovered 
-            ToolTip.text: i18nc("as in 'A note group'", "Create a new group") + " (" + createGroupAction.shortcut + ")"
+            ToolTip.text: i18nc("@tooltip", "Create a new folder") + " (" + createFolderAction.shortcut + ")"
         }
 
         ToolButton {
@@ -64,7 +55,7 @@ ToolBar {
             visible: !barLayout.searching && mainToolBar.sideBarWide
             ToolTip.delay: Kirigami.Units.toolTipDelay
             ToolTip.visible: hovered 
-            ToolTip.text: i18nc("as in 'A note'", "Create a new note") + " (" + createNoteAction.shortcut + ")"
+            ToolTip.text: i18nc("@tooltip", "Create a new note") + " (" + createNoteAction.shortcut + ")"
         }
 
         ToolButton {
@@ -140,71 +131,17 @@ ToolBar {
     }
 
     Kirigami.Action {
-        id: createCategoryAction
-
-        property string name
-        property bool isActive : false
+        id: createFolderAction
 
         shortcut: "Ctrl+Alt+C"
-        icon.name: "journal-new-symbolic"
+        icon.name: "folder-new-symbolic" 
 
-        onNameChanged: if (isActive) {
-            treeView.model.addRow(name, Config.storagePath, 1)
-            isActive = false
-            name = ""
-            useCurrentItem()
-        }
         onTriggered: {
-            isActive = true
-            const objectName = Config.defaultCategoryName
-            mainToolBar.getName("Category", objectName, Config.storagePath, createCategoryAction, true)
+            mainToolBar.getName(false, makeFolder, true)
         }
-    }
 
-    Kirigami.Action {
-        id: createGroupAction
-
-        property string name
-        property string categoryPath
-        property var parentModelIndex
-        property bool isActive : false
-
-        shortcut: "Ctrl+Alt+G"
-        icon.name: "folder-new-symbolic"
-
-        onNameChanged: if (isActive) {
-            treeView.model.addRow(name, categoryPath, 2, parentModelIndex)
-            isActive = false
-            name = ""
-            useCurrentItem()
-        }
-        onTriggered: {
-            isActive = true
-
-            switch(mainToolBar.currentClickedItem.useCase) {
-                case "Category":
-                    categoryPath = mainToolBar.currentClickedItem.path
-                    parentModelIndex = currentModelIndex
-                    break;
-                case "Group":
-                    categoryPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
-
-                    parentModelIndex = treeView.model.parent(currentModelIndex)
-                    break;
-                case "Note":
-                    const groupPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
-                    categoryPath = KleverUtility.getParentPath(groupPath)
-
-                    if (groupPath.endsWith(".BaseGroup")) {
-                        parentModelIndex = treeView.model.parent(currentModelIndex)
-                    } else {
-                        const groupModelIndex = treeView.model.parent(currentModelIndex)
-                        parentModelIndex = treeView.model.parent(groupModelIndex)
-                    }
-                    break;
-            }
-            const objectName = Config.defaultGroupName
-            mainToolBar.getName("Group", objectName, categoryPath, createGroupAction, true)
+        function makeFolder(name: string): void {
+            makeRow(false, name)
         }
     }
 
@@ -212,63 +149,34 @@ ToolBar {
         id: createNoteAction
 
         property string name
-        property string groupPath
-        property var parentModelIndex
         property bool isActive : false
 
         shortcut: "Ctrl+Alt+N"
         icon.name: "document-new-symbolic"
 
-        onNameChanged: if (isActive) {
-            const newModelIndex = treeView.model.addRow(name, groupPath, 3, parentModelIndex)
-            isActive = false
-            name = ""
-            askForFocus(newModelIndex)
-        }
         onTriggered: {
-            isActive = true
+            mainToolBar.getName(true, makeNote, true)
+        }
 
-            switch(mainToolBar.currentClickedItem.useCase) {
-                case "Category":
-                    groupPath = mainToolBar.currentClickedItem.path+"/.BaseGroup"
-                    parentModelIndex = currentModelIndex
-                    break;
-                case "Group":
-                    groupPath = mainToolBar.currentClickedItem.path
-                    parentModelIndex = currentModelIndex
-                    break;
-                case "Note":
-                    groupPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
-                    parentModelIndex = treeView.model.parent(currentModelIndex)
-                    break;
-            }
-            const shownName = Config.defaultNoteName
-
-            mainToolBar.getName("Note", shownName, groupPath, createNoteAction, true)
+        function makeNote(name: string): void {
+            makeRow(true, name)
         }
     }
 
     Kirigami.Action{
         id: renameAction
 
-        property bool isActive: false
-        property string name: mainToolBar.currentClickedItem ? mainToolBar.currentClickedItem.text : ""
-
         shortcut: "Ctrl+R"
         icon.name: "edit-rename-symbolic"
 
-        onNameChanged: if (isActive) {
+        onTriggered: {
+            mainToolBar.getName(mainToolBar.currentClickedItem.isNote, renameNote, false)
+        }
+
+        function renameNote(name: string): void {
             applicationWindow().saveState()
             treeView.model.rename(currentModelIndex, name)
-            isActive = false
             useCurrentItem()
-        }
-        onTriggered: {
-            isActive = true
-
-            const useCase = mainToolBar.currentClickedItem.useCase
-            const parentPath = KleverUtility.getParentPath(mainToolBar.currentClickedItem.path)
-            mainToolBar.getName(useCase, name, parentPath, renameAction, false)
         }
     }
 
@@ -297,31 +205,51 @@ ToolBar {
         }
     }
 
-    function getName(useCase, shownName, parentPath, callingAction, newItem){
-        namingDialog.useCase = useCase
-        namingDialog.shownName = shownName
-        namingDialog.textFieldText = shownName
-        namingDialog.parentPath = parentPath
-        namingDialog.callingAction = callingAction
+    function makeRow(isNote: bool, name: string): void {
+        const parentModelIndex = mainToolBar.currentClickedItem.isNote 
+            ? treeView.model.parent(mainToolBar.currentModelIndex)
+            : mainToolBar.currentModelIndex
+
+        const newModelIndex = treeView.model.addRow(name, isNote, parentModelIndex)
+        askForFocus(newModelIndex)
+    }
+
+    function getName(isNote: bool, callBackFunc: var, newItem: bool): void {
+        let defaultName
+        if (newItem) {
+            if (isNote) {
+                defaultName = Config.defaultNoteName.length !== 0 ? Config.defaultNoteName : i18n("New Note")
+            } else {
+                defaultName = Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
+            }
+        } else {
+            defaultName = mainToolBar.currentClickedItem.text
+        }
+
+        namingDialog.isNote = isNote
+        namingDialog.shownName = defaultName
+        namingDialog.textFieldText = defaultName
+        namingDialog.parentPath = mainToolBar.currentClickedItem.dir
+        namingDialog.callBackFunc = callBackFunc
         namingDialog.newItem = newItem
         namingDialog.open()
     }
-
-    function forceError(error) {
+    
+    function forceError(error: string): void {
         namingDialog.throwError(error) 
     }
 
-    function setClickedItemInfo(clickedItem, clickedModelIndex) {
+    function setClickedItemInfo(clickedItem, clickedModelIndex): void {
         currentClickedItem = clickedItem
         currentModelIndex = clickedModelIndex
     }
 
-    function useCurrentItem() {
+    function useCurrentItem(): void {
         const currentModelIndex = treeView.getModelIndex(treeView.currentIndex)
         setClickedItemInfo(treeView.currentItem, currentModelIndex)
     }
 
-    function askForFocus(itemModelIndex) {
+    function askForFocus(itemModelIndex): void {
         applicationWindow().globalDrawer.askForFocus(itemModelIndex)
     }
 }

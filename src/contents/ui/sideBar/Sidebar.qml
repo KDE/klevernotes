@@ -341,15 +341,17 @@ Kirigami.OverlayDrawer {
             currentModelIndex = nextModelIndex
         }
 
-        if (parentRowsList.length === 0) return;
-
-        const firstModelIndex = parentRowsList[parentRowsList.length - 1]
-
-        firstModelIndex.model.askForExpand(firstModelIndex)
-        // This might be the exact same as "firstModelIndex" but is still needed for Category notes
-        timer.modelIndex = parentRowsList[0]
-        timer.start()
-
         focusTimer.focusModelIndex = modelIndex
+
+        if (parentRowsList.length !== 0) {
+            const firstModelIndex = parentRowsList[parentRowsList.length - 1]
+
+            firstModelIndex.model.askForExpand(firstModelIndex)
+            // This might be the exact same as "firstModelIndex" but is still needed for Category notes
+            timer.modelIndex = parentRowsList[0]
+            timer.start()
+        } else {
+            focusTimer.start()
+        }
     }
 }

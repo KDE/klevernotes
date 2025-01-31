@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -16,7 +16,7 @@ Kirigami.Page {
     id: root
 
     readonly property CheatSheet cheatSheet: cheatSheet
-    readonly property bool hasNote: currentlySelected && currentlySelected.useCase === "Note"
+    readonly property bool hasNote: currentlySelected && currentlySelected.isNote
     readonly property bool isVisible: applicationWindow().isMainPage()
 
     property QtObject currentlySelected
@@ -36,7 +36,8 @@ Kirigami.Page {
                     ? editorView.actions 
                     : todoView.actions
     
-    onCurrentlySelectedChanged: if (root.hasNote) {
+    onCurrentlySelectedChanged: if (currentlySelected.isNote) {
+        EditorHandler.noteDir = currentlySelected.dir
         const editor = editorView.editor
         const oldPath = editorView.path
         const text = editor.text
@@ -50,7 +51,7 @@ Kirigami.Page {
 
         EditorView {
             id: editorView
-            path: hasNote ? currentlySelected.path + "/note.md" : ""
+            path: hasNote ? currentlySelected.path : ""
             visible: 0.5 < opacity
             opacity: 0
             Layout.fillHeight: true

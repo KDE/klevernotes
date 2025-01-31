@@ -51,20 +51,20 @@ void setFromMetadata(const QJsonObject &metadata, const QString &key, QString &v
 }
 }
 
-TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model, TreeItem *parentItem)
+TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentItem)
     : m_parentItem(parentItem)
     , m_model(model)
-    , m_isNote(isNote)
 {
     const QFileInfo fileInfo(path);
     Q_ASSERT(fileInfo.exists());
 
-    const QString fileName = fileInfo.fileName();
-
-    m_name = fileInfo.isFile() ? fileName.chopped(3) : fileName;
     m_isNote = fileInfo.isFile();
+
+    const QString fileName = fileInfo.fileName();
+    m_name = m_isNote ? fileName.chopped(3) : fileName;
+
     m_path = fileInfo.absoluteFilePath(); // Should be the same as 'path'
-    m_dir = fileInfo.dir().path();
+    m_dir = m_isNote ? fileInfo.dir().path() : m_path;
 
     if (!m_isNote) {
         setTempMetaData();
@@ -86,7 +86,7 @@ TreeItem::TreeItem(const QString &path, const bool isNote, NoteTreeModel *model,
             continue;
         }
 
-        auto node = std::make_unique<TreeItem>(file.absoluteFilePath(), file.isFile(), m_model, this);
+        auto node = std::make_unique<TreeItem>(file.absoluteFilePath(), m_model, this);
 
         const int nameIdx = m_tempChildrenNames.indexOf(node->m_name);
         if (nameIdx != -1) {
