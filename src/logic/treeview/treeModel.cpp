@@ -175,29 +175,46 @@ QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, con
     return currentModelIndex;
 }
 
-void NoteTreeModel::removeFromTree(const QModelIndex &index)
+void NoteTreeModel::handleRemoveItem(const QModelIndex &index, const bool succes)
+{
+    if (succes) {
+        const auto row = static_cast<TreeItem *>(index.internalPointer());
+        beginRemoveRows(parent(index), index.row(), index.row());
+        row->remove();
+        endRemoveRows();
+    } else {
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to remove this item."));
+    }
+}
+
+void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanent)
 {
     auto row = static_cast<TreeItem *>(index.internalPointer());
-    const QString rowPath = row->data(PathRole).toString();
 
     // Prevent KDescendantsProxyModel from crashing
     if (row->childCount() > 0) {
         row->askForExpand(index);
     }
 
-    auto *job = KIO::trash(QUrl::fromLocalFile(rowPath));
-    job->start();
+    const bool isNote = row->data(IsNote).toBool();
+    const QString rowPath = row->data(PathRole).toString();
+    const QString dirPath = row->data(DirRole).toString();
+    const QString name = row->data(NoteNameRole).toString();
+    const QString todoPath = dirPath + slash + name + todoEnding;
 
-    connect(job, &KJob::result, this, [job, row, index, this] {
-        if (!job->error()) {
-            beginRemoveRows(parent(index), index.row(), index.row());
-            row->remove();
-            endRemoveRows();
-            return;
-        }
-        Q_EMIT errorOccurred(i18n("An error occurred while trying to remove this item."));
-        qWarning() << job->errorString();
-    });
+    if (!permanent) {
+        auto *job = isNote ? KIO::trash({QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(todoPath)}) : KIO::trash(QUrl::fromLocalFile(rowPath));
+
+        job->start();
+
+        connect(job, &KJob::result, this, [job, &index, this] {
+            handleRemoveItem(index, !job->error());
+        });
+    } else {
+        const bool succes = isNote ? (QFile(rowPath).remove() && QFile(todoPath).remove()) : QDir(rowPath).removeRecursively();
+
+        handleRemoveItem(index, succes);
+    }
 }
 
 void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName)

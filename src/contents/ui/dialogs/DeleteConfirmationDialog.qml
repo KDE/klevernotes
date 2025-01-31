@@ -8,39 +8,36 @@ import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Components.MessageDialog {
-    required property string useCase
+    required property bool isNote
     required property string name
-
-    readonly property var useCaseTrad: {
-        "category": xi18nc("@info, as in 'A note category'", "Are you sure you want to delete the category <filename>%1</filename>?", name),
-        "group": xi18nc("@info, as in 'A note group'", "Are you sure you want to delete the group <filename>%1</filename>?", name),
-        "note": xi18nc("@info", "Are you sure you want to delete the note <filename>%1</filename>?", name)
-    }
-
-    readonly property var useCaseTitleTrad: {
-        "category": i18nc("@title:dialog, as in 'A note category'", "Delete Category Confirmation"),
-        "group": i18nc("@title:dialog, as in 'A note category'", "Delete Group Confirmation"),
-        "note": i18nc("@title:dialog, as in 'A note category'", "Delete Note Confirmation"),
-    }
+    readonly property bool permanent: permanentDeleteCheck.checked
 
     width: Kirigami.Units.gridUnit * 20
 
     dialogType: Components.MessageDialog.Warning
-    title: useCase ? useCaseTitleTrad[useCase.toLowerCase()] : ""
+    title: isNote 
+        ? i18nc("@title:dialog, as in 'A note category'", "Delete Note Confirmation")
+        : i18nc("@title:dialog, as in 'A note category'", "Delete Folder Confirmation")
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
     Label {
-        text: useCase ? useCaseTrad[useCase.toLowerCase()] : ""
+        text: isNote
+            ? xi18nc("@info", "Are you sure you want to delete the note <filename>%1</filename>?", name)
+            : xi18nc("@info", "Are you sure you want to delete the folder <filename>%1</filename>?", name)
+
         wrapMode: Text.WordWrap
         Layout.fillWidth: true
     }
 
-    Label {
-        text: i18nc("@title:dialog", "This action can not be reverted.")
-        wrapMode: Text.WordWrap
+    FormCard.FormCheckDelegate {
+        id: permanentDeleteCheck
+
+        text: i18nc("@label:check", "Delete this permanently.")
+
         Layout.fillWidth: true
     }
 }

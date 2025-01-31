@@ -63,11 +63,11 @@ Controls.Menu {
     DeleteConfirmationDialog {
         id: deleteConfirmationDialog
 
-        useCase: "note" //actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
+        isNote: actionBar.currentClickedItem.isNote
         name: actionBar.currentClickedItem ? actionBar.currentClickedItem.text : ""
 
         onAccepted: {
-            treeView.model.removeFromTree(actionBar.currentModelIndex)
+            treeView.model.removeFromTree(actionBar.currentModelIndex, permanent)
             close()
         }
         onRejected: {
