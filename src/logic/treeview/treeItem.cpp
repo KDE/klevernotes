@@ -310,6 +310,12 @@ QString TreeItem::getRealName() const
     return m_name;
 }
 
+void TreeItem::setPath(const QString &path)
+{
+    m_path = path;
+    m_dir = m_isNote ? QFileInfo(path).dir().path() : m_path;
+}
+
 void TreeItem::askForFocus(const QModelIndex &itemIndex)
 {
     // We just want to send a signal to QML
