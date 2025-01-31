@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Controls
@@ -15,10 +15,11 @@ FormCard.FormCardDialog {
     readonly property QtObject nameField: nameField
 
     property bool newItem
-    property string useCase
+    property bool isNote
     property string shownName
     property string parentPath
     property QtObject callingAction
+    property var callBackFunc
     property alias textFieldText: nameField.text
 
     title: i18nc("@title:dialog", "Choose a name")
@@ -29,9 +30,14 @@ FormCard.FormCardDialog {
 
     onApplied: {
         const error = checkName()
-        if (error === "") {
+        if (error.length === 0) {
             textPromptDialog.close()
-            callingAction.name = nameField.text.trim()
+            if (callingAction) { // Remove the use of this
+                callingAction.name = nameField.text.trim()
+            }
+            if (callBackFunc) {
+                callBackFunc(nameField.text.trim())
+            }
             return
         }
         throwError(error)
@@ -41,7 +47,9 @@ FormCard.FormCardDialog {
         nameField.forceActiveFocus()
     }
     onRejected: {
-        callingAction.isActive = false
+        if (callingAction) { // Remove the use of this
+            callingAction.isActive = false
+        }
     }
 
     FormCard.FormTextFieldDelegate {
@@ -64,7 +72,7 @@ FormCard.FormCardDialog {
         if (component.status == Component.Ready) {
             var dialog = component.createObject(textPromptDialog);
             dialog.error = error
-            dialog.useCase = useCase
+            dialog.isNote = isNote
             dialog.nameField = nameField
             dialog.open()
         } else {
@@ -76,11 +84,9 @@ FormCard.FormCardDialog {
         // The user just pressed apply without renaming the object
         if (textFieldText === shownName && !textPromptDialog.newItem) return ""
 
-        const name = textFieldText.trim()
-        const error = KleverUtility.isProperPath(parentPath,name)
-        if (error !== "") return error
-
-        if (name === Config.categoryDisplayName) return "exist"
+        const name = textFieldText.trim() + (isNote ? ".md" : "")
+        const error = KleverUtility.isProperPath(parentPath, name)
+        if (error.length !== 0) return error
 
         return ""
     }
