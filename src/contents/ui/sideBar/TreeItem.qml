@@ -19,14 +19,14 @@ Delegates.RoundedTreeDelegate {
     required property string path
     required property string dir
     required property bool isNote
-    required property string displayName
+    required property string name
     required property string iconName
     required property bool wantExpand
     required property bool wantFocus
 
     signal itemRightClicked 
 
-    text: displayName
+    text: name
     icon.name: iconName
     highlighted: treeView._hasBeenClicked && treeView.currentItem ? treeView.currentItem.path === path : false
 

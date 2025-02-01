@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -19,7 +19,6 @@ KirigamiComponents.SearchPopupField {
     property var clickedIndex
     property bool textSelected: false
     property string selectedText: ""
-    property string selectedUseCase: ""
 
     spaceAvailableLeft: false
     spaceAvailableRight: false
@@ -36,19 +35,11 @@ KirigamiComponents.SearchPopupField {
                     id: descendants
                     model: root.listModel
                 }
-                filterRoleName: inSideBar 
-                    ? "useCase" 
-                    : currentUseCase === "Note" 
-                        ? "noteName"
-                        : "useCase"
-                filterString: inSideBar
-                    ? "note"
-                    : currentUseCase === "Note" 
-                        ? ".Not a note"
-                        : "category"
+                filterRoleName: "isNote" 
+                filterString: inSideBar ? "true" : "false" // Seems silly but we need a string
                 filterCaseSensitivity: Qt.CaseInsensitive
             }
-            filterRoleName: inSideBar ? "noteName" : "displayName"
+            filterRoleName: "name"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 
@@ -67,29 +58,16 @@ KirigamiComponents.SearchPopupField {
 
             contentItem: ColumnLayout {
                 Controls.Label {
-                    id: useCaseLabel
-                    readonly property var useCaseTrad: {
-                        "Category": i18nc("Name, as in 'A note category'", "Category"),
-                        "Group": i18nc("Name, as in 'A note group'", "Group"),
-                    }
-                    readonly property string branchNameStr: model.branchName
-                    readonly property string branchNameContext: useCaseLabel.branchNameStr.length > 0 
-                        ? " (" + i18n("From") + " : " + useCaseLabel.branchNameStr + ")"
-                        : ""
-
-
-                    text: root.inSideBar
-                        ? i18n("From") + " : " + useCaseLabel.branchNameStr 
-                        : useCaseTrad[model.useCase] + useCaseLabel.branchNameContext
+                    text: i18n("From") + ": " + model.parentPath
 
                     font: Kirigami.Theme.smallFont
-                    elide: Text.ElideRight
+                    elide: Text.ElideMiddle
                     Layout.fillWidth: true
                 }
                 Controls.Label {
                     id: nameLabel
 
-                    text: model.displayName
+                    text: model.name
                     wrapMode: Text.WordWrap
                     font.bold: true
                     Layout.fillWidth: true
@@ -111,8 +89,6 @@ KirigamiComponents.SearchPopupField {
                 
                 if (!inSideBar) {
                     root.selectedText = nameLabel.text
-                    root.selectedUseCase = useCaseLabel.text
-                    root.text = selectedUseCase + ": " + selectedText
                 }
             }
         }
@@ -128,21 +104,17 @@ KirigamiComponents.SearchPopupField {
     }
 
     onFieldFocusChanged: if (fieldFocus && selectedText.length !== 0) {
-        root.text = selectedText
+        //root.text = selectedText
         searchFilterProxyModel.setFilterFixedString(text)
     }
     // Doesn't triggered when changing text to selected item
     // see: https://doc.qt.io/qt-6/qml-qtquick-textinput.html#textEdited-signal
     searchField.onTextEdited: {
         searchFilterProxyModel.setFilterFixedString(text)
-        selectedText = ""
-        selectedUseCase = ""
         clickedIndex = null
     }
     // true only when we clear the search field
     onTextChanged: if (text.length === 0) {
-        selectedText = ""
-        selectedUseCase = ""
         clickedIndex = null
     }
 }

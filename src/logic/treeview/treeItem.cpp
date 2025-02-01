@@ -4,15 +4,21 @@
 // KleverNotes includes
 #include "treeItem.h"
 
+#include "kleverconfig.h"
 #include "logic/documentHandler.h"
 #include "logic/treeview/fileSystemHelper.h"
 #include "treeModel.h"
+
+// KDE includes
+#include <KLocalizedString>
 
 // Qt includes
 #include <QDir>
 #include <QFileInfo>
 #include <QIcon>
 #include <QJsonArray>
+
+#define slash QLatin1String("/")
 
 namespace
 {
@@ -71,7 +77,7 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
     }
 
     if (m_isNote) {
-        const QString todoPath = m_dir + QStringLiteral("/") + m_name + QStringLiteral(".todo.json");
+        const QString todoPath = m_dir + slash + m_name + QStringLiteral(".todo.json");
         if (!QFile(todoPath).exists()) {
             fileSystemHelper::createFile(todoPath);
         }
@@ -229,11 +235,16 @@ QVariant TreeItem::data(int role) const
     case NoteTreeModel::PathRole:
         return m_path;
 
+    case NoteTreeModel::ParentPathRole: {
+        const QString trimmedPath = QString(m_parentItem->m_dir).remove(0, KleverConfig::storagePath().length());
+        return trimmedPath.isEmpty() ? slash : trimmedPath;
+    }
+
     case NoteTreeModel::DirRole:
         return m_dir;
 
     case Qt::DisplayRole:
-    case NoteTreeModel::DisplayNameRole:
+    case NoteTreeModel::NameRole:
         return m_name;
 
     case Qt::DecorationRole:
@@ -244,17 +255,6 @@ QVariant TreeItem::data(int role) const
     }
     case NoteTreeModel::IsNote:
         return m_isNote;
-
-    case NoteTreeModel::NoteNameRole:
-        return data(NoteTreeModel::DisplayNameRole);
-
-    case NoteTreeModel::BranchNameRole:
-        return QLatin1String();
-
-    case NoteTreeModel::FullNameRole: {
-        const QString returnValue = data(NoteTreeModel::BranchNameRole).toString() + QStringLiteral(": ") + data(NoteTreeModel::NoteNameRole).toString();
-        return returnValue;
-    }
 
     case NoteTreeModel::WantFocusRole:
         return m_wantFocus;
