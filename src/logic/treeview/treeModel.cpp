@@ -87,14 +87,12 @@ QModelIndex NoteTreeModel::index(int row, int column, const QModelIndex &parent)
 QHash<int, QByteArray> NoteTreeModel::roleNames() const
 {
     return {
-        {DisplayNameRole, "displayName"},
+        {NameRole, "name"},
         {PathRole, "path"},
         {DirRole, "dir"},
+        {ParentPathRole, "parentPath"},
         {IconNameRole, "iconName"},
         {IsNote, "isNote"},
-        {NoteNameRole, "noteName"},
-        {BranchNameRole, "branchName"},
-        {FullNameRole, "fullName"},
         {WantFocusRole, "wantFocus"},
         {WantExpandRole, "wantExpand"},
     };
@@ -199,7 +197,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
     const bool isNote = row->data(IsNote).toBool();
     const QString rowPath = row->data(PathRole).toString();
     const QString dirPath = row->data(DirRole).toString();
-    const QString name = row->data(NoteNameRole).toString();
+    const QString name = row->data(NameRole).toString();
     const QString todoPath = dirPath + slash + name + todoEnding;
 
     if (!permanent) {
@@ -219,6 +217,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
 
 void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName)
 {
+    return;
     auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
 
     const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
@@ -287,7 +286,7 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
         renamed = QFile(rowPath).rename(newPath);
 
         if (renamed) {
-            const QString currentTodo = currentDirPath + slash + row->data(NoteNameRole).toString() + todoEnding;
+            const QString currentTodo = currentDirPath + slash + row->data(NameRole).toString() + todoEnding;
             const QString newTodo = newPartialPath + todoEnding;
 
             renamed = QFile(currentTodo).rename(newTodo);

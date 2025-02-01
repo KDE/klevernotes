@@ -22,12 +22,10 @@ public:
     enum ExtraRoles {
         PathRole = Qt::UserRole + 1, // To get a string with the fullPath of the Note/Folder
         DirRole, // To get a string with the fullPath the folder or the folder containing the note
-        DisplayNameRole, // To get a string with the name of the Category/Group/Note to be displayed instead of the hidden name
+        ParentPathRole, // To get a string with the fullPath to the parent folder of the item
+        NameRole, // To get a string with the name of the Item (strip down of ".md" for the note)
         IconNameRole, // To get a string with the icon name associated with the Category/Group/Note
         IsNote, // To know if the item is a Note (else it's a folder)
-        NoteNameRole, // For only filtering between notes in the searchBar
-        BranchNameRole, // To get the name of the category + group of a note
-        FullNameRole, // To get the "full" name of the category + group + note of a note
         WantFocusRole, // For send a signal to the qml ItemDelegate using dataChanged, asking for focus
         WantExpandRole, // For send a signal to the qml ItemDelegate using dataChanged, asking to expands
     };

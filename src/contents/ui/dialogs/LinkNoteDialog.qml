@@ -44,10 +44,10 @@ FormCard.FormCardDialog {
                 id: descendants
                 model: linkNoteDialog.listModel 
             }
-            filterRoleName: "useCase"
-            filterString: "Note"
+            filterRoleName: "isNote"
+            filterString: "true"
         }
-        textRole: "fullName"
+        textRole: "name"
         valueRole: "path"
         displayMode: FormCard.FormComboBoxDelegate.Dialog
 
