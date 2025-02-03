@@ -154,7 +154,7 @@ QVariant NoteTreeModel::data(const QModelIndex &index, int role) const
 QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, const QModelIndex &parentModelIndex)
 {
     const auto parentRow = !parentModelIndex.isValid() ? m_rootItem.get() : static_cast<TreeItem *>(parentModelIndex.internalPointer());
-    const QString parentPath = parentRow->data(NoteTreeModel::PathRole).toString();
+    const QString parentPath = parentRow->getPath();
 
     const QString rowPath = isNote ? makeNote(parentPath, rowName) : makeFolder(parentPath, rowName);
 
@@ -194,10 +194,10 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
         row->askForExpand(index);
     }
 
-    const bool isNote = row->data(IsNote).toBool();
-    const QString rowPath = row->data(PathRole).toString();
-    const QString dirPath = row->data(DirRole).toString();
-    const QString name = row->data(NameRole).toString();
+    const bool isNote = row->isNote();
+    const QString rowPath = row->getPath();
+    const QString dirPath = row->getDir();
+    const QString name = row->getName();
     const QString todoPath = dirPath + slash + name + todoEnding;
 
     if (!permanent) {
@@ -226,18 +226,18 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
         return;
     }
 
-    const QString rowPath = row->data(PathRole).toString();
-    const QString parentPath = newParent->data(PathRole).toString();
+    const QString rowPath = row->getPath();
+    const QString parentPath = newParent->getPath();
     QString dest = parentPath + slash;
 
     if (newParent->getDepth() == 1 && row->getDepth() == 3) {
         dest += QStringLiteral(".BaseGroup") + slash;
     }
-    const QString finalName = newName.isEmpty() ? row->getRealName() : newName;
+    const QString finalName = newName.isEmpty() ? row->getName() : newName;
     dest += finalName;
 
     if (QDir(dest).exists()) {
-        Q_EMIT moveError(rowModelIndex, newParentIndex, row->data(NoteTreeModel::IsNote).toString(), row->getRealName(), parentPath);
+        Q_EMIT moveError(rowModelIndex, newParentIndex, row->isNote() ? QStringLiteral("note") : QStringLiteral("folder"), row->getName(), parentPath);
         return;
     }
 
@@ -257,8 +257,7 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
             const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
             // // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
             auto row = oldParent->takeUniqueChildAt(oldRowNumber);
-            row->setDisplayName(finalName);
-            row->setRealName(finalName);
+            row->setName(finalName);
             newParent->appendChild(std::move(row));
 
             endMoveRows();
@@ -273,20 +272,20 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
 {
     const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
 
-    const auto currentDirPath = row->data(DirRole).toString();
-    const QString rowPath = row->data(PathRole).toString();
+    const auto currentDirPath = row->getDir();
+    const QString rowPath = row->getPath();
 
     QString newPath;
 
     bool renamed = false;
-    if (row->data(IsNote).toBool()) {
+    if (row->isNote()) {
         const QString newPartialPath = currentDirPath + slash + newName;
         newPath = newPartialPath + mdEnding;
 
         renamed = QFile(rowPath).rename(newPath);
 
         if (renamed) {
-            const QString currentTodo = currentDirPath + slash + row->data(NameRole).toString() + todoEnding;
+            const QString currentTodo = currentDirPath + slash + row->getName() + todoEnding;
             const QString newTodo = newPartialPath + todoEnding;
 
             renamed = QFile(currentTodo).rename(newTodo);
@@ -305,10 +304,7 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
     }
 
     row->setPath(newPath);
-
-    // Will change
-    row->setDisplayName(newName);
-    row->setRealName(newName);
+    row->setName(newName);
 
     Q_EMIT dataChanged(rowModelIndex, rowModelIndex);
 }

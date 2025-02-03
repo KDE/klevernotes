@@ -295,17 +295,12 @@ void TreeItem::remove()
     m_parentItem->m_children.erase(it);
 }
 
-void TreeItem::setDisplayName(const QString &name)
+void TreeItem::setName(const QString &name)
 {
     m_name = name;
 }
 
-void TreeItem::setRealName(const QString &name)
-{
-    m_name = name;
-}
-
-QString TreeItem::getRealName() const
+QString TreeItem::getName() const
 {
     return m_name;
 }
@@ -314,6 +309,21 @@ void TreeItem::setPath(const QString &path)
 {
     m_path = path;
     m_dir = m_isNote ? QFileInfo(path).dir().path() : m_path;
+}
+
+QString TreeItem::getPath() const
+{
+    return m_path;
+}
+
+bool TreeItem::isNote() const
+{
+    return m_isNote;
+}
+
+QString TreeItem::getDir() const
+{
+    return m_dir;
 }
 
 void TreeItem::askForFocus(const QModelIndex &itemIndex)
