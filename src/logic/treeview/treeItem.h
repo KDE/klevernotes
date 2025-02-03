@@ -26,15 +26,21 @@ public:
     TreeItem *getParentItem() const;
     void setParentItem(TreeItem *parentItem);
     void remove();
-    void setRealName(const QString &name);
-    QString getRealName() const;
-    void setDisplayName(const QString &name);
     void askForFocus(const QModelIndex &itemIndex);
     void askForExpand(const QModelIndex &itemIndex);
     int getDepth() const;
 
     void saveMetaData();
+
+    void setName(const QString &name);
+    QString getName() const;
+
     void setPath(const QString &path);
+    QString getPath() const;
+
+    bool isNote() const;
+
+    QString getDir() const;
 
 public:
     // Metadata
