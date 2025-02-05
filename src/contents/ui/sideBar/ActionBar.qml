@@ -22,15 +22,12 @@ ToolBar {
     readonly property QtObject createNoteAction: createNoteAction
     readonly property QtObject createFolderAction: createFolderAction
 
-    property var currentModelIndex
-    property var currentClickedItem
-
     NamingDialog {
         id: namingDialog
 
         onRejected: {
             close()
-            useCurrentItem()
+            treeView.useCurrentItem()
         }
     }
 
@@ -105,9 +102,8 @@ ToolBar {
         id: searchBar
 
         visible: barLayout.searching && mainToolBar.sideBarWide
-        listModel: treeView.model
+        treeView: mainToolBar.treeView
         inSideBar: true
-        currentUseCase: "note"
 
         width: drawer.isWide 
             ? drawer.largeWidth - Kirigami.Units.smallSpacing 
@@ -170,13 +166,13 @@ ToolBar {
         icon.name: "edit-rename-symbolic"
 
         onTriggered: {
-            mainToolBar.getName(mainToolBar.currentClickedItem.isNote, renameNote, false)
+            mainToolBar.getName(treeView.currentClickedItem.isNote, renameNote, false)
         }
 
         function renameNote(name: string): void {
             applicationWindow().saveState()
-            treeView.model.rename(currentModelIndex, name)
-            useCurrentItem()
+            treeView.model.rename(treeView.currentModelIndex, name)
+            treeView.useCurrentItem()
         }
     }
 
@@ -206,9 +202,9 @@ ToolBar {
     }
 
     function makeRow(isNote: bool, name: string): void {
-        const parentModelIndex = mainToolBar.currentClickedItem.isNote 
-            ? treeView.model.parent(mainToolBar.currentModelIndex)
-            : mainToolBar.currentModelIndex
+        const parentModelIndex = treeView.currentClickedItem.isNote 
+            ? treeView.model.parent(treeView.currentModelIndex)
+            : mainToolBar.treeView.currentModelIndex
 
         const newModelIndex = treeView.model.addRow(name, isNote, parentModelIndex)
         askForFocus(newModelIndex)
@@ -223,13 +219,13 @@ ToolBar {
                 defaultName = Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
             }
         } else {
-            defaultName = mainToolBar.currentClickedItem.text
+            defaultName = treeView.currentClickedItem.text
         }
 
         namingDialog.isNote = isNote
         namingDialog.shownName = defaultName
         namingDialog.textFieldText = defaultName
-        namingDialog.parentPath = mainToolBar.currentClickedItem.dir
+        namingDialog.parentPath = treeView.currentClickedItem.dir
         namingDialog.callBackFunc = callBackFunc
         namingDialog.newItem = newItem
         namingDialog.open()
@@ -238,17 +234,7 @@ ToolBar {
     function forceError(error: string): void {
         namingDialog.throwError(error) 
     }
-
-    function setClickedItemInfo(clickedItem, clickedModelIndex): void {
-        currentClickedItem = clickedItem
-        currentModelIndex = clickedModelIndex
-    }
-
-    function useCurrentItem(): void {
-        const currentModelIndex = treeView.getModelIndex(treeView.currentIndex)
-        setClickedItemInfo(treeView.currentItem, currentModelIndex)
-    }
-
+    
     function askForFocus(itemModelIndex): void {
         applicationWindow().globalDrawer.askForFocus(itemModelIndex)
     }

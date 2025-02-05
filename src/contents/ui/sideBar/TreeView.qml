@@ -20,14 +20,8 @@ Controls.ScrollView {
     property alias currentIndex: treeView.currentIndex
     property alias descendantsModel: descendantsModel
 
-    signal itemRightClicked(clickedItem: TreeItem)
-
-    Component.onCompleted: {
-        // we do this in reverse to avoid collapsing a Category/Group before its children 
-        for (var i = treeView.count; i >= 0 ; --i) {
-            descendantsModel.toggleChildren(i)
-        }
-    }
+    property var currentModelIndex // Using var instead of QModelIndex
+    property TreeItem currentClickedItem
     
     ListView {
         id: treeView
@@ -35,7 +29,8 @@ Controls.ScrollView {
         clip: true
         model: KDescendantsProxyModel {
             id: descendantsModel
-        } 
+            expandsByDefault: false
+        }
 
         property bool _hasBeenClicked: false
 
@@ -46,15 +41,13 @@ Controls.ScrollView {
             Kirigami.Theme.backgroundColor: scrollView.backgroundColor
 
             onItemRightClicked: {
-                scrollView.itemRightClicked(treeItem)
+                setClickedItemInfo(treeItem)
             }
             onWantFocusChanged: if (wantFocus) {
                 clicked()
             }
             onWantExpandChanged: if (wantExpand) {
-                if (!kDescendantExpanded) {
-                    descendantsModel.toggleChildren(index)
-                }
+                descendantsModel.expandChildren(index)
             }
             onClicked: {
                 treeView._hasBeenClicked = true
@@ -70,7 +63,18 @@ Controls.ScrollView {
         }
     }
 
-    function getModelIndex(rowIndex) {
+    onCurrentItemChanged: setClickedItemInfo(currentItem) 
+
+    function setClickedItemInfo(item: TreeItem): void {
+        currentClickedItem = item
+        currentModelIndex = getModelIndex(item.index) 
+    }
+
+    function useCurrentItem(): void {
+        setClickedItemInfo(treeView.currentItem)
+    }
+
+    function getModelIndex(rowIndex: int): var {
         return descendantsModel.mapToSource(descendantsModel.index(rowIndex, 0))
     }
 }

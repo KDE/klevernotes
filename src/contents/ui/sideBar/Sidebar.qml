@@ -210,14 +210,6 @@ Kirigami.OverlayDrawer {
                         treeView.movingRowNewParentIndex = null
                         treeView.name = ""
                     }
-                    onItemRightClicked: function (clickedItem) {
-                        const tempModelIndex = treeView.getModelIndex(clickedItem.index)
-                        actionBar.setClickedItemInfo(clickedItem, tempModelIndex)
-                    }
-                    onCurrentItemChanged: {
-                        const currentModelIndex = treeView.getModelIndex(treeView.currentIndex)
-                        actionBar.setClickedItemInfo(treeView.currentItem, currentModelIndex)
-                    }
                 }
 
                 Controls.ToolSeparator {

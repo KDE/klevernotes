@@ -44,7 +44,6 @@ Controls.Menu {
     Controls.MenuItem {
         icon.name: "edit-move-symbolic"
         text: i18n("Move")
-        visible: actionBar.currentClickedItem.useCase !== "Category"
 
         onTriggered: if (visible) { // A bit useless right now, but might be handy if we had a shortcut
             moveDialog.open()
@@ -63,11 +62,11 @@ Controls.Menu {
     DeleteConfirmationDialog {
         id: deleteConfirmationDialog
 
-        isNote: actionBar.currentClickedItem.isNote
-        name: actionBar.currentClickedItem ? actionBar.currentClickedItem.text : ""
+        isNote: treeView.currentClickedItem.isNote
+        name: treeView.currentClickedItem ? treeView.currentClickedItem.text : ""
 
         onAccepted: {
-            treeView.model.removeFromTree(actionBar.currentModelIndex, permanent)
+            treeView.model.removeFromTree(treeView.currentModelIndex, permanent)
             close()
         }
         onRejected: {
@@ -81,12 +80,12 @@ Controls.Menu {
     MoveDialog {
         id: moveDialog
 
-        treeView: contextMenu.treeView.model
-        useCase: "note"//actionBar.currentClickedItem ? actionBar.currentClickedItem.useCase : ""
+        treeView: contextMenu.treeView
+        useCase: "note" // Will change
 
-        onApplied: if (clickedIndex && actionBar.currentModelIndex) {
+        onApplied: if (clickedIndex && treeView.currentModelIndex) {
             applicationWindow().saveState()
-            contextMenu.treeView.model.moveRow(actionBar.currentModelIndex, clickedIndex)
+            contextMenu.treeView.model.moveRow(treeView.currentModelIndex, clickedIndex)
             close()
         }
         onRejected: {

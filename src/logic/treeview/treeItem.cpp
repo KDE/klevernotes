@@ -235,10 +235,8 @@ QVariant TreeItem::data(int role) const
     case NoteTreeModel::PathRole:
         return m_path;
 
-    case NoteTreeModel::ParentPathRole: {
-        const QString trimmedPath = QString(m_parentItem->m_dir).remove(0, KleverConfig::storagePath().length());
-        return trimmedPath.isEmpty() ? slash : trimmedPath;
-    }
+    case NoteTreeModel::ParentPathRole:
+        return m_parentItem->m_dir;
 
     case NoteTreeModel::DirRole:
         return m_dir;

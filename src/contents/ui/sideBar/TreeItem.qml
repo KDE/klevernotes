@@ -17,6 +17,7 @@ Delegates.RoundedTreeDelegate {
     id: treeItem
 
     required property string path
+    required property string parentPath
     required property string dir
     required property bool isNote
     required property string name
