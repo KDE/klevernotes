@@ -29,6 +29,7 @@ public:
         WantFocusRole, // For send a signal to the qml ItemDelegate using dataChanged, asking for focus
         WantExpandRole, // For send a signal to the qml ItemDelegate using dataChanged, asking to expands
     };
+    Q_ENUM(ExtraRoles)
 
     QVariant data(const QModelIndex &index, int role) const override;
     QModelIndex index(int row, int column, const QModelIndex &parent = {}) const override;

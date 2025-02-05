@@ -49,9 +49,8 @@ FormCard.FormCardDialog {
         SearchBar {
             id: searchBar
 
-            listModel: textPromptDialog.treeView
+            treeView: textPromptDialog.treeView
             inSideBar: false
-            currentUseCase: textPromptDialog.useCase
 
             Layout.fillWidth: true
 
