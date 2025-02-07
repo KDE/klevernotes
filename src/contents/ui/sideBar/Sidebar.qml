@@ -309,18 +309,30 @@ Kirigami.OverlayDrawer {
     }
 
     Timer {
-        id: timer
+        id: expandTimer
 
-        property var modelIndex
+        property var _modelIndexesList
+        property int _counter
 
         repeat: false
-        interval: Kirigami.Units.shortDuration
+        interval: Kirigami.Units.veryShortDuration
 
-        onTriggered: if (modelIndex) {
-            modelIndex.model.askForExpand(modelIndex)
-            modelIndex = undefined
-            interval = Kirigami.Units.shortDuration
-            focusTimer.start()
+        onTriggered: if (_modelIndexesList) {
+            if (0 <= _counter) {
+                const currentModelIndex = _modelIndexesList[_counter]
+                currentModelIndex.model.askForExpand(currentModelIndex)
+                _counter--
+                expandTimer.start()
+            } else {
+                _modelIndexesList = undefined
+                focusTimer.start()
+            }
+        }
+
+        function expand(modelIndexesList: var): void {
+            _modelIndexesList = modelIndexesList
+            _counter = modelIndexesList.length - 1
+            expandTimer.start()
         }
     }
 
@@ -336,12 +348,7 @@ Kirigami.OverlayDrawer {
         focusTimer.focusModelIndex = modelIndex
 
         if (parentRowsList.length !== 0) {
-            const firstModelIndex = parentRowsList[parentRowsList.length - 1]
-
-            firstModelIndex.model.askForExpand(firstModelIndex)
-            // This might be the exact same as "firstModelIndex" but is still needed for Category notes
-            timer.modelIndex = parentRowsList[0]
-            timer.start()
+            expandTimer.expand(parentRowsList)
         } else {
             focusTimer.start()
         }
