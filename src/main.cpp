@@ -85,8 +85,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(config, &KleverConfig::spacesForTabChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::visibleToolsChanged, config, &KleverConfig::save);
     QObject::connect(config, &KleverConfig::invisibleToolsChanged, config, &KleverConfig::save);
-    // Appearence
-    QObject::connect(config, &KleverConfig::categoryDisplayNameChanged, config, &KleverConfig::save);
     // Plugins
     // TODO move a maximum of this to plugin helper or editorHandler
     QObject::connect(config, &KleverConfig::codeSynthaxHighlighterChanged, config, &KleverConfig::save);

@@ -31,7 +31,7 @@ FormCard.FormCardPage {
         NamingDialog {
             id: namingDialog
 
-            useCase: ""
+            isNote: false
             parentPath: ""
             newItem: false
 
@@ -108,17 +108,16 @@ FormCard.FormCardPage {
         applicationWindow().switchToPage("Main")
     }
 
-    function updateName(shownName, callingAction) {
+    function updateName(isNote: bool, shownName: string, callBackFunc: var): void {
+        namingDialog.isNote = isNote
         namingDialog.shownName = shownName
         namingDialog.textFieldText = shownName
-        namingDialog.callingAction = callingAction
+        namingDialog.callBackFunc = callBackFunc
         namingDialog.open()
-        // Can't use selectAll on FormTextFieldDelegate
-        // namingDialog.nameField.selectAll()
-        namingDialog.nameField.forceActiveFocus()
+        namingDialog.nameField.selectAll()
     }
 
-    function updateColor(button, selectedColor) {
+    function updateColor(button: QtObject, selectedColor: string): void {
         switch(button.name) {
             case "background":
                 Config.viewBodyColor = selectedColor

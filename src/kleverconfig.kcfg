@@ -14,10 +14,6 @@
             <default>None</default>
         </entry>
 
-        <entry name="categoryDisplayName" type="String">
-            <label>The default name shown in place of "./BaseCategory"</label>
-            <default>Notes</default>
-        </entry>
         <entry name="defaultFolderName" type="String">
             <label>The default name for a new Category</label>
         </entry>
