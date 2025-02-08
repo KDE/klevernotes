@@ -16,14 +16,11 @@ FormCard.FormCardDialog {
     id: textPromptDialog
 
     required property var treeView
-    required property string useCase
-    readonly property var useCaseTrad: {
-        "group": i18nc("@subtitle:dialog, as in 'A note group'", "Where do you want to move this group ?"),
-        "note": i18nc("@subtitle:dialog", "Where do you want to move this note ?") 
-    }
+    required property bool isNote
+
     readonly property var clickedIndex: searchBar.clickedIndex
 
-    title: i18nc("@title:dialog, to move a group/note", "Move")
+    title: i18nc("@title:dialog, to move a folder/note", "Move")
 
     standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Cancel
 
@@ -41,7 +38,9 @@ FormCard.FormCardDialog {
     contentItem: ColumnLayout {
         spacing: Kirigami.Units.largeSpacing * 2
         Label {
-            text: useCase && useCase !== "Category" ? useCaseTrad[useCase.toLowerCase()] : ""
+            text: isNote 
+                ? i18nc("@subtitle:dialog", "Where do you want to move this note ?") 
+                : i18nc("@subtitle:dialog", "Where do you want to move this folder ?")
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
         }

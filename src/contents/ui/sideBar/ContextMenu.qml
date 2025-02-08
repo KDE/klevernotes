@@ -73,7 +73,7 @@ Controls.Menu {
             close()
         }
         onClosed: {
-            actionBar.useCurrentItem()
+            treeView.useCurrentItem()
         }
     }
 
@@ -81,15 +81,18 @@ Controls.Menu {
         id: moveDialog
 
         treeView: contextMenu.treeView
-        useCase: "note" // Will change
+        isNote: treeView.currentClickedItem.isNote
 
         onApplied: if (clickedIndex && treeView.currentModelIndex) {
             applicationWindow().saveState()
-            contextMenu.treeView.model.moveRow(treeView.currentModelIndex, clickedIndex)
+            treeView.model.moveRow(treeView.currentModelIndex, clickedIndex)
             close()
         }
         onRejected: {
             close()
+        }
+        onClosed: {
+            treeView.useCurrentItem()
         }
     }
 }
