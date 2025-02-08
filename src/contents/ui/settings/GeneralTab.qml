@@ -63,90 +63,48 @@ ColumnLayout {
         Layout.fillWidth: true
 
         FormCard.FormTextFieldDelegate {
-            id: newCategoryField
+            id: newFolderField
 
-            property string name
-            property bool isActive: false
-
-            text: Config.defaultCategoryName
-            label: i18nc("@label:textbox, the default note category name", "New Category name:")
+            text: Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
+            label: i18nc("@label:textbox", "New Folder name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
-
-            onNameChanged: if (isActive) {
-                text = name
-                Config.defaultCategoryName = name
-                isActive = false
-                name = ""
-            }
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    newCategoryField.isActive = true
-                    updateName(newCategoryField.text, newCategoryField)
+                    updateName(false, newFolderField.text, newFolderField.updateDefaultFolderName)
                 }
             }
-        }
 
-        FormCard.FormDelegateSeparator { above: newCategoryField; below: newGroupField }
-
-        FormCard.FormTextFieldDelegate {
-            id: newGroupField
-
-            property string name
-            property bool isActive: false
-
-            text: Config.defaultGroupName
-            label: i18nc("@label:textbox, the default note group name", "New Group name:")
-
-            Layout.margins: 0
-            Layout.fillWidth: true
-
-            onNameChanged: if (isActive) {
-                text = name
+            function updateDefaultFolderName(name: string): void {
+                return
                 Config.defaultGroupName = name
-                isActive = false
-                name = ""
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    newGroupField.isActive = true
-                    updateName(newGroupField.text, newGroupField)
-                }
             }
         }
 
-        FormCard.FormDelegateSeparator { above: newGroupField; below: newNoteField }
+        FormCard.FormDelegateSeparator { above: newFolderField; below: newNoteField }
 
         FormCard.FormTextFieldDelegate {
             id: newNoteField
 
-            property string name
-            property bool isActive: false
-
-            text: Config.defaultNoteName
+            text: Config.defaultNoteName.length !== 0 ? Config.defaultNoteName : i18n("New Note")
             label: i18nc("@label:textbox, the default note name", "New Note name:")
 
             Layout.margins: 0
             Layout.fillWidth: true
 
-            onNameChanged: if (isActive) {
-                text = name
-                Config.defaultNoteName = name
-                isActive = false
-                name = ""
-            }
-
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    newNoteField.isActive = true
-                    updateName(newNoteField.text, newNoteField)
+                    updateName(true, newNoteField.text, newNoteField.updateDefaultNoteName)
                 }
+            }
+
+            function updateDefaultNoteName(name: string): void {
+                return
+                Config.defaultNoteName = name
             }
         }
     }
