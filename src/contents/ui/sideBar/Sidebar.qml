@@ -162,10 +162,8 @@ Kirigami.OverlayDrawer {
                 TreeView {
                     id: treeView
                     // used when moveRow throws an error
-                    property string name
                     property var movingRowModelIndex
                     property var movingRowNewParentIndex
-                    property var isActive: false
 
                     Kirigami.Theme.backgroundColor: drawer.backgroundColor
 
@@ -192,23 +190,26 @@ Kirigami.OverlayDrawer {
                         onOldStorageStructure: function () {
                             oldStructureWarning.open()
                         }
-                        onMoveError: function (rowModelIndex, newParentIndex, useCase, shownName, parentPath) {
-                            treeView.isActive = true
+                        onMoveError: function (rowModelIndex, newParentIndex, isNote, name, parentPath) {
                             treeView.movingRowModelIndex = rowModelIndex
                             treeView.movingRowNewParentIndex = newParentIndex
-                            actionBar.getName(useCase, shownName, parentPath, treeView, false)
+                            actionBar.getName(isNote, treeView.moveErrorRename, false, name, parentPath)
                             actionBar.forceError("exist")
+                        }
+                        onForceFocus: function (rowModelIndex) {
+                            drawer.askForFocus(rowModelIndex)
                         }
                     }
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    onNameChanged: if (name.length > 0) {
-                        noteTreeModel.moveRow(movingRowModelIndex, movingRowNewParentIndex, name)
-                        treeView.movingRowModelIndex = null
-                        treeView.movingRowNewParentIndex = null
-                        treeView.name = ""
+                    function moveErrorRename(newName: string): void {
+                        if (newName.length > 0) {
+                            noteTreeModel.moveRow(treeView.movingRowModelIndex, treeView.movingRowNewParentIndex, newName)
+                            treeView.movingRowModelIndex = null
+                            treeView.movingRowNewParentIndex = null
+                        }
                     }
                 }
 

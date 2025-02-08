@@ -145,7 +145,6 @@ ToolBar {
         id: createNoteAction
 
         property string name
-        property bool isActive : false
 
         shortcut: "Ctrl+Alt+N"
         icon.name: "document-new-symbolic"
@@ -210,7 +209,8 @@ ToolBar {
         askForFocus(newModelIndex)
     }
 
-    function getName(isNote: bool, callBackFunc: var, newItem: bool): void {
+    // avoid typing `name` and `parentPath` in case they're undefined
+    function getName(isNote: bool, callBackFunc: var, newItem: bool, name, parentPath): void {
         let defaultName
         if (newItem) {
             if (isNote) {
@@ -219,13 +219,13 @@ ToolBar {
                 defaultName = Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
             }
         } else {
-            defaultName = treeView.currentClickedItem.text
+            defaultName = name ? name : treeView.currentClickedItem.text
         }
 
         namingDialog.isNote = isNote
         namingDialog.shownName = defaultName
         namingDialog.textFieldText = defaultName
-        namingDialog.parentPath = treeView.currentClickedItem.dir
+        namingDialog.parentPath = parentPath ? parentPath : treeView.currentClickedItem.dir
         namingDialog.callBackFunc = callBackFunc
         namingDialog.newItem = newItem
         namingDialog.open()

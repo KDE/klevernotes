@@ -55,8 +55,9 @@ public:
 
 Q_SIGNALS:
     void errorOccurred(const QString &errorMessage);
-    void
-    moveError(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &useCase, const QString &shownName, const QString &parentPath);
+    void moveError(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, bool isNote, const QString &shownName, const QString &parentPath);
+    void forceFocus(const QModelIndex &rowModelIndex);
+
     // NoteMapper
     void newGlobalPathFound(const QString &path);
     void globalPathUpdated(const QString &oldPath, const QString &newPath);
@@ -67,6 +68,7 @@ Q_SIGNALS:
 
 private:
     void handleRemoveItem(const QModelIndex &index, const bool succes);
+    void handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName, int error);
 
     // Storage Handler
     bool makeStorage(const QString &storagePath);
@@ -74,6 +76,11 @@ private:
     QString makeNote(const QString &parentPath, const QString &noteName);
 
 private:
+    enum MoveError {
+        NoError, // For code readability
+        NameExist,
+        FailedToMove
+    };
     // NoteMapper
     bool m_noteMapEnabled = KleverConfig::noteMapEnabled();
     bool m_isInit = false;

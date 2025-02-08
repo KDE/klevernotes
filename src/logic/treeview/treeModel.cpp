@@ -176,10 +176,22 @@ QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, con
 void NoteTreeModel::handleRemoveItem(const QModelIndex &index, const bool succes)
 {
     if (succes) {
+        const QModelIndex parentModelIndex = parent(index);
+
         const auto row = static_cast<TreeItem *>(index.internalPointer());
-        beginRemoveRows(parent(index), index.row(), index.row());
+        const int rowIndex = row->row();
+
+        beginRemoveRows(parentModelIndex, rowIndex, rowIndex);
         row->remove();
         endRemoveRows();
+
+        const auto parentRow = static_cast<TreeItem *>(parentModelIndex.internalPointer());
+
+        QModelIndex needFocus = parentModelIndex;
+        if (parentRow->childCount()) {
+            needFocus = rowIndex ? createIndex(rowIndex - 1, 0, parentRow->child(rowIndex - 1)) : createIndex(0, 0, parentRow->child(0));
+        }
+        Q_EMIT forceFocus(needFocus);
     } else {
         Q_EMIT errorOccurred(i18n("An error occurred while trying to remove this item."));
     }
@@ -215,57 +227,77 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
     }
 }
 
+void NoteTreeModel::handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &name, int error)
+{
+    const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
+
+    switch (error) {
+    case MoveError::NameExist: {
+        const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
+        Q_EMIT moveError(rowModelIndex, newParentIndex, row->isNote(), row->getName(), newParent->getPath());
+        break;
+    }
+    case MoveError::FailedToMove: {
+        Q_EMIT errorOccurred(i18n("An error occurred while trying to move this item."));
+        break;
+    }
+    default: {
+        newParent->askForExpand(newParentIndex);
+
+        const int oldRowNumber = rowModelIndex.row();
+        const QModelIndex oldParentIndex = parent(rowModelIndex);
+
+        const int newRowIndex = newParent->childCount();
+        beginMoveRows(oldParentIndex, oldRowNumber, oldRowNumber, newParentIndex, newRowIndex);
+
+        const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
+        // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
+        auto row = oldParent->takeUniqueChildAt(oldRowNumber);
+        row->setName(name);
+        newParent->appendChild(std::move(row));
+
+        endMoveRows();
+
+        Q_EMIT forceFocus(createIndex(newRowIndex, 0, newParent->child(newRowIndex)));
+    }
+    }
+}
+
 void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName)
 {
-    return;
     auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
 
     const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
 
-    if (row->getParentItem() == newParent) {
-        return;
-    }
+    const QString rowDir = row->getDir();
+    const QString rowName = row->getName();
 
-    const QString rowPath = row->getPath();
-    const QString parentPath = newParent->getPath();
-    QString dest = parentPath + slash;
+    const QString newParentPath = newParent->getPath();
+    const QString finalName = newName.isEmpty() ? rowName : newName;
+    const QString newBasePath = newParentPath + slash + finalName;
 
-    if (newParent->getDepth() == 1 && row->getDepth() == 3) {
-        dest += QStringLiteral(".BaseGroup") + slash;
-    }
-    const QString finalName = newName.isEmpty() ? row->getName() : newName;
-    dest += finalName;
+    int error;
+    QDir dir;
+    if (row->isNote()) {
+        const QString notePath = rowDir + slash + rowName + mdEnding;
+        const QString todoPath = rowDir + slash + rowName + todoEnding;
+        const QString newNotePath = newBasePath + mdEnding;
+        const QString newTodoPath = newBasePath + todoEnding;
 
-    if (QDir(dest).exists()) {
-        Q_EMIT moveError(rowModelIndex, newParentIndex, row->isNote() ? QStringLiteral("note") : QStringLiteral("folder"), row->getName(), parentPath);
-        return;
-    }
+        error = (dir.exists(newNotePath) || dir.exists(newTodoPath)) ? MoveError::NameExist : MoveError::NoError;
 
-    auto *job = KIO::move(QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(dest));
-    job->start();
-
-    connect(job, &KJob::result, this, [job, rowModelIndex, finalName, newParent, newParentIndex, this] {
-        if (!job->error()) {
-            newParent->askForExpand(newParentIndex);
-
-            const int oldRowNumber = rowModelIndex.row();
-            const int lastRow = newParent->childCount();
-            const QModelIndex oldParentIndex = parent(rowModelIndex);
-
-            beginMoveRows(oldParentIndex, oldRowNumber, oldRowNumber, newParentIndex, lastRow);
-
-            const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
-            // // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
-            auto row = oldParent->takeUniqueChildAt(oldRowNumber);
-            row->setName(finalName);
-            newParent->appendChild(std::move(row));
-
-            endMoveRows();
-            return;
+        if (!error) {
+            error = (dir.rename(notePath, newNotePath) && dir.rename(todoPath, newTodoPath)) ? MoveError::NoError : MoveError::FailedToMove;
         }
-        Q_EMIT errorOccurred(i18n("An error occurred while trying to move this item."));
-        qWarning() << job->errorString();
-    });
+    } else {
+        error = dir.exists(newBasePath) ? MoveError::NameExist : MoveError::NoError;
+
+        if (!error) {
+            error = dir.rename(rowDir, newBasePath) ? MoveError::NoError : MoveError::FailedToMove;
+        }
+    }
+
+    return handleMoveItem(rowModelIndex, newParentIndex, finalName, error);
 }
 
 void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newName)
