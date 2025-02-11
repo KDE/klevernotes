@@ -271,25 +271,17 @@ msgid "Please choose another name for it."
 msgstr "Prosím, vyberte jiný název."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:41
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid ""
-#| "This name starts with a dot, this may cause problem and is therefore not "
-#| "allowed."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Tento název začíná tečkou. To by mohlo vést k problémům a proto to není "
-"povoleno."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please remove the dot or choose another name."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Prosím, odstraňte tečku a vyberte jiný název."
+msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -542,12 +534,10 @@ msgid "Auto crop"
 msgstr "Automatický ořez"
 
 #: contents/ui/pages/PaintingPage.qml:91
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Barva textu:"
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:31
 #, kde-format
@@ -628,13 +618,11 @@ msgid "Outline and fill"
 msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Title color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Barva popisku:"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:148
 #, kde-format
