@@ -164,8 +164,10 @@ Kirigami.Dialog {
             CheatSheetEntry {
                 element: i18n("Note link")
                 syntax: "[[ " 
-                    + i18nc("exemple, a note path ('/' are important), Category as in 'a category, Group 'a group', Note 'a note'", "Category/Group/Note") 
-                    + ":# " + i18nc("exemple", "header") + " | " + i18nc("exemple", "displayed name") + " ]]"
+                    + i18nc("exemple", "<path to note>/<note name>") 
+                    /* TODO: fix this when reworking headers
+                     + ":# " + i18nc("exemple", "header") */
+                     + " | " + i18nc("exemple", "displayed name") + " ]]"
                 onClicked: clipboardHelper.text = syntax
             }
         }

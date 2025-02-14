@@ -13,7 +13,7 @@ class LinkedNoteItem
 {
 public:
     explicit LinkedNoteItem(const QString &path,
-                            const QString &exists,
+                            const bool exists,
                             const QString &header,
                             const bool headerExists,
                             const int headerLevel,
@@ -21,14 +21,14 @@ public:
 
     QVariant data(int role) const;
     void updatePath(const QString &path);
-    void updateExists(const QString &exists);
+    void updateExists(const bool exists);
     void updateHeaderExists(const bool exists);
 
 private:
     void setDisplayPath(const QString &path);
     QString m_path;
     QString m_displayPath;
-    QString m_exists; // QString because we use a KSortFilterProxyModel
+    bool m_exists;
 
     QString m_header;
     bool m_headerExists;

@@ -1,75 +1,53 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "noteMapperParserUtils.h"
 #include "kleverconfig.h"
 #include "logic/editor/editorHandler.hpp"
 
+#define slash QStringLiteral("/")
+
 NoteMapperParserUtils::NoteMapperParserUtils(MdEditor::EditorHandler *editorHandler)
     : m_editorHandler(editorHandler)
 {
 }
 
-QString NoteMapperParserUtils::getGroupPath(const QString &notePath)
+QString NoteMapperParserUtils::sanitizePath(const QString &_path, const QString &notePath)
 {
-    // notePath == storagePath/Category/Group/Note/ => /Category/Group/Note
-    const QString mapperNotePath = notePath.chopped(1).remove(KleverConfig::storagePath());
+    QString path(_path);
+    if (_path.endsWith(QStringLiteral(".md"))) {
+        path.chop(3);
+    }
 
-    // /Category/Group/Note => /Category/Group (no '/' at the end to make it easier for m_categPath)
-    QString groupPath = mapperNotePath.chopped(mapperNotePath.size() - mapperNotePath.lastIndexOf(QStringLiteral("/")) - 1);
+    QDir dir(path);
+    QDir note(notePath);
 
-    return groupPath;
-}
-
-QPair<QString, bool> NoteMapperParserUtils::sanitizePath(const QString &_path, const QString &notePath)
-{
-    static const QString slashStr = QStringLiteral("/");
-    QStringList parts = _path.split(slashStr);
-
-    bool leadingSlashRemnant = false;
-    for (int i = 0; i < parts.count(); i++) {
-        QString part = parts[i].trimmed();
-        if (part.isEmpty()) {
-            if (i == 0) {
-                leadingSlashRemnant = true;
-            } else { // The path is not correctly formed
-                return qMakePair(_path, false);
-            }
+    static const QString dot = QStringLiteral(".");
+    QString finalPath = {};
+    QString noteName = dir.dirName();
+    bool valid = !noteName.isEmpty() && !noteName.startsWith(dot);
+    if (dir.isRelative() && valid) {
+        QString prefix = QStringLiteral("../"); // This way we don't have to `cdUp` the note
+        if (!dir.path().startsWith(dot)) {
+            prefix += QStringLiteral("./");
         }
-        parts[i] = part;
+        dir.setPath(path);
+
+        QString cdPath = prefix + path;
+        // Simply doing `cdUp` on `dir` doesn't always work we need another way to get the cdPath
+        cdPath = cdPath.left(cdPath.length() - noteName.length());
+
+        valid = note.cd(cdPath);
+        finalPath = note.path() + slash + noteName;
+    } else if (valid) {
+        dir = QDir(KleverConfig::storagePath() + path);
+        finalPath = dir.path();
     }
+    finalPath.remove(0, KleverConfig::storagePath().length());
 
-    if (leadingSlashRemnant)
-        parts.removeAt(0);
-
-    if (parts[0] == KleverConfig::defaultCategoryDisplayNameValue() && 1 < parts.length()) {
-        parts[0] = QStringLiteral(".BaseCategory");
-    }
-
-    const QString groupPath = getGroupPath(notePath);
-
-    QString path = _path;
-    switch (parts.count()) {
-    case 1: // Note name only
-        path = groupPath + parts[0];
-        break;
-    case 2:
-        if (parts[0] == QStringLiteral(".")) { // Note name only
-            path = groupPath + parts[1];
-        } else { // Note inside category
-            path = slashStr + parts[0] + QStringLiteral("/.BaseGroup/") + parts[1];
-        }
-        break;
-    case 3: // 'Full' path
-        path = slashStr + parts.join(slashStr);
-        break;
-    default: // Not a note path
-        return qMakePair(_path, false);
-    }
-
-    return qMakePair(path, true);
+    return valid ? finalPath : QLatin1String();
 }
 
 void NoteMapperParserUtils::setNotePath(const QString &_path)

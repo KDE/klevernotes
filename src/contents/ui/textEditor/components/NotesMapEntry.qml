@@ -35,17 +35,19 @@ FormCard.AbstractFormDelegate {
 
         Controls.Label {
             text: root.displayedPath
-            elide: Text.ElideRight
-            color: root.exists === "Yes" ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
+            elide: Text.ElideLeft
+            color: root.exists === "true" ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
             Layout.preferredWidth: root.elemWidth * 2
         }
 
+        /* TODO: fix this when reworking headers
         Controls.Label {
             text: root.header
             elide: Text.ElideRight
             color: root.headerExists ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
             Layout.preferredWidth: root.elemWidth
         }
+        */
 
         FormCard.FormArrow {
             id: arrow

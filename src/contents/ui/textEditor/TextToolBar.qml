@@ -216,7 +216,7 @@ Kirigami.ActionToolBar {
 
         onAccepted: {
             const text = linkText.trim()
-            const notePath = path.substring(Config.storagePath.length)
+            const notePath = path.substring(Config.storagePath.length, path.length - 3)
             const headerPart = headerString.length > 0 
                 ? " : " + headerString 
                 : ""
