@@ -32,16 +32,15 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
         if (cap.hasMatch()) {
             const QString href = cap.captured(1).trimmed();
             if (!href.isEmpty()) {
-                const QPair<QString, bool> sanitizedHref = NoteMapperParserUtils::sanitizePath(href, po.m_workingPath);
+                const QString sanitizedHref = NoteMapperParserUtils::sanitizePath(href, po.m_workingPath);
+                if (!sanitizedHref.isEmpty()) {
+                    const QString header = cap.captured(3).trimmed();
 
-                const QString header = cap.captured(3).trimmed();
+                    const bool hasPipe = !cap.captured(4).isEmpty();
 
-                const bool hasPipe = !cap.captured(4).isEmpty();
+                    const QString potentitalTitle = cap.captured(5).trimmed();
+                    const QString title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.split(QStringLiteral("/")).last();
 
-                const QString potentitalTitle = cap.captured(5).trimmed();
-                const QString title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.first.split(QStringLiteral("/")).last();
-
-                if (sanitizedHref.second) {
                     auto lineInfo = po.m_fr.m_data.at(textData.m_line);
                     auto paraIdx = textAtIdx(p, rawIdx);
                     const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
@@ -59,7 +58,7 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
                     const int urlEnd = (header.isEmpty() ? urlStart + href.length() : item->startColumn() + cap.capturedEnd(2) + header.length()) - 1;
                     link->setUrlPos({urlStart, link->startLine(), urlEnd, link->endLine()});
                     // This hopefuly, is enough to separate the 2 without collinding with user input
-                    const QString fullUrl = sanitizedHref.first + QStringLiteral("@HEADER@") + header; // <Note path>@HEADER@<header ref>
+                    const QString fullUrl = sanitizedHref + QStringLiteral("@HEADER@") + header; // <Note path>@HEADER@<header ref>
                     link->setUrl(fullUrl);
 
                     const int textStart = item->startColumn() + cap.capturedStart(5);

@@ -173,15 +173,15 @@ void TreeItem::saveMetaData()
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
 {
-    // if (item->m_depth_level == 3 && m_model->noteMapEnabled()) {
-    //     // very important to make a copy here !
-    //     const QString path = item->data(NoteTreeModel::PathRole).toString().remove(KleverConfig::storagePath());
-    //     if (m_model->isInit()) {
-    //         Q_EMIT m_model->newGlobalPathFound(path);
-    //     } else {
-    //         m_model->addInitialGlobalPath(path);
-    //     }
-    // }
+    if (item->isNote() && m_model->noteMapEnabled()) {
+        // very important to make a copy here !
+        const QString path = QString(item->m_path).remove(KleverConfig::storagePath());
+        if (m_model->isInit()) {
+            Q_EMIT m_model->newGlobalPathFound(path);
+        } else {
+            m_model->addInitialGlobalPath(path);
+        }
+    }
     if (item->getParentItem() != this) {
         item->setParentItem(this);
     }

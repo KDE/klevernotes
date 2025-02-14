@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "noteMapper.h"
@@ -11,7 +11,7 @@
 #include <QJsonArray>
 
 LinkedNoteItem::LinkedNoteItem(const QString &path,
-                               const QString &exists,
+                               const bool exists,
                                const QString &header,
                                const bool headerExists,
                                const int headerLevel,
@@ -67,11 +67,10 @@ void LinkedNoteItem::updatePath(const QString &path)
 void LinkedNoteItem::setDisplayPath(const QString &path)
 {
     auto newPath = path;
-    newPath.replace(QStringLiteral(".BaseCategory"), KleverConfig::defaultCategoryDisplayNameValue()).remove(QStringLiteral(".BaseGroup/"));
     m_displayPath = newPath;
 }
 
-void LinkedNoteItem::updateExists(const QString &exists)
+void LinkedNoteItem::updateExists(const bool exists)
 {
     m_exists = exists;
 }
@@ -165,7 +164,8 @@ void NoteMapper::addRow(const QStringList &infos)
     const int headerLevel = NoteMapperUtils::headerLevel(cleanedHeader);
     const QString headerText = NoteMapperUtils::headerText(cleanedHeader);
 
-    QString exists = QStringLiteral("No"); // Not a bool because used for KSortFilterProxyModel filterString
+    bool exists = m_treeViewPaths.contains(path + QStringLiteral(".md"));
+    /* TODO: fix this when reworking headers
     if (m_treeViewPaths.contains(path)) {
         exists = QStringLiteral("Yes");
 
@@ -188,7 +188,7 @@ void NoteMapper::addRow(const QStringList &infos)
                 }
             }
         }
-    }
+    }*/
 
     auto newRow = std::make_unique<LinkedNoteItem>(path, exists, headerText, headerExists, headerLevel, title); // making it a const prevent std::move
 
@@ -260,8 +260,8 @@ void NoteMapper::addGlobalPath(const QString &path)
     for (auto it = m_list.cbegin(); it != m_list.cend(); it++) {
         const auto child = static_cast<LinkedNoteItem *>(it->get());
 
-        if (child->data(PathRole).toString() == path && child->data(ExistsRole) != QStringLiteral("Yes")) {
-            child->updateExists(QStringLiteral("Yes"));
+        if (child->data(PathRole).toString() == path && child->data(ExistsRole).toBool()) {
+            child->updateExists(true);
             // Don't need to check for header since this is a brand new file
             QModelIndex childIndex = createIndex(0, 0, child);
             Q_EMIT dataChanged(childIndex, childIndex);
@@ -290,7 +290,7 @@ void NoteMapper::updateGlobalPath(const QString &_oldPath, const QString &_newPa
         }
         if (child->data(PathRole).toString() == newPath) {
             needUpdate = true;
-            child->updateExists(QStringLiteral("Yes"));
+            child->updateExists(true);
         }
 
         if (needUpdate) {

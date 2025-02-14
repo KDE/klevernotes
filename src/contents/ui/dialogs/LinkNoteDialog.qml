@@ -26,7 +26,7 @@ FormCard.FormCardDialog {
 
     onClosed: {
         linkText = ""
-        headerSwitch.checked = false
+        //headerSwitch.checked = false
         noteComboBox.currentIndex = 0
     }
     onRejected: {
@@ -51,14 +51,15 @@ FormCard.FormCardDialog {
         valueRole: "path"
         displayMode: FormCard.FormComboBoxDelegate.Dialog
 
-        onCurrentValueChanged: if (headerSwitch.checked) {
-            headerComboBox.model = NoteMapper.getNoteHeaders(noteComboBox.currentValue)
-        }
+        //onCurrentValueChanged: if (headerSwitch.checked) {
+            //headerComboBox.model = NoteMapper.getNoteHeaders(noteComboBox.currentValue)
+        //}
         Component.onCompleted: {
             currentIndex = 0
         }
     }
 
+    /* TODO: fix this when reworking headers
     ExpandingFormSwitch {
         id: headerSwitch
 
@@ -85,6 +86,7 @@ FormCard.FormCardDialog {
             }
         }
     }
+    */
 
     FormCard.FormTextFieldDelegate {
         id: linkTextField

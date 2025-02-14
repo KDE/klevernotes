@@ -53,7 +53,7 @@ Kirigami.Dialog {
                             EditorHandler.headerInfo = [header, headerLevel.toString()]
                         }
                         const sidebar = applicationWindow().globalDrawer
-                        const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+                        const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath + ".md")
                         sidebar.askForFocus(noteModelIndex)
                         noteMap.close()
                     }
@@ -84,7 +84,7 @@ Kirigami.Dialog {
 
             sourceModel: NoteMapper
             filterRoleName: "exists"
-            filterString: "No"
+            filterString: "false"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
 
@@ -93,7 +93,7 @@ Kirigami.Dialog {
 
             sourceModel: NoteMapper
             filterRoleName: "exists"
-            filterString: "Yes"
+            filterString: "true"
             filterCaseSensitivity: Qt.CaseInsensitive
         }
     }

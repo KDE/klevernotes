@@ -54,6 +54,7 @@ void NoteTreeModel::initModel(bool convert)
 
     if (m_noteMapEnabled) {
         m_isInit = true;
+
         Q_EMIT initialGlobalPathsSent(m_initialGlobalPaths);
     }
 }
@@ -355,28 +356,22 @@ void NoteTreeModel::askForExpand(const QModelIndex &rowModelIndex)
 
 QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
 {
-    QStringList currentPathParts = notePath.split(QStringLiteral("/"));
+    QStringList currentPathParts = notePath.split(slash);
     currentPathParts.pop_front(); // remove the first empty string
     QString currentPathPart = currentPathParts.takeAt(0);
 
     auto currentParentItem = m_rootItem.get();
-    QModelIndex currentModelIndex;
 
-    bool hasBreak = false;
     for (int i = 0; i < currentParentItem->childCount();) {
         const auto currentItem = currentParentItem->child(i);
-        const QString currentItemPath = currentItem->data(PathRole).toString();
-        if (currentItemPath.endsWith(currentPathPart)) {
-            currentModelIndex = createIndex(i, 0, currentItem);
-            if (currentPathParts.isEmpty()) {
-                hasBreak = true;
-                break;
-            } else {
-                currentPathPart = currentPathParts.takeAt(0);
+        const QString currentItemPath = currentItem->getPath();
 
-                if (currentPathPart == QStringLiteral(".BaseGroup"))
-                    currentPathPart = currentPathParts.takeAt(0);
+        if (currentItemPath.endsWith(currentPathPart)) {
+            if (currentPathParts.isEmpty()) {
+                return createIndex(i, 0, currentItem);
             }
+
+            currentPathPart = currentPathParts.takeAt(0);
             currentParentItem = currentItem;
             i = 0;
             continue;
@@ -384,7 +379,7 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
         i++;
     }
 
-    return hasBreak ? currentModelIndex : QModelIndex(); // Easier to handle in qml
+    return QModelIndex(); // Easier to handle in qml
 }
 
 // NoteMapper

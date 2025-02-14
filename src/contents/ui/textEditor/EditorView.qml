@@ -245,6 +245,16 @@ ColumnLayout {
         function onFocusEditor() {
             editor.textArea.forceActiveFocus()
         }
+
+        function onNewLinkedNotesInfos(linkedNotesInfos) {
+            NoteMapper.addLinkedNotesInfos(linkedNotesInfos)
+        }
+
+        /* TODO: handle this when reworking header link
+        function onNoteHeadersSent(notePath, noteHeaders) {
+            noteMapper.updatePathInfo(notePath, noteHeaders)
+        }
+        */
     }
 
 

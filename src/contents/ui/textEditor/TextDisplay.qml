@@ -89,9 +89,9 @@ RowLayout {
                         
                         notePath = notePath.substring(0, delimiterIndex)
 
-                        const headerInfo = NoteMapper.getCleanedHeaderAndLevel(header)
+                        //const headerInfo = NoteMapper.getCleanedHeaderAndLevel(header)
                         const sidebar = applicationWindow().globalDrawer
-                        const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath)
+                        const noteModelIndex = sidebar.treeModel.getNoteModelIndex(notePath + ".md")
 
                         if (noteModelIndex.row !== -1) {
                             // if (header[1] !== 0) parser.headerInfo = headerInfo
@@ -99,7 +99,6 @@ RowLayout {
                             sidebar.askForFocus(noteModelIndex)
                         } 
                         else {
-                            notePath = notePath.replace(".BaseCategory", Config.categoryDisplayName).replace(".BaseGroup/", "")
                             showPassiveNotification(i18nc("@notification, error message %1 is a path", "%1 doesn't exists", notePath))
                         }
                     } else {
