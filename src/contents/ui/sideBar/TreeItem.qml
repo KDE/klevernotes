@@ -30,6 +30,7 @@ Delegates.RoundedTreeDelegate {
     text: name
     icon.name: iconName
     highlighted: treeView._hasBeenClicked && treeView.currentItem ? treeView.currentItem.path === path : false
+    width: listView.view.width / 3 < leftInset ? Math.round(listView.view.width * 0.75) + leftInset : listView.view.width
 
     MouseArea {
         anchors.fill: parent

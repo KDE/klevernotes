@@ -22,23 +22,21 @@ Controls.ScrollView {
 
     property var currentModelIndex // Using var instead of QModelIndex
     property TreeItem currentClickedItem
-    
+
     ListView {
         id: treeView
 
+        property bool _hasBeenClicked: false
+
         clip: true
+        contentWidth: contentItem.childrenRect.width 
         model: KDescendantsProxyModel {
             id: descendantsModel
             expandsByDefault: false
         }
 
-        property bool _hasBeenClicked: false
-
         delegate: TreeItem {
             id: treeItem
-
-            // Without this the first item in the TreeView doesn't have the right color
-            Kirigami.Theme.backgroundColor: scrollView.backgroundColor
 
             onItemRightClicked: {
                 setClickedItemInfo(treeItem)
