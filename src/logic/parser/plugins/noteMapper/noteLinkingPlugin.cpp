@@ -5,6 +5,7 @@
 
 #include "noteLinkingPlugin.hpp"
 
+#include "kleverconfig.h"
 #include "logic/parser/md4qtDataManip.hpp"
 #include "noteMapperParserUtils.h"
 
@@ -32,7 +33,11 @@ inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, lon
         if (cap.hasMatch()) {
             const QString href = cap.captured(1).trimmed();
             if (!href.isEmpty()) {
-                const QString sanitizedHref = NoteMapperParserUtils::sanitizePath(href, po.m_workingPath);
+                QString relativeNoteDir = QString(po.m_workingPath);
+                if (relativeNoteDir.startsWith(KleverConfig::storagePath())) {
+                    relativeNoteDir.remove(0, KleverConfig::storagePath().length());
+                }
+                const QString sanitizedHref = NoteMapperParserUtils::sanitizePath(href, relativeNoteDir);
                 if (!sanitizedHref.isEmpty()) {
                     const QString header = cap.captured(3).trimmed();
 

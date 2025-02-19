@@ -4,7 +4,6 @@
 */
 
 #include "noteMapperParserUtils.h"
-#include "kleverconfig.h"
 #include "logic/editor/editorHandler.hpp"
 
 #define slash QStringLiteral("/")
@@ -22,30 +21,18 @@ QString NoteMapperParserUtils::sanitizePath(const QString &_path, const QString 
     }
 
     QDir dir(path);
-    QDir note(notePath);
 
-    static const QString dot = QStringLiteral(".");
     QString finalPath = {};
     QString noteName = dir.dirName();
-    bool valid = !noteName.isEmpty() && !noteName.startsWith(dot);
+    bool valid = !noteName.isEmpty() && !noteName.startsWith(QStringLiteral("."));
     if (dir.isRelative() && valid) {
-        QString prefix = QStringLiteral("../"); // This way we don't have to `cdUp` the note
-        if (!dir.path().startsWith(dot)) {
-            prefix += QStringLiteral("./");
-        }
-        dir.setPath(path);
-
-        QString cdPath = prefix + path;
-        // Simply doing `cdUp` on `dir` doesn't always work we need another way to get the cdPath
-        cdPath = cdPath.left(cdPath.length() - noteName.length());
-
-        valid = note.cd(cdPath);
-        finalPath = note.path() + slash + noteName;
+        const QString newPath = notePath + slash + path;
+        dir.setPath(newPath);
+        valid = dir.makeAbsolute();
+        finalPath = dir.path();
     } else if (valid) {
-        dir = QDir(KleverConfig::storagePath() + path);
         finalPath = dir.path();
     }
-    finalPath.remove(0, KleverConfig::storagePath().length());
 
     return valid ? finalPath : QLatin1String();
 }

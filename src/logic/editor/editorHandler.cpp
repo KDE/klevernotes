@@ -213,10 +213,6 @@ void EditorHandler::parseDoc()
 
 void EditorHandler::parse(const QString &src)
 {
-    if (!m_notePath.endsWith(QStringLiteral(".md"))) {
-        return;
-    }
-
     m_textChanged = !m_noteFirstHighlight;
     if (m_pluginHelper) {
         m_pluginHelper->clearPluginsInfo();
@@ -228,28 +224,7 @@ void EditorHandler::parse(const QString &src)
 
     ++m_parseCount;
 
-    Q_EMIT askForParsing(src, m_notePath, m_parseCount);
-}
-
-QString EditorHandler::getNotePath() const
-{
-    return m_notePath;
-}
-
-void EditorHandler::setNotePath(const QString &notePath)
-{
-    if (notePath == m_notePath) {
-        return;
-    }
-    if (!notePath.endsWith(QStringLiteral(".md"))) {
-        m_notePath = QLatin1String();
-        return;
-    }
-    m_notePath = notePath;
-    m_noteFirstHighlight = true;
-
-    Q_EMIT renderingFinished({});
-    parseDoc();
+    Q_EMIT askForParsing(src, m_noteDir, m_parseCount);
 }
 
 QString EditorHandler::getNoteDir() const
@@ -259,6 +234,7 @@ QString EditorHandler::getNoteDir() const
 
 void EditorHandler::setNoteDir(const QString &noteDir)
 {
+    m_noteDir = noteDir;
     m_renderer->setNoteDir(noteDir);
 
     if (m_pluginHelper) {
@@ -267,6 +243,10 @@ void EditorHandler::setNoteDir(const QString &noteDir)
 
         m_pluginHelper->mapperParserUtils()->setNotePath(noteDir);
     }
+    m_noteFirstHighlight = true;
+
+    Q_EMIT renderingFinished({});
+    parseDoc();
 }
 // !Parser
 
@@ -274,7 +254,7 @@ void EditorHandler::setNoteDir(const QString &noteDir)
 void EditorHandler::renderDoc()
 {
     if (m_currentMdDoc) {
-        const auto html = m_renderer->toHtml(m_currentMdDoc, m_notePath);
+        const auto html = m_renderer->toHtml(m_currentMdDoc, m_noteDir);
 
         if (m_pluginHelper) {
             m_pluginHelper->postTokChanges();
@@ -300,7 +280,7 @@ void EditorHandler::changeRenderPreviewState(const bool _enabled)
 // =========
 void EditorHandler::cacheAndHighlightSyntax(std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
 {
-    if (!m_notePath.isEmpty()) {
+    if (!m_noteDir.isEmpty()) {
         m_highlighting = true;
         m_editorHighlighter->cacheAndHighlight(doc, m_config->editorHighlightEnabled());
         m_highlighting = false;
@@ -484,7 +464,7 @@ void EditorHandler::tagScaleChanged()
 
 void EditorHandler::cursorMovedTimeOut()
 {
-    if (!m_textChanged && m_notePath.endsWith(QStringLiteral(".md"))) {
+    if (!m_textChanged) { // && m_notePath.endsWith(QStringLiteral(".md"))) {
         m_highlighting = true;
         m_surroundingDelims = m_editorHighlighter->showDelimAroundCursor(m_textChanged);
         m_highlighting = false;

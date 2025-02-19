@@ -84,7 +84,7 @@ void NoteLinkingTest::linkBeginningWithOpenClose()
     QCOMPARE_EQ(item1->openStyles().length(), 2);
     QCOMPARE_EQ(item1->closeStyles().length(), 1);
     QCOMPARE_EQ(item1->opts(), 2);
-    QCOMPARE(item1->url(), QStringLiteral("/my/.BaseGroup/link@HEADER@header"));
+    QCOMPARE(item1->url(), QStringLiteral("/my/link@HEADER@header"));
     QCOMPARE_EQ(item1->urlPos(), MD::WithPosition(4, 0, 18, 0));
     QCOMPARE(item1->text(), QStringLiteral("My link with opening and closing"));
     QCOMPARE_EQ(item1->textPos(), MD::WithPosition(22, 0, 53, 0));
@@ -119,7 +119,7 @@ void NoteLinkingTest::linkBeginningWithOpen()
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
-    QCOMPARE(item1->url(), QStringLiteral("/my/.BaseGroup/link@HEADER@header"));
+    QCOMPARE(item1->url(), QStringLiteral("/my/link@HEADER@header"));
     QCOMPARE_EQ(item1->urlPos(), MD::WithPosition(3, 0, 17, 0));
     QCOMPARE(item1->text(), QStringLiteral("My link with opening"));
     QCOMPARE_EQ(item1->textPos(), MD::WithPosition(21, 0, 40, 0));
@@ -163,7 +163,7 @@ void NoteLinkingTest::linkMiddleWithClose()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 1);
     QCOMPARE_EQ(item2->opts(), 2);
-    QCOMPARE(item2->url(), QStringLiteral("/my/.BaseGroup/link@HEADER@header"));
+    QCOMPARE(item2->url(), QStringLiteral("/my/link@HEADER@header"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(16, 0, 30, 0));
     QCOMPARE(item2->text(), QStringLiteral("my link with closing"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(34, 0, 53, 0));
@@ -207,7 +207,7 @@ void NoteLinkingTest::linkMiddleWithOpen()
     QCOMPARE_EQ(item2->openStyles().length(), 1);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 2);
-    QCOMPARE(item2->url(), QStringLiteral("/my/.BaseGroup/link@HEADER@header"));
+    QCOMPARE(item2->url(), QStringLiteral("/my/link@HEADER@header"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(15, 0, 29, 0));
     QCOMPARE(item2->text(), QStringLiteral("my link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(33, 0, 39, 0));
@@ -251,7 +251,7 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 2);
-    QCOMPARE(item2->url(), QStringLiteral("/my/.BaseGroup/link@HEADER@header"));
+    QCOMPARE(item2->url(), QStringLiteral("/my/link@HEADER@header"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(28, 0, 42, 0));
     QCOMPARE(item2->text(), QStringLiteral("my link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(46, 0, 52, 0));
@@ -304,7 +304,7 @@ void NoteLinkingTest::linkNoHeader()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
-    QCOMPARE(item2->url(), QStringLiteral("/my/.BaseGroup/Link@HEADER@"));
+    QCOMPARE(item2->url(), QStringLiteral("/home/dummy/my/Link@HEADER@"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(5, 0, 11, 0));
     QCOMPARE(item2->text(), QStringLiteral("link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(15, 0, 18, 0));
@@ -348,7 +348,7 @@ void NoteLinkingTest::linkNoSpecificTitle()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
-    QCOMPARE(item2->url(), QStringLiteral("/home/link@HEADER@"));
+    QCOMPARE(item2->url(), QStringLiteral("/link@HEADER@"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(5, 0, 9, 0));
     QCOMPARE(item2->text(), QStringLiteral("link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(10, 0, 9, 0));
@@ -471,7 +471,7 @@ void NoteLinkingTest::inTitle()
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 2);
-    QCOMPARE(item2->url(), QStringLiteral("/my/.BaseGroup/link@HEADER@header"));
+    QCOMPARE(item2->url(), QStringLiteral("/my/link@HEADER@header"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(30, 0, 44, 0));
     QCOMPARE(item2->text(), QStringLiteral("my link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(48, 0, 54, 0));

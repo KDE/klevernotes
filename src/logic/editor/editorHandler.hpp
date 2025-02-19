@@ -40,7 +40,6 @@ class EditorHandler : public QObject
     Q_PROPERTY(int selectionStart READ selectionStart WRITE setSelectionStart NOTIFY selectionStartChanged)
     Q_PROPERTY(int selectionEnd READ selectionEnd WRITE setSelectionEnd NOTIFY selectionEndChanged)
 
-    Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
     Q_PROPERTY(QString noteDir READ getNoteDir WRITE setNoteDir)
 
 public:
@@ -162,7 +161,7 @@ private:
     int m_selectionEnd = 0;
 
     // Parsing
-    QString m_notePath;
+    QString m_noteDir;
     Parser *m_parser = nullptr;
     unsigned long long int m_parseCount;
     QThread *m_parsingThread = nullptr;
