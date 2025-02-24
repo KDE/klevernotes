@@ -278,7 +278,7 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
     const QString finalName = newName.isEmpty() ? rowName : newName;
     const QString newBasePath = newParentPath + slash + finalName;
 
-    int error;
+    MoveError error;
     QDir dir;
     if (row->isNote()) {
         const QString notePath = rowDir + slash + rowName + mdEnding;
