@@ -73,7 +73,7 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
     m_dir = m_isNote ? fileInfo.dir().path() : m_path;
 
     if (!m_isNote) {
-        setTempMetaData();
+        setMetaData();
     }
 
     if (m_isNote) {
@@ -119,7 +119,7 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
     saveMetaData();
 }
 
-void TreeItem::setTempMetaData()
+void TreeItem::setMetaData()
 {
     QJsonObject metadata;
 

@@ -16,41 +16,104 @@ class TreeItem
 public:
     explicit TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentItem = nullptr);
 
+    // Override default
     void appendChild(std::unique_ptr<TreeItem> &&child);
-
     TreeItem *child(int row) const;
-    std::unique_ptr<TreeItem> takeUniqueChildAt(int row);
     int childCount() const;
-    QVariant data(int role) const;
     int row() const;
-    TreeItem *getParentItem() const;
-    void setParentItem(TreeItem *parentItem);
-    void remove();
+    QVariant data(int role) const;
+
+    /*
+     * Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview
+     * Usually works in tandem with `askForFocus`
+     *
+     * @param itemIndex: The QModelIndex pointing to this row
+     */
     void askForFocus(const QModelIndex &itemIndex);
+
+    /*
+     * Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview
+     * Usually works in tandem with `askForFocus`
+     *
+     * @param itemModelIndex: The QModelIndex pointing to this row
+     */
     void askForExpand(const QModelIndex &itemIndex);
-    int getDepth() const;
 
-    void saveMetaData();
-
-    void setColor(QString color);
-    void setIcon(QString icon);
-
-    void setName(const QString &name);
-    QString getName() const;
-
-    void setPath(const QString &path);
-    QString getPath() const;
-
+    /*
+     * Whether this Item is a note
+     */
     bool isNote() const;
 
+    /*
+     * Get the path to the "closest" directory. The parent if it's a note, the Item path itself otherwise
+     */
     QString getDir() const;
 
+    /*
+     * Get the parent Item of this Item
+     */
+    TreeItem *getParentItem() const;
+
+    /*
+     * Get the name of this Item
+     */
+    QString getName() const;
+
+    /*
+     * Get the path of this Item
+     */
+    QString getPath() const;
+
+    /*
+     * Removes itself from its parent
+     */
+    void remove();
+
+    /*
+     * Save the Items Metadata recursively
+     */
+    void saveMetaData();
+
+    /*
+     * Set the given color
+     */
+    void setColor(QString color);
+
+    /*
+     * Set the given icon
+     */
+    void setIcon(QString icon);
+
+    /*
+     * Set the given parent item
+     */
+    void setParentItem(TreeItem *parentItem);
+
+    /*
+     * Set the given path
+     */
+    void setPath(const QString &path);
+
+    /*
+     * Set the given name
+     */
+    void setName(const QString &name);
+
+    /*
+     * Takes and return the child at the `row` index
+     */
+    std::unique_ptr<TreeItem> takeUniqueChildAt(int row);
+
+    int getDepth() const; // TODO: Remove
 public:
     // Metadata
     int place = -1;
 
 private:
-    void setTempMetaData();
+    /*
+     * Set the Item metadata
+     */
+    void setMetaData();
 
 private:
     // Position in tree

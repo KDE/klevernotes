@@ -229,7 +229,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
     }
 }
 
-void NoteTreeModel::handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &name, int error)
+void NoteTreeModel::handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &name, MoveError error)
 {
     const auto newParent = static_cast<TreeItem *>(newParentIndex.internalPointer());
 

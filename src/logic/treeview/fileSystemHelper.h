@@ -8,9 +8,18 @@
 
 namespace fileSystemHelper
 {
+/*
+ * Move all the content from one folder to another
+ */
 void moveContent(const QString &from, const QString &to);
 
+/*
+ * Create a folder to the given path and returns the succes
+ */
 bool createFolder(const QString &path);
 
+/*
+ * Create a file to the given path and returns the succes
+ */
 bool createFile(const QString &path);
 }
