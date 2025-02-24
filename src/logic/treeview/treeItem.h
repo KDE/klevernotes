@@ -32,6 +32,9 @@ public:
 
     void saveMetaData();
 
+    void setColor(QString color);
+    void setIcon(QString icon);
+
     void setName(const QString &name);
     QString getName() const;
 

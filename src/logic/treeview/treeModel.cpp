@@ -93,6 +93,7 @@ QHash<int, QByteArray> NoteTreeModel::roleNames() const
         {DirRole, "dir"},
         {ParentPathRole, "parentPath"},
         {IconNameRole, "iconName"},
+        {ColorRole, "color"},
         {IsNote, "isNote"},
         {WantFocusRole, "wantFocus"},
         {WantExpandRole, "wantExpand"},
@@ -380,6 +381,14 @@ QModelIndex NoteTreeModel::getNoteModelIndex(const QString &notePath)
     }
 
     return QModelIndex(); // Easier to handle in qml
+}
+
+void NoteTreeModel::setProperties(const QModelIndex &rowModelIndex, const QString color, const QString icon)
+{
+    const auto row = static_cast<TreeItem *>(rowModelIndex.internalPointer());
+    row->setColor(color);
+    row->setIcon(icon);
+    Q_EMIT dataChanged(rowModelIndex, rowModelIndex);
 }
 
 // NoteMapper

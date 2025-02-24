@@ -11,6 +11,7 @@
         <file>contents/ui/dialogs/FileSaverDialog.qml</file>
         <file>contents/ui/dialogs/FolderPickerDialog.qml</file>
         <file>contents/ui/dialogs/FontPickerDialog.qml</file>
+        <file>contents/ui/dialogs/ItemPropertiesDialog.qml</file>
         <file>contents/ui/dialogs/LeavePaintingDialog.qml</file>
         <file>contents/ui/dialogs/LinkDialog.qml</file>
         <file>contents/ui/dialogs/LinkNoteDialog.qml</file>

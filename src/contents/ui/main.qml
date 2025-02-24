@@ -110,6 +110,7 @@ Kirigami.ApplicationWindow {
             const editor = editorView.editor
             editor.saveNote(editor.text, editor.path)
         }
+        sideBar.treeModel.saveMetaData()
         if (Config.noteMapEnabled) NoteMapper.saveMap()
     }
 

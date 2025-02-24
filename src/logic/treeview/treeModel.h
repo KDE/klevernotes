@@ -24,7 +24,8 @@ public:
         DirRole, // To get a string with the fullPath the folder or the folder containing the note
         ParentPathRole, // To get a string with the fullPath to the parent folder of the item
         NameRole, // To get a string with the name of the Item (strip down of ".md" for the note)
-        IconNameRole, // To get a string with the icon name associated with the Category/Group/Note
+        IconNameRole, // To get a string with the icon name associated with the Item
+        ColorRole, // To get a string with the color associated with the Item
         IsNote, // To know if the item is a Note (else it's a folder)
         WantFocusRole, // For send a signal to the qml ItemDelegate using dataChanged, asking for focus
         WantExpandRole, // For send a signal to the qml ItemDelegate using dataChanged, asking to expands
@@ -46,6 +47,7 @@ public:
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
     Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName = QLatin1String());
     Q_INVOKABLE void saveMetaData();
+    Q_INVOKABLE void setProperties(const QModelIndex &rowModelIndex, const QString color, const QString icon);
 
     // NoteMapper
     void setNoteMapEnabled(const bool noteMapEnabled);

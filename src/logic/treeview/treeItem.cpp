@@ -245,12 +245,12 @@ QVariant TreeItem::data(int role) const
     case NoteTreeModel::NameRole:
         return m_name;
 
-    case Qt::DecorationRole:
-        return QIcon::fromTheme(QStringLiteral("document-edit-sign"));
+    case NoteTreeModel::IconNameRole:
+        return m_icon;
 
-    case NoteTreeModel::IconNameRole: {
-        return m_icon.isEmpty() ? m_isNote ? QStringLiteral("document-edit-sign-symbolic") : QStringLiteral("folder-symbolic") : m_icon;
-    }
+    case NoteTreeModel::ColorRole:
+        return m_color;
+
     case NoteTreeModel::IsNote:
         return m_isNote;
 
@@ -322,6 +322,22 @@ bool TreeItem::isNote() const
 QString TreeItem::getDir() const
 {
     return m_dir;
+}
+
+void TreeItem::setColor(const QString color)
+{
+    if (m_color == color)
+        return;
+
+    m_color = color;
+}
+
+void TreeItem::setIcon(const QString icon)
+{
+    if (m_icon == icon)
+        return;
+
+    m_icon = icon;
 }
 
 void TreeItem::askForFocus(const QModelIndex &itemIndex)

@@ -3,6 +3,7 @@
 
 import QtQuick
 import QtQuick.Controls as Controls
+import QtQuick.Layouts
 
 import org.kde.Klever
 
@@ -34,7 +35,7 @@ Controls.Menu {
 
     Controls.MenuItem {
         icon.name: "edit-rename-symbolic"
-        text: i18n("Rename")
+        text: i18nc("@item:menu", "Rename")
 
         onTriggered: {
             actionBar.renameAction.triggered()
@@ -43,7 +44,7 @@ Controls.Menu {
 
     Controls.MenuItem {
         icon.name: "edit-move-symbolic"
-        text: i18n("Move")
+        text: i18nc("@item:menu", "Move")
 
         onTriggered: if (visible) { // A bit useless right now, but might be handy if we had a shortcut
             moveDialog.open()
@@ -52,10 +53,24 @@ Controls.Menu {
 
     Controls.MenuItem {
         icon.name: "user-trash-symbolic"
-        text: i18n("Delete")
+        text: i18nc("@item:menu", "Delete")
 
         onTriggered: {
             deleteConfirmationDialog.open()
+        }
+    }
+
+    Controls.MenuItem {
+        icon.name: "document-properties-symbolic"
+        text: i18nc("@item:menu", "Properties")
+
+        onTriggered: {
+            itemPropertiesDialog.itemTitle = treeView.currentClickedItem.name
+            itemPropertiesDialog.color = treeView.currentClickedItem.color 
+                ? treeView.currentClickedItem.color 
+                : treeView.currentClickedItem.defaultColor
+            itemPropertiesDialog.iconName = treeView.currentClickedItem.icon.name
+            itemPropertiesDialog.open()
         }
     }
 
@@ -93,6 +108,29 @@ Controls.Menu {
         }
         onClosed: {
             treeView.useCurrentItem()
+        }
+    }
+
+    ItemPropertiesDialog {
+        id: itemPropertiesDialog
+
+        onResetProperty: function (val) {
+            switch (val) {
+                case 0:
+                    itemPropertiesDialog.iconName = treeView.currentClickedItem.defaultIcon
+                    break;
+                case 1:
+                    itemPropertiesDialog.color = treeView.currentClickedItem.defaultColor
+                    break;
+            }
+        }
+
+        onApplied: {
+            // No point in saving the default values
+            const c = itemPropertiesDialog.color === treeView.currentClickedItem.defaultColor ? "" : itemPropertiesDialog.color
+            const i = itemPropertiesDialog.iconName === treeView.currentClickedItem.defaultIcon ? "" : itemPropertiesDialog.iconName
+            treeView.model.setProperties(treeView.currentModelIndex, c, i)
+            close()
         }
     }
 }
