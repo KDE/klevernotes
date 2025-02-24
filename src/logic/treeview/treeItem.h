@@ -104,7 +104,6 @@ public:
      */
     std::unique_ptr<TreeItem> takeUniqueChildAt(int row);
 
-    int getDepth() const; // TODO: Remove
 public:
     // Metadata
     int place = -1;

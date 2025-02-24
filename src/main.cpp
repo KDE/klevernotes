@@ -25,7 +25,6 @@
 
 #include "logic/editor/editorHandler.hpp"
 
-// #include "logic/treeview/noteTreeModel.h"
 #include "logic/treeview/treeModel.h"
 
 #include "logic/printing/printingHelper.h"

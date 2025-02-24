@@ -275,11 +275,6 @@ void TreeItem::setParentItem(TreeItem *parentItem)
     m_parentItem = parentItem;
 }
 
-int TreeItem::getDepth() const
-{
-    return 0;
-}
-
 void TreeItem::remove()
 {
     Q_ASSERT(m_parentItem);

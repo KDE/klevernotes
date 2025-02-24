@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-3-Clause
-# SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
+# SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 add_library(klevernoteslib STATIC
     app.cpp
@@ -25,7 +25,6 @@ add_library(klevernoteslib STATIC
     logic/preview/styleHandler.cpp
 
     # Treeview
-    # logic/treeview/noteTreeModel.cpp
     logic/treeview/treeItem.cpp
     logic/treeview/treeModel.cpp
     logic/treeview/oldModelConverter.cpp
