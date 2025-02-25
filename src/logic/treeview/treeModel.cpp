@@ -26,30 +26,30 @@ NoteTreeModel::NoteTreeModel(QObject *parent)
 
 void NoteTreeModel::initModel(bool convert)
 {
-    if (KleverConfig::storagePath().isEmpty()) {
+    const QString storagePath = KleverConfig::storagePath();
+    if (storagePath.isEmpty()) {
         return;
     }
 
-    if (!QDir(KleverConfig::storagePath()).exists()) {
-        const bool storageCreated = makeStorage(KleverConfig::storagePath());
+    if (!QDir(storagePath).exists()) {
+        const bool storageCreated = makeStorage(storagePath);
         if (!storageCreated) {
             m_rootItem = nullptr;
             return;
         }
     }
 
-    const QString storagePath = KleverConfig::storagePath();
     const QString metadataPath = storagePath + QStringLiteral("/.klevernotesFolder.metadata.json");
-    if (KleverConfig::storagePath().toLower().endsWith(QStringLiteral("klevernotes")) && !QFile(metadataPath).exists()) {
+    if (storagePath.toLower().endsWith(QStringLiteral("klevernotes")) && !QFile(metadataPath).exists()) {
         if (!convert) {
             Q_EMIT oldStorageStructure();
             return;
         }
-        treeModelConverter::convertFileStructure(KleverConfig::storagePath());
+        treeModelConverter::convertFileStructure(storagePath);
     }
 
     beginResetModel();
-    m_rootItem = std::make_unique<TreeItem>(KleverConfig::storagePath(), this);
+    m_rootItem = std::make_unique<TreeItem>(storagePath, this);
     endResetModel();
 
     if (m_noteMapEnabled) {
@@ -447,28 +447,33 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
     const QString demoErrorMessage = i18n("An error occurred while trying to create the demo note.");
 
     const QString mainFolderName = i18nc("Main folder name, where all the notes will be stored by default", "Notes");
-    if (makeFolder(storagePath, mainFolderName).isEmpty()) {
+    const QString mainFolderPath = makeFolder(storagePath, mainFolderName);
+    if (mainFolderPath.isEmpty()) {
         Q_EMIT errorOccurred(storageErrorMessage);
         return false;
     }
 
-    const QString mainFolderPath = storagePath + slash + mainFolderName;
-    const QString demoName = i18nc("The name for a demo note", "Demo");
-    const QString demoPath = makeNote(mainFolderPath, demoName);
-    if (demoPath.isEmpty()) {
-        Q_EMIT errorOccurred(demoErrorMessage);
-    } else {
-        if (QFile::copy(QStringLiteral(":/demo_note.md"), demoPath)) {
-            QFile(demoPath).setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser | QFile::WriteUser | QFile::ReadGroup | QFile::WriteGroup
-                                           | QFile::ReadOther | QFile::WriteOther);
-        } else {
-            // No need to return false, the user simply won't have the Demo, no big deal
-            Q_EMIT errorOccurred(demoErrorMessage);
-        }
+    // Prevent warning for newly created storage
+    fileSystemHelper::createFile(storagePath + QStringLiteral("/.klevernotesFolder.metadata.json"));
 
-        if (!QFile::copy(QStringLiteral(":/Images/logo.png"), mainFolderPath + QStringLiteral("/logo.png"))) {
+    const QString demoName = i18nc("The name for a demo note", "Demo");
+    const QString generalNotePath = mainFolderPath + slash + demoName;
+    const QString demoPath = generalNotePath + mdEnding;
+
+    if (QFile::copy(QStringLiteral(":/demo_note.md"), demoPath)) {
+        QFile(demoPath).setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser | QFile::WriteUser | QFile::ReadGroup | QFile::WriteGroup
+                                       | QFile::ReadOther | QFile::WriteOther);
+
+        if (!fileSystemHelper::createFile(generalNotePath + todoEnding)) {
             Q_EMIT errorOccurred(demoErrorMessage);
         }
+    } else {
+        // No need to return false, the user simply won't have the Demo, no big deal
+        Q_EMIT errorOccurred(demoErrorMessage);
+    }
+
+    if (!QFile::copy(QStringLiteral(":/Images/logo.png"), mainFolderPath + QStringLiteral("/logo.png"))) {
+        Q_EMIT errorOccurred(demoErrorMessage);
     }
 
     return true;

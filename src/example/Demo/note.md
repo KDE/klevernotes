@@ -18,7 +18,7 @@ This note will try to give an overview of what Markdown, and to be more precise,
 
 Headings are created using hash symbols (`#`) at the very start of a line.
 
-Or, alternatively, by using '=' (level 1) or '-' (level 2) right under a line.
+Or, alternatively, by using `=` (level 1) or `-` (level 2) right under a line.
 
 
 Emphasis
@@ -130,7 +130,7 @@ Images
 
 Images are similar to links but are preceded by an exclamation mark (`!`). The alt text is placed in square brackets (`[ ]`), followed by the image URL in parentheses (`( )`). Example:
 
-![KleverNotes](./Images/logo.png "KleverNotes logo !")
+![KleverNotes](./logo.png "KleverNotes logo !")
 
 Using notation like "/home/user/myfile.png" or "~/myfile.png" will also work if you want to access images stored on your system but not alongside your note 😁
 
