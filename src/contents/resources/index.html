@@ -12,6 +12,13 @@
         <div id="contentElem"></div>
 
         <script>
+            function copyCode(button) {
+                const codeBlock = button.nextElementSibling
+
+                console.log("copy:" + codeBlock.innerText)
+            }
+        </script>
+        <script>
             'use strict';
 
             const contentElem = document.getElementById('contentElem');

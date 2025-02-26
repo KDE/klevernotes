@@ -62,7 +62,24 @@ RowLayout {
             clip: true
 
             onJavaScriptConsoleMessage: function (level, message, lineNumber, sourceID) {
-                console.error('WEB:', message, lineNumber, sourceID)
+                switch (level) {
+                case 0:
+                    if (message.startsWith("copy:")) {
+                        KleverUtility.copyToClipboard(message.substring("copy:".length))
+                        showPassiveNotification(i18n("Copied !"))
+                    } else {
+                        console.log('WEB:', message, lineNumber, sourceID)
+                    }
+                    break;
+                case 1:
+                    console.warn('WEB:', message, lineNumber, sourceID)
+                    break;
+                case 2:
+                    console.error('WEB:', message, lineNumber, sourceID)
+                    break;
+                default:
+                    console.error('WEB uncaught:', level, message, lineNumber, sourceID)
+                }
             }
             onPdfPrintingFinished: {
                 const printingPage = applicationWindow().pageStack.currentItem
