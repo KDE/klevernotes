@@ -148,3 +148,17 @@ pre > code {
     margin: 0;
     padding: 0;
 }
+
+.klever-copy-button {
+    border: 1px solid var(--textColor);
+    border-radius: 10%;
+}
+
+.klever-copy-button > svg {
+    transition: 0.2s ease-out;
+}
+
+.klever-copy-button:hover > svg {
+    fill: var(--linkColor);
+    transition: 0.2s ease-out;
+}

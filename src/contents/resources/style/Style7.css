@@ -408,3 +408,25 @@ sup {
     vertical-align: super;
     line-height: 0;
 }
+
+.klever-copy-button {
+    border: 1px solid var(--textColor);
+    border-radius: 10%;
+    background: var(--bodyColor);
+    transition: 0.2s ease-out;
+}
+
+.klever-copy-button > svg {
+    fill: var(--textColor);
+    transition: 0.2s ease-out;
+}
+
+.klever-copy-button:hover {
+    border: 1px solid var(--linkColor);
+    transition: 0.2s ease-out;
+}
+
+.klever-copy-button:hover > svg {
+    fill: var(--linkColor);
+    transition: 0.2s ease-out;
+}
