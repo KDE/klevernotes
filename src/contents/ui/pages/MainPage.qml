@@ -51,7 +51,7 @@ Kirigami.Page {
 
         EditorView {
             id: editorView
-            path: hasNote ? currentlySelected.path : ""
+            currentlySelectedItem: currentlySelected
             visible: 0.5 < opacity
             opacity: 0
             Layout.fillHeight: true

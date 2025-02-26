@@ -19,7 +19,7 @@ Kirigami.ActionToolBar {
     id: toolbar
 
     required property TextArea editorTextArea
-    required property string notePath
+    required property string noteDir
 
     readonly property QtObject imagePickerDialog: imagePickerDialog
 
@@ -113,7 +113,7 @@ Kirigami.ActionToolBar {
     ImagePickerDialog {
         id: imagePickerDialog
 
-        noteImagesStoringPath: toolbar.notePath.replace("note.md","") + "Images/"
+        noteImagesStoringPath: toolbar.noteDir
 
         onRejected: {
             storedImageChoosen = false
@@ -150,7 +150,7 @@ Kirigami.ActionToolBar {
 
             if (modifiedPath.startsWith("file://")) modifiedPath = modifiedPath.replace("file://","")
 
-            if (useLocalImage) modifiedPath = "./Images/"+modifiedPath.replace(noteImagesStoringPath,"")
+            if (useLocalImage) modifiedPath = "." + modifiedPath.replace(noteImagesStoringPath,"")
 
             if (modifiedPath.startsWith("/home/")) {
                 // Get the first "/" after the /home/username

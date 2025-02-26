@@ -180,7 +180,7 @@ FormCard.FormCardDialog {
                     imagePickerDialog.paintClipRect = undefined
                     clearTmp()
                     storedImageChoosen = true
-                    filePickerDialog.folder = "file://"+imagePickerDialog.noteImagesStoringPath
+                    filePickerDialog.currentFolder = "file://" + imagePickerDialog.noteImagesStoringPath
                     filePickerDialog.open()
                 }
             }

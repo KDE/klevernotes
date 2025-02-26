@@ -13,7 +13,7 @@ import "qrc:/contents/ui/dialogs"
 ColumnLayout {
     id: root
 
-    required property string path
+    required property QtObject currentlySelectedItem
     readonly property TextEditor editor: editor
     readonly property TextDisplay display: display
     readonly property QtObject imagePickerDialog: toolbar.imagePickerDialog
@@ -90,7 +90,7 @@ ColumnLayout {
 
     spacing: 0
     
-    onPathChanged: {
+    onCurrentlySelectedItemChanged: {
         focusEditor()
     }
     onDefaultColorsChanged: if (applicationWindow().isMainPage()) {
@@ -132,7 +132,7 @@ ColumnLayout {
     TextToolBar {
         id: toolbar
 
-        notePath: root.path
+        noteDir: root.currentlySelectedItem ? root.currentlySelectedItem.dir : ""
         editorTextArea: root.editor.textArea
         visible: editor.visible
         Layout.margins: Kirigami.Units.largeSpacing
@@ -159,7 +159,7 @@ ColumnLayout {
                     ? 2
                     : 1
                     
-                path: root.path
+                path: root.currentlySelectedItem ? root.currentlySelectedItem.path : ""
                 visible: editorToggler.checked // make sure that the textDisplay while correctly grow
 
                 Layout.fillWidth: visible
