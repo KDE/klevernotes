@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2022-2024 Igor Mironchik <igor.mironchik@gmail.com>
+    SPDX-FileCopyrightText: 2022-2025 Igor Mironchik <igor.mironchik@gmail.com>
     SPDX-License-Identifier: MIT
 */
 
@@ -41,6 +41,7 @@ public:
 
     ~AlgoVisitor() override = default;
 
+    //! Walk through the document.
     virtual void walk(std::shared_ptr<Document<Trait>> doc)
     {
         this->process(doc);
@@ -53,6 +54,7 @@ protected:
     {
     }
 
+    //! Process user defined item type.
     void onUserDefined(Item<Trait> *i) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -62,6 +64,7 @@ protected:
         }
     }
 
+    //! Process text item.
     void onText(Text<Trait> *t) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -71,6 +74,7 @@ protected:
         }
     }
 
+    //! Process LaTeX math item.
     void onMath(Math<Trait> *m) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -80,6 +84,7 @@ protected:
         }
     }
 
+    //! Process line break.
     void onLineBreak(LineBreak<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -89,6 +94,7 @@ protected:
         }
     }
 
+    //! Process paragraph.
     void onParagraph(Paragraph<Trait> *p, bool) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -102,6 +108,7 @@ protected:
         }
     }
 
+    //! Process heading.
     void onHeading(Heading<Trait> *h) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -115,6 +122,7 @@ protected:
         }
     }
 
+    //! Process code block.
     void onCode(Code<Trait> *c) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -124,6 +132,7 @@ protected:
         }
     }
 
+    //! Process inline code.
     void onInlineCode(Code<Trait> *c) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -133,6 +142,7 @@ protected:
         }
     }
 
+    //! Process blockquote.
     void onBlockquote(Blockquote<Trait> *b) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -146,6 +156,7 @@ protected:
         }
     }
 
+    //! Process list.
     void onList(List<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -161,6 +172,7 @@ protected:
         }
     }
 
+    //! Process table.
     void onTable(Table<Trait> *t) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -194,6 +206,7 @@ protected:
         }
     }
 
+    //! Process anchor.
     void onAnchor(Anchor<Trait> *a) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -203,6 +216,7 @@ protected:
         }
     }
 
+    //! Process raw HTML block.
     void onRawHtml(RawHtml<Trait> *h) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -212,6 +226,7 @@ protected:
         }
     }
 
+    //! Process horizontal line.
     void onHorizontalLine(HorizontalLine<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -221,6 +236,7 @@ protected:
         }
     }
 
+    //! Process link.
     void onLink(Link<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -238,6 +254,7 @@ protected:
         }
     }
 
+    //! Process Image.
     void onImage(Image<Trait> *i) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -247,6 +264,7 @@ protected:
         }
     }
 
+    //! Process footnote reference.
     void onFootnoteRef(FootnoteRef<Trait> *ref) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -256,6 +274,7 @@ protected:
         }
     }
 
+    //! Process list item.
     void onListItem(ListItem<Trait> *i, bool) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -269,11 +288,13 @@ protected:
         }
     }
 
+    //! Process table cell.
     void onTableCell(TableCell<Trait> *c) override
     {
         Visitor<Trait>::onTableCell(c);
     }
 
+    //! Process footnote.
     void onFootnote(Footnote<Trait> *f) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -287,6 +308,7 @@ protected:
         }
     }
 
+    //! Process all footnotes.
     virtual void onFootnotes(std::shared_ptr<Document<Trait>> doc)
     {
         for (const auto &f : doc->footnotesMap()) {
@@ -295,11 +317,17 @@ protected:
     }
 
 protected:
+    //! Current nesting level, increments/decrements during walking through te document.
     unsigned int m_currentNestingLevel = 0;
+    //! Maximum allowed nesting level.
     unsigned int m_maxNestingLevel = 0;
+    //! List of types that should be processed.
     const typename Trait::template Vector<ItemType> &m_types;
+    //! Functor that will be invoked if all circumstances will be observed.
     ItemFunctor<Trait> m_func = {};
 
+    //! Auxiliary structure to increment/decrement nesting level during walking through
+    //! the document, and checking circumstances for the algorithm.
     struct IncrementNestingLevel {
         IncrementNestingLevel(unsigned int &l, unsigned int m, const typename Trait::template Vector<ItemType> &t)
             : m_level(l)
@@ -314,18 +342,23 @@ protected:
             --m_level;
         }
 
+        //! \return Is this item type allowed at this nesting level.
         bool allowed(ItemType t) const
         {
             return ((m_maxNestingLevel == 0 || m_level <= m_maxNestingLevel) && std::find(m_types.cbegin(), m_types.cend(), t) != m_types.cend());
         }
 
+        //! \return Is next nesting level allowed.
         bool nextAllowed() const
         {
             return (m_maxNestingLevel == 0 || m_level + 1 <= m_maxNestingLevel);
         }
 
+        //! Reference to nesting level.
         unsigned int &m_level;
+        //! Maximum allowed nesting level.
         unsigned int m_maxNestingLevel;
+        //! Reference to list of allowed types.
         const typename Trait::template Vector<ItemType> &m_types;
     }; // struct IncrementNestingLevel
 }; // class HtmlVisitor

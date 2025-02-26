@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2022-2024 Igor Mironchik <igor.mironchik@gmail.com>
+    SPDX-FileCopyrightText: 2022-2025 Igor Mironchik <igor.mironchik@gmail.com>
     SPDX-License-Identifier: MIT
 */
 
@@ -50,6 +50,7 @@
 namespace MD
 {
 
+//! Internal string, used to get virgin (original) string from transformed string.
 template<class String, class Char, class Latin1Char>
 class InternalStringT
 {
@@ -63,20 +64,25 @@ public:
     {
     }
 
+    //! \return Reference to string.
     String &asString()
     {
         return m_str;
     }
+
+    //! \return Reference to string.
     const String &asString() const
     {
         return m_str;
     }
 
+    //! \return Full virgin string.
     const String &fullVirginString() const
     {
         return m_virginStr;
     }
 
+    //! \return Virgin sub-string with position and length in the transformed string.
     String virginSubString(long long int pos = 0, long long int len = -1) const
     {
         if (pos < 0) {
@@ -123,7 +129,14 @@ public:
         return startStr + m_virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1) + endStr;
     }
 
-    long long int virginPos(long long int pos, bool end = false) const
+    //! \return Virgin position from transformed.
+    long long int virginPos(
+        //! Transformed position.
+        long long int pos,
+        //! If true will be return last virgin position before transformation.
+        //! For example if in virgin string 2 characters were replaced with 1,
+        //! we will receive position of second character if \p end is true.
+        bool end = false) const
     {
         for (auto it = m_changedPos.crbegin(), last = m_changedPos.crend(); it != last; ++it) {
             pos = virginPosImpl(pos, *it, end);
@@ -137,6 +150,7 @@ public:
         return m_str[position];
     }
 
+    //! Replace substring.
     InternalStringT &replaceOne(long long int pos, long long int size, const String &with)
     {
         const auto len = m_str.length();
@@ -152,6 +166,7 @@ public:
         return *this;
     }
 
+    //! Replace string.
     InternalStringT &replace(const String &what, const String &with)
     {
         String tmp;
@@ -187,6 +202,7 @@ public:
         return *this;
     }
 
+    //! Remove sub-string.
     InternalStringT &remove(long long int pos, long long int size)
     {
         const auto len = m_str.length();
@@ -199,15 +215,19 @@ public:
         return *this;
     }
 
+    //! \return Is this string empty?
     bool isEmpty() const
     {
         return m_str.isEmpty();
     }
+
+    //! \return Length of the string.
     long long int length() const
     {
         return m_str.length();
     }
 
+    //! \return Simplified string.
     InternalStringT simplified() const
     {
         if (isEmpty()) {
@@ -270,6 +290,7 @@ public:
         return result;
     }
 
+    //! Split string.
     std::vector<InternalStringT> split(const InternalStringT &sep) const
     {
         std::vector<InternalStringT> result;
@@ -313,6 +334,7 @@ public:
         return result;
     }
 
+    //! \return Sliced sub-string.
     InternalStringT sliced(long long int pos, long long int len = -1) const
     {
         InternalStringT tmp = *this;
@@ -326,6 +348,7 @@ public:
         return tmp;
     }
 
+    //! \return Right sub-string.
     InternalStringT right(long long int n) const
     {
         InternalStringT tmp = *this;
@@ -336,11 +359,13 @@ public:
         return tmp;
     }
 
+    //! Insert one character.
     InternalStringT &insert(long long int pos, Char ch)
     {
         return insert(pos, String(1, ch));
     }
 
+    //! Insert string.
     InternalStringT &insert(long long int pos, const String &s)
     {
         const auto len = m_str.length();
@@ -355,20 +380,25 @@ public:
     }
 
 private:
+    //! Transformed string.
     String m_str;
+    //! Virgin (original) string.
     String m_virginStr;
 
+    //! Auxiliary struct to store information about transformation.
     struct ChangedPos {
         long long int m_pos = -1;
         long long int m_oldLen = -1;
         long long int m_len = -1;
     };
 
+    //! Auxiliary struct to store information about transformation.
     struct LengthAndStartPos {
         long long int m_firstPos = 0;
         long long int m_length = 0;
     };
 
+    //! Information about transformations.
     std::vector<std::pair<LengthAndStartPos, std::vector<ChangedPos>>> m_changedPos;
 
 private:
@@ -958,6 +988,16 @@ struct UnicodeStringTrait {
     {
         str.push_back(Char(ch));
     }
+
+    //! Search for last occurrence of string.
+    static long long int lastIndexOf(const String &where, const String &what, long long int from)
+    {
+        if (from < 0) {
+            return -1;
+        } else {
+            return where.lastIndexOf(what, 0, from + 1);
+        }
+    }
 }; // struct UnicodeStringTrait
 
 #endif // MD4QT_ICU_STL_SUPPORT
@@ -1050,6 +1090,16 @@ struct QStringTrait {
     static void appendUcs4(String &str, char32_t ch)
     {
         str += QChar::fromUcs4(ch);
+    }
+
+    //! Search for last occurrence of string.
+    static long long int lastIndexOf(const String &where, const String &what, long long int from)
+    {
+        if (from < 0) {
+            return -1;
+        } else {
+            return where.lastIndexOf(what, from);
+        }
     }
 }; // struct QStringTrait
 

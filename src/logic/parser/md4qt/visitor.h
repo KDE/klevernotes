@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2022-2024 Igor Mironchik <igor.mironchik@gmail.com>
+    SPDX-FileCopyrightText: 2022-2025 Igor Mironchik <igor.mironchik@gmail.com>
     SPDX-License-Identifier: MIT
 */
 
@@ -29,6 +29,7 @@ public:
     Visitor() = default;
     virtual ~Visitor() = default;
 
+    //! Walk through the document.
     void process(std::shared_ptr<Document<Trait>> d)
     {
         m_anchors.clear();
@@ -106,18 +107,22 @@ protected:
         MD_UNUSED(item)
     }
 
+    //! Handle text item.
     virtual void onText(
         //! Text.
         Text<Trait> *t) = 0;
 
+    //! Handle LaTeX math expression.
     virtual void onMath(
         //! Math.
         Math<Trait> *m) = 0;
 
+    //! Handle line break.
     virtual void onLineBreak(
         //! Linebreak.
         LineBreak<Trait> *b) = 0;
 
+    //! Handle paragraph.
     virtual void onParagraph(
         //! Paragraph.
         Paragraph<Trait> *p,
@@ -179,18 +184,22 @@ protected:
         }
     }
 
+    //! Handle heading.
     virtual void onHeading(
         //! Heading.
         Heading<Trait> *h) = 0;
 
+    //! Handle code.
     virtual void onCode(
         //! Code.
         Code<Trait> *c) = 0;
 
+    //! Handle inline code.
     virtual void onInlineCode(
         //! Code.
         Code<Trait> *c) = 0;
 
+    //! Handle blockquote.
     virtual void onBlockquote(
         //! Blockquote.
         Blockquote<Trait> *b)
@@ -239,38 +248,47 @@ protected:
         }
     }
 
+    //! Handle list.
     virtual void onList(
         //! List.
         List<Trait> *l) = 0;
 
+    //! Handle table.
     virtual void onTable(
         //! Table.
         Table<Trait> *t) = 0;
 
+    //! Handle anchor.
     virtual void onAnchor(
         //! Anchor.
         Anchor<Trait> *a) = 0;
 
+    //! Handle raw HTML.
     virtual void onRawHtml(
         //! Raw HTML.
         RawHtml<Trait> *h) = 0;
 
+    //! Handle horizontal line.
     virtual void onHorizontalLine(
         //! Horizontal line.
         HorizontalLine<Trait> *l) = 0;
 
+    //! Handle link.
     virtual void onLink(
         //! Link.
         Link<Trait> *l) = 0;
 
+    //! Handle image.
     virtual void onImage(
         //! Image.
         Image<Trait> *i) = 0;
 
+    //! Handle footnote reference.
     virtual void onFootnoteRef(
         //! Footnote reference.
         FootnoteRef<Trait> *ref) = 0;
 
+    //! Handle list item.
     virtual void onListItem(
         //! List item.
         ListItem<Trait> *i,
@@ -323,6 +341,7 @@ protected:
         }
     }
 
+    //! Handle table cell.
     virtual void onTableCell(
         //! Table cell.
         TableCell<Trait> *c)
@@ -366,6 +385,7 @@ protected:
         }
     }
 
+    //! Handle footnote.
     virtual void onFootnote(
         //! Footnote.
         Footnote<Trait> *f)

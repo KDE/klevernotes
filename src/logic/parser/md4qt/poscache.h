@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2022-2024 Igor Mironchik <igor.mironchik@gmail.com>
+    SPDX-FileCopyrightText: 2022-2025 Igor Mironchik <igor.mironchik@gmail.com>
     SPDX-License-Identifier: MIT
 */
 
@@ -23,15 +23,23 @@ namespace details
 // PosRange
 //
 
+//! Cached position of Item.
 template<class Trait>
 struct PosRange {
+    //! Start column
     long long int m_startColumn = -1;
+    //! Start line.
     long long int m_startLine = -1;
+    //! End column.
     long long int m_endColumn = -1;
+    //! End line.
     long long int m_endLine = -1;
+    //! Pointer to this item.
     Item<Trait> *m_item = nullptr;
+    //! List of children.
     std::vector<PosRange<Trait>> m_children = {};
 
+    //! \return Is position valid.
     inline bool isValidPos() const
     {
         return m_startColumn > -1 && m_startLine > -1 && m_endColumn > -1 && m_endLine > -1;
@@ -103,7 +111,12 @@ public:
     }
 
 protected:
-    details::PosRange<Trait> *findInCache(std::vector<details::PosRange<Trait>> &vec, const details::PosRange<Trait> &pos) const
+    //! Find in cache an item with the given position.
+    details::PosRange<Trait> *findInCache(
+        //! Cache of position.
+        std::vector<details::PosRange<Trait>> &vec,
+        //! Position of sought-for item.
+        const details::PosRange<Trait> &pos) const
     {
         const auto it = std::lower_bound(vec.begin(), vec.end(), pos);
 
@@ -120,7 +133,14 @@ protected:
         }
     }
 
-    void findFirstInCache(const std::vector<details::PosRange<Trait>> &vec, const details::PosRange<Trait> &pos, Items &res) const
+    //! Find in cache items with the given position with all parents.
+    void findFirstInCache(
+        //! Cache.
+        const std::vector<details::PosRange<Trait>> &vec,
+        //! Position of sought-for item.
+        const details::PosRange<Trait> &pos,
+        //! Reference to result of search.
+        Items &res) const
     {
         const auto it = std::lower_bound(vec.begin(), vec.end(), pos);
 
@@ -133,7 +153,12 @@ protected:
         }
     }
 
-    void insertInCache(const details::PosRange<Trait> &item, bool sort = false)
+    //! Insert in cache.
+    void insertInCache(
+        //! Position for insertion.
+        const details::PosRange<Trait> &item,
+        //! Should we sord when insert top-level item, or we can be sure that this item is last?
+        bool sort = false)
     {
         if (!m_skipInCache) {
             assert(item.isValidPos());
@@ -159,6 +184,7 @@ protected:
     }
 
 protected:
+    //! Cache user defined item.
     void onUserDefined(Item<Trait> *i) override
     {
         details::PosRange<Trait> r{i->startColumn(), i->startLine(), i->endColumn(), i->endLine(), i};
@@ -166,6 +192,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache shortcut link.
     virtual void onReferenceLink(
         //! Link.
         Link<Trait> *l)
@@ -179,6 +206,7 @@ protected:
     {
     }
 
+    //! Cache text item.
     void onText(Text<Trait> *t) override
     {
         details::PosRange<Trait> r{t->openStyles().empty() ? t->startColumn() : t->openStyles().front().startColumn(),
@@ -190,6 +218,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache LaTeX math expression.
     void onMath(Math<Trait> *m) override
     {
         auto startColumn = m->startDelim().startColumn();
@@ -216,6 +245,7 @@ protected:
     {
     }
 
+    //! Cache paragraph.
     void onParagraph(Paragraph<Trait> *p, bool wrap) override
     {
         details::PosRange<Trait> r{p->startColumn(), p->startLine(), p->endColumn(), p->endLine(), p};
@@ -225,6 +255,7 @@ protected:
         Visitor<Trait>::onParagraph(p, wrap);
     }
 
+    //! Cache heading.
     void onHeading(Heading<Trait> *h) override
     {
         details::PosRange<Trait> r{h->startColumn(), h->startLine(), h->endColumn(), h->endLine(), h};
@@ -236,6 +267,7 @@ protected:
         }
     }
 
+    //! Cache code.
     void onCode(Code<Trait> *c) override
     {
         auto startColumn = c->isFensedCode() ? c->startDelim().startColumn() : c->startColumn();
@@ -248,6 +280,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache inline code.
     void onInlineCode(Code<Trait> *c) override
     {
         auto startColumn = c->startDelim().startColumn();
@@ -270,6 +303,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache blockquote.
     void onBlockquote(Blockquote<Trait> *b) override
     {
         details::PosRange<Trait> r{b->startColumn(), b->startLine(), b->endColumn(), b->endLine(), b};
@@ -279,6 +313,7 @@ protected:
         Visitor<Trait>::onBlockquote(b);
     }
 
+    //! Cache list.
     void onList(List<Trait> *l) override
     {
         bool first = true;
@@ -296,6 +331,7 @@ protected:
         }
     }
 
+    //! Cache table.
     void onTable(Table<Trait> *t) override
     {
         details::PosRange<Trait> r{t->startColumn(), t->startLine(), t->endColumn(), t->endLine(), t};
@@ -331,6 +367,7 @@ protected:
     {
     }
 
+    //! Cache raw HTML.
     void onRawHtml(RawHtml<Trait> *h) override
     {
         details::PosRange<Trait> r{h->startColumn(), h->startLine(), h->endColumn(), h->endLine(), h};
@@ -338,6 +375,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache horizontal line.
     void onHorizontalLine(HorizontalLine<Trait> *l) override
     {
         details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};
@@ -345,6 +383,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache link.
     void onLink(Link<Trait> *l) override
     {
         auto startColumn = l->startColumn();
@@ -373,6 +412,7 @@ protected:
         }
     }
 
+    //! Cache image.
     void onImage(Image<Trait> *i) override
     {
         auto startColumn = i->startColumn();
@@ -401,6 +441,7 @@ protected:
         }
     }
 
+    //! Cache footnote reference.
     void onFootnoteRef(FootnoteRef<Trait> *ref) override
     {
         auto startColumn = ref->startColumn();
@@ -423,6 +464,7 @@ protected:
         insertInCache(r);
     }
 
+    //! Cache footnote.
     void onFootnote(Footnote<Trait> *f) override
     {
         details::PosRange<Trait> r{f->startColumn(), f->startLine(), f->endColumn(), f->endLine(), f};
@@ -432,6 +474,7 @@ protected:
         Visitor<Trait>::onFootnote(f);
     }
 
+    //! Cache list item.
     void onListItem(ListItem<Trait> *l, bool first) override
     {
         details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};

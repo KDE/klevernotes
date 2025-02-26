@@ -81,7 +81,7 @@ void Renderer::onHeading(
     if (!m_justCollectFootnoteRefs) {
         m_html.push_back(QStringLiteral("<"));
         m_html.push_back(ht);
-        m_html.push_back(MD::details::headingIdToHtml(h));
+        m_html.push_back(headingIdToHtml(h));
         m_html.push_back(QStringLiteral(">"));
     }
 
@@ -138,11 +138,11 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
         }
     } else if (!l->text().isEmpty()) {
         if (!m_justCollectFootnoteRefs) {
-            m_html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->text()));
+            m_html.push_back(prepareTextForHtml(l->text()));
         }
     } else {
         if (!m_justCollectFootnoteRefs) {
-            m_html.push_back(MD::details::prepareTextForHtml<MD::QStringTrait>(l->url()));
+            m_html.push_back(prepareTextForHtml(l->url()));
         }
     }
 

@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2022-2024 Igor Mironchik <igor.mironchik@gmail.com>
+    SPDX-FileCopyrightText: 2022-2025 Igor Mironchik <igor.mironchik@gmail.com>
     SPDX-License-Identifier: MIT
 */
 
@@ -21,60 +21,6 @@ namespace MD
 namespace details
 {
 
-template<class Trait>
-typename Trait::String headingIdToHtml(Heading<Trait> *h)
-{
-    typename Trait::String html;
-
-    if (h->isLabeled()) {
-        html.push_back(Trait::latin1ToString(" id=\""));
-        auto label = h->label();
-        if (label.startsWith(Trait::latin1ToString("#"))) {
-            label.remove(0, 1);
-        }
-        html.push_back(label);
-        html.push_back(Trait::latin1ToString("\""));
-    }
-
-    return html;
-}
-
-template<class Trait>
-typename Trait::String prepareTextForHtml(const typename Trait::String &t)
-{
-    auto tmp = t;
-    tmp.replace(Trait::latin1ToChar('&'), Trait::latin1ToString("&amp;"));
-    tmp.replace(Trait::latin1ToChar('<'), Trait::latin1ToString("&lt;"));
-    tmp.replace(Trait::latin1ToChar('>'), Trait::latin1ToString("&gt;"));
-
-    return tmp;
-}
-
-template<class Trait>
-typename Trait::String tableAlignmentToHtml(typename Table<Trait>::Alignment a)
-{
-    typename Trait::String html;
-
-    switch (a) {
-    case Table<Trait>::AlignLeft:
-        html.push_back(Trait::latin1ToString(" align=\"left\""));
-        break;
-
-    case Table<Trait>::AlignCenter:
-        html.push_back(Trait::latin1ToString(" align=\"center\""));
-        break;
-
-    case Table<Trait>::AlignRight:
-        html.push_back(Trait::latin1ToString(" align=\"right\""));
-        break;
-
-    default:
-        break;
-    }
-
-    return html;
-}
-
 //
 // HtmlVisitor
 //
@@ -87,6 +33,7 @@ public:
     HtmlVisitor() = default;
     ~HtmlVisitor() override = default;
 
+    //! Walk through the document.
     virtual typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc, const typename Trait::String &hrefForRefBackImage, bool wrappedInArticle = true)
     {
         m_isWrappedInArticle = wrappedInArticle;
@@ -102,6 +49,7 @@ public:
     }
 
 protected:
+    //! Insert into HTML tags for opening styles.
     virtual void openStyle(const typename ItemWithOpts<Trait>::Styles &styles)
     {
         for (const auto &s : styles) {
@@ -124,6 +72,7 @@ protected:
         }
     }
 
+    //! Insert into HTML tags for closing styles.
     virtual void closeStyle(const typename ItemWithOpts<Trait>::Styles &styles)
     {
         for (const auto &s : styles) {
@@ -146,12 +95,14 @@ protected:
         }
     }
 
+    //! Handle new line in HTML.
     void onAddLineEnding() override
     {
         if (!m_justCollectFootnoteRefs)
             m_html.push_back(Trait::latin1ToString("\n"));
     }
 
+    //! Handle text item.
     void onText(
         //! Text.
         Text<Trait> *t) override
@@ -159,12 +110,13 @@ protected:
         if (!m_justCollectFootnoteRefs) {
             openStyle(t->openStyles());
 
-            m_html.push_back(prepareTextForHtml<Trait>(t->text()));
+            m_html.push_back(prepareTextForHtml(t->text()));
 
             closeStyle(t->closeStyles());
         }
     }
 
+    //! Handle LaTeX math expression.
     void onMath(
         //! Math.
         Math<Trait> *m) override
@@ -173,13 +125,14 @@ protected:
             openStyle(m->openStyles());
 
             m_html.push_back(m->isInline() ? Trait::latin1ToString("$") : Trait::latin1ToString("$$"));
-            m_html.push_back(prepareTextForHtml<Trait>(m->expr()));
+            m_html.push_back(prepareTextForHtml(m->expr()));
             m_html.push_back(m->isInline() ? Trait::latin1ToString("$") : Trait::latin1ToString("$$"));
 
             closeStyle(m->closeStyles());
         }
     }
 
+    //! Handle line break.
     void onLineBreak(
         //! Linebreak.
         LineBreak<Trait> *) override
@@ -189,6 +142,7 @@ protected:
         }
     }
 
+    //! Handle paragraph.
     void onParagraph(
         //! Paragraph.
         Paragraph<Trait> *p,
@@ -207,6 +161,7 @@ protected:
         }
     }
 
+    //! Handle heading.
     void onHeading(
         //! Heading.
         Heading<Trait> *h) override
@@ -234,6 +189,7 @@ protected:
         }
     }
 
+    //! Handle code block.
     void onCode(
         //! Code.
         Code<Trait> *c) override
@@ -249,12 +205,13 @@ protected:
             }
 
             m_html.push_back(Trait::latin1ToString(">"));
-            m_html.push_back(prepareTextForHtml<Trait>(c->text()));
+            m_html.push_back(prepareTextForHtml(c->text()));
             m_html.push_back(Trait::latin1ToString("</code></pre>"));
             m_html.push_back(Trait::latin1ToString("\n"));
         }
     }
 
+    //! Handle inline code.
     void onInlineCode(
         //! Code.
         Code<Trait> *c) override
@@ -264,7 +221,7 @@ protected:
 
             m_html.push_back(Trait::latin1ToString("<code>"));
 
-            m_html.push_back(prepareTextForHtml<Trait>(c->text()));
+            m_html.push_back(prepareTextForHtml(c->text()));
 
             m_html.push_back(Trait::latin1ToString("</code>"));
 
@@ -272,6 +229,7 @@ protected:
         }
     }
 
+    //! Handle blockquote.
     void onBlockquote(
         //! Blockquote.
         Blockquote<Trait> *b) override
@@ -287,6 +245,7 @@ protected:
         }
     }
 
+    //! Handle list.
     void onList(
         //! List.
         List<Trait> *l) override
@@ -345,6 +304,7 @@ protected:
         }
     }
 
+    //! Handle table.
     void onTable(
         //! Table.
         Table<Trait> *t) override
@@ -363,7 +323,7 @@ protected:
             for (auto th = (*t->rows().cbegin())->cells().cbegin(), last = (*t->rows().cbegin())->cells().cend(); th != last; ++th) {
                 if (!m_justCollectFootnoteRefs) {
                     m_html.push_back(Trait::latin1ToString("<th"));
-                    m_html.push_back(tableAlignmentToHtml<Trait>(t->columnAlignment(columns)));
+                    m_html.push_back(tableAlignmentToHtml(t->columnAlignment(columns)));
                     m_html.push_back(Trait::latin1ToString(" dir=\"auto\">\n"));
                 }
 
@@ -390,7 +350,7 @@ protected:
                 for (auto c = (*r)->cells().cbegin(), clast = (*r)->cells().cend(); c != clast; ++c) {
                     if (!m_justCollectFootnoteRefs) {
                         m_html.push_back(Trait::latin1ToString("\n<td"));
-                        m_html.push_back(tableAlignmentToHtml<Trait>(t->columnAlignment(i)));
+                        m_html.push_back(tableAlignmentToHtml(t->columnAlignment(i)));
                         m_html.push_back(Trait::latin1ToString(" dir=\"auto\">\n"));
                     }
 
@@ -426,6 +386,7 @@ protected:
         }
     }
 
+    //! Handle anchor.
     void onAnchor(
         //! Anchor.
         Anchor<Trait> *a) override
@@ -437,6 +398,7 @@ protected:
         }
     }
 
+    //! Handle raw HTML.
     void onRawHtml(
         //! Raw HTML.
         RawHtml<Trait> *h) override
@@ -450,6 +412,7 @@ protected:
         }
     }
 
+    //! Handle horizontal line.
     void onHorizontalLine(
         //! Horizontal line.
         HorizontalLine<Trait> *) override
@@ -459,6 +422,7 @@ protected:
         }
     }
 
+    //! Handle link.
     void onLink(
         //! Link.
         Link<Trait> *l) override
@@ -473,12 +437,18 @@ protected:
 
         if (std::find(this->m_anchors.cbegin(), this->m_anchors.cend(), url) != this->m_anchors.cend()) {
             url = Trait::latin1ToString("#") + url;
-        } else if (url.startsWith(Trait::latin1ToString("#")) && this->m_doc->labeledHeadings().find(url) == this->m_doc->labeledHeadings().cend()) {
-            auto path = static_cast<Anchor<Trait> *>(this->m_doc->items().at(0).get())->label();
-            const auto sp = path.lastIndexOf(Trait::latin1ToString("/"));
-            path.remove(sp, path.length() - sp);
-            const auto p = url.indexOf(path) - 1;
-            url.remove(p, url.length() - p);
+        } else if (url.startsWith(Trait::latin1ToString("#"))) {
+            const auto it = this->m_doc->labeledHeadings().find(url);
+
+            if (it == this->m_doc->labeledHeadings().cend()) {
+                auto path = static_cast<Anchor<Trait> *>(this->m_doc->items().at(0).get())->label();
+                const auto sp = path.lastIndexOf(Trait::latin1ToString("/"));
+                path.remove(sp, path.length() - sp);
+                const auto p = url.indexOf(path) - 1;
+                url.remove(p, url.length() - p);
+            } else {
+                url = it->second->label();
+            }
         }
 
         if (!m_justCollectFootnoteRefs) {
@@ -497,11 +467,11 @@ protected:
             }
         } else if (!l->text().isEmpty()) {
             if (!m_justCollectFootnoteRefs) {
-                m_html.push_back(prepareTextForHtml<Trait>(l->text()));
+                m_html.push_back(prepareTextForHtml(l->text()));
             }
         } else {
             if (!m_justCollectFootnoteRefs) {
-                m_html.push_back(prepareTextForHtml<Trait>(l->url()));
+                m_html.push_back(prepareTextForHtml(l->url()));
             }
         }
 
@@ -512,6 +482,7 @@ protected:
         }
     }
 
+    //! Handle image.
     void onImage(
         //! Image.
         Image<Trait> *i) override
@@ -522,13 +493,14 @@ protected:
             m_html.push_back(Trait::latin1ToString("<img src=\""));
             m_html.push_back(i->url());
             m_html.push_back(Trait::latin1ToString("\" alt=\""));
-            m_html.push_back(prepareTextForHtml<Trait>(i->text()));
+            m_html.push_back(prepareTextForHtml(i->text()));
             m_html.push_back(Trait::latin1ToString("\" style=\"max-width:100%;\" />"));
 
             closeStyle(i->closeStyles());
         }
     }
 
+    //! Handle footnote reference.
     void onFootnoteRef(
         //! Footnote reference.
         FootnoteRef<Trait> *ref) override
@@ -587,6 +559,7 @@ protected:
             onText(static_cast<Text<Trait> *>(ref));
     }
 
+    //! Handle list item.
     void onListItem(
         //! List item.
         ListItem<Trait> *i,
@@ -622,6 +595,7 @@ protected:
         }
     }
 
+    //! Handle heading.
     virtual void onHeading(
         //! Heading.
         Heading<Trait> *h,
@@ -646,6 +620,7 @@ protected:
         }
     }
 
+    //! Handle footnotes.
     virtual void onFootnotes(const typename Trait::String &hrefForRefBackImage)
     {
         if (!m_fns.empty()) {
@@ -705,7 +680,62 @@ protected:
         }
     }
 
+    //! \return HTML content for heading's ID.
+    virtual typename Trait::String headingIdToHtml(Heading<Trait> *h)
+    {
+        typename Trait::String html;
+
+        if (h->isLabeled()) {
+            html.push_back(Trait::latin1ToString(" id=\""));
+            auto label = h->label();
+            if (label.startsWith(Trait::latin1ToString("#"))) {
+                label.remove(0, 1);
+            }
+            html.push_back(label);
+            html.push_back(Trait::latin1ToString("\""));
+        }
+
+        return html;
+    }
+
+    //! Prepare text to insert into HTML content.
+    virtual typename Trait::String prepareTextForHtml(const typename Trait::String &t)
+    {
+        auto tmp = t;
+        tmp.replace(Trait::latin1ToChar('&'), Trait::latin1ToString("&amp;"));
+        tmp.replace(Trait::latin1ToChar('<'), Trait::latin1ToString("&lt;"));
+        tmp.replace(Trait::latin1ToChar('>'), Trait::latin1ToString("&gt;"));
+
+        return tmp;
+    }
+
+    //! \return HTML content for table alignment.
+    virtual typename Trait::String tableAlignmentToHtml(typename Table<Trait>::Alignment a)
+    {
+        typename Trait::String html;
+
+        switch (a) {
+        case Table<Trait>::AlignLeft:
+            html.push_back(Trait::latin1ToString(" align=\"left\""));
+            break;
+
+        case Table<Trait>::AlignCenter:
+            html.push_back(Trait::latin1ToString(" align=\"center\""));
+            break;
+
+        case Table<Trait>::AlignRight:
+            html.push_back(Trait::latin1ToString(" align=\"right\""));
+            break;
+
+        default:
+            break;
+        }
+
+        return html;
+    }
+
 protected:
+    //! HTML content.
     typename Trait::String m_html;
     //! Just collect footnote references?
     bool m_justCollectFootnoteRefs = false;
@@ -714,9 +744,13 @@ protected:
     //! Is this HTML wrapped in artcile tag?
     bool m_isWrappedInArticle = true;
 
+    //! Auxiliary struct to process footnotes.
     struct FootnoteRefStuff {
+        //! ID of footnote.
         typename Trait::String m_id;
+        //! Count of references with this ID.
         long long int m_count = 0;
+        //! Number of footnote reference with this ID.
         long long int m_current = 0;
     };
 
@@ -726,9 +760,17 @@ protected:
 
 } /* namespace details */
 
-template<class Trait>
-typename Trait::String
-toHtml(std::shared_ptr<Document<Trait>> doc, bool wrapInBodyTag = true, const typename Trait::String &hrefForRefBackImage = {}, bool wrapInArticle = true)
+//! Convert Document to HTML.
+template<class Trait, class HtmlVisitor = details::HtmlVisitor<Trait>>
+typename Trait::String toHtml(
+    //! Markdown document.
+    std::shared_ptr<Document<Trait>> doc,
+    //! Wrap HTML into <body> tag?
+    bool wrapInBodyTag = true,
+    //! String that will be applied as URL for image for back link from footnote.
+    const typename Trait::String &hrefForRefBackImage = {},
+    //! Wrap HTML with <article> tag?
+    bool wrapInArticle = true)
 {
     typename Trait::String html;
 
@@ -740,7 +782,7 @@ toHtml(std::shared_ptr<Document<Trait>> doc, bool wrapInBodyTag = true, const ty
         html.push_back(Trait::latin1ToString("<article class=\"markdown-body\">"));
     }
 
-    details::HtmlVisitor<Trait> visitor;
+    HtmlVisitor visitor;
 
     html.push_back(visitor.toHtml(doc, hrefForRefBackImage, wrapInArticle));
 
