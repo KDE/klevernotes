@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-09 00:40+0000\n"
+"POT-Creation-Date: 2025-02-27 00:41+0000\n"
 "PO-Revision-Date: 2024-09-19 07:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -17,47 +17,39 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 24.08.1\n"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:17
-#, kde-kuit-format
-msgctxt "@info, as in 'A note category'"
-msgid "Are you sure you want to delete the category <filename>%1</filename>?"
-msgstr "Opravdu si přejete smazat kategorii <filename>%1</filename>?"
-
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:18
-#, kde-kuit-format
-msgctxt "@info, as in 'A note group'"
-msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-msgstr "Opravdu si přejete smazat skupinu <filename>%1</filename>?"
-
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:19
-#, kde-kuit-format
-msgctxt "@info"
-msgid "Are you sure you want to delete the note <filename>%1</filename>?"
-msgstr "Opravdu si přejete smazat poznámku <filename>%1</filename>?"
-
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, kde-format
-msgctxt "@title:dialog, as in 'A note category'"
-msgid "Delete Category Confirmation"
-msgstr "Potvrzení smazání kategorie"
-
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:24
-#, kde-format
-msgctxt "@title:dialog, as in 'A note category'"
-msgid "Delete Group Confirmation"
-msgstr "Potvrzení smazání skupiny"
-
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:25
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
 msgstr "Potvrzení smazání poznámky"
 
-#: contents/ui/dialogs/DeleteConfirmationDialog.qml:42
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, as in 'A note category'"
+#| msgid "Delete Note Confirmation"
+msgctxt "@title:dialog, as in 'A note category'"
+msgid "Delete Folder Confirmation"
+msgstr "Potvrzení smazání poznámky"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+msgstr "Opravdu si přejete smazat poznámku <filename>%1</filename>?"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+msgctxt "@info"
+msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+msgstr "Opravdu si přejete smazat poznámku <filename>%1</filename>?"
+
+#: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
-msgctxt "@title:dialog"
-msgid "This action can not be reverted."
-msgstr "Tuto akci nelze vrátit."
+msgctxt "@label:check"
+msgid "Delete this permanently."
+msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -129,6 +121,32 @@ msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
 msgstr "Vložit tento obrázek do složky poznámek"
 
+#: contents/ui/dialogs/ItemPropertiesDialog.qml:21
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<filename>%1</filename> properties"
+msgstr ""
+
+#: contents/ui/dialogs/ItemPropertiesDialog.qml:62
+#, kde-format
+msgctxt "@action:button"
+msgid "Icon"
+msgstr ""
+
+#: contents/ui/dialogs/ItemPropertiesDialog.qml:101
+#, fuzzy, kde-format
+#| msgctxt "@label:ComboBox"
+#| msgid "Color theme"
+msgctxt "@action:button"
+msgid "Color"
+msgstr "Barevný motiv"
+
+#: contents/ui/dialogs/ItemPropertiesDialog.qml:102
+#, kde-format
+msgctxt "Accessible description"
+msgid "Current color \"%1\""
+msgstr ""
+
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
@@ -167,7 +185,7 @@ msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:75
-#: contents/ui/dialogs/LinkNoteDialog.qml:92
+#: contents/ui/dialogs/LinkNoteDialog.qml:94
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
@@ -180,67 +198,40 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "Poznámka:"
 
-#: contents/ui/dialogs/LinkNoteDialog.qml:65
-#, kde-format
-msgctxt "@label:switch"
-msgid "Search headers"
-msgstr "Prohledat hlavičky"
+#: contents/ui/dialogs/MoveDialog.qml:23
+#, fuzzy, kde-format
+#| msgid "Move"
+msgctxt "@title:dialog, to move a folder/note"
+msgid "Move"
+msgstr "Přesunout"
 
-#: contents/ui/dialogs/LinkNoteDialog.qml:77
-#, kde-format
-msgctxt "@label:textbox"
-msgid "Header:"
-msgstr "Hlavička:"
-
-#: contents/ui/dialogs/MoveDialog.qml:21
-#, kde-format
-msgctxt "@subtitle:dialog, as in 'A note group'"
-msgid "Where do you want to move this group ?"
-msgstr "Kam si přejete přesunout tuto skupinu?"
-
-#: contents/ui/dialogs/MoveDialog.qml:22
+#: contents/ui/dialogs/MoveDialog.qml:42
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "Kam si přejete přesunout tuto poznámku?"
 
-#: contents/ui/dialogs/MoveDialog.qml:26
-#, kde-format
-msgctxt "@title:dialog, to move a group/note"
-msgid "Move"
-msgstr "Přesunout"
+#: contents/ui/dialogs/MoveDialog.qml:43
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Where do you want to move this note ?"
+msgctxt "@subtitle:dialog"
+msgid "Where do you want to move this folder ?"
+msgstr "Kam si přejete přesunout tuto poznámku?"
 
-#: contents/ui/dialogs/NamingDialog.qml:24
+#: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
 msgstr "Vyberte název"
 
-#: contents/ui/dialogs/NamingDialog.qml:50
+#: contents/ui/dialogs/NamingDialog.qml:58
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
 msgstr "Název:"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:13
-#, kde-format
-msgctxt "@subtitle:dialog, as in 'A note category'"
-msgid "This category already exists."
-msgstr "Tato kategorie již existuje."
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:14
-#, kde-format
-msgctxt "@subtitle:dialog, as in 'A note group'"
-msgid "This group already exists."
-msgstr "Tato skupina již existuje."
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:15
-#, kde-format
-msgctxt "@subtitle:dialog"
-msgid "This note already exists."
-msgstr "Tato poznámka již existuje."
-
-#: contents/ui/dialogs/NamingErrorDialog.qml:22
+#: contents/ui/dialogs/NamingErrorDialog.qml:16
 #, kde-format
 msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
@@ -248,7 +239,7 @@ msgctxt ""
 msgid "KleverNotes Storage"
 msgstr "Úložiště KleverNotes"
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:36
+#: contents/ui/dialogs/NamingErrorDialog.qml:30
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
@@ -258,26 +249,40 @@ msgstr ""
 "Tento název začíná tečkou. To by mohlo vést k problémům a proto to není "
 "povoleno."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:37
+#: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
 msgstr "Prosím, odstraňte tečku a vyberte jiný název."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:39
+#: contents/ui/dialogs/NamingErrorDialog.qml:34
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid "This note already exists."
+msgstr "Tato poznámka již existuje."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:35
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "This note already exists."
+msgctxt "@subtitle:dialog"
+msgid "This folder already exists."
+msgstr "Tato poznámka již existuje."
+
+#: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name for it."
 msgstr "Prosím, vyberte jiný název."
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:41
+#: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
 
-#: contents/ui/dialogs/NamingErrorDialog.qml:42
+#: contents/ui/dialogs/NamingErrorDialog.qml:40
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
@@ -306,6 +311,54 @@ msgstr "Tisk do PDF"
 msgctxt "@label:button"
 msgid "Disable due to flatpak limitation."
 msgstr "Zakázáno kvůli omezením flatpaku."
+
+#: contents/ui/dialogs/StorageConversionDialog.qml:12
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "More options"
+msgctxt "@title:dialog"
+msgid "Mandatory operation"
+msgstr "Více možností"
+
+#: contents/ui/dialogs/StorageConversionDialog.qml:19
+#, kde-format
+msgctxt ""
+"@subtitle:dialog, 'storage' as in 'the folder where all the notes will be "
+"stored'"
+msgid ""
+"This storage appears to be using the old KleverNotes file structure which is "
+"no longer supported."
+msgstr ""
+
+#: contents/ui/dialogs/StorageConversionDialog.qml:21
+#, kde-format
+msgctxt "@subtitle:dialog, the standard Qt 'Apply' button"
+msgid ""
+"By pressing the 'Apply' button, you agree to convert the storage to the new "
+"structure (this should not be a destructive operation)."
+msgstr ""
+
+#: contents/ui/dialogs/StorageConversionDialog.qml:23
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid ""
+"You can cancel this operation by closing this dialog, which gives you time "
+"to back up your files if you want to."
+msgstr ""
+
+#: contents/ui/dialogs/StorageConversionDialog.qml:32
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid ""
+"Note: Any locally saved images will be moved from the 'Images' subfolder to "
+"the note’s parent folder."
+msgstr ""
+
+#: contents/ui/dialogs/StorageConversionDialog.qml:34
+#, kde-format
+msgctxt "@subtitle:dialog"
+msgid "Simply remove '/Images' from their path to make them reappear."
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -499,12 +552,12 @@ msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Vítejte"
 
-#: contents/ui/pages/MainPage.qml:121
+#: contents/ui/pages/MainPage.qml:122
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Vítejte v KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:131
+#: contents/ui/pages/MainPage.qml:132
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Vytvořte nebo vyberte poznámku a začněte pracovat."
@@ -797,37 +850,47 @@ msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "Postranní panel"
 
-#: contents/ui/settings/GeneralTab.qml:72
-#, kde-format
-msgctxt "@label:textbox, the default note category name"
-msgid "New Category name:"
-msgstr "Název nové kategorie:"
+#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "New note"
+msgid "New Folder"
+msgstr "Nová poznámka"
 
-#: contents/ui/settings/GeneralTab.qml:102
-#, kde-format
-msgctxt "@label:textbox, the default note group name"
-msgid "New Group name:"
-msgstr "Název nové skupiny:"
+#: contents/ui/settings/GeneralTab.qml:69
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox, the default note name"
+#| msgid "New Note name:"
+msgctxt "@label:textbox"
+msgid "New Folder name:"
+msgstr "Název nové poznámky:"
 
-#: contents/ui/settings/GeneralTab.qml:132
+#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "New note"
+msgid "New Note"
+msgstr "Nová poznámka"
+
+#: contents/ui/settings/GeneralTab.qml:93
 #, kde-format
 msgctxt "@label:textbox, the default note name"
 msgid "New Note name:"
 msgstr "Název nové poznámky:"
 
-#: contents/ui/settings/GeneralTab.qml:155
+#: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr "Panel nástrojů"
 
-#: contents/ui/settings/GeneralTab.qml:163
+#: contents/ui/settings/GeneralTab.qml:121
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr "Viditelný"
 
-#: contents/ui/settings/GeneralTab.qml:224
+#: contents/ui/settings/GeneralTab.qml:182
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
@@ -1192,110 +1255,111 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "Připojit poznámku"
 
-#: contents/ui/sideBar/ActionBar.qml:51
-#, kde-format
-msgctxt "as in 'A note category'"
-msgid "Create a new category"
-msgstr "Vytvořit novou kategorii"
+#: contents/ui/sideBar/ActionBar.qml:47
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "Create a new note"
+msgctxt "@tooltip"
+msgid "Create a new folder"
+msgstr "Vytvořit novou poznámku"
 
-#: contents/ui/sideBar/ActionBar.qml:59
-#, kde-format
-msgctxt "as in 'A note group'"
-msgid "Create a new group"
-msgstr "Vytvořit novou skupinu"
-
-#: contents/ui/sideBar/ActionBar.qml:67
-#, kde-format
-msgctxt "as in 'A note'"
+#: contents/ui/sideBar/ActionBar.qml:55
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "Create a new note"
+msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "Vytvořit novou poznámku"
 
-#: contents/ui/sideBar/ActionBar.qml:75 contents/ui/sideBar/ContextMenu.qml:46
+#: contents/ui/sideBar/ActionBar.qml:63
 #, kde-format
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: contents/ui/sideBar/ActionBar.qml:88
+#: contents/ui/sideBar/ActionBar.qml:76
 #, kde-format
 msgid "Search"
 msgstr "Hledat"
 
-#: contents/ui/sideBar/ActionBar.qml:105
+#: contents/ui/sideBar/ActionBar.qml:93
 #, kde-format
 msgid "Collapse sidebar"
 msgstr "Svinout postranní panel"
 
-#: contents/ui/sideBar/ActionBar.qml:106
+#: contents/ui/sideBar/ActionBar.qml:94
 #, kde-format
 msgid "Expand sidebar"
 msgstr "Rozbalit postranní panel"
 
-#: contents/ui/sideBar/ContextMenu.qml:18
-#, kde-format
-msgctxt "as in 'A note category'"
-msgid "New category"
-msgstr "Nová kategorie"
+#: contents/ui/sideBar/ContextMenu.qml:20
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "New note"
+msgctxt "@item:menu"
+msgid "New folder"
+msgstr "Nová poznámka"
 
-#: contents/ui/sideBar/ContextMenu.qml:28
-#, kde-format
-msgctxt "as in 'A note group'"
-msgid "New group"
-msgstr "Nová skupina"
-
-#: contents/ui/sideBar/ContextMenu.qml:37
-#, kde-format
-msgctxt "as in 'A note'"
+#: contents/ui/sideBar/ContextMenu.qml:29
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "New note"
+msgctxt "@item:menu"
 msgid "New note"
 msgstr "Nová poznámka"
 
-#: contents/ui/sideBar/ContextMenu.qml:55
-#, kde-format
+#: contents/ui/sideBar/ContextMenu.qml:38
+#, fuzzy, kde-format
+#| msgid "Rename"
+msgctxt "@item:menu"
+msgid "Rename"
+msgstr "Přejmenovat"
+
+#: contents/ui/sideBar/ContextMenu.qml:47
+#, fuzzy, kde-format
+#| msgid "Move"
+msgctxt "@item:menu"
 msgid "Move"
 msgstr "Přesunout"
 
-#: contents/ui/sideBar/ContextMenu.qml:65
-#, kde-format
+#: contents/ui/sideBar/ContextMenu.qml:56
+#, fuzzy, kde-format
+#| msgid "Delete"
+msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Smazat"
 
-#: contents/ui/sideBar/SearchBar.qml:72
+#: contents/ui/sideBar/ContextMenu.qml:65
 #, kde-format
-msgctxt "Name, as in 'A note category'"
-msgid "Category"
-msgstr "Kategorie"
+msgctxt "@item:menu"
+msgid "Properties"
+msgstr ""
 
-#: contents/ui/sideBar/SearchBar.qml:73
-#, kde-format
-msgctxt "Name, as in 'A note group'"
-msgid "Group"
-msgstr "Skupina"
-
-#: contents/ui/sideBar/SearchBar.qml:77 contents/ui/sideBar/SearchBar.qml:82
+#: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
 msgid "From"
 msgstr "Od"
 
-#: contents/ui/sideBar/SearchBar.qml:124
+#: contents/ui/sideBar/SearchBar.qml:123
 #, kde-format
 msgid "No search results"
 msgstr "Žádné výsledky hledání"
 
-#: contents/ui/sideBar/Sidebar.qml:89
+#: contents/ui/sideBar/Sidebar.qml:91
 #, kde-format
 msgid "Show notes"
 msgstr "Zobrazit poznámky"
 
-#: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:225
+#: contents/ui/sideBar/Sidebar.qml:112 contents/ui/sideBar/Sidebar.qml:223
 #, kde-format
 msgid "Cheat sheet"
 msgstr "Nápověda syntaxe"
 
-#: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:237
+#: contents/ui/sideBar/Sidebar.qml:128 contents/ui/sideBar/Sidebar.qml:235
 #, kde-format
 msgid "Settings"
 msgstr "Nastavení"
 
-#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:249
+#: contents/ui/sideBar/Sidebar.qml:143 contents/ui/sideBar/Sidebar.qml:247
 #, kde-format
 msgid "About KleverNotes"
 msgstr "O aplikaci KleverNotes"
@@ -1319,7 +1383,8 @@ msgid "Markdown Cheat Sheet"
 msgstr "Nápověda syntaxe pro Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
-#: contents/ui/textEditor/TextDisplay.qml:82
+#: contents/ui/textEditor/TextDisplay.qml:69
+#: contents/ui/textEditor/TextDisplay.qml:99
 #, kde-format
 msgid "Copied !"
 msgstr "Zkopírováno."
@@ -1548,19 +1613,12 @@ msgstr "Odkazy poznámky"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
-msgctxt ""
-"exemple, a note path ('/' are important), Category as in 'a category, Group "
-"'a group', Note 'a note'"
-msgid "Category/Group/Note"
-msgstr "Kategorie/Skupina/Poznámka"
-
-#: contents/ui/textEditor/CheatSheet.qml:168
-#, kde-format
 msgctxt "exemple"
-msgid "header"
-msgstr "hlavička"
+msgid "<path to note>/<note name>"
+msgstr ""
 
-#: contents/ui/textEditor/CheatSheet.qml:168
+#. i18nc("exemple", "header")
+#: contents/ui/textEditor/CheatSheet.qml:170
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
@@ -1616,7 +1674,7 @@ msgid "Missing notes"
 msgstr "Chybějící poznámky"
 
 #: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:103
+#: contents/ui/textEditor/TextDisplay.qml:119
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1732,50 +1790,55 @@ msgstr "Vlastní"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Nastala chyba při pokusu o zkopírování tohoto pdf."
 
-#: logic/treeview/noteTreeModel.cpp:291
-#, kde-format
-msgid "An error occurred while trying to create the demo note."
-msgstr "Při pokusu o vytvoření zkušební poznámky nastala chyba."
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
+#, fuzzy, kde-format
+#| msgctxt "@label:button, as in 'A note'"
+#| msgid "Note"
+msgctxt "Main folder name, where all the notes will be stored by default"
+msgid "Notes"
+msgstr "Poznámka"
 
-#: logic/treeview/noteTreeModel.cpp:424
-#, kde-format
-msgid "An error occurred while trying to create this item."
-msgstr "Nastala chyba při pokusu o vytvoření této položky."
-
-#: logic/treeview/noteTreeModel.cpp:463
+#: logic/treeview/treeModel.cpp:198
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Nastala chyba při pokusu o odstranění této položky."
 
-#: logic/treeview/noteTreeModel.cpp:517
+#: logic/treeview/treeModel.cpp:243
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Nastala chyba při pokusu o přesunutí této položky."
 
-#: logic/treeview/noteTreeModel.cpp:540
+#: logic/treeview/treeModel.cpp:336
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Nastala chyba při pokusu o přejmenování této položky."
 
-#: logic/treeview/noteTreeModel.cpp:638
+#: logic/treeview/treeModel.cpp:426
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Nastala chyba při pokusu o vytvoření poznámky."
 
-#: logic/treeview/noteTreeModel.cpp:649
-#, kde-format
-msgid "An error occurred while trying to create the group."
-msgstr "Nastala chyba při pokusu o vytvoření skupiny."
+#: logic/treeview/treeModel.cpp:438
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to create this item."
+msgid "An error occurred while trying to create this folder."
+msgstr "Nastala chyba při pokusu o vytvoření této položky."
 
-#: logic/treeview/noteTreeModel.cpp:659
-#, kde-format
-msgid "An error occurred while trying to create the category."
-msgstr "Nastala chyba při pokusu o vytvoření kategorie."
-
-#: logic/treeview/noteTreeModel.cpp:667
+#: logic/treeview/treeModel.cpp:446
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Nastala chyba při pokusu o vytvoření úložiště."
+
+#: logic/treeview/treeModel.cpp:447
+#, kde-format
+msgid "An error occurred while trying to create the demo note."
+msgstr "Při pokusu o vytvoření zkušební poznámky nastala chyba."
+
+#: logic/treeview/treeModel.cpp:459
+#, kde-format
+msgctxt "The name for a demo note"
+msgid "Demo"
+msgstr ""
 
 #: main.cpp:56
 #, kde-format
@@ -1810,3 +1873,96 @@ msgstr "Vít Pelčák"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
+
+#~ msgctxt "@info, as in 'A note category'"
+#~ msgid ""
+#~ "Are you sure you want to delete the category <filename>%1</filename>?"
+#~ msgstr "Opravdu si přejete smazat kategorii <filename>%1</filename>?"
+
+#~ msgctxt "@info, as in 'A note group'"
+#~ msgid "Are you sure you want to delete the group <filename>%1</filename>?"
+#~ msgstr "Opravdu si přejete smazat skupinu <filename>%1</filename>?"
+
+#~ msgctxt "@title:dialog, as in 'A note category'"
+#~ msgid "Delete Category Confirmation"
+#~ msgstr "Potvrzení smazání kategorie"
+
+#~ msgctxt "@title:dialog, as in 'A note category'"
+#~ msgid "Delete Group Confirmation"
+#~ msgstr "Potvrzení smazání skupiny"
+
+#~ msgctxt "@title:dialog"
+#~ msgid "This action can not be reverted."
+#~ msgstr "Tuto akci nelze vrátit."
+
+#~ msgctxt "@label:switch"
+#~ msgid "Search headers"
+#~ msgstr "Prohledat hlavičky"
+
+#~ msgctxt "@label:textbox"
+#~ msgid "Header:"
+#~ msgstr "Hlavička:"
+
+#~ msgctxt "@subtitle:dialog, as in 'A note group'"
+#~ msgid "Where do you want to move this group ?"
+#~ msgstr "Kam si přejete přesunout tuto skupinu?"
+
+#~ msgctxt "@title:dialog, to move a group/note"
+#~ msgid "Move"
+#~ msgstr "Přesunout"
+
+#~ msgctxt "@subtitle:dialog, as in 'A note category'"
+#~ msgid "This category already exists."
+#~ msgstr "Tato kategorie již existuje."
+
+#~ msgctxt "@subtitle:dialog, as in 'A note group'"
+#~ msgid "This group already exists."
+#~ msgstr "Tato skupina již existuje."
+
+#~ msgctxt "@label:textbox, the default note category name"
+#~ msgid "New Category name:"
+#~ msgstr "Název nové kategorie:"
+
+#~ msgctxt "@label:textbox, the default note group name"
+#~ msgid "New Group name:"
+#~ msgstr "Název nové skupiny:"
+
+#~ msgctxt "as in 'A note category'"
+#~ msgid "Create a new category"
+#~ msgstr "Vytvořit novou kategorii"
+
+#~ msgctxt "as in 'A note group'"
+#~ msgid "Create a new group"
+#~ msgstr "Vytvořit novou skupinu"
+
+#~ msgctxt "as in 'A note category'"
+#~ msgid "New category"
+#~ msgstr "Nová kategorie"
+
+#~ msgctxt "as in 'A note group'"
+#~ msgid "New group"
+#~ msgstr "Nová skupina"
+
+#~ msgctxt "Name, as in 'A note category'"
+#~ msgid "Category"
+#~ msgstr "Kategorie"
+
+#~ msgctxt "Name, as in 'A note group'"
+#~ msgid "Group"
+#~ msgstr "Skupina"
+
+#~ msgctxt ""
+#~ "exemple, a note path ('/' are important), Category as in 'a category, "
+#~ "Group 'a group', Note 'a note'"
+#~ msgid "Category/Group/Note"
+#~ msgstr "Kategorie/Skupina/Poznámka"
+
+#~ msgctxt "exemple"
+#~ msgid "header"
+#~ msgstr "hlavička"
+
+#~ msgid "An error occurred while trying to create the group."
+#~ msgstr "Nastala chyba při pokusu o vytvoření skupiny."
+
+#~ msgid "An error occurred while trying to create the category."
+#~ msgstr "Nastala chyba při pokusu o vytvoření kategorie."
