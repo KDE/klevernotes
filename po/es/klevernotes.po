@@ -1,15 +1,15 @@
 # Spanish translations for klevernotes.po package.
-# Copyright (C) 2023 This file is copyright:
+# Copyright (C) 2023-2025 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
 # Automatically generated, 2023.
-# SPDX-FileCopyrightText: 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-27 00:41+0000\n"
-"PO-Revision-Date: 2024-10-26 20:24+0200\n"
+"PO-Revision-Date: 2025-02-27 12:16+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -26,12 +26,10 @@ msgid "Delete Note Confirmation"
 msgstr "Confirmación de borrado de nota"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Folder Confirmation"
-msgstr "Confirmación de borrado de nota"
+msgstr "Confirmación de borrado de carpeta"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -40,18 +38,16 @@ msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgstr "¿Seguro que quiere borrar la nota <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
-msgstr "¿Seguro que quiere borrar la nota <filename>%1</filename>?"
+msgstr "¿Seguro que quiere borrar la carpeta <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "Borrar permanentemente."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -127,27 +123,25 @@ msgstr "Situar esta imagen dentro de la carpeta de notas"
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "Propiedades de <filename>%1</filename>"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "Icono"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "Tema de color"
+msgstr "Color"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "Color actual «%1»"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -201,8 +195,7 @@ msgid "Note:"
 msgstr "Nota:"
 
 #: contents/ui/dialogs/MoveDialog.qml:23
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
 msgstr "Mover"
@@ -214,12 +207,10 @@ msgid "Where do you want to move this note ?"
 msgstr "¿Adónde quiere mover esta nota?"
 
 #: contents/ui/dialogs/MoveDialog.qml:43
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "¿Adónde quiere mover esta nota?"
+msgstr "¿Adónde quiere mover esta carpeta?"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -264,12 +255,10 @@ msgid "This note already exists."
 msgstr "Esta nota ya existe."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "Esta nota ya existe."
+msgstr "Esta carpeta ya existe."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -316,12 +305,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "Desactivar por limitaciones de Flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "Más opciones"
+msgstr "Operación obligatoria"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -332,6 +319,8 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
+"Parece que este almacenamiento usa la estructura de archivos antigua de "
+"KleverNotes, que ya no está permitida."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -340,6 +329,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"Al pulsar el botón «Aplicar», aceptará convertir el almacenamiento a la "
+"nueva estructura (esta operación no debería ser destructiva)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -348,6 +339,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"Puede cancelar esta operación cerrando este diálogo, lo que le dará la "
+"oportunidad de hacer una copia de seguridad, si así lo desea."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -356,12 +349,15 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"Nota: todas las imágenes guardadas localmente se moverán de la carpeta "
+"«Imágenes» a la carpeta superior de la nota."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
 msgstr ""
+"Solo tiene que eliminar «/Imágenes» de su ruta para que vuelvan a aparecer."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -857,24 +853,18 @@ msgid "Sidebar"
 msgstr "Barra lateral"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "Nueva nota"
+msgstr "Nueva carpeta"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "Nuevo nombre de nota:"
+msgstr "Nuevo nombre de carpeta:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "Nueva nota"
 
@@ -1263,17 +1253,13 @@ msgid "Link note"
 msgstr "Enlazar nota"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "Crear una nueva nota"
+msgstr "Crear una nueva carpeta"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "Crear una nueva nota"
@@ -1299,38 +1285,31 @@ msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "Nueva nota"
+msgstr "Nueva carpeta"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Nueva nota"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Cambiar nombre"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "Mover"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Borrar"
@@ -1339,7 +1318,7 @@ msgstr "Borrar"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
@@ -1622,7 +1601,7 @@ msgstr "Enlace a nota"
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<ruta a la nota>/<nombre de la nota>"
 
 #. i18nc("exemple", "header")
 #: contents/ui/textEditor/CheatSheet.qml:170
@@ -1798,12 +1777,10 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "Ha ocurrido un error al intentar copiar este PDF."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr "Nota"
+msgstr "Notas"
 
 #: logic/treeview/treeModel.cpp:198
 #, kde-format
@@ -1826,10 +1803,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "Ha ocurrido un error al intentar crear la nota."
 
 #: logic/treeview/treeModel.cpp:438
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "Ha ocurrido un error al intentar crear este elemento."
+msgstr "Ha ocurrido un error al intentar crear esta carpeta."
 
 #: logic/treeview/treeModel.cpp:446
 #, kde-format
@@ -1845,7 +1821,7 @@ msgstr "Ha ocurrido un error al intentar crear la nota de demostración."
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Demostración"
 
 #: main.cpp:56
 #, kde-format
@@ -1880,167 +1856,3 @@ msgstr "Eloy Cuadra"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ecuadra@eloihr.net"
-
-#~ msgctxt "@info, as in 'A note category'"
-#~ msgid ""
-#~ "Are you sure you want to delete the category <filename>%1</filename>?"
-#~ msgstr "¿Seguro que quiere borrar la categoría <filename>%1</filename>?"
-
-#~ msgctxt "@info, as in 'A note group'"
-#~ msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-#~ msgstr "¿Seguro que quiere borrar el grupo <filename>%1</filename>?"
-
-#~ msgctxt "@title:dialog, as in 'A note category'"
-#~ msgid "Delete Category Confirmation"
-#~ msgstr "Confirmación de borrado de categoría"
-
-#~ msgctxt "@title:dialog, as in 'A note category'"
-#~ msgid "Delete Group Confirmation"
-#~ msgstr "Confirmación de borrado de grupo"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "This action can not be reverted."
-#~ msgstr "Esta acción no se puede revertir."
-
-#~ msgctxt "@label:switch"
-#~ msgid "Search headers"
-#~ msgstr "Buscar cabeceras"
-
-#~ msgctxt "@label:textbox"
-#~ msgid "Header:"
-#~ msgstr "Cabecera:"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note group'"
-#~ msgid "Where do you want to move this group ?"
-#~ msgstr "¿Adónde quiere mover este grupo?"
-
-#~ msgctxt "@title:dialog, to move a group/note"
-#~ msgid "Move"
-#~ msgstr "Mover"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note category'"
-#~ msgid "This category already exists."
-#~ msgstr "Esta categoría ya existe."
-
-#~ msgctxt "@subtitle:dialog, as in 'A note group'"
-#~ msgid "This group already exists."
-#~ msgstr "Este grupo ya existe."
-
-#~ msgctxt "@label:textbox, the default note category name"
-#~ msgid "New Category name:"
-#~ msgstr "Nuevo nombre de categoría:"
-
-#~ msgctxt "@label:textbox, the default note group name"
-#~ msgid "New Group name:"
-#~ msgstr "Nuevo nombre de grupo:"
-
-#~ msgctxt "as in 'A note category'"
-#~ msgid "Create a new category"
-#~ msgstr "Crear una nueva categoría"
-
-#~ msgctxt "as in 'A note group'"
-#~ msgid "Create a new group"
-#~ msgstr "Crear un nuevo grupo"
-
-#~ msgctxt "as in 'A note category'"
-#~ msgid "New category"
-#~ msgstr "Nueva categoría"
-
-#~ msgctxt "as in 'A note group'"
-#~ msgid "New group"
-#~ msgstr "Nuevo grupo"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "Category"
-#~ msgstr "Categoría"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "Group"
-#~ msgstr "Grupo"
-
-#~ msgctxt ""
-#~ "exemple, a note path ('/' are important), Category as in 'a category, "
-#~ "Group 'a group', Note 'a note'"
-#~ msgid "Category/Group/Note"
-#~ msgstr "Categoría/grupo/nota"
-
-#~ msgctxt "exemple"
-#~ msgid "header"
-#~ msgstr "cabecera"
-
-#~ msgid "An error occurred while trying to create the group."
-#~ msgstr "Ha ocurrido un error al intentar crear el grupo."
-
-#~ msgid "An error occurred while trying to create the category."
-#~ msgstr "Ha ocurrido un error al intentar crear la categoría."
-
-#~ msgctxt "@title, general text editor settings"
-#~ msgid "Editor"
-#~ msgstr "Editor"
-
-#~ msgctxt ""
-#~ "@label, tab (inside tab bar), all settings related to the general "
-#~ "appearance of the app"
-#~ msgid "Appearance"
-#~ msgstr "Aspecto"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note category'"
-#~ msgid "Where do you want to move this category ?"
-#~ msgstr "¿Adónde quiere mover esta categoría?"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Warning"
-#~ msgstr "Advertencia"
-
-#~ msgctxt "@label:checkbox"
-#~ msgid "Do not show again"
-#~ msgstr "No volver a mostrar"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Color Picker"
-#~ msgstr "Selector de color"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "category"
-#~ msgstr "categoría"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "group"
-#~ msgstr "grupo"
-
-#~ msgctxt "Name, as in 'A note'"
-#~ msgid "note"
-#~ msgstr "nota"
-
-#~ msgctxt ""
-#~ "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#~ "group) or 'note' (a note)"
-#~ msgid "Your %1 name starts with a dot, "
-#~ msgstr "El nombre %1 empieza con un punto, "
-
-#~ msgid "Application Description"
-#~ msgstr "Descripción de la aplicación"
-
-#~ msgid "Name, as in 'A note'"
-#~ msgstr "Nombre, como en «Una nota»"
-
-#~ msgctxt ""
-#~ "@title, display as in 'the note display' where you can visualize the note"
-#~ msgid "Display"
-#~ msgstr "Visualización"
-
-#~ msgctxt "@title"
-#~ msgid "KleverNotes plugins"
-#~ msgstr "Complementos de KleverNotes"
-
-#~ msgid "Your "
-#~ msgstr "Su "
-
-#~ msgid "This "
-#~ msgstr "Esta "
-
-#~ msgid "Select Number"
-#~ msgstr "Seleccionar número"
-
-#~ msgid "Change storage path"
-#~ msgstr "Cambiar la ruta de almacenamiento"

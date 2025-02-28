@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-27 00:41+0000\n"
-"PO-Revision-Date: 2025-01-09 16:15+0300\n"
+"PO-Revision-Date: 2025-02-27 14:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -25,12 +25,10 @@ msgid "Delete Note Confirmation"
 msgstr "Not Silmeyi Onayla"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Folder Confirmation"
-msgstr "Not Silmeyi Onayla"
+msgstr "Klasör Silmeyi Onayla"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -39,18 +37,16 @@ msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgstr "<filename>%1</filename> notunu silmek istediğinizden emin misiniz?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
-msgstr "<filename>%1</filename> notunu silmek istediğinizden emin misiniz?"
+msgstr "<filename>%1</filename> klasörünü silmek istediğinizden emin misiniz?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "Bunu kalıcı olarak silin."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -126,27 +122,25 @@ msgstr "Bu görseli not klasörünün içine yerleştir"
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "<filename>%1</filename> özellikleri"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "Simge"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "Renk teması"
+msgstr "Renk"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "Geçerli renk “%1”"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -200,8 +194,7 @@ msgid "Note:"
 msgstr "Not:"
 
 #: contents/ui/dialogs/MoveDialog.qml:23
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
 msgstr "Taşı"
@@ -213,12 +206,10 @@ msgid "Where do you want to move this note ?"
 msgstr "Bu notu nereye taşımak istiyorsunuz?"
 
 #: contents/ui/dialogs/MoveDialog.qml:43
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "Bu notu nereye taşımak istiyorsunuz?"
+msgstr "Bu klasörü nereye taşımak istiyorsunuz?"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -263,12 +254,10 @@ msgid "This note already exists."
 msgstr "Bu not halihazırda var."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "Bu not halihazırda var."
+msgstr "Bu klasör halihazırda var."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -315,12 +304,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "Flatpak sınırlamaları nedeniyle devre dışıdır."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "Daha Çok Seçenek"
+msgstr "Zorunlu İşlem"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -331,6 +318,8 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
+"Bu depolama, artık desteklenmeyen eski Akıllı Notlar dosya yapısını "
+"kullanıyor gibi görünüyor."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -339,6 +328,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"“Uygula” düğmesine basarak, depolamayı yeni yapıya geçirmeyi kabul edersiniz "
+"(bu, verilerinize zarar vermeyen bir işlemdir)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -347,6 +338,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"Bu işlemi iptal etmek için bu iletişim kutusunu kapatın; böylece isterseniz "
+"dosyalarınızı yedeklemek için bir şansınız olur."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -355,12 +348,16 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"Not: Yerel olarak kaydedilmiş herhangi bir görsel, “Görseller” alt "
+"klasöründen notun üst klasörüne taşınacaktır."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
 msgstr ""
+"Onların yeniden görünmesini sağlamak için onların yolundan yalnızca “/"
+"Images” parçasını kaldırın."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -856,24 +853,18 @@ msgid "Sidebar"
 msgstr "Kenar Çubuğu"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "Yeni Not"
+msgstr "Yeni Klasör"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "Yeni not adı:"
+msgstr "Yeni klasör adı:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "Yeni Not"
 
@@ -1264,20 +1255,16 @@ msgid "Link note"
 msgstr "Notu bağlantıla"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "Yeni Bir Not Oluştur"
+msgstr "Yeni bir klasör oluştur"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
-msgstr "Yeni Bir Not Oluştur"
+msgstr "Yeni bir not oluştur"
 
 #: contents/ui/sideBar/ActionBar.qml:63
 #, kde-format
@@ -1300,38 +1287,31 @@ msgid "Expand sidebar"
 msgstr "Kenar çubuğunu genişlet"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "Yeni Not"
+msgstr "Yeni Klasör"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Yeni Not"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "Taşı"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Sil"
@@ -1340,7 +1320,7 @@ msgstr "Sil"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "Özellikler"
 
 #: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
@@ -1623,7 +1603,7 @@ msgstr "Not bağlantısı"
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<nota olan yol>/<not adı>"
 
 #. i18nc("exemple", "header")
 #: contents/ui/textEditor/CheatSheet.qml:170
@@ -1800,12 +1780,10 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "Bu PDF kopyalanmaya çalışılırken bir hata oluştu."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr "Not"
+msgstr "Notlar"
 
 #: logic/treeview/treeModel.cpp:198
 #, kde-format
@@ -1828,10 +1806,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "Not oluşturulmaya çalışılırken bir hata oluştu."
 
 #: logic/treeview/treeModel.cpp:438
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "Bu öge oluşturulmaya çalışılırken bir hata oluştu."
+msgstr "Bu klasör oluşturulmaya çalışılırken bir hata oluştu."
 
 #: logic/treeview/treeModel.cpp:446
 #, kde-format
@@ -1847,7 +1824,7 @@ msgstr "Tanıtım notu oluşturulmaya çalışılırken bir hata oluştu."
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Tanıtım"
 
 #: main.cpp:56
 #, kde-format

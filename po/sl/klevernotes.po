@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-27 00:41+0000\n"
-"PO-Revision-Date: 2024-10-26 08:06+0200\n"
+"PO-Revision-Date: 2025-02-27 10:58+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,9 +25,7 @@ msgid "Delete Note Confirmation"
 msgstr "Potrditev brisanja zabeležke"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Folder Confirmation"
 msgstr "Potrditev brisanja zabeležke"
@@ -40,19 +38,16 @@ msgstr ""
 "Ali ste prepričani, da želite izbrisati zabeležko <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
-msgstr ""
-"Ali ste prepričani, da želite izbrisati zabeležko <filename>%1</filename>?"
+msgstr "Ali ste prepričani, da želite izbrisati mapo <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "Zbriši to permanentno."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -128,27 +123,25 @@ msgstr "Postavite to sliko znotraj mape z zabeležkami"
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "Latnosti <filename>%1</filename>"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "Barvna tema"
+msgstr "Barva"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "Trenutna barva \"%1\""
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -202,8 +195,7 @@ msgid "Note:"
 msgstr "Zabeležka:"
 
 #: contents/ui/dialogs/MoveDialog.qml:23
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
 msgstr "Premakni"
@@ -215,12 +207,10 @@ msgid "Where do you want to move this note ?"
 msgstr "Kam želite premakniti to zabeležko ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:43
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "Kam želite premakniti to zabeležko ?"
+msgstr "Kam želite premakniti to mapo ?"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -263,12 +253,10 @@ msgid "This note already exists."
 msgstr "Ta zabeležka že obstaja."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "Ta zabeležka že obstaja."
+msgstr "Ta mapa že obstaja."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -314,12 +302,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "Onemogoči zaradi omejitve flatpaka."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "Več možnosti"
+msgstr "Obvezna operacija"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -330,6 +316,8 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
+"Zdi se, da ta shramba uporablja staro strukturo datotek KleverNotes, ki ni "
+"več podprta."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -338,6 +326,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"S pritiskom na gumb 'Uporabi' se strinjate s pretvorbo pomnilnika v novo "
+"strukturo (to ne bi smela biti destruktivna operacija)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -346,6 +336,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"To operacijo lahko prekličete tako, da zaprete to pogovorno okno, kar vam "
+"daje čas za varnostno kopiranje datotek, če to želite."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -354,12 +346,14 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"Opomba: Vse lokalno shranjene slike bodo premaknjene iz podmape 'Images' v "
+"nadrejeno mapo klevernotes."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
-msgstr ""
+msgstr "Preprosto odstranite '/Images' z njihove poti, da se znova prikažejo."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -637,7 +631,7 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:53
 #, kde-format
 msgid "Width:"
-msgstr "širina:"
+msgstr "Širina:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:73
 #, kde-format
@@ -850,24 +844,18 @@ msgid "Sidebar"
 msgstr "Stranska letvica"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "Nova zabeležka"
+msgstr "Nova mapa"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "Novo ime zabeležke:"
+msgstr "Ime nove mape:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "Nova zabeležka"
 
@@ -1258,20 +1246,16 @@ msgid "Link note"
 msgstr "Poveži zabeležko"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "Ustvarite novo zabeležko"
+msgstr "Ustvari novo mapo"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
-msgstr "Ustvarite novo zabeležko"
+msgstr "Ustvari novo zabeležko"
 
 #: contents/ui/sideBar/ActionBar.qml:63
 #, kde-format
@@ -1294,38 +1278,31 @@ msgid "Expand sidebar"
 msgstr "Razširi stransko letvico"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "Nova zabeležka"
+msgstr "Nova mapa"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Nova zabeležka"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Preimenuj"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "Premakni"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Izbriši"
@@ -1334,7 +1311,7 @@ msgstr "Izbriši"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "Lastnosti"
 
 #: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
@@ -1617,7 +1594,7 @@ msgstr "Povezava zabeležke"
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<pot do zabeležke>/<ime zabeležke>"
 
 #. i18nc("exemple", "header")
 #: contents/ui/textEditor/CheatSheet.qml:170
@@ -1792,12 +1769,10 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "Prišlo je do napake pri poskusu kopiranja te datoteke pdf."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr "Zabeležka"
+msgstr "Zabeležke"
 
 #: logic/treeview/treeModel.cpp:198
 #, kde-format
@@ -1820,10 +1795,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "Prišlo je do napake pri poskusu ustvarjanja zabeležke."
 
 #: logic/treeview/treeModel.cpp:438
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "Prišlo je do napake pri poskusu ustvarjanja te postavke."
+msgstr "Prišlo je do napake pri poskusu ustvarjanja te mape."
 
 #: logic/treeview/treeModel.cpp:446
 #, kde-format
@@ -1839,7 +1813,7 @@ msgstr "Prišlo je do napake pri poskusu ustvarjanja vzorčne zabeležke."
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Demo"
 
 #: main.cpp:56
 #, kde-format
