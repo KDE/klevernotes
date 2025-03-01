@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-27 00:41+0000\n"
-"PO-Revision-Date: 2024-10-26 09:12+0300\n"
+"PO-Revision-Date: 2025-02-27 08:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -25,12 +25,10 @@ msgid "Delete Note Confirmation"
 msgstr "Підтвердження вилучення нотатки"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Folder Confirmation"
-msgstr "Підтвердження вилучення нотатки"
+msgstr "Підтвердження вилучення теки"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -39,18 +37,16 @@ msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgstr "Ви справді хочете вилучити нотатку <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
-msgstr "Ви справді хочете вилучити нотатку <filename>%1</filename>?"
+msgstr "Ви справді хочете вилучити теку <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "Вилучити остаточно."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -127,27 +123,25 @@ msgstr "Розташуйте це зображення у теці нотато�
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "Властивості <filename>%1</filename>"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "Піктограма"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "Тема кольорів"
+msgstr "Колір"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "Поточний колір «%1»"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -201,11 +195,10 @@ msgid "Note:"
 msgstr "Нотатка:"
 
 #: contents/ui/dialogs/MoveDialog.qml:23
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
-msgstr "Пересунути"
+msgstr "Пересування"
 
 #: contents/ui/dialogs/MoveDialog.qml:42
 #, kde-format
@@ -214,12 +207,10 @@ msgid "Where do you want to move this note ?"
 msgstr "Куди ви хочете пересунути цю нотатку?"
 
 #: contents/ui/dialogs/MoveDialog.qml:43
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "Куди ви хочете пересунути цю нотатку?"
+msgstr "Куди ви хочете пересунути цю теку?"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -264,12 +255,10 @@ msgid "This note already exists."
 msgstr "Така нотатка вже існує."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "Така нотатка вже існує."
+msgstr "Така тека вже існує."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -317,12 +306,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "Вимкнути через обмеження flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "Додаткові параметри"
+msgstr "Обов'язкова дія"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -333,6 +320,8 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
+"Здається, у цьому сховищі використано застарілу структуру файлів "
+"KleverNotes, підтримку якої припинено."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -341,6 +330,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"Натисканням кнопки «Застосувати» ви погоджуєтеся із перетворенням сховища до "
+"нової структури (це не повинно зашкодити цілісності даних)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -349,6 +340,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"Ви можете скасувати цю дію, закривши це вікно. Таким чином ви отримаєте час "
+"на резервне копіювання своїх файлів, якщо ви цього хочете."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -357,12 +350,15 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"Зауваження: усі збережені локально зображення буде пересунуто до підтеки "
+"«Images» у батьківській теці нотатки."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
 msgstr ""
+"Просто вилучіть «/Images» з відповідного каталогу, щоб вони з'явилися знову."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -857,24 +853,18 @@ msgid "Sidebar"
 msgstr "Бічна панель"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "Нова нотатка"
+msgstr "Нова тека"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "Назва нової нотатки:"
+msgstr "Назва нової теки:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "Нова нотатка"
 
@@ -1264,17 +1254,13 @@ msgid "Link note"
 msgstr "Пов'язана нотатка"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "Створити нотатку"
+msgstr "Створити теку"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "Створити нотатку"
@@ -1300,38 +1286,31 @@ msgid "Expand sidebar"
 msgstr "Розгорнути бічну панель"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "Нова нотатка"
+msgstr "Нова тека"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Нова нотатка"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Перейменувати"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "Пересунути"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Вилучити"
@@ -1340,7 +1319,7 @@ msgstr "Вилучити"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "Властивості"
 
 #: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
@@ -1623,7 +1602,7 @@ msgstr "Посилання у нотатці"
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<шлях до нотатки>/<назва нотатки>"
 
 #. i18nc("exemple", "header")
 #: contents/ui/textEditor/CheatSheet.qml:170
@@ -1798,12 +1777,10 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "Сталася помилка під час спроби скопіювати цей PDF."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr "Нотатка"
+msgstr "Нотатки"
 
 #: logic/treeview/treeModel.cpp:198
 #, kde-format
@@ -1826,10 +1803,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "Сталася помилка під час створення нотатки."
 
 #: logic/treeview/treeModel.cpp:438
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "Сталася помилка під час створення цього запису."
+msgstr "Сталася помилка під час створення цієї теки."
 
 #: logic/treeview/treeModel.cpp:446
 #, kde-format
@@ -1845,7 +1821,7 @@ msgstr "Сталася помилка під час створення демо�
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Демонстрація"
 
 #: main.cpp:56
 #, kde-format

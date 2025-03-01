@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-27 00:41+0000\n"
-"PO-Revision-Date: 2024-10-26 08:00+0300\n"
+"PO-Revision-Date: 2025-02-28 12:01+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -25,12 +25,10 @@ msgid "Delete Note Confirmation"
 msgstr "אישור מחיקת פתקית"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Folder Confirmation"
-msgstr "אישור מחיקת פתקית"
+msgstr "אישור מחיקת תיקייה"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -39,18 +37,16 @@ msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgstr "למחוק את הפתקית <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
-msgstr "למחוק את הפתקית <filename>%1</filename>?"
+msgstr "למחוק את התיקייה <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "מחיקה של זה לצמיתות."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -126,27 +122,25 @@ msgstr "הצבת התמונה הזאת בתוך תיקיית הפתקיות"
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "מאפייני <filename>%1</filename>"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "סמל"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "ערכת צבעים"
+msgstr "צבע"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "הצבע הנוכחי „%1”"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -200,11 +194,10 @@ msgid "Note:"
 msgstr "פתקית:"
 
 #: contents/ui/dialogs/MoveDialog.qml:23
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
-msgstr "הזזה"
+msgstr "העברה"
 
 #: contents/ui/dialogs/MoveDialog.qml:42
 #, kde-format
@@ -213,12 +206,10 @@ msgid "Where do you want to move this note ?"
 msgstr "לאן להזיז את הפתקית הזאת?"
 
 #: contents/ui/dialogs/MoveDialog.qml:43
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "לאן להזיז את הפתקית הזאת?"
+msgstr "לאן להעביר את התיקייה הזאת?"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -261,12 +252,10 @@ msgid "This note already exists."
 msgstr "הפתקית הזאת כבר קיימת."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "הפתקית הזאת כבר קיימת."
+msgstr "התיקייה הזאת כבר קיימת."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -312,12 +301,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "השבתה עקב מגבלה של flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "אפשרויות נוספות"
+msgstr "פעולת חובה"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -327,7 +314,7 @@ msgctxt ""
 msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
-msgstr ""
+msgstr "נראה שהאחסון משתמש במבנה קבצים ישן של KleverNotes שאינו נתמך עוד."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -336,6 +323,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"לחיצה על הכפתור ‚החלה’ מהווה את הסכמתך להמרת האחסון למבנה החדשה (זאת לא "
+"אמורה להיות פעולה הרסנית)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -344,6 +333,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"אפשר לבטל את הפעולה הזאת על ידי סגירת החלונית, שנותנת לך זמן לגבות את הקבצים "
+"שלך במקרה הצורך."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -352,12 +343,14 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"לתשומת ליבך: תמונות כלשהן שנשמרו מקומית תועברנה מתת־התיקייה ‚Images’ לתיקיית "
+"ההורה של הפתקית."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
-msgstr ""
+msgstr "אפשר פשוט להסיר את ‚‎/Images’ מהנתיב שלהם כדי שיופיעו שוב."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -846,24 +839,18 @@ msgid "Sidebar"
 msgstr "סרגל צד"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "פתקית חדשה"
+msgstr "תיקייה חדשה"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "שם חדש לפתקית:"
+msgstr "שם חדש לתיקייה:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "פתקית חדשה"
 
@@ -1251,17 +1238,13 @@ msgid "Link note"
 msgstr "קישור פתקית"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "יצירת פתקית חדשה"
+msgstr "יצירת תיקייה חדשה"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "יצירת פתקית חדשה"
@@ -1287,38 +1270,31 @@ msgid "Expand sidebar"
 msgstr "הרחבת סרגל צד"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "פתקית חדשה"
+msgstr "תיקייה חדשה"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "פתקית חדשה"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "שינוי שם"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
-msgstr "הזזה"
+msgstr "העברה"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "מחיקה"
@@ -1327,7 +1303,7 @@ msgstr "מחיקה"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "מאפיינים"
 
 #: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
@@ -1610,7 +1586,7 @@ msgstr "קישור פתקית"
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<נתיב לפתקית>/<שם הפתקית>"
 
 #. i18nc("exemple", "header")
 #: contents/ui/textEditor/CheatSheet.qml:170
@@ -1785,9 +1761,7 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "אירעה שגיאה בניסיון להעתיק את ה־pdf הזה."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "פתקית"
@@ -1813,10 +1787,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "אירעה שגיאה במהלך הניסיון ליצור את הפתקית."
 
 #: logic/treeview/treeModel.cpp:438
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "אירעה שגיאה במהלך הניסיון ליצור את הפריט הזה."
+msgstr "אירעה שגיאה במהלך הניסיון ליצור את התיקייה הזאת."
 
 #: logic/treeview/treeModel.cpp:446
 #, kde-format
@@ -1832,7 +1805,7 @@ msgstr "אירעה שגיאה במהלך הניסיון ליצור פתקית ל
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "הדגמה"
 
 #: main.cpp:56
 #, kde-format
