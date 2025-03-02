@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 // SPDX-FileCopyrightText: 2024 Carl Schwan <carl@carlschwan.eu>
 
 import QtQuick
@@ -19,15 +19,15 @@ Components.MessageDialog {
 
     dialogType: Components.MessageDialog.Warning
     title: isNote 
-        ? i18nc("@title:dialog, as in 'A note category'", "Delete Note Confirmation")
-        : i18nc("@title:dialog, as in 'A note category'", "Delete Folder Confirmation")
+        ? i18nc("@title:dialog, Confirmation for deletion of a note", "Delete Note Confirmation")
+        : i18nc("@title:dialog, Confirmation for deletion of a folder", "Delete Folder Confirmation")
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
     Label {
         text: isNote
-            ? xi18nc("@info", "Are you sure you want to delete the note <filename>%1</filename>?", name)
-            : xi18nc("@info", "Are you sure you want to delete the folder <filename>%1</filename>?", name)
+            ? xi18nc("@info", "Are you sure you want to delete this note <filename>%1</filename>?", name)
+            : xi18nc("@info", "Are you sure you want to delete this folder <filename>%1</filename>?", name)
 
         wrapMode: Text.WordWrap
         Layout.fillWidth: true
