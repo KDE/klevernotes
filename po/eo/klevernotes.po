@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-27 00:41+0000\n"
-"PO-Revision-Date: 2025-01-13 22:15+0100\n"
+"PO-Revision-Date: 2025-03-01 17:55+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -22,15 +22,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Note Confirmation"
-msgstr "Konfirmo Forigi Noton"
+msgstr "Konfirmo pri Forigi Noton"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, as in 'A note category'"
 msgid "Delete Folder Confirmation"
-msgstr "Konfirmo Forigi Noton"
+msgstr "Konfirmo pri Forigi Dosierujon"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -39,18 +37,17 @@ msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgstr "Ĉu vi certas, ke vi volas forigi la noton <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
-msgstr "Ĉu vi certas, ke vi volas forigi la noton <filename>%1</filename>?"
+msgstr ""
+"Ĉu vi certas, ke vi volas forigi la dosierujon <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "Forigi tiun ĉi porĉiame."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -135,18 +132,16 @@ msgid "Icon"
 msgstr ""
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "Kolora etoso"
+msgstr "Koloro"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "Aktuala koloro \"%1\""
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -200,8 +195,7 @@ msgid "Note:"
 msgstr "Noto:"
 
 #: contents/ui/dialogs/MoveDialog.qml:23
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
 msgstr "Movi"
@@ -213,12 +207,10 @@ msgid "Where do you want to move this note ?"
 msgstr "Kien vi volas movi ĉi noton ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:43
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "Kien vi volas movi ĉi noton ?"
+msgstr "Kien vi volas movi ĉi dosierujon ?"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -263,12 +255,10 @@ msgid "This note already exists."
 msgstr "Ĉi tiu noto jam ekzistas."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "Ĉi tiu noto jam ekzistas."
+msgstr "Ĉi tiu dosierujo jam ekzistas."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -315,12 +305,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "Malŝalti pro limigo de flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "Pliaj elektebloj"
+msgstr "Deviga funkcio"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -853,26 +841,20 @@ msgid "Sidebar"
 msgstr "Flankmenuo"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "Nova noto"
+msgstr "Nova Dosierujo"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "Nova Notonomo:"
+msgstr "Nova Dosierujonomo:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
-msgstr "Nova noto"
+msgstr "Nova Noto"
 
 #: contents/ui/settings/GeneralTab.qml:93
 #, kde-format
@@ -1259,17 +1241,13 @@ msgid "Link note"
 msgstr "Lignoto"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "Krei novan noton"
+msgstr "Krei novan dosierujon"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "Krei novan noton"
@@ -1295,38 +1273,31 @@ msgid "Expand sidebar"
 msgstr "Vastigi flankbreton"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "Nova noto"
+msgstr "Nova dosierujo"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Nova noto"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Alinomi"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "Movi"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Forigi"
@@ -1335,7 +1306,7 @@ msgstr "Forigi"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "Proprecoj"
 
 #: contents/ui/sideBar/SearchBar.qml:76
 #, kde-format
@@ -1794,12 +1765,10 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "Okazis eraro dum provado kopii ĉi tiun pdf."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr "Noto"
+msgstr "Notoj"
 
 #: logic/treeview/treeModel.cpp:198
 #, kde-format
@@ -1822,10 +1791,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "Okazis eraro dum provo krei la noton."
 
 #: logic/treeview/treeModel.cpp:438
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "Okazis eraro dum provo krei ĉi tiun eron."
+msgstr "Okazis eraro dum provo krei ĉi tiun dosierujon."
 
 #: logic/treeview/treeModel.cpp:446
 #, kde-format
@@ -1841,7 +1809,7 @@ msgstr "Okazis eraro dum provo krei la demo-noton."
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Demo"
 
 #: main.cpp:56
 #, kde-format
@@ -1876,97 +1844,3 @@ msgstr "Oliver Kellogg"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "olivermkellogg@gmail.com"
-
-#~ msgctxt "@info, as in 'A note category'"
-#~ msgid ""
-#~ "Are you sure you want to delete the category <filename>%1</filename>?"
-#~ msgstr ""
-#~ "Ĉu vi certas, ke vi volas forigi la kategorion <filename>%1</filename>?"
-
-#~ msgctxt "@info, as in 'A note group'"
-#~ msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-#~ msgstr "Ĉu vi certas, ke vi volas forigi la grupon <filename>%1</filename>?"
-
-#~ msgctxt "@title:dialog, as in 'A note category'"
-#~ msgid "Delete Category Confirmation"
-#~ msgstr "Konfirmo Forigi Kategorion"
-
-#~ msgctxt "@title:dialog, as in 'A note category'"
-#~ msgid "Delete Group Confirmation"
-#~ msgstr "Konfirmo Forigi Grupon"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "This action can not be reverted."
-#~ msgstr "Ĉi tiu ago ne povas esti malfarata."
-
-#~ msgctxt "@label:switch"
-#~ msgid "Search headers"
-#~ msgstr "Serĉi kapliniojn"
-
-#~ msgctxt "@label:textbox"
-#~ msgid "Header:"
-#~ msgstr "Kapo:"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note group'"
-#~ msgid "Where do you want to move this group ?"
-#~ msgstr "Kien vi volas movi ĉi grupon ?"
-
-#~ msgctxt "@title:dialog, to move a group/note"
-#~ msgid "Move"
-#~ msgstr "Movi"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note category'"
-#~ msgid "This category already exists."
-#~ msgstr "Ĉi tiu kategorio jam ekzistas."
-
-#~ msgctxt "@subtitle:dialog, as in 'A note group'"
-#~ msgid "This group already exists."
-#~ msgstr "Ĉi tiu grupo jam ekzistas."
-
-#~ msgctxt "@label:textbox, the default note category name"
-#~ msgid "New Category name:"
-#~ msgstr "Nova Kategoria Nomo:"
-
-#~ msgctxt "@label:textbox, the default note group name"
-#~ msgid "New Group name:"
-#~ msgstr "Nova Grupnomo:"
-
-#~ msgctxt "as in 'A note category'"
-#~ msgid "Create a new category"
-#~ msgstr "Krei novan kategorion"
-
-#~ msgctxt "as in 'A note group'"
-#~ msgid "Create a new group"
-#~ msgstr "Krei novan grupon"
-
-#~ msgctxt "as in 'A note category'"
-#~ msgid "New category"
-#~ msgstr "Nova kategorio"
-
-#~ msgctxt "as in 'A note group'"
-#~ msgid "New group"
-#~ msgstr "Nova grupo"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "Category"
-#~ msgstr "Kategorio"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "Group"
-#~ msgstr "Grupo"
-
-#~ msgctxt ""
-#~ "exemple, a note path ('/' are important), Category as in 'a category, "
-#~ "Group 'a group', Note 'a note'"
-#~ msgid "Category/Group/Note"
-#~ msgstr "Kategorio/Grupo/Noto"
-
-#~ msgctxt "exemple"
-#~ msgid "header"
-#~ msgstr "kapo"
-
-#~ msgid "An error occurred while trying to create the group."
-#~ msgstr "Okazis eraro dum provo krei la grupon."
-
-#~ msgid "An error occurred while trying to create the category."
-#~ msgstr "Okazis eraro dum provo krei la kategorion."
