@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-27 00:41+0000\n"
+"POT-Creation-Date: 2025-03-03 00:41+0000\n"
 "PO-Revision-Date: 2024-12-24 17:13+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -18,8 +18,10 @@ msgstr ""
 "X-Generator: Lokalize 23.08.5\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, kde-format
-msgctxt "@title:dialog, as in 'A note category'"
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, as in 'A note category'"
+#| msgid "Delete Note Confirmation"
+msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
 msgstr "메모 삭제 확인"
 
@@ -27,14 +29,16 @@ msgstr "메모 삭제 확인"
 #, fuzzy, kde-format
 #| msgctxt "@title:dialog, as in 'A note category'"
 #| msgid "Delete Note Confirmation"
-msgctxt "@title:dialog, as in 'A note category'"
+msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
 msgstr "메모 삭제 확인"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+msgid "Are you sure you want to delete this note <filename>%1</filename>?"
 msgstr "<filename>%1</filename> 메모를 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
@@ -42,7 +46,7 @@ msgstr "<filename>%1</filename> 메모를 삭제하시겠습니까?"
 #| msgctxt "@info"
 #| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
 msgstr "<filename>%1</filename> 메모를 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39

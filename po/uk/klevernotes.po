@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-27 00:41+0000\n"
+"POT-Creation-Date: 2025-03-03 00:41+0000\n"
 "PO-Revision-Date: 2025-02-27 08:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -19,27 +19,35 @@ msgstr ""
 "X-Generator: Lokalize 23.04.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, kde-format
-msgctxt "@title:dialog, as in 'A note category'"
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, as in 'A note category'"
+#| msgid "Delete Note Confirmation"
+msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
 msgstr "Підтвердження вилучення нотатки"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, kde-format
-msgctxt "@title:dialog, as in 'A note category'"
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, as in 'A note category'"
+#| msgid "Delete Folder Confirmation"
+msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
 msgstr "Підтвердження вилучення теки"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+msgid "Are you sure you want to delete this note <filename>%1</filename>?"
 msgstr "Ви справді хочете вилучити нотатку <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
 msgstr "Ви справді хочете вилучити теку <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39

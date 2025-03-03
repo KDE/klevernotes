@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-27 00:41+0000\n"
+"POT-Creation-Date: 2025-03-03 00:41+0000\n"
 "PO-Revision-Date: 2024-10-27 08:58+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -21,8 +21,10 @@ msgstr ""
 "X-Generator: Lokalize 24.08.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, kde-format
-msgctxt "@title:dialog, as in 'A note category'"
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, as in 'A note category'"
+#| msgid "Delete Note Confirmation"
+msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
 msgstr "Oharra ezabatzeko baieztapena"
 
@@ -30,14 +32,16 @@ msgstr "Oharra ezabatzeko baieztapena"
 #, fuzzy, kde-format
 #| msgctxt "@title:dialog, as in 'A note category'"
 #| msgid "Delete Note Confirmation"
-msgctxt "@title:dialog, as in 'A note category'"
+msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
 msgstr "Oharra ezabatzeko baieztapena"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+msgid "Are you sure you want to delete this note <filename>%1</filename>?"
 msgstr "Ziur zaude <filename>%1</filename> oharra ezabatu nahi duzula?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
@@ -45,7 +49,7 @@ msgstr "Ziur zaude <filename>%1</filename> oharra ezabatu nahi duzula?"
 #| msgctxt "@info"
 #| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
 msgstr "Ziur zaude <filename>%1</filename> oharra ezabatu nahi duzula?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
