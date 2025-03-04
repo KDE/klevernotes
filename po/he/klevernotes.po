@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-03 00:41+0000\n"
-"PO-Revision-Date: 2025-02-28 12:01+0200\n"
+"PO-Revision-Date: 2025-03-03 09:26+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,36 +19,28 @@ msgstr ""
 "X-Generator: Lokalize 24.12.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
 msgstr "אישור מחיקת פתקית"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Folder Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
 msgstr "אישור מחיקת תיקייה"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this note <filename>%1</filename>?"
-msgstr "למחוק את הפתקית <filename>%1</filename>?"
+msgstr "למחוק את הפתקית הזאת <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
-msgstr "למחוק את התיקייה <filename>%1</filename>?"
+msgstr "למחוק את התיקייה הזאת <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format

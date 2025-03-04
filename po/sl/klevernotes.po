@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-03 00:41+0000\n"
-"PO-Revision-Date: 2025-02-27 10:58+0100\n"
+"PO-Revision-Date: 2025-03-03 06:56+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,37 +19,30 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
-msgstr "Potrditev brisanja zabeležke"
+msgstr "Potrdi brisanje zabeležke"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Folder Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
-msgstr "Potrditev brisanja zabeležke"
+msgstr "Potrdi brisanje zabeležke"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this note <filename>%1</filename>?"
 msgstr ""
-"Ali ste prepričani, da želite izbrisati zabeležko <filename>%1</filename>?"
+"Ali ste prepričani, da želite izbrisati to zabeležko <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
-msgstr "Ali ste prepričani, da želite izbrisati mapo <filename>%1</filename>?"
+msgstr ""
+"Ali ste prepričani, da želite izbrisati to mapo <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
