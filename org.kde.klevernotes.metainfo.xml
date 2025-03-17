@@ -242,6 +242,24 @@
     <color type="primary" scheme_preference="dark">#254545</color>
   </branding>
   <releases>
+    <release version="1.2.0" date="2025-03-17">
+      <description>
+        <p>What's new:</p>
+        <ul>
+          <li>New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
+          <li>New drawing page with more features</li>
+          <li>Copy button inside block of code</li>
+          <li>New bottom bar to switch between note and todos</li>
+          <li>Improved page switching animation</li>
+        </ul>
+        <p>Bug fixes including but not limited to:</p>
+        <ul>
+          <li>Pressing V without any modifier while having an image in the clipboard do nothing (as it should)</li>
+          <li>Prevent naming item with a '/' since it would create a directory</li>
+          <li>Various rendering issues</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2024-10-07">
       <description>
         <p>
