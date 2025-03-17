@@ -249,46 +249,30 @@
           note-taking app from KDE. For 3 months, I have been working hard to 
           add new features while improving the app and fixing some bugs.
         </p>
+        <p>KleverNotes parser has been switched to md4qt:</p>
+        <p>md4qt is a header-only C++ library for parsing Markdown.</p>
         <p>
-          KleverNotes parser has been switched to md4qt:
-
-          md4qt is a header-only C++ library for parsing Markdown.
-
           md4qt supports CommonMark 0.31.2 Spec, and some GitHub extensions, 
           such as tables, footnotes, tasks lists, strikethroughs, 
           LaTeX Math injections, GitHub's autolinks.
-
-          It is fast, repliable, customizable and easy to use. A perfect match ! 
         </p>
+        <p>It is fast, repliable, customizable and easy to use. A perfect match !</p>
+        <p>The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
+        <p>On top of that, the toolbar now shows you which tags are already applied on the text under the cursor or the selected text.</p>
         <p>
-          The toolbar is now more precise for removing specific Markdown tags 
-          but also to apply them. 
-          On top of that, the toolbar now shows you which tags are already applied 
-          on the text under the cursor or the selected text. 
-
           The editor has also gained some interesting features. Block tab/untab support 
           and automatic addition of list items are now more reliable, but you now also have 
           the ability to add an html break before a new line with `Shift + Enter` or 
           a horizontal ruler using `Alt + Enter`.
         </p>
-        <p>
-          - The parsing is now done on a separated thread, so parsing very large notes 
-          should still be smooth ! 
-
-          - The rendering is now disabled if the preview is disabled, saving some resources ! 
-
-          - Using the toolbar will now add or remove text in a single undo block, 
-          no more double/triple `Ctrl+Z` to go back to your previous state.
-        </p>
-        <p>
-          The editor now has the abilty to be "WYSIWYG".
-
-          By default, the markdown tags will be smaller than the rest of text by 50%, this can 
-          of course be tweaked in the settings.
-
-          Those tags will regain their normal sizes based on the cursor position/selected text.
-          This way, you're able to see which tag is responsible for a style.
-        </p>
+        <ul>
+          <li> The parsing is now done on a separated thread, so parsing very large notes should still be smooth !</li>
+           <li> The rendering is now disabled if the preview is disabled, saving some resources !</li> 
+           <li> Using the toolbar will now add or remove text in a single undo block, no more double/triple `Ctrl+Z` to go back to your previous state.</li> 
+        </ul>
+        <p>The editor now has the abilty to be "WYSIWYG".</p>
+        <p>By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
+        <p>Those tags will regain their normal sizes based on the cursor position/selected text. This way, you're able to see which tag is responsible for a style.</p>
       </description>
     </release>
     <release version="1.0.0" date="2024-06-05">
