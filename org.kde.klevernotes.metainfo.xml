@@ -285,8 +285,8 @@
         </p>
         <ul>
           <li> The parsing is now done on a separated thread, so parsing very large notes should still be smooth !</li>
-           <li> The rendering is now disabled if the preview is disabled, saving some resources !</li> 
-           <li> Using the toolbar will now add or remove text in a single undo block, no more double/triple `Ctrl+Z` to go back to your previous state.</li> 
+          <li> The rendering is now disabled if the preview is disabled, saving some resources !</li>
+          <li> Using the toolbar will now add or remove text in a single undo block, no more double/triple `Ctrl+Z` to go back to your previous state.</li>
         </ul>
         <p>The editor now has the abilty to be "WYSIWYG".</p>
         <p>By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
