@@ -117,7 +117,7 @@ private:
 private:
     // Position in tree
     std::vector<std::unique_ptr<TreeItem>> m_children;
-    TreeItem *m_parentItem;
+    TreeItem *m_parentItem = nullptr;
 
     NoteTreeModel *m_model;
 

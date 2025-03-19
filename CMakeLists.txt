@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: BSD-3-Clause
-# SPDX-FileCopyrightText: 2022-2024 Louis Schul <schul9louis@gmail.com>
+# SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 cmake_minimum_required(VERSION 3.16)
 
-project(klevernotes VERSION "1.2.0")
+project(klevernotes VERSION "1.2.1")
 
 include(FeatureSummary)
 

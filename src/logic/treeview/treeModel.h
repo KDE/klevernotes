@@ -89,7 +89,7 @@ public:
      * @param newParentIndex: The QModelIndex pointing to the new parent for the row
      * @param newName: The possible new name for the row
      */
-    Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName = QLatin1String());
+    Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex = {}, const QString &newName = QLatin1String());
 
     /*
      * Remove the Item from the model
@@ -219,6 +219,7 @@ private:
      *
      * @param rowModelIndex: The QModelIndex pointing to the Item that has been moved
      * @param newParentIndex: The QModelIndex pointing to the new parent of the Item
+     * @param newPath: The potential new path for the row
      * @param newName: The potential new name for the row
      * @param error: A potential error code based on the `MoveError` enum
      *
@@ -226,7 +227,7 @@ private:
      * @signal errorOccurred: If the Item could not be moved
      * @signal forceFocus: Ask for the Item to be focused
      */
-    void handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newName, MoveError error);
+    void handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newPath, const QString &newName, MoveError error);
 
     // Storage Handler
     /*

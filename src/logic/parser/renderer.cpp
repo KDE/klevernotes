@@ -201,17 +201,17 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
         static const QString plantUMLStr = QStringLiteral("plantuml");
 
         const QString lang = c->syntax();
-        const QString _text = c->text();
-        QString code = _text;
+        const QString text = c->text();
 
         QString returnValue;
         if (m_pluginHelper && m_pumlEnable && (lang.toLower() == pumlStr || lang.toLower() == plantUMLStr)) {
-            QPair<QString, QString> imageInfo = m_pluginHelper->pumlParserUtils()->renderCode(_text, m_pumlDark);
+            QPair<QString, QString> imageInfo = m_pluginHelper->pumlParserUtils()->renderCode(text, m_pumlDark);
 
             returnValue = image(imageInfo.first, imageInfo.second);
         } else {
-            if (m_pluginHelper) {
-                code = m_pluginHelper->highlightParserUtils()->getCode(m_codeHighlight, _text, lang);
+            QString code = prepareTextForHtml(text);
+            if (m_pluginHelper && !lang.isEmpty()) {
+                code = m_pluginHelper->highlightParserUtils()->getCode(m_codeHighlight, text, lang);
             }
             returnValue = Renderer::code(code);
         }

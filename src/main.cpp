@@ -55,13 +55,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         // A displayable program name string.
         i18nc("@title", "KleverNotes"),
         // The program version string.
-        QStringLiteral("1.2.0"),
+        QStringLiteral("1.2.1"),
         // Short description of what the app does.
         i18n("Note taking and management application"),
         // The license this code is released under.
         KAboutLicense::GPL,
         // Copyright Statement.
-        i18n("(c) 2022-2023"));
+        i18n("(c) 2022-2025"));
     aboutData.addAuthor(i18nc("@info:credit", "Louis Schul"),
                         // i18nc("@info:credit", "Author Role"),
                         QStringLiteral("schul9louis@outlook.fr")

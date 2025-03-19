@@ -81,7 +81,7 @@ Kirigami.Page {
 
         ToDoView {
             id: todoView
-            path: hasNote ? currentlySelected.path + "/todo.json" : ""
+            path: hasNote ? currentlySelected.path + ".todo.json" : ""
             visible: 0.5 < opacity
             opacity: 0
             Layout.fillHeight: true

@@ -98,9 +98,13 @@ Controls.Menu {
         treeView: contextMenu.treeView
         isNote: treeView.currentClickedItem.isNote
 
-        onApplied: if (clickedIndex && treeView.currentModelIndex) {
+        onApplied: if ((clickedIndex || moveDialog.moveToRoot) && treeView.currentModelIndex) {
             applicationWindow().saveState()
-            treeView.model.moveRow(treeView.currentModelIndex, clickedIndex)
+            if (moveDialog.moveToRoot) {
+                treeView.model.moveRow(treeView.currentModelIndex)
+            } else {
+                treeView.model.moveRow(treeView.currentModelIndex, clickedIndex)
+            } 
             close()
         }
         onRejected: {

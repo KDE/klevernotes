@@ -91,13 +91,7 @@ FormCard.FormCardDialog {
         if (userChoice === setupPopup.newStorage){
             folderPath = folderPath.concat("/klevernotes")
         }
-        var pathEnd = folderPath.substring(folderPath.length, folderPath.length-11)
-
-        if (pathEnd.toLowerCase() !== "klevernotes") {
-            subtitle = i18nc("@subtitle:dialog, Storage as in 'the folder where all the notes will be stored'", "It looks like the selected folder is not a KleverNotes storage.\n\nPlease choose a location for your future KleverNotes storage or select an existing one.")
-            setupPopup.folder = ""
-            return
-        }
+        
         Config.storagePath = folderPath
 
         const fullNotification = setupPopup.userChoice + folderPath
