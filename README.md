@@ -5,26 +5,23 @@
 
 # Klevernotes 
 
+<img src="logo.png" width="10%" align="right">
+
 KleverNotes is a note taking and management application. It uses markdown and allow you to preview your content. 
 
 Different versions of Markdown are supported thanks to the [md4qt](https://invent.kde.org/libraries/md4qt) parser with which the project works closely (many thanks to the author: igormironchik).
-This parser allows text plugins to extend Markdown parsing, enabling the creation of KleverNotes "[plugins](https://invent.kde.org/office/klevernotes#plugins)". 
+This parser allows text plugins to extend Markdown parsing, enabling the creation of KleverNotes "[plugins](#plugins)". 
 
 **Get involved and join our Matrix channel: [klevernotes:kde.org](https://matrix.to/#/#klevernotes:kde.org)**
 
-___
-
 ## Screenshots
 
-### Adaptative
-![Screenshot of Klevernotes main page on desktop](https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png)
-![Screenshot of Klevernotes main page on mobile](https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png)
-### Todos for each note
-![Screenshot of Klevernotes todo](https://cdn.kde.org/screenshots/klevernotes//todo_desktop.png)
-### Draw your thoughts ! 
-![Screenshot of  Klevernotes drawing](https://cdn.kde.org/screenshots/klevernotes//painting.png)
+| On Desktop | On Mobile |
+| --- | --- |
+| ![Screenshot of Klevernotes main page on desktop](https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png) | ![Screenshot of Klevernotes main page on mobile](https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png) |
+| **Todos for each note** | **Draw your thoughts!** |
+| ![Screenshot of Klevernotes todo](https://cdn.kde.org/screenshots/klevernotes//todo_desktop.png) | ![Screenshot of  Klevernotes drawing](https://cdn.kde.org/screenshots/klevernotes//painting.png) |
 
-___
 
 ## Plugins
 > A feature that goes beyond the normal scope of Markdown. 
@@ -85,15 +82,12 @@ or
 
 </details>
 
-___
-
 ## Get it
 
 ### Install the flatpak
 Get the latest release on flathub.<br>
 <a href='https://flathub.org/apps/org.kde.klevernotes'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
-<br>
 
 A Nightly Flatpak, based on the master branch is available through [KDE cdn](https://cdn.kde.org/flatpak/klevernotes-nightly/), just run the following command (based on [this tutorial](https://userbase.kde.org/Tutorials/Flatpak#Nightly_KDE_apps)) to get it:
 
@@ -101,12 +95,13 @@ A Nightly Flatpak, based on the master branch is available through [KDE cdn](htt
 flatpak install --user --or-update https://cdn.kde.org/flatpak/klevernotes-nightly/org.kde.klevernotes.flatpakref
 ```
 
-#### ⚠️ Note: With the flatpak, if you want to use plugins relying on external software (e.g: code highlighting), you must enable `talk-name=org.freedesktop.Flatpak` for the app using:
-
-```
-flatpak override --talk-name=org.freedesktop.Flatpak org.kde.klevernotes
-```
-<br>
+> ⚠️ Note
+>
+> **With the flatpak, if you want to use plugins relying on external software (e.g: code highlighting), you must enable `talk-name=org.freedesktop.Flatpak` for the app using:**
+>
+> ```
+> flatpak override --talk-name=org.freedesktop.Flatpak org.kde.klevernotes
+> ```
 
 ### Build
 
@@ -117,8 +112,6 @@ Arch Linux dependencies:
 ```
 base-devel extra-cmake-modules cmake qt6-base qt6-declarative qt6-quickcontrols2 qt6-webengine
 ```
-
-<br>
 
 Once kdesrc-build is correctly installed on your system:
 
