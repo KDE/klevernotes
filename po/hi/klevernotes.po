@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-03 00:41+0000\n"
+"POT-Creation-Date: 2025-03-20 00:42+0000\n"
 "PO-Revision-Date: 2024-12-15 19:24+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -203,26 +203,36 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "टिप्पणी:"
 
-#: contents/ui/dialogs/MoveDialog.qml:23
+#: contents/ui/dialogs/MoveDialog.qml:24
 #, fuzzy, kde-format
 #| msgid "Move"
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move"
 msgstr "कदम"
 
-#: contents/ui/dialogs/MoveDialog.qml:42
+#: contents/ui/dialogs/MoveDialog.qml:44
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "आप इस नोट को कहां ले जाना चाहते हैं?"
 
-#: contents/ui/dialogs/MoveDialog.qml:43
+#: contents/ui/dialogs/MoveDialog.qml:45
 #, fuzzy, kde-format
 #| msgctxt "@subtitle:dialog"
 #| msgid "Where do you want to move this note ?"
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
 msgstr "आप इस नोट को कहां ले जाना चाहते हैं?"
+
+#: contents/ui/dialogs/MoveDialog.qml:54
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@label:button, Storage as in 'the folder where all the notes will be "
+#| "stored'"
+#| msgid "Change the storage path"
+msgctxt "@label:checkbox, move this folder/note to the root of the storage"
+msgid "Move to storage root"
+msgstr "संग्रहण पथ बदलें"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -427,21 +437,6 @@ msgstr "भंडारण बनाएं"
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
 msgstr "नया स्टोरेज बनाएं"
-
-#: contents/ui/dialogs/StorageDialog.qml:97
-#, kde-format
-msgctxt ""
-"@subtitle:dialog, Storage as in 'the folder where all the notes will be "
-"stored'"
-msgid ""
-"It looks like the selected folder is not a KleverNotes storage.\n"
-"\n"
-"Please choose a location for your future KleverNotes storage or select an "
-"existing one."
-msgstr ""
-"ऐसा लगता है कि चयनित फ़ोल्डर KleverNotes संग्रहण नहीं है।\n"
-"\n"
-"कृपया अपने भविष्य के KleverNotes संग्रहण के लिए कोई स्थान चुनें या कोई मौजूदा स्थान चुनें।"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
@@ -1790,7 +1785,7 @@ msgstr "रिवाज़"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "इस पीडीएफ को कॉपी करने का प्रयास करते समय एक त्रुटि हुई।"
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:449
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:462
 #, fuzzy, kde-format
 #| msgctxt "@label:button, as in 'A note'"
 #| msgid "Note"
@@ -1798,43 +1793,43 @@ msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "टिप्पणी"
 
-#: logic/treeview/treeModel.cpp:198
+#: logic/treeview/treeModel.cpp:200
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "इस आइटम को हटाने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:243
+#: logic/treeview/treeModel.cpp:249
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "इस आइटम को स्थानांतरित करने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:336
+#: logic/treeview/treeModel.cpp:349
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "इस आइटम का नाम बदलने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:426
+#: logic/treeview/treeModel.cpp:439
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "नोट बनाने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:438
+#: logic/treeview/treeModel.cpp:451
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
 msgid "An error occurred while trying to create this folder."
 msgstr "इस आइटम को बनाने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:446
+#: logic/treeview/treeModel.cpp:459
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "संग्रहण बनाने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:447
+#: logic/treeview/treeModel.cpp:460
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "डेमो नोट बनाने का प्रयास करते समय एक त्रुटि हुई."
 
-#: logic/treeview/treeModel.cpp:459
+#: logic/treeview/treeModel.cpp:472
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
@@ -1852,8 +1847,9 @@ msgid "Note taking and management application"
 msgstr "नोट लेने और प्रबंधन अनुप्रयोग"
 
 #: main.cpp:64
-#, kde-format
-msgid "(c) 2022-2023"
+#, fuzzy, kde-format
+#| msgid "(c) 2022-2023"
+msgid "(c) 2022-2025"
 msgstr "(सी) 2022-2023"
 
 #: main.cpp:65
@@ -1873,6 +1869,19 @@ msgstr "तुम्हारे नाम"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "आपके ईमेल"
+
+#~ msgctxt ""
+#~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
+#~ "stored'"
+#~ msgid ""
+#~ "It looks like the selected folder is not a KleverNotes storage.\n"
+#~ "\n"
+#~ "Please choose a location for your future KleverNotes storage or select an "
+#~ "existing one."
+#~ msgstr ""
+#~ "ऐसा लगता है कि चयनित फ़ोल्डर KleverNotes संग्रहण नहीं है।\n"
+#~ "\n"
+#~ "कृपया अपने भविष्य के KleverNotes संग्रहण के लिए कोई स्थान चुनें या कोई मौजूदा स्थान चुनें।"
 
 #~ msgctxt "@info, as in 'A note category'"
 #~ msgid ""
