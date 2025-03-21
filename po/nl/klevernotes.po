@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-03 11:01+0100\n"
+"PO-Revision-Date: 2025-03-20 12:59+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -213,14 +213,10 @@ msgid "Where do you want to move this folder ?"
 msgstr "Hoe wilt u deze map naar verplaatsen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:54
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Het opslagpad wijzigen"
+msgstr "Naar hoofdmap van opslag verplaatsen"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1833,10 +1829,9 @@ msgid "Note taking and management application"
 msgstr "Toepassing voor maken en beheren van notities "
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022-2025"
 
 #: main.cpp:65
 #, kde-format

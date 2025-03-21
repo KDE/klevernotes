@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-03 09:03+0100\n"
+"PO-Revision-Date: 2025-03-20 09:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -214,14 +214,10 @@ msgid "Where do you want to move this folder ?"
 msgstr "A on voleu moure esta carpeta?"
 
 #: contents/ui/dialogs/MoveDialog.qml:54
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Canvia el camí de l'emmagatzematge"
+msgstr "Mou cap a l'emmagatzematge arrel"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1831,10 +1827,9 @@ msgid "Note taking and management application"
 msgstr "Aplicació de presa i gestió de notes"
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022-2025"
 
 #: main.cpp:65
 #, kde-format
@@ -1853,18 +1848,3 @@ msgstr "Josep M. Ferrer"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
-
-#~ msgctxt ""
-#~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
-#~ "stored'"
-#~ msgid ""
-#~ "It looks like the selected folder is not a KleverNotes storage.\n"
-#~ "\n"
-#~ "Please choose a location for your future KleverNotes storage or select an "
-#~ "existing one."
-#~ msgstr ""
-#~ "Pareix que la carpeta seleccionada no és un emmagatzematge de "
-#~ "KleverNotes.\n"
-#~ "\n"
-#~ "Seleccioneu una ubicació per a l'emmagatzematge futur de KleverNotes o "
-#~ "seleccioneu-ne un ja existent."

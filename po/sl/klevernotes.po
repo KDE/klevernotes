@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-03 06:56+0100\n"
+"PO-Revision-Date: 2025-03-20 07:27+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -214,14 +214,10 @@ msgid "Where do you want to move this folder ?"
 msgstr "Kam želite premakniti to mapo ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:54
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Spremeni pot shrambe"
+msgstr "Premakni v koren shrambe"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1823,10 +1819,9 @@ msgid "Note taking and management application"
 msgstr "Aplikacija za beleženje in upravljanje"
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022-2025"
 
 #: main.cpp:65
 #, kde-format
