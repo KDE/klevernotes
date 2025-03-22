@@ -217,8 +217,9 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
     const QString name = row->getName();
     const QString todoPath = dirPath + slash + name + todoEnding;
 
+    const bool todoExists = QDir().exists(todoPath);
     if (!permanent) {
-        auto *job = isNote ? KIO::trash({QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(todoPath)}) : KIO::trash(QUrl::fromLocalFile(rowPath));
+        auto *job = isNote && todoExists ? KIO::trash({QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(todoPath)}) : KIO::trash(QUrl::fromLocalFile(rowPath));
 
         job->start();
 
@@ -226,7 +227,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
             handleRemoveItem(index, !job->error());
         });
     } else {
-        const bool succes = isNote ? (QFile(rowPath).remove() && QFile(todoPath).remove()) : QDir(rowPath).removeRecursively();
+        const bool succes = isNote && todoExists ? (QFile(rowPath).remove() && QFile(todoPath).remove()) : QDir(rowPath).removeRecursively();
 
         handleRemoveItem(index, succes);
     }
@@ -300,10 +301,11 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
 
         finalPath = newNotePath;
 
-        error = (dir.exists(newNotePath) || dir.exists(newTodoPath)) ? MoveError::NameExist : MoveError::NoError;
+        const bool todoExists = dir.exists(todoPath);
+        error = (dir.exists(newNotePath) || (todoExists && dir.exists(newTodoPath))) ? MoveError::NameExist : MoveError::NoError;
 
         if (!error) {
-            error = (dir.rename(notePath, newNotePath) && dir.rename(todoPath, newTodoPath)) ? MoveError::NoError : MoveError::FailedToMove;
+            error = (dir.rename(notePath, newNotePath) && (todoExists && dir.rename(todoPath, newTodoPath))) ? MoveError::NoError : MoveError::FailedToMove;
         }
     } else {
         error = dir.exists(newBasePath) ? MoveError::NameExist : MoveError::NoError;
@@ -335,8 +337,10 @@ void NoteTreeModel::rename(const QModelIndex &rowModelIndex, const QString &newN
         if (renamed) {
             const QString currentTodo = currentDirPath + slash + row->getName() + todoEnding;
             const QString newTodo = newPartialPath + todoEnding;
-
-            renamed = QFile(currentTodo).rename(newTodo);
+            QFile todoFile = QFile(currentTodo);
+            if (todoFile.exists()) {
+                renamed = todoFile.rename(newTodo);
+            }
         }
     } else {
         QDir dir(rowPath);
@@ -432,11 +436,7 @@ QString NoteTreeModel::makeNote(const QString &parentPath, const QString &noteNa
     const QString generalNotePath = parentPath + slash + noteName;
     const QString notePath = generalNotePath + mdEnding;
 
-    bool creationSucces = fileSystemHelper::createFile(notePath);
-    if (creationSucces) {
-        creationSucces = fileSystemHelper::createFile(generalNotePath + todoEnding);
-    }
-    if (!creationSucces) {
+    if (!fileSystemHelper::createFile(notePath)) {
         Q_EMIT errorOccurred(i18n("An error occurred while trying to create the note."));
         return {};
     }
@@ -477,10 +477,6 @@ bool NoteTreeModel::makeStorage(const QString &storagePath)
     if (QFile::copy(QStringLiteral(":/demo_note.md"), demoPath)) {
         QFile(demoPath).setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser | QFile::WriteUser | QFile::ReadGroup | QFile::WriteGroup
                                        | QFile::ReadOther | QFile::WriteOther);
-
-        if (!fileSystemHelper::createFile(generalNotePath + todoEnding)) {
-            Q_EMIT errorOccurred(demoErrorMessage);
-        }
     } else {
         // No need to return false, the user simply won't have the Demo, no big deal
         Q_EMIT errorOccurred(demoErrorMessage);

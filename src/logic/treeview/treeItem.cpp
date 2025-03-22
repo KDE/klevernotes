@@ -76,13 +76,6 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
         setMetaData();
     }
 
-    if (m_isNote) {
-        const QString todoPath = m_dir + slash + m_name + QStringLiteral(".todo.json");
-        if (!QFile(todoPath).exists()) {
-            fileSystemHelper::createFile(todoPath);
-        }
-    }
-
     const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask, QDir::Name);
 
     for (const QFileInfo &file : fileList) {
