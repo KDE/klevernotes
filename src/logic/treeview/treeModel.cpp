@@ -261,7 +261,7 @@ void NoteTreeModel::handleMoveItem(const QModelIndex &rowModelIndex,
         const int newRowIndex = newParent->childCount();
         beginMoveRows(oldParentIndex, oldRowNumber, oldRowNumber, newParentIndex, newRowIndex);
 
-        const auto oldParent = static_cast<TreeItem *>(oldParentIndex.internalPointer());
+        const auto oldParent = oldParentIndex.isValid() ? static_cast<TreeItem *>(oldParentIndex.internalPointer()) : m_rootItem.get();
         // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
         auto row = oldParent->takeUniqueChildAt(oldRowNumber);
         row->setName(name);
@@ -288,7 +288,7 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
     const QString newParentPath = newParent->getPath();
     const QString finalName = newName.isEmpty() ? rowName : newName;
     const QString newBasePath = newParentPath + slash + finalName;
-    QString finalPath = newParentPath;
+    QString finalPath = newBasePath;
 
     MoveError error;
     QDir dir;

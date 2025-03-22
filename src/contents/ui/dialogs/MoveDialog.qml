@@ -32,6 +32,7 @@ FormCard.FormCardDialog {
     }
     onClosed: {
         searchBar.text = ""
+        searchBar.selectedText = ""
     }
 
     padding: Kirigami.Units.largeSpacing * 2
