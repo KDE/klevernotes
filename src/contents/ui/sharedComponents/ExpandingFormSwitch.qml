@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 
 /*
  * BASED ON FormSwitchDelegate :
@@ -43,10 +43,9 @@ T.SwitchDelegate {
      */
     property alias descriptionItem: internalDescriptionItem
 
-    leftPadding: Kirigami.Units.gridUnit
-    topPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
-    bottomPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
-    rightPadding: Kirigami.Units.gridUnit
+    // Value coming from kirigami Addons > FormCard > Private > Units
+    horizontalPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing 
+    verticalPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing 
 
     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
@@ -93,7 +92,15 @@ T.SwitchDelegate {
             Controls.Switch {
                 id: switchItem
                 focusPolicy: Qt.NoFocus // provided by delegate
-                Layout.leftMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
+                Layout.leftMargin: Kirigami.Units.largeSpacing // Value coming from kirigami Addons > FormCard > Private > Units > "horizontalSpacing"
+
+                spacing: 0
+                contentItem: null
+
+                topPadding: 0
+                leftPadding: 0
+                rightPadding: 0
+                bottomPadding: 0
 
                 enabled: root.enabled
                 checked: root.checked
