@@ -135,20 +135,38 @@ Kirigami.Dialog {
                         i18nc("exemple","Sample text here...") + "\n" +
                         "```"
                 onClicked: clipboardHelper.text = syntax
-            } 
+            }
 
             CheatSheetEntry {
                 element: i18n("Strikethrough")
                 syntax: "~~" + i18nc("exemple, something wrong","The world is flat.") + "~~"
                 onClicked: clipboardHelper.text = syntax
-            } 
+            }
 
             CheatSheetEntry {
                 element: i18n("Task list")
                 syntax: "- [ ] " + i18nc("exemple", "Make more foo") + "\n" +
                         "- [x] " + i18nc("exemple", "Make more bar")
                 onClicked: clipboardHelper.text = syntax
-            } 
+            }
+
+            CheatSheetEntry {
+                element: i18n("Highlight")
+                syntax: "==" + i18nc("exemple", "highlighted text") + "=="
+                onClicked: clipboardHelper.text = syntax
+            }
+
+            CheatSheetEntry {
+                element: i18n("Subscript")
+                syntax: "-" + i18nc("exemple", "subscript text") + "-"
+                onClicked: clipboardHelper.text = syntax
+            }
+
+            CheatSheetEntry {
+                element: i18n("Superscript")
+                syntax: "^" + i18nc("exemple", "superscript text") + "^"
+                onClicked: clipboardHelper.text = syntax
+            }
         }
 
         FormCard.FormHeader {
