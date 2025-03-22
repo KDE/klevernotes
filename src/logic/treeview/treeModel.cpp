@@ -180,7 +180,7 @@ QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, con
 void NoteTreeModel::handleRemoveItem(const QModelIndex &index, const bool succes)
 {
     if (succes) {
-        const QModelIndex parentModelIndex = parent(index);
+        QModelIndex parentModelIndex = parent(index);
 
         const auto row = static_cast<TreeItem *>(index.internalPointer());
         const int rowIndex = row->row();
@@ -189,6 +189,7 @@ void NoteTreeModel::handleRemoveItem(const QModelIndex &index, const bool succes
         row->remove();
         endRemoveRows();
 
+        parentModelIndex = parentModelIndex.isValid() ? parentModelIndex : createIndex(m_rootItem->row(), 0, m_rootItem.get());
         const auto parentRow = static_cast<TreeItem *>(parentModelIndex.internalPointer());
 
         QModelIndex needFocus = parentModelIndex;
@@ -221,7 +222,7 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
 
         job->start();
 
-        connect(job, &KJob::result, this, [job, &index, this] {
+        connect(job, &KJob::result, this, [job, index, this] {
             handleRemoveItem(index, !job->error());
         });
     } else {
