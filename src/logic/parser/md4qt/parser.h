@@ -5285,7 +5285,9 @@ inline void Parser<Trait>::finishRule5HtmlTag(typename Delims::iterator it, type
 template<class Trait>
 inline void Parser<Trait>::finishRule6HtmlTag(typename Delims::iterator it, typename Delims::iterator last, TextParsingOpts<Trait> &po)
 {
-    po.m_html.m_onLine = (it != last ? it->m_pos == skipSpaces<Trait>(0, po.m_fr.m_data[it->m_line].first.asString()) : true);
+    if (!po.m_html.m_onLine) {
+        po.m_html.m_onLine = (it != last ? it->m_pos == skipSpaces<Trait>(0, po.m_fr.m_data[it->m_line].first.asString()) : true);
+    }
 
     if (po.m_html.m_onLine) {
         eatRawHtmlTillEmptyLine(it, last, po.m_line, po.m_pos, po, 6, true, true);
