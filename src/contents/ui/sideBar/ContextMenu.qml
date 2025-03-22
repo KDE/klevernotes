@@ -97,6 +97,7 @@ Controls.Menu {
 
         treeView: contextMenu.treeView
         isNote: treeView.currentClickedItem.isNote
+        itemName: treeView.currentClickedItem.name
 
         onApplied: if ((clickedIndex || moveDialog.moveToRoot) && treeView.currentModelIndex) {
             applicationWindow().saveState()
