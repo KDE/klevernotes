@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-04 09:21+0100\n"
+"PO-Revision-Date: 2025-03-21 12:07+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -212,14 +212,10 @@ msgid "Where do you want to move this folder ?"
 msgstr "Vers quel emplacement voulez-vous vraiment déplacer ce dossier ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:54
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Modifier l'emplacement de la zone d'enregistrement"
+msgstr "Déplacer vers la racine de l'emplacement d'enregistrement"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1847,10 +1843,9 @@ msgid "Note taking and management application"
 msgstr "Application de prise et de gestion de notes."
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022 - 2025"
 
 #: main.cpp:65
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:42+0000\n"
-"PO-Revision-Date: 2025-03-15 22:36+0100\n"
+"PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -213,14 +213,10 @@ msgid "Where do you want to move this folder ?"
 msgstr "Kien vi volas movi ĉi dosierujon ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:54
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Ŝanĝi la konservejan vojon"
+msgstr "Movi al radiko de konservejo"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1817,10 +1813,9 @@ msgid "Note taking and management application"
 msgstr "Not-prena kaj -administra aplikaĵo"
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022-2025"
 
 #: main.cpp:65
 #, kde-format
@@ -1839,17 +1834,3 @@ msgstr "Oliver Kellogg"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "olivermkellogg@gmail.com"
-
-#~ msgctxt ""
-#~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
-#~ "stored'"
-#~ msgid ""
-#~ "It looks like the selected folder is not a KleverNotes storage.\n"
-#~ "\n"
-#~ "Please choose a location for your future KleverNotes storage or select an "
-#~ "existing one."
-#~ msgstr ""
-#~ "Ŝajnas, ke la elektita dosierujo ne estas KleverNotes-konservejo.\n"
-#~ "\n"
-#~ "Bonvolu elektu lokon por via estonta KleverNotes-konservejo aŭ elektu "
-#~ "ekzistantan."
