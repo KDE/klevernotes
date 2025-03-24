@@ -36,10 +36,10 @@ Kirigami.Page {
                     ? editorView.actions 
                     : todoView.actions
     
-    onCurrentlySelectedChanged: if (currentlySelected.isNote) {
+    onCurrentlySelectedChanged: if (currentlySelected) {
         EditorHandler.noteDir = currentlySelected.dir
         const editor = editorView.editor
-        const oldPath = editorView.path
+        const oldPath = editor.path
         const text = editor.text
         editor.saveNote(text, oldPath)
     }
@@ -81,7 +81,7 @@ Kirigami.Page {
 
         ToDoView {
             id: todoView
-            path: hasNote ? currentlySelected.path + ".todo.json" : ""
+            path: hasNote ? currentlySelected.path.slice(0, -("md".length)) + "todo.json" : ""
             visible: 0.5 < opacity
             opacity: 0
             Layout.fillHeight: true

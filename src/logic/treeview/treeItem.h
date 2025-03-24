@@ -114,6 +114,11 @@ private:
      */
     void setMetaData();
 
+    /*
+     * Change the parent path part in the path
+     */
+    void changeParentPathPart(const QString &newPart);
+
 private:
     // Position in tree
     std::vector<std::unique_ptr<TreeItem>> m_children;

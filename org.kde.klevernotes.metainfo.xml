@@ -242,6 +242,20 @@
     <color type="primary" scheme_preference="dark">#254545</color>
   </branding>
   <releases>
+    <release version="1.2.2" date="2025-03-24">
+      <description>
+        <p>Bug fixing release:</p>
+        <ul>
+          <li>Fix crash when deleting note</li>
+          <li>Fix path issue when moving note</li>
+          <li>Do not create todo file unless necessary</li>
+          <li>Align ExpandingFormSwitch style to FormSwitchDelegate style</li>
+          <li>Improve move dialog design</li>
+          <li>Add cheatsheet entries for extending syntax</li>
+          <li>Update md4qt</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.1" date="2025-03-19">
       <description>
         <p>Bug fixing release:</p>

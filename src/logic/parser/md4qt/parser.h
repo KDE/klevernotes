@@ -5285,7 +5285,9 @@ inline void Parser<Trait>::finishRule5HtmlTag(typename Delims::iterator it, type
 template<class Trait>
 inline void Parser<Trait>::finishRule6HtmlTag(typename Delims::iterator it, typename Delims::iterator last, TextParsingOpts<Trait> &po)
 {
-    po.m_html.m_onLine = (it != last ? it->m_pos == skipSpaces<Trait>(0, po.m_fr.m_data[it->m_line].first.asString()) : true);
+    if (!po.m_html.m_onLine) {
+        po.m_html.m_onLine = (it != last ? it->m_pos == skipSpaces<Trait>(0, po.m_fr.m_data[it->m_line].first.asString()) : true);
+    }
 
     if (po.m_html.m_onLine) {
         eatRawHtmlTillEmptyLine(it, last, po.m_line, po.m_pos, po, 6, true, true);
@@ -5770,39 +5772,31 @@ Parser<Trait>::readTextBetweenSquareBrackets(typename Delims::iterator start,
 
             return {{{po.m_fr.m_data.at(start->m_line).first.sliced(p, n), {po.m_fr.m_data.at(start->m_line).second.m_lineNumber}}}, it};
         } else {
-            if (it->m_line - start->m_line < 3) {
-                typename MdBlock<Trait>::Data res;
-                res.push_back({po.m_fr.m_data.at(start->m_line).first.sliced(start->m_pos + start->m_len), po.m_fr.m_data.at(start->m_line).second});
+            typename MdBlock<Trait>::Data res;
+            res.push_back({po.m_fr.m_data.at(start->m_line).first.sliced(start->m_pos + start->m_len), po.m_fr.m_data.at(start->m_line).second});
 
-                long long int i = start->m_line + 1;
+            long long int i = start->m_line + 1;
 
-                for (; i <= it->m_line; ++i) {
-                    if (i == it->m_line) {
-                        res.push_back({po.m_fr.m_data.at(i).first.sliced(0, it->m_pos), po.m_fr.m_data.at(i).second});
-                    } else {
-                        res.push_back({po.m_fr.m_data.at(i).first, po.m_fr.m_data.at(i).second});
-                    }
+            for (; i <= it->m_line; ++i) {
+                if (i == it->m_line) {
+                    res.push_back({po.m_fr.m_data.at(i).first.sliced(0, it->m_pos), po.m_fr.m_data.at(i).second});
+                } else {
+                    res.push_back({po.m_fr.m_data.at(i).first, po.m_fr.m_data.at(i).second});
                 }
-
-                if (pos) {
-                    long long int startPos, startLine, endPos, endLine;
-                    std::tie(startPos, startLine) = nextPosition(po.m_fr,
-                                                                 po.m_fr.m_data[start->m_line].first.virginPos(start->m_pos + start->m_len - 1),
-                                                                 po.m_fr.m_data[start->m_line].second.m_lineNumber);
-                    std::tie(endPos, endLine) =
-                        prevPosition(po.m_fr, po.m_fr.m_data[it->m_line].first.virginPos(it->m_pos), po.m_fr.m_data[it->m_line].second.m_lineNumber);
-
-                    *pos = {startPos, startLine, endPos, endLine};
-                }
-
-                return {res, it};
-            } else {
-                if (!doNotCreateTextOnFail) {
-                    makeText(start->m_line, start->m_pos + start->m_len, po);
-                }
-
-                return {{}, start};
             }
+
+            if (pos) {
+                long long int startPos, startLine, endPos, endLine;
+                std::tie(startPos, startLine) = nextPosition(po.m_fr,
+                                                             po.m_fr.m_data[start->m_line].first.virginPos(start->m_pos + start->m_len - 1),
+                                                             po.m_fr.m_data[start->m_line].second.m_lineNumber);
+                std::tie(endPos, endLine) =
+                    prevPosition(po.m_fr, po.m_fr.m_data[it->m_line].first.virginPos(it->m_pos), po.m_fr.m_data[it->m_line].second.m_lineNumber);
+
+                *pos = {startPos, startLine, endPos, endLine};
+            }
+
+            return {res, it};
         }
     } else {
         if (!doNotCreateTextOnFail) {

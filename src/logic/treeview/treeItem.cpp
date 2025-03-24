@@ -76,13 +76,6 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
         setMetaData();
     }
 
-    if (m_isNote) {
-        const QString todoPath = m_dir + slash + m_name + QStringLiteral(".todo.json");
-        if (!QFile(todoPath).exists()) {
-            fileSystemHelper::createFile(todoPath);
-        }
-    }
-
     const QFileInfoList fileList = QDir(path).entryInfoList(QDir::Filter::NoDotAndDotDot | QDir::Filter::AllEntries | QDir::Filter::AccessMask, QDir::Name);
 
     for (const QFileInfo &file : fileList) {
@@ -298,10 +291,23 @@ QString TreeItem::getName() const
     return m_name;
 }
 
+void TreeItem::changeParentPathPart(const QString &newPart)
+{
+    QString newPath = newPart + slash + m_name;
+    if (m_isNote) {
+        newPath += QStringLiteral(".md");
+    }
+
+    setPath(newPath);
+}
+
 void TreeItem::setPath(const QString &path)
 {
     m_path = path;
     m_dir = m_isNote ? QFileInfo(path).dir().path() : m_path;
+    for (const auto &child : m_children) {
+        child->changeParentPathPart(m_path);
+    }
 }
 
 QString TreeItem::getPath() const

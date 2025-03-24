@@ -133,7 +133,8 @@ ToolBar {
         icon.name: "folder-new-symbolic" 
 
         onTriggered: {
-            mainToolBar.getName(false, makeFolder, true)
+            const parentPath = treeView.currentClickedItem ? treeView.currentClickedItem.dir : Config.storagePath
+            mainToolBar.getName(false, makeFolder, true, parentPath)
         }
 
         function makeFolder(name: string): void {
@@ -150,7 +151,8 @@ ToolBar {
         icon.name: "document-new-symbolic"
 
         onTriggered: {
-            mainToolBar.getName(true, makeNote, true)
+            const parentPath = treeView.currentClickedItem ? treeView.currentClickedItem.dir : Config.storagePath
+            mainToolBar.getName(true, makeNote, true, parentPath)
         }
 
         function makeNote(name: string): void {
@@ -164,8 +166,8 @@ ToolBar {
         shortcut: "Ctrl+R"
         icon.name: "edit-rename-symbolic"
 
-        onTriggered: {
-            mainToolBar.getName(treeView.currentClickedItem.isNote, renameNote, false)
+        onTriggered: if (treeView.currentClickedItem) {
+            mainToolBar.getName(treeView.currentClickedItem.isNote, renameNote, false, treeView.currentClickedItem.dir)
         }
 
         function renameNote(name: string): void {
@@ -201,16 +203,21 @@ ToolBar {
     }
 
     function makeRow(isNote: bool, name: string): void {
-        const parentModelIndex = treeView.currentClickedItem.isNote 
-            ? treeView.model.parent(treeView.currentModelIndex)
-            : mainToolBar.treeView.currentModelIndex
+        let newModelIndex;
+        if (treeView.currentClickedItem) {
+            const parentModelIndex = treeView.currentClickedItem.isNote 
+                ? treeView.model.parent(treeView.currentModelIndex)
+                : mainToolBar.treeView.currentModelIndex
 
-        const newModelIndex = treeView.model.addRow(name, isNote, parentModelIndex)
+            newModelIndex = treeView.model.addRow(name, isNote, parentModelIndex)
+        } else {
+            newModelIndex = treeView.model.addRow(name, isNote)
+        }
         askForFocus(newModelIndex)
     }
 
-    // avoid typing `name` and `parentPath` in case they're undefined
-    function getName(isNote: bool, callBackFunc: var, newItem: bool, name, parentPath): void {
+    // avoid typing `name` in case they're undefined
+    function getName(isNote: bool, callBackFunc: var, newItem: bool, parentPath: string, name): void {
         let defaultName
         if (newItem) {
             if (isNote) {
@@ -225,7 +232,7 @@ ToolBar {
         namingDialog.isNote = isNote
         namingDialog.shownName = defaultName
         namingDialog.textFieldText = defaultName
-        namingDialog.parentPath = parentPath ? parentPath : treeView.currentClickedItem.dir
+        namingDialog.parentPath = parentPath
         namingDialog.callBackFunc = callBackFunc
         namingDialog.newItem = newItem
         namingDialog.open()

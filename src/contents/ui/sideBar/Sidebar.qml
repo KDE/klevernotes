@@ -193,7 +193,7 @@ Kirigami.OverlayDrawer {
                         onMoveError: function (rowModelIndex, newParentIndex, isNote, name, parentPath) {
                             treeView.movingRowModelIndex = rowModelIndex
                             treeView.movingRowNewParentIndex = newParentIndex
-                            actionBar.getName(isNote, treeView.moveErrorRename, false, name, parentPath)
+                            actionBar.getName(isNote, treeView.moveErrorRename, false, parentPath, name)
                             actionBar.forceError("exist")
                         }
                         onForceFocus: function (rowModelIndex) {

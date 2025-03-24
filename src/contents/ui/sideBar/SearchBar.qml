@@ -51,7 +51,8 @@ KirigamiComponents.SearchPopupField {
 
                 return RegExp(root.text, "i").test(rowName) && (
                     inSideBar || (
-                        !rowPath.includes(treeView.currentClickedItem.path) // Can't move to children
+                        rowPath !== treeView.currentClickedItem.path
+                        && !rowPath.includes(treeView.currentClickedItem.path + "/") // Can't move to children
                         && rowPath !== treeView.currentClickedItem.parentPath // No point in moving to parent
                     )    
                 )
