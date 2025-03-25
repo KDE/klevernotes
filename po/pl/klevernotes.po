@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-25 00:42+0000\n"
 "PO-Revision-Date: 2024-12-21 11:30+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -204,20 +204,19 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "Notatka:"
 
-#: contents/ui/dialogs/MoveDialog.qml:24
-#, fuzzy, kde-format
-#| msgid "Move"
+#: contents/ui/dialogs/MoveDialog.qml:25
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
-msgid "Move"
-msgstr "Przenieś"
+msgid "Move <filename>%1</filename>?"
+msgstr ""
 
-#: contents/ui/dialogs/MoveDialog.qml:44
+#: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "Gdzie chcesz przenieść tę notatkę ?"
 
-#: contents/ui/dialogs/MoveDialog.qml:45
+#: contents/ui/dialogs/MoveDialog.qml:42
 #, fuzzy, kde-format
 #| msgctxt "@subtitle:dialog"
 #| msgid "Where do you want to move this note ?"
@@ -225,7 +224,7 @@ msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
 msgstr "Gdzie chcesz przenieść tę notatkę ?"
 
-#: contents/ui/dialogs/MoveDialog.qml:54
+#: contents/ui/dialogs/MoveDialog.qml:51
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@label:button, Storage as in 'the folder where all the notes will be "
@@ -234,6 +233,14 @@ msgstr "Gdzie chcesz przenieść tę notatkę ?"
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
 msgstr "Zmień ścieżkę pamięci"
+
+#: contents/ui/dialogs/MoveDialog.qml:64
+#, fuzzy, kde-format
+#| msgctxt "@label:switch"
+#| msgid "Search headers"
+msgctxt "@label:dialog"
+msgid "Search for a folder:"
+msgstr "Przeszukaj nagłówki"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -853,7 +860,7 @@ msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "Pasek boczny"
 
-#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
+#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
@@ -868,7 +875,7 @@ msgctxt "@label:textbox"
 msgid "New Folder name:"
 msgstr "Nazwa nowej notatki:"
 
-#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
+#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
@@ -1338,12 +1345,12 @@ msgctxt "@item:menu"
 msgid "Properties"
 msgstr ""
 
-#: contents/ui/sideBar/SearchBar.qml:76
+#: contents/ui/sideBar/SearchBar.qml:77
 #, kde-format
 msgid "From"
 msgstr "Od"
 
-#: contents/ui/sideBar/SearchBar.qml:123
+#: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
 msgstr "Nie ma żadnych wyników wyszukiwania"
@@ -1604,25 +1611,64 @@ msgctxt "exemple"
 msgid "Make more bar"
 msgstr "Zrób więcej bar"
 
-#: contents/ui/textEditor/CheatSheet.qml:156
+#: contents/ui/textEditor/CheatSheet.qml:154
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Highlight"
+msgid "Highlight"
+msgstr "Podświetlenie"
+
+#: contents/ui/textEditor/CheatSheet.qml:155
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter style"
+msgctxt "exemple"
+msgid "highlighted text"
+msgstr "Wygląd podświetlenia"
+
+#: contents/ui/textEditor/CheatSheet.qml:160
+#, kde-format
+msgid "Subscript"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:161
+#, kde-format
+msgctxt "exemple"
+msgid "subscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:166
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Description:"
+msgid "Superscript"
+msgstr "Opis:"
+
+#: contents/ui/textEditor/CheatSheet.qml:167
+#, kde-format
+msgctxt "exemple"
+msgid "superscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "Wtyczki KleverNotes"
 
-#: contents/ui/textEditor/CheatSheet.qml:165
+#: contents/ui/textEditor/CheatSheet.qml:183
 #, kde-format
 msgid "Note link"
 msgstr "Odniesienie do notatki"
 
-#: contents/ui/textEditor/CheatSheet.qml:167
+#: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
 msgstr ""
 
 #. i18nc("exemple", "header")
-#: contents/ui/textEditor/CheatSheet.qml:170
+#: contents/ui/textEditor/CheatSheet.qml:188
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
@@ -1794,7 +1840,7 @@ msgstr "Własna"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Wystąpił błąd przy próbie skopiowania tego PDFa."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:462
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, fuzzy, kde-format
 #| msgctxt "@label:button, as in 'A note'"
 #| msgid "Note"
@@ -1802,43 +1848,43 @@ msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "Notatka"
 
-#: logic/treeview/treeModel.cpp:200
+#: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Wystąpił błąd przy próbie usunięcia tej rzeczy."
 
-#: logic/treeview/treeModel.cpp:249
+#: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Wystąpił błąd przy próbie przeniesienia tej rzeczy."
 
-#: logic/treeview/treeModel.cpp:349
+#: logic/treeview/treeModel.cpp:354
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Wystąpił błąd przy próbie przemianowania tej rzeczy."
 
-#: logic/treeview/treeModel.cpp:439
+#: logic/treeview/treeModel.cpp:440
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Wystąpił błąd przy próbie utworzenia notatki."
 
-#: logic/treeview/treeModel.cpp:451
+#: logic/treeview/treeModel.cpp:452
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
 msgid "An error occurred while trying to create this folder."
 msgstr "Wystąpił błąd przy próbie utworzenia tej rzeczy."
 
-#: logic/treeview/treeModel.cpp:459
+#: logic/treeview/treeModel.cpp:460
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Wystąpił błąd przy próbie utworzenia pamięci."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Wystąpił błąd przy próbie utworzenia notatki pokazowej."
 
-#: logic/treeview/treeModel.cpp:472
+#: logic/treeview/treeModel.cpp:473
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
@@ -1879,6 +1925,12 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "lukasz.wojnilowicz@gmail.com"
 
+#, fuzzy
+#~| msgid "Move"
+#~ msgctxt "@title:dialog, to move a folder/note"
+#~ msgid "Move"
+#~ msgstr "Przenieś"
+
 #~ msgctxt ""
 #~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 #~ "stored'"
@@ -1913,10 +1965,6 @@ msgstr "lukasz.wojnilowicz@gmail.com"
 #~ msgctxt "@title:dialog"
 #~ msgid "This action can not be reverted."
 #~ msgstr "Nie będzie można wycofać tego działania."
-
-#~ msgctxt "@label:switch"
-#~ msgid "Search headers"
-#~ msgstr "Przeszukaj nagłówki"
 
 #~ msgctxt "@label:textbox"
 #~ msgid "Header:"

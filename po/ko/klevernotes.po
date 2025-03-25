@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-25 00:42+0000\n"
 "PO-Revision-Date: 2024-12-24 17:13+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -202,20 +202,19 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "메모:"
 
-#: contents/ui/dialogs/MoveDialog.qml:24
-#, fuzzy, kde-format
-#| msgid "Move"
+#: contents/ui/dialogs/MoveDialog.qml:25
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
-msgid "Move"
-msgstr "이동"
+msgid "Move <filename>%1</filename>?"
+msgstr ""
 
-#: contents/ui/dialogs/MoveDialog.qml:44
+#: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "이 메모를 어디로 이동하시겠습니까?"
 
-#: contents/ui/dialogs/MoveDialog.qml:45
+#: contents/ui/dialogs/MoveDialog.qml:42
 #, fuzzy, kde-format
 #| msgctxt "@subtitle:dialog"
 #| msgid "Where do you want to move this note ?"
@@ -223,7 +222,7 @@ msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
 msgstr "이 메모를 어디로 이동하시겠습니까?"
 
-#: contents/ui/dialogs/MoveDialog.qml:54
+#: contents/ui/dialogs/MoveDialog.qml:51
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@label:button, Storage as in 'the folder where all the notes will be "
@@ -232,6 +231,14 @@ msgstr "이 메모를 어디로 이동하시겠습니까?"
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
 msgstr "저장소 경로 변경"
+
+#: contents/ui/dialogs/MoveDialog.qml:64
+#, fuzzy, kde-format
+#| msgctxt "@label:switch"
+#| msgid "Search headers"
+msgctxt "@label:dialog"
+msgid "Search for a folder:"
+msgstr "머리글 검색"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -852,7 +859,7 @@ msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "사이드바"
 
-#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
+#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
@@ -867,7 +874,7 @@ msgctxt "@label:textbox"
 msgid "New Folder name:"
 msgstr "새 메모 이름:"
 
-#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
+#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
@@ -1337,12 +1344,12 @@ msgctxt "@item:menu"
 msgid "Properties"
 msgstr ""
 
-#: contents/ui/sideBar/SearchBar.qml:76
+#: contents/ui/sideBar/SearchBar.qml:77
 #, kde-format
 msgid "From"
 msgstr "검색 위치"
 
-#: contents/ui/sideBar/SearchBar.qml:123
+#: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
 msgstr "검색 결과 없음"
@@ -1603,25 +1610,64 @@ msgctxt "exemple"
 msgid "Make more bar"
 msgstr "저쩌구 더 만들기"
 
-#: contents/ui/textEditor/CheatSheet.qml:156
+#: contents/ui/textEditor/CheatSheet.qml:154
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Highlight"
+msgid "Highlight"
+msgstr "강조"
+
+#: contents/ui/textEditor/CheatSheet.qml:155
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter style"
+msgctxt "exemple"
+msgid "highlighted text"
+msgstr "강조 도구 스타일"
+
+#: contents/ui/textEditor/CheatSheet.qml:160
+#, kde-format
+msgid "Subscript"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:161
+#, kde-format
+msgctxt "exemple"
+msgid "subscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:166
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Description:"
+msgid "Superscript"
+msgstr "설명:"
+
+#: contents/ui/textEditor/CheatSheet.qml:167
+#, kde-format
+msgctxt "exemple"
+msgid "superscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "KleverNotes 플러그인"
 
-#: contents/ui/textEditor/CheatSheet.qml:165
+#: contents/ui/textEditor/CheatSheet.qml:183
 #, kde-format
 msgid "Note link"
 msgstr "메모 링크"
 
-#: contents/ui/textEditor/CheatSheet.qml:167
+#: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
 msgstr ""
 
 #. i18nc("exemple", "header")
-#: contents/ui/textEditor/CheatSheet.qml:170
+#: contents/ui/textEditor/CheatSheet.qml:188
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
@@ -1792,7 +1838,7 @@ msgstr "사용자 정의"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "이 PDF를 복사하는 중 오류가 발생했습니다."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:462
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, fuzzy, kde-format
 #| msgctxt "@label:button, as in 'A note'"
 #| msgid "Note"
@@ -1800,43 +1846,43 @@ msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "메모"
 
-#: logic/treeview/treeModel.cpp:200
+#: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "이 항목을 삭제하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:249
+#: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "이 항목을 이동하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:349
+#: logic/treeview/treeModel.cpp:354
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "이 항목의 이름을 변경하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:439
+#: logic/treeview/treeModel.cpp:440
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "메모를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:451
+#: logic/treeview/treeModel.cpp:452
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
 msgid "An error occurred while trying to create this folder."
 msgstr "이 항목을 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:459
+#: logic/treeview/treeModel.cpp:460
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "저장소를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "데모 메모를 생성하는 중 오류가 발생했습니다."
 
-#: logic/treeview/treeModel.cpp:472
+#: logic/treeview/treeModel.cpp:473
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
@@ -1877,6 +1923,12 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
+#, fuzzy
+#~| msgid "Move"
+#~ msgctxt "@title:dialog, to move a folder/note"
+#~ msgid "Move"
+#~ msgstr "이동"
+
 #~ msgctxt ""
 #~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 #~ "stored'"
@@ -1911,10 +1963,6 @@ msgstr "kde@peremen.name"
 #~ msgctxt "@title:dialog"
 #~ msgid "This action can not be reverted."
 #~ msgstr "이 작업은 취소할 수 없습니다."
-
-#~ msgctxt "@label:switch"
-#~ msgid "Search headers"
-#~ msgstr "머리글 검색"
 
 #~ msgctxt "@label:textbox"
 #~ msgid "Header:"

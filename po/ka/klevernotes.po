@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-25 00:42+0000\n"
 "PO-Revision-Date: 2025-03-20 03:29+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -194,29 +194,39 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "შენიშვნა:"
 
-#: contents/ui/dialogs/MoveDialog.qml:24
-#, kde-format
+#: contents/ui/dialogs/MoveDialog.qml:25
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title"
+#| msgid "<filename>%1</filename> properties"
 msgctxt "@title:dialog, to move a folder/note"
-msgid "Move"
-msgstr "გადატანა"
+msgid "Move <filename>%1</filename>?"
+msgstr "<filename>%1</filename>-ის თვისებები"
 
-#: contents/ui/dialogs/MoveDialog.qml:44
+#: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "სად გნებავთ, ეს შენიშვნა გადაიტანოთ?"
 
-#: contents/ui/dialogs/MoveDialog.qml:45
+#: contents/ui/dialogs/MoveDialog.qml:42
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
 msgstr "სად გნებავთ, ეს საქაღალდე გადაიტანოთ?"
 
-#: contents/ui/dialogs/MoveDialog.qml:54
+#: contents/ui/dialogs/MoveDialog.qml:51
 #, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
 msgstr "გადატანა საცავის ძირითად საქაღალდეში"
+
+#: contents/ui/dialogs/MoveDialog.qml:64
+#, fuzzy, kde-format
+#| msgctxt "@label:switch"
+#| msgid "Search headers"
+msgctxt "@label:dialog"
+msgid "Search for a folder:"
+msgstr "თავსართების ძებნა"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -839,7 +849,7 @@ msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "გვერდითი ზოლი"
 
-#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
+#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
 #, kde-format
 msgid "New Folder"
 msgstr "ახალი საქაღალდე"
@@ -850,7 +860,7 @@ msgctxt "@label:textbox"
 msgid "New Folder name:"
 msgstr "ახალი საქაღალდის სახელი:"
 
-#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
+#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
 msgid "New Note"
 msgstr "ახალი შენიშვნა"
@@ -1310,12 +1320,12 @@ msgctxt "@item:menu"
 msgid "Properties"
 msgstr "თვისებები"
 
-#: contents/ui/sideBar/SearchBar.qml:76
+#: contents/ui/sideBar/SearchBar.qml:77
 #, kde-format
 msgid "From"
 msgstr "ვისგან"
 
-#: contents/ui/sideBar/SearchBar.qml:123
+#: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
 msgstr "ძებნის შედეგების გარეშე"
@@ -1576,25 +1586,64 @@ msgctxt "exemple"
 msgid "Make more bar"
 msgstr "მეტი ვირის გაკეთება"
 
-#: contents/ui/textEditor/CheatSheet.qml:156
+#: contents/ui/textEditor/CheatSheet.qml:154
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Highlight"
+msgid "Highlight"
+msgstr "გამოკვეთა"
+
+#: contents/ui/textEditor/CheatSheet.qml:155
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter style"
+msgctxt "exemple"
+msgid "highlighted text"
+msgstr "გამომკვეთის სტილი"
+
+#: contents/ui/textEditor/CheatSheet.qml:160
+#, kde-format
+msgid "Subscript"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:161
+#, kde-format
+msgctxt "exemple"
+msgid "subscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:166
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Description:"
+msgid "Superscript"
+msgstr "აღწერა:"
+
+#: contents/ui/textEditor/CheatSheet.qml:167
+#, kde-format
+msgctxt "exemple"
+msgid "superscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "KleverNotes-ის დამატებები"
 
-#: contents/ui/textEditor/CheatSheet.qml:165
+#: contents/ui/textEditor/CheatSheet.qml:183
 #, kde-format
 msgid "Note link"
 msgstr "შენიშვნის ბმა"
 
-#: contents/ui/textEditor/CheatSheet.qml:167
+#: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
 msgstr "<ბილიკი შენიშვნამდე>/<შენიშვნის სახელი>"
 
 #. i18nc("exemple", "header")
-#: contents/ui/textEditor/CheatSheet.qml:170
+#: contents/ui/textEditor/CheatSheet.qml:188
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
@@ -1766,48 +1815,48 @@ msgstr "ხელით მითითება"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "შეცდომა ამ PDF ფაილის კოპირებისას."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:462
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "შენიშვნები"
 
-#: logic/treeview/treeModel.cpp:200
+#: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "შეცდომა ამ ელემენტის წაშლისას."
 
-#: logic/treeview/treeModel.cpp:249
+#: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "შეცდომა ამ ელემენტის გადატანისას."
 
-#: logic/treeview/treeModel.cpp:349
+#: logic/treeview/treeModel.cpp:354
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "შეცდომ ამ ელემენტის სახელის გადარქმევისას."
 
-#: logic/treeview/treeModel.cpp:439
+#: logic/treeview/treeModel.cpp:440
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "შეცდომა ამ შენიშვნის შექმნისას."
 
-#: logic/treeview/treeModel.cpp:451
+#: logic/treeview/treeModel.cpp:452
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr "შეცდომა ამ საქაღალდის შექმნისას."
 
-#: logic/treeview/treeModel.cpp:459
+#: logic/treeview/treeModel.cpp:460
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "შეცდომა საცავის შექმნისას."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "შეცდომა ამ დემო შენიშვნის შექმნისას."
 
-#: logic/treeview/treeModel.cpp:472
+#: logic/treeview/treeModel.cpp:473
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
@@ -1847,6 +1896,10 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
+#~ msgctxt "@title:dialog, to move a folder/note"
+#~ msgid "Move"
+#~ msgstr "გადატანა"
+
 #~ msgctxt ""
 #~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 #~ "stored'"
@@ -1881,10 +1934,6 @@ msgstr "Temuri.doghonadze@gmail.com"
 #~ msgctxt "@title:dialog"
 #~ msgid "This action can not be reverted."
 #~ msgstr "ეს ქმედება შეუქცევადია."
-
-#~ msgctxt "@label:switch"
-#~ msgid "Search headers"
-#~ msgstr "თავსართების ძებნა"
 
 #~ msgctxt "@label:textbox"
 #~ msgid "Header:"

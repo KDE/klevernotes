@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-25 00:42+0000\n"
 "PO-Revision-Date: 2024-11-06 20:41+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -205,22 +205,21 @@ msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "Muistiinpano:"
 
-#: contents/ui/dialogs/MoveDialog.qml:24
-#, fuzzy, kde-format
-#| msgid "Move"
+#: contents/ui/dialogs/MoveDialog.qml:25
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
-msgid "Move"
-msgstr "Siirrä"
+msgid "Move <filename>%1</filename>?"
+msgstr ""
 
 # *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#: contents/ui/dialogs/MoveDialog.qml:44
+#: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "Minne haluat muistiinpanon siirtää?"
 
 # *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#: contents/ui/dialogs/MoveDialog.qml:45
+#: contents/ui/dialogs/MoveDialog.qml:42
 #, fuzzy, kde-format
 #| msgctxt "@subtitle:dialog"
 #| msgid "Where do you want to move this note ?"
@@ -228,7 +227,7 @@ msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
 msgstr "Minne haluat muistiinpanon siirtää?"
 
-#: contents/ui/dialogs/MoveDialog.qml:54
+#: contents/ui/dialogs/MoveDialog.qml:51
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@label:button, Storage as in 'the folder where all the notes will be "
@@ -237,6 +236,14 @@ msgstr "Minne haluat muistiinpanon siirtää?"
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
 msgstr "Vaihda talletustilan sijaintia"
+
+#: contents/ui/dialogs/MoveDialog.qml:64
+#, fuzzy, kde-format
+#| msgctxt "@label:switch"
+#| msgid "Search headers"
+msgctxt "@label:dialog"
+msgid "Search for a folder:"
+msgstr "Etsi ylätunnisteesta"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -853,7 +860,7 @@ msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "Sivupalkki"
 
-#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:219
+#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
@@ -868,7 +875,7 @@ msgctxt "@label:textbox"
 msgid "New Folder name:"
 msgstr "Uuden muistiinpanon nimi:"
 
-#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:217
+#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, fuzzy, kde-format
 #| msgctxt "as in 'A note'"
 #| msgid "New note"
@@ -1340,12 +1347,12 @@ msgid "Properties"
 msgstr ""
 
 # *** TARKISTA: Pitäisi tietää, mihin tämä on selite.
-#: contents/ui/sideBar/SearchBar.qml:76
+#: contents/ui/sideBar/SearchBar.qml:77
 #, kde-format
 msgid "From"
 msgstr "Mistä:"
 
-#: contents/ui/sideBar/SearchBar.qml:123
+#: contents/ui/sideBar/SearchBar.qml:124
 #, kde-format
 msgid "No search results"
 msgstr "Ei hakutuloksia"
@@ -1606,25 +1613,64 @@ msgctxt "exemple"
 msgid "Make more bar"
 msgstr "Tee lisää tätä"
 
-#: contents/ui/textEditor/CheatSheet.qml:156
+#: contents/ui/textEditor/CheatSheet.qml:154
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Highlight"
+msgid "Highlight"
+msgstr "Korostus"
+
+#: contents/ui/textEditor/CheatSheet.qml:155
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter style"
+msgctxt "exemple"
+msgid "highlighted text"
+msgstr "Korostustyyli"
+
+#: contents/ui/textEditor/CheatSheet.qml:160
+#, kde-format
+msgid "Subscript"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:161
+#, kde-format
+msgctxt "exemple"
+msgid "subscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:166
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Description:"
+msgid "Superscript"
+msgstr "Kuvaus:"
+
+#: contents/ui/textEditor/CheatSheet.qml:167
+#, kde-format
+msgctxt "exemple"
+msgid "superscript text"
+msgstr ""
+
+#: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "KleverNotes-liitännäiset"
 
-#: contents/ui/textEditor/CheatSheet.qml:165
+#: contents/ui/textEditor/CheatSheet.qml:183
 #, kde-format
 msgid "Note link"
 msgstr "Muistiinpanolinkki"
 
-#: contents/ui/textEditor/CheatSheet.qml:167
+#: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
 msgstr ""
 
 #. i18nc("exemple", "header")
-#: contents/ui/textEditor/CheatSheet.qml:170
+#: contents/ui/textEditor/CheatSheet.qml:188
 #, kde-format
 msgctxt "exemple"
 msgid "displayed name"
@@ -1795,7 +1841,7 @@ msgstr "Mukautettu"
 msgid "An error occurred while trying to copy this pdf."
 msgstr "Yritettäessä kopioida tätä PDF:ää sattui virhe."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:462
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, fuzzy, kde-format
 #| msgctxt "@label:button, as in 'A note'"
 #| msgid "Note"
@@ -1803,43 +1849,43 @@ msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "Huomautus"
 
-#: logic/treeview/treeModel.cpp:200
+#: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
 msgstr "Yritettäessä poistaa kohdetta sattui virhe."
 
-#: logic/treeview/treeModel.cpp:249
+#: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Yritettäessä siirtää kohdetta sattui virhe."
 
-#: logic/treeview/treeModel.cpp:349
+#: logic/treeview/treeModel.cpp:354
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Yritettäessä muuttaa kohteen nimeä sattui virhe."
 
-#: logic/treeview/treeModel.cpp:439
+#: logic/treeview/treeModel.cpp:440
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Yritettäessä luoda muistiinpanoa sattui virhe."
 
-#: logic/treeview/treeModel.cpp:451
+#: logic/treeview/treeModel.cpp:452
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create this item."
 msgid "An error occurred while trying to create this folder."
 msgstr "Yritettäessä luoda kohdetta sattui virhe."
 
-#: logic/treeview/treeModel.cpp:459
+#: logic/treeview/treeModel.cpp:460
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Yritettäessä luoda talletustilaa sattui virhe."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Yritettäessä luoda demoa sattui virhe."
 
-#: logic/treeview/treeModel.cpp:472
+#: logic/treeview/treeModel.cpp:473
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
@@ -1880,6 +1926,12 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "translator@legisign.org"
 
+#, fuzzy
+#~| msgid "Move"
+#~ msgctxt "@title:dialog, to move a folder/note"
+#~ msgid "Move"
+#~ msgstr "Siirrä"
+
 #~ msgctxt ""
 #~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
 #~ "stored'"
@@ -1915,10 +1967,6 @@ msgstr "translator@legisign.org"
 #~ msgctxt "@title:dialog"
 #~ msgid "This action can not be reverted."
 #~ msgstr "Tätä toimintoa ei voi kumota."
-
-#~ msgctxt "@label:switch"
-#~ msgid "Search headers"
-#~ msgstr "Etsi ylätunnisteesta"
 
 #~ msgctxt "@label:textbox"
 #~ msgid "Header:"
