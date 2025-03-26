@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 09:58+0200\n"
+"PO-Revision-Date: 2025-03-25 08:22+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -195,12 +195,10 @@ msgid "Note:"
 msgstr "Нотатка:"
 
 #: contents/ui/dialogs/MoveDialog.qml:25
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title"
-#| msgid "<filename>%1</filename> properties"
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "Властивості <filename>%1</filename>"
+msgstr "Пересунути <filename>%1</filename>?"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -221,12 +219,10 @@ msgid "Move to storage root"
 msgstr "Пересунути до кореневої теки сховища"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "Шукати у заголовках"
+msgstr "Шукати теку:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1588,43 +1584,37 @@ msgid "Make more bar"
 msgstr "Додати додаткові інші записи"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "Підсвічування"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "Стиль підсвічування"
+msgstr "Підсвічений текст"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Нижній індекс"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "Текст нижнього індексу"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Опис:"
+msgstr "Верхній індекс"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "Текст верхнього індексу"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format

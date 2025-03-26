@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 03:29+0100\n"
+"PO-Revision-Date: 2025-03-25 04:01+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -195,12 +195,10 @@ msgid "Note:"
 msgstr "შენიშვნა:"
 
 #: contents/ui/dialogs/MoveDialog.qml:25
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title"
-#| msgid "<filename>%1</filename> properties"
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "<filename>%1</filename>-ის თვისებები"
+msgstr "გადავიტანო <filename>%1</filename>?"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -221,12 +219,10 @@ msgid "Move to storage root"
 msgstr "გადატანა საცავის ძირითად საქაღალდეში"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "თავსართების ძებნა"
+msgstr "საქაღალდის ძებნა:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1587,43 +1583,37 @@ msgid "Make more bar"
 msgstr "მეტი ვირის გაკეთება"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "გამოკვეთა"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "გამომკვეთის სტილი"
+msgstr "გამოკვეთილი ტექსტი"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "ქვედა რეგისტრი"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "ხაზსქვემოთა ტექსტი"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "აღწერა:"
+msgstr "ხაზსზემო"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "ხაზსზემოთა ტექსტი"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format

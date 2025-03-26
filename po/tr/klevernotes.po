@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 15:27+0300\n"
+"PO-Revision-Date: 2025-03-25 21:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -194,12 +194,10 @@ msgid "Note:"
 msgstr "Not:"
 
 #: contents/ui/dialogs/MoveDialog.qml:25
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title"
-#| msgid "<filename>%1</filename> properties"
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "<filename>%1</filename> özellikleri"
+msgstr "<filename>%1</filename> Dosyasını Taşı"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -220,12 +218,10 @@ msgid "Move to storage root"
 msgstr "Depolama kök konumuna taşı"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "Başlıkları ara"
+msgstr "Klasör ara:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1589,43 +1585,37 @@ msgid "Make more bar"
 msgstr "Biraz yararlı işler yap"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "Vurgu"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "Vurgulayıcı biçemi"
+msgstr "Vurgulanmış metin"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Alt simge"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "Alt simge metni"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Açıklama:"
+msgstr "Üst simge"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "Üst simge metni"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
