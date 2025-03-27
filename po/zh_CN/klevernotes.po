@@ -1559,19 +1559,15 @@ msgid "Make more bar"
 msgstr "搞得一团糟"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "高亮"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "高亮笔样式"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
@@ -1585,11 +1581,9 @@ msgid "subscript text"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "描述："
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
@@ -1866,7 +1860,3 @@ msgstr "KDE China, Guo Yunhe, dqfamily"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-china@kde.org, i@guoyunhe.me, yanluping2009@outlook.com"
-
-#~ msgctxt "@title:dialog, to move a folder/note"
-#~ msgid "Move"
-#~ msgstr "移动"
