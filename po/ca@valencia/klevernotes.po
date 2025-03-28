@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-03-20 09:09+0100\n"
+"PO-Revision-Date: 2025-03-25 11:54+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -196,12 +196,10 @@ msgid "Note:"
 msgstr "Nota:"
 
 #: contents/ui/dialogs/MoveDialog.qml:25
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title"
-#| msgid "<filename>%1</filename> properties"
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "Propietats de <filename>%1</filename>"
+msgstr "Voleu moure <filename>%1</filename>?"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -225,7 +223,7 @@ msgstr "Mou cap a l'emmagatzematge arrel"
 #, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr ""
+msgstr "Busca una carpeta:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1587,43 +1585,37 @@ msgid "Make more bar"
 msgstr "Fes més «bar»"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "Ressaltat"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "Estil del ressaltador"
+msgstr "text ressaltat"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Subíndex"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "text de subíndex"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Descripció:"
+msgstr "Superíndex"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "text de superíndex"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1895,7 +1887,3 @@ msgstr "Josep M. Ferrer"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
-
-#~ msgctxt "@title:dialog, to move a folder/note"
-#~ msgid "Move"
-#~ msgstr "Mou"
