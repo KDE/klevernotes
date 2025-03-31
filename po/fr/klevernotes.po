@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-03-21 12:07+0100\n"
+"PO-Revision-Date: 2025-03-26 09:56+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -194,12 +194,10 @@ msgid "Note:"
 msgstr "Remarque :"
 
 #: contents/ui/dialogs/MoveDialog.qml:25
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title"
-#| msgid "<filename>%1</filename> properties"
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "Propriétés de <filename>%1</filename>"
+msgstr "Voulez-vous vraiment déplacer <filename>%1</filename> ?"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -220,12 +218,10 @@ msgid "Move to storage root"
 msgstr "Déplacer vers la racine de l'emplacement d'enregistrement"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "Rechercher des en-têtes"
+msgstr "Recherche d'un dossier :"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1594,43 +1590,37 @@ msgid "Make more bar"
 msgstr "Faire plus de « bar »"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
-msgstr "Surlignement"
+msgstr "Mettre en évidence"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "Style de coloration"
+msgstr "Texte mis en  évidence"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Indice"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "Texte en indice"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Description :"
+msgstr "Exposant"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "Texte en exposant"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
