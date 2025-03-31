@@ -55,6 +55,7 @@ void Parser::addRemovePlugin(const int pluginId, const bool add)
 void Parser::noteLinkindEnabledChanged()
 {
     addRemovePlugin(PluginsId::NoteLinkingPlugin, KleverConfig::noteMapEnabled());
+    addRemovePlugin(PluginsId::HeaderLinkingPlugin, KleverConfig::noteMapEnabled());
 }
 
 void Parser::quickEmojiEnabledChanged()

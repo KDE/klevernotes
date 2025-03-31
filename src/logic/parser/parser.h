@@ -11,6 +11,7 @@
 
 // KleverNotes include
 #include "plugins/emoji/emojiPlugin.hpp"
+#include "plugins/noteMapper/headerLinkingPlugin.h"
 #include "plugins/noteMapper/noteLinkingPlugin.hpp"
 
 // md4qt include
@@ -57,11 +58,13 @@ private Q_SLOTS:
 private:
     enum PluginsId : int {
         NoteLinkingPlugin = 320, // EditorHandler::ExtensionID::KleverPlugins
+        HeaderLinkingPlugin,
         EmojiPlugin,
     };
 
     const std::map<int, MD::TextPluginFunc<MD::QStringTrait>> m_kleverPlugins = {
         {PluginsId::NoteLinkingPlugin, NoteLinkingPlugin::noteLinkingHelperFunc},
+        {PluginsId::HeaderLinkingPlugin, HeaderLinkingPlugin::headerLinkingHelperFunc},
         {PluginsId::EmojiPlugin, EmojiPlugin::emojiHelperFunc},
     };
 
