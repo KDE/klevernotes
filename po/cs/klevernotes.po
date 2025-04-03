@@ -1600,9 +1600,7 @@ msgid "Make more bar"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "Zvýraznění"
 
@@ -1617,7 +1615,7 @@ msgstr "Styl zvýraznění"
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Dolní index"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
@@ -1626,11 +1624,9 @@ msgid "subscript text"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Popis:"
+msgstr "Horní index"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
