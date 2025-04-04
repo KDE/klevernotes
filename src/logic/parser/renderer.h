@@ -5,13 +5,18 @@
 
 #pragma once
 
+// KleverNotes include
 #include "plugins/emoji/emojiPlugin.hpp"
+#include "plugins/noteMapper/headerLinkingPlugin.h"
 #include "plugins/pluginHelper.h"
-#include <utility>
 
+// Qt include
 #define MD4QT_QT_SUPPORT
 #include "md4qt/html.h"
 #include "md4qt/traits.h"
+
+// C++ include
+#include <utility>
 
 class Renderer : public MD::details::HtmlVisitor<MD::QStringTrait>
 {
@@ -42,6 +47,7 @@ public:
 
     // Custom
     void onEmoji(EmojiPlugin::EmojiItem *e);
+    void onHeaderLinking(HeaderLinkingPlugin::HeaderLinkingItem *h);
 
     static QString code(QString &code);
     static QString openListItem(const bool hasTask = false, const bool isChecked = false, const int startNumber = -1);

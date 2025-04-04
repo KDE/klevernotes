@@ -6,6 +6,7 @@
 #include "renderer.h"
 
 // KleverNotes include
+#include "logic/parser/plugins/noteMapper/headerLinkingPlugin.h"
 #include "plugins/pluginsSharedValues.h"
 
 // Qt include
@@ -232,6 +233,11 @@ void Renderer::onUserDefined(MD::Item<MD::QStringTrait> *item)
         onEmoji(emoji);
         break;
     }
+    case PluginsSharedValues::CustomType::HeaderLinking: {
+        auto headerLinking = static_cast<HeaderLinkingPlugin::HeaderLinkingItem *>(item);
+        onHeaderLinking(headerLinking);
+        break;
+    }
     default:
         qWarning() << "Rendered: Unsupported custom item";
         return;
@@ -250,6 +256,22 @@ void Renderer::onEmoji(EmojiPlugin::EmojiItem *e)
         m_html.push_back(emoji);
         m_html.push_back(QStringLiteral("</a>"));
         closeStyle(e->closeStyles());
+    }
+}
+
+void Renderer::onHeaderLinking(HeaderLinkingPlugin::HeaderLinkingItem *h)
+{
+    if (!m_justCollectFootnoteRefs) {
+        const QString hLevel = QStringLiteral("h") + QString::number(h->level());
+
+        m_html.push_back(QStringLiteral("<"));
+        m_html.push_back(hLevel);
+        m_html.push_back(QStringLiteral(" class='klevernotes-") + hLevel + QStringLiteral("-headerLinking'"));
+        m_html.push_back(QStringLiteral(">"));
+        m_html.push_back(h->text());
+        m_html.push_back(QStringLiteral("</"));
+        m_html.push_back(hLevel);
+        m_html.push_back(QStringLiteral(">"));
     }
 }
 // !Custom
