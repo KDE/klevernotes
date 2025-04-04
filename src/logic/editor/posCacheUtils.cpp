@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "posCacheUtils.hpp"
@@ -8,11 +8,10 @@
 // KleverNotes includes.
 #include "logic/parser/md4qtDataGetter.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
+#include "logic/parser/plugins/pluginsSharedValues.h"
 
 // C++ include.
 #include <memory>
-
-static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
 
 void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
                QList<MD::WithPosition> &waitingOpeningDelims,
@@ -58,7 +57,7 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
         // Find a better way to do this with futur user defined
         const int itemType = static_cast<int>(item->type());
 
-        if (itemType == USERDEFINEDINT + 1) {
+        if (itemType == PluginsSharedValues::CustomType::Emoji) {
             const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item);
             const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, emojiItem->startDelim(), emojiItem->endDelim()};
             openCloseDelims.append(outerDelims);

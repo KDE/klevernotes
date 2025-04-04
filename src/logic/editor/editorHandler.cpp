@@ -324,7 +324,7 @@ void EditorHandler::addExtendedSyntax(const QStringList &details)
 
     m_editorHighlighter->addExtendedSyntax(opts, details);
 
-    const QStringList options = {details[0], QString::number(opts), QString::number(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount)};
+    const QStringList options = {details[0], QString::number(opts), QString::number(m_extendedSyntaxCount)};
     m_parser->addExtendedSyntax(options);
     ++m_extendedSyntaxCount;
 }

@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "emojiPlugin.hpp"
@@ -9,6 +9,7 @@
 #include "kleverconfig.h"
 #include "logic/parser/md4qtDataGetter.hpp"
 #include "logic/parser/md4qtDataManip.hpp"
+#include "logic/parser/plugins/pluginsSharedValues.h"
 
 // Qt include
 #include <QRegularExpression>
@@ -19,7 +20,7 @@ namespace EmojiPlugin
 // EmojiItem
 MD::ItemType EmojiItem::type() const
 {
-    return MD::ItemType{static_cast<int>(MD::ItemType::UserDefined) + 1};
+    return MD::ItemType{PluginsSharedValues::CustomType::Emoji};
 }
 
 void EmojiItem::applyEmojiBase(const EmojiItem &other)

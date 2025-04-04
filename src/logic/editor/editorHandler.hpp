@@ -173,15 +173,8 @@ private:
 
     // Plugins
     PluginHelper *m_pluginHelper = nullptr;
+
     // md4qt plugins
-    enum ExtensionID : int {
-        /* Extended syntax
-         * ===============*/
-        ExtendedSyntax = 256, // MD::TextPlugin::UserDefinedPluginID + 1
-        /* Plugins
-         * ===============*/
-        KleverPlugins = ExtendedSyntax + 64,
-    };
     int m_extendedSyntaxCount = 0;
 
     // Editor highlight

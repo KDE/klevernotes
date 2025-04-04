@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #include "parser.h"
@@ -37,7 +37,7 @@ void Parser::connectPlugins()
 // =======
 void Parser::addExtendedSyntax(const QStringList &details)
 {
-    m_md4qtParser.addTextPlugin(details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
+    m_md4qtParser.addTextPlugin(PluginsSharedValues::ExtendedSyntax + details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
 }
 
 void Parser::addRemovePlugin(const int pluginId, const bool add)
@@ -54,13 +54,13 @@ void Parser::addRemovePlugin(const int pluginId, const bool add)
 // =================
 void Parser::noteLinkindEnabledChanged()
 {
-    addRemovePlugin(PluginsId::NoteLinkingPlugin, KleverConfig::noteMapEnabled());
-    addRemovePlugin(PluginsId::HeaderLinkingPlugin, KleverConfig::noteMapEnabled());
+    addRemovePlugin(PluginsSharedValues::PluginsId::NoteLinkingPlugin, KleverConfig::noteMapEnabled());
+    addRemovePlugin(PluginsSharedValues::PluginsId::HeaderLinkingPlugin, KleverConfig::noteMapEnabled());
 }
 
 void Parser::quickEmojiEnabledChanged()
 {
-    addRemovePlugin(PluginsId::EmojiPlugin, KleverConfig::quickEmojiEnabled());
+    addRemovePlugin(PluginsSharedValues::PluginsId::EmojiPlugin, KleverConfig::quickEmojiEnabled());
 }
 // !KleverNotes slots
 

@@ -5,10 +5,13 @@
 
 #include "renderer.h"
 
+// KleverNotes include
+#include "plugins/pluginsSharedValues.h"
+
+// Qt include
 #include <QDir>
 #include <QRegularExpression>
 #include <QUrl>
-#include <qstringliteral.h>
 
 Renderer::Renderer()
     : MD::details::HtmlVisitor<MD::QStringTrait>() {};
@@ -222,16 +225,15 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
 
 void Renderer::onUserDefined(MD::Item<MD::QStringTrait> *item)
 {
-    static const int userDefinedType = static_cast<int>(MD::ItemType::UserDefined);
     const int itemType = static_cast<int>(item->type());
     switch (itemType) {
-    case userDefinedType + 1: {
+    case PluginsSharedValues::CustomType::Emoji: {
         auto emoji = static_cast<EmojiPlugin::EmojiItem *>(item);
         onEmoji(emoji);
         break;
     }
     default:
-        qWarning() << "Unsupported custom item";
+        qWarning() << "Rendered: Unsupported custom item";
         return;
     }
 }

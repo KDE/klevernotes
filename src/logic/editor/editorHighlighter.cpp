@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 
 #include "editorHighlighter.hpp"
 
 // KleverNotes includes
 #include "logic/editor/editorHandler.hpp"
 #include "logic/editor/editorTextManipulation.hpp"
+#include "logic/parser/plugins/pluginsSharedValues.h"
 
 // Qt include.
 #include <QTextBlock>
@@ -14,13 +15,9 @@
 #include <QTextEdit>
 
 // C++ include.
-#include <algorithm>
 #include <memory>
-#include <qlogging.h>
 
 using namespace Qt::Literals::StringLiterals;
-
-static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
 
 namespace MdEditor
 {
@@ -545,13 +542,13 @@ void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
     if (m_highlightEnabled) {
         const int itemType = static_cast<int>(item->type());
         switch (itemType) {
-        case USERDEFINEDINT + 1: {
+        case PluginsSharedValues::CustomType::Emoji: {
             auto emoji = static_cast<EmojiPlugin::EmojiItem *>(item);
             onEmoji(emoji);
             break;
         }
         default:
-            qWarning() << "Unsupported custom item";
+            qWarning() << "Highlighter: Unsupported custom item";
             return;
         }
     }

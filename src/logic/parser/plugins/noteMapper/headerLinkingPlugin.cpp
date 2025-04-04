@@ -5,10 +5,11 @@
 
 #include "headerLinkingPlugin.h"
 
-#include "kleverconfig.h"
+// KleverNotes include
+#include "logic/parser/plugins/pluginsSharedValues.h"
+
+// md4qt include
 #include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qtDataManip.hpp"
-#include "noteMapperParserUtils.h"
 
 // Qt include
 #include <QRegularExpression>
@@ -19,7 +20,7 @@ namespace HeaderLinkingPlugin
 // HeaderLinkingItem
 MD::ItemType HeaderLinkingItem::type() const
 {
-    return MD::ItemType{static_cast<int>(MD::ItemType::UserDefined) + 2};
+    return MD::ItemType{PluginsSharedValues::CustomType::HeaderLinking};
 }
 
 void HeaderLinkingItem::applyBase(const HeaderLinkingItem &other)

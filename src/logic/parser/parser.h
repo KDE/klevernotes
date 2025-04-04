@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 */
 
 #pragma once
@@ -13,6 +13,7 @@
 #include "plugins/emoji/emojiPlugin.hpp"
 #include "plugins/noteMapper/headerLinkingPlugin.h"
 #include "plugins/noteMapper/noteLinkingPlugin.hpp"
+#include "plugins/pluginsSharedValues.h"
 
 // md4qt include
 #define MD4QT_QT_SUPPORT
@@ -56,16 +57,10 @@ private Q_SLOTS:
     void onParse();
 
 private:
-    enum PluginsId : int {
-        NoteLinkingPlugin = 320, // EditorHandler::ExtensionID::KleverPlugins
-        HeaderLinkingPlugin,
-        EmojiPlugin,
-    };
-
     const std::map<int, MD::TextPluginFunc<MD::QStringTrait>> m_kleverPlugins = {
-        {PluginsId::NoteLinkingPlugin, NoteLinkingPlugin::noteLinkingHelperFunc},
-        {PluginsId::HeaderLinkingPlugin, HeaderLinkingPlugin::headerLinkingHelperFunc},
-        {PluginsId::EmojiPlugin, EmojiPlugin::emojiHelperFunc},
+        {PluginsSharedValues::PluginsId::NoteLinkingPlugin, NoteLinkingPlugin::noteLinkingHelperFunc},
+        {PluginsSharedValues::PluginsId::HeaderLinkingPlugin, HeaderLinkingPlugin::headerLinkingHelperFunc},
+        {PluginsSharedValues::PluginsId::EmojiPlugin, EmojiPlugin::emojiHelperFunc},
     };
 
     // markdown-tools editor
