@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-02-28 19:40+0100\n"
+"PO-Revision-Date: 2025-04-05 22:17+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,37 +15,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
 msgstr "Bekräfta borttagning av anteckning"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Folder Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
 msgstr "Bekräfta borttagning av katalog"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this note <filename>%1</filename>?"
 msgstr ""
 "Är du säker på att du vill ta bort anteckningen <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the folder <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
 msgstr "Är du säker på att du vill ta bort katalogen <filename>%1</filename>?"
@@ -202,12 +194,10 @@ msgid "Note:"
 msgstr "Anteckning:"
 
 #: contents/ui/dialogs/MoveDialog.qml:25
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title"
-#| msgid "<filename>%1</filename> properties"
+#, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "Egenskaper för <filename>%1</filename>"
+msgstr "Flytta <filename>%1</filename>?"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -222,22 +212,16 @@ msgid "Where do you want to move this folder ?"
 msgstr "Vart vill du flytta katalogen?"
 
 #: contents/ui/dialogs/MoveDialog.qml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Ändra lagringssökväg"
+msgstr "Flytta till lagringens rotkatalog"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "Sök efter rubriker"
+msgstr "Sök efter en katalog"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1600,43 +1584,37 @@ msgid "Make more bar"
 msgstr "Gör mer där"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
-msgstr "Färglägg"
+msgstr "Markera"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "Färgläggningsstil"
+msgstr "markerad text"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Nedsänkt"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "nedsänkt text"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Beskrivning:"
+msgstr "Upphöjd"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "upphöjd text"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1886,10 +1864,9 @@ msgid "Note taking and management application"
 msgstr "Antecknings- och administrationsprogram"
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "© 2022-2023"
+msgstr "© 2022-2025"
 
 #: main.cpp:65
 #, kde-format
