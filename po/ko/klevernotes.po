@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# SPDX-FileCopyrightText: 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2024-12-24 17:13+0100\n"
+"PO-Revision-Date: 2025-04-06 23:29+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,42 +18,34 @@ msgstr ""
 "X-Generator: Lokalize 23.08.5\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Delete Note Confirmation"
 msgstr "메모 삭제 확인"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Delete Folder Confirmation"
-msgstr "메모 삭제 확인"
+msgstr "폴더 삭제 확인"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this note <filename>%1</filename>?"
 msgstr "<filename>%1</filename> 메모를 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
-msgstr "<filename>%1</filename> 메모를 삭제하시겠습니까?"
+msgstr "<filename>%1</filename> 폴더를 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete this permanently."
-msgstr ""
+msgstr "이 메모를 영원히 삭제합니다."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -129,27 +121,25 @@ msgstr "메모 폴더에 이 그림 두기"
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "<filename>%1</filename> 속성"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "아이콘"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "색 테마"
+msgstr "색상"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "현재 색상 \"%1\""
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
@@ -206,7 +196,7 @@ msgstr "메모:"
 #, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr ""
+msgstr "<filename>%1</filename>을(를) 이동하시겠습니까?"
 
 #: contents/ui/dialogs/MoveDialog.qml:41
 #, kde-format
@@ -215,30 +205,22 @@ msgid "Where do you want to move this note ?"
 msgstr "이 메모를 어디로 이동하시겠습니까?"
 
 #: contents/ui/dialogs/MoveDialog.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Where do you want to move this note ?"
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "이 메모를 어디로 이동하시겠습니까?"
+msgstr "이 폴더를 어디로 이동하시겠습니까?"
 
 #: contents/ui/dialogs/MoveDialog.qml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "저장소 경로 변경"
+msgstr "저장소 루트로 이동"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "머리글 검색"
+msgstr "폴더 검색:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -283,12 +265,10 @@ msgid "This note already exists."
 msgstr "이 메모가 이미 존재합니다."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "This note already exists."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "이 메모가 이미 존재합니다."
+msgstr "이 폴더가 이미 존재합니다."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -336,12 +316,10 @@ msgid "Disable due to flatpak limitation."
 msgstr "Flatpak 제한으로 비활성화되었습니다."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "옵션 더 보기"
+msgstr "필수 작업"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -352,6 +330,7 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
+"이 저장소는 이전 KleverNotes 파일 구조를 사용하며 더 이상 지원하지 않습니다."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -360,6 +339,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"'적용' 단추를 클릭하면 새 저장 구조로 변환합니다(이 작업은 데이터를 손상시키"
+"지 않습니다)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -368,6 +349,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"이 대화 상자를 닫으면 작업을 취소할 수 있으며, 기존 파일을 백업할 수 있습니"
+"다."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -376,12 +359,14 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"메모: 로컬로 저장된 그림은 'Images' 하위 폴더에서 메모의 부모 폴더로 이동됩니"
+"다."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
-msgstr ""
+msgstr "'/Images'를 경로에서 삭제하면 다시 표시됩니다."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -860,24 +845,18 @@ msgid "Sidebar"
 msgstr "사이드바"
 
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "새 메모"
+msgstr "새 폴더"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Folder name:"
-msgstr "새 메모 이름:"
+msgstr "새 폴더 이름:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "새 메모"
 
@@ -1266,17 +1245,13 @@ msgid "Link note"
 msgstr "메모 링크"
 
 #: contents/ui/sideBar/ActionBar.qml:47
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "새 메모 만들기"
+msgstr "새 폴더 만들기"
 
 #: contents/ui/sideBar/ActionBar.qml:55
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "새 메모 만들기"
@@ -1302,38 +1277,31 @@ msgid "Expand sidebar"
 msgstr "사이드바 펴기"
 
 #: contents/ui/sideBar/ContextMenu.qml:20
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "새 메모"
+msgstr "새 폴더"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "새 메모"
 
 #: contents/ui/sideBar/ContextMenu.qml:38
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "이름 바꾸기"
 
 #: contents/ui/sideBar/ContextMenu.qml:47
-#, fuzzy, kde-format
-#| msgid "Move"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "이동"
 
 #: contents/ui/sideBar/ContextMenu.qml:56
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "삭제"
@@ -1342,7 +1310,7 @@ msgstr "삭제"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "속성"
 
 #: contents/ui/sideBar/SearchBar.qml:77
 #, kde-format
@@ -1611,43 +1579,37 @@ msgid "Make more bar"
 msgstr "저쩌구 더 만들기"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "강조"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "강조 도구 스타일"
+msgstr "방문한 링크 텍스트"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "아래 첨자"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "아래 첨자 텍스트"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "설명:"
+msgstr "위 첨자"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "위 첨자 텍스트"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1664,7 +1626,7 @@ msgstr "메모 링크"
 #, kde-format
 msgctxt "exemple"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<path to note>/<note name>"
 
 #. i18nc("exemple", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
@@ -1839,9 +1801,7 @@ msgid "An error occurred while trying to copy this pdf."
 msgstr "이 PDF를 복사하는 중 오류가 발생했습니다."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "메모"
@@ -1867,10 +1827,9 @@ msgid "An error occurred while trying to create the note."
 msgstr "메모를 생성하는 중 오류가 발생했습니다."
 
 #: logic/treeview/treeModel.cpp:452
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to create this item."
+#, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "이 항목을 생성하는 중 오류가 발생했습니다."
+msgstr "이 폴더를 생성하는 중 오류가 발생했습니다."
 
 #: logic/treeview/treeModel.cpp:460
 #, kde-format
@@ -1886,7 +1845,7 @@ msgstr "데모 메모를 생성하는 중 오류가 발생했습니다."
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "데모"
 
 #: main.cpp:56
 #, kde-format
@@ -1900,10 +1859,9 @@ msgid "Note taking and management application"
 msgstr "메모 작성 및 관리 앱"
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "(c) 2022-2023"
+msgstr "(c) 2022-2025"
 
 #: main.cpp:65
 #, kde-format
