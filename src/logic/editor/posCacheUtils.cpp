@@ -28,48 +28,6 @@ void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
     }
 }
 
-void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
-                        QList<MD::WithPosition> &waitingOpeningDelims,
-                        QList<posCacheUtils::DelimsInfo> &openCloseDelims,
-                        const int headingLevel)
-{
-    switch (item->type()) {
-    case MD::ItemType::Text:
-    case MD::ItemType::Link:
-    case MD::ItemType::Image: {
-        const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item);
-        return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims, headingLevel);
-    }
-    case MD::ItemType::Code: {
-        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item);
-        const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, codeItem->startDelim(), codeItem->endDelim()};
-        openCloseDelims.append(outerDelims);
-
-        return makePairs(codeItem, waitingOpeningDelims, openCloseDelims, headingLevel);
-    }
-    case MD::ItemType::RawHtml:
-    case MD::ItemType::LineBreak: {
-        // "useless" in this case, but no need for an error message,
-        // we already it is not supported, not a bug
-        break;
-    }
-    default:
-        // Find a better way to do this with futur user defined
-        const int itemType = static_cast<int>(item->type());
-
-        if (itemType == PluginsSharedValues::CustomType::Emoji) {
-            const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item);
-            const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, emojiItem->startDelim(), emojiItem->endDelim()};
-            openCloseDelims.append(outerDelims);
-
-            return makePairs(emojiItem, waitingOpeningDelims, openCloseDelims, headingLevel);
-        } else {
-            qWarning() << "Item not handled" << static_cast<int>(item->type());
-            return;
-        }
-    }
-}
-
 SharedItems getInnerItems(MD::Item<MD::QStringTrait> *item)
 {
     switch (item->type()) {
@@ -91,6 +49,95 @@ SharedItems getInnerItems(MD::Item<MD::QStringTrait> *item)
         qWarning() << "getInnerItems: Unsupported block item" << static_cast<int>(item->type());
     }
     return {};
+}
+
+void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
+                               QList<MD::WithPosition> &waitingOpeningDelims,
+                               QList<posCacheUtils::DelimsInfo> &openCloseDelims,
+                               const MD::WithPosition &cursorPos,
+                               const MD::WithPosition &selectStartPos,
+                               const MD::WithPosition &selectEndPos)
+{
+    if (!waitingOpeningDelims.isEmpty()) {
+        qWarning() << "Error in processing open/close style for unhighlight, remaining open delims:";
+        for (const auto &delim : waitingOpeningDelims) {
+            qWarning() << delim.startColumn() << delim.startLine() << delim.endColumn() << delim.endLine();
+        }
+        return;
+    }
+
+    for (const auto &delimInfo : openCloseDelims) {
+        const auto &openDelim = delimInfo.opening;
+        const auto &closeDelim = delimInfo.closing;
+
+        bool addPair = true;
+        if (selectStartPos.startColumn() != -1 && selectEndPos.startColumn() != -1) {
+            addPair = md4qtHelperFunc::isBetweenDelims(cursorPos, openDelim, closeDelim, true)
+                || md4qtHelperFunc::isBetweenDelims(openDelim, selectStartPos, selectEndPos)
+                || md4qtHelperFunc::isBetweenDelims(closeDelim, selectStartPos, selectEndPos);
+        }
+
+        if (addPair && !delims.contains(delimInfo)) {
+            delims.append(delimInfo);
+        }
+    }
+}
+
+void addSurroundingDelims(QList<posCacheUtils::DelimsInfo> &delims,
+                          MD::Item<MD::QStringTrait> *baseItem,
+                          const MD::WithPosition &cursorPos,
+                          const MD::WithPosition &selectStartPos,
+                          const MD::WithPosition &selectEndPos,
+                          const int headingLevel)
+{
+    auto items = getInnerItems(baseItem);
+
+    QList<MD::WithPosition> waitingOpeningDelims;
+    QList<posCacheUtils::DelimsInfo> openCloseDelims;
+
+    for (const auto &item : items) {
+        switch (item->type()) {
+        case MD::ItemType::Text:
+        case MD::ItemType::Link:
+        case MD::ItemType::Image: {
+            const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item.get());
+            makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims, headingLevel);
+            addSurroundingDelimsPairs(delims, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos);
+            break;
+        }
+        case MD::ItemType::Code: {
+            const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item.get());
+            const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, codeItem->startDelim(), codeItem->endDelim()};
+            openCloseDelims.append(outerDelims);
+
+            makePairs(codeItem, waitingOpeningDelims, openCloseDelims, headingLevel);
+            addSurroundingDelimsPairs(delims, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos);
+            break;
+        }
+        case MD::ItemType::RawHtml:
+        case MD::ItemType::LineBreak: {
+            // "useless" in this case, but no need for an error message,
+            // we already it is not supported, not a bug
+            break;
+        }
+        default:
+            // Find a better way to do this with futur user defined
+            const int itemType = static_cast<int>(item->type());
+
+            if (itemType == PluginsSharedValues::CustomType::Emoji) {
+                const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item.get());
+                const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, emojiItem->startDelim(), emojiItem->endDelim()};
+                openCloseDelims.append(outerDelims);
+
+                makePairs(emojiItem, waitingOpeningDelims, openCloseDelims, headingLevel);
+                addSurroundingDelimsPairs(delims, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos);
+                break;
+            } else {
+                qWarning() << "Item not handled" << static_cast<int>(item->type());
+                return;
+            }
+        }
+    }
 }
 
 void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QStringTrait> *item, int &headingLevel)
@@ -163,6 +210,7 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
     case MD::ItemType::List:
     case MD::ItemType::Paragraph:
     case MD::ItemType::HorizontalLine:
+    case MD::ItemType::Table:
     case MD::ItemType::RawHtml: {
         // Those block are "useless" in this case, but no need for an error message,
         // we already know that they're not supported, not a bug
@@ -174,49 +222,6 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
 
     if (delimInfo.opening.startLine() != -1 && !delims.contains(delimInfo)) {
         delims.append(delimInfo);
-    }
-}
-
-void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
-                               MD::Item<MD::QStringTrait> *item,
-                               const MD::WithPosition &cursorPos,
-                               const MD::WithPosition &selectStartPos,
-                               const MD::WithPosition &selectEndPos,
-                               const int headingLevel)
-{
-    auto items = getInnerItems(item);
-
-    QList<MD::WithPosition> waitingOpeningDelims;
-    QList<posCacheUtils::DelimsInfo> openCloseDelims;
-
-    for (const auto &item : items) {
-        getOpenCloseDelims(item.get(), waitingOpeningDelims, openCloseDelims, headingLevel);
-    }
-
-    if (!waitingOpeningDelims.isEmpty()) {
-        qWarning() << "Error in processing open/close style for unhighlight, remaining open delims:";
-        for (const auto &delim : waitingOpeningDelims) {
-            qWarning() << delim.startColumn() << delim.startLine() << delim.endColumn() << delim.endLine();
-        }
-        return;
-    }
-
-    for (const auto &delimInfo : openCloseDelims) {
-        const auto &openDelim = delimInfo.opening;
-        const auto &closeDelim = delimInfo.closing;
-
-        bool addPair = true;
-        if (selectStartPos.startColumn() != -1 && selectEndPos.startColumn() != -1) {
-            addPair = md4qtHelperFunc::isBetweenDelims(cursorPos, openDelim, closeDelim, true)
-                || md4qtHelperFunc::isBetweenDelims(openDelim, selectStartPos, selectEndPos)
-                || md4qtHelperFunc::isBetweenDelims(closeDelim, selectStartPos, selectEndPos);
-        }
-
-        if (addPair) {
-            if (!delims.contains(delimInfo)) {
-                delims.append(delimInfo);
-            }
-        }
     }
 }
 
@@ -243,7 +248,7 @@ void addDelimsFromItems(QList<posCacheUtils::DelimsInfo> &delims,
     if (2 <= cacheLen) {
         const auto &secondToLast = items.at(cacheLen - 2);
 
-        addSurroundingDelimsPairs(delims, secondToLast, pos, selectStartPos, selectEndPos, headingLevel);
+        addSurroundingDelims(delims, secondToLast, pos, selectStartPos, selectEndPos, headingLevel);
     }
 }
 }
