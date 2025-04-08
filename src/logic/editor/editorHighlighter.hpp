@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 
 #pragma once
 
@@ -8,6 +8,7 @@
 #include "logic/editor/colors.hpp"
 #include "logic/editor/posCacheUtils.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
+#include "logic/parser/plugins/noteMapper/headerLinkingPlugin.h"
 
 // md4qt include.
 #define MD4QT_QT_SUPPORT
@@ -63,6 +64,7 @@ private:
     void onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i);
 
     void onEmoji(EmojiPlugin::EmojiItem *e);
+    void onHeaderLinking(HeaderLinkingPlugin::HeaderLinkingItem *h);
 
     void revertHeadingDelims(MD::Item<MD::QStringTrait> *item);
 

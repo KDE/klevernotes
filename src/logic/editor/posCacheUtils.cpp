@@ -8,6 +8,7 @@
 // KleverNotes includes.
 #include "logic/parser/md4qtDataGetter.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
+#include "logic/parser/plugins/noteMapper/headerLinkingPlugin.h"
 #include "logic/parser/plugins/pluginsSharedValues.h"
 
 // C++ include.
@@ -83,6 +84,40 @@ void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
     }
 }
 
+void addCustomSurroundingDelims(QList<posCacheUtils::DelimsInfo> &delims,
+                                ItemSharedPointer item,
+                                QList<MD::WithPosition> &waitingOpeningDelims,
+                                QList<posCacheUtils::DelimsInfo> &openCloseDelims,
+                                const MD::WithPosition &cursorPos,
+                                const MD::WithPosition &selectStartPos,
+                                const MD::WithPosition &selectEndPos,
+                                const int headingLevel)
+{
+    const int itemType = static_cast<int>(item->type());
+    switch (itemType) {
+    case PluginsSharedValues::CustomType::Emoji: {
+        const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item.get());
+        const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, emojiItem->startDelim(), emojiItem->endDelim()};
+        openCloseDelims.append(outerDelims);
+
+        makePairs(emojiItem, waitingOpeningDelims, openCloseDelims, headingLevel);
+        addSurroundingDelimsPairs(delims, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos);
+        break;
+    }
+    case PluginsSharedValues::CustomType::HeaderLinking: {
+        const auto header = static_cast<HeaderLinkingPlugin::HeaderLinkingItem *>(item.get());
+
+        const int delimType = (posCacheUtils::BlockDelimTypes::Heading1 - 1) + header->level();
+        delims.append({header->level(), delimType, header->delim()});
+        break;
+    }
+    default: {
+        qWarning() << "Item not handled" << static_cast<int>(item->type());
+        return;
+    }
+    }
+}
+
 void addSurroundingDelims(QList<posCacheUtils::DelimsInfo> &delims,
                           MD::Item<MD::QStringTrait> *baseItem,
                           const MD::WithPosition &cursorPos,
@@ -100,8 +135,7 @@ void addSurroundingDelims(QList<posCacheUtils::DelimsInfo> &delims,
         case MD::ItemType::Text:
         case MD::ItemType::Link:
         case MD::ItemType::Image: {
-            const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item.get());
-            makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims, headingLevel);
+            makePairs(static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item.get()), waitingOpeningDelims, openCloseDelims, headingLevel);
             addSurroundingDelimsPairs(delims, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos);
             break;
         }
@@ -121,21 +155,7 @@ void addSurroundingDelims(QList<posCacheUtils::DelimsInfo> &delims,
             break;
         }
         default:
-            // Find a better way to do this with futur user defined
-            const int itemType = static_cast<int>(item->type());
-
-            if (itemType == PluginsSharedValues::CustomType::Emoji) {
-                const auto emojiItem = static_cast<EmojiPlugin::EmojiItem *>(item.get());
-                const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, emojiItem->startDelim(), emojiItem->endDelim()};
-                openCloseDelims.append(outerDelims);
-
-                makePairs(emojiItem, waitingOpeningDelims, openCloseDelims, headingLevel);
-                addSurroundingDelimsPairs(delims, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos);
-                break;
-            } else {
-                qWarning() << "Item not handled" << static_cast<int>(item->type());
-                return;
-            }
+            addCustomSurroundingDelims(delims, item, waitingOpeningDelims, openCloseDelims, cursorPos, selectStartPos, selectEndPos, headingLevel);
         }
     }
 }
@@ -146,27 +166,8 @@ void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QSt
     headingLevel = h->level();
 
     for (const auto &delim : h->delims()) {
-        int delimType = 0;
-        switch (headingLevel) {
-        case 1:
-            delimType = posCacheUtils::BlockDelimTypes::Heading1;
-            break;
-        case 2:
-            delimType = posCacheUtils::BlockDelimTypes::Heading2;
-            break;
-        case 3:
-            delimType = posCacheUtils::BlockDelimTypes::Heading3;
-            break;
-        case 4:
-            delimType = posCacheUtils::BlockDelimTypes::Heading4;
-            break;
-        case 5:
-            delimType = posCacheUtils::BlockDelimTypes::Heading5;
-            break;
-        case 6:
-            delimType = posCacheUtils::BlockDelimTypes::Heading6;
-            break;
-        }
+        const int delimType = (posCacheUtils::BlockDelimTypes::Heading1 - 1) + headingLevel;
+
         const posCacheUtils::DelimsInfo delimInfo = {headingLevel, delimType, delim};
         if (!delims.contains(delimInfo)) {
             delims.append(delimInfo);

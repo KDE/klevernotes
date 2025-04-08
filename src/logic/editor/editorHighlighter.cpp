@@ -537,6 +537,29 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
     d->additionalStyle = inititalAdditionalStyle;
 }
 
+void EditorHighlighter::onHeaderLinking(HeaderLinkingPlugin::HeaderLinkingItem *h)
+{
+    const int inititalHeadingLevel = d->headingLevel;
+    const int inititalAdditionalStyle = d->additionalStyle;
+    if (m_highlightEnabled) {
+        d->headingLevel = h->level();
+        d->additionalStyle = MD::BoldText;
+
+        QTextCharFormat textFormat;
+        textFormat.setForeground(d->colors.titleColor);
+        textFormat.setFont(d->styleFont(MD::BoldText));
+        d->setFormat(textFormat, h->textPos());
+
+        QTextCharFormat delimFormat;
+        delimFormat.setForeground(d->colors.specialColor);
+        delimFormat.setFont(d->styleFont(MD::TextWithoutFormat, true));
+        d->setFormat(delimFormat, h->delim());
+    }
+
+    d->headingLevel = inititalHeadingLevel;
+    d->additionalStyle = inititalAdditionalStyle;
+}
+
 void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
 {
     if (m_highlightEnabled) {
@@ -545,6 +568,11 @@ void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
         case PluginsSharedValues::CustomType::Emoji: {
             auto emoji = static_cast<EmojiPlugin::EmojiItem *>(item);
             onEmoji(emoji);
+            break;
+        }
+        case PluginsSharedValues::CustomType::HeaderLinking: {
+            auto header = static_cast<HeaderLinkingPlugin::HeaderLinkingItem *>(item);
+            onHeaderLinking(header);
             break;
         }
         default:
