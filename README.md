@@ -7,7 +7,7 @@
 
 <img src="logo.png" width="10%" align="right">
 
-KleverNotes is a note taking and management application. It uses markdown and allow you to preview your content. 
+KleverNotes is a note taking and management application. It uses markdown and allows you to preview your content. 
 
 Different versions of Markdown are supported thanks to the [md4qt](https://invent.kde.org/libraries/md4qt) parser with which the project works closely (many thanks to the author: igormironchik).
 This parser allows text plugins to extend Markdown parsing, enabling the creation of KleverNotes "[plugins](#plugins)". 
