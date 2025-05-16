@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-25 00:42+0000\n"
-"PO-Revision-Date: 2025-04-03 17:41+0300\n"
+"PO-Revision-Date: 2025-04-20 16:36+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -199,7 +199,7 @@ msgstr "Muistiinpano:"
 #, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr ""
+msgstr "Siirretäänkö <filename>%1</filename>?"
 
 # *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
 #: contents/ui/dialogs/MoveDialog.qml:41
@@ -216,22 +216,16 @@ msgid "Where do you want to move this folder ?"
 msgstr "Minne haluat kansion siirtää?"
 
 #: contents/ui/dialogs/MoveDialog.qml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:button, Storage as in 'the folder where all the notes will be "
-#| "stored'"
-#| msgid "Change the storage path"
+#, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Vaihda talletustilan sijaintia"
+msgstr "Siirrä talletustilan juureen"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:switch"
-#| msgid "Search headers"
+#, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "Etsi ylätunnisteesta"
+msgstr "Etsi kansiota:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -1590,43 +1584,37 @@ msgid "Make more bar"
 msgstr "Tee lisää tätä"
 
 #: contents/ui/textEditor/CheatSheet.qml:154
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Highlight"
+#, kde-format
 msgid "Highlight"
 msgstr "Korostus"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "@label:combobox"
-#| msgid "Highlighter style"
+#, kde-format
 msgctxt "exemple"
 msgid "highlighted text"
-msgstr "Korostustyyli"
+msgstr "korostettu teksti"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Alaindeksi"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "exemple"
 msgid "subscript text"
-msgstr ""
+msgstr "alaindeksoitu teksti"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Kuvaus:"
+msgstr "Yläindeksi"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "exemple"
 msgid "superscript text"
-msgstr ""
+msgstr "yläindeksoitu teksti"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1876,10 +1864,9 @@ msgid "Note taking and management application"
 msgstr "Muistiinpanojen hallintasovellus"
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
-msgstr "© 2022–2023"
+msgstr "© 2022–2025"
 
 #: main.cpp:65
 #, kde-format
