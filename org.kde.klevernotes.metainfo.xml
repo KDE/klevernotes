@@ -6,6 +6,7 @@
 <component type="desktop-application">
   <id>org.kde.klevernotes</id>
   <name>KleverNotes</name>
+  <name xml:lang="ar">ملاحظات ذكية</name>
   <name xml:lang="ca">KleverNotes</name>
   <name xml:lang="ca-valencia">KleverNotes</name>
   <name xml:lang="cs">KleverNotes</name>
@@ -36,6 +37,7 @@
   <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>Take and manage your notes</summary>
+  <summary xml:lang="ar">دوِّن ملاحظاتك وأدرها</summary>
   <summary xml:lang="ca">Preneu i gestioneu les vostres notes</summary>
   <summary xml:lang="ca-valencia">Preneu i gestioneu les vostres notes</summary>
   <summary xml:lang="cs">Vytvářejte a organizujte své poznámky</summary>
@@ -86,6 +88,7 @@
   </developer>
   <description>
     <p>KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
+    <p xml:lang="ar">ملاحظات ذكية هو تطبيق لتدوين الملاحظات وإدارتها لأجهزتك المحمولة والمكتبية. يستخدم لغة مارك داون ويسمح لك بمعاينة محتواك.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
     <p xml:lang="ca-valencia">KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Utilitza Markdown i permet previsualitzar el contingut.</p>
     <p xml:lang="en-GB">KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
@@ -116,6 +119,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main page on desktop</caption>
+      <caption xml:lang="ar">الصفحة الرئيسة على سطح المكتب</caption>
       <caption xml:lang="ca">Pàgina principal a l'escriptori</caption>
       <caption xml:lang="ca-valencia">Pàgina principal a l'escriptori</caption>
       <caption xml:lang="cs">Hlavní stránka na pracovní ploše</caption>
@@ -146,6 +150,7 @@
     </screenshot>
     <screenshot>
       <caption>Main page on small form factor</caption>
+      <caption xml:lang="ar">الصفحة الرئيسة على الشكل الصغير</caption>
       <caption xml:lang="ca">Pàgina principal al factor de format petit</caption>
       <caption xml:lang="ca-valencia">Pàgina principal al factor de format xicotet</caption>
       <caption xml:lang="en-GB">Main page on small form factor</caption>
@@ -175,6 +180,7 @@
     </screenshot>
     <screenshot>
       <caption>Todo page</caption>
+      <caption xml:lang="ar">صفحة المهمة</caption>
       <caption xml:lang="ca">Pàgina de tasques pendents</caption>
       <caption xml:lang="ca-valencia">Pàgina de tasques pendents</caption>
       <caption xml:lang="cs">Stránka úkolů</caption>
@@ -206,6 +212,7 @@
     </screenshot>
     <screenshot>
       <caption>Drawing page</caption>
+      <caption xml:lang="ar">صفحة الرسم</caption>
       <caption xml:lang="ca">Pàgina de dibuix</caption>
       <caption xml:lang="ca-valencia">Pàgina de dibuix</caption>
       <caption xml:lang="cs">Stránka pro kreslení</caption>
