@@ -3,6 +3,7 @@
 
 [Desktop Entry]
 Name=KleverNotes
+Name[ar]=ملاحظات ذكية
 Name[ca]=KleverNotes
 Name[ca@valencia]=KleverNotes
 Name[cs]=KleverNotes
@@ -33,6 +34,7 @@ Name[x-test]=xxKleverNotesxx
 Name[zh_CN]=KleverNotes
 Name[zh_TW]=KleverNotes 智慧筆記
 Comment=KleverNotes Kirigami Application
+Comment[ar]=تطبيق كيريغامي ملاحظات ذكية
 Comment[ca]=Aplicació de Kirigami KleverNotes
 Comment[ca@valencia]=Aplicació de Kirigami KleverNotes
 Comment[cs]=Aplikace Kirigami KleverNotes
