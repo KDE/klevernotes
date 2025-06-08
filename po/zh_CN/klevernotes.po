@@ -214,13 +214,13 @@ msgstr "您想要将此文件夹移动到哪里？"
 #, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr ""
+msgstr "移动到存储根目录"
 
 #: contents/ui/dialogs/MoveDialog.qml:64
 #, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr ""
+msgstr "搜索文件夹："
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
@@ -266,7 +266,7 @@ msgstr "该记事帖已存在。"
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr ""
+msgstr "该文件夹已存在。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -325,7 +325,7 @@ msgctxt ""
 msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
-msgstr ""
+msgstr "此存档似乎使用了不再支持的旧的 KleverNotes 文件结构。"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -333,7 +333,7 @@ msgctxt "@subtitle:dialog, the standard Qt 'Apply' button"
 msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
-msgstr ""
+msgstr "若您按下“应用”按钮，则表明您同意将存档转换为新结构（这不会造成损坏）。"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -341,7 +341,7 @@ msgctxt "@subtitle:dialog"
 msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
-msgstr ""
+msgstr "您可以通过关闭此对话框取消此操作，您可自行备份文件。"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
