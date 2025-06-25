@@ -43,8 +43,8 @@ FormCard.FormCardDialog {
     FormCard.FormDelegateSeparator {}
 
     FormCard.FormButtonDelegate {
-        text: i18nc("@label:button", "Print to pdf")
-        description: enabled ? "" : i18nc("@label:button", "Disable due to flatpak limitation.")
+        text: i18nc("@label:button", "Print to PDF")
+        description: enabled ? "" : i18nc("@label:button", "Disabled due to Flatpak limitations.")
         enabled: !KleverUtility.isFlatpak()
         Layout.fillWidth: true
         onClicked: {

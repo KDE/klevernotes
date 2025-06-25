@@ -52,45 +52,45 @@ Kirigami.Dialog {
 
             CheatSheetEntry {
                 element: "<h1>" + i18n("Heading") + "</h1>"
-                syntax: "# " + i18nc("exemple","Heading1")
+                syntax: "# " + i18nc("example","Heading1")
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: "<b>" + i18n("Bold") + "</b>"
-                syntax: "**" + i18nc("exemple","Bold text") + "**"
+                syntax: "**" + i18nc("example","Bold text") + "**"
                 onClicked: clipboardHelper.text = syntax
             } 
 
             CheatSheetEntry {
                 element: "<i>" + i18n("Italic") + "</i>"
-                syntax: "_" + i18nc("exemple","Italic text") + "_"
+                syntax: "_" + i18nc("example","Italic text") + "_"
                 onClicked: clipboardHelper.text = syntax
             } 
 
             CheatSheetEntry {
                 element: i18n("Blockquote")
-                syntax: "> " + i18nc("exemple","Quote")
+                syntax: "> " + i18nc("example","Quote")
                 onClicked: clipboardHelper.text = syntax
             } 
 
             CheatSheetEntry {
                 element: i18n("Ordered list")
-                syntax: "1. " + i18nc("exemple","First item") + "\n" +
-                        "2. " + i18nc("exemple","Second item")
+                syntax: "1. " + i18nc("example","First item") + "\n" +
+                        "2. " + i18nc("example","Second item")
                 onClicked: clipboardHelper.text = syntax
             } 
 
             CheatSheetEntry {
                 element: i18n("Unordered list")
-                syntax: "- " + i18nc("exemple","First item") + "\n" +
-                        "- " + i18nc("exemple","Second item")
+                syntax: "- " + i18nc("example","First item") + "\n" +
+                        "- " + i18nc("example","Second item")
                 onClicked: clipboardHelper.text = syntax
             } 
 
             CheatSheetEntry {
                 element: i18n("Code")
-                syntax: "`" + i18nc("exemple","Inline code") + "`"
+                syntax: "`" + i18nc("example","Inline code") + "`"
                 onClicked: clipboardHelper.text = syntax
             } 
 
@@ -102,13 +102,13 @@ Kirigami.Dialog {
 
             CheatSheetEntry {
                 element: i18n("Link")
-                syntax: "[" + i18nc("exemple","title") + "](" + i18nc("exemple", "https://www.example.com") + ")"
+                syntax: "[" + i18nc("example","title") + "](" + i18nc("example", "https://www.example.com") + ")"
                 onClicked: clipboardHelper.text = syntax
             } 
 
             CheatSheetEntry {
                 element: i18n("Image")
-                syntax: "![" + i18nc("exemple","alt text") + "](" + i18nc("exemple", "image") + ".jpg)"
+                syntax: "![" + i18nc("example","alt text") + "](" + i18nc("example", "image") + ".jpg)"
                 onClicked: clipboardHelper.text = syntax
             } 
         }
@@ -125,46 +125,46 @@ Kirigami.Dialog {
                 element: i18n("Table")
                 syntax: "|" + i18nc("@label, noun, 'The left side of something'","Left") + "|" + i18nc("@label, verb, 'To center something'","Center") + "|" + i18nc("@label, noun, 'The right side of something", "Right") + "|\n" +
                         "| :------ | :------: | ------:|\n" +
-                        "|" + i18nc("exemple","Cell 1") + "|" + i18nc("exemple", "Cell 2") + "|" + i18nc("exemple", "Cell 3") + "|"
+                        "|" + i18nc("example","Cell 1") + "|" + i18nc("example", "Cell 2") + "|" + i18nc("example", "Cell 3") + "|"
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: i18n("Fenced code block")
                 syntax: "```\n" +
-                        i18nc("exemple","Sample text here...") + "\n" +
+                        i18nc("example","Sample text here...") + "\n" +
                         "```"
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: i18n("Strikethrough")
-                syntax: "~~" + i18nc("exemple, something wrong","The world is flat.") + "~~"
+                syntax: "~~" + i18nc("example, something wrong","The world is flat.") + "~~"
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: i18n("Task list")
-                syntax: "- [ ] " + i18nc("exemple", "Make more foo") + "\n" +
-                        "- [x] " + i18nc("exemple", "Make more bar")
+                syntax: "- [ ] " + i18nc("example", "Make more foo") + "\n" +
+                        "- [x] " + i18nc("example", "Make more bar")
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: i18n("Highlight")
-                syntax: "==" + i18nc("exemple", "highlighted text") + "=="
+                syntax: "==" + i18nc("example", "highlighted text") + "=="
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: i18n("Subscript")
-                syntax: "-" + i18nc("exemple", "subscript text") + "-"
+                syntax: "-" + i18nc("example", "subscript text") + "-"
                 onClicked: clipboardHelper.text = syntax
             }
 
             CheatSheetEntry {
                 element: i18n("Superscript")
-                syntax: "^" + i18nc("exemple", "superscript text") + "^"
+                syntax: "^" + i18nc("example", "superscript text") + "^"
                 onClicked: clipboardHelper.text = syntax
             }
         }
@@ -182,10 +182,10 @@ Kirigami.Dialog {
             CheatSheetEntry {
                 element: i18n("Note link")
                 syntax: "[[ " 
-                    + i18nc("exemple", "<path to note>/<note name>") 
+                    + i18nc("example", "<path to note>/<note name>") 
                     /* TODO: fix this when reworking headers
-                     + ":# " + i18nc("exemple", "header") */
-                     + " | " + i18nc("exemple", "displayed name") + " ]]"
+                     + ":# " + i18nc("example", "header") */
+                     + " | " + i18nc("example", "displayed name") + " ]]"
                 onClicked: clipboardHelper.text = syntax
             }
         }

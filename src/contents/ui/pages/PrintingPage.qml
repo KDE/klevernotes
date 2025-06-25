@@ -107,7 +107,7 @@ Kirigami.Page {
         }
 
         Controls.Label {
-            text: i18n("This could cause visual artifact near the end of the pdf.")
+            text: i18n("This could cause visual artifacts near the end of the PDF.")
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
         }
@@ -118,7 +118,7 @@ Kirigami.Page {
 
         caller: saveAction
 
-        title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note as pdf")
+        title: i18nc("@title:dialog, choose the location of where the file will be saved", "Save note as PDF")
         currentFile: applicationWindow().pageStack.get(0).title
         nameFilters: [ "PDF file (*.pdf)"]
     }

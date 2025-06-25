@@ -31,7 +31,7 @@ void PrintingUtility::writePdf(const QString &path) const
 
 void PrintingUtility::copy(const QString &fromPath, const QString &toPath)
 {
-    static const QString errorMessage = i18n("An error occurred while trying to copy this pdf.");
+    static const QString errorMessage = i18n("An error occurred while trying to copy this PDF.");
     if (QFile::exists(toPath)) {
         const bool previousRemoved = QFile::remove(toPath);
         if (!previousRemoved) {

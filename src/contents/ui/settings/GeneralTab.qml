@@ -66,7 +66,7 @@ ColumnLayout {
             id: newFolderField
 
             text: Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
-            label: i18nc("@label:textbox", "New Folder name:")
+            label: i18nc("@label:textbox", "Default name for new folders:")
 
             Layout.margins: 0
             Layout.fillWidth: true
@@ -90,7 +90,7 @@ ColumnLayout {
             id: newNoteField
 
             text: Config.defaultNoteName.length !== 0 ? Config.defaultNoteName : i18n("New Note")
-            label: i18nc("@label:textbox, the default note name", "New Note name:")
+            label: i18nc("@label:textbox", "Default name for new notes:")
 
             Layout.margins: 0
             Layout.fillWidth: true

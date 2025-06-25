@@ -19,15 +19,15 @@ Components.MessageDialog {
 
     dialogType: Components.MessageDialog.Warning
     title: isNote 
-        ? i18nc("@title:dialog, Confirmation for deletion of a note", "Delete Note Confirmation")
-        : i18nc("@title:dialog, Confirmation for deletion of a folder", "Delete Folder Confirmation")
+        ? i18nc("@title:dialog, Confirmation for deletion of a note", "Confirm Note Deletion")
+        : i18nc("@title:dialog, Confirmation for deletion of a folder", "Confirm Folder Deletion")
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
     Label {
         text: isNote
-            ? xi18nc("@info", "Are you sure you want to delete this note <filename>%1</filename>?", name)
-            : xi18nc("@info", "Are you sure you want to delete this folder <filename>%1</filename>?", name)
+            ? xi18nc("@info", "Delete the note <filename>%1</filename>?", name)
+            : xi18nc("@info", "Delete the folder <filename>%1</filename>?", name)
 
         wrapMode: Text.WordWrap
         Layout.fillWidth: true
@@ -36,7 +36,7 @@ Components.MessageDialog {
     FormCard.FormCheckDelegate {
         id: permanentDeleteCheck
 
-        text: i18nc("@label:check", "Delete this permanently.")
+        text: i18nc("@label:check", "Delete permanently")
 
         Layout.fillWidth: true
     }

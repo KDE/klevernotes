@@ -80,7 +80,7 @@ ColumnLayout {
             }
 
             Label {
-                text: i18nc("@exemple, the rest of the sentence is 'italic text and its tags', the second part is provided by another string",
+                text: i18nc("@example, the rest of the sentence is 'italic text and its tags', the second part is provided by another string",
                         "A title with a preview of") + " "
 
                 font.pointSize: labelLayout.editorTextSize
@@ -104,7 +104,7 @@ ColumnLayout {
             }
 
             Label {
-                text: i18nc("@exemple, the first part of the sentence is 'A title with a preview of ', the first part is provided by another string",
+                text: i18nc("@example, the first part of the sentence is 'A title with a preview of ', the first part is provided by another string",
                         "italic text and its tags")
 
                 font.pointSize: labelLayout.editorTextSize

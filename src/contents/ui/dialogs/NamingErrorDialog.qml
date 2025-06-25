@@ -34,7 +34,7 @@ Components.MessageDialog {
                 ? i18nc("@subtitle:dialog", "This note already exists.") 
                 :  i18nc("@subtitle:dialog", "This folder already exists.")
             ) + "\n" 
-            + i18nc("@subtitle:dialog", "Please choose another name for it.") + "\n"
+            + i18nc("@subtitle:dialog", "Please choose another name.") + "\n"
         } else if (error === "/") {
             return i18nc("@subtitle:dialog", "This name contains '/', this may cause problem and is therefore not allowed.")
                 + "\n" + i18nc("@subtitle:dialog", "Please remove the '/' or choose another name.")

@@ -150,7 +150,7 @@ ColumnLayout {
 
             text: i18nc("@label:checkbox", "Enable quick emoji")
             description: i18nc("@description:checkbox, will be followed by the corresponding syntax, spacing between the end of the sentence and the syntax is already there", 
-                "Quickly write emoji using the following syntax") + " :<i>" + i18nc("@exemple, something representing a possible emoji short name", "emoji_name") + "</i>:"
+                "Quickly write emoji using the following syntax") + " :<i>" + i18nc("@example, something representing a possible emoji short name", "emoji_name") + "</i>:"
             checked: Config.quickEmojiEnabled
 
             onCheckedChanged: if (checked != Config.quickEmojiEnabled) {
