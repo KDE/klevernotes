@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-25 00:42+0000\n"
+"POT-Creation-Date: 2025-06-26 00:43+0000\n"
 "PO-Revision-Date: 2024-09-19 07:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -20,31 +20,31 @@ msgstr ""
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
-msgid "Delete Note Confirmation"
+msgid "Confirm Note Deletion"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
-msgid "Delete Folder Confirmation"
+msgid "Confirm Folder Deletion"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
 msgctxt "@info"
-msgid "Are you sure you want to delete this note <filename>%1</filename>?"
+msgid "Delete the note <filename>%1</filename>?"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
 #, kde-kuit-format
 msgctxt "@info"
-msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
+msgid "Delete the folder <filename>%1</filename>?"
 msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
-msgid "Delete this permanently."
+msgid "Delete permanently"
 msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
@@ -271,9 +271,11 @@ msgid "This folder already exists."
 msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please choose another name for it."
 msgctxt "@subtitle:dialog"
-msgid "Please choose another name for it."
+msgid "Please choose another name."
 msgstr "Prosím, vyberte jiný název."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
@@ -302,15 +304,19 @@ msgid "Print html"
 msgstr "Vytisknout html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Print to pdf"
 msgctxt "@label:button"
-msgid "Print to pdf"
+msgid "Print to PDF"
 msgstr "Tisk do PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Disable due to flatpak limitation."
 msgctxt "@label:button"
-msgid "Disable due to flatpak limitation."
+msgid "Disabled due to Flatpak limitations."
 msgstr "Zakázáno kvůli omezením flatpaku."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
@@ -594,14 +600,17 @@ msgid "Background"
 msgstr "Pozadí"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, kde-format
-msgid "This could cause visual artifact near the end of the pdf."
+#, fuzzy, kde-format
+#| msgid "This could cause visual artifact near the end of the pdf."
+msgid "This could cause visual artifacts near the end of the PDF."
 msgstr "Tohle by mohlo způsobovat vizuální artefakt na konci pdf."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note as pdf"
 msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as pdf"
+msgid "Save note as PDF"
 msgstr "Uložit poznámku jako pdf"
 
 #: contents/ui/pages/SettingsPage.qml:18
@@ -761,17 +770,25 @@ msgid "Tag scale"
 msgstr "Škálování značek"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
+#| "second part is provided by another string"
+#| msgid "A title with a preview of"
 msgctxt ""
-"@exemple, the rest of the sentence is 'italic text and its tags', the second "
+"@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
 msgstr "Titulek s náhledem "
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
+#| "the first part is provided by another string"
+#| msgid "italic text and its tags"
 msgctxt ""
-"@exemple, the first part of the sentence is 'A title with a preview of ', "
+"@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
 msgstr "text kurzívy a jeho značky"
@@ -841,7 +858,7 @@ msgstr "Nová složka"
 #: contents/ui/settings/GeneralTab.qml:69
 #, kde-format
 msgctxt "@label:textbox"
-msgid "New Folder name:"
+msgid "Default name for new folders:"
 msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
@@ -851,9 +868,9 @@ msgstr "Nová poznámka"
 
 #: contents/ui/settings/GeneralTab.qml:93
 #, kde-format
-msgctxt "@label:textbox, the default note name"
-msgid "New Note name:"
-msgstr "Název nové poznámky:"
+msgctxt "@label:textbox"
+msgid "Default name for new notes:"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -977,10 +994,11 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "Rychle psát emotikony pomocí následující syntaxe"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, kde-format
-msgctxt "@exemple, something representing a possible emoji short name"
+#, fuzzy, kde-format
+#| msgid "Rename"
+msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr ""
+msgstr "Přejmenovat"
 
 #: contents/ui/settings/PluginsTab.qml:164
 #, kde-format
@@ -1367,8 +1385,10 @@ msgid "Heading"
 msgstr "Záhlaví"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Heading1"
+msgctxt "example"
 msgid "Heading1"
 msgstr "Záhlaví 1"
 
@@ -1378,8 +1398,10 @@ msgid "Bold"
 msgstr "Tučné"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Bold text"
+msgctxt "example"
 msgid "Bold text"
 msgstr "Tučný text"
 
@@ -1389,8 +1411,10 @@ msgid "Italic"
 msgstr "Kurzíva"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Italic text"
+msgctxt "example"
 msgid "Italic text"
 msgstr "Skloněný text"
 
@@ -1400,8 +1424,10 @@ msgid "Blockquote"
 msgstr "Blok citace"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Quote"
+msgctxt "example"
 msgid "Quote"
 msgstr "Citát"
 
@@ -1412,15 +1438,19 @@ msgstr "Seřazený seznam"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "First item"
+msgctxt "example"
 msgid "First item"
 msgstr "První položka"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Second item"
+msgctxt "example"
 msgid "Second item"
 msgstr "Druhá položka"
 
@@ -1435,8 +1465,10 @@ msgid "Code"
 msgstr "Kód"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Inline code"
+msgctxt "example"
 msgid "Inline code"
 msgstr "Vložený kód"
 
@@ -1452,14 +1484,18 @@ msgid "Link"
 msgstr "Odkaz"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "title"
+msgctxt "example"
 msgid "title"
 msgstr "název"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "https://www.example.com"
+msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.priklad.cz"
 
@@ -1469,14 +1505,18 @@ msgid "Image"
 msgstr "Obrázek"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "alt text"
+msgctxt "example"
 msgid "alt text"
 msgstr "alt text"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "image"
+msgctxt "example"
 msgid "image"
 msgstr "obrázek"
 
@@ -1510,20 +1550,26 @@ msgid "Right"
 msgstr "Vpravo"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 1"
+msgctxt "example"
 msgid "Cell 1"
 msgstr "Buňka 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 2"
+msgctxt "example"
 msgid "Cell 2"
 msgstr "Buňka 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 3"
+msgctxt "example"
 msgid "Cell 3"
 msgstr "Buňka 3"
 
@@ -1533,8 +1579,10 @@ msgid "Fenced code block"
 msgstr "Blok kódu"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Sample text here..."
+msgctxt "example"
 msgid "Sample text here..."
 msgstr "Ukázkový text..."
 
@@ -1544,8 +1592,10 @@ msgid "Strikethrough"
 msgstr "Přeškrtnutí"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, kde-format
-msgctxt "exemple, something wrong"
+#, fuzzy, kde-format
+#| msgctxt "exemple, something wrong"
+#| msgid "The world is flat."
+msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "Země je plochá."
 
@@ -1556,13 +1606,13 @@ msgstr "Seznam úkolů"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "Make more foo"
 msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:149
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "Make more bar"
 msgstr ""
 
@@ -1572,10 +1622,12 @@ msgid "Highlight"
 msgstr "Zvýraznění"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter style"
+msgctxt "example"
 msgid "highlighted text"
-msgstr ""
+msgstr "Styl zvýraznění"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
@@ -1583,10 +1635,11 @@ msgid "Subscript"
 msgstr "Dolní index"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgid "Subscript"
+msgctxt "example"
 msgid "subscript text"
-msgstr ""
+msgstr "Dolní index"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
 #, kde-format
@@ -1594,10 +1647,11 @@ msgid "Superscript"
 msgstr "Horní index"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgid "Superscript"
+msgctxt "example"
 msgid "superscript text"
-msgstr ""
+msgstr "Horní index"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1612,14 +1666,16 @@ msgstr "Odkazy poznámky"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "<path to note>/<note name>"
 msgstr ""
 
-#. i18nc("exemple", "header")
+#. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "displayed name"
+msgctxt "example"
 msgid "displayed name"
 msgstr "zobrazený název"
 
@@ -1785,8 +1841,9 @@ msgid "Custom"
 msgstr "Vlastní"
 
 #: logic/printing/printingHelper.cpp:34
-#, kde-format
-msgid "An error occurred while trying to copy this pdf."
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to copy this pdf."
+msgid "An error occurred while trying to copy this PDF."
 msgstr "Nastala chyba při pokusu o zkopírování tohoto pdf."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
@@ -1869,3 +1926,11 @@ msgstr "Vít Pelčák"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
+
+#~ msgctxt "@label:textbox, the default note name"
+#~ msgid "New Note name:"
+#~ msgstr "Název nové poznámky:"
+
+#~ msgctxt "exemple"
+#~ msgid "Quote"
+#~ msgstr "Citát"

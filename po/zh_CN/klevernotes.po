@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-25 00:42+0000\n"
+"POT-Creation-Date: 2025-06-26 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 16:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -20,31 +20,37 @@ msgstr ""
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
-msgid "Delete Note Confirmation"
-msgstr "确认删除笔记"
+msgid "Confirm Note Deletion"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
-msgid "Delete Folder Confirmation"
-msgstr "确认删除文件夹"
+msgid "Confirm Folder Deletion"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog, to move a folder/note"
+#| msgid "Move <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete this note <filename>%1</filename>?"
-msgstr "您确定要删除此<filename> %1 </filename>笔记吗？"
+msgid "Delete the note <filename>%1</filename>?"
+msgstr "移动 <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog, to move a folder/note"
+#| msgid "Move <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
-msgstr "您确定要删除此<filename> %1 </filename>文件夹吗？"
+msgid "Delete the folder <filename>%1</filename>?"
+msgstr "移动 <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:check"
+#| msgid "Delete this permanently."
 msgctxt "@label:check"
-msgid "Delete this permanently."
+msgid "Delete permanently"
 msgstr "彻底删除"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
@@ -269,9 +275,11 @@ msgid "This folder already exists."
 msgstr "该文件夹已存在。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please choose another name for it."
 msgctxt "@subtitle:dialog"
-msgid "Please choose another name for it."
+msgid "Please choose another name."
 msgstr "请使用其他名称。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
@@ -300,15 +308,19 @@ msgid "Print html"
 msgstr "Print html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Print to pdf"
 msgctxt "@label:button"
-msgid "Print to pdf"
+msgid "Print to PDF"
 msgstr "打印为 PDF 文件"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Disable due to flatpak limitation."
 msgctxt "@label:button"
-msgid "Disable due to flatpak limitation."
+msgid "Disabled due to Flatpak limitations."
 msgstr "由于flatpak限制而不可用。"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
@@ -591,14 +603,17 @@ msgid "Background"
 msgstr "背景"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, kde-format
-msgid "This could cause visual artifact near the end of the pdf."
+#, fuzzy, kde-format
+#| msgid "This could cause visual artifact near the end of the pdf."
+msgid "This could cause visual artifacts near the end of the PDF."
 msgstr "这可能会在PDF页脚生成视觉尾影。"
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note as pdf"
 msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as pdf"
+msgid "Save note as PDF"
 msgstr "将笔记另存为 PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
@@ -756,17 +771,25 @@ msgid "Tag scale"
 msgstr "标签比例"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
+#| "second part is provided by another string"
+#| msgid "A title with a preview of"
 msgctxt ""
-"@exemple, the rest of the sentence is 'italic text and its tags', the second "
+"@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
 msgstr "标题预览"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
+#| "the first part is provided by another string"
+#| msgid "italic text and its tags"
 msgctxt ""
-"@exemple, the first part of the sentence is 'A title with a preview of ', "
+"@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
 msgstr "斜体文本及其标签"
@@ -834,10 +857,12 @@ msgid "New Folder"
 msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:dialog"
+#| msgid "Search for a folder:"
 msgctxt "@label:textbox"
-msgid "New Folder name:"
-msgstr ""
+msgid "Default name for new folders:"
+msgstr "搜索文件夹："
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
@@ -845,10 +870,12 @@ msgid "New Note"
 msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, kde-format
-msgctxt "@label:textbox, the default note name"
-msgid "New Note name:"
-msgstr "新笔记名:"
+#, fuzzy, kde-format
+#| msgctxt "@tooltip"
+#| msgid "Create a new note"
+msgctxt "@label:textbox"
+msgid "Default name for new notes:"
+msgstr "创建新笔记"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -969,8 +996,10 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "使用以下语法快速写入表情"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, kde-format
-msgctxt "@exemple, something representing a possible emoji short name"
+#, fuzzy, kde-format
+#| msgctxt "@exemple, something representing a possible emoji short name"
+#| msgid "emoji_name"
+msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "表情名称"
 
@@ -1359,8 +1388,10 @@ msgid "Heading"
 msgstr "标题"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Heading1"
+msgctxt "example"
 msgid "Heading1"
 msgstr "标题1"
 
@@ -1370,8 +1401,10 @@ msgid "Bold"
 msgstr "粗体"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Bold text"
+msgctxt "example"
 msgid "Bold text"
 msgstr "加粗文本"
 
@@ -1381,8 +1414,10 @@ msgid "Italic"
 msgstr "斜体"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Italic text"
+msgctxt "example"
 msgid "Italic text"
 msgstr "斜体文本"
 
@@ -1392,8 +1427,10 @@ msgid "Blockquote"
 msgstr "块引用"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Quote"
+msgctxt "example"
 msgid "Quote"
 msgstr "引用"
 
@@ -1404,15 +1441,19 @@ msgstr "有序列表"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "First item"
+msgctxt "example"
 msgid "First item"
 msgstr "第一项"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Second item"
+msgctxt "example"
 msgid "Second item"
 msgstr "第二项"
 
@@ -1427,8 +1468,10 @@ msgid "Code"
 msgstr "代码"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Inline code"
+msgctxt "example"
 msgid "Inline code"
 msgstr "内联代码"
 
@@ -1444,14 +1487,18 @@ msgid "Link"
 msgstr "链接"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "title"
+msgctxt "example"
 msgid "title"
 msgstr "标题"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "https://www.example.com"
+msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
 
@@ -1461,14 +1508,18 @@ msgid "Image"
 msgstr "图片"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "alt text"
+msgctxt "example"
 msgid "alt text"
 msgstr "替代文字"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "image"
+msgctxt "example"
 msgid "image"
 msgstr "图像"
 
@@ -1502,20 +1553,26 @@ msgid "Right"
 msgstr "右对齐"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 1"
+msgctxt "example"
 msgid "Cell 1"
 msgstr "单元格1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 2"
+msgctxt "example"
 msgid "Cell 2"
 msgstr "单元格2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 3"
+msgctxt "example"
 msgid "Cell 3"
 msgstr "单元格3"
 
@@ -1525,8 +1582,10 @@ msgid "Fenced code block"
 msgstr "围栏代码块"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Sample text here..."
+msgctxt "example"
 msgid "Sample text here..."
 msgstr "示例文本..."
 
@@ -1536,8 +1595,10 @@ msgid "Strikethrough"
 msgstr "删除线"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, kde-format
-msgctxt "exemple, something wrong"
+#, fuzzy, kde-format
+#| msgctxt "exemple, something wrong"
+#| msgid "The world is flat."
+msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "世界是平坦的。"
 
@@ -1547,14 +1608,18 @@ msgid "Task list"
 msgstr "任务列表"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Make more foo"
+msgctxt "example"
 msgid "Make more foo"
 msgstr "制造混乱"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Make more bar"
+msgctxt "example"
 msgid "Make more bar"
 msgstr "搞得一团糟"
 
@@ -1564,10 +1629,12 @@ msgid "Highlight"
 msgstr "高亮"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@label:combobox"
+#| msgid "Highlighter style"
+msgctxt "example"
 msgid "highlighted text"
-msgstr ""
+msgstr "高亮笔样式"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
@@ -1576,7 +1643,7 @@ msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "subscript text"
 msgstr ""
 
@@ -1587,7 +1654,7 @@ msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "superscript text"
 msgstr ""
 
@@ -1604,14 +1671,16 @@ msgstr "链接笔记"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "<path to note>/<note name>"
 msgstr ""
 
-#. i18nc("exemple", "header")
+#. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "displayed name"
+msgctxt "example"
 msgid "displayed name"
 msgstr "显示名称"
 
@@ -1776,8 +1845,9 @@ msgid "Custom"
 msgstr "定制"
 
 #: logic/printing/printingHelper.cpp:34
-#, kde-format
-msgid "An error occurred while trying to copy this pdf."
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to copy this pdf."
+msgid "An error occurred while trying to copy this PDF."
 msgstr "尝试复制PDF文件时发生错误。"
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
@@ -1860,3 +1930,27 @@ msgstr "KDE China, Guo Yunhe, dqfamily"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-china@kde.org, i@guoyunhe.me, yanluping2009@outlook.com"
+
+#~ msgctxt "@title:dialog, Confirmation for deletion of a note"
+#~ msgid "Delete Note Confirmation"
+#~ msgstr "确认删除笔记"
+
+#~ msgctxt "@title:dialog, Confirmation for deletion of a folder"
+#~ msgid "Delete Folder Confirmation"
+#~ msgstr "确认删除文件夹"
+
+#~ msgctxt "@info"
+#~ msgid "Are you sure you want to delete this note <filename>%1</filename>?"
+#~ msgstr "您确定要删除此<filename> %1 </filename>笔记吗？"
+
+#~ msgctxt "@info"
+#~ msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
+#~ msgstr "您确定要删除此<filename> %1 </filename>文件夹吗？"
+
+#~ msgctxt "@label:textbox, the default note name"
+#~ msgid "New Note name:"
+#~ msgstr "新笔记名:"
+
+#~ msgctxt "exemple"
+#~ msgid "Quote"
+#~ msgstr "引用"

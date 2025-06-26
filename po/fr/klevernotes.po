@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-25 00:42+0000\n"
+"POT-Creation-Date: 2025-06-26 00:43+0000\n"
 "PO-Revision-Date: 2025-03-26 09:56+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -17,31 +17,37 @@ msgstr ""
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
-msgid "Delete Note Confirmation"
-msgstr "Supprimer la confirmation de note"
+msgid "Confirm Note Deletion"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
-msgid "Delete Folder Confirmation"
-msgstr "Supprimer la confirmation de dossier"
+msgid "Confirm Folder Deletion"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog, to move a folder/note"
+#| msgid "Move <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete this note <filename>%1</filename>?"
-msgstr "Voulez-vous vraiment supprimer cette note <filename>%1</filename> ?"
+msgid "Delete the note <filename>%1</filename>?"
+msgstr "Voulez-vous vraiment déplacer <filename>%1</filename> ?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:dialog, to move a folder/note"
+#| msgid "Move <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
-msgstr "Voulez-vous vraiment supprimer ce dossier <filename>%1</filename> ?"
+msgid "Delete the folder <filename>%1</filename>?"
+msgstr "Voulez-vous vraiment déplacer <filename>%1</filename> ?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:check"
+#| msgid "Delete this permanently."
 msgctxt "@label:check"
-msgid "Delete this permanently."
+msgid "Delete permanently"
 msgstr "Supprimer ceci de façon définitive"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
@@ -272,9 +278,11 @@ msgid "This folder already exists."
 msgstr "Le dossier existe déjà."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please choose another name for it."
 msgctxt "@subtitle:dialog"
-msgid "Please choose another name for it."
+msgid "Please choose another name."
 msgstr "Veuillez sélectionner un autre nom pour lui."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
@@ -305,15 +313,19 @@ msgid "Print html"
 msgstr "Imprimer en format « HTML »"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Print to pdf"
 msgctxt "@label:button"
-msgid "Print to pdf"
+msgid "Print to PDF"
 msgstr "Imprimer vers un fichier « PDF »"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Disable due to flatpak limitation."
 msgctxt "@label:button"
-msgid "Disable due to flatpak limitation."
+msgid "Disabled due to Flatpak limitations."
 msgstr "Désactivé en raison de la limitation de flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
@@ -609,16 +621,19 @@ msgid "Background"
 msgstr "Arrière-plan"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, kde-format
-msgid "This could cause visual artifact near the end of the pdf."
+#, fuzzy, kde-format
+#| msgid "This could cause visual artifact near the end of the pdf."
+msgid "This could cause visual artifacts near the end of the PDF."
 msgstr ""
 "Ceci pourrait provoquer des artefacts visuels près de la fin du fichier "
 "« PDF »."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note as pdf"
 msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as pdf"
+msgid "Save note as PDF"
 msgstr "Enregistrer une note au format « PDF »"
 
 #: contents/ui/pages/SettingsPage.qml:18
@@ -782,17 +797,25 @@ msgid "Tag scale"
 msgstr "Échelle d'étiquette"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
+#| "second part is provided by another string"
+#| msgid "A title with a preview of"
 msgctxt ""
-"@exemple, the rest of the sentence is 'italic text and its tags', the second "
+"@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
 msgstr "Un titre avec un aperçu de"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
+#| "the first part is provided by another string"
+#| msgid "italic text and its tags"
 msgctxt ""
-"@exemple, the first part of the sentence is 'A title with a preview of ', "
+"@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
 msgstr "texte en italique et ses étiquettes"
@@ -860,10 +883,12 @@ msgid "New Folder"
 msgstr "Nouveau dossier"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@tooltip"
+#| msgid "Create a new folder"
 msgctxt "@label:textbox"
-msgid "New Folder name:"
-msgstr "Nouveau nom de dossier :"
+msgid "Default name for new folders:"
+msgstr "Créer un nouveau dossier"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
@@ -871,10 +896,12 @@ msgid "New Note"
 msgstr "Nouvelle note"
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, kde-format
-msgctxt "@label:textbox, the default note name"
-msgid "New Note name:"
-msgstr "Nom de nouvelle note :"
+#, fuzzy, kde-format
+#| msgctxt "@tooltip"
+#| msgid "Create a new note"
+msgctxt "@label:textbox"
+msgid "Default name for new notes:"
+msgstr "Créer une nouvelle note"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -998,8 +1025,10 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "Insérez rapidement des émoticônes en utilisant la syntaxe suivante"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, kde-format
-msgctxt "@exemple, something representing a possible emoji short name"
+#, fuzzy, kde-format
+#| msgctxt "@exemple, something representing a possible emoji short name"
+#| msgid "emoji_name"
+msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "nom-émoticône"
 
@@ -1390,8 +1419,10 @@ msgid "Heading"
 msgstr "En-tête"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Heading1"
+msgctxt "example"
 msgid "Heading1"
 msgstr "En-tête 1"
 
@@ -1401,8 +1432,10 @@ msgid "Bold"
 msgstr "Gras"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Bold text"
+msgctxt "example"
 msgid "Bold text"
 msgstr "Texte en gras"
 
@@ -1412,8 +1445,10 @@ msgid "Italic"
 msgstr "Italique"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Italic text"
+msgctxt "example"
 msgid "Italic text"
 msgstr "Texte en italique"
 
@@ -1423,8 +1458,10 @@ msgid "Blockquote"
 msgstr "Bloc de citation"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Quote"
+msgctxt "example"
 msgid "Quote"
 msgstr "Guillemet"
 
@@ -1435,15 +1472,19 @@ msgstr "Liste triée"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "First item"
+msgctxt "example"
 msgid "First item"
 msgstr "Premier élément"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Second item"
+msgctxt "example"
 msgid "Second item"
 msgstr "Second élément"
 
@@ -1458,8 +1499,10 @@ msgid "Code"
 msgstr "Code"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Inline code"
+msgctxt "example"
 msgid "Inline code"
 msgstr "Code intégré"
 
@@ -1475,14 +1518,18 @@ msgid "Link"
 msgstr "Lien"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "title"
+msgctxt "example"
 msgid "title"
 msgstr "titre"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "https://www.example.com"
+msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.exemple.com"
 
@@ -1492,14 +1539,18 @@ msgid "Image"
 msgstr "Image"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "alt text"
+msgctxt "example"
 msgid "alt text"
 msgstr "Texte alternatif"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "image"
+msgctxt "example"
 msgid "image"
 msgstr "image"
 
@@ -1533,20 +1584,26 @@ msgid "Right"
 msgstr "Droite"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 1"
+msgctxt "example"
 msgid "Cell 1"
 msgstr "Cellule 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 2"
+msgctxt "example"
 msgid "Cell 2"
 msgstr "Cellule 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 3"
+msgctxt "example"
 msgid "Cell 3"
 msgstr "Cellule 3"
 
@@ -1556,8 +1613,10 @@ msgid "Fenced code block"
 msgstr "Bloc de code borné"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Sample text here..."
+msgctxt "example"
 msgid "Sample text here..."
 msgstr "Exemple de texte ici..."
 
@@ -1567,8 +1626,10 @@ msgid "Strikethrough"
 msgstr "Barré"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, kde-format
-msgctxt "exemple, something wrong"
+#, fuzzy, kde-format
+#| msgctxt "exemple, something wrong"
+#| msgid "The world is flat."
+msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "Le monde est plat."
 
@@ -1578,14 +1639,18 @@ msgid "Task list"
 msgstr "Liste de tâches"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Make more foo"
+msgctxt "example"
 msgid "Make more foo"
 msgstr "Faire plus de « foo »"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Make more bar"
+msgctxt "example"
 msgid "Make more bar"
 msgstr "Faire plus de « bar »"
 
@@ -1595,8 +1660,10 @@ msgid "Highlight"
 msgstr "Mettre en évidence"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "highlighted text"
+msgctxt "example"
 msgid "highlighted text"
 msgstr "Texte mis en  évidence"
 
@@ -1606,8 +1673,10 @@ msgid "Subscript"
 msgstr "Indice"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "subscript text"
+msgctxt "example"
 msgid "subscript text"
 msgstr "Texte en indice"
 
@@ -1617,8 +1686,10 @@ msgid "Superscript"
 msgstr "Exposant"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "superscript text"
+msgctxt "example"
 msgid "superscript text"
 msgstr "Texte en exposant"
 
@@ -1634,15 +1705,19 @@ msgid "Note link"
 msgstr "Lien de note"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "<path to note>/<note name>"
+msgctxt "example"
 msgid "<path to note>/<note name>"
 msgstr "<path to note>/<note name>"
 
-#. i18nc("exemple", "header")
+#. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "displayed name"
+msgctxt "example"
 msgid "displayed name"
 msgstr "nom affiché"
 
@@ -1808,8 +1883,9 @@ msgid "Custom"
 msgstr "Personnalisé"
 
 #: logic/printing/printingHelper.cpp:34
-#, kde-format
-msgid "An error occurred while trying to copy this pdf."
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to copy this pdf."
+msgid "An error occurred while trying to copy this PDF."
 msgstr ""
 "Une erreur est survenue lors de la tentative de copie de ce fichier « pdf »."
 
@@ -1903,6 +1979,34 @@ msgstr "Xavier Besnard"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xavier.besnard@kde.org"
+
+#~ msgctxt "@title:dialog, Confirmation for deletion of a note"
+#~ msgid "Delete Note Confirmation"
+#~ msgstr "Supprimer la confirmation de note"
+
+#~ msgctxt "@title:dialog, Confirmation for deletion of a folder"
+#~ msgid "Delete Folder Confirmation"
+#~ msgstr "Supprimer la confirmation de dossier"
+
+#~ msgctxt "@info"
+#~ msgid "Are you sure you want to delete this note <filename>%1</filename>?"
+#~ msgstr "Voulez-vous vraiment supprimer cette note <filename>%1</filename> ?"
+
+#~ msgctxt "@info"
+#~ msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
+#~ msgstr "Voulez-vous vraiment supprimer ce dossier <filename>%1</filename> ?"
+
+#~ msgctxt "@label:textbox"
+#~ msgid "New Folder name:"
+#~ msgstr "Nouveau nom de dossier :"
+
+#~ msgctxt "@label:textbox, the default note name"
+#~ msgid "New Note name:"
+#~ msgstr "Nom de nouvelle note :"
+
+#~ msgctxt "exemple"
+#~ msgid "Quote"
+#~ msgstr "Guillemet"
 
 #~ msgctxt "@title:dialog, to move a folder/note"
 #~ msgid "Move"

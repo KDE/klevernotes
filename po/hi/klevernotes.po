@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-25 00:42+0000\n"
+"POT-Creation-Date: 2025-06-26 00:43+0000\n"
 "PO-Revision-Date: 2024-12-15 19:24+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -19,27 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
-msgid "Delete Note Confirmation"
-msgstr "नोट हटाने की पुष्टि"
+msgid "Confirm Note Deletion"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, as in 'A note category'"
-#| msgid "Delete Note Confirmation"
+#, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
-msgid "Delete Folder Confirmation"
-msgstr "नोट हटाने की पुष्टि"
+msgid "Confirm Folder Deletion"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete this note <filename>%1</filename>?"
+msgid "Delete the note <filename>%1</filename>?"
 msgstr "क्या आप वाकई नोट <filename>%1</filename> को हटाना चाहते हैं?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
@@ -47,13 +43,13 @@ msgstr "क्या आप वाकई नोट <filename>%1</filename> क�
 #| msgctxt "@info"
 #| msgid "Are you sure you want to delete the note <filename>%1</filename>?"
 msgctxt "@info"
-msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
+msgid "Delete the folder <filename>%1</filename>?"
 msgstr "क्या आप वाकई नोट <filename>%1</filename> को हटाना चाहते हैं?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
-msgid "Delete this permanently."
+msgid "Delete permanently"
 msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
@@ -290,9 +286,11 @@ msgid "This folder already exists."
 msgstr "यह नोट पहले से मौजूद है."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@subtitle:dialog"
+#| msgid "Please choose another name for it."
 msgctxt "@subtitle:dialog"
-msgid "Please choose another name for it."
+msgid "Please choose another name."
 msgstr "कृपया इसके लिए कोई दूसरा नाम चुनें."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
@@ -321,15 +319,19 @@ msgid "Print html"
 msgstr "प्रिंट html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Print to pdf"
 msgctxt "@label:button"
-msgid "Print to pdf"
+msgid "Print to PDF"
 msgstr "पीडीएफ में प्रिंट करें"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:button"
+#| msgid "Disable due to flatpak limitation."
 msgctxt "@label:button"
-msgid "Disable due to flatpak limitation."
+msgid "Disabled due to Flatpak limitations."
 msgstr "फ्लैटपैक सीमा के कारण अक्षम."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
@@ -614,14 +616,17 @@ msgid "Background"
 msgstr "पृष्ठभूमि"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, kde-format
-msgid "This could cause visual artifact near the end of the pdf."
+#, fuzzy, kde-format
+#| msgid "This could cause visual artifact near the end of the pdf."
+msgid "This could cause visual artifacts near the end of the PDF."
 msgstr "इससे पीडीएफ के अंत में दृश्य विरूपण उत्पन्न हो सकता है।"
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:dialog, choose the location of where the file will be saved"
+#| msgid "Save note as pdf"
 msgctxt "@title:dialog, choose the location of where the file will be saved"
-msgid "Save note as pdf"
+msgid "Save note as PDF"
 msgstr "नोट को pdf के रूप में सहेजें"
 
 #: contents/ui/pages/SettingsPage.qml:18
@@ -780,17 +785,25 @@ msgid "Tag scale"
 msgstr "टैग स्केल"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
+#| "second part is provided by another string"
+#| msgid "A title with a preview of"
 msgctxt ""
-"@exemple, the rest of the sentence is 'italic text and its tags', the second "
+"@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
 msgstr "एक पूर्वावलोकन के साथ एक शीर्षक"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
+#| "the first part is provided by another string"
+#| msgid "italic text and its tags"
 msgctxt ""
-"@exemple, the first part of the sentence is 'A title with a preview of ', "
+"@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
 msgstr "इटैलिक पाठ और उसके टैग"
@@ -861,11 +874,11 @@ msgstr "नया नोट"
 
 #: contents/ui/settings/GeneralTab.qml:69
 #, fuzzy, kde-format
-#| msgctxt "@label:textbox, the default note name"
-#| msgid "New Note name:"
+#| msgctxt "as in 'A note'"
+#| msgid "Create a new note"
 msgctxt "@label:textbox"
-msgid "New Folder name:"
-msgstr "नये नोट का नाम:"
+msgid "Default name for new folders:"
+msgstr "नया नोट बनाएं"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, fuzzy, kde-format
@@ -875,10 +888,12 @@ msgid "New Note"
 msgstr "नया नोट"
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, kde-format
-msgctxt "@label:textbox, the default note name"
-msgid "New Note name:"
-msgstr "नये नोट का नाम:"
+#, fuzzy, kde-format
+#| msgctxt "as in 'A note'"
+#| msgid "Create a new note"
+msgctxt "@label:textbox"
+msgid "Default name for new notes:"
+msgstr "नया नोट बनाएं"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -1001,8 +1016,10 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "निम्नलिखित सिंटैक्स का उपयोग करके जल्दी से इमोजी लिखें"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, kde-format
-msgctxt "@exemple, something representing a possible emoji short name"
+#, fuzzy, kde-format
+#| msgctxt "@exemple, something representing a possible emoji short name"
+#| msgid "emoji_name"
+msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "इमोजी_नाम"
 
@@ -1404,8 +1421,10 @@ msgid "Heading"
 msgstr "शीर्षक"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Heading1"
+msgctxt "example"
 msgid "Heading1"
 msgstr "शीर्षक 1"
 
@@ -1415,8 +1434,10 @@ msgid "Bold"
 msgstr "बोल्ड"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Bold text"
+msgctxt "example"
 msgid "Bold text"
 msgstr "मोटा पाठ्यांश"
 
@@ -1426,8 +1447,10 @@ msgid "Italic"
 msgstr "तिरछा"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Italic text"
+msgctxt "example"
 msgid "Italic text"
 msgstr "इटैलिक पाठ"
 
@@ -1437,8 +1460,10 @@ msgid "Blockquote"
 msgstr "ब्लॉककोट"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@tooltip, text format, will be followed by the shortcut"
+#| msgid "Quote"
+msgctxt "example"
 msgid "Quote"
 msgstr "उद्धरण"
 
@@ -1449,15 +1474,19 @@ msgstr "आदेशित सूची"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "First item"
+msgctxt "example"
 msgid "First item"
 msgstr "पहला आइटम"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Second item"
+msgctxt "example"
 msgid "Second item"
 msgstr "दूसरा आइटम"
 
@@ -1472,8 +1501,10 @@ msgid "Code"
 msgstr "कोड"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Inline code"
+msgctxt "example"
 msgid "Inline code"
 msgstr "इनलाइन कोड"
 
@@ -1489,14 +1520,18 @@ msgid "Link"
 msgstr "जोड़ना"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "title"
+msgctxt "example"
 msgid "title"
 msgstr "शीर्षक"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "https://www.example.com"
+msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
 
@@ -1506,14 +1541,18 @@ msgid "Image"
 msgstr "छवि"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "alt text"
+msgctxt "example"
 msgid "alt text"
 msgstr "सभी पाठ"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "image"
+msgctxt "example"
 msgid "image"
 msgstr "छवि"
 
@@ -1547,20 +1586,26 @@ msgid "Right"
 msgstr "सही"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 1"
+msgctxt "example"
 msgid "Cell 1"
 msgstr "सेल 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 2"
+msgctxt "example"
 msgid "Cell 2"
 msgstr "सेल 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Cell 3"
+msgctxt "example"
 msgid "Cell 3"
 msgstr "सेल 3"
 
@@ -1570,8 +1615,10 @@ msgid "Fenced code block"
 msgstr "फेंस्ड कोड ब्लॉक"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Sample text here..."
+msgctxt "example"
 msgid "Sample text here..."
 msgstr "नमूना पाठ यहां..."
 
@@ -1581,8 +1628,10 @@ msgid "Strikethrough"
 msgstr "स्ट्राइकथ्रू"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, kde-format
-msgctxt "exemple, something wrong"
+#, fuzzy, kde-format
+#| msgctxt "exemple, something wrong"
+#| msgid "The world is flat."
+msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "दुनिया चपटी है."
 
@@ -1592,14 +1641,18 @@ msgid "Task list"
 msgstr "कार्य सूची"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Make more foo"
+msgctxt "example"
 msgid "Make more foo"
 msgstr "अधिक फ़ू बनाओ"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "Make more bar"
+msgctxt "example"
 msgid "Make more bar"
 msgstr "अधिक बार बनाएं"
 
@@ -1614,7 +1667,7 @@ msgstr "प्रमुखता से दिखाना"
 #, fuzzy, kde-format
 #| msgctxt "@label:combobox"
 #| msgid "Highlighter style"
-msgctxt "exemple"
+msgctxt "example"
 msgid "highlighted text"
 msgstr "हाइलाइटर शैली"
 
@@ -1625,7 +1678,7 @@ msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "subscript text"
 msgstr ""
 
@@ -1637,10 +1690,12 @@ msgid "Superscript"
 msgstr "विवरण:"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Description:"
+msgctxt "example"
 msgid "superscript text"
-msgstr ""
+msgstr "विवरण:"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1655,14 +1710,16 @@ msgstr "नोट लिंक"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
-msgctxt "exemple"
+msgctxt "example"
 msgid "<path to note>/<note name>"
 msgstr ""
 
-#. i18nc("exemple", "header")
+#. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, kde-format
-msgctxt "exemple"
+#, fuzzy, kde-format
+#| msgctxt "exemple"
+#| msgid "displayed name"
+msgctxt "example"
 msgid "displayed name"
 msgstr "प्रदर्शित नाम"
 
@@ -1827,8 +1884,9 @@ msgid "Custom"
 msgstr "रिवाज़"
 
 #: logic/printing/printingHelper.cpp:34
-#, kde-format
-msgid "An error occurred while trying to copy this pdf."
+#, fuzzy, kde-format
+#| msgid "An error occurred while trying to copy this pdf."
+msgid "An error occurred while trying to copy this PDF."
 msgstr "इस पीडीएफ को कॉपी करने का प्रयास करते समय एक त्रुटि हुई।"
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
@@ -1915,6 +1973,35 @@ msgstr "तुम्हारे नाम"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "आपके ईमेल"
+
+#, fuzzy
+#~| msgctxt "@title:dialog, as in 'A note category'"
+#~| msgid "Delete Note Confirmation"
+#~ msgctxt "@title:dialog, Confirmation for deletion of a note"
+#~ msgid "Delete Note Confirmation"
+#~ msgstr "नोट हटाने की पुष्टि"
+
+#, fuzzy
+#~| msgctxt "@title:dialog, as in 'A note category'"
+#~| msgid "Delete Note Confirmation"
+#~ msgctxt "@title:dialog, Confirmation for deletion of a folder"
+#~ msgid "Delete Folder Confirmation"
+#~ msgstr "नोट हटाने की पुष्टि"
+
+#, fuzzy
+#~| msgctxt "@label:textbox, the default note name"
+#~| msgid "New Note name:"
+#~ msgctxt "@label:textbox"
+#~ msgid "New Folder name:"
+#~ msgstr "नये नोट का नाम:"
+
+#~ msgctxt "@label:textbox, the default note name"
+#~ msgid "New Note name:"
+#~ msgstr "नये नोट का नाम:"
+
+#~ msgctxt "exemple"
+#~ msgid "Quote"
+#~ msgstr "उद्धरण"
 
 #, fuzzy
 #~| msgid "Move"
