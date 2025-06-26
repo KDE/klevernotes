@@ -182,7 +182,7 @@ Kirigami.Dialog {
             CheatSheetEntry {
                 element: i18n("Note link")
                 syntax: "[[ " 
-                    + i18nc("example", "<path to note>/<note name>") 
+                    + i18nc("example, These are placeholders, not XML tags. Please translate to your language", "<path to note>/<note name>") 
                     /* TODO: fix this when reworking headers
                      + ":# " + i18nc("example", "header") */
                      + " | " + i18nc("example", "displayed name") + " ]]"
