@@ -119,33 +119,6 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main page on Desktop PC</caption>
-      <caption xml:lang="ar">الصفحة الرئيسة على سطح المكتب</caption>
-      <caption xml:lang="ca">Pàgina principal a l'escriptori</caption>
-      <caption xml:lang="ca-valencia">Pàgina principal a l'escriptori</caption>
-      <caption xml:lang="cs">Hlavní stránka na pracovní ploše</caption>
-      <caption xml:lang="en-GB">Main page on desktop</caption>
-      <caption xml:lang="eo">Ĉefpaĝo en labortablo</caption>
-      <caption xml:lang="es">Página principal para el escritorio</caption>
-      <caption xml:lang="eu">Orri nagusia mahaigainean</caption>
-      <caption xml:lang="fi">Pääsivu työpöydällä</caption>
-      <caption xml:lang="fr">Page principale sur le bureau</caption>
-      <caption xml:lang="gl">Páxina principal no escritorio.</caption>
-      <caption xml:lang="he">עמוד ראשי בשולחן העבודה</caption>
-      <caption xml:lang="hi">डेस्कटॉप पर मुख्य पृष्ठ</caption>
-      <caption xml:lang="ia">PAgina principal sur scriptorio</caption>
-      <caption xml:lang="it">Pagina principale su desktop</caption>
-      <caption xml:lang="ka">მთავარი გვერდი სამუშაო მაგიდაზე</caption>
-      <caption xml:lang="ko">데스크톱의 주 페이지</caption>
-      <caption xml:lang="nl">Hoofdpagina op bureaublad</caption>
-      <caption xml:lang="pl">Główna strona na komputerze biurkowym</caption>
-      <caption xml:lang="sa">डेस्कटॉप् इत्यत्र मुख्यपृष्ठम्</caption>
-      <caption xml:lang="sl">Glavna stran na namizju</caption>
-      <caption xml:lang="sv">Huvudsida på skrivbord</caption>
-      <caption xml:lang="tr">Masaüstünde ana sayfa</caption>
-      <caption xml:lang="uk">Основна сторінка на робочій станції</caption>
-      <caption xml:lang="x-test">xxMain page on desktopxx</caption>
-      <caption xml:lang="zh-CN">桌面模式的主页面</caption>
-      <caption xml:lang="zh-TW">桌面模式的主頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png</image>
     </screenshot>
     <screenshot>
