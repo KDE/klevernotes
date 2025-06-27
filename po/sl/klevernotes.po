@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-25 06:59+0100\n"
+"POT-Creation-Date: 2025-06-27 00:43+0000\n"
+"PO-Revision-Date: 2025-06-26 06:39+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,43 +16,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Confirm Note Deletion"
-msgstr ""
+msgstr "Potrdite brisanje zabeležke"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "Potrdite brisanje mape"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr "Naj premaknem <filename>%1</filename>?"
+msgstr "Naj izbrišem <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr "Naj premaknem <filename>%1</filename>?"
+msgstr "Naj izbrišem mapo <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@label:check"
-#| msgid "Delete this permanently."
+#, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr "Zbriši to permanentno."
+msgstr "Zbriši trajno."
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -276,12 +270,10 @@ msgid "This folder already exists."
 msgstr "Ta mapa že obstaja."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please choose another name for it."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr "Izberite drugo ime za to."
+msgstr "Izberite drugo ime."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -309,20 +301,16 @@ msgid "Print html"
 msgstr "Natisni html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Print to pdf"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
-msgstr "Natisni na pdf"
+msgstr "Natisni v PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Disable due to flatpak limitation."
+#, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr "Onemogoči zaradi omejitve flatpaka."
+msgstr "Onemogočeno zaradi omejitev Flatpaka."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
@@ -612,18 +600,15 @@ msgid "Background"
 msgstr "Ozadje"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, fuzzy, kde-format
-#| msgid "This could cause visual artifact near the end of the pdf."
+#, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr "To utegne povzročiti vizualni artefakt na koncu dokumenta pdf."
+msgstr "To utegne povzročiti vizualni artefakt na koncu dokumenta PDF."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as pdf"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
-msgstr "Shrani zabeležko kot pdf"
+msgstr "Shrani zabeležko kot PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -782,23 +767,15 @@ msgid "Tag scale"
 msgstr "Merilo oznake"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
-#| "second part is provided by another string"
-#| msgid "A title with a preview of"
+#, kde-format
 msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr "Naslov s predogledom"
+msgstr "Naslov s predogledom od"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
-#| "the first part is provided by another string"
-#| msgid "italic text and its tags"
+#, kde-format
 msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
@@ -868,12 +845,10 @@ msgid "New Folder"
 msgstr "Nova mapa"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new folder"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr "Ustvari novo mapo"
+msgstr "Privzeto ime za nove mape:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
@@ -881,12 +856,10 @@ msgid "New Note"
 msgstr "Nova zabeležka"
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr "Ustvari novo zabeležko"
+msgstr "Privzeto ime nove zabeležke:"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -1011,9 +984,7 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "Hitro napišite čustvenčka z naslednjo sintakso"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, fuzzy, kde-format
-#| msgctxt "@exemple, something representing a possible emoji short name"
-#| msgid "emoji_name"
+#, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "emoji_name"
@@ -1405,9 +1376,7 @@ msgid "Heading"
 msgstr "Glava"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Heading1"
+#, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "Glava 1"
@@ -1418,9 +1387,7 @@ msgid "Bold"
 msgstr "Krepko"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Krepko besedilo"
@@ -1431,9 +1398,7 @@ msgid "Italic"
 msgstr "Poševno"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Italic text"
+#, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "Poševno besedilo"
@@ -1444,12 +1409,10 @@ msgid "Blockquote"
 msgstr "Bločni sklic"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Quote"
+#, kde-format
 msgctxt "example"
 msgid "Quote"
-msgstr "Sklic"
+msgstr "Navednica"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #, kde-format
@@ -1458,18 +1421,14 @@ msgstr "Urejeni seznam"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Prva postavka"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Druga postavka"
@@ -1485,9 +1444,7 @@ msgid "Code"
 msgstr "Koda"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Inline code"
+#, kde-format
 msgctxt "example"
 msgid "Inline code"
 msgstr "Znotrajvrstčna koda"
@@ -1504,17 +1461,13 @@ msgid "Link"
 msgstr "Povezava"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "title"
+#, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "naslov"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "https://www.example.com"
+#, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
@@ -1525,17 +1478,13 @@ msgid "Image"
 msgstr "Slika"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "alt text"
+#, kde-format
 msgctxt "example"
 msgid "alt text"
 msgstr "alt besedilo"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "image"
+#, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "slika"
@@ -1570,25 +1519,19 @@ msgid "Right"
 msgstr "Desno"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 1"
+#, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "Celica 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 2"
+#, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "Celica 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 3"
+#, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "Celica 3"
@@ -1599,9 +1542,7 @@ msgid "Fenced code block"
 msgstr "Ograjen blok kode"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Sample text here..."
+#, kde-format
 msgctxt "example"
 msgid "Sample text here..."
 msgstr "Vzorčno besedilo tukaj..."
@@ -1612,9 +1553,7 @@ msgid "Strikethrough"
 msgstr "Prečrtano"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, fuzzy, kde-format
-#| msgctxt "exemple, something wrong"
-#| msgid "The world is flat."
+#, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "Svet je ploščat."
@@ -1625,17 +1564,13 @@ msgid "Task list"
 msgstr "Seznam nalog"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more foo"
+#, kde-format
 msgctxt "example"
 msgid "Make more foo"
 msgstr "Naredi več foo"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more bar"
+#, kde-format
 msgctxt "example"
 msgid "Make more bar"
 msgstr "Naredi več bar"
@@ -1646,9 +1581,7 @@ msgid "Highlight"
 msgstr "Osvetli"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "highlighted text"
+#, kde-format
 msgctxt "example"
 msgid "highlighted text"
 msgstr "osvetljeno besedilo"
@@ -1659,9 +1592,7 @@ msgid "Subscript"
 msgstr "Indeks spodaj"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "subscript text"
+#, kde-format
 msgctxt "example"
 msgid "subscript text"
 msgstr "podpisano besedilo"
@@ -1672,9 +1603,7 @@ msgid "Superscript"
 msgstr "Indeks zgoraj"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "superscript text"
+#, kde-format
 msgctxt "example"
 msgid "superscript text"
 msgstr "nadpisano besedilo"
@@ -1692,17 +1621,17 @@ msgstr "Povezava zabeležke"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
 #, fuzzy, kde-format
-#| msgctxt "exemple"
+#| msgctxt "example"
 #| msgid "<path to note>/<note name>"
-msgctxt "example"
+msgctxt ""
+"example, These are placeholders, not XML tags. Please translate to your "
+"language"
 msgid "<path to note>/<note name>"
 msgstr "<pot do zabeležke>/<ime zabeležke>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "displayed name"
+#, kde-format
 msgctxt "example"
 msgid "displayed name"
 msgstr "prikazano ime"
@@ -1868,10 +1797,9 @@ msgid "Custom"
 msgstr "Po meri"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to copy this pdf."
+#, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr "Prišlo je do napake pri poskusu kopiranja te datoteke pdf."
+msgstr "Prišlo je do napake pri poskusu kopiranja te datoteke PDF."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, kde-format

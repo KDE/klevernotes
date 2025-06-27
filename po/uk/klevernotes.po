@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-25 08:22+0200\n"
+"POT-Creation-Date: 2025-06-27 00:43+0000\n"
+"PO-Revision-Date: 2025-06-26 09:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -22,37 +22,31 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Confirm Note Deletion"
-msgstr ""
+msgstr "Підтвердження вилучення нотатки"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "Підтвердження вилучення теки"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr "Пересунути <filename>%1</filename>?"
+msgstr "Вилучити нотатку <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr "Пересунути <filename>%1</filename>?"
+msgstr "Вилучити теку <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@label:check"
-#| msgid "Delete this permanently."
+#, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr "Вилучити остаточно."
+msgstr "Вилучити остаточно"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -279,9 +273,7 @@ msgid "This folder already exists."
 msgstr "Така тека вже існує."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please choose another name for it."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
 msgstr "Будь ласка, виберіть іншу назву."
@@ -314,20 +306,16 @@ msgid "Print html"
 msgstr "Надрукувати до файла HTML"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Print to pdf"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
 msgstr "Надрукувати до PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Disable due to flatpak limitation."
+#, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr "Вимкнути через обмеження flatpak."
+msgstr "Вилучено через обмеження Flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
@@ -619,15 +607,12 @@ msgid "Background"
 msgstr "Тло"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, fuzzy, kde-format
-#| msgid "This could cause visual artifact near the end of the pdf."
+#, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr "Це може спричинити візуальний дефект наприкінці pdf."
+msgstr "Це може спричинити візуальні дефекти наприкінці PDF."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as pdf"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
 msgstr "Збереження нотатки як PDF"
@@ -791,11 +776,7 @@ msgid "Tag scale"
 msgstr "Масштаб мітки"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
-#| "second part is provided by another string"
-#| msgid "A title with a preview of"
+#, kde-format
 msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
@@ -803,11 +784,7 @@ msgid "A title with a preview of"
 msgstr "Заголовок із переглядом"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
-#| "the first part is provided by another string"
-#| msgid "italic text and its tags"
+#, kde-format
 msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
@@ -877,12 +854,10 @@ msgid "New Folder"
 msgstr "Нова тека"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new folder"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr "Створити теку"
+msgstr "Типова назва для нових тек:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
@@ -890,12 +865,10 @@ msgid "New Note"
 msgstr "Нова нотатка"
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr "Створити нотатку"
+msgstr "Типова назва для нових нотаток:"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -1019,9 +992,7 @@ msgstr ""
 "Швидкий запис емоційок за допомогою вказаних нижче синтаксичних конструкцій"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, fuzzy, kde-format
-#| msgctxt "@exemple, something representing a possible emoji short name"
-#| msgid "emoji_name"
+#, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "назва_емоційки"
@@ -1413,9 +1384,7 @@ msgid "Heading"
 msgstr "Заголовок"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Heading1"
+#, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "Заголовок1"
@@ -1426,9 +1395,7 @@ msgid "Bold"
 msgstr "Напівжирний"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Текст напівжирним"
@@ -1439,9 +1406,7 @@ msgid "Italic"
 msgstr "Курсив"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Italic text"
+#, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "Текст курсивом"
@@ -1452,9 +1417,7 @@ msgid "Blockquote"
 msgstr "Блок цитування"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Quote"
+#, kde-format
 msgctxt "example"
 msgid "Quote"
 msgstr "Цитата"
@@ -1466,18 +1429,14 @@ msgstr "Впорядкований список"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Перший пункт"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Другий пункт"
@@ -1493,9 +1452,7 @@ msgid "Code"
 msgstr "Код"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Inline code"
+#, kde-format
 msgctxt "example"
 msgid "Inline code"
 msgstr "Код в рядку"
@@ -1512,17 +1469,13 @@ msgid "Link"
 msgstr "Посилання"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "title"
+#, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "заголовок"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "https://www.example.com"
+#, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
@@ -1533,17 +1486,13 @@ msgid "Image"
 msgstr "Зображення"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "alt text"
+#, kde-format
 msgctxt "example"
 msgid "alt text"
-msgstr "Альтернативний текст"
+msgstr "альтернативний текст"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "image"
+#, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "зображення"
@@ -1578,25 +1527,19 @@ msgid "Right"
 msgstr "Праворуч"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 1"
+#, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "Комірка 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 2"
+#, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "Комірка 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 3"
+#, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "Комірка 3"
@@ -1607,9 +1550,7 @@ msgid "Fenced code block"
 msgstr "Блок коду у рамці"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Sample text here..."
+#, kde-format
 msgctxt "example"
 msgid "Sample text here..."
 msgstr "Зразок тексту…"
@@ -1620,9 +1561,7 @@ msgid "Strikethrough"
 msgstr "Перекреслення"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, fuzzy, kde-format
-#| msgctxt "exemple, something wrong"
-#| msgid "The world is flat."
+#, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "Земля пласка."
@@ -1633,17 +1572,13 @@ msgid "Task list"
 msgstr "Список завдань"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more foo"
+#, kde-format
 msgctxt "example"
 msgid "Make more foo"
 msgstr "Додати додаткові фіктивні записи"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more bar"
+#, kde-format
 msgctxt "example"
 msgid "Make more bar"
 msgstr "Додати додаткові інші записи"
@@ -1654,12 +1589,10 @@ msgid "Highlight"
 msgstr "Підсвічування"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "highlighted text"
+#, kde-format
 msgctxt "example"
 msgid "highlighted text"
-msgstr "Підсвічений текст"
+msgstr "підсвічений текст"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
@@ -1667,12 +1600,10 @@ msgid "Subscript"
 msgstr "Нижній індекс"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "subscript text"
+#, kde-format
 msgctxt "example"
 msgid "subscript text"
-msgstr "Текст нижнього індексу"
+msgstr "текст нижнього індексу"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
 #, kde-format
@@ -1680,12 +1611,10 @@ msgid "Superscript"
 msgstr "Верхній індекс"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "superscript text"
+#, kde-format
 msgctxt "example"
 msgid "superscript text"
-msgstr "Текст верхнього індексу"
+msgstr "текст верхнього індексу"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1700,17 +1629,17 @@ msgstr "Посилання у нотатці"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
 #, fuzzy, kde-format
-#| msgctxt "exemple"
+#| msgctxt "example"
 #| msgid "<path to note>/<note name>"
-msgctxt "example"
+msgctxt ""
+"example, These are placeholders, not XML tags. Please translate to your "
+"language"
 msgid "<path to note>/<note name>"
 msgstr "<шлях до нотатки>/<назва нотатки>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "displayed name"
+#, kde-format
 msgctxt "example"
 msgid "displayed name"
 msgstr "показана назва"
@@ -1876,8 +1805,7 @@ msgid "Custom"
 msgstr "Нетипові"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to copy this pdf."
+#, kde-format
 msgid "An error occurred while trying to copy this PDF."
 msgstr "Сталася помилка під час спроби скопіювати цей PDF."
 

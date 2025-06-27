@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-26 00:43+0000\n"
+"POT-Creation-Date: 2025-06-27 00:43+0000\n"
 "PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -1689,7 +1689,9 @@ msgstr "Nota ligilo"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
 #, kde-format
-msgctxt "example"
+msgctxt ""
+"example, These are placeholders, not XML tags. Please translate to your "
+"language"
 msgid "<path to note>/<note name>"
 msgstr ""
 
