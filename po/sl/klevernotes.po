@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-27 00:43+0000\n"
-"PO-Revision-Date: 2025-06-26 06:39+0200\n"
+"PO-Revision-Date: 2025-06-27 06:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -46,7 +46,7 @@ msgstr "Naj izbrišem mapo <filename>%1</filename>?"
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr "Zbriši trajno."
+msgstr "Zbriši trajno"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -1620,9 +1620,7 @@ msgid "Note link"
 msgstr "Povezava zabeležke"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
-#, fuzzy, kde-format
-#| msgctxt "example"
-#| msgid "<path to note>/<note name>"
+#, kde-format
 msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
