@@ -119,6 +119,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Main page on Desktop PC</caption>
+      <caption xml:lang="ca">Pàgina principal al PC d'escriptori</caption>
+      <caption xml:lang="ca-valencia">Pàgina principal al PC d'escriptori</caption>
+      <caption xml:lang="he">עמוד ראשי במחשב שולחני</caption>
+      <caption xml:lang="ka">მთავარი გვერდი სამუშაო PC-ზე</caption>
+      <caption xml:lang="nl">Hoofdpagina op PC met bureaublad</caption>
+      <caption xml:lang="sl">Glavna stran na namiznem računalniku</caption>
+      <caption xml:lang="tr">Masaüstü bilgisayarda ana sayfa görünümü</caption>
+      <caption xml:lang="uk">Основна сторінка на робочій станції</caption>
+      <caption xml:lang="x-test">xxMain page on Desktop PCxx</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png</image>
     </screenshot>
     <screenshot>
