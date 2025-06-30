@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-27 00:43+0000\n"
-"PO-Revision-Date: 2025-06-27 10:10+0300\n"
+"PO-Revision-Date: 2025-06-29 09:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1336,7 +1336,7 @@ msgstr "Notları göster"
 #: contents/ui/sideBar/Sidebar.qml:112 contents/ui/sideBar/Sidebar.qml:223
 #, kde-format
 msgid "Cheat sheet"
-msgstr "Kopya Kağıdı"
+msgstr "Kopya Kâğıdı"
 
 #: contents/ui/sideBar/Sidebar.qml:128 contents/ui/sideBar/Sidebar.qml:235
 #, kde-format
@@ -1364,7 +1364,7 @@ msgstr "Not"
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr "Markdown Kopya Kağıdı"
+msgstr "Markdown Kopya Kâğıdı"
 
 #: contents/ui/textEditor/CheatSheet.qml:40
 #: contents/ui/textEditor/TextDisplay.qml:69

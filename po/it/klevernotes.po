@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-27 00:43+0000\n"
-"PO-Revision-Date: 2025-03-25 14:20+0100\n"
+"PO-Revision-Date: 2025-06-28 20:48+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,43 +15,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Confirm Note Deletion"
-msgstr ""
+msgstr "Conferma eliminazione nota"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "Conferma eliminazione cartella"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr "Vuoi spostare <filename>%1</filename>?"
+msgstr "Vuoi eliminare la nota <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr "Vuoi spostare <filename>%1</filename>?"
+msgstr "Vuoi eliminare la cartella <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@label:check"
-#| msgid "Delete this permanently."
+#, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr "Eliminalo definitivamente."
+msgstr "Elimina definitivamente"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -277,12 +271,10 @@ msgid "This folder already exists."
 msgstr "Questa cartella esiste già."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please choose another name for it."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr "Scegli un altro nome per questo."
+msgstr "Scegli un altro nome."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -312,20 +304,16 @@ msgid "Print html"
 msgstr "Stampa html"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Print to pdf"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
 msgstr "Stampa in PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Disable due to flatpak limitation."
+#, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr "Disabilita a causa della limitazione flatpak."
+msgstr "Disabilitata a causa delle limitazioni di Flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
@@ -616,18 +604,15 @@ msgid "Background"
 msgstr "Sfondo"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, fuzzy, kde-format
-#| msgid "This could cause visual artifact near the end of the pdf."
+#, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr "Ciò potrebbe causare artefatti visivi verso la fine del pdf."
+msgstr "Ciò potrebbe causare artefatti visivi verso la fine del PDF."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as pdf"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
-msgstr "Salva la nota come pdf"
+msgstr "Salva la nota come PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -790,11 +775,7 @@ msgid "Tag scale"
 msgstr "Dimensione dei tag"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
-#| "second part is provided by another string"
-#| msgid "A title with a preview of"
+#, kde-format
 msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
@@ -802,11 +783,7 @@ msgid "A title with a preview of"
 msgstr "Un titolo con un'anteprima di"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
-#| "the first part is provided by another string"
-#| msgid "italic text and its tags"
+#, kde-format
 msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
@@ -876,12 +853,10 @@ msgid "New Folder"
 msgstr "Nuova cartella"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new folder"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr "Crea una nuova cartella"
+msgstr "Nome predefinito per le nuove cartelle:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
@@ -889,12 +864,10 @@ msgid "New Note"
 msgstr "Nuova nota"
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr "Crea una nuova nota"
+msgstr "Nome predefinito per le nuove note:"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -1019,9 +992,7 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "Scrivi rapidamente le emoji utilizzando la seguente sintassi"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, fuzzy, kde-format
-#| msgctxt "@exemple, something representing a possible emoji short name"
-#| msgid "emoji_name"
+#, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "nome_emoji"
@@ -1413,9 +1384,7 @@ msgid "Heading"
 msgstr "Intestazione"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Heading1"
+#, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "Intestazione1"
@@ -1426,9 +1395,7 @@ msgid "Bold"
 msgstr "Grassetto"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Testo in grassetto"
@@ -1439,9 +1406,7 @@ msgid "Italic"
 msgstr "Corsivo"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Italic text"
+#, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "Testo in corsivo"
@@ -1452,9 +1417,7 @@ msgid "Blockquote"
 msgstr "Blocco di citazione"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Quote"
+#, kde-format
 msgctxt "example"
 msgid "Quote"
 msgstr "Citazione"
@@ -1466,18 +1429,14 @@ msgstr "Elenco ordinato"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Primo elemento"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Secondo elemento"
@@ -1493,9 +1452,7 @@ msgid "Code"
 msgstr "Codice postale"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Inline code"
+#, kde-format
 msgctxt "example"
 msgid "Inline code"
 msgstr "Codice in linea"
@@ -1512,17 +1469,13 @@ msgid "Link"
 msgstr "Collegamento"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "title"
+#, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "titolo"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "https://www.example.com"
+#, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.esempio.com"
@@ -1533,17 +1486,13 @@ msgid "Image"
 msgstr "Immagine"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "alt text"
+#, kde-format
 msgctxt "example"
 msgid "alt text"
 msgstr "testo alternativo"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "image"
+#, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "immagine"
@@ -1578,25 +1527,19 @@ msgid "Right"
 msgstr "Destra"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 1"
+#, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "Cella 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 2"
+#, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "Cella 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 3"
+#, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "Cella 3"
@@ -1607,9 +1550,7 @@ msgid "Fenced code block"
 msgstr "Blocco di codice delimitato"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Sample text here..."
+#, kde-format
 msgctxt "example"
 msgid "Sample text here..."
 msgstr "Testo di esempio qui..."
@@ -1620,9 +1561,7 @@ msgid "Strikethrough"
 msgstr "Barrato"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, fuzzy, kde-format
-#| msgctxt "exemple, something wrong"
-#| msgid "The world is flat."
+#, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "La Terra è piatta."
@@ -1633,17 +1572,13 @@ msgid "Task list"
 msgstr "Elenco di attività"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more foo"
+#, kde-format
 msgctxt "example"
 msgid "Make more foo"
 msgstr "Produci altro sale"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more bar"
+#, kde-format
 msgctxt "example"
 msgid "Make more bar"
 msgstr "Produci altro zucchero"
@@ -1654,9 +1589,7 @@ msgid "Highlight"
 msgstr "Evidenzia"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "highlighted text"
+#, kde-format
 msgctxt "example"
 msgid "highlighted text"
 msgstr "Testo evidenziato"
@@ -1667,9 +1600,7 @@ msgid "Subscript"
 msgstr "Pedice"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "subscript text"
+#, kde-format
 msgctxt "example"
 msgid "subscript text"
 msgstr "testo del pedice"
@@ -1680,9 +1611,7 @@ msgid "Superscript"
 msgstr "Apice"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "superscript text"
+#, kde-format
 msgctxt "example"
 msgid "superscript text"
 msgstr "testo dell'apice"
@@ -1699,9 +1628,7 @@ msgid "Note link"
 msgstr "Collegamento della nota"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "<path to note>/<note name>"
+#, kde-format
 msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
@@ -1710,9 +1637,7 @@ msgstr "<percorso alla nota>/<nome della nota>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "displayed name"
+#, kde-format
 msgctxt "example"
 msgid "displayed name"
 msgstr "nome visualizzato"
@@ -1879,10 +1804,9 @@ msgid "Custom"
 msgstr "Personalizzate"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to copy this pdf."
+#, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr "Si è verificato un errore durante il tentativo di copiare questo pdf."
+msgstr "Si è verificato un errore durante il tentativo di copiare questo PDF."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, kde-format
