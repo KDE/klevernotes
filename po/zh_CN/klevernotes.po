@@ -21,31 +21,31 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Confirm Note Deletion"
-msgstr ""
+msgstr "确认删除笔记"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "确认删除文件夹"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr ""
+msgstr "删除笔记 <filename>%1</filename>？"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr ""
+msgstr "删除文件夹 <filename>%1</filename>？"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr ""
+msgstr "永久删除"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -272,7 +272,7 @@ msgstr "该文件夹已存在。"
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr ""
+msgstr "请选择其他名称。"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -303,19 +303,19 @@ msgstr "Print html"
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
-msgstr ""
+msgstr "打印到 PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr ""
+msgstr "由于 Flatpak 限制而不可用。"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr ""
+msgstr "强制性操作"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -349,13 +349,13 @@ msgctxt "@subtitle:dialog"
 msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
-msgstr ""
+msgstr "注意：所有本地保存的图片将从“图片”子文件夹移动到该笔记的父文件夹。"
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
-msgstr ""
+msgstr "只需从路径中移除“/Images”，即可让它们重新显示。"
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -593,13 +593,13 @@ msgstr "背景"
 #: contents/ui/pages/PrintingPage.qml:110
 #, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr ""
+msgstr "这可能导致 PDF 末尾附近出现视觉伪影。"
 
 #: contents/ui/pages/PrintingPage.qml:121
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
-msgstr ""
+msgstr "将笔记另存为 PDF"
 
 #: contents/ui/pages/SettingsPage.qml:18
 #, kde-format
@@ -761,7 +761,7 @@ msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "标题预览"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
 #, kde-format
