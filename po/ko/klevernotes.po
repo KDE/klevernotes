@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-27 00:43+0000\n"
-"PO-Revision-Date: 2025-04-06 23:29+0200\n"
+"PO-Revision-Date: 2025-07-21 01:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,43 +15,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Confirm Note Deletion"
-msgstr ""
+msgstr "메모 삭제 확인"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "폴더 삭제 확인"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr "<filename>%1</filename>을(를) 이동하시겠습니까?"
+msgstr "<filename>%1</filename> 메모를 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr "<filename>%1</filename>을(를) 이동하시겠습니까?"
+msgstr "<filename>%1</filename> 폴더를 삭제하시겠습니까?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@label:check"
-#| msgid "Delete this permanently."
+#, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr "이 메모를 영원히 삭제합니다."
+msgstr "완전히 삭제"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
 #, kde-format
@@ -277,9 +271,7 @@ msgid "This folder already exists."
 msgstr "이 폴더가 이미 존재합니다."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please choose another name for it."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
 msgstr "다른 이름을 지정하십시오."
@@ -312,17 +304,13 @@ msgid "Print html"
 msgstr "HTML 인쇄"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Print to pdf"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
 msgstr "PDF로 인쇄"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Disable due to flatpak limitation."
+#, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
 msgstr "Flatpak 제한으로 비활성화되었습니다."
@@ -615,15 +603,12 @@ msgid "Background"
 msgstr "배경"
 
 #: contents/ui/pages/PrintingPage.qml:110
-#, fuzzy, kde-format
-#| msgid "This could cause visual artifact near the end of the pdf."
+#, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
 msgstr "PDF 파일 끝부분에 잔상이 생길 수도 있습니다."
 
 #: contents/ui/pages/PrintingPage.qml:121
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as pdf"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
 msgstr "PDF로 메모 저장"
@@ -787,11 +772,7 @@ msgid "Tag scale"
 msgstr "태그 단계"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:84
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
-#| "second part is provided by another string"
-#| msgid "A title with a preview of"
+#, kde-format
 msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
@@ -799,11 +780,7 @@ msgid "A title with a preview of"
 msgstr "다음의 미리 보기를 포함한 제목"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:108
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
-#| "the first part is provided by another string"
-#| msgid "italic text and its tags"
+#, kde-format
 msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
@@ -873,12 +850,10 @@ msgid "New Folder"
 msgstr "새 폴더"
 
 #: contents/ui/settings/GeneralTab.qml:69
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new folder"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr "새 폴더 만들기"
+msgstr "새 폴더의 기본 이름:"
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
@@ -886,12 +861,10 @@ msgid "New Note"
 msgstr "새 메모"
 
 #: contents/ui/settings/GeneralTab.qml:93
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr "새 메모 만들기"
+msgstr "새 메모의 기본 이름:"
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -1014,9 +987,7 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "다음 문법을 사용하여 빠르게 이모지 입력"
 
 #: contents/ui/settings/PluginsTab.qml:153
-#, fuzzy, kde-format
-#| msgctxt "@exemple, something representing a possible emoji short name"
-#| msgid "emoji_name"
+#, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "emoji_name"
@@ -1408,9 +1379,7 @@ msgid "Heading"
 msgstr "머리글"
 
 #: contents/ui/textEditor/CheatSheet.qml:55
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Heading1"
+#, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "머리글1"
@@ -1421,9 +1390,7 @@ msgid "Bold"
 msgstr "굵게"
 
 #: contents/ui/textEditor/CheatSheet.qml:61
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "굵은 텍스트"
@@ -1434,9 +1401,7 @@ msgid "Italic"
 msgstr "이탤릭"
 
 #: contents/ui/textEditor/CheatSheet.qml:67
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Italic text"
+#, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "이탤릭 텍스트"
@@ -1447,9 +1412,7 @@ msgid "Blockquote"
 msgstr "블록 인용문"
 
 #: contents/ui/textEditor/CheatSheet.qml:73
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Quote"
+#, kde-format
 msgctxt "example"
 msgid "Quote"
 msgstr "인용문"
@@ -1461,18 +1424,14 @@ msgstr "정렬된 목록"
 
 #: contents/ui/textEditor/CheatSheet.qml:79
 #: contents/ui/textEditor/CheatSheet.qml:86
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "첫째 항목"
 
 #: contents/ui/textEditor/CheatSheet.qml:80
 #: contents/ui/textEditor/CheatSheet.qml:87
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "둘째 항목"
@@ -1488,9 +1447,7 @@ msgid "Code"
 msgstr "코드"
 
 #: contents/ui/textEditor/CheatSheet.qml:93
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Inline code"
+#, kde-format
 msgctxt "example"
 msgid "Inline code"
 msgstr "인라인 코드"
@@ -1507,17 +1464,13 @@ msgid "Link"
 msgstr "링크"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "title"
+#, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "제목"
 
 #: contents/ui/textEditor/CheatSheet.qml:105
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "https://www.example.com"
+#, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
@@ -1528,17 +1481,13 @@ msgid "Image"
 msgstr "그림"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "alt text"
+#, kde-format
 msgctxt "example"
 msgid "alt text"
 msgstr "대체 문자열"
 
 #: contents/ui/textEditor/CheatSheet.qml:111
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "image"
+#, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "그림"
@@ -1573,25 +1522,19 @@ msgid "Right"
 msgstr "오른쪽"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 1"
+#, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "셀 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 2"
+#, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "셀 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:128
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 3"
+#, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "셀 3"
@@ -1602,9 +1545,7 @@ msgid "Fenced code block"
 msgstr "둘러싸인 코드 블록"
 
 #: contents/ui/textEditor/CheatSheet.qml:135
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Sample text here..."
+#, kde-format
 msgctxt "example"
 msgid "Sample text here..."
 msgstr "예제 텍스트..."
@@ -1615,9 +1556,7 @@ msgid "Strikethrough"
 msgstr "취소선"
 
 #: contents/ui/textEditor/CheatSheet.qml:142
-#, fuzzy, kde-format
-#| msgctxt "exemple, something wrong"
-#| msgid "The world is flat."
+#, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "지구는 평평합니다."
@@ -1628,17 +1567,13 @@ msgid "Task list"
 msgstr "할 일 목록"
 
 #: contents/ui/textEditor/CheatSheet.qml:148
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more foo"
+#, kde-format
 msgctxt "example"
 msgid "Make more foo"
 msgstr "어쩌구 더 만들기"
 
 #: contents/ui/textEditor/CheatSheet.qml:149
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more bar"
+#, kde-format
 msgctxt "example"
 msgid "Make more bar"
 msgstr "저쩌구 더 만들기"
@@ -1649,9 +1584,7 @@ msgid "Highlight"
 msgstr "강조"
 
 #: contents/ui/textEditor/CheatSheet.qml:155
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "highlighted text"
+#, kde-format
 msgctxt "example"
 msgid "highlighted text"
 msgstr "방문한 링크 텍스트"
@@ -1662,9 +1595,7 @@ msgid "Subscript"
 msgstr "아래 첨자"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "subscript text"
+#, kde-format
 msgctxt "example"
 msgid "subscript text"
 msgstr "아래 첨자 텍스트"
@@ -1675,9 +1606,7 @@ msgid "Superscript"
 msgstr "위 첨자"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "superscript text"
+#, kde-format
 msgctxt "example"
 msgid "superscript text"
 msgstr "위 첨자 텍스트"
@@ -1694,20 +1623,16 @@ msgid "Note link"
 msgstr "메모 링크"
 
 #: contents/ui/textEditor/CheatSheet.qml:185
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "<path to note>/<note name>"
+#, kde-format
 msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
 msgid "<path to note>/<note name>"
-msgstr "<path to note>/<note name>"
+msgstr "<메모 경로>/<메모 이름>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "displayed name"
+#, kde-format
 msgctxt "example"
 msgid "displayed name"
 msgstr "표시 이름"
@@ -1873,8 +1798,7 @@ msgid "Custom"
 msgstr "사용자 정의"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to copy this pdf."
+#, kde-format
 msgid "An error occurred while trying to copy this PDF."
 msgstr "이 PDF를 복사하는 중 오류가 발생했습니다."
 
