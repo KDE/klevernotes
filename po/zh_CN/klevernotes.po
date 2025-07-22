@@ -769,7 +769,7 @@ msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "斜体文本及其标签"
 
 #: contents/ui/settings/EditorTab.qml:21
 #, kde-format
@@ -831,24 +831,24 @@ msgstr "侧边栏"
 #: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
 #, kde-format
 msgid "New Folder"
-msgstr ""
+msgstr "新文件夹"
 
 #: contents/ui/settings/GeneralTab.qml:69
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr ""
+msgstr "新文件夹的默认名称："
 
 #: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
 msgid "New Note"
-msgstr ""
+msgstr "新建笔记"
 
 #: contents/ui/settings/GeneralTab.qml:93
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr ""
+msgstr "新笔记的默认名称："
 
 #: contents/ui/settings/GeneralTab.qml:113
 #, kde-format
@@ -1228,7 +1228,7 @@ msgstr "链接笔记"
 #, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr ""
+msgstr "创建文件夹"
 
 #: contents/ui/sideBar/ActionBar.qml:55
 #, kde-format
@@ -1260,7 +1260,7 @@ msgstr "展开侧边栏"
 #, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr ""
+msgstr "新文件夹"
 
 #: contents/ui/sideBar/ContextMenu.qml:29
 #, kde-format
@@ -1290,7 +1290,7 @@ msgstr "删除"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "属性"
 
 #: contents/ui/sideBar/SearchBar.qml:77
 #, kde-format
@@ -1567,29 +1567,29 @@ msgstr "高亮"
 #, kde-format
 msgctxt "example"
 msgid "highlighted text"
-msgstr ""
+msgstr "高亮文本"
 
 #: contents/ui/textEditor/CheatSheet.qml:160
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "下标"
 
 #: contents/ui/textEditor/CheatSheet.qml:161
 #, kde-format
 msgctxt "example"
 msgid "subscript text"
-msgstr ""
+msgstr "下标文本"
 
 #: contents/ui/textEditor/CheatSheet.qml:166
 #, kde-format
 msgid "Superscript"
-msgstr ""
+msgstr "上标"
 
 #: contents/ui/textEditor/CheatSheet.qml:167
 #, kde-format
 msgctxt "example"
 msgid "superscript text"
-msgstr ""
+msgstr "上标文本"
 
 #: contents/ui/textEditor/CheatSheet.qml:174
 #, kde-format
@@ -1608,7 +1608,7 @@ msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<path to note>/<note name>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:188
