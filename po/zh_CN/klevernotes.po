@@ -1780,13 +1780,13 @@ msgstr "定制"
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr ""
+msgstr "尝试复制该 PDF 文件时发生错误。"
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr ""
+msgstr "记事贴"
 
 #: logic/treeview/treeModel.cpp:201
 #, kde-format
@@ -1811,7 +1811,7 @@ msgstr "创建笔记时出错。"
 #: logic/treeview/treeModel.cpp:452
 #, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr ""
+msgstr "创建该文件夹时出错。"
 
 #: logic/treeview/treeModel.cpp:460
 #, kde-format
@@ -1827,7 +1827,7 @@ msgstr "试图创建演示笔记时出错。"
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "示例"
 
 #: main.cpp:56
 #, kde-format
@@ -1843,7 +1843,7 @@ msgstr "笔记和管理应用程序"
 #: main.cpp:64
 #, kde-format
 msgid "(c) 2022-2025"
-msgstr ""
+msgstr "(c) 2022-2025"
 
 #: main.cpp:65
 #, kde-format
