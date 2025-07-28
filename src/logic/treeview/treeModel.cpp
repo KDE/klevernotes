@@ -305,7 +305,8 @@ void NoteTreeModel::moveRow(const QModelIndex &rowModelIndex, const QModelIndex 
         error = (dir.exists(newNotePath) || (todoExists && dir.exists(newTodoPath))) ? MoveError::NameExist : MoveError::NoError;
 
         if (!error) {
-            error = (dir.rename(notePath, newNotePath) && (todoExists && dir.rename(todoPath, newTodoPath))) ? MoveError::NoError : MoveError::FailedToMove;
+            error = dir.rename(notePath, newNotePath) ? MoveError::NoError : MoveError::FailedToMove;
+            dir.rename(todoPath, newTodoPath); // No need to error if it's just the todos
         }
     } else {
         error = dir.exists(newBasePath) ? MoveError::NameExist : MoveError::NoError;
