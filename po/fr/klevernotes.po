@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-27 00:43+0000\n"
+"POT-Creation-Date: 2025-07-29 00:41+0000\n"
 "PO-Revision-Date: 2025-06-27 10:21+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -1815,7 +1815,7 @@ msgid "An error occurred while trying to copy this PDF."
 msgstr ""
 "Une erreur est survenue lors de la tentative de copie de ce fichier « PDF »."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
@@ -1834,39 +1834,39 @@ msgid "An error occurred while trying to move this item."
 msgstr ""
 "Une erreur est survenue lors de la tentative de déplacement de cet élément."
 
-#: logic/treeview/treeModel.cpp:354
+#: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr ""
 "Une erreur a été rencontrée lors de la tentative de renommage de cet élément."
 
-#: logic/treeview/treeModel.cpp:440
+#: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr ""
 "Une erreur a été rencontrée lors de la tentative de création de la note."
 
-#: logic/treeview/treeModel.cpp:452
+#: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr ""
 "Une erreur est survenue lors de la tentative de création de ce dossier."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr ""
 "Une erreur a été rencontrée lors de la tentative de création de la zone "
 "d'enregistrement."
 
-#: logic/treeview/treeModel.cpp:461
+#: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr ""
 "Une erreur a été rencontrée lors de la tentative de création de la note de "
 "démonstration."
 
-#: logic/treeview/treeModel.cpp:473
+#: logic/treeview/treeModel.cpp:474
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"

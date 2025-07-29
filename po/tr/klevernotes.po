@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-27 00:43+0000\n"
+"POT-Creation-Date: 2025-07-29 00:41+0000\n"
 "PO-Revision-Date: 2025-06-29 09:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1810,7 +1810,7 @@ msgstr "Özel"
 msgid "An error occurred while trying to copy this PDF."
 msgstr "Bu PDF’yi kopyalamaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
@@ -1826,32 +1826,32 @@ msgstr "Bu öge kaldırılmaya çalışılırken bir hata oluştu."
 msgid "An error occurred while trying to move this item."
 msgstr "Bu öge taşınmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/treeModel.cpp:354
+#: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Bu öge yeniden adlandırılmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/treeModel.cpp:440
+#: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Not oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/treeModel.cpp:452
+#: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr "Bu klasör oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Depolama oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/treeModel.cpp:461
+#: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Tanıtım notu oluşturulmaya çalışılırken bir hata oluştu."
 
-#: logic/treeview/treeModel.cpp:473
+#: logic/treeview/treeModel.cpp:474
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"

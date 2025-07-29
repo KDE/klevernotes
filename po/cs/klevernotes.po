@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-27 00:43+0000\n"
+"POT-Creation-Date: 2025-07-29 00:41+0000\n"
 "PO-Revision-Date: 2024-09-19 07:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1848,7 +1848,7 @@ msgstr "Vlastní"
 msgid "An error occurred while trying to copy this PDF."
 msgstr "Nastala chyba při pokusu o zkopírování tohoto pdf."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
@@ -1864,32 +1864,32 @@ msgstr "Nastala chyba při pokusu o odstranění této položky."
 msgid "An error occurred while trying to move this item."
 msgstr "Nastala chyba při pokusu o přesunutí této položky."
 
-#: logic/treeview/treeModel.cpp:354
+#: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Nastala chyba při pokusu o přejmenování této položky."
 
-#: logic/treeview/treeModel.cpp:440
+#: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Nastala chyba při pokusu o vytvoření poznámky."
 
-#: logic/treeview/treeModel.cpp:452
+#: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr ""
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Nastala chyba při pokusu o vytvoření úložiště."
 
-#: logic/treeview/treeModel.cpp:461
+#: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Při pokusu o vytvoření zkušební poznámky nastala chyba."
 
-#: logic/treeview/treeModel.cpp:473
+#: logic/treeview/treeModel.cpp:474
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"

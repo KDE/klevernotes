@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-27 00:43+0000\n"
+"POT-Creation-Date: 2025-07-29 00:41+0000\n"
 "PO-Revision-Date: 2025-06-28 18:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1795,7 +1795,7 @@ msgstr "مخصّص"
 msgid "An error occurred while trying to copy this PDF."
 msgstr "حدث خطأ أثناء محاولة نسخ ملف بي دي إف هذا."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:463
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
@@ -1811,32 +1811,32 @@ msgstr "حدث خطأ أثناء محاولة إزالة هذا العنصر."
 msgid "An error occurred while trying to move this item."
 msgstr "حدث خطأ أثناء محاولة نقل هذا العنصر."
 
-#: logic/treeview/treeModel.cpp:354
+#: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "حدث خطأ أثناء محاولة إعادة تسمية هذا العنصر."
 
-#: logic/treeview/treeModel.cpp:440
+#: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "حدث خطأ أثناء محاولة إنشاء الملاحظة."
 
-#: logic/treeview/treeModel.cpp:452
+#: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr "حدث خطأ أثناء محاولة إنشاء هذا المجلد."
 
-#: logic/treeview/treeModel.cpp:460
+#: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "حدث خطأ أثناء محاولة إنشاء وحدة التخزين."
 
-#: logic/treeview/treeModel.cpp:461
+#: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "حدث خطأ أثناء محاولة إنشاء الملاحظة التجريبية."
 
-#: logic/treeview/treeModel.cpp:473
+#: logic/treeview/treeModel.cpp:474
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
