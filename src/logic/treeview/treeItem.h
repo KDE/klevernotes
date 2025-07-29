@@ -119,6 +119,11 @@ private:
      */
     void changeParentPathPart(const QString &newPart);
 
+    /*
+     * Order the children
+     */
+    void orderChildren();
+
 private:
     // Position in tree
     std::vector<std::unique_ptr<TreeItem>> m_children;

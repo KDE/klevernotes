@@ -17,6 +17,7 @@
 #include <QFileInfo>
 #include <QIcon>
 #include <QJsonArray>
+#include <qaccessible_base.h>
 
 #define slash QLatin1String("/")
 
@@ -99,15 +100,10 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
         appendChild(std::move(node));
     }
 
-    m_tempChildrenNames = {}; // Node need to keep it
-    m_tempChildrenInfo = {}; // Node need to keep it
-    std::sort(m_children.begin(), m_children.end(), [](auto const &a, auto const &b) {
-        if (a->place == -1)
-            return false;
-        if (b->place == -1)
-            return true;
-        return a->place < b->place;
-    });
+    m_tempChildrenNames = {}; // No need to keep it
+    m_tempChildrenInfo = {}; // No need to keep it
+
+    orderChildren();
 
     saveMetaData();
 }
@@ -162,6 +158,16 @@ void TreeItem::saveMetaData()
 
     const QString metadataPath = m_path + QStringLiteral("/.klevernotesFolder.metadata.json");
     DocumentHandler::saveJson(metadata, metadataPath);
+}
+
+void TreeItem::orderChildren()
+{
+    std::sort(m_children.begin(), m_children.end(), [](auto const &a, auto const &b) {
+        if (a->m_isNote != b->m_isNote)
+            return !a->m_isNote;
+
+        return QString::compare(a->m_name, b->m_name, Qt::CaseSensitive) <= 0;
+    });
 }
 
 void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
