@@ -17,7 +17,6 @@
 #include <QFileInfo>
 #include <QIcon>
 #include <QJsonArray>
-#include <qaccessible_base.h>
 
 #define slash QLatin1String("/")
 
@@ -90,7 +89,7 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
 
         const int nameIdx = m_tempChildrenNames.indexOf(node->m_name);
         if (nameIdx != -1) {
-            node->place = nameIdx;
+            // node->place = nameIdx;
             const auto refChild = m_tempChildrenInfo[nameIdx].toObject();
 
             setFromMetadata(refChild, QStringLiteral("icon"), node->m_icon);

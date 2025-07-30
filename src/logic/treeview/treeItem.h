@@ -128,10 +128,12 @@ public:
      */
     int compare(const std::unique_ptr<TreeItem> &other) const;
 
-public:
-    // Metadata
-    int place = -1;
-
+    /* Will come later...*/
+    /*
+    public:
+        // Metadata
+        int place = -1;
+    */
 private:
     /*
      * Set the Item metadata
