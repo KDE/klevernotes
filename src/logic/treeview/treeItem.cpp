@@ -160,17 +160,37 @@ void TreeItem::saveMetaData()
     DocumentHandler::saveJson(metadata, metadataPath);
 }
 
+int TreeItem::compare(const QString &name, bool isNote) const
+{
+    if (m_isNote != isNote)
+        return !m_isNote ? -1 : 1;
+
+    return QString::compare(m_name, name, Qt::CaseSensitive);
+}
+
+int TreeItem::compare(const std::unique_ptr<TreeItem> &other) const
+{
+    return compare(other->m_name, other->m_isNote);
+}
+
+int TreeItem::getNewChildIndex(const QString &name, bool isNote) const
+{
+    int index = static_cast<int>(m_children.size());
+    for (int i = 0; i < index; i++) {
+        if (m_children[i]->compare(name, isNote) > 0)
+            return i;
+    }
+    return index;
+}
+
 void TreeItem::orderChildren()
 {
     std::sort(m_children.begin(), m_children.end(), [](auto const &a, auto const &b) {
-        if (a->m_isNote != b->m_isNote)
-            return !a->m_isNote;
-
-        return QString::compare(a->m_name, b->m_name, Qt::CaseSensitive) <= 0;
+        return a->compare(b) < 0;
     });
 }
 
-void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
+void TreeItem::insertChild(std::unique_ptr<TreeItem> &&item, int index)
 {
     if (item->isNote() && m_model->noteMapEnabled()) {
         // very important to make a copy here !
@@ -184,7 +204,17 @@ void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
     if (item->getParentItem() != this) {
         item->setParentItem(this);
     }
-    m_children.push_back(std::move(item));
+
+    if (index == static_cast<int>(m_children.size())) {
+        m_children.push_back(std::move(item));
+    } else {
+        m_children.insert(m_children.begin() + index, std::move(item));
+    }
+}
+
+void TreeItem::appendChild(std::unique_ptr<TreeItem> &&item)
+{
+    insertChild(std::move(item), m_children.size());
 }
 
 TreeItem *TreeItem::child(int row) const

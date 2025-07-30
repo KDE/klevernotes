@@ -167,13 +167,13 @@ QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, con
     }
 
     auto newRow = std::make_unique<TreeItem>(rowPath, this, parentRow);
+    const int rowNewIndex = parentRow->getNewChildIndex(newRow);
 
-    const int childCount = parentRow->childCount();
-    beginInsertRows(parentModelIndex, childCount, childCount);
-    parentRow->appendChild(std::move(newRow));
+    beginInsertRows(parentModelIndex, rowNewIndex, rowNewIndex);
+    parentRow->insertChild(std::move(newRow), rowNewIndex);
     endInsertRows();
 
-    QModelIndex currentModelIndex = createIndex(childCount, 0, parentRow->child(childCount));
+    QModelIndex currentModelIndex = createIndex(rowNewIndex, 0, parentRow->child(rowNewIndex));
     return currentModelIndex;
 }
 
@@ -258,16 +258,16 @@ void NoteTreeModel::handleMoveItem(const QModelIndex &rowModelIndex,
 
         const int oldRowNumber = rowModelIndex.row();
         const QModelIndex oldParentIndex = parent(rowModelIndex);
-
-        const int newRowIndex = newParent->childCount();
-        beginMoveRows(oldParentIndex, oldRowNumber, oldRowNumber, newParentIndex, newRowIndex);
-
         const auto oldParent = oldParentIndex.isValid() ? static_cast<TreeItem *>(oldParentIndex.internalPointer()) : m_rootItem.get();
-        // actually remove the row, that's why we don't use the already avalaible 'row' TreeItem
-        auto row = oldParent->takeUniqueChildAt(oldRowNumber);
-        row->setName(name);
-        row->setPath(path);
-        newParent->appendChild(std::move(row));
+
+        const auto row = oldParent->child(oldRowNumber);
+        const int newRowIndex = newParent->getNewChildIndex(row->getName(), row->isNote());
+
+        beginMoveRows(oldParentIndex, oldRowNumber, oldRowNumber, newParentIndex, newRowIndex);
+        auto unique_row = oldParent->takeUniqueChildAt(oldRowNumber);
+        unique_row->setName(name);
+        unique_row->setPath(path);
+        newParent->insertChild(std::move(unique_row), newRowIndex);
         endMoveRows();
 
         Q_EMIT forceFocus(createIndex(newRowIndex, 0, newParent->child(newRowIndex)));

@@ -24,6 +24,14 @@ public:
     QVariant data(int role) const;
 
     /*
+     * Insert child at index
+     *
+     * @param child: a unique_ptr to the TreeItem to be inserted
+     * @param index: the index at which the child should be inserted
+     */
+    void insertChild(std::unique_ptr<TreeItem> &&child, int index);
+
+    /*
      * Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview
      * Usually works in tandem with `askForFocus`
      *
@@ -104,6 +112,22 @@ public:
      */
     std::unique_ptr<TreeItem> takeUniqueChildAt(int row);
 
+    /*
+     * Get the index of where the new child would be based on the compare method.
+     * Default to the end of the list.
+     *
+     * @param name: Name of the new child
+     * @param isNote: Whether the new child is a note (a directory otherwise)
+     */
+    int getNewChildIndex(const QString &name, bool isNote) const;
+
+    /*
+     * Compare this TreeItem to the other
+     *
+     * @param other: A TreeItem unique_ptr
+     */
+    int compare(const std::unique_ptr<TreeItem> &other) const;
+
 public:
     // Metadata
     int place = -1;
@@ -123,6 +147,14 @@ private:
      * Order the children
      */
     void orderChildren();
+
+    /*
+     * Compare this TreeItem to another based on name and status
+     *
+     * @param name: The other TreeItem name
+     * @param isNote: Whether the other TreeItem is a note (a directory otherwise)
+     */
+    int compare(const QString &name, bool isNote) const;
 
 private:
     // Position in tree
