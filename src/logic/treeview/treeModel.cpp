@@ -167,7 +167,7 @@ QModelIndex NoteTreeModel::addRow(const QString &rowName, const bool isNote, con
     }
 
     auto newRow = std::make_unique<TreeItem>(rowPath, this, parentRow);
-    const int rowNewIndex = parentRow->getNewChildIndex(newRow);
+    const int rowNewIndex = parentRow->getNewChildIndex(rowName, isNote);
 
     beginInsertRows(parentModelIndex, rowNewIndex, rowNewIndex);
     parentRow->insertChild(std::move(newRow), rowNewIndex);
