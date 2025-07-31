@@ -82,7 +82,7 @@ RowLayout {
                 }
             }
             onPdfPrintingFinished: {
-                const printingPage = applicationWindow().pageStack.currentItem
+                const printingPage = applicationWindow().pageStack.layers.currentItem
 
                 printingPage.displayPdf()
             }
