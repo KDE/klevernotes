@@ -22,7 +22,7 @@ public:
 private:
     inline static const QString m_chromaName = QStringLiteral("chroma");
     inline static const QString m_pygmentizeName = QStringLiteral("pygmentize");
-    inline static const QString m_kSyntaxName = QStringLiteral("ksynthaxhighlighter6");
+    inline static const QString m_kSyntaxName = QStringLiteral("ksyntaxhighlighter6");
     inline static const QString m_kateSyntaxName = QStringLiteral("kate-syntax-highlighter");
     inline static QMap<QString, QStringList> m_highlightersCommands = {
         {
