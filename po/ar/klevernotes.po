@@ -566,7 +566,7 @@ msgstr "احفظ"
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
-msgstr "امسح"
+msgstr "امحُ"
 
 #: contents/ui/pages/PaintingPage.qml:54
 #, kde-format
@@ -1699,7 +1699,7 @@ msgstr "ترويسة"
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr "امسح المُعلمة"
+msgstr "امحُ المُعلمة"
 
 #: contents/ui/todoEditor/ToDoView.qml:79
 #, kde-format
