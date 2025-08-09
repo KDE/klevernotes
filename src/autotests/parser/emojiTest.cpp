@@ -78,8 +78,8 @@ private:
 /* Settings Data */
 void EmojiTest::initTestCase()
 {
-    m_md4qtParser.addTextPlugin(256, EmojiPlugin::emojiHelperFunc, true, {});
-    m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
+    m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(static_cast<int>(MD::TextPlugin::UserDefined) + 1), EmojiPlugin::emojiHelperFunc, true, {});
+    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
 }
 
 /* TEST */

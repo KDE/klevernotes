@@ -176,7 +176,7 @@ void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
     }
 }
 
-void Renderer::onListItem(MD::ListItem<MD::QStringTrait> *i, bool first)
+void Renderer::onListItem(MD::ListItem<MD::QStringTrait> *i, bool first, bool skipOpeningWrap)
 {
     const bool hasTask = i->isTaskList();
     const bool isChecked = i->isChecked();
@@ -187,7 +187,7 @@ void Renderer::onListItem(MD::ListItem<MD::QStringTrait> *i, bool first)
     }
 
     // Add the text
-    Visitor<MD::QStringTrait>::onListItem(i, first);
+    Visitor<MD::QStringTrait>::onListItem(i, first, skipOpeningWrap);
 
     if (!m_justCollectFootnoteRefs) {
         m_html.push_back(closeListItem(hasTask));

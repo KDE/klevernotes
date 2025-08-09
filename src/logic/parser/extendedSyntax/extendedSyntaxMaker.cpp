@@ -292,7 +292,7 @@ void restoreBadStyleText(MDParagraphPtr p, MDParsingOpts &po, const QList<StyleD
             newTextItem->setEndColumn(badStyleInfo.delim.endColumn());
 
             auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(delimText);
-            finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
+            finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText);
             newTextItem->setText(finalSimplifiedText);
 
             po.m_rawTextData.insert(po.m_rawTextData.cbegin() + nextRawDataIdx, newTextData);

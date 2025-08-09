@@ -16,7 +16,7 @@ Parser::Parser()
 {
     connect(this, &Parser::newData, this, &Parser::onParse, Qt::QueuedConnection);
     connectPlugins();
-    m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
+    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
 }
 
 // Connections
@@ -37,15 +37,15 @@ void Parser::connectPlugins()
 // =======
 void Parser::addExtendedSyntax(const QStringList &details)
 {
-    m_md4qtParser.addTextPlugin(details.last().toInt(), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
+    m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(details.last().toInt()), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
 }
 
 void Parser::addRemovePlugin(const int pluginId, const bool add)
 {
     if (add) {
-        m_md4qtParser.addTextPlugin(pluginId, m_kleverPlugins.at(pluginId), true, {});
+        m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(pluginId), m_kleverPlugins.at(pluginId), true, {});
     } else {
-        m_md4qtParser.removeTextPlugin(pluginId);
+        m_md4qtParser.removeTextPlugin(static_cast<MD::TextPlugin>(pluginId));
     }
 }
 // !Setters

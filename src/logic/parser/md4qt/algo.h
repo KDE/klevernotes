@@ -16,10 +16,25 @@
 namespace MD
 {
 
-//! Function type for algorithms.
+/*!
+ * \inmodule md4qt
+ * \typealias MD::ItemFunctor
+ * \inheaderfile md4qt/algo.h
+ *
+ * \brief Function type for algorithms.
+ */
 template<class Trait>
 using ItemFunctor = std::function<void(Item<Trait> *)>;
 
+/*!
+ * \namespace MD::details
+ * \inmodule md4qt
+ * \inheaderfile md4qt/algo.h
+ *
+ * \brief Namespace for some implemetation details, but useful for reuse.
+ *
+ * Namespace for reusable auxiliary data structures.
+ */
 namespace details
 {
 
@@ -27,11 +42,33 @@ namespace details
 // AlgoVisitor
 //
 
-//! Visitor for algorithms.
+/*!
+ * \class MD::details::AlgoVisitor
+ * \inmodule md4qt
+ * \inheaderfile md4qt/algo.h
+ *
+ * \brief Visitor for algorithms.
+ *
+ * The main difference from MD::Visitor is that this class during walking through the
+ * document takes into account nesting level of the item. If nesting level reached defined value
+ * it won't process anything further. And if type of the item is in set types walking through
+ * the document will invoke a given function object for that item.
+ *
+ * \sa MD::Visitor
+ */
 template<class Trait>
 class AlgoVisitor : public Visitor<Trait>
 {
 public:
+    /*!
+     * Constructor
+     *
+     * \a mnl Maximum nesting level
+     *
+     * \a t List of items' types.
+     *
+     * \a f Functor.
+     */
     AlgoVisitor(unsigned int mnl, const typename Trait::template Vector<ItemType> &t, ItemFunctor<Trait> f)
         : m_maxNestingLevel(mnl)
         , m_types(t)
@@ -41,7 +78,11 @@ public:
 
     ~AlgoVisitor() override = default;
 
-    //! Walk through the document.
+    /*!
+     * Walk through the document.
+     *
+     * \a doc Document.
+     */
     virtual void walk(std::shared_ptr<Document<Trait>> doc)
     {
         this->process(doc);
@@ -54,7 +95,11 @@ protected:
     {
     }
 
-    //! Process user defined item type.
+    /*!
+     * Process user defined item type.
+     *
+     * \a i Item.
+     */
     void onUserDefined(Item<Trait> *i) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -64,7 +109,11 @@ protected:
         }
     }
 
-    //! Process text item.
+    /*!
+     * Process text item.
+     *
+     * \a t Text.
+     */
     void onText(Text<Trait> *t) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -74,7 +123,11 @@ protected:
         }
     }
 
-    //! Process LaTeX math item.
+    /*!
+     * Process LaTeX math item.
+     *
+     * \a m Math.
+     */
     void onMath(Math<Trait> *m) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -84,7 +137,11 @@ protected:
         }
     }
 
-    //! Process line break.
+    /*!
+     * Process line break.
+     *
+     * \a l Line break.
+     */
     void onLineBreak(LineBreak<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -94,9 +151,17 @@ protected:
         }
     }
 
-    //! Process paragraph.
-    void onParagraph(Paragraph<Trait> *p, bool) override
+    /*!
+     * Process paragraph.
+     *
+     * \a p Paragraph.
+     *
+     * \a skipOpeningWrap Indicates that opening wrap should be added or no.
+     */
+    void onParagraph(Paragraph<Trait> *p, bool, bool skipOpeningWrap = false) override
     {
+        MD_UNUSED(skipOpeningWrap)
+
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
 
         if (inc.allowed(ItemType::Paragraph)) {
@@ -104,11 +169,15 @@ protected:
         }
 
         if (inc.nextAllowed()) {
-            Visitor<Trait>::onParagraph(p, true);
+            Visitor<Trait>::onParagraph(p, true, skipOpeningWrap);
         }
     }
 
-    //! Process heading.
+    /*!
+     * Process heading.
+     *
+     * \a h Heading.
+     */
     void onHeading(Heading<Trait> *h) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -122,7 +191,11 @@ protected:
         }
     }
 
-    //! Process code block.
+    /*!
+     * Process code block.
+     *
+     * \a c Code.
+     */
     void onCode(Code<Trait> *c) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -132,7 +205,11 @@ protected:
         }
     }
 
-    //! Process inline code.
+    /*!
+     * Process inline code.
+     *
+     * \a c Code.
+     */
     void onInlineCode(Code<Trait> *c) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -142,7 +219,11 @@ protected:
         }
     }
 
-    //! Process blockquote.
+    /*!
+     * Process blockquote.
+     *
+     * \a b Blockquote.
+     */
     void onBlockquote(Blockquote<Trait> *b) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -156,7 +237,11 @@ protected:
         }
     }
 
-    //! Process list.
+    /*!
+     * Process list.
+     *
+     * \a l List.
+     */
     void onList(List<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -172,7 +257,11 @@ protected:
         }
     }
 
-    //! Process table.
+    /*!
+     * Process table.
+     *
+     * \a t Table.
+     */
     void onTable(Table<Trait> *t) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -206,7 +295,11 @@ protected:
         }
     }
 
-    //! Process anchor.
+    /*!
+     * Process anchor.
+     *
+     * \a a Anchor.
+     */
     void onAnchor(Anchor<Trait> *a) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -216,7 +309,11 @@ protected:
         }
     }
 
-    //! Process raw HTML block.
+    /*!
+     * Process raw HTML block.
+     *
+     * \a h Raw HTML.
+     */
     void onRawHtml(RawHtml<Trait> *h) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -226,7 +323,11 @@ protected:
         }
     }
 
-    //! Process horizontal line.
+    /*!
+     * Process horizontal line.
+     *
+     * \a l Horizontal line.
+     */
     void onHorizontalLine(HorizontalLine<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -236,7 +337,11 @@ protected:
         }
     }
 
-    //! Process link.
+    /*!
+     * Process link.
+     *
+     * \a l Link.
+     */
     void onLink(Link<Trait> *l) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -254,7 +359,11 @@ protected:
         }
     }
 
-    //! Process Image.
+    /*!
+     * Process Image.
+     *
+     * \a i Image.
+     */
     void onImage(Image<Trait> *i) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -264,7 +373,11 @@ protected:
         }
     }
 
-    //! Process footnote reference.
+    /*!
+     * Process footnote reference.
+     *
+     * \a ref Footnote reference.
+     */
     void onFootnoteRef(FootnoteRef<Trait> *ref) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -274,9 +387,17 @@ protected:
         }
     }
 
-    //! Process list item.
-    void onListItem(ListItem<Trait> *i, bool) override
+    /*!
+     * Process list item.
+     *
+     * \a i List item.
+     *
+     * \a skipOpeningWrap Indicates that opening wrap should be added or no.
+     */
+    void onListItem(ListItem<Trait> *i, bool, bool skipOpeningWrap = false) override
     {
+        MD_UNUSED(skipOpeningWrap)
+
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
 
         if (inc.allowed(ItemType::ListItem)) {
@@ -288,13 +409,21 @@ protected:
         }
     }
 
-    //! Process table cell.
+    /*!
+     * Process table cell.
+     *
+     * \a c Table cell.
+     */
     void onTableCell(TableCell<Trait> *c) override
     {
         Visitor<Trait>::onTableCell(c);
     }
 
-    //! Process footnote.
+    /*!
+     * Process footnote.
+     *
+     * \a f Footnote.
+     */
     void onFootnote(Footnote<Trait> *f) override
     {
         IncrementNestingLevel inc(m_currentNestingLevel, m_maxNestingLevel, m_types);
@@ -308,7 +437,11 @@ protected:
         }
     }
 
-    //! Process all footnotes.
+    /*!
+     * Process all footnotes.
+     *
+     * \a doc Document.
+     */
     virtual void onFootnotes(std::shared_ptr<Document<Trait>> doc)
     {
         for (const auto &f : doc->footnotesMap()) {
@@ -317,18 +450,41 @@ protected:
     }
 
 protected:
-    //! Current nesting level, increments/decrements during walking through te document.
+    /*!
+     * Current nesting level, increments/decrements during walking through te document.
+     */
     unsigned int m_currentNestingLevel = 0;
-    //! Maximum allowed nesting level.
+    /*!
+     * Maximum allowed nesting level.
+     */
     unsigned int m_maxNestingLevel = 0;
-    //! List of types that should be processed.
+    /*!
+     * List of types that should be processed.
+     */
     const typename Trait::template Vector<ItemType> &m_types;
-    //! Functor that will be invoked if all circumstances will be observed.
+    /*!
+     * Functor that will be invoked if all circumstances will be observed.
+     */
     ItemFunctor<Trait> m_func = {};
 
-    //! Auxiliary structure to increment/decrement nesting level during walking through
-    //! the document, and checking circumstances for the algorithm.
+    /*!
+     * \inmodule md4qt
+     *
+     * \brief Auxiliary structure for MD::details::AlgoVisitor.
+     *
+     * Auxiliary structure to increment/decrement nesting level during walking through
+     * the document, and checking circumstances for the algorithm.
+     */
     struct IncrementNestingLevel {
+        /*!
+         * Constructor.
+         *
+         * \a l Level.
+         *
+         * \a m Max nesting level.
+         *
+         * \a t List of types.
+         */
         IncrementNestingLevel(unsigned int &l, unsigned int m, const typename Trait::template Vector<ItemType> &t)
             : m_level(l)
             , m_maxNestingLevel(m)
@@ -342,41 +498,57 @@ protected:
             --m_level;
         }
 
-        //! \return Is this item type allowed at this nesting level.
+        /*!
+         * Returns whether this item type allowed at this nesting level.
+         *
+         * \a t Item's type to check.
+         */
         bool allowed(ItemType t) const
         {
             return ((m_maxNestingLevel == 0 || m_level <= m_maxNestingLevel) && std::find(m_types.cbegin(), m_types.cend(), t) != m_types.cend());
         }
 
-        //! \return Is next nesting level allowed.
+        /*!
+         * Returns whether next nesting level allowed.
+         */
         bool nextAllowed() const
         {
             return (m_maxNestingLevel == 0 || m_level + 1 <= m_maxNestingLevel);
         }
 
-        //! Reference to nesting level.
+        /*!
+         * Reference to nesting level.
+         */
         unsigned int &m_level;
-        //! Maximum allowed nesting level.
+        /*!
+         * Maximum allowed nesting level.
+         */
         unsigned int m_maxNestingLevel;
-        //! Reference to list of allowed types.
+        /*!
+         * Reference to list of allowed types.
+         */
         const typename Trait::template Vector<ItemType> &m_types;
     }; // struct IncrementNestingLevel
 }; // class HtmlVisitor
 
 } /* namespace details */
 
-//! Calls function for each item in the document with the given type.
+/*!
+ * \inheaderfile md4qt/algo.h
+ *
+ * \brief Calls function for each item in the document with the given type.
+ *
+ * \a types Vector of item's types to be processed.
+ *
+ * \a doc Document.
+ *
+ * \a func Functor object.
+ *
+ * \a maxNestingLevel Maximun nesting level. 0 means infinity, 1 - only top level items...
+ */
 template<class Trait>
-inline void forEach(
-    //! Vector of item's types to be processed.
-    const typename Trait::template Vector<ItemType> &types,
-    //! Document.
-    std::shared_ptr<Document<Trait>> doc,
-    //! Functor object.
-    ItemFunctor<Trait> func,
-    //! Maximun nesting level.
-    //! 0 means infinity, 1 - only top level items...
-    unsigned int maxNestingLevel = 0)
+inline void
+forEach(const typename Trait::template Vector<ItemType> &types, std::shared_ptr<Document<Trait>> doc, ItemFunctor<Trait> func, unsigned int maxNestingLevel = 0)
 {
     details::AlgoVisitor<Trait> v(maxNestingLevel, types, func);
 

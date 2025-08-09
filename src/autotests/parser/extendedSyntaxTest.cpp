@@ -54,7 +54,7 @@ private:
     // md4qt
     MD::Parser<MD::QStringTrait> m_md4qtParser;
     int m_extendedSyntaxCount = 0;
-    const int m_id = MD::TextPlugin::UserDefinedPluginID + 1;
+    const int m_id = static_cast<int>(MD::TextPlugin::UserDefined) + 1;
 
     // Data
     QStringList m_testingLines = {
@@ -105,14 +105,14 @@ void ExtendedSyntaxTest::addExtendedSyntaxs()
         const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
 
         const QStringList options = {details[0], QString::number(opts)};
-        m_md4qtParser.addTextPlugin(m_id + m_extendedSyntaxCount, ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, options);
+        m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(m_id + m_extendedSyntaxCount), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, options);
         ++m_extendedSyntaxCount;
     }
 }
 
 void ExtendedSyntaxTest::initTestCase()
 {
-    m_md4qtParser.addTextPlugin(1024, md4qtDataCleaner::dataCleaningFunc, false, {});
+    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
     addExtendedSyntaxs();
     makeTexts();
 }

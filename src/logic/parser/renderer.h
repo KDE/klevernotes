@@ -34,7 +34,7 @@ public:
     void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
     void onImage(MD::Image<MD::QStringTrait> *i) override;
-    void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first) override;
+    void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first, bool skipOpeningWrap) override;
     void onCode(MD::Code<MD::QStringTrait> *c) override;
     void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
     void onLink(MD::Link<MD::QStringTrait> *l) override;

@@ -148,7 +148,7 @@ bool addStringTo(const MDItemWithOptsPtr item,
         newText = rstrip(newText);
     }
     auto newSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText);
-    newSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(newSimplifiedText);
+    newSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(newSimplifiedText);
     textItem->setText(newSimplifiedText);
 
     po.m_rawTextData[rawIdx] = rawData;
@@ -189,7 +189,7 @@ void mergeFromIndex(const long long int from, MDParagraphPtr p, MDParsingOpts &p
     currentRawData.m_str = finalText;
 
     auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(finalText);
-    finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
+    finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText);
     currentTextItem->setText(finalSimplifiedText);
 
     // Others var
@@ -250,7 +250,7 @@ int splitItem(MDParagraphPtr p,
 
         auto simplifiedLeftText = atParagraphStart ? lstrip(leftRawText) : leftRawText;
         simplifiedLeftText = MD::replaceEntity<MD::QStringTrait>(simplifiedLeftText);
-        simplifiedLeftText = MD::removeBackslashes<QString, MD::QStringTrait>(simplifiedLeftText);
+        simplifiedLeftText = MD::removeBackslashes<MD::QStringTrait>(simplifiedLeftText);
         textItem->setText(simplifiedLeftText);
         textItem->setEndColumn(from - 1);
 
@@ -270,7 +270,7 @@ int splitItem(MDParagraphPtr p,
 
         auto finalSimplifiedText = atParagraphEnd ? rstrip(rightRawText) : rightRawText;
         finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(finalSimplifiedText);
-        finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
+        finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText);
         newTextItem->setText(finalSimplifiedText);
 
         po.m_rawTextData.insert(po.m_rawTextData.cbegin() + rawIdx + 1, newTextData);
@@ -302,7 +302,7 @@ int splitItem(MDParagraphPtr p,
     po.m_rawTextData[rawIdx] = rawData;
 
     auto finalSimplifiedText = MD::replaceEntity<MD::QStringTrait>(newText);
-    finalSimplifiedText = MD::removeBackslashes<QString, MD::QStringTrait>(finalSimplifiedText);
+    finalSimplifiedText = MD::removeBackslashes<MD::QStringTrait>(finalSimplifiedText);
     textItem->setText(finalSimplifiedText);
 
     return 0;

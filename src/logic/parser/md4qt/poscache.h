@@ -11,6 +11,8 @@
 // C++ include.
 #include <algorithm>
 #include <cassert>
+#include <memory>
+#include <stack>
 #include <vector>
 
 namespace MD
@@ -23,23 +25,117 @@ namespace details
 // PosRange
 //
 
-//! Cached position of Item.
+/*!
+ * \class MD::details::PosRange
+ * \inmodule md4qt
+ * \inheaderfile md4qt/poscache.h
+ *
+ * \brief Cached position of MD::Item.
+ *
+ * Just a data structure to hold information about positions and pointers to items.
+ * Purely for internal use, a developer should not have a need to work with this structure.
+ */
 template<class Trait>
 struct PosRange {
-    //! Start column
-    long long int m_startColumn = -1;
-    //! Start line.
-    long long int m_startLine = -1;
-    //! End column.
-    long long int m_endColumn = -1;
-    //! End line.
-    long long int m_endLine = -1;
-    //! Pointer to this item.
-    Item<Trait> *m_item = nullptr;
-    //! List of children.
-    std::vector<PosRange<Trait>> m_children = {};
+    /*!
+     * Initializing constructor.
+     *
+     * \a startColumn Start column.
+     *
+     * \a startLine Start line.
+     *
+     * \a endColumn End column.
+     *
+     * \a endLine End line.
+     */
+    PosRange(long long int startColumn, long long int startLine, long long int endColumn, long long int endLine)
+        : m_startColumn(startColumn)
+        , m_startLine(startLine)
+        , m_endColumn(endColumn)
+        , m_endLine(endLine)
+    {
+    }
 
-    //! \return Is position valid.
+    /*!
+     * Initializing constructor.
+     *
+     * \a startColumn Start column.
+     *
+     * \a startLine Start line.
+     *
+     * \a endColumn End column.
+     *
+     * \a endLine End line.
+     *
+     * \a item This item.
+     */
+    PosRange(long long int startColumn, long long int startLine, long long int endColumn, long long int endLine, Item<Trait> *item)
+        : m_startColumn(startColumn)
+        , m_startLine(startLine)
+        , m_endColumn(endColumn)
+        , m_endLine(endLine)
+        , m_item(item)
+    {
+    }
+
+    /*!
+     * Initializing constructor.
+     *
+     * \a startColumn Start column.
+     *
+     * \a startLine Start line.
+     *
+     * \a endColumn End column.
+     *
+     * \a endLine End line.
+     *
+     * \a item This item.
+     *
+     * \a children Children items.
+     */
+    PosRange(long long int startColumn,
+             long long int startLine,
+             long long int endColumn,
+             long long int endLine,
+             Item<Trait> *item,
+             const std::vector<std::shared_ptr<PosRange<Trait>>> &children)
+        : m_startColumn(startColumn)
+        , m_startLine(startLine)
+        , m_endColumn(endColumn)
+        , m_endLine(endLine)
+        , m_item(item)
+        , m_children(children)
+    {
+    }
+
+    /*!
+     * Start column
+     */
+    long long int m_startColumn = -1;
+    /*!
+     * Start line.
+     */
+    long long int m_startLine = -1;
+    /*!
+     * End column.
+     */
+    long long int m_endColumn = -1;
+    /*!
+     * End line.
+     */
+    long long int m_endLine = -1;
+    /*!
+     * Pointer to this item.
+     */
+    Item<Trait> *m_item = nullptr;
+    /*!
+     * List of children.
+     */
+    std::vector<std::shared_ptr<PosRange<Trait>>> m_children = {};
+
+    /*!
+     * Returns whether position valid.
+     */
     inline bool isValidPos() const
     {
         return m_startColumn > -1 && m_startLine > -1 && m_endColumn > -1 && m_endLine > -1;
@@ -48,6 +144,16 @@ struct PosRange {
 
 // Look at this equality operator like on rectangles intersection.
 // If rectangles in text intersect then rectangles are equal.
+/*!
+ * \relates MD::details::PosRange
+ * \inheaderfile md4qt/poscache.h
+ *
+ * Returns whether both are equal.
+ *
+ * \a l Left operand.
+ *
+ * \a r Right operand.
+ */
 template<class Trait>
 bool operator==(const PosRange<Trait> &l, const PosRange<Trait> &r)
 {
@@ -55,6 +161,16 @@ bool operator==(const PosRange<Trait> &l, const PosRange<Trait> &r)
             && (l.m_startLine == r.m_endLine && l.m_endLine == r.m_startLine ? l.m_endColumn >= r.m_startColumn && l.m_startColumn <= r.m_endColumn : true));
 }
 
+/*!
+ * \relates MD::details::PosRange
+ * \inheaderfile md4qt/poscache.h
+ *
+ * Returns whether left is less of right.
+ *
+ * \a l Left operand.
+ *
+ * \a r Right operand.
+ */
 template<class Trait>
 bool operator<(const PosRange<Trait> &l, const PosRange<Trait> &r)
 {
@@ -63,20 +179,54 @@ bool operator<(const PosRange<Trait> &l, const PosRange<Trait> &r)
 
 } /* namespace details */
 
+template<class Trait>
+bool comparePosRangeLower(const std::shared_ptr<details::PosRange<Trait>> &ptr, const details::PosRange<Trait> &range)
+{
+    return (*ptr.get() < range);
+}
+
+template<class Trait>
+bool comparePosRangeUpper(const details::PosRange<Trait> &range, const std::shared_ptr<details::PosRange<Trait>> &ptr)
+{
+    return (range < *ptr.get());
+}
+
 //
 // PosCache
 //
 
-//! Cache of Markdown items to be accessed via position.
+/*!
+ * \class MD::PosCache
+ * \inmodule md4qt
+ * \inheaderfile md4qt/poscache.h
+ *
+ * \brief Cache of Markdown items to be accessed via position.
+ *
+ * A visitor that during walking through a document gathers information about positions of items
+ * and stores it internally. When positions cache is initialized a developer can search for items
+ * by its positions with MD::PosCache::findFirstInCache method.
+ *
+ * A complexity of walking is O(N), whereas searching is LOG(N).
+ *
+ * \sa MD::Visitor
+ */
 template<class Trait>
 class PosCache : public MD::Visitor<Trait>
 {
 public:
+    /*!
+     * Default constructor.
+     */
     PosCache() = default;
     ~PosCache() override = default;
 
-    //! Initialize m_cache with the give document.
-    //! \note Document should not be recursive.
+    /*!
+     * Initialize m_cache with the given document.
+     *
+     * \note Document should not be recursive.
+     *
+     * \a doc Document.
+     */
     virtual void initialize(std::shared_ptr<MD::Document<Trait>> doc)
     {
         m_cache.clear();
@@ -94,11 +244,22 @@ public:
         }
     }
 
-    //! Vector with items, where front is a top-level item,
-    //! and back is most nested child.
+    /*!
+     * \class MD::PosCache::Items
+     * \inmodule md4qt
+     *
+     * \brief Vector of items.
+     *
+     * Vector with items, where front is a top-level item,
+     * and back is most nested child.
+     */
     using Items = typename Trait::template Vector<Item<Trait> *>;
 
-    //! \return First occurense of Markdown item with all first children by the give position.
+    /*!
+     * Returns first occurence of Markdown item with all first children by the given position.
+     *
+     * \a pos Position.
+     */
     Items findFirstInCache(const MD::WithPosition &pos) const
     {
         Items res;
@@ -111,80 +272,124 @@ public:
     }
 
 protected:
-    //! Find in cache an item with the given position.
-    details::PosRange<Trait> *findInCache(
-        //! Cache of position.
-        std::vector<details::PosRange<Trait>> &vec,
-        //! Position of sought-for item.
-        const details::PosRange<Trait> &pos) const
+    /*!
+     * Find in cache an item with the given position.
+     *
+     * \a vec Cache of position.
+     *
+     * \a pos Position of sought-for item.
+     *
+     * \a ordered Indicates that we sure that searching item places after everything.
+     */
+    details::PosRange<Trait> *
+    findInCache(const std::vector<std::shared_ptr<details::PosRange<Trait>>> &vec, const details::PosRange<Trait> &pos, bool ordered = false) const
     {
-        const auto it = std::lower_bound(vec.begin(), vec.end(), pos);
-
-        if (it != vec.end() && *it == pos) {
-            if (!it->m_children.empty()) {
-                auto nested = findInCache(it->m_children, pos);
-
-                return (nested ? nested : &(*it));
-            } else {
-                return &(*it);
-            }
-        } else {
+        if (!m_currentItems.empty()) {
+            return m_currentItems.top().get();
+        } else if (ordered) {
             return nullptr;
-        }
-    }
+        } else {
+            const auto it = std::lower_bound(vec.begin(), vec.end(), pos, comparePosRangeLower<Trait>);
 
-    //! Find in cache items with the given position with all parents.
-    void findFirstInCache(
-        //! Cache.
-        const std::vector<details::PosRange<Trait>> &vec,
-        //! Position of sought-for item.
-        const details::PosRange<Trait> &pos,
-        //! Reference to result of search.
-        Items &res) const
-    {
-        const auto it = std::lower_bound(vec.begin(), vec.end(), pos);
+            if (it != vec.end() && *it->get() == pos) {
+                if (!it->get()->m_children.empty()) {
+                    auto nested = findInCache(it->get()->m_children, pos);
 
-        if (it != vec.end() && *it == pos) {
-            res.push_back(it->m_item);
-
-            if (!it->m_children.empty()) {
-                findFirstInCache(it->m_children, pos, res);
+                    return (nested ? nested : it->get());
+                } else {
+                    return it->get();
+                }
+            } else {
+                return nullptr;
             }
         }
     }
 
-    //! Insert in cache.
-    void insertInCache(
-        //! Position for insertion.
-        const details::PosRange<Trait> &item,
-        //! Should we sord when insert top-level item, or we can be sure that this item is last?
-        bool sort = false)
+    /*!
+     * Find in cache items with the given position with all parents.
+     *
+     * \a vec Cache.
+     *
+     * \a pos Position of sought-for item.
+     *
+     * \a res Reference to result of search.
+     */
+    void findFirstInCache(const std::vector<std::shared_ptr<details::PosRange<Trait>>> &vec, const details::PosRange<Trait> &pos, Items &res) const
     {
+        const auto it = std::lower_bound(vec.begin(), vec.end(), pos, comparePosRangeLower<Trait>);
+
+        if (it != vec.end() && *it->get() == pos) {
+            res.push_back(it->get()->m_item);
+
+            if (!it->get()->m_children.empty()) {
+                findFirstInCache(it->get()->m_children, pos, res);
+            }
+        }
+    }
+
+    /*!
+     * Insert in cache.
+     *
+     * \a item Position for insertion.
+     *
+     * \a sort Should we sord when insert top-level item, or we can be sure that this item is last?
+     *
+     * \a insertInStack Indicates that this item is some kind a block with children that should be
+     *                  added into stack for fast finding parent item for the next children. This
+     *                  techinque allows to have O(N) walking complexity.
+     */
+    void insertInCache(const details::PosRange<Trait> &item, bool sort = false, bool insertInStack = false)
+    {
+        const auto insertInStackFunc = [this, insertInStack](std::shared_ptr<details::PosRange<Trait>> item) {
+            if (insertInStack) {
+                this->m_currentItems.push(item);
+            }
+        };
+
+        static const auto makeSharedPosRange = [](const details::PosRange<Trait> &range) -> std::shared_ptr<details::PosRange<Trait>> {
+            return std::make_shared<details::PosRange<Trait>>(range.m_startColumn,
+                                                              range.m_startLine,
+                                                              range.m_endColumn,
+                                                              range.m_endLine,
+                                                              range.m_item,
+                                                              range.m_children);
+        };
+
         if (!m_skipInCache) {
             assert(item.isValidPos());
 
-            auto pos = findInCache(m_cache, item);
+            auto pos = findInCache(m_cache, item, !sort);
 
             if (pos) {
-                pos->m_children.push_back(item);
+                pos->m_children.push_back(makeSharedPosRange(item));
+
+                insertInStackFunc(pos->m_children.back());
             } else {
                 if (sort) {
-                    const auto it = std::upper_bound(m_cache.begin(), m_cache.end(), item);
+                    const auto it = std::upper_bound(m_cache.begin(), m_cache.end(), item, comparePosRangeUpper<Trait>);
 
                     if (it != m_cache.end()) {
-                        m_cache.insert(it, item);
+                        insertInStackFunc(*m_cache.insert(it, makeSharedPosRange(item)));
                     } else {
-                        m_cache.push_back(item);
+                        m_cache.push_back(makeSharedPosRange(item));
+
+                        insertInStackFunc(m_cache.back());
                     }
                 } else {
-                    m_cache.push_back(item);
+                    m_cache.push_back(makeSharedPosRange(item));
+
+                    insertInStackFunc(m_cache.back());
                 }
             }
         }
     }
 
 protected:
-    //! Cache user defined item.
+    /*!
+     * Cache user defined item.
+     *
+     * \a i Item.
+     */
     void onUserDefined(Item<Trait> *i) override
     {
         details::PosRange<Trait> r{i->startColumn(), i->startLine(), i->endColumn(), i->endLine(), i};
@@ -192,10 +397,12 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache shortcut link.
-    virtual void onReferenceLink(
-        //! Link.
-        Link<Trait> *l)
+    /*!
+     * Cache shortcut link.
+     *
+     * \a l Link.
+     */
+    virtual void onReferenceLink(Link<Trait> *l)
     {
         details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};
 
@@ -206,7 +413,11 @@ protected:
     {
     }
 
-    //! Cache text item.
+    /*!
+     * Cache text item.
+     *
+     * \a t Text.
+     */
     void onText(Text<Trait> *t) override
     {
         details::PosRange<Trait> r{t->openStyles().empty() ? t->startColumn() : t->openStyles().front().startColumn(),
@@ -218,7 +429,11 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache LaTeX math expression.
+    /*!
+     * Cache LaTeX math expression.
+     *
+     * \a m Math.
+     */
     void onMath(Math<Trait> *m) override
     {
         auto startColumn = m->startDelim().startColumn();
@@ -245,29 +460,52 @@ protected:
     {
     }
 
-    //! Cache paragraph.
-    void onParagraph(Paragraph<Trait> *p, bool wrap) override
+    /*!
+     * Cache paragraph.
+     *
+     * \a p Paragraph.
+     *
+     * \a wrap Wrap this paragraph with something or no? It's useful to not wrap standalone
+     *         paragraph in list item, for example.
+     *
+     * \a skipOpeningWrap Indicates that opening wrap should be added or no.
+     */
+    void onParagraph(Paragraph<Trait> *p, bool wrap, bool skipOpeningWrap = false) override
     {
         details::PosRange<Trait> r{p->startColumn(), p->startLine(), p->endColumn(), p->endLine(), p};
 
-        insertInCache(r);
+        insertInCache(r, false, true);
 
-        Visitor<Trait>::onParagraph(p, wrap);
+        Visitor<Trait>::onParagraph(p, wrap, skipOpeningWrap);
+
+        if (!m_skipInCache) {
+            m_currentItems.pop();
+        }
     }
 
-    //! Cache heading.
+    /*!
+     * Cache heading.
+     *
+     * \a h Heading.
+     */
     void onHeading(Heading<Trait> *h) override
     {
         details::PosRange<Trait> r{h->startColumn(), h->startLine(), h->endColumn(), h->endLine(), h};
 
-        insertInCache(r);
+        insertInCache(r, false, true);
 
         if (h->text() && !h->text()->isEmpty()) {
             onParagraph(h->text().get(), false);
         }
+
+        m_currentItems.pop();
     }
 
-    //! Cache code.
+    /*!
+     * Cache code.
+     *
+     * \a c Code.
+     */
     void onCode(Code<Trait> *c) override
     {
         auto startColumn = c->isFensedCode() ? c->startDelim().startColumn() : c->startColumn();
@@ -280,7 +518,11 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache inline code.
+    /*!
+     * Cache inline code.
+     *
+     * \a c Code.
+     */
     void onInlineCode(Code<Trait> *c) override
     {
         auto startColumn = c->startDelim().startColumn();
@@ -303,24 +545,34 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache blockquote.
+    /*!
+     * Cache blockquote.
+     *
+     * \a b Blockquote.
+     */
     void onBlockquote(Blockquote<Trait> *b) override
     {
         details::PosRange<Trait> r{b->startColumn(), b->startLine(), b->endColumn(), b->endLine(), b};
 
-        insertInCache(r);
+        insertInCache(r, false, true);
 
         Visitor<Trait>::onBlockquote(b);
+
+        m_currentItems.pop();
     }
 
-    //! Cache list.
+    /*!
+     * Cache list.
+     *
+     * \a l List.
+     */
     void onList(List<Trait> *l) override
     {
         bool first = true;
 
         details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};
 
-        insertInCache(r);
+        insertInCache(r, false, true);
 
         for (auto it = l->items().cbegin(), last = l->items().cend(); it != last; ++it) {
             if ((*it)->type() == ItemType::ListItem) {
@@ -329,14 +581,20 @@ protected:
                 first = false;
             }
         }
+
+        m_currentItems.pop();
     }
 
-    //! Cache table.
+    /*!
+     * Cache table.
+     *
+     * \a t Table.
+     */
     void onTable(Table<Trait> *t) override
     {
         details::PosRange<Trait> r{t->startColumn(), t->startLine(), t->endColumn(), t->endLine(), t};
 
-        insertInCache(r);
+        insertInCache(r, false, true);
 
         if (!t->isEmpty()) {
             int columns = 0;
@@ -361,13 +619,19 @@ protected:
                 }
             }
         }
+
+        m_currentItems.pop();
     }
 
     void onAnchor(Anchor<Trait> *) override
     {
     }
 
-    //! Cache raw HTML.
+    /*!
+     * Cache raw HTML.
+     *
+     * \a h Raw HTML.
+     */
     void onRawHtml(RawHtml<Trait> *h) override
     {
         details::PosRange<Trait> r{h->startColumn(), h->startLine(), h->endColumn(), h->endLine(), h};
@@ -375,7 +639,11 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache horizontal line.
+    /*!
+     * Cache horizontal line.
+     *
+     * \a l Horizontal line.
+     */
     void onHorizontalLine(HorizontalLine<Trait> *l) override
     {
         details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};
@@ -383,7 +651,11 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache link.
+    /*!
+     * Cache link.
+     *
+     * \a l Link.
+     */
     void onLink(Link<Trait> *l) override
     {
         auto startColumn = l->startColumn();
@@ -406,13 +678,16 @@ protected:
         insertInCache(r);
 
         if (l->p()) {
-            m_skipInCache = true;
+            RollbackBool skipInCacheRollback(m_skipInCache, true);
             onParagraph(l->p().get(), true);
-            m_skipInCache = false;
         }
     }
 
-    //! Cache image.
+    /*!
+     * Cache image.
+     *
+     * \a i Image.
+     */
     void onImage(Image<Trait> *i) override
     {
         auto startColumn = i->startColumn();
@@ -435,13 +710,16 @@ protected:
         insertInCache(r);
 
         if (i->p()) {
-            m_skipInCache = true;
+            RollbackBool skipInCacheRollback(m_skipInCache, true);
             onParagraph(i->p().get(), true);
-            m_skipInCache = false;
         }
     }
 
-    //! Cache footnote reference.
+    /*!
+     * Cache footnote reference.
+     *
+     * \a ref Footnote reference.
+     */
     void onFootnoteRef(FootnoteRef<Trait> *ref) override
     {
         auto startColumn = ref->startColumn();
@@ -464,31 +742,72 @@ protected:
         insertInCache(r);
     }
 
-    //! Cache footnote.
+    /*!
+     * Cache footnote.
+     *
+     * \a f Footnote.
+     */
     void onFootnote(Footnote<Trait> *f) override
     {
         details::PosRange<Trait> r{f->startColumn(), f->startLine(), f->endColumn(), f->endLine(), f};
 
-        insertInCache(r, true);
+        insertInCache(r, true, true);
 
         Visitor<Trait>::onFootnote(f);
+
+        m_currentItems.pop();
     }
 
-    //! Cache list item.
-    void onListItem(ListItem<Trait> *l, bool first) override
+    /*!
+     * Cache list item.
+     *
+     * \a l List item.
+     *
+     * \a first Is this item first in the list?
+     *
+     * \a skipOpeningWrap Indicates that opening wrap should be added or no.
+     */
+    void onListItem(ListItem<Trait> *l, bool first, bool skipOpeningWrap = false) override
     {
         details::PosRange<Trait> r{l->startColumn(), l->startLine(), l->endColumn(), l->endLine(), l};
 
-        insertInCache(r);
+        insertInCache(r, false, true);
 
-        Visitor<Trait>::onListItem(l, first);
+        Visitor<Trait>::onListItem(l, first, skipOpeningWrap);
+
+        m_currentItems.pop();
     }
 
 protected:
-    //! Cache.
-    std::vector<details::PosRange<Trait>> m_cache;
-    //! Skip adding in cache.
+    /*!
+     * Cache.
+     */
+    std::vector<std::shared_ptr<details::PosRange<Trait>>> m_cache;
+    /*!
+     * Skip adding in cache.
+     */
     bool m_skipInCache = false;
+
+private:
+    std::stack<std::shared_ptr<details::PosRange<Trait>>> m_currentItems;
+
+    struct RollbackBool {
+        RollbackBool(bool &variable, bool newValue)
+            : m_variable(variable)
+            , m_prevValue(variable)
+        {
+            m_variable = newValue;
+        }
+
+        ~RollbackBool()
+        {
+            m_variable = m_prevValue;
+        }
+
+    private:
+        bool &m_variable;
+        bool m_prevValue;
+    }; // struct RollbackBool
 }; // class PosCache
 
 } /* namespace MD */

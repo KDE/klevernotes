@@ -352,9 +352,9 @@ void EditorHighlighter::onBlockquote(MD::Blockquote<MD::QStringTrait> *b)
     }
 }
 
-void EditorHighlighter::onListItem(MD::ListItem<MD::QStringTrait> *l, bool first)
+void EditorHighlighter::onListItem(MD::ListItem<MD::QStringTrait> *l, bool first, bool skipOpeningWrap)
 {
-    MD::PosCache<MD::QStringTrait>::onListItem(l, first);
+    MD::PosCache<MD::QStringTrait>::onListItem(l, first, skipOpeningWrap);
     if (m_highlightEnabled) {
         QTextCharFormat special;
         special.setForeground(d->colors.highlightColor);

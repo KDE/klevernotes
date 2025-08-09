@@ -13,6 +13,7 @@
 // C++ include.
 #include <algorithm>
 #include <string>
+#include <unordered_map>
 #include <utility>
 
 namespace MD
@@ -22,21 +23,87 @@ namespace details
 {
 
 //
+// IdsMap
+//
+
+/*!
+ * \typealias MD::details::IdsMap
+ * \inmodule md4qt
+ * \inheaderfile md4qt/html.h
+ *
+ * \brief Map of IDs to set them for items in HTML.
+ *
+ * This is a map of IDs that should be set in HTML for corresponding items.
+ */
+template<class Trait>
+using IdsMap = std::unordered_map<MD::Item<Trait> *, typename Trait::String>;
+
+//
 // HtmlVisitor
 //
 
-//! HTML visitor interface to walk through Document.
+/*!
+ * \class MD::details::HtmlVisitor
+ * \inmodule md4qt
+ * \inheaderfile md4qt/html.h
+ *
+ * \brief HTML visitor interface to walk through the MD:Document.
+ *
+ * This is visitor to convert Markdown document to HTML string. This class is highly
+ * customizable, absolutelly everything may be overriden, all data members are protected
+ * so a developer won't have problems with customizaion.
+ *
+ * As example of customization have a look at the following code.
+ *
+ * \code
+ * class HtmlVisitor : public MD::details::HtmlVisitor<MD::QStringTrait>
+ * {
+ * protected:
+ *     QString prepareTextForHtml(const QString &t) override
+ *     {
+ *         auto tmp = MD::details::HtmlVisitor<MD::QStringTrait>::prepareTextForHtml(t);
+ *         tmp.replace(QLatin1Char('$'), QStringLiteral("<span>$</span>"));
+ *
+ *         return tmp;
+ *     }
+ * };
+ * \endcode
+ *
+ * In this example we convert \c {$} character to \c {<span>$</span>} when inserting string to HTML.
+ * This is needed to disable processing of \c {$} character in HTML as start/end of \c {LaTeX} equation
+ * by some JavaScript, like \c {KaTeX}, to prevent wrong rendering of standalone \c {$} character.
+ *
+ * MD::details::HtmlVisitor doesn't do this protection, so if in your case you use rendering of \c {LaTeX}
+ * math equation and enframe them by \c {$} character in HTML, you will need something like the above example.
+ */
 template<class Trait>
 class HtmlVisitor : public Visitor<Trait>
 {
 public:
+    /*!
+     * Default constructor.
+     */
     HtmlVisitor() = default;
     ~HtmlVisitor() override = default;
 
-    //! Walk through the document.
-    virtual typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc, const typename Trait::String &hrefForRefBackImage, bool wrappedInArticle = true)
+    /*!
+     * Walk through the document.
+     *
+     * \a doc Document.
+     *
+     * \a hrefForRefBackImage String that will be applied as URL for image for back link from footnote.
+     *
+     * \a wrappedInArticle Wrap HTML with <article> tag?
+     *
+     * \a idsMap Map of IDs to set to corresonding items.
+     */
+    virtual typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc,
+                                          const typename Trait::String &hrefForRefBackImage,
+                                          bool wrappedInArticle = true,
+                                          const IdsMap<Trait> *idsMap = nullptr)
     {
         m_isWrappedInArticle = wrappedInArticle;
+        m_idsMap = idsMap;
 
         m_html.clear();
         m_fns.clear();
@@ -49,7 +116,49 @@ public:
     }
 
 protected:
-    //! Insert into HTML tags for opening styles.
+    /*!
+     * Returns ID of item if it's set.
+     *
+     * \a item Item.
+     */
+    virtual typename Trait::String getId(Item<Trait> *item) const
+    {
+        if (item->type() != ItemType::Heading) {
+            if (m_idsMap) {
+                const auto it = m_idsMap->find(item);
+
+                if (it != m_idsMap->cend()) {
+                    return it->second;
+                }
+            }
+        } else {
+            return static_cast<Heading<Trait> *>(item)->label();
+        }
+
+        return {};
+    }
+
+    /*!
+     * Append ID into HTML.
+     *
+     * \a item Item.
+     */
+    virtual void printId(Item<Trait> *item)
+    {
+        const auto id = getId(item);
+
+        if (!id.isEmpty()) {
+            m_html.push_back(Trait::latin1ToString(" id=\""));
+            m_html.push_back(id);
+            m_html.push_back(Trait::latin1ToString("\""));
+        }
+    }
+
+    /*!
+     * Insert into HTML tags for opening styles.
+     *
+     * \a styles Styles.
+     */
     virtual void openStyle(const typename ItemWithOpts<Trait>::Styles &styles)
     {
         for (const auto &s : styles) {
@@ -72,7 +181,11 @@ protected:
         }
     }
 
-    //! Insert into HTML tags for closing styles.
+    /*!
+     * Insert into HTML tags for closing styles.
+     *
+     * \a styles Styles.
+     */
     virtual void closeStyle(const typename ItemWithOpts<Trait>::Styles &styles)
     {
         for (const auto &s : styles) {
@@ -95,17 +208,21 @@ protected:
         }
     }
 
-    //! Handle new line in HTML.
+    /*!
+     * Handle new line in HTML.
+     */
     void onAddLineEnding() override
     {
         if (!m_justCollectFootnoteRefs)
             m_html.push_back(Trait::latin1ToString("\n"));
     }
 
-    //! Handle text item.
-    void onText(
-        //! Text.
-        Text<Trait> *t) override
+    /*!
+     * Handle text item.
+     *
+     * \a t Text.
+     */
+    void onText(Text<Trait> *t) override
     {
         if (!m_justCollectFootnoteRefs) {
             openStyle(t->openStyles());
@@ -116,10 +233,12 @@ protected:
         }
     }
 
-    //! Handle LaTeX math expression.
-    void onMath(
-        //! Math.
-        Math<Trait> *m) override
+    /*!
+     * Handle LaTeX math expression.
+     *
+     * \a m Math.
+     */
+    void onMath(Math<Trait> *m) override
     {
         if (!m_justCollectFootnoteRefs) {
             openStyle(m->openStyles());
@@ -132,26 +251,32 @@ protected:
         }
     }
 
-    //! Handle line break.
-    void onLineBreak(
-        //! Linebreak.
-        LineBreak<Trait> *) override
+    /*!
+     * Handle line break.
+     */
+    void onLineBreak(LineBreak<Trait> *) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("<br />"));
         }
     }
 
-    //! Handle paragraph.
-    void onParagraph(
-        //! Paragraph.
-        Paragraph<Trait> *p,
-        //! Wrap this paragraph with something or no? It's useful to not wrap standalone
-        //! paragraph in list item, for example.
-        bool wrap) override
+    /*!
+     * Handle paragraph.
+     *
+     * \a p Paragraph.
+     *
+     * \a wrap Wrap this paragraph with something or no? It's useful to not wrap standalone
+     *         paragraph in list item, for example.
+     *
+     * \a skipOpeningWrap Indicates that opening wrap should be added or no.
+     */
+    void onParagraph(Paragraph<Trait> *p, bool wrap, bool skipOpeningWrap = false) override
     {
-        if (wrap && !m_justCollectFootnoteRefs) {
-            m_html.push_back(Trait::latin1ToString("<p dir=\"auto\">"));
+        if (wrap && !m_justCollectFootnoteRefs && !skipOpeningWrap) {
+            m_html.push_back(Trait::latin1ToString("<p dir=\"auto\""));
+            printId(p);
+            m_html.push_back(Trait::latin1ToString(">"));
         }
 
         Visitor<Trait>::onParagraph(p, wrap);
@@ -161,10 +286,12 @@ protected:
         }
     }
 
-    //! Handle heading.
-    void onHeading(
-        //! Heading.
-        Heading<Trait> *h) override
+    /*!
+     * Handle heading.
+     *
+     * \a h Heading.
+     */
+    void onHeading(Heading<Trait> *h) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("\n"));
@@ -189,14 +316,18 @@ protected:
         }
     }
 
-    //! Handle code block.
-    void onCode(
-        //! Code.
-        Code<Trait> *c) override
+    /*!
+     * Handle code block.
+     *
+     * \a c Code.
+     */
+    void onCode(Code<Trait> *c) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("\n"));
-            m_html.push_back(Trait::latin1ToString("<pre><code"));
+            m_html.push_back(Trait::latin1ToString("<pre"));
+            printId(c);
+            m_html.push_back(Trait::latin1ToString("><code"));
 
             if (!c->syntax().isEmpty()) {
                 m_html.push_back(Trait::latin1ToString(" class=\"language-"));
@@ -211,15 +342,19 @@ protected:
         }
     }
 
-    //! Handle inline code.
-    void onInlineCode(
-        //! Code.
-        Code<Trait> *c) override
+    /*!
+     * Handle inline code.
+     *
+     * \a c Code.
+     */
+    void onInlineCode(Code<Trait> *c) override
     {
         if (!m_justCollectFootnoteRefs) {
             openStyle(c->openStyles());
 
-            m_html.push_back(Trait::latin1ToString("<code>"));
+            m_html.push_back(Trait::latin1ToString("<code"));
+            printId(c);
+            m_html.push_back(Trait::latin1ToString(">"));
 
             m_html.push_back(prepareTextForHtml(c->text()));
 
@@ -229,13 +364,17 @@ protected:
         }
     }
 
-    //! Handle blockquote.
-    void onBlockquote(
-        //! Blockquote.
-        Blockquote<Trait> *b) override
+    /*!
+     * Handle blockquote.
+     *
+     * \a b Blockquote.
+     */
+    void onBlockquote(Blockquote<Trait> *b) override
     {
         if (!m_justCollectFootnoteRefs) {
-            m_html.push_back(Trait::latin1ToString("\n<blockquote>"));
+            m_html.push_back(Trait::latin1ToString("\n<blockquote"));
+            printId(b);
+            m_html.push_back(Trait::latin1ToString(">"));
         }
 
         Visitor<Trait>::onBlockquote(b);
@@ -245,10 +384,12 @@ protected:
         }
     }
 
-    //! Handle list.
-    void onList(
-        //! List.
-        List<Trait> *l) override
+    /*!
+     * Handle list.
+     *
+     * \a l List.
+     */
+    void onList(List<Trait> *l) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("\n"));
@@ -267,6 +408,7 @@ protected:
                     if (type == ListItem<Trait>::Ordered) {
                         if (!m_justCollectFootnoteRefs) {
                             m_html.push_back(Trait::latin1ToString("<ol"));
+                            printId(l);
 
                             if (item->isTaskList()) {
                                 m_html.push_back(Trait::latin1ToString(" class=\"contains-task-list\""));
@@ -277,6 +419,7 @@ protected:
                     } else {
                         if (!m_justCollectFootnoteRefs) {
                             m_html.push_back(Trait::latin1ToString("<ul"));
+                            printId(l);
 
                             if (item->isTaskList()) {
                                 m_html.push_back(Trait::latin1ToString(" class=\"contains-task-list\""));
@@ -304,10 +447,12 @@ protected:
         }
     }
 
-    //! Handle table.
-    void onTable(
-        //! Table.
-        Table<Trait> *t) override
+    /*!
+     * Handle table.
+     *
+     * \a t Table.
+     */
+    void onTable(Table<Trait> *t) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("\n"));
@@ -315,7 +460,9 @@ protected:
 
         if (!t->isEmpty()) {
             if (!m_justCollectFootnoteRefs) {
-                m_html.push_back(Trait::latin1ToString("<table><thead><tr>\n"));
+                m_html.push_back(Trait::latin1ToString("<table"));
+                printId(t);
+                m_html.push_back(Trait::latin1ToString("><thead><tr>\n"));
             }
 
             int columns = 0;
@@ -386,10 +533,12 @@ protected:
         }
     }
 
-    //! Handle anchor.
-    void onAnchor(
-        //! Anchor.
-        Anchor<Trait> *a) override
+    /*!
+     * Handle anchor.
+     *
+     * \a a Anchor.
+     */
+    void onAnchor(Anchor<Trait> *a) override
     {
         if (!m_justCollectFootnoteRefs && m_isWrappedInArticle) {
             m_html.push_back(Trait::latin1ToString("\n<div id=\""));
@@ -398,10 +547,12 @@ protected:
         }
     }
 
-    //! Handle raw HTML.
-    void onRawHtml(
-        //! Raw HTML.
-        RawHtml<Trait> *h) override
+    /*!
+     * Handle raw HTML.
+     *
+     * \a h Raw HTML.
+     */
+    void onRawHtml(RawHtml<Trait> *h) override
     {
         if (!m_justCollectFootnoteRefs) {
             openStyle(h->openStyles());
@@ -412,20 +563,22 @@ protected:
         }
     }
 
-    //! Handle horizontal line.
-    void onHorizontalLine(
-        //! Horizontal line.
-        HorizontalLine<Trait> *) override
+    /*!
+     * Handle horizontal line.
+     */
+    void onHorizontalLine(HorizontalLine<Trait> *) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("<hr />"));
         }
     }
 
-    //! Handle link.
-    void onLink(
-        //! Link.
-        Link<Trait> *l) override
+    /*!
+     * Handle link.
+     *
+     * \a l Link.
+     */
+    void onLink(Link<Trait> *l) override
     {
         typename Trait::String url = l->url();
 
@@ -456,7 +609,9 @@ protected:
 
             m_html.push_back(Trait::latin1ToString("<a href=\""));
             m_html.push_back(url);
-            m_html.push_back(Trait::latin1ToString("\">"));
+            m_html.push_back(Trait::latin1ToString("\""));
+            printId(l);
+            m_html.push_back(Trait::latin1ToString(">"));
         }
 
         if (l->p() && !l->p()->isEmpty()) {
@@ -482,10 +637,12 @@ protected:
         }
     }
 
-    //! Handle image.
-    void onImage(
-        //! Image.
-        Image<Trait> *i) override
+    /*!
+     * Handle image.
+     *
+     * \a i Image.
+     */
+    void onImage(Image<Trait> *i) override
     {
         if (!m_justCollectFootnoteRefs) {
             openStyle(i->openStyles());
@@ -494,16 +651,20 @@ protected:
             m_html.push_back(i->url());
             m_html.push_back(Trait::latin1ToString("\" alt=\""));
             m_html.push_back(prepareTextForHtml(i->text()));
-            m_html.push_back(Trait::latin1ToString("\" style=\"max-width:100%;\" />"));
+            m_html.push_back(Trait::latin1ToString("\" style=\"max-width:100%;\""));
+            printId(i);
+            m_html.push_back(Trait::latin1ToString(" />"));
 
             closeStyle(i->closeStyles());
         }
     }
 
-    //! Handle footnote reference.
-    void onFootnoteRef(
-        //! Footnote reference.
-        FootnoteRef<Trait> *ref) override
+    /*!
+     * Handle footnote reference.
+     *
+     * \a ref Footnote reference.
+     */
+    void onFootnoteRef(FootnoteRef<Trait> *ref) override
     {
         const auto fit = this->m_doc->footnotesMap().find(ref->id());
 
@@ -547,8 +708,9 @@ protected:
                 }
 
                 m_fns.push_back({ref->id(), 1, 0});
-            } else if (!m_justCollectFootnoteRefs)
+            } else if (!m_justCollectFootnoteRefs) {
                 m_html.push_back(Trait::latin1ToString(std::to_string(std::distance(m_fns.begin(), r) + 1).c_str()));
+            }
 
             if (!m_justCollectFootnoteRefs) {
                 m_html.push_back(Trait::latin1ToString("</a></sup>"));
@@ -559,19 +721,32 @@ protected:
             onText(static_cast<Text<Trait> *>(ref));
     }
 
-    //! Handle list item.
-    void onListItem(
-        //! List item.
-        ListItem<Trait> *i,
-        //! Is this item first in the list?
-        bool first) override
+    /*!
+     * Handle list item.
+     *
+     * \a i List item.
+     *
+     * \a first Is this item first in the list?
+     *
+     * \a skipOpeningWrap Indicates that opening wrap should be added or no.
+     */
+    void onListItem(ListItem<Trait> *i, bool first, bool skipOpeningWrap = false) override
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("<li"));
+            printId(i);
 
             if (i->isTaskList()) {
+                skipOpeningWrap = Visitor<Trait>::wrapFirstParagraphInListItem(i);
+
+                m_html.push_back(Trait::latin1ToString(" class=\"task-list-item\">"));
+
+                if (skipOpeningWrap && !i->isEmpty() && i->items().at(0)->type() == MD::ItemType::Paragraph) {
+                    m_html.push_back(Trait::latin1ToString("<p dir=\"auto\">"));
+                }
+
                 m_html.push_back(
-                    Trait::latin1ToString(" class=\"task-list-item\"><input "
+                    Trait::latin1ToString("<input "
                                           "type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\""));
 
                 if (i->isChecked()) {
@@ -588,19 +763,21 @@ protected:
             m_html.push_back(Trait::latin1ToString(">\n"));
         }
 
-        Visitor<Trait>::onListItem(i, first);
+        Visitor<Trait>::onListItem(i, first, skipOpeningWrap);
 
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("</li>\n"));
         }
     }
 
-    //! Handle heading.
-    virtual void onHeading(
-        //! Heading.
-        Heading<Trait> *h,
-        //! Heading tag.
-        const typename Trait::String &ht)
+    /*!
+     * Handle heading.
+     *
+     * \a h Heading.
+     *
+     * \a ht Heading tag.
+     */
+    virtual void onHeading(Heading<Trait> *h, const typename Trait::String &ht)
     {
         if (!m_justCollectFootnoteRefs) {
             m_html.push_back(Trait::latin1ToString("<"));
@@ -620,7 +797,11 @@ protected:
         }
     }
 
-    //! Handle footnotes.
+    /*!
+     * Handle footnotes.
+     *
+     * \a hrefForRefBackImage String that will be applied as URL for image for back link from footnote.
+     */
     virtual void onFootnotes(const typename Trait::String &hrefForRefBackImage)
     {
         if (!m_fns.empty()) {
@@ -629,10 +810,11 @@ protected:
 
         int i = 1;
 
-        const auto tmpm_fns = m_fns;
+        // This copy is needed. First time we want to iterate on non-modified container.
+        const auto tmpFns = m_fns;
         m_justCollectFootnoteRefs = true;
 
-        for (const auto &id : tmpm_fns) {
+        for (const auto &id : tmpFns) {
             const auto fit = this->m_doc->footnotesMap().find(id.m_id);
 
             if (fit != this->m_doc->footnotesMap().cend()) {
@@ -680,7 +862,11 @@ protected:
         }
     }
 
-    //! \return HTML content for heading's ID.
+    /*!
+     * Returns HTML content for heading's ID.
+     *
+     * \a h Heading.
+     */
     virtual typename Trait::String headingIdToHtml(Heading<Trait> *h)
     {
         typename Trait::String html;
@@ -698,7 +884,11 @@ protected:
         return html;
     }
 
-    //! Prepare text to insert into HTML content.
+    /*!
+     * Prepare text to insert into HTML content.
+     *
+     * \a t String.
+     */
     virtual typename Trait::String prepareTextForHtml(const typename Trait::String &t)
     {
         auto tmp = t;
@@ -709,7 +899,11 @@ protected:
         return tmp;
     }
 
-    //! \return HTML content for table alignment.
+    /*!
+     * Returns HTML content for table alignment.
+     *
+     * \a a Alignment.
+     */
     virtual typename Trait::String tableAlignmentToHtml(typename Table<Trait>::Alignment a)
     {
         typename Trait::String html;
@@ -735,42 +929,87 @@ protected:
     }
 
 protected:
-    //! HTML content.
+    /*!
+     * HTML content.
+     */
     typename Trait::String m_html;
-    //! Just collect footnote references?
+    /*!
+     * Just collect footnote references?
+     */
     bool m_justCollectFootnoteRefs = false;
-    //! Just process footnote references and don't increment count number.
+    /*!
+     * Just process footnote references and don't increment count number.
+     */
     bool m_dontIncrementFootnoteCount = false;
-    //! Is this HTML wrapped in artcile tag?
+    /*!
+     * Is this HTML wrapped in artcile tag?
+     */
     bool m_isWrappedInArticle = true;
 
-    //! Auxiliary struct to process footnotes.
+    /*!
+     * \class MD::details::HtmlVisitor::FootnoteRefStuff
+     * \inmodule md4qt
+     *
+     * \brief Auxiliary struct to process footnotes.
+     *
+     * This structure is used to form ID of footnote reference in generated HTML.
+     *
+     * ID of footnote reference in HTML looks like "ref-{FOOTNOTE_ID}-{NUMBER_OF_REFERENCE_WITH_THIS_FOOTNOTE_ID}"
+     */
     struct FootnoteRefStuff {
-        //! ID of footnote.
+        /*!
+         * ID of footnote.
+         *
+         * This ID places to {FOOTNOTE_ID}.
+         */
         typename Trait::String m_id;
-        //! Count of references with this ID.
+        /*!
+         * Count of references with this ID.
+         *
+         * Used to generate back links from footnote to footnote reference.
+         */
         long long int m_count = 0;
-        //! Number of footnote reference with this ID.
+        /*!
+         * Number of footnote reference with this ID.
+         *
+         * This number places to {NUMBER_OF_REFERENCE_WITH_THIS_FOOTNOTE_ID}.
+         */
         long long int m_current = 0;
     };
 
-    //! Vector of processed footnotes references.
+    /*!
+     * Vector of processed footnotes references.
+     */
     typename Trait::template Vector<FootnoteRefStuff> m_fns;
+    /*!
+     * Map of IDs to set to corresponding items.
+     */
+    const IdsMap<Trait> *m_idsMap = nullptr;
 }; // class HtmlVisitor
 
 } /* namespace details */
 
-//! Convert Document to HTML.
+/*!
+ * \inheaderfile md4qt/html.h
+ *
+ * \brief Convert Document to HTML.
+ *
+ * \a doc Markdown document.
+ *
+ * \a wrapInBodyTag Wrap HTML into <body> tag?
+ *
+ * \a hrefForRefBackImage String that will be applied as URL for image for back link from footnote.
+ *
+ * \a wrapInArticle Wrap HTML with <article> tag?
+ *
+ * \a idsMap Map of IDs to set to items.
+ */
 template<class Trait, class HtmlVisitor = details::HtmlVisitor<Trait>>
-typename Trait::String toHtml(
-    //! Markdown document.
-    std::shared_ptr<Document<Trait>> doc,
-    //! Wrap HTML into <body> tag?
-    bool wrapInBodyTag = true,
-    //! String that will be applied as URL for image for back link from footnote.
-    const typename Trait::String &hrefForRefBackImage = {},
-    //! Wrap HTML with <article> tag?
-    bool wrapInArticle = true)
+typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc,
+                              bool wrapInBodyTag = true,
+                              const typename Trait::String &hrefForRefBackImage = {},
+                              bool wrapInArticle = true,
+                              const details::IdsMap<Trait> *idsMap = nullptr)
 {
     typename Trait::String html;
 
@@ -784,7 +1023,7 @@ typename Trait::String toHtml(
 
     HtmlVisitor visitor;
 
-    html.push_back(visitor.toHtml(doc, hrefForRefBackImage, wrapInArticle));
+    html.push_back(visitor.toHtml(doc, hrefForRefBackImage, wrapInArticle, idsMap));
 
     if (wrapInArticle) {
         html.push_back(Trait::latin1ToString("</article>\n"));

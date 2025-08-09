@@ -6,36 +6,12 @@
 #ifndef MD4QT_MD_TRAITS_HPP_INCLUDED
 #define MD4QT_MD_TRAITS_HPP_INCLUDED
 
-#ifdef MD4QT_ICU_STL_SUPPORT
-
-// C++ include.
-#include <algorithm>
-#include <cctype>
-#include <filesystem>
-#include <map>
-#include <memory>
-#include <string>
-#include <utility>
-#include <vector>
-
-// ICU include.
-#include <unicode/uchar.h>
-#include <unicode/unistr.h>
-
-// uriparser include.
-#include <uriparser/Uri.h>
-
-#endif // MD4QT_ICU_STL_SUPPORT
-
 #ifdef MD4QT_QT_SUPPORT
 
-#ifndef MD4QT_ICU_STL_SUPPORT
-
 // C++ include.
 #include <map>
 #include <memory>
-
-#endif // MD4QT_ICU_STL_SUPPORT
+#include <variant>
 
 // Qt include.
 #include <QFileInfo>
@@ -50,51 +26,259 @@
 namespace MD
 {
 
-//! Internal string, used to get virgin (original) string from transformed string.
-template<class String, class Char, class Latin1Char>
+/*!
+ * \class MD::StringVariant
+ * \inmodule md4qt
+ * \inheaderfile md4qt/traits.h
+ *
+ * \brief String variant that may holds string or string view.
+ *
+ * String variant that may holds string or string view. Modifications are
+ * allowed even if it holds string view - in this case will be made deep copy
+ * to string from view, and modifications will be made on copied string.
+ */
+template<class String, class StringView>
+class StringVariant
+{
+public:
+    /*!
+     * Default constructor of empty string variant.
+     */
+    StringVariant()
+    {
+    }
+
+    /*!
+     * Constructor from string.
+     */
+    StringVariant(const String &s)
+        : m_string(s)
+        , m_isView(false)
+    {
+    }
+
+    /*!
+     * Constructor from string view.
+     */
+    StringVariant(const StringView &v)
+        : m_view(v)
+    {
+    }
+
+    /*!
+     * Copy operator.
+     */
+    StringVariant &operator=(const StringVariant &) = default;
+    /*!
+     * Copy constructor.
+     */
+    StringVariant(const StringVariant &) = default;
+
+    /*!
+     * Returns character at the given position.
+     *
+     * \a pos Position.
+     */
+    typename String::value_type operator[](long long int pos) const
+    {
+        return (m_isView ? m_view[pos] : m_string[pos]);
+    }
+
+    /*!
+     * Returns length of the string.
+     */
+    long long int length() const
+    {
+        return (m_isView ? m_view.length() : m_string.length());
+    }
+
+    /*!
+     * Returns deep copy of the string.
+     */
+    String toString() const
+    {
+        return (m_isView ? m_view.toString() : m_string);
+    }
+
+    /*!
+     * Returns sliced of this string variant. Doesn't do any copying.
+     *
+     * \a pos Start position.
+     *
+     * \a n Count of characters.
+     */
+    StringVariant sliced(long long int pos, long long int n) const
+    {
+        return (m_isView ? StringVariant(m_view.sliced(pos, n)) : StringVariant(m_string.sliced(pos, n)));
+    }
+
+    /*!
+     * Returns whether this string is empty.
+     */
+    bool isEmpty() const
+    {
+        return (m_isView ? m_view.isEmpty() : m_string.isEmpty());
+    }
+
+    /*!
+     * Insert string at the given position.
+     *
+     * \a pos Position.
+     *
+     * \a what A string to insert.
+     */
+    StringVariant &insert(long long int pos, const String &what)
+    {
+        if (m_isView) {
+            m_string = m_view.toString();
+            m_isView = false;
+            m_view = {};
+        }
+
+        m_string.insert(pos, what);
+
+        return *this;
+    }
+
+    /*!
+     * Removes from the given position the given count of characters.
+     *
+     * \a pos Position.
+     *
+     * \a size Count of characters.
+     */
+    StringVariant &remove(long long int pos, long long int size)
+    {
+        if (m_isView) {
+            m_string = m_view.toString();
+            m_isView = false;
+            m_view = {};
+        }
+
+        m_string.remove(pos, size);
+
+        return *this;
+    }
+
+    /*!
+     * Clear this string variant to default empty state.
+     */
+    void clear()
+    {
+        m_isView = true;
+        m_view = {};
+        m_string.clear();
+    }
+
+private:
+    String m_string;
+    StringView m_view;
+    bool m_isView = true;
+};
+
+/*!
+ * \class MD::InternalStringT
+ * \inmodule md4qt
+ * \inheaderfile md4qt/traits.h
+ *
+ * \brief Internal string, used to get virgin (original) string from transformed string.
+ *
+ * Actually this is a wrapper around string implemented to have ability to get virgin string/substring
+ * after implemented modifications. In other words - if from string "abc" remove letter "b" and then
+ * ask for virgin substring starting at position 0 and length 2, this class will give you virgin
+ * "abc" string.
+ */
+template<class String, class StringView, class Char, class Latin1Char>
 class InternalStringT
 {
 public:
+    /*!
+     * \typealias MD::InternalStringT::value_type
+     * \inmodule md4qt
+     * \inheaderfile md4qt/traits.h
+     *
+     * \brief Value type of a symbol in string.
+     */
+    using value_type = Char;
+
+    /*!
+     * Default constructor.
+     */
     InternalStringT()
     {
     }
+
+    /*!
+     * Constructor from string.
+     */
     InternalStringT(const String &s)
-        : m_str(s)
+        : m_string(s)
         , m_virginStr(s)
     {
     }
 
-    //! \return Reference to string.
-    String &asString()
+    /*!
+     * Constructor from string view.
+     */
+    InternalStringT(StringView s)
+        : m_string(s)
+        , m_virginStr(s)
     {
-        return m_str;
     }
 
-    //! \return Reference to string.
-    const String &asString() const
+    /*!
+     * Returns full virgin string.
+     */
+    String fullVirginString() const
     {
-        return m_str;
+        return m_virginStr.toString();
     }
 
-    //! \return Full virgin string.
-    const String &fullVirginString() const
+    /*!
+     * Returns copy of string view as string
+     */
+    String toString() const
     {
-        return m_virginStr;
+        return m_string.toString();
     }
 
-    //! \return Virgin sub-string with position and length in the transformed string.
+    /*!
+     * Returns a length of this string.
+     */
+    long long int length() const
+    {
+        return m_string.length();
+    }
+
+    /*!
+     * Clear string.
+     */
+    void clear()
+    {
+        m_string.clear();
+        m_virginStr = {};
+        m_changedPos.clear();
+    }
+
+    /*!
+     * Returns virgin sub-string with position and length in the transformed string.
+     *
+     * \a pos Position.
+     *
+     * \a len Length.
+     */
     String virginSubString(long long int pos = 0, long long int len = -1) const
     {
         if (pos < 0) {
             pos = 0;
         }
 
-        if (pos + len > m_str.length() || len < 0) {
-            len = m_str.length() - pos;
+        if (pos + len > length() || len < 0) {
+            len = length() - pos;
         }
 
         if (len == 0) {
-            return (m_str.isEmpty() ? m_virginStr : String());
+            return (isEmpty() ? m_virginStr.toString() : String());
         }
 
         auto virginStartPos = virginPos(pos);
@@ -126,17 +310,19 @@ public:
             }
         }
 
-        return startStr + m_virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1) + endStr;
+        return startStr + m_virginStr.sliced(virginStartPos, virginEndPos - virginStartPos + 1).toString() + endStr;
     }
 
-    //! \return Virgin position from transformed.
-    long long int virginPos(
-        //! Transformed position.
-        long long int pos,
-        //! If true will be return last virgin position before transformation.
-        //! For example if in virgin string 2 characters were replaced with 1,
-        //! we will receive position of second character if \p end is true.
-        bool end = false) const
+    /*!
+     * Returns virgin position from transformed.
+     *
+     * \a pos Transformed position.
+     *
+     * \a end If true will be return last virgin position before transformation.
+     *        For example if in virgin string 2 characters were replaced with 1,
+     *        we will receive position of second character if \a end is true.
+     */
+    long long int virginPos(long long int pos, bool end = false) const
     {
         for (auto it = m_changedPos.crbegin(), last = m_changedPos.crend(); it != last; ++it) {
             pos = virginPosImpl(pos, *it, end);
@@ -145,69 +331,171 @@ public:
         return pos;
     }
 
+    /*!
+     * Returns character at a given \a position position.
+     *
+     * \a position Position.
+     */
     Char operator[](long long int position) const
     {
-        return m_str[position];
+        return m_string[position];
     }
 
-    //! Replace substring.
+    /*!
+     * Replace substring.
+     *
+     * \a pos Position.
+     *
+     * \a size Length.
+     *
+     * \a with Value to insert.
+     */
     InternalStringT &replaceOne(long long int pos, long long int size, const String &with)
     {
-        const auto len = m_str.length();
+        const auto len = m_string.length();
 
-        m_str.remove(pos, size);
-        m_str.insert(pos, with);
+        m_string.remove(pos, size);
+        m_string.insert(pos, with);
 
         if (with.length() != size) {
             m_changedPos.push_back({{0, len}, {}});
-            m_changedPos.back().second.push_back({pos, size, with.size()});
+            m_changedPos.back().second.push_back({pos, size, with.length()});
         }
 
         return *this;
     }
 
-    //! Replace string.
-    InternalStringT &replace(const String &what, const String &with)
+    /*!
+     * Find string.
+     *
+     * \a what What to find.
+     *
+     * \a from Start position.
+     */
+    template<class T>
+    long long int indexOf(const T &what, long long int from = 0) const
     {
-        String tmp;
-        bool init = false;
-        const auto len = m_str.length();
+        if (from < 0 || from >= length()) {
+            return -1;
+        }
 
-        for (long long int i = 0; i < m_str.size();) {
-            long long int p = m_str.indexOf(what, i);
+        if (what.isEmpty()) {
+            return 0;
+        }
 
-            if (p != -1) {
-                tmp.push_back(m_str.sliced(i, p - i));
-                tmp.push_back(with);
-
-                i = p + what.size();
-
-                if (what.size() != with.size()) {
-                    if (!init) {
-                        m_changedPos.push_back({{0, len}, {}});
-                        init = true;
+        for (long long int i = from; i <= length() - what.length(); ++i) {
+            if (this->operator[](i) == what[0]) {
+                bool match = true;
+                for (long long int j = 1; j < what.length(); ++j) {
+                    if (this->operator[](i + j) != what[j]) {
+                        match = false;
+                        break;
                     }
-
-                    m_changedPos.back().second.push_back({p, what.size(), with.size()});
                 }
-            } else {
-                tmp.push_back(m_str.sliced(i));
 
-                i = m_str.size();
+                if (match) {
+                    return i;
+                }
             }
         }
 
-        std::swap(m_str, tmp);
+        return -1;
+    }
+
+    /*!
+     * Returns whether this string contains a given string.
+     *
+     * \a what What to find.
+     */
+    template<class T>
+    bool contains(const T &what) const
+    {
+        return (indexOf(what) != -1);
+    }
+
+    /*!
+     * Returns whether this string starts with a given string.
+     *
+     * \a what What to find.
+     */
+    template<class T>
+    bool startsWith(const T &what) const
+    {
+        if (what.isEmpty()) {
+            return true;
+        }
+
+        if (what.length() > length()) {
+            return false;
+        }
+
+        for (long long int i = 0; i < what.length(); ++i) {
+            if (this->operator[](i) != what[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /*!
+     * Returns whether this string ends with a given string.
+     *
+     * \a what What to find.
+     */
+    template<class T>
+    bool endsWith(const T &what) const
+    {
+        if (what.isEmpty()) {
+            return true;
+        }
+
+        const auto l = length();
+
+        if (what.length() > l) {
+            return false;
+        }
+
+        for (long long int i = 0; i < what.length(); ++i) {
+            if (this->operator[](l - i - 1) != what[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /*!
+     * Replace string.
+     *
+     * \a what What to replace.
+     *
+     * \a with Value to insert.
+     */
+    InternalStringT &replace(const String &what, const String &with)
+    {
+        long long int pos = 0;
+
+        while ((pos = indexOf(what, pos)) != -1) {
+            replaceOne(pos, what.length(), with);
+            pos += with.length();
+        }
 
         return *this;
     }
 
-    //! Remove sub-string.
+    /*!
+     * Remove sub-string.
+     *
+     * \a pos Position.
+     *
+     * \a size Length.
+     */
     InternalStringT &remove(long long int pos, long long int size)
     {
-        const auto len = m_str.length();
+        const auto len = m_string.length();
 
-        m_str.remove(pos, size);
+        m_string.remove(pos, size);
 
         m_changedPos.push_back({{0, len}, {}});
         m_changedPos.back().second.push_back({pos, size, 0});
@@ -215,38 +503,37 @@ public:
         return *this;
     }
 
-    //! \return Is this string empty?
+    /*!
+     * Returns whether this string empty?
+     */
     bool isEmpty() const
     {
-        return m_str.isEmpty();
+        return m_string.isEmpty();
     }
 
-    //! \return Length of the string.
-    long long int length() const
-    {
-        return m_str.length();
-    }
-
-    //! \return Simplified string.
+    /*!
+     * Returns simplified string.
+     */
     InternalStringT simplified() const
     {
         if (isEmpty()) {
             return *this;
         }
 
-        const auto len = m_str.length();
+        const auto len = length();
 
         InternalStringT result = *this;
-        result.m_str.clear();
+        String tmpString;
+
         long long int i = 0;
         bool init = false;
         bool first = true;
         long long int spaces = 0;
 
         while (true) {
-            long long tmp = i;
+            long long int tmp = i;
 
-            while (i < length() && m_str[i].isSpace()) {
+            while (i < length() && this->operator[](i).isSpace()) {
                 ++i;
             }
 
@@ -265,41 +552,48 @@ public:
 
             first = false;
 
-            while (i != length() && !m_str[i].isSpace()) {
-                result.m_str.push_back(m_str[i]);
+            while (i != len && !this->operator[](i).isSpace()) {
+                tmpString.push_back(this->operator[](i));
                 ++i;
             }
 
-            if (i == length()) {
+            if (i == len) {
                 break;
             }
 
-            result.m_str.push_back(Latin1Char(' '));
+            tmpString.push_back(Latin1Char(' '));
         }
 
-        if (!result.isEmpty() && result.m_str[result.length() - 1] == Latin1Char(' ')) {
-            result.m_str.remove(result.length() - 1, 1);
+        if (!tmpString.isEmpty() && tmpString[tmpString.length() - 1] == Latin1Char(' ')) {
+            tmpString.remove(tmpString.length() - 1, 1);
 
             if (spaces > 1) {
                 result.m_changedPos.back().second.back().m_len = 0;
             } else if (spaces == 1) {
-                result.m_changedPos.back().second.push_back({m_str.length() - spaces, spaces, 0});
+                result.m_changedPos.back().second.push_back({length() - spaces, spaces, 0});
             }
         }
+
+        result.m_string = tmpString;
 
         return result;
     }
 
-    //! Split string.
+    /*!
+     * Split string.
+     *
+     * \a sep Separator.
+     */
     std::vector<InternalStringT> split(const InternalStringT &sep) const
     {
         std::vector<InternalStringT> result;
-        const auto len = m_str.length();
+        const auto len = length();
 
         if (sep.isEmpty()) {
-            for (long long int i = 0; i < m_str.length(); ++i) {
+            for (long long int i = 0; i < len; ++i) {
                 auto is = *this;
-                is.m_str = m_str[i];
+                is.m_string.clear();
+                is.m_string = String(1, this->operator[](i));
                 is.m_changedPos.push_back({{i, len}, {}});
 
                 result.push_back(is);
@@ -311,67 +605,78 @@ public:
         long long int pos = 0;
         long long int fpos = 0;
 
-        while ((fpos = m_str.indexOf(sep.asString(), pos)) != -1 && fpos < length()) {
+        while ((fpos = indexOf(sep, pos)) != -1 && fpos < len) {
             if (fpos - pos > 0) {
-                auto is = *this;
-                is.m_str = m_str.sliced(pos, fpos - pos);
-                is.m_changedPos.push_back({{pos, len}, {}});
-
-                result.push_back(is);
+                result.push_back(sliced(pos, fpos - pos));
             }
 
             pos = fpos + sep.length();
         }
 
-        if (pos < m_str.length()) {
-            auto is = *this;
-            is.m_str = m_str.sliced(pos, m_str.length() - pos);
-            is.m_changedPos.push_back({{pos, len}, {}});
-
-            result.push_back(is);
+        if (pos < len) {
+            result.push_back(sliced(pos, len - pos));
         }
 
         return result;
     }
 
-    //! \return Sliced sub-string.
+    /*!
+     * Returns sliced sub-string.
+     *
+     * \a pos Position.
+     *
+     * \a len Length.
+     */
     InternalStringT sliced(long long int pos, long long int len = -1) const
     {
         InternalStringT tmp = *this;
-        const auto oldLen = m_str.length();
-        tmp.m_str = tmp.m_str.sliced(pos, (len == -1 ? tmp.m_str.length() - pos : len));
+        tmp.m_string.clear();
+        const auto oldLen = length();
+        tmp.m_string = m_string.sliced(pos, (len == -1 ? oldLen - pos : len));
+
         tmp.m_changedPos.push_back({{pos, oldLen}, {}});
-        if (len != -1 && len < length() - pos) {
-            tmp.m_changedPos.back().second.push_back({pos + len, length() - pos - len, 0});
+        if (len != -1 && len < oldLen - pos) {
+            tmp.m_changedPos.back().second.push_back({pos + len, oldLen - pos - len, 0});
         }
 
         return tmp;
     }
 
-    //! \return Right sub-string.
+    /*!
+     * Returns a substring that contains the \a n rightmost characters of the string.
+     *
+     * \a n Count of characters.
+     */
     InternalStringT right(long long int n) const
     {
-        InternalStringT tmp = *this;
-        const auto len = m_str.length();
-        tmp.m_str = tmp.m_str.right(n);
-        tmp.m_changedPos.push_back({{length() - n, len}, {}});
-
-        return tmp;
+        return sliced(length() - n, n);
     }
 
-    //! Insert one character.
+    /*!
+     * Insert one character.
+     *
+     * \a pos Position.
+     *
+     * \a ch Character.
+     */
     InternalStringT &insert(long long int pos, Char ch)
     {
         return insert(pos, String(1, ch));
     }
 
-    //! Insert string.
+    /*!
+     * Insert string.
+     *
+     * \a pos Position.
+     *
+     * \a s String.
+     */
     InternalStringT &insert(long long int pos, const String &s)
     {
-        const auto len = m_str.length();
+        const auto len = m_string.length();
         const auto ilen = s.length();
 
-        m_str.insert(pos, s);
+        m_string.insert(pos, s);
 
         m_changedPos.push_back({{0, len}, {}});
         m_changedPos.back().second.push_back({pos, 1, ilen + 1});
@@ -380,25 +685,35 @@ public:
     }
 
 private:
-    //! Transformed string.
-    String m_str;
-    //! Virgin (original) string.
-    String m_virginStr;
+    /*!
+     * Transformed string.
+     */
+    StringVariant<String, StringView> m_string;
+    /*!
+     * Virgin (original) string.
+     */
+    StringVariant<String, StringView> m_virginStr;
 
-    //! Auxiliary struct to store information about transformation.
+    /*!
+     * Auxiliary struct to store information about transformation.
+     */
     struct ChangedPos {
         long long int m_pos = -1;
         long long int m_oldLen = -1;
         long long int m_len = -1;
     };
 
-    //! Auxiliary struct to store information about transformation.
+    /*!
+     * Auxiliary struct to store information about transformation.
+     */
     struct LengthAndStartPos {
         long long int m_firstPos = 0;
         long long int m_length = 0;
     };
 
-    //! Information about transformations.
+    /*
+     * Information about transformations.
+     */
     std::vector<std::pair<LengthAndStartPos, std::vector<ChangedPos>>> m_changedPos;
 
 private:
@@ -452,555 +767,32 @@ private:
     }
 }; // class InternalString
 
-#ifdef MD4QT_ICU_STL_SUPPORT
-
-//
-// UnicodeChar
-//
-
-//! Wrapper for UChar32 to be used with MD::Parser.
-class UnicodeChar
+/*!
+ * \inheaderfile md4qt/traits.h
+ *
+ * Comparison of MD::InternalStringT with other string.
+ *
+ * \a str First string to compare.
+ *
+ * \a other Other string to compare.
+ */
+template<class String, class StringView, class Char, class Latin1Char, class T>
+bool operator==(const InternalStringT<String, StringView, Char, Latin1Char> &str, const T &other)
 {
-public:
-    UnicodeChar()
-        : m_ch(0)
-    {
+    const auto length = str.length();
+
+    if (length != other.length()) {
+        return false;
     }
 
-    UnicodeChar(UChar32 ch)
-        : m_ch(ch)
-    {
-    }
-
-    operator UChar32() const
-    {
-        return m_ch;
-    }
-
-    inline bool isSpace() const
-    {
-        bool unicodeSpace = false;
-
-        const auto type = u_charType(m_ch);
-
-        switch (type) {
-        case U_SPACE_SEPARATOR:
-        case U_LINE_SEPARATOR:
-        case U_PARAGRAPH_SEPARATOR:
-            unicodeSpace = true;
-            break;
-
-        default:
-            break;
-        }
-
-        return m_ch == 0x20 || (m_ch <= 0x0D && m_ch >= 0x09) || (m_ch > 127 && (m_ch == 0x85 || m_ch == 0xA0 || unicodeSpace));
-    }
-
-    inline bool isDigit() const
-    {
-        return (u_charType(m_ch) == U_DECIMAL_DIGIT_NUMBER);
-    }
-
-    inline bool isNull() const
-    {
-        return m_ch == 0;
-    }
-
-    inline UChar32 unicode() const
-    {
-        return m_ch;
-    }
-
-    inline bool isLetter() const
-    {
-        const auto type = u_charType(m_ch);
-
-        switch (type) {
-        case U_UPPERCASE_LETTER:
-        case U_LOWERCASE_LETTER:
-        case U_TITLECASE_LETTER:
-        case U_MODIFIER_LETTER:
-        case U_OTHER_LETTER:
-            return true;
-
-        default:
+    for (long long int i = 0; i < length; ++i) {
+        if (str[i] != other[i]) {
             return false;
         }
     }
 
-    inline bool isLetterOrNumber() const
-    {
-        return isLetter() || isDigit();
-    }
-
-    inline bool isPunct() const
-    {
-        const auto type = u_charType(m_ch);
-
-        switch (type) {
-        case U_DASH_PUNCTUATION:
-        case U_START_PUNCTUATION:
-        case U_END_PUNCTUATION:
-        case U_CONNECTOR_PUNCTUATION:
-        case U_OTHER_PUNCTUATION:
-        case U_INITIAL_PUNCTUATION:
-        case U_FINAL_PUNCTUATION:
-            return true;
-
-        default:
-            return false;
-        }
-    }
-
-    inline bool isSymbol() const
-    {
-        const auto type = u_charType(m_ch);
-
-        switch (type) {
-        case U_MATH_SYMBOL:
-        case U_CURRENCY_SYMBOL:
-        case U_MODIFIER_SYMBOL:
-        case U_OTHER_SYMBOL:
-            return true;
-
-        default:
-            return false;
-        }
-    }
-
-    UnicodeChar toLower() const
-    {
-        return icu::UnicodeString(1, m_ch, 1).toLower().char32At(0);
-    }
-
-    bool operator==(const UnicodeChar &other) const
-    {
-        return m_ch == other.m_ch;
-    }
-
-    bool operator!=(const UnicodeChar &other) const
-    {
-        return m_ch != other.m_ch;
-    }
-
-private:
-    UChar32 m_ch;
-}; // class UnicodeChar
-
-//
-// UnicodeString
-//
-
-//! Wrapper for icu::UnicodeString to be used with MD::Parser.
-class UnicodeString final : public icu::UnicodeString
-{
-public:
-    UnicodeString()
-    {
-    }
-
-    UnicodeString(const icu::UnicodeString &str)
-        : icu::UnicodeString(str)
-    {
-    }
-
-    UnicodeString(char ch)
-        : icu::UnicodeString((char16_t)ch)
-    {
-    }
-
-    UnicodeString(const char16_t *str)
-        : icu::UnicodeString(str)
-    {
-    }
-
-    UnicodeString(const UnicodeChar &ch)
-        : icu::UnicodeString(1, (UChar32)ch, 1)
-    {
-    }
-
-    UnicodeString(const char *str)
-        : icu::UnicodeString(icu::UnicodeString::fromUTF8(str))
-    {
-    }
-
-    UnicodeString(const std::string &str)
-        : icu::UnicodeString(icu::UnicodeString::fromUTF8(str))
-    {
-    }
-
-    UnicodeString(long long int count, char ch)
-        : icu::UnicodeString((int32_t)count, (UChar32)ch, (int32_t)count)
-    {
-    }
-
-    ~UnicodeString() override = default;
-
-    UnicodeChar operator[](long long int position) const
-    {
-        return UnicodeChar(char32At((int32_t)position));
-    }
-
-    void push_back(const UnicodeChar &ch)
-    {
-        icu::UnicodeString::append((UChar32)ch);
-    }
-
-    void push_back(const UnicodeString &str)
-    {
-        icu::UnicodeString::append(str);
-    }
-
-    int32_t size() const
-    {
-        return length();
-    }
-
-    int toInt(bool *ok = nullptr, int base = 10) const
-    {
-        try {
-            std::string tmp;
-            toUTF8String(tmp);
-            const auto result = std::stoi(tmp, nullptr, base);
-            if (ok) {
-                *ok = true;
-            }
-            return result;
-        } catch (const std::invalid_argument &) {
-            if (ok) {
-                *ok = false;
-            }
-        } catch (const std::out_of_range &) {
-            if (ok) {
-                *ok = false;
-            }
-        }
-
-        return 0;
-    }
-
-    bool contains(const UnicodeChar &ch) const
-    {
-        return (icu::UnicodeString::indexOf((UChar32)ch) != -1);
-    }
-
-    bool contains(const UnicodeString &str) const
-    {
-        return (icu::UnicodeString::indexOf(str) != -1);
-    }
-
-    UnicodeString simplified() const
-    {
-        if (isEmpty()) {
-            return *this;
-        }
-
-        UnicodeString result;
-        int32_t i = 0;
-
-        while (true) {
-            while (i < length() && UnicodeChar(char32At(i)).isSpace()) {
-                ++i;
-            }
-
-            while (i != length() && !UnicodeChar(char32At(i)).isSpace()) {
-                result.append(UnicodeChar(char32At(i)));
-                ++i;
-            }
-
-            if (i == length()) {
-                break;
-            }
-
-            result.append(UnicodeChar(' '));
-        }
-
-        if (!result.isEmpty() && result[result.size() - 1] == UnicodeChar(' ')) {
-            result.remove(result.size() - 1, 1);
-        }
-
-        return result;
-    }
-
-    std::vector<UnicodeString> split(const UnicodeChar &ch) const
-    {
-        std::vector<UnicodeString> result;
-
-        int32_t pos = 0;
-        int32_t fpos = 0;
-
-        while ((fpos = indexOf(ch, pos)) != -1 && fpos < length()) {
-            if (fpos - pos > 0) {
-                icu::UnicodeString tmp;
-                extract(pos, fpos - pos, tmp);
-                result.push_back(tmp);
-            }
-
-            pos = fpos + 1;
-        }
-
-        if (pos < length()) {
-            icu::UnicodeString tmp;
-            extract(pos, length() - pos, tmp);
-            result.push_back(tmp);
-        }
-
-        return result;
-    }
-
-    std::vector<UnicodeString> split(char ch) const
-    {
-        return split(UnicodeChar(ch));
-    }
-
-    UnicodeString &replace(const UnicodeChar &before, const UnicodeString &after)
-    {
-        for (int32_t pos = 0; (pos = indexOf(before, pos)) != -1; pos += after.size()) {
-            icu::UnicodeString::replace(pos, 1, after);
-        }
-
-        return *this;
-    }
-
-    UnicodeString &replace(const UnicodeString &before, const UnicodeString &after)
-    {
-        for (int32_t pos = 0; (pos = indexOf(before, pos)) != -1; pos += after.size()) {
-            icu::UnicodeString::replace(pos, before.length(), after);
-        }
-
-        return *this;
-    }
-
-    UnicodeString sliced(long long int pos, long long int len = -1) const
-    {
-        icu::UnicodeString tmp;
-        extract((int32_t)pos, (int32_t)(len == -1 ? length() - pos : len), tmp);
-
-        return tmp;
-    }
-
-    UnicodeString right(long long int n) const
-    {
-        icu::UnicodeString tmp;
-        extract(length() - (int32_t)n, (int32_t)n, tmp);
-
-        return tmp;
-    }
-
-    UnicodeString toCaseFolded() const
-    {
-        icu::UnicodeString tmp = *this;
-        tmp.foldCase();
-
-        return tmp;
-    }
-
-    UnicodeString toUpper() const
-    {
-        icu::UnicodeString tmp = *this;
-        tmp.toUpper();
-
-        return tmp;
-    }
-
-    UnicodeString toLower() const
-    {
-        icu::UnicodeString tmp = *this;
-        tmp.toLower();
-
-        return tmp;
-    }
-
-    void clear()
-    {
-        icu::UnicodeString::remove();
-    }
-}; // class UnicodeString
-
-//
-// UrlUri
-//
-
-class UrlUri
-{
-public:
-    explicit UrlUri(const UnicodeString &uriStr)
-        : m_valid(false)
-        , m_relative(false)
-    {
-        UriUriA uri;
-        std::string uriString;
-        uriStr.toUTF8String(uriString);
-
-        if (uriParseSingleUriA(&uri, uriString.c_str(), NULL) == URI_SUCCESS) {
-            m_valid = true;
-            m_relative = !(uri.scheme.first && uri.scheme.afterLast);
-
-            if (!m_relative) {
-                m_scheme = UnicodeString(std::string(uri.scheme.first, uri.scheme.afterLast - uri.scheme.first).c_str());
-            }
-
-            if (uri.hostText.first && uri.hostText.afterLast) {
-                m_host = UnicodeString(std::string(uri.hostText.first, uri.hostText.afterLast - uri.hostText.first).c_str());
-            }
-
-            uriFreeUriMembersA(&uri);
-        }
-    }
-
-    ~UrlUri()
-    {
-    }
-
-    bool isValid() const
-    {
-        return m_valid;
-    }
-
-    bool isRelative() const
-    {
-        return m_relative;
-    }
-
-    UnicodeString scheme() const
-    {
-        return m_scheme;
-    }
-
-    UnicodeString host() const
-    {
-        return m_host;
-    }
-
-private:
-    bool m_valid;
-    bool m_relative;
-    UnicodeString m_scheme;
-    UnicodeString m_host;
-}; // class UrlUri
-
-//
-// UnicodeStringTrait
-//
-
-//! Trait to use this library with std::string.
-struct UnicodeStringTrait {
-    template<class T>
-    using Vector = std::vector<T>;
-
-    template<class T, class U>
-    using Map = std::map<T, U>;
-
-    using String = UnicodeString;
-
-    using Char = UnicodeChar;
-
-    using InternalString = InternalStringT<String, Char, Char>;
-
-    using TextStream = std::istream;
-
-    using StringList = std::vector<String>;
-
-    using InternalStringList = std::vector<InternalString>;
-
-    using Url = UrlUri;
-
-    //! \return Is Unicode whitespace?
-    static bool isUnicodeWhitespace(const UnicodeChar &ch)
-    {
-        const auto c = ch.unicode();
-
-        if (u_charType(c) == U_SPACE_SEPARATOR) {
-            return true;
-        } else if (c == 0x09 || c == 0x0A || c == 0x0C || c == 0x0D) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //! Convert UTF-16 into trait's string.
-    static String utf16ToString(const char16_t *u16)
-    {
-        return UnicodeString(u16);
-    }
-
-    //! Convert Latin1 into trait's string.
-    static String latin1ToString(const char *latin1)
-    {
-        return UnicodeString(latin1);
-    }
-
-    //! Convert Latin1 char into trait's char.
-    static Char latin1ToChar(char latin1)
-    {
-        return UnicodeChar(latin1);
-    }
-
-    //! Convert UTF8 into trait's string.
-    static String utf8ToString(const char *utf8)
-    {
-        return UnicodeString(utf8);
-    }
-
-    //! \return Does file exist.
-    static bool fileExists(const String &fileName, const String &workingPath)
-    {
-        std::string path;
-        (workingPath.isEmpty() ? fileName : String(workingPath + "/" + fileName)).toUTF8String(path);
-
-        std::error_code er;
-
-        const auto result = std::filesystem::exists(path, er);
-
-        return (er ? false : result);
-    }
-
-    //! \return Does file exist.
-    static bool fileExists(const String &fileName)
-    {
-        std::string path;
-        fileName.toUTF8String(path);
-
-        std::error_code er;
-
-        const auto result = std::filesystem::exists(path, er);
-
-        return (er ? false : result);
-    }
-
-    //! \return Absolute file path.
-    static String absoluteFilePath(const String &path)
-    {
-        std::string tmp;
-        path.toUTF8String(tmp);
-        std::error_code er;
-        auto p = std::filesystem::canonical(tmp, er).u8string();
-
-        std::replace(p.begin(), p.end(), '\\', '/');
-
-        return (er ? "" : UnicodeString::fromUTF8(p));
-    }
-
-    //! Add UCS4 to string.
-    static void appendUcs4(String &str, char32_t ch)
-    {
-        str.push_back(Char(ch));
-    }
-
-    //! Search for last occurrence of string.
-    static long long int lastIndexOf(const String &where, const String &what, long long int from)
-    {
-        if (from < 0) {
-            return -1;
-        } else {
-            return where.lastIndexOf(what, 0, from + 1);
-        }
-    }
-}; // struct UnicodeStringTrait
-
-#endif // MD4QT_ICU_STL_SUPPORT
+    return true;
+}
 
 #ifdef MD4QT_QT_SUPPORT
 
@@ -1008,7 +800,15 @@ struct UnicodeStringTrait {
 // QStringTrait
 //
 
-//! Trait to use this library with QString.
+/*!
+ * \class MD::QStringTrait
+ * \inmodule md4qt
+ * \inheaderfile md4qt/traits.h
+ *
+ * \brief Trait to use this library with QString.
+ *
+ * Trait for \c {md4qt} library to work with QString as string.
+ */
 struct QStringTrait {
     template<class T>
     using Vector = QVector<T>;
@@ -1018,9 +818,11 @@ struct QStringTrait {
 
     using String = QString;
 
+    using StringView = QStringView;
+
     using Char = QChar;
 
-    using InternalString = InternalStringT<String, Char, QLatin1Char>;
+    using InternalString = InternalStringT<String, StringView, Char, QLatin1Char>;
 
     using InternalStringList = std::vector<InternalString>;
 
@@ -1030,7 +832,11 @@ struct QStringTrait {
 
     using Url = QUrl;
 
-    //! \return Is Unicode whitespace?
+    /*!
+     * Returns whether Unicode whitespace?
+     *
+     * \a ch Character to check.
+     */
     static bool isUnicodeWhitespace(const QChar &ch)
     {
         const auto c = ch.unicode();
@@ -1044,55 +850,99 @@ struct QStringTrait {
         }
     }
 
-    //! Convert UTF-16 into trait's string.
+    /*!
+     * Convert UTF-16 into trait's string.
+     *
+     * \a u16 String.
+     */
     static String utf16ToString(const char16_t *u16)
     {
         return QString::fromUtf16(u16);
     }
 
-    //! Convert Latin1 into trait's string.
+    /*!
+     * Convert Latin1 into trait's string.
+     *
+     * \a latin1 String.
+     */
     static String latin1ToString(const char *latin1)
     {
         return QLatin1String(latin1);
     }
 
-    //! Convert Latin1 char into trait's char.
+    /*!
+     * Convert Latin1 char into trait's char.
+     *
+     * \a latin1 Character.
+     */
     static Char latin1ToChar(char latin1)
     {
         return QLatin1Char(latin1);
     }
 
-    //! Convert UTF8 into trait's string.
+    /*!
+     * Convert UTF8 into trait's string.
+     *
+     * \a utf8 UTF-8 string.
+     */
     static String utf8ToString(const char *utf8)
     {
         return QString::fromUtf8(utf8, -1);
     }
 
-    //! \return Does file exist.
+    /*!
+     * Returns whether file exist.
+     *
+     * \a fileName File name.
+     *
+     * \a workingPath Working path.
+     */
     static bool fileExists(const String &fileName, const String &workingPath)
     {
         return QFileInfo::exists((workingPath.isEmpty() ? QString() : workingPath + latin1ToString("/")) + fileName);
     }
 
-    //! \return Does file exist.
+    /*!
+     * Returns whether file exist.
+     *
+     * \a fileName File name.
+     */
     static bool fileExists(const String &fileName)
     {
         return QFileInfo::exists(fileName);
     }
 
-    //! \return Absolute file path.
+    /*!
+     * Returns absolute file path.
+     *
+     * \a path Path.
+     */
     static String absoluteFilePath(const String &path)
     {
         return QFileInfo(path).absoluteFilePath();
     }
 
-    //! Add UCS4 to string.
+    /*!
+     * Add UCS4 to string.
+     *
+     * \a str String.
+     *
+     * \a ch Character to append.
+     */
     static void appendUcs4(String &str, char32_t ch)
     {
         str += QChar::fromUcs4(ch);
     }
 
-    //! Search for last occurrence of string.
+    /*!
+     * Search for last occurrence of string.
+     *
+     * \a where String for checking.
+     *
+     * \a what What to look for?
+     *
+     * \a from Start position.
+     */
     static long long int lastIndexOf(const String &where, const String &what, long long int from)
     {
         if (from < 0) {

@@ -9,6 +9,8 @@
 
 namespace md4qtDataCleaner
 {
+const MD::TextPlugin dataCleanerId = static_cast<MD::TextPlugin>(1024);
+
 void removeEmpty(MDParagraphPtr p, MDParsingOpts &po);
 
 void dataCleaningFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options);
