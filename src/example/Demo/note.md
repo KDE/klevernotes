@@ -170,7 +170,7 @@ Extended syntax
 KleverNotes includes some extended syntax that follows the syntax style of emphasis and lets you:
 
 Have ==highlighted part== of text.
-Or show text as -subscript- or ^superscript^.
+Or show text as --subscript-- or ^superscript^.
 
 Plugins
 ---
