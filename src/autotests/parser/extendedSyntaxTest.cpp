@@ -97,7 +97,7 @@ void ExtendedSyntaxTest::addExtendedSyntaxs()
 {
     static const QList<QStringList> extendedSyntaxsList = {
         {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
-        {QStringLiteral("-"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
+        {QStringLiteral("--"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
         {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
     };
 

@@ -46,7 +46,7 @@ EditorHandler::EditorHandler(QObject *parent)
         // if empty for bool value => false, if empty for other => default value
         // TODO: make documentation about this
         {u"=="_s, u"<mark>"_s, u"</mark>"_s, u""_s, u"background"_s, u"highlight"_s, u""_s, u""_s, u""_s, u""_s, u""_s, u""_s}, // Highlight
-        {u"-"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
+        {u"--"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
         {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
     };
     addExtendedSyntaxs(extendedSyntaxsList);

@@ -158,7 +158,7 @@ Kirigami.Dialog {
 
             CheatSheetEntry {
                 element: i18n("Subscript")
-                syntax: "-" + i18nc("example", "subscript text") + "-"
+                syntax: "--" + i18nc("example", "subscript text") + "--"
                 onClicked: clipboardHelper.text = syntax
             }
 
