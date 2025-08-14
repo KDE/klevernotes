@@ -280,7 +280,7 @@ msgstr "فضلًا اختر اسمًا آخرًا."
 msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
-msgstr "يحتوي هذا الاسم على '/' ، وهذا قد يسبب مشكلة وبالتالي غير مسموح به."
+msgstr "يحتوي هذا الاسم على '/'، وهذا قد يسبب مشكلة وبالتالي غير مسموح به."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:40
 #, kde-format
