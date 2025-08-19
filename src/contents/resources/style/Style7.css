@@ -409,6 +409,16 @@ sup {
     line-height: 0;
 }
 
+.footnotes {
+    margin-top: 50px;
+    border-top: 1px solid var(--titleColor);
+    font-size: calc(var(--fontSize) * 0.8);
+}
+
+.footnotes ol {
+    padding-left: 20px;
+}
+
 .klever-copy-button {
     border: 1px solid var(--textColor);
     border-radius: 10%;
