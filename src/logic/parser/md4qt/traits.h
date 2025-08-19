@@ -770,7 +770,7 @@ private:
 /*!
  * \inheaderfile md4qt/traits.h
  *
- * Comparison of MD::InternalStringT with other string.
+ * Returns whether MD::InternalStringT is equal to other string.
  *
  * \a str First string to compare.
  *

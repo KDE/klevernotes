@@ -278,7 +278,7 @@ void EditorHandler::setNoteDir(const QString &noteDir)
 void EditorHandler::renderDoc()
 {
     if (m_currentMdDoc) {
-        const auto html = m_renderer->toHtml(m_currentMdDoc, m_noteDir);
+        const auto html = m_renderer->toHtml(m_currentMdDoc, QStringLiteral("&nbsp;&hookleftarrow;&nbsp;"));
 
         if (m_pluginHelper) {
             m_pluginHelper->postTokChanges();

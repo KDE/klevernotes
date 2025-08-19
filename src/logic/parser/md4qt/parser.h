@@ -5374,6 +5374,8 @@ inline void makeTextObject(const typename Trait::String &text,
  * \a endPos End text position.
  *
  * \a endLine End line number.
+ *
+ * \a removeSpacesAtEnd Indicates whether spaces at end should be removed or no.
  */
 template<class Trait>
 inline void makeTextObjectWithLineBreak(const typename Trait::String &text,
@@ -9262,7 +9264,10 @@ inline void makeHorLine(const typename MdBlock<Trait>::Line &line, std::shared_p
  *
  * \a po Text parsing options.
  *
- * \a collectRefLicks Are we collecting reference links?
+ * \a collectRefLinks Are we collecting reference links?
+ *
+ * \a replaceLineBreakBySpacessToo Indicates whether line break set with spaces at end should get back to the text too,
+ *                                 as set with reverse solidus character.
  */
 template<class Trait>
 inline void
@@ -9883,23 +9888,41 @@ inline std::tuple<bool, long long int, typename Trait::Char, bool> listItemData(
         space = s[p + 1].isSpace();
     }
 
+    const auto calcIndent = [&](long long int pos) -> long long int {
+        const auto spaces = skipSpaces(pos, s) - pos;
+
+        return (spaces <= 4 && spaces >= 1 ? spaces : 1);
+    };
+
     if (p < 4) {
         if (s[p] == s_asteriskChar<Trait> && space) {
-            return {true, p + 2, s_asteriskChar<Trait>, p + 2 < s.length() ? !s.sliced(p + 2).isEmpty() : false};
+            ++p;
+            const auto indent = calcIndent(p);
+
+            return {true, p + indent, s_asteriskChar<Trait>, p + indent < s.length() ? !s.sliced(p + indent).isEmpty() : false};
         } else if (s[p] == s_minusChar<Trait>) {
+            ++p;
+            const auto indent = calcIndent(p);
+
             if (isH2<Trait>(s) && wasText) {
-                return {false, p + 2, s_minusChar<Trait>, false};
+                return {false, p + indent, s_minusChar<Trait>, false};
             } else if (space) {
-                return {true, p + 2, s_minusChar<Trait>, p + 2 < s.length() ? !s.sliced(p + 2).isEmpty() : false};
+                return {true, p + indent, s_minusChar<Trait>, p + indent < s.length() ? !s.sliced(p + indent).isEmpty() : false};
             }
         } else if (s[p] == s_plusSignChar<Trait> && space) {
-            return {true, p + 2, s_plusSignChar<Trait>, p + 2 < s.length() ? !s.sliced(p + 2).isEmpty() : false};
+            ++p;
+            const auto indent = calcIndent(p);
+
+            return {true, p + indent, s_plusSignChar<Trait>, p + indent < s.length() ? !s.sliced(p + indent).isEmpty() : false};
         } else {
             int d = 0, l = 0;
             typename Trait::Char c;
 
             if (isOrderedList<Trait>(s, &d, &l, &c)) {
-                return {true, p + l + 2, c, p + l + 2 < s.length() ? !s.sliced(p + l + 2).isEmpty() : false};
+                p += l + 1;
+                const auto indent = calcIndent(p);
+
+                return {true, p + indent, c, p + indent < s.length() ? !s.sliced(p + indent).isEmpty() : false};
             } else {
                 return {false, 0, typename Trait::Char(), false};
             }

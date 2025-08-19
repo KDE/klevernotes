@@ -91,14 +91,15 @@ public:
      *
      * \a doc Document.
      *
-     * \a hrefForRefBackImage String that will be applied as URL for image for back link from footnote.
+     * \a footnoteBackLinkContent String that will be applied as content of back link from footnote.
+     *                            As an example, you can use "<img src="..." />".
      *
      * \a wrappedInArticle Wrap HTML with <article> tag?
      *
      * \a idsMap Map of IDs to set to corresonding items.
      */
     virtual typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc,
-                                          const typename Trait::String &hrefForRefBackImage,
+                                          const typename Trait::String &footnoteBackLinkContent,
                                           bool wrappedInArticle = true,
                                           const IdsMap<Trait> *idsMap = nullptr)
     {
@@ -110,7 +111,7 @@ public:
 
         this->process(doc);
 
-        onFootnotes(hrefForRefBackImage);
+        onFootnotes(footnoteBackLinkContent);
 
         return m_html;
     }
@@ -800,9 +801,10 @@ protected:
     /*!
      * Handle footnotes.
      *
-     * \a hrefForRefBackImage String that will be applied as URL for image for back link from footnote.
+     * \a footnoteBackLinkContent String that will be applied as content of back link from footnote.
+     *                            As an example, you can use "<img src="..." />".
      */
-    virtual void onFootnotes(const typename Trait::String &hrefForRefBackImage)
+    virtual void onFootnotes(const typename Trait::String &footnoteBackLinkContent)
     {
         if (!m_fns.empty()) {
             m_html.push_back(Trait::latin1ToString("<section class=\"footnotes\"><ol dir=\"auto\">"));
@@ -836,7 +838,7 @@ protected:
             if (fit != this->m_doc->footnotesMap().cend()) {
                 this->onFootnote(fit->second.get());
 
-                if (!hrefForRefBackImage.isEmpty()) {
+                if (!footnoteBackLinkContent.isEmpty()) {
                     typename Trait::String backRef;
                     long long int backRefPos = m_html.endsWith(Trait::latin1ToString("</p>")) ? 4 : 0;
 
@@ -845,9 +847,9 @@ protected:
                         backRef.push_back(id.m_id);
                         backRef.push_back(Trait::latin1ToString("-"));
                         backRef.push_back(Trait::latin1ToString(std::to_string(i).c_str()));
-                        backRef.push_back(Trait::latin1ToString("\"><img src=\""));
-                        backRef.push_back(hrefForRefBackImage);
-                        backRef.push_back(Trait::latin1ToString("\" /></a>"));
+                        backRef.push_back(Trait::latin1ToString("\">"));
+                        backRef.push_back(footnoteBackLinkContent);
+                        backRef.push_back(Trait::latin1ToString("</a>"));
                     }
 
                     m_html.insert(m_html.length() - backRefPos, backRef);
@@ -998,7 +1000,8 @@ protected:
  *
  * \a wrapInBodyTag Wrap HTML into <body> tag?
  *
- * \a hrefForRefBackImage String that will be applied as URL for image for back link from footnote.
+ * \a footnoteBackLinkContent String that will be applied as content of back link from footnote.
+ *                            As an example, you can use "<img src="..." />".
  *
  * \a wrapInArticle Wrap HTML with <article> tag?
  *
@@ -1007,7 +1010,7 @@ protected:
 template<class Trait, class HtmlVisitor = details::HtmlVisitor<Trait>>
 typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc,
                               bool wrapInBodyTag = true,
-                              const typename Trait::String &hrefForRefBackImage = {},
+                              const typename Trait::String &footnoteBackLinkContent = {},
                               bool wrapInArticle = true,
                               const details::IdsMap<Trait> *idsMap = nullptr)
 {
@@ -1023,7 +1026,7 @@ typename Trait::String toHtml(std::shared_ptr<Document<Trait>> doc,
 
     HtmlVisitor visitor;
 
-    html.push_back(visitor.toHtml(doc, hrefForRefBackImage, wrapInArticle, idsMap));
+    html.push_back(visitor.toHtml(doc, footnoteBackLinkContent, wrapInArticle, idsMap));
 
     if (wrapInArticle) {
         html.push_back(Trait::latin1ToString("</article>\n"));
