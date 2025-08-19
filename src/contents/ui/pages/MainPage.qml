@@ -37,7 +37,7 @@ Kirigami.Page {
                     : todoView.actions
     
     onCurrentlySelectedChanged: if (currentlySelected) {
-        EditorHandler.noteDir = currentlySelected.dir
+        EditorHandler.notePath = currentlySelected.path
         const editor = editorView.editor
         const oldPath = editor.path
         const text = editor.text

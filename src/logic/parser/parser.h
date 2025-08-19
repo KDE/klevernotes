@@ -42,7 +42,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     // markdown-tools editor
-    void onData(const QString &md, const QString &notePath, unsigned long long int counter);
+    void onData(const QString &md, const QString &noteDir, const QString &noteName, unsigned long long int counter);
 
 private Q_SLOTS:
     // Note Linking
@@ -67,7 +67,8 @@ private:
 
     // markdown-tools editor
     QStringList m_data; // Using a QStringList enable us to make the difference between no data and empty data !!
-    QString m_notePath;
+    QString m_noteDir;
+    QString m_noteName;
     unsigned long long int m_counter;
     MD::Parser<MD::QStringTrait> m_md4qtParser;
 };

@@ -64,11 +64,12 @@ void Parser::quickEmojiEnabledChanged()
 // !KleverNotes slots
 
 // markdown-tools editor slots
-void Parser::onData(const QString &md, const QString &notePath, unsigned long long int counter)
+void Parser::onData(const QString &md, const QString &noteDir, const QString &noteName, unsigned long long int counter)
 {
     m_data.clear();
     m_data.push_back(md);
-    m_notePath = notePath;
+    m_noteDir = noteDir;
+    m_noteName = noteName;
     m_counter = counter;
 
     Q_EMIT newData();
@@ -79,7 +80,7 @@ void Parser::onParse()
     if (!m_data.isEmpty()) {
         QTextStream stream(&m_data.back());
 
-        const auto doc = m_md4qtParser.parse(stream, m_notePath, QStringLiteral("note.md"), false);
+        const auto doc = m_md4qtParser.parse(stream, m_noteDir, m_noteName, false);
 
         m_data.clear();
 

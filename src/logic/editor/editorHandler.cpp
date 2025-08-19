@@ -224,7 +224,30 @@ void EditorHandler::parse(const QString &src)
 
     ++m_parseCount;
 
-    Q_EMIT askForParsing(src, m_noteDir, m_parseCount);
+    Q_EMIT askForParsing(src, m_noteDir, m_noteName, m_parseCount);
+}
+
+QString EditorHandler::getNotePath() const
+{
+    return m_noteDir + QStringLiteral("+") + m_noteName;
+}
+
+void EditorHandler::setNotePath(const QString &notePath)
+{
+    QDir note(notePath);
+    setNoteName(note.dirName());
+    note.cdUp();
+    setNoteDir(note.absolutePath());
+}
+
+QString EditorHandler::getNoteName() const
+{
+    return m_noteName;
+}
+
+void EditorHandler::setNoteName(const QString &noteName)
+{
+    m_noteName = noteName;
 }
 
 QString EditorHandler::getNoteDir() const
@@ -248,6 +271,7 @@ void EditorHandler::setNoteDir(const QString &noteDir)
     Q_EMIT renderingFinished({});
     parseDoc();
 }
+
 // !Parser
 
 // Rendering

@@ -40,7 +40,7 @@ class EditorHandler : public QObject
     Q_PROPERTY(int selectionStart READ selectionStart WRITE setSelectionStart NOTIFY selectionStartChanged)
     Q_PROPERTY(int selectionEnd READ selectionEnd WRITE setSelectionEnd NOTIFY selectionEndChanged)
 
-    Q_PROPERTY(QString noteDir READ getNoteDir WRITE setNoteDir)
+    Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
 
 public:
     explicit EditorHandler(QObject *parent = nullptr);
@@ -56,11 +56,9 @@ public:
 
     // Parser
     void parseDoc();
-    Q_INVOKABLE void parse(const QString &src);
+    void parse(const QString &src);
     QString getNotePath() const;
     void setNotePath(const QString &notePath);
-    QString getNoteDir() const;
-    void setNoteDir(const QString &noteDir);
 
     Parser *parser() const;
 
@@ -90,7 +88,7 @@ Q_SIGNALS:
     void selectionStartChanged(const int position);
     void selectionEndChanged(const int position);
 
-    void askForParsing(const QString &md, const QString &notePath, unsigned long long int counter);
+    void askForParsing(const QString &md, const QString &notePath, const QString &noteName, unsigned long long int counter);
     void renderingFinished(const QString &content);
 
     // Toolbar
@@ -127,6 +125,12 @@ private Q_SLOTS:
     void onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>>, unsigned long long int);
 
 private:
+    // Parser
+    QString getNoteName() const;
+    void setNoteName(const QString &noteName);
+    QString getNoteDir() const;
+    void setNoteDir(const QString &noteDir);
+
     // Connections
     void connectParser();
     void connectPlugins();
@@ -162,6 +166,7 @@ private:
 
     // Parsing
     QString m_noteDir;
+    QString m_noteName;
     Parser *m_parser = nullptr;
     unsigned long long int m_parseCount;
     QThread *m_parsingThread = nullptr;
