@@ -1,13 +1,13 @@
 /*
     SPDX-License-Identifier: GPL-2.0-or-later
-    SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+    SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 */
 #pragma once
 
 #include <QAbstractItemModel>
+#include <QQmlEngine>
 #include <QSet>
 #include <QVariant>
-#include <memory>
 
 class LinkedNoteItem
 {
@@ -40,6 +40,9 @@ private:
 class NoteMapper : public QAbstractItemModel
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(int count READ rowCount CONSTANT) // QML will handle the signal and change it for us
 public:
     explicit NoteMapper(QObject *parent = nullptr);

@@ -4,6 +4,7 @@
 #pragma once
 
 #include <QObject>
+#include <QQmlEngine>
 #include <QVariantMap>
 
 class QAbstractItemModel;
@@ -12,6 +13,9 @@ class KColorSchemeManager;
 class ColorSchemer : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(QAbstractItemModel *model READ model CONSTANT)
 public:
     explicit ColorSchemer(QObject *parent = nullptr);

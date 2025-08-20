@@ -1,13 +1,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 
 #pragma once
 
 #include <QObject>
+#include <QQmlEngine>
 
 class PrintingUtility : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     explicit PrintingUtility(QObject *parent = nullptr);
