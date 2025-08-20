@@ -10,10 +10,14 @@
 // Qt includes
 #include <QAbstractItemModel>
 #include <QFileInfo>
+#include <QQmlEngine>
 
 class NoteTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(bool noteMapEnabled WRITE setNoteMapEnabled) // QML will handle the signal and change it for us
 
 public:

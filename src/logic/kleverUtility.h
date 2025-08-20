@@ -1,15 +1,18 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 #pragma once
 
 #include <QFont>
 #include <QJsonObject>
 #include <QObject>
+#include <QQmlEngine>
 #include <QUrl>
 
 class KleverUtility : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     explicit KleverUtility(QObject *parent = nullptr);

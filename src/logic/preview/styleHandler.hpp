@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 
 #pragma once
 
@@ -7,10 +7,13 @@
 
 // Qt include
 #include <QObject>
+#include <QQmlEngine>
 
 class StyleHandler : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
     Q_PROPERTY(bool printBackground READ printBackground WRITE setPrintBackground)
     Q_PROPERTY(bool inMain READ inMain WRITE setInMain)

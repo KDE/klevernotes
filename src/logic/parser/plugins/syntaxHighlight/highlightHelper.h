@@ -1,16 +1,20 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 
 #pragma once
 
 #include <QMap>
 #include <QObject>
+#include <QQmlEngine>
 #include <QRegularExpression>
 #include <QStandardPaths>
 
 class HighlightHelper : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(QStringList highlighters READ getHighlighters CONSTANT)
 public:
     explicit HighlightHelper(QObject *parent = nullptr);
