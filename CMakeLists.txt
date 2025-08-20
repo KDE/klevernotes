@@ -7,8 +7,8 @@ project(klevernotes VERSION "1.2.2")
 
 include(FeatureSummary)
 
-set(QT_MIN_VERSION "6.5")
-set(KF_MIN_VERSION "6.4")
+set(QT_MIN_VERSION "6.6")
+set(KF_MIN_VERSION "6.8")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 
@@ -19,12 +19,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMSetupVersion)
-include(ECMGenerateHeaders)
 include(KDEClangFormat)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+include(ECMQtDeclareLoggingCategory)
 include(KDEGitCommitHooks)
+include(ECMAddAppIcon)
 include(ECMAddTests)
+include(ECMDeprecationSettings)
+include(ECMQmlModule)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX KLEVER
