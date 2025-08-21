@@ -131,13 +131,17 @@ ecm_add_qml_module(klevernotes_static
 
 target_include_directories(klevernotes_static PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/logic
+
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/editor
-    ${CMAKE_CURRENT_SOURCE_DIR}/logic/preview
-    ${CMAKE_CURRENT_SOURCE_DIR}/logic/printing
-    ${CMAKE_CURRENT_SOURCE_DIR}/logic/treeview
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/logic/parser
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/parser/plugins/emoji
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/parser/plugins/noteMapper
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/parser/plugins/syntaxHighlight
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/logic/preview
+    ${CMAKE_CURRENT_SOURCE_DIR}/logic/printing
+    ${CMAKE_CURRENT_SOURCE_DIR}/logic/treeview
 )
 
 target_sources(klevernotes_static
@@ -209,7 +213,6 @@ target_link_libraries(klevernotes_static PUBLIC
 
 add_executable(klevernotes
     main.cpp
-    app.cpp
     resources.qrc
 )
 
