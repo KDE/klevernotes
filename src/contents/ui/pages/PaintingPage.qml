@@ -9,10 +9,7 @@ import Qt.labs.platform
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
 
-import "qrc:/contents/ui/dialogs"
-import "qrc:/contents/ui/painting"
-
-import org.kde.Klever
+import org.kde.klevernotes
 
 Kirigami.Page {
     id: root

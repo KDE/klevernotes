@@ -8,7 +8,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 FormCard.FormCardDialog {
     id: setupPopup
@@ -77,7 +77,7 @@ FormCard.FormCardDialog {
     }
 
     function getFolder() {
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/FolderPickerDialog.qml")
+        let component = Qt.createComponent("org.kde.klevernotes", "FolderPickerDialog")
 
         if (component.status == Component.Ready) {
             var dialog = component.createObject(setupPopup);
@@ -92,7 +92,7 @@ FormCard.FormCardDialog {
             folderPath = folderPath.concat("/klevernotes")
         }
         
-        Config.storagePath = folderPath
+        KleverConfig.storagePath = folderPath
 
         const fullNotification = setupPopup.userChoice + folderPath
 

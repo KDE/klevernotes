@@ -8,10 +8,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import "qrc:/contents/ui/settings"
-import "qrc:/contents/ui/dialogs"
-
-import org.kde.Klever
+import org.kde.klevernotes
 
 ToolBar {
     id: root
@@ -71,7 +68,7 @@ ToolBar {
             id: fontPicker
 
             label: i18nc("@label:textbox", "Font:")
-            configFont: Config.viewFont
+            configFont: KleverConfig.viewFont
 
             visible: root.toolMode === "text"
 

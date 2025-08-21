@@ -7,10 +7,7 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
 
-import "qrc:/contents/ui/textEditor"
-import "qrc:/contents/ui/todoEditor"
-
-import org.kde.Klever
+import org.kde.klevernotes
 
 Kirigami.Page {
     id: root

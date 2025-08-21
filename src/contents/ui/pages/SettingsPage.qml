@@ -7,10 +7,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/settings"
-import "qrc:/contents/ui/dialogs"
+import org.kde.klevernotes
 
 FormCard.FormCardPage {
     id: settingsPage
@@ -25,7 +22,7 @@ FormCard.FormCardPage {
             firstSetup: false
 
             onClosed: {
-                generalLoader.item.displayedStoragePath = Config.storagePath
+                generalLoader.item.displayedStoragePath = KleverConfig.storagePath
             }
         },
         NamingDialog {
@@ -120,25 +117,25 @@ FormCard.FormCardPage {
     function updateColor(button: QtObject, selectedColor: string): void {
         switch(button.name) {
             case "background":
-                Config.viewBodyColor = selectedColor
+                KleverConfig.viewBodyColor = selectedColor
                 break;
             case "text":
-                Config.viewTextColor = selectedColor
+                KleverConfig.viewTextColor = selectedColor
                 break;
             case "title":
-                Config.viewTitleColor = selectedColor
+                KleverConfig.viewTitleColor = selectedColor
                 break;
             case "link":
-                Config.viewLinkColor = selectedColor
+                KleverConfig.viewLinkColor = selectedColor
                 break;
             case "visitedLink":
-                Config.viewVisitedLinkColor = selectedColor
+                KleverConfig.viewVisitedLinkColor = selectedColor
                 break;
             case "code":
-                Config.viewCodeColor = selectedColor
+                KleverConfig.viewCodeColor = selectedColor
                 break;
             case "highlight":
-                Config.viewHighlightColor = selectedColor
+                KleverConfig.viewHighlightColor = selectedColor
                 break;
         }
     }

@@ -7,9 +7,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/sharedComponents"
+import org.kde.klevernotes
 
 ColumnLayout {
     id: root
@@ -28,11 +26,11 @@ ColumnLayout {
         FontPicker {
             id: textEditorFont
             
-            configFont: Config.editorFont
+            configFont: KleverConfig.editorFont
             label: i18nc("@label:textbox, the font used in the text editor", "Editor font:")
 
             onNewFontChanged: if (configFont !== newFont) {
-                Config.editorFont = newFont
+                KleverConfig.editorFont = newFont
             }
         } 
     }
@@ -44,10 +42,10 @@ ColumnLayout {
             id: spaceTabSwitch
 
             text: i18nc("@label:checkbox", "Use spaces for tab")
-            checked: Config.useSpaceForTab
+            checked: KleverConfig.useSpaceForTab
 
-            onCheckedChanged: if (checked != Config.useSpaceForTab) {
-                Config.useSpaceForTab = checked
+            onCheckedChanged: if (checked != KleverConfig.useSpaceForTab) {
+                KleverConfig.useSpaceForTab = checked
             }
 
             FormCard.FormSpinBoxDelegate {
@@ -61,11 +59,11 @@ ColumnLayout {
                 to: 8
 
                 Component.onCompleted: {
-                    value = Config.spacesForTab
+                    value = KleverConfig.spacesForTab
                     isInit = true
                 }
                 onValueChanged: {
-                    if (value != Config.spacesForTab && isInit) Config.spacesForTab = value
+                    if (value != KleverConfig.spacesForTab && isInit) KleverConfig.spacesForTab = value
                 }
             }
         }
@@ -85,10 +83,10 @@ ColumnLayout {
             id: editorHighlightCheck
 
             text: i18nc("@label:checkbox", "Enable editor highlighting")
-            checked: Config.editorHighlightEnabled
+            checked: KleverConfig.editorHighlightEnabled
 
-            onCheckedChanged: if (checked != Config.editorHighlightEnabled) {
-                Config.editorHighlightEnabled = checked
+            onCheckedChanged: if (checked != KleverConfig.editorHighlightEnabled) {
+                KleverConfig.editorHighlightEnabled = checked
             }
 
             EditorHighlightPreview {

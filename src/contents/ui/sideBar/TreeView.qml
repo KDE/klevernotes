@@ -8,7 +8,7 @@ import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 Controls.ScrollView {
     id: scrollView

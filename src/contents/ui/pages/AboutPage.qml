@@ -5,7 +5,7 @@ import QtQuick
 
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 FormCard.AboutPage {
     aboutData: About

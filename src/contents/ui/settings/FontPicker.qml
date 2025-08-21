@@ -7,7 +7,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 FormCard.FormTextFieldDelegate {
     required property font configFont

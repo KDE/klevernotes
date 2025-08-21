@@ -9,9 +9,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 import org.kde.kirigamiaddons.components as Components
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/dialogs/todoDialog"
+import org.kde.klevernotes
 
 Controls.ScrollView {
     id: root

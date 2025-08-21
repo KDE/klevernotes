@@ -7,8 +7,6 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import "qrc:/contents/ui/dialogs/todoDialog"
-
 FormCard.FormCardDialog {
     id: promptDialog
 

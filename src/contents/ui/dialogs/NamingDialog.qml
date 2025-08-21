@@ -7,7 +7,7 @@ import QtQuick.Controls
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 FormCard.FormCardDialog {
     id: textPromptDialog
@@ -67,7 +67,7 @@ FormCard.FormCardDialog {
     }
 
     function throwError(error): void {
-        let component = Qt.createComponent("qrc:/contents/ui/dialogs/NamingErrorDialog.qml")
+        let component = Qt.createComponent("org.kde.klevernotes", "NamingErrorDialog")
 
         if (component.status == Component.Ready) {
             var dialog = component.createObject(textPromptDialog);

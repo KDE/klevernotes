@@ -7,13 +7,7 @@ import QtQuick.Dialogs
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/dialogs"
-import "qrc:/contents/ui/dialogs/emojiDialog"
-import "qrc:/contents/ui/dialogs/imagePickerDialog"
-import "qrc:/contents/ui/dialogs/tableMakerDialog"
-import "qrc:/contents/ui/sharedComponents"
+import org.kde.klevernotes
 
 Kirigami.ActionToolBar {
     id: toolbar
@@ -82,7 +76,7 @@ Kirigami.ActionToolBar {
             linkNoteDialog.open()
         }
     }
-    readonly property list<int> visibleTools: Config.visibleTools
+    readonly property list<int> visibleTools: KleverConfig.visibleTools
 
     property var actionPositionMap;
 
@@ -106,7 +100,7 @@ Kirigami.ActionToolBar {
 
         onChosen: function (emoji) {
             editorTextArea.insert(editorTextArea.selectionStart, 
-                Config.quickEmojiEnabled && Config.quickEmojiDialogEnabled ? (":" + emoji + ":") : emoji)
+                KleverConfig.quickEmojiEnabled && KleverConfig.quickEmojiDialogEnabled ? (":" + emoji + ":") : emoji)
         }
     }
 
@@ -216,7 +210,7 @@ Kirigami.ActionToolBar {
 
         onAccepted: {
             const text = linkText.trim()
-            const notePath = path.substring(Config.storagePath.length, path.length - 3)
+            const notePath = path.substring(KleverConfig.storagePath.length, path.length - 3)
             const headerPart = headerString.length > 0 
                 ? " : " + headerString 
                 : ""
@@ -344,8 +338,8 @@ Kirigami.ActionToolBar {
         const currentActionList = actionsList.actions
         const allActionsLen = currentActionList.length
 
-        const visibleToolsIndexes = Config.visibleTools
-        const invisibleIndexes = Config.invisibleTools
+        const visibleToolsIndexes = KleverConfig.visibleTools
+        const invisibleIndexes = KleverConfig.invisibleTools
 
         let visibleIndexes = [];
         for (let i = 0 ; i < visibleToolsIndexes.length ; i++) {
@@ -387,7 +381,7 @@ Kirigami.ActionToolBar {
         toolbar.actionPositionMap = actionPosition
 
         if (finalList.length !== visibleIndexes.length) {
-            Config.visibleTools = visibleIndexes.concat(unknownIndexes) 
+            KleverConfig.visibleTools = visibleIndexes.concat(unknownIndexes) 
         }
 
         return finalList

@@ -6,7 +6,7 @@ import QtQuick.Controls
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 ScrollView {
     id: view
@@ -30,7 +30,7 @@ ScrollView {
 
         property bool tempBuff
 
-        font: Config.editorFont
+        font: KleverConfig.editorFont
         wrapMode: TextEdit.Wrap
         persistentSelection: true
 

@@ -13,8 +13,7 @@ import Qt.labs.platform
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
-import qtMdEditor as QtMdEditor
+import org.kde.klevernotes
 
 RowLayout {
     id: root
@@ -101,7 +100,7 @@ RowLayout {
                 } else if (url.startsWith("http") || url.startsWith("file://")) { // Seems silly but prevent errors when loading pages
                     let notePath = url.substring(7)
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
-                    if (delimiterIndex != -1 && Config.noteMapEnabled) {
+                    if (delimiterIndex != -1 && KleverConfig.noteMapEnabled) {
                         // const header = notePath.substring(delimiterIndex + 8)
                         
                         notePath = notePath.substring(0, delimiterIndex)
@@ -124,11 +123,11 @@ RowLayout {
                     request.reject()
                 }
             }
-            QtMdEditor.QmlLinker{
+            QmlLinker{
                 id: contentLink
                 WebChannel.id: "contentLink"
             }
-            QtMdEditor.QmlLinker{
+            QmlLinker{
                 id: cssLink
                 WebChannel.id: "cssLink"
             }

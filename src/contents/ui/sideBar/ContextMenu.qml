@@ -5,9 +5,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/dialogs"
+import org.kde.klevernotes
 
 Controls.Menu {
     id: contextMenu
