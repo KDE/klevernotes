@@ -5,9 +5,7 @@ import QtQuick
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/sideBar"
+import org.kde.klevernotes
 
 Kirigami.ApplicationWindow {
     id: root
@@ -76,10 +74,6 @@ Kirigami.ApplicationWindow {
         onTriggered: App.saveWindowGeometry(root)
     }
 
-    Kirigami.PagePool { 
-        id: pagePool 
-    }
-
     Sidebar { 
         id: sideBar 
 
@@ -110,17 +104,17 @@ Kirigami.ApplicationWindow {
             const editor = editorView.editor
             editor.saveNote(editor.text, editor.path)
         }
-        sideBar.treeModel.saveMetaData()
-        if (Config.noteMapEnabled) NoteMapper.saveMap()
+        NoteTreeModel.saveMetaData()
+        if (KleverConfig.noteMapEnabled) NoteMapper.saveMap()
     }
 
     function getPage(name) {
         switch (name) {
-            case "Main": return pagePool.loadPage("qrc:contents/ui/pages/MainPage.qml");
-            case "Settings": return pagePool.loadPage("qrc:contents/ui/pages/SettingsPage.qml");
-            case "Painting": return pagePool.loadPage("qrc:contents/ui/pages/PaintingPage.qml");
-            case "Printing": return pagePool.loadPage("qrc:contents/ui/pages/PrintingPage.qml");
-            case "About": return pagePool.loadPage("qrc:contents/ui/pages/AboutPage.qml");
+            case "Main": return Qt.createComponent("org.kde.klevernotes", "MainPage");
+            case "Settings": return Qt.createComponent("org.kde.klevernotes", "SettingsPage");
+            case "Painting": return Qt.createComponent("org.kde.klevernotes", "PaintingPage");
+            case "Printing": return Qt.createComponent("org.kde.klevernotes", "PrintingPage");
+            case "About": return Qt.createComponent("org.kde.klevernotes", "AboutPage");
         }
     }
 

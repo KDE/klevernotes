@@ -8,9 +8,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/textEditor/components/"
+import org.kde.klevernotes
 
 Kirigami.Dialog {
     id: cheatSheet
@@ -172,12 +170,12 @@ Kirigami.Dialog {
         FormCard.FormHeader {
             Layout.fillWidth: true
             title: i18nc("@title, cheat sheet section", "KleverNotes plugins")
-            visible: Config.noteMapEnabled // Will change when more plugins are added
+            visible: KleverConfig.noteMapEnabled // Will change when more plugins are added
         }
 
         FormCard.FormCard {
             Layout.fillWidth: true
-            visible: Config.noteMapEnabled
+            visible: KleverConfig.noteMapEnabled
 
             CheatSheetEntry {
                 element: i18n("Note link")

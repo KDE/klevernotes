@@ -6,8 +6,7 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
 
-import neochatComponents
-import org.kde.Klever
+import org.kde.klevernotes
 
 QQC2.ScrollView {
     id: root
@@ -60,7 +59,7 @@ QQC2.ScrollView {
             Keys.onEnterPressed: clicked()
             Keys.onReturnPressed: clicked()
             onClicked: {
-                root.chosen(Config.quickEmojiEnabled && Config.quickEmojiDialogEnabled ? modelData.shortName : modelData.unicode)
+                root.chosen(KleverConfig.quickEmojiEnabled && KleverConfig.quickEmojiDialogEnabled ? modelData.shortName : modelData.unicode)
                 EmojiModel.emojiUsed(modelData)
             }
             Keys.onSpacePressed: pressAndHold()

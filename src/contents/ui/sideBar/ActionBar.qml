@@ -9,9 +9,7 @@ import QtQuick.Dialogs
 import org.kde.kitemmodels
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/dialogs"
+import org.kde.klevernotes
 
 ToolBar {
     id: mainToolBar
@@ -133,7 +131,7 @@ ToolBar {
         icon.name: "folder-new-symbolic" 
 
         onTriggered: {
-            const parentPath = treeView.currentClickedItem ? treeView.currentClickedItem.dir : Config.storagePath
+            const parentPath = treeView.currentClickedItem ? treeView.currentClickedItem.dir : KleverConfig.storagePath
             mainToolBar.getName(false, makeFolder, true, parentPath)
         }
 
@@ -151,7 +149,7 @@ ToolBar {
         icon.name: "document-new-symbolic"
 
         onTriggered: {
-            const parentPath = treeView.currentClickedItem ? treeView.currentClickedItem.dir : Config.storagePath
+            const parentPath = treeView.currentClickedItem ? treeView.currentClickedItem.dir : KleverConfig.storagePath
             mainToolBar.getName(true, makeNote, true, parentPath)
         }
 
@@ -221,9 +219,9 @@ ToolBar {
         let defaultName
         if (newItem) {
             if (isNote) {
-                defaultName = Config.defaultNoteName.length !== 0 ? Config.defaultNoteName : i18n("New Note")
+                defaultName = KleverConfig.defaultNoteName.length !== 0 ? KleverConfig.defaultNoteName : i18n("New Note")
             } else {
-                defaultName = Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
+                defaultName = KleverConfig.defaultFolderName.length !== 0 ? KleverConfig.defaultFolderName : i18n("New Folder")
             }
         } else {
             defaultName = name ? name : treeView.currentClickedItem.text

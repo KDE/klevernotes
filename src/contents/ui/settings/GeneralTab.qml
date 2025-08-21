@@ -8,12 +8,7 @@ import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/sharedComponents"
-import "qrc:/contents/ui/textEditor"
-import "qrc:/contents/ui/dialogs/tableMakerDialog"
-import "qrc:/contents/ui/settings/components"
+import org.kde.klevernotes
 
 ColumnLayout {
     id: root
@@ -36,7 +31,7 @@ ColumnLayout {
         FormCard.FormTextFieldDelegate {
             id: storageField
 
-            text: Config.storagePath
+            text: KleverConfig.storagePath
             label: i18nc("@label:textbox, Storage as in 'the folder where all the notes will be stored'", "Storage path:")
 
             Layout.margins: 0
@@ -44,7 +39,7 @@ ColumnLayout {
             
             // workaround to make it readOnly
             onTextChanged: {
-                text = Config.storagePath
+                text = KleverConfig.storagePath
             }
 
             MouseArea {
@@ -65,7 +60,7 @@ ColumnLayout {
         FormCard.FormTextFieldDelegate {
             id: newFolderField
 
-            text: Config.defaultFolderName.length !== 0 ? Config.defaultFolderName : i18n("New Folder")
+            text: KleverConfig.defaultFolderName.length !== 0 ? KleverConfig.defaultFolderName : i18n("New Folder")
             label: i18nc("@label:textbox", "Default name for new folders:")
 
             Layout.margins: 0
@@ -80,7 +75,7 @@ ColumnLayout {
 
             function updateDefaultFolderName(name: string): void {
                 return
-                Config.defaultGroupName = name
+                KleverConfig.defaultGroupName = name
             }
         }
 
@@ -89,7 +84,7 @@ ColumnLayout {
         FormCard.FormTextFieldDelegate {
             id: newNoteField
 
-            text: Config.defaultNoteName.length !== 0 ? Config.defaultNoteName : i18n("New Note")
+            text: KleverConfig.defaultNoteName.length !== 0 ? KleverConfig.defaultNoteName : i18n("New Note")
             label: i18nc("@label:textbox", "Default name for new notes:")
 
             Layout.margins: 0
@@ -104,7 +99,7 @@ ColumnLayout {
 
             function updateDefaultNoteName(name: string): void {
                 return
-                Config.defaultNoteName = name
+                KleverConfig.defaultNoteName = name
             }
         }
     }
@@ -239,8 +234,8 @@ ColumnLayout {
     function fillModel(model) {
         const currentActionList = actionsList.actions
         
-        const visibleIndexes = Config.visibleTools
-        const invisibleIndexes = Config.invisibleTools
+        const visibleIndexes = KleverConfig.visibleTools
+        const invisibleIndexes = KleverConfig.invisibleTools
         
         // prefill the model, so we can set the correct property later
         for (var i = 0 ; i < visibleIndexes.length ; i++) {
@@ -269,13 +264,13 @@ ColumnLayout {
                 const currentAction = currentActionList[i]
                 visibleModel.append(getActionInfo(currentAction, visibleIndexes.length + i))
             }
-            Config.visibleTools = visibleIndexes.concat(unknownIndexes)
+            KleverConfig.visibleTools = visibleIndexes.concat(unknownIndexes)
         }
     }
 
     function moveItem(modelFrom, indexFrom, modelTo, indexTo) {
-        let visibleIndexes = Config.visibleTools
-        let invisibleIndexes = Config.invisibleTools
+        let visibleIndexes = KleverConfig.visibleTools
+        let invisibleIndexes = KleverConfig.invisibleTools
         const fromVisible = modelFrom === visibleModel
 
         if (modelFrom == modelTo) {
@@ -286,7 +281,7 @@ ColumnLayout {
             indexesList.splice(indexFrom, 1);
             indexesList.splice(indexTo, 0, element);
             
-            if (fromVisible) Config.visibleTools = indexesList
+            if (fromVisible) KleverConfig.visibleTools = indexesList
         } else {
             const item = modelFrom.get(indexFrom)
             // The item ogIndex will change when we remove it
@@ -302,17 +297,17 @@ ColumnLayout {
             if (fromVisible) {
                 // Can't be in one line, would keep the old value
                 invisibleIndexes.push(newItem.ogIndex)
-                Config.invisibleTools = invisibleIndexes
+                KleverConfig.invisibleTools = invisibleIndexes
                 // Can't be in one line, would keep the old value
                 visibleIndexes.splice(indexFrom, 1)
-                Config.visibleTools = visibleIndexes 
+                KleverConfig.visibleTools = visibleIndexes 
             } else {
                 // Can't be in one line, would keep the old value
                 visibleIndexes.push(newItem.ogIndex)
-                Config.visibleTools = visibleIndexes
+                KleverConfig.visibleTools = visibleIndexes
                 // Can't be in one line, would keep the old value
                 invisibleIndexes.splice(indexFrom, 1)
-                Config.invisibleTools = invisibleIndexes
+                KleverConfig.invisibleTools = invisibleIndexes
             }
         }
     }

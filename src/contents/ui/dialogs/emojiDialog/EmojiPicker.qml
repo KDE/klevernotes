@@ -7,7 +7,7 @@ import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
 
-import neochatComponents
+import org.kde.klevernotes
 
 ColumnLayout {
     id: root

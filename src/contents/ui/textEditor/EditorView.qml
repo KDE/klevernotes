@@ -6,9 +6,7 @@ import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/dialogs"
+import org.kde.klevernotes
 
 ColumnLayout {
     id: root
@@ -32,7 +30,7 @@ ColumnLayout {
         Kirigami.Action {
             id: linkedNotesAction
 
-            enabled: Config.noteMapEnabled
+            enabled: KleverConfig.noteMapEnabled
             visible: enabled
             shortcut: "Ctrl+M"
             tooltip: i18nc("@tooltip, will be followed by the shortcut", "Linked notes") + " (" + shortcut + ")"
@@ -59,15 +57,15 @@ ColumnLayout {
             
             shortcut: "Ctrl+Shift+8"
             tooltip: i18nc("@tooltip, will be followed by the shortcut", "View/Hide editor") + " (" + shortcut + ")"
-            checked: Config.editorVisible
+            checked: KleverConfig.editorVisible
             checkable: true
             icon.name: editorToggler.checked ? "text-flow-into-frame-symbolic" : "text-unflow-symbolic"
             
             onTriggered: if (!editorToggler.checked && !viewToggler.checked) {
                 editorToggler.checked = true
             }
-            onCheckedChanged: if (Config.editorVisible !== editorToggler.checked) {
-                Config.editorVisible = editorToggler.checked
+            onCheckedChanged: if (KleverConfig.editorVisible !== editorToggler.checked) {
+                KleverConfig.editorVisible = editorToggler.checked
             }
         },
         Kirigami.Action {
@@ -75,15 +73,15 @@ ColumnLayout {
             
             shortcut: "Ctrl+Shift+9"
             tooltip: i18nc("@tooltip, display as in 'the note preview', will be followed by the shortcut", "View/Hide preview") + " (" + shortcut + ")"
-            checked: Config.previewVisible
+            checked: KleverConfig.previewVisible
             checkable: true
             icon.name: viewToggler.checked ? "quickview-symbolic" : "view-hidden-symbolic"
             
             onTriggered: if (!viewToggler.checked && !editorToggler.checked) {
                 viewToggler.checked = true
             }
-            onCheckedChanged: if (Config.previewVisible !== viewToggler.checked) {
-                Config.previewVisible = viewToggler.checked
+            onCheckedChanged: if (KleverConfig.previewVisible !== viewToggler.checked) {
+                KleverConfig.previewVisible = viewToggler.checked
             }
         }
     ]
@@ -227,7 +225,7 @@ ColumnLayout {
         sourceComponent: NotesMap {
             id: linkedNotesMap
         }
-        active: Config.noteMapEnabled
+        active: KleverConfig.noteMapEnabled
     }
 
     Connections {

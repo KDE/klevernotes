@@ -7,15 +7,13 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import "qrc:/contents/ui/textEditor"
-
-import org.kde.Klever
+import org.kde.klevernotes
 
 FormCard.FormCard {
     FormCard.FormComboBoxDelegate {
         readonly property var styles: KleverUtility.getCssStylesList()
         readonly property var stylesNames: Object.keys(styles)
-        readonly property var styleName: KleverUtility.getName(Config.stylePath).replace(".css", "")
+        readonly property var styleName: KleverUtility.getName(KleverConfig.stylePath).replace(".css", "")
 
         text: i18nc("@label:combobox", "Style:")
 
@@ -25,7 +23,7 @@ FormCard.FormCard {
         onCurrentValueChanged: {
             const path = styles[currentValue]
 
-            if (Config.stylePath !== path) Config.stylePath = path;
+            if (KleverConfig.stylePath !== path) KleverConfig.stylePath = path;
         }
     }
 
@@ -40,7 +38,7 @@ FormCard.FormCard {
 
     RowLayout {
         SettingsColorButton {
-            readonly property string configColor: Config.viewTextColor
+            readonly property string configColor: KleverConfig.viewTextColor
 
             name: "text"
             title: i18nc("@label:button", "Text color:")
@@ -53,7 +51,7 @@ FormCard.FormCard {
         }
 
         SettingsColorButton {
-            readonly property string configColor: Config.viewTitleColor
+            readonly property string configColor: KleverConfig.viewTitleColor
 
             name: "title"
             title: i18nc("@label:button", "Title color:")
@@ -67,7 +65,7 @@ FormCard.FormCard {
     }
     RowLayout {
         SettingsColorButton {
-            readonly property string configColor: Config.viewLinkColor
+            readonly property string configColor: KleverConfig.viewLinkColor
 
             name: "link"
             title: i18nc("@label:button", "Link color:")
@@ -80,7 +78,7 @@ FormCard.FormCard {
         }
 
         SettingsColorButton {
-            readonly property string configColor: Config.viewVisitedLinkColor
+            readonly property string configColor: KleverConfig.viewVisitedLinkColor
 
             name: "visitedLink"
             title: i18nc("@label:button", "Visited Link color:")
@@ -95,12 +93,11 @@ FormCard.FormCard {
 
     RowLayout {
         SettingsColorButton {
-            readonly property string configColor: Config.viewCodeColor
+            readonly property string configColor: KleverConfig.viewCodeColor
 
             name: "code"
             title: i18nc("@label:button", "Code color:")
 
-            // Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: displayer.width / 2
 
             onConfigColorChanged: {
@@ -109,12 +106,11 @@ FormCard.FormCard {
         }
 
        SettingsColorButton {
-            readonly property string configColor: Config.viewHighlightColor
+            readonly property string configColor: KleverConfig.viewHighlightColor
 
             name: "highlight"
             title: i18nc("@label:button", "Highlight color:")
 
-            // Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: displayer.width / 2
 
             onConfigColorChanged: {
@@ -125,23 +121,23 @@ FormCard.FormCard {
 
     FontPicker {
         label: i18nc("@label:textbox", "General font:")
-        configFont: Config.viewFont
+        configFont: KleverConfig.viewFont
 
         Layout.fillWidth: true
 
         onNewFontChanged: if (configFont !== newFont) {
-            Config.viewFont = newFont 
+            KleverConfig.viewFont = newFont 
         }
     }
 
     FontPicker {
         label: i18nc("@label:textbox", "Code block font:")
-        configFont: Config.codeFont
+        configFont: KleverConfig.codeFont
 
         Layout.fillWidth: true
 
         onNewFontChanged: if (configFont !== newFont) {
-            Config.codeFont = newFont 
+            KleverConfig.codeFont = newFont 
         }
     }
 }

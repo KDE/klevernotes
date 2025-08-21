@@ -5,7 +5,7 @@ import QtQuick
 
 import org.kde.kirigami as Kirigami
 
-import org.kde.Klever
+import org.kde.klevernotes
 
 Item {
     readonly property list<QtObject> actions: [ 
@@ -176,7 +176,7 @@ Item {
             shortcut: "Ctrl+Alt+K"
             tooltip: i18nc("@tooltip, text format, will be followed by the shortcut", "Link note") + " (" + shortcut + ")"
             icon.name: "edit-link-symbolic"
-            visible: Config.noteMapEnabled
+            visible: KleverConfig.noteMapEnabled
             enabled: visible
         }
     ]

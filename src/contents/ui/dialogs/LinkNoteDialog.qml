@@ -8,8 +8,6 @@ import org.kde.kitemmodels
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import "qrc:/contents/ui/sharedComponents"
-
 FormCard.FormCardDialog {
     id: linkNoteDialog
 

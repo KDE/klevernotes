@@ -7,9 +7,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/sharedComponents"
+import org.kde.klevernotes
 
 ColumnLayout {
     id: root
@@ -33,10 +31,10 @@ ColumnLayout {
             text: i18nc("@label:checkbox", "Enable note linking")
             description: i18nc("@description:checkbox", "Note linking allows you to create a link from one note to another.") 
                 + "\n" + i18nc("@description:checkbox", "Advice: restart the app once activated.")
-            checked: Config.noteMapEnabled
+            checked: KleverConfig.noteMapEnabled
 
-            onCheckedChanged: if (checked != Config.noteMapEnabled) {
-                Config.noteMapEnabled = checked
+            onCheckedChanged: if (checked != KleverConfig.noteMapEnabled) {
+                KleverConfig.noteMapEnabled = checked
             }
         }
 
@@ -46,10 +44,10 @@ ColumnLayout {
             text: i18nc("@label:checkbox", "Enable PlantUML")
             description: i18nc("@description:checkbox", "PlantUML lets you create diagrams.")
                 + "\n" + i18nc("@description:checkbox", "Note: creating diagrams can be slow. If you have a large number of diagrams, displaying them as images would be easier.")
-            checked: Config.pumlEnabled
+            checked: KleverConfig.pumlEnabled
 
-            onCheckedChanged: if (checked != Config.pumlEnabled) {
-                Config.pumlEnabled = checked
+            onCheckedChanged: if (checked != KleverConfig.pumlEnabled) {
+                KleverConfig.pumlEnabled = checked
             }
 
             FormCard.FormSwitchDelegate {
@@ -57,10 +55,10 @@ ColumnLayout {
 
                 text: i18nc("@lable:switch", "Enable dark background")
                 description: i18nc("@description:switch", "PlantUML diagram will have a dark background.")
-                checked: Config.pumlDark
+                checked: KleverConfig.pumlDark
 
-                onCheckedChanged: if (checked != Config.pumlDark) {
-                    Config.pumlDark = checked
+                onCheckedChanged: if (checked != KleverConfig.pumlDark) {
+                    KleverConfig.pumlDark = checked
                 }
             }
         }
@@ -81,10 +79,10 @@ ColumnLayout {
 
             text: i18nc("@label:checkbox", "Enable code syntax highlighting")
             description: "<a href='https://invent.kde.org/office/klevernotes#syntax-highlighting'>" + i18nc("@description:checkbox", "List of supported highlighters") + "</a>"
-            checked: Config.codeSynthaxHighlightEnabled
+            checked: KleverConfig.codeSynthaxHighlightEnabled
 
-            onCheckedChanged: if (checked != Config.codeSynthaxHighlightEnabled) {
-                Config.codeSynthaxHighlightEnabled = checked
+            onCheckedChanged: if (checked != KleverConfig.codeSynthaxHighlightEnabled) {
+                KleverConfig.codeSynthaxHighlightEnabled = checked
             }
 
             FormCard.FormComboBoxDelegate {
@@ -96,12 +94,12 @@ ColumnLayout {
                 onModelChanged: if (model.length !== 0) {
                     const baseIndex = 0;
 
-                    if (Config.codeSynthaxHighlighter.length === 0) {
+                    if (KleverConfig.codeSynthaxHighlighter.length === 0) {
                         highlighterCombobox.currentIndex = baseIndex
                         return
                     }
 
-                    const inModelIndex = model.indexOf(Config.codeSynthaxHighlighter)
+                    const inModelIndex = model.indexOf(KleverConfig.codeSynthaxHighlighter)
 
                     highlighterCombobox.currentIndex = inModelIndex === -1
                         ? baseIndex
@@ -109,7 +107,7 @@ ColumnLayout {
                 }
                 onCurrentValueChanged: {
                     const highlighter = highlighterCombobox.currentValue
-                    if (highlighter != Config.codeSynthaxHighlighter) Config.codeSynthaxHighlighter = highlighter
+                    if (highlighter != KleverConfig.codeSynthaxHighlighter) KleverConfig.codeSynthaxHighlighter = highlighter
                 }
             } 
 
@@ -125,10 +123,10 @@ ColumnLayout {
                     if (!styleCombobox.configStyleSet) {
                         const baseIndex = 0;
 
-                        if (Config.codeSynthaxHighlighterStyle.length === 0) {
+                        if (KleverConfig.codeSynthaxHighlighterStyle.length === 0) {
                             styleCombobox.currentIndex = baseIndex
                         } else {
-                            const inModelIndex = model.indexOf(Config.codeSynthaxHighlighterStyle)
+                            const inModelIndex = model.indexOf(KleverConfig.codeSynthaxHighlighterStyle)
 
                             styleCombobox.currentIndex = inModelIndex === -1
                                 ? baseIndex
@@ -136,8 +134,8 @@ ColumnLayout {
                         }
                         styleCombobox.configStyleSet = true
                     }
-                    if (currentValue != Config.codeSynthaxHighlighterStyle) {
-                        Config.codeSynthaxHighlighterStyle = currentValue
+                    if (currentValue != KleverConfig.codeSynthaxHighlighterStyle) {
+                        KleverConfig.codeSynthaxHighlighterStyle = currentValue
                     }
                 }
             }
@@ -151,10 +149,10 @@ ColumnLayout {
             text: i18nc("@label:checkbox", "Enable quick emoji")
             description: i18nc("@description:checkbox, will be followed by the corresponding syntax, spacing between the end of the sentence and the syntax is already there", 
                 "Quickly write emoji using the following syntax") + " :<i>" + i18nc("@example, something representing a possible emoji short name", "emoji_name") + "</i>:"
-            checked: Config.quickEmojiEnabled
+            checked: KleverConfig.quickEmojiEnabled
 
-            onCheckedChanged: if (checked != Config.quickEmojiEnabled) {
-                Config.quickEmojiEnabled = checked
+            onCheckedChanged: if (checked != KleverConfig.quickEmojiEnabled) {
+                KleverConfig.quickEmojiEnabled = checked
             }
 
             FormCard.FormComboBoxDelegate {
@@ -174,10 +172,10 @@ ColumnLayout {
                 ]
 
                 Component.onCompleted: {
-                    currentIndex = indexOfValue(Config.emojiTone)
+                    currentIndex = indexOfValue(KleverConfig.emojiTone)
                 }
                 onCurrentValueChanged: {
-                    if (currentValue != Config.emojiTone) Config.emojiTone = currentValue
+                    if (currentValue != KleverConfig.emojiTone) KleverConfig.emojiTone = currentValue
                 }
             }
 
@@ -186,10 +184,10 @@ ColumnLayout {
 
                 text: i18nc("@lable:switch", "Enable quick emoji dialog")
                 description: i18nc("@description:switch", "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji inside the text.")
-                checked: Config.quickEmojiDialogEnabled
+                checked: KleverConfig.quickEmojiDialogEnabled
 
-                onCheckedChanged: if (checked != Config.quickEmojiDialogEnabled) {
-                    Config.quickEmojiDialogEnabled = checked
+                onCheckedChanged: if (checked != KleverConfig.quickEmojiDialogEnabled) {
+                    KleverConfig.quickEmojiDialogEnabled = checked
                 }
             }
         }

@@ -5,8 +5,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 
-import neochatComponents
-import org.kde.Klever
+import org.kde.klevernotes
 
 QQC2.Popup {
     id: root

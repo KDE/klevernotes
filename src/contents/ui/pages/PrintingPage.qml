@@ -15,9 +15,7 @@ import Qt.labs.platform
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/dialogs"
+import org.kde.klevernotes
 
 Kirigami.Page {
     id: printPreview

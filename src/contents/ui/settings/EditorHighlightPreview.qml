@@ -8,9 +8,7 @@ import QtQuick.Controls
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-import org.kde.Klever
-
-import "qrc:/contents/ui/sharedComponents"
+import org.kde.klevernotes
 
 ColumnLayout {
     id: root
@@ -26,12 +24,12 @@ ColumnLayout {
         text: i18nc("@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is header`, similar concept as an html tag `<h1>`", "Enable adaptive tag size")
         description: i18nc("@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is header`, similar concept as an html tag `<h1>`", "The adaptive size will scale the tag size based on its surrounding.")
             + "\n" + i18nc("@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is header`, similar concept as an html tag `<h1>`", "Example: a tag inside a header will be as large as the rest of the header text.")
-        checked: Config.adaptiveTagSizeEnabled
+        checked: KleverConfig.adaptiveTagSizeEnabled
 
         Layout.fillWidth: true
 
-        onCheckedChanged: if (checked != Config.adaptiveTagSizeEnabled) {
-            Config.adaptiveTagSizeEnabled = checked
+        onCheckedChanged: if (checked != KleverConfig.adaptiveTagSizeEnabled) {
+            KleverConfig.adaptiveTagSizeEnabled = checked
             setPreviewEditorFontSize()
         }
     }
@@ -43,12 +41,12 @@ ColumnLayout {
 
         from: 1
         to: 100
-        value: Config.tagSizeScale
+        value: KleverConfig.tagSizeScale
 
         Layout.fillWidth: true
 
-        onValueChanged: if (Config.tagSizeScale != value) {
-            Config.tagSizeScale = value
+        onValueChanged: if (KleverConfig.tagSizeScale != value) {
+            KleverConfig.tagSizeScale = value
             setPreviewEditorFontSize()
         }
     }
@@ -125,15 +123,15 @@ ColumnLayout {
     }
 
     function setPreviewEditorFontSize() {
-        const editorFontInfo = KleverUtility.fontInfo(Config.editorFont)
+        const editorFontInfo = KleverUtility.fontInfo(KleverConfig.editorFont)
 
         const baseSize = editorFontInfo.pointSize
 
         // Based on KleverStyle.css
         const titleSize = baseSize + 12
 
-        let delimSize = Config.adaptiveTagSizeEnabled ? titleSize : baseSize
-        delimSize = delimSize * Config.tagSizeScale / 100
+        let delimSize = KleverConfig.adaptiveTagSizeEnabled ? titleSize : baseSize
+        delimSize = delimSize * KleverConfig.tagSizeScale / 100
         if (delimSize < 1) {
             delimSize = 1
         }

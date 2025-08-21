@@ -7,35 +7,7 @@ import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
 
-import "qrc:/contents/ui/sharedComponents"
-
-// Kirigami.NavigationTabBar {
-//     id: tool
-//
-//     property bool showNoteEditor: true
-//
-//     actions: [
-//         Kirigami.Action {
-//             icon.name: "document-edit-symbolic"
-//             text: i18nc("@label:button, as in 'A note'", "Note")
-//             checkable: true
-//             checked: true
-//
-//             onTriggered: {
-//                 showNoteEditor = true
-//             }
-//         },
-//         Kirigami.Action {
-//             icon.name: "view-task-symbolic"
-//             text: i18nc("@label:button", "TODO")
-//             checkable: true
-//
-//             onTriggered: {
-//                 showNoteEditor = false
-//             }
-//         }
-//     ]
-// }
+import org.kde.klevernotes
 
 RowLayout {
     id: root

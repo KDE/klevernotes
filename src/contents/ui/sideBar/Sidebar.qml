@@ -15,9 +15,7 @@ import QtQuick.Controls as Controls
 import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigami as Kirigami
 
-import "qrc:/contents/ui/dialogs"
-
-import org.kde.Klever
+import org.kde.klevernotes
 
 Kirigami.OverlayDrawer {
     id: drawer
@@ -25,7 +23,7 @@ Kirigami.OverlayDrawer {
     required property color backgroundColor
 
     readonly property NoteTreeModel treeModel: treeView.model
-    readonly property string storagePath: Config.storagePath
+    readonly property string storagePath: KleverConfig.storagePath
     readonly property int narrowWidth: Kirigami.Units.gridUnit * 3
     readonly property int largeWidth: Kirigami.Units.gridUnit * 15
 
@@ -167,39 +165,42 @@ Kirigami.OverlayDrawer {
 
                     Kirigami.Theme.backgroundColor: drawer.backgroundColor
 
-                    model: NoteTreeModel {
-                        id: noteTreeModel
+                    model: NoteTreeModel
 
-                        noteMapEnabled: Config.noteMapEnabled
+                    Connections {
+                        target: NoteTreeModel
 
-                        onNewGlobalPathFound: function (path) {
+
+                        function onNewGlobalPathFound(path) {
                             NoteMapper.addGlobalPath(path)
                         }
-                        onGlobalPathUpdated: function (oldPath, newPath) {
+                        function onGlobalPathUpdated(oldPath, newPath) {
                             NoteMapper.updateGlobalPath(oldPath, newPath)
                         }
-                        onGlobalPathRemoved: function (path) {
+                        function onGlobalPathRemoved(path) {
                             NoteMapper.removeGlobalPath(path)
                         }
-                        onInitialGlobalPathsSent: function (initialGlobalPaths) {
+                        function onInitialGlobalPathsSent(initialGlobalPaths) {
                             NoteMapper.addInitialGlobalPaths(initialGlobalPaths)
                         }
-                        onErrorOccurred: function (errorMessage) {
+                        function onErrorOccurred(errorMessage) {
                             applicationWindow().showPassiveNotification(errorMessage)
                         }
-                        onOldStorageStructure: function () {
+                        function onOldStorageStructure() {
                             oldStructureWarning.open()
                         }
-                        onMoveError: function (rowModelIndex, newParentIndex, isNote, name, parentPath) {
+                        function onMoveError(rowModelIndex, newParentIndex, isNote, name, parentPath) {
                             treeView.movingRowModelIndex = rowModelIndex
                             treeView.movingRowNewParentIndex = newParentIndex
                             actionBar.getName(isNote, treeView.moveErrorRename, false, parentPath, name)
                             actionBar.forceError("exist")
                         }
-                        onForceFocus: function (rowModelIndex) {
+                        function onForceFocus(rowModelIndex) {
                             drawer.askForFocus(rowModelIndex)
                         }
                     }
+
+                    Component.onCompleted: NoteTreeModel.noteMapEnabled = KleverConfig.noteMapEnabled
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -263,11 +264,11 @@ Kirigami.OverlayDrawer {
         open()
     }
     onStoragePathChanged: if (storagePath !== "None") {
-        noteTreeModel.initModel()
+        NoteTreeModel.initModel()
     }
     Component.onCompleted: {
         if (storagePath === "None"){
-            let component = Qt.createComponent("qrc:/contents/ui/dialogs/StorageDialog.qml")
+            let component = Qt.createComponent("org.kde.klevernotes", "StorageDialog")
 
             if (component.status == Component.Ready) {
                 var dialog = component.createObject(applicationWindow());
