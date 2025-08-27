@@ -278,7 +278,7 @@ public:
         }
 
         if (len == 0) {
-            return (isEmpty() ? m_virginStr.toString() : String());
+            return String();
         }
 
         auto virginStartPos = virginPos(pos);
