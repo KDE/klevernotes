@@ -15,9 +15,9 @@ FormCard.FormCardDialog {
     id: imagePickerDialog
 
     readonly property Image imageObject: displayImage
-    readonly property FormCard.FormCheckDelegate storeCheckbox: storeCheckbox
+    readonly property FormCard.FormCheckDelegate storeCheckbox: _storeCheckbox
     readonly property bool imageLoaded: displayImage.visible
-    readonly property bool storeImage: storeCheckbox.checked && !storedImageChoosen
+    readonly property bool storeImage: _storeCheckbox.checked && !storedImageChoosen
 
     property string noteImagesStoringPath
     property var paintClipRect
@@ -261,7 +261,7 @@ FormCard.FormCardDialog {
         }
 
         FormCard.FormCheckDelegate {
-            id: storeCheckbox
+            id: _storeCheckbox
 
             text: i18nc("@label:checkbox", "Place this image inside the note folder")
 
@@ -273,8 +273,8 @@ FormCard.FormCardDialog {
         if (paintedImageChoosen || clipboardImage) {
             paintedImageChoosen = false
             clipboardImage = false
-            storeCheckbox.enabled = true
-            storeCheckbox.checked = false
+            _storeCheckbox.enabled = true
+            _storeCheckbox.checked = false
         }
         if (clipboardImage) {
             KleverUtility.remove(path.substring(7)) // Clear the temp image
