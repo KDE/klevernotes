@@ -30,15 +30,31 @@ public:
     void setPUMLdark(const bool dark);
     void setCodeHighlightEnable(const bool enable);
 
+    using Base = MD::details::HtmlVisitor<MD::QStringTrait>;
     // md4qt
     void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
+    using Base::openStyle;
+
     void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
+    using Base::closeStyle;
+
     void onImage(MD::Image<MD::QStringTrait> *i) override;
+    using Base::onImage;
+
     void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first, bool skipOpeningWrap) override;
+    using Base::onListItem;
+
     void onCode(MD::Code<MD::QStringTrait> *c) override;
+    using Base::onCode;
+
     void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
+    using Base::onHeading;
+
     void onLink(MD::Link<MD::QStringTrait> *l) override;
+    using Base::onLink;
+
     void onUserDefined(MD::Item<MD::QStringTrait> *item) override;
+    using Base::onUserDefined;
 
     // Custom
     void onEmoji(EmojiPlugin::EmojiItem *e);
