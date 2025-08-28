@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
         // A displayable program name string.
         i18nc("@title", "KleverNotes"),
         // The program version string.
-        QStringLiteral("1.2.2"),
+        QStringLiteral("1.2.3"),
         // Short description of what the app does.
         i18n("Note taking and management application"),
         // The license this code is released under.
