@@ -251,6 +251,18 @@
     <color type="primary" scheme_preference="dark">#254545</color>
   </branding>
   <releases>
+    <release version="1.2.3" date="2025-08-28">
+      <description>
+        <p>Bug fixing release:</p>
+        <ul>
+          <li>Fix items move to root folder</li>
+          <li>Fix items sorting</li>
+          <li>Change subscript delim to `--`</li>
+          <li>Update md4qt (fix minor and major issues)</li>
+          <li>Various small bugs fixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.2" date="2025-03-24">
       <description>
         <p>Bug fixing release:</p>
