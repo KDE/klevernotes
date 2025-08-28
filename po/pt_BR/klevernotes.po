@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-29 00:41+0000\n"
+"POT-Creation-Date: 2025-08-28 00:43+0000\n"
 "PO-Revision-Date: 2025-08-23 15:48-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -47,12 +47,12 @@ msgctxt "@label:check"
 msgid "Delete permanently"
 msgstr "Excluir permanentemente"
 
-#: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
+#: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No stickers"
 msgstr "Sem stickers"
 
-#: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:80
+#: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No emojis"
 msgstr "Sem emojis"
@@ -69,49 +69,49 @@ msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Seletor de fonte"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:34
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:31
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Seletor de imagem"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:83
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:80
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Imagem Web"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:112
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:109
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Imagem local"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:143
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:140
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Pintar uma imagem"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:166
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:163
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Coleção de imagens"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:241
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Parece que a imagem selecionada não existe ou não é suportada."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:260
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Texto da imagem: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:269
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -160,7 +160,7 @@ msgid "Do you want to save it before leaving ?"
 msgstr "Você quer salvá-lo antes de sair?"
 
 #: contents/ui/dialogs/LinkDialog.qml:17
-#: contents/ui/dialogs/LinkNoteDialog.qml:21
+#: contents/ui/dialogs/LinkNoteDialog.qml:19
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
@@ -179,44 +179,44 @@ msgid "URL:"
 msgstr "URL:"
 
 #: contents/ui/dialogs/LinkDialog.qml:75
-#: contents/ui/dialogs/LinkNoteDialog.qml:94
+#: contents/ui/dialogs/LinkNoteDialog.qml:92
 #, kde-format
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
 msgstr "Texto do link:"
 
-#: contents/ui/dialogs/LinkNoteDialog.qml:39
+#: contents/ui/dialogs/LinkNoteDialog.qml:37
 #, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "Nota:"
 
-#: contents/ui/dialogs/MoveDialog.qml:25
+#: contents/ui/dialogs/MoveDialog.qml:23
 #, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
 msgstr "Mover <filename>%1</filename>?"
 
-#: contents/ui/dialogs/MoveDialog.qml:41
+#: contents/ui/dialogs/MoveDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
 msgstr "Para onde você quer mover esta nota?"
 
-#: contents/ui/dialogs/MoveDialog.qml:42
+#: contents/ui/dialogs/MoveDialog.qml:40
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
 msgstr "Para onde você quer mover esta pasta?"
 
-#: contents/ui/dialogs/MoveDialog.qml:51
+#: contents/ui/dialogs/MoveDialog.qml:49
 #, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
 msgstr "Mover para o armazenamento raiz"
 
-#: contents/ui/dialogs/MoveDialog.qml:64
+#: contents/ui/dialogs/MoveDialog.qml:62
 #, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
@@ -533,94 +533,94 @@ msgctxt "@title:dialog"
 msgid "Choose an URL"
 msgstr "Escolher uma URL"
 
-#: contents/ui/main.qml:30
+#: contents/ui/Main.qml:28
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: contents/ui/pages/MainPage.qml:26
+#: contents/ui/pages/MainPage.qml:23
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: contents/ui/pages/MainPage.qml:122
+#: contents/ui/pages/MainPage.qml:119
 #, kde-format
 msgid "Welcome to KleverNotes!"
 msgstr "Bem-vindo ao KleverNotes!"
 
-#: contents/ui/pages/MainPage.qml:132
+#: contents/ui/pages/MainPage.qml:129
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr "Crie ou selecione uma nota para começar a trabalhar!"
 
-#: contents/ui/pages/PaintingPage.qml:27
+#: contents/ui/pages/PaintingPage.qml:24
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Pinte!"
 
-#: contents/ui/pages/PaintingPage.qml:36 contents/ui/pages/PrintingPage.qml:76
+#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:74
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Salvar"
 
-#: contents/ui/pages/PaintingPage.qml:44
+#: contents/ui/pages/PaintingPage.qml:41
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Limpar"
 
-#: contents/ui/pages/PaintingPage.qml:54
+#: contents/ui/pages/PaintingPage.qml:51
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Recorte automático"
 
-#: contents/ui/pages/PaintingPage.qml:91
+#: contents/ui/pages/PaintingPage.qml:88
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
 msgstr "Texto para desenho"
 
-#: contents/ui/pages/PrintingPage.qml:31
+#: contents/ui/pages/PrintingPage.qml:29
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
 msgstr "Imprimir"
 
-#: contents/ui/pages/PrintingPage.qml:41
+#: contents/ui/pages/PrintingPage.qml:39
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
 msgstr "Tema de cor"
 
-#: contents/ui/pages/PrintingPage.qml:55
+#: contents/ui/pages/PrintingPage.qml:53
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
 msgstr "Plano de fundo"
 
-#: contents/ui/pages/PrintingPage.qml:110
+#: contents/ui/pages/PrintingPage.qml:108
 #, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
 msgstr "Isso pode causar artefatos visuais perto do final do PDF."
 
-#: contents/ui/pages/PrintingPage.qml:121
+#: contents/ui/pages/PrintingPage.qml:119
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
 msgstr "Salvar nota como PDF"
 
-#: contents/ui/pages/SettingsPage.qml:18
+#: contents/ui/pages/SettingsPage.qml:15
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
 msgstr "Configurações"
 
-#: contents/ui/pages/SettingsPage.qml:24
+#: contents/ui/pages/SettingsPage.qml:21
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
@@ -629,114 +629,114 @@ msgstr ""
 "Escolha um local para seu futuro armazenamento do KleverNotes ou selecione "
 "um existente.\n"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:53
+#: contents/ui/painting/DrawingToolBarOptions.qml:50
 #, kde-format
 msgid "Width:"
 msgstr "Largura:"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:73
+#: contents/ui/painting/DrawingToolBarOptions.qml:70
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
 msgstr "Fonte:"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:119
+#: contents/ui/painting/DrawingToolBarOptions.qml:116
 #, kde-format
 msgid "Fill toolMode:"
 msgstr "Modo de preenchimento:"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:129
+#: contents/ui/painting/DrawingToolBarOptions.qml:126
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
 msgstr "Preencher"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:130
+#: contents/ui/painting/DrawingToolBarOptions.qml:127
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
 msgstr "Contornar"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:131
+#: contents/ui/painting/DrawingToolBarOptions.qml:128
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
 msgstr "Contornar e preencher"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:145
+#: contents/ui/painting/DrawingToolBarOptions.qml:142
 #, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
 msgstr "Cor de preenchimento"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:148
+#: contents/ui/painting/DrawingToolBarOptions.qml:145
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
 msgstr "Primária"
 
-#: contents/ui/painting/DrawingToolBarOptions.qml:149
+#: contents/ui/painting/DrawingToolBarOptions.qml:146
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
 msgstr "Secundária"
 
-#: contents/ui/settings/DisplayPreview.qml:20
+#: contents/ui/settings/DisplayPreview.qml:18
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
 msgstr "Estilo:"
 
-#: contents/ui/settings/DisplayPreview.qml:46
+#: contents/ui/settings/DisplayPreview.qml:44
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
 msgstr "Cor do texto:"
 
-#: contents/ui/settings/DisplayPreview.qml:59
+#: contents/ui/settings/DisplayPreview.qml:57
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
 msgstr "Cor do título:"
 
-#: contents/ui/settings/DisplayPreview.qml:73
+#: contents/ui/settings/DisplayPreview.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
 msgstr "Cor do link:"
 
-#: contents/ui/settings/DisplayPreview.qml:86
+#: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
 msgstr "Cor do link visitado:"
 
-#: contents/ui/settings/DisplayPreview.qml:101
+#: contents/ui/settings/DisplayPreview.qml:99
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
 msgstr "Cor de código:"
 
-#: contents/ui/settings/DisplayPreview.qml:115
+#: contents/ui/settings/DisplayPreview.qml:112
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
 msgstr "Cor de realce:"
 
-#: contents/ui/settings/DisplayPreview.qml:127
+#: contents/ui/settings/DisplayPreview.qml:123
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Fonte geral:"
 
-#: contents/ui/settings/DisplayPreview.qml:138
+#: contents/ui/settings/DisplayPreview.qml:134
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
 msgstr "Fonte de bloco de código:"
 
-#: contents/ui/settings/EditorHighlightPreview.qml:26
+#: contents/ui/settings/EditorHighlightPreview.qml:24
 #, kde-format
 msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
@@ -744,7 +744,7 @@ msgctxt ""
 msgid "Enable adaptive tag size"
 msgstr "Habilitar tamanho de etiqueta adaptável"
 
-#: contents/ui/settings/EditorHighlightPreview.qml:27
+#: contents/ui/settings/EditorHighlightPreview.qml:25
 #, kde-format
 msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
@@ -754,7 +754,7 @@ msgstr ""
 "O tamanho adaptável dimensionará o tamanho da etiqueta com base no ambiente "
 "ao redor."
 
-#: contents/ui/settings/EditorHighlightPreview.qml:28
+#: contents/ui/settings/EditorHighlightPreview.qml:26
 #, kde-format
 msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
@@ -766,7 +766,7 @@ msgstr ""
 "Exemplo: uma etiqueta dentro de um cabeçalho será tão grande quanto o "
 "restante do texto do cabeçalho."
 
-#: contents/ui/settings/EditorHighlightPreview.qml:42
+#: contents/ui/settings/EditorHighlightPreview.qml:40
 #, kde-format
 msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
@@ -774,7 +774,7 @@ msgctxt ""
 msgid "Tag scale"
 msgstr "Escala da etiqueta"
 
-#: contents/ui/settings/EditorHighlightPreview.qml:84
+#: contents/ui/settings/EditorHighlightPreview.qml:82
 #, kde-format
 msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
@@ -782,7 +782,7 @@ msgctxt ""
 msgid "A title with a preview of"
 msgstr "Um título com uma visualização de"
 
-#: contents/ui/settings/EditorHighlightPreview.qml:108
+#: contents/ui/settings/EditorHighlightPreview.qml:106
 #, kde-format
 msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
@@ -790,43 +790,43 @@ msgctxt ""
 msgid "italic text and its tags"
 msgstr "texto itálico e suas etiquetas"
 
-#: contents/ui/settings/EditorTab.qml:21
+#: contents/ui/settings/EditorTab.qml:19
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "Geral"
 
-#: contents/ui/settings/EditorTab.qml:32
+#: contents/ui/settings/EditorTab.qml:30
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
 msgstr "Fonte do editor:"
 
-#: contents/ui/settings/EditorTab.qml:46
+#: contents/ui/settings/EditorTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
 msgstr "Usar espaços para tabulação"
 
-#: contents/ui/settings/EditorTab.qml:58
+#: contents/ui/settings/EditorTab.qml:56
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
 msgstr "Número de espaços"
 
-#: contents/ui/settings/EditorTab.qml:75
+#: contents/ui/settings/EditorTab.qml:73
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
 msgstr "Realce no editor"
 
-#: contents/ui/settings/EditorTab.qml:87
+#: contents/ui/settings/EditorTab.qml:85
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
 msgstr "Habilitar realce no editor"
 
-#: contents/ui/settings/GeneralTab.qml:29
+#: contents/ui/settings/GeneralTab.qml:24
 #, kde-format
 msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
@@ -834,96 +834,96 @@ msgctxt ""
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: contents/ui/settings/GeneralTab.qml:40
+#: contents/ui/settings/GeneralTab.qml:35
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
 msgstr "Caminho do armazenamento:"
 
-#: contents/ui/settings/GeneralTab.qml:58
+#: contents/ui/settings/GeneralTab.qml:53
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: contents/ui/settings/GeneralTab.qml:68 contents/ui/sideBar/ActionBar.qml:226
+#: contents/ui/settings/GeneralTab.qml:63 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
 msgid "New Folder"
 msgstr "Nova pasta"
 
-#: contents/ui/settings/GeneralTab.qml:69
+#: contents/ui/settings/GeneralTab.qml:64
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
 msgstr "Nome padrão para novas pastas:"
 
-#: contents/ui/settings/GeneralTab.qml:92 contents/ui/sideBar/ActionBar.qml:224
+#: contents/ui/settings/GeneralTab.qml:87 contents/ui/sideBar/ActionBar.qml:222
 #, kde-format
 msgid "New Note"
 msgstr "Nova nota"
 
-#: contents/ui/settings/GeneralTab.qml:93
+#: contents/ui/settings/GeneralTab.qml:88
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
 msgstr "Nome padrão para novas notas:"
 
-#: contents/ui/settings/GeneralTab.qml:113
+#: contents/ui/settings/GeneralTab.qml:108
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr "Barra de ferramentas"
 
-#: contents/ui/settings/GeneralTab.qml:121
+#: contents/ui/settings/GeneralTab.qml:116
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr "Visível"
 
-#: contents/ui/settings/GeneralTab.qml:182
+#: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
 msgstr "Invisível"
 
-#: contents/ui/settings/PluginsTab.qml:21
+#: contents/ui/settings/PluginsTab.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
 msgstr "Plugins utilitários"
 
-#: contents/ui/settings/PluginsTab.qml:33
+#: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
 msgstr "Habilitar link de nota"
 
-#: contents/ui/settings/PluginsTab.qml:34
+#: contents/ui/settings/PluginsTab.qml:32
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
 msgstr "O link de notas permite que você crie um link de uma nota para outra."
 
-#: contents/ui/settings/PluginsTab.qml:35
+#: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
 msgstr "Dica: reinicie o aplicativo após a ativação."
 
-#: contents/ui/settings/PluginsTab.qml:46
+#: contents/ui/settings/PluginsTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
 msgstr "Habilitar PlantUML"
 
-#: contents/ui/settings/PluginsTab.qml:47
+#: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
 msgstr "PlantUML permite que você crie diagramas."
 
-#: contents/ui/settings/PluginsTab.qml:48
+#: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
 msgctxt "@description:checkbox"
 msgid ""
@@ -933,55 +933,55 @@ msgstr ""
 "Observação: criar diagramas pode ser lento. Se você tiver um grande número "
 "de diagramas, exibi-los como imagens será mais fácil."
 
-#: contents/ui/settings/PluginsTab.qml:58
+#: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
 msgstr "Habilitar plano de fundo escuro"
 
-#: contents/ui/settings/PluginsTab.qml:59
+#: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
 msgstr "O diagrama do PlantUML terá um plano de fundo escuro."
 
-#: contents/ui/settings/PluginsTab.qml:70
+#: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
 msgstr "Plugins cosméticos"
 
-#: contents/ui/settings/PluginsTab.qml:82
+#: contents/ui/settings/PluginsTab.qml:80
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
 msgstr "Habilitar realce de sintaxe do código"
 
-#: contents/ui/settings/PluginsTab.qml:83
+#: contents/ui/settings/PluginsTab.qml:81
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
 msgstr "Lista dos realces suportados"
 
-#: contents/ui/settings/PluginsTab.qml:93
+#: contents/ui/settings/PluginsTab.qml:91
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
 msgstr "Realce"
 
-#: contents/ui/settings/PluginsTab.qml:121
+#: contents/ui/settings/PluginsTab.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
 msgstr "Estilo de realce"
 
-#: contents/ui/settings/PluginsTab.qml:151
+#: contents/ui/settings/PluginsTab.qml:149
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
 msgstr "Habilitar emoji rápido"
 
-#: contents/ui/settings/PluginsTab.qml:153
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
@@ -989,63 +989,63 @@ msgctxt ""
 msgid "Quickly write emoji using the following syntax"
 msgstr "Escreva emojis rapidamente usando a seguinte sintaxe"
 
-#: contents/ui/settings/PluginsTab.qml:153
+#: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "nome_emoji"
 
-#: contents/ui/settings/PluginsTab.qml:164
+#: contents/ui/settings/PluginsTab.qml:162
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
 msgstr "Tom de emoji padrão"
 
-#: contents/ui/settings/PluginsTab.qml:168
+#: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
 msgstr "Padrão"
 
-#: contents/ui/settings/PluginsTab.qml:169
+#: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "Claro"
 
-#: contents/ui/settings/PluginsTab.qml:170
+#: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
 msgstr "Claro médio"
 
-#: contents/ui/settings/PluginsTab.qml:171
+#: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
 msgstr "Médio"
 
-#: contents/ui/settings/PluginsTab.qml:172
+#: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
 msgstr "Escuro médio"
 
-#: contents/ui/settings/PluginsTab.qml:173
+#: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
 msgstr "Escuro"
 
-#: contents/ui/settings/PluginsTab.qml:187
+#: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
 msgstr "Habilitar janela de emoji rápido"
 
-#: contents/ui/settings/PluginsTab.qml:188
+#: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
 msgctxt "@description:switch"
 msgid ""
@@ -1247,385 +1247,385 @@ msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "Link de nota"
 
-#: contents/ui/sideBar/ActionBar.qml:47
+#: contents/ui/sideBar/ActionBar.qml:45
 #, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
 msgstr "Cria uma nova pasta"
 
-#: contents/ui/sideBar/ActionBar.qml:55
+#: contents/ui/sideBar/ActionBar.qml:53
 #, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "Criar uma nova nota"
 
-#: contents/ui/sideBar/ActionBar.qml:63
+#: contents/ui/sideBar/ActionBar.qml:61
 #, kde-format
 msgid "Rename"
 msgstr "Renomear"
 
-#: contents/ui/sideBar/ActionBar.qml:76
+#: contents/ui/sideBar/ActionBar.qml:74
 #, kde-format
 msgid "Search"
 msgstr "Pesquisar"
 
-#: contents/ui/sideBar/ActionBar.qml:93
+#: contents/ui/sideBar/ActionBar.qml:91
 #, kde-format
 msgid "Collapse sidebar"
 msgstr "Recolher barra lateral"
 
-#: contents/ui/sideBar/ActionBar.qml:94
+#: contents/ui/sideBar/ActionBar.qml:92
 #, kde-format
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
 
-#: contents/ui/sideBar/ContextMenu.qml:20
+#: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
 msgstr "Nova pasta"
 
-#: contents/ui/sideBar/ContextMenu.qml:29
+#: contents/ui/sideBar/ContextMenu.qml:27
 #, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Nova nota"
 
-#: contents/ui/sideBar/ContextMenu.qml:38
+#: contents/ui/sideBar/ContextMenu.qml:36
 #, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Renomear"
 
-#: contents/ui/sideBar/ContextMenu.qml:47
+#: contents/ui/sideBar/ContextMenu.qml:45
 #, kde-format
 msgctxt "@item:menu"
 msgid "Move"
 msgstr "Mover"
 
-#: contents/ui/sideBar/ContextMenu.qml:56
+#: contents/ui/sideBar/ContextMenu.qml:54
 #, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Excluir"
 
-#: contents/ui/sideBar/ContextMenu.qml:65
+#: contents/ui/sideBar/ContextMenu.qml:63
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
 msgstr "Propriedades"
 
-#: contents/ui/sideBar/SearchBar.qml:77
+#: contents/ui/sideBar/SearchBar.qml:78
 #, kde-format
 msgid "From"
 msgstr "De"
 
-#: contents/ui/sideBar/SearchBar.qml:124
+#: contents/ui/sideBar/SearchBar.qml:125
 #, kde-format
 msgid "No search results"
 msgstr "Nenhum resultado na pesquisa"
 
-#: contents/ui/sideBar/Sidebar.qml:91
+#: contents/ui/sideBar/Sidebar.qml:89
 #, kde-format
 msgid "Show notes"
 msgstr "Mostrar notas"
 
-#: contents/ui/sideBar/Sidebar.qml:112 contents/ui/sideBar/Sidebar.qml:223
+#: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:224
 #, kde-format
 msgid "Cheat sheet"
 msgstr "Folha de dicas"
 
-#: contents/ui/sideBar/Sidebar.qml:128 contents/ui/sideBar/Sidebar.qml:235
+#: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:236
 #, kde-format
 msgid "Settings"
 msgstr "Configurações"
 
-#: contents/ui/sideBar/Sidebar.qml:143 contents/ui/sideBar/Sidebar.qml:247
+#: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:248
 #, kde-format
 msgid "About KleverNotes"
 msgstr "Sobre o KleverNotes"
 
-#: contents/ui/textEditor/BottomToolBar.qml:51
+#: contents/ui/textEditor/BottomToolBar.qml:23
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
 msgstr "TAREFA"
 
-#: contents/ui/textEditor/BottomToolBar.qml:87
+#: contents/ui/textEditor/BottomToolBar.qml:59
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
 msgstr "Nota"
 
-#: contents/ui/textEditor/CheatSheet.qml:18
+#: contents/ui/textEditor/CheatSheet.qml:16
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
 msgstr "Folha de dicas de Markdown"
 
-#: contents/ui/textEditor/CheatSheet.qml:40
-#: contents/ui/textEditor/TextDisplay.qml:69
-#: contents/ui/textEditor/TextDisplay.qml:99
+#: contents/ui/textEditor/CheatSheet.qml:38
+#: contents/ui/textEditor/TextDisplay.qml:68
+#: contents/ui/textEditor/TextDisplay.qml:98
 #, kde-format
 msgid "Copied !"
 msgstr "Copiado !"
 
-#: contents/ui/textEditor/CheatSheet.qml:47
+#: contents/ui/textEditor/CheatSheet.qml:45
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
 msgstr "Sintaxe básica"
 
-#: contents/ui/textEditor/CheatSheet.qml:54
+#: contents/ui/textEditor/CheatSheet.qml:52
 #, kde-format
 msgid "Heading"
 msgstr "Cabeçalho"
 
-#: contents/ui/textEditor/CheatSheet.qml:55
+#: contents/ui/textEditor/CheatSheet.qml:53
 #, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "Cabeçalho1"
 
-#: contents/ui/textEditor/CheatSheet.qml:60
+#: contents/ui/textEditor/CheatSheet.qml:58
 #, kde-format
 msgid "Bold"
 msgstr "Negrito"
 
-#: contents/ui/textEditor/CheatSheet.qml:61
+#: contents/ui/textEditor/CheatSheet.qml:59
 #, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Texto em negrito"
 
-#: contents/ui/textEditor/CheatSheet.qml:66
+#: contents/ui/textEditor/CheatSheet.qml:64
 #, kde-format
 msgid "Italic"
 msgstr "Itálico"
 
-#: contents/ui/textEditor/CheatSheet.qml:67
+#: contents/ui/textEditor/CheatSheet.qml:65
 #, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "Texto em itálico"
 
-#: contents/ui/textEditor/CheatSheet.qml:72
+#: contents/ui/textEditor/CheatSheet.qml:70
 #, kde-format
 msgid "Blockquote"
 msgstr "Citação em bloco"
 
-#: contents/ui/textEditor/CheatSheet.qml:73
+#: contents/ui/textEditor/CheatSheet.qml:71
 #, kde-format
 msgctxt "example"
 msgid "Quote"
 msgstr "Citação"
 
-#: contents/ui/textEditor/CheatSheet.qml:78
+#: contents/ui/textEditor/CheatSheet.qml:76
 #, kde-format
 msgid "Ordered list"
 msgstr "Lista ordenada"
 
-#: contents/ui/textEditor/CheatSheet.qml:79
-#: contents/ui/textEditor/CheatSheet.qml:86
+#: contents/ui/textEditor/CheatSheet.qml:77
+#: contents/ui/textEditor/CheatSheet.qml:84
 #, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Primeiro item"
 
-#: contents/ui/textEditor/CheatSheet.qml:80
-#: contents/ui/textEditor/CheatSheet.qml:87
+#: contents/ui/textEditor/CheatSheet.qml:78
+#: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Segundo item"
 
-#: contents/ui/textEditor/CheatSheet.qml:85
+#: contents/ui/textEditor/CheatSheet.qml:83
 #, kde-format
 msgid "Unordered list"
 msgstr "Lista não ordenada"
 
-#: contents/ui/textEditor/CheatSheet.qml:92
+#: contents/ui/textEditor/CheatSheet.qml:90
 #, kde-format
 msgid "Code"
 msgstr "Código"
 
-#: contents/ui/textEditor/CheatSheet.qml:93
+#: contents/ui/textEditor/CheatSheet.qml:91
 #, kde-format
 msgctxt "example"
 msgid "Inline code"
 msgstr "Código em linha"
 
-#: contents/ui/textEditor/CheatSheet.qml:98
+#: contents/ui/textEditor/CheatSheet.qml:96
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
 msgstr "Régua"
 
-#: contents/ui/textEditor/CheatSheet.qml:104
+#: contents/ui/textEditor/CheatSheet.qml:102
 #, kde-format
 msgid "Link"
 msgstr "Link"
 
-#: contents/ui/textEditor/CheatSheet.qml:105
+#: contents/ui/textEditor/CheatSheet.qml:103
 #, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "título"
 
-#: contents/ui/textEditor/CheatSheet.qml:105
+#: contents/ui/textEditor/CheatSheet.qml:103
 #, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.examplo.com"
 
-#: contents/ui/textEditor/CheatSheet.qml:110
+#: contents/ui/textEditor/CheatSheet.qml:108
 #, kde-format
 msgid "Image"
 msgstr "Imagem"
 
-#: contents/ui/textEditor/CheatSheet.qml:111
+#: contents/ui/textEditor/CheatSheet.qml:109
 #, kde-format
 msgctxt "example"
 msgid "alt text"
 msgstr "texto alt"
 
-#: contents/ui/textEditor/CheatSheet.qml:111
+#: contents/ui/textEditor/CheatSheet.qml:109
 #, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "imagem"
 
-#: contents/ui/textEditor/CheatSheet.qml:118
+#: contents/ui/textEditor/CheatSheet.qml:116
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
 msgstr "Sintaxe estendida"
 
-#: contents/ui/textEditor/CheatSheet.qml:125
+#: contents/ui/textEditor/CheatSheet.qml:123
 #, kde-format
 msgid "Table"
 msgstr "Tabela"
 
-#: contents/ui/textEditor/CheatSheet.qml:126
+#: contents/ui/textEditor/CheatSheet.qml:124
 #, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
 msgstr "Esquerda"
 
-#: contents/ui/textEditor/CheatSheet.qml:126
+#: contents/ui/textEditor/CheatSheet.qml:124
 #, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
 msgstr "Centro"
 
-#: contents/ui/textEditor/CheatSheet.qml:126
+#: contents/ui/textEditor/CheatSheet.qml:124
 #, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
 msgstr "Direita"
 
-#: contents/ui/textEditor/CheatSheet.qml:128
+#: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "Célula 1"
 
-#: contents/ui/textEditor/CheatSheet.qml:128
+#: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "Célula 2"
 
-#: contents/ui/textEditor/CheatSheet.qml:128
+#: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "Célula 3"
 
-#: contents/ui/textEditor/CheatSheet.qml:133
+#: contents/ui/textEditor/CheatSheet.qml:131
 #, kde-format
 msgid "Fenced code block"
 msgstr "Bloco de código cercado"
 
-#: contents/ui/textEditor/CheatSheet.qml:135
+#: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgctxt "example"
 msgid "Sample text here..."
 msgstr "Exemplo de texto aqui..."
 
-#: contents/ui/textEditor/CheatSheet.qml:141
+#: contents/ui/textEditor/CheatSheet.qml:139
 #, kde-format
 msgid "Strikethrough"
 msgstr "Tachado"
 
-#: contents/ui/textEditor/CheatSheet.qml:142
+#: contents/ui/textEditor/CheatSheet.qml:140
 #, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "O mundo é plano."
 
-#: contents/ui/textEditor/CheatSheet.qml:147
+#: contents/ui/textEditor/CheatSheet.qml:145
 #, kde-format
 msgid "Task list"
 msgstr "Lista de tarefas"
 
-#: contents/ui/textEditor/CheatSheet.qml:148
+#: contents/ui/textEditor/CheatSheet.qml:146
 #, kde-format
 msgctxt "example"
 msgid "Make more foo"
 msgstr "Faça mais foo"
 
-#: contents/ui/textEditor/CheatSheet.qml:149
+#: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgctxt "example"
 msgid "Make more bar"
 msgstr "Faça mais bar"
 
-#: contents/ui/textEditor/CheatSheet.qml:154
+#: contents/ui/textEditor/CheatSheet.qml:152
 #, kde-format
 msgid "Highlight"
 msgstr "Realce"
 
-#: contents/ui/textEditor/CheatSheet.qml:155
+#: contents/ui/textEditor/CheatSheet.qml:153
 #, kde-format
 msgctxt "example"
 msgid "highlighted text"
 msgstr "texto realçado"
 
-#: contents/ui/textEditor/CheatSheet.qml:160
+#: contents/ui/textEditor/CheatSheet.qml:158
 #, kde-format
 msgid "Subscript"
 msgstr "Subscrito"
 
-#: contents/ui/textEditor/CheatSheet.qml:161
+#: contents/ui/textEditor/CheatSheet.qml:159
 #, kde-format
 msgctxt "example"
 msgid "subscript text"
 msgstr "texto subscrito"
 
-#: contents/ui/textEditor/CheatSheet.qml:166
+#: contents/ui/textEditor/CheatSheet.qml:164
 #, kde-format
 msgid "Superscript"
 msgstr "Sobrescrito"
 
-#: contents/ui/textEditor/CheatSheet.qml:167
+#: contents/ui/textEditor/CheatSheet.qml:165
 #, kde-format
 msgctxt "example"
 msgid "superscript text"
 msgstr "texto sobrescrito"
 
-#: contents/ui/textEditor/CheatSheet.qml:174
+#: contents/ui/textEditor/CheatSheet.qml:172
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "Plugins do KleverNotes"
 
-#: contents/ui/textEditor/CheatSheet.qml:183
+#: contents/ui/textEditor/CheatSheet.qml:181
 #, kde-format
 msgid "Note link"
 msgstr "Link de nota"
 
-#: contents/ui/textEditor/CheatSheet.qml:185
+#: contents/ui/textEditor/CheatSheet.qml:183
 #, kde-format
 msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
@@ -1634,84 +1634,84 @@ msgid "<path to note>/<note name>"
 msgstr "<caminho para a nota>/<nome da nota>"
 
 #. i18nc("example", "header")
-#: contents/ui/textEditor/CheatSheet.qml:188
+#: contents/ui/textEditor/CheatSheet.qml:186
 #, kde-format
 msgctxt "example"
 msgid "displayed name"
 msgstr "nome exibido"
 
-#: contents/ui/textEditor/EditorView.qml:38
+#: contents/ui/textEditor/EditorView.qml:36
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "Notas linkadas"
 
-#: contents/ui/textEditor/EditorView.qml:49
+#: contents/ui/textEditor/EditorView.qml:47
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
 msgstr "Imprimir"
 
-#: contents/ui/textEditor/EditorView.qml:61
+#: contents/ui/textEditor/EditorView.qml:59
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
 msgstr "Ver/Ocultar editor"
 
-#: contents/ui/textEditor/EditorView.qml:77
+#: contents/ui/textEditor/EditorView.qml:75
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
 msgstr "Ver/Ocultar visualização"
 
-#: contents/ui/textEditor/EditorView.qml:107
+#: contents/ui/textEditor/EditorView.qml:105
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
 msgstr "Salvar nota como html"
 
-#: contents/ui/textEditor/NotesMap.qml:19
+#: contents/ui/textEditor/NotesMap.qml:17
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
 msgstr "Mapa de notas linkadas"
 
-#: contents/ui/textEditor/NotesMap.qml:39
+#: contents/ui/textEditor/NotesMap.qml:37
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
 msgstr "Notas existentes"
 
-#: contents/ui/textEditor/NotesMap.qml:65
+#: contents/ui/textEditor/NotesMap.qml:63
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
 msgstr "Notas faltando"
 
-#: contents/ui/textEditor/NotesMap.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:119
+#: contents/ui/textEditor/NotesMap.qml:75
+#: contents/ui/textEditor/TextDisplay.qml:118
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr "%1 não existe"
 
-#: contents/ui/textEditor/TextToolBar.qml:179
-#: contents/ui/textEditor/TextToolBar.qml:180
-#: contents/ui/textEditor/TextToolBar.qml:181
-#: contents/ui/textEditor/TextToolBar.qml:183
-#: contents/ui/textEditor/TextToolBar.qml:184
+#: contents/ui/textEditor/TextToolBar.qml:173
+#: contents/ui/textEditor/TextToolBar.qml:174
+#: contents/ui/textEditor/TextToolBar.qml:175
+#: contents/ui/textEditor/TextToolBar.qml:177
+#: contents/ui/textEditor/TextToolBar.qml:178
 #, kde-format
 msgid "Header"
 msgstr "Cabeçalho"
 
-#: contents/ui/todoEditor/ToDoView.qml:24
+#: contents/ui/todoEditor/ToDoView.qml:22
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
 msgstr "Limpar checados"
 
-#: contents/ui/todoEditor/ToDoView.qml:79
+#: contents/ui/todoEditor/ToDoView.qml:77
 #, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
@@ -1853,35 +1853,35 @@ msgctxt "The name for a demo note"
 msgid "Demo"
 msgstr "Demonstração"
 
-#: main.cpp:56
+#: main.cpp:45
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:60
+#: main.cpp:49
 #, kde-format
 msgid "Note taking and management application"
 msgstr "Aplicativo de tomada e gerenciamento de notas"
 
-#: main.cpp:64
+#: main.cpp:53
 #, kde-format
 msgid "(c) 2022-2025"
 msgstr "(c) 2022-2025"
 
-#: main.cpp:65
+#: main.cpp:54
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "Louis Schul"
 
-#: main.cpp:70
+#: main.cpp:59
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Marcus Gama"
 
-#: main.cpp:70
+#: main.cpp:59
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
