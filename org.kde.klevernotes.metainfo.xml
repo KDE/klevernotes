@@ -34,7 +34,6 @@
   <name xml:lang="sv">KleverNotes</name>
   <name xml:lang="tr">Akıllı Notlar</name>
   <name xml:lang="uk">KleverNotes</name>
-  <name xml:lang="x-test">xxKleverNotesxx</name>
   <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
   <summary>Take and manage your notes</summary>
@@ -64,7 +63,6 @@
   <summary xml:lang="sv">Skriv och hantera anteckningar</summary>
   <summary xml:lang="tr">Not Alma Uygulaması</summary>
   <summary xml:lang="uk">Записуйте ваші нотатки та керуйте ними</summary>
-  <summary xml:lang="x-test">xxTake and manage your notesxx</summary>
   <summary xml:lang="zh-CN">记下并管理您的笔记</summary>
   <summary xml:lang="zh-TW">寫下或管理筆記</summary>
   <url type="homepage">https://invent.kde.org/office/klevernotes</url>
@@ -117,7 +115,6 @@
     <p xml:lang="sv">KleverNotes är ett antecknings- och hanteringsprogram för mobil och skrivbord. Det använder Markdown och låter dig förhandsgranska innehållet.</p>
     <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi önizlemenize izin verir.</p>
     <p xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними для ваших мобільних пристроїв та робочих станцій. У ній використано мову markdown та передбачено можливість попереднього перегляду результатів.</p>
-    <p xml:lang="x-test">xxKleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.xx</p>
     <p xml:lang="zh-CN">KleverNotes 是您移动设备和桌面设备的记录和管理笔记应用程序。它使用Markdown并允许您预览您的内容。</p>
     <p xml:lang="zh-TW">KleverNotes 是一個桌面與行動裝置用的筆記記錄與管理應用程式。它利用 Markdown 格式，並讓您能夠預覽您的內容。</p>
   </description>
@@ -141,7 +138,6 @@
       <caption xml:lang="sv">Huvudsida på skrivbordsdator</caption>
       <caption xml:lang="tr">Masaüstü bilgisayarda ana sayfa görünümü</caption>
       <caption xml:lang="uk">Основна сторінка на робочій станції</caption>
-      <caption xml:lang="x-test">xxMain page on Desktop PCxx</caption>
       <caption xml:lang="zh-CN">桌面模式的主页面</caption>
       <caption xml:lang="zh-TW">桌電上的主頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/main_note_desktop.png</image>
@@ -173,7 +169,6 @@
       <caption xml:lang="sv">Huvudsida på liten formfaktor</caption>
       <caption xml:lang="tr">Küçük biçimde ana sayfa</caption>
       <caption xml:lang="uk">Основна сторінка з малим форм-фактором</caption>
-      <caption xml:lang="x-test">xxMain page on small form factorxx</caption>
       <caption xml:lang="zh-CN">小屏幕模式的主页面</caption>
       <caption xml:lang="zh-TW">小螢幕模式的主頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/main_note_mobile.png</image>
@@ -206,7 +201,6 @@
       <caption xml:lang="sv">Uppgiftssida</caption>
       <caption xml:lang="tr">Yapılacaklar sayfası</caption>
       <caption xml:lang="uk">Сторінка завдань</caption>
-      <caption xml:lang="x-test">xxTodo pagexx</caption>
       <caption xml:lang="zh-CN">待办页</caption>
       <caption xml:lang="zh-TW">待辦事項頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/todo_desktop.png</image>
@@ -239,7 +233,6 @@
       <caption xml:lang="sv">Teckningssida</caption>
       <caption xml:lang="tr">Çizim sayfası</caption>
       <caption xml:lang="uk">Сторінка малювання</caption>
-      <caption xml:lang="x-test">xxDrawing pagexx</caption>
       <caption xml:lang="zh-CN">绘画页</caption>
       <caption xml:lang="zh-TW">繪圖頁面</caption>
       <image>https://cdn.kde.org/screenshots/klevernotes/painting.png</image>
