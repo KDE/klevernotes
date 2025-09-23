@@ -305,13 +305,19 @@ void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListIt
 
     QString str = modifier == keyModif::ShiftModifer ? QStringLiteral("<br>\n") : QStringLiteral("\n");
     if (listItem) {
-        const int indent = listItem->delim().startColumn();
-        str += useSpaceForTab ? QStringLiteral(" ").repeated(indent) : QStringLiteral("\t").repeated(indent);
+        if (listItem->isEmpty()) {
+            QTextBlock block = cursor.block();
 
-        if (listItem->listType() == MD::ListItem<MD::QStringTrait>::Ordered) {
-            str += QString::number(listItem->startNumber() + 1) + QStringLiteral(". ");
+            removeText(cursor, block.position(), block.position() + block.length());
         } else {
-            str += QStringLiteral("- ");
+            const int indent = listItem->delim().startColumn();
+            str += useSpaceForTab ? QStringLiteral(" ").repeated(indent) : QStringLiteral("\t").repeated(indent);
+
+            if (listItem->listType() == MD::ListItem<MD::QStringTrait>::Ordered) {
+                str += QString::number(listItem->startNumber() + 1) + QStringLiteral(". ");
+            } else {
+                str += QStringLiteral("- ");
+            }
         }
     }
 
