@@ -397,6 +397,7 @@ void EditorHandler::handleReturnPressed(const int modifier)
     const MD::ListItem<MD::QStringTrait> *listItem = m_editorHighlighter->searchListItem(line, pos);
 
     editorTextManipulation::handleReturnPressed(this, listItem, m_config->useSpaceForTab(), modifier);
+    m_textChanged = false;
 
     Q_EMIT focusEditor();
 }
@@ -488,7 +489,7 @@ void EditorHandler::tagScaleChanged()
 
 void EditorHandler::cursorMovedTimeOut()
 {
-    if (!m_textChanged) { // && m_notePath.endsWith(QStringLiteral(".md"))) {
+    if (!m_textChanged) {
         m_highlighting = true;
         m_surroundingDelims = m_editorHighlighter->showDelimAroundCursor(m_textChanged);
         m_highlighting = false;
