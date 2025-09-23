@@ -244,6 +244,16 @@
     <color type="primary" scheme_preference="dark">#254545</color>
   </branding>
   <releases>
+    <release version="1.2.4" date="2025-09-23">
+      <description>
+        <p>Bug fixing release:</p>
+        <ul>
+          <li>Update md4qt (fix major issue)</li>
+          <li>Fix major editor highlight issue</li>
+          <li>Improve "auto list" feature</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.3" date="2025-08-28">
       <description>
         <p>Bug fixing release:</p>
