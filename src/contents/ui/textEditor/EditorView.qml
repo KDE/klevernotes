@@ -233,7 +233,7 @@ ColumnLayout {
         target: EditorHandler
 
         function onSurroundingDelimsChanged(delimsTypes) {
-            toolbar.checkSourrindingDelimsActions(delimsTypes)
+            toolbar.checkSurrindingDelimsActions(delimsTypes)
         }
 
         function onUncheckAction(delimType) {

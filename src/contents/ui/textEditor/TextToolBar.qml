@@ -280,7 +280,7 @@ Kirigami.ActionToolBar {
         return [actionIndex, headingLevel]
     }
 
-    function checkSourrindingDelimsActions(delimsTypes) {
+    function checkSurrindingDelimsActions(delimsTypes) {
         for (let i = 0 ; i < toolbar.actions.length ; i++) {
             let currentAction = toolbar.actions[i]
             for (let j = 0 ; j < currentAction.children.length ; j++) {
