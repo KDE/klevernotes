@@ -1,8 +1,14 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2024-2025 Louis Schul <schul9louis@gmail.com>
 
+// KleverNotes include
 #include "editorHighlighterPrivate.hpp"
+
+// md4qt include
 #include "logic/parser/md4qt/doc.h"
+
+// C++ include
+#include <algorithm>
 #include <utility>
 
 using namespace Qt::Literals::StringLiterals;
@@ -60,8 +66,8 @@ void EditorHighlighterPrivate::setFormat(const QTextCharFormat &format,
             int length = (i == startLine ? (i == endLine ? endColumn - startColumn + 1 : formats[i].block.length() - 1 - startColumn)
                                          : (i == endLine ? endColumn + 1 : formats[i].block.length() - 1));
 
-            for (int j = start; j < start + length; ++j) {
-                auto &t = formats[i];
+            auto &t = formats[i];
+            for (int j = start; j < std::min((start + length), static_cast<int>(t.formats.length())); ++j) {
                 t.formats[j] = format;
             }
         }
