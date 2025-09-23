@@ -4611,10 +4611,16 @@ inline void Parser<Trait>::parseHeading(MdBlock<Trait> &fr,
 
         fr.m_data.erase(fr.m_data.cbegin());
 
-        if (p->items().size() && p->items().at(0)->type() == ItemType::Paragraph) {
-            h->setText(std::static_pointer_cast<Paragraph<Trait>>(p->items().at(0)));
-        } else {
-            h->setText(p);
+        if (p->items().size()) {
+            if (p->items().at(0)->type() == ItemType::Paragraph) {
+                h->setText(std::static_pointer_cast<Paragraph<Trait>>(p->items().at(0)));
+            } else {
+                p->setStartColumn(p->items().front()->startColumn());
+                p->setStartLine(p->items().front()->startLine());
+                p->setEndColumn(p->items().back()->endColumn());
+                p->setEndLine(p->items().back()->endLine());
+                h->setText(p);
+            }
         }
 
         if (h->isLabeled()) {
