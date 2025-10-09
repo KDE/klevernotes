@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 import QtQuick.Layouts
@@ -408,9 +408,8 @@ Kirigami.Page {
         }
     }
 
-    function showImagePicker(imagePath) {
+    function prepareImagePicker(imagePath) {
         const imagePickerDialog = editorView.imagePickerDialog
-        imagePickerDialog.open()
         if (autoCropAction.checked) {
             imagePickerDialog.paintClipRect = root.cropRect
         }
@@ -418,15 +417,17 @@ Kirigami.Page {
         imagePickerDialog.paintedImageChoosen = true
         imagePickerDialog.storeCheckbox.checked = wantSave
         imagePickerDialog.storeCheckbox.enabled = false
+
     }
 
     function closePage(imagePath) {
         root.cantLeave = false
         canvas.clear()
-        applicationWindow().switchToPage("Main")
-        showImagePicker(imagePath)
+        prepareImagePicker(imagePath)
         canvas.isInit = false
         root.cropRect = Qt.rect(0, 0, 0, 0)
+
+        applicationWindow().switchToPage("Main", editorView.imagePickerDialog)
     }
 
     function saveImage() {

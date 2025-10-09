@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2022 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2022-2025 Louis Schul <schul9louis@gmail.com>
 
 import QtQuick
 
@@ -91,8 +91,23 @@ Kirigami.ApplicationWindow {
                 pageStack.layers.push(page)
             } else {
                 sideBar.changeWidth = true
-                if (!sideBar.modal) sideBar.open()
+                if (!sideBar.modal) {
+                    sideBar.open()
+                    openDialogTimer.start()
+                }
             }
+        }
+    }
+
+    Timer {
+        id: openDialogTimer
+
+        property var dialog: null
+        repeat: false
+        interval: Kirigami.Units.longDuration
+        onTriggered: if (dialog) {
+            dialog.open()
+            dialog = null
         }
     }
 
@@ -118,8 +133,9 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    function switchToPage(pageName) {
+    function switchToPage(pageName, dialogToOpen) {
         currentPageName = pageName
+        openDialogTimer.dialog = dialogToOpen
     }
 
     function isMainPage() {
