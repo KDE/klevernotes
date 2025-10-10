@@ -304,7 +304,7 @@ void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListIt
     }
 
     QString str = modifier == keyModif::ShiftModifer ? QStringLiteral("<br>\n") : QStringLiteral("\n");
-    if (listItem) {
+    if (listItem && listItem->startColumn() < cursor.positionInBlock()) {
         if (listItem->isEmpty()) {
             QTextBlock block = cursor.block();
 
