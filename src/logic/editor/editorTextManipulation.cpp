@@ -308,7 +308,7 @@ void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListIt
         if (listItem->isEmpty()) {
             QTextBlock block = cursor.block();
 
-            removeText(cursor, block.position(), block.position() + block.length());
+            removeText(cursor, block.position(), block.position() + block.length() - 1);
         } else {
             const int indent = listItem->delim().startColumn();
             str += useSpaceForTab ? QStringLiteral(" ").repeated(indent) : QStringLiteral("\t").repeated(indent);
