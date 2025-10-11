@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:43+0000\n"
+"POT-Creation-Date: 2025-10-11 09:07+0000\n"
 "PO-Revision-Date: 2025-07-01 22:10+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1347,8 +1347,8 @@ msgid "Markdown Cheat Sheet"
 msgstr "Markdown 小抄"
 
 #: contents/ui/textEditor/CheatSheet.qml:38
-#: contents/ui/textEditor/TextDisplay.qml:68
-#: contents/ui/textEditor/TextDisplay.qml:98
+#: contents/ui/textEditor/TextDisplay.qml:74
+#: contents/ui/textEditor/TextDisplay.qml:104
 #, kde-format
 msgid "Copied !"
 msgstr "已複製！"
@@ -1673,7 +1673,7 @@ msgid "Missing notes"
 msgstr "缺乏的筆記"
 
 #: contents/ui/textEditor/NotesMap.qml:75
-#: contents/ui/textEditor/TextDisplay.qml:118
+#: contents/ui/textEditor/TextDisplay.qml:124
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"

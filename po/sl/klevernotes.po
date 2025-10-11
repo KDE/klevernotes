@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:43+0000\n"
+"POT-Creation-Date: 2025-10-11 09:07+0000\n"
 "PO-Revision-Date: 2025-06-27 06:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1358,8 +1358,8 @@ msgid "Markdown Cheat Sheet"
 msgstr "Plonk listek za markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:38
-#: contents/ui/textEditor/TextDisplay.qml:68
-#: contents/ui/textEditor/TextDisplay.qml:98
+#: contents/ui/textEditor/TextDisplay.qml:74
+#: contents/ui/textEditor/TextDisplay.qml:104
 #, kde-format
 msgid "Copied !"
 msgstr "Kopirano!"
@@ -1684,7 +1684,7 @@ msgid "Missing notes"
 msgstr "Manjkajoče zabeležke"
 
 #: contents/ui/textEditor/NotesMap.qml:75
-#: contents/ui/textEditor/TextDisplay.qml:118
+#: contents/ui/textEditor/TextDisplay.qml:124
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
