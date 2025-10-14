@@ -21,24 +21,80 @@
 namespace MdEditor
 {
 //! Markdown syntax highlighter.
+/**
+ * @class EditorHighlighter
+ * @brief Class providing highlight to the QML editor.
+ */
 class EditorHighlighter : public MD::PosCache<MD::QStringTrait>
 {
 public:
     explicit EditorHighlighter(EditorHandler *editor);
     ~EditorHighlighter() override;
 
+    /**
+     * @brief Cache the given doc and highlight the editor.
+     *
+     * @param doc The MD::Document resulting of the parsing.
+     * @param highlight Whether to highlight the editor.
+     */
     void cacheAndHighlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const bool highlight);
+
+    /**
+     * @brief Change the style of the delims surrounding the cursor to make them more visible.
+     *
+     * @param clearCache Whether to clear the cached format.
+     */
     QList<posCacheUtils::DelimsInfo> showDelimAroundCursor(const bool clearCache = true);
+
+    /**
+     * @brief Set the font used for the highlight.
+     *
+     * @param f The font to be used for the highlight.
+     */
     void setFont(const QFont &f);
+
+    /**
+     * @brief Clear the highlighting in the editor.
+     */
     void clearHighlighting();
 
+    /**
+     * @brief Set the colors to be used for the highlighter.
+     *
+     * @param colors The colors.
+     */
     void setColors(const Colors &colors);
 
+    /**
+     * @brief Add an extended syntax to the highlighter.
+     *
+     * @param opts The options used to identify the given extended syntax.
+     * @param info The highlighting information for the extended syntax.
+     */
     void addExtendedSyntax(const long long int opts, const QStringList &info);
 
+    /**
+     * @brief Changed the way the delims will be highlighted.
+     * Adaptive will make then smaller than the rest of the text.
+     *
+     * @param adaptive Whether the delim style should be adaptive.
+     */
     void changeAdaptiveTagSize(const bool adaptive);
+
+    /**
+     * @brief Change the scale of the text used when the adaptive tag scale is active.
+     *
+     * @param tagSizeScale The scale of the text.
+     */
     void changeTagScale(const int tagSizeScale);
 
+    /**
+     * @brief Search a list item near the given position.
+     *
+     * @param line The line on which we want to search the item.
+     * @param pos The position (column) on which we want to search the item.
+     * @result A pointer to the list item if it is found. A nullptr otherwise.
+     */
     MD::ListItem<MD::QStringTrait> *searchListItem(const int line, const int pos);
 
 protected:

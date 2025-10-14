@@ -11,6 +11,11 @@
 #include <memory>
 
 class NoteTreeModel;
+
+/**
+ * @class TreeItem
+ * @brief Class representing a tree item.
+ */
 class TreeItem
 {
 public:
@@ -24,107 +29,130 @@ public:
     QVariant data(int role) const;
 
     /*
-     * Insert child at index
+     * @brief Insert child at index.
      *
-     * @param child: a unique_ptr to the TreeItem to be inserted
-     * @param index: the index at which the child should be inserted
+     * @param child: a unique_ptr to the TreeItem to be inserted.
+     * @param index: the index at which the child should be inserted.
      */
     void insertChild(std::unique_ptr<TreeItem> &&child, int index);
 
     /*
-     * Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview
-     * Usually works in tandem with `askForFocus`
+     * @brief Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview.
+     * Usually works in tandem with `askForFocus`.
      *
-     * @param itemIndex: The QModelIndex pointing to this row
+     * @param itemIndex: The QModelIndex pointing to this row.
      */
     void askForFocus(const QModelIndex &itemIndex);
 
     /*
-     * Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview
-     * Usually works in tandem with `askForFocus`
+     * @brief Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview.
+     * Usually works in tandem with `askForFocus`.
      *
-     * @param itemModelIndex: The QModelIndex pointing to this row
+     * @param itemModelIndex: The QModelIndex pointing to this row.
      */
     void askForExpand(const QModelIndex &itemIndex);
 
     /*
-     * Whether this Item is a note
+     * @brief Whether this Item is a note.
+     *
+     * @return True if the item represent a note, false otherwise.
      */
     bool isNote() const;
 
     /*
-     * Get the path to the "closest" directory. The parent if it's a note, the Item path itself otherwise
+     * @brief Get the path to the "closest" directory. The parent if it's a note, the Item path itself otherwise.
+     *
+     * @return The path to closest directory.
      */
     QString getDir() const;
 
     /*
-     * Get the parent Item of this Item
+     * @brief Get the parent Item of this Item.
+     *
+     * @return The parent TreeItem of this object.
      */
     TreeItem *getParentItem() const;
 
     /*
-     * Get the name of this Item
+     * @brief Get the name of this Item.
+     *
+     * @return The name of this item.
      */
     QString getName() const;
 
     /*
-     * Get the path of this Item
+     * @brief Get the path of this Item.
+     *
+     * @return The path of this item.
      */
     QString getPath() const;
 
     /*
-     * Removes itself from its parent
+     * @brief Removes itself from its parent.
      */
     void remove();
 
     /*
-     * Save the Items Metadata recursively
+     * @brief Save the Items Metadata recursively.
      */
     void saveMetaData();
 
     /*
-     * Set the given color
+     * @brief Set the given color.
+     *
+     * @param color The color for this item.
      */
     void setColor(QString color);
 
     /*
-     * Set the given icon
+     * @brief Set the given icon.
+     *
+     * @param icon The icon for this item.
      */
     void setIcon(QString icon);
 
     /*
-     * Set the given parent item
+     * @brief Set the given parent item.
+     *
+     * @param parentItem The tree item to be used as the parent.
      */
     void setParentItem(TreeItem *parentItem);
 
     /*
-     * Set the given path
+     * @brief Set the given path.
+     *
+     * @param path The path to be set.
      */
     void setPath(const QString &path);
 
     /*
-     * Set the given name
+     * @brief Set the given name.
+     *
+     * @param name The name to be set.
      */
     void setName(const QString &name);
 
     /*
-     * Takes and return the child at the `row` index
+     * @brief Takes and return the child at the `row` index.
+     *
+     * @param row The index of the wanted row.
+     * @return A unique_ptr of the TreeItem at the `row` index.
      */
     std::unique_ptr<TreeItem> takeUniqueChildAt(int row);
 
     /*
-     * Get the index of where the new child would be based on the compare method.
+     * @brief Get the index of where the new child would be based on the compare method.
      * Default to the end of the list.
      *
-     * @param name: Name of the new child
-     * @param isNote: Whether the new child is a note (a directory otherwise)
+     * @param name Name of the new child.
+     * @param isNote Whether the new child is a note (a directory otherwise).
      */
     int getNewChildIndex(const QString &name, bool isNote) const;
 
     /*
-     * Compare this TreeItem to the other
+     * @brief Compare this TreeItem to the other.
      *
-     * @param other: A TreeItem unique_ptr
+     * @param other A TreeItem unique_ptr.
      */
     int compare(const std::unique_ptr<TreeItem> &other) const;
 
@@ -136,25 +164,28 @@ public:
     */
 private:
     /*
-     * Set the Item metadata
+     * @brief Set the Item metadata.
      */
     void setMetaData();
 
     /*
-     * Change the parent path part in the path
+     * @brief Change the parent path part in the path.
+     *
+     * @param newPart The new part.
      */
     void changeParentPathPart(const QString &newPart);
 
     /*
-     * Order the children
+     * @brief Order the children.
      */
     void orderChildren();
 
     /*
-     * Compare this TreeItem to another based on name and status
+     * @brief Compare this TreeItem to another based on name and status.
      *
-     * @param name: The other TreeItem name
-     * @param isNote: Whether the other TreeItem is a note (a directory otherwise)
+     * @param name The other TreeItem name.
+     * @param isNote Whether the other TreeItem is a note (a directory otherwise).
+     * @return A negative integere if this item name is inferior to `name`, a positive one if it is superior, 0 if it is equal.
      */
     int compare(const QString &name, bool isNote) const;
 

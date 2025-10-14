@@ -9,6 +9,11 @@
 #include <QRegularExpression>
 #include <QStandardPaths>
 
+/**
+ * @class HighlightHelper
+ * @brief Helper class to interact with external code highlighters.
+ *
+ */
 class HighlightHelper : public QObject
 {
     Q_OBJECT
@@ -19,8 +24,28 @@ class HighlightHelper : public QObject
 public:
     explicit HighlightHelper(QObject *parent = nullptr);
 
+    /**
+     * @brief Get the list of the available highlighters.
+     *
+     * @return A list of the different highlighters names.
+     */
     QStringList getHighlighters() const;
+
+    /**
+     * @brief Get the list of all available styles for the given highlighter.
+     *
+     * @param highlighter The highlighter for which we want to know the name of the themes.
+     * @return A list of all the styles names.
+     */
     Q_INVOKABLE QStringList getHighlighterStyle(const QString &highlighter) const;
+
+    /**
+     * @brief Get an highlighted string based on the given lang and the previously chosen highlighter.
+     *
+     * @param inputStr The string to be highlighted.
+     * @param lang The language of the code to be highlighted.
+     * @return The highlighted input string in form of HTML.
+     */
     static QString getHighlightedString(const QString &inputStr, const QString &lang);
 
 private:
@@ -49,7 +74,17 @@ private:
 
     inline static const QRegularExpression m_pygmentizeRegex = QRegularExpression(QStringLiteral("(\\* )(.+)(:)"));
 
+    /**
+     * @brief Get the list of all available styles for the given highlighter using the command line.
+     *
+     * @param highlighter The highlighter for which we want to know the name of the themes.
+     * @return A list of all the styles names.
+     */
     QStringList getHighlighterStyleFromCmd(const QString &highlighter) const;
+
+    /**
+     * @brief Set the list of available highlighters after checking.
+     */
     void setAvailableHighlighters();
     inline static QMap<QString, QStringList> m_availableHighlighters;
 };

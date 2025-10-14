@@ -6,6 +6,11 @@
 #include <QObject>
 #include <QQmlEngine>
 
+/**
+ * @class QmlLinker
+ * @brief Utility class to link QML to the WebView
+ *
+ */
 class QmlLinker : public QObject
 {
     Q_OBJECT

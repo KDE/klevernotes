@@ -45,6 +45,7 @@ void mergeStyle(MDItemWithOptsPtr a, MDItemWithOptsPtr b)
             opts += style;
         }
     }
+    // TODO: FIX THIS !!! => closeStyles !
     for (const auto &styleDelim : a->openStyles()) {
         int style = styleDelim.style();
         if (!(opts & style)) {

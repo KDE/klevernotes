@@ -8,5 +8,13 @@
 class PumlHelper
 {
 public:
+    /**
+     * @brief Makes a diagram from the input string using PUML.
+     *
+     * @param inputStr The input string.
+     * @param diagName The name of the resulting diagram.
+     * @param darkTheme Whether the diagram should have a dark background.
+     * @return True if the diagram was successfully made, false otherwise.
+     */
     static bool makeDiagram(const QString &inputStr, const QString diagName, const bool darkTheme);
 };

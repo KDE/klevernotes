@@ -16,6 +16,11 @@ using Items = typename MD::QStringTrait::template Vector<MD::Item<MD::QStringTra
 
 namespace posCacheUtils
 {
+
+/**
+ * @class DelimsInfo
+ * @brief Structure holding specific information about styles delims.
+ */
 struct DelimsInfo {
     int headingLevel = 0;
     int delimType = MD::TextOption::TextWithoutFormat;
@@ -37,8 +42,24 @@ enum BlockDelimTypes {
     UnorderedList,
 };
 
+/**
+ * @brief Check if both DelimsInfo are equals based on there opening and closing.
+ *
+ * @param d1 A DelimsInfo.
+ * @param d2 Another DelimsInfo.
+ * @return True if both are equals, false otherwise.
+ */
 bool operator==(const DelimsInfo &d1, const DelimsInfo &d2);
 
+/**
+ * @brief Add all the delims found inside the items that surround the `selectStartPos` and the `selectEndPos` to the `delims` list.
+ *
+ * @param delims A list of DelimsInfo where all the new DelimsInfo will be added.
+ * @param items A vector of items in which we will look for delims.
+ * @param pos The current cursor position.
+ * @param selectStartPos The position where the selection starts. If there's no selection, this is equal to `pos`.
+ * @param selectEndPos The position where the selection ends. If there's no selection, this is equal to `pos`.
+ */
 void addDelimsFromItems(QList<DelimsInfo> &delims,
                         const Items &items,
                         const MD::WithPosition &pos,

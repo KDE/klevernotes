@@ -20,29 +20,88 @@ class EditorHighlighterPrivate
 public:
     EditorHighlighterPrivate(EditorHandler *e);
 
+    /**
+     * @brief Clear all the formating of the editor.
+     */
     void clearFormats();
 
+    /**
+     * @brief Apply formating to the editor.
+     */
     void applyFormats();
 
+    /**
+     * @brief Apply the given format to the given position.
+     *
+     * @param format The format to apply.
+     * @param pos The position on which to apply the format.
+     */
     void setFormat(const QTextCharFormat &format, const MD::WithPosition &pos);
 
+    /**
+     * @brief Apply the given format to the given position.
+     *
+     * @param format The format to apply.
+     * @param startLine The starting line on which to apply the format.
+     * @param startColumn The starting column on which to apply the format.
+     * @param endLine The ending line on which to apply the format.
+     * @param endColumn The ending column on which to apply the format.
+     */
     void setFormat(const QTextCharFormat &format, long long int startLine, long long int startColumn, long long int endLine, long long int endColumn);
 
+    /**
+     * @brief Apply formats that have changed.
+     */
     void applyFormatChanges();
 
+    /**
+     * @brief Style the font based on the given information.
+     *
+     * @param opts The style options which will affect the font.
+     * @param isSpecial Whether the font is special, for example, if it is used for the delims.
+     * @return A font styled based on the given info.
+     */
     QFont styleFont(int opts, bool isSpecial = false) const;
 
     // KleverNotes
+    /**
+     * @brief Get a color based on its info.
+     *
+     * @param info The info of the color.
+     * @return A color corresponding to the given info. An invalid color of the given info was not valid.
+     */
     QColor getColor(const QString &info);
 
+    /**
+     * @brief Create a format base on the given options.
+     *
+     * @param opts The style options which will affect the format.
+     * @return A format corresponding to the given options.
+     */
     QTextCharFormat makeFormat(const long long int opts);
 
+    /**
+     * @brief Restore the cached formats.
+     */
     void restoreCachedFormats();
 
+    /**
+     * @brief Remove and cache the formats currently applied to the given position.
+     *
+     * @param withPosition The position on which we want to remove and cache the formats.
+     */
     void revertFormat(const MD::WithPosition &withPosition);
 
+    /**
+     * @brief Remove and cache the formats currently applied at the positions defined in the delimInfo.
+     *
+     * @param delimInfo The delimInfo on which we want to remove and cache the formats.
+     */
     void revertFormats(const posCacheUtils::DelimsInfo &delimInfo);
 
+    /**
+     * @brief Simple workaround to prevent the TextArea from auto scrolling to put the cursor line at the bottom.
+     */
     void preventAutoScroll();
 
     // Editor.

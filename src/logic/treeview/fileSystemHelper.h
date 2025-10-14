@@ -9,17 +9,26 @@
 namespace fileSystemHelper
 {
 /*
- * Move all the content from one folder to another
+ * @brief Move all the content from one folder to another.
+ *
+ * @param from The path of the folder to be moved.
+ * @param to The path where the folder should be moved.
  */
 void moveContent(const QString &from, const QString &to);
 
 /*
- * Create a folder to the given path and returns the succes
+ * @brief Create a folder to the given path and returns the succes.
+ *
+ * @param path The path of the folder that should be created.
+ * @return True if the folder was successfully created, false otherwise.
  */
 bool createFolder(const QString &path);
 
 /*
- * Create a file to the given path and returns the succes
+ * @brief Create a file to the given path and returns the succes.
+ *
+ * @param path The path of the file that should be created.
+ * @return True if the file was successfully created, false otherwise.
  */
 bool createFile(const QString &path);
 }

@@ -12,6 +12,10 @@
 #include <QFileInfo>
 #include <QQmlEngine>
 
+/**
+ * @class NoteTreeModel
+ * @brief Model exposed to QML holding TreeItem.
+ */
 class NoteTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
@@ -45,158 +49,181 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     /*
-     * Create a file/folder (based on `isNote`) inside the folder corresponding to `parentModelIndex` and adds it to the model.
+     * @brief Create a file/folder (based on `isNote`) inside the folder corresponding to `parentModelIndex` and adds it to the model.
      * Returns the newly created QModelIndex corresponding to the Item.
      *
-     * @param rowName: The name of the futur row
-     * @param isNote: Whether this row should be a note (a file) or not (a folder)
-     * @param parentModelIndex: The QModelIndex pointing to the parent. If this param is invalid (by default) it is considered to be the root item
+     * @param rowName The name of the futur row.
+     * @param isNote Whether this row should be a note (a file) or not (a folder).
+     * @param parentModelIndex The QModelIndex pointing to the parent.
+     * If this param is invalid (by default) it is considered to be the root item.
      */
     Q_INVOKABLE QModelIndex addRow(const QString &rowName, const bool isNote, const QModelIndex &parentModelIndex = QModelIndex());
 
     /*
-     * Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview
-     * Usually works in tandem with `askForFocus`
+     * @brief Make the Item ask to be expended by the KDescendantsProxyModel inside the Treeview.
+     * Usually works in tandem with `askForFocus`.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the row to expand
+     * @param rowModelIndex The QModelIndex pointing to the row to expand.
      */
     Q_INVOKABLE void askForExpand(const QModelIndex &rowModelIndex);
 
     /*
-     * Make the Item ask to be focused by the KDescendantsProxyModel inside the Treeview
-     * Usually works in tandem with `askForExpand`
+     * @brief Make the Item ask to be focused by the KDescendantsProxyModel inside the Treeview.
+     * Usually works in tandem with `askForExpand`.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the row to focus
+     * @param rowModelIndex The QModelIndex pointing to the row to focus.
      */
     Q_INVOKABLE void askForFocus(const QModelIndex &rowModelIndex);
 
     /*
-     * Get the model index for a given notePath.
+     * @brief Get the model index for a given notePath.
      * A default QModelIndex (invalid) is returned if the notePath wasn't found.
+     *
+     * @param notePath The path for which we want the model index.
      */
     Q_INVOKABLE QModelIndex getNoteModelIndex(const QString &notePath);
 
     /*
-     * Initialize the model
+     * @brief Initialize the model.
      *
-     * @param convert: Whether the old file structure should be converted if it is detected
+     * @param convert Whether the old file structure should be converted if it is detected.
      *
-     * @signal oldStorageStructure: If the old file structure is detected and `convert` is set to false
+     * @signal oldStorageStructure If the old file structure is detected and `convert` is set to false.
      */
     Q_INVOKABLE void initModel(bool convert = false);
 
     /*
-     * Move the Item (and children) to a new parent.
+     * @brief Move the Item (and children) to a new parent.
      * This also renames it to `newName` if not empty.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the row to move
-     * @param newParentIndex: The QModelIndex pointing to the new parent for the row
-     * @param newName: The possible new name for the row
+     * @param rowModelIndex The QModelIndex pointing to the row to move.
+     * @param newParentIndex The QModelIndex pointing to the new parent for the row.
+     * @param newName The possible new name for the row.
+     *
+     * @signal forceFocus Tells the QML tree model that the moved row need to be focus.
+     * @signal errorOccurred If an error occured during the moving process.
      */
     Q_INVOKABLE void moveRow(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex = {}, const QString &newName = QLatin1String());
 
     /*
-     * Remove the Item from the model
+     * @brief Remove the Item from the model.
      *
-     * @param index: The QModelIndex pointing to the row to remove
-     * @param permanent: Whether the file/folder corresponding to this item should be delete (true) or placed inside the trash (false)
+     * @param index The QModelIndex pointing to the row to remove.
+     * @param permanent Whether the file/folder corresponding to this item should be delete (true) or placed inside the trash (false).
      */
     Q_INVOKABLE void removeFromTree(const QModelIndex &index, const bool permanent);
 
     /*
-     * Try to rename the Item to `newName`
+     * @brief Try to rename the Item to `newName`.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the row to remove
-     * @param newName: The expected new name for the item
+     * @param rowModelIndex The QModelIndex pointing to the row to remove.
+     * @param newName The expected new name for the item.
      *
-     * @signal errorOccurred: If the item could not be renamed for whatever reason
+     * @signal errorOccurred If the item could not be renamed for whatever reason.
      */
     Q_INVOKABLE void rename(const QModelIndex &rowModelIndex, const QString &newName);
 
     /*
-     * Save the metadata of each Item
+     * @brief Save the metadata of each Item.
      */
     Q_INVOKABLE void saveMetaData();
 
     /*
-     * Set the properties (color and icon) for the given Item
-     * There's no checks for the validity of these properties
+     * @brief Set the properties (color and icon) for the given Item.
+     * There's no checks for the validity of these properties.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the row
-     * @param color: The color of this row
-     * @param icon: The icon of this row
+     * @param rowModelIndex The QModelIndex pointing to the row.
+     * @param color The color of this row.
+     * @param icon The icon of this row.
      */
     Q_INVOKABLE void setProperties(const QModelIndex &rowModelIndex, const QString color, const QString icon);
 
     // NoteMapper
-    /*
-     * Enable/disable the note map based on noteMapEnabled
+    /**
+     * @brief Enable/disable the note map based on noteMapEnabled.
+     *
+     * @param noteMapEnabled Whether the note map plugin is enabled.
      */
     void setNoteMapEnabled(const bool noteMapEnabled);
 
     /*
-     * Check if the note map is enabled
+     * @brief Check if the note map is enabled.
+     *
+     * @return True if the note map plugin is enabled, false otherwise.
      */
     bool noteMapEnabled();
 
     /*
-     * Check if the model is initialized
+     * @brief Check if the model is initialized.
+     *
+     * @return True if the model is initialized, false otherwise.
      */
     bool isInit();
 
     /*
-     * Add `path` to the initial global path inside the note map
+     * @brief Add `path` to the initial global path inside the note map.
+     *
+     * @param The path to add.
      */
     void addInitialGlobalPath(const QString &path);
 
 Q_SIGNALS:
     /*
-     * Signals an error with a given error message to display
+     * @brief Signals an error with a given error message to display.
+     *
+     * @param errorMessage The error message to display.
      */
     void errorOccurred(const QString &errorMessage);
 
     /*
-     * Signals that this item need focus
+     * @brief Signals that this item need focus.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the item needing focus
+     * @param rowModelIndex The QModelIndex pointing to the item needing focus.
      */
     void forceFocus(const QModelIndex &rowModelIndex);
 
     /*
-     * Signals on error while trying to move an item.
+     * @brief Signals on error while trying to move an item.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the item we were trying to move
-     * @param newParentIndex: The QModelIndex pointing to the new parent item we were trying to move to
-     * @param rowName: The row name
-     * @param newParentPath: The path of the new parent item
+     * @param rowModelIndex The QModelIndex pointing to the item we were trying to move.
+     * @param newParentIndex The QModelIndex pointing to the new parent item we were trying to move to.
+     * @param rowName The row name.
+     * @param newParentPath The path of the new parent item.
      */
     void moveError(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, bool isNote, const QString &rowName, const QString &newParentPath);
 
     /*
-     * Signals that the old file structure has been detected
+     * @brief Signals that the old file structure has been detected.
      */
     void oldStorageStructure();
 
     // NoteMapper
     /*
-     * Signals that a new global path has been found
+     * @brief Signals that a new global path has been found.
+     *
+     * @param path The newly found path.
      */
     void newGlobalPathFound(const QString &path);
 
     /*
-     * Signals that a global path has been updated
+     * @brief Signals that a global path has been updated.
+     *
+     * @param oldPath The old path.
+     * @param newPath The new path.
      */
     void globalPathUpdated(const QString &oldPath, const QString &newPath);
 
     /*
-     * Signals that a global path has been removed
+     * @brief Signals that a global path has been removed.
+     *
+     * @param path The path to be removed.
      */
     void globalPathRemoved(const QString &path);
 
     /*
-     * Signals that this item need focus
+     * Signals that this item need focus.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the item needing focus
+     * @param rowModelIndex The QModelIndex pointing to the item needing focus.
      */
     void initialGlobalPathsSent(const QStringList &initialGlobalPaths);
 
@@ -208,58 +235,58 @@ private:
     };
 
     /*
-     * Handle the result of the removing of an Item. Signals error if needed or update the model.
+     * @brief Handle the result of the removing of an Item. Signals error if needed or update the model.
      *
-     * @param index: The QModelIndex pointing to the Item that has been removed
-     * @param succes: Whether the operation was successful
+     * @param index The QModelIndex pointing to the Item that has been removed.
+     * @param succes Whether the operation was successful.
      *
-     * @signal forceFocus: Ask for a specific item to be focused if the removing was successful
-     * @signal errorOccurred: If the Item could not be removed
+     * @signal forceFocus Ask for a specific item to be focused if the removing was successful.
+     * @signal errorOccurred If the Item could not be removed.
      */
     void handleRemoveItem(const QModelIndex &index, const bool succes);
 
     /*
-     * Handle the result of the moving of an Item. Signals error or update the model.
+     * @brief Handle the result of the moving of an Item. Signals error or update the model.
      *
-     * @param rowModelIndex: The QModelIndex pointing to the Item that has been moved
-     * @param newParentIndex: The QModelIndex pointing to the new parent of the Item
-     * @param newPath: The potential new path for the row
-     * @param newName: The potential new name for the row
-     * @param error: A potential error code based on the `MoveError` enum
+     * @param rowModelIndex The QModelIndex pointing to the Item that has been moved.
+     * @param newParentIndex The QModelIndex pointing to the new parent of the Item.
+     * @param newPath The potential new path for the row.
+     * @param newName The potential new name for the row.
+     * @param error A potential error code based on the `MoveError` enum.
      *
-     * @signal moveError: If an Item with the same name already exists in the new location
-     * @signal errorOccurred: If the Item could not be moved
-     * @signal forceFocus: Ask for the Item to be focused
+     * @signal moveError If an Item with the same name already exists in the new location.
+     * @signal errorOccurred If the Item could not be moved.
+     * @signal forceFocus Ask for the Item to be focused.
      */
     void handleMoveItem(const QModelIndex &rowModelIndex, const QModelIndex &newParentIndex, const QString &newPath, const QString &newName, MoveError error);
 
     // Storage Handler
     /*
-     * Create the storage at the given storage path. Return the succes of this operation.
+     * @brief Create the storage at the given storage path. Return the succes of this operation.
      *
-     * @param storagePath: The path where the storage should be placed
+     * @param storagePath The path where the storage should be placed.
      *
-     * @signal errorOccurred: For what ever error that could happen
+     * @signal errorOccurred For what ever error that could happen.
      */
     bool makeStorage(const QString &storagePath);
 
     /*
-     * Create a folder inside the folder given by `parentPath`
+     * @brief Create a folder inside the folder given by `parentPath`.
      *
-     * @param parentPath: The path where the folder should be placed
-     * @param folderName: The name of the folder
+     * @param parentPath The path where the folder should be placed.
+     * @param folderName The name of the folder.
      *
-     * @signal errorOccurred: For what ever error that could happen
+     * @signal errorOccurred For what ever error that could happen.
      */
     QString makeFolder(const QString &parentPath, const QString &folderName);
 
     /*
-     * Create a note inside the folder given by `parentPath`
+     * @brief Create a note inside the folder given by `parentPath`.
      *
-     * @param parentPath: The path where the folder should be placed
-     * @param noteName: The name of the note
+     * @param parentPath The path where the folder should be placed.
+     * @param noteName The name of the note.
      *
-     * @signal errorOccurred: For what ever error that could happen
+     * @signal errorOccurred: For what ever error that could happen.
      */
     QString makeNote(const QString &parentPath, const QString &noteName);
 

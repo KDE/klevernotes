@@ -14,6 +14,14 @@
 
 static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
 
+/**
+ * @brief Create and add DelimsInfo inside `openCloseDelims`, from delims found inside the item.
+ *
+ * @param item The items being treated.
+ * @param waitingOpeningDelims List of opening delims already found, waiting to be paired.
+ * @param openCloseDelims List where the new DelimsInfo will be added.
+ * @param headingLevel The heading level of the newly created DelimsInfo.
+ */
 void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
                QList<MD::WithPosition> &waitingOpeningDelims,
                QList<posCacheUtils::DelimsInfo> &openCloseDelims,
@@ -29,6 +37,14 @@ void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
     }
 }
 
+/**
+ * @brief Wrapper function for `makePairs` ignoring specific (useless) Items.
+ *
+ * @param item The items being treated.
+ * @param waitingOpeningDelims List of opening delims already found, waiting to be paired.
+ * @param openCloseDelims List where the new DelimsInfo will be added.
+ * @param headingLevel The heading level of the newly created DelimsInfo.
+ */
 void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
                         QList<MD::WithPosition> &waitingOpeningDelims,
                         QList<posCacheUtils::DelimsInfo> &openCloseDelims,
@@ -71,6 +87,12 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
     }
 }
 
+/**
+ * @brief Get the inner (child) items for specific item type.
+ *
+ * @param item The item for which we want the inner items.
+ * @return The list of inner items. An empty list if none where found.
+ */
 SharedItems getInnerItems(MD::Item<MD::QStringTrait> *item)
 {
     switch (item->type()) {
@@ -94,6 +116,14 @@ SharedItems getInnerItems(MD::Item<MD::QStringTrait> *item)
     return {};
 }
 
+/**
+ * @brief Create and add the header DelimsInfo into `delims`.
+ * Handle the specific case of heading.
+ *
+ * @param delims A list of DelimsInfo where all the new DelimsInfo will be added.
+ * @param item The item being treated for which we know it is a Heading.
+ * @param headingLevel The heading level of the newly created DelimsInfo. This will be modified based on the level of the item (being a Heading).
+ */
 void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QStringTrait> *item, int &headingLevel)
 {
     const auto &h = static_cast<MD::Heading<MD::QStringTrait> *>(item);
@@ -128,6 +158,14 @@ void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QSt
     }
 }
 
+/**
+ * @brief Create and add all the DelimsInfo found inside the item to `delims`, if this item one is a block.
+ *
+ * @param delims A list of DelimsInfo where all the new DelimsInfo will be added.
+ * @param item The item being treated.
+ * @param pos The position of the cursor.
+ * @param headingLevel The heading level of the newly created DelimsInfo.
+ */
 void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QStringTrait> *item, const MD::WithPosition &pos, int &headingLevel)
 {
     posCacheUtils::DelimsInfo delimInfo;
@@ -178,6 +216,16 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
     }
 }
 
+/**
+ * @brief Create and add all the DelimsInfo found inside the item to `delims`.
+ *
+ * @param delims A list of DelimsInfo where all the new DelimsInfo will be added.
+ * @param item The item being treated.
+ * @param cursorPos The position of the cursor.
+ * @param selectStartPos The position where the selection starts. If there's no selection, this is equal to `pos`.
+ * @param selectEndPos The position where the selection ends. If there's no selection, this is equal to `pos`.
+ * @param headingLevel The heading level of the newly created DelimsInfo.
+ */
 void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
                                MD::Item<MD::QStringTrait> *item,
                                const MD::WithPosition &cursorPos,

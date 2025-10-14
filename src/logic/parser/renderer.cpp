@@ -340,6 +340,7 @@ QString Renderer::wikilink(const QString &href, const QString &title, const QStr
     const QString leading = QStringLiteral("<a href=\"") + href + QStringLiteral("\"");
     const QString ending = QStringLiteral(">") + text + QStringLiteral("</a>");
     QString middle = QLatin1String();
+    // TODO: USELESS, REMOVE THIS
     if (!title.isEmpty()) {
         QStringLiteral(" title=\"") + title + QStringLiteral("\"");
     }

@@ -9,10 +9,10 @@
 namespace treeModelConverter
 {
 /*
- * Convert the old file structure (Category/Group/Note) to the new one.
+ * @brief Convert the old file structure (Category/Group/Note) to the new one.
  *
- * @param path: The path to the current folder
- * @param depth_level: The depth_level of the current folder being converted
+ * @param path The path to the current folder.
+ * @param depth_level The depth_level of the current folder being converted.
  */
 void convertFileStructure(const QString &path, const int depth_level = 0);
 }

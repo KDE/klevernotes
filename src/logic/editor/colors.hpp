@@ -10,6 +10,10 @@
 
 namespace MdEditor
 {
+/**
+ * @class Colors
+ * @brief Class providing the various colors used for the editor highlighting.
+ */
 struct Colors {
     QColor backgroundColor = Qt::white;
     QColor textColor = QColor(64, 128, 255);

@@ -345,7 +345,6 @@ void EditorHighlighterPrivate::revertFormats(const posCacheUtils::DelimsInfo &de
     }
 }
 
-// Simple workaround to prevent the TextArea from auto scrolling to put the cursor line at the bottom
 void EditorHighlighterPrivate::preventAutoScroll()
 {
     if (!formats.isEmpty()) {
