@@ -244,6 +244,16 @@
     <color type="primary" scheme_preference="dark">#254545</color>
   </branding>
   <releases>
+    <release version="1.2.5" date="2025-10-29">
+      <description>
+        <p>Bug fixing release:</p>
+        <ul>
+          <li>Fix major issue with the painting page</li>
+          <li>Fix the preview going black when the app loses focus</li>
+          <li>Tweak the auto indent</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.4" date="2025-09-23">
       <description>
         <p>Bug fixing release:</p>
