@@ -352,7 +352,7 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
-"Vous pouvez annuler cette opération en fermant cette boîte de dialogue, ce "
+"Vous pouvez annuler cette opération en fermant cette boite de dialogue, ce "
 "qui vous donne le temps de sauvegarder vos fichiers si vous le souhaitez."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
@@ -371,7 +371,7 @@ msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
 msgstr ""
 "Veuillez simplement supprimer le dossier « /Images » de leur chemin d'accès "
-"pour les faire réapparaître."
+"pour les faire réapparaitre."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -1051,7 +1051,7 @@ msgstr "Sombre"
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr "Activer la boîte de dialogue pour émoticône rapides"
+msgstr "Activer la boite de dialogue pour émoticône rapides"
 
 #: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
@@ -1060,7 +1060,7 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
-"La boîte de dialogue concernant les émoticônes insère à l'intérieur du "
+"La boite de dialogue concernant les émoticônes insère à l'intérieur du "
 "texte, la syntaxe « Émoticônes rapides » au lieu de l'émoticône réelle."
 
 #: contents/ui/settings/TabBar.qml:13
