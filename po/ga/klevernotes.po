@@ -1,183 +1,182 @@
-# Copyright (C) 2024 This file is copyright:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2025-11-30 15:38+0200\n"
-"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
-"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
-"Language: fi\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a note"
 msgid "Confirm Note Deletion"
-msgstr "Vahvista muistiinpanon poistaminen"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:23
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr "Vahvista kansion poistaminen"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr "Poistetaanko muistiinpano <filename>%1</filename>?"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr "Poistetaanko kansio <filename>%1</filename>?"
+msgstr ""
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr "Poista pysyvästi"
+msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No stickers"
-msgstr "Ei tarroja"
+msgstr ""
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No emojis"
-msgstr "Ei emojeja"
+msgstr ""
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
-msgstr "Kuvavalitsin"
+msgstr ""
 
 #: contents/ui/dialogs/FontPickerDialog.qml:34
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Font selector"
-msgstr "Fonttivalitsin"
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:31
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr "Kuvavalitsin"
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:80
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
-msgstr "Verkkokuva"
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:109
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
-msgstr "Paikallinen kuva"
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:140
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr "Maalaa kuva"
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:163
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
-msgstr "Kuvakokoelma"
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
-msgstr "Valitsemaasi kuvaa ei tunnu olevan olemassa tai sen muotoa ei tueta."
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
-msgstr "Kuvateksti: "
+msgstr ""
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr "Sijoita tämä kuva muistiinpanokansioon"
+msgstr ""
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:21
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr "<filename>%1</filename> – ominaisuudet"
+msgstr ""
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr "Kuvake"
+msgstr ""
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
 #, kde-format
 msgctxt "@action:button"
 msgid "Color"
-msgstr "Väri"
+msgstr ""
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:102
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr "Nykyinen väri ”%1”"
+msgstr ""
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr "KleverNotes-maalaus"
+msgstr ""
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr "Olet poistumassa tallentamatta piirustustasi!"
+msgstr ""
 
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Do you want to save it before leaving ?"
-msgstr "Haluatko tallentaa sen ennen poistumista?"
+msgstr ""
 
 #: contents/ui/dialogs/LinkDialog.qml:17
 #: contents/ui/dialogs/LinkNoteDialog.qml:19
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr "Luo linkki"
+msgstr ""
 
 #: contents/ui/dialogs/LinkDialog.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr "Linkitä paikallinen tiedosto"
+msgstr ""
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
 msgctxt "@label:textbox, link URL, like the 'href' of an html <a> "
 msgid "URL:"
-msgstr "Verkko-osoite:"
+msgstr ""
 
 #: contents/ui/dialogs/LinkDialog.qml:75
 #: contents/ui/dialogs/LinkNoteDialog.qml:92
@@ -185,57 +184,55 @@ msgstr "Verkko-osoite:"
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr "Linkin teksti:"
+msgstr ""
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
 #, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
-msgstr "Muistiinpano:"
+msgstr ""
 
 #: contents/ui/dialogs/MoveDialog.qml:23
 #, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr "Siirretäänkö <filename>%1</filename>?"
+msgstr ""
 
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
 #: contents/ui/dialogs/MoveDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr "Minne haluat muistiinpanon siirtää?"
+msgstr ""
 
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
 #: contents/ui/dialogs/MoveDialog.qml:40
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr "Minne haluat kansion siirtää?"
+msgstr ""
 
 #: contents/ui/dialogs/MoveDialog.qml:49
 #, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr "Siirrä talletustilan juureen"
+msgstr ""
 
 #: contents/ui/dialogs/MoveDialog.qml:62
 #, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr "Etsi kansiota:"
+msgstr ""
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "Valitse nimi"
+msgstr ""
 
 #: contents/ui/dialogs/NamingDialog.qml:58
 #, kde-format
 msgctxt "As in 'a name'"
 msgid "Name:"
-msgstr "Nimi:"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:16
 #, kde-format
@@ -243,7 +240,7 @@ msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotesin talletustila"
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:30
 #, kde-format
@@ -252,31 +249,30 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
-"Nimi alkaa pisteellä, mikä voisi aiheuttaa ongelmia, joten sitä ei sallita."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the dot or choose another name."
-msgstr "Poista piste tai valitse toinen nimi."
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This note already exists."
-msgstr "Tämä muistiinpano on jo olemassa."
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:35
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "Kansio on jo olemassa."
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr "Valitse toinen nimi."
+msgstr ""
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -284,44 +280,42 @@ msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
-"Nimi alkaa vinoviivalla ”/”, mikä voisi aiheuttaa ongelmia, joten sitä ei "
-"sallita."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:40
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
-msgstr "Poista vinoviiva ”/” tai valitse toinen nimi."
+msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr "Tulostusikkuna"
+msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
 #, kde-format
 msgctxt "@label:button"
 msgid "Print html"
-msgstr "Tulosta HTML:ksi"
+msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
 #, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
-msgstr "Tulosta PDF:ksi"
+msgstr ""
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
 #, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr "Poistettu käytöstä Flatpak-rajoituksen vuoksi."
+msgstr ""
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
-msgstr "Pakollinen toimenpide"
+msgstr ""
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:19
 #, kde-format
@@ -332,8 +326,6 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
-"Talletustila vaikuttaa käyttävän KleverNotesin vanhaa tiedostorakennetta, "
-"jota ei enää tueta."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -342,8 +334,6 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
-"Napsauttamalla ”Käytä” hyväksyt talletustilan muuntamisen uuteen "
-"rakenteeseen (tämän ei pitäisi olla tuhoisa toimenpide)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -352,8 +342,6 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
-"Toimenpiteen voi perua sulkemalla tämän ikkunan, jolloin ehtii halutessaan "
-"varmuuskopioida tiedostot."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -362,15 +350,12 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
-"Huom! Kaikki paikallisesti tallennetut kuvat siirretään muistiinpanon "
-"yläkansion ”Images”-alikansioon."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
 msgstr ""
-"Palauta ne näkyviin yksinkertaisesti poistamalla polkunimistä ”/Images”."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -378,7 +363,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr "Talletustila on luotu kansioon "
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:17
 #, kde-format
@@ -386,7 +371,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr "Olemassa oleva talletustila valittu kansiosta "
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -399,49 +384,46 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Vaikuttaa siltä, että käytät sovellusta ensi kertaa!\n"
-"\n"
-"Anna uuden tai olemassa olevan KleverNotes-talletustilan sijainti."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
 #, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
-msgstr "KleverNotesin talletustila"
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:49
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr "Olemassa oleva sijainti"
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:51
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr "Vaihda talletustilan sijaintia"
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Create storage"
-msgstr "Luo talletustila"
+msgstr ""
 
 #: contents/ui/dialogs/StorageDialog.qml:67
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr "Luo uusi talletustila"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr "Taulukon luonti"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:49
 #, kde-format
@@ -449,292 +431,292 @@ msgctxt ""
 "@label, display the final size of the table %1 is the number of row and %2 "
 "the number of column"
 msgid "Size: %1 x %2"
-msgstr "Koko: %1 × %2"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:165
 #, kde-format
 msgctxt "@label:button"
 msgid "More options"
-msgstr "Enemmän valintoja"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:219
 #, kde-format
 msgctxt "@label:spinbox, name, 'a row'"
 msgid "Row"
-msgstr "Rivi"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:231
 #, kde-format
 msgctxt "@label:spinbox, name, 'a column'"
 msgid "Column"
-msgstr "Sarake"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:243
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Alignment :"
-msgstr "Tasaus:"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:248
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Left"
-msgstr "Vasemmalle"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:249
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Center"
-msgstr "Keskitä"
+msgstr ""
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:250
 #, kde-format
 msgctxt "@entry:combobox, alignment name"
 msgid "Right"
-msgstr "Oikealle"
+msgstr ""
 
 #: contents/ui/dialogs/todoDialog/TextAreaDelegate.qml:166
 #, kde-format
 msgctxt "@label %1 is current text length, %2 is maximum length of text field"
 msgid "%1/%2"
-msgstr "%1/%2"
+msgstr ""
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:17
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
-msgstr "Lisää tehtävä"
+msgstr ""
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:24
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
-msgstr "Otsikko:"
+msgstr ""
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:26
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr "Tehtävän otsikko (vaaditaan)"
+msgstr ""
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Description:"
-msgstr "Kuvaus:"
+msgstr ""
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:41
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Optional"
-msgstr "Valinnainen"
+msgstr ""
 
 #: contents/ui/dialogs/URLDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
-msgstr "Valitse verkko-osoite"
+msgstr ""
 
 #: contents/ui/Main.qml:28
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr ""
 
 #: contents/ui/pages/MainPage.qml:23
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
-msgstr "Tervetuloa"
+msgstr ""
 
 #: contents/ui/pages/MainPage.qml:119
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Tervetuloa KleverNotesiin!"
+msgstr ""
 
 #: contents/ui/pages/MainPage.qml:129
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr "Aloita työt luomalla tai valitsemalla muistiinpano!"
+msgstr ""
 
 #: contents/ui/pages/PaintingPage.qml:24
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
-msgstr "Maalaa!"
+msgstr ""
 
 #: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:74
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
-msgstr "Tallenna"
+msgstr ""
 
 #: contents/ui/pages/PaintingPage.qml:41
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
-msgstr "Tyhjennä"
+msgstr ""
 
 #: contents/ui/pages/PaintingPage.qml:51
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
-msgstr "Rajaa automaattisesti"
+msgstr ""
 
 #: contents/ui/pages/PaintingPage.qml:88
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
-msgstr "Piirrettävä teksti"
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:29
 #, kde-format
 msgctxt "@title:page"
 msgid "Print"
-msgstr "Tulostus"
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:39
 #, kde-format
 msgctxt "@label:ComboBox"
 msgid "Color theme"
-msgstr "Väriteema"
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:53
 #, kde-format
 msgctxt "@label:button, as in 'the background of an image'"
 msgid "Background"
-msgstr "Tausta"
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:108
 #, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr "Voi aiheuttaa näyttövirheitä PDF:n loppuun."
+msgstr ""
 
 #: contents/ui/pages/PrintingPage.qml:119
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
-msgstr "Tallenna muistiinpano PDF:ksi"
+msgstr ""
 
 #: contents/ui/pages/SettingsPage.qml:15
 #, kde-format
 msgctxt "@title:window"
 msgid "Settings"
-msgstr "Asetukset"
+msgstr ""
 
 #: contents/ui/pages/SettingsPage.qml:21
 #, kde-format
 msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
-msgstr "Anna uuden tai olemassa olevan KleverNotes-talletustilan sijainti.\n"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:50
 #, kde-format
 msgid "Width:"
-msgstr "Leveys:"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:70
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Font:"
-msgstr "Fontti:"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:116
 #, kde-format
 msgid "Fill toolMode:"
-msgstr "Täyttötyökalun tila:"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:126
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr "Täyttö"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:127
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr "Ääriviiva"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:128
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr "Ääriviiva ja täyttö"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:142
 #, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
-msgstr "Täyttöväri"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:145
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr "Ensisijainen"
+msgstr ""
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:146
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr "Toissijainen"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:18
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Style:"
-msgstr "Tyyli:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:44
 #, kde-format
 msgctxt "@label:button"
 msgid "Text color:"
-msgstr "Tekstiväri:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:57
 #, kde-format
 msgctxt "@label:button"
 msgid "Title color:"
-msgstr "Otsikkoväri:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:71
 #, kde-format
 msgctxt "@label:button"
 msgid "Link color:"
-msgstr "Linkkiväri:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:84
 #, kde-format
 msgctxt "@label:button"
 msgid "Visited Link color:"
-msgstr "Vieraillun linkin väri:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:99
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
-msgstr "Koodiväri:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:112
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr "Korostusväri:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:123
 #, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
-msgstr "Yleisfontti:"
+msgstr ""
 
 #: contents/ui/settings/DisplayPreview.qml:134
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr "Koodilohkon fontti:"
+msgstr ""
 
 #: contents/ui/settings/EditorHighlightPreview.qml:24
 #, kde-format
@@ -742,7 +724,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr "Käytä luokitukselle mukautuvaa kokoa"
+msgstr ""
 
 #: contents/ui/settings/EditorHighlightPreview.qml:25
 #, kde-format
@@ -750,7 +732,7 @@ msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
-msgstr "Mukautuva koko sovittaa luokituksen koon ympäristöönsä."
+msgstr ""
 
 #: contents/ui/settings/EditorHighlightPreview.qml:26
 #, kde-format
@@ -761,8 +743,6 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
-"Esimerkiksi: otsakkeen sisällä luokitus on yhtä suuri kuin muu otsakkeen "
-"teksti."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:40
 #, kde-format
@@ -770,7 +750,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr "Luokituksen mittakaava"
+msgstr ""
 
 #: contents/ui/settings/EditorHighlightPreview.qml:82
 #, kde-format
@@ -778,7 +758,7 @@ msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr "Otsikko, jossa on esikatselu"
+msgstr ""
 
 #: contents/ui/settings/EditorHighlightPreview.qml:106
 #, kde-format
@@ -786,43 +766,43 @@ msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr "kursiivitekstistä luokituksineen"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:19
 #, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
-msgstr "Perusasetukset"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:30
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr "Muokkainfontti:"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr "Käytä sarkaimina välilyöntejä"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:56
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr "Välilyöntien määrä"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:73
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Muokkaimen korostus"
+msgstr ""
 
 #: contents/ui/settings/EditorTab.qml:85
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Käytä muokkaimen korostusta"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:24
 #, kde-format
@@ -830,96 +810,96 @@ msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr "Talletuspaikka"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:35
 #, kde-format
 msgctxt ""
 "@label:textbox, Storage as in 'the folder where all the notes will be stored'"
 msgid "Storage path:"
-msgstr "Talletustilan sijainti:"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:53
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr "Sivupalkki"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:63 contents/ui/sideBar/ActionBar.qml:224
 #, kde-format
 msgid "New Folder"
-msgstr "Uusi kansio"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:64
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr "Uusien kansioiden oletusnimi:"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:87 contents/ui/sideBar/ActionBar.qml:222
 #, kde-format
 msgid "New Note"
-msgstr "Uusi muistiinpano"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:88
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr "Uusien muistiinpanojen oletusnimi:"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:108
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr "Työkalurivi"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:116
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr "Näkyvä"
+msgstr ""
 
 #: contents/ui/settings/GeneralTab.qml:177
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr "Näkymätön"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr "Työkaluliitännäiset"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr "Käytä muistiinpanojen linkitystä"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:32
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
-msgstr "Linkityksellä voi luoda linkin muistiinpanosta toiseen."
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr "Ohje: käynnistä ohjelma aktivoinnin jälkeen uudestaan."
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr "Käytä PlantUML:ää"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr "PlantUML:llä voi luoda kaavioita."
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -928,56 +908,54 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
-"Huom! Kaavioiden luominen voi olla hidasta. Jos diagrammeja on useita, ne on "
-"nopeampi näyttää kuvina."
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr "Käytä tummaa taustaa"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr "PlantUML-kaaviolle tulee tumma tausta."
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr "Ulkoasuliitännäiset"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:80
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr "Käytä koodin syntaksiväritystä"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:81
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr "Tuettujen syntaksiväritysten luettelo"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:91
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr "Korostus"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr "Korostustyyli"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:149
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr "Käytä pikaemojeja"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -985,65 +963,64 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr "Kirjoita emojit nopeasti oheisella syntaksilla"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
-msgstr "emojin_nimi"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:162
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr "Emojien oletussävy"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr "Oletus"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:167
 #, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
-msgstr "Vaalea"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:168
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr "Keskivaalea"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr "Keskimääräinen"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr "Keskitumma"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr "Tumma"
+msgstr ""
 
 #: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr "Käytä nopeaa emoji-ikkunaa"
+msgstr ""
 
-# *** TARKISTA: Alkukielen lause on sekava ja jättää epäselväksi, mitä näkyy kyselyikkunassa ja mitä tekstissä!
 #: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
 msgctxt "@description:switch"
@@ -1051,14 +1028,12 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
-"Emoji-ikkunassa käytetään ”pikaemojisyntaksia” varsinaisen tekstissä näkyvän "
-"emojin sijaan"
 
 #: contents/ui/settings/TabBar.qml:13
 #, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
-msgstr "Perusasetukset"
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:21
 #, kde-format
@@ -1066,564 +1041,563 @@ msgctxt ""
 "@label, tab (inside tab bar), all settings related to the rendered preview "
 "of the note"
 msgid "Note preview"
-msgstr "Muistiinpanon esikatselu"
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:29
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
-msgstr "Muokkain"
+msgstr ""
 
 #: contents/ui/settings/TabBar.qml:37
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr "Liitännäiset"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:14
 #: contents/ui/sharedComponents/ActionsList.qml:16
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Headers"
-msgstr "Otsikot"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:16
 #, kde-format
 msgctxt "@tooltip, short form of 'number'"
 msgid "num"
-msgstr "nro"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:20
 #: contents/ui/sharedComponents/ActionsList.qml:23
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 1"
-msgstr "Otsikko 1"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:29
 #: contents/ui/sharedComponents/ActionsList.qml:32
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 2"
-msgstr "Otsikko 2"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:38
 #: contents/ui/sharedComponents/ActionsList.qml:41
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 3"
-msgstr "Otsikko 3"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:47
 #: contents/ui/sharedComponents/ActionsList.qml:50
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 4"
-msgstr "Otsikko 4"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:56
 #: contents/ui/sharedComponents/ActionsList.qml:59
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 5"
-msgstr "Otsikko 5"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:65
 #: contents/ui/sharedComponents/ActionsList.qml:68
 #, kde-format
 msgctxt "@tooltip, text format header level, will be followed by the shortcut"
 msgid "Header 6"
-msgstr "Otsikko 6"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:75
 #: contents/ui/sharedComponents/ActionsList.qml:77
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Bold"
-msgstr "Lihavointi"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:84
 #: contents/ui/sharedComponents/ActionsList.qml:86
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Italic"
-msgstr "Kursiivi"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:93
 #: contents/ui/sharedComponents/ActionsList.qml:95
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Strikethrough"
-msgstr "Yliviivaus"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:102
 #: contents/ui/sharedComponents/ActionsList.qml:104
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Code"
-msgstr "Koodi"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:111
 #: contents/ui/sharedComponents/ActionsList.qml:113
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Quote"
-msgstr "Lainaus"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:120
 #: contents/ui/sharedComponents/ActionsList.qml:122
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Image"
-msgstr "Kuva"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:127
 #: contents/ui/sharedComponents/ActionsList.qml:129
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link"
-msgstr "Linkki"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:134
 #: contents/ui/sharedComponents/ActionsList.qml:136
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Table"
-msgstr "Taulukko"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:141
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
-msgstr "Järjestetty luettelo"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:143
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr "Järjestetty luettelo"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:150
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
-msgstr "Luetelma"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:152
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr "Luetelma"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:159
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr "Korostus"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:161
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr "Tekstin korostus"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:168
 #: contents/ui/sharedComponents/ActionsList.qml:170
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr "Emoji"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:175
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
-msgstr "Linkitä muistiinpano"
+msgstr ""
 
 #: contents/ui/sharedComponents/ActionsList.qml:177
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
-msgstr "Linkitä muistiinpano"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:45
 #, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
-msgstr "Luo uusi kansio"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:53
 #, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
-msgstr "Luo uusi muistiinpano"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:61
 #, kde-format
 msgid "Rename"
-msgstr "Muuta nimeä"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:74
 #, kde-format
 msgid "Search"
-msgstr "Etsi"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:91
 #, kde-format
 msgid "Collapse sidebar"
-msgstr "Supista sivupalkki"
+msgstr ""
 
 #: contents/ui/sideBar/ActionBar.qml:92
 #, kde-format
 msgid "Expand sidebar"
-msgstr "Laajenna sivupaneeli"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:18
 #, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
-msgstr "Uusi kansio"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:27
 #, kde-format
 msgctxt "@item:menu"
 msgid "New note"
-msgstr "Uusi muistiinpano"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:36
 #, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
-msgstr "Muuta nimeä"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:45
 #, kde-format
 msgctxt "@item:menu"
 msgid "Move"
-msgstr "Siirrä"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:54
 #, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
-msgstr "Poista"
+msgstr ""
 
 #: contents/ui/sideBar/ContextMenu.qml:63
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr "Ominaisuudet"
+msgstr ""
 
-# *** TARKISTA: Pitäisi tietää, mihin tämä on selite.
 #: contents/ui/sideBar/SearchBar.qml:78
 #, kde-format
 msgid "From"
-msgstr "Mistä:"
+msgstr ""
 
 #: contents/ui/sideBar/SearchBar.qml:125
 #, kde-format
 msgid "No search results"
-msgstr "Ei hakutuloksia"
+msgstr ""
 
 #: contents/ui/sideBar/Sidebar.qml:89
 #, kde-format
 msgid "Show notes"
-msgstr "Näytä muistiinpanot"
+msgstr ""
 
 #: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:224
 #, kde-format
 msgid "Cheat sheet"
-msgstr "Luntti"
+msgstr ""
 
 #: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:236
 #, kde-format
 msgid "Settings"
-msgstr "Asetukset"
+msgstr ""
 
 #: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:248
 #, kde-format
 msgid "About KleverNotes"
-msgstr "Tietoa KleverNotesista"
+msgstr ""
 
 #: contents/ui/textEditor/BottomToolBar.qml:23
 #, kde-format
 msgctxt "@label:button"
 msgid "TODO"
-msgstr "TEHTÄVÄ"
+msgstr ""
 
 #: contents/ui/textEditor/BottomToolBar.qml:59
 #, kde-format
 msgctxt "@label:button, as in 'A note'"
 msgid "Note"
-msgstr "Huomautus"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:16
 #, kde-format
 msgctxt "@window:title"
 msgid "Markdown Cheat Sheet"
-msgstr "Markdown-luntti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:38
 #: contents/ui/textEditor/TextDisplay.qml:74
 #: contents/ui/textEditor/TextDisplay.qml:104
 #, kde-format
 msgid "Copied !"
-msgstr "Kopioitu!"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:45
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr "Peruskielioppi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:52
 #, kde-format
 msgid "Heading"
-msgstr "Otsikko"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:53
 #, kde-format
 msgctxt "example"
 msgid "Heading1"
-msgstr "Otsikko1"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:58
 #, kde-format
 msgid "Bold"
-msgstr "Lihavointi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:59
 #, kde-format
 msgctxt "example"
 msgid "Bold text"
-msgstr "Lihavoitu teksti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:64
 #, kde-format
 msgid "Italic"
-msgstr "Kursiivi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:65
 #, kde-format
 msgctxt "example"
 msgid "Italic text"
-msgstr "Kursivoitu teksti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:70
 #, kde-format
 msgid "Blockquote"
-msgstr "Lainauslohko"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:71
 #, kde-format
 msgctxt "example"
 msgid "Quote"
-msgstr "Lainaus"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:76
 #, kde-format
 msgid "Ordered list"
-msgstr "Järjestetty luettelo"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:77
 #: contents/ui/textEditor/CheatSheet.qml:84
 #, kde-format
 msgctxt "example"
 msgid "First item"
-msgstr "Ensimmäinen kohta"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #: contents/ui/textEditor/CheatSheet.qml:85
 #, kde-format
 msgctxt "example"
 msgid "Second item"
-msgstr "Toinen kohta"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:83
 #, kde-format
 msgid "Unordered list"
-msgstr "Luetelma"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:90
 #, kde-format
 msgid "Code"
-msgstr "Koodi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:91
 #, kde-format
 msgctxt "example"
 msgid "Inline code"
-msgstr "Sisällytetty koodi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:96
 #, kde-format
 msgctxt "@label, horizontal rule => <hr> html tag"
 msgid "Rule"
-msgstr "Sääntö"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:102
 #, kde-format
 msgid "Link"
-msgstr "Linkki"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:103
 #, kde-format
 msgctxt "example"
 msgid "title"
-msgstr "otsikko"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:103
 #, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
-msgstr "https://www.esimerkki.fi/"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:108
 #, kde-format
 msgid "Image"
-msgstr "Kuva"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:109
 #, kde-format
 msgctxt "example"
 msgid "alt text"
-msgstr "vaihtoehtoinen teksti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:109
 #, kde-format
 msgctxt "example"
 msgid "image"
-msgstr "kuva"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:116
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr "Lisäkielioppi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:123
 #, kde-format
 msgid "Table"
-msgstr "Taulukko"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:124
 #, kde-format
 msgctxt "@label, noun, 'The left side of something'"
 msgid "Left"
-msgstr "Vasemmalle"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:124
 #, kde-format
 msgctxt "@label, verb, 'To center something'"
 msgid "Center"
-msgstr "Keskitä"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:124
 #, kde-format
 msgctxt "@label, noun, 'The right side of something"
 msgid "Right"
-msgstr "Oikealle"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "example"
 msgid "Cell 1"
-msgstr "1. solu"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "example"
 msgid "Cell 2"
-msgstr "2. solu"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:126
 #, kde-format
 msgctxt "example"
 msgid "Cell 3"
-msgstr "3. solu"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:131
 #, kde-format
 msgid "Fenced code block"
-msgstr "Rajattu koodilohko"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgctxt "example"
 msgid "Sample text here..."
-msgstr "Esimerkkiteksti tähän…"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:139
 #, kde-format
 msgid "Strikethrough"
-msgstr "Yliviivaus"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:140
 #, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
-msgstr "Maailma on litteä."
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:145
 #, kde-format
 msgid "Task list"
-msgstr "Tehtäväluettelo"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:146
 #, kde-format
 msgctxt "example"
 msgid "Make more foo"
-msgstr "Tee lisää yhtä"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgctxt "example"
 msgid "Make more bar"
-msgstr "Tee lisää toista"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:152
 #, kde-format
 msgid "Highlight"
-msgstr "Korostus"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:153
 #, kde-format
 msgctxt "example"
 msgid "highlighted text"
-msgstr "korostettu teksti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:158
 #, kde-format
 msgid "Subscript"
-msgstr "Alaindeksi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:159
 #, kde-format
 msgctxt "example"
 msgid "subscript text"
-msgstr "alaindeksoitu teksti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:164
 #, kde-format
 msgid "Superscript"
-msgstr "Yläindeksi"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:165
 #, kde-format
 msgctxt "example"
 msgid "superscript text"
-msgstr "yläindeksoitu teksti"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:172
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
-msgstr "KleverNotes-liitännäiset"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:181
 #, kde-format
 msgid "Note link"
-msgstr "Muistiinpanolinkki"
+msgstr ""
 
 #: contents/ui/textEditor/CheatSheet.qml:183
 #, kde-format
@@ -1631,70 +1605,70 @@ msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
 msgid "<path to note>/<note name>"
-msgstr "<muistiinpanon sijainti>/<muistiinpanon nimi>"
+msgstr ""
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:186
 #, kde-format
 msgctxt "example"
 msgid "displayed name"
-msgstr "näyttönimi"
+msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:36
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
-msgstr "Linkitetyt muistiinpanot"
+msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:47
 #, kde-format
 msgctxt "@tooltip, Print action, will be followed by the shortcut"
 msgid "Print"
-msgstr "Tulosta"
+msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:59
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr "Piilota tai näytä muokkain"
+msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:75
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr "Piilota tai näytä esikatselu"
+msgstr ""
 
 #: contents/ui/textEditor/EditorView.qml:105
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr "Tallenna muistiinpano HTML:ksi"
+msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:17
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr "Linkitettyjen muistiinpanojen kartta"
+msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:37
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr "Olemassa olevat muistiinpanot"
+msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:63
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Missing notes"
-msgstr "Puuttuvat muistiinpanot"
+msgstr ""
 
 #: contents/ui/textEditor/NotesMap.qml:75
 #: contents/ui/textEditor/TextDisplay.qml:124
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr "Ei ole olemassa: %1"
+msgstr ""
 
 #: contents/ui/textEditor/TextToolBar.qml:173
 #: contents/ui/textEditor/TextToolBar.qml:174
@@ -1703,19 +1677,19 @@ msgstr "Ei ole olemassa: %1"
 #: contents/ui/textEditor/TextToolBar.qml:178
 #, kde-format
 msgid "Header"
-msgstr "Ylätunniste"
+msgstr ""
 
 #: contents/ui/todoEditor/ToDoView.qml:22
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr "Poista valinnat"
+msgstr ""
 
 #: contents/ui/todoEditor/ToDoView.qml:77
 #, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr "Lisää uusi tehtävä"
+msgstr ""
 
 #: logic/kleverUtility.cpp:108
 #, kde-format
@@ -1727,382 +1701,156 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
-"/*            \n"
-"Tiedosto on kopio muistiinpanonäkymän oletus-CSS-tyylistä.            \n"
-"Muokkaa vapaasti tai luo omasi.            \n"
-"Huom! Kullakin tyylillä on oltava oma nimensä.            \n"
-"*/\n"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:152
 #: logic/parser/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr "Historia"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr "Hymiöt"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr "Ihmiset"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr "Luonto"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr "Ruoka"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr "Toiminnat"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr "Matkailu"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr "Oliot"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr "Symbolit"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr "Liput"
+msgstr ""
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr "Mukautettu"
+msgstr ""
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr "Yritettäessä kopioida tätä PDF:ää sattui virhe."
+msgstr ""
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
-msgstr "Muistiinpanot"
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr "Yritettäessä poistaa kohdetta sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr "Yritettäessä siirtää kohdetta sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr "Yritettäessä muuttaa kohteen nimeä sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr "Yritettäessä luoda muistiinpanoa sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "Yritettäessä luoda kansiota sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr "Yritettäessä luoda talletustilaa sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "Yritettäessä luoda demoa sattui virhe."
+msgstr ""
 
 #: logic/treeview/treeModel.cpp:474
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr "Demo"
+msgstr ""
 
 #: main.cpp:45
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr ""
 
 #: main.cpp:49
 #, kde-format
 msgid "Note taking and management application"
-msgstr "Muistiinpanojen hallintasovellus"
+msgstr ""
 
 #: main.cpp:53
 #, kde-format
 msgid "(c) 2022-2025"
-msgstr "© 2022–2025"
+msgstr ""
 
 #: main.cpp:54
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
-msgstr "Louis Schul"
+msgstr ""
 
 #: main.cpp:59
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Tommi Nieminen"
+msgstr ""
 
 #: main.cpp:59
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "translator@legisign.org"
-
-#~ msgctxt "@title:dialog, Confirmation for deletion of a note"
-#~ msgid "Delete Note Confirmation"
-#~ msgstr "Vahvista muistiinpanon poistaminen"
-
-#~ msgctxt "@title:dialog, Confirmation for deletion of a folder"
-#~ msgid "Delete Folder Confirmation"
-#~ msgstr "Vahvista kansion poistaminen"
-
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#~ msgctxt "@info"
-#~ msgid "Are you sure you want to delete this note <filename>%1</filename>?"
-#~ msgstr "Haluatko varmasti poistaa muistiinpanon <filename>%1</filename>?"
-
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#~ msgctxt "@info"
-#~ msgid "Are you sure you want to delete this folder <filename>%1</filename>?"
-#~ msgstr "Haluatko varmasti poistaa kansion <filename>%1</filename>?"
-
-#~ msgctxt "@label:textbox"
-#~ msgid "New Folder name:"
-#~ msgstr "Uuden kansion nimi:"
-
-#~ msgctxt "@label:textbox, the default note name"
-#~ msgid "New Note name:"
-#~ msgstr "Uuden muistiinpanon nimi:"
-
-#~ msgctxt "exemple"
-#~ msgid "Quote"
-#~ msgstr "Lainaus"
-
-#, fuzzy
-#~| msgid "Move"
-#~ msgctxt "@title:dialog, to move a folder/note"
-#~ msgid "Move"
-#~ msgstr "Siirrä"
-
-#~ msgctxt ""
-#~ "@subtitle:dialog, Storage as in 'the folder where all the notes will be "
-#~ "stored'"
-#~ msgid ""
-#~ "It looks like the selected folder is not a KleverNotes storage.\n"
-#~ "\n"
-#~ "Please choose a location for your future KleverNotes storage or select an "
-#~ "existing one."
-#~ msgstr ""
-#~ "Valitsemasi kansio ei vaikuta KleverNotes-talletustilalta.\n"
-#~ "\n"
-#~ "Anna uuden tai olemassa olevan KleverNotes-talletustilan sijainti."
-
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#~ msgctxt "@info, as in 'A note category'"
-#~ msgid ""
-#~ "Are you sure you want to delete the category <filename>%1</filename>?"
-#~ msgstr "Haluatko varmasti poistaa luokan <filename>%1</filename>?"
-
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#~ msgctxt "@info, as in 'A note group'"
-#~ msgid "Are you sure you want to delete the group <filename>%1</filename>?"
-#~ msgstr "Haluatko varmasti poistaa ryhmän <filename>%1</filename>?"
-
-#~ msgctxt "@title:dialog, as in 'A note category'"
-#~ msgid "Delete Category Confirmation"
-#~ msgstr "Vahvista luokan poistaminen"
-
-#~ msgctxt "@title:dialog, as in 'A note category'"
-#~ msgid "Delete Group Confirmation"
-#~ msgstr "Vahvista ryhmän poistaminen"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "This action can not be reverted."
-#~ msgstr "Tätä toimintoa ei voi kumota."
-
-#~ msgctxt "@label:textbox"
-#~ msgid "Header:"
-#~ msgstr "Ylätunniste:"
-
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#~ msgctxt "@subtitle:dialog, as in 'A note group'"
-#~ msgid "Where do you want to move this group ?"
-#~ msgstr "Minne haluat ryhmän siirtää?"
-
-#~ msgctxt "@title:dialog, to move a group/note"
-#~ msgid "Move"
-#~ msgstr "Siirrä"
-
-#~ msgctxt "@subtitle:dialog, as in 'A note category'"
-#~ msgid "This category already exists."
-#~ msgstr "Tämä luokka on jo olemassa."
-
-#~ msgctxt "@subtitle:dialog, as in 'A note group'"
-#~ msgid "This group already exists."
-#~ msgstr "Tämä ryhmä on jo olemassa."
-
-#~ msgctxt "@label:textbox, the default note category name"
-#~ msgid "New Category name:"
-#~ msgstr "Uuden luokan nimi:"
-
-#~ msgctxt "@label:textbox, the default note group name"
-#~ msgid "New Group name:"
-#~ msgstr "Uuden ryhmän nimi:"
-
-#~ msgctxt "as in 'A note category'"
-#~ msgid "Create a new category"
-#~ msgstr "Luo uusi luokka"
-
-#~ msgctxt "as in 'A note group'"
-#~ msgid "Create a new group"
-#~ msgstr "Luo uusi ryhmä"
-
-#~ msgctxt "as in 'A note category'"
-#~ msgid "New category"
-#~ msgstr "Uusi luokka"
-
-#~ msgctxt "as in 'A note group'"
-#~ msgid "New group"
-#~ msgstr "Uusi ryhmä"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "Category"
-#~ msgstr "Luokka"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "Group"
-#~ msgstr "Ryhmä"
-
-#~ msgctxt ""
-#~ "exemple, a note path ('/' are important), Category as in 'a category, "
-#~ "Group 'a group', Note 'a note'"
-#~ msgid "Category/Group/Note"
-#~ msgstr "Luokka/ryhmä/muistiinpano"
-
-#~ msgctxt "exemple"
-#~ msgid "header"
-#~ msgstr "ylätunniste"
-
-#~ msgid "An error occurred while trying to create the group."
-#~ msgstr "Yritettäessä luoda ryhmää sattui virhe."
-
-#~ msgid "An error occurred while trying to create the category."
-#~ msgstr "Yritettäessä luoda luokkaa sattui virhe."
-
-#~ msgctxt "@title, general text editor settings"
-#~ msgid "Editor"
-#~ msgstr "Muokkain"
-
-#~ msgctxt ""
-#~ "@label, tab (inside tab bar), all settings related to the general "
-#~ "appearance of the app"
-#~ msgid "Appearance"
-#~ msgstr "Ulkoasu"
-
-# *** TARKISTA: Olisiko tässä avuksi, jos noita sanoja voisi taivuttaa? Ainut ongelma on ilmeisesti ”luokka”, jossa on astevaihtelu.
-#, fuzzy
-#~| msgctxt ""
-#~| "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a "
-#~| "note group) or 'note' (a note)"
-#~| msgid "Are you sure you want to delete this %1 ?"
-#~ msgctxt "@subtitle:dialog, as in 'A note category'"
-#~ msgid "Where do you want to move this category ?"
-#~ msgstr "%1: haluatko varmasti poistaa?"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Warning"
-#~ msgstr "Varoitus"
-
-#~ msgctxt "@label:checkbox"
-#~ msgid "Do not show again"
-#~ msgstr "Älä näytä enää"
-
-#~ msgctxt "@title:dialog"
-#~ msgid "Color Picker"
-#~ msgstr "Värivalitsin"
-
-#~ msgctxt "Name, as in 'A note category'"
-#~ msgid "category"
-#~ msgstr "luokka"
-
-#~ msgctxt "Name, as in 'A note group'"
-#~ msgid "group"
-#~ msgstr "ryhmä"
-
-#~ msgctxt "Name, as in 'A note'"
-#~ msgid "note"
-#~ msgstr "huomautus"
-
-#~ msgctxt ""
-#~ "@subtitle:dialog, %1 can be 'category' (a note category), 'group' (a note "
-#~ "group) or 'note' (a note)"
-#~ msgid "Your %1 name starts with a dot, "
-#~ msgstr "%1: nimi alkaa pisteellä, "
-
-#~ msgid "Application Description"
-#~ msgstr "Sovelluksen kuvaus"
-
-#~ msgid "Name, as in 'A note'"
-#~ msgstr "Nimi, esimerkiksi ”Muistiinpano”"
-
-#~ msgctxt ""
-#~ "@title, display as in 'the note display' where you can visualize the note"
-#~ msgid "Display"
-#~ msgstr "Näkymä"
-
-#, fuzzy
-#~| msgctxt "@title:dialog"
-#~| msgid "KleverNotes painting"
-#~ msgctxt "@title"
-#~ msgid "KleverNotes plugins"
-#~ msgstr "KleverNotes-maalaus"
-
-#~ msgid "Your "
-#~ msgstr "Oma"
-
-#~ msgid "This "
-#~ msgstr "Tämä"
-
-#~ msgid "Select Number"
-#~ msgstr "Valitse luku"
-
-#~ msgid "Change storage path"
-#~ msgstr "Muuta talletustilan sijaintia"
+msgstr ""
