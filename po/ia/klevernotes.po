@@ -1,14 +1,14 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
 #
-# SPDX-FileCopyrightText: 2024, 2025 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 giovanni <g.sora@tiscali.it>
 # giovanni <g.sora@tiscali.it>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2025-09-02 17:57+0200\n"
+"PO-Revision-Date: 2026-01-09 15:59+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -47,9 +47,7 @@ msgid "Delete the folder <filename>%1</filename>?"
 msgstr "Move <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
-#, fuzzy, kde-format
-#| msgctxt "@label:check"
-#| msgid "Delete this permanently."
+#, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
 msgstr "Dele permanentemente"
@@ -1411,9 +1409,7 @@ msgid "Bold"
 msgstr "Grasse"
 
 #: contents/ui/textEditor/CheatSheet.qml:59
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Texto grasse"
@@ -1447,18 +1443,14 @@ msgstr "Lista ordinate"
 
 #: contents/ui/textEditor/CheatSheet.qml:77
 #: contents/ui/textEditor/CheatSheet.qml:84
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Prime elemento"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #: contents/ui/textEditor/CheatSheet.qml:85
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Secunde elemento"
