@@ -29,7 +29,7 @@ msgstr "Confirmeu la supressió de nota"
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr "Confirmeu la supressió de carpeta"
+msgstr "Confirmeu la supressió de la carpeta"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -229,7 +229,7 @@ msgstr "Busca una carpeta:"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr "Seleccioneu un nom"
+msgstr "Trieu un nom"
 
 #: contents/ui/dialogs/NamingDialog.qml:58
 #, kde-format
@@ -277,7 +277,7 @@ msgstr "Esta carpeta ja existix."
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr "Seleccioneu un altre nom."
+msgstr "Trieu un altre nom."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -401,8 +401,8 @@ msgid ""
 msgstr ""
 "Pareix que esta és la primera vegada que utilitzeu esta aplicació!\n"
 "\n"
-"Seleccioneu una ubicació per a l'emmagatzematge futur de KleverNotes o "
-"seleccioneu-ne un ja existent."
+"Trieu una ubicació per a l'emmagatzematge futur de KleverNotes o trieu-ne un "
+"ja existent."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
 #, kde-format
@@ -534,7 +534,7 @@ msgstr "Opcional"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
-msgstr "Seleccioneu un URL"
+msgstr "Trieu un URL"
 
 #: contents/ui/Main.qml:28
 #, kde-format
@@ -556,7 +556,7 @@ msgstr "Us donem la benvinguda a KleverNotes!"
 #: contents/ui/pages/MainPage.qml:129
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr "Creeu o seleccioneu una nota per a començar a treballar!"
+msgstr "Creeu o trieu una nota per a començar a treballar!"
 
 #: contents/ui/pages/PaintingPage.qml:24
 #, kde-format
@@ -629,8 +629,8 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
-"Seleccioneu una ubicació per a l'emmagatzematge futur de KleverNotes o "
-"seleccioneu-ne un ja existent.\n"
+"Trieu una ubicació per a l'emmagatzematge futur de KleverNotes o trieu-ne un "
+"ja existent.\n"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:50
 #, kde-format
@@ -1807,7 +1807,7 @@ msgstr "Personalitzats"
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr "S'ha produït un error en intentar copiar este PDF."
+msgstr "S'ha produït un error mentre s'intentava copiar este PDF."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
@@ -1818,37 +1818,37 @@ msgstr "Notes"
 #: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr "S'ha produït un error en intentar eliminar este element."
+msgstr "S'ha produït un error mentre s'intentava eliminar este element."
 
 #: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr "S'ha produït un error en intentar moure este element."
+msgstr "S'ha produït un error mentre s'intentava moure este element."
 
 #: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr "S'ha produït un error en intentar canviar de nom este element."
+msgstr "S'ha produït un error mentre s'intentava canviar de nom este element."
 
 #: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr "S'ha produït un error en intentar crear la nota."
+msgstr "S'ha produït un error mentre s'intentava crear la nota."
 
 #: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr "S'ha produït un error en intentar crear esta carpeta."
+msgstr "S'ha produït un error mentre s'intentava crear esta carpeta."
 
 #: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr "S'ha produït un error en intentar crear l'emmagatzematge."
+msgstr "S'ha produït un error mentre s'intentava crear l'emmagatzematge."
 
 #: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr "S'ha produït un error en intentar crear la nota de mostra."
+msgstr "S'ha produït un error mentre s'intentava crear la nota de mostra."
 
 #: logic/treeview/treeModel.cpp:474
 #, kde-format
