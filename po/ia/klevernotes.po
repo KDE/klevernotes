@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2026-01-09 15:59+0100\n"
+"PO-Revision-Date: 2026-01-20 15:33+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -31,20 +31,16 @@ msgid "Confirm Folder Deletion"
 msgstr "Confirma deletion de Dossier"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr "Move <filename>%1</filename>?"
+msgstr "Dele le nota  <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:dialog, to move a folder/note"
-#| msgid "Move <filename>%1</filename>?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr "Move <filename>%1</filename>?"
+msgstr "Dele le dossier <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
@@ -277,12 +273,10 @@ msgid "This folder already exists."
 msgstr "Iste dossier jam existe"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@subtitle:dialog"
-#| msgid "Please choose another name for it."
+#, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr "Pro favor tu selige un altere nomine per illo."
+msgstr "Pro favor tu selige un altere nomine."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -318,12 +312,10 @@ msgid "Print to PDF"
 msgstr "Imprime a PDF"
 
 #: contents/ui/dialogs/PrintingDialog.qml:47
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Disable due to flatpak limitation."
+#, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr "Impedite debite a limitationes de flatpack"
+msgstr "Impedite debite a limitationes de Flatpack."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
@@ -614,18 +606,15 @@ msgid "Background"
 msgstr "Fundo"
 
 #: contents/ui/pages/PrintingPage.qml:108
-#, fuzzy, kde-format
-#| msgid "This could cause visual artifact near the end of the pdf."
+#, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr "Isto poterea causar disordine vicin alfin del pdf."
+msgstr "Isto poterea causar manufactos visual vicin al fin del PDF."
 
 #: contents/ui/pages/PrintingPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "@title:dialog, choose the location of where the file will be saved"
-#| msgid "Save note as pdf"
+#, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
-msgstr "Salveguarda nota como pdf"
+msgstr "Salveguarda nota como PDF"
 
 #: contents/ui/pages/SettingsPage.qml:15
 #, kde-format
@@ -865,12 +854,10 @@ msgid "New Folder"
 msgstr "Nove dossier"
 
 #: contents/ui/settings/GeneralTab.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new folder"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
-msgstr "Crea un nove dossier"
+msgstr "Nomine predefinite per nove dossieres:"
 
 #: contents/ui/settings/GeneralTab.qml:87 contents/ui/sideBar/ActionBar.qml:222
 #, kde-format
@@ -878,12 +865,10 @@ msgid "New Note"
 msgstr "Nove Nota"
 
 #: contents/ui/settings/GeneralTab.qml:88
-#, fuzzy, kde-format
-#| msgctxt "@tooltip"
-#| msgid "Create a new note"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
-msgstr "Crea un nove nota"
+msgstr "Nomine predefinite per nove notas"
 
 #: contents/ui/settings/GeneralTab.qml:108
 #, kde-format
@@ -1642,9 +1627,7 @@ msgid "Note link"
 msgstr "Ligamine de nota"
 
 #: contents/ui/textEditor/CheatSheet.qml:183
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "<path to note>/<note name>"
+#, kde-format
 msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
@@ -1820,10 +1803,9 @@ msgid "Custom"
 msgstr "Personalisate"
 
 #: logic/printing/printingHelper.cpp:34
-#, fuzzy, kde-format
-#| msgid "An error occurred while trying to copy this pdf."
+#, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr "Un error occurreva durante que il tentava copiar iste pdf."
+msgstr "Un error occurreva durante que il tentava copiar iste PDF."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
