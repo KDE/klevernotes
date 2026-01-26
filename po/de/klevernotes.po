@@ -5,20 +5,21 @@
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
+# SPDX-FileCopyrightText: 2026 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2025-07-09 17:13+0200\n"
-"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
+"PO-Revision-Date: 2026-01-22 22:21+0100\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -58,7 +59,7 @@ msgstr "Keine Sticker"
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No emojis"
-msgstr "Keine Emoji"
+msgstr "Keine Emojis"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
@@ -156,7 +157,7 @@ msgstr "KleverNotes-Malen"
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
+msgstr "Sie verlassen diese Seite, ohne Ihre Zeichnung zu speichern!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
 #, kde-format
@@ -169,13 +170,13 @@ msgstr "Möchten Sie Ihre Änderungen vor dem Verlassen speichern?"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr ""
+msgstr "Erstellen Sie Ihre Verknüpfung"
 
 #: contents/ui/dialogs/LinkDialog.qml:46
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Link local file"
-msgstr "Lokales Datei verknüpfen"
+msgstr "Verknüpfung zu lokaler Datei"
 
 #: contents/ui/dialogs/LinkDialog.qml:62 contents/ui/dialogs/URLDialog.qml:32
 #, kde-format
@@ -295,7 +296,8 @@ msgstr ""
 msgctxt "@subtitle:dialog"
 msgid "Please remove the '/' or choose another name."
 msgstr ""
-"Bitte den Schrägstriche („/“) entfernen oder einen anderen Namen wählen."
+"Bitte entfernen Sie den Schrägstrich („/“) oder wählen Sie einen anderen "
+"Namen."
 
 #: contents/ui/dialogs/PrintingDialog.qml:21
 #, kde-format
@@ -319,7 +321,7 @@ msgstr "In PDF-Datei drucken"
 #, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr ""
+msgstr "Aufgrund von Flatpak-Einschränkungen deaktiviert."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
 #, kde-format
@@ -346,7 +348,7 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
-"Wenn Sie auf die Schaltfläche „Übernehmen“ klicken, stimmen Sie der "
+"Wenn Sie auf die Schaltfläche „Anwenden“ klicken, stimmen Sie der "
 "Konvertierung des Speichers in die neue Struktur zu (dies sollte kein "
 "destruktiver Vorgang sein)."
 
@@ -404,10 +406,10 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
-"Es scheint als würde diese Anwendung erstmalig gestartet werden.\n"
+"Es scheint, als würde diese Anwendung erstmalig gestartet werden.\n"
 "\n"
-"Bitte einen neuen Speicherort für den KleverNotes angeben oder einen "
-"vorhandenen auswählen."
+"Bitte wählen Sie einen neuen oder einen vorhandenen Speicherort für den "
+"KleverNotes-Speicher aus."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
 #, kde-format
@@ -556,13 +558,14 @@ msgstr "Willkommen"
 #: contents/ui/pages/MainPage.qml:119
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "Willkommen zu KleverNotes."
+msgstr "Willkommen bei KleverNotes!"
 
 #: contents/ui/pages/MainPage.qml:129
 #, kde-format
 msgid "Create or select a note to start working !"
 msgstr ""
-"Bitte eine Notiz erstellen oder auswählen, um mit der Arbeit zu beginnen."
+"Erstellen Sie eine Notiz oder wählen Sie eine aus, um mit der Arbeit zu "
+"beginnen!"
 
 #: contents/ui/pages/PaintingPage.qml:24
 #, kde-format
@@ -615,7 +618,7 @@ msgstr "Hintergrund"
 #: contents/ui/pages/PrintingPage.qml:108
 #, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr ""
+msgstr "Dies kann zu visuellen Artefakten gegen Ende der PDF-Datei führen."
 
 #: contents/ui/pages/PrintingPage.qml:119
 #, kde-format
@@ -635,8 +638,8 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one.\n"
 msgstr ""
-"Bitte einen neuen Speicherort für den KleverNotes angeben oder einen "
-"vorhandenen auswählen.\n"
+"Bitte wählen Sie einen neuen oder einen vorhandenen Speicherort für den "
+"KleverNotes-Speicher aus.\n"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:50
 #, kde-format
@@ -652,7 +655,7 @@ msgstr "Schriftart:"
 #: contents/ui/painting/DrawingToolBarOptions.qml:116
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "Füllmodus"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:126
 #, kde-format
@@ -664,13 +667,13 @@ msgstr "Füllen"
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr "Außenlinie"
+msgstr "Umriss"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:128
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr "Außenlinie und Füllen"
+msgstr "Umriss und Füllung"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:142
 #, kde-format
@@ -751,7 +754,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Anpassungsfähige Markierungsgröße aktivieren"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:25
 #, kde-format
@@ -760,6 +763,8 @@ msgctxt ""
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
 msgstr ""
+"Mit der anpassungsfähigen Größe wird sich die Größe der Markierung ihrer "
+"Umgebung anpassen."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:26
 #, kde-format
@@ -770,6 +775,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Beispiel: Eine Markierung innerhalb einer Kopfzeile wird so groß sein wie "
+"der Rest des Kopfzeilentextes."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:40
 #, kde-format
@@ -777,7 +784,7 @@ msgctxt ""
 "@label:spinbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Tag scale"
-msgstr ""
+msgstr "Skalierung der Markierung"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:82
 #, kde-format
@@ -823,13 +830,13 @@ msgstr "Anzahl der Leerzeichen"
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr "Editor-Hervorhebung"
+msgstr "Hervorhebungen im Editor"
 
 #: contents/ui/settings/EditorTab.qml:85
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr "Editor-Hervorhebung aktivieren"
+msgstr "Hervorhebungen im Editor aktivieren"
 
 #: contents/ui/settings/GeneralTab.qml:24
 #, kde-format
@@ -1461,7 +1468,7 @@ msgstr "Quelltext"
 #, kde-format
 msgctxt "example"
 msgid "Inline code"
-msgstr ""
+msgstr "Eingebetteter Quelltext"
 
 #: contents/ui/textEditor/CheatSheet.qml:96
 #, kde-format
@@ -1553,7 +1560,7 @@ msgstr "Zelle 3"
 #: contents/ui/textEditor/CheatSheet.qml:131
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Umschlossener Quelltext-Block"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
@@ -1581,13 +1588,13 @@ msgstr "Aufgabenliste"
 #, kde-format
 msgctxt "example"
 msgid "Make more foo"
-msgstr ""
+msgstr "Mache dies"
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgctxt "example"
 msgid "Make more bar"
-msgstr ""
+msgstr "Mache das"
 
 #: contents/ui/textEditor/CheatSheet.qml:152
 #, kde-format
@@ -1639,7 +1646,7 @@ msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<Pfad zur Notiz>/<Name der Notiz>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:186
@@ -1683,7 +1690,7 @@ msgstr "Notiz als HTML speichern"
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Übersicht verknüpfter Notizen"
 
 #: contents/ui/textEditor/NotesMap.qml:37
 #, kde-format
@@ -1717,7 +1724,7 @@ msgstr "Kopfzeile"
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr ""
+msgstr "Erledigte löschen"
 
 #: contents/ui/todoEditor/ToDoView.qml:77
 #, kde-format
@@ -1735,6 +1742,13 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"Diese Datei ist eine Kopie des standardmäßigen CSS-Stils für die Anzeige von "
+"Notizen.            \n"
+"Sie können sie nach Belieben bearbeiten oder eine eigene Datei "
+"erstellen.            \n"
+"Hinweis: Jeder Stil muss einen eigenen Namen haben.            \n"
+"*/\n"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:152
 #: logic/parser/plugins/emoji/emojiModel.cpp:210
@@ -1806,7 +1820,7 @@ msgstr "Benutzerdefiniert"
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr ""
+msgstr "Beim Versuch, diese PDF-Datei zu kopieren, ist ein Fehler aufgetreten."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
 #, kde-format
@@ -1817,43 +1831,45 @@ msgstr "Notizen"
 #: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Beim Versuch, dieses Element zu entfernen, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:251
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr ""
+"Beim Versuch, dieses Element zu verschieben, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:355
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Beim Versuch, dieses Element umzubenennen, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:441
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Beim Versuch, die Notiz zu erstellen, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:453
 #, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr ""
+msgstr "Beim Versuch, diesen Ordner zu erstellen, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:461
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Beim Versuch, den Speicher zu erstellen, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:462
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr ""
+"Beim Versuch, die Beispielnotiz zu erstellen, ist ein Fehler aufgetreten."
 
 #: logic/treeview/treeModel.cpp:474
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Beispielnotiz"
 
 #: main.cpp:45
 #, kde-format
@@ -1864,7 +1880,7 @@ msgstr "KleverNotes"
 #: main.cpp:49
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Anwendung zur Erstellung und Verwaltung von Notizen"
 
 #: main.cpp:53
 #, kde-format
