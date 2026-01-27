@@ -92,7 +92,7 @@
     <p xml:lang="ar">ملاحظات ذكية هو تطبيق لتدوين الملاحظات وإدارتها لأجهزتك المحمولة والمكتبية. يستخدم لغة مارك داون ويسمح لك بمعاينة محتواك.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
     <p xml:lang="ca-valencia">KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Utilitza Markdown i permet previsualitzar el contingut.</p>
-    <p xml:lang="de">KleverNotes ist eine Anwendung zur Erfassung und Verwaltung von Notizen für Ihre Mobil- und Desktopgeräte. Sie verwendet Markdown und ermöglicht Ihnen eine Vorschau Ihres Inhalts.</p>
+    <p xml:lang="de">KleverNotes ist eine Anwendung zur Erstellung und Verwaltung von Notizen für Ihre Mobil- und Desktop-Geräte. Sie verwendet Markdown und bietet Ihnen eine formatierte Vorschau des Inhalts an.</p>
     <p xml:lang="en-GB">KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="eo">KleverNotes estas aplikaĵo por prenado kaj administrado de notoj por viaj porteblaj kaj labortablaj aparatoj. Ĝi uzas markdown kaj permesas vin antaŭrigardi vian enhavon.</p>
     <p xml:lang="es">KleverNotes es una aplicación para tomar notas y gestionarlas para el escritorio y dispositivos móviles. Usa markdown y permite vistas previas del contenido.</p>
@@ -124,6 +124,7 @@
       <caption xml:lang="ar">الصفحة الرئيسة على سطح المكتب</caption>
       <caption xml:lang="ca">Pàgina principal al PC d'escriptori</caption>
       <caption xml:lang="ca-valencia">Pàgina principal al PC d'escriptori</caption>
+      <caption xml:lang="de">Hauptseite auf dem Desktop-Rechner</caption>
       <caption xml:lang="es">Página principal del equipo de escritorio</caption>
       <caption xml:lang="eu">Orri nagusia mahaigaineko PCrako</caption>
       <caption xml:lang="fi">Pääsivu tietokoneella</caption>
@@ -212,7 +213,7 @@
       <caption xml:lang="ca">Pàgina de dibuix</caption>
       <caption xml:lang="ca-valencia">Pàgina de dibuix</caption>
       <caption xml:lang="cs">Stránka pro kreslení</caption>
-      <caption xml:lang="de">Malseite</caption>
+      <caption xml:lang="de">Zeichnungsseite</caption>
       <caption xml:lang="en-GB">Drawing page</caption>
       <caption xml:lang="eo">Paĝo de desegnado</caption>
       <caption xml:lang="es">Página de dibujo</caption>
