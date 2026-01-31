@@ -218,18 +218,34 @@ void NoteTreeModel::removeFromTree(const QModelIndex &index, const bool permanen
     const QString todoPath = dirPath + slash + name + todoEnding;
 
     const bool todoExists = QDir().exists(todoPath);
-    if (!permanent) {
-        auto *job = isNote && todoExists ? KIO::trash({QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(todoPath)}) : KIO::trash(QUrl::fromLocalFile(rowPath));
 
+    if (!permanent) {
+        KIO::CopyJob *job = nullptr;
+
+        if (isNote && todoExists) {
+            job = KIO::trash({QUrl::fromLocalFile(rowPath), QUrl::fromLocalFile(todoPath)});
+        } else if (isNote) {
+            job = KIO::trash(QUrl::fromLocalFile(rowPath));
+        } else {
+            KIO::trash(QUrl::fromLocalFile(rowPath));
+        }
         job->start();
 
         connect(job, &KJob::result, this, [job, index, this] {
             handleRemoveItem(index, !job->error());
         });
     } else {
-        const bool succes = isNote && todoExists ? (QFile(rowPath).remove() && QFile(todoPath).remove()) : QDir(rowPath).removeRecursively();
+        bool success = false;
+        if (isNote) {
+            success = QFile(rowPath).remove();
+            if (success && todoExists) {
+                success = QFile(todoPath).remove();
+            }
+        } else {
+            success = QDir(rowPath).removeRecursively();
+        }
 
-        handleRemoveItem(index, succes);
+        handleRemoveItem(index, success);
     }
 }
 
