@@ -36,11 +36,14 @@ RowLayout {
     // WORK-AROUND for : https://invent.kde.org/office/klevernotes/-/issues/26
     Connections {
         target: applicationWindow()
-        onActiveChanged: { web_view.width += 1 ; web_view.width -= 1 } 
+        function onActiveChanged() {
+            web_view.width += 1
+            web_view.width -= 1
+        }
     }
 
-    // WARNING, HACK: 
-    // Do not remove, this prevent the WebEngineView from taking 
+    // WARNING, HACK:
+    // Do not remove, this prevent the WebEngineView from taking
     //to much space and escaping from the Card !
     Item {
         Layout.fillWidth: true
