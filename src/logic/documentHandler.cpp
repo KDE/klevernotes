@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2026 Louis Schul <schul9louis@gmail.com>
 
 #include "documentHandler.h"
-// #include <QDebug>
+
+// Qt includes
 #include <QFile>
 #include <QJsonDocument>
 #include <QTextStream>
-#include <qstringliteral.h>
 
 DocumentHandler::DocumentHandler(QObject *parent)
     : QObject(parent)
@@ -23,8 +23,7 @@ QString DocumentHandler::readFile(const QString &path)
         while (!stream.atEnd()) {
             line.append(stream.readLine() + QStringLiteral("\n"));
         }
-        if (line.length() > 3)
-            line.remove(line.length() - 1, 1); // Remove the last \n
+        line.removeLast();
     }
     file.close();
 
