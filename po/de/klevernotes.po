@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2026-02-01 00:43+0000\n"
 "PO-Revision-Date: 2026-01-22 22:21+0100\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1379,8 +1379,8 @@ msgid "Markdown Cheat Sheet"
 msgstr "Markdown-Kurzhilfe"
 
 #: contents/ui/textEditor/CheatSheet.qml:38
-#: contents/ui/textEditor/TextDisplay.qml:74
-#: contents/ui/textEditor/TextDisplay.qml:104
+#: contents/ui/textEditor/TextDisplay.qml:77
+#: contents/ui/textEditor/TextDisplay.qml:107
 #, kde-format
 msgid "Copied !"
 msgstr "Kopiert."
@@ -1705,7 +1705,7 @@ msgid "Missing notes"
 msgstr "Fehlende Notizen"
 
 #: contents/ui/textEditor/NotesMap.qml:75
-#: contents/ui/textEditor/TextDisplay.qml:124
+#: contents/ui/textEditor/TextDisplay.qml:127
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1822,7 +1822,7 @@ msgstr "Benutzerdefiniert"
 msgid "An error occurred while trying to copy this PDF."
 msgstr "Beim Versuch, diese PDF-Datei zu kopieren, ist ein Fehler aufgetreten."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:480
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
@@ -1833,39 +1833,39 @@ msgstr "Notizen"
 msgid "An error occurred while trying to remove this item."
 msgstr "Beim Versuch, dieses Element zu entfernen, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:251
+#: logic/treeview/treeModel.cpp:267
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr ""
 "Beim Versuch, dieses Element zu verschieben, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:355
+#: logic/treeview/treeModel.cpp:371
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Beim Versuch, dieses Element umzubenennen, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:441
+#: logic/treeview/treeModel.cpp:457
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Beim Versuch, die Notiz zu erstellen, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:453
+#: logic/treeview/treeModel.cpp:469
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr "Beim Versuch, diesen Ordner zu erstellen, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:461
+#: logic/treeview/treeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Beim Versuch, den Speicher zu erstellen, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:462
+#: logic/treeview/treeModel.cpp:478
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr ""
 "Beim Versuch, die Beispielnotiz zu erstellen, ist ein Fehler aufgetreten."
 
-#: logic/treeview/treeModel.cpp:474
+#: logic/treeview/treeModel.cpp:490
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"

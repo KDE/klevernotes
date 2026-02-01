@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2026-02-01 00:43+0000\n"
 "PO-Revision-Date: 2025-11-30 15:38+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1364,8 +1364,8 @@ msgid "Markdown Cheat Sheet"
 msgstr "Markdown-luntti"
 
 #: contents/ui/textEditor/CheatSheet.qml:38
-#: contents/ui/textEditor/TextDisplay.qml:74
-#: contents/ui/textEditor/TextDisplay.qml:104
+#: contents/ui/textEditor/TextDisplay.qml:77
+#: contents/ui/textEditor/TextDisplay.qml:107
 #, kde-format
 msgid "Copied !"
 msgstr "Kopioitu!"
@@ -1690,7 +1690,7 @@ msgid "Missing notes"
 msgstr "Puuttuvat muistiinpanot"
 
 #: contents/ui/textEditor/NotesMap.qml:75
-#: contents/ui/textEditor/TextDisplay.qml:124
+#: contents/ui/textEditor/TextDisplay.qml:127
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
@@ -1805,7 +1805,7 @@ msgstr "Mukautettu"
 msgid "An error occurred while trying to copy this PDF."
 msgstr "Yritettäessä kopioida tätä PDF:ää sattui virhe."
 
-#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:464
+#: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:480
 #, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
@@ -1816,37 +1816,37 @@ msgstr "Muistiinpanot"
 msgid "An error occurred while trying to remove this item."
 msgstr "Yritettäessä poistaa kohdetta sattui virhe."
 
-#: logic/treeview/treeModel.cpp:251
+#: logic/treeview/treeModel.cpp:267
 #, kde-format
 msgid "An error occurred while trying to move this item."
 msgstr "Yritettäessä siirtää kohdetta sattui virhe."
 
-#: logic/treeview/treeModel.cpp:355
+#: logic/treeview/treeModel.cpp:371
 #, kde-format
 msgid "An error occurred while trying to rename this item."
 msgstr "Yritettäessä muuttaa kohteen nimeä sattui virhe."
 
-#: logic/treeview/treeModel.cpp:441
+#: logic/treeview/treeModel.cpp:457
 #, kde-format
 msgid "An error occurred while trying to create the note."
 msgstr "Yritettäessä luoda muistiinpanoa sattui virhe."
 
-#: logic/treeview/treeModel.cpp:453
+#: logic/treeview/treeModel.cpp:469
 #, kde-format
 msgid "An error occurred while trying to create this folder."
 msgstr "Yritettäessä luoda kansiota sattui virhe."
 
-#: logic/treeview/treeModel.cpp:461
+#: logic/treeview/treeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
 msgstr "Yritettäessä luoda talletustilaa sattui virhe."
 
-#: logic/treeview/treeModel.cpp:462
+#: logic/treeview/treeModel.cpp:478
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
 msgstr "Yritettäessä luoda demoa sattui virhe."
 
-#: logic/treeview/treeModel.cpp:474
+#: logic/treeview/treeModel.cpp:490
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
