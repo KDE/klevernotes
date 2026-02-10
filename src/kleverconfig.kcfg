@@ -45,6 +45,10 @@
         <entry name="invisibleTools" type="IntList">
             <label>The list of index of invisible text actions</label>
         </entry>
+        <entry name="sortByLastModified" type="Bool">
+            <label>Whether or not the notes in each folder in Sidebar should be sorted by last modified date</label>
+            <default>false</default>
+        </entry>
     </group>
 
     <group name="Appearance">

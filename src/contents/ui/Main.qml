@@ -110,6 +110,14 @@ Kirigami.ApplicationWindow {
             dialog = null
         }
     }
+    Connections{
+        target : KleverConfig
+
+        function onSortByLastModifiedChanged(){
+            saveState()
+            NoteTreeModel.initModel()
+        }
+    }
 
     function saveState() {
         App.saveWindowGeometry(root)

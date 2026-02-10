@@ -66,7 +66,7 @@ Kirigami.OverlayDrawer {
             treeView: treeView
             sideBarWide: drawer.isWide
         }
-        
+
         Loader {
             active: !drawer.isWide
             anchors {

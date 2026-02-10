@@ -103,6 +103,18 @@ ColumnLayout {
             }
         }
     }
+    FormCard.FormCard{
+        Layout.fillWidth: true
+        FormCard.FormSwitchDelegate{
+            id: sortingLastModifiedSwitch
+            text: i18nc("@label:switch", "Sort Notes by Last Modified")
+            checked: KleverConfig.sortByLastModified
+
+            onCheckedChanged: {
+                KleverConfig.sortByLastModified = checked
+            }
+        }
+    }
 
     FormCard.FormHeader {
         title: i18nc("@title, general text toolbar settings", "Toolbar")

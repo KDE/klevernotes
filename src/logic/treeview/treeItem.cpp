@@ -102,9 +102,17 @@ TreeItem::TreeItem(const QString &path, NoteTreeModel *model, TreeItem *parentIt
     m_tempChildrenNames = {}; // No need to keep it
     m_tempChildrenInfo = {}; // No need to keep it
 
-    orderChildren();
-
     saveMetaData();
+
+    handleOrdering();
+
+}
+
+void TreeItem::handleOrdering(){
+    if(KleverConfig::sortByLastModified())
+        orderChildrenByLastModified();
+    else
+        orderChildren();
 }
 
 void TreeItem::setMetaData()
@@ -126,6 +134,7 @@ void TreeItem::setMetaData()
 
     m_tempChildrenInfo = metadata[QStringLiteral("content")].toArray();
     m_tempChildrenNames = getChildrenNames(m_tempChildrenInfo);
+
 }
 
 void TreeItem::saveMetaData()
@@ -137,6 +146,7 @@ void TreeItem::saveMetaData()
     if (!m_color.isEmpty()) {
         metadata[QStringLiteral("color")] = m_color;
     }
+
     QJsonArray content;
     for (const auto &child : m_children) {
         if (!child->m_isNote) {
@@ -167,9 +177,29 @@ int TreeItem::compare(const QString &name, bool isNote) const
     return QString::compare(m_name, name, Qt::CaseSensitive);
 }
 
+int TreeItem::compareByLastModified(const QString &filepath) const
+{
+    /*
+     * NOTE: Folders also have a last modified timestamp
+     * but they only update when files are added or removed or renamed in a folder
+    */
+    QFileInfo thisInfo(m_path);
+    QFileInfo otherInfo(filepath);
+    QDateTime thisModified = thisInfo.lastModified();
+    QDateTime otherModified = otherInfo.lastModified();
+    qint64 x = otherModified.msecsTo(thisModified);
+    if(x == 0) return 0;
+    else return x > 0 ? 1 : -1;
+}
+
 int TreeItem::compare(const std::unique_ptr<TreeItem> &other) const
 {
     return compare(other->m_name, other->m_isNote);
+}
+
+int TreeItem::compareByLastModified(const std::unique_ptr<TreeItem> &other) const
+{
+    return compareByLastModified(other->m_path);
 }
 
 int TreeItem::getNewChildIndex(const QString &name, bool isNote) const
@@ -186,6 +216,13 @@ void TreeItem::orderChildren()
 {
     std::sort(m_children.begin(), m_children.end(), [](auto const &a, auto const &b) {
         return a->compare(b) < 0;
+    });
+}
+
+void TreeItem::orderChildrenByLastModified()
+{
+    std::sort(m_children.begin(), m_children.end(), [](auto const &a, auto const &b) {
+        return a->compareByLastModified(b) > 0;
     });
 }
 

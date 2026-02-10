@@ -156,12 +156,7 @@ public:
      */
     int compare(const std::unique_ptr<TreeItem> &other) const;
 
-    /* Will come later...*/
-    /*
-    public:
-        // Metadata
-        int place = -1;
-    */
+
 private:
     /*
      * @brief Set the Item metadata.
@@ -175,10 +170,6 @@ private:
      */
     void changeParentPathPart(const QString &newPart);
 
-    /*
-     * @brief Order the children.
-     */
-    void orderChildren();
 
     /*
      * @brief Compare this TreeItem to another based on name and status.
@@ -189,6 +180,41 @@ private:
      */
     int compare(const QString &name, bool isNote) const;
 
+    /*
+     * @brief Compare this TreeItem to another based on last modified timestamp
+     * Fetches last modified from filesystem. Supports folders as well.
+     * @param filepath The other TreeItem filepath.
+     * @return A negative integere if this item filepath.lastModified is later than 'filepath'.lastModified,
+     * a positive one if it is more recent, 0 if it is equal.
+     */
+    int compareByLastModified(const QString &filepath) const;
+    /*
+     * @brief Order the children.
+     */
+    void orderChildren();
+
+    /*
+     * @brief Order the children by last modified timestamp
+     */
+    void orderChildrenByLastModified();
+    /* Will come later...*/
+    /*
+    public:
+        // Metadata
+        int place = -1;
+    */
+
+    /*
+     * @brief Compare this TreeItem to the other based on last modified.
+     *
+     * @param other A TreeItem unique_ptr.
+     */
+    int compareByLastModified(const std::unique_ptr<TreeItem> &other) const;
+
+    /*
+     * @brief Orders based on sortByLastModified from KleverConfig
+     */
+    void handleOrdering();
 private:
     // Position in tree
     std::vector<std::unique_ptr<TreeItem>> m_children;
