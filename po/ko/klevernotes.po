@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-01 00:43+0000\n"
+"POT-Creation-Date: 2026-02-11 00:45+0000\n"
 "PO-Revision-Date: 2025-07-21 01:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -866,19 +866,25 @@ msgctxt "@label:textbox"
 msgid "Default name for new notes:"
 msgstr "새 메모의 기본 이름:"
 
-#: contents/ui/settings/GeneralTab.qml:108
+#: contents/ui/settings/GeneralTab.qml:110
+#, kde-format
+msgctxt "@label:switch"
+msgid "Sort Notes by Last Modified"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:120
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr "도구 모음"
 
-#: contents/ui/settings/GeneralTab.qml:116
+#: contents/ui/settings/GeneralTab.qml:128
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr "표시"
 
-#: contents/ui/settings/GeneralTab.qml:177
+#: contents/ui/settings/GeneralTab.qml:189
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"

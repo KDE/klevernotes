@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-01 00:43+0000\n"
+"POT-Creation-Date: 2026-02-11 00:45+0000\n"
 "PO-Revision-Date: 2025-11-30 15:38+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -867,19 +867,25 @@ msgctxt "@label:textbox"
 msgid "Default name for new notes:"
 msgstr "Uusien muistiinpanojen oletusnimi:"
 
-#: contents/ui/settings/GeneralTab.qml:108
+#: contents/ui/settings/GeneralTab.qml:110
+#, kde-format
+msgctxt "@label:switch"
+msgid "Sort Notes by Last Modified"
+msgstr ""
+
+#: contents/ui/settings/GeneralTab.qml:120
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
 msgstr "Työkalurivi"
 
-#: contents/ui/settings/GeneralTab.qml:116
+#: contents/ui/settings/GeneralTab.qml:128
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
 msgstr "Näkyvä"
 
-#: contents/ui/settings/GeneralTab.qml:177
+#: contents/ui/settings/GeneralTab.qml:189
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
