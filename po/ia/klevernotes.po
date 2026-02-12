@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:45+0000\n"
-"PO-Revision-Date: 2026-02-05 18:52+0100\n"
+"PO-Revision-Date: 2026-02-11 12:46+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -874,7 +874,7 @@ msgstr "Nomine predefinite per nove notas"
 #, kde-format
 msgctxt "@label:switch"
 msgid "Sort Notes by Last Modified"
-msgstr ""
+msgstr "Ordina Notas per Ultime modificate"
 
 #: contents/ui/settings/GeneralTab.qml:120
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:45+0000\n"
-"PO-Revision-Date: 2025-06-27 05:14+0200\n"
+"PO-Revision-Date: 2026-02-11 05:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -871,7 +871,7 @@ msgstr "ნაგულისხმევი სახელი ახალი 
 #, kde-format
 msgctxt "@label:switch"
 msgid "Sort Notes by Last Modified"
-msgstr ""
+msgstr "შენიშვნების დალაგება ბოლო ცვლილების მიხედვით"
 
 #: contents/ui/settings/GeneralTab.qml:120
 #, kde-format
