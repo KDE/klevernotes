@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:45+0000\n"
-"PO-Revision-Date: 2026-01-05 02:52+0900\n"
+"PO-Revision-Date: 2026-02-12 16:17+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -858,7 +858,7 @@ msgstr "新筆記預設名稱："
 #, kde-format
 msgctxt "@label:switch"
 msgid "Sort Notes by Last Modified"
-msgstr ""
+msgstr "依最後修改時間排序筆記"
 
 #: contents/ui/settings/GeneralTab.qml:120
 #, kde-format
