@@ -249,75 +249,149 @@
     <release version="1.2.5" date="2025-10-29">
       <description>
         <p>Bug fixing release:</p>
+        <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
+        <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
         <ul>
           <li>Fix major issue with the painting page</li>
+          <li xml:lang="ka">გასწორდა დიდი პრობლემა გვერდის დახატვასთან</li>
+          <li xml:lang="pt-BR">Corrigido problema grave na página de pintura</li>
           <li>Fix the preview going black when the app loses focus</li>
+          <li xml:lang="ka">გასწორდა მინიატურის გაშავება აპიდან ფოკუსის გადატანისას</li>
+          <li xml:lang="pt-BR">Corrigido o problema da pré-visualização ficar preta quando o aplicativo perde o foco</li>
           <li>Tweak the auto indent</li>
+          <li xml:lang="ka">ოდნავ გასწორდა ავტოსწორება</li>
+          <li xml:lang="pt-BR">Ajuste do recuo automático</li>
         </ul>
       </description>
     </release>
     <release version="1.2.4" date="2025-09-23">
       <description>
         <p>Bug fixing release:</p>
+        <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
+        <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
         <ul>
           <li>Update md4qt (fix major issue)</li>
+          <li xml:lang="ka">განახლდა md4qt (გასწორდა დიდი პრობლემა)</li>
+          <li xml:lang="pt-BR">Atualizado do md4qt (correção de problema grave)</li>
           <li>Fix major editor highlight issue</li>
+          <li xml:lang="ka">გასწორდა დიდი პრობლემა რედაქტორში გამოკვეთასთან</li>
+          <li xml:lang="pt-BR">Correção de problema grave de destaque no editor</li>
           <li>Improve "auto list" feature</li>
+          <li xml:lang="ka">გაუმჯობესდა ფუნქცია "ავტოჩამოთვლა"</li>
+          <li xml:lang="pt-BR">Melhoria na funcionalidade de "lista automática"</li>
         </ul>
       </description>
     </release>
     <release version="1.2.3" date="2025-08-28">
       <description>
         <p>Bug fixing release:</p>
+        <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
+        <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
         <ul>
           <li>Fix items move to root folder</li>
+          <li xml:lang="ka">გასწორდა ელემენტების გადატანა ძირითად საქაღალდეში</li>
+          <li xml:lang="pt-BR">Correção da movimentação de itens para a pasta raiz</li>
           <li>Fix items sorting</li>
+          <li xml:lang="ka">გასწორდა ელემენტების დალაგება</li>
+          <li xml:lang="pt-BR">Correção da ordenação de itens</li>
           <li>Change subscript delim to `--`</li>
+          <li xml:lang="ka">ქვესკრიპტის გამყოფის შეცვლა სიმბოლოზე `--`</li>
+          <li xml:lang="pt-BR">Alteração do delimitador de subscrito para `--`</li>
           <li>Update md4qt (fix minor and major issues)</li>
+          <li xml:lang="ka">განახლდა md4qt (გასწორდა დიდი და პატარა პრობლემები)</li>
+          <li xml:lang="pt-BR">Atualização do md4qt (correção de problemas menores e maiores)</li>
           <li>Various small bugs fixes</li>
+          <li xml:lang="ka">გასწორდა სხვადასხვა პატარა შეცდომები</li>
+          <li xml:lang="pt-BR">Correções de vários pequenos bugs</li>
         </ul>
       </description>
     </release>
     <release version="1.2.2" date="2025-03-24">
       <description>
         <p>Bug fixing release:</p>
+        <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
+        <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
         <ul>
           <li>Fix crash when deleting note</li>
+          <li xml:lang="ka">გასწორდა ავარიული დასრულება შენიშვნის წაშლისას</li>
+          <li xml:lang="pt-BR">Correção do problema que ocorria ao excluir uma nota</li>
           <li>Fix path issue when moving note</li>
+          <li xml:lang="ka">გასწორდა ბილიკის პრობლემა შენიშვნის გადატანისას</li>
+          <li xml:lang="pt-BR">Correção do problema de caminho ao mover notas</li>
           <li>Do not create todo file unless necessary</li>
+          <li xml:lang="ka">ფაილი todo არ შეიქმნება, თუ ეს აუცილებელი არაა</li>
+          <li xml:lang="pt-BR">Não criar um arquivo de tarefas a menos que seja necessário</li>
           <li>Align ExpandingFormSwitch style to FormSwitchDelegate style</li>
+          <li xml:lang="ka">ExpandingFormSwitch სტილის სწორება FormSwitchDelegate სტილთან</li>
+          <li xml:lang="pt-BR">Alinhar estilo ExpandingFormSwitch ao estilo FormSwitchDelegate</li>
           <li>Improve move dialog design</li>
+          <li xml:lang="ka">გაუმჯობესდა გადატანის დიალოგის დიზაინი</li>
+          <li xml:lang="pt-BR">Melhorias no design da caixa de diálogo de movimentação</li>
           <li>Add cheatsheet entries for extending syntax</li>
+          <li xml:lang="ka">დაემატა ჩიტების სიის ჩანაწერები გაფართოებული სინტაქსისთვის</li>
+          <li xml:lang="pt-BR">Adicionadas entradas de referência rápida para extensão de sintaxe</li>
           <li>Update md4qt</li>
+          <li xml:lang="ka">md4qt-ის განახლება</li>
+          <li xml:lang="pt-BR">Atualização do md4qt</li>
         </ul>
       </description>
     </release>
     <release version="1.2.1" date="2025-03-19">
       <description>
         <p>Bug fixing release:</p>
+        <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
+        <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
         <ul>
           <li>Remove the requirement for the storage name (no longer need to be "klevernotes")</li>
+          <li xml:lang="ka">არარაა მოთხოვნა საცავის სახელისთვის (აუცილებელი აღარაა, ერქვას "klevernotes")</li>
+          <li xml:lang="pt-BR">Remoção da exigência do nome de armazenamento (não precisa mais ser "klevernotes")</li>
           <li>Fix code block rendering issue with HTML tag</li>
+          <li xml:lang="ka">გასწორდა კოდის ბლოკის რენდერის პრობლემა HTML ჭდესტან</li>
+          <li xml:lang="pt-BR">Correção do problema de renderização de bloco de código com tag HTML</li>
           <li>Fix todos saving</li>
+          <li xml:lang="ka">გასწორდა გეგმების შენახვა</li>
+          <li xml:lang="pt-BR">Correção do salvamento de tarefas</li>
           <li>Allow items to be moved to the storage root</li>
+          <li xml:lang="ka">ელემენტების საცავის ძირითად საქაღალდეში გადატანის დაშვება</li>
+          <li xml:lang="pt-BR">Permitir que os itens sejam movidos para a raiz de armazenamento</li>
         </ul>
       </description>
     </release>
     <release version="1.2.0" date="2025-03-17">
       <description>
         <p>What's new:</p>
+        <p xml:lang="ka">სიახლეები:</p>
+        <p xml:lang="pt-BR">O que há de novo:</p>
         <ul>
           <li>New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
+          <li xml:lang="ka">ახალი ფაილის სტრუქტურა, რომელიც კარგად ასახავს, რას ხედავთ გვერდით პანელში და შესაძლებლობა, თითოეული ელემენტის ფერი და ხატულა შეცვალოთ.</li>
+          <li xml:lang="pt-BR">Nova estrutura de arquivos que reflete perfeitamente o que você vê na barra lateral. E a possibilidade de alterar a cor e o ícone de cada item.</li>
           <li>New drawing page with more features</li>
+          <li xml:lang="ka">ახალი ხატვის გვერდი მეტი ფუნქციით</li>
+          <li xml:lang="pt-BR">Nova página de desenho com mais funcionalidades</li>
           <li>Copy button inside block of code</li>
+          <li xml:lang="ka">კოპირების ღილაკი კოდის ბლოკში</li>
+          <li xml:lang="pt-BR">Botão de copiar dentro do bloco de código</li>
           <li>New bottom bar to switch between note and todos</li>
+          <li xml:lang="ka">ახალი ქვედა პანელი შენიშვნებსა და გგეგმებს შორის გადასართავად</li>
+          <li xml:lang="pt-BR">Nova barra inferior para alternar entre notas e tarefas</li>
           <li>Improved page switching animation</li>
+          <li xml:lang="ka">გაუმჯობესდა გვერდის გადართვის ანიმაცია</li>
+          <li xml:lang="pt-BR">Animação de troca de páginas aprimorada</li>
         </ul>
         <p>Bug fixes including but not limited to:</p>
+        <p xml:lang="ka">შეცდომების გასწორება შეიცავს, მაგრამ არა მხოლოდ:</p>
+        <p xml:lang="pt-BR">Correções de bugs, incluindo, entre outros:</p>
         <ul>
           <li>Pressing V without any modifier while having an image in the clipboard do nothing (as it should)</li>
+          <li xml:lang="ka">V-ის დაჭერა მოდიფიკატორის გარეშე მაშინ, როცა ბუფერში გამოსახულებაა, არაფერს იზამს (როგორც უნდა აკეთებდეს)</li>
+          <li xml:lang="pt-BR">Pressionar V sem nenhuma tecla modificadora enquanto há uma imagem na área de transferência não faz nada (como deveria)</li>
           <li>Prevent naming item with a '/' since it would create a directory</li>
+          <li xml:lang="ka">'/'-ის შემცველი ელემენტის შექმნის აკრძალვა, რადგან ის საქაღალდეს შექმნიდა</li>
+          <li xml:lang="pt-BR">Impedir nomear itens com uma barra ('/'), pois isso criaria um diretório</li>
           <li>Various rendering issues</li>
+          <li xml:lang="ka">რენდერის სხვადასხვა პრობლემები</li>
+          <li xml:lang="pt-BR">Vários problemas de renderização</li>
         </ul>
       </description>
     </release>
@@ -328,30 +402,58 @@
           note-taking app from KDE. For 3 months, I have been working hard to 
           add new features while improving the app and fixing some bugs.
         </p>
+        <p xml:lang="ka">როგორც იქნა, KleverNotes 1.1.0 აქაა! KleverNotes წარმოადგენს Markdown-ის შენიშვნების ჩასაწერ პროგრამას KDE-ისგან. სამი თვის განმავლობაში მე ვმუშაობდი, რომ დამემატებინა ახალი ფუნქციები და ამავე დროს გამეუმჯობესებინა აპი და გამესწორებინა შეცდომები.</p>
+        <p xml:lang="pt-BR">O KleverNotes 1.1.0 está finalmente disponível! O KleverNotes é o aplicativo de anotações em Markdown do KDE. Durante 3 meses, trabalhei arduamente para adicionar novas funcionalidades, aprimorar o aplicativo e corrigir alguns bugs.</p>
         <p>KleverNotes parser has been switched to md4qt:</p>
+        <p xml:lang="ka">KleverNotes-ის დამმუშავებელი გადართულია md4qt-ზე:</p>
+        <p xml:lang="pt-BR">O analisador sintático do KleverNotes foi alterado para md4qt:</p>
         <p>md4qt is a header-only C++ library for parsing Markdown.</p>
+        <p xml:lang="ka">md4qt მხოლოდ-თავსართიანი C++ ბიბლიოთეკაა Markdown-ის დასამუშავებლად.</p>
+        <p xml:lang="pt-BR">md4qt é uma biblioteca C++ composta apenas por arquivos de cabeçalho para analisar Markdown.</p>
         <p>
           md4qt supports CommonMark 0.31.2 Spec, and some GitHub extensions, 
           such as tables, footnotes, tasks lists, strikethroughs, 
           LaTeX Math injections, GitHub's autolinks.
         </p>
+        <p xml:lang="ka">md4qt-ს აქვს CommonMark 0.31.2 სპეციფიკაციის და ზოგიერთი GitHub-ის გაფართოების, როგორიცაა ცხრილების, ქვედა კოლონტიტულის, ამოცანების სიის, ხაზის გადასმის, LaTeX-ის მათემატიკური ფუნქციები და GitHub-ის ავტობმულების მხარდაჭერა.</p>
+        <p xml:lang="pt-BR">O md4qt é compatível com a especificação CommonMark 0.31.2 e com algumas extensões do GitHub, como tabelas, notas de rodapé, listas de tarefas, tachados, injeções de fórmulas matemáticas LaTeX e links automáticos do GitHub.</p>
         <p>It is fast, repliable, customizable and easy to use. A perfect match !</p>
+        <p xml:lang="ka">ის სწრაფი, მორგებადი და იოლი გამოსაყენებელია. განა ეს გადასარევი არაა?!</p>
+        <p xml:lang="pt-BR">É rápido, confiável, personalizável e fácil de usar. Uma combinação perfeita!</p>
         <p>The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
+        <p xml:lang="ka">ხელსაწყოთა პანელი ახლა უფრო ზუსტია არა მხოლოდ მითითებული Markdown-ის ჭდეების წაშლაში, არამედ მათ ჩასმაშიც.</p>
+        <p xml:lang="pt-BR">A barra de ferramentas agora oferece maior precisão não apenas para remover tags Markdown específicas, mas também para aplicá-las.</p>
         <p>On top of that, the toolbar now shows you which tags are already applied on the text under the cursor or the selected text.</p>
+        <p xml:lang="ka">კიდევ ხელსაწყოთა პანელი ახლა გაჩვენებთ, რომელი ჭდეებია უკვე გამოყენებული ტექსტზე კურსორის ქვეშ, ან მონიშნულ ტექსტზე.</p>
+        <p xml:lang="pt-BR">Além disso, a barra de ferramentas agora mostra quais tags já estão aplicadas ao texto sob o cursor ou ao texto selecionado.</p>
         <p>
           The editor has also gained some interesting features. Block tab/untab support 
           and automatic addition of list items are now more reliable, but you now also have 
           the ability to add an html break before a new line with `Shift + Enter` or 
           a horizontal ruler using `Alt + Enter`.
         </p>
+        <p xml:lang="ka">რედაქტორმა ასევე შეიძინა რამდენიმე საინტერესო ფუნქცია. tab/untab-ის დაბლოკვის მხარდაჭერა და სიის ელემენტების ავტომატური დამატება ახლა უფრო სანდოა, მაგრამ ახლა ასევე გაქვთ შესაძლებლობა, დაამატოთ html შეწყვეტა ახალ ხაზამდე ღილაკებით 'Shift + Enter', ან ჰორიზონტალურ სახაზავი ღილაკებით 'Alt + Enter'.</p>
+        <p xml:lang="pt-BR">O editor também ganhou alguns recursos interessantes. O suporte para tabulação/destabulação de blocos e a adição automática de itens de lista agora são mais confiáveis, mas você também tem a capacidade de adicionar uma quebra de linha HTML antes de uma nova linha com `Shift + Enter` ou uma régua horizontal usando `Alt + Enter`.</p>
         <ul>
           <li> The parsing is now done on a separated thread, so parsing very large notes should still be smooth !</li>
+          <li xml:lang="ka">დამუშავება ახალა ცალკე ნაკადში ხდება, ამიტომ დიდი შენიშვნების დამუშავება მაინც შეუმჩნევლად მოხდება!</li>
+          <li xml:lang="pt-BR">A análise sintática agora é feita em uma thread separada, portanto, analisar notas muito grandes ainda deve ocorrer sem problemas!</li>
           <li> The rendering is now disabled if the preview is disabled, saving some resources !</li>
+          <li xml:lang="ka">რენდერი ახლა გამოირთვება, თუ მინიატურა გამორთულია, რითიც ის რესურსებს დაზოგავს!</li>
+          <li xml:lang="pt-BR">A renderização agora é desativada se a pré-visualização estiver desativada, economizando alguns recursos!</li>
           <li> Using the toolbar will now add or remove text in a single undo block, no more double/triple `Ctrl+Z` to go back to your previous state.</li>
+          <li xml:lang="ka">ხელსაწყოთა პანელის გამოყენებით ახლა ტექსტის დამატება და წაშლა ერთი გაუქმების ღილაკით შეგიძლიათ. წინა მდგომარეობაში დასაბრუნებლად ორმაგი/სამმაგი 'Ctrl+Z' საჭირო აღარაა.</li>
+          <li xml:lang="pt-BR">Agora, usar a barra de ferramentas permite adicionar ou remover texto em um único bloco de desfazer, sem precisar usar `Ctrl+Z` duas ou três vezes para voltar ao estado anterior.</li>
         </ul>
         <p>The editor now has the abilty to be "WYSIWYG".</p>
+        <p xml:lang="ka">რედაქტორს ახლა აქვს საშუალება, იყოს "WYSIWYG".</p>
+        <p xml:lang="pt-BR">O editor agora possui a capacidade de ser "WYSIWYG".</p>
         <p>By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
+        <p xml:lang="ka">ნაგულისხმევად Markdown-ის ჭდეები დანარჩენ ტექსტზე 50%-ით პატარაა და ამისი შეცვლა რა თქმა უნდა, მორგების ფანჯრიდან შეგიძლიათ.</p>
+        <p xml:lang="pt-BR">Por padrão, as tags Markdown serão 50% menores que o restante do texto, mas isso pode ser ajustado nas configurações.</p>
         <p>Those tags will regain their normal sizes based on the cursor position/selected text. This way, you're able to see which tag is responsible for a style.</p>
+        <p xml:lang="ka">ის ჭდეები თავიანთ ზომას კურსორის მდებარეობის/მონიშნული ტექსტის მიხედვით დაიბრუნებენ. ამგვარად თქვენ საშუალება გექნებათ, დაინახოთ, რომელი ჭდეა პასუხისმგებელი სტილზე.</p>
+        <p xml:lang="pt-BR">Essas tags recuperarão seus tamanhos normais com base na posição do cursor/texto selecionado. Dessa forma, você poderá ver qual tag é responsável por um estilo.</p>
       </description>
     </release>
     <release version="1.0.0" date="2024-06-05">
@@ -359,21 +461,30 @@
         <p>
           KleverNotes, KDE's Markdown note-taking and management application using Kirigami, is ready for its first release!
         </p>
+        <p xml:lang="ka">KleverNotes წარმოადგენს KDE-ის Markdown-ის შენიშვნების ჩაწერისა და მართვის აპლიკაციას, რომელიც Kirigami-ის იყენებს. ის მზადაა პირველი ვერსიისთვის!</p>
+        <p xml:lang="pt-BR">O KleverNotes, aplicativo de anotações e gerenciamento em Markdown do KDE que utiliza Kirigami, está pronto para seu primeiro lançamento!</p>
+        <p xml:lang="uk">KleverNotes — програма KDE для створення нотаток у Markdown та керування ними з використанням Kirigami, готова до першого випуску!</p>
         <p>
           KleverNotes allows you to create and preview a Markdown note while giving you the freedom to customize the preview from settings or using a CSS theme.
           You can organize your notes however you want with a combination of categories and groups, which will be directly reflected on your system in the 
           hierarchy of your KleverNotes storage folders.
           Simply choose your storage location and you're ready to write!
         </p>
+        <p xml:lang="ka">KleverNotes საშუალებას გაძლევთ, შექმნათ და გადახედოთ Markdown-ის შენიშვნას იმ დროს, როცა გაძლევთ საშუალებას, მოირგოთ მინიატურა პარამეტრებიდან, ან CSS თემით. შეგიძლიათ, დააორგანიზოთ თქვენი შენიშვნები როგორც გნებავთ, ისე კატეგორიებთან და ჯგუფებთან ერთად, რომლებიც პირდაპირ აისახება თქვენს სიტემაში KleverNotes-ის საცავის საქაღალდეების იერარქიაში. უბრალოდ აირჩიეთ თქვენი საცავის მდებარეობა და ჩასაწერად მზად ბრძანდებით!</p>
+        <p xml:lang="pt-BR">O KleverNotes permite criar e visualizar notas em Markdown, oferecendo a liberdade de personalizar a pré-visualização nas configurações ou usando um tema CSS. Você pode organizar suas notas como quiser, combinando categorias e grupos, que serão refletidos diretamente na hierarquia das pastas de armazenamento do KleverNotes. Basta escolher o local de armazenamento e você já pode começar a escrever!</p>
         <p>
           You can print your notes, add small sketches and even create specific tasks for each of them, all from the application!
         </p>
+        <p xml:lang="ka">შეგიძლიათ, დაბეჭდოთ თქვენი შენიშვნები, დაამატოთ პატარა ესკიზები და შექმნათ სპეციფიკური ამოცანები თითოეული მათგანისთვის და ყველაფერი ეს აპლიკაციიდან!</p>
+        <p xml:lang="pt-BR">Você pode imprimir suas anotações, adicionar pequenos esboços e até mesmo criar tarefas específicas para cada uma delas, tudo a partir do aplicativo!</p>
         <p>
           Notes are saved as Markdown files in your KleverNotes storage for easy access. 
           They support the entire CommonMark specification with extensive syntax. 
           KleverNotes also introduces a small collection of opt-in “plugins” to extend basic markdown features, such as: 
           code highlighting, note linking, quick emoji, etc.
         </p>
+        <p xml:lang="ka">შენიშვნების შენახვა Markdown-ის ფაილებად ხდება თქვენი KleverNotes-ის საქაღალდეში იოლი წვდომისთვის. მას აქვს მთელი CommonMark-ის სპეციფიკაციის მხარდაჭერა ექსტენსიური სინტაქსით. KleverNotes ასევე გთავაზობთ "დამატებების" პატარა კოლექციას Makrkdown-ის ფუნქციონალის გასაზრდელად: კოდის გამოკვეთა, შენიშვნასთან დაკავშირება, სწრაფი ემოჯი და ა.შ.</p>
+        <p xml:lang="pt-BR">As notas são salvas como arquivos Markdown no seu armazenamento do KleverNotes para facilitar o acesso. Elas são compatíveis com toda a especificação CommonMark, com sintaxe abrangente. O KleverNotes também apresenta uma pequena coleção de "plugins" opcionais para estender os recursos básicos do Markdown, como: realce de sintaxe, links entre notas, emojis rápidos, etc.</p>
       </description>
     </release>
   </releases>
