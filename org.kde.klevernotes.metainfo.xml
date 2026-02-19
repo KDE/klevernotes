@@ -590,7 +590,7 @@
           <li xml:lang="pt-BR">Agora, usar a barra de ferramentas permite adicionar ou remover texto em um único bloco de desfazer, sem precisar usar `Ctrl+Z` duas ou três vezes para voltar ao estado anterior.</li>
           <li xml:lang="sl">Z uporabo orodne vrstice boste zdaj dodali ali odstranili besedilo v enem samem bloku za razveljavitev, nič več dvojnega/trojnega `Ctrl+Z` za vrnitev v prejšnje stanje.</li>
         </ul>
-        <p>The editor now has the abilty to be "WYSIWYG".</p>
+        <p>The editor now has the ability to be "WYSIWYG".</p>
         <p xml:lang="ar">يمتلك المحرر الآن القدرة على أن يكون محرر "ما تراه هو ما تحصل عليه".</p>
         <p xml:lang="ca">L'editor ara té la capacitat de ser «WYSIWYG».</p>
         <p xml:lang="ka">რედაქტორს ახლა აქვს საშუალება, იყოს "WYSIWYG".</p>
