@@ -775,6 +775,13 @@
           <li xml:lang="uk">Використання панелі інструментів у новій версії уможливлює додавання або вилучення тексту в одному блоці скасування, більше не потрібно двічі/потрійно натискати `Ctrl+Z` для повернення до попереднього стану.</li>
         </ul>
         <p>The editor now has the ability to be "WYSIWYG".</p>
+        <p xml:lang="ca">L'editor ara té la capacitat de ser «WYSIWYG».</p>
+        <p xml:lang="ca-valencia">L'editor ara té la capacitat de ser «WYSIWYG».</p>
+        <p xml:lang="ka">რედაქტორს ახლა აქვს საშუალება, იყოს "WYSIWYG".</p>
+        <p xml:lang="pt-BR">O editor agora possui a capacidade de ser "WYSIWYG".</p>
+        <p xml:lang="sl">Urejevalnik ima zdaj sposobnost delovanja "WYSIWYG".</p>
+        <p xml:lang="tr">The editor now has the ability to be "WYSIWYG".</p>
+        <p xml:lang="uk">У новій версії редактор має можливість бути візуальним.</p>
         <p>By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
         <p xml:lang="ar">ستكون وسوم مارك داون أصغر من بقية النص بنسبة 50% مبدئياً، ويمكن بالطبع ضبط ذلك في الإعدادات.</p>
         <p xml:lang="ca">De manera predeterminada, les etiquetes del Markdown seran més petites que la resta de text en un 50%, això es pot ajustar a la configuració.</p>
