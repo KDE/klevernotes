@@ -775,6 +775,7 @@
           <li xml:lang="uk">Використання панелі інструментів у новій версії уможливлює додавання або вилучення тексту в одному блоці скасування, більше не потрібно двічі/потрійно натискати `Ctrl+Z` для повернення до попереднього стану.</li>
         </ul>
         <p>The editor now has the ability to be "WYSIWYG".</p>
+        <p xml:lang="ar">يمتلك المحرر الآن القدرة على أن يكون محرر "ما تراه هو ما تحصل عليه".</p>
         <p xml:lang="ca">L'editor ara té la capacitat de ser «WYSIWYG».</p>
         <p xml:lang="ca-valencia">L'editor ara té la capacitat de ser «WYSIWYG».</p>
         <p xml:lang="ka">რედაქტორს ახლა აქვს საშუალება, იყოს "WYSIWYG".</p>
