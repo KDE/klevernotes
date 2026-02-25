@@ -749,6 +749,7 @@
         <p xml:lang="ar">إنه سريع، وموثوق، وقابل للتخصيص، وسهل الاستخدام. إنه التوافق الأمثل!</p>
         <p xml:lang="ca">És ràpid, repetible, personalitzable i fàcil d'utilitzar. Una combinació perfecta!</p>
         <p xml:lang="ca-valencia">És ràpid, repetible, personalitzable i fàcil d'utilitzar. Una combinació perfecta!</p>
+        <p xml:lang="he">הוא מהיר, אמין, גמיש וקל לשימוש. הכול בחבילה אחת!</p>
         <p xml:lang="it">È veloce, affidabile, personalizzabile e facile da usare. Un abbinamento perfetto!</p>
         <p xml:lang="ka">ის სწრაფი, მორგებადი და იოლი გამოსაყენებელია. განა ეს გადასარევი არაა?!</p>
         <p xml:lang="pt-BR">É rápido, confiável, personalizável e fácil de usar. Uma combinação perfeita!</p>
@@ -843,6 +844,7 @@
         <p xml:lang="ar">ستكون وسوم مارك داون أصغر من بقية النص بنسبة 50% مبدئياً، ويمكن بالطبع ضبط ذلك في الإعدادات.</p>
         <p xml:lang="ca">De manera predeterminada, les etiquetes del Markdown seran més petites que la resta de text en un 50%, això es pot ajustar a la configuració.</p>
         <p xml:lang="ca-valencia">De manera predeterminada, les etiquetes de Markdown seran més xicotetes que la resta de text en un 50%, açò es pot ajustar en la configuració.</p>
+        <p xml:lang="he">כברירת מחדל, תגיות ה־markdown תהיינה קטנות יותר משאר הטקסט ב־50%, אפשר כמובן לכוון את זה בהגדרות.</p>
         <p xml:lang="it">Per impostazione predefinita, i tag markdown saranno più piccoli del 50% rispetto al resto del testo; questa impostazione può ovviamente essere modificata.</p>
         <p xml:lang="ka">ნაგულისხმევად Markdown-ის ჭდეები დანარჩენ ტექსტზე 50%-ით პატარაა და ამისი შეცვლა რა თქმა უნდა, მორგების ფანჯრიდან შეგიძლიათ.</p>
         <p xml:lang="pt-BR">Por padrão, as tags Markdown serão 50% menores que o restante do texto, mas isso pode ser ajustado nas configurações.</p>
@@ -853,6 +855,7 @@
         <p xml:lang="ar">ستستعيد تلك الوسوم أحجامها الطبيعية بناءً على موقع المؤشر أو النص المحدد. بهذه الطريقة، يمكن معرفة أي وسم هو المسؤول عن النمط.</p>
         <p xml:lang="ca">Aquestes etiquetes recuperaran les seves mides normals en funció de la posició del cursor/text seleccionat. D'aquesta manera, podeu veure quina etiqueta és la responsable d'un estil.</p>
         <p xml:lang="ca-valencia">Estes etiquetes recuperaran les seues mides normals en funció de la posició del cursor/text seleccionat. D'esta manera, podeu veure quina etiqueta és la responsable d'un estil.</p>
+        <p xml:lang="he">התגיות האלה תשובנה לגדלים הרגילים שלהם לפי מקום הסמן/הטקסט הנבחר. כך, ניתן לראות איזו תגית אחראית על הסגנון.</p>
         <p xml:lang="it">Questi tag riacquisteranno le loro dimensioni normali in base alla posizione del cursore o al testo selezionato. In questo modo, potrai vedere quale tag è responsabile di uno stile.</p>
         <p xml:lang="ka">ის ჭდეები თავიანთ ზომას კურსორის მდებარეობის/მონიშნული ტექსტის მიხედვით დაიბრუნებენ. ამგვარად თქვენ საშუალება გექნებათ, დაინახოთ, რომელი ჭდეა პასუხისმგებელი სტილზე.</p>
         <p xml:lang="pt-BR">Essas tags recuperarão seus tamanhos normais com base na posição do cursor/texto selecionado. Dessa forma, você poderá ver qual tag é responsável por um estilo.</p>
@@ -898,6 +901,7 @@
         <p xml:lang="ar">يمكن طباعة الملاحظات، وإضافة رسومات صغيرة، بل وحتى إنشاء مهام محددة لكل منها، كل ذلك من داخل التطبيق!</p>
         <p xml:lang="ca">Podeu imprimir les vostres notes, afegir esbossos petits i fins i tot crear tasques específiques per a cadascuna, tot des de l'aplicació!</p>
         <p xml:lang="ca-valencia">Podeu imprimir les vostres notes, afegir esbossos petits i fins i tot crear tasques específiques per a cadascuna, tot des de l'aplicació!</p>
+        <p xml:lang="he">אפשר להדפיס את הפתקיות שלך, להוסיף איורים קטנים ואפילו ליצור משימות נקודתיות לכל אחת מהן, הכול מתוך היישום!</p>
         <p xml:lang="it">Puoi stampare i tuoi appunti, aggiungere piccoli schizzi e persino creare attività specifiche per ciascuno di essi, tutto dall'applicazione!</p>
         <p xml:lang="ka">შეგიძლიათ, დაბეჭდოთ თქვენი შენიშვნები, დაამატოთ პატარა ესკიზები და შექმნათ სპეციფიკური ამოცანები თითოეული მათგანისთვის და ყველაფერი ეს აპლიკაციიდან!</p>
         <p xml:lang="pt-BR">Você pode imprimir suas anotações, adicionar pequenos esboços e até mesmo criar tarefas específicas para cada uma delas, tudo a partir do aplicativo!</p>
