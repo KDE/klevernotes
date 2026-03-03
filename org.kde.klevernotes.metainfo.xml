@@ -262,6 +262,7 @@
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Bug fixing release:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
+        <p xml:lang="zh-TW">錯誤修正釋出：</p>
         <ul>
           <li>Fix major issue with the painting page</li>
           <li xml:lang="ar">إصلاح مشكلة كبرى في صفحة الرسم</li>
@@ -324,6 +325,7 @@
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Bug fixing release:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
+        <p xml:lang="zh-TW">錯誤修正釋出：</p>
         <ul>
           <li>Update md4qt (fix major issue)</li>
           <li xml:lang="ar">تحديث md4qt (إصلاح مشكلة كبرى)</li>
@@ -383,6 +385,7 @@
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Bug fixing release:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
+        <p xml:lang="zh-TW">錯誤修正釋出：</p>
         <ul>
           <li>Fix items move to root folder</li>
           <li xml:lang="ar">إصلاح نقل العناصر إلى المجلد الجذر</li>
@@ -410,6 +413,7 @@
           <li xml:lang="sl">Popravljeno razvrščanje elementov</li>
           <li xml:lang="tr">Fix items sorting</li>
           <li xml:lang="uk">Виправлено упорядкування записів</li>
+          <li xml:lang="zh-TW">修正項目排序</li>
           <li>Change subscript delim to `--`</li>
           <li xml:lang="ar">تغيير محدد النصوص السفلية إلى `--`</li>
           <li xml:lang="ca">Canvia el delimitador de subíndex a `--`</li>
@@ -468,6 +472,7 @@
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Bug fixing release:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
+        <p xml:lang="zh-TW">錯誤修正釋出：</p>
         <ul>
           <li>Fix crash when deleting note</li>
           <li xml:lang="ar">إصلاح الانهيار عند حذف ملاحظة</li>
@@ -482,6 +487,7 @@
           <li xml:lang="sl">Popravljeno sesutje pri brisanju zapiska</li>
           <li xml:lang="tr">Fix crash when deleting note</li>
           <li xml:lang="uk">Усунено аварійне завершення роботи при вилученні нотатки</li>
+          <li xml:lang="zh-TW">修正刪除筆記時的崩潰</li>
           <li>Fix path issue when moving note</li>
           <li xml:lang="ar">إصلاح مشكلة المسار عند نقل ملاحظة</li>
           <li xml:lang="ca">Corregeix un problema de camí en moure la nota</li>
@@ -560,6 +566,7 @@
           <li xml:lang="sl">Posodobitev md4qt</li>
           <li xml:lang="tr">Update md4qt</li>
           <li xml:lang="uk">Оновлено md4qt</li>
+          <li xml:lang="zh-TW">更新 md4qt</li>
         </ul>
       </description>
     </release>
@@ -579,6 +586,7 @@
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Bug fixing release:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
+        <p xml:lang="zh-TW">錯誤修正釋出：</p>
         <ul>
           <li>Remove the requirement for the storage name (no longer need to be "klevernotes")</li>
           <li xml:lang="ar">إزالة شرط اسم التخزين (لم يعد بحاجة لأن يكون "klevernotes")</li>
@@ -619,6 +627,7 @@
           <li xml:lang="sl">Popravljeno shranjevanje opravil</li>
           <li xml:lang="tr">Fix todos saving</li>
           <li xml:lang="uk">Виправлено зберігання файлів завдань</li>
+          <li xml:lang="zh-TW">修正待辦事項的儲存</li>
           <li>Allow items to be moved to the storage root</li>
           <li xml:lang="ar">السماح بنقل العناصر إلى جذر التخزين</li>
           <li xml:lang="ca">Permet que els elements es moguin a l'arrel d'emmagatzematge</li>
@@ -651,6 +660,7 @@
         <p xml:lang="sl">Kaj je novega:</p>
         <p xml:lang="tr">What's new:</p>
         <p xml:lang="uk">Що нового?</p>
+        <p xml:lang="zh-TW">新功能：</p>
         <ul>
           <li>New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
           <li xml:lang="ar">بنية ملفات جديدة تعكس تماماً ما يظهر في الشريط الجانبي، مع إمكانية تغيير اللون والأيقونة لكل عنصر.</li>
