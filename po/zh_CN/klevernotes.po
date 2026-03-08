@@ -184,7 +184,7 @@ msgstr "URL："
 msgctxt ""
 "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
 msgid "Link text:"
-msgstr "链接文字："
+msgstr "链接文本："
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
 #, kde-format
@@ -1470,7 +1470,7 @@ msgstr "图片"
 #, kde-format
 msgctxt "example"
 msgid "alt text"
-msgstr "替代文字"
+msgstr "替代文本"
 
 #: contents/ui/textEditor/CheatSheet.qml:109
 #, kde-format
