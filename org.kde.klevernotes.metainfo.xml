@@ -336,6 +336,7 @@
           <li xml:lang="ia">Actualisa md4gt (corrige grosse problema)</li>
           <li xml:lang="it">Aggiorna md4qt (corregge un problema importante)</li>
           <li xml:lang="ka">განახლდა md4qt (გასწორდა დიდი პრობლემა)</li>
+          <li xml:lang="nl">werk md4qt bij (grote fout opgelost)</li>
           <li xml:lang="pt-BR">Atualizado do md4qt (correção de problema grave)</li>
           <li xml:lang="sl">Posodobitev md4qt (popravljena večja težava)</li>
           <li xml:lang="tr">Update md4qt (fix major issue)</li>
@@ -349,6 +350,7 @@
           <li xml:lang="ia">Corrige grosse problema de evidentiare de editor</li>
           <li xml:lang="it">Corregge il problema principale di evidenziazione dell'editor</li>
           <li xml:lang="ka">გასწორდა დიდი პრობლემა რედაქტორში გამოკვეთასთან</li>
+          <li xml:lang="nl">Een belangrijk probleem op met het accentueren van tekst in de bewerker is opgelost</li>
           <li xml:lang="pt-BR">Correção de problema grave de destaque no editor</li>
           <li xml:lang="sl">Popravljena večja težava z označevanjem urejevalnika</li>
           <li xml:lang="tr">Fix major editor highlight issue</li>
@@ -362,6 +364,7 @@
           <li xml:lang="ia">Meliora characteristica de "auto listar"</li>
           <li xml:lang="it">Migliora la funzionalità «elenco automatico»</li>
           <li xml:lang="ka">გაუმჯობესდა ფუნქცია "ავტოჩამოთვლა"</li>
+          <li xml:lang="nl">Verbeter de functie "automatische lijst"</li>
           <li xml:lang="pt-BR">Melhoria na funcionalidade de "lista automática"</li>
           <li xml:lang="sl">Izboljšana zmožnost "samodejnega seznama"</li>
           <li xml:lang="tr">Improve "auto list" feature</li>
@@ -396,6 +399,7 @@
           <li xml:lang="ia">Corrige elementos que move adossier radice (root)</li>
           <li xml:lang="it">Correggi gli elementi spostati nella cartella radice</li>
           <li xml:lang="ka">გასწორდა ელემენტების გადატანა ძირითად საქაღალდეში</li>
+          <li xml:lang="nl">Items verplaatsen naar de hoofdmap opgelost</li>
           <li xml:lang="pt-BR">Correção da movimentação de itens para a pasta raiz</li>
           <li xml:lang="sl">Popravljeno premikanje elementov v korensko mapo</li>
           <li xml:lang="tr">Fix items move to root folder</li>
@@ -409,6 +413,7 @@
           <li xml:lang="ia">Corrige ordinar de elementos</li>
           <li xml:lang="it">Corregge l'ordinamento degli elementi</li>
           <li xml:lang="ka">გასწორდა ელემენტების დალაგება</li>
+          <li xml:lang="nl">Items sorteren opgelost</li>
           <li xml:lang="pt-BR">Correção da ordenação de itens</li>
           <li xml:lang="sl">Popravljeno razvrščanje elementov</li>
           <li xml:lang="tr">Fix items sorting</li>
