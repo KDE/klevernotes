@@ -252,6 +252,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
         <p xml:lang="ia">Version de corriger faltas (bug):</p>
@@ -296,6 +297,7 @@
           <li xml:lang="ar">تحسين الإزاحة الآلية</li>
           <li xml:lang="ca">Ajusta el sagnat automàtic</li>
           <li xml:lang="ca-valencia">Ajusta el sagnat automàtic</li>
+          <li xml:lang="es">Se ha corregido el sangrado automático.</li>
           <li xml:lang="fr">Ajuster l'indentation automatique</li>
           <li xml:lang="he">ההזחה האוטומטית שופצה</li>
           <li xml:lang="ia">Pincia le auto intentation</li>
@@ -315,6 +317,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
         <p xml:lang="ia">Version de corriger faltas (bug):</p>
@@ -359,6 +362,7 @@
           <li xml:lang="ar">تحسين ميزة "القائمة الآلية"</li>
           <li xml:lang="ca">Millora la característica «llista automàtica»</li>
           <li xml:lang="ca-valencia">Millora la característica «llista automàtica»</li>
+          <li xml:lang="es">Se ha mejorado la función de «lista automática».</li>
           <li xml:lang="fr">Améliorer la fonctionnalité « Liste automatique »</li>
           <li xml:lang="he">היכולת „רשימות אוטומטיות” השתפרה</li>
           <li xml:lang="ia">Meliora characteristica de "auto listar"</li>
@@ -378,6 +382,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
         <p xml:lang="ia">Version de corriger faltas (bug):</p>
@@ -408,6 +413,7 @@
           <li xml:lang="ar">إصلاح فرز العناصر</li>
           <li xml:lang="ca">Corregeix l'ordenació d'elements</li>
           <li xml:lang="ca-valencia">Corregix l'ordenació d'elements</li>
+          <li xml:lang="es">Se ha corregido el orden de los elementos.</li>
           <li xml:lang="fr">Correction du tri des éléments</li>
           <li xml:lang="he">סידור פריטים תוקן</li>
           <li xml:lang="ia">Corrige ordinar de elementos</li>
@@ -470,6 +476,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
         <p xml:lang="ia">Version de corriger faltas (bug):</p>
@@ -571,6 +578,7 @@
           <li xml:lang="ar">تحديث md4qt</li>
           <li xml:lang="ca">Actualitza «md4qt»</li>
           <li xml:lang="ca-valencia">Actualitza «md4qt»</li>
+          <li xml:lang="es">Se ha actualizado md4qt.</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt »</li>
           <li xml:lang="he">‏md4qt עודכן</li>
           <li xml:lang="ia">Actualisa md4qt</li>
@@ -591,6 +599,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
         <p xml:lang="ia">Version de corriger faltas (bug):</p>
@@ -669,6 +678,7 @@
         <p xml:lang="ar">ما الجديد:</p>
         <p xml:lang="ca">Què hi ha de nou:</p>
         <p xml:lang="ca-valencia">Què hi ha de nou:</p>
+        <p xml:lang="es">Novedades:</p>
         <p xml:lang="fr">Quoi de neuf :</p>
         <p xml:lang="he">מה חדש:</p>
         <p xml:lang="ia">Que es de novo:</p>
@@ -727,6 +737,7 @@
           <li xml:lang="ar">شريط سفلي جديد للتبديل بين الملاحظات والمهام</li>
           <li xml:lang="ca">Barra inferior nova per a canviar entre la nota i les tasques pendents</li>
           <li xml:lang="ca-valencia">Barra inferior nova per a canviar entre la nota i les tasques pendents</li>
+          <li xml:lang="es">Nueva barra inferior para cambiar entre notas y tareas pendientes.</li>
           <li xml:lang="fr">Nouvelle barre inférieure pour basculer entre les notes et les tâches à faire</li>
           <li xml:lang="he">סרגל תחתון חדש להחלפה בין פתקית למטלות</li>
           <li xml:lang="ia">Nove barra de button percommutar inter nota e agenda (todos)</li>
@@ -741,6 +752,7 @@
           <li xml:lang="ar">تحسين رسوم تبديل الصفحات المتحركة</li>
           <li xml:lang="ca">Millora de l'animació de canvi de pàgina</li>
           <li xml:lang="ca-valencia">Millora de l'animació de canvi de pàgina</li>
+          <li xml:lang="es">Se ha mejorado la animación de cambio de página.</li>
           <li xml:lang="fr">Amélioration de l'animation de basculement de page</li>
           <li xml:lang="he">הנפשת החלפת עמודים השתפרה</li>
           <li xml:lang="ia">Meliorate animation de commutar de pagina</li>
@@ -756,6 +768,7 @@
         <p xml:lang="ar">إصلاحات للعلل تشمل ولا تقتصر على:</p>
         <p xml:lang="ca">Correccions d'errors que inclouen però no es limiten a:</p>
         <p xml:lang="ca-valencia">Esmenes d'errors que inclouen però no es limiten a:</p>
+        <p xml:lang="es">Correcciones de fallos que incluyen, entre otras:</p>
         <p xml:lang="fr">Corrections de bogues incluant, mais sans s'y limite à :</p>
         <p xml:lang="he">תיקוני תקלות שכוללים אך לא מוגבלים לרשימה הבאה:</p>
         <p xml:lang="ia">Correctiones de falta includente ma non limitate a:</p>
@@ -799,6 +812,7 @@
           <li xml:lang="ar">مشكلات صيرورة متنوعة</li>
           <li xml:lang="ca">Problemes diversos de renderització</li>
           <li xml:lang="ca-valencia">Problemes diversos de renderització</li>
+          <li xml:lang="es">Diversos problemas de visualización.</li>
           <li xml:lang="fr">Divers problèmes de rendu</li>
           <li xml:lang="he">תקלות עיבוד שונות</li>
           <li xml:lang="ia">Varie problemas de rendering</li>
