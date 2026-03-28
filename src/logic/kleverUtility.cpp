@@ -46,7 +46,7 @@ QString KleverUtility::getImageStoragingPath(const QString &noteImagesStoringPat
 {
     create(noteImagesStoringPath);
 
-    QString imagePath = noteImagesStoringPath + wantedName;
+    QString imagePath = noteImagesStoringPath +QStringLiteral("/")+ wantedName;
     if (iteration != 0)
         imagePath += QStringLiteral("(") + QString::number(iteration) + QStringLiteral(")");
     imagePath += QStringLiteral(".png");
