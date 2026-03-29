@@ -107,7 +107,7 @@ public:
     // Editor.
     EditorHandler *editor = nullptr;
     // Document.
-    std::shared_ptr<MD::Document<MD::QStringTrait>> doc;
+    QSharedPointer<MD::Document> doc;
     // Colors.
     Colors colors;
     // Default font.

@@ -3,18 +3,16 @@
     SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 */
 
-#include "logic/parser/md4qtDataCleaner.hpp"
 #include "logic/parser/plugins/noteMapper/noteLinkingPlugin.hpp"
+#include "logic/parser/plugins_helper.h"
 
 // Qt include
 #include <QObject>
 #include <QTextStream>
 #include <QtTest/QTest>
 
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/parser.h"
-#include "logic/parser/md4qt/traits.h"
+#include <md4qt/src/doc.h>
+#include <md4qt/src/parser.h>
 
 class NoteLinkingTest : public QObject
 {
@@ -37,7 +35,7 @@ private Q_SLOTS:
 
 private:
     // md4qt
-    MD::Parser<MD::QStringTrait> m_md4qtParser;
+    MD::Parser m_md4qtParser;
     const QString dummyPath = QStringLiteral("/home/dummy/");
 
     // Data
@@ -59,11 +57,8 @@ private:
 /* Settings Data */
 void NoteLinkingTest::initTestCase()
 {
-    m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(static_cast<int>(MD::TextPlugin::UserDefined) + 1),
-                                NoteLinkingPlugin::noteLinkingHelperFunc,
-                                true,
-                                {});
-    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
+    auto inlineParsers = setInlineParsers<NoteLinkingPlugin::NoteLinkingParser>();
+    m_md4qtParser.setInlineParsers(inlineParsers);
 }
 
 /* TEST */
@@ -78,12 +73,12 @@ void NoteLinkingTest::linkBeginningWithOpenClose()
         QFAIL("linkBeginningWithOpenClose: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("linkBeginningWithOpenClose: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Link>();
     QCOMPARE_EQ(item1->openStyles().length(), 2);
     QCOMPARE_EQ(item1->closeStyles().length(), 1);
     QCOMPARE_EQ(item1->opts(), 2);
@@ -92,7 +87,7 @@ void NoteLinkingTest::linkBeginningWithOpenClose()
     QCOMPARE(item1->text(), QStringLiteral("My link with opening and closing"));
     QCOMPARE_EQ(item1->textPos(), MD::WithPosition(22, 0, 53, 0));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 1);
     QCOMPARE_EQ(item2->opts(), 2);
@@ -113,12 +108,12 @@ void NoteLinkingTest::linkBeginningWithOpen()
         QFAIL("linkBeginningWithOpen: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("linkBeginningWithOpen: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Link>();
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
@@ -127,12 +122,12 @@ void NoteLinkingTest::linkBeginningWithOpen()
     QCOMPARE(item1->text(), QStringLiteral("My link with opening"));
     QCOMPARE_EQ(item1->textPos(), MD::WithPosition(21, 0, 40, 0));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 1);
     QCOMPARE_EQ(item2->opts(), 2);
 
-    QCOMPARE(item2->text(), QStringLiteral("text after with closing"));
+    QCOMPARE(item2->text(), QStringLiteral(" text after with closing"));
     QCOMPARE_EQ(item2->startColumn(), 43);
     QCOMPARE_EQ(item2->endColumn(), 66);
 }
@@ -148,12 +143,12 @@ void NoteLinkingTest::linkMiddleWithClose()
         QFAIL("linkMiddleWithClose: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("linkMiddleWithClose: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 2);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
@@ -162,7 +157,7 @@ void NoteLinkingTest::linkMiddleWithClose()
     QCOMPARE_EQ(item1->startColumn(), 2);
     QCOMPARE_EQ(item1->endColumn(), 13);
 
-    const auto item2 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Link>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 1);
     QCOMPARE_EQ(item2->opts(), 2);
@@ -171,7 +166,7 @@ void NoteLinkingTest::linkMiddleWithClose()
     QCOMPARE(item2->text(), QStringLiteral("my link with closing"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(34, 0, 53, 0));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
@@ -192,12 +187,12 @@ void NoteLinkingTest::linkMiddleWithOpen()
         QFAIL("linkMiddleWithOpen: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("linkMiddleWithOpen: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -206,7 +201,7 @@ void NoteLinkingTest::linkMiddleWithOpen()
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 11);
 
-    const auto item2 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Link>();
     QCOMPARE_EQ(item2->openStyles().length(), 1);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 2);
@@ -215,7 +210,7 @@ void NoteLinkingTest::linkMiddleWithOpen()
     QCOMPARE(item2->text(), QStringLiteral("my link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(33, 0, 39, 0));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
@@ -236,12 +231,12 @@ void NoteLinkingTest::linkMiddle()
         QFAIL("linkMiddle: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 4) {
         QFAIL("linkMiddle: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
@@ -250,7 +245,7 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE_EQ(item1->startColumn(), 1);
     QCOMPARE_EQ(item1->endColumn(), 25);
 
-    const auto item2 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Link>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 2);
@@ -259,7 +254,7 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE(item2->text(), QStringLiteral("my link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(46, 0, 52, 0));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
@@ -268,7 +263,7 @@ void NoteLinkingTest::linkMiddle()
     QCOMPARE_EQ(item3->startColumn(), 55);
     QCOMPARE_EQ(item3->endColumn(), 82);
 
-    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    const auto item4 = paragraph->getItemAt(3).staticCast<MD::Text>();
     QCOMPARE_EQ(item4->openStyles().length(), 0);
     QCOMPARE_EQ(item4->closeStyles().length(), 0);
     QCOMPARE_EQ(item4->opts(), 0);
@@ -289,12 +284,12 @@ void NoteLinkingTest::linkNoHeader()
         QFAIL("linkNoHeader: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("linkNoHeader: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -303,7 +298,7 @@ void NoteLinkingTest::linkNoHeader()
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 2);
 
-    const auto item2 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Link>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
@@ -312,7 +307,7 @@ void NoteLinkingTest::linkNoHeader()
     QCOMPARE(item2->text(), QStringLiteral("link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(15, 0, 18, 0));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
@@ -333,12 +328,12 @@ void NoteLinkingTest::linkNoSpecificTitle()
         QFAIL("linkNoSpecificTitle: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("linkNoSpecificTitle: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -347,16 +342,16 @@ void NoteLinkingTest::linkNoSpecificTitle()
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 2);
 
-    const auto item2 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Link>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
     QCOMPARE(item2->url(), QStringLiteral("/link@HEADER@"));
     QCOMPARE_EQ(item2->urlPos(), MD::WithPosition(5, 0, 9, 0));
     QCOMPARE(item2->text(), QStringLiteral("link"));
-    QCOMPARE_EQ(item2->textPos(), MD::WithPosition(10, 0, 9, 0));
+    QCOMPARE_EQ(item2->textPos(), MD::WithPosition(-1, -1, -1, -1));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
@@ -377,12 +372,12 @@ void NoteLinkingTest::badUrl()
         QFAIL("badUrl: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("badUrl: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -403,12 +398,12 @@ void NoteLinkingTest::illFormed1()
         QFAIL("illFormed1: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("illFormed1: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -429,12 +424,12 @@ void NoteLinkingTest::illFormed2()
         QFAIL("illFormed2: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("illFormed2: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -455,13 +450,13 @@ void NoteLinkingTest::inTitle()
         QFAIL("inTitle: Incorrect items count in the doc");
     }
 
-    const auto heading = static_cast<MD::Heading<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto heading = doc->items().at(1).staticCast<MD::Heading>();
     const auto paragraph = heading->text();
     if (paragraph->items().length() != 4) {
         QFAIL("inTitle: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 2);
@@ -470,7 +465,7 @@ void NoteLinkingTest::inTitle()
     QCOMPARE_EQ(item1->startColumn(), 3);
     QCOMPARE_EQ(item1->endColumn(), 27);
 
-    const auto item2 = std::static_pointer_cast<MD::Link<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Link>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 2);
@@ -479,7 +474,7 @@ void NoteLinkingTest::inTitle()
     QCOMPARE(item2->text(), QStringLiteral("my link"));
     QCOMPARE_EQ(item2->textPos(), MD::WithPosition(48, 0, 54, 0));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 1);
     QCOMPARE_EQ(item3->opts(), 2);
@@ -488,7 +483,7 @@ void NoteLinkingTest::inTitle()
     QCOMPARE_EQ(item3->startColumn(), 57);
     QCOMPARE_EQ(item3->endColumn(), 84);
 
-    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    const auto item4 = paragraph->getItemAt(3).staticCast<MD::Text>();
     QCOMPARE_EQ(item4->openStyles().length(), 0);
     QCOMPARE_EQ(item4->closeStyles().length(), 0);
     QCOMPARE_EQ(item4->opts(), 0);

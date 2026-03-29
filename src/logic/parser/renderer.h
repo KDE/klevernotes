@@ -9,15 +9,13 @@
 #include "plugins/pluginHelper.h"
 #include <utility>
 
-#define MD4QT_QT_SUPPORT
-#include "md4qt/html.h"
-#include "md4qt/traits.h"
+#include <md4qt/src/html.h>
 
 /**
  * @class Renderer
  * @brief MD::HtmlVisitor with custom rendering.
  */
-class Renderer : public MD::details::HtmlVisitor<MD::QStringTrait>
+class Renderer : public MD::details::HtmlVisitor
 {
 public:
     Renderer();
@@ -76,30 +74,30 @@ public:
      */
     void setCodeHighlightEnable(const bool enable);
 
-    using Base = MD::details::HtmlVisitor<MD::QStringTrait>;
+    using Base = MD::details::HtmlVisitor;
     // md4qt
-    void openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
+    void openStyle(const typename MD::ItemWithOpts::Styles &styles) override;
     using Base::openStyle;
 
-    void closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles) override;
+    void closeStyle(const typename MD::ItemWithOpts::Styles &styles) override;
     using Base::closeStyle;
 
-    void onImage(MD::Image<MD::QStringTrait> *i) override;
+    void onImage(MD::Image *i) override;
     using Base::onImage;
 
-    void onListItem(MD::ListItem<MD::QStringTrait> *i, bool first, bool skipOpeningWrap) override;
+    void onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap) override;
     using Base::onListItem;
 
-    void onCode(MD::Code<MD::QStringTrait> *c) override;
+    void onCode(MD::Code *c) override;
     using Base::onCode;
 
-    void onHeading(MD::Heading<MD::QStringTrait> *h, const typename MD::QStringTrait::String &ht) override;
+    void onHeading(MD::Heading *h, const QString &ht) override;
     using Base::onHeading;
 
-    void onLink(MD::Link<MD::QStringTrait> *l) override;
+    void onLink(MD::Link *l) override;
     using Base::onLink;
 
-    void onUserDefined(MD::Item<MD::QStringTrait> *item) override;
+    void onUserDefined(MD::Item *item) override;
     using Base::onUserDefined;
 
     // Custom

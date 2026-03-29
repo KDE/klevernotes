@@ -11,11 +11,11 @@
 #include <qstringliteral.h>
 
 Renderer::Renderer()
-    : MD::details::HtmlVisitor<MD::QStringTrait>() {};
+    : MD::details::HtmlVisitor() { };
 
 // Overriding default
 // =========
-void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
+void Renderer::openStyle(const typename MD::ItemWithOpts::Styles &styles)
 {
     for (const auto &s : styles) {
         const long long int opts = s.style();
@@ -44,7 +44,7 @@ void Renderer::openStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styl
     }
 }
 
-void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Styles &styles)
+void Renderer::closeStyle(const typename MD::ItemWithOpts::Styles &styles)
 {
     for (const auto &s : styles) {
         const long long int opts = s.style();
@@ -75,9 +75,9 @@ void Renderer::closeStyle(const typename MD::ItemWithOpts<MD::QStringTrait>::Sty
 
 void Renderer::onHeading(
     //! Heading.
-    MD::Heading<MD::QStringTrait> *h,
+    MD::Heading *h,
     //! Heading tag.
-    const typename MD::QStringTrait::String &ht)
+    const QString &ht)
 {
     if (!m_justCollectFootnoteRefs) {
         m_html.push_back(QStringLiteral("<"));
@@ -96,7 +96,7 @@ void Renderer::onHeading(
     }
 }
 
-void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
+void Renderer::onLink(MD::Link *l)
 {
     QString url = l->url();
 
@@ -112,12 +112,12 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
     const auto lit = this->m_doc->labeledLinks().find(url);
 
     if (lit != this->m_doc->labeledLinks().cend())
-        url = lit->second->url();
+        url = lit.value()->url();
 
     if (std::find(this->m_anchors.cbegin(), this->m_anchors.cend(), url) != this->m_anchors.cend())
         url = QStringLiteral("#") + url;
     else if (url.startsWith(QStringLiteral("#")) && this->m_doc->labeledHeadings().find(url) == this->m_doc->labeledHeadings().cend()) {
-        auto path = static_cast<MD::Anchor<MD::QStringTrait> *>(this->m_doc->items().at(0).get())->label();
+        auto path = static_cast<MD::Anchor *>(this->m_doc->items().at(0).get())->label();
         const auto sp = path.lastIndexOf(QStringLiteral("/"));
         path.remove(sp, path.length() - sp);
         const auto p = url.indexOf(path) - 1;
@@ -154,7 +154,7 @@ void Renderer::onLink(MD::Link<MD::QStringTrait> *l)
     }
 }
 
-void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
+void Renderer::onImage(MD::Image *i)
 {
     if (!m_justCollectFootnoteRefs) {
         QString url = i->url();
@@ -176,25 +176,25 @@ void Renderer::onImage(MD::Image<MD::QStringTrait> *i)
     }
 }
 
-void Renderer::onListItem(MD::ListItem<MD::QStringTrait> *i, bool first, bool skipOpeningWrap)
+void Renderer::onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap)
 {
     const bool hasTask = i->isTaskList();
     const bool isChecked = i->isChecked();
-    const int startNum = i->listType() == MD::ListItem<MD::QStringTrait>::Ordered && first ? i->startNumber() : -1;
+    const int startNum = i->listType() == MD::ListItem::Ordered && first ? i->startNumber() : -1;
 
     if (!m_justCollectFootnoteRefs) {
         m_html.push_back(openListItem(hasTask, isChecked, startNum));
     }
 
     // Add the text
-    Visitor<MD::QStringTrait>::onListItem(i, first, skipOpeningWrap);
+    Visitor::onListItem(i, first, skipOpeningWrap);
 
     if (!m_justCollectFootnoteRefs) {
         m_html.push_back(closeListItem(hasTask));
     }
 }
 
-void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
+void Renderer::onCode(MD::Code *c)
 {
     if (!m_justCollectFootnoteRefs) {
         static const QString pumlStr = QStringLiteral("puml");
@@ -220,7 +220,7 @@ void Renderer::onCode(MD::Code<MD::QStringTrait> *c)
     }
 }
 
-void Renderer::onUserDefined(MD::Item<MD::QStringTrait> *item)
+void Renderer::onUserDefined(MD::Item *item)
 {
     static const int userDefinedType = static_cast<int>(MD::ItemType::UserDefined);
     const int itemType = static_cast<int>(item->type());

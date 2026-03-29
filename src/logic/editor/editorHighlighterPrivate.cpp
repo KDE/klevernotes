@@ -5,7 +5,7 @@
 #include "editorHighlighterPrivate.hpp"
 
 // md4qt include
-#include "logic/parser/md4qt/doc.h"
+#include <md4qt/src/doc.h>
 
 // C++ include
 #include <algorithm>

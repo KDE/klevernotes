@@ -13,9 +13,7 @@
 #include "logic/parser/renderer.h"
 
 // md4qt include.
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/traits.h"
+#include <md4qt/src/doc.h>
 
 // Qt include
 #include <QObject>
@@ -136,7 +134,7 @@ public:
     /**
      * @brief Get the MD::Document resulting of the parsing.
      */
-    std::shared_ptr<MD::Document<MD::QStringTrait>> currentDoc() const;
+    QSharedPointer<MD::Document> currentDoc() const;
 
     // Highlight
     /**
@@ -321,7 +319,7 @@ private Q_SLOTS:
     /**
      * @brief Receives the info the parsing is finished.
      */
-    void onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>>, unsigned long long int);
+    void onParsingDone(QSharedPointer<MD::Document>, unsigned long long int);
 
 private:
     // Parser
@@ -433,7 +431,7 @@ private:
      *
      * @param doc The MD::Document resulting of the parsing.
      */
-    void cacheAndHighlightSyntax(std::shared_ptr<MD::Document<MD::QStringTrait>> doc);
+    void cacheAndHighlightSyntax(QSharedPointer<MD::Document> doc);
 
 private:
     // Config Connections
@@ -452,7 +450,7 @@ private:
     Parser *m_parser = nullptr;
     unsigned long long int m_parseCount;
     QThread *m_parsingThread = nullptr;
-    std::shared_ptr<MD::Document<MD::QStringTrait>> m_currentMdDoc = nullptr;
+    QSharedPointer<MD::Document> m_currentMdDoc = nullptr;
 
     // Rendering
     bool m_renderEnabled = true;
@@ -460,16 +458,6 @@ private:
 
     // Plugins
     PluginHelper *m_pluginHelper = nullptr;
-    // md4qt plugins
-    enum ExtensionID : int {
-        /* Extended syntax
-         * ===============*/
-        ExtendedSyntax = 256, // MD::TextPlugin::UserDefinedPluginID + 1
-        /* Plugins
-         * ===============*/
-        KleverPlugins = ExtendedSyntax + 64,
-    };
-    int m_extendedSyntaxCount = 0;
 
     // Editor highlight
     EditorHighlighter *m_editorHighlighter = nullptr;

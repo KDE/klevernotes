@@ -6,9 +6,7 @@
 #pragma once
 
 // md4qt include.
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/traits.h"
+#include <md4qt/src/doc.h>
 
 #define HighlightDelim 8
 
@@ -67,5 +65,5 @@ void handleTabPressed(const MdEditor::EditorHandler *editor, const bool useSpace
  * @param useSpaceForTab Whether we use space for tab or not.
  * @param modifier The modifiers key pressed when <Return> was pressed.
  */
-void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListItem<MD::QStringTrait> *listItem, const bool useSpaceForTab, const int modifier);
+void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListItem *listItem, const bool useSpaceForTab, const int modifier);
 }

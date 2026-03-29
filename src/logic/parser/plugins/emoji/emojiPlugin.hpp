@@ -5,10 +5,9 @@
 
 #pragma once
 
-#include "logic/parser/md4qtDataGetter.hpp"
-
 // md4qt include
-#include "logic/parser/md4qt/doc.h"
+#include <md4qt/src/doc.h>
+#include <md4qt/src/inline_parser.h>
 
 namespace EmojiPlugin
 {
@@ -17,7 +16,7 @@ namespace EmojiPlugin
  * @brief Custom MD::ItemWithOpts representing an Emoji.
  * This will be used in the `onUserDefined` method of the Renderer.
  */
-class EmojiItem : public MD::ItemWithOpts<MD::QStringTrait>
+class EmojiItem : public MD::ItemWithOpts
 {
 public:
     EmojiItem() = default;
@@ -32,7 +31,7 @@ public:
      */
     void applyEmojiBase(const EmojiItem &other);
 
-    std::shared_ptr<MD::Item<MD::QStringTrait>> clone(MD::Document<MD::QStringTrait> *doc = nullptr) const override;
+    QSharedPointer<MD::Item> clone(MD::Document *doc = nullptr) const override;
 
     /**
      * @brief Set the emoji value.
@@ -107,21 +106,22 @@ private:
     MD::WithPosition m_endDelim = {};
 };
 
-/**
- * @brief Provide a simple way to execute the whole parsing for the emoji.
- *
- * @param p The current MD::Paragraph being treated
- * @param po The current MD::TextParsingOpts used for `rawTextData`
- * @param rawIdx The index of the current rawTextData item being treated.
- */
-inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx);
+class EmojiParser : public MD::InlineParser
+{
+public:
+    EmojiParser() = default;
+    ~EmojiParser() override = default;
 
-/**
- * @brief Function exposed to md4qt::Parser::addTextPlugin
- *
- * @param p The current MD::Paragraph being treated
- * @param po The current MD::TextParsingOpts used for `rawTextData`
- * @param options Options of this plugins
- */
-void emojiHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options);
+    bool check(MD::Line &line,
+               MD::ParagraphStream &stream,
+               MD::InlineContext &ctx,
+               QSharedPointer<MD::Document> doc,
+               const QString &path,
+               const QString &fileName,
+               QStringList &linksToParse,
+               MD::Parser &parser,
+               const MD::ReverseSolidusHandler &rs) override;
+
+    QString startDelimiterSymbols() const override;
+};
 }

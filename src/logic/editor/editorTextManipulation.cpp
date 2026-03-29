@@ -153,6 +153,18 @@ QString rstrip(const QString &str)
     return {};
 }
 
+/**
+ * @class StartColumnOrder
+ * @brief Class providing sorting abilities to `md4qt` items with MD::WithPosition traits.
+ */
+struct StartColumnOrder {
+    template<typename T>
+    bool operator()(const T &lhs, const T &rhs) const
+    {
+        return lhs.startLine() == rhs.startLine() ? lhs.startColumn() < rhs.startColumn() : lhs.startLine() < rhs.startLine();
+    }
+};
+
 void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
 {
     std::vector<MD::WithPosition> toRemove;
@@ -165,7 +177,7 @@ void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
         }
     }
 
-    std::sort(toRemove.begin(), toRemove.end(), md4qtHelperFunc::StartColumnOrder{});
+    std::sort(toRemove.begin(), toRemove.end(), StartColumnOrder{});
 
     QTextCursor cursor = editor->textCursor();
 
@@ -293,7 +305,7 @@ void handleTabPressed(const MdEditor::EditorHandler *editor, const bool useSpace
     cursor.endEditBlock();
 }
 
-void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListItem<MD::QStringTrait> *listItem, const bool useSpaceForTab, const int modifier)
+void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListItem *listItem, const bool useSpaceForTab, const int modifier)
 {
     auto cursor = getProperCursor(editor, false);
 
@@ -313,7 +325,7 @@ void handleReturnPressed(const MdEditor::EditorHandler *editor, const MD::ListIt
             const int indent = listItem->delim().startColumn();
             str += useSpaceForTab ? QStringLiteral(" ").repeated(indent) : QStringLiteral("\t").repeated(indent);
 
-            if (listItem->listType() == MD::ListItem<MD::QStringTrait>::Ordered) {
+            if (listItem->listType() == MD::ListItem::Ordered) {
                 str += QString::number(listItem->startNumber() + 1) + QStringLiteral(". ");
             } else {
                 str += QStringLiteral("- ");

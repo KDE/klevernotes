@@ -3,18 +3,16 @@
     SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 */
 
-#include "logic/parser/md4qtDataCleaner.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
+#include "logic/parser/plugins_helper.h"
 
 // Qt include
 #include <QObject>
 #include <QTextStream>
 #include <QtTest/QTest>
 
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/parser.h"
-#include "logic/parser/md4qt/traits.h"
+#include <md4qt/src/doc.h>
+#include <md4qt/src/parser.h>
 
 class EmojiTest : public QObject
 {
@@ -47,7 +45,7 @@ private Q_SLOTS:
 
 private:
     // md4qt
-    MD::Parser<MD::QStringTrait> m_md4qtParser;
+    MD::Parser m_md4qtParser;
     const QString dummyPath = QStringLiteral("/home/dummy/");
     // Data
     QStringList m_testingLines = {
@@ -78,8 +76,8 @@ private:
 /* Settings Data */
 void EmojiTest::initTestCase()
 {
-    m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(static_cast<int>(MD::TextPlugin::UserDefined) + 1), EmojiPlugin::emojiHelperFunc, true, {});
-    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
+    auto inlineParsers = setInlineParsers<EmojiPlugin::EmojiParser>();
+    m_md4qtParser.setInlineParsers(inlineParsers);
 }
 
 /* TEST */
@@ -94,19 +92,19 @@ void EmojiTest::simpleEmojiMiddle()
         QFAIL("simpleEmojiMiddle: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("simpleEmojiMiddle: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 6);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
     QCOMPARE(item1->text(), QStringLiteral("Simple "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 7);
     QCOMPARE_EQ(item2->endColumn(), 13);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -118,7 +116,7 @@ void EmojiTest::simpleEmojiMiddle()
     auto t = item2->optionsPos();
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->startColumn(), 14);
     QCOMPARE_EQ(item3->endColumn(), 33);
     QCOMPARE_EQ(item3->startLine(), 0);
@@ -137,12 +135,12 @@ void EmojiTest::simpleEmojiStart()
         QFAIL("simpleEmojiStart: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("simpleEmojiStart: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 6);
     QCOMPARE_EQ(item1->startLine(), 0);
@@ -153,12 +151,12 @@ void EmojiTest::simpleEmojiStart()
     MD::WithPosition optionsPos = namePos;
     QCOMPARE_EQ(item1->optionsPos(), optionsPos);
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     QCOMPARE_EQ(item2->startColumn(), 7);
     QCOMPARE_EQ(item2->endColumn(), 28);
     QCOMPARE_EQ(item2->startLine(), 0);
     QCOMPARE_EQ(item2->endLine(), 0);
-    QCOMPARE(item2->text(), QStringLiteral("simple emoji at start"));
+    QCOMPARE(item2->text(), QStringLiteral(" simple emoji at start"));
 }
 
 /*
@@ -172,19 +170,19 @@ void EmojiTest::simpleEmojiEnd()
         QFAIL("simpleEmojiEnd: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("simpleEmojiEnd: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 19);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Simple emoji at end"));
+    QCOMPARE(item1->text(), QStringLiteral("Simple emoji at end "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 20);
     QCOMPARE_EQ(item2->endColumn(), 26);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -207,19 +205,19 @@ void EmojiTest::simpleEmojiWithStyle()
         QFAIL("simpleEmojiWithStyle: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("simpleEmojiWithStyle: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 6);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
     QCOMPARE(item1->text(), QStringLiteral("Simple "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 8);
     QCOMPARE_EQ(item2->endColumn(), 14);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -233,7 +231,7 @@ void EmojiTest::simpleEmojiWithStyle()
     MD::WithPosition optionsPos = namePos;
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->startColumn(), 16);
     QCOMPARE_EQ(item3->endColumn(), 32);
     QCOMPARE_EQ(item3->startLine(), 0);
@@ -252,19 +250,19 @@ void EmojiTest::darkSkinEmoji()
         QFAIL("darkSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("darkSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 15);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Dark skin emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Dark skin emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 16);
     QCOMPARE_EQ(item2->endColumn(), 37);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -287,19 +285,19 @@ void EmojiTest::mediumDarkSkinEmoji()
         QFAIL("mediumDarkSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("mediumDarkSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 22);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Medium dark skin emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Medium dark skin emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 23);
     QCOMPARE_EQ(item2->endColumn(), 51);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -322,19 +320,19 @@ void EmojiTest::mediumSkinEmoji()
         QFAIL("mediumSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("mediumSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 17);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Medium skin emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Medium skin emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 18);
     QCOMPARE_EQ(item2->endColumn(), 41);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -357,19 +355,19 @@ void EmojiTest::mediumLightSkinEmoji()
         QFAIL("mediumLightSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("mediumLightSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 23);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Medium light skin emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Medium light skin emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 24);
     QCOMPARE_EQ(item2->endColumn(), 53);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -392,19 +390,19 @@ void EmojiTest::lightSkinEmoji()
         QFAIL("lightSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("lightSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 16);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Light skin emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Light skin emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 17);
     QCOMPARE_EQ(item2->endColumn(), 39);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -427,19 +425,19 @@ void EmojiTest::defaultSkinEmoji()
         QFAIL("defaultSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("defaultSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 18);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Default skin emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Default skin emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 19);
     QCOMPARE_EQ(item2->endColumn(), 43);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -462,19 +460,19 @@ void EmojiTest::wrongSkinEmoji()
         QFAIL("wrongSkinEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("wrongSkinEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 27);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
     QCOMPARE(item1->text(), QStringLiteral("Wrong given skin tone emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 28);
     QCOMPARE_EQ(item2->endColumn(), 34);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -485,7 +483,7 @@ void EmojiTest::wrongSkinEmoji()
     MD::WithPosition optionsPos = namePos;
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->startColumn(), 35);
     QCOMPARE_EQ(item3->endColumn(), 50);
     QCOMPARE_EQ(item3->startLine(), 0);
@@ -504,19 +502,19 @@ void EmojiTest::variantEmoji()
         QFAIL("variantEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("variantEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 13);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Variant emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Variant emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 14);
     QCOMPARE_EQ(item2->endColumn(), 29);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -539,19 +537,19 @@ void EmojiTest::wrongVariantEmoji()
         QFAIL("wrongVariantEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("wrongVariantEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 19);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
     QCOMPARE(item1->text(), QStringLiteral("Wrong variant emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 20);
     QCOMPARE_EQ(item2->endColumn(), 26);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -562,7 +560,7 @@ void EmojiTest::wrongVariantEmoji()
     MD::WithPosition optionsPos = namePos;
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->startColumn(), 27);
     QCOMPARE_EQ(item3->endColumn(), 38);
     QCOMPARE_EQ(item3->startLine(), 0);
@@ -581,19 +579,19 @@ void EmojiTest::toneAndVariantEmoji()
         QFAIL("toneAndVariantEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("toneAndVariantEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 20);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Tone + variant emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Tone + variant emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 21);
     QCOMPARE_EQ(item2->endColumn(), 53);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -616,19 +614,19 @@ void EmojiTest::wrongToneAndVariantEmoji()
         QFAIL("wrongToneAndVariantEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("wrongToneAndVariantEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 26);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Wrong tone + variant emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Wrong tone + variant emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 27);
     QCOMPARE_EQ(item2->endColumn(), 60);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -651,19 +649,19 @@ void EmojiTest::toneAndWrongVariantEmoji()
         QFAIL("toneAndWrongVariantEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 2) {
         QFAIL("toneAndWrongVariantEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 26);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("Tone + wrong variant emoji"));
+    QCOMPARE(item1->text(), QStringLiteral("Tone + wrong variant emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 27);
     QCOMPARE_EQ(item2->endColumn(), 61);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -686,19 +684,19 @@ void EmojiTest::wrongToneAndWrongVariantEmoji()
         QFAIL("wrongToneAndWrongVariantEmoji: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 3) {
         QFAIL("wrongToneAndWrongVariantEmoji: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 32);
     QCOMPARE_EQ(item1->startLine(), 0);
     QCOMPARE_EQ(item1->endLine(), 0);
     QCOMPARE(item1->text(), QStringLiteral("Wrong tone + wrong variant emoji "));
 
-    const auto item2 = std::static_pointer_cast<EmojiPlugin::EmojiItem>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<EmojiPlugin::EmojiItem>();
     QCOMPARE_EQ(item2->startColumn(), 33);
     QCOMPARE_EQ(item2->endColumn(), 39);
     QCOMPARE_EQ(item2->startLine(), 0);
@@ -709,7 +707,7 @@ void EmojiTest::wrongToneAndWrongVariantEmoji()
     MD::WithPosition optionsPos = namePos;
     QCOMPARE_EQ(item2->optionsPos(), optionsPos);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->startColumn(), 40);
     QCOMPARE_EQ(item3->endColumn(), 68);
     QCOMPARE_EQ(item3->startLine(), 0);
@@ -728,12 +726,12 @@ void EmojiTest::badEmoji1()
         QFAIL("badEmoji1: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("badEmoji1: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 10);
     QCOMPARE_EQ(item1->startLine(), 0);
@@ -752,12 +750,12 @@ void EmojiTest::badEmoji2()
         QFAIL("badEmoji2: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("badEmoji2: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 20);
     QCOMPARE_EQ(item1->startLine(), 0);
@@ -776,12 +774,12 @@ void EmojiTest::badEmoji3()
         QFAIL("badEmoji3: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("badEmoji3: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 27);
     QCOMPARE_EQ(item1->startLine(), 0);
@@ -800,12 +798,12 @@ void EmojiTest::badEmoji4()
         QFAIL("badEmoji4: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = doc->items().at(1).staticCast<MD::Paragraph>();
     if (paragraph->items().length() != 1) {
         QFAIL("badEmoji4: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->startColumn(), 0);
     QCOMPARE_EQ(item1->endColumn(), 37);
     QCOMPARE_EQ(item1->startLine(), 0);

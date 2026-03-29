@@ -7,6 +7,7 @@
 #include "editorHighlighter.hpp"
 #include "logic/editor/editorTextManipulation.hpp"
 #include "logic/parser/parser.h"
+#include "logic/parser/plugins_helper.h"
 #include "logic/parser/renderer.h"
 
 // Qt include
@@ -40,14 +41,14 @@ EditorHandler::EditorHandler(QObject *parent)
     connectTimer();
 
     static const QList<QStringList> extendedSyntaxsList = {
-        // 0. Delim, 1. HTML open, 2. HTML close, 3. size scale,
+        // 0. Style, 1. HTML open, 2. HTML close, 3. size scale,
         // 4. foreground, 5. background, 6. vertical alignment, 7. bold enabled,
         // 8. italic enabled, 9. strikethrough enabled, 10. underline enabled, 11. underline style
         // if empty for bool value => false, if empty for other => default value
         // TODO: make documentation about this
-        {u"=="_s, u"<mark>"_s, u"</mark>"_s, u""_s, u"background"_s, u"highlight"_s, u""_s, u""_s, u""_s, u""_s, u""_s, u""_s}, // Highlight
-        {u"--"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
-        {u"^"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
+        {u"8"_s, u"<mark>"_s, u"</mark>"_s, u""_s, u"background"_s, u"highlight"_s, u""_s, u""_s, u""_s, u""_s, u""_s, u""_s}, // Highlight
+        {u"16"_s, u"<sub>"_s, u"</sub>"_s, u""_s, u""_s, u""_s, u"2"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Subscript
+        {u"32"_s, u"<sup>"_s, u"</sup>"_s, u""_s, u""_s, u""_s, u"1"_s, u"y"_s, u"y"_s, u""_s, u""_s, u""_s}, // Superscript
     };
     addExtendedSyntaxs(extendedSyntaxsList);
 }
@@ -302,7 +303,7 @@ void EditorHandler::changeRenderPreviewState(const bool _enabled)
 
 // Highlight
 // =========
-void EditorHandler::cacheAndHighlightSyntax(std::shared_ptr<MD::Document<MD::QStringTrait>> doc)
+void EditorHandler::cacheAndHighlightSyntax(QSharedPointer<MD::Document> doc)
 {
     if (!m_noteDir.isEmpty()) {
         m_highlighting = true;
@@ -343,14 +344,9 @@ void EditorHandler::editorFontChanged()
 // ExtendedSyntax
 void EditorHandler::addExtendedSyntax(const QStringList &details)
 {
-    const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
+    const auto opts = details[0].toInt();
     m_renderer->addExtendedSyntax(opts, details[1], details[2]);
-
     m_editorHighlighter->addExtendedSyntax(opts, details);
-
-    const QStringList options = {details[0], QString::number(opts), QString::number(ExtensionID::ExtendedSyntax + m_extendedSyntaxCount)};
-    m_parser->addExtendedSyntax(options);
-    ++m_extendedSyntaxCount;
 }
 
 void EditorHandler::addExtendedSyntaxs(const QList<QStringList> &syntaxsDetails)
@@ -394,7 +390,7 @@ void EditorHandler::handleReturnPressed(const int modifier)
     const int pos = cursor.block().length() - 2;
     const int line = cursor.blockNumber();
 
-    const MD::ListItem<MD::QStringTrait> *listItem = m_editorHighlighter->searchListItem(line, pos);
+    const MD::ListItem *listItem = m_editorHighlighter->searchListItem(line, pos);
 
     editorTextManipulation::handleReturnPressed(this, listItem, m_config->useSpaceForTab(), modifier);
     m_textChanged = false;
@@ -406,7 +402,7 @@ void EditorHandler::handleReturnPressed(const int modifier)
 
 // md-editor method
 // ================
-std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() const
+QSharedPointer<MD::Document> EditorHandler::currentDoc() const
 {
     return m_currentMdDoc;
 }
@@ -415,7 +411,7 @@ std::shared_ptr<MD::Document<MD::QStringTrait>> EditorHandler::currentDoc() cons
 // KleverNotes slots
 // =================
 // Parsing
-void EditorHandler::onParsingDone(std::shared_ptr<MD::Document<MD::QStringTrait>> mdDoc, unsigned long long int parseCount)
+void EditorHandler::onParsingDone(QSharedPointer<MD::Document> mdDoc, unsigned long long int parseCount)
 {
     if (parseCount == m_parseCount) {
         m_currentMdDoc = mdDoc;

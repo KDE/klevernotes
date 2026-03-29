@@ -4,18 +4,15 @@
 */
 
 #include "logic/parser/extendedSyntax/extendedSyntaxMaker.hpp"
-#include "logic/parser/md4qtDataCleaner.hpp"
-#include "logic/parser/md4qtDataGetter.hpp"
+#include "logic/parser/plugins_helper.h"
 
 // Qt include
 #include <QObject>
 #include <QTextStream>
 #include <QtTest/QTest>
 
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/parser.h"
-#include "logic/parser/md4qt/traits.h"
+#include <md4qt/src/doc.h>
+#include <md4qt/src/parser.h>
 
 class ExtendedSyntaxTest : public QObject
 {
@@ -52,9 +49,7 @@ private Q_SLOTS:
 
 private:
     // md4qt
-    MD::Parser<MD::QStringTrait> m_md4qtParser;
-    int m_extendedSyntaxCount = 0;
-    const int m_id = static_cast<int>(MD::TextPlugin::UserDefined) + 1;
+    MD::Parser m_md4qtParser;
 
     // Data
     QStringList m_testingLines = {
@@ -71,7 +66,7 @@ private:
         QStringLiteral("\\==Untouched=="),
         QStringLiteral("*==Unaffected*=="),
         QStringLiteral("^Unaffected\n^"),
-        QStringLiteral("New style mix--===--==--==--=="),
+        QStringLiteral("New style mix --===--==--==--=="),
         QStringLiteral("Multi__*line*__ ==*mix*== --of--\n^new^ --====and==-- original"),
         QStringLiteral("==*Cancelling part of== **original style***"),
         QStringLiteral("# ==*Cancelling part of== **original style in title***"),
@@ -95,24 +90,13 @@ void ExtendedSyntaxTest::makeTexts()
 
 void ExtendedSyntaxTest::addExtendedSyntaxs()
 {
-    static const QList<QStringList> extendedSyntaxsList = {
-        {QStringLiteral("=="), QStringLiteral("<mark>"), QStringLiteral("</mark>")}, // Highlight
-        {QStringLiteral("--"), QStringLiteral("<sub>"), QStringLiteral("</sub>")}, // Subscript
-        {QStringLiteral("^"), QStringLiteral("<sup>"), QStringLiteral("</sup>")}, // Superscript
-    };
-
-    for (const auto &details : extendedSyntaxsList) {
-        const long long int opts = MD::TextOption::StrikethroughText << (m_extendedSyntaxCount + 1);
-
-        const QStringList options = {details[0], QString::number(opts)};
-        m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(m_id + m_extendedSyntaxCount), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, options);
-        ++m_extendedSyntaxCount;
-    }
+    auto inlineParsers =
+        setInlineParsers<ExtendedSyntaxMaker::SupEmphasisParser, ExtendedSyntaxMaker::SubEmphasisParser, ExtendedSyntaxMaker::HighlightEmphasisParser>();
+    m_md4qtParser.setInlineParsers(inlineParsers);
 }
 
 void ExtendedSyntaxTest::initTestCase()
 {
-    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
     addExtendedSyntaxs();
     makeTexts();
 }
@@ -130,12 +114,12 @@ void ExtendedSyntaxTest::simpleHighlight()
         QFAIL("simpleHighlight: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("simpleHighlight: Incorrect items count in the paragraph");
     }
 
-    const auto item = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item = paragraph->getItemAt(0).staticCast<MD::Text>();
 
     // Check delims
     const auto &openStyles = item->openStyles();
@@ -167,12 +151,12 @@ void ExtendedSyntaxTest::originalAndNew()
         QFAIL("originalAndNew: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("originalAndNew: Incorrect items count in the paragraph");
     }
 
-    const auto item = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item = paragraph->getItemAt(0).staticCast<MD::Text>();
 
     // Check delims
     const auto &openStyles = item->openStyles();
@@ -212,12 +196,12 @@ void ExtendedSyntaxTest::cancellingPrevious()
         QFAIL("cancellingPrevious: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("cancellingPrevious: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles = item1->openStyles();
     QCOMPARE_EQ(openStyles.length(), 1);
@@ -235,7 +219,7 @@ void ExtendedSyntaxTest::cancellingPrevious()
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*Cancelling previous style"));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
@@ -253,12 +237,12 @@ void ExtendedSyntaxTest::newAndOriginal()
         QFAIL("newAndOriginal: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("newAndOriginal: Incorrect items count in the paragraph");
     }
 
-    const auto item = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles = item->openStyles();
     QCOMPARE_EQ(openStyles.length(), 2);
@@ -297,12 +281,12 @@ void ExtendedSyntaxTest::withNonText()
         QFAIL("withNonText: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 3) {
         QFAIL("withNonText: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles = item1->openStyles();
     QCOMPARE_EQ(openStyles.length(), 1);
@@ -315,13 +299,13 @@ void ExtendedSyntaxTest::withNonText()
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("With "));
 
-    const auto item2 = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::ItemWithOpts>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 8);
     QCOMPARE_EQ(item2->type(), MD::ItemType::Code);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     // Check delims
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     const auto &closeStyles = item3->closeStyles();
@@ -346,12 +330,12 @@ void ExtendedSyntaxTest::withNonTextAndOriginal()
         QFAIL("withNonTextAndOriginal: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 3) {
         QFAIL("withNonTextAndOriginal: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles = item1->openStyles();
     QCOMPARE_EQ(openStyles.length(), 2);
@@ -368,13 +352,13 @@ void ExtendedSyntaxTest::withNonTextAndOriginal()
     QCOMPARE_EQ(item1->opts(), 10);
     QCOMPARE(item1->text(), QStringLiteral("With "));
 
-    const auto item2 = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::ItemWithOpts>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 10);
     QCOMPARE_EQ(item2->type(), MD::ItemType::Code);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     // Check delims
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     const auto &closeStyles = item3->closeStyles();
@@ -403,12 +387,12 @@ void ExtendedSyntaxTest::withNonTextAndCancelling()
         QFAIL("withNonTextAndCancelling: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 4) {
         QFAIL("withNonTextAndCancelling: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles = item1->openStyles();
     QCOMPARE_EQ(openStyles.length(), 1);
@@ -421,13 +405,13 @@ void ExtendedSyntaxTest::withNonTextAndCancelling()
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*With "));
 
-    const auto item2 = std::static_pointer_cast<MD::ItemWithOpts<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::ItemWithOpts>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 8);
     QCOMPARE_EQ(item2->type(), MD::ItemType::Code);
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     // Check delims
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     const auto &closeStyles = item3->closeStyles();
@@ -440,7 +424,7 @@ void ExtendedSyntaxTest::withNonTextAndCancelling()
     QCOMPARE_EQ(item3->opts(), 8);
     QCOMPARE(item3->text(), QStringLiteral(" and cancelling"));
 
-    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    const auto item4 = paragraph->getItemAt(3).staticCast<MD::Text>();
     QCOMPARE_EQ(item4->openStyles().length(), 0);
     QCOMPARE_EQ(item4->closeStyles().length(), 0);
     QCOMPARE_EQ(item4->opts(), 0);
@@ -458,12 +442,12 @@ void ExtendedSyntaxTest::untouched1()
         QFAIL("untouched1: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("untouched1: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -481,12 +465,12 @@ void ExtendedSyntaxTest::untouched2()
         QFAIL("untouched2: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("untouched2: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -504,12 +488,12 @@ void ExtendedSyntaxTest::untouched3()
         QFAIL("untouched3: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("untouched3: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -527,12 +511,12 @@ void ExtendedSyntaxTest::untouched4()
         QFAIL("untouched4: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 1) {
         QFAIL("untouched4: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
@@ -550,12 +534,12 @@ void ExtendedSyntaxTest::unaffected1()
         QFAIL("unaffected1: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("unaffected1: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 1);
     QCOMPARE_EQ(item1->closeStyles().length(), 1);
     // Check delims
@@ -575,7 +559,7 @@ void ExtendedSyntaxTest::unaffected1()
     QCOMPARE_EQ(item1->opts(), 2);
     QCOMPARE(item1->text(), QStringLiteral("==Unaffected"));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
@@ -594,18 +578,18 @@ void ExtendedSyntaxTest::unaffected2()
         QFAIL("unaffected2: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("unaffected2: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
     QCOMPARE(item1->text(), QStringLiteral("^Unaffected"));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);
     QCOMPARE_EQ(item2->opts(), 0);
@@ -613,7 +597,7 @@ void ExtendedSyntaxTest::unaffected2()
 };
 
 /*
-New style mix--===--==--==--==
+New style mix --===--==--==--==
 */
 void ExtendedSyntaxTest::newStyleMix()
 {
@@ -623,64 +607,60 @@ void ExtendedSyntaxTest::newStyleMix()
         QFAIL("newStyleMix: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
-    if (paragraph->items().length() != 5) {
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 4) {
         QFAIL("newStyleMix: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
-    QCOMPARE(item1->text(), QStringLiteral("New style mix"));
+    QCOMPARE(item1->text(), QStringLiteral("New style mix "));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles2 = item2->openStyles();
     QCOMPARE_EQ(openStyles2.length(), 1);
-    QCOMPARE_EQ(openStyles2[0].startColumn(), 13);
-    QCOMPARE_EQ(openStyles2[0].endColumn(), 14);
+    QCOMPARE_EQ(openStyles2[0].startColumn(), 14);
+    QCOMPARE_EQ(openStyles2[0].endColumn(), 15);
     QCOMPARE_EQ(openStyles2[0].startLine(), 0);
     QCOMPARE_EQ(openStyles2[0].endLine(), 0);
     const auto &closeStyles2 = item2->closeStyles();
     QCOMPARE_EQ(closeStyles2.length(), 1);
-    QCOMPARE_EQ(closeStyles2[0].startColumn(), 18);
-    QCOMPARE_EQ(closeStyles2[0].endColumn(), 19);
+    QCOMPARE_EQ(closeStyles2[0].startColumn(), 19);
+    QCOMPARE_EQ(closeStyles2[0].endColumn(), 20);
     QCOMPARE_EQ(closeStyles2[0].startLine(), 0);
     QCOMPARE_EQ(closeStyles2[0].endLine(), 0);
     // !Check delims
     QCOMPARE_EQ(item2->opts(), 16);
     QCOMPARE(item2->text(), QStringLiteral("==="));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
-    QCOMPARE_EQ(item3->openStyles().length(), 0);
-    QCOMPARE_EQ(item3->closeStyles().length(), 0);
-    QCOMPARE_EQ(item3->opts(), 0);
-    QCOMPARE(item3->text(), QStringLiteral("=="));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
+    const auto &openStyles3 = item3->openStyles();
+    QCOMPARE_EQ(openStyles3.length(), 1);
+    QCOMPARE_EQ(openStyles3[0].startColumn(), 21);
+    QCOMPARE_EQ(openStyles3[0].endColumn(), 22);
+    QCOMPARE_EQ(openStyles3[0].startLine(), 0);
+    QCOMPARE_EQ(openStyles3[0].endLine(), 0);
+    const auto &closeStyles3 = item3->closeStyles();
+    QCOMPARE_EQ(closeStyles3.length(), 1);
+    QCOMPARE_EQ(closeStyles3[0].startColumn(), 25);
+    QCOMPARE_EQ(closeStyles3[0].endColumn(), 26);
+    QCOMPARE_EQ(closeStyles3[0].startLine(), 0);
+    QCOMPARE_EQ(closeStyles3[0].endLine(), 0);
+    QCOMPARE_EQ(item3->opts(), 8);
+    QCOMPARE(item3->text(), QStringLiteral("--"));
 
-    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    const auto item4 = paragraph->getItemAt(3).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles4 = item4->openStyles();
-    QCOMPARE_EQ(openStyles4.length(), 1);
-    QCOMPARE_EQ(openStyles4[0].startColumn(), 22);
-    QCOMPARE_EQ(openStyles4[0].endColumn(), 23);
-    QCOMPARE_EQ(openStyles4[0].startLine(), 0);
-    QCOMPARE_EQ(openStyles4[0].endLine(), 0);
+    QCOMPARE_EQ(openStyles4.length(), 0);
     const auto &closeStyles4 = item4->closeStyles();
-    QCOMPARE_EQ(closeStyles4.length(), 1);
-    QCOMPARE_EQ(closeStyles4[0].startColumn(), 26);
-    QCOMPARE_EQ(closeStyles4[0].endColumn(), 27);
-    QCOMPARE_EQ(closeStyles4[0].startLine(), 0);
-    QCOMPARE_EQ(closeStyles4[0].endLine(), 0);
+    QCOMPARE_EQ(closeStyles4.length(), 0);
     // !Check delims
-    QCOMPARE_EQ(item4->opts(), 16);
-    QCOMPARE(item4->text(), QStringLiteral("=="));
-
-    const auto item5 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(4));
-    QCOMPARE_EQ(item5->openStyles().length(), 0);
-    QCOMPARE_EQ(item5->closeStyles().length(), 0);
-    QCOMPARE_EQ(item5->opts(), 0);
-    QCOMPARE(item5->text(), QStringLiteral("=="));
+    QCOMPARE_EQ(item4->opts(), MD::TextOption::TextWithoutFormat);
+    QCOMPARE(item4->text(), QStringLiteral("--=="));
 };
 
 /*
@@ -695,18 +675,18 @@ void ExtendedSyntaxTest::multiLineMix()
         QFAIL("multiLineMix: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
-    if (paragraph->items().length() != 9) {
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 11) {
         QFAIL("multiLineMix: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
     QCOMPARE_EQ(item1->opts(), 0);
     QCOMPARE(item1->text(), QStringLiteral("Multi__"));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles2 = item2->openStyles();
     QCOMPARE_EQ(openStyles2.length(), 1);
@@ -724,13 +704,13 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item2->opts(), 2);
     QCOMPARE(item2->text(), QStringLiteral("line"));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(2).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
     QCOMPARE(item3->text(), QStringLiteral("__ "));
 
-    const auto item4 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(3));
+    const auto item4 = paragraph->getItemAt(3).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles4 = item4->openStyles();
     QCOMPARE_EQ(openStyles4.length(), 2);
@@ -756,7 +736,10 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item4->opts(), 10);
     QCOMPARE(item4->text(), QStringLiteral("mix"));
 
-    const auto item5 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(4));
+    const auto space1 = paragraph->getItemAt(4).staticCast<MD::Text>();
+    QCOMPARE(space1->text(), QStringLiteral(" "));
+
+    const auto item5 = paragraph->getItemAt(5).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles5 = item5->openStyles();
     QCOMPARE_EQ(openStyles5.length(), 1);
@@ -775,7 +758,7 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item5->opts(), 16);
     QCOMPARE(item5->text(), QStringLiteral("of"));
 
-    const auto item6 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(5));
+    const auto item6 = paragraph->getItemAt(6).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles6 = item6->openStyles();
     QCOMPARE_EQ(openStyles6.length(), 1);
@@ -793,7 +776,10 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item6->opts(), 32);
     QCOMPARE(item6->text(), QStringLiteral("new"));
 
-    const auto item7 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(6));
+    const auto space2 = paragraph->getItemAt(7).staticCast<MD::Text>();
+    QCOMPARE(space2->text(), QStringLiteral(" "));
+
+    const auto item7 = paragraph->getItemAt(8).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles7 = item7->openStyles();
     QCOMPARE_EQ(openStyles7.length(), 1);
@@ -806,7 +792,7 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item7->opts(), 16);
     QCOMPARE(item7->text(), QStringLiteral("=="));
 
-    const auto item8 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(7));
+    const auto item8 = paragraph->getItemAt(9).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles8 = item8->openStyles();
     QCOMPARE_EQ(openStyles8.length(), 1);
@@ -829,7 +815,7 @@ void ExtendedSyntaxTest::multiLineMix()
     QCOMPARE_EQ(item8->opts(), 24);
     QCOMPARE(item8->text(), QStringLiteral("and"));
 
-    const auto item9 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(8));
+    const auto item9 = paragraph->getItemAt(10).staticCast<MD::Text>();
     QCOMPARE_EQ(item9->openStyles().length(), 0);
     QCOMPARE_EQ(item9->closeStyles().length(), 0);
     QCOMPARE_EQ(item9->opts(), 0);
@@ -847,12 +833,12 @@ void ExtendedSyntaxTest::cancellingPart()
         QFAIL("cancellingPart: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
-    if (paragraph->items().length() != 3) {
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    if (paragraph->items().length() != 4) {
         QFAIL("cancellingPart: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles1 = item1->openStyles();
     QCOMPARE_EQ(openStyles1.length(), 1);
@@ -870,7 +856,10 @@ void ExtendedSyntaxTest::cancellingPart()
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*Cancelling part of"));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto space = paragraph->getItemAt(1).staticCast<MD::Text>();
+    QCOMPARE(space->text(), QStringLiteral(" "));
+
+    const auto item2 = paragraph->getItemAt(2).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles2 = item2->openStyles();
     QCOMPARE_EQ(openStyles2.length(), 1);
@@ -888,7 +877,7 @@ void ExtendedSyntaxTest::cancellingPart()
     QCOMPARE_EQ(item2->opts(), 1);
     QCOMPARE(item2->text(), QStringLiteral("original style"));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(3).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
@@ -906,13 +895,13 @@ void ExtendedSyntaxTest::cancellingPartInTitle()
         QFAIL("cancellingPart: Incorrect items count in the doc");
     }
 
-    const auto heading = static_cast<MD::Heading<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto heading = static_cast<MD::Heading *>(doc->items().at(1).get());
     const auto paragraph = heading->text();
-    if (paragraph->items().length() != 3) {
+    if (paragraph->items().length() != 4) {
         QFAIL("cancellingPart: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles1 = item1->openStyles();
     QCOMPARE_EQ(openStyles1.length(), 1);
@@ -930,7 +919,10 @@ void ExtendedSyntaxTest::cancellingPartInTitle()
     QCOMPARE_EQ(item1->opts(), 8);
     QCOMPARE(item1->text(), QStringLiteral("*Cancelling part of"));
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto space = paragraph->getItemAt(1).staticCast<MD::Text>();
+    QCOMPARE(space->text(), QStringLiteral(" "));
+
+    const auto item2 = paragraph->getItemAt(2).staticCast<MD::Text>();
     // Check delims
     const auto &openStyles2 = item2->openStyles();
     QCOMPARE_EQ(openStyles2.length(), 1);
@@ -948,7 +940,7 @@ void ExtendedSyntaxTest::cancellingPartInTitle()
     QCOMPARE_EQ(item2->opts(), 1);
     QCOMPARE(item2->text(), QStringLiteral("original style in title"));
 
-    const auto item3 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(2));
+    const auto item3 = paragraph->getItemAt(3).staticCast<MD::Text>();
     QCOMPARE_EQ(item3->openStyles().length(), 0);
     QCOMPARE_EQ(item3->closeStyles().length(), 0);
     QCOMPARE_EQ(item3->opts(), 0);
@@ -968,7 +960,7 @@ void ExtendedSyntaxTest::checkOpenCloseStylesParity()
         QFAIL("cancellingPart: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 27) {
         QFAIL("cancellingPart: Incorrect items count in the paragraph");
     }
@@ -976,7 +968,7 @@ void ExtendedSyntaxTest::checkOpenCloseStylesParity()
     QList<MD::StyleDelim> openStyles;
     QList<MD::StyleDelim> closeStyles;
     for (const auto &item : paragraph->items()) {
-        const auto itemWithOpts = md4qtHelperFunc::getSharedItemWithOpts(item);
+        const auto itemWithOpts = item.staticCast<MD::ItemWithOpts>();
 
         openStyles << itemWithOpts->openStyles();
         closeStyles << itemWithOpts->closeStyles();
@@ -996,17 +988,17 @@ void ExtendedSyntaxTest::continuousDelims()
         QFAIL("cancellingPart: Incorrect items count in the doc");
     }
 
-    const auto paragraph = static_cast<MD::Paragraph<MD::QStringTrait> *>(doc->items().at(1).get());
+    const auto paragraph = static_cast<MD::Paragraph *>(doc->items().at(1).get());
     if (paragraph->items().length() != 2) {
         QFAIL("cancellingPart: Incorrect items count in the paragraph");
     }
 
-    const auto item1 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(0));
+    const auto item1 = paragraph->getItemAt(0).staticCast<MD::Text>();
 
     QCOMPARE_EQ(item1->openStyles().length(), 0);
     QCOMPARE_EQ(item1->closeStyles().length(), 0);
 
-    const auto item2 = std::static_pointer_cast<MD::Text<MD::QStringTrait>>(paragraph->getItemAt(1));
+    const auto item2 = paragraph->getItemAt(1).staticCast<MD::Text>();
 
     QCOMPARE_EQ(item2->openStyles().length(), 0);
     QCOMPARE_EQ(item2->closeStyles().length(), 0);

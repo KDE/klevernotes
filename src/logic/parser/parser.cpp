@@ -6,7 +6,6 @@
 #include "parser.h"
 
 #include "extendedSyntax/extendedSyntaxMaker.hpp"
-#include "md4qtDataCleaner.hpp"
 
 #include "kleverconfig.h"
 
@@ -16,7 +15,6 @@ Parser::Parser()
 {
     connect(this, &Parser::newData, this, &Parser::onParse, Qt::QueuedConnection);
     connectPlugins();
-    m_md4qtParser.addTextPlugin(md4qtDataCleaner::dataCleanerId, md4qtDataCleaner::dataCleaningFunc, false, {});
 }
 
 // Connections
@@ -24,42 +22,37 @@ Parser::Parser()
 void Parser::connectPlugins()
 {
     // Note Linking
-    connect(KleverConfig::self(), &KleverConfig::noteMapEnabledChanged, this, &Parser::noteLinkindEnabledChanged);
-    noteLinkindEnabledChanged();
+    connect(KleverConfig::self(), &KleverConfig::noteMapEnabledChanged, this, qOverload<>(&Parser::noteLinkingEnabledChanged), Qt::DirectConnection);
+    connect(this, &Parser::noteLinkingEnabledChangedSignal, this, qOverload<bool>(&Parser::noteLinkingEnabledChanged), Qt::QueuedConnection);
+    noteLinkingEnabledChanged();
 
     // Emoji
-    connect(KleverConfig::self(), &KleverConfig::quickEmojiEnabledChanged, this, &Parser::quickEmojiEnabledChanged);
+    connect(KleverConfig::self(), &KleverConfig::quickEmojiEnabledChanged, this, qOverload<>(&Parser::quickEmojiEnabledChanged), Qt::DirectConnection);
+    connect(this, &Parser::quickEmojiEnabledChangedSignal, this, qOverload<bool>(&Parser::quickEmojiEnabledChanged), Qt::QueuedConnection);
     quickEmojiEnabledChanged();
 }
 // !Connections
 
-// Setters
-// =======
-void Parser::addExtendedSyntax(const QStringList &details)
-{
-    m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(details.last().toInt()), ExtendedSyntaxMaker::extendedSyntaxHelperFunc, true, details);
-}
-
-void Parser::addRemovePlugin(const int pluginId, const bool add)
-{
-    if (add) {
-        m_md4qtParser.addTextPlugin(static_cast<MD::TextPlugin>(pluginId), m_kleverPlugins.at(pluginId), true, {});
-    } else {
-        m_md4qtParser.removeTextPlugin(static_cast<MD::TextPlugin>(pluginId));
-    }
-}
-// !Setters
-
 // KleverNotes slots
 // =================
-void Parser::noteLinkindEnabledChanged()
+void Parser::noteLinkingEnabledChanged()
 {
-    addRemovePlugin(PluginsId::NoteLinkingPlugin, KleverConfig::noteMapEnabled());
+    Q_EMIT noteLinkingEnabledChangedSignal(KleverConfig::noteMapEnabled());
 }
 
 void Parser::quickEmojiEnabledChanged()
 {
-    addRemovePlugin(PluginsId::EmojiPlugin, KleverConfig::quickEmojiEnabled());
+    Q_EMIT quickEmojiEnabledChangedSignal(KleverConfig::quickEmojiEnabled());
+}
+
+void Parser::noteLinkingEnabledChanged(bool on)
+{
+    addRemovePlugin<NoteLinkingPlugin::NoteLinkingParser>(on);
+}
+
+void Parser::quickEmojiEnabledChanged(bool on)
+{
+    addRemovePlugin<EmojiPlugin::EmojiParser>(on);
 }
 // !KleverNotes slots
 
@@ -80,7 +73,7 @@ void Parser::onParse()
     if (!m_data.isEmpty()) {
         QTextStream stream(&m_data.back());
 
-        const auto doc = m_md4qtParser.parse(stream, m_noteDir, m_noteName, false);
+        const auto doc = m_md4qtParser.parse(stream, m_noteDir, m_noteName);
 
         m_data.clear();
 

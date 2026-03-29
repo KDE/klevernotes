@@ -1,0 +1,1324 @@
+/*
+    SPDX-FileCopyrightText: 2026 Igor Mironchik <igor.mironchik@gmail.com>
+    SPDX-License-Identifier: MIT
+*/
+
+// doctest include.
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include <doctest/doctest.h>
+
+// md4qt include.
+#include "parser.h"
+
+/*
+- Text
+
+  - Text
+    - Text
+
+    ```bash
+    code
+    ```
+
+    - Text
+
+
+*/
+TEST_CASE("184")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/184.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    {
+        REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(1).get());
+        REQUIRE(l->items().size() == 1);
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 0);
+        REQUIRE(l->endColumn() == 9);
+        REQUIRE(l->endLine() == 9);
+
+        REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+        auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+        REQUIRE(i->items().size() == 2);
+        REQUIRE(i->startColumn() == 0);
+        REQUIRE(i->startLine() == 0);
+        REQUIRE(i->endColumn() == 9);
+        REQUIRE(i->endLine() == 9);
+        REQUIRE(i->delim() == MD::WithPosition{0, 0, 0, 0});
+
+        REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+        auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+        REQUIRE(p->startColumn() == 2);
+        REQUIRE(p->startLine() == 0);
+        REQUIRE(p->endColumn() == 5);
+        REQUIRE(p->endLine() == 0);
+
+        {
+            REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+            auto l = static_cast<MD::List *>(i->items().at(1).get());
+            REQUIRE(l->startColumn() == 2);
+            REQUIRE(l->startLine() == 2);
+            REQUIRE(l->endColumn() == 9);
+            REQUIRE(l->endLine() == 9);
+            REQUIRE(l->items().size() == 1);
+
+            REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+            auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+            REQUIRE(i->items().size() == 4);
+            REQUIRE(i->startColumn() == 2);
+            REQUIRE(i->startLine() == 2);
+            REQUIRE(i->endColumn() == 9);
+            REQUIRE(i->endLine() == 9);
+            REQUIRE(i->delim() == MD::WithPosition{2, 2, 2, 2});
+
+            REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+            REQUIRE(p->startColumn() == 4);
+            REQUIRE(p->startLine() == 2);
+            REQUIRE(p->endColumn() == 7);
+            REQUIRE(p->endLine() == 2);
+
+            {
+                REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+                auto l = static_cast<MD::List *>(i->items().at(1).get());
+                REQUIRE(l->startColumn() == 4);
+                REQUIRE(l->startLine() == 3);
+                REQUIRE(l->endColumn() == 9);
+                REQUIRE(l->endLine() == 3);
+                REQUIRE(l->items().size() == 1);
+
+                REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+                auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+                REQUIRE(i->items().size() == 1);
+                REQUIRE(i->startColumn() == 4);
+                REQUIRE(i->startLine() == 3);
+                REQUIRE(i->endColumn() == 9);
+                REQUIRE(i->endLine() == 3);
+                REQUIRE(i->delim() == MD::WithPosition{4, 3, 4, 3});
+
+                REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            }
+
+            {
+                REQUIRE(i->items().at(2)->type() == MD::ItemType::Code);
+                auto c = static_cast<MD::Code *>(i->items().at(2).get());
+                REQUIRE(c->startColumn() == 4);
+                REQUIRE(c->startLine() == 6);
+                REQUIRE(c->endColumn() == 7);
+                REQUIRE(c->endLine() == 6);
+                REQUIRE(c->startDelim() == MD::WithPosition{4, 5, 6, 5});
+                REQUIRE(c->endDelim() == MD::WithPosition{4, 7, 6, 7});
+                REQUIRE(c->syntaxPos() == MD::WithPosition{7, 5, 10, 5});
+                REQUIRE(c->text() == QStringLiteral("code"));
+            }
+
+            {
+                REQUIRE(i->items().at(3)->type() == MD::ItemType::List);
+                auto l = static_cast<MD::List *>(i->items().at(3).get());
+                REQUIRE(l->startColumn() == 4);
+                REQUIRE(l->startLine() == 9);
+                REQUIRE(l->endColumn() == 9);
+                REQUIRE(l->endLine() == 9);
+                REQUIRE(l->items().size() == 1);
+
+                REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+                auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+                REQUIRE(i->items().size() == 1);
+                REQUIRE(i->startColumn() == 4);
+                REQUIRE(i->startLine() == 9);
+                REQUIRE(i->endColumn() == 9);
+                REQUIRE(i->endLine() == 9);
+                REQUIRE(i->delim() == MD::WithPosition{4, 9, 4, 9});
+
+                REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            }
+        }
+    }
+}
+
+/*
+    - code
+
+*/
+TEST_CASE("185")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/185.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(doc->items().at(1).get());
+    REQUIRE(c->startColumn() == 4);
+    REQUIRE(c->startLine() == 0);
+    REQUIRE(c->endColumn() == 9);
+    REQUIRE(c->endLine() == 0);
+    REQUIRE(c->text() == QStringLiteral("- code"));
+}
+
+/*
+```
+- code
+```
+
+*/
+TEST_CASE("186")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/186.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(doc->items().at(1).get());
+    REQUIRE(c->startColumn() == 0);
+    REQUIRE(c->startLine() == 1);
+    REQUIRE(c->endColumn() == 5);
+    REQUIRE(c->endLine() == 1);
+    REQUIRE(c->text() == QStringLiteral("- code"));
+    REQUIRE(c->startDelim() == MD::WithPosition{0, 0, 2, 0});
+    REQUIRE(c->endDelim() == MD::WithPosition{0, 2, 2, 2});
+    REQUIRE(c->syntaxPos() == MD::WithPosition{-1, -1, -1, -1});
+}
+
+/*
+- List
+
+  - List
+    - List
+
+    ```
+    code
+    ```
+
+    - List
+
+    Text
+
+    ```
+    code
+    ```
+
+    - List
+
+*/
+TEST_CASE("187")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/187.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    {
+        REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(1).get());
+        REQUIRE(l->items().size() == 1);
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 0);
+        REQUIRE(l->endColumn() == 9);
+        REQUIRE(l->endLine() == 17);
+
+        REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+        auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+        REQUIRE(i->items().size() == 2);
+        REQUIRE(i->startColumn() == 0);
+        REQUIRE(i->startLine() == 0);
+        REQUIRE(i->endColumn() == 9);
+        REQUIRE(i->endLine() == 17);
+        REQUIRE(i->delim() == MD::WithPosition{0, 0, 0, 0});
+
+        REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+        auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+        REQUIRE(p->startColumn() == 2);
+        REQUIRE(p->startLine() == 0);
+        REQUIRE(p->endColumn() == 5);
+        REQUIRE(p->endLine() == 0);
+
+        {
+            REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+            auto l = static_cast<MD::List *>(i->items().at(1).get());
+            REQUIRE(l->startColumn() == 2);
+            REQUIRE(l->startLine() == 2);
+            REQUIRE(l->endColumn() == 9);
+            REQUIRE(l->endLine() == 17);
+            REQUIRE(l->items().size() == 1);
+
+            REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+            auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+            REQUIRE(i->items().size() == 7);
+            REQUIRE(i->startColumn() == 2);
+            REQUIRE(i->startLine() == 2);
+            REQUIRE(i->endColumn() == 9);
+            REQUIRE(i->endLine() == 17);
+            REQUIRE(i->delim() == MD::WithPosition{2, 2, 2, 2});
+
+            REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+            REQUIRE(p->startColumn() == 4);
+            REQUIRE(p->startLine() == 2);
+            REQUIRE(p->endColumn() == 7);
+            REQUIRE(p->endLine() == 2);
+
+            {
+                REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+                auto l = static_cast<MD::List *>(i->items().at(1).get());
+                REQUIRE(l->startColumn() == 4);
+                REQUIRE(l->startLine() == 3);
+                REQUIRE(l->endColumn() == 9);
+                REQUIRE(l->endLine() == 3);
+                REQUIRE(l->items().size() == 1);
+
+                REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+                auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+                REQUIRE(i->items().size() == 1);
+                REQUIRE(i->startColumn() == 4);
+                REQUIRE(i->startLine() == 3);
+                REQUIRE(i->endColumn() == 9);
+                REQUIRE(i->endLine() == 3);
+                REQUIRE(i->delim() == MD::WithPosition{4, 3, 4, 3});
+
+                REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            }
+
+            {
+                REQUIRE(i->items().at(2)->type() == MD::ItemType::Code);
+                auto c = static_cast<MD::Code *>(i->items().at(2).get());
+                REQUIRE(c->startColumn() == 4);
+                REQUIRE(c->startLine() == 6);
+                REQUIRE(c->endColumn() == 7);
+                REQUIRE(c->endLine() == 6);
+                REQUIRE(c->text() == QStringLiteral("code"));
+            }
+
+            {
+                REQUIRE(i->items().at(3)->type() == MD::ItemType::List);
+                auto l = static_cast<MD::List *>(i->items().at(3).get());
+                REQUIRE(l->startColumn() == 4);
+                REQUIRE(l->startLine() == 9);
+                REQUIRE(l->endColumn() == 9);
+                REQUIRE(l->endLine() == 9);
+                REQUIRE(l->items().size() == 1);
+
+                REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+                auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+                REQUIRE(i->items().size() == 1);
+                REQUIRE(i->startColumn() == 4);
+                REQUIRE(i->startLine() == 9);
+                REQUIRE(i->endColumn() == 9);
+                REQUIRE(i->endLine() == 9);
+                REQUIRE(i->delim() == MD::WithPosition{4, 9, 4, 9});
+
+                REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            }
+
+            {
+                REQUIRE(i->items().at(4)->type() == MD::ItemType::Paragraph);
+                auto p = static_cast<MD::Paragraph *>(i->items().at(4).get());
+                REQUIRE(p->startColumn() == 4);
+                REQUIRE(p->startLine() == 11);
+                REQUIRE(p->endColumn() == 7);
+                REQUIRE(p->endLine() == 11);
+            }
+
+            {
+                REQUIRE(i->items().at(5)->type() == MD::ItemType::Code);
+                auto c = static_cast<MD::Code *>(i->items().at(5).get());
+                REQUIRE(c->startColumn() == 4);
+                REQUIRE(c->startLine() == 14);
+                REQUIRE(c->endColumn() == 7);
+                REQUIRE(c->endLine() == 14);
+                REQUIRE(c->text() == QStringLiteral("code"));
+            }
+
+            {
+                REQUIRE(i->items().at(6)->type() == MD::ItemType::List);
+                auto l = static_cast<MD::List *>(i->items().at(6).get());
+                REQUIRE(l->startColumn() == 4);
+                REQUIRE(l->startLine() == 17);
+                REQUIRE(l->endColumn() == 9);
+                REQUIRE(l->endLine() == 17);
+                REQUIRE(l->items().size() == 1);
+
+                REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+                auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+                REQUIRE(i->items().size() == 1);
+                REQUIRE(i->startColumn() == 4);
+                REQUIRE(i->startLine() == 17);
+                REQUIRE(i->endColumn() == 9);
+                REQUIRE(i->endLine() == 17);
+                REQUIRE(i->delim() == MD::WithPosition{4, 17, 4, 17});
+
+                REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            }
+        }
+    }
+}
+
+/*
+- list
+
+    not code
+
+<!-- -->
+
+- list
+  - list
+    - list
+
+    not code
+
+*/
+TEST_CASE("188")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/188.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 4);
+
+    {
+        REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(1).get());
+        REQUIRE(l->items().size() == 1);
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 0);
+        REQUIRE(l->endColumn() == 11);
+        REQUIRE(l->endLine() == 2);
+
+        REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+        auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+        REQUIRE(i->items().size() == 2);
+        REQUIRE(i->startColumn() == 0);
+        REQUIRE(i->startLine() == 0);
+        REQUIRE(i->endColumn() == 11);
+        REQUIRE(i->endLine() == 2);
+        REQUIRE(i->delim() == MD::WithPosition{0, 0, 0, 0});
+
+        REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+        REQUIRE(i->items().at(1)->type() == MD::ItemType::Paragraph);
+    }
+
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::RawHtml);
+
+    {
+        REQUIRE(doc->items().at(3)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(3).get());
+        REQUIRE(l->items().size() == 1);
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 6);
+        REQUIRE(l->endColumn() == 11);
+        REQUIRE(l->endLine() == 10);
+
+        REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+        auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+        REQUIRE(i->items().size() == 2);
+        REQUIRE(i->startColumn() == 0);
+        REQUIRE(i->startLine() == 6);
+        REQUIRE(i->endColumn() == 11);
+        REQUIRE(i->endLine() == 10);
+        REQUIRE(i->delim() == MD::WithPosition{0, 6, 0, 6});
+
+        REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+        REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+
+        {
+            auto l = static_cast<MD::List *>(i->items().at(1).get());
+            REQUIRE(l->items().size() == 1);
+            REQUIRE(l->startColumn() == 2);
+            REQUIRE(l->startLine() == 7);
+            REQUIRE(l->endColumn() == 11);
+            REQUIRE(l->endLine() == 10);
+
+            REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+            auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+            REQUIRE(i->items().size() == 3);
+            REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+            REQUIRE(i->items().at(2)->type() == MD::ItemType::Paragraph);
+            auto p = static_cast<MD::Paragraph *>(i->items().at(2).get());
+            REQUIRE(p->startColumn() == 4);
+            REQUIRE(p->startLine() == 10);
+            REQUIRE(p->endColumn() == 11);
+            REQUIRE(p->endLine() == 10);
+        }
+    }
+}
+
+/*
+1. a
+
+  2. b
+
+    code
+*/
+TEST_CASE("189")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/189.md"));
+
+    REQUIRE(doc->items().size() == 3);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+    auto l = static_cast<MD::List *>(doc->items().at(1).get());
+    REQUIRE(l->items().size() == 2);
+
+    for (int i = 0; i < 2; ++i) {
+        REQUIRE(l->items().at(i)->type() == MD::ItemType::ListItem);
+        auto li = static_cast<MD::ListItem *>(l->items().at(i).get());
+        REQUIRE(li->delim() == MD::WithPosition{0 + 2 * i, 2 * i, 1 + 2 * i, 2 * i});
+        REQUIRE(li->items().size() == 1);
+        REQUIRE(li->listType() == MD::ListItem::Ordered);
+        REQUIRE(li->startNumber() == i + 1);
+        REQUIRE(li->items().at(0)->type() == MD::ItemType::Paragraph);
+        auto p = static_cast<MD::Paragraph *>(li->items().at(0).get());
+        REQUIRE(p->items().size() == 1);
+        REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+        auto t = static_cast<MD::Text *>(p->items().at(0).get());
+        REQUIRE(t->opts() == MD::TextWithoutFormat);
+        const char16_t ch = 97 + i;
+        REQUIRE(t->text() == QChar(ch));
+    }
+
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(doc->items().at(2).get());
+    REQUIRE(!c->isInline());
+    REQUIRE(c->text() == QStringLiteral("code"));
+}
+
+/*
+ ```c++
+     code
+ ```
+
+*/
+TEST_CASE("190")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/190.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(doc->items().at(1).get());
+    REQUIRE(c->syntax() == QStringLiteral("c++"));
+    REQUIRE(c->text() == QStringLiteral("    code"));
+    REQUIRE(c->startDelim() == MD::WithPosition{1, 0, 3, 0});
+    REQUIRE(c->endDelim() == MD::WithPosition{1, 2, 3, 2});
+    REQUIRE(c->syntaxPos() == MD::WithPosition{4, 0, 6, 0});
+}
+
+/*
+Text[^1]:
+
+[^1]: Footnote.
+
+```
+code
+```
+
+Text.
+
+*/
+TEST_CASE("191")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/191.md"));
+
+    REQUIRE(doc->items().size() == 4);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(doc->items().at(2).get());
+    REQUIRE(c->text() == QStringLiteral("code"));
+    REQUIRE(c->startDelim() == MD::WithPosition{0, 4, 2, 4});
+    REQUIRE(c->endDelim() == MD::WithPosition{0, 6, 2, 6});
+    REQUIRE(c->syntaxPos() == MD::WithPosition{-1, -1, -1, -1});
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Paragraph);
+
+    REQUIRE(doc->footnotesMap().size() == 1);
+}
+
+/*
+Text[^1]:
+
+[^1]: Footnote.
+
+- List.
+
+Text.
+
+
+*/
+TEST_CASE("192")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/192.md"));
+
+    REQUIRE(doc->items().size() == 4);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::List);
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Paragraph);
+
+    REQUIRE(doc->footnotesMap().size() == 1);
+}
+
+/*
+| Table |
+| --- |
+| Data |
+    code
+
+*/
+
+TEST_CASE("193")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/193.md"));
+
+    REQUIRE(doc->items().size() == 3);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Table);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::Code);
+}
+
+/*
+Text
+| Table |
+| --- |
+| Data |
+    code
+
+*/
+
+TEST_CASE("194")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/194.md"));
+
+    REQUIRE(doc->items().size() == 4);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::Table);
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Code);
+}
+
+/*
+Text
+| Table |
+| --- |
+| Data |
+    code
+Text
+
+*/
+TEST_CASE("195")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/195.md"));
+
+    REQUIRE(doc->items().size() == 5);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::Table);
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Code);
+    REQUIRE(doc->items().at(4)->type() == MD::ItemType::Paragraph);
+}
+
+/*
+- list
+    - list
+
+    --------------------------------
+
+    text
+
+*/
+TEST_CASE("196")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/196.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+    auto l = static_cast<MD::List *>(doc->items().at(1).get());
+    REQUIRE(l->items().size() == 1);
+    REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+    auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+    REQUIRE(i->items().size() == 4);
+    REQUIRE(i->delim() == MD::WithPosition{0, 0, 0, 0});
+    REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+    REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+    REQUIRE(i->items().at(2)->type() == MD::ItemType::HorizontalLine);
+    REQUIRE(i->items().at(3)->type() == MD::ItemType::Paragraph);
+}
+
+/*
+- list
+
+    --------------------------------
+
+    text
+
+*/
+TEST_CASE("197")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/197.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+    auto l = static_cast<MD::List *>(doc->items().at(1).get());
+    REQUIRE(l->items().size() == 1);
+    REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+    auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+    REQUIRE(i->delim() == MD::WithPosition{0, 0, 0, 0});
+    REQUIRE(i->items().size() == 3);
+    REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+    REQUIRE(i->items().at(1)->type() == MD::ItemType::HorizontalLine);
+    REQUIRE(i->items().at(2)->type() == MD::ItemType::Paragraph);
+}
+
+/*
+<std::vector<T>> <std::vector<T>>
+
+*/
+TEST_CASE("198")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/198.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 5);
+
+    {
+        REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+        auto t = static_cast<MD::Text *>(p->items().at(0).get());
+        REQUIRE(t->text() == QStringLiteral("<std::vector"));
+    }
+
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::RawHtml);
+
+    {
+        REQUIRE(p->items().at(2)->type() == MD::ItemType::Text);
+        auto t = static_cast<MD::Text *>(p->items().at(2).get());
+        REQUIRE(t->text() == QStringLiteral("> <std::vector"));
+    }
+
+    REQUIRE(p->items().at(3)->type() == MD::ItemType::RawHtml);
+
+    {
+        REQUIRE(p->items().at(4)->type() == MD::ItemType::Text);
+        auto t = static_cast<MD::Text *>(p->items().at(4).get());
+        REQUIRE(t->text() == QStringLiteral(">"));
+    }
+}
+
+/*
+  1) Text
+    ```
+    text
+    ```
+
+*/
+TEST_CASE("199")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/199.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+    auto l = static_cast<MD::List *>(doc->items().at(1).get());
+    REQUIRE(l->items().size() == 1);
+    REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+    auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+    REQUIRE(i->items().size() == 1);
+    REQUIRE(i->delim() == MD::WithPosition{2, 0, 3, 0});
+    REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+    REQUIRE(p->items().size() == 2);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(p->items().at(1).get());
+    REQUIRE(c->isInline());
+    REQUIRE(c->text() == QStringLiteral("text"));
+}
+
+/*
+~text~
+
+*/
+TEST_CASE("200")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/200.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 1);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    auto t = static_cast<MD::Text *>(p->items().at(0).get());
+    REQUIRE(t->opts() == MD::StrikethroughText);
+    REQUIRE(t->text() == QStringLiteral("text"));
+    REQUIRE(t->openStyles().size() == 1);
+    REQUIRE(t->openStyles().at(0) == MD::StyleDelim{MD::StrikethroughText, 0, 0, 0, 0});
+    REQUIRE(t->closeStyles().size() == 1);
+    REQUIRE(t->closeStyles().at(0) == MD::StyleDelim{MD::StrikethroughText, 5, 0, 5, 0});
+}
+
+/*
+~~text~text~~
+
+*/
+TEST_CASE("201")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/201.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 1);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    auto t = static_cast<MD::Text *>(p->items().at(0).get());
+    REQUIRE(t->opts() == MD::StrikethroughText);
+    REQUIRE(t->text() == QStringLiteral("text~text"));
+    REQUIRE(t->openStyles().size() == 1);
+    REQUIRE(t->openStyles().at(0) == MD::StyleDelim{MD::StrikethroughText, 0, 0, 1, 0});
+    REQUIRE(t->closeStyles().size() == 1);
+    REQUIRE(t->closeStyles().at(0) == MD::StyleDelim{MD::StrikethroughText, 11, 0, 12, 0});
+}
+
+/*
+~~~text~~
+
+*/
+TEST_CASE("202")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/202.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Code);
+    auto c = static_cast<MD::Code *>(doc->items().at(1).get());
+    REQUIRE(c->text() == QStringLiteral("\n"));
+    REQUIRE(c->openStyles().empty());
+    REQUIRE(c->closeStyles().empty());
+}
+
+/*
+~~text~
+
+*/
+TEST_CASE("203")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/203.md"));
+
+    REQUIRE(doc->items().size() == 2);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 1);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    auto t = static_cast<MD::Text *>(p->items().at(0).get());
+    REQUIRE(t->opts() == MD::TextWithoutFormat);
+    REQUIRE(t->text() == QStringLiteral("~~text~"));
+    REQUIRE(t->openStyles().empty());
+    REQUIRE(t->closeStyles().empty());
+}
+
+/*
+<!-- -->
+[link]: https://www.google.com
+
+Text [link].
+
+*/
+TEST_CASE("204")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/204.md"));
+
+    REQUIRE(doc->items().size() == 3);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(2).get());
+    REQUIRE(p->items().size() == 3);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Link);
+    auto l = static_cast<MD::Link *>(p->items().at(1).get());
+    REQUIRE(l->textPos() == MD::WithPosition{6, 3, 9, 3});
+    REQUIRE(l->urlPos() == MD::WithPosition{6, 3, 9, 3});
+    REQUIRE(p->items().at(2)->type() == MD::ItemType::Text);
+}
+
+/*
+<!-- -->
+<!-- -->
+[link]: https://www.google.com
+
+Text [link].
+
+*/
+TEST_CASE("205")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/205.md"));
+
+    REQUIRE(doc->items().size() == 4);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(3).get());
+    REQUIRE(p->items().size() == 3);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Link);
+    REQUIRE(p->items().at(2)->type() == MD::ItemType::Text);
+
+    REQUIRE(doc->labeledLinks().size() == 1);
+    auto it = doc->labeledLinks().cbegin();
+
+    {
+        auto l = static_cast<MD::Link *>(it.value().get());
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 2);
+        REQUIRE(l->endColumn() == 29);
+        REQUIRE(l->endLine() == 2);
+    }
+}
+
+/*
+<!-- --><!-- -->
+<!-- -->
+[link]: https://www.google.com
+
+Text [link].
+
+*/
+TEST_CASE("206")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/206.md"));
+
+    REQUIRE(doc->items().size() == 4);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(3).get());
+    REQUIRE(p->items().size() == 3);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Link);
+    REQUIRE(p->items().at(2)->type() == MD::ItemType::Text);
+
+    REQUIRE(doc->labeledLinks().size() == 1);
+    auto l = static_cast<MD::Link *>(doc->labeledLinks().cbegin().value().get());
+    REQUIRE(l->startColumn() == 0);
+    REQUIRE(l->startLine() == 2);
+    REQUIRE(l->endColumn() == 29);
+    REQUIRE(l->endLine() == 2);
+}
+
+/*
+<!-- -->
+[link1]: https://www.google.com
+<!-- -->
+[link2]: https://www.google.com
+
+Text [link1] and [link2].
+
+*/
+TEST_CASE("207")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/207.md"));
+
+    REQUIRE(doc->items().size() == 4);
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(2)->type() == MD::ItemType::RawHtml);
+    REQUIRE(doc->items().at(3)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(3).get());
+    REQUIRE(p->items().size() == 5);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Link);
+    REQUIRE(p->items().at(2)->type() == MD::ItemType::Text);
+    REQUIRE(p->items().at(3)->type() == MD::ItemType::Link);
+    REQUIRE(p->items().at(4)->type() == MD::ItemType::Text);
+
+    REQUIRE(doc->labeledLinks().size() == 2);
+    auto it = doc->labeledLinks().cbegin();
+
+    {
+        auto l = static_cast<MD::Link *>(it.value().get());
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 1);
+        REQUIRE(l->endColumn() == 30);
+        REQUIRE(l->endLine() == 1);
+    }
+
+    ++it;
+
+    {
+        auto l = static_cast<MD::Link *>(it.value().get());
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 3);
+        REQUIRE(l->endColumn() == 30);
+        REQUIRE(l->endLine() == 3);
+    }
+}
+
+/*
+1. Text
+   - Text
+    text
+
+*/
+TEST_CASE("208")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/208.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    {
+        REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(1).get());
+        REQUIRE(l->items().size() == 1);
+
+        REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+        auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+        REQUIRE(i->delim() == MD::WithPosition{0, 0, 1, 0});
+
+        REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+        auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+        REQUIRE(p->items().size() == 1);
+        REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+        auto t = static_cast<MD::Text *>(p->items().at(0).get());
+        REQUIRE(t->text() == QStringLiteral("Text"));
+
+        {
+            REQUIRE(i->items().at(1)->type() == MD::ItemType::List);
+            auto l = static_cast<MD::List *>(i->items().at(1).get());
+
+            REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+            auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+            REQUIRE(i->delim() == MD::WithPosition{3, 1, 3, 1});
+            REQUIRE(i->items().size() == 1);
+
+            REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+            auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+            REQUIRE(p->items().size() == 2);
+            REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+            auto t1 = static_cast<MD::Text *>(p->items().at(0).get());
+            REQUIRE(t1->text() == QStringLiteral("Text"));
+            REQUIRE(p->items().at(1)->type() == MD::ItemType::Text);
+            auto t2 = static_cast<MD::Text *>(p->items().at(1).get());
+            REQUIRE(t2->text() == QStringLiteral("text"));
+        }
+    }
+}
+
+/*
+Text
+0. text
+
+*/
+TEST_CASE("209")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/209.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 2);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+    auto t1 = static_cast<MD::Text *>(p->items().at(0).get());
+    REQUIRE(t1->text() == QStringLiteral("Text"));
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Text);
+    auto t2 = static_cast<MD::Text *>(p->items().at(1).get());
+    REQUIRE(t2->text() == QStringLiteral("0. text"));
+}
+
+/*
+- [#6899]: Text
+
+[#6899]: https://www.google.com
+
+*/
+TEST_CASE("210")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/210.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+    auto l = static_cast<MD::List *>(doc->items().at(1).get());
+    REQUIRE(l->items().size() == 1);
+
+    REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+    auto i = static_cast<MD::ListItem *>(l->items().at(0).get());
+    REQUIRE(i->delim() == MD::WithPosition{0, 0, 0, 0});
+
+    REQUIRE(i->items().at(0)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(i->items().at(0).get());
+    REQUIRE(p->items().size() == 2);
+    REQUIRE(p->items().at(0)->type() == MD::ItemType::Link);
+
+    {
+        auto l = static_cast<MD::Link *>(p->items().at(0).get());
+        REQUIRE(l->textPos() == MD::WithPosition{3, 0, 7, 0});
+        REQUIRE(l->urlPos() == MD::WithPosition{3, 0, 7, 0});
+    }
+
+    REQUIRE(p->items().at(1)->type() == MD::ItemType::Text);
+
+    REQUIRE(doc->labeledLinks().size() == 1);
+    auto it = doc->labeledLinks().cbegin();
+
+    {
+        auto l = static_cast<MD::Link *>(it.value().get());
+        REQUIRE(l->startColumn() == 0);
+        REQUIRE(l->startLine() == 2);
+        REQUIRE(l->endColumn() == 30);
+        REQUIRE(l->endLine() == 2);
+    }
+}
+
+/*
+<!--
+--comment
+-->
+
+*/
+TEST_CASE("211")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/211.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::RawHtml);
+}
+
+/*
+foo <!--
+--
+-->
+
+*/
+TEST_CASE("212")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/212.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 3);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Heading);
+    auto h = static_cast<MD::Heading *>(doc->items().at(1).get());
+    REQUIRE(h->text()->items().size() == 1);
+    REQUIRE(h->text()->items().at(0)->type() == MD::ItemType::Text);
+    auto t = static_cast<MD::Text *>(h->text()->items().at(0).get());
+    REQUIRE(t->text() == QStringLiteral("foo <!--"));
+
+    {
+        REQUIRE(doc->items().at(2)->type() == MD::ItemType::Paragraph);
+        auto p = static_cast<MD::Paragraph *>(doc->items().at(2).get());
+        REQUIRE(p->items().size() == 1);
+        REQUIRE(p->items().at(0)->type() == MD::ItemType::Text);
+        auto t = static_cast<MD::Text *>(p->items().at(0).get());
+        REQUIRE(t->text() == QStringLiteral("-->"));
+    }
+}
+
+/*
+- 	text
+1.	text
+    - text $text
+    - text $text
+
+*/
+TEST_CASE("213")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/213.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 3);
+
+    {
+        REQUIRE(doc->items().at(1)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(1).get());
+        REQUIRE(l->items().size() == 1);
+
+        {
+            REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+            auto li = static_cast<MD::ListItem *>(l->items().at(0).get());
+            REQUIRE(li->delim() == MD::WithPosition{0, 0, 0, 0});
+            REQUIRE(li->listType() == MD::ListItem::Unordered);
+            REQUIRE(li->items().size() == 1);
+            REQUIRE(li->items().at(0)->type() == MD::ItemType::Paragraph);
+        }
+    }
+
+    {
+        REQUIRE(doc->items().at(2)->type() == MD::ItemType::List);
+        auto l = static_cast<MD::List *>(doc->items().at(2).get());
+        REQUIRE(l->items().size() == 1);
+
+        {
+            REQUIRE(l->items().at(0)->type() == MD::ItemType::ListItem);
+            auto li = static_cast<MD::ListItem *>(l->items().at(0).get());
+            REQUIRE(li->delim() == MD::WithPosition{0, 1, 1, 1});
+            REQUIRE(li->listType() == MD::ListItem::Ordered);
+            REQUIRE(li->items().size() == 2);
+            REQUIRE(li->items().at(0)->type() == MD::ItemType::Paragraph);
+            REQUIRE(li->items().at(1)->type() == MD::ItemType::List);
+            auto ll = static_cast<MD::List *>(li->items().at(1).get());
+            REQUIRE(ll->items().size() == 2);
+        }
+    }
+}
+
+/*
+text[^1] text[^2]
+
+[^1]: footnote1
+[^2]: footnote2
+
+*/
+TEST_CASE("214")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/214.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 4);
+
+    REQUIRE(doc->footnotesMap().size() == 2);
+}
+
+/*
+Text[^1]
+[^1]: Footnote1
+
+*/
+TEST_CASE("215")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/215.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 2);
+
+    REQUIRE(doc->footnotesMap().size() == 1);
+}
+
+/*
+Text[^1]
+[^1]: Footnote1
+Text[^1]
+
+*/
+TEST_CASE("216")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/216.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 2);
+
+    REQUIRE(doc->footnotesMap().size() == 1);
+    auto f = static_cast<MD::Footnote *>(doc->footnotesMap().cbegin().value().get());
+    REQUIRE(f->items().size() == 1);
+    REQUIRE(f->idPos() == MD::WithPosition{0, 1, 4, 1});
+    auto pp = static_cast<MD::Paragraph *>(f->items().at(0).get());
+    REQUIRE(pp->items().size() == 3);
+    REQUIRE(pp->items().at(2)->type() == MD::ItemType::FootnoteRef);
+}
+
+/*
+Text[^1] text[^2].
+
+[^1]: E.g., James H. Breasted, "Editor's Forward," in Ancient
+Records of Assyria and Babylonia, vol. 1, Historical Records of
+Assyria from the Earliest Times to Sargon, by Daniel D.
+Luckenbill (Chicago: The University of Chicago Press, 1926),
+viii.
+
+[^2]: James H. Breasted, The Oriental Institute of the University
+of Chicago: A Beginning and A Program. Oriental Institute
+Communications 1 (Chicago: University of Chicago Press, 1922),
+22-23.
+
+*/
+TEST_CASE("217")
+{
+    MD::Parser parser;
+
+    auto doc = parser.parse(QStringLiteral("tests/parser/data/217.md"));
+
+    REQUIRE(doc->isEmpty() == false);
+    REQUIRE(doc->items().size() == 2);
+
+    REQUIRE(doc->items().at(1)->type() == MD::ItemType::Paragraph);
+    auto p = static_cast<MD::Paragraph *>(doc->items().at(1).get());
+    REQUIRE(p->items().size() == 5);
+
+    REQUIRE(doc->footnotesMap().size() == 2);
+}

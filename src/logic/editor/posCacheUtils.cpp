@@ -6,11 +6,13 @@
 #include "posCacheUtils.hpp"
 
 // KleverNotes includes.
-#include "logic/parser/md4qtDataGetter.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
 
 // C++ include.
 #include <memory>
+
+// Qt include.
+#include <QDebug>
 
 static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
 
@@ -22,10 +24,7 @@ static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
  * @param openCloseDelims List where the new DelimsInfo will be added.
  * @param headingLevel The heading level of the newly created DelimsInfo.
  */
-void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
-               QList<MD::WithPosition> &waitingOpeningDelims,
-               QList<posCacheUtils::DelimsInfo> &openCloseDelims,
-               const int headingLevel)
+void makePairs(MD::ItemWithOpts *item, QList<MD::WithPosition> &waitingOpeningDelims, QList<posCacheUtils::DelimsInfo> &openCloseDelims, const int headingLevel)
 {
     for (const MD::WithPosition &openStyle : item->openStyles()) { // Need the cast into MD::WithPosition
         waitingOpeningDelims.append(openStyle);
@@ -45,7 +44,7 @@ void makePairs(MD::ItemWithOpts<MD::QStringTrait> *item,
  * @param openCloseDelims List where the new DelimsInfo will be added.
  * @param headingLevel The heading level of the newly created DelimsInfo.
  */
-void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
+void getOpenCloseDelims(MD::Item *item,
                         QList<MD::WithPosition> &waitingOpeningDelims,
                         QList<posCacheUtils::DelimsInfo> &openCloseDelims,
                         const int headingLevel)
@@ -54,11 +53,11 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
     case MD::ItemType::Text:
     case MD::ItemType::Link:
     case MD::ItemType::Image: {
-        const auto itemWithOpts = static_cast<MD::ItemWithOpts<MD::QStringTrait> *>(item);
+        const auto itemWithOpts = static_cast<MD::ItemWithOpts *>(item);
         return makePairs(itemWithOpts, waitingOpeningDelims, openCloseDelims, headingLevel);
     }
     case MD::ItemType::Code: {
-        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item);
+        const auto codeItem = static_cast<MD::Code *>(item);
         const posCacheUtils::DelimsInfo outerDelims = {headingLevel, 0, codeItem->startDelim(), codeItem->endDelim()};
         openCloseDelims.append(outerDelims);
 
@@ -93,15 +92,15 @@ void getOpenCloseDelims(MD::Item<MD::QStringTrait> *item,
  * @param item The item for which we want the inner items.
  * @return The list of inner items. An empty list if none where found.
  */
-SharedItems getInnerItems(MD::Item<MD::QStringTrait> *item)
+SharedItems getInnerItems(MD::Item *item)
 {
     switch (item->type()) {
     case MD::ItemType::Heading: {
-        const auto h = static_cast<MD::Heading<MD::QStringTrait> *>(item);
+        const auto h = static_cast<MD::Heading *>(item);
         return h->text().get()->items();
     }
     case MD::ItemType::Paragraph: {
-        return static_cast<MD::Paragraph<MD::QStringTrait> *>(item)->items();
+        return static_cast<MD::Paragraph *>(item)->items();
     }
     case MD::ItemType::Blockquote:
     case MD::ItemType::List:
@@ -124,9 +123,9 @@ SharedItems getInnerItems(MD::Item<MD::QStringTrait> *item)
  * @param item The item being treated for which we know it is a Heading.
  * @param headingLevel The heading level of the newly created DelimsInfo. This will be modified based on the level of the item (being a Heading).
  */
-void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QStringTrait> *item, int &headingLevel)
+void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item *item, int &headingLevel)
 {
-    const auto &h = static_cast<MD::Heading<MD::QStringTrait> *>(item);
+    const auto &h = static_cast<MD::Heading *>(item);
     headingLevel = h->level();
 
     for (const auto &delim : h->delims()) {
@@ -166,7 +165,7 @@ void addHeadingDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QSt
  * @param pos The position of the cursor.
  * @param headingLevel The heading level of the newly created DelimsInfo.
  */
-void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::QStringTrait> *item, const MD::WithPosition &pos, int &headingLevel)
+void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item *item, const MD::WithPosition &pos, int &headingLevel)
 {
     posCacheUtils::DelimsInfo delimInfo;
     switch (item->type()) {
@@ -176,14 +175,14 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
         return;
     }
     case MD::ItemType::Code: {
-        const auto codeItem = static_cast<MD::Code<MD::QStringTrait> *>(item);
+        const auto codeItem = static_cast<MD::Code *>(item);
         if (codeItem->isFensedCode()) {
             delimInfo = {0, posCacheUtils::BlockDelimTypes::CodeBlock, codeItem->startDelim(), codeItem->endDelim()};
         }
         break;
     }
     case MD::ItemType::Blockquote: {
-        const auto quoteItem = static_cast<MD::Blockquote<MD::QStringTrait> *>(item);
+        const auto quoteItem = static_cast<MD::Blockquote *>(item);
         for (const auto &delim : quoteItem->delims()) {
             if (delim.startLine() == pos.startLine()) {
                 delimInfo = {headingLevel, posCacheUtils::BlockDelimTypes::BlockQuote, delim};
@@ -193,9 +192,9 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
         break;
     }
     case MD::ItemType::ListItem: {
-        const auto listItem = static_cast<MD::ListItem<MD::QStringTrait> *>(item);
-        int delimType = listItem->listType() == MD::ListItem<MD::QStringTrait>::ListType::Ordered ? posCacheUtils::BlockDelimTypes::OrderedList
-                                                                                                  : posCacheUtils::BlockDelimTypes::UnorderedList;
+        const auto listItem = static_cast<MD::ListItem *>(item);
+        int delimType = listItem->listType() == MD::ListItem::ListType::Ordered ? posCacheUtils::BlockDelimTypes::OrderedList
+                                                                                : posCacheUtils::BlockDelimTypes::UnorderedList;
         delimInfo = {headingLevel, delimType, listItem->delim()};
         break;
     }
@@ -216,6 +215,23 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
     }
 }
 
+inline bool isBetweenDelims(const MD::WithPosition value, const MD::WithPosition start, const MD::WithPosition end, const bool isCursor = false)
+{
+    // Note: since we're dealing with delims, it's fine to assume that, within a delim: startLine() == endLine()
+    const bool betweenLine = start.startLine() <= value.startLine() && value.startLine() <= end.startLine();
+    if (betweenLine) {
+        // To be less strict with cursor
+        const long long veryEnd = isCursor ? end.endColumn() + 1 : end.endColumn();
+
+        const bool afterStart = start.startLine() < value.startLine() ? true : start.startColumn() <= value.startColumn();
+        const bool beforeEnd = value.startLine() < end.startLine() ? true : value.endColumn() <= veryEnd;
+
+        return afterStart && beforeEnd;
+    }
+
+    return false;
+}
+
 /**
  * @brief Create and add all the DelimsInfo found inside the item to `delims`.
  *
@@ -227,7 +243,7 @@ void addBlockItemDelims(QList<posCacheUtils::DelimsInfo> &delims, MD::Item<MD::Q
  * @param headingLevel The heading level of the newly created DelimsInfo.
  */
 void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
-                               MD::Item<MD::QStringTrait> *item,
+                               MD::Item *item,
                                const MD::WithPosition &cursorPos,
                                const MD::WithPosition &selectStartPos,
                                const MD::WithPosition &selectEndPos,
@@ -256,9 +272,8 @@ void addSurroundingDelimsPairs(QList<posCacheUtils::DelimsInfo> &delims,
 
         bool addPair = true;
         if (selectStartPos.startColumn() != -1 && selectEndPos.startColumn() != -1) {
-            addPair = md4qtHelperFunc::isBetweenDelims(cursorPos, openDelim, closeDelim, true)
-                || md4qtHelperFunc::isBetweenDelims(openDelim, selectStartPos, selectEndPos)
-                || md4qtHelperFunc::isBetweenDelims(closeDelim, selectStartPos, selectEndPos);
+            addPair = isBetweenDelims(cursorPos, openDelim, closeDelim, true) || isBetweenDelims(openDelim, selectStartPos, selectEndPos)
+                || isBetweenDelims(closeDelim, selectStartPos, selectEndPos);
         }
 
         if (addPair) {
@@ -285,7 +300,7 @@ void addDelimsFromItems(QList<posCacheUtils::DelimsInfo> &delims,
 {
     int headingLevel = 0;
     const int cacheLen = items.length();
-    MD::Item<MD::QStringTrait> *blockItem = 3 <= cacheLen ? items.at(cacheLen - 3) : items.first();
+    MD::Item *blockItem = 3 <= cacheLen ? items.at(cacheLen - 3) : items.first();
 
     addBlockItemDelims(delims, blockItem, pos, headingLevel);
 

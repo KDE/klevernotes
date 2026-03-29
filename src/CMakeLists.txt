@@ -165,9 +165,6 @@ target_sources(klevernotes_static
         # === PARSER ===
         logic/parser/parser.cpp
         logic/parser/renderer.cpp
-        logic/parser/md4qtDataCleaner.cpp
-        logic/parser/md4qtDataGetter.cpp
-        logic/parser/md4qtDataManip.cpp
 
         # Extended Syntax
         logic/parser/extendedSyntax/extendedSyntaxMaker.cpp
@@ -216,7 +213,7 @@ add_executable(klevernotes
     resources.qrc
 )
 
-target_link_libraries(klevernotes PRIVATE klevernotes_static klevernotes_staticplugin)
+target_link_libraries(klevernotes PRIVATE klevernotes_static klevernotes_staticplugin md4qt::md4qt)
 
 if (BUILD_TESTING)
     add_subdirectory(autotests)

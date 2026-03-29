@@ -5,25 +5,29 @@
 
 #pragma once
 
-#include "logic/parser/md4qtDataGetter.hpp"
+// md4qt include.
+#include <md4qt/src/inline_parser.h>
 
 namespace NoteLinkingPlugin
 {
-/**
- * @brief Provide a simple way to execute the whole parsing for the note linking.
- *
- * @param p The current MD::Paragraph being treated
- * @param po The current MD::TextParsingOpts used for `rawTextData`
- * @param rawIdx The index of the current rawTextData item being treated.
- */
-inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx);
 
-/**
- * @brief Function exposed to md4qt::Parser::addTextPlugin
- *
- * @param p The current MD::Paragraph being treated
- * @param po The current MD::TextParsingOpts used for `rawTextData`
- * @param options Options of this plugins
- */
-void noteLinkingHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options);
+class NoteLinkingParser : public MD::InlineParser
+{
+public:
+    NoteLinkingParser() = default;
+    ~NoteLinkingParser() override = default;
+
+    bool check(MD::Line &line,
+               MD::ParagraphStream &stream,
+               MD::InlineContext &ctx,
+               QSharedPointer<MD::Document> doc,
+               const QString &path,
+               const QString &fileName,
+               QStringList &linksToParse,
+               MD::Parser &parser,
+               const MD::ReverseSolidusHandler &rs) override;
+
+    QString startDelimiterSymbols() const override;
+};
+
 }

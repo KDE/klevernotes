@@ -1,0 +1,34 @@
+version = 1
+SPDX-PackageName = "KleverNotes"
+SPDX-PackageSupplier = "Louis Schul <schul9louis@gmail.com>"
+SPDX-PackageDownloadLocation = "https://invent.kde.org/office/klevernotes"
+
+[[annotations]]
+path = ".flatpak-manifest.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Louis Schul <schul9louis@gmail.com>"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+[[annotations]]
+path = "src/example/Demo/note.md"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Louis Schul <schul9louis@gmail.com>"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+[[annotations]]
+path = "logo.png"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Helden Hoierman"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = "src/example/Demo/Images/logo.png"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Helden Hoierman"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = "po/**"
+precedence = "aggregate"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+SPDX-FileCopyrightText = "Louis Schul <schul9louis@gmail.com>"

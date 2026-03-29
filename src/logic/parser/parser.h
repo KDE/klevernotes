@@ -10,14 +10,14 @@
 #include <QSet>
 
 // KleverNotes include
+#include "extendedSyntax/extendedSyntaxMaker.hpp"
 #include "plugins/emoji/emojiPlugin.hpp"
 #include "plugins/noteMapper/noteLinkingPlugin.hpp"
+#include "plugins_helper.h"
 
 // md4qt include
-#define MD4QT_QT_SUPPORT
-#include "md4qt/doc.h"
-#include "md4qt/parser.h"
-#include "md4qt/traits.h"
+#include <md4qt/src/doc.h>
+#include <md4qt/src/parser.h>
 
 namespace MdEditor
 {
@@ -34,6 +34,7 @@ class Parser : public QObject
 public:
     explicit Parser();
 
+private:
     // Connections
     /**
      * @brief Connects the default KleverNotes plugins to the md4qt parser.
@@ -42,19 +43,47 @@ public:
 
     // Setters
     /**
-     * @brief Add an extended syntax to the md4qt parser.
-     *
-     * @param details The details of the extended syntax.
-     */
-    void addExtendedSyntax(const QStringList &details);
-
-    /**
      * @brief Add/remove a specific plugin.
      *
-     * @param pluginId The id of the plugin inside the md4qt parser.
      * @param add Whether to add the plugin, remove otherwise.
      */
-    void addRemovePlugin(const int pluginId, const bool add);
+    template<class Plugin>
+    void addRemovePlugin(const bool add)
+    {
+        auto inlineParsers =
+            setInlineParsers<ExtendedSyntaxMaker::SupEmphasisParser, ExtendedSyntaxMaker::SubEmphasisParser, ExtendedSyntaxMaker::HighlightEmphasisParser>();
+
+        if (add) {
+            if (std::is_same<Plugin, EmojiPlugin::EmojiParser>::value) {
+                m_plugins.insert(PluginID::EmojiPlugin);
+            } else if (std::is_same<Plugin, NoteLinkingPlugin::NoteLinkingParser>::value) {
+                m_plugins.insert(PluginID::NoteLinkingPlugin);
+            }
+        } else {
+            if (std::is_same<Plugin, EmojiPlugin::EmojiParser>::value) {
+                m_plugins.remove(PluginID::EmojiPlugin);
+            } else if (std::is_same<Plugin, NoteLinkingPlugin::NoteLinkingParser>::value) {
+                m_plugins.remove(PluginID::NoteLinkingPlugin);
+            }
+        }
+
+        for (const auto &id : std::as_const(m_plugins)) {
+            switch (id) {
+            case PluginID::EmojiPlugin: {
+                addInlinePlugins<EmojiPlugin::EmojiParser>(inlineParsers);
+            } break;
+
+            case PluginID::NoteLinkingPlugin: {
+                addInlinePlugins<NoteLinkingPlugin::NoteLinkingParser>(inlineParsers);
+            } break;
+
+            default:
+                break;
+            }
+        }
+
+        m_md4qtParser.setInlineParsers(inlineParsers);
+    }
 
 Q_SIGNALS:
     /**
@@ -68,7 +97,21 @@ Q_SIGNALS:
      * @param mdDoc The resulting MD::Document.
      * @param parseCount The parsing number related to this MD::Document. Used for multithreading.
      */
-    void done(std::shared_ptr<MD::Document<MD::QStringTrait>> mdDoc, unsigned long long int parseCount);
+    void done(QSharedPointer<MD::Document> mdDoc, unsigned long long int parseCount);
+
+    /**
+     * @brief Note linking option changed.
+     *
+     * @param on Is on?
+     */
+    void noteLinkingEnabledChangedSignal(bool on);
+
+    /**
+     * @brief Emoji option changed.
+     *
+     * @param on Is on?
+     */
+    void quickEmojiEnabledChangedSignal(bool on);
 
 public Q_SLOTS:
     // markdown-tools editor
@@ -86,14 +129,37 @@ private Q_SLOTS:
     // Note Linking
     /**
      * @brief Connection to KleverNotes config for the Note Linking Plugin.
+     *
+     * Invokes on the main thread.
      */
-    void noteLinkindEnabledChanged();
+    void noteLinkingEnabledChanged();
 
     // Emoji
     /**
      * @brief Connection to KleverNotes config for the Quick Emoji Plugin.
+     *
+     * Invokes on the main thread.
      */
     void quickEmojiEnabledChanged();
+
+    /**
+     * @brief Connection to KleverNotes config for the Note Linking Plugin.
+     *
+     * Invokes on the parsing thread.
+     *
+     * @param on Is on?
+     */
+    void noteLinkingEnabledChanged(bool on);
+
+    // Emoji
+    /**
+     * @brief Connection to KleverNotes config for the Quick Emoji Plugin.
+     *
+     * Invokes on the parsing thread.
+     *
+     * @param on Is on?
+     */
+    void quickEmojiEnabledChanged(bool on);
 
     // markdown-tools editor
     /**
@@ -102,21 +168,18 @@ private Q_SLOTS:
     void onParse();
 
 private:
-    enum PluginsId : int {
-        NoteLinkingPlugin = 320, // EditorHandler::ExtensionID::KleverPlugins
+    enum class PluginID {
         EmojiPlugin,
+        NoteLinkingPlugin
     };
 
-    const std::map<int, MD::TextPluginFunc<MD::QStringTrait>> m_kleverPlugins = {
-        {PluginsId::NoteLinkingPlugin, NoteLinkingPlugin::noteLinkingHelperFunc},
-        {PluginsId::EmojiPlugin, EmojiPlugin::emojiHelperFunc},
-    };
+    QSet<PluginID> m_plugins;
 
     // markdown-tools editor
     QStringList m_data; // Using a QStringList enable us to make the difference between no data and empty data !!
     QString m_noteDir;
     QString m_noteName;
     unsigned long long int m_counter;
-    MD::Parser<MD::QStringTrait> m_md4qtParser;
+    MD::Parser m_md4qtParser;
 };
 }

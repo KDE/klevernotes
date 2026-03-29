@@ -3,18 +3,18 @@
 
 ecm_add_test(./parser/extendedSyntaxTest.cpp
     TEST_NAME extendedSyntax
-    LINK_LIBRARIES klevernotes_static Qt::Test
+    LINK_LIBRARIES klevernotes_static Qt::Test md4qt::md4qt
     NAME_PREFIX "klevernotes-"
 )
 
 ecm_add_test(./parser/noteLinkingTest.cpp
     TEST_NAME noteLinking
-    LINK_LIBRARIES klevernotes_static Qt::Test
+    LINK_LIBRARIES klevernotes_static Qt::Test md4qt::md4qt
     NAME_PREFIX "klevernotes-"
 )
 
 ecm_add_test(./parser/emojiTest.cpp
     TEST_NAME emoji
-    LINK_LIBRARIES klevernotes_static Qt::Test
+    LINK_LIBRARIES klevernotes_static Qt::Test md4qt::md4qt
     NAME_PREFIX "klevernotes-"
 )

@@ -49,7 +49,7 @@ void EditorHighlighter::setColors(const Colors &colors)
     d->colors = colors;
 }
 
-void EditorHighlighter::cacheAndHighlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const bool highlight)
+void EditorHighlighter::cacheAndHighlight(QSharedPointer<MD::Document> doc, const bool highlight)
 {
     m_highlightEnabled = highlight;
     auto c = d->editor->textCursor();
@@ -58,7 +58,7 @@ void EditorHighlighter::cacheAndHighlight(std::shared_ptr<MD::Document<MD::QStri
 
     d->doc = doc;
 
-    MD::PosCache<MD::QStringTrait>::initialize(d->doc);
+    MD::PosCache::initialize(d->doc);
     c.endEditBlock();
     showDelimAroundCursor();
 }
@@ -166,21 +166,21 @@ QList<posCacheUtils::DelimsInfo> EditorHighlighter::showDelimAroundCursor(const 
     return delims;
 }
 
-MD::ListItem<MD::QStringTrait> *EditorHighlighter::searchListItem(const int line, const int pos)
+MD::ListItem *EditorHighlighter::searchListItem(const int line, const int pos)
 {
     const Items blockItems = findFirstInCache({pos, line, pos, line});
 
     for (int i = blockItems.size() - 1; -1 != i; --i) {
         const auto item = blockItems.at(i);
         if (item->type() == MD::ItemType::ListItem) {
-            return static_cast<MD::ListItem<MD::QStringTrait> *>(item);
+            return static_cast<MD::ListItem *>(item);
         }
     }
 
     return nullptr;
 }
 
-void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
+void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts *i)
 {
     if (m_highlightEnabled) {
         QTextCharFormat special;
@@ -195,7 +195,7 @@ void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i)
     }
 }
 
-void EditorHighlighter::onText(MD::Text<MD::QStringTrait> *t)
+void EditorHighlighter::onText(MD::Text *t)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format = d->makeFormat(t->opts());
@@ -203,10 +203,10 @@ void EditorHighlighter::onText(MD::Text<MD::QStringTrait> *t)
     }
     onItemWithOpts(t);
 
-    MD::PosCache<MD::QStringTrait>::onText(t);
+    MD::PosCache::onText(t);
 }
 
-void EditorHighlighter::onMath(MD::Math<MD::QStringTrait> *m)
+void EditorHighlighter::onMath(MD::Math *m)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format;
@@ -230,10 +230,10 @@ void EditorHighlighter::onMath(MD::Math<MD::QStringTrait> *m)
     }
     onItemWithOpts(m);
 
-    MD::PosCache<MD::QStringTrait>::onMath(m);
+    MD::PosCache::onMath(m);
 }
 
-void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
+void EditorHighlighter::onHeading(MD::Heading *h)
 {
     const int inititalHeadingLevel = d->headingLevel;
     const int inititalAdditionalStyle = d->additionalStyle;
@@ -248,7 +248,7 @@ void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
         d->setFormat(baseFormat, h->startLine(), formatStart, h->endLine(), h->endColumn());
     }
 
-    MD::PosCache<MD::QStringTrait>::onHeading(h);
+    MD::PosCache::onHeading(h);
 
     d->headingLevel = inititalHeadingLevel;
     d->additionalStyle = inititalAdditionalStyle;
@@ -269,7 +269,7 @@ void EditorHighlighter::onHeading(MD::Heading<MD::QStringTrait> *h)
     }
 }
 
-void EditorHighlighter::onCode(MD::Code<MD::QStringTrait> *c)
+void EditorHighlighter::onCode(MD::Code *c)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format;
@@ -305,10 +305,10 @@ void EditorHighlighter::onCode(MD::Code<MD::QStringTrait> *c)
     }
     onItemWithOpts(c);
 
-    MD::PosCache<MD::QStringTrait>::onCode(c);
+    MD::PosCache::onCode(c);
 }
 
-void EditorHighlighter::onInlineCode(MD::Code<MD::QStringTrait> *c)
+void EditorHighlighter::onInlineCode(MD::Code *c)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format;
@@ -336,12 +336,12 @@ void EditorHighlighter::onInlineCode(MD::Code<MD::QStringTrait> *c)
     }
     onItemWithOpts(c);
 
-    MD::PosCache<MD::QStringTrait>::onInlineCode(c);
+    MD::PosCache::onInlineCode(c);
 }
 
-void EditorHighlighter::onBlockquote(MD::Blockquote<MD::QStringTrait> *b)
+void EditorHighlighter::onBlockquote(MD::Blockquote *b)
 {
-    MD::PosCache<MD::QStringTrait>::onBlockquote(b);
+    MD::PosCache::onBlockquote(b);
     if (m_highlightEnabled) {
         QTextCharFormat special;
         special.setForeground(d->colors.linkColor);
@@ -352,9 +352,9 @@ void EditorHighlighter::onBlockquote(MD::Blockquote<MD::QStringTrait> *b)
     }
 }
 
-void EditorHighlighter::onListItem(MD::ListItem<MD::QStringTrait> *l, bool first, bool skipOpeningWrap)
+void EditorHighlighter::onListItem(MD::ListItem *l, bool first, bool skipOpeningWrap)
 {
-    MD::PosCache<MD::QStringTrait>::onListItem(l, first, skipOpeningWrap);
+    MD::PosCache::onListItem(l, first, skipOpeningWrap);
     if (m_highlightEnabled) {
         QTextCharFormat special;
         special.setForeground(d->colors.highlightColor);
@@ -367,7 +367,7 @@ void EditorHighlighter::onListItem(MD::ListItem<MD::QStringTrait> *l, bool first
     }
 }
 
-void EditorHighlighter::onTable(MD::Table<MD::QStringTrait> *t)
+void EditorHighlighter::onTable(MD::Table *t)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format;
@@ -376,10 +376,10 @@ void EditorHighlighter::onTable(MD::Table<MD::QStringTrait> *t)
 
         d->setFormat(format, t->startLine(), t->startColumn(), t->endLine(), t->endColumn());
     }
-    MD::PosCache<MD::QStringTrait>::onTable(t);
+    MD::PosCache::onTable(t);
 }
 
-void EditorHighlighter::onRawHtml(MD::RawHtml<MD::QStringTrait> *h)
+void EditorHighlighter::onRawHtml(MD::RawHtml *h)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format;
@@ -390,10 +390,10 @@ void EditorHighlighter::onRawHtml(MD::RawHtml<MD::QStringTrait> *h)
     }
     onItemWithOpts(h);
 
-    MD::PosCache<MD::QStringTrait>::onRawHtml(h);
+    MD::PosCache::onRawHtml(h);
 }
 
-void EditorHighlighter::onHorizontalLine(MD::HorizontalLine<MD::QStringTrait> *l)
+void EditorHighlighter::onHorizontalLine(MD::HorizontalLine *l)
 {
     if (m_highlightEnabled) {
         QTextCharFormat special;
@@ -402,10 +402,10 @@ void EditorHighlighter::onHorizontalLine(MD::HorizontalLine<MD::QStringTrait> *l
 
         d->setFormat(special, l->startLine(), l->startColumn(), l->endLine(), l->endColumn());
     }
-    MD::PosCache<MD::QStringTrait>::onHorizontalLine(l);
+    MD::PosCache::onHorizontalLine(l);
 }
 
-void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
+void EditorHighlighter::onLink(MD::Link *l)
 {
     const int inititalAdditionalStyle = d->additionalStyle;
     if (m_highlightEnabled) {
@@ -417,10 +417,12 @@ void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
 
         d->additionalStyle = d->additionalStyle | l->opts();
 
-        QTextCharFormat textFormat;
-        textFormat.setForeground(d->colors.textColor);
-        textFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
-        d->setFormat(textFormat, l->textPos());
+        if (!l->textPos().isNullPositions()) {
+            QTextCharFormat textFormat;
+            textFormat.setForeground(d->colors.textColor);
+            textFormat.setFont(d->styleFont(l->opts() | d->additionalStyle));
+            d->setFormat(textFormat, l->textPos());
+        }
 
         QTextCharFormat urlFormat;
         urlFormat.setForeground(d->colors.linkColor);
@@ -428,14 +430,14 @@ void EditorHighlighter::onLink(MD::Link<MD::QStringTrait> *l)
         urlFormat.setFontUnderline(true);
         d->setFormat(urlFormat, l->urlPos());
     }
-    MD::PosCache<MD::QStringTrait>::onLink(l);
+    MD::PosCache::onLink(l);
 
     onItemWithOpts(l);
 
     d->additionalStyle = inititalAdditionalStyle;
 }
 
-void EditorHighlighter::onReferenceLink(MD::Link<MD::QStringTrait> *l)
+void EditorHighlighter::onReferenceLink(MD::Link *l)
 {
     if (m_highlightEnabled) {
         QTextCharFormat generalFormat;
@@ -450,10 +452,10 @@ void EditorHighlighter::onReferenceLink(MD::Link<MD::QStringTrait> *l)
         urlFormat.setFontUnderline(true);
         d->setFormat(urlFormat, l->urlPos());
     }
-    MD::PosCache<MD::QStringTrait>::onReferenceLink(l);
+    MD::PosCache::onReferenceLink(l);
 }
 
-void EditorHighlighter::onImage(MD::Image<MD::QStringTrait> *i)
+void EditorHighlighter::onImage(MD::Image *i)
 {
     if (m_highlightEnabled) {
         QTextCharFormat generalFormat;
@@ -473,12 +475,12 @@ void EditorHighlighter::onImage(MD::Image<MD::QStringTrait> *i)
         textFormat.setFont(d->styleFont(d->additionalStyle));
         d->setFormat(textFormat, i->textPos());
     }
-    MD::PosCache<MD::QStringTrait>::onImage(i);
+    MD::PosCache::onImage(i);
 
     onItemWithOpts(i);
 }
 
-void EditorHighlighter::onFootnoteRef(MD::FootnoteRef<MD::QStringTrait> *ref)
+void EditorHighlighter::onFootnoteRef(MD::FootnoteRef *ref)
 {
     if (m_highlightEnabled) {
         if (d->doc->footnotesMap().find(ref->id()) != d->doc->footnotesMap().cend()) {
@@ -495,12 +497,12 @@ void EditorHighlighter::onFootnoteRef(MD::FootnoteRef<MD::QStringTrait> *ref)
             d->setFormat(format, ref->startLine(), ref->startColumn(), ref->endLine(), ref->endColumn());
         }
     }
-    MD::PosCache<MD::QStringTrait>::onFootnoteRef(ref);
+    MD::PosCache::onFootnoteRef(ref);
 
     onItemWithOpts(ref);
 }
 
-void EditorHighlighter::onFootnote(MD::Footnote<MD::QStringTrait> *f)
+void EditorHighlighter::onFootnote(MD::Footnote *f)
 {
     if (m_highlightEnabled) {
         QTextCharFormat format;
@@ -509,7 +511,7 @@ void EditorHighlighter::onFootnote(MD::Footnote<MD::QStringTrait> *f)
 
         d->setFormat(format, f->startLine(), f->startColumn(), f->endLine(), f->endColumn());
     }
-    MD::PosCache<MD::QStringTrait>::onFootnote(f);
+    MD::PosCache::onFootnote(f);
 }
 
 void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
@@ -540,7 +542,7 @@ void EditorHighlighter::onEmoji(EmojiPlugin::EmojiItem *e)
     d->additionalStyle = inititalAdditionalStyle;
 }
 
-void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
+void EditorHighlighter::onUserDefined(MD::Item *item)
 {
     if (m_highlightEnabled) {
         const int itemType = static_cast<int>(item->type());
@@ -555,7 +557,7 @@ void EditorHighlighter::onUserDefined(MD::Item<MD::QStringTrait> *item)
             return;
         }
     }
-    MD::PosCache<MD::QStringTrait>::onUserDefined(item);
+    MD::PosCache::onUserDefined(item);
 }
 // !EditorHighlighter
 } // !namespace M

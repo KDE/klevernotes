@@ -6,124 +6,156 @@
 #include "noteLinkingPlugin.hpp"
 
 #include "kleverconfig.h"
-#include "logic/parser/md4qtDataManip.hpp"
 #include "noteMapperParserUtils.h"
 
-// Qt include
-#include <QRegularExpression>
+// md4qt include.
+#include <md4qt/src/inline_context.h>
+#include <md4qt/src/reverse_solidus.h>
+#include <md4qt/src/text_stream.h>
+#include <md4qt/src/utils.h>
 
 namespace NoteLinkingPlugin
 {
 
-inline long long int processNoteLinking(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx)
+static const QChar s_leftSquare = QLatin1Char('[');
+static const QChar s_colon = QLatin1Char(':');
+static const QChar s_rightSquare = QLatin1Char(']');
+static const QChar s_pipe = QLatin1Char('|');
+static const QChar s_space = QLatin1Char(' ');
+
+inline bool isNotSpecial(const QChar &ch)
 {
-    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.m_rawTextData.size())) {
-        return rawIdx;
-    }
-
-    auto textData = po.m_rawTextData[rawIdx];
-    QString src = textData.m_str;
-
-    static const QRegularExpression inline_wikilink =
-        QRegularExpression(QStringLiteral("\\[\\[ *([^:\\]\\|\\r\\n]*)( *: *)?([^:\\]\\|\\r\\n]*)( *\\| *)?([^:\\]\\|\\r\\n]*) *\\]\\]"));
-
-    int offSet = 0;
-    while (offSet != src.length()) {
-        QRegularExpressionMatch cap = inline_wikilink.matchView(src, offSet);
-        if (cap.hasMatch()) {
-            const QString href = cap.captured(1).trimmed();
-            if (!href.isEmpty()) {
-                QString relativeNoteDir = QString(po.m_workingPath);
-                if (relativeNoteDir.startsWith(KleverConfig::storagePath())) {
-                    relativeNoteDir.remove(0, KleverConfig::storagePath().length());
-                }
-                const QString sanitizedHref = NoteMapperParserUtils::sanitizePath(href, relativeNoteDir);
-                if (!sanitizedHref.isEmpty()) {
-                    const QString header = cap.captured(3).trimmed();
-
-                    const bool hasPipe = !cap.captured(4).isEmpty();
-
-                    const QString potentitalTitle = cap.captured(5).trimmed();
-                    const QString title = hasPipe && !potentitalTitle.isEmpty() ? potentitalTitle : sanitizedHref.split(QStringLiteral("/")).last();
-
-                    auto lineInfo = po.m_fr.m_data.at(textData.m_line);
-                    auto paraIdx = textAtIdx(p, rawIdx);
-                    const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-                    const auto opts = item->opts();
-
-                    const long long int virginStartPos = item->startColumn() + cap.capturedStart();
-                    const long long int virginEndPos = item->startColumn() + cap.capturedEnd() - 1;
-                    std::shared_ptr<MD::Link<MD::QStringTrait>> link(new MD::Link<MD::QStringTrait>);
-                    link->setStartColumn(virginStartPos);
-                    link->setStartLine(item->startLine());
-                    link->setEndColumn(virginEndPos);
-                    link->setEndLine(item->endLine());
-
-                    const int urlStart = item->startColumn() + cap.capturedStart(1);
-                    const int urlEnd = (header.isEmpty() ? urlStart + href.length() : item->startColumn() + cap.capturedEnd(2) + header.length()) - 1;
-                    link->setUrlPos({urlStart, link->startLine(), urlEnd, link->endLine()});
-                    // This hopefuly, is enough to separate the 2 without collinding with user input
-                    const QString fullUrl = sanitizedHref + QStringLiteral("@HEADER@") + header; // <Note path>@HEADER@<header ref>
-                    link->setUrl(fullUrl);
-
-                    const int textStart = item->startColumn() + cap.capturedStart(5);
-                    const int textEnd = textStart + potentitalTitle.length() - 1;
-                    link->setTextPos({textStart, link->startLine(), textEnd, link->endLine()});
-                    link->setText(title);
-
-                    link->setOpts(opts);
-
-                    const int addedData = md4qtHelperFunc::splitItem(p, po, paraIdx, rawIdx, virginStartPos, cap.capturedLength());
-
-                    if (addedData == -1) {
-                        link->openStyles() << item->openStyles();
-                        link->closeStyles() << item->closeStyles();
-                        p->removeItemAt(paraIdx);
-                        po.m_rawTextData.erase(po.m_rawTextData.cbegin() + rawIdx);
-                    } else if (addedData == 1) {
-                        const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-                        const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-                        md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
-                    }
-
-                    const long long int totalOffSet = offSet + cap.capturedStart();
-                    // If capture start at 0, then we stay on the same index
-                    const long long int linkParaIdx = totalOffSet ? paraIdx + 1 : paraIdx;
-                    p->insertItem(linkParaIdx, link);
-
-                    if (addedData == 0) {
-                        const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-                        const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-                        if (totalOffSet) {
-                            md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
-                            md4qtHelperFunc::transferStyle(currentItem, nextItem, false);
-                        } else {
-                            md4qtHelperFunc::transferStyle(nextItem, currentItem, true);
-                            md4qtHelperFunc::transferStyle(nextItem, currentItem, false);
-                        }
-                    }
-
-                    return addedData < 0 ? rawIdx : ++rawIdx;
-                }
-            }
-            // Not a note path
-            offSet = cap.capturedEnd();
-            continue;
-        }
-        break;
-    }
-    return ++rawIdx;
+    return (ch != s_colon && ch != s_rightSquare && ch != s_pipe);
 }
 
-void noteLinkingHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
+inline void readPart(MD::Line &line, QString &receiver, qsizetype &spacesAtEnd)
 {
-    Q_UNUSED(options);
-    if (!po.m_collectRefLinks) {
-        long long int i = 0;
+    while (line.position() < line.length()) {
+        if (isNotSpecial(line.currentChar())) {
+            if (line.currentChar() == s_space) {
+                ++spacesAtEnd;
+            } else {
+                spacesAtEnd = 0;
+            }
 
-        while (0 <= i && i < (long long int)po.m_rawTextData.size()) {
-            i = processNoteLinking(p, po, i);
+            receiver.append(line.currentChar());
+            line.nextChar();
+        } else {
+            break;
         }
     }
+
+    receiver = receiver.trimmed();
+}
+
+bool NoteLinkingParser::check(MD::Line &line,
+                              MD::ParagraphStream &,
+                              MD::InlineContext &ctx,
+                              QSharedPointer<MD::Document>,
+                              const QString &path,
+                              const QString &,
+                              QStringList &,
+                              MD::Parser &,
+                              const MD::ReverseSolidusHandler &rs)
+{
+    if (!rs.isPrevReverseSolidus()) {
+        const auto st = line.currentState();
+
+        line.nextChar();
+
+        if (line.currentChar() == s_leftSquare) {
+            line.nextChar();
+
+            QString href;
+            QString header;
+            QString title;
+
+            qsizetype hrefSpacesAtEnd = 0;
+            qsizetype headerSpacesAtEnd = 0;
+            qsizetype titleSpacesAtEnd = 0;
+
+            const auto urlStart = line.position();
+            qsizetype headerStart = -1;
+            qsizetype titleStart = -1;
+
+            readPart(line, href, hrefSpacesAtEnd);
+
+            if (!href.isEmpty()) {
+                if (line.currentChar() == s_colon) {
+                    line.nextChar();
+
+                    MD::skipSpaces(line);
+
+                    headerStart = line.position();
+
+                    readPart(line, header, headerSpacesAtEnd);
+                }
+
+                if (line.currentChar() == s_pipe) {
+                    line.nextChar();
+
+                    MD::skipSpaces(line);
+
+                    titleStart = line.position();
+
+                    readPart(line, title, titleSpacesAtEnd);
+                }
+
+                if (line.currentChar() == s_rightSquare) {
+                    line.nextChar();
+
+                    if (line.currentChar() == s_rightSquare) {
+                        line.nextChar();
+
+                        QString relativeNoteDir = QString(path);
+                        if (relativeNoteDir.startsWith(KleverConfig::storagePath())) {
+                            relativeNoteDir.remove(0, KleverConfig::storagePath().length());
+                        }
+                        const QString sanitizedHref = NoteMapperParserUtils::sanitizePath(href, relativeNoteDir);
+
+                        if (!sanitizedHref.isEmpty()) {
+                            const auto potentitalTitle = title;
+
+                            if (title.isEmpty()) {
+                                title = sanitizedHref.split(QStringLiteral("/")).last();
+                            }
+
+                            auto link = QSharedPointer<MD::Link>::create();
+                            link->setStartColumn(st.m_pos);
+                            link->setStartLine(line.lineNumber());
+                            link->setEndColumn(line.position() - 1);
+                            link->setEndLine(line.lineNumber());
+
+                            const auto urlEnd = (header.isEmpty() ? urlStart + href.length() : headerStart + header.length()) - 1;
+                            link->setUrlPos({urlStart, link->startLine(), urlEnd, link->endLine()});
+                            // This hopefuly, is enough to separate the 2 without collinding with user input
+                            const QString fullUrl = sanitizedHref + QStringLiteral("@HEADER@") + header; // <Note path>@HEADER@<header ref>
+                            link->setUrl(fullUrl);
+
+                            if (titleStart != -1) {
+                                const auto textEnd = titleStart + potentitalTitle.length() - 1;
+                                link->setTextPos({titleStart, link->startLine(), textEnd, link->endLine()});
+                            }
+
+                            link->setText(title);
+
+                            ctx.inlines().append(link);
+
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        line.restoreState(&st);
+    }
+
+    return false;
+}
+
+QString NoteLinkingParser::startDelimiterSymbols() const
+{
+    return QStringLiteral("[");
 }
 }

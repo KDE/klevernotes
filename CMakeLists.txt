@@ -58,6 +58,11 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
 )
 
+set(BUILD_MD4QT_TESTS OFF CACHE INTERNAL "" FORCE)
+add_subdirectory(3rdparty/md4qt)
+
+include_directories(${md4qt_INCLUDE_DIRECTORIES}/../..)
+
 add_subdirectory(src)
 
 ki18n_install(po)

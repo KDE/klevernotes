@@ -7,11 +7,10 @@
 
 #include "emojiModel.h"
 #include "kleverconfig.h"
-#include "logic/parser/md4qtDataGetter.hpp"
-#include "logic/parser/md4qtDataManip.hpp"
 
-// Qt include
-#include <QRegularExpression>
+// md4qt include.
+#include <md4qt/src/inline_context.h>
+#include <md4qt/src/text_stream.h>
 
 namespace EmojiPlugin
 {
@@ -25,18 +24,18 @@ MD::ItemType EmojiItem::type() const
 void EmojiItem::applyEmojiBase(const EmojiItem &other)
 {
     if (this != &other) {
-        MD::ItemWithOpts<MD::QStringTrait>::applyItemWithOpts(other);
+        MD::ItemWithOpts::applyItemWithOpts(other);
         setEmoji(other.emoji());
         setEmojiNamePos(other.emojiNamePos());
         setOptionsPos(other.optionsPos());
     }
 }
 
-std::shared_ptr<MD::Item<MD::QStringTrait>> EmojiItem::clone(MD::Document<MD::QStringTrait> *doc) const
+QSharedPointer<MD::Item> EmojiItem::clone(MD::Document *doc) const
 {
-    MD_UNUSED(doc)
+    Q_UNUSED(doc)
 
-    auto t = std::make_shared<EmojiItem>();
+    auto t = QSharedPointer<EmojiItem>::create();
     t->applyEmojiBase(*this);
 
     return t;
@@ -93,43 +92,79 @@ void EmojiItem::setEndDelim(const MD::WithPosition &pos)
 }
 // !EmojiItem
 
-inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long int rawIdx)
+static const QChar s_colon = QLatin1Char(':');
+
+bool EmojiParser::check(MD::Line &line,
+                        MD::ParagraphStream &,
+                        MD::InlineContext &ctx,
+                        QSharedPointer<MD::Document>,
+                        const QString &,
+                        const QString &,
+                        QStringList &,
+                        MD::Parser &,
+                        const MD::ReverseSolidusHandler &)
 {
-    if (rawIdx < 0 || rawIdx >= static_cast<long long>(po.m_rawTextData.size())) {
-        return rawIdx;
-    }
+    const auto st = line.currentState();
+    MD::Line::State toneStartState;
+    line.nextChar();
+    QString face;
+    QString tone;
+    auto faceFound = false;
+    auto toneFound = false;
 
-    auto textData = po.m_rawTextData[rawIdx];
-    QString src = textData.m_str;
+    if (!line.currentChar().isSpace()) {
+        while (line.position() < line.length()) {
+            if (line.currentChar() != s_colon) {
+                face.append(line.currentChar());
+                line.nextChar();
+            } else {
+                faceFound = true;
 
-    static const auto emojiModel = &EmojiModel::instance();
-    static const QRegularExpression inline_emoji = QRegularExpression(QStringLiteral(":(?=\\S)([^:]*)(:?)([^:]*):"));
-    static const QString defaultToneStr = QStringLiteral("default skin tone");
-    static const QSet<QString> tonesOptions = {
-        QStringLiteral("dark skin tone"),
-        QStringLiteral("medium-dark skin tone"),
-        QStringLiteral("medium skin tone"),
-        QStringLiteral("medium-light skin tone"),
-        QStringLiteral("light skin tone"),
-        defaultToneStr, // To possibly overwrite the default in config
-    };
+                line.nextChar();
 
-    int offSet = 0;
-    while (offSet != src.length()) {
-        QRegularExpressionMatch cap = inline_emoji.matchView(src, offSet);
-        if (cap.hasMatch()) {
-            const QString emojiName = cap.captured(1).trimmed();
-            const QString possibleOptions = cap.captured(3).trimmed();
+                toneStartState = line.currentState();
 
-            QStringList optionsInfo;
-            if (!possibleOptions.isEmpty()) {
-                optionsInfo = possibleOptions.split(QStringLiteral(","));
+                while (line.position() < line.length()) {
+                    if (line.currentChar() != s_colon) {
+                        tone.append(line.currentChar());
+                        line.nextChar();
+                    } else {
+                        toneFound = true;
+                        line.nextChar();
+                        break;
+                    }
+                }
+
+                break;
             }
+        }
+
+        if (faceFound && !face.isEmpty()) {
+            QStringList optionsInfo;
+            if (toneFound && !tone.isEmpty()) {
+                optionsInfo = tone.split(QStringLiteral(","));
+            }
+
+            if (!toneFound) {
+                line.restoreState(&toneStartState);
+            }
+
+            static const auto emojiModel = &EmojiModel::instance();
+            static const QString defaultToneStr = QStringLiteral("default skin tone");
+            static const QSet<QString> tonesOptions = {
+                QStringLiteral("dark skin tone"),
+                QStringLiteral("medium-dark skin tone"),
+                QStringLiteral("medium skin tone"),
+                QStringLiteral("medium-light skin tone"),
+                QStringLiteral("light skin tone"),
+                defaultToneStr, // To possibly overwrite the default in config
+            };
 
             const QString configTone = KleverConfig::emojiTone();
             QString tone = configTone == QStringLiteral("None") ? defaultToneStr : configTone;
             QString givenVariant;
             bool toneGiven = false;
+
             if (!optionsInfo.isEmpty()) {
                 // e.g:
                 // "woman: dark skin tone, blond hair"
@@ -145,14 +180,16 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
                     givenVariant = optionsInfo[1].trimmed();
                 }
             }
+
             const bool defaultToneGiven = tone == defaultToneStr;
 
-            const QString searchTerm = givenVariant.isEmpty() ? emojiName : (emojiName + QStringLiteral(": ") + givenVariant);
+            const QString searchTerm = givenVariant.isEmpty() ? face : (face + QStringLiteral(": ") + givenVariant);
 
             QString uniEmoji;
             bool variantFound = false;
+
             if (!defaultToneGiven) { // Check for tones, but will also gives tones + variant
-                const QVariantList tonedEmojis = emojiModel->tones(emojiName);
+                const QVariantList tonedEmojis = emojiModel->tones(face);
                 for (auto it = tonedEmojis.begin(); it != tonedEmojis.end(); ++it) {
                     const Emoji currentEmoji = it->value<Emoji>();
                     const QString tonedEmojiName = currentEmoji.shortName;
@@ -190,90 +227,50 @@ inline long long int processEmoji(MDParagraphPtr p, MDParsingOpts &po, long long
             }
 
             if (uniEmoji.isEmpty()) { // Last try to find one
-                const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(emojiName);
+                const QVariantList possibleEmojis = emojiModel->filterModelNoCustom(face);
                 for (auto it = possibleEmojis.begin(); it != possibleEmojis.end(); it++) {
                     const Emoji currentEmoji = it->value<Emoji>();
-                    if (currentEmoji.shortName == emojiName) {
+                    if (currentEmoji.shortName == face) {
                         uniEmoji = currentEmoji.unicode;
                         break;
                     }
                 }
             }
 
-            static const QString surroundingStr = QStringLiteral("::");
-            const int firstPartCapLength = cap.capturedLength(1) + surroundingStr.length();
-            if (uniEmoji.isEmpty()) {
-                offSet += firstPartCapLength;
-                continue;
-            }
-
-            auto lineInfo = po.m_fr.m_data.at(textData.m_line);
-            auto paraIdx = textAtIdx(p, rawIdx);
-            const auto item = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-
-            const long long int splitLength = variantFound || (toneGiven && defaultToneGiven) ? cap.capturedLength() : firstPartCapLength;
-            const long long int virginStartPos = item->startColumn() + cap.capturedStart();
-            const long long int virginEndPos = item->startColumn() + cap.capturedStart() + splitLength - 1;
-
-            auto emojiItem = std::make_shared<EmojiItem>();
-            emojiItem->applyPositions({virginStartPos, item->startLine(), virginEndPos, item->endLine()});
-            emojiItem->setStartDelim({virginStartPos, item->startLine(), virginStartPos, item->startLine()});
-            emojiItem->setEndDelim({virginEndPos, item->endLine(), virginEndPos, item->endLine()});
-            emojiItem->setOpts(item->opts());
-            emojiItem->setEmoji(uniEmoji);
-
-            const long long int nameStart = item->startColumn() + cap.capturedStart(1);
-            const long long int nameEnd = item->startColumn() + cap.capturedEnd(1) - 1;
-            emojiItem->setEmojiNamePos({nameStart, emojiItem->startLine(), nameEnd, emojiItem->endLine()});
-
-            const long long int optionsStart = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedStart(2) : nameStart;
-            const long long int optionsEnd = variantFound || (toneGiven && defaultToneGiven) ? item->startColumn() + cap.capturedEnd(3) - 1 : nameEnd;
-            emojiItem->setOptionsPos({optionsStart, emojiItem->startLine(), optionsEnd, emojiItem->endLine()});
-
-            const int addedData = md4qtHelperFunc::splitItem(p, po, paraIdx, rawIdx, virginStartPos, splitLength);
-            if (addedData == -1) {
-                emojiItem->openStyles() << item->openStyles();
-                emojiItem->closeStyles() << item->closeStyles();
-                p->removeItemAt(paraIdx);
-                po.m_rawTextData.erase(po.m_rawTextData.cbegin() + rawIdx);
-            } else if (addedData == 1) {
-                const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-                const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-                md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
-            }
-
-            // If capture start at 0, then we stay on the same index
-            const long long int emojiParaIdx = cap.capturedStart() ? paraIdx + 1 : paraIdx;
-            p->insertItem(emojiParaIdx, emojiItem);
-
-            if (addedData == 0) {
-                const auto currentItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx));
-                const auto nextItem = md4qtHelperFunc::getSharedItemWithOpts(p->getItemAt(paraIdx + 1));
-                if (cap.capturedStart()) {
-                    md4qtHelperFunc::transferStyle(currentItem, nextItem, true);
-                    md4qtHelperFunc::transferStyle(currentItem, nextItem, false);
-                } else {
-                    md4qtHelperFunc::transferStyle(nextItem, currentItem, true);
-                    md4qtHelperFunc::transferStyle(nextItem, currentItem, false);
+            if (!uniEmoji.isEmpty()) {
+                if (!variantFound) {
+                    line.restoreState(&toneStartState);
                 }
-            }
 
-            return addedData < 0 ? rawIdx : ++rawIdx;
+                auto emojiItem = QSharedPointer<EmojiItem>::create();
+                const auto endPos = line.position() - 1;
+                emojiItem->applyPositions({st.m_pos, line.lineNumber(), endPos, line.lineNumber()});
+                emojiItem->setStartDelim({st.m_pos, line.lineNumber(), st.m_pos, line.lineNumber()});
+                emojiItem->setEndDelim({endPos, line.lineNumber(), endPos, line.lineNumber()});
+                emojiItem->setEmoji(uniEmoji);
+
+                const long long int nameStart = st.m_pos + 1;
+                const long long int nameEnd = toneStartState.m_pos - 2;
+                emojiItem->setEmojiNamePos({nameStart, emojiItem->startLine(), nameEnd, emojiItem->endLine()});
+
+                const long long int optionsStart = variantFound || (toneGiven && defaultToneGiven) ? toneStartState.m_pos - 1 : nameStart;
+                const long long int optionsEnd = variantFound || (toneGiven && defaultToneGiven) ? line.position() - 2 : nameEnd;
+                emojiItem->setOptionsPos({optionsStart, emojiItem->startLine(), optionsEnd, emojiItem->endLine()});
+
+                ctx.inlines().append(emojiItem);
+
+                return true;
+            }
         }
-        break;
     }
-    return ++rawIdx;
+
+    line.restoreState(&st);
+
+    return false;
 }
 
-void emojiHelperFunc(MDParagraphPtr p, MDParsingOpts &po, const QStringList &options)
+QString EmojiParser::startDelimiterSymbols() const
 {
-    Q_UNUSED(options);
-    if (!po.m_collectRefLinks) {
-        long long int i = 0;
-
-        while (0 <= i && i < (long long int)po.m_rawTextData.size()) {
-            i = processEmoji(p, po, i);
-        }
-    }
+    return QStringLiteral(":");
 }
 }

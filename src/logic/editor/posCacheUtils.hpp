@@ -5,14 +5,12 @@
 
 #pragma once
 
-// md-editor include.
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/doc.h"
-#include "logic/parser/md4qt/traits.h"
+// md4qt include.
+#include <md4qt/src/doc.h>
 
-using ItemSharedPointer = std::shared_ptr<MD::Item<MD::QStringTrait>>;
-using SharedItems = typename MD::QStringTrait::template Vector<ItemSharedPointer>;
-using Items = typename MD::QStringTrait::template Vector<MD::Item<MD::QStringTrait> *>;
+using ItemSharedPointer = QSharedPointer<MD::Item>;
+using SharedItems = QVector<ItemSharedPointer>;
+using Items = QVector<MD::Item *>;
 
 namespace posCacheUtils
 {

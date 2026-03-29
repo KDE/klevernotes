@@ -1,0 +1,17 @@
+maintainer: imironchik
+description: C++ library for parsing Markdown.
+platforms:
+    - name: Linux
+    - name: FreeBSD
+    - name: Android
+    - name: Windows
+public_lib: true
+deprecated: false
+release: true
+cmakename: md4qt
+mailinglist: kde-devel
+public_source_dirs:
+  - src
+libraries:
+  - license: MIT
+    cmake: md4qt

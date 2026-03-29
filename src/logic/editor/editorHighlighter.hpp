@@ -10,9 +10,7 @@
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
 
 // md4qt include.
-#define MD4QT_QT_SUPPORT
-#include "logic/parser/md4qt/poscache.h"
-#include "logic/parser/md4qt/traits.h"
+#include <md4qt/src/poscache.h>
 
 // Qt include.
 #include <QColor>
@@ -25,7 +23,7 @@ namespace MdEditor
  * @class EditorHighlighter
  * @brief Class providing highlight to the QML editor.
  */
-class EditorHighlighter : public MD::PosCache<MD::QStringTrait>
+class EditorHighlighter : public MD::PosCache
 {
 public:
     explicit EditorHighlighter(EditorHandler *editor);
@@ -37,7 +35,7 @@ public:
      * @param doc The MD::Document resulting of the parsing.
      * @param highlight Whether to highlight the editor.
      */
-    void cacheAndHighlight(std::shared_ptr<MD::Document<MD::QStringTrait>> doc, const bool highlight);
+    void cacheAndHighlight(QSharedPointer<MD::Document> doc, const bool highlight);
 
     /**
      * @brief Change the style of the delims surrounding the cursor to make them more visible.
@@ -95,32 +93,32 @@ public:
      * @param pos The position (column) on which we want to search the item.
      * @result A pointer to the list item if it is found. A nullptr otherwise.
      */
-    MD::ListItem<MD::QStringTrait> *searchListItem(const int line, const int pos);
+    MD::ListItem *searchListItem(const int line, const int pos);
 
 protected:
-    void onReferenceLink(MD::Link<MD::QStringTrait> *l) override;
-    void onText(MD::Text<MD::QStringTrait> *t) override;
-    void onMath(MD::Math<MD::QStringTrait> *m) override;
-    void onHeading(MD::Heading<MD::QStringTrait> *h) override;
-    void onCode(MD::Code<MD::QStringTrait> *c) override;
-    void onInlineCode(MD::Code<MD::QStringTrait> *c) override;
-    void onBlockquote(MD::Blockquote<MD::QStringTrait> *b) override;
-    void onTable(MD::Table<MD::QStringTrait> *t) override;
-    void onRawHtml(MD::RawHtml<MD::QStringTrait> *h) override;
-    void onHorizontalLine(MD::HorizontalLine<MD::QStringTrait> *l) override;
-    void onLink(MD::Link<MD::QStringTrait> *l) override;
-    void onImage(MD::Image<MD::QStringTrait> *i) override;
-    void onFootnoteRef(MD::FootnoteRef<MD::QStringTrait> *ref) override;
-    void onFootnote(MD::Footnote<MD::QStringTrait> *f) override;
-    void onListItem(MD::ListItem<MD::QStringTrait> *l, bool first, bool skipOpeningWrap) override;
-    void onUserDefined(MD::Item<MD::QStringTrait> *item) override;
+    void onReferenceLink(MD::Link *l) override;
+    void onText(MD::Text *t) override;
+    void onMath(MD::Math *m) override;
+    void onHeading(MD::Heading *h) override;
+    void onCode(MD::Code *c) override;
+    void onInlineCode(MD::Code *c) override;
+    void onBlockquote(MD::Blockquote *b) override;
+    void onTable(MD::Table *t) override;
+    void onRawHtml(MD::RawHtml *h) override;
+    void onHorizontalLine(MD::HorizontalLine *l) override;
+    void onLink(MD::Link *l) override;
+    void onImage(MD::Image *i) override;
+    void onFootnoteRef(MD::FootnoteRef *ref) override;
+    void onFootnote(MD::Footnote *f) override;
+    void onListItem(MD::ListItem *l, bool first, bool skipOpeningWrap) override;
+    void onUserDefined(MD::Item *item) override;
 
 private:
-    void onItemWithOpts(MD::ItemWithOpts<MD::QStringTrait> *i);
+    void onItemWithOpts(MD::ItemWithOpts *i);
 
     void onEmoji(EmojiPlugin::EmojiItem *e);
 
-    void revertHeadingDelims(MD::Item<MD::QStringTrait> *item);
+    void revertHeadingDelims(MD::Item *item);
 
     void addBlockDelims(QList<posCacheUtils::DelimsInfo> &delims,
                         const QTextBlock &block,
