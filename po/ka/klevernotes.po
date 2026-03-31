@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-11 00:45+0000\n"
+"POT-Creation-Date: 2026-03-31 00:45+0000\n"
 "PO-Revision-Date: 2026-02-11 05:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1860,35 +1860,35 @@ msgctxt "The name for a demo note"
 msgid "Demo"
 msgstr "დემო"
 
-#: main.cpp:45
+#: main.cpp:46
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
 msgstr "KleverNotes"
 
-#: main.cpp:49
+#: main.cpp:50
 #, kde-format
 msgid "Note taking and management application"
 msgstr "შენიშვნების მართვის აპლიკაცია"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "(c) 2022-2025"
 msgstr "(c) 2022-2025"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgctxt "@info:credit"
 msgid "Louis Schul"
 msgstr "ლუის შული"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Temuri Doghonadze"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
