@@ -37,6 +37,20 @@ public:
      */
     Q_INVOKABLE void copy(const QString &fromPath, const QString &toPath);
 
+    /**
+     * @brief Inform the helper that the PDF is ready to be displayed.
+     * The helper will send the signal himself.
+     * This is a fallback to keep in memory the fact that the PDF is ready.
+     */
+    Q_INVOKABLE void setPdfReady();
+
+    /**
+     * @brief Checks if the PDF is ready to be displayed.
+     *
+     * @post If the `_pdfReady` was set to true, it will be set to false after this call.
+     */
+    Q_INVOKABLE bool isPdfReady();
+
 Q_SIGNALS:
     /**
      * @brief A signal sent once the copy is action is done.
@@ -45,4 +59,12 @@ Q_SIGNALS:
      * @param message The possible error message.
      */
     void pdfCopyDone(const bool succes, const QString &message);
+
+    /**
+     * @brief Inform the connections that the PDF is ready.
+     */
+    void pdfReady();
+
+private:
+    bool _pdfReady = false;
 };

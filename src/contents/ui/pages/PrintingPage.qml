@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// SPDX-FileCopyrightText: 2023-2024 Louis Schul <schul9louis@gmail.com>
+// SPDX-FileCopyrightText: 2023-2026 Louis Schul <schul9louis@gmail.com>
 
 // LOOSELY BASED ON : https://invent.kde.org/network/angelfish/-/blob/master/lib/contents/ui/PrintPreview.qml
 // SPDX-License-Identifier: GPL-2.0-or-later
@@ -21,8 +21,8 @@ Kirigami.Page {
     id: printPreview
 
     readonly property QtObject textDisplay: applicationWindow().pageStack.get(0).editorView.display
-    readonly property string pdfPath: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/pdf-preview.pdf"
-    readonly property string emptyPdf: StandardPaths.writableLocation(StandardPaths.TempLocation)+"/empty.pdf"
+    readonly property string pdfPath: StandardPaths.writableLocation(StandardPaths.TempLocation) + "/pdf-preview.pdf"
+    readonly property string emptyPdf: StandardPaths.writableLocation(StandardPaths.TempLocation) + "/empty.pdf"
 
     property var colors
 
@@ -126,7 +126,7 @@ Kirigami.Page {
         width: Kirigami.Units.gridUnit * 15
         anchors.fill: parent
         clip: true
-        document: PdfDocument { 
+        document: PdfDocument {
             id: pdfDoc
 
             onStatusChanged: function (status) {
@@ -139,7 +139,7 @@ Kirigami.Page {
 
     Controls.BusyIndicator {
         id: busyIndicator
-        
+
         width: Kirigami.Units.gridUnit * 5
         height: width
         anchors.centerIn: parent
@@ -175,13 +175,21 @@ Kirigami.Page {
                 showPassiveNotification(errorMessage)
             } else {
                 closePage()
-            } 
+            }
+        }
+
+        function onPdfReady() {
+            const ready = PrintingUtility.isPdfReady()
+
+            if (ready) {
+                displayPdf()
+            }
         }
     }
 
     function displayPdf() {
         busyIndicator.visible = true
-        PrintingUtility.writePdf(emptyPdf.substring(7)) 
+        PrintingUtility.writePdf(emptyPdf.substring(7))
         pdfDoc.source = emptyPdf
         changingDocTimer.start()
     }

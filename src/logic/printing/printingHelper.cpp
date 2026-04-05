@@ -48,3 +48,25 @@ void PrintingUtility::copy(const QString &fromPath, const QString &toPath)
 
     Q_EMIT pdfCopyDone(true, {});
 }
+
+void PrintingUtility::setPdfReady()
+{
+    _pdfReady = true;
+
+    Q_EMIT pdfReady();
+}
+
+bool PrintingUtility::isPdfReady()
+{
+    if (_pdfReady) {
+        _pdfReady = false;
+        return true;
+    }
+
+    return false;
+}
+
+void PrintingUtility::askForPDF()
+{
+    Q_EMIT makePDF();
+}

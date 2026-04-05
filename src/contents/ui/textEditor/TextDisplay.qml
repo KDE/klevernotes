@@ -90,9 +90,7 @@ RowLayout {
                 }
             }
             onPdfPrintingFinished: {
-                const printingPage = applicationWindow().pageStack.layers.currentItem
-
-                printingPage.displayPdf()
+                PrintingUtility.setPdfReady()
             }
             onLoadingChanged: if (!loading) {
                 scrollToHeader()
@@ -111,7 +109,7 @@ RowLayout {
                     const delimiterIndex = notePath.lastIndexOf("@HEADER@")
                     if (delimiterIndex != -1 && KleverConfig.noteMapEnabled) {
                         // const header = notePath.substring(delimiterIndex + 8)
-                        
+
                         notePath = notePath.substring(0, delimiterIndex)
 
                         //const headerInfo = NoteMapper.getCleanedHeaderAndLevel(header)
@@ -177,7 +175,7 @@ RowLayout {
 
     Connections {
         id: styleHandlerConnections
-        target: StyleHandler 
+        target: StyleHandler
 
         function onNewCss(css) {
             root.css = css
