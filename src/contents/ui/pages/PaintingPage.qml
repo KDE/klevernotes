@@ -5,6 +5,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import Qt.labs.platform
+import QtQuick.Shapes
 
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
@@ -89,6 +90,7 @@ Kirigami.Page {
 
         onAccepted: {
             canvas.drawText(textDialog.text, canvas.lastX, canvas.lastY)
+            root.cantLeave = true
         }
         onClosed: {
             clear()
@@ -167,9 +169,11 @@ Kirigami.Page {
                         property real lastY
                         property real startX: -1
                         property real startY: -1
+                        property bool shiftHeld : false
                         property int strokeWidth: drawingToolBarOptions.lineWidth * (drawingToolBar.mode === "erase" ? 2 : 1)
                         property bool isInit: false
                         readonly property bool shapeIsStarted: canvas.startX !== -1 && canvas.startY !== -1
+
 
                         onPaint: if (!isInit) {
                             getContext("2d")
@@ -197,9 +201,9 @@ Kirigami.Page {
                             id: shapeBox
 
                             x: Math.min(canvas.startX, canvas.lastX)
-                            y: Math.min(canvas.startY, canvas.lastY)
+                            y: canvas.yManagerForBoxes()
                             width: Math.abs(canvas.startX - canvas.lastX)
-                            height: Math.abs(canvas.startY - canvas.lastY)
+                            height: canvas.heightManagerForBoxes()
 
                             color: Kirigami.Theme.highlightColor 
                             opacity: 0.3
@@ -208,25 +212,103 @@ Kirigami.Page {
                                 color: Kirigami.Theme.textColor
                             }
 
-                            visible: canvas.shapeIsStarted && drawingToolBar.isShape
+                            visible: canvas.shapeIsStarted && drawingToolBar.isShape && drawingToolBar.mode === "rectangle"
                         }
+
+
+                        // an ELLIPSE preview shown when using the circle tool in ellipse mode (shift key NOT HELD)
+                        Shape {
+                            id : ellipseBox
+                            width : shapeBox.width
+                            height : shapeBox.height
+                            readonly property real arcStartX : (canvas.startX + canvas.lastX - width)/2
+                            readonly property real arcStartY : (canvas.startY + canvas.lastY)/2
+                            readonly property real arcEndX : (canvas.startX + canvas.lastX + width)/2
+                            readonly property real arcEndY : (canvas.startY + canvas.lastY)/2
+                            opacity: 0.3
+
+
+                            ShapePath{
+                                fillColor: Kirigami.Theme.highlightColor
+                                strokeColor: Kirigami.Theme.textColor
+                                startX: ellipseBox.arcStartX
+                                startY : ellipseBox.arcStartY
+
+                                PathArc{
+                                    direction: PathArc.Clockwise
+                                    radiusX: ellipseBox.width/2
+                                    radiusY : ellipseBox.height/2
+                                    x : ellipseBox.arcEndX
+                                    y: ellipseBox.arcEndY
+                                }
+
+                            }
+
+
+                            ShapePath{
+                                fillColor: Kirigami.Theme.highlightColor
+                                strokeColor: Kirigami.Theme.textColor
+                                startX: ellipseBox.arcStartX
+                                startY : ellipseBox.arcStartY
+
+
+                                PathArc{
+                                    direction: PathArc.Counterclockwise
+                                    radiusX: ellipseBox.width/2
+                                    radiusY : ellipseBox.height/2
+                                    x : ellipseBox.arcEndX
+                                    y: ellipseBox.arcEndY
+                                }
+
+                            }
+
+                            visible: canvas.shapeIsStarted && drawingToolBar.isShape && drawingToolBar.mode === "circle" && !canvas.shiftHeld
+
+                        }
+
+
+                        // a CIRCLE preview shown when using the circle tool in circle mode (shift key HELD)
+                        Rectangle {
+                            x: Math.min(canvas.startX, canvas.lastX)
+                            y: canvas.yManagerForBoxes()
+                            width: Math.abs(canvas.startX - canvas.lastX)
+                            height: canvas.heightManagerForBoxes()
+
+                            color: Kirigami.Theme.highlightColor
+                            opacity: 0.3
+                            border {
+                                width: 2
+                                color: Kirigami.Theme.textColor
+                            }
+                            radius: width
+
+                            visible: canvas.shapeIsStarted && drawingToolBar.isShape && drawingToolBar.mode === "circle" && canvas.shiftHeld
+                        }
+
 
                         MouseArea {
                             id: mouseArea
 
                             property var lastButton
                             property bool isPress: false
-
                             anchors.fill: canvas
 
                             enabled: true
                             acceptedButtons: Qt.LeftButton | Qt.RightButton
                             hoverEnabled: true
+
                             onPositionChanged: function (mouse) {
+
                                 if (isPress) {
                                     if (drawingToolBar.isBaseMode) {
                                         canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
                                         root.cantLeave = true
+                                    }
+                                    if (mouse.modifiers & Qt.ShiftModifier) {
+                                        canvas.shiftHeld = true
+                                    }
+                                    else{
+                                        canvas.shiftHeld = false
                                     }
 
                                     canvas.lastX = getX()
@@ -273,6 +355,7 @@ Kirigami.Page {
                                             canvas.drawCircle(shapeBox.x, shapeBox.y, shapeBox.width, shapeBox.height)
                                         }
                                     }
+                                    cantLeave = true
                                     canvas.startX = -1
                                     canvas.startY = -1
                                 }
@@ -395,6 +478,29 @@ Kirigami.Page {
                             h = 1 + pix.y[n] - pix.y[0];
 
                             root.cropRect = Qt.rect(pix.x[0], pix.y[0], w, h)
+                        }
+
+                        function yManagerForBoxes(){
+                            if (shiftHeld){
+                                if (lastY >= startY) {
+                                    return startY;
+                                }
+                                else{
+                                    return startY - Math.abs(startX - lastX);
+                                }
+                            }
+                            else{
+                                return Math.min(startY, lastY);
+                            }
+                        }
+
+                        function heightManagerForBoxes(){
+                            if(shiftHeld) {
+                                return Math.abs(canvas.startX - canvas.lastX);
+                            }
+                            else{
+                                return Math.abs(startY - lastY);
+                            }
                         }
                     }
                 }
