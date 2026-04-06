@@ -65,8 +65,3 @@ bool PrintingUtility::isPdfReady()
 
     return false;
 }
-
-void PrintingUtility::askForPDF()
-{
-    Q_EMIT makePDF();
-}
