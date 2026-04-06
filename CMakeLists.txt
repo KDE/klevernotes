@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(klevernotes VERSION "1.2.6")
+project(klevernotes VERSION "1.3.0")
 
 include(FeatureSummary)
 
