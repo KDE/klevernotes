@@ -538,12 +538,12 @@ msgstr "ملاحظات ذكية"
 #, kde-format
 msgctxt "@title:page"
 msgid "Welcome"
-msgstr "مرحباً"
+msgstr "مرحبًا"
 
 #: contents/ui/pages/MainPage.qml:119
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr "مرحبا بك في ملاحظات ذكية!"
+msgstr "مرحبًا بك في ملاحظات ذكية!"
 
 #: contents/ui/pages/MainPage.qml:129
 #, kde-format
