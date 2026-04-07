@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-31 00:45+0000\n"
+"POT-Creation-Date: 2026-04-07 00:44+0000\n"
 "PO-Revision-Date: 2024-12-15 19:24+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -567,31 +567,31 @@ msgstr "क्लेवरनोट्स में आपका स्वाग
 msgid "Create or select a note to start working !"
 msgstr "काम शुरू करने के लिए एक नोट बनाएं या चुनें!"
 
-#: contents/ui/pages/PaintingPage.qml:24
+#: contents/ui/pages/PaintingPage.qml:25
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "रँगना!"
 
-#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:74
+#: contents/ui/pages/PaintingPage.qml:34 contents/ui/pages/PrintingPage.qml:74
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "बचाना"
 
-#: contents/ui/pages/PaintingPage.qml:41
+#: contents/ui/pages/PaintingPage.qml:42
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "स्पष्ट"
 
-#: contents/ui/pages/PaintingPage.qml:51
+#: contents/ui/pages/PaintingPage.qml:52
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "ऑटो क्रॉप"
 
-#: contents/ui/pages/PaintingPage.qml:88
+#: contents/ui/pages/PaintingPage.qml:89
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
@@ -1410,7 +1410,7 @@ msgstr "मार्कडाउन चीट शीट"
 
 #: contents/ui/textEditor/CheatSheet.qml:38
 #: contents/ui/textEditor/TextDisplay.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:107
+#: contents/ui/textEditor/TextDisplay.qml:105
 #, kde-format
 msgid "Copied !"
 msgstr "कॉपी किया गया !"
@@ -1781,7 +1781,7 @@ msgid "Missing notes"
 msgstr "गुम हुए नोट्स"
 
 #: contents/ui/textEditor/NotesMap.qml:75
-#: contents/ui/textEditor/TextDisplay.qml:127
+#: contents/ui/textEditor/TextDisplay.qml:125
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-31 00:45+0000\n"
+"POT-Creation-Date: 2026-04-07 00:44+0000\n"
 "PO-Revision-Date: 2026-02-11 10:16+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -557,31 +557,31 @@ msgstr "Us donem la benvinguda al KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Creeu o seleccioneu una nota per a començar a treballar!"
 
-#: contents/ui/pages/PaintingPage.qml:24
+#: contents/ui/pages/PaintingPage.qml:25
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Pinta!"
 
-#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:74
+#: contents/ui/pages/PaintingPage.qml:34 contents/ui/pages/PrintingPage.qml:74
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Desa"
 
-#: contents/ui/pages/PaintingPage.qml:41
+#: contents/ui/pages/PaintingPage.qml:42
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Neteja"
 
-#: contents/ui/pages/PaintingPage.qml:51
+#: contents/ui/pages/PaintingPage.qml:52
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Escapçament automàtic"
 
-#: contents/ui/pages/PaintingPage.qml:88
+#: contents/ui/pages/PaintingPage.qml:89
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
@@ -1372,7 +1372,7 @@ msgstr "Full de trucs del Markdown"
 
 #: contents/ui/textEditor/CheatSheet.qml:38
 #: contents/ui/textEditor/TextDisplay.qml:77
-#: contents/ui/textEditor/TextDisplay.qml:107
+#: contents/ui/textEditor/TextDisplay.qml:105
 #, kde-format
 msgid "Copied !"
 msgstr "Copiat!"
@@ -1697,7 +1697,7 @@ msgid "Missing notes"
 msgstr "Manquen notes"
 
 #: contents/ui/textEditor/NotesMap.qml:75
-#: contents/ui/textEditor/TextDisplay.qml:127
+#: contents/ui/textEditor/TextDisplay.qml:125
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
