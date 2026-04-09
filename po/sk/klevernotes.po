@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -25,41 +25,41 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "Potvrdiť vymazanie priečinka"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the note <filename>%1</filename>?"
-msgstr ""
+msgstr "Odstrániť poznámku <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:30
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete the folder <filename>%1</filename>?"
-msgstr ""
+msgstr "Odstrániť priečinok <filename>%1</filename>?"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:39
 #, kde-format
 msgctxt "@label:check"
 msgid "Delete permanently"
-msgstr ""
+msgstr "Odstrániť natrvalo"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No stickers"
-msgstr ""
+msgstr "Upraviť zariadenie"
 
 #: contents/ui/dialogs/emojiDialog/EmojiGrid.qml:79
 #, kde-format
 msgid "No emojis"
-msgstr ""
+msgstr "No emojis"
 
 #: contents/ui/dialogs/FilePickerDialog.qml:14
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image picker"
-msgstr ""
+msgstr "Výber obrázka"
 
 #: contents/ui/dialogs/FontPickerDialog.qml:34
 #, kde-format
@@ -71,13 +71,13 @@ msgstr "Výber písma"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
-msgstr ""
+msgstr "Výber obrázka"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:80
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
-msgstr ""
+msgstr "Obrázok z webu"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:109
 #, kde-format
@@ -89,7 +89,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
-msgstr ""
+msgstr "Nakresliť obrázok"
 
 #: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:163
 #, kde-format
@@ -113,24 +113,22 @@ msgstr ""
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
-msgstr ""
+msgstr "Umiestniť tento obrázok do priečinka poznámky"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:21
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<filename>%1</filename> properties"
-msgstr ""
+msgstr "Vlastnosti <filename>%1</filename>"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #: contents/ui/dialogs/ItemPropertiesDialog.qml:101
-#, fuzzy, kde-format
-#| msgctxt "@label:ComboBox"
-#| msgid "Color theme"
+#, kde-format
 msgctxt "@action:button"
 msgid "Color"
 msgstr "Farebná téma"
@@ -139,19 +137,19 @@ msgstr "Farebná téma"
 #, kde-format
 msgctxt "Accessible description"
 msgid "Current color \"%1\""
-msgstr ""
+msgstr "Aktuálna farba „%1“"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:12
 #, kde-format
 msgctxt "@title:dialog"
 msgid "KleverNotes painting"
-msgstr ""
+msgstr "Kreslenie KleverNotes"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:20
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "You're about to leave without saving your drawing!"
-msgstr ""
+msgstr "Chystáte sa odísť bez uloženia kresby!"
 
 #: contents/ui/dialogs/LeavePaintingDialog.qml:21
 #, kde-format
@@ -164,7 +162,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Create your link"
-msgstr ""
+msgstr "Vytvorte svoj odkaz"
 
 #: contents/ui/dialogs/LinkDialog.qml:46
 #, kde-format
@@ -187,9 +185,7 @@ msgid "Link text:"
 msgstr "Text odkazu:"
 
 #: contents/ui/dialogs/LinkNoteDialog.qml:37
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "@label:combobox, 'a note' (the noun)"
 msgid "Note:"
 msgstr "Poznámka"
@@ -198,37 +194,37 @@ msgstr "Poznámka"
 #, kde-kuit-format
 msgctxt "@title:dialog, to move a folder/note"
 msgid "Move <filename>%1</filename>?"
-msgstr ""
+msgstr "Presunúť <filename>%1</filename>?"
 
 #: contents/ui/dialogs/MoveDialog.qml:39
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this note ?"
-msgstr ""
+msgstr "Kam chcete presunúť túto poznámku?"
 
 #: contents/ui/dialogs/MoveDialog.qml:40
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Where do you want to move this folder ?"
-msgstr ""
+msgstr "Kam chcete presunúť tento priečinok?"
 
 #: contents/ui/dialogs/MoveDialog.qml:49
 #, kde-format
 msgctxt "@label:checkbox, move this folder/note to the root of the storage"
 msgid "Move to storage root"
-msgstr ""
+msgstr "Presunúť do koreňa úložiska"
 
 #: contents/ui/dialogs/MoveDialog.qml:62
 #, kde-format
 msgctxt "@label:dialog"
 msgid "Search for a folder:"
-msgstr ""
+msgstr "Hľadať priečinok:"
 
 #: contents/ui/dialogs/NamingDialog.qml:25
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose a name"
-msgstr ""
+msgstr "Vyberte názov"
 
 #: contents/ui/dialogs/NamingDialog.qml:58
 #, kde-format
@@ -242,7 +238,7 @@ msgctxt ""
 "@title:dialog, 'storage' as in 'the folder where all the notes will be "
 "stored'"
 msgid "KleverNotes Storage"
-msgstr ""
+msgstr "KleverNotes"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:30
 #, kde-format
@@ -251,6 +247,8 @@ msgid ""
 "This name starts with a dot, this may cause problem and is therefore not "
 "allowed."
 msgstr ""
+"Tento názov začína bodkou, čo môže spôsobiť problémy, a preto to nie je "
+"povolené."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:31
 #, kde-format
@@ -274,7 +272,7 @@ msgstr ""
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Please choose another name."
-msgstr ""
+msgstr "Prosím, zvoľte iný názov"
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:39
 #, kde-format
@@ -282,6 +280,8 @@ msgctxt "@subtitle:dialog"
 msgid ""
 "This name contains '/', this may cause problem and is therefore not allowed."
 msgstr ""
+"Tento názov obsahuje '/', čo môže spôsobiť problémy, a preto to nie je "
+"povolené."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:40
 #, kde-format
@@ -293,20 +293,16 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr ""
+msgstr "Printing Dialog"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print html"
 msgstr "Tlačiť"
 
 #: contents/ui/dialogs/PrintingDialog.qml:46
-#, fuzzy, kde-format
-#| msgctxt "@title:page"
-#| msgid "Print"
+#, kde-format
 msgctxt "@label:button"
 msgid "Print to PDF"
 msgstr "Tlačiť"
@@ -315,12 +311,10 @@ msgstr "Tlačiť"
 #, kde-format
 msgctxt "@label:button"
 msgid "Disabled due to Flatpak limitations."
-msgstr ""
+msgstr "Zakázané kvôli obmedzeniam Flatpak."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:12
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "More options"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Mandatory operation"
 msgstr "Viac možností"
@@ -334,6 +328,8 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
+"This storage appears to be using the old KleverNotes file structure which is "
+"no longer supported."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
 #, kde-format
@@ -342,6 +338,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
+"By pressing the 'Apply' button, you agree to convert the storage to the new "
+"structure (this should not be a destructive operation)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
@@ -350,6 +348,8 @@ msgid ""
 "You can cancel this operation by closing this dialog, which gives you time "
 "to back up your files if you want to."
 msgstr ""
+"You can cancel this operation by closing this dialog, which gives you time "
+"to back up your files if you want to."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:32
 #, kde-format
@@ -358,12 +358,14 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
+"Note: Any locally saved images will be moved from the 'Images' subfolder to "
+"the note’s parent folder."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
-msgstr ""
+msgstr "Simply remove '/Images' from their path to make them reappear."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
 #, kde-format
@@ -371,7 +373,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Storage created at "
-msgstr ""
+msgstr "Storage created at "
 
 #: contents/ui/dialogs/StorageDialog.qml:17
 #, kde-format
@@ -379,7 +381,7 @@ msgctxt ""
 "Storage as in 'the folder where all the notes will be stored'; this text "
 "will be followed by the path to this folder"
 msgid "Existing storage chosen at "
-msgstr ""
+msgstr "Existing storage chosen at "
 
 #: contents/ui/dialogs/StorageDialog.qml:22
 #, kde-format
@@ -392,11 +394,13 @@ msgid ""
 "Please choose a location for your future KleverNotes storage or select an "
 "existing one."
 msgstr ""
+"It looks like this is your first time using this app!\n"
+"\n"
+"Please choose a location for your future KleverNotes storage or select an "
+"existing one."
 
 #: contents/ui/dialogs/StorageDialog.qml:26
-#, fuzzy, kde-format
-#| msgctxt "@title:ApplicationWindow"
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt ""
 "@title:dialog, Storage as in 'the folder where all the notes will be stored'"
 msgid "KleverNotes Storage"
@@ -407,14 +411,14 @@ msgstr "KleverNotes"
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Existing storage"
-msgstr ""
+msgstr "Existing storage"
 
 #: contents/ui/dialogs/StorageDialog.qml:51
 #, kde-format
 msgctxt ""
 "@label:button, Storage as in 'the folder where all the notes will be stored'"
 msgid "Change the storage path"
-msgstr ""
+msgstr "Change the storage path"
 
 #: contents/ui/dialogs/StorageDialog.qml:65
 #, kde-format
@@ -427,13 +431,13 @@ msgstr ""
 #, kde-format
 msgctxt "Storage as in 'the folder where all the notes will be stored'"
 msgid "Create a new storage"
-msgstr ""
+msgstr "Create a new storage"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:21
 #, kde-format
 msgctxt "@title:dialog, table => an html table"
 msgid "Table creation"
-msgstr ""
+msgstr "Table creation"
 
 #: contents/ui/dialogs/tableMakerDialog/TableMakerDialog.qml:49
 #, kde-format
@@ -495,7 +499,7 @@ msgstr "%1/%2"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Add Todo"
-msgstr ""
+msgstr "Add Todo"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:24
 #, kde-format
@@ -507,7 +511,7 @@ msgstr "Názov:"
 #, kde-format
 msgctxt "@placeholderText:textbox"
 msgid "Todo title (required)"
-msgstr ""
+msgstr "Todo title (required)"
 
 #: contents/ui/dialogs/todoDialog/ToDoDialog.qml:38
 #, kde-format
@@ -525,7 +529,7 @@ msgstr "Voliteľné"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Choose an URL"
-msgstr ""
+msgstr "Choose an URL"
 
 #: contents/ui/Main.qml:28
 #, kde-format
@@ -542,12 +546,12 @@ msgstr "Vitajte"
 #: contents/ui/pages/MainPage.qml:119
 #, kde-format
 msgid "Welcome to KleverNotes!"
-msgstr ""
+msgstr "Welcome to KleverNotes!"
 
 #: contents/ui/pages/MainPage.qml:129
 #, kde-format
 msgid "Create or select a note to start working !"
-msgstr ""
+msgstr "Create or select a note to start working !"
 
 #: contents/ui/pages/PaintingPage.qml:25
 #, kde-format
@@ -574,9 +578,7 @@ msgid "Auto crop"
 msgstr "Automatické orezanie"
 
 #: contents/ui/pages/PaintingPage.qml:89
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Text color:"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
 msgstr "Farba textu:"
@@ -602,13 +604,13 @@ msgstr "Pozadie"
 #: contents/ui/pages/PrintingPage.qml:108
 #, kde-format
 msgid "This could cause visual artifacts near the end of the PDF."
-msgstr ""
+msgstr "This could cause visual artifacts near the end of the PDF."
 
 #: contents/ui/pages/PrintingPage.qml:119
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as PDF"
-msgstr ""
+msgstr "Save note as PDF"
 
 #: contents/ui/pages/SettingsPage.qml:15
 #, kde-format
@@ -626,7 +628,7 @@ msgstr ""
 #: contents/ui/painting/DrawingToolBarOptions.qml:50
 #, kde-format
 msgid "Width:"
-msgstr ""
+msgstr "Šírka:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:70
 #, kde-format
@@ -637,30 +639,28 @@ msgstr "Písmo:"
 #: contents/ui/painting/DrawingToolBarOptions.qml:116
 #, kde-format
 msgid "Fill toolMode:"
-msgstr ""
+msgstr "Fill toolMode:"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:126
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Fill"
-msgstr ""
+msgstr "Výplň"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:127
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline"
-msgstr ""
+msgstr "Obrys"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:128
 #, kde-format
 msgctxt "@combobox:entry, shape style"
 msgid "Outline and fill"
-msgstr ""
+msgstr "Outline and fill"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:142
-#, fuzzy, kde-format
-#| msgctxt "@label:button"
-#| msgid "Link color:"
+#, kde-format
 msgctxt ""
 "@label, the color in used to fill the shape, can be 'Primary' or 'Secondary'"
 msgid "Fill color"
@@ -670,13 +670,13 @@ msgstr "Farba odkazu:"
 #, kde-format
 msgctxt "@label, as in 'the primary color'"
 msgid "Primary"
-msgstr ""
+msgstr "Primary"
 
 #: contents/ui/painting/DrawingToolBarOptions.qml:146
 #, kde-format
 msgctxt "@label, as in 'the secondary color'"
 msgid "Secondary"
-msgstr ""
+msgstr "Secondary"
 
 #: contents/ui/settings/DisplayPreview.qml:18
 #, kde-format
@@ -712,18 +712,16 @@ msgstr "Farba navštíveného odkazu:"
 #, kde-format
 msgctxt "@label:button"
 msgid "Code color:"
-msgstr ""
+msgstr "Code color:"
 
 #: contents/ui/settings/DisplayPreview.qml:112
 #, kde-format
 msgctxt "@label:button"
 msgid "Highlight color:"
-msgstr ""
+msgstr "Farba zvýraznenia:"
 
 #: contents/ui/settings/DisplayPreview.qml:123
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "General font:"
 msgstr "Všeobecné"
@@ -732,7 +730,7 @@ msgstr "Všeobecné"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Code block font:"
-msgstr ""
+msgstr "Code block font:"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:24
 #, kde-format
@@ -740,7 +738,7 @@ msgctxt ""
 "@label:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "Enable adaptive tag size"
-msgstr ""
+msgstr "Enable adaptive tag size"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:25
 #, kde-format
@@ -748,7 +746,7 @@ msgctxt ""
 "@description:checkbox, a Markdown tag, e.g: the `#` for a header `# this is "
 "header`, similar concept as an html tag `<h1>`"
 msgid "The adaptive size will scale the tag size based on its surrounding."
-msgstr ""
+msgstr "The adaptive size will scale the tag size based on its surrounding."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:26
 #, kde-format
@@ -759,6 +757,8 @@ msgid ""
 "Example: a tag inside a header will be as large as the rest of the header "
 "text."
 msgstr ""
+"Example: a tag inside a header will be as large as the rest of the header "
+"text."
 
 #: contents/ui/settings/EditorHighlightPreview.qml:40
 #, kde-format
@@ -774,7 +774,7 @@ msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
 msgid "A title with a preview of"
-msgstr ""
+msgstr "A title with a preview of"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:106
 #, kde-format
@@ -782,12 +782,10 @@ msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
 msgid "italic text and its tags"
-msgstr ""
+msgstr "italic text and its tags"
 
 #: contents/ui/settings/EditorTab.qml:19
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@title, general text editor settings"
 msgid "General"
 msgstr "Všeobecné"
@@ -796,31 +794,31 @@ msgstr "Všeobecné"
 #, kde-format
 msgctxt "@label:textbox, the font used in the text editor"
 msgid "Editor font:"
-msgstr ""
+msgstr "Pismo editora:"
 
 #: contents/ui/settings/EditorTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Use spaces for tab"
-msgstr ""
+msgstr "Use spaces for tab"
 
 #: contents/ui/settings/EditorTab.qml:56
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Number of spaces"
-msgstr ""
+msgstr "Number of spaces"
 
 #: contents/ui/settings/EditorTab.qml:73
 #, kde-format
 msgctxt "@title"
 msgid "Editor highlighting"
-msgstr ""
+msgstr "Editor highlighting"
 
 #: contents/ui/settings/EditorTab.qml:85
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable editor highlighting"
-msgstr ""
+msgstr "Enable editor highlighting"
 
 #: contents/ui/settings/GeneralTab.qml:24
 #, kde-format
@@ -828,7 +826,7 @@ msgctxt ""
 "@title, general storage settings, Storage as in 'the folder where all the "
 "notes will be stored'"
 msgid "Storage"
-msgstr ""
+msgstr "Úložisko"
 
 #: contents/ui/settings/GeneralTab.qml:35
 #, kde-format
@@ -841,34 +839,26 @@ msgstr ""
 #, kde-format
 msgctxt "@title, general sidebar settings"
 msgid "Sidebar"
-msgstr ""
+msgstr "Bočný panel"
 
 #: contents/ui/settings/GeneralTab.qml:63 contents/ui/sideBar/ActionBar.qml:224
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Folder"
-msgstr "Nová poznámka"
+msgstr "Pridať priečinok"
 
 #: contents/ui/settings/GeneralTab.qml:64
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note category'"
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new folders:"
 msgstr "Vytvoriť novú kategóriu"
 
 #: contents/ui/settings/GeneralTab.qml:87 contents/ui/sideBar/ActionBar.qml:222
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "New Note"
 msgstr "Nová poznámka"
 
 #: contents/ui/settings/GeneralTab.qml:88
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note category'"
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Default name for new notes:"
 msgstr "Vytvoriť novú kategóriu"
@@ -877,61 +867,61 @@ msgstr "Vytvoriť novú kategóriu"
 #, kde-format
 msgctxt "@label:switch"
 msgid "Sort Notes by Last Modified"
-msgstr ""
+msgstr "Sort Notes by Last Modified"
 
 #: contents/ui/settings/GeneralTab.qml:120
 #, kde-format
 msgctxt "@title, general text toolbar settings"
 msgid "Toolbar"
-msgstr ""
+msgstr "Panel nástrojov"
 
 #: contents/ui/settings/GeneralTab.qml:128
 #, kde-format
 msgctxt "@title, list of visible toolbar actions"
 msgid "Visible"
-msgstr ""
+msgstr "Viditeľné"
 
 #: contents/ui/settings/GeneralTab.qml:189
 #, kde-format
 msgctxt "@title, list of invisible toolbar actions"
 msgid "Invisible"
-msgstr ""
+msgstr "Neviditeľný"
 
 #: contents/ui/settings/PluginsTab.qml:19
 #, kde-format
 msgctxt "@title"
 msgid "Utility plugins"
-msgstr ""
+msgstr "Utility plugins"
 
 #: contents/ui/settings/PluginsTab.qml:31
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable note linking"
-msgstr ""
+msgstr "Enable note linking"
 
 #: contents/ui/settings/PluginsTab.qml:32
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Note linking allows you to create a link from one note to another."
-msgstr ""
+msgstr "Note linking allows you to create a link from one note to another."
 
 #: contents/ui/settings/PluginsTab.qml:33
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "Advice: restart the app once activated."
-msgstr ""
+msgstr "Advice: restart the app once activated."
 
 #: contents/ui/settings/PluginsTab.qml:44
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable PlantUML"
-msgstr ""
+msgstr "Enable PlantUML"
 
 #: contents/ui/settings/PluginsTab.qml:45
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "PlantUML lets you create diagrams."
-msgstr ""
+msgstr "PlantUML lets you create diagrams."
 
 #: contents/ui/settings/PluginsTab.qml:46
 #, kde-format
@@ -940,54 +930,56 @@ msgid ""
 "Note: creating diagrams can be slow. If you have a large number of diagrams, "
 "displaying them as images would be easier."
 msgstr ""
+"Note: creating diagrams can be slow. If you have a large number of diagrams, "
+"displaying them as images would be easier."
 
 #: contents/ui/settings/PluginsTab.qml:56
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable dark background"
-msgstr ""
+msgstr "Enable dark background"
 
 #: contents/ui/settings/PluginsTab.qml:57
 #, kde-format
 msgctxt "@description:switch"
 msgid "PlantUML diagram will have a dark background."
-msgstr ""
+msgstr "PlantUML diagram will have a dark background."
 
 #: contents/ui/settings/PluginsTab.qml:68
 #, kde-format
 msgctxt "@title"
 msgid "Cosmetic plugins"
-msgstr ""
+msgstr "Cosmetic plugins"
 
 #: contents/ui/settings/PluginsTab.qml:80
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable code syntax highlighting"
-msgstr ""
+msgstr "Enable code syntax highlighting"
 
 #: contents/ui/settings/PluginsTab.qml:81
 #, kde-format
 msgctxt "@description:checkbox"
 msgid "List of supported highlighters"
-msgstr ""
+msgstr "List of supported highlighters"
 
 #: contents/ui/settings/PluginsTab.qml:91
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter"
-msgstr ""
+msgstr "Zvýrazňovač"
 
 #: contents/ui/settings/PluginsTab.qml:119
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Highlighter style"
-msgstr ""
+msgstr "Highlighter style"
 
 #: contents/ui/settings/PluginsTab.qml:149
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable quick emoji"
-msgstr ""
+msgstr "Enable quick emoji"
 
 #: contents/ui/settings/PluginsTab.qml:151
 #, kde-format
@@ -995,11 +987,10 @@ msgctxt ""
 "@description:checkbox, will be followed by the corresponding syntax, spacing "
 "between the end of the sentence and the syntax is already there"
 msgid "Quickly write emoji using the following syntax"
-msgstr ""
+msgstr "Quickly write emoji using the following syntax"
 
 #: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "Premenovať"
@@ -1008,18 +999,16 @@ msgstr "Premenovať"
 #, kde-format
 msgctxt "@label:combobox"
 msgid "Default emoji tone"
-msgstr ""
+msgstr "Default emoji tone"
 
 #: contents/ui/settings/PluginsTab.qml:166
 #, kde-format
 msgctxt "@combobox:entry, As in 'default skin tone' (for an emoji), see '🫶'"
 msgid "Default"
-msgstr ""
+msgstr "Predvolené"
 
 #: contents/ui/settings/PluginsTab.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@entry:combobox, alignment name"
-#| msgid "Right"
+#, kde-format
 msgctxt "@combobox:entry, As in 'light skin tone' (for an emoji), see '🫶🏻'"
 msgid "Light"
 msgstr "Vpravo"
@@ -1029,32 +1018,32 @@ msgstr "Vpravo"
 msgctxt ""
 "@combobox:entry, As in 'medium light skin tone' (for an emoji), see '🫶🏼'"
 msgid "Medium light"
-msgstr ""
+msgstr "Medium light"
 
 #: contents/ui/settings/PluginsTab.qml:169
 #, kde-format
 msgctxt "@combobox:entry, As in 'Medium skin tone' (for an emoji), see '🫶🏽'"
 msgid "Medium"
-msgstr ""
+msgstr "Medium"
 
 #: contents/ui/settings/PluginsTab.qml:170
 #, kde-format
 msgctxt ""
 "@combobox:entry, As in 'Medium-dark skin tone' (for an emoji), see '🫶🏾'"
 msgid "Medium dark"
-msgstr ""
+msgstr "Medium dark"
 
 #: contents/ui/settings/PluginsTab.qml:171
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "Dark"
 
 #: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
 msgctxt "@lable:switch"
 msgid "Enable quick emoji dialog"
-msgstr ""
+msgstr "Enable quick emoji dialog"
 
 #: contents/ui/settings/PluginsTab.qml:186
 #, kde-format
@@ -1063,11 +1052,11 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
+"The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
+"inside the text."
 
 #: contents/ui/settings/TabBar.qml:13
-#, fuzzy, kde-format
-#| msgctxt "@title, general settings"
-#| msgid "General"
+#, kde-format
 msgctxt "@label, tab (inside tab bar), general settings of the app"
 msgid "General"
 msgstr "Všeobecné"
@@ -1084,13 +1073,13 @@ msgstr ""
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all settings related to the text editor"
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #: contents/ui/settings/TabBar.qml:37
 #, kde-format
 msgctxt "@label, tab (inside tab bar), all things related to plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Moduly"
 
 #: contents/ui/sharedComponents/ActionsList.qml:14
 #: contents/ui/sharedComponents/ActionsList.qml:16
@@ -1207,75 +1196,65 @@ msgstr "Tabuľka"
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered List"
-msgstr ""
+msgstr "Ordered List"
 
 #: contents/ui/sharedComponents/ActionsList.qml:143
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Ordered list"
-msgstr ""
+msgstr "Zoradený zoznam"
 
 #: contents/ui/sharedComponents/ActionsList.qml:150
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered List"
-msgstr ""
+msgstr "Unordered List"
 
 #: contents/ui/sharedComponents/ActionsList.qml:152
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Unordered list"
-msgstr ""
+msgstr "Nezoradený zoznam"
 
 #: contents/ui/sharedComponents/ActionsList.qml:159
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Highlight"
-msgstr ""
+msgstr "Highlight"
 
 #: contents/ui/sharedComponents/ActionsList.qml:161
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Text highlight"
-msgstr ""
+msgstr "Text highlight"
 
 #: contents/ui/sharedComponents/ActionsList.qml:168
 #: contents/ui/sharedComponents/ActionsList.qml:170
 #, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Emoji"
-msgstr ""
+msgstr "Emoji"
 
 #: contents/ui/sharedComponents/ActionsList.qml:175
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link Note"
 msgstr "Text odkazu:"
 
 #: contents/ui/sharedComponents/ActionsList.qml:177
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, text format, will be followed by the shortcut"
 msgid "Link note"
 msgstr "Text odkazu:"
 
 #: contents/ui/sideBar/ActionBar.qml:45
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note category'"
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new folder"
 msgstr "Vytvoriť novú kategóriu"
 
 #: contents/ui/sideBar/ActionBar.qml:53
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note category'"
-#| msgid "Create a new category"
+#, kde-format
 msgctxt "@tooltip"
 msgid "Create a new note"
 msgstr "Vytvoriť novú kategóriu"
@@ -1288,37 +1267,32 @@ msgstr "Premenovať"
 #: contents/ui/sideBar/ActionBar.qml:74
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "&Hľadať"
 
 #: contents/ui/sideBar/ActionBar.qml:91
 #, kde-format
 msgid "Collapse sidebar"
-msgstr ""
+msgstr "Zbaliť bočný panel"
 
 #: contents/ui/sideBar/ActionBar.qml:92
 #, kde-format
 msgid "Expand sidebar"
-msgstr ""
+msgstr "Rozbaliť bočný panel"
 
 #: contents/ui/sideBar/ContextMenu.qml:18
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New folder"
 msgstr "Nová poznámka"
 
 #: contents/ui/sideBar/ContextMenu.qml:27
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgctxt "@item:menu"
 msgid "New note"
 msgstr "Nová poznámka"
 
 #: contents/ui/sideBar/ContextMenu.qml:36
-#, fuzzy, kde-format
-#| msgid "Rename"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Rename"
 msgstr "Premenovať"
@@ -1327,11 +1301,10 @@ msgstr "Premenovať"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Move"
-msgstr ""
+msgstr "Presunúť"
 
 #: contents/ui/sideBar/ContextMenu.qml:54
-#, fuzzy, kde-format
-#| msgid "Delete"
+#, kde-format
 msgctxt "@item:menu"
 msgid "Delete"
 msgstr "Vymazať"
@@ -1340,13 +1313,12 @@ msgstr "Vymazať"
 #, kde-format
 msgctxt "@item:menu"
 msgid "Properties"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: contents/ui/sideBar/SearchBar.qml:78
-#, fuzzy, kde-format
-#| msgid "From : "
+#, kde-format
 msgid "From"
-msgstr "Od:"
+msgstr "Od"
 
 #: contents/ui/sideBar/SearchBar.qml:125
 #, kde-format
@@ -1354,16 +1326,14 @@ msgid "No search results"
 msgstr "Žiadne výsledky hľadania"
 
 #: contents/ui/sideBar/Sidebar.qml:89
-#, fuzzy, kde-format
-#| msgctxt "as in 'A note'"
-#| msgid "New note"
+#, kde-format
 msgid "Show notes"
 msgstr "Nová poznámka"
 
 #: contents/ui/sideBar/Sidebar.qml:110 contents/ui/sideBar/Sidebar.qml:224
 #, kde-format
 msgid "Cheat sheet"
-msgstr ""
+msgstr "Cheat sheet"
 
 #: contents/ui/sideBar/Sidebar.qml:126 contents/ui/sideBar/Sidebar.qml:236
 #, kde-format
@@ -1373,7 +1343,7 @@ msgstr "Nastavenia"
 #: contents/ui/sideBar/Sidebar.qml:141 contents/ui/sideBar/Sidebar.qml:248
 #, kde-format
 msgid "About KleverNotes"
-msgstr ""
+msgstr "About KleverNotes"
 
 #: contents/ui/textEditor/BottomToolBar.qml:23
 #, kde-format
@@ -1404,7 +1374,7 @@ msgstr "Skopírované!"
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Basic syntax"
-msgstr ""
+msgstr "Basic syntax"
 
 #: contents/ui/textEditor/CheatSheet.qml:52
 #, kde-format
@@ -1412,9 +1382,7 @@ msgid "Heading"
 msgstr "Nadpis"
 
 #: contents/ui/textEditor/CheatSheet.qml:53
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Heading1"
+#, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "Nadpis 1"
@@ -1425,9 +1393,7 @@ msgid "Bold"
 msgstr "Tučné"
 
 #: contents/ui/textEditor/CheatSheet.qml:59
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Tučný text"
@@ -1438,9 +1404,7 @@ msgid "Italic"
 msgstr "Kurzíva"
 
 #: contents/ui/textEditor/CheatSheet.qml:65
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Italic text"
+#, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "Kurzíva"
@@ -1448,12 +1412,10 @@ msgstr "Kurzíva"
 #: contents/ui/textEditor/CheatSheet.qml:70
 #, kde-format
 msgid "Blockquote"
-msgstr ""
+msgstr "Blockquote"
 
 #: contents/ui/textEditor/CheatSheet.qml:71
-#, fuzzy, kde-format
-#| msgctxt "@tooltip, text format, will be followed by the shortcut"
-#| msgid "Quote"
+#, kde-format
 msgctxt "example"
 msgid "Quote"
 msgstr "Citácia"
@@ -1461,22 +1423,18 @@ msgstr "Citácia"
 #: contents/ui/textEditor/CheatSheet.qml:76
 #, kde-format
 msgid "Ordered list"
-msgstr ""
+msgstr "Ordered list"
 
 #: contents/ui/textEditor/CheatSheet.qml:77
 #: contents/ui/textEditor/CheatSheet.qml:84
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Prvá položka"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #: contents/ui/textEditor/CheatSheet.qml:85
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Druhá položka"
@@ -1484,7 +1442,7 @@ msgstr "Druhá položka"
 #: contents/ui/textEditor/CheatSheet.qml:83
 #, kde-format
 msgid "Unordered list"
-msgstr ""
+msgstr "Unordered list"
 
 #: contents/ui/textEditor/CheatSheet.qml:90
 #, kde-format
@@ -1495,7 +1453,7 @@ msgstr "Kód"
 #, kde-format
 msgctxt "example"
 msgid "Inline code"
-msgstr ""
+msgstr "Inline code"
 
 #: contents/ui/textEditor/CheatSheet.qml:96
 #, kde-format
@@ -1509,17 +1467,13 @@ msgid "Link"
 msgstr "Odkaz"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "title"
+#, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "titulok"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "https://www.example.com"
+#, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
@@ -1530,17 +1484,13 @@ msgid "Image"
 msgstr "Obrázok"
 
 #: contents/ui/textEditor/CheatSheet.qml:109
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "alt text"
+#, kde-format
 msgctxt "example"
 msgid "alt text"
 msgstr "alt text"
 
 #: contents/ui/textEditor/CheatSheet.qml:109
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "image"
+#, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "obrázok"
@@ -1549,7 +1499,7 @@ msgstr "obrázok"
 #, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "Extended syntax"
-msgstr ""
+msgstr "Extended syntax"
 
 #: contents/ui/textEditor/CheatSheet.qml:123
 #, kde-format
@@ -1575,25 +1525,19 @@ msgid "Right"
 msgstr "Vpravo"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 1"
+#, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "Bunka 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 2"
+#, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "Bunka 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 3"
+#, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "Bunka 3"
@@ -1601,13 +1545,13 @@ msgstr "Bunka 3"
 #: contents/ui/textEditor/CheatSheet.qml:131
 #, kde-format
 msgid "Fenced code block"
-msgstr ""
+msgstr "Ohradený blok kódu"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
 #, kde-format
 msgctxt "example"
 msgid "Sample text here..."
-msgstr ""
+msgstr "Vzorový text tu..."
 
 #: contents/ui/textEditor/CheatSheet.qml:139
 #, kde-format
@@ -1618,7 +1562,7 @@ msgstr "Prečiarknuté"
 #, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
-msgstr ""
+msgstr "Zem je plochá."
 
 #: contents/ui/textEditor/CheatSheet.qml:145
 #, kde-format
@@ -1629,63 +1573,55 @@ msgstr ""
 #, kde-format
 msgctxt "example"
 msgid "Make more foo"
-msgstr ""
+msgstr "Viac foo"
 
 #: contents/ui/textEditor/CheatSheet.qml:147
 #, kde-format
 msgctxt "example"
 msgid "Make more bar"
-msgstr ""
+msgstr "Viac bar"
 
 #: contents/ui/textEditor/CheatSheet.qml:152
 #, kde-format
 msgid "Highlight"
-msgstr ""
+msgstr "Zvýrazniť"
 
 #: contents/ui/textEditor/CheatSheet.qml:153
 #, kde-format
 msgctxt "example"
 msgid "highlighted text"
-msgstr ""
+msgstr "zvýraznený text"
 
 #: contents/ui/textEditor/CheatSheet.qml:158
 #, kde-format
 msgid "Subscript"
-msgstr ""
+msgstr "Dolný index"
 
 #: contents/ui/textEditor/CheatSheet.qml:159
 #, kde-format
 msgctxt "example"
 msgid "subscript text"
-msgstr ""
+msgstr "text dolného indexu"
 
 #: contents/ui/textEditor/CheatSheet.qml:164
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgid "Superscript"
-msgstr "Popis:"
+msgstr "Horný index"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Description:"
+#, kde-format
 msgctxt "example"
 msgid "superscript text"
 msgstr "Popis:"
 
 #: contents/ui/textEditor/CheatSheet.qml:172
-#, fuzzy, kde-format
-#| msgctxt "@title:ApplicationWindow"
-#| msgid "KleverNotes"
+#, kde-format
 msgctxt "@title, cheat sheet section"
 msgid "KleverNotes plugins"
 msgstr "KleverNotes"
 
 #: contents/ui/textEditor/CheatSheet.qml:181
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgid "Note link"
 msgstr "Poznámka"
 
@@ -1695,20 +1631,17 @@ msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
 msgid "<path to note>/<note name>"
-msgstr ""
+msgstr "<path to note>/<note name>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:186
 #, kde-format
 msgctxt "example"
 msgid "displayed name"
-msgstr ""
+msgstr "zobrazený názov"
 
 #: contents/ui/textEditor/EditorView.qml:36
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label:textbox, the displayed text of a link, in html: <a>This text</a> "
-#| msgid "Link text:"
+#, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "Linked notes"
 msgstr "Text odkazu:"
@@ -1723,32 +1656,32 @@ msgstr "Tlačiť"
 #, kde-format
 msgctxt "@tooltip, will be followed by the shortcut"
 msgid "View/Hide editor"
-msgstr ""
+msgstr "Zobraziť/Skryť editor"
 
 #: contents/ui/textEditor/EditorView.qml:75
 #, kde-format
 msgctxt ""
 "@tooltip, display as in 'the note preview', will be followed by the shortcut"
 msgid "View/Hide preview"
-msgstr ""
+msgstr "Zobraziť/Skryť náhľad"
 
 #: contents/ui/textEditor/EditorView.qml:105
 #, kde-format
 msgctxt "@title:dialog, choose the location of where the file will be saved"
 msgid "Save note as html"
-msgstr ""
+msgstr "Uložiť poznámku ako html"
 
 #: contents/ui/textEditor/NotesMap.qml:17
 #, kde-format
 msgctxt "@window:title"
 msgid "Linked notes map"
-msgstr ""
+msgstr "Mapa prepojených poznámok"
 
 #: contents/ui/textEditor/NotesMap.qml:37
 #, kde-format
 msgctxt "@title, notes map section"
 msgid "Existing notes"
-msgstr ""
+msgstr "Existujúce poznámky"
 
 #: contents/ui/textEditor/NotesMap.qml:63
 #, kde-format
@@ -1761,7 +1694,7 @@ msgstr ""
 #, kde-format
 msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
-msgstr ""
+msgstr "%1 neexistuje"
 
 #: contents/ui/textEditor/TextToolBar.qml:173
 #: contents/ui/textEditor/TextToolBar.qml:174
@@ -1776,13 +1709,13 @@ msgstr "Hlavička"
 #, kde-format
 msgctxt "@label:button, checked as in 'the todos that are checked'"
 msgid "Clear checked"
-msgstr ""
+msgstr "Vymazať označené"
 
 #: contents/ui/todoEditor/ToDoView.qml:77
 #, kde-format
 msgctxt "@action:button"
 msgid "Add new todo"
-msgstr ""
+msgstr "Pridať novú úlohu"
 
 #: logic/kleverUtility.cpp:108
 #, kde-format
@@ -1794,83 +1727,87 @@ msgid ""
 "Note: each style need to have a different name.            \n"
 "*/\n"
 msgstr ""
+"/*            \n"
+"This file is a copy of the default CSS style for the note "
+"display.            \n"
+"Feel free to edit it or make your own.            \n"
+"Note: each style need to have a different name.            \n"
+"*/\n"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:152
 #: logic/parser/plugins/emoji/emojiModel.cpp:210
 #, kde-format
 msgctxt "Previously used emojis"
 msgid "History"
-msgstr ""
+msgstr "História"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:157
 #, kde-format
 msgctxt "'Smileys' is a category of emoji"
 msgid "Smileys"
-msgstr ""
+msgstr "Smileys"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:162
 #, kde-format
 msgctxt "'People' is a category of emoji"
 msgid "People"
-msgstr ""
+msgstr "Ľudia"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:167
 #, kde-format
 msgctxt "'Nature' is a category of emoji"
 msgid "Nature"
-msgstr ""
+msgstr "Príroda"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:172
 #, kde-format
 msgctxt "'Food' is a category of emoji"
 msgid "Food"
-msgstr ""
+msgstr "Jedlo"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:177
 #, kde-format
 msgctxt "'Activities' is a category of emoji"
 msgid "Activities"
-msgstr ""
+msgstr "Aktivity"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:182
 #, kde-format
 msgctxt "'Travel' is  a category of emoji"
 msgid "Travel"
-msgstr ""
+msgstr "Cestovanie"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:187
 #, kde-format
 msgctxt "'Objects' is a category of emoji"
 msgid "Objects"
-msgstr ""
+msgstr "Objekty"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:192
 #, kde-format
 msgctxt "'Symbols' is a category of emoji"
 msgid "Symbols"
-msgstr ""
+msgstr "Symboly"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:197
 #, kde-format
 msgctxt "'Flags' is a category of emoji"
 msgid "Flags"
-msgstr ""
+msgstr "Vlajky"
 
 #: logic/parser/plugins/emoji/emojiModel.cpp:216
 #, kde-format
 msgctxt "'Custom' is a category of emoji"
 msgid "Custom"
-msgstr ""
+msgstr "Vlastné"
 
 #: logic/printing/printingHelper.cpp:34
 #, kde-format
 msgid "An error occurred while trying to copy this PDF."
-msgstr ""
+msgstr "Pri pokuse o kopírovanie tohto PDF sa vyskytla chyba."
 
 #: logic/treeview/oldModelConverter.cpp:65 logic/treeview/treeModel.cpp:480
-#, fuzzy, kde-format
-#| msgctxt "@label:button, as in 'A note'"
-#| msgid "Note"
+#, kde-format
 msgctxt "Main folder name, where all the notes will be stored by default"
 msgid "Notes"
 msgstr "Poznámka"
@@ -1878,43 +1815,43 @@ msgstr "Poznámka"
 #: logic/treeview/treeModel.cpp:201
 #, kde-format
 msgid "An error occurred while trying to remove this item."
-msgstr ""
+msgstr "Pri pokuse o odstránenie tejto položky sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:267
 #, kde-format
 msgid "An error occurred while trying to move this item."
-msgstr ""
+msgstr "Pri pokuse o presunutie tejto položky sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:371
 #, kde-format
 msgid "An error occurred while trying to rename this item."
-msgstr ""
+msgstr "Pri pokuse o premenovanie tejto položky sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:457
 #, kde-format
 msgid "An error occurred while trying to create the note."
-msgstr ""
+msgstr "Pri pokuse o vytvorenie poznámky sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:469
 #, kde-format
 msgid "An error occurred while trying to create this folder."
-msgstr ""
+msgstr "Pri pokuse o vytvorenie tohto priečinka sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:477
 #, kde-format
 msgid "An error occurred while trying to create the storage."
-msgstr ""
+msgstr "Pri pokuse o vytvorenie úložiska sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:478
 #, kde-format
 msgid "An error occurred while trying to create the demo note."
-msgstr ""
+msgstr "Pri pokuse o vytvorenie ukážkovej poznámky sa vyskytla chyba."
 
 #: logic/treeview/treeModel.cpp:490
 #, kde-format
 msgctxt "The name for a demo note"
 msgid "Demo"
-msgstr ""
+msgstr "Demo"
 
 #: main.cpp:46
 #, kde-format
@@ -1925,11 +1862,10 @@ msgstr "KleverNotes"
 #: main.cpp:50
 #, kde-format
 msgid "Note taking and management application"
-msgstr ""
+msgstr "Aplikácia na tvorbu a správu poznámok"
 
 #: main.cpp:54
-#, fuzzy, kde-format
-#| msgid "(c) 2022-2023"
+#, kde-format
 msgid "(c) 2022-2025"
 msgstr "(c) 2022-2023"
 
@@ -1952,8 +1888,6 @@ msgid "Your emails"
 msgstr "wizzardsk@gmail.com"
 
 #, fuzzy
-#~| msgctxt "@label:textbox, the default note group name"
-#~| msgid "New Group name:"
 #~ msgctxt "@label:textbox"
 #~ msgid "New Folder name:"
 #~ msgstr "Názov novej skupiny:"
@@ -1963,7 +1897,6 @@ msgstr "wizzardsk@gmail.com"
 #~ msgstr "Citácia"
 
 #, fuzzy
-#~| msgid "Header"
 #~ msgctxt "@label:textbox"
 #~ msgid "Header:"
 #~ msgstr "Hlavička"
@@ -1977,21 +1910,16 @@ msgstr "wizzardsk@gmail.com"
 #~ msgstr "Nová skupina"
 
 #, fuzzy
-#~| msgctxt "Name, as in 'A note category'"
-#~| msgid "category"
 #~ msgctxt "Name, as in 'A note category'"
 #~ msgid "Category"
 #~ msgstr "kategória"
 
 #, fuzzy
-#~| msgctxt "Name, as in 'A note group'"
-#~| msgid "group"
 #~ msgctxt "Name, as in 'A note group'"
 #~ msgid "Group"
 #~ msgstr "skupina"
 
 #, fuzzy
-#~| msgid "Header"
 #~ msgctxt "exemple"
 #~ msgid "header"
 #~ msgstr "Hlavička"
@@ -2025,8 +1953,6 @@ msgstr "wizzardsk@gmail.com"
 #~ msgstr "Obrazovka"
 
 #, fuzzy
-#~| msgctxt "@title"
-#~| msgid "KleverNotes"
 #~ msgctxt "@title"
 #~ msgid "KleverNotes plugins"
 #~ msgstr "KleverNotes"
