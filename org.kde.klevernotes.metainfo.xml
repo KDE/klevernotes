@@ -59,6 +59,7 @@
   <summary xml:lang="pl">Sporządzaj i zarządzaj swoimi notatkami</summary>
   <summary xml:lang="pt-BR">Faça e gerencie suas anotações</summary>
   <summary xml:lang="sa">स्वस्य टिप्पणीं गृहीत्वा प्रबन्धयन्तु</summary>
+  <summary xml:lang="sk">Tvorte a spravujte svoje poznámky</summary>
   <summary xml:lang="sl">Vzemite in upravljajte svoje zapiske</summary>
   <summary xml:lang="sv">Skriv och hantera anteckningar</summary>
   <summary xml:lang="tr">Not Alma Uygulaması</summary>
@@ -111,6 +112,7 @@
     <p xml:lang="pt">O KleverNotes é uma aplicação para tirar e gerir notas no seu telemóvel e no seu computador. Use o Markdown e permite-lhe antever o seu conteúdo.</p>
     <p xml:lang="pt-BR">O KleverNotes é um aplicativo de tomada e gerenciamento de notas para dispositivos móveis e desktop. Ele utiliza Markdown e permite que você visualize seu conteúdo.</p>
     <p xml:lang="sa">KleverNotes भवतः मोबाईल-डेस्कटॉप-उपकरणानाम् कृते टिप्पणी-ग्रहणं प्रबन्धन-अनुप्रयोगः अस्ति । एतत् markdown इत्यस्य उपयोगं करोति तथा च भवतः सामग्रीं पूर्वावलोकनं कर्तुं शक्नोति ।</p>
+    <p xml:lang="sk">KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="sl">KleverNotes je aplikacija za vnos opomb in upravljanje za vaše mobilne in namizne naprave. Uporablja markdown in dovoljuje predogled vaše vsebine.</p>
     <p xml:lang="sv">KleverNotes är ett antecknings- och hanteringsprogram för mobil och skrivbord. Det använder Markdown och låter dig förhandsgranska innehållet.</p>
     <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi önizlemenize izin verir.</p>
@@ -136,6 +138,7 @@
       <caption xml:lang="ko">데스크톱에서의 주 페이지</caption>
       <caption xml:lang="nl">Hoofdpagina op PC met bureaublad</caption>
       <caption xml:lang="pt-BR">Página principal em um computador Desktop</caption>
+      <caption xml:lang="sk">Hlavná stránka na stolnom počítači</caption>
       <caption xml:lang="sl">Glavna stran na namiznem računalniku</caption>
       <caption xml:lang="sv">Huvudsida på skrivbordsdator</caption>
       <caption xml:lang="tr">Masaüstü bilgisayarda ana sayfa görünümü</caption>
@@ -167,6 +170,7 @@
       <caption xml:lang="pl">Główna strona na urządzeniu przenośnym</caption>
       <caption xml:lang="pt-BR">Página principal em um dispositivo pequeno</caption>
       <caption xml:lang="sa">लघु रूप कारक पर मुख्य पृष्ठ</caption>
+      <caption xml:lang="sk">Hlavná stránka na malom displeji</caption>
       <caption xml:lang="sl">Glavna stran v majhni obliki</caption>
       <caption xml:lang="sv">Huvudsida på liten formfaktor</caption>
       <caption xml:lang="tr">Küçük biçimde ana sayfa</caption>
@@ -199,6 +203,7 @@
       <caption xml:lang="pl">Strona zadań</caption>
       <caption xml:lang="pt-BR">Página de tarefas</caption>
       <caption xml:lang="sa">सर्वं पृष्ठम्</caption>
+      <caption xml:lang="sk">Stránka úloh</caption>
       <caption xml:lang="sl">Stran stvari za še narediti</caption>
       <caption xml:lang="sv">Uppgiftssida</caption>
       <caption xml:lang="tr">Yapılacaklar sayfası</caption>
@@ -231,6 +236,7 @@
       <caption xml:lang="pl">Strona rysowania</caption>
       <caption xml:lang="pt-BR">Página de desenho</caption>
       <caption xml:lang="sa">रेखाचित्र पृष्ठ</caption>
+      <caption xml:lang="sk">Stránka kreslenia</caption>
       <caption xml:lang="sl">Stran risanja</caption>
       <caption xml:lang="sv">Teckningssida</caption>
       <caption xml:lang="tr">Çizim sayfası</caption>
@@ -253,9 +259,11 @@
         <p xml:lang="ca-valencia">La versió 5.0.0 del md4qt s'ha integrat en KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="es">Se ha introducido md4qt en KleverNotes, que proporciona mejoras importantes: gracias a Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="he">החל שימוש ב־md4qt גרסה 5.0.0 ב־KleverNotes, ואיתו שיפורים רבים: תודה רבה לאיגור מירוצ׳ניק, היוצר של md4qt.</p>
+        <p xml:lang="it">La versione 5.0.0 di md4qt è stata introdotta in KleverNotes, apportando importanti miglioramenti: un ringraziamento speciale a Igor Mironchik, creatore di md4qt.</p>
         <p xml:lang="ka">KleverNotes-ში დაინერგა md4qt ვერსიით 5.0.0 და მან მნიშვნელოვანი გაუმჯობესებები მოიტანა თან: მადლობა იგორ მირონჩიკს, md4qt-ის ავტორს.</p>
         <p xml:lang="nl">md4qt versie 5.0.0 is toegevoegd aan KleverNotes en brengt belangrijke verbeteringen met zich mee. Met dank aan Igor Mironchik, de maker van md4qt.</p>
         <p xml:lang="pt-BR">md4qt versão 5.0.0 foi introduzido ao KleverNotes, trazendo grandes melhorias: Graças ao Igor Mironchik, criador do md4qt.</p>
+        <p xml:lang="sk">md4qt version 5.0.0 has been introduced to KleverNotes, bringing major improvements: Thanks to Igor Mironchik, creator of md4qt.</p>
         <p xml:lang="sl">V KleverNotes je bila uvedena različica md4qt 5.0.0, ki prinaša pomembne izboljšave: Zahvala gre Igorju Mirončiku, ustvarjalcu md4qt.</p>
         <p xml:lang="tr">md4qt 5.0.0 sürümü Akıllı Notlar’a tümleştirildi ve bu sayede büyük iyileştirmelere kavuştu: md4qt’nin yaratıcısı olan İgor Mironçik’e çok teşekkürler.</p>
         <p xml:lang="uk">У KleverNotes було впроваджено md4qt version 5.0.0, що надало доступ до значних удосконалень: дякуємо Ігорю Мірончику, творцеві md4qt.</p>
@@ -264,9 +272,11 @@
         <p xml:lang="ca-valencia">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
         <p xml:lang="es">Posibilidad de ordenar las notas por la fecha de última modificación: gracias a Akash Kumar.</p>
         <p xml:lang="he">אפשרות לסדר פתקיות לפי מועד השינוי האחרון שלהן: תודה רבה לאקאש קומאר</p>
+        <p xml:lang="it">Possibilità di ordinare le note per data di ultima modifica: grazie ad Akash Kumar</p>
         <p xml:lang="ka">შენიშვნების ბოლო ცვლილების თარიღით დალაგების შესაძლებლობა: მადლობა აკაშ კუმარს</p>
         <p xml:lang="nl">Mogelijkheid om notities te sorteren op datum van laatste wijziging: met dank aan Akash Kumar</p>
         <p xml:lang="pt-BR">Possibilidade de ordenar notas pela última data de modificação: Graças ao Akash Kumar</p>
+        <p xml:lang="sk">Possibility to sort note by last modified date: Thanks to Akash Kumar</p>
         <p xml:lang="sl">Možnost razvrščanja zapiskov po datumu zadnje spremembe: Zahvala Akashu Kumarju</p>
         <p xml:lang="tr">Notları son değiştirilme tarihine göre sıralama özelliği: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість упорядковувати нотатки за датою внесення змін: дякуємо Акашу Кумару</p>
@@ -275,9 +285,11 @@
         <p xml:lang="ca-valencia">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
         <p xml:lang="es">Posibilidad de dibujar círculos y cuadrados perfectos: gracias a Akash Kumar.</p>
         <p xml:lang="he">אפשרות לצייר עיגולים וריבועים מושלמים: תודה רבה לאקאש קומאר</p>
+        <p xml:lang="it">Possibilità di disegnare cerchi e quadrati perfetti: grazie ad Akash Kumar</p>
         <p xml:lang="ka">სრულყოფილი წრისა და კვადრატის დახატვის შესაძლებლობა: მადლობა აკაშ კუმარს</p>
         <p xml:lang="nl">Mogelijkheid om een ​​perfecte cirkel en een perfect vierkant te tekenen: met dank aan Akash Kumar</p>
         <p xml:lang="pt-BR">Possibilidade de desenhar círculos e quadrados perfeitos: Graças ao Akash Kumar</p>
+        <p xml:lang="sk">Possibility to draw perfect circle and square: Thanks to Akash Kumar</p>
         <p xml:lang="sl">Možnost risanja popolnega kroga in kvadrata: Zahvala Akashu Kumarju</p>
         <p xml:lang="tr">Mükemmel daireler ve kareler çizme olanağı: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість малювати ідеальні кола і квадрати: дякуємо Акашу Кумару</p>
@@ -287,9 +299,11 @@
         <p xml:lang="es">Diversas correcciones de pequeños fallos y mejoras.</p>
         <p xml:lang="he">מגוון תיקוני תקלות ושיפורים קטנטנים.</p>
         <p xml:lang="ia">Varie correctiones de parve faltas e melioramentos.</p>
+        <p xml:lang="it">Varie piccole correzioni di bug e miglioramenti.</p>
         <p xml:lang="ka">გასწორდა სხვადასხვა პატარა შეცდომები.</p>
         <p xml:lang="nl">Verschillende en kleine reparaties van fouten en verbeteringen.</p>
         <p xml:lang="pt-BR">Correções de vários pequenos bugs e melhorias.</p>
+        <p xml:lang="sk">Rôzne drobné opravy chýb a vylepšenia.</p>
         <p xml:lang="sl">Različni popravki manjših napak in izboljšave</p>
         <p xml:lang="tr">Çeşitli hata düzeltmeleri ve iyileştirmeler</p>
         <p xml:lang="uk">Різноманітні виправлення невеликих вад та удосконалення.</p>
@@ -309,6 +323,7 @@
         <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
         <p xml:lang="nl">Uitgave met reparaties van fouten:</p>
         <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
+        <p xml:lang="sk">Vydanie s opravami chýb:</p>
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Hata düzeltme yayımı:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
@@ -326,6 +341,7 @@
           <li xml:lang="ka">გასწორდა დიდი პრობლემა გვერდის დახატვასთან</li>
           <li xml:lang="nl">Een groot probleem met de schilderpagina is opgelost</li>
           <li xml:lang="pt-BR">Corrigido problema grave na página de pintura</li>
+          <li xml:lang="sk">Oprava závažného problému so stránkou kreslenia</li>
           <li xml:lang="sl">Odpravljena večja težava s stranjo za slikanje</li>
           <li xml:lang="tr">Boyama sayfasındaki büyük sorunlar giderildi.</li>
           <li xml:lang="uk">Виправлено велику проблему зі сторінкою малювання</li>
@@ -341,6 +357,7 @@
           <li xml:lang="ka">გასწორდა მინიატურის გაშავება აპიდან ფოკუსის გადატანისას</li>
           <li xml:lang="nl">Het probleem is opgelost dat de preview zwart wordt wanneer de toepassing de focus verliest</li>
           <li xml:lang="pt-BR">Corrigido o problema da pré-visualização ficar preta quando o aplicativo perde o foco</li>
+          <li xml:lang="sk">Oprava čierneho náhľadu pri strate fokusu aplikácie</li>
           <li xml:lang="sl">Odpravljena težava s črnim predogledom, ko aplikacija izgubi fokus</li>
           <li xml:lang="tr">Uygulama odağı kaybettiğinde önizlemenin kararması sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що попередній перегляд чорнів, якщо програма втрачала фокус</li>
@@ -356,6 +373,7 @@
           <li xml:lang="ka">ოდნავ გასწორდა ავტოსწორება</li>
           <li xml:lang="nl">Pas het automatische inspringen aan</li>
           <li xml:lang="pt-BR">Ajuste do recuo automático</li>
+          <li xml:lang="sk">Úprava automatického odsadzovania</li>
           <li xml:lang="sl">Prilagojen samodejnI zamik</li>
           <li xml:lang="tr">Kendiliğinden girintilemeye ince ayar çekildi.</li>
           <li xml:lang="uk">Скориговано автоматичний відступ</li>
@@ -376,6 +394,7 @@
         <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
         <p xml:lang="nl">Uitgave met reparaties van fouten:</p>
         <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
+        <p xml:lang="sk">Vydanie s opravami chýb:</p>
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Hata düzeltme yayımı:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
@@ -393,6 +412,7 @@
           <li xml:lang="ka">განახლდა md4qt (გასწორდა დიდი პრობლემა)</li>
           <li xml:lang="nl">werk md4qt bij (grote fout opgelost)</li>
           <li xml:lang="pt-BR">Atualizado do md4qt (correção de problema grave)</li>
+          <li xml:lang="sk">Aktualizácia md4qt (oprava závažného problému)</li>
           <li xml:lang="sl">Posodobitev md4qt (popravljena večja težava)</li>
           <li xml:lang="tr">md4qt güncellendi.</li>
           <li xml:lang="uk">Оновлено md4qt (виправлено значну проблему)</li>
@@ -408,6 +428,7 @@
           <li xml:lang="ka">გასწორდა დიდი პრობლემა რედაქტორში გამოკვეთასთან</li>
           <li xml:lang="nl">Een belangrijk probleem op met het accentueren van tekst in de bewerker is opgelost</li>
           <li xml:lang="pt-BR">Correção de problema grave de destaque no editor</li>
+          <li xml:lang="sk">Oprava závažného problému so zvýrazňovaním v editore</li>
           <li xml:lang="sl">Popravljena večja težava z označevanjem urejevalnika</li>
           <li xml:lang="tr">Düzenleyicideki ana vurgulama sorunu onarıldı.</li>
           <li xml:lang="uk">Виправлено значну проблему з підсвічуванням у редакторі</li>
@@ -423,6 +444,7 @@
           <li xml:lang="ka">გაუმჯობესდა ფუნქცია "ავტოჩამოთვლა"</li>
           <li xml:lang="nl">Verbeter de functie "automatische lijst"</li>
           <li xml:lang="pt-BR">Melhoria na funcionalidade de "lista automática"</li>
+          <li xml:lang="sk">Vylepšenie funkcie „automatický zoznam“</li>
           <li xml:lang="sl">Izboljšana zmožnost "samodejnega seznama"</li>
           <li xml:lang="tr">Improve "auto list" feature</li>
           <li xml:lang="uk">Удосконалено можливість «автосписок»</li>
@@ -443,6 +465,7 @@
         <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
         <p xml:lang="nl">Uitgave met reparaties van fouten:</p>
         <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
+        <p xml:lang="sk">Vydanie s opravami chýb:</p>
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Hata düzeltme yayımı:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
@@ -460,6 +483,7 @@
           <li xml:lang="ka">გასწორდა ელემენტების გადატანა ძირითად საქაღალდეში</li>
           <li xml:lang="nl">Items verplaatsen naar de hoofdmap opgelost</li>
           <li xml:lang="pt-BR">Correção da movimentação de itens para a pasta raiz</li>
+          <li xml:lang="sk">Oprava presúvania položiek do koreňového priečinka</li>
           <li xml:lang="sl">Popravljeno premikanje elementov v korensko mapo</li>
           <li xml:lang="tr">Fix items move to root folder</li>
           <li xml:lang="uk">Виправлено пересування записів до кореневої теки</li>
@@ -475,6 +499,7 @@
           <li xml:lang="ka">გასწორდა ელემენტების დალაგება</li>
           <li xml:lang="nl">Items sorteren opgelost</li>
           <li xml:lang="pt-BR">Correção da ordenação de itens</li>
+          <li xml:lang="sk">Oprava triedenia položiek</li>
           <li xml:lang="sl">Popravljeno razvrščanje elementov</li>
           <li xml:lang="tr">Fix items sorting</li>
           <li xml:lang="uk">Виправлено упорядкування записів</li>
@@ -491,6 +516,7 @@
           <li xml:lang="ka">ქვესკრიპტის გამყოფის შეცვლა სიმბოლოზე `--`</li>
           <li xml:lang="nl">Wijzig de subscript delim naar `--`</li>
           <li xml:lang="pt-BR">Alteração do delimitador de subscrito para `--`</li>
+          <li xml:lang="sk">Zmena oddeľovača dolného indexu na `--`</li>
           <li xml:lang="sl">Sprememba ločila podpisa na `--`</li>
           <li xml:lang="tr">Change subscript delim to `--`</li>
           <li xml:lang="uk">Виправлено роздільник нижнього індексу на `--`</li>
@@ -506,6 +532,7 @@
           <li xml:lang="ka">განახლდა md4qt (გასწორდა დიდი და პატარა პრობლემები)</li>
           <li xml:lang="nl">Werk md4qt bij (verhelpt kleine en grote problemen)</li>
           <li xml:lang="pt-BR">Atualização do md4qt (correção de problemas menores e maiores)</li>
+          <li xml:lang="sk">Aktualizácia md4qt (oprava menších a závažných problémov)</li>
           <li xml:lang="sl">Posodobitev md4qt (popravljene manjše in večje težave)</li>
           <li xml:lang="tr">Update md4qt (fix minor and major issues)</li>
           <li xml:lang="uk">Оновлено md4qt (виправлено незначні та значні вади)</li>
@@ -521,6 +548,7 @@
           <li xml:lang="ka">გასწორდა სხვადასხვა პატარა შეცდომები</li>
           <li xml:lang="nl">Verschillende en kleine reparaties van fouten</li>
           <li xml:lang="pt-BR">Correções de vários pequenos bugs</li>
+          <li xml:lang="sk">Rôzne drobné opravy chýb</li>
           <li xml:lang="sl">Različni popravki manjših napak</li>
           <li xml:lang="tr">Çeşitli hata düzeltmeleri ve iyileştirmeler</li>
           <li xml:lang="uk">Різноманітні виправлення невеликих вад</li>
@@ -541,6 +569,7 @@
         <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
         <p xml:lang="nl">Uitgave met reparaties van fouten:</p>
         <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
+        <p xml:lang="sk">Vydanie s opravami chýb:</p>
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Hata düzeltme yayımı:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
@@ -558,6 +587,7 @@
           <li xml:lang="ka">გასწორდა ავარიული დასრულება შენიშვნის წაშლისას</li>
           <li xml:lang="nl">Crash repareren bij verwijderen van notitie</li>
           <li xml:lang="pt-BR">Correção do problema que ocorria ao excluir uma nota</li>
+          <li xml:lang="sk">Oprava pádu pri odstraňovaní poznámky</li>
           <li xml:lang="sl">Popravljeno sesutje pri brisanju zapiska</li>
           <li xml:lang="tr">Fix crash when deleting note</li>
           <li xml:lang="uk">Усунено аварійне завершення роботи при вилученні нотатки</li>
@@ -574,6 +604,7 @@
           <li xml:lang="ka">გასწორდა ბილიკის პრობლემა შენიშვნის გადატანისას</li>
           <li xml:lang="nl">Los het padprobleem op bij het verplaatsen van een notitie</li>
           <li xml:lang="pt-BR">Correção do problema de caminho ao mover notas</li>
+          <li xml:lang="sk">Oprava problému s cestou pri presúvaní poznámky</li>
           <li xml:lang="sl">Popravljena težava s potjo pri premikanju zapiska</li>
           <li xml:lang="tr">Fix path issue when moving note</li>
           <li xml:lang="uk">Виправлено проблему зі шляхом при пересуванні нотатки</li>
@@ -589,6 +620,7 @@
           <li xml:lang="ka">ფაილი todo არ შეიქმნება, თუ ეს აუცილებელი არაა</li>
           <li xml:lang="nl">Maak geen takenlijst aan, tenzij dit noodzakelijk is</li>
           <li xml:lang="pt-BR">Não criar um arquivo de tarefas a menos que seja necessário</li>
+          <li xml:lang="sk">Nevytvárať súbor úloh, pokiaľ to nie je potrebné</li>
           <li xml:lang="sl">Ne ustvarjaj datoteke z opravili, razen če je to potrebno</li>
           <li xml:lang="tr">Do not create todo file unless necessary</li>
           <li xml:lang="uk">Усунено непотрібне створення файла завдань</li>
@@ -604,6 +636,7 @@
           <li xml:lang="ka">ExpandingFormSwitch სტილის სწორება FormSwitchDelegate სტილთან</li>
           <li xml:lang="nl">Lijn de stijl van ExpandingFormSwitch uit met de stijl van FormSwitchDelegate</li>
           <li xml:lang="pt-BR">Alinhar estilo ExpandingFormSwitch ao estilo FormSwitchDelegate</li>
+          <li xml:lang="sk">Zosúladenie štýlu ExpandingFormSwitch so štýlom FormSwitchDelegate</li>
           <li xml:lang="sl">Poravnava sloga ExpandingFormSwitch s slogom FormSwitchDelegate</li>
           <li xml:lang="tr">Align ExpandingFormSwitch style to FormSwitchDelegate style</li>
           <li xml:lang="uk">Вирівняно стиль ExpandingFormSwitch за стилем FormSwitchDelegate</li>
@@ -619,6 +652,7 @@
           <li xml:lang="ka">გაუმჯობესდა გადატანის დიალოგის დიზაინი</li>
           <li xml:lang="nl">Verbeter het ontwerp van de verplaatsingsdialoog</li>
           <li xml:lang="pt-BR">Melhorias no design da caixa de diálogo de movimentação</li>
+          <li xml:lang="sk">Vylepšenie dizajnu dialógu presúvania</li>
           <li xml:lang="sl">Izboljšana zasnova pogovornega okna za premikanje</li>
           <li xml:lang="tr">Improve move dialog design</li>
           <li xml:lang="uk">Удосконалено дизайн вікна пересування</li>
@@ -634,6 +668,7 @@
           <li xml:lang="ka">დაემატა ჩიტების სიის ჩანაწერები გაფართოებული სინტაქსისთვის</li>
           <li xml:lang="nl">Voeg spiekbriefvermeldingen toe voor het uitbreiden van de syntaxis</li>
           <li xml:lang="pt-BR">Adicionadas entradas de referência rápida para extensão de sintaxe</li>
+          <li xml:lang="sk">Pridanie položiek ťaháku pre rozšírenú syntax</li>
           <li xml:lang="sl">Dodani vnosi v preglednico za razširitev skladnje</li>
           <li xml:lang="tr">Add cheatsheet entries for extending syntax</li>
           <li xml:lang="uk">Додано записи підказки для розширення синтаксису</li>
@@ -649,6 +684,7 @@
           <li xml:lang="ka">md4qt-ის განახლება</li>
           <li xml:lang="nl">werk md4qt bij</li>
           <li xml:lang="pt-BR">Atualização do md4qt</li>
+          <li xml:lang="sk">Aktualizácia md4qt</li>
           <li xml:lang="sl">Posodobitev md4qt</li>
           <li xml:lang="tr">Update md4qt</li>
           <li xml:lang="uk">Оновлено md4qt</li>
@@ -670,6 +706,7 @@
         <p xml:lang="ka">შეცდომების გასწორების ვერსია:</p>
         <p xml:lang="nl">Uitgave met reparaties van fouten:</p>
         <p xml:lang="pt-BR">Lançamento de correção de bugs:</p>
+        <p xml:lang="sk">Vydanie s opravami chýb:</p>
         <p xml:lang="sl">Izdaja s popravki napak:</p>
         <p xml:lang="tr">Hata düzeltme yayımı:</p>
         <p xml:lang="uk">Випуск із виправленнями вад:</p>
@@ -687,6 +724,7 @@
           <li xml:lang="ka">არარაა მოთხოვნა საცავის სახელისთვის (აუცილებელი აღარაა, ერქვას "klevernotes")</li>
           <li xml:lang="nl">Verwijder het vereiste voor de opslagnaam (hoeft niet langer "klevernotes" te zijn)</li>
           <li xml:lang="pt-BR">Remoção da exigência do nome de armazenamento (não precisa mais ser "klevernotes")</li>
+          <li xml:lang="sk">Odstránenie požiadavky na názov úložiska (že nemusí byť „klevernotes“)</li>
           <li xml:lang="sl">Odstranjena zahteva za ime shrambe (ni več potrebno »klevernotes«)</li>
           <li xml:lang="tr">Remove the requirement for the storage name (no longer need to be "klevernotes")</li>
           <li xml:lang="uk">Вилучено вимогу щодо назви сховища (ним більше не обов'язково є «klevernotes»)</li>
@@ -702,6 +740,7 @@
           <li xml:lang="ka">გასწორდა კოდის ბლოკის რენდერის პრობლემა HTML ჭდესტან</li>
           <li xml:lang="nl">Los het weergaveprobleem van het codeblok met de HTML-tag op</li>
           <li xml:lang="pt-BR">Correção do problema de renderização de bloco de código com tag HTML</li>
+          <li xml:lang="sk">Oprava problému s vykreslením bloku kódu s HTML značkou</li>
           <li xml:lang="sl">Popravljena težava z upodabljanjem bloka kode z oznako HTML</li>
           <li xml:lang="tr">Fix code block rendering issue with HTML tag</li>
           <li xml:lang="uk">Виправлено проблему із обробкою блоку коду з теґом HTML</li>
@@ -717,6 +756,7 @@
           <li xml:lang="ka">გასწორდა გეგმების შენახვა</li>
           <li xml:lang="nl">Oplossing voor het opslaan van taken</li>
           <li xml:lang="pt-BR">Correção do salvamento de tarefas</li>
+          <li xml:lang="sk">Oprava ukladania úloh</li>
           <li xml:lang="sl">Popravljeno shranjevanje opravil</li>
           <li xml:lang="tr">Fix todos saving</li>
           <li xml:lang="uk">Виправлено зберігання файлів завдань</li>
@@ -733,6 +773,7 @@
           <li xml:lang="ka">ელემენტების საცავის ძირითად საქაღალდეში გადატანის დაშვება</li>
           <li xml:lang="nl">Sta toe dat items naar de hoofdmap van de opslag worden verplaatst</li>
           <li xml:lang="pt-BR">Permitir que os itens sejam movidos para a raiz de armazenamento</li>
+          <li xml:lang="sk">Umožnenie presunu položiek do koreňa úložiska</li>
           <li xml:lang="sl">Dovoljeno premikanje elementov v korensko mapo shrambe</li>
           <li xml:lang="tr">Allow items to be moved to the storage root</li>
           <li xml:lang="uk">Уможливлено пересування записів до кореневої теки сховища</li>
@@ -753,6 +794,7 @@
         <p xml:lang="ka">სიახლეები:</p>
         <p xml:lang="nl">Wat is nieuw:</p>
         <p xml:lang="pt-BR">O que há de novo:</p>
+        <p xml:lang="sk">Čo je nové:</p>
         <p xml:lang="sl">Kaj je novega:</p>
         <p xml:lang="tr">Neler yeni:</p>
         <p xml:lang="uk">Що нового?</p>
@@ -770,6 +812,7 @@
           <li xml:lang="ka">ახალი ფაილის სტრუქტურა, რომელიც კარგად ასახავს, რას ხედავთ გვერდით პანელში და შესაძლებლობა, თითოეული ელემენტის ფერი და ხატულა შეცვალოთ.</li>
           <li xml:lang="nl">Nieuwe bestandsstructuur die perfect aansluit op wat u in de zijbalk ziet. En de mogelijkheid om de kleur en het pictogram van elk item te wijzigen.</li>
           <li xml:lang="pt-BR">Nova estrutura de arquivos que reflete perfeitamente o que você vê na barra lateral. E a possibilidade de alterar a cor e o ícone de cada item.</li>
+          <li xml:lang="sk">New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
           <li xml:lang="sl">Nova struktura datotek, ki popolnoma odraža tisto, kar vidite v stranski vrstici. In možnost spreminjanja barve in ikone posameznih elementov.</li>
           <li xml:lang="tr">New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
           <li xml:lang="uk">Нова структура файлів, яка ідеально відповідає тому, що ви бачите на бічній панелі. І можливість змінити колір та піктограму для кожного запису.</li>
@@ -785,6 +828,7 @@
           <li xml:lang="ka">ახალი ხატვის გვერდი მეტი ფუნქციით</li>
           <li xml:lang="nl">Nieuwe tekenpagina met meer functies</li>
           <li xml:lang="pt-BR">Nova página de desenho com mais funcionalidades</li>
+          <li xml:lang="sk">Nová stránka kreslenia s viacerými funkciami</li>
           <li xml:lang="sl">Nova stran za risanje z več zmožnostmi</li>
           <li xml:lang="tr">New drawing page with more features</li>
           <li xml:lang="uk">Нова сторінка малювання з додатковими можливостями</li>
@@ -800,6 +844,7 @@
           <li xml:lang="ka">კოპირების ღილაკი კოდის ბლოკში</li>
           <li xml:lang="nl">Kopieerknop binnen het codeblok</li>
           <li xml:lang="pt-BR">Botão de copiar dentro do bloco de código</li>
+          <li xml:lang="sk">Tlačidlo kopírovania v bloku kódu</li>
           <li xml:lang="sl">Gumb za kopiranje znotraj bloka kode</li>
           <li xml:lang="tr">Copy button inside block of code</li>
           <li xml:lang="uk">Кнопка копіювання у блоці коду</li>
@@ -815,6 +860,7 @@
           <li xml:lang="ka">ახალი ქვედა პანელი შენიშვნებსა და გგეგმებს შორის გადასართავად</li>
           <li xml:lang="nl">Nieuwe onderste balk om te schakelen tussen notities en taken</li>
           <li xml:lang="pt-BR">Nova barra inferior para alternar entre notas e tarefas</li>
+          <li xml:lang="sk">Nový spodný panel na prepínanie medzi poznámkou a úlohami</li>
           <li xml:lang="sl">Nova spodnja vrstica za preklapljanje med zapiski in opravili</li>
           <li xml:lang="tr">New bottom bar to switch between note and todos</li>
           <li xml:lang="uk">Нова нижня панель для перемикання між нотатками та завданнями</li>
@@ -830,6 +876,7 @@
           <li xml:lang="ka">გაუმჯობესდა გვერდის გადართვის ანიმაცია</li>
           <li xml:lang="nl">Verbeterde animatie voor het wisselen van pagina's</li>
           <li xml:lang="pt-BR">Animação de troca de páginas aprimorada</li>
+          <li xml:lang="sk">Vylepšená animácia prepínania stránok</li>
           <li xml:lang="sl">Izboljšana animacija preklapljanja med stranmi</li>
           <li xml:lang="tr">Improved page switching animation</li>
           <li xml:lang="uk">Удосконалено анімацію перемикання сторінок</li>
@@ -846,6 +893,7 @@
         <p xml:lang="ka">შეცდომების გასწორება შეიცავს, მაგრამ არა მხოლოდ:</p>
         <p xml:lang="nl">Reparaties van fouten, waaronder maar niet beperkt tot:</p>
         <p xml:lang="pt-BR">Correções de bugs, incluindo, entre outros:</p>
+        <p xml:lang="sk">Opravy chýb okrem iného vrátane:</p>
         <p xml:lang="sl">Popravki napak, vključno z, vendar ne omejeno na:</p>
         <p xml:lang="tr">Bug fixes including but not limited to:</p>
         <p xml:lang="uk">Виправлення вад, серед яких:</p>
@@ -862,6 +910,7 @@
           <li xml:lang="ka">V-ის დაჭერა მოდიფიკატორის გარეშე მაშინ, როცა ბუფერში გამოსახულებაა, არაფერს იზამს (როგორც უნდა აკეთებდეს)</li>
           <li xml:lang="nl">Als je zonder modificatietoets op V drukt terwijl er een afbeelding in het klembord staat, gebeurt er niets (zoals het zou moten)</li>
           <li xml:lang="pt-BR">Pressionar V sem nenhuma tecla modificadora enquanto há uma imagem na área de transferência não faz nada (como deveria)</li>
+          <li xml:lang="sk">Stlačenie V bez modifikátora s obrázkom v schránke neurobí nič (ako má byť)</li>
           <li xml:lang="sl">Pritisk tipke V brez kakršnega koli modifikatorja, medtem ko je slika v odložišču, ne naredi ničesar (kot bi moralo)</li>
           <li xml:lang="tr">Pressing V without any modifier while having an image in the clipboard do nothing (as it should)</li>
           <li xml:lang="uk">Натискання V без клавіші-модифікатор, коли у буфері обміну даними є зображення, не призводило ні до яких наслідків (але мало призводити)</li>
@@ -877,6 +926,7 @@
           <li xml:lang="ka">'/'-ის შემცველი ელემენტის შექმნის აკრძალვა, რადგან ის საქაღალდეს შექმნიდა</li>
           <li xml:lang="nl">Vermijd het benoemen van items met een '/' omdat dit een map zou creëren</li>
           <li xml:lang="pt-BR">Impedir nomear itens com uma barra ('/'), pois isso criaria um diretório</li>
+          <li xml:lang="sk">Zabránenie pomenovaniu položky znakom '/', pretože by sa vytvoril priečinok</li>
           <li xml:lang="sl">Preprečitev poimenovanja elementa z '/', ker bi ustvarilo imenik</li>
           <li xml:lang="tr">Prevent naming item with a '/' since it would create a directory</li>
           <li xml:lang="uk">Реалізовано запобігання назвам запису з «/», оскільки це призводило б до створення каталогу</li>
@@ -892,6 +942,7 @@
           <li xml:lang="ka">რენდერის სხვადასხვა პრობლემები</li>
           <li xml:lang="nl">Diverse weergaveproblemen</li>
           <li xml:lang="pt-BR">Vários problemas de renderização</li>
+          <li xml:lang="sk">Rôzne problémy s vykreslením</li>
           <li xml:lang="sl">Različne težave z upodabljanjem</li>
           <li xml:lang="tr">Çeşitli sunma sorunları düzeltmeleri</li>
           <li xml:lang="uk">Різноманітні вади обробки</li>
@@ -916,6 +967,7 @@
         <p xml:lang="ka">როგორც იქნა, KleverNotes 1.1.0 აქაა! KleverNotes წარმოადგენს Markdown-ის შენიშვნების ჩასაწერ პროგრამას KDE-ისგან. სამი თვის განმავლობაში მე ვმუშაობდი, რომ დამემატებინა ახალი ფუნქციები და ამავე დროს გამეუმჯობესებინა აპი და გამესწორებინა შეცდომები.</p>
         <p xml:lang="nl">KleverNotes 1.1.0 is eindelijk beschikbaar! KleverNotes is de Markdown-notitie-toepassing van KDE. De afgelopen drie maanden heb ik hard gewerkt aan het toevoegen van nieuwe functies, het verbeteren van de toepassing en het oplossen van fouten.</p>
         <p xml:lang="pt-BR">O KleverNotes 1.1.0 está finalmente disponível! O KleverNotes é o aplicativo de anotações em Markdown do KDE. Durante 3 meses, trabalhei arduamente para adicionar novas funcionalidades, aprimorar o aplicativo e corrigir alguns bugs.</p>
+        <p xml:lang="sk">KleverNotes 1.1.0 is finally available! KleverNotes is the Markdown note-taking app from KDE. For 3 months, I have been working hard to add new features while improving the app and fixing some bugs.</p>
         <p xml:lang="sl">KleverNotes 1.1.0 je končno na voljo! KleverNotes je aplikacija za beleženje zapiskov Markdown iz KDE. Tri mesece sem trdo delal na dodajanju novih funkcij, hkrati pa sem izboljševal aplikacijo in odpravljal nekatere napake.</p>
         <p xml:lang="tr">KleverNotes 1.1.0 is finally available! KleverNotes is the Markdown note-taking app from KDE. For 3 months, I have been working hard to add new features while improving the app and fixing some bugs.</p>
         <p xml:lang="uk">Нарешті випущено KleverNotes 1.1.0! KleverNotes — це програма для створення нотаток у форматі Markdown від KDE. Протягом 3 місяців я наполегливо працював над додаванням нових функцій, одночасно покращуючи програму та виправляючи деякі помилки.</p>
@@ -931,6 +983,7 @@
         <p xml:lang="ka">KleverNotes-ის დამმუშავებელი გადართულია md4qt-ზე:</p>
         <p xml:lang="nl">De ontleder vsn de KleverNotes-parser is overgeschakeld naar md4qt:</p>
         <p xml:lang="pt-BR">O analisador sintático do KleverNotes foi alterado para md4qt:</p>
+        <p xml:lang="sk">KleverNotes parser has been switched to md4qt:</p>
         <p xml:lang="sl">Razčlenjevalnik KleverNotes je bil preklopljen na md4qt:</p>
         <p xml:lang="tr">KleverNotes parser has been switched to md4qt:</p>
         <p xml:lang="uk">Здійснено перехід KleverNotes на обробник md4qt:</p>
@@ -946,6 +999,7 @@
         <p xml:lang="ka">md4qt მხოლოდ-თავსართიანი C++ ბიბლიოთეკაა Markdown-ის დასამუშავებლად.</p>
         <p xml:lang="nl">md4qt is een header-only C++-bibliotheek voor het ontleden van Markdown.</p>
         <p xml:lang="pt-BR">md4qt é uma biblioteca C++ composta apenas por arquivos de cabeçalho para analisar Markdown.</p>
+        <p xml:lang="sk">md4qt is a header-only C++ library for parsing Markdown.</p>
         <p xml:lang="sl">md4qt je knjižnica C++, ki deluje samo za glave, za razčlenjevanje Markdowna.</p>
         <p xml:lang="tr">md4qt is a header-only C++ library for parsing Markdown.</p>
         <p xml:lang="uk">md4qt — бібліотека C++ для обробки коду Markdown, яка складається лише з заголовків.</p>
@@ -965,6 +1019,7 @@
         <p xml:lang="ka">md4qt-ს აქვს CommonMark 0.31.2 სპეციფიკაციის და ზოგიერთი GitHub-ის გაფართოების, როგორიცაა ცხრილების, ქვედა კოლონტიტულის, ამოცანების სიის, ხაზის გადასმის, LaTeX-ის მათემატიკური ფუნქციები და GitHub-ის ავტობმულების მხარდაჭერა.</p>
         <p xml:lang="nl">md4qt ondersteunt CommonMark 0.31.2 Spec en enkele GitHub-extensies, zoals tabellen, voetnoten, takenlijsten, doorhalen, LaTeX Math-injecties en GitHub's autolinks.</p>
         <p xml:lang="pt-BR">O md4qt é compatível com a especificação CommonMark 0.31.2 e com algumas extensões do GitHub, como tabelas, notas de rodapé, listas de tarefas, tachados, injeções de fórmulas matemáticas LaTeX e links automáticos do GitHub.</p>
+        <p xml:lang="sk">md4qt supports CommonMark 0.31.2 Spec, and some GitHub extensions, such as tables, footnotes, tasks lists, strikethroughs, LaTeX Math injections, GitHub's autolinks.</p>
         <p xml:lang="sl">md4qt podpira specifikacijo CommonMark 0.31.2 in nekatere razširitve GitHub, kot so tabele, opombe, seznami opravil, prečrtane črte, injekcije matematičnega kodiranja LaTeX in samodejne povezave GitHub.</p>
         <p xml:lang="tr">md4qt supports CommonMark 0.31.2 Spec, and some GitHub extensions, such as tables, footnotes, tasks lists, strikethroughs, LaTeX Math injections, GitHub's autolinks.</p>
         <p xml:lang="uk">У md4qt передбачено підтримку специфікації CommonMark 0.31.2 та деякі розширення GitHub, такі як таблиці, виноски, списки завдань, закреслення, ін'єкції математичних елементів LaTeX, автоматичні посилання GitHub.</p>
@@ -980,6 +1035,7 @@
         <p xml:lang="ka">ის სწრაფი, მორგებადი და იოლი გამოსაყენებელია. განა ეს გადასარევი არაა?!</p>
         <p xml:lang="nl">Het is snel, reproduceerbaar, aanpasbaar en gebruiksvriendelijk. Een perfecte match!</p>
         <p xml:lang="pt-BR">É rápido, confiável, personalizável e fácil de usar. Uma combinação perfeita!</p>
+        <p xml:lang="sk">It is fast, repliable, customizable and easy to use. A perfect match !</p>
         <p xml:lang="sl">Je hiter, odziven, prilagodljiv in enostaven za uporabo. Popolno ujemanje!</p>
         <p xml:lang="tr">It is fast, repliable, customizable and easy to use. A perfect match !</p>
         <p xml:lang="uk">Вона швидка, надійна, придатна до налаштовування та проста у користуванні. Чудова річ!</p>
@@ -995,6 +1051,7 @@
         <p xml:lang="ka">ხელსაწყოთა პანელი ახლა უფრო ზუსტია არა მხოლოდ მითითებული Markdown-ის ჭდეების წაშლაში, არამედ მათ ჩასმაშიც.</p>
         <p xml:lang="nl">De werkbalk is nu preciezer voor het verwijderen van specifieke Markdown-tags, maar ook voor het toevoegen ervan.</p>
         <p xml:lang="pt-BR">A barra de ferramentas agora oferece maior precisão não apenas para remover tags Markdown específicas, mas também para aplicá-las.</p>
+        <p xml:lang="sk">The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
         <p xml:lang="sl">Orodna vrstica je zdaj natančnejša za odstranjevanje določenih oznak Markdown, pa tudi za njihovo uporabo.</p>
         <p xml:lang="tr">The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
         <p xml:lang="uk">Панель інструментів тепер точніша як для вилучення певних теґів Markdown, так і для їхнього застосування.</p>
@@ -1010,6 +1067,7 @@
         <p xml:lang="ka">კიდევ ხელსაწყოთა პანელი ახლა გაჩვენებთ, რომელი ჭდეებია უკვე გამოყენებული ტექსტზე კურსორის ქვეშ, ან მონიშნულ ტექსტზე.</p>
         <p xml:lang="nl">Bovendien laat de werkbalk nu zien welke tags al zijn toegepast op de tekst onder de cursor of op de geselecteerde tekst.</p>
         <p xml:lang="pt-BR">Além disso, a barra de ferramentas agora mostra quais tags já estão aplicadas ao texto sob o cursor ou ao texto selecionado.</p>
+        <p xml:lang="sk">On top of that, the toolbar now shows you which tags are already applied on the text under the cursor or the selected text.</p>
         <p xml:lang="sl">Poleg tega orodna vrstica zdaj prikazuje, katere oznake so že uporabljene na besedilu pod kazalcem ali izbranem besedilu.</p>
         <p xml:lang="tr">On top of that, the toolbar now shows you which tags are already applied on the text under the cursor or the selected text.</p>
         <p xml:lang="uk">Крім того, панель інструментів нової версії показує, які теґи вже застосовано до тексту під курсором або до позначеного тексту.</p>
@@ -1030,6 +1088,7 @@
         <p xml:lang="ka">რედაქტორმა ასევე შეიძინა რამდენიმე საინტერესო ფუნქცია. tab/untab-ის დაბლოკვის მხარდაჭერა და სიის ელემენტების ავტომატური დამატება ახლა უფრო სანდოა, მაგრამ ახლა ასევე გაქვთ შესაძლებლობა, დაამატოთ html შეწყვეტა ახალ ხაზამდე ღილაკებით 'Shift + Enter', ან ჰორიზონტალურ სახაზავი ღილაკებით 'Alt + Enter'.</p>
         <p xml:lang="nl">De bewerker heeft ook een aantal interessante nieuwe functies gekregen. De ondersteuning voor tab- en untab-blokken en het automatisch toevoegen van lijstitems is nu betrouwbaarder, maar je kunt nu ook een HTML-regeleinde invoegen vóór een nieuwe regel met `Shift + Enter` of een horizontale liniaal met `Alt + Enter`.</p>
         <p xml:lang="pt-BR">O editor também ganhou alguns recursos interessantes. O suporte para tabulação/destabulação de blocos e a adição automática de itens de lista agora são mais confiáveis, mas você também tem a capacidade de adicionar uma quebra de linha HTML antes de uma nova linha com `Shift + Enter` ou uma régua horizontal usando `Alt + Enter`.</p>
+        <p xml:lang="sk">The editor has also gained some interesting features. Block tab/untab support and automatic addition of list items are now more reliable, but you now also have the ability to add an html break before a new line with `Shift + Enter` or a horizontal ruler using `Alt + Enter`.</p>
         <p xml:lang="sl">Urejevalnik je pridobil tudi nekaj zanimivih zmožnosti. Podpora za blokovni tabulator/odstranjevanje tabulatorja in samodejno dodajanje elementov seznama sta zdaj zanesljivejša, zdaj pa imate tudi možnost dodajanja preloma HTML pred novo vrstico s `Shift + Enter` ali z vodoravnim ravnilom z `Alt + Enter`.</p>
         <p xml:lang="tr">The editor has also gained some interesting features. Block tab/untab support and automatic addition of list items are now more reliable, but you now also have the ability to add an html break before a new line with `Shift + Enter` or a horizontal ruler using `Alt + Enter`.</p>
         <p xml:lang="uk">У редакторі також реалізовано декілька цікавих функцій. Підтримка блокування табуляції/зняття табуляції та автоматичне додавання елементів списку тепер надійніші, крім того, ви маєте можливість додавати розрив рядка HTML перед новим рядком за допомогою `Shift + Enter` або горизонтальну лінійку за допомогою `Alt + Enter`.</p>
@@ -1046,6 +1105,7 @@
           <li xml:lang="ka">დამუშავება ახალა ცალკე ნაკადში ხდება, ამიტომ დიდი შენიშვნების დამუშავება მაინც შეუმჩნევლად მოხდება!</li>
           <li xml:lang="nl">Het ontleden gebeurt nu in een aparte thread, dus het ontleden van zeer grote notities zou nog steeds soepel moeten verlopen!</li>
           <li xml:lang="pt-BR">A análise sintática agora é feita em uma thread separada, portanto, analisar notas muito grandes ainda deve ocorrer sem problemas!</li>
+          <li xml:lang="sk">The parsing is now done on a separated thread, so parsing very large notes should still be smooth !</li>
           <li xml:lang="sl">Razčlenjevanje se zdaj izvaja v ločeni niti, zato bi moralo razčlenjevanje zelo velikih zapiskov še vedno potekati gladko!</li>
           <li xml:lang="tr">The parsing is now done on a separated thread, so parsing very large notes should still be smooth !</li>
           <li xml:lang="uk">Обробка тепер виконується в окремому потоці, тому обробка дуже великих нотаток має бути прозорішою!</li>
@@ -1061,6 +1121,7 @@
           <li xml:lang="ka">რენდერი ახლა გამოირთვება, თუ მინიატურა გამორთულია, რითიც ის რესურსებს დაზოგავს!</li>
           <li xml:lang="nl">Het renderen wordt nu uitgeschakeld als de preview is uitgeschakeld, waardoor er wat systeembronnen worden bespaard!</li>
           <li xml:lang="pt-BR">A renderização agora é desativada se a pré-visualização estiver desativada, economizando alguns recursos!</li>
+          <li xml:lang="sk">The rendering is now disabled if the preview is disabled, saving some resources !</li>
           <li xml:lang="sl">Upodabljanje je zdaj onemogočeno, če je predogled onemogočen, kar prihrani nekaj virov!</li>
           <li xml:lang="tr">The rendering is now disabled if the preview is disabled, saving some resources !</li>
           <li xml:lang="uk">Обробка тепер вимикається, якщо попередній перегляд вимкнено, що певним чином заощаджує ресурси!</li>
@@ -1076,6 +1137,7 @@
           <li xml:lang="ka">ხელსაწყოთა პანელის გამოყენებით ახლა ტექსტის დამატება და წაშლა ერთი გაუქმების ღილაკით შეგიძლიათ. წინა მდგომარეობაში დასაბრუნებლად ორმაგი/სამმაგი 'Ctrl+Z' საჭირო აღარაა.</li>
           <li xml:lang="nl">Met de werkbalk kun u nu tekst toevoegen of verwijderen in één ongedaan maken-blok; u hoeft niet meer twee of drie keer op `Ctrl+Z` te drukken om terug te gaan naar de vorige status.</li>
           <li xml:lang="pt-BR">Agora, usar a barra de ferramentas permite adicionar ou remover texto em um único bloco de desfazer, sem precisar usar `Ctrl+Z` duas ou três vezes para voltar ao estado anterior.</li>
+          <li xml:lang="sk">Using the toolbar will now add or remove text in a single undo block, no more double/triple `Ctrl+Z` to go back to your previous state.</li>
           <li xml:lang="sl">Z uporabo orodne vrstice boste zdaj dodali ali odstranili besedilo v enem samem bloku za razveljavitev, nič več dvojnega/trojnega `Ctrl+Z` za vrnitev v prejšnje stanje.</li>
           <li xml:lang="tr">Using the toolbar will now add or remove text in a single undo block, no more double/triple `Ctrl+Z` to go back to your previous state.</li>
           <li xml:lang="uk">Використання панелі інструментів у новій версії уможливлює додавання або вилучення тексту в одному блоці скасування, більше не потрібно двічі/потрійно натискати `Ctrl+Z` для повернення до попереднього стану.</li>
@@ -1092,6 +1154,7 @@
         <p xml:lang="ka">რედაქტორს ახლა აქვს საშუალება, იყოს "WYSIWYG".</p>
         <p xml:lang="nl">De bewerker heeft nu de mogelijkheid om "WYSIWYG" te gebruiken.</p>
         <p xml:lang="pt-BR">O editor agora possui a capacidade de ser "WYSIWYG".</p>
+        <p xml:lang="sk">The editor now has the ability to be "WYSIWYG".</p>
         <p xml:lang="sl">Urejevalnik ima zdaj sposobnost delovanja "WYSIWYG".</p>
         <p xml:lang="tr">The editor now has the ability to be "WYSIWYG".</p>
         <p xml:lang="uk">У новій версії редактор має можливість бути візуальним.</p>
@@ -1107,6 +1170,7 @@
         <p xml:lang="ka">ნაგულისხმევად Markdown-ის ჭდეები დანარჩენ ტექსტზე 50%-ით პატარაა და ამისი შეცვლა რა თქმა უნდა, მორგების ფანჯრიდან შეგიძლიათ.</p>
         <p xml:lang="nl">Standaard zijn de markdown-tags 50% kleiner dan de rest van de tekst. Dit kan uiteraard worden aangepast in de instellingen.</p>
         <p xml:lang="pt-BR">Por padrão, as tags Markdown serão 50% menores que o restante do texto, mas isso pode ser ajustado nas configurações.</p>
+        <p xml:lang="sk">By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
         <p xml:lang="sl">Privzeto bodo oznake Markdown za 50% manjše od preostalega besedila, kar je seveda mogoče prilagoditi v nastavitvah.</p>
         <p xml:lang="tr">By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
         <p xml:lang="uk">Типово теґи markdown будуть на 50% меншими за решту тексту, це, звичайно, можна налаштувати у параметрах роботи програми.</p>
@@ -1122,6 +1186,7 @@
         <p xml:lang="ka">ის ჭდეები თავიანთ ზომას კურსორის მდებარეობის/მონიშნული ტექსტის მიხედვით დაიბრუნებენ. ამგვარად თქვენ საშუალება გექნებათ, დაინახოთ, რომელი ჭდეა პასუხისმგებელი სტილზე.</p>
         <p xml:lang="nl">Die tags krijgen hun normale grootte terug op basis van de cursorpositie/geselecteerde tekst. Zo kunt u zien welke tag verantwoordelijk is voor een bepaalde stijl.</p>
         <p xml:lang="pt-BR">Essas tags recuperarão seus tamanhos normais com base na posição do cursor/texto selecionado. Dessa forma, você poderá ver qual tag é responsável por um estilo.</p>
+        <p xml:lang="sk">Those tags will regain their normal sizes based on the cursor position/selected text. This way, you're able to see which tag is responsible for a style.</p>
         <p xml:lang="sl">Te oznake bodo ponovno pridobile svojo običajno velikost glede na položaj kazalca/izbrano besedilo. Na ta način lahko vidite, katera oznaka je odgovorna za slog.</p>
         <p xml:lang="tr">Those tags will regain their normal sizes based on the cursor position/selected text. This way, you're able to see which tag is responsible for a style.</p>
         <p xml:lang="uk">Ці теги відновлять свої звичайні розміри залежно від положення курсора/позначеного тексту. Таким чином, ви зможете побачити, який теґ відповідає за стиль.</p>
@@ -1143,6 +1208,7 @@
         <p xml:lang="ka">KleverNotes წარმოადგენს KDE-ის Markdown-ის შენიშვნების ჩაწერისა და მართვის აპლიკაციას, რომელიც Kirigami-ის იყენებს. ის მზადაა პირველი ვერსიისთვის!</p>
         <p xml:lang="nl">KleverNotes, de toepassing voor het maken en beheren van notities in Markdown van KDE met gebruik van Kirigami is gereed voor de eerste uitgave!</p>
         <p xml:lang="pt-BR">O KleverNotes, aplicativo de anotações e gerenciamento em Markdown do KDE que utiliza Kirigami, está pronto para seu primeiro lançamento!</p>
+        <p xml:lang="sk">KleverNotes, KDE's Markdown note-taking and management application using Kirigami, is ready for its first release!</p>
         <p xml:lang="sl">KleverNotes, KDE-jeva aplikacija za ustvarjanje in upravljanje zapiskov Markdown z uporabo Kirigamija, je pripravljena na svojo prvo izdajo!</p>
         <p xml:lang="tr">KleverNotes, KDE's Markdown note-taking and management application using Kirigami, is ready for its first release!</p>
         <p xml:lang="uk">KleverNotes — програма KDE для створення нотаток у Markdown та керування ними з використанням Kirigami, готова до першого випуску!</p>
@@ -1163,6 +1229,7 @@
         <p xml:lang="ka">KleverNotes საშუალებას გაძლევთ, შექმნათ და გადახედოთ Markdown-ის შენიშვნას იმ დროს, როცა გაძლევთ საშუალებას, მოირგოთ მინიატურა პარამეტრებიდან, ან CSS თემით. შეგიძლიათ, დააორგანიზოთ თქვენი შენიშვნები როგორც გნებავთ, ისე კატეგორიებთან და ჯგუფებთან ერთად, რომლებიც პირდაპირ აისახება თქვენს სიტემაში KleverNotes-ის საცავის საქაღალდეების იერარქიაში. უბრალოდ აირჩიეთ თქვენი საცავის მდებარეობა და ჩასაწერად მზად ბრძანდებით!</p>
         <p xml:lang="nl">Met KleverNotes kunt u een Markdown-notitie maken en bekijken, en het voorbeeld volledig naar wens aanpassen via de instellingen of een CSS-thema. U kunt uw notities ordenen zoals u wilt met een combinatie van categorieën en groepen, die direct worden weergegeven in de hiërarchie van uw KleverNotes-opslagmappen. Kies eenvoudig uw opslaglocatie en u kunt meteen beginnen met schrijven!</p>
         <p xml:lang="pt-BR">O KleverNotes permite criar e visualizar notas em Markdown, oferecendo a liberdade de personalizar a pré-visualização nas configurações ou usando um tema CSS. Você pode organizar suas notas como quiser, combinando categorias e grupos, que serão refletidos diretamente na hierarquia das pastas de armazenamento do KleverNotes. Basta escolher o local de armazenamento e você já pode começar a escrever!</p>
+        <p xml:lang="sk">KleverNotes allows you to create and preview a Markdown note while giving you the freedom to customize the preview from settings or using a CSS theme. You can organize your notes however you want with a combination of categories and groups, which will be directly reflected on your system in the hierarchy of your KleverNotes storage folders. Simply choose your storage location and you're ready to write!</p>
         <p xml:lang="sl">KleverNotes vam omogoča ustvarjanje in predogled zapiska Markdown, hkrati pa vam daje svobodo prilagajanja predogleda iz nastavitev ali z uporabo teme CSS. Svoje zapiske lahko organizirate poljubno s kombinacijo kategorij in skupin, kar se bo neposredno odražalo v vašem sistemu v hierarhiji map za shranjevanje KleverNotes. Preprosto izberite mesto shranjevanja in pripravljeni ste na pisanje!</p>
         <p xml:lang="tr">KleverNotes allows you to create and preview a Markdown note while giving you the freedom to customize the preview from settings or using a CSS theme. You can organize your notes however you want with a combination of categories and groups, which will be directly reflected on your system in the hierarchy of your KleverNotes storage folders. Simply choose your storage location and you're ready to write!</p>
         <p xml:lang="uk">KleverNotes надає змогу створювати та переглядати нотатки Markdown, надаючи вам свободу налаштовувати попередній перегляд за допомогою налаштувань або теми CSS. Ви можете впорядковувати свої нотатки як завгодно, поєднуючи категорії та групи, що безпосередньо буде відтворено у вашій системі в ієрархії тек зберігання KleverNotes. Просто виберіть місце зберігання, і ви готові писати!</p>
@@ -1180,6 +1247,7 @@
         <p xml:lang="ka">შეგიძლიათ, დაბეჭდოთ თქვენი შენიშვნები, დაამატოთ პატარა ესკიზები და შექმნათ სპეციფიკური ამოცანები თითოეული მათგანისთვის და ყველაფერი ეს აპლიკაციიდან!</p>
         <p xml:lang="nl">U kunt uw notities afdrukken, kleine schetsen toevoegen en zelfs specifieke taken voor elk ervan aanmaken, allemaal vanuit de toepassing!</p>
         <p xml:lang="pt-BR">Você pode imprimir suas anotações, adicionar pequenos esboços e até mesmo criar tarefas específicas para cada uma delas, tudo a partir do aplicativo!</p>
+        <p xml:lang="sk">You can print your notes, add small sketches and even create specific tasks for each of them, all from the application!</p>
         <p xml:lang="sl">Svoje zapiske lahko natisnete, dodate majhne skice in celo ustvarite posebne naloge za vsakega od njih, vse iz aplikacije!</p>
         <p xml:lang="tr">You can print your notes, add small sketches and even create specific tasks for each of them, all from the application!</p>
         <p xml:lang="uk">Ви можете роздрукувати свої нотатки, додати невеликі ескізи та навіть створити окремі завдання для кожного з них, і все це прямо з програми!</p>
@@ -1200,6 +1268,7 @@
         <p xml:lang="ka">შენიშვნების შენახვა Markdown-ის ფაილებად ხდება თქვენი KleverNotes-ის საქაღალდეში იოლი წვდომისთვის. მას აქვს მთელი CommonMark-ის სპეციფიკაციის მხარდაჭერა ექსტენსიური სინტაქსით. KleverNotes ასევე გთავაზობთ "დამატებების" პატარა კოლექციას Makrkdown-ის ფუნქციონალის გასაზრდელად: კოდის გამოკვეთა, შენიშვნასთან დაკავშირება, სწრაფი ემოჯი და ა.შ.</p>
         <p xml:lang="nl">Notities worden opgeslagen als Markdown-bestanden in uw KleverNotes-opslag, zodat u ze gemakkelijk kunt openen. Ze ondersteunen de volledige CommonMark-specificatie met uitgebreide syntaxis. KleverNotes biedt ook een kleine verzameling optionele "plug-ins" om de basisfuncties van Markdown uit te breiden, zoals: syntaxismarkering, het koppelen van notities, snelle emoji's, enzovoort.</p>
         <p xml:lang="pt-BR">As notas são salvas como arquivos Markdown no seu armazenamento do KleverNotes para facilitar o acesso. Elas são compatíveis com toda a especificação CommonMark, com sintaxe abrangente. O KleverNotes também apresenta uma pequena coleção de "plugins" opcionais para estender os recursos básicos do Markdown, como: realce de sintaxe, links entre notas, emojis rápidos, etc.</p>
+        <p xml:lang="sk">Notes are saved as Markdown files in your KleverNotes storage for easy access. They support the entire CommonMark specification with extensive syntax. KleverNotes also introduces a small collection of opt-in “plugins” to extend basic markdown features, such as: code highlighting, note linking, quick emoji, etc.</p>
         <p xml:lang="sl">Zapiski so shranjeni kot datoteke Markdown v vašem pomnilniku KleverNotes za enostaven dostop. Podpirajo celotno specifikacijo CommonMark z obsežno skladnjo. KleverNotes predstavlja tudi majhno zbirko vtičnikov, ki jih je mogoče vključiti v program, in s katerimi se razširijo osnovne funkcije markdowna, kot so: označevanje kode, povezovanje zapiskov, hitri čustvenčki itd.</p>
         <p xml:lang="tr">Notes are saved as Markdown files in your KleverNotes storage for easy access. They support the entire CommonMark specification with extensive syntax. KleverNotes also introduces a small collection of opt-in “plugins” to extend basic markdown features, such as: code highlighting, note linking, quick emoji, etc.</p>
         <p xml:lang="uk">Нотатки зберігаються у форматі Markdown у вашому сховищі KleverNotes для полегшення доступу. У них передбачено підтримку усієї специфікації CommonMark з розширеним синтаксисом. KleverNotes також пропонує невелику збірку додатків, що підтримуються окремо, для розширення основних функцій Markdown, зокрема: підсвічування коду, посилання на нотатки, швидкі емодзі тощо.</p>
