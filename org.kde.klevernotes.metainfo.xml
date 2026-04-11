@@ -255,10 +255,13 @@
     <release version="1.3.0" date="2026-04-06">
       <description>
         <p>md4qt version 5.0.0 has been introduced to KleverNotes, bringing major improvements: Thanks to Igor Mironchik, creator of md4qt.</p>
+        <p xml:lang="ar">أُدرجت النسخة 5.0.0 من md4qt في KleverNotes، لتقدم تحسينات كبيرة: شكرًا لإيغور ميرونشيك، مطور md4qt.</p>
         <p xml:lang="ca">La versió 5.0.0 del md4qt s'ha integrat en el KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="ca-valencia">La versió 5.0.0 del md4qt s'ha integrat en KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="es">Se ha introducido md4qt en KleverNotes, que proporciona mejoras importantes: gracias a Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="fr">La version 5.0.0 de la bibliothèque « md4qt » a été introduite dans KleverNotes, apportant des améliorations majeures : merci à Igor Mironchik, créateur de cette bibliothèque.</p>
         <p xml:lang="he">החל שימוש ב־md4qt גרסה 5.0.0 ב־KleverNotes, ואיתו שיפורים רבים: תודה רבה לאיגור מירוצ׳ניק, היוצר של md4qt.</p>
+        <p xml:lang="ia">md4qt version 5.0.0 ha essite introducite in KleverNotes, apportante major meliorationes: Gratias a Igor Mironchik, creator de md4qt.</p>
         <p xml:lang="it">La versione 5.0.0 di md4qt è stata introdotta in KleverNotes, apportando importanti miglioramenti: un ringraziamento speciale a Igor Mironchik, creatore di md4qt.</p>
         <p xml:lang="ka">KleverNotes-ში დაინერგა md4qt ვერსიით 5.0.0 და მან მნიშვნელოვანი გაუმჯობესებები მოიტანა თან: მადლობა იგორ მირონჩიკს, md4qt-ის ავტორს.</p>
         <p xml:lang="nl">md4qt versie 5.0.0 is toegevoegd aan KleverNotes en brengt belangrijke verbeteringen met zich mee. Met dank aan Igor Mironchik, de maker van md4qt.</p>
@@ -268,10 +271,13 @@
         <p xml:lang="tr">md4qt 5.0.0 sürümü Akıllı Notlar’a tümleştirildi ve bu sayede büyük iyileştirmelere kavuştu: md4qt’nin yaratıcısı olan İgor Mironçik’e çok teşekkürler.</p>
         <p xml:lang="uk">У KleverNotes було впроваджено md4qt version 5.0.0, що надало доступ до значних удосконалень: дякуємо Ігорю Мірончику, творцеві md4qt.</p>
         <p>Possibility to sort note by last modified date: Thanks to Akash Kumar</p>
+        <p xml:lang="ar">إمكانية فرز الملاحظات حسب تاريخ آخر تعديل: شكرًا لأكاش كومار</p>
         <p xml:lang="ca">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
         <p xml:lang="ca-valencia">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
         <p xml:lang="es">Posibilidad de ordenar las notas por la fecha de última modificación: gracias a Akash Kumar.</p>
+        <p xml:lang="fr">Possibilité de trier les notes par date de dernière modification : merci à Akash Kumar</p>
         <p xml:lang="he">אפשרות לסדר פתקיות לפי מועד השינוי האחרון שלהן: תודה רבה לאקאש קומאר</p>
+        <p xml:lang="ia">Possibilitate de ordinar notas per data de ultime modification:  Gratias a Akash Kumar</p>
         <p xml:lang="it">Possibilità di ordinare le note per data di ultima modifica: grazie ad Akash Kumar</p>
         <p xml:lang="ka">შენიშვნების ბოლო ცვლილების თარიღით დალაგების შესაძლებლობა: მადლობა აკაშ კუმარს</p>
         <p xml:lang="nl">Mogelijkheid om notities te sorteren op datum van laatste wijziging: met dank aan Akash Kumar</p>
@@ -281,10 +287,13 @@
         <p xml:lang="tr">Notları son değiştirilme tarihine göre sıralama özelliği: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість упорядковувати нотатки за датою внесення змін: дякуємо Акашу Кумару</p>
         <p>Possibility to draw perfect circle and square: Thanks to Akash Kumar</p>
+        <p xml:lang="ar">إمكانية رسم دائرة ومربع مثاليين: بفضل أكاش كومار</p>
         <p xml:lang="ca">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
         <p xml:lang="ca-valencia">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
         <p xml:lang="es">Posibilidad de dibujar círculos y cuadrados perfectos: gracias a Akash Kumar.</p>
+        <p xml:lang="fr">Possibilité de dessiner un cercle et un carré parfaits : merci à Akash Kumar</p>
         <p xml:lang="he">אפשרות לצייר עיגולים וריבועים מושלמים: תודה רבה לאקאש קומאר</p>
+        <p xml:lang="ia">Possibilitate de trahar un circulo e un quadrato perfecte:  Gratias a Akash Kumar.</p>
         <p xml:lang="it">Possibilità di disegnare cerchi e quadrati perfetti: grazie ad Akash Kumar</p>
         <p xml:lang="ka">სრულყოფილი წრისა და კვადრატის დახატვის შესაძლებლობა: მადლობა აკაშ კუმარს</p>
         <p xml:lang="nl">Mogelijkheid om een ​​perfecte cirkel en een perfect vierkant te tekenen: met dank aan Akash Kumar</p>
@@ -294,9 +303,11 @@
         <p xml:lang="tr">Mükemmel daireler ve kareler çizme olanağı: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість малювати ідеальні кола і квадрати: дякуємо Акашу Кумару</p>
         <p>Various small bugs fixes and improvements.</p>
+        <p xml:lang="ar">إصلاحات لأخطاء بسيطة متنوعة وتحسينات.</p>
         <p xml:lang="ca">Correccions diverses d'errors petits i millores.</p>
         <p xml:lang="ca-valencia">Correccions diverses d'errors petits i millores.</p>
         <p xml:lang="es">Diversas correcciones de pequeños fallos y mejoras.</p>
+        <p xml:lang="fr">Diverses petites corrections de bogues et améliorations</p>
         <p xml:lang="he">מגוון תיקוני תקלות ושיפורים קטנטנים.</p>
         <p xml:lang="ia">Varie correctiones de parve faltas e melioramentos.</p>
         <p xml:lang="it">Varie piccole correzioni di bug e miglioramenti.</p>
