@@ -443,4 +443,26 @@ bool FencedCodeParser::mayBreakParagraph(Line &,
     return true;
 }
 
+void FencedCodeParser::finish(Line &currentLine,
+                              TextStream &stream,
+                              QSharedPointer<Document>,
+                              QSharedPointer<Block>,
+                              Context &,
+                              const QString &,
+                              const QString &,
+                              QStringList &)
+{
+    if (m_code && m_code->isNullPositions()) {
+        const auto st = stream.currentState();
+        const auto line = stream.moveTo(currentLine.lineNumber() - 1);
+
+        m_code->setStartColumn(line.length());
+        m_code->setStartLine(m_code->startDelim().startLine());
+        m_code->setEndColumn(line.length());
+        m_code->setEndLine(m_code->startLine());
+
+        stream.restoreState(&st);
+    }
+}
+
 } /* namespace MD */
