@@ -262,7 +262,7 @@
         <p>md4qt version 5.0.0 has been introduced to KleverNotes, bringing major improvements: Thanks to Igor Mironchik, creator of md4qt.</p>
         <p xml:lang="ar">أُدرجت النسخة 5.0.0 من md4qt في KleverNotes، لتقدم تحسينات كبيرة: شكرًا لإيغور ميرونشيك، مطور md4qt.</p>
         <p xml:lang="ca">La versió 5.0.0 del md4qt s'ha integrat en el KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador del md4qt.</p>
-        <p xml:lang="ca-valencia">La versió 5.0.0 del md4qt s'ha integrat en KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador del md4qt.</p>
+        <p xml:lang="ca-valencia">La versió 5.0.0 de md4qt s'ha integrat en KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="es">Se ha introducido md4qt en KleverNotes, que proporciona mejoras importantes: gracias a Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="fr">La version 5.0.0 de la bibliothèque « md4qt » a été introduite dans KleverNotes, apportant des améliorations majeures : merci à Igor Mironchik, créateur de cette bibliothèque.</p>
         <p xml:lang="he">החל שימוש ב־md4qt גרסה 5.0.0 ב־KleverNotes, ואיתו שיפורים רבים: תודה רבה לאיגור מירוצ׳ניק, היוצר של md4qt.</p>
@@ -419,7 +419,7 @@
           <li>Update md4qt (fix major issue)</li>
           <li xml:lang="ar">تحديث md4qt (إصلاح مشكلة كبرى)</li>
           <li xml:lang="ca">Actualitza el «md4qt» (corregeix un problema important)</li>
-          <li xml:lang="ca-valencia">Actualitza el «md4qt» (corregix un problema important)</li>
+          <li xml:lang="ca-valencia">Actualitza «md4qt» (corregix un problema important)</li>
           <li xml:lang="es">Actualización de md4qt (corrige un problema importante).</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt » (Correction d un problème majeur)</li>
           <li xml:lang="he">‏md4qt עודכן (מתקן בעיות משמעותיות)</li>
@@ -539,7 +539,7 @@
           <li>Update md4qt (fix minor and major issues)</li>
           <li xml:lang="ar">تحديث md4qt (إصلاح علل صغرى وكبرى)</li>
           <li xml:lang="ca">Actualitza el «md4qt» (corregeix problemes lleus i importants)</li>
-          <li xml:lang="ca-valencia">Actualitza el «md4qt» (corregix problemes lleus i importants)</li>
+          <li xml:lang="ca-valencia">Actualitza «md4qt» (corregix problemes lleus i importants)</li>
           <li xml:lang="es">Actualización de md4qt (corrige problemas importantes y menores).</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt » (Correction de problèmes mineur et majeur)</li>
           <li xml:lang="he">‏md4qt עודכן (מתקן בעיות מזעריות ומשמעותיות)</li>
