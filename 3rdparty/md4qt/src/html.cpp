@@ -686,6 +686,8 @@ QString HtmlVisitor::prepareTextForHtml(const QString &t)
     tmp.replace(QLatin1Char('&'), QStringLiteral("&amp;"));
     tmp.replace(QLatin1Char('<'), QStringLiteral("&lt;"));
     tmp.replace(QLatin1Char('>'), QStringLiteral("&gt;"));
+    tmp.replace(QLatin1Char('"'), QStringLiteral("&quot;"));
+    tmp.replace(QLatin1Char('\''), QStringLiteral("&#39;"));
 
     return tmp;
 }
