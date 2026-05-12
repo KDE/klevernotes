@@ -255,6 +255,15 @@
     <release version="1.3.1" date="2026-05-08">
       <description>
         <p>update md4qt to version 5.0.15: Igor Mironchik, creator of md4qt.</p>
+        <p xml:lang="ca">Actualitza el md4qt a la versió 5.0.15: Igor Mironchik, creador del md4qt.</p>
+        <p xml:lang="ca-valencia">Actualitza md4qt a la versió 5.0.15: Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="es">Se ha actualizado md4qt a la versión 5.0.15: Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="ka">md4qt განახლდა ვერსიამდე 5.0.15: იგორ მირონჩიკი, md4qt-ის ავტორი.</p>
+        <p xml:lang="nl">Werk md4qt bij naar versie 5.0.15: Igor Mironchik, maker van md4qt.</p>
+        <p xml:lang="pt-BR">Atualização do md4qt para a versão 5.0.15: Igor Mironchik, criador do md4qt.</p>
+        <p xml:lang="sl">posodobitev md4qt na različico 5.0.15: Igor Mironchik, avtor md4qt.</p>
+        <p xml:lang="tr">md4qt, 5.0.15 sürümüne güncellendi: İgor Mironçik, md4qt yazarı.</p>
+        <p xml:lang="uk">оновлено md4qt до версії 5.0.15: Ігор Мірончик, автор md4qt.</p>
       </description>
     </release>
     <release version="1.3.0" date="2026-04-06">
@@ -320,7 +329,7 @@
         <p xml:lang="nl">Verschillende en kleine reparaties van fouten en verbeteringen.</p>
         <p xml:lang="pt-BR">Correções de vários pequenos bugs e melhorias.</p>
         <p xml:lang="sk">Rôzne drobné opravy chýb a vylepšenia.</p>
-        <p xml:lang="sl">Različni popravki manjših napak in izboljšave</p>
+        <p xml:lang="sl">Različni popravki manjših napak in izboljšave.</p>
         <p xml:lang="tr">Çeşitli hata düzeltmeleri ve iyileştirmeler</p>
         <p xml:lang="uk">Різноманітні виправлення невеликих вад та удосконалення.</p>
       </description>
@@ -462,7 +471,7 @@
           <li xml:lang="pt-BR">Melhoria na funcionalidade de "lista automática"</li>
           <li xml:lang="sk">Vylepšenie funkcie „automatický zoznam“</li>
           <li xml:lang="sl">Izboljšana zmožnost "samodejnega seznama"</li>
-          <li xml:lang="tr">Improve "auto list" feature</li>
+          <li xml:lang="tr">“Otomatik liste” özelliği iyileştirildi.</li>
           <li xml:lang="uk">Удосконалено можливість «автосписок»</li>
         </ul>
       </description>
@@ -501,7 +510,7 @@
           <li xml:lang="pt-BR">Correção da movimentação de itens para a pasta raiz</li>
           <li xml:lang="sk">Oprava presúvania položiek do koreňového priečinka</li>
           <li xml:lang="sl">Popravljeno premikanje elementov v korensko mapo</li>
-          <li xml:lang="tr">Fix items move to root folder</li>
+          <li xml:lang="tr">Ögeleri kök klasöre taşıma onarıldı.</li>
           <li xml:lang="uk">Виправлено пересування записів до кореневої теки</li>
           <li>Fix items sorting</li>
           <li xml:lang="ar">إصلاح فرز العناصر</li>
@@ -517,7 +526,7 @@
           <li xml:lang="pt-BR">Correção da ordenação de itens</li>
           <li xml:lang="sk">Oprava triedenia položiek</li>
           <li xml:lang="sl">Popravljeno razvrščanje elementov</li>
-          <li xml:lang="tr">Fix items sorting</li>
+          <li xml:lang="tr">Ögeleri sıralama onarıldı.</li>
           <li xml:lang="uk">Виправлено упорядкування записів</li>
           <li xml:lang="zh-TW">修正項目排序</li>
           <li>Change subscript delim to `--`</li>
@@ -534,7 +543,7 @@
           <li xml:lang="pt-BR">Alteração do delimitador de subscrito para `--`</li>
           <li xml:lang="sk">Zmena oddeľovača dolného indexu na `--`</li>
           <li xml:lang="sl">Sprememba ločila podpisa na `--`</li>
-          <li xml:lang="tr">Change subscript delim to `--`</li>
+          <li xml:lang="tr">Alt simge sınırlayıcısı “--” olarak değiştirildi.</li>
           <li xml:lang="uk">Виправлено роздільник нижнього індексу на `--`</li>
           <li>Update md4qt (fix minor and major issues)</li>
           <li xml:lang="ar">تحديث md4qt (إصلاح علل صغرى وكبرى)</li>
@@ -550,7 +559,7 @@
           <li xml:lang="pt-BR">Atualização do md4qt (correção de problemas menores e maiores)</li>
           <li xml:lang="sk">Aktualizácia md4qt (oprava menších a závažných problémov)</li>
           <li xml:lang="sl">Posodobitev md4qt (popravljene manjše in večje težave)</li>
-          <li xml:lang="tr">Update md4qt (fix minor and major issues)</li>
+          <li xml:lang="tr">md4qt güncellendi.</li>
           <li xml:lang="uk">Оновлено md4qt (виправлено незначні та значні вади)</li>
           <li>Various small bugs fixes</li>
           <li xml:lang="ar">إصلاحات لعلل صغيرة متنوعة</li>
@@ -605,7 +614,7 @@
           <li xml:lang="pt-BR">Correção do problema que ocorria ao excluir uma nota</li>
           <li xml:lang="sk">Oprava pádu pri odstraňovaní poznámky</li>
           <li xml:lang="sl">Popravljeno sesutje pri brisanju zapiska</li>
-          <li xml:lang="tr">Fix crash when deleting note</li>
+          <li xml:lang="tr">Not silerken oluşan çökme giderildi.</li>
           <li xml:lang="uk">Усунено аварійне завершення роботи при вилученні нотатки</li>
           <li xml:lang="zh-TW">修正刪除筆記時的崩潰</li>
           <li>Fix path issue when moving note</li>
@@ -622,7 +631,7 @@
           <li xml:lang="pt-BR">Correção do problema de caminho ao mover notas</li>
           <li xml:lang="sk">Oprava problému s cestou pri presúvaní poznámky</li>
           <li xml:lang="sl">Popravljena težava s potjo pri premikanju zapiska</li>
-          <li xml:lang="tr">Fix path issue when moving note</li>
+          <li xml:lang="tr">Notu taşırken oluşan yol sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено проблему зі шляхом при пересуванні нотатки</li>
           <li>Do not create todo file unless necessary</li>
           <li xml:lang="ar">عدم إنشاء ملف مهام إلا عند الضرورة</li>
@@ -638,7 +647,7 @@
           <li xml:lang="pt-BR">Não criar um arquivo de tarefas a menos que seja necessário</li>
           <li xml:lang="sk">Nevytvárať súbor úloh, pokiaľ to nie je potrebné</li>
           <li xml:lang="sl">Ne ustvarjaj datoteke z opravili, razen če je to potrebno</li>
-          <li xml:lang="tr">Do not create todo file unless necessary</li>
+          <li xml:lang="tr">Gerekli değilse yapılacak dosyasını oluşturma</li>
           <li xml:lang="uk">Усунено непотрібне створення файла завдань</li>
           <li>Align ExpandingFormSwitch style to FormSwitchDelegate style</li>
           <li xml:lang="ar">محاذاة نمط ExpandingFormSwitch مع نمط FormSwitchDelegate</li>
@@ -654,7 +663,7 @@
           <li xml:lang="pt-BR">Alinhar estilo ExpandingFormSwitch ao estilo FormSwitchDelegate</li>
           <li xml:lang="sk">Zosúladenie štýlu ExpandingFormSwitch so štýlom FormSwitchDelegate</li>
           <li xml:lang="sl">Poravnava sloga ExpandingFormSwitch s slogom FormSwitchDelegate</li>
-          <li xml:lang="tr">Align ExpandingFormSwitch style to FormSwitchDelegate style</li>
+          <li xml:lang="tr">ExpandingFormSwitch biçemini FormSwitchDelegate olarak değiştir</li>
           <li xml:lang="uk">Вирівняно стиль ExpandingFormSwitch за стилем FormSwitchDelegate</li>
           <li>Improve move dialog design</li>
           <li xml:lang="ar">تحسين تصميم حوار النقل</li>
@@ -670,7 +679,7 @@
           <li xml:lang="pt-BR">Melhorias no design da caixa de diálogo de movimentação</li>
           <li xml:lang="sk">Vylepšenie dizajnu dialógu presúvania</li>
           <li xml:lang="sl">Izboljšana zasnova pogovornega okna za premikanje</li>
-          <li xml:lang="tr">Improve move dialog design</li>
+          <li xml:lang="tr">Taşıma iletişim kutusu tasarımı iyileştirildi.</li>
           <li xml:lang="uk">Удосконалено дизайн вікна пересування</li>
           <li>Add cheatsheet entries for extending syntax</li>
           <li xml:lang="ar">إضافة مدخلات ورقة المساعدة لتوسيع الصيغة</li>
@@ -686,7 +695,7 @@
           <li xml:lang="pt-BR">Adicionadas entradas de referência rápida para extensão de sintaxe</li>
           <li xml:lang="sk">Pridanie položiek ťaháku pre rozšírenú syntax</li>
           <li xml:lang="sl">Dodani vnosi v preglednico za razširitev skladnje</li>
-          <li xml:lang="tr">Add cheatsheet entries for extending syntax</li>
+          <li xml:lang="tr">Genişleyen sözdizimi için kopya kâğıdı girdileri eklendi.</li>
           <li xml:lang="uk">Додано записи підказки для розширення синтаксису</li>
           <li>Update md4qt</li>
           <li xml:lang="ar">تحديث md4qt</li>
@@ -702,7 +711,7 @@
           <li xml:lang="pt-BR">Atualização do md4qt</li>
           <li xml:lang="sk">Aktualizácia md4qt</li>
           <li xml:lang="sl">Posodobitev md4qt</li>
-          <li xml:lang="tr">Update md4qt</li>
+          <li xml:lang="tr">md4qt güncellendi.</li>
           <li xml:lang="uk">Оновлено md4qt</li>
           <li xml:lang="zh-TW">更新 md4qt</li>
         </ul>
@@ -742,7 +751,7 @@
           <li xml:lang="pt-BR">Remoção da exigência do nome de armazenamento (não precisa mais ser "klevernotes")</li>
           <li xml:lang="sk">Odstránenie požiadavky na názov úložiska (že nemusí byť „klevernotes“)</li>
           <li xml:lang="sl">Odstranjena zahteva za ime shrambe (ni več potrebno »klevernotes«)</li>
-          <li xml:lang="tr">Remove the requirement for the storage name (no longer need to be "klevernotes")</li>
+          <li xml:lang="tr">Depolama adı için “klevernotes” zorunluluğu kaldırıldı.</li>
           <li xml:lang="uk">Вилучено вимогу щодо назви сховища (ним більше не обов'язково є «klevernotes»)</li>
           <li>Fix code block rendering issue with HTML tag</li>
           <li xml:lang="ar">إصلاح مشكلة صيرورة كتلة الكود مع وسوم HTML</li>
@@ -758,7 +767,7 @@
           <li xml:lang="pt-BR">Correção do problema de renderização de bloco de código com tag HTML</li>
           <li xml:lang="sk">Oprava problému s vykreslením bloku kódu s HTML značkou</li>
           <li xml:lang="sl">Popravljena težava z upodabljanjem bloka kode z oznako HTML</li>
-          <li xml:lang="tr">Fix code block rendering issue with HTML tag</li>
+          <li xml:lang="tr">HTML künyesiyle olan kod görüntüleme sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено проблему із обробкою блоку коду з теґом HTML</li>
           <li>Fix todos saving</li>
           <li xml:lang="ar">إصلاح حفظ المهام</li>
@@ -774,7 +783,7 @@
           <li xml:lang="pt-BR">Correção do salvamento de tarefas</li>
           <li xml:lang="sk">Oprava ukladania úloh</li>
           <li xml:lang="sl">Popravljeno shranjevanje opravil</li>
-          <li xml:lang="tr">Fix todos saving</li>
+          <li xml:lang="tr">Yapılacak kaydı onarıldı.</li>
           <li xml:lang="uk">Виправлено зберігання файлів завдань</li>
           <li xml:lang="zh-TW">修正待辦事項的儲存</li>
           <li>Allow items to be moved to the storage root</li>
@@ -791,7 +800,7 @@
           <li xml:lang="pt-BR">Permitir que os itens sejam movidos para a raiz de armazenamento</li>
           <li xml:lang="sk">Umožnenie presunu položiek do koreňa úložiska</li>
           <li xml:lang="sl">Dovoljeno premikanje elementov v korensko mapo shrambe</li>
-          <li xml:lang="tr">Allow items to be moved to the storage root</li>
+          <li xml:lang="tr">Ögelerin depolama kök düzeyine taşınmasına artık izin veriliyor.</li>
           <li xml:lang="uk">Уможливлено пересування записів до кореневої теки сховища</li>
         </ul>
       </description>
