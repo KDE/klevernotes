@@ -258,12 +258,14 @@
         <p xml:lang="ca">Actualitza el md4qt a la versió 5.0.15: Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="ca-valencia">Actualitza md4qt a la versió 5.0.15: Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="es">Se ha actualizado md4qt a la versión 5.0.15: Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="ia">actualisa md4qt a version 5.0.15: Igor Mironchik, creator de md4qt.</p>
         <p xml:lang="ka">md4qt განახლდა ვერსიამდე 5.0.15: იგორ მირონჩიკი, md4qt-ის ავტორი.</p>
         <p xml:lang="nl">Werk md4qt bij naar versie 5.0.15: Igor Mironchik, maker van md4qt.</p>
         <p xml:lang="pt-BR">Atualização do md4qt para a versão 5.0.15: Igor Mironchik, criador do md4qt.</p>
         <p xml:lang="sl">posodobitev md4qt na različico 5.0.15: Igor Mironchik, avtor md4qt.</p>
         <p xml:lang="tr">md4qt, 5.0.15 sürümüne güncellendi: İgor Mironçik, md4qt yazarı.</p>
         <p xml:lang="uk">оновлено md4qt до версії 5.0.15: Ігор Мірончик, автор md4qt.</p>
+        <p xml:lang="zh-TW">更新 md4qt 到 5.0.15 版：md4qt 作者 Igor Mironchik</p>
       </description>
     </release>
     <release version="1.3.0" date="2026-04-06">
@@ -284,6 +286,7 @@
         <p xml:lang="sl">V KleverNotes je bila uvedena različica md4qt 5.0.0, ki prinaša pomembne izboljšave: Zahvala gre Igorju Mirončiku, ustvarjalcu md4qt.</p>
         <p xml:lang="tr">md4qt 5.0.0 sürümü Akıllı Notlar’a tümleştirildi ve bu sayede büyük iyileştirmelere kavuştu: md4qt’nin yaratıcısı olan İgor Mironçik’e çok teşekkürler.</p>
         <p xml:lang="uk">У KleverNotes було впроваджено md4qt version 5.0.0, що надало доступ до значних удосконалень: дякуємо Ігорю Мірончику, творцеві md4qt.</p>
+        <p xml:lang="zh-TW">KleverNotes 現使用 md4qt 5.0.0 版，這個版本帶來許多大幅度的改善。感謝 Igor Mironchik，也就是 md4qt 的作者本人。</p>
         <p>Possibility to sort note by last modified date: Thanks to Akash Kumar</p>
         <p xml:lang="ar">إمكانية فرز الملاحظات حسب تاريخ آخر تعديل: شكرًا لأكاش كومار</p>
         <p xml:lang="ca">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
@@ -300,6 +303,7 @@
         <p xml:lang="sl">Možnost razvrščanja zapiskov po datumu zadnje spremembe: Zahvala Akashu Kumarju</p>
         <p xml:lang="tr">Notları son değiştirilme tarihine göre sıralama özelliği: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість упорядковувати нотатки за датою внесення змін: дякуємо Акашу Кумару</p>
+        <p xml:lang="zh-TW">用最後修改日期排序筆記的功能：感謝 Akash Kumar</p>
         <p>Possibility to draw perfect circle and square: Thanks to Akash Kumar</p>
         <p xml:lang="ar">إمكانية رسم دائرة ومربع مثاليين: بفضل أكاش كومار</p>
         <p xml:lang="ca">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
@@ -316,6 +320,7 @@
         <p xml:lang="sl">Možnost risanja popolnega kroga in kvadrata: Zahvala Akashu Kumarju</p>
         <p xml:lang="tr">Mükemmel daireler ve kareler çizme olanağı: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість малювати ідеальні кола і квадрати: дякуємо Акашу Кумару</p>
+        <p xml:lang="zh-TW">繪製完美圓形與正方形的功能：感謝 Akash Kumar</p>
         <p>Various small bugs fixes and improvements.</p>
         <p xml:lang="ar">إصلاحات لأخطاء بسيطة متنوعة وتحسينات.</p>
         <p xml:lang="ca">Correccions diverses d'errors petits i millores.</p>
@@ -332,6 +337,7 @@
         <p xml:lang="sl">Različni popravki manjših napak in izboljšave.</p>
         <p xml:lang="tr">Çeşitli hata düzeltmeleri ve iyileştirmeler</p>
         <p xml:lang="uk">Різноманітні виправлення невеликих вад та удосконалення.</p>
+        <p xml:lang="zh-TW">許多小幅度錯誤修正與改進。</p>
       </description>
     </release>
     <release version="1.2.5" date="2025-10-29">
@@ -370,6 +376,7 @@
           <li xml:lang="sl">Odpravljena večja težava s stranjo za slikanje</li>
           <li xml:lang="tr">Boyama sayfasındaki büyük sorunlar giderildi.</li>
           <li xml:lang="uk">Виправлено велику проблему зі сторінкою малювання</li>
+          <li xml:lang="zh-TW">修正繪圖頁面的嚴重問題</li>
           <li>Fix the preview going black when the app loses focus</li>
           <li xml:lang="ar">إصلاح تحول المعاينة للون الأسود عند فقدان التطبيق للتركيز</li>
           <li xml:lang="ca">Corregeix la vista prèvia que es fa negra quan l'aplicació perd el focus</li>
@@ -386,6 +393,7 @@
           <li xml:lang="sl">Odpravljena težava s črnim predogledom, ko aplikacija izgubi fokus</li>
           <li xml:lang="tr">Uygulama odağı kaybettiğinde önizlemenin kararması sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що попередній перегляд чорнів, якщо програма втрачала фокус</li>
+          <li xml:lang="zh-TW">修正應用程式喪失焦點時預覽會變黑的問題</li>
           <li>Tweak the auto indent</li>
           <li xml:lang="ar">تحسين الإزاحة الآلية</li>
           <li xml:lang="ca">Ajusta el sagnat automàtic</li>
@@ -402,6 +410,7 @@
           <li xml:lang="sl">Prilagojen samodejnI zamik</li>
           <li xml:lang="tr">Kendiliğinden girintilemeye ince ayar çekildi.</li>
           <li xml:lang="uk">Скориговано автоматичний відступ</li>
+          <li xml:lang="zh-TW">調整自動縮排</li>
         </ul>
       </description>
     </release>
@@ -441,6 +450,7 @@
           <li xml:lang="sl">Posodobitev md4qt (popravljena večja težava)</li>
           <li xml:lang="tr">md4qt güncellendi.</li>
           <li xml:lang="uk">Оновлено md4qt (виправлено значну проблему)</li>
+          <li xml:lang="zh-TW">更新 md4qt （修正大問題）</li>
           <li>Fix major editor highlight issue</li>
           <li xml:lang="ar">إصلاح مشكلة كبرى في إبراز المحرر</li>
           <li xml:lang="ca">Corregeix un problema important del ressaltat de l'editor</li>
@@ -457,6 +467,7 @@
           <li xml:lang="sl">Popravljena večja težava z označevanjem urejevalnika</li>
           <li xml:lang="tr">Düzenleyicideki ana vurgulama sorunu onarıldı.</li>
           <li xml:lang="uk">Виправлено значну проблему з підсвічуванням у редакторі</li>
+          <li xml:lang="zh-TW">修正嚴重的編輯器語法突顯問題</li>
           <li>Improve "auto list" feature</li>
           <li xml:lang="ar">تحسين ميزة "القائمة الآلية"</li>
           <li xml:lang="ca">Millora la característica «llista automàtica»</li>
@@ -473,6 +484,7 @@
           <li xml:lang="sl">Izboljšana zmožnost "samodejnega seznama"</li>
           <li xml:lang="tr">“Otomatik liste” özelliği iyileştirildi.</li>
           <li xml:lang="uk">Удосконалено можливість «автосписок»</li>
+          <li xml:lang="zh-TW">改善「自動列表」功能</li>
         </ul>
       </description>
     </release>
@@ -512,6 +524,7 @@
           <li xml:lang="sl">Popravljeno premikanje elementov v korensko mapo</li>
           <li xml:lang="tr">Ögeleri kök klasöre taşıma onarıldı.</li>
           <li xml:lang="uk">Виправлено пересування записів до кореневої теки</li>
+          <li xml:lang="zh-TW">修正項目移動到根資料夾</li>
           <li>Fix items sorting</li>
           <li xml:lang="ar">إصلاح فرز العناصر</li>
           <li xml:lang="ca">Corregeix l'ordenació d'elements</li>
@@ -1237,6 +1250,7 @@
         <p xml:lang="sl">KleverNotes, KDE-jeva aplikacija za ustvarjanje in upravljanje zapiskov Markdown z uporabo Kirigamija, je pripravljena na svojo prvo izdajo!</p>
         <p xml:lang="tr">KleverNotes, KDE's Markdown note-taking and management application using Kirigami, is ready for its first release!</p>
         <p xml:lang="uk">KleverNotes — програма KDE для створення нотаток у Markdown та керування ними з використанням Kirigami, готова до першого випуску!</p>
+        <p xml:lang="zh-TW">KDE 利用 Kirigami 的 Markdown 筆記記錄與管理應用程式 KleverNotes 準備好發佈第一個版本了！</p>
         <p>
           KleverNotes allows you to create and preview a Markdown note while giving you the freedom to customize the preview from settings or using a CSS theme.
           You can organize your notes however you want with a combination of categories and groups, which will be directly reflected on your system in the 
