@@ -93,6 +93,7 @@
     <p xml:lang="ar">ملاحظات ذكية هو تطبيق لتدوين الملاحظات وإدارتها لأجهزتك المحمولة والمكتبية. يستخدم لغة مارك داون ويسمح لك بمعاينة محتواك.</p>
     <p xml:lang="ca">El KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Empra el Markdown i permet previsualitzar el contingut.</p>
     <p xml:lang="ca-valencia">KleverNotes és una aplicació de presa i gestió de notes per als vostres dispositius mòbils i d'escriptori. Utilitza Markdown i permet previsualitzar el contingut.</p>
+    <p xml:lang="cs">KleverNotes je aplikace pro pořizování a správu poznámek pro mobilní a stolní zařízení. Využívá formát Markdown a umožňuje náhled obsahu.</p>
     <p xml:lang="de">KleverNotes ist eine Anwendung zur Erstellung und Verwaltung von Notizen für Ihre Mobil- und Desktop-Geräte. Sie verwendet Markdown und bietet Ihnen eine formatierte Vorschau des Inhalts an.</p>
     <p xml:lang="en-GB">KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="eo">KleverNotes estas aplikaĵo por prenado kaj administrado de notoj por viaj porteblaj kaj labortablaj aparatoj. Ĝi uzas markdown kaj permesas vin antaŭrigardi vian enhavon.</p>
@@ -126,6 +127,7 @@
       <caption xml:lang="ar">الصفحة الرئيسة على سطح المكتب</caption>
       <caption xml:lang="ca">Pàgina principal al PC d'escriptori</caption>
       <caption xml:lang="ca-valencia">Pàgina principal al PC d'escriptori</caption>
+      <caption xml:lang="cs">Hlavní stránka na pracovní ploše</caption>
       <caption xml:lang="de">Hauptseite auf dem Desktop-Rechner</caption>
       <caption xml:lang="es">Página principal del equipo de escritorio</caption>
       <caption xml:lang="eu">Orri nagusia mahaigaineko PCrako</caption>
@@ -152,6 +154,7 @@
       <caption xml:lang="ar">الصفحة الرئيسة على الشكل الصغير</caption>
       <caption xml:lang="ca">Pàgina principal al factor de format petit</caption>
       <caption xml:lang="ca-valencia">Pàgina principal al factor de format xicotet</caption>
+      <caption xml:lang="cs">Hlavní stránka na zařízení s malými rozměry</caption>
       <caption xml:lang="de">Hauptseite auf einem kleineren Endgerät</caption>
       <caption xml:lang="en-GB">Main page on small form factor</caption>
       <caption xml:lang="eo">Ĉefpaĝo en malgranda formfaktoro</caption>
@@ -257,6 +260,7 @@
         <p>update md4qt to version 5.0.15: Igor Mironchik, creator of md4qt.</p>
         <p xml:lang="ca">Actualitza el md4qt a la versió 5.0.15: Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="ca-valencia">Actualitza md4qt a la versió 5.0.15: Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="cs">Aktualizace md4qt na verzi 5.0.15: Igor Mironchik, autor programu md4qt.</p>
         <p xml:lang="es">Se ha actualizado md4qt a la versión 5.0.15: Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="fr">Mettre à jour le logiciel « md4qt » vers la version 5.0.15 : logiciel « md4qt » créé par Igor Mironchik.</p>
         <p xml:lang="he">עדכון של md4qt לגרסה 5.0.15: איגור מירוצ׳ניק, היוצר של md4qt.</p>
@@ -278,6 +282,7 @@
         <p xml:lang="ar">أُدرجت النسخة 5.0.0 من md4qt في KleverNotes، لتقدم تحسينات كبيرة: شكرًا لإيغور ميرونشيك، مطور md4qt.</p>
         <p xml:lang="ca">La versió 5.0.0 del md4qt s'ha integrat en el KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="ca-valencia">La versió 5.0.0 de md4qt s'ha integrat en KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="cs">Do aplikace KleverNotes byla přidána verze 5.0.0 nástroje md4qt, která přináší významná vylepšení: Děkujeme Igoru Mironchikovi, tvůrci nástroje md4qt.</p>
         <p xml:lang="es">Se ha introducido md4qt en KleverNotes, que proporciona mejoras importantes: gracias a Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="fr">La version 5.0.0 de la bibliothèque « md4qt » a été introduite dans KleverNotes, apportant des améliorations majeures : merci à Igor Mironchik, créateur de cette bibliothèque.</p>
         <p xml:lang="he">החל שימוש ב־md4qt גרסה 5.0.0 ב־KleverNotes, ואיתו שיפורים רבים: תודה רבה לאיגור מירוצ׳ניק, היוצר של md4qt.</p>
@@ -295,6 +300,7 @@
         <p xml:lang="ar">إمكانية فرز الملاحظات حسب تاريخ آخر تعديل: شكرًا لأكاش كومار</p>
         <p xml:lang="ca">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
         <p xml:lang="ca-valencia">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
+        <p xml:lang="cs">Možnost seřadit poznámky podle data poslední úpravy: Děkujeme Akashovi Kumarovi</p>
         <p xml:lang="es">Posibilidad de ordenar las notas por la fecha de última modificación: gracias a Akash Kumar.</p>
         <p xml:lang="fr">Possibilité de trier les notes par date de dernière modification : merci à Akash Kumar</p>
         <p xml:lang="he">אפשרות לסדר פתקיות לפי מועד השינוי האחרון שלהן: תודה רבה לאקאש קומאר</p>
@@ -312,6 +318,7 @@
         <p xml:lang="ar">إمكانية رسم دائرة ومربع مثاليين: بفضل أكاش كومار</p>
         <p xml:lang="ca">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
         <p xml:lang="ca-valencia">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
+        <p xml:lang="cs">Možnost nakreslit dokonalý kruh a čtverec: Díky Akashovi Kumarovi</p>
         <p xml:lang="es">Posibilidad de dibujar círculos y cuadrados perfectos: gracias a Akash Kumar.</p>
         <p xml:lang="fr">Possibilité de dessiner un cercle et un carré parfaits : merci à Akash Kumar</p>
         <p xml:lang="he">אפשרות לצייר עיגולים וריבועים מושלמים: תודה רבה לאקאש קומאר</p>
@@ -329,6 +336,7 @@
         <p xml:lang="ar">إصلاحات لأخطاء بسيطة متنوعة وتحسينات.</p>
         <p xml:lang="ca">Correccions diverses d'errors petits i millores.</p>
         <p xml:lang="ca-valencia">Correccions diverses d'errors petits i millores.</p>
+        <p xml:lang="cs">Různé drobné opravy chyb a vylepšení.</p>
         <p xml:lang="es">Diversas correcciones de pequeños fallos y mejoras.</p>
         <p xml:lang="fr">Diverses petites corrections de bogues et améliorations</p>
         <p xml:lang="he">מגוון תיקוני תקלות ושיפורים קטנטנים.</p>
@@ -350,6 +358,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="cs">Verze s opravami chyb:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -368,6 +377,7 @@
           <li xml:lang="ar">إصلاح مشكلة كبرى في صفحة الرسم</li>
           <li xml:lang="ca">Corregeix un problema important amb la pàgina de pintat</li>
           <li xml:lang="ca-valencia">Corregix un problema important amb la pàgina de pintat</li>
+          <li xml:lang="cs">Oprava závažného problému na stránce s kreslením</li>
           <li xml:lang="es">Se ha solucionado un problema importante de la página de dibujo.</li>
           <li xml:lang="fr">Correction d'un problème majeur avec la page de dessin</li>
           <li xml:lang="he">תוקנה בעיה משמעותית עם עמוד הציור</li>
@@ -385,6 +395,7 @@
           <li xml:lang="ar">إصلاح تحول المعاينة للون الأسود عند فقدان التطبيق للتركيز</li>
           <li xml:lang="ca">Corregeix la vista prèvia que es fa negra quan l'aplicació perd el focus</li>
           <li xml:lang="ca-valencia">Corregix la vista prèvia que es fa negra quan l'aplicació perd el focus</li>
+          <li xml:lang="cs">Opraven problém, kdy náhled zčerná, když aplikace ztratí zaměření</li>
           <li xml:lang="es">Se ha corregido el problema por el que la vista previa se pone en negro cuando la aplicación pierde el foco.</li>
           <li xml:lang="fr">Correction de l'aperçu devenant noir lors de la perte du focus par l'application</li>
           <li xml:lang="he">תוקנה בעיה שהתצוגה המקדימה מושחרת כשהיישום יוצא ממיקוד</li>
@@ -402,6 +413,7 @@
           <li xml:lang="ar">تحسين الإزاحة الآلية</li>
           <li xml:lang="ca">Ajusta el sagnat automàtic</li>
           <li xml:lang="ca-valencia">Ajusta el sagnat automàtic</li>
+          <li xml:lang="cs">Upraveno automatické odsazení</li>
           <li xml:lang="es">Se ha corregido el sangrado automático.</li>
           <li xml:lang="fr">Ajuster l'indentation automatique</li>
           <li xml:lang="he">ההזחה האוטומטית שופצה</li>
@@ -424,6 +436,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="cs">Verze s opravami chyb:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -442,6 +455,7 @@
           <li xml:lang="ar">تحديث md4qt (إصلاح مشكلة كبرى)</li>
           <li xml:lang="ca">Actualitza el «md4qt» (corregeix un problema important)</li>
           <li xml:lang="ca-valencia">Actualitza «md4qt» (corregix un problema important)</li>
+          <li xml:lang="cs">Aktualizováno md4qt (oprava závažné chyby)</li>
           <li xml:lang="es">Actualización de md4qt (corrige un problema importante).</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt » (Correction d un problème majeur)</li>
           <li xml:lang="he">‏md4qt עודכן (מתקן בעיות משמעותיות)</li>
@@ -459,6 +473,7 @@
           <li xml:lang="ar">إصلاح مشكلة كبرى في إبراز المحرر</li>
           <li xml:lang="ca">Corregeix un problema important del ressaltat de l'editor</li>
           <li xml:lang="ca-valencia">Corregix un problema important del ressaltat de l'editor</li>
+          <li xml:lang="cs">Opravena závažná chyba zvýrazňování v editoru</li>
           <li xml:lang="es">Se ha corregido un problema importante de resaltado en el editor.</li>
           <li xml:lang="fr">Correction du problème majeur de surlignage de l'éditeur</li>
           <li xml:lang="he">תוקנה בעיית הדגשה עיקרית בעורך</li>
@@ -476,6 +491,7 @@
           <li xml:lang="ar">تحسين ميزة "القائمة الآلية"</li>
           <li xml:lang="ca">Millora la característica «llista automàtica»</li>
           <li xml:lang="ca-valencia">Millora la característica «llista automàtica»</li>
+          <li xml:lang="cs">Vylepšená funkce automatického seznamu</li>
           <li xml:lang="es">Se ha mejorado la función de «lista automática».</li>
           <li xml:lang="fr">Améliorer la fonctionnalité « Liste automatique »</li>
           <li xml:lang="he">היכולת „רשימות אוטומטיות” השתפרה</li>
@@ -498,6 +514,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="cs">Verze s opravami chyb:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -516,6 +533,7 @@
           <li xml:lang="ar">إصلاح نقل العناصر إلى المجلد الجذر</li>
           <li xml:lang="ca">Corregeix els elements que es mouen a la carpeta arrel</li>
           <li xml:lang="ca-valencia">Corregix els elements que es mouen cap a dins de la carpeta arrel</li>
+          <li xml:lang="cs">Opraven přesun položek do kořenové složky</li>
           <li xml:lang="es">Se ha corregido el movimiento de elementos a la carpeta raíz.</li>
           <li xml:lang="fr">Correction du déplacement d'éléments vers le dossier racine</li>
           <li xml:lang="he">תוקנה העברת פריטים לתיקיית הבסיס</li>
@@ -533,6 +551,7 @@
           <li xml:lang="ar">إصلاح فرز العناصر</li>
           <li xml:lang="ca">Corregeix l'ordenació d'elements</li>
           <li xml:lang="ca-valencia">Corregix l'ordenació d'elements</li>
+          <li xml:lang="cs">Opraveno řazení položek</li>
           <li xml:lang="es">Se ha corregido el orden de los elementos.</li>
           <li xml:lang="fr">Correction du tri des éléments</li>
           <li xml:lang="he">סידור פריטים תוקן</li>
@@ -550,6 +569,7 @@
           <li xml:lang="ar">تغيير محدد النصوص السفلية إلى `--`</li>
           <li xml:lang="ca">Canvia el delimitador de subíndex a `--`</li>
           <li xml:lang="ca-valencia">Canvia el delimitador de subíndex a `--`</li>
+          <li xml:lang="cs">Oddělovač indexů změněn na `--`</li>
           <li xml:lang="es">Se ha cambiado el delimitador de subíndice a `--`.</li>
           <li xml:lang="fr">Modifier le séparateur des indices en « -- »</li>
           <li xml:lang="he">מפריד הכתב התחתי התחלף ל־׳--׳</li>
@@ -566,6 +586,7 @@
           <li xml:lang="ar">تحديث md4qt (إصلاح علل صغرى وكبرى)</li>
           <li xml:lang="ca">Actualitza el «md4qt» (corregeix problemes lleus i importants)</li>
           <li xml:lang="ca-valencia">Actualitza «md4qt» (corregix problemes lleus i importants)</li>
+          <li xml:lang="cs">Aktualizace md4qt (oprava drobných i závažnějších problémů)</li>
           <li xml:lang="es">Actualización de md4qt (corrige problemas importantes y menores).</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt » (Correction de problèmes mineur et majeur)</li>
           <li xml:lang="he">‏md4qt עודכן (מתקן בעיות מזעריות ומשמעותיות)</li>
@@ -582,6 +603,7 @@
           <li xml:lang="ar">إصلاحات لعلل صغيرة متنوعة</li>
           <li xml:lang="ca">Correccions diverses d'errors petits</li>
           <li xml:lang="ca-valencia">Correccions diverses d'errors petits</li>
+          <li xml:lang="cs">Oprava různých drobných chyb</li>
           <li xml:lang="es">Diversas correcciones de pequeños fallos.</li>
           <li xml:lang="fr">Diverses petites corrections de bogues</li>
           <li xml:lang="he">מגוון תיקוני תקלות קטנטנים</li>
@@ -603,6 +625,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="cs">Verze s opravami chyb:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -621,6 +644,7 @@
           <li xml:lang="ar">إصلاح الانهيار عند حذف ملاحظة</li>
           <li xml:lang="ca">Corregeix una fallada en suprimir una nota</li>
           <li xml:lang="ca-valencia">Corregix una fallada en suprimir una nota</li>
+          <li xml:lang="cs">Oprava pádu aplikace při mazání poznámky</li>
           <li xml:lang="es">Se ha corregido un fallo de la aplicación al borrar notas.</li>
           <li xml:lang="fr">Correction d'un plantage lors de la suppression d'une note</li>
           <li xml:lang="he">תוקנה קריסה במחיקת פתקית</li>
@@ -638,6 +662,7 @@
           <li xml:lang="ar">إصلاح مشكلة المسار عند نقل ملاحظة</li>
           <li xml:lang="ca">Corregeix un problema de camí en moure la nota</li>
           <li xml:lang="ca-valencia">Corregix un problema de camí en moure la nota</li>
+          <li xml:lang="cs">Opraven problém s cestou při přesouvání poznámky</li>
           <li xml:lang="es">Se ha corregido un problema de ruta al mover notas.</li>
           <li xml:lang="fr">Correction du problème de chemin lors du déplacement d'une note</li>
           <li xml:lang="he">תוקנה בעיית נתיב בעת העברת פתקית</li>
@@ -654,6 +679,7 @@
           <li xml:lang="ar">عدم إنشاء ملف مهام إلا عند الضرورة</li>
           <li xml:lang="ca">No crea el fitxer de tasques pendents llevat que sigui necessari</li>
           <li xml:lang="ca-valencia">No crea el fitxer de tasques pendents llevat que siga necessari</li>
+          <li xml:lang="cs">Nevytváří se soubor se seznamem úkolů, pokud to není nutné</li>
           <li xml:lang="es">No crear el archivo de tareas pendientes si no es necesario.</li>
           <li xml:lang="fr">Ne pas créer pas de fichier de tâches à faire sauf si nécessaire</li>
           <li xml:lang="he">לא ליצור קובץ מטלות אלא במקרה הצורך</li>
@@ -670,6 +696,7 @@
           <li xml:lang="ar">محاذاة نمط ExpandingFormSwitch مع نمط FormSwitchDelegate</li>
           <li xml:lang="ca">Alinea l'estil ExpandingFormSwitch a l'estil FormSwitchDelegate</li>
           <li xml:lang="ca-valencia">Alinea l'estil ExpandingFormSwitch a l'estil FormSwitchDelegate</li>
+          <li xml:lang="cs">Styl ExpandingFormSwitch sladěn se stylem FormSwitchDelegate</li>
           <li xml:lang="es">Alinear el estilo ExpandingFormSwitch al estilo FormSwitchDelegate.</li>
           <li xml:lang="fr">Aligner le style « ExpandingFormSwitch » sur le style « FormSwitchDelegate »</li>
           <li xml:lang="he">יישור הסגנון של ExpandingFormSwitch עם הסגנון של FormSwitchDelegate</li>
@@ -686,6 +713,7 @@
           <li xml:lang="ar">تحسين تصميم حوار النقل</li>
           <li xml:lang="ca">Millora el disseny del diàleg de moure</li>
           <li xml:lang="ca-valencia">Millora el disseny del diàleg de moure</li>
+          <li xml:lang="cs">Vylepšen vzhled dialogového okna pro přesun</li>
           <li xml:lang="es">Se ha mejorado el diseño del diálogo para mover.</li>
           <li xml:lang="fr">Améliorer la conception de la boîte de dialogue de déplacement</li>
           <li xml:lang="he">עיצוב חלונית ההעברה השתפר</li>
@@ -702,6 +730,7 @@
           <li xml:lang="ar">إضافة مدخلات ورقة المساعدة لتوسيع الصيغة</li>
           <li xml:lang="ca">Afegeix entrades de full de trucs per a ampliar la sintaxi</li>
           <li xml:lang="ca-valencia">Afig entrades de full de trucs per a ampliar la sintaxi</li>
+          <li xml:lang="cs">Přidány položky do přehledu pro rozšíření syntaxe</li>
           <li xml:lang="es">Se han añadido entradas a la hoja de referencia para extender la sintaxis.</li>
           <li xml:lang="fr">Ajouter des entrées de mémo pour extension de la syntaxe</li>
           <li xml:lang="he">נוספו רשימות שליפים להרחבת התחביר</li>
@@ -718,6 +747,7 @@
           <li xml:lang="ar">تحديث md4qt</li>
           <li xml:lang="ca">Actualitza «md4qt»</li>
           <li xml:lang="ca-valencia">Actualitza «md4qt»</li>
+          <li xml:lang="cs">Aktualizace md4qt</li>
           <li xml:lang="es">Se ha actualizado md4qt.</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt »</li>
           <li xml:lang="he">‏md4qt עודכן</li>
@@ -740,6 +770,7 @@
         <p xml:lang="ar">إصدار لإصلاح العلل:</p>
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
+        <p xml:lang="cs">Verze s opravami chyb:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -758,6 +789,7 @@
           <li xml:lang="ar">إزالة شرط اسم التخزين (لم يعد بحاجة لأن يكون "klevernotes")</li>
           <li xml:lang="ca">Elimina el requisit per al nom d'emmagatzematge (ja no cal que sigui «klevernotes»)</li>
           <li xml:lang="ca-valencia">Elimina el requisit per al nom d'emmagatzematge (ja no cal que siga «klevernotes»)</li>
+          <li xml:lang="cs">Zrušen požadavek na název úložiště (již nemusí být "klevernotes")</li>
           <li xml:lang="es">Se ha eliminado el requisito para el nombre del almacenamiento (ya no necesita ser «klevernotes»).</li>
           <li xml:lang="fr">Supprimer l'exigence concernant le nom du média (Il n'est plus nécessaire qu'il soit « klevernotes »)</li>
           <li xml:lang="he">הוסרה הדרישה לשם אחסון (לא חייב עוד להיות „klevernotes”)</li>
@@ -774,6 +806,7 @@
           <li xml:lang="ar">إصلاح مشكلة صيرورة كتلة الكود مع وسوم HTML</li>
           <li xml:lang="ca">Corregeix el problema de renderització de blocs de codi amb etiqueta HTML</li>
           <li xml:lang="ca-valencia">Corregix el problema de renderització de blocs de codi amb etiqueta HTML</li>
+          <li xml:lang="cs">Opraven problém se zobrazením bloku kódu s HTML tagem</li>
           <li xml:lang="es">Se ha corregido el problema de visualización de bloques de código con la etiqueta HTML.</li>
           <li xml:lang="fr">Correction du problème d'affichage des blocs de code avec la balise « HTML »</li>
           <li xml:lang="he">תוקנו בעיות עיבוד קודים של קוד עם תגית HTML</li>
@@ -790,6 +823,7 @@
           <li xml:lang="ar">إصلاح حفظ المهام</li>
           <li xml:lang="ca">Corregeix el desament de les tasques pendents</li>
           <li xml:lang="ca-valencia">Corregix la guardada de les tasques pendents</li>
+          <li xml:lang="cs">Opraveno ukládání úkolů</li>
           <li xml:lang="es">Se ha corregido la operación de guardar tareas pendientes.</li>
           <li xml:lang="fr">Correction de l'enregistrement des tâches à faire</li>
           <li xml:lang="he">תוקנה שמירת רשימות מטלות</li>
@@ -807,6 +841,7 @@
           <li xml:lang="ar">السماح بنقل العناصر إلى جذر التخزين</li>
           <li xml:lang="ca">Permet que els elements es moguin a l'arrel d'emmagatzematge</li>
           <li xml:lang="ca-valencia">Permet que els elements es moguen a l'arrel d'emmagatzematge</li>
+          <li xml:lang="cs">Povolen přesun položek do kořenového adresáře úložiště</li>
           <li xml:lang="es">Se permite mover elementos a la raíz del almacenamiento.</li>
           <li xml:lang="fr">Autoriser le déplacement des éléments vers la racine du media</li>
           <li xml:lang="he">לאפשר העברת פריטים לתיקיית בסיס האחסון</li>
@@ -828,6 +863,7 @@
         <p xml:lang="ar">ما الجديد:</p>
         <p xml:lang="ca">Què hi ha de nou:</p>
         <p xml:lang="ca-valencia">Què hi ha de nou:</p>
+        <p xml:lang="cs">Co je nového:</p>
         <p xml:lang="es">Novedades:</p>
         <p xml:lang="fr">Quoi de neuf :</p>
         <p xml:lang="he">מה חדש:</p>
@@ -846,6 +882,7 @@
           <li xml:lang="ar">بنية ملفات جديدة تعكس تماماً ما يظهر في الشريط الجانبي، مع إمكانية تغيير اللون والأيقونة لكل عنصر.</li>
           <li xml:lang="ca">Estructura de fitxers nova que reflecteix perfectament el que es veu a la barra lateral. I la possibilitat de canviar el color i la icona de cada element.</li>
           <li xml:lang="ca-valencia">Estructura de fitxers nova que reflectix perfectament el que es veu a la barra lateral. I la possibilitat de canviar el color i la icona de cada element.</li>
+          <li xml:lang="cs">Nová struktura souborů, která přesně odpovídá tomu, co vidíte v postranním panelu. A možnost změnit barvu a ikonu jednotlivých položek.</li>
           <li xml:lang="es">Nueva estructura de archivos que refleja perfectamente lo que se ve en la barra lateral. Se puede cambiar el color y el icono de cada elemento.</li>
           <li xml:lang="fr">Nouvelle structure de fichiers reflétant parfaitement ce que vous voyez dans la barre latérale. Et possibilité de modifier la couleur et l'icône de chaque élément.</li>
           <li xml:lang="he">מבנה קבצים חדש שמשקף בצורה מושלמת את מה שמופיע בסרגל הצד. וגם היכולת לשנות את הצבע והסמל של כל אחד מהפריטים.</li>
@@ -862,6 +899,7 @@
           <li xml:lang="ar">صفحة رسم جديدة بميزات أكثر</li>
           <li xml:lang="ca">Pàgina de dibuix nova amb més funcionalitats</li>
           <li xml:lang="ca-valencia">Pàgina de dibuix nova amb més funcionalitats</li>
+          <li xml:lang="cs">Nová stránka pro kreslení s více funkcemi</li>
           <li xml:lang="es">Nueva página de dibujo con más funciones.</li>
           <li xml:lang="fr">Nouvelle page de dessin avec plus de fonctionnalités</li>
           <li xml:lang="he">עמוד ציור חדש עם יכולות נוספות</li>
@@ -878,6 +916,7 @@
           <li xml:lang="ar">زر نسخ داخل كتلة الكود</li>
           <li xml:lang="ca">Botó de còpia dins del bloc de codi</li>
           <li xml:lang="ca-valencia">Botó de còpia dins del bloc de codi</li>
+          <li xml:lang="cs">Tlačítko Kopírovat uvnitř bloku kódu</li>
           <li xml:lang="es">Botón «Copiar» dentro del bloque de código.</li>
           <li xml:lang="fr">Bouton « Copier » à l'intérieur d'un bloc de code</li>
           <li xml:lang="he">כפתור העתקה בתוך מקטע קוד</li>
@@ -894,6 +933,7 @@
           <li xml:lang="ar">شريط سفلي جديد للتبديل بين الملاحظات والمهام</li>
           <li xml:lang="ca">Barra inferior nova per a canviar entre la nota i les tasques pendents</li>
           <li xml:lang="ca-valencia">Barra inferior nova per a canviar entre la nota i les tasques pendents</li>
+          <li xml:lang="cs">Nová spodní lišta pro přepínání mezi poznámkami a úkoly</li>
           <li xml:lang="es">Nueva barra inferior para cambiar entre notas y tareas pendientes.</li>
           <li xml:lang="fr">Nouvelle barre inférieure pour basculer entre les notes et les tâches à faire</li>
           <li xml:lang="he">סרגל תחתון חדש להחלפה בין פתקית למטלות</li>
@@ -910,6 +950,7 @@
           <li xml:lang="ar">تحسين رسوم تبديل الصفحات المتحركة</li>
           <li xml:lang="ca">Millora de l'animació de canvi de pàgina</li>
           <li xml:lang="ca-valencia">Millora de l'animació de canvi de pàgina</li>
+          <li xml:lang="cs">Vylepšená animace při přepínání stránek</li>
           <li xml:lang="es">Se ha mejorado la animación de cambio de página.</li>
           <li xml:lang="fr">Amélioration de l'animation de basculement de page</li>
           <li xml:lang="he">הנפשת החלפת עמודים השתפרה</li>
@@ -927,6 +968,7 @@
         <p xml:lang="ar">إصلاحات للعلل تشمل ولا تقتصر على:</p>
         <p xml:lang="ca">Correccions d'errors que inclouen però no es limiten a:</p>
         <p xml:lang="ca-valencia">Esmenes d'errors que inclouen però no es limiten a:</p>
+        <p xml:lang="cs">Opravy chyb, mimo jiné:</p>
         <p xml:lang="es">Correcciones de fallos que incluyen, entre otras:</p>
         <p xml:lang="fr">Corrections de bogues incluant, mais sans s'y limite à :</p>
         <p xml:lang="he">תיקוני תקלות שכוללים אך לא מוגבלים לרשימה הבאה:</p>
@@ -944,6 +986,7 @@
           <li xml:lang="ar">الضغط على V بدون مفتاح تعديل عند وجود صورة في الحافظة لا يؤدي لشيء (كما يجب)</li>
           <li xml:lang="ca">Prement V sense cap modificador mentre hi ha una imatge al porta-retalls no fa res (com hauria de fer)</li>
           <li xml:lang="ca-valencia">Prement V sense cap modificador mentre hi ha una imatge al porta-retalls no fa res (com hauria de fer)</li>
+          <li xml:lang="cs">Stisknutí klávesy V bez jakéhokoli modifikačního klávesy při přítomnosti obrázku ve schránce nemá žádný účinek (jak by mělo být)</li>
           <li xml:lang="es">Pulsar V sin ninguna tecla modificadora cuando hay una imagen en el portapapeles no hace nada (como debería ser).</li>
           <li xml:lang="fr">L'appui sur la touche « V » sans aucun modificateur lorsqu'une image est dans le presse-papier ne fait rien (Comme cela devrait être)</li>
           <li xml:lang="he">לחיצה על V בלי שום מקש החלפה תוך כדי שיש תמונה בלוח הגזירים לא עושה כלום (כמו שצריך)</li>
@@ -960,6 +1003,7 @@
           <li xml:lang="ar">منع تسمية العناصر بالرمز '/' لتجنب إنشاء مجلدات</li>
           <li xml:lang="ca">Evita anomenar elements amb un «/», ja que crearia un directori</li>
           <li xml:lang="ca-valencia">Evita anomenar elements amb un «/», ja que crearia un directori</li>
+          <li xml:lang="cs">Zabráněno pojmenování položky znakem '/', protože by se tím vytvořil adresář</li>
           <li xml:lang="es">Impedir que se use el carácter «/» en el nombre de los elementos, ya que crearía un directorio.</li>
           <li xml:lang="fr">Bloquer le renommage d'un élément avec le caractère « / » pour éviter la création d'un dossier</li>
           <li xml:lang="he">למנוע מתן שם עם ‚/’ לפריט כיוון שהתן הזה גורם ליצירת תיקייה</li>
@@ -976,6 +1020,7 @@
           <li xml:lang="ar">مشكلات صيرورة متنوعة</li>
           <li xml:lang="ca">Problemes diversos de renderització</li>
           <li xml:lang="ca-valencia">Problemes diversos de renderització</li>
+          <li xml:lang="cs">Různé problémy s vykreslováním</li>
           <li xml:lang="es">Diversos problemas de visualización.</li>
           <li xml:lang="fr">Divers problèmes de rendu</li>
           <li xml:lang="he">תקלות עיבוד שונות</li>
@@ -1001,6 +1046,7 @@
         <p xml:lang="ar">إصدار ملاحظات ذكية 1.1.0 متاح أخيراً! ملاحظات ذكية هو تطبيق لتدوين الملاحظات بلغة مارك داون من كِيدِي. استمر العمل بجد لمدة 3 أشهر لإضافة ميزات جديدة وتحسين التطبيق وإصلاح بعض العلل.</p>
         <p xml:lang="ca">Finalment, el KleverNotes 1.1.0 està disponible! El KleverNotes és l'aplicació per a la presa de notes Markdown de KDE. Durant 3 mesos, he estat treballant de valent afegint funcionalitats noves mentre millorava l'aplicació i solucionava alguns errors.</p>
         <p xml:lang="ca-valencia">Finalment, KleverNotes 1.1.0 està disponible! KleverNotes és l'aplicació per a la presa de notes Markdown de KDE. Durant 3 mesos, he sigut treballant de valent afegint característiques noves mentre millorava l'aplicació i solucionava alguns errors.</p>
+        <p xml:lang="cs">KleverNotes 1.1.0 je konečně k dispozici! KleverNotes je aplikace pro psaní poznámek ve formátu Markdown od KDE. Poslední tři měsíce se usilovně pracovalo na přidávání nových funkcí, vylepšování aplikace a opravování některých chyb.</p>
         <p xml:lang="es">Ya está disponible KleverNotes 1.1.0. KleverNotes es una aplicación de KDE para escribir notas. Durante tres meses, he estado trabajando duro para añadir nuevas funciones a la vez que mejoraba la aplicación y corregía algunos fallos.</p>
         <p xml:lang="fr">KleverNotes 1.1.0 est enfin disponible ! KleverNotes est l'application de prise de notes de KDE en Markdown. Depuis 3 mois, je travaille dur pour ajouter de nouvelles fonctionnalités tout en améliorant l'application et en corrigeant certains bogues.</p>
         <p xml:lang="he">KleverNotes 1.1.0 סוף סוף זמין! KleverNotes הוא יישום כתיבת הפתקיות ב־Markdown מבית KDE. במשך 3 חודשים עמלתי רבות על הוספת יכולות חדשות תוך שיפור היישום ותיקון כל מיני תקלות.</p>
@@ -1017,6 +1063,7 @@
         <p xml:lang="ar">حُوّل معالج ملاحظات ذكية إلى md4qt:</p>
         <p xml:lang="ca">L'analitzador del KleverNotes s'ha canviat a «md4qt»:</p>
         <p xml:lang="ca-valencia">L'analitzador de KleverNotes s'ha canviat a «md4qt»:</p>
+        <p xml:lang="cs">Parser KleverNotes byl nahrazen md4qt:</p>
         <p xml:lang="es">El analizador de KleverNotes se ha cambiado a md4qt:</p>
         <p xml:lang="fr">L'analyseur de KleverNotes a été migré vers la bibliothèque « md4qt » :</p>
         <p xml:lang="he">המפענח של KleverNotes הוחלף ל־md4qt:</p>
@@ -1033,6 +1080,7 @@
         <p xml:lang="ar">md4qt هي مكتبة C++ مقتصرة على الترويسات لمعالجة مارك داون.</p>
         <p xml:lang="ca">«md4qt» és una biblioteca C++ només de capçalera per a analitzar Markdown.</p>
         <p xml:lang="ca-valencia">«md4qt» és una biblioteca C++ només de capçalera per a analitzar Markdown.</p>
+        <p xml:lang="cs">md4qt je knihovna C++ typu header-only určená k analýze formátu Markdown.</p>
         <p xml:lang="es">md4qt es una biblioteca C++ de una cabecera para analizar Markdown.</p>
         <p xml:lang="fr">La bibliothèque « md4qt » est une bibliothèque en C++ uniquement composée d'en-têtes pour l'analyse du langage Markdown.</p>
         <p xml:lang="he">‏md4qt היא ספריית C++‎ עם כותרת בלבד לפיענוח Markdown.</p>
@@ -1053,6 +1101,7 @@
         <p xml:lang="ar">تدعم md4qt مواصفات CommonMark 0.31.2، وبعض ملحقات جيت هاب مثل الجداول، والحواشي السفلية، وقوائم المهام، والتشطيب، وإدراجات لغة تخ الرياضية، وروابط جيت هاب الآلية.</p>
         <p xml:lang="ca">«md4qt» admet l'especificació CommonMark 0.31.2, i algunes extensions de GitHub, com ara taules, notes a peu de pàgina, llistes de tasques, injeccions de LaTeX Math, enllaços automàtics de GitHub.</p>
         <p xml:lang="ca-valencia">«md4qt» admet l'especificació CommonMark 0.31.2, i algunes extensions de GitHub, com ara taules, notes a peu de pàgina, llistes de tasques, injeccions de LaTeX Math, enllaços automàtics de GitHub.</p>
+        <p xml:lang="cs">md4qt podporuje specifikaci CommonMark 0.31.2 a některá rozšíření GitHubu, jako jsou tabulky, poznámky pod čarou, seznamy úkolů, přeškrtnutí, vkládání matematických výrazů v LaTeXu a automatické odkazy GitHubu.</p>
         <p xml:lang="es">md4qt es compatible con la especificación CommonMark 0.31.2 y con algunas extensiones de GitHub, como tablas, notas al pie, listas de tareas, tachado, bloques de LaTeX Math y enlaces automáticos de GitHub.</p>
         <p xml:lang="fr">La bibliothèque « md4qt » prend en charge la spécification « CommonMark 0.31.2 », ainsi que certaines extensions de GitHub, telles que les tableaux, les notes de bas de page, les listes de tâches, les textes barrés, les injections de mathématiques en LaTeX et les liens automatiques de GitHub.</p>
         <p xml:lang="he">‏md4qt תומך במפרט CommonMark 0.31.2, ובכל מיני הרחבות של GitHub כגון טבלאות, הערות שוליים, רשימות מטלות, קווים חוצים, הזרקות מתמטיקה ב־LaTeX, קישורים אוטומטיים של GitHub.</p>
@@ -1069,6 +1118,7 @@
         <p xml:lang="ar">إنه سريع، وموثوق، وقابل للتخصيص، وسهل الاستخدام. إنه التوافق الأمثل!</p>
         <p xml:lang="ca">És ràpid, repetible, personalitzable i fàcil d'utilitzar. Una combinació perfecta!</p>
         <p xml:lang="ca-valencia">És ràpid, repetible, personalitzable i fàcil d'utilitzar. Una combinació perfecta!</p>
+        <p xml:lang="cs">Je rychlý, škálovatelný, přizpůsobitelný a snadno ovladatelný. Ideální volba!</p>
         <p xml:lang="es">Es rápido, fiable, personalizable y fácil de usar. ¡Una combinación perfecta!</p>
         <p xml:lang="fr">Il est rapide, repliable, personnalisable et facile à utiliser. Une adaptation parfaite !</p>
         <p xml:lang="he">הוא מהיר, אמין, גמיש וקל לשימוש. הכול בחבילה אחת!</p>
@@ -1085,6 +1135,7 @@
         <p xml:lang="ar">أصبح شريط الأدوات الآن أكثر دقة في إزالة وسوم مارك داون المحددة وأيضاً في تطبيقها.</p>
         <p xml:lang="ca">La barra d'eines ara és més precisa en eliminar etiquetes específiques del Markdown, però també en aplicar-les.</p>
         <p xml:lang="ca-valencia">La barra d'eines ara és més precisa en eliminar etiquetes específiques de Markdown, però també en aplicar-les.</p>
+        <p xml:lang="cs">Panel nástrojů nyní umožňuje přesnější odstranění konkrétních značek Markdownu, ale také jejich vkládání.</p>
         <p xml:lang="es">La barra de herramientas es ahora más precisa para eliminar etiquetas específicas de Markdown y también para aplicarlas.</p>
         <p xml:lang="fr">La barre d'outils est désormais plus précise pour la suppression de balises Markdown spécifiques, mais aussi pour leurs applications.</p>
         <p xml:lang="he">סרגל הכלים מדויק יותר מעתה מבחינת הסרת תגיות Markdown מסוימות אבל גם מבחינת החלתן.</p>
@@ -1101,6 +1152,7 @@
         <p xml:lang="ar">علاوة على ذلك، يظهر شريط الأدوات الآن الوسوم المطبقة بالفعل على النص الموجود تحت المؤشر أو النص المحدد.</p>
         <p xml:lang="ca">A més d'això, la barra d'eines ara mostra quines etiquetes ja s'apliquen al text sota el cursor o el text seleccionat.</p>
         <p xml:lang="ca-valencia">A més d'açò, la barra d'eines ara mostra quines etiquetes ja s'apliquen al text baix el cursor o el text seleccionat.</p>
+        <p xml:lang="cs">Kromě toho vám panel nástrojů nyní ukazuje, jaké štítky jsou již přiřazeny k textu pod kurzorem nebo k vybranému textu.</p>
         <p xml:lang="es">Por si esto fuera poco, la barra de herramientas muestra ahora las etiquetas que se han aplicado al texto que hay bajo el cursor o en el texto seleccionado.</p>
         <p xml:lang="fr">De plus, la barre d'outils vous permet désormais l'affichage des étiquettes qui sont déjà appliqués sur le texte sous le pointeur ou sur le texte sélectionné.</p>
         <p xml:lang="he">על גבי זה, סרגל הכלים מציג לך מעתה אילו תגיות כבר חלות על הטקסט שתחת הסמן או הטקסט הנבחר.</p>
@@ -1122,6 +1174,7 @@
         <p xml:lang="ar">اكتسب المحرر أيضاً بعض الميزات المثيرة للاهتمام. أصبح دعم الإزاحة الكتلية والإضافة الآلية لعناصر القائمة أكثر موثوقية، كما تتوفر الآن إمكانية إضافة فاصل html قبل سطر جديد عبر `Shift + Enter` أو مسطرة أفقية عبر `Alt + Enter`.</p>
         <p xml:lang="ca">L'editor també ha guanyat algunes característiques interessants. La implementació de tabulació/anular la tabulació de blocs i l'addició automàtica d'elements de llista ara són més fiables, però ara també teniu la capacitat d'afegir un salt HTML abans d'una línia nova amb `Maj + Retorn` o un regle horitzontal utilitzant `Alt + Retorn`.</p>
         <p xml:lang="ca-valencia">L'editor també ha guanyat algunes característiques interessants. La implementació de tabulació/anular la tabulació de blocs i l'addició automàtica d'elements de llista ara són més fiables, però ara també teniu la capacitat d'afegir un salt HTML abans d'una línia nova amb `Majús + Retorn` o un regle horitzontal utilitzant `Alt + Retorn`.</p>
+        <p xml:lang="cs">Editor byl také obohacen o několik zajímavých funkcí. Podpora seskupování a oddělování bloků a automatické přidávání položek do seznamu nyní fungují spolehlivěji, ale navíc máte nyní možnost vložit před nový řádek oddělovač HTML pomocí klávesové zkratky `Shift + Enter` nebo vodorovnou čáru pomocí klávesové zkratky `Alt + Enter`.</p>
         <p xml:lang="es">El editor también ha ganado algunas funciones interesantes. La función de poner/quitar tabulación de bloques y la adición automática de elementos de lista son ahora más fiables. También se puede añadir un salto de línea HTML antes de una nueva línea con `Mayúsculas + Intro` o una línea horizontal con `Alt + Intro`.</p>
         <p xml:lang="fr">L'éditeur a également reçu quelques fonctionnalités intéressantes. La prise en charge du tabulation / dé-tabulation des blocs et l'ajout automatique d'éléments de liste sont maintenant plus fiables. Mais, vous avez désormais aussi la possibilité d'ajouter un saut « HTML » avant une nouvelle ligne avec `Maj + Entrée` ou une règle horizontale de repères en utilisant `ALT + Entrée`.</p>
         <p xml:lang="he">גם לעורך נוספו כמה יכולות מעניינות. תמיכה בהגדלת/הקטנת כניסת מקטע בטאב והוספה אוטומטית של פריטי רשימה היא אמינה יותר מעתה, אבל מעכשיו יש גם יכולת להוסיף הפוגת html לפני שורה חדשה עם `Shift + Enter` או סרגל אופקי עם `Alt + Enter`.</p>
@@ -1139,6 +1192,7 @@
           <li xml:lang="ar">تُجرى المعالجة الآن في خيط منفصل، لذا ستظل معالجة الملاحظات الضخمة جداً سلسة!</li>
           <li xml:lang="ca">L'anàlisi ara es fa en un fil separat, de manera que l'anàlisi de notes molt grans encara ha de ser fluid!</li>
           <li xml:lang="ca-valencia">L'anàlisi ara es fa en un fil separat, de manera que l'anàlisi de notes molt grans encara ha de ser fluid!</li>
+          <li xml:lang="cs">Parsování se nyní provádí v samostatném vlákně, takže i při parsování velmi rozsáhlých poznámek by mělo vše běžet plynule!</li>
           <li xml:lang="es">El análisis sintáctico se lleva a cabo ahora en un hilo independiente, por lo que el análisis de notas muy grandes no debería ser problemático.</li>
           <li xml:lang="fr">L'analyse est maintenant effectuée sur un processus séparé. Par conséquent, l'analyse de notes très volumineuses devrait rester fluide !</li>
           <li xml:lang="he">הפיענוח מתבצע מעתה בתהליכון נפרד, כך שפיענוח פתקיות גדולות במיוחד עדיין אמור לרוץ חלק!</li>
@@ -1155,6 +1209,7 @@
           <li xml:lang="ar">تُعطل الصيرورة الآن في حال تعطيل المعاينة، مما يوفر بعض الموارد!</li>
           <li xml:lang="ca">La renderització ara està desactivada si la vista prèvia està desactivada, estalviant recursos!</li>
           <li xml:lang="ca-valencia">La renderització ara està desactivada si la vista prèvia està desactivada, estalviant recursos!</li>
+          <li xml:lang="cs">Pokud je náhled vypnutý, je nyní vypnuté i vykreslování, což šetří některé zdroje!</li>
           <li xml:lang="es">La representación está ahora desactivada si la vista previa también está desactivada, lo que ahorra recursos.</li>
           <li xml:lang="fr">Le rendu est maintenant désactivé si l'aperçu est désactivé. Cela permet d'économiser des ressources !</li>
           <li xml:lang="he">העיבוד מושבת אם התצוגה המקדימה מושבתת, כך חוסכים במשאבים!</li>
@@ -1171,6 +1226,7 @@
           <li xml:lang="ar">يؤدي استخدام شريط الأدوات الآن إلى إضافة النص أو إزالته في كتلة تراجع واحدة، فلا حاجة لتكرار `Ctrl+Z` للعودة إلى الحالة السابقة.</li>
           <li xml:lang="ca">L'ús de la barra d'eines ara afegirà o eliminarà text en un sol bloc de desfer, ja no caldrà més un `Ctrl+Z` doble/triple per a tornar a l'estat anterior.</li>
           <li xml:lang="ca-valencia">L'ús de la barra d'eines ara afegirà o eliminarà text en un sol bloc de desfer, ja no caldrà més un `Ctrl+Z` doble/triple per a tornar a l'estat anterior.</li>
+          <li xml:lang="cs">Použitím panelu nástrojů nyní přidáte nebo odstraníte text v rámci jediného bloku zpětných kroků, takže už nebudete muset stisknout dvakrát či třikrát klávesovou zkratku `Ctrl+Z`, abyste se vrátili do předchozího stavu.</li>
           <li xml:lang="es">Ahora, al usar la barra de herramientas, podrá añadir o eliminar texto en un solo bloque de deshacer, sin necesidad de pulsar dos o tres veces `Ctrl+Z` para volver al estado anterior.</li>
           <li xml:lang="fr">L'utilisation de la barre d'outils ajoutera ou supprimera désormais du texte dans un seul bloc d'annulation, plus besoin d'appuyer deux ou trois fois sur `CTRL + Z` pour revenir à votre état précédent.</li>
           <li xml:lang="he">שימוש בסרגל הכלים יוסיף או יסיר מעתה טקסט במקטע הסגה יחיד, לא צריך יותר `Ctrl+Z` כפול או משולש כדי לחזור למצב הקודם שלך.</li>
@@ -1188,6 +1244,7 @@
         <p xml:lang="ar">يمتلك المحرر الآن القدرة على أن يكون محرر "ما تراه هو ما تحصل عليه".</p>
         <p xml:lang="ca">L'editor ara té la capacitat de ser «WYSIWYG».</p>
         <p xml:lang="ca-valencia">L'editor ara té la capacitat de ser «WYSIWYG».</p>
+        <p xml:lang="cs">Editor nyní podporuje režim "WYSIWYG".</p>
         <p xml:lang="es">El editor tiene ahora la capacidad de ser «WYSIWYG».</p>
         <p xml:lang="fr">L'éditeur a maintenant la capacité d'être « WYSIWYG ».</p>
         <p xml:lang="he">העורך יכול מעתה לעבוד בתצורת „WYSIWYG” (המחשה חזותית בזמן העריכה).</p>
@@ -1204,6 +1261,7 @@
         <p xml:lang="ar">ستكون وسوم مارك داون أصغر من بقية النص بنسبة 50% مبدئياً، ويمكن بالطبع ضبط ذلك في الإعدادات.</p>
         <p xml:lang="ca">De manera predeterminada, les etiquetes del Markdown seran més petites que la resta de text en un 50%, això es pot ajustar a la configuració.</p>
         <p xml:lang="ca-valencia">De manera predeterminada, les etiquetes de Markdown seran més xicotetes que la resta de text en un 50%, açò es pot ajustar en la configuració.</p>
+        <p xml:lang="cs">Ve výchozím nastavení budou značky Markdownu o 50 % menší než zbytek textu; toto nastavení lze samozřejmě upravit v nastavení.</p>
         <p xml:lang="es">Por omisión, las etiquetas markdown serán un 50 % menores que el resto del texto, aunque puede afinar este comportamiento en los ajustes.</p>
         <p xml:lang="fr">Par défaut, les balises en Markdown seront plus petites que le reste du texte de 50 %. Mais, cela peut bien sûr être ajusté dans la configuration.</p>
         <p xml:lang="he">כברירת מחדל, תגיות ה־markdown תהיינה קטנות יותר משאר הטקסט ב־50%, אפשר כמובן לכוון את זה בהגדרות.</p>
@@ -1220,6 +1278,7 @@
         <p xml:lang="ar">ستستعيد تلك الوسوم أحجامها الطبيعية بناءً على موقع المؤشر أو النص المحدد. بهذه الطريقة، يمكن معرفة أي وسم هو المسؤول عن النمط.</p>
         <p xml:lang="ca">Aquestes etiquetes recuperaran les seves mides normals en funció de la posició del cursor/text seleccionat. D'aquesta manera, podeu veure quina etiqueta és la responsable d'un estil.</p>
         <p xml:lang="ca-valencia">Estes etiquetes recuperaran les seues mides normals en funció de la posició del cursor/text seleccionat. D'esta manera, podeu veure quina etiqueta és la responsable d'un estil.</p>
+        <p xml:lang="cs">Tyto značky se vrátí ke své normální velikosti podle polohy kurzoru nebo vybraného textu. Takto můžete zjistit, která značka daný styl způsobuje.</p>
         <p xml:lang="es">Estas etiquetas volverán a tener su tamaño normal según la posición del cursor o si hay texto seleccionado. De este modo podrá ver la etiqueta responsable de un determinado estilo.</p>
         <p xml:lang="fr">Ces étiquettes retrouveront leur taille normale selon la position du pointeur ou du texte sélectionné. De cette façon, vous pouvez voir quelle étiquette est responsable d'un style.</p>
         <p xml:lang="he">התגיות האלה תשובנה לגדלים הרגילים שלהם לפי מקום הסמן/הטקסט הנבחר. כך, ניתן לראות איזו תגית אחראית על הסגנון.</p>
@@ -1242,6 +1301,7 @@
         <p xml:lang="ar">تطبيق ملاحظات ذكية من كِيدِي لتدوين وإدارة ملاحظات مارك داون باستخدام كيريغامي جاهز لإصداره الأول!</p>
         <p xml:lang="ca">El KleverNotes, l'aplicació de gestió i presa de notes en Markdown de KDE que utilitza el Kirigami, està llest per al seu primer llançament!</p>
         <p xml:lang="ca-valencia">KleverNotes, l'aplicació de gestió i presa de notes en Markdown de KDE que utilitza Kirigami, està llest per al seu primer llançament!</p>
+        <p xml:lang="cs">KleverNotes, aplikace pro psaní a správu poznámek v Markdownu od KDE využívající Kirigami, je připravena k prvnímu vydání!</p>
         <p xml:lang="es">KleverNotes, la aplicación de gestión y escritura de notas en Markdown de KDE que usa Kirigami, está lista para su primera versión.</p>
         <p xml:lang="fr">KleverNotes, une application de prise de notes et de leurs gestions utilisant Kirigami est maintenant prête pour sa première publication !</p>
         <p xml:lang="he">KleverNotes, יישום לניהול וכתיבת פתקיות Markdown מבית KDE שמשתמש ב־Kirigami, מוכן למהדורה הראשונה שלו!</p>
@@ -1264,6 +1324,7 @@
         <p xml:lang="ar">يسمح ملاحظات ذكية بإنشاء ومعاينة ملاحظات مارك داون مع منح حرية تخصيص المعاينة من الإعدادات أو باستخدام سمات CSS. يمكن تنظيم الملاحظات حسب الرغبة عبر مزيج من الفئات والمجموعات، وهو ما سينعكس مباشرة على نظامك في هيكلية مجلدات تخزين التطبيق. ما عليك سوى اختيار موقع التخزين والبدء في الكتابة!</p>
         <p xml:lang="ca">El KleverNotes us permet crear i previsualitzar una nota Markdown mentre us dona la llibertat de personalitzar la vista prèvia des de la configuració o utilitzant un tema CSS. Podeu organitzar les notes com vulgueu amb una combinació de categories i grups, que es reflectiran directament en el sistema a la jerarquia de les carpetes d'emmagatzematge del KleverNotes. Només cal escollir la ubicació d'emmagatzematge i ja estareu preparat per a escriure!</p>
         <p xml:lang="ca-valencia">KleverNotes us permet crear i previsualitzar una nota Markdown mentre vos dona la llibertat de personalitzar la vista prèvia des de la configuració o utilitzant un tema CSS. Podeu organitzar les notes com vulgueu amb una combinació de categories i grups, que es reflectiran directament en el sistema a la jerarquia de les carpetes d'emmagatzematge de KleverNotes. Només cal escollir la ubicació d'emmagatzematge i ja estareu preparat per a escriure!</p>
+        <p xml:lang="cs">KleverNotes vám umožňuje vytvářet poznámky ve formátu Markdown a prohlížet si jejich náhled, přičemž máte možnost přizpůsobit si náhled v nastavení nebo pomocí CSS šablony. Poznámky si můžete uspořádat podle libosti pomocí kombinace kategorií a skupin, což se přímo promítne do hierarchie vašich úložných složek v systému KleverNotes. Stačí si vybrat místo pro ukládání a můžete začít psát!</p>
         <p xml:lang="es">KleverNotes permite crear y previsualizar notas en Markdown a la vez que proporciona la libertar de personalizar la vista previa mediante ajustes o usando un tema CSS. Puede organizar las notas del modo que prefiera con una combinación de categorías y grupos, que se reflejará de forma directa en la jerarquía de carpetas de almacenamiento de KleverNotes en el sistema. Solo tiene que escoger la ubicación en la que se guardarán antes de empezar a escribir.</p>
         <p xml:lang="fr">KleverNotes vous permet de créer et d'afficher un aperçu d'une note en Markdown tout en vous donnant la liberté de personnaliser son aperçu depuis la configuration ou en utilisant un thème « CSS ». Vous pouvez organiser vos notes comme vous le souhaitez avec une combinaison de catégories et de groupes, qui sera similaire à la hiérarchie de vos dossiers sur votre système de fichiers pour KleverNotes. Il vous suffit de sélectionner votre emplacement d'enregistrement et vous êtes prêt à écrire vos notes !</p>
         <p xml:lang="he">KleverNotes מאפשר לך ליצור ולהציג פתקיות Markdown לצד מתן החופש להתאים את הגדרות התצוגה המקדימה או להשתמש בערכת עיצוב ב־CSS. אפשר לסדר את הפתקיות שלך בצורה המועדפת עליך, מה שישוקף ישירות במערכת שלך בהיררכיית תיקיות האחסון של KleverNotes. צריך פשוט לבחור את מקום האחסון שלך ואפשר להתחיל לכתוב!</p>
@@ -1282,6 +1343,7 @@
         <p xml:lang="ar">يمكن طباعة الملاحظات، وإضافة رسومات صغيرة، بل وحتى إنشاء مهام محددة لكل منها، كل ذلك من داخل التطبيق!</p>
         <p xml:lang="ca">Podeu imprimir les vostres notes, afegir esbossos petits i fins i tot crear tasques específiques per a cadascuna, tot des de l'aplicació!</p>
         <p xml:lang="ca-valencia">Podeu imprimir les vostres notes, afegir esbossos petits i fins i tot crear tasques específiques per a cadascuna, tot des de l'aplicació!</p>
+        <p xml:lang="cs">Můžete si své poznámky vytisknout, doplnit je o malé náčrtky a dokonce ke každé z nich přidat konkrétní úkoly – to vše přímo z aplikace!</p>
         <p xml:lang="es">Puede imprimir notas, añadir pequeños bocetos e incluso crear tareas específicas en cada una de ellas, todo desde la aplicación.</p>
         <p xml:lang="fr">Vous pouvez imprimer vos notes, ajouter de petits croquis et même créer des tâches spécifiques pour chacune d'elles, le tout depuis l'application !</p>
         <p xml:lang="he">אפשר להדפיס את הפתקיות שלך, להוסיף איורים קטנים ואפילו ליצור משימות נקודתיות לכל אחת מהן, הכול מתוך היישום!</p>
@@ -1303,6 +1365,7 @@
         <p xml:lang="ar">تُحفظ الملاحظات كملفات مارك داون في مستودع تخزين التطبيق لسهولة الوصول إليها. وهي تدعم مواصفات CommonMark الكاملة مع صيغ موسعة. يقدم تطبيق ملاحظات ذكية أيضاً مجموعة صغيرة من الملحقات الاختيارية لتوسيع ميزات مارك داون الأساسية، مثل: إبراز الكود، وربط الملاحظات، والرموز التعبيرية السريعة، وغيرها.</p>
         <p xml:lang="ca">Les notes es desen com a fitxers Markdown a l'emmagatzematge del KleverNotes per a un accés fàcil. Admeten tota l'especificació de CommonMark amb una sintaxi àmplia. El KleverNotes també introdueix una petita col·lecció de «connectors» d'alta voluntària per a ampliar les característiques bàsiques del Markdown, com ara: ressaltat de codi, enllaçat de notes, emoji ràpid, etc.</p>
         <p xml:lang="ca-valencia">Les notes es guarden com a fitxers en Markdown a l'emmagatzematge de KleverNotes per a un accés fàcil. Admeten tota l'especificació de CommonMark amb una sintaxi àmplia. KleverNotes també introduïx una xicoteta col·lecció de «connectors» d'alta voluntària per a ampliar les característiques bàsiques de Markdown, com ara: ressaltat de codi, enllaçat de notes, emoji ràpid, etc.</p>
+        <p xml:lang="cs">Poznámky se ukládají jako soubory ve formátu Markdown do vašeho úložiště KleverNotes, kde jsou snadno dostupné. Podporují celou specifikaci CommonMark s rozsáhlou syntaxí. KleverNotes také nabízí malou sadu volitelných modulů, které rozšiřují základní funkce Markdownu, jako jsou například: zvýrazňování kódu, propojování poznámek, rychlé vkládání emotikonů atd.</p>
         <p xml:lang="es">Las notas se guardan en archivos Markdown en el almacenamiento de KleverNotes para un fácil acceso. Son compatibles con la totalidad de la especificación CommonMark con una sintaxis extensa. KleverNotes también introduce una pequeña colección de «complementos» optimizados para extender las funciones básicas de markdown, como: resaltado de sintaxis de código fuente, enlaces de notas, emoji rápido, etc.</p>
         <p xml:lang="fr">Les notes sont enregistrées au format Markdown dans votre espace pour KleverNotes pour un accès facile. Elles prennent en charge l'intégralité de la spécification « CommonMark » avec une syntaxe étendue. KleverNotes introduit également une petite collection de « modules externes » optionnels pour étendre les fonctionnalités standards en Markdown, tels que : surlignage de code, lien vers les notes, émoticônes rapides, etc.</p>
         <p xml:lang="he">הפתקיות נשמרות כקובצי Markdown באחסון של KleverNotes כדי להקל על הגישה. הם תומכים בכל מפרט CommonMark עם תחביר מורחב. ב־KleverNotes יש גם אוסף קטן של „תוספים” שאפשר להפעיל כדי להרחיב את יכולות ה־markdown הבסיסיות כגון: הדגשת קוד, קישור פתקיות, אמוג׳ים מהירים ועוד.</p>
