@@ -33,6 +33,7 @@
   <name xml:lang="sl">KleverNotes</name>
   <name xml:lang="sv">KleverNotes</name>
   <name xml:lang="tr">Akıllı Notlar</name>
+  <name xml:lang="ug">KleverNotes</name>
   <name xml:lang="uk">KleverNotes</name>
   <name xml:lang="zh-CN">KleverNotes</name>
   <name xml:lang="zh-TW">KleverNotes 筆記</name>
@@ -210,6 +211,7 @@
       <caption xml:lang="sl">Stran stvari za še narediti</caption>
       <caption xml:lang="sv">Uppgiftssida</caption>
       <caption xml:lang="tr">Yapılacaklar sayfası</caption>
+      <caption xml:lang="ug">بېجىرىدىغانلار بېتى</caption>
       <caption xml:lang="uk">Сторінка завдань</caption>
       <caption xml:lang="zh-CN">待办页</caption>
       <caption xml:lang="zh-TW">待辦事項頁面</caption>
