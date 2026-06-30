@@ -90,16 +90,22 @@ Kirigami.ActionToolBar {
     }
 
     onVisibleToolsChanged: {
-        actions = setupActions()
+        actions = []
+
+        const finalActions = setupActions()
+
+        for (let i = 0 ; i < finalActions.length ; i++) {
+            actions.push(finalActions[i])
+        }
     }
 
-    ActionsList { id: actionsList } 
+    ActionsList { id: actionsList }
 
     EmojiDialog {
         id: emojiDialog
 
         onChosen: function (emoji) {
-            editorTextArea.insert(editorTextArea.selectionStart, 
+            editorTextArea.insert(editorTextArea.selectionStart,
                 KleverConfig.quickEmojiEnabled && KleverConfig.quickEmojiDialogEnabled ? (":" + emoji + ":") : emoji)
         }
     }
@@ -323,7 +329,7 @@ Kirigami.ActionToolBar {
             for (let i = 0 ; i < currentAction.children.length ; i++) {
                 const actionChild = currentAction.children[i]
                 const actionChildName = actionChild.actionName
-                
+
                 const actionChildTrigger = actionsTrigger[actionChildName]
                 if (actionChildTrigger) {
                     actionChild.triggerFunction = actionChildTrigger
@@ -350,7 +356,7 @@ Kirigami.ActionToolBar {
             if (allActionsLen === visibleIndexes.length) {
                 break;
             }
-        }   
+        }
 
         let visibleActions = Array(visibleIndexes.length)
 
@@ -372,7 +378,7 @@ Kirigami.ActionToolBar {
         }
 
         const finalList = visibleActions.concat(unknownActions)
-        
+
         let actionPosition = {}
         for (let i = 0 ; i < finalList.length ; i++) {
             const currentAction = finalList[i]
@@ -381,7 +387,7 @@ Kirigami.ActionToolBar {
         toolbar.actionPositionMap = actionPosition
 
         if (finalList.length !== visibleIndexes.length) {
-            KleverConfig.visibleTools = visibleIndexes.concat(unknownIndexes) 
+            KleverConfig.visibleTools = visibleIndexes.concat(unknownIndexes)
         }
 
         return finalList
