@@ -5,7 +5,7 @@
 
 # Klevernotes 
 
-<img src="logo.png" width="10%" align="right">
+<img src="org.kde.klevernotes.svg" width="20%" align="right">
 
 KleverNotes is a note taking and management application. It uses markdown and allows you to preview your content. 
 
