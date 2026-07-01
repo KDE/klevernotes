@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-07 00:44+0000\n"
+"POT-Creation-Date: 2026-07-01 00:46+0000\n"
 "PO-Revision-Date: 2024-04-22 16:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1679,11 +1679,11 @@ msgctxt "@notification, error message %1 is a path"
 msgid "%1 doesn't exists"
 msgstr "%1 不存在"
 
-#: contents/ui/textEditor/TextToolBar.qml:173
-#: contents/ui/textEditor/TextToolBar.qml:174
-#: contents/ui/textEditor/TextToolBar.qml:175
-#: contents/ui/textEditor/TextToolBar.qml:177
-#: contents/ui/textEditor/TextToolBar.qml:178
+#: contents/ui/textEditor/TextToolBar.qml:179
+#: contents/ui/textEditor/TextToolBar.qml:180
+#: contents/ui/textEditor/TextToolBar.qml:181
+#: contents/ui/textEditor/TextToolBar.qml:183
+#: contents/ui/textEditor/TextToolBar.qml:184
 #, kde-format
 msgid "Header"
 msgstr "标题"
