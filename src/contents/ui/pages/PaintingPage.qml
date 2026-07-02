@@ -41,7 +41,7 @@ Kirigami.Page {
         Kirigami.Action {
             text: i18nc("@label:button, as in 'erase everything'", "Clear")
             icon.name: "edit-clear-symbolic"
-            
+
             onTriggered: {
                 canvas.clear()
             }
@@ -58,7 +58,7 @@ Kirigami.Page {
 
     onBackRequested: (event) => {
         canvas.cropImage()
-        
+
         root.cantLeave = root.cropRect.width && root.cropRect.height 
         if (root.cantLeave) {
             event.accepted = true;
@@ -115,7 +115,7 @@ Kirigami.Page {
             Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: 0
-            
+
             DrawingToolBar {
                 id: drawingToolBar
 
@@ -143,13 +143,13 @@ Kirigami.Page {
                     Rectangle {
                         id: canvasBorder
                         width: canvas.width + 8
-                        height: canvas.width + 8 
+                        height: canvas.width + 8
                         x: Math.max(Kirigami.Units.largeSpacing * 2, (root.width - width) / 2)
                         y: (Kirigami.Units.largeSpacing * 2) - 4
 
                         Kirigami.Theme.inherit: false
                         Kirigami.Theme.colorSet: Kirigami.Theme.View
-                        color: Kirigami.Theme.backgroundColor 
+                        color: Kirigami.Theme.backgroundColor
                         radius: 5
                         border {
                             color: Kirigami.Theme.highlightColor
@@ -188,13 +188,13 @@ Kirigami.Page {
                             y: canvas.lastY - height / 2
                             width: height
                             height: canvas.strokeWidth
-                            
+
                             border {
                                 width: 5
-                                color: Qt.rgba(1, 0, 0, 0.75) 
+                                color: Qt.rgba(1, 0, 0, 0.75)
                             }
                             radius: height / 2
-                            visible: mouseArea.isPress && drawingToolBar.mode === "erase" 
+                            visible: mouseArea.isPress && drawingToolBar.mode === "erase"
                         }
 
                         Rectangle {
@@ -219,14 +219,16 @@ Kirigami.Page {
                         // an ELLIPSE preview shown when using the circle tool in ellipse mode (shift key NOT HELD)
                         Shape {
                             id : ellipseBox
+
                             width : shapeBox.width
                             height : shapeBox.height
+
                             readonly property real arcStartX : (canvas.startX + canvas.lastX - width)/2
                             readonly property real arcStartY : (canvas.startY + canvas.lastY)/2
                             readonly property real arcEndX : (canvas.startX + canvas.lastX + width)/2
                             readonly property real arcEndY : (canvas.startY + canvas.lastY)/2
-                            opacity: 0.3
 
+                            opacity: 0.3
 
                             ShapePath{
                                 fillColor: Kirigami.Theme.highlightColor
@@ -234,14 +236,13 @@ Kirigami.Page {
                                 startX: ellipseBox.arcStartX
                                 startY : ellipseBox.arcStartY
 
-                                PathArc{
+                                PathArc {
                                     direction: PathArc.Clockwise
                                     radiusX: ellipseBox.width/2
                                     radiusY : ellipseBox.height/2
                                     x : ellipseBox.arcEndX
                                     y: ellipseBox.arcEndY
                                 }
-
                             }
 
 
@@ -251,19 +252,16 @@ Kirigami.Page {
                                 startX: ellipseBox.arcStartX
                                 startY : ellipseBox.arcStartY
 
-
-                                PathArc{
+                                PathArc {
                                     direction: PathArc.Counterclockwise
                                     radiusX: ellipseBox.width/2
                                     radiusY : ellipseBox.height/2
                                     x : ellipseBox.arcEndX
                                     y: ellipseBox.arcEndY
                                 }
-
                             }
 
                             visible: canvas.shapeIsStarted && drawingToolBar.isShape && drawingToolBar.mode === "circle" && !canvas.shiftHeld
-
                         }
 
 
@@ -298,7 +296,6 @@ Kirigami.Page {
                             hoverEnabled: true
 
                             onPositionChanged: function (mouse) {
-
                                 if (isPress) {
                                     if (drawingToolBar.isBaseMode) {
                                         canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
@@ -307,7 +304,7 @@ Kirigami.Page {
                                     if (mouse.modifiers & Qt.ShiftModifier) {
                                         canvas.shiftHeld = true
                                     }
-                                    else{
+                                    else {
                                         canvas.shiftHeld = false
                                     }
 
@@ -341,8 +338,8 @@ Kirigami.Page {
                                     }
                                     case "rectangle":
                                     case "circle": {
-                                        canvas.startX = canvas.lastX 
-                                        canvas.startY = canvas.lastY 
+                                        canvas.startX = canvas.lastX
+                                        canvas.startY = canvas.lastY
                                         break
                                     }
                                     }
@@ -467,40 +464,32 @@ Kirigami.Page {
                                     if (imageData.data[dataEndIndex] > 100) { // Arbitrary value
                                         pix.x.push(x);
                                         pix.y.push(y);
-                                    } 
+                                    }
                                 }
                             }
                             pix.x.sort(function(a,b){return a-b});
                             pix.y.sort(function(a,b){return a-b});
-                            var n = pix.x.length-1;
-                          
+                            let n = pix.x.length - 1;
+
                             w = 1 + pix.x[n] - pix.x[0];
                             h = 1 + pix.y[n] - pix.y[0];
 
                             root.cropRect = Qt.rect(pix.x[0], pix.y[0], w, h)
                         }
 
-                        function yManagerForBoxes(){
+                        function yManagerForBoxes() {
                             if (shiftHeld){
-                                if (lastY >= startY) {
+                                if (lastY >= startY)
                                     return startY;
-                                }
-                                else{
-                                    return startY - Math.abs(startX - lastX);
-                                }
+                                return startY - Math.abs(startX - lastX);
                             }
-                            else{
-                                return Math.min(startY, lastY);
-                            }
+                            return Math.min(startY, lastY);
                         }
 
-                        function heightManagerForBoxes(){
-                            if(shiftHeld) {
-                                return Math.abs(canvas.startX - canvas.lastX);
-                            }
-                            else{
-                                return Math.abs(startY - lastY);
-                            }
+                        function heightManagerForBoxes() {
+                            return shiftHeld
+                                ? Math.abs(canvas.startX - canvas.lastX)
+                                : Math.abs(startY - lastY)
                         }
                     }
                 }
