@@ -102,6 +102,9 @@ ecm_add_qml_module(klevernotes_static
         logic/kleverUtility.cpp
         logic/kleverUtility.h
 
+        # Painting
+        logic/painting/imageSaver.cpp
+
         # Printing
         logic/printing/printingHelper.cpp
 
@@ -139,6 +142,7 @@ target_include_directories(klevernotes_static PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/parser/plugins/noteMapper
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/parser/plugins/syntaxHighlight
 
+    ${CMAKE_CURRENT_SOURCE_DIR}/logic/painting
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/preview
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/printing
     ${CMAKE_CURRENT_SOURCE_DIR}/logic/treeview
@@ -198,7 +202,7 @@ target_link_libraries(klevernotes_static PUBLIC
     Qt::Svg
     Qt::WebChannel
     Qt::PrintSupport
-    Qt6::WebEngineQuick 
+    Qt6::WebEngineQuick
     KF6::I18n
     KF6::CoreAddons
     KF6::ConfigCore

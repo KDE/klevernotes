@@ -20,7 +20,6 @@ FormCard.FormCardDialog {
     readonly property bool storeImage: _storeCheckbox.checked && !storedImageChoosen
 
     property string noteImagesStoringPath
-    property var paintClipRect
     property string path: ""
     property alias imageName: nameTextField.text
     property bool storedImageChoosen: false
@@ -96,7 +95,6 @@ FormCard.FormCardDialog {
                     : width
 
                 onClicked: {
-                    imagePickerDialog.paintClipRect = undefined
                     clearTmp()
                     storedImageChoosen = false
                     urlDialog.open()
@@ -119,7 +117,6 @@ FormCard.FormCardDialog {
                 Layout.preferredHeight: internetButton.height
 
                 onClicked: {
-                    imagePickerDialog.paintClipRect = undefined
                     clearTmp()
                     storedImageChoosen = false
                     filePickerDialog.currentFolder = StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
@@ -150,7 +147,6 @@ FormCard.FormCardDialog {
                 Layout.preferredHeight: internetButton.height
 
                 onClicked: {
-                    imagePickerDialog.paintClipRect = undefined
                     clearTmp()
                     imagePickerDialog.close()
                     applicationWindow().switchToPage('Painting')
@@ -174,7 +170,6 @@ FormCard.FormCardDialog {
                 Layout.preferredHeight: visible ? internetButton.height : 0
 
                 onClicked: {
-                    imagePickerDialog.paintClipRect = undefined
                     clearTmp()
                     storedImageChoosen = true
                     filePickerDialog.currentFolder = "file://" + imagePickerDialog.noteImagesStoringPath
@@ -211,7 +206,6 @@ FormCard.FormCardDialog {
                 source: path
                 visible: displayImage.status == Image.Ready
                 fillMode: Image.PreserveAspectFit
-                sourceClipRect: imagePickerDialog.paintClipRect
 
                 onStatusChanged: if (status === Image.Ready){
                     // If the image is placed inside the note folder, we want it to be max 1024x1024

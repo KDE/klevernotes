@@ -20,7 +20,6 @@ Kirigami.Page {
     property bool cantLeave: false
     property color penColor: mouseArea.lastButton === Qt.RightButton ? colorBar.secondaryColor : colorBar.primaryColor
     property bool wantSave
-    property var cropRect
 
     title: i18nc("@title:page", "Paint!")
 
@@ -57,9 +56,6 @@ Kirigami.Page {
     ]
 
     onBackRequested: (event) => {
-        canvas.cropImage()
-
-        root.cantLeave = root.cropRect.width && root.cropRect.height 
         if (root.cantLeave) {
             event.accepted = true;
             leavingDialog.open();
@@ -446,37 +442,6 @@ Kirigami.Page {
                             root.cantLeave = false
                         }
 
-                        // Slightly modified version of: https://stackoverflow.com/a/22267731
-                        function cropImage() {
-                            let pix = {x:[], y:[]}
-                            let w = canvas.width
-                            let h = canvas.height
-                            let imageData = context.getImageData(0, 0, w, h)
-
-                            let dataStartIndex, dataEndIndex;
-                            for (let y = 0; y < h; y++) {
-                                for (let x = 0; x < w; x++) {
-                                    // The data is stored in a single array
-                                    // The data for a single pixel takes 4 slots in this array, for: RGBA
-                                    // See: https://doc.qt.io/qt-6/qml-qtquick-canvasimagedata.html#data-prop
-                                    dataStartIndex = (y * w + x) * 4;
-                                    dataEndIndex = dataStartIndex + 3
-                                    if (imageData.data[dataEndIndex] > 100) { // Arbitrary value
-                                        pix.x.push(x);
-                                        pix.y.push(y);
-                                    }
-                                }
-                            }
-                            pix.x.sort(function(a,b){return a-b});
-                            pix.y.sort(function(a,b){return a-b});
-                            let n = pix.x.length - 1;
-
-                            w = 1 + pix.x[n] - pix.x[0];
-                            h = 1 + pix.y[n] - pix.y[0];
-
-                            root.cropRect = Qt.rect(pix.x[0], pix.y[0], w, h)
-                        }
-
                         function yManagerForBoxes() {
                             if (shiftHeld){
                                 if (lastY >= startY)
@@ -505,14 +470,11 @@ Kirigami.Page {
 
     function prepareImagePicker(imagePath) {
         const imagePickerDialog = editorView.imagePickerDialog
-        if (autoCropAction.checked) {
-            imagePickerDialog.paintClipRect = root.cropRect
-        }
+
         imagePickerDialog.path = imagePath
         imagePickerDialog.paintedImageChoosen = true
         imagePickerDialog.storeCheckbox.checked = wantSave
         imagePickerDialog.storeCheckbox.enabled = false
-
     }
 
     function closePage(imagePath) {
@@ -520,21 +482,34 @@ Kirigami.Page {
         canvas.clear()
         prepareImagePicker(imagePath)
         canvas.isInit = false
-        root.cropRect = Qt.rect(0, 0, 0, 0)
 
         applicationWindow().switchToPage("Main", editorView.imagePickerDialog)
     }
 
     function saveImage() {
-        let filePath
         if (root.cantLeave) {
             let date = new Date().valueOf()
-            const tmpFileName = "/KNtmpPaint"+date+".png"
-            filePath = (StandardPaths.writableLocation(StandardPaths.TempLocation) + tmpFileName)
+            const tmpFileName = "/KNtmpPaint" + date + ".png"
 
-            canvas.save(filePath.substring(7)) // removes "file://"
+            let filePath = (StandardPaths.writableLocation(StandardPaths.TempLocation) + tmpFileName)
+            imageSaverConnection.savedPath = filePath
+
+            filePath = filePath.substring("file://".length)
+            ImageSaver.saveImage(canvas, filePath, autoCropAction.checked)
         }
         root.wantSave = true
-        closePage(filePath)
+    }
+
+    Connections {
+        id: imageSaverConnection
+
+        target: ImageSaver
+
+        property string savedPath: ""
+
+        function onSaved(success) {
+            if (success && savedPath) closePage(savedPath)
+            savedPath = ""
+        }
     }
 }
