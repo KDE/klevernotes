@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-01 00:46+0000\n"
+"POT-Creation-Date: 2026-07-08 00:44+0000\n"
 "PO-Revision-Date: 2026-02-11 07:58-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -69,49 +69,49 @@ msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Seletor de fonte"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:31
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:30
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Seletor de imagem"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:80
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:79
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Imagem Web"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:109
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:107
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Imagem local"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:140
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:137
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Pintar uma imagem"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:163
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:159
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Coleção de imagens"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:232
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Parece que a imagem selecionada não existe ou não é suportada."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:251
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Texto da imagem: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:260
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -555,31 +555,31 @@ msgstr "Bem-vindo ao KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Crie ou selecione uma nota para começar a trabalhar!"
 
-#: contents/ui/pages/PaintingPage.qml:25
+#: contents/ui/pages/PaintingPage.qml:24
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Pinte!"
 
-#: contents/ui/pages/PaintingPage.qml:34 contents/ui/pages/PrintingPage.qml:74
+#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:74
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Salvar"
 
-#: contents/ui/pages/PaintingPage.qml:42
+#: contents/ui/pages/PaintingPage.qml:41
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Limpar"
 
-#: contents/ui/pages/PaintingPage.qml:52
+#: contents/ui/pages/PaintingPage.qml:51
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Recorte automático"
 
-#: contents/ui/pages/PaintingPage.qml:89
+#: contents/ui/pages/PaintingPage.qml:85
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"

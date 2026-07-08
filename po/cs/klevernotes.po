@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-01 00:46+0000\n"
+"POT-Creation-Date: 2026-07-08 00:44+0000\n"
 "PO-Revision-Date: 2026-05-20 20:27+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -70,49 +70,49 @@ msgctxt "@title:dialog"
 msgid "Font selector"
 msgstr "Volba písma"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:31
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:30
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Image selector"
 msgstr "Výběr obrázku"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:80
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:79
 #, kde-format
 msgctxt "@label:button, As in 'image from the internet'"
 msgid "Web image"
 msgstr "Obrázek z webu"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:109
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:107
 #, kde-format
 msgctxt "label:button, Image from the local file system"
 msgid "Local image"
 msgstr "Místní obrázek"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:140
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:137
 #, kde-format
 msgctxt "@label:button"
 msgid "Paint an image"
 msgstr "Namalovat obrázek"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:163
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:159
 #, kde-format
 msgctxt "@label:button, Collection of image stored inside the note folder"
 msgid "Image collection"
 msgstr "Sbírka obrázků"
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:238
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:232
 #, kde-format
 msgid ""
 "It appears that the image you selected does not exist or is not supported."
 msgstr "Zdá se, že vybraný obrázek neexistuje nebo není podporován."
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:257
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:251
 #, kde-format
 msgctxt "@label:textbox, text associated to the selected image"
 msgid "Image text: "
 msgstr "Text obrázku: "
 
-#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:266
+#: contents/ui/dialogs/imagePickerDialog/ImagePickerDialog.qml:260
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Place this image inside the note folder"
@@ -556,31 +556,31 @@ msgstr "Vítejte v KleverNotes!"
 msgid "Create or select a note to start working !"
 msgstr "Vytvořte nebo vyberte poznámku a začněte pracovat!"
 
-#: contents/ui/pages/PaintingPage.qml:25
+#: contents/ui/pages/PaintingPage.qml:24
 #, kde-format
 msgctxt "@title:page"
 msgid "Paint!"
 msgstr "Namalovat!"
 
-#: contents/ui/pages/PaintingPage.qml:34 contents/ui/pages/PrintingPage.qml:74
+#: contents/ui/pages/PaintingPage.qml:33 contents/ui/pages/PrintingPage.qml:74
 #, kde-format
 msgctxt "@label:button"
 msgid "Save"
 msgstr "Uložit"
 
-#: contents/ui/pages/PaintingPage.qml:42
+#: contents/ui/pages/PaintingPage.qml:41
 #, kde-format
 msgctxt "@label:button, as in 'erase everything'"
 msgid "Clear"
 msgstr "Vyprázdnit"
 
-#: contents/ui/pages/PaintingPage.qml:52
+#: contents/ui/pages/PaintingPage.qml:51
 #, kde-format
 msgctxt "@label:action"
 msgid "Auto crop"
 msgstr "Automatický ořez"
 
-#: contents/ui/pages/PaintingPage.qml:89
+#: contents/ui/pages/PaintingPage.qml:85
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Text to draw"
