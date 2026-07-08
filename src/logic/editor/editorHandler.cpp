@@ -7,7 +7,6 @@
 #include "editorHighlighter.hpp"
 #include "logic/editor/editorTextManipulation.hpp"
 #include "logic/parser/parser.h"
-#include "logic/parser/plugins_helper.h"
 #include "logic/parser/renderer.h"
 
 // Qt include
@@ -308,6 +307,7 @@ void EditorHandler::cacheAndHighlightSyntax(QSharedPointer<MD::Document> doc)
     if (!m_noteDir.isEmpty()) {
         m_highlighting = true;
         m_editorHighlighter->cacheAndHighlight(doc, m_config->editorHighlightEnabled());
+        updateSurroundingDelims();
         m_highlighting = false;
     }
 }
@@ -363,6 +363,11 @@ QList<posCacheUtils::DelimsInfo> EditorHandler::getSurroundingDelims() const
     return m_surroundingDelims;
 }
 
+void EditorHandler::updateSurroundingDelims()
+{
+    m_surroundingDelims = m_editorHighlighter->showDelimAroundCursor(true);
+}
+
 void EditorHandler::handleDelims(const bool addDelims, const int delimType)
 {
     if (addDelims) {
@@ -373,7 +378,6 @@ void EditorHandler::handleDelims(const bool addDelims, const int delimType)
     } else {
         editorTextManipulation::removeDelims(this, delimType);
     }
-
     Q_EMIT focusEditor();
 }
 // !Toolbar

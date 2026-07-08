@@ -352,7 +352,6 @@ private:
     void setNoteDir(const QString &noteDir);
 
     // Connections
-
     /**
      * @brief Connect the parser to its different signals handler.
      */
@@ -432,6 +431,11 @@ private:
      * @param doc The MD::Document resulting of the parsing.
      */
     void cacheAndHighlightSyntax(QSharedPointer<MD::Document> doc);
+
+    /**
+     * @brief Force the handler to update the delims surrounding the cursor/selected text.
+     */
+    void updateSurroundingDelims();
 
 private:
     // Config Connections

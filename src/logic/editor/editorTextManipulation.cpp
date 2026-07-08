@@ -5,6 +5,7 @@
 
 // KleverNotes includes
 #include "logic/editor/editorHandler.hpp"
+#include "posCacheUtils.hpp"
 
 // Qt includes
 #include <QTextBlock>
@@ -185,7 +186,11 @@ void removeDelims(const MdEditor::EditorHandler *editor, const int delimType)
     for (auto it = toRemove.rbegin(); it != toRemove.rend(); ++it) {
         const QTextBlock line = editor->document()->findBlockByNumber(it->startLine());
         const int startPos = line.position() + it->startColumn();
-        const int endPos = line.position() + it->endColumn() + 1;
+        int endPos = line.position() + it->endColumn() + 1;
+
+        if ((posCacheUtils::Heading1 - 1 < delimType && delimType < posCacheUtils::Heading6 + 1) || delimType == posCacheUtils::BlockQuote
+            || delimType == posCacheUtils::OrderedList || delimType == posCacheUtils::UnorderedList)
+            ++endPos;
 
         removeText(cursor, startPos, endPos);
     }
@@ -263,10 +268,14 @@ bool addDelims(const MdEditor::EditorHandler *editor, const int delimType)
 
     auto cursor = editor->textCursor();
     cursor.beginEditBlock();
-    int pos = delimsPos.size();
-    for (auto it = delimsPos.rbegin(); it != delimsPos.rend(); ++it) {
-        insertText(cursor, *it, increment ? QString::number(pos) + delimText : delimText);
-        --pos;
+    if (*delimsPos.begin() == *delimsPos.rbegin()) {
+        insertText(cursor, *delimsPos.begin(), increment ? QString::number(1) + delimText : delimText);
+    } else {
+        int pos = delimsPos.size();
+        for (auto it = delimsPos.rbegin(); it != delimsPos.rend(); ++it) {
+            insertText(cursor, *it, increment ? QString::number(pos) + delimText : delimText);
+            --pos;
+        }
     }
     cursor.endEditBlock();
 

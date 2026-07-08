@@ -13,11 +13,6 @@
 #include <QTextCursor>
 #include <QTextEdit>
 
-// C++ include.
-#include <algorithm>
-#include <memory>
-#include <qlogging.h>
-
 using namespace Qt::Literals::StringLiterals;
 
 static const int USERDEFINEDINT = static_cast<int>(MD::ItemType::UserDefined);
