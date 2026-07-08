@@ -48,7 +48,7 @@ Kirigami.ActionToolBar {
         "codeBlock": function (checked) {
             EditorHandler.handleDelims(checked, -4)
         },
-        "quote": function () {
+        "quote": function (checked) {
             EditorHandler.handleDelims(checked, -3)
         },
         "image": function () {
