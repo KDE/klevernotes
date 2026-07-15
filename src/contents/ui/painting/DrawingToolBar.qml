@@ -16,7 +16,8 @@ Components.FloatingToolBar {
         Eraser,
         Text,
         Rectangle,
-        Circle
+        Circle,
+        Pan
     }
 
     property int _selectedTool: DrawingToolBar.Tool.Pen
@@ -31,6 +32,8 @@ Components.FloatingToolBar {
             return "rectangle"
         case DrawingToolBar.Tool.Circle:
             return "circle"
+        case DrawingToolBar.Tool.Pan:
+            return "pan"
     }
 
     ActionGroup {
@@ -91,6 +94,15 @@ Components.FloatingToolBar {
                 root._selectedTool = DrawingToolBar.Tool.Circle
             }
         }
+        Kirigami.Action{
+            id: panToggler
+            checkable: true
+            icon.name: "hand-symbolic"
+
+            onTriggered: {
+                root._selectedTool = DrawingToolBar.Tool.Pan
+            }
+        }
     }
 
     contentItem: ColumnLayout {
@@ -112,6 +124,9 @@ Components.FloatingToolBar {
 
         ToolButton {
             action: circleToggler
+        }
+        ToolButton {
+            action : panToggler
         }
     }
 }

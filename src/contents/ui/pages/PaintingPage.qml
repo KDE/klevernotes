@@ -105,6 +105,7 @@ Kirigami.Page {
 
             Layout.fillWidth: true
             Layout.preferredHeight: Kirigami.Units.gridUnit * 4 + Kirigami.Units.smallSpacing
+            visible: drawingToolBar.mode !== "pan"
         }
 
         RowLayout {
@@ -118,7 +119,7 @@ Kirigami.Page {
                 readonly property bool isBaseMode: (mode === "draw" || mode === "erase")
                 readonly property bool isShape: (mode === "rectangle" || mode === "circle")
 
-                Layout.preferredHeight: Kirigami.Units.gridUnit * 12
+                Layout.preferredHeight: Kirigami.Units.gridUnit * 16
                 Layout.margins: Kirigami.Units.largeSpacing
             }
 
@@ -134,7 +135,7 @@ Kirigami.Page {
                     anchors.fill: parent
 
                     clip: true
-                    interactive: !mouseArea.isPress
+                    interactive : !(mouseArea.isPan || mouseArea.isPress)
 
                     Rectangle {
                         id: canvasBorder
@@ -284,15 +285,24 @@ Kirigami.Page {
                             id: mouseArea
 
                             property var lastButton
+                            property point prevMouse : Qt.point(0,0)
                             property bool isPress: false
+                            property bool isPan : false
                             anchors.fill: canvas
 
                             enabled: true
                             acceptedButtons: Qt.LeftButton | Qt.RightButton
                             hoverEnabled: true
+                            cursorShape: drawingToolBar.mode === "pan" ? (isPan? Qt.ClosedHandCursor :Qt.OpenHandCursor ): Qt.ArrowCursor
 
                             onPositionChanged: function (mouse) {
-                                if (isPress) {
+                                if (isPan) {
+                                    const curMouse = mapToItem(null, mouse.x, mouse.y)
+                                    flickable.contentX -= (curMouse.x - prevMouse.x)
+                                    flickable.contentY -= (curMouse.y - prevMouse.y)
+                                    prevMouse = curMouse
+                                }
+                                else if (isPress) {
                                     if (drawingToolBar.isBaseMode) {
                                         canvas.drawLine(canvas.lastX, canvas.lastY, mouseX, mouseY);
                                         root.cantLeave = true
@@ -307,14 +317,23 @@ Kirigami.Page {
                                     canvas.lastX = getX()
                                     canvas.lastY = getY()
                                 }
+
                             }
                             onReleased: function (mouse) {
+                                if (isPan) {
+                                    isPan = false
+                                    flickable.returnToBounds()
+                                }
                                 if (mouse.button === lastButton && !drawingToolBar.isShape) {
                                     isPress = false
                                 }
                             }
                             onPressed: function (mouse) {
-                                if (!isPress) {
+                                if (drawingToolBar.mode === "pan"){
+                                    isPan = true
+                                    prevMouse = mapToItem(null, mouseX, mouseY)
+                                }
+                                else if (!isPress) {
                                     isPress = true
                                     canvas.lastX = getX()
                                     canvas.lastY = getY()
