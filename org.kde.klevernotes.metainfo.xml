@@ -274,6 +274,7 @@
         <p xml:lang="pt-BR">Atualização do md4qt para a versão 5.0.15: Igor Mironchik, criador do md4qt.</p>
         <p xml:lang="sk">aktualizácia md4qt na verziu 5.0.15: Igor Mironchik, tvorca md4qt.</p>
         <p xml:lang="sl">posodobitev md4qt na različico 5.0.15: Igor Mironchik, avtor md4qt.</p>
+        <p xml:lang="sv">uppdatera md4qt till version 5.0.15: Igor Mironchik, skapare av md4qt.</p>
         <p xml:lang="tr">md4qt, 5.0.15 sürümüne güncellendi: İgor Mironçik, md4qt yazarı.</p>
         <p xml:lang="uk">оновлено md4qt до версії 5.0.15: Ігор Мірончик, автор md4qt.</p>
         <p xml:lang="zh-TW">更新 md4qt 到 5.0.15 版：md4qt 作者 Igor Mironchik</p>
@@ -296,6 +297,7 @@
         <p xml:lang="pt-BR">md4qt versão 5.0.0 foi introduzido ao KleverNotes, trazendo grandes melhorias: Graças ao Igor Mironchik, criador do md4qt.</p>
         <p xml:lang="sk">md4qt version 5.0.0 has been introduced to KleverNotes, bringing major improvements: Thanks to Igor Mironchik, creator of md4qt.</p>
         <p xml:lang="sl">V KleverNotes je bila uvedena različica md4qt 5.0.0, ki prinaša pomembne izboljšave: Zahvala gre Igorju Mirončiku, ustvarjalcu md4qt.</p>
+        <p xml:lang="sv">md4qt version 5.0.0 har introducerats i KleverNotes, vilket ger stora förbättringar: Tack till Igor Mironchik, skapare av md4qt.</p>
         <p xml:lang="tr">md4qt 5.0.0 sürümü Akıllı Notlar’a tümleştirildi ve bu sayede büyük iyileştirmelere kavuştu: md4qt’nin yaratıcısı olan İgor Mironçik’e çok teşekkürler.</p>
         <p xml:lang="uk">У KleverNotes було впроваджено md4qt version 5.0.0, що надало доступ до значних удосконалень: дякуємо Ігорю Мірончику, творцеві md4qt.</p>
         <p xml:lang="zh-TW">KleverNotes 現使用 md4qt 5.0.0 版，這個版本帶來許多大幅度的改善。感謝 Igor Mironchik，也就是 md4qt 的作者本人。</p>
@@ -314,6 +316,7 @@
         <p xml:lang="pt-BR">Possibilidade de ordenar notas pela última data de modificação: Graças ao Akash Kumar</p>
         <p xml:lang="sk">Possibility to sort note by last modified date: Thanks to Akash Kumar</p>
         <p xml:lang="sl">Možnost razvrščanja zapiskov po datumu zadnje spremembe: Zahvala Akashu Kumarju</p>
+        <p xml:lang="sv">Möjlighet att sortera anteckning enligt senaste ändringsdatum: Tack till Akash Kumar</p>
         <p xml:lang="tr">Notları son değiştirilme tarihine göre sıralama özelliği: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість упорядковувати нотатки за датою внесення змін: дякуємо Акашу Кумару</p>
         <p xml:lang="zh-TW">用最後修改日期排序筆記的功能：感謝 Akash Kumar</p>
@@ -332,6 +335,7 @@
         <p xml:lang="pt-BR">Possibilidade de desenhar círculos e quadrados perfeitos: Graças ao Akash Kumar</p>
         <p xml:lang="sk">Possibility to draw perfect circle and square: Thanks to Akash Kumar</p>
         <p xml:lang="sl">Možnost risanja popolnega kroga in kvadrata: Zahvala Akashu Kumarju</p>
+        <p xml:lang="sv">Möjlighet att rita perfekta cirklar och fyrkanter: Tack till Akash Kumar</p>
         <p xml:lang="tr">Mükemmel daireler ve kareler çizme olanağı: Akaş Kumar’a teşekkürler</p>
         <p xml:lang="uk">Можливість малювати ідеальні кола і квадрати: дякуємо Акашу Кумару</p>
         <p xml:lang="zh-TW">繪製完美圓形與正方形的功能：感謝 Akash Kumar</p>
@@ -350,6 +354,7 @@
         <p xml:lang="pt-BR">Correções de vários pequenos bugs e melhorias.</p>
         <p xml:lang="sk">Rôzne drobné opravy chýb a vylepšenia.</p>
         <p xml:lang="sl">Različni popravki manjših napak in izboljšave.</p>
+        <p xml:lang="sv">diverse små felrättningar och förbättringar.</p>
         <p xml:lang="tr">Çeşitli hata düzeltmeleri ve iyileştirmeler</p>
         <p xml:lang="uk">Різноманітні виправлення невеликих вад та удосконалення.</p>
         <p xml:lang="zh-TW">許多小幅度錯誤修正與改進。</p>
