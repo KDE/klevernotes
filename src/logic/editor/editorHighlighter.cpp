@@ -245,7 +245,6 @@ void EditorHighlighter::onHeading(MD::Heading *h)
 
     MD::PosCache::onHeading(h);
 
-    d->headingLevel = inititalHeadingLevel;
     d->additionalStyle = inititalAdditionalStyle;
 
     if (m_highlightEnabled) {
@@ -262,6 +261,8 @@ void EditorHighlighter::onHeading(MD::Heading *h)
             d->setFormat(special, h->labelPos());
         }
     }
+
+    d->headingLevel = inititalHeadingLevel;
 }
 
 void EditorHighlighter::onCode(MD::Code *c)
