@@ -98,60 +98,16 @@ void Renderer::onHeading(
 
 void Renderer::onLink(MD::Link *l)
 {
-    QString url = l->url();
-
     if (m_pluginHelper) {
-        const QString wikilinkDelim = QStringLiteral("@HEADER@");
-        if (url.contains(wikilinkDelim)) {
-            auto linkedNoteInfo = url.split(wikilinkDelim);
+        static const QString wikilinkDelim = QStringLiteral("@HEADER@");
+        if (l->url().contains(wikilinkDelim)) {
+            auto linkedNoteInfo = l->url().split(wikilinkDelim);
             linkedNoteInfo.append(l->text());
             m_pluginHelper->mapperParserUtils()->addToLinkedNoteInfos(linkedNoteInfo);
         }
     }
 
-    const auto lit = this->m_doc->labeledLinks().find(url);
-
-    if (lit != this->m_doc->labeledLinks().cend())
-        url = lit.value()->url();
-
-    if (std::find(this->m_anchors.cbegin(), this->m_anchors.cend(), url) != this->m_anchors.cend())
-        url = QStringLiteral("#") + url;
-    else if (url.startsWith(QStringLiteral("#")) && this->m_doc->labeledHeadings().find(url) == this->m_doc->labeledHeadings().cend()) {
-        auto path = static_cast<MD::Anchor *>(this->m_doc->items().at(0).get())->label();
-        const auto sp = path.lastIndexOf(QStringLiteral("/"));
-        path.remove(sp, path.length() - sp);
-        const auto p = url.indexOf(path) - 1;
-        url.remove(p, url.length() - p);
-    }
-
-    if (!m_justCollectFootnoteRefs) {
-        openStyle(l->openStyles());
-
-        m_html.push_back(QStringLiteral("<a href=\""));
-        m_html.push_back(url);
-        m_html.push_back(QStringLiteral("\">"));
-    }
-    if (l->p() && !l->p()->isEmpty()) {
-        onParagraph(l->p().get(), false);
-    } else if (!l->img()->isEmpty()) {
-        if (!m_justCollectFootnoteRefs) {
-            onImage(l->img().get());
-        }
-    } else if (!l->text().isEmpty()) {
-        if (!m_justCollectFootnoteRefs) {
-            m_html.push_back(prepareTextForHtml(l->text()));
-        }
-    } else {
-        if (!m_justCollectFootnoteRefs) {
-            m_html.push_back(prepareTextForHtml(l->url()));
-        }
-    }
-
-    if (!m_justCollectFootnoteRefs) {
-        m_html.push_back(QStringLiteral("</a>"));
-
-        closeStyle(l->closeStyles());
-    }
+    MD::details::HtmlVisitor::onLink(l);
 }
 
 void Renderer::onImage(MD::Image *i)
