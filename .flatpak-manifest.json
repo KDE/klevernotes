@@ -6,7 +6,9 @@
     "base": "io.qt.qtwebengine.BaseApp",
     "base-version": "6.11",
     "command": "klevernotes",
-    "tags": ["nightly"],
+    "tags": [
+        "nightly"
+    ],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": [
         "--device=dri",
@@ -20,14 +22,20 @@
         "/include"
     ],
     "separate-locales": false,
-
-
     "modules": [
         {
             "name": "klevernotes",
             "buildsystem": "cmake-ninja",
             "builddir": true,
-            "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": ".",
+                    "skip": [
+                        ".git"
+                    ]
+                }
+            ]
         }
     ]
 }
