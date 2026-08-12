@@ -267,7 +267,7 @@ msgstr "هذه الملاحظة موجودة فعلًا"
 #, kde-format
 msgctxt "@subtitle:dialog"
 msgid "This folder already exists."
-msgstr "هذا المجلد موجود مسبقاً."
+msgstr "هذا المجلد موجود مسبقًا."
 
 #: contents/ui/dialogs/NamingErrorDialog.qml:37
 #, kde-format
@@ -356,7 +356,7 @@ msgid ""
 "Note: Any locally saved images will be moved from the 'Images' subfolder to "
 "the note’s parent folder."
 msgstr ""
-"ملاحظة: ستُنقل أي صور محفوظة محلياً من المجلد الفرعي ”الصور“ إلى المجلد الأمر "
+"ملاحظة: ستُنقل أي صور محفوظة محليًا من المجلد الفرعي ”الصور“ إلى المجلد الأمر "
 "للملاحظة."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:34
@@ -1048,7 +1048,7 @@ msgid ""
 "The emoji dialog insert the 'quick emoji' syntax instead of the actual emoji "
 "inside the text."
 msgstr ""
-"قوم مربع حوار الرموز التعبيرية بإدراج صيغة ”الرموز التعبيرية السريعة“ بدلاً "
+"قوم مربع حوار الرموز التعبيرية بإدراج صيغة ”الرموز التعبيرية السريعة“ بدلًا "
 "من الرموز التعبيرية الفعلية داخل النص."
 
 #: contents/ui/settings/TabBar.qml:13
