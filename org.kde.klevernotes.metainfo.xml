@@ -915,7 +915,7 @@
         <p xml:lang="zh-TW">新功能：</p>
         <ul>
           <li>New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
-          <li xml:lang="ar">بنية ملفات جديدة تعكس تماماً ما يظهر في الشريط الجانبي، مع إمكانية تغيير اللون والأيقونة لكل عنصر.</li>
+          <li xml:lang="ar">بنية ملفات جديدة تعكس تمامًا ما يظهر في الشريط الجانبي، مع إمكانية تغيير اللون والأيقونة لكل عنصر.</li>
           <li xml:lang="ca">Estructura de fitxers nova que reflecteix perfectament el que es veu a la barra lateral. I la possibilitat de canviar el color i la icona de cada element.</li>
           <li xml:lang="ca-valencia">Estructura de fitxers nova que reflectix perfectament el que es veu a la barra lateral. I la possibilitat de canviar el color i la icona de cada element.</li>
           <li xml:lang="cs">Nová struktura souborů, která přesně odpovídá tomu, co vidíte v postranním panelu. A možnost změnit barvu a ikonu jednotlivých položek.</li>
@@ -1088,7 +1088,7 @@
           note-taking app from KDE. For 3 months, I have been working hard to 
           add new features while improving the app and fixing some bugs.
         </p>
-        <p xml:lang="ar">إصدار ملاحظات ذكية 1.1.0 متاح أخيراً! ملاحظات ذكية هو تطبيق لتدوين الملاحظات بلغة مارك داون من كِيدِي. استمر العمل بجد لمدة 3 أشهر لإضافة ميزات جديدة وتحسين التطبيق وإصلاح بعض العلل.</p>
+        <p xml:lang="ar">إصدار ملاحظات ذكية 1.1.0 متاح أخيرًا! ملاحظات ذكية هو تطبيق لتدوين الملاحظات بلغة مارك داون من كِيدِي. استمر العمل بجد لمدة 3 أشهر لإضافة ميزات جديدة وتحسين التطبيق وإصلاح بعض العلل.</p>
         <p xml:lang="ca">Finalment, el KleverNotes 1.1.0 està disponible! El KleverNotes és l'aplicació per a la presa de notes Markdown de KDE. Durant 3 mesos, he estat treballant de valent afegint funcionalitats noves mentre millorava l'aplicació i solucionava alguns errors.</p>
         <p xml:lang="ca-valencia">Finalment, KleverNotes 1.1.0 està disponible! KleverNotes és l'aplicació per a la presa de notes Markdown de KDE. Durant 3 mesos, he sigut treballant de valent afegint característiques noves mentre millorava l'aplicació i solucionava alguns errors.</p>
         <p xml:lang="cs">KleverNotes 1.1.0 je konečně k dispozici! KleverNotes je aplikace pro psaní poznámek ve formátu Markdown od KDE. Poslední tři měsíce se usilovně pracovalo na přidávání nových funkcí, vylepšování aplikace a opravování některých chyb.</p>
@@ -1182,7 +1182,7 @@
         <p xml:lang="tr">It is fast, repliable, customizable and easy to use. A perfect match !</p>
         <p xml:lang="uk">Вона швидка, надійна, придатна до налаштовування та проста у користуванні. Чудова річ!</p>
         <p>The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
-        <p xml:lang="ar">أصبح شريط الأدوات الآن أكثر دقة في إزالة وسوم مارك داون المحددة وأيضاً في تطبيقها.</p>
+        <p xml:lang="ar">أصبح شريط الأدوات الآن أكثر دقة في إزالة وسوم مارك داون المحددة وأيضًا في تطبيقها.</p>
         <p xml:lang="ca">La barra d'eines ara és més precisa en eliminar etiquetes específiques del Markdown, però també en aplicar-les.</p>
         <p xml:lang="ca-valencia">La barra d'eines ara és més precisa en eliminar etiquetes específiques de Markdown, però també en aplicar-les.</p>
         <p xml:lang="cs">Panel nástrojů nyní umožňuje přesnější odstranění konkrétních značek Markdownu, ale také jejich vkládání.</p>
@@ -1223,7 +1223,7 @@
           the ability to add an html break before a new line with `Shift + Enter` or 
           a horizontal ruler using `Alt + Enter`.
         </p>
-        <p xml:lang="ar">اكتسب المحرر أيضاً بعض الميزات المثيرة للاهتمام. أصبح دعم الإزاحة الكتلية والإضافة الآلية لعناصر القائمة أكثر موثوقية، كما تتوفر الآن إمكانية إضافة فاصل html قبل سطر جديد عبر `Shift + Enter` أو مسطرة أفقية عبر `Alt + Enter`.</p>
+        <p xml:lang="ar">اكتسب المحرر أيضًا بعض الميزات المثيرة للاهتمام. أصبح دعم الإزاحة الكتلية والإضافة الآلية لعناصر القائمة أكثر موثوقية، كما تتوفر الآن إمكانية إضافة فاصل html قبل سطر جديد عبر `Shift + Enter` أو مسطرة أفقية عبر `Alt + Enter`.</p>
         <p xml:lang="ca">L'editor també ha guanyat algunes característiques interessants. La implementació de tabulació/anular la tabulació de blocs i l'addició automàtica d'elements de llista ara són més fiables, però ara també teniu la capacitat d'afegir un salt HTML abans d'una línia nova amb `Maj + Retorn` o un regle horitzontal utilitzant `Alt + Retorn`.</p>
         <p xml:lang="ca-valencia">L'editor també ha guanyat algunes característiques interessants. La implementació de tabulació/anular la tabulació de blocs i l'addició automàtica d'elements de llista ara són més fiables, però ara també teniu la capacitat d'afegir un salt HTML abans d'una línia nova amb `Majús + Retorn` o un regle horitzontal utilitzant `Alt + Retorn`.</p>
         <p xml:lang="cs">Editor byl také obohacen o několik zajímavých funkcí. Podpora seskupování a oddělování bloků a automatické přidávání položek do seznamu nyní fungují spolehlivěji, ale navíc máte nyní možnost vložit před nový řádek oddělovač HTML pomocí klávesové zkratky `Shift + Enter` nebo vodorovnou čáru pomocí klávesové zkratky `Alt + Enter`.</p>
@@ -1242,7 +1242,7 @@
         <p xml:lang="uk">У редакторі також реалізовано декілька цікавих функцій. Підтримка блокування табуляції/зняття табуляції та автоматичне додавання елементів списку тепер надійніші, крім того, ви маєте можливість додавати розрив рядка HTML перед новим рядком за допомогою `Shift + Enter` або горизонтальну лінійку за допомогою `Alt + Enter`.</p>
         <ul>
           <li> The parsing is now done on a separated thread, so parsing very large notes should still be smooth !</li>
-          <li xml:lang="ar">تُجرى المعالجة الآن في خيط منفصل، لذا ستظل معالجة الملاحظات الضخمة جداً سلسة!</li>
+          <li xml:lang="ar">تُجرى المعالجة الآن في خيط منفصل، لذا ستظل معالجة الملاحظات الضخمة جدًا سلسة!</li>
           <li xml:lang="ca">L'anàlisi ara es fa en un fil separat, de manera que l'anàlisi de notes molt grans encara ha de ser fluid!</li>
           <li xml:lang="ca-valencia">L'anàlisi ara es fa en un fil separat, de manera que l'anàlisi de notes molt grans encara ha de ser fluid!</li>
           <li xml:lang="cs">Parsování se nyní provádí v samostatném vlákně, takže i při parsování velmi rozsáhlých poznámek by mělo vše běžet plynule!</li>
@@ -1315,7 +1315,7 @@
         <p xml:lang="tr">The editor now has the ability to be "WYSIWYG".</p>
         <p xml:lang="uk">У новій версії редактор має можливість бути візуальним.</p>
         <p>By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
-        <p xml:lang="ar">ستكون وسوم مارك داون أصغر من بقية النص بنسبة 50% مبدئياً، ويمكن بالطبع ضبط ذلك في الإعدادات.</p>
+        <p xml:lang="ar">ستكون وسوم مارك داون أصغر من بقية النص بنسبة 50% مبدئيًا، ويمكن بالطبع ضبط ذلك في الإعدادات.</p>
         <p xml:lang="ca">De manera predeterminada, les etiquetes del Markdown seran més petites que la resta de text en un 50%, això es pot ajustar a la configuració.</p>
         <p xml:lang="ca-valencia">De manera predeterminada, les etiquetes de Markdown seran més xicotetes que la resta de text en un 50%, açò es pot ajustar en la configuració.</p>
         <p xml:lang="cs">Ve výchozím nastavení budou značky Markdownu o 50 % menší než zbytek textu; toto nastavení lze samozřejmě upravit v nastavení.</p>
@@ -1425,7 +1425,7 @@
           KleverNotes also introduces a small collection of opt-in “plugins” to extend basic markdown features, such as: 
           code highlighting, note linking, quick emoji, etc.
         </p>
-        <p xml:lang="ar">تُحفظ الملاحظات كملفات مارك داون في مستودع تخزين التطبيق لسهولة الوصول إليها. وهي تدعم مواصفات CommonMark الكاملة مع صيغ موسعة. يقدم تطبيق ملاحظات ذكية أيضاً مجموعة صغيرة من الملحقات الاختيارية لتوسيع ميزات مارك داون الأساسية، مثل: إبراز الكود، وربط الملاحظات، والرموز التعبيرية السريعة، وغيرها.</p>
+        <p xml:lang="ar">تُحفظ الملاحظات كملفات مارك داون في مستودع تخزين التطبيق لسهولة الوصول إليها. وهي تدعم مواصفات CommonMark الكاملة مع صيغ موسعة. يقدم تطبيق ملاحظات ذكية أيضًا مجموعة صغيرة من الملحقات الاختيارية لتوسيع ميزات مارك داون الأساسية، مثل: إبراز الكود، وربط الملاحظات، والرموز التعبيرية السريعة، وغيرها.</p>
         <p xml:lang="ca">Les notes es desen com a fitxers Markdown a l'emmagatzematge del KleverNotes per a un accés fàcil. Admeten tota l'especificació de CommonMark amb una sintaxi àmplia. El KleverNotes també introdueix una petita col·lecció de «connectors» d'alta voluntària per a ampliar les característiques bàsiques del Markdown, com ara: ressaltat de codi, enllaçat de notes, emoji ràpid, etc.</p>
         <p xml:lang="ca-valencia">Les notes es guarden com a fitxers en Markdown a l'emmagatzematge de KleverNotes per a un accés fàcil. Admeten tota l'especificació de CommonMark amb una sintaxi àmplia. KleverNotes també introduïx una xicoteta col·lecció de «connectors» d'alta voluntària per a ampliar les característiques bàsiques de Markdown, com ara: ressaltat de codi, enllaçat de notes, emoji ràpid, etc.</p>
         <p xml:lang="cs">Poznámky se ukládají jako soubory ve formátu Markdown do vašeho úložiště KleverNotes, kde jsou snadno dostupné. Podporují celou specifikaci CommonMark s rozsáhlou syntaxí. KleverNotes také nabízí malou sadu volitelných modulů, které rozšiřují základní funkce Markdownu, jako jsou například: zvýrazňování kódu, propojování poznámek, rychlé vkládání emotikonů atd.</p>
