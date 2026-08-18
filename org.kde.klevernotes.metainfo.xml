@@ -264,6 +264,7 @@
         <p xml:lang="ca">Actualitza el md4qt a la versió 5.0.15: Igor Mironchik, creador del md4qt.</p>
         <p xml:lang="ca-valencia">Actualitza md4qt a la versió 5.0.15: Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="cs">Aktualizace md4qt na verzi 5.0.15: Igor Mironchik, autor programu md4qt.</p>
+        <p xml:lang="de">„md4qt“ auf Version 5.0.15 aktualisiert: Igor Mironchik, Autor von „md4qt“.</p>
         <p xml:lang="es">Se ha actualizado md4qt a la versión 5.0.15: Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="fr">Mettre à jour le logiciel « md4qt » vers la version 5.0.15 : logiciel « md4qt » créé par Igor Mironchik.</p>
         <p xml:lang="he">עדכון של md4qt לגרסה 5.0.15: איגור מירוצ׳ניק, היוצר של md4qt.</p>
@@ -344,6 +345,7 @@
         <p xml:lang="ca">Correccions diverses d'errors petits i millores.</p>
         <p xml:lang="ca-valencia">Correccions diverses d'errors petits i millores.</p>
         <p xml:lang="cs">Různé drobné opravy chyb a vylepšení.</p>
+        <p xml:lang="de">Verschiedene kleine Fehlerbehebungen und Verbesserungen.</p>
         <p xml:lang="es">Diversas correcciones de pequeños fallos y mejoras.</p>
         <p xml:lang="fr">Diverses petites corrections de bogues et améliorations</p>
         <p xml:lang="he">מגוון תיקוני תקלות ושיפורים קטנטנים.</p>
@@ -367,6 +369,7 @@
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
         <p xml:lang="cs">Verze s opravami chyb:</p>
+        <p xml:lang="de">Veröffentlichung mit Fehlerbehebungen:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -449,6 +452,7 @@
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
         <p xml:lang="cs">Verze s opravami chyb:</p>
+        <p xml:lang="de">Veröffentlichung mit Fehlerbehebungen:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -531,6 +535,7 @@
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
         <p xml:lang="cs">Verze s opravami chyb:</p>
+        <p xml:lang="de">Veröffentlichung mit Fehlerbehebungen:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -570,6 +575,7 @@
           <li xml:lang="ca">Corregeix l'ordenació d'elements</li>
           <li xml:lang="ca-valencia">Corregix l'ordenació d'elements</li>
           <li xml:lang="cs">Opraveno řazení položek</li>
+          <li xml:lang="de">Fehler beim Sortieren der Elemente behoben</li>
           <li xml:lang="es">Se ha corregido el orden de los elementos.</li>
           <li xml:lang="fr">Correction du tri des éléments</li>
           <li xml:lang="he">סידור פריטים תוקן</li>
@@ -625,6 +631,7 @@
           <li xml:lang="ca">Correccions diverses d'errors petits</li>
           <li xml:lang="ca-valencia">Correccions diverses d'errors petits</li>
           <li xml:lang="cs">Oprava různých drobných chyb</li>
+          <li xml:lang="de">Verschiedene kleine Fehler behoben</li>
           <li xml:lang="es">Diversas correcciones de pequeños fallos.</li>
           <li xml:lang="fr">Diverses petites corrections de bogues</li>
           <li xml:lang="he">מגוון תיקוני תקלות קטנטנים</li>
@@ -648,6 +655,7 @@
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
         <p xml:lang="cs">Verze s opravami chyb:</p>
+        <p xml:lang="de">Veröffentlichung mit Fehlerbehebungen:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -668,6 +676,7 @@
           <li xml:lang="ca">Corregeix una fallada en suprimir una nota</li>
           <li xml:lang="ca-valencia">Corregix una fallada en suprimir una nota</li>
           <li xml:lang="cs">Oprava pádu aplikace při mazání poznámky</li>
+          <li xml:lang="de">Absturz beim Löschen einer Notiz behoben</li>
           <li xml:lang="es">Se ha corregido un fallo de la aplicación al borrar notas.</li>
           <li xml:lang="fr">Correction d'un plantage lors de la suppression d'une note</li>
           <li xml:lang="he">תוקנה קריסה במחיקת פתקית</li>
@@ -777,6 +786,7 @@
           <li xml:lang="ca">Actualitza «md4qt»</li>
           <li xml:lang="ca-valencia">Actualitza «md4qt»</li>
           <li xml:lang="cs">Aktualizace md4qt</li>
+          <li xml:lang="de">„md4qt“ aktualisiert</li>
           <li xml:lang="es">Se ha actualizado md4qt.</li>
           <li xml:lang="fr">Mettre à jour la bibliothèque « md4qt »</li>
           <li xml:lang="he">‏md4qt עודכן</li>
@@ -801,6 +811,7 @@
         <p xml:lang="ca">Llançament de correcció d'errors:</p>
         <p xml:lang="ca-valencia">Llançament d'esmena d'errors:</p>
         <p xml:lang="cs">Verze s opravami chyb:</p>
+        <p xml:lang="de">Veröffentlichung mit Fehlerbehebungen:</p>
         <p xml:lang="es">Versión de corrección de fallos:</p>
         <p xml:lang="fr">Version de correction de bogues :</p>
         <p xml:lang="he">מהדורת תיקון תקלות:</p>
@@ -899,6 +910,7 @@
         <p xml:lang="ca">Què hi ha de nou:</p>
         <p xml:lang="ca-valencia">Què hi ha de nou:</p>
         <p xml:lang="cs">Co je nového:</p>
+        <p xml:lang="de">Was ist neu:</p>
         <p xml:lang="es">Novedades:</p>
         <p xml:lang="fr">Quoi de neuf :</p>
         <p xml:lang="he">מה חדש:</p>
@@ -1010,6 +1022,7 @@
         <p xml:lang="ca">Correccions d'errors que inclouen però no es limiten a:</p>
         <p xml:lang="ca-valencia">Esmenes d'errors que inclouen però no es limiten a:</p>
         <p xml:lang="cs">Opravy chyb, mimo jiné:</p>
+        <p xml:lang="de">Fehlerbehebungen, unter anderem:</p>
         <p xml:lang="es">Correcciones de fallos que incluyen, entre otras:</p>
         <p xml:lang="fr">Corrections de bogues incluant, mais sans s'y limite à :</p>
         <p xml:lang="he">תיקוני תקלות שכוללים אך לא מוגבלים לרשימה הבאה:</p>
@@ -1065,6 +1078,7 @@
           <li xml:lang="ca">Problemes diversos de renderització</li>
           <li xml:lang="ca-valencia">Problemes diversos de renderització</li>
           <li xml:lang="cs">Různé problémy s vykreslováním</li>
+          <li xml:lang="de">Verschiedene Darstellungsfehler</li>
           <li xml:lang="es">Diversos problemas de visualización.</li>
           <li xml:lang="fr">Divers problèmes de rendu</li>
           <li xml:lang="he">תקלות עיבוד שונות</li>
@@ -1092,6 +1106,7 @@
         <p xml:lang="ca">Finalment, el KleverNotes 1.1.0 està disponible! El KleverNotes és l'aplicació per a la presa de notes Markdown de KDE. Durant 3 mesos, he estat treballant de valent afegint funcionalitats noves mentre millorava l'aplicació i solucionava alguns errors.</p>
         <p xml:lang="ca-valencia">Finalment, KleverNotes 1.1.0 està disponible! KleverNotes és l'aplicació per a la presa de notes Markdown de KDE. Durant 3 mesos, he sigut treballant de valent afegint característiques noves mentre millorava l'aplicació i solucionava alguns errors.</p>
         <p xml:lang="cs">KleverNotes 1.1.0 je konečně k dispozici! KleverNotes je aplikace pro psaní poznámek ve formátu Markdown od KDE. Poslední tři měsíce se usilovně pracovalo na přidávání nových funkcí, vylepšování aplikace a opravování některých chyb.</p>
+        <p xml:lang="de">KleverNotes 1.1.0 ist endlich verfügbar! KleverNotes ist eine Anwendung zum Erstellen von Markdown-Notizen von KDE. In den vergangenen drei Monaten habe ich hart an neuen Funktionen gearbeitet und die Anwendung verbessert sowie einige Fehler behoben.</p>
         <p xml:lang="es">Ya está disponible KleverNotes 1.1.0. KleverNotes es una aplicación de KDE para escribir notas. Durante tres meses, he estado trabajando duro para añadir nuevas funciones a la vez que mejoraba la aplicación y corregía algunos fallos.</p>
         <p xml:lang="fr">KleverNotes 1.1.0 est enfin disponible ! KleverNotes est l'application de prise de notes de KDE en Markdown. Depuis 3 mois, je travaille dur pour ajouter de nouvelles fonctionnalités tout en améliorant l'application et en corrigeant certains bogues.</p>
         <p xml:lang="he">KleverNotes 1.1.0 סוף סוף זמין! KleverNotes הוא יישום כתיבת הפתקיות ב־Markdown מבית KDE. במשך 3 חודשים עמלתי רבות על הוספת יכולות חדשות תוך שיפור היישום ותיקון כל מיני תקלות.</p>
