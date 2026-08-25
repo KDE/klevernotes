@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the klevernotes package.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-08 00:44+0000\n"
-"PO-Revision-Date: 2025-11-30 15:38+0200\n"
+"PO-Revision-Date: 2026-04-13 18:43+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -871,7 +871,7 @@ msgstr "Uusien muistiinpanojen oletusnimi:"
 #, kde-format
 msgctxt "@label:switch"
 msgid "Sort Notes by Last Modified"
-msgstr ""
+msgstr "Lajittele muistiinpanot muutosajan mukaan"
 
 #: contents/ui/settings/GeneralTab.qml:120
 #, kde-format
