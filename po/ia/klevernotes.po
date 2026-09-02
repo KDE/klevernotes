@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-08 00:44+0000\n"
-"PO-Revision-Date: 2026-02-11 12:46+0100\n"
+"PO-Revision-Date: 2026-09-01 17:14+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -332,7 +332,7 @@ msgid ""
 "This storage appears to be using the old KleverNotes file structure which is "
 "no longer supported."
 msgstr ""
-"Iste immagazinage sembla esser usante lev etere structura de KleverNotes que "
+"Iste immagazinage sembla esser usante le vetere structura de KleverNotes que "
 "non es plus supportate."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:21
@@ -342,8 +342,8 @@ msgid ""
 "By pressing the 'Apply' button, you agree to convert the storage to the new "
 "structure (this should not be a destructive operation)."
 msgstr ""
-"Per pressare lebutton 'Applica', tu concorda converter leimmagazinage al "
-"nove structura (isto don deberea esser un operation descrtuctive)."
+"Per pressar le button 'Applica', tu concorda converter le immagazinage al "
+"nove structura (isto non deberea esser un operation desctructive)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
 #, kde-format
