@@ -296,7 +296,7 @@ msgstr "Veuillez supprimer le caractère « / » ou sélectionner un autre nom
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Printing Dialog"
-msgstr "Boîte de dialogue d'impression"
+msgstr "Boite de dialogue d'impression"
 
 #: contents/ui/dialogs/PrintingDialog.qml:36
 #, kde-format
