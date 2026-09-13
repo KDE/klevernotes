@@ -6,18 +6,22 @@
 #pragma once
 
 // KleverNotes include
-#include "colors.hpp"
 #include "kleverconfig.h"
+#include "logic/editor/editorHighlighter.hpp"
 #include "logic/editor/posCacheUtils.hpp"
 #include "logic/parser/plugins/pluginHelper.h"
 #include "logic/parser/renderer.h"
 
 // md4qt include.
 #include <md4qt/src/doc.h>
+#include <md4qt/src/poscache.h>
+#include <md4qt/src/utils.h>
 
 // Qt include
 #include <QObject>
 #include <QQuickTextDocument>
+#include <QTextBlock>
+#include <QTextCursor>
 #include <QTextDocument>
 #include <QTimer>
 #include <QtQml>
@@ -27,8 +31,15 @@ Q_DECLARE_METATYPE(QQuickTextDocument);
 namespace MdEditor
 {
 
+/**
+ * @brief Returns whether the link is in items.
+ *
+ * @param items Stack of items.
+ */
+MD::Link *isLink(const MD::PosCache::Items &items);
+
 class Parser;
-class EditorHighlighter;
+
 /**
  * @class EditorHandler
  * @brief Class giving access to the QML TextArea.
@@ -43,6 +54,7 @@ class EditorHandler : public QObject
     Q_PROPERTY(int cursorPosition READ cursorPosition WRITE setCursorPosition NOTIFY cursorPositionChanged)
     Q_PROPERTY(int selectionStart READ selectionStart WRITE setSelectionStart NOTIFY selectionStartChanged)
     Q_PROPERTY(int selectionEnd READ selectionEnd WRITE setSelectionEnd NOTIFY selectionEndChanged)
+    Q_PROPERTY(int cursorUnderMouse READ cursorUnderMouse WRITE setCursorUnderMouse NOTIFY cursorUnderMouseChanged)
 
     Q_PROPERTY(QString notePath READ getNotePath WRITE setNotePath)
 
@@ -95,6 +107,14 @@ public:
      * @return The selection ending position.
      */
     int selectionEnd() const;
+
+    /**
+     * @brief Get the TextArea current position under mouse cursor.
+     * This position is set only with Ctrl keyboard modifier.
+     *
+     * @return The current position under mouse cursor.
+     */
+    int cursorUnderMouse() const;
 
     // Parser
     /**
@@ -200,6 +220,11 @@ Q_SIGNALS:
     void cursorPositionChanged(const int position);
 
     /**
+     * @brief Force repaint of text area in QML.
+     */
+    void repaintTextArea();
+
+    /**
      * @brief Signals that the selection starting position has changed.
      *
      * @param position The new position.
@@ -212,6 +237,13 @@ Q_SIGNALS:
      * @param position The new position.
      */
     void selectionEndChanged(const int position);
+
+    /**
+     * @brief Signals that the position under mouse has changed.
+     *
+     * @param position The new position.
+     */
+    void cursorUnderMouseChanged(const int position);
 
     /**
      * @brief Signals that the editor wants to parse the given `md`.
@@ -265,6 +297,13 @@ public Q_SLOTS:
      */
     void editorFontChanged();
 
+    /**
+     * @brief Text area was clicked.
+     *
+     * @param pos Cursor position.
+     */
+    Q_INVOKABLE void textClicked(const int pos);
+
 private Q_SLOTS:
     // Code highlight
     /**
@@ -308,6 +347,11 @@ private Q_SLOTS:
      * @brief Receives the info that timer tracking the cursor movement has timed out.
      */
     void cursorMovedTimeOut();
+
+    /**
+     * @brief Receives the info that the cursor under mouse has been changed.
+     */
+    void onCursorUnderMouseChanged(const int position);
 
     // Render
     /**
@@ -402,6 +446,13 @@ private:
      */
     void setSelectionEnd(const int position);
 
+    /**
+     * @brief Set the current position under mouse.
+     *
+     * @param position The current position under mouse.
+     */
+    void setCursorUnderMouse(const int position);
+
     // Render
     /**
      * @brief Render the MD::Document resulting of the parsing.
@@ -437,6 +488,49 @@ private:
      */
     void updateSurroundingDelims();
 
+    /**
+     * Returns actual URL for the link.
+     */
+    QString actualUrl(MD::Link *link) const;
+
+    /**
+     * @brief Handle link.
+     */
+    template<class Func>
+    bool handleLink(const int position, Func f)
+    {
+        QTextCursor cursor = QTextCursor(m_document);
+        cursor.setPosition(position);
+
+        const auto lineNumber = cursor.block().blockNumber();
+        const auto pos = cursor.position() - cursor.block().position();
+
+        const auto link = isLink(m_editorHighlighter->findFirstInCache({pos, lineNumber, pos, lineNumber}));
+
+        if (link) {
+            const auto place = actualUrl(link);
+
+            if (!place.startsWith(QLatin1Char('#'))) {
+                QUrl u(place);
+                const auto scheme = u.scheme().toLower();
+
+                static const QString s_http = QStringLiteral("http");
+                static const QString s_https = QStringLiteral("https");
+                static const QString s_mailto = QStringLiteral("mailto");
+                static const QString s_www = QStringLiteral("www.");
+
+                // Handle hyperlinks only while.
+                if (scheme == s_http || scheme == s_https || scheme == s_mailto || place.toLower().startsWith(s_www) || MD::isEmail(place)) {
+                    f(link);
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 private:
     // Config Connections
     KleverConfig *m_config;
@@ -447,6 +541,7 @@ private:
     int m_cursorPosition = 0;
     int m_selectionStart = 0;
     int m_selectionEnd = 0;
+    int m_cursorUnderMouse = 0;
 
     // Parsing
     QString m_noteDir;

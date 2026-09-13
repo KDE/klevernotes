@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
-#include "editorHighlighter.hpp"
-
 // KleverNotes includes
+#include "editorHighlighterPrivate.hpp"
 #include "logic/editor/editorHandler.hpp"
 #include "logic/editor/editorTextManipulation.hpp"
 
 // Qt include.
-#include <QTextBlock>
+#include <QApplication>
 #include <QTextCharFormat>
 #include <QTextCursor>
 #include <QTextEdit>
@@ -47,14 +46,12 @@ void EditorHighlighter::setColors(const Colors &colors)
 void EditorHighlighter::cacheAndHighlight(QSharedPointer<MD::Document> doc, const bool highlight)
 {
     m_highlightEnabled = highlight;
-    auto c = d->editor->textCursor();
-    c.beginEditBlock();
+    d->m_underlinedLink = {};
     d->clearFormats();
 
     d->doc = doc;
 
     MD::PosCache::initialize(d->doc);
-    c.endEditBlock();
     showDelimAroundCursor();
 }
 
@@ -150,12 +147,10 @@ QList<posCacheUtils::DelimsInfo> EditorHighlighter::showDelimAroundCursor(const 
 
     const auto delims = getDelimsFromCursor();
     if (m_highlightEnabled) {
-        auto c = d->editor->textCursor();
-        c.joinPreviousEditBlock();
         revertDelimsStyle(delims);
         d->applyFormats();
-        d->preventAutoScroll();
-        c.endEditBlock();
+
+        Q_EMIT d->editor->repaintTextArea();
     }
 
     return delims;
@@ -173,6 +168,81 @@ MD::ListItem *EditorHighlighter::searchListItem(const int line, const int pos)
     }
 
     return nullptr;
+}
+
+namespace /* anonymous */
+{
+
+bool operator!=(const MD::WithPosition &p1, const MD::WithPosition &p2)
+{
+    return (p1.startLine() != p2.startLine() || p1.startColumn() != p2.startColumn() || p1.endLine() != p2.endLine() || p1.endColumn() != p2.endColumn());
+}
+
+} /* namespace anonymous */
+
+void EditorHighlighter::underlineLink(MD::Link *link)
+{
+    const MD::WithPosition pos = {link->startColumn(), link->startLine(), link->endColumn(), link->endLine()};
+
+    if (pos != d->m_underlinedLink) {
+        restoreLink();
+
+        QApplication::setOverrideCursor(Qt::PointingHandCursor);
+
+        d->m_underlinedLink = pos;
+
+        for (auto i = pos.startLine(); i <= pos.endLine(); ++i) {
+            const auto block = d->editor->document()->findBlockByNumber(i);
+
+            const int start = (i == pos.startLine() ? pos.startColumn() : 0);
+            const int length = (i == pos.startLine() ? (i == pos.endLine() ? pos.endColumn() - pos.startColumn() + 1 : block.length() - 1 - pos.startColumn())
+                                                     : (i == pos.endLine() ? pos.endColumn() + 1 : block.length() - 1));
+
+            QList<QTextCharFormat> formats;
+
+            auto cursor = QTextCursor(block);
+            qsizetype localPos = 0;
+
+            while (cursor.position() < block.position() + block.length() - 1) {
+                auto fmt = cursor.charFormat();
+
+                if (localPos >= start && localPos < start + length) {
+                    fmt.setFontUnderline(true);
+                }
+
+                formats.append(fmt);
+
+                ++localPos;
+                cursor.movePosition(QTextCursor::NextCharacter);
+            }
+
+            if (!d->underlinedLinks.contains(i)) {
+                d->underlinedLinks.insert(i, d->formats[i]);
+            }
+
+            d->formats[i].formats = formats;
+        }
+
+        d->applyFormats();
+
+        Q_EMIT d->editor->repaintTextArea();
+    }
+}
+
+void EditorHighlighter::restoreLink()
+{
+    if (!d->m_underlinedLink.isNullPositions()) {
+        for (auto i = d->m_underlinedLink.startLine(); i <= d->m_underlinedLink.endLine(); ++i) {
+            d->formats[i].formats = d->underlinedLinks[i].formats;
+        }
+
+        d->m_underlinedLink = {};
+        d->applyFormats();
+
+        QApplication::restoreOverrideCursor();
+
+        Q_EMIT d->editor->repaintTextArea();
+    }
 }
 
 void EditorHighlighter::onItemWithOpts(MD::ItemWithOpts *i)

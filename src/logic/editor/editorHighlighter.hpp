@@ -4,7 +4,6 @@
 #pragma once
 
 // KleverNotes include
-#include "editorHighlighterPrivate.hpp"
 #include "logic/editor/colors.hpp"
 #include "logic/editor/posCacheUtils.hpp"
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
@@ -15,9 +14,13 @@
 // Qt include.
 #include <QColor>
 #include <QScopedPointer>
+#include <QTextBlock>
 
 namespace MdEditor
 {
+class EditorHandler;
+class EditorHighlighterPrivate;
+
 //! Markdown syntax highlighter.
 /**
  * @class EditorHighlighter
@@ -94,6 +97,18 @@ public:
      * @result A pointer to the list item if it is found. A nullptr otherwise.
      */
     MD::ListItem *searchListItem(const int line, const int pos);
+
+    /**
+     * @brief Underline link.
+     *
+     * @param link The link.
+     */
+    void underlineLink(MD::Link *link);
+
+    /**
+     * @brief Restore previously underlined link.
+     */
+    void restoreLink();
 
 protected:
     void onReferenceLink(MD::Link *l) override;

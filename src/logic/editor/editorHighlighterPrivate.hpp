@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2024 Louis Schul <schul9louis@gmail.com>
 
 // KleverNotes includes
-#include "logic/editor/editorHandler.hpp"
+#include "colors.hpp"
 #include "logic/editor/posCacheUtils.hpp"
 
 // Qt include.
@@ -15,6 +15,8 @@ using namespace Qt::Literals::StringLiterals;
 
 namespace MdEditor
 {
+class EditorHandler;
+
 class EditorHighlighterPrivate
 {
 public:
@@ -99,11 +101,6 @@ public:
      */
     void revertFormats(const posCacheUtils::DelimsInfo &delimInfo);
 
-    /**
-     * @brief Simple workaround to prevent the TextArea from auto scrolling to put the cursor line at the bottom.
-     */
-    void preventAutoScroll();
-
     // Editor.
     EditorHandler *editor = nullptr;
     // Document.
@@ -127,6 +124,7 @@ public:
     // Formats.
     QMap<int, Format> formats;
     QMap<int, Format> cachedFormats;
+    QMap<int, Format> underlinedLinks;
     int headingLevel = 0;
 
     // KleverNotes
@@ -135,5 +133,8 @@ public:
 
     int tagSizeScale = 100;
     bool adaptiveTagSize = false;
+
+    // Currently underlined link.
+    MD::WithPosition m_underlinedLink;
 }; // !EditorHighlighterPrivate
 } // !namespace MdEditor

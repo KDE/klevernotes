@@ -3,6 +3,7 @@
 
 // KleverNotes include
 #include "editorHighlighterPrivate.hpp"
+#include "editorHandler.hpp"
 
 // md4qt include
 #include <md4qt/src/doc.h>
@@ -32,6 +33,7 @@ void EditorHighlighterPrivate::clearFormats()
 
     formats.clear();
     cachedFormats.clear();
+    underlinedLinks.clear();
 }
 
 void EditorHighlighterPrivate::applyFormats()
@@ -342,15 +344,6 @@ void EditorHighlighterPrivate::revertFormats(const posCacheUtils::DelimsInfo &de
     revertFormat(delimInfo.opening);
     if (delimInfo.closing.endColumn() != -1) {
         revertFormat(delimInfo.closing);
-    }
-}
-
-void EditorHighlighterPrivate::preventAutoScroll()
-{
-    if (!formats.isEmpty()) {
-        const auto &f = formats.last();
-
-        editor->document()->markContentsDirty(f.block.position() + f.block.length() - 1, f.block.length());
     }
 }
 } // !namespace MdEditor

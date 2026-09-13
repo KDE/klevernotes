@@ -11,8 +11,8 @@
 
 // Qt include
 #include <QColor>
+#include <QDesktopServices>
 #include <QRegularExpression>
-#include <QTextBlock>
 
 using namespace Qt::Literals::StringLiterals;
 namespace MdEditor
@@ -32,6 +32,7 @@ EditorHandler::EditorHandler(QObject *parent)
 
     connectParser();
 
+    connect(this, &EditorHandler::cursorUnderMouseChanged, this, &EditorHandler::onCursorUnderMouseChanged);
     connect(m_config, &KleverConfig::previewVisibleChanged, this, &EditorHandler::renderPreviewStateChanged);
     changeRenderPreviewState();
 
@@ -198,6 +199,22 @@ void EditorHandler::setSelectionEnd(const int position)
     if (m_cursorMoveTimer && m_selectionStart == m_selectionEnd) {
         m_cursorMoveTimer->start();
     }
+}
+
+int EditorHandler::cursorUnderMouse() const
+{
+    return m_cursorUnderMouse;
+}
+
+void EditorHandler::setCursorUnderMouse(const int position)
+{
+    if (m_cursorUnderMouse == position) {
+        return;
+    }
+
+    m_cursorUnderMouse = position;
+
+    Q_EMIT cursorUnderMouseChanged(m_cursorUnderMouse);
 }
 // !QTextDocument Info
 
@@ -504,6 +521,62 @@ void EditorHandler::cursorMovedTimeOut()
     }
 
     m_textChanged = false;
+}
+
+MD::Link *isLink(const MD::PosCache::Items &items)
+{
+    if (!items.isEmpty()) {
+        for (const auto &i : std::as_const(items)) {
+            if (i->type() == MD::ItemType::Link) {
+                return static_cast<MD::Link *>(i);
+            }
+        }
+    }
+
+    return nullptr;
+}
+
+QString EditorHandler::actualUrl(MD::Link *link) const
+{
+    auto place = link->url();
+
+    auto lit = m_currentMdDoc->labeledLinks().find(place);
+
+    if (lit != m_currentMdDoc->labeledLinks().cend()) {
+        place = lit.value()->url();
+    }
+
+    return place;
+}
+
+void EditorHandler::onCursorUnderMouseChanged(const int position)
+{
+    Q_UNUSED(position)
+
+    if (m_editorHighlighter && m_document) {
+        if (position > -1 && handleLink(m_cursorUnderMouse, [this](MD::Link *link) {
+                this->m_editorHighlighter->underlineLink(link);
+            })) {
+            return;
+        }
+
+        m_editorHighlighter->restoreLink();
+    }
+}
+
+void EditorHandler::textClicked(const int pos)
+{
+    handleLink(pos, [this](MD::Link *link) {
+        static const QString s_mailto = QStringLiteral("mailto:");
+
+        auto url = this->actualUrl(link);
+
+        if (MD::isEmail(url) && !url.toLower().startsWith(s_mailto)) {
+            url.prepend(QStringLiteral("mailto:"));
+        }
+
+        QDesktopServices::openUrl(QUrl(url));
+    });
 }
 // !Highlight
 // !KleverNotes slots

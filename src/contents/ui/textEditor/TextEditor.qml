@@ -79,9 +79,42 @@ ScrollView {
             }
             EditorHandler.handleReturnPressed(modifier)
         }
+        onReleased: (mouse) => {
+            if (mouse.modifiers === Qt.ControlModifier) {
+                EditorHandler.textClicked(textArea.positionAt(mouse.x, mouse.y));
+            }
+        }
 
         function handleTabPressed(backtab) {
             EditorHandler.handleTabPressed(backtab)
+        }
+
+        HoverHandler {
+            id: mouseSpy
+
+            onPointChanged: {
+                if (mouseSpy.point.modifiers === Qt.ControlModifier) {
+                    EditorHandler.cursorUnderMouse =
+                        textArea.positionAt(mouseSpy.point.position.x, mouseSpy.point.position.y);
+                } else {
+                    EditorHandler.cursorUnderMouse = -1;
+                }
+            }
+        }
+    }
+
+    Connections {
+        target: EditorHandler
+
+        function onRepaintTextArea() {
+            const y = view.ScrollBar.vertical.position;
+            const x = view.ScrollBar.horizontal.position;
+
+            textArea.width += 0.1;
+            textArea.width -= 0.1;
+
+            view.ScrollBar.horizontal.position = x;
+            view.ScrollBar.vertical.position = y;
         }
     }
 
