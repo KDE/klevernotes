@@ -58,11 +58,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
 )
 
-set(BUILD_MD4QT_TESTS OFF CACHE INTERNAL "" FORCE)
-set(INSTALL_MD4QT OFF CACHE INTERNAL "" FORCE)
-add_subdirectory(3rdparty/md4qt)
-
-include_directories(${md4qt_INCLUDE_DIRECTORIES}/../..)
+find_package(md4qt REQUIRED)
 
 add_subdirectory(src)
 

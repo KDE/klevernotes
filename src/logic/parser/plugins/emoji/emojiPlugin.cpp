@@ -9,8 +9,8 @@
 #include "kleverconfig.h"
 
 // md4qt include.
-#include <md4qt/src/inline_context.h>
-#include <md4qt/src/text_stream.h>
+#include <md4qt/inline_context.h>
+#include <md4qt/text_stream.h>
 
 namespace EmojiPlugin
 {

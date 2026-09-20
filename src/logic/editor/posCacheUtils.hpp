@@ -6,7 +6,7 @@
 #pragma once
 
 // md4qt include.
-#include <md4qt/src/doc.h>
+#include <md4qt/doc.h>
 
 using ItemSharedPointer = QSharedPointer<MD::Item>;
 using SharedItems = QVector<ItemSharedPointer>;

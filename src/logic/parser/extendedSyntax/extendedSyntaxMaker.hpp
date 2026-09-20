@@ -6,7 +6,7 @@
 #pragma once
 
 // md4qt include.
-#include <md4qt/src/emphasis_parser.h>
+#include <md4qt/emphasis_parser.h>
 
 namespace ExtendedSyntaxMaker
 {

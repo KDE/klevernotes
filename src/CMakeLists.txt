@@ -194,6 +194,7 @@ target_sources(klevernotes_static
 kconfig_target_kcfg_file(klevernotes_static FILE kleverconfig.kcfg CLASS_NAME KleverConfig MUTATORS GENERATE_PROPERTIES GENERATE_MOC DEFAULT_VALUE_GETTERS PARENT_IN_CONSTRUCTOR QML_REGISTRATION SINGLETON)
 
 target_link_libraries(klevernotes_static PUBLIC
+    md4qt::md4qt
     Qt::Core
     Qt::Gui
     Qt::Qml

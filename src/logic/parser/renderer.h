@@ -9,7 +9,7 @@
 #include "plugins/pluginHelper.h"
 #include <utility>
 
-#include <md4qt/src/html.h>
+#include <md4qt/html.h>
 
 /**
  * @class Renderer

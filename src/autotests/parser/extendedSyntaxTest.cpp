@@ -11,8 +11,8 @@
 #include <QTextStream>
 #include <QtTest/QTest>
 
-#include <md4qt/src/doc.h>
-#include <md4qt/src/parser.h>
+#include <md4qt/doc.h>
+#include <md4qt/parser.h>
 
 class ExtendedSyntaxTest : public QObject
 {

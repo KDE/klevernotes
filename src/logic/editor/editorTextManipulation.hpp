@@ -6,7 +6,7 @@
 #pragma once
 
 // md4qt include.
-#include <md4qt/src/doc.h>
+#include <md4qt/doc.h>
 
 #define HighlightDelim 8
 

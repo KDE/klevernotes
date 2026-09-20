@@ -9,7 +9,7 @@
 #include "logic/parser/plugins/emoji/emojiPlugin.hpp"
 
 // md4qt include.
-#include <md4qt/src/poscache.h>
+#include <md4qt/poscache.h>
 
 // Qt include.
 #include <QColor>

@@ -9,10 +9,10 @@
 #include "noteMapperParserUtils.h"
 
 // md4qt include.
-#include <md4qt/src/inline_context.h>
-#include <md4qt/src/reverse_solidus.h>
-#include <md4qt/src/text_stream.h>
-#include <md4qt/src/utils.h>
+#include <md4qt/inline_context.h>
+#include <md4qt/reverse_solidus.h>
+#include <md4qt/text_stream.h>
+#include <md4qt/utils.h>
 
 namespace NoteLinkingPlugin
 {

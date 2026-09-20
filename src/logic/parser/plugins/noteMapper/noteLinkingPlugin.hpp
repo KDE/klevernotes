@@ -6,7 +6,7 @@
 #pragma once
 
 // md4qt include.
-#include <md4qt/src/inline_parser.h>
+#include <md4qt/inline_parser.h>
 
 namespace NoteLinkingPlugin
 {

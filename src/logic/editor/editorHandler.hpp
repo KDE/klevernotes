@@ -13,9 +13,9 @@
 #include "logic/parser/renderer.h"
 
 // md4qt include.
-#include <md4qt/src/doc.h>
-#include <md4qt/src/poscache.h>
-#include <md4qt/src/utils.h>
+#include <md4qt/doc.h>
+#include <md4qt/poscache.h>
+#include <md4qt/utils.h>
 
 // Qt include
 #include <QObject>

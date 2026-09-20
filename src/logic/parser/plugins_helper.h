@@ -6,18 +6,18 @@
 #pragma once
 
 // md4qt include.
-#include <md4qt/src/asterisk_emphasis_parser.h>
-#include <md4qt/src/autolink_parser.h>
-#include <md4qt/src/emphasis_parser.h>
-#include <md4qt/src/gfm_autolink_parser.h>
-#include <md4qt/src/hard_line_break_parser.h>
-#include <md4qt/src/inline_code_parser.h>
-#include <md4qt/src/inline_html_parser.h>
-#include <md4qt/src/inline_math_parser.h>
-#include <md4qt/src/link_image_parser.h>
-#include <md4qt/src/parser.h>
-#include <md4qt/src/strikethrough_emphasis_parser.h>
-#include <md4qt/src/underline_emphasis_parser.h>
+#include <md4qt/asterisk_emphasis_parser.h>
+#include <md4qt/autolink_parser.h>
+#include <md4qt/emphasis_parser.h>
+#include <md4qt/gfm_autolink_parser.h>
+#include <md4qt/hard_line_break_parser.h>
+#include <md4qt/inline_code_parser.h>
+#include <md4qt/inline_html_parser.h>
+#include <md4qt/inline_math_parser.h>
+#include <md4qt/link_image_parser.h>
+#include <md4qt/parser.h>
+#include <md4qt/strikethrough_emphasis_parser.h>
+#include <md4qt/underline_emphasis_parser.h>
 
 template<class... Plugins>
 void addInlinePlugins(MD::Parser::InlineParsers &inlineParsers)
