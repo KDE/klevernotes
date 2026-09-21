@@ -130,7 +130,6 @@ void EditorHighlighterPrivate::applyFormatChanges()
 
     if (formatsChanged) {
         layout->setFormats(ranges);
-        editor->document()->markContentsDirty(currentBlock.position(), currentBlock.length());
     }
 }
 
