@@ -620,6 +620,7 @@
           <li xml:lang="sv">Ändra nersänkt avgränsare till `--`</li>
           <li xml:lang="tr">Alt simge sınırlayıcısı “--” olarak değiştirildi.</li>
           <li xml:lang="uk">Виправлено роздільник нижнього індексу на `--`</li>
+          <li xml:lang="zh-TW">將下標分隔符改為 `--`</li>
           <li>Update md4qt (fix minor and major issues)</li>
           <li xml:lang="ar">تحديث md4qt (إصلاح علل صغرى وكبرى)</li>
           <li xml:lang="ca">Actualitza el «md4qt» (corregeix problemes lleus i importants)</li>
@@ -639,6 +640,7 @@
           <li xml:lang="sv">Uppdatera md4qt (rätta mindre och större problem)</li>
           <li xml:lang="tr">md4qt güncellendi.</li>
           <li xml:lang="uk">Оновлено md4qt (виправлено незначні та значні вади)</li>
+          <li xml:lang="zh-TW">更新 md4qt（修正一些大小問題）</li>
           <li>Various small bugs fixes</li>
           <li xml:lang="ar">إصلاحات لعلل صغيرة متنوعة</li>
           <li xml:lang="ca">Correccions diverses d'errors petits</li>
@@ -659,6 +661,7 @@
           <li xml:lang="sv">Diverse små felrättningar</li>
           <li xml:lang="tr">Çeşitli hata düzeltmeleri ve iyileştirmeler</li>
           <li xml:lang="uk">Різноманітні виправлення невеликих вад</li>
+          <li xml:lang="zh-TW">許多小問題修正</li>
         </ul>
       </description>
     </release>
@@ -726,6 +729,7 @@
           <li xml:lang="sv">Rätta problem med sökvägar när anteckning flyttas</li>
           <li xml:lang="tr">Notu taşırken oluşan yol sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено проблему зі шляхом при пересуванні нотатки</li>
+          <li xml:lang="zh-TW">修正移動筆記時路徑的問題</li>
           <li>Do not create todo file unless necessary</li>
           <li xml:lang="ar">عدم إنشاء ملف مهام إلا عند الضرورة</li>
           <li xml:lang="ca">No crea el fitxer de tasques pendents llevat que sigui necessari</li>
@@ -745,6 +749,7 @@
           <li xml:lang="sv">Skapa inte en uppgiftsfil om det inte behövs</li>
           <li xml:lang="tr">Gerekli değilse yapılacak dosyasını oluşturma</li>
           <li xml:lang="uk">Усунено непотрібне створення файла завдань</li>
+          <li xml:lang="zh-TW">沒有必要的時候不要建立待辦事項檔案</li>
           <li>Align ExpandingFormSwitch style to FormSwitchDelegate style</li>
           <li xml:lang="ar">محاذاة نمط ExpandingFormSwitch مع نمط FormSwitchDelegate</li>
           <li xml:lang="ca">Alinea l'estil ExpandingFormSwitch a l'estil FormSwitchDelegate</li>
@@ -764,6 +769,7 @@
           <li xml:lang="sv">Justera stilen ExpandingFormSwitch till stilen FormSwitchDelegate</li>
           <li xml:lang="tr">ExpandingFormSwitch biçemini FormSwitchDelegate olarak değiştir</li>
           <li xml:lang="uk">Вирівняно стиль ExpandingFormSwitch за стилем FormSwitchDelegate</li>
+          <li xml:lang="zh-TW">讓 ExpandingFormSwitch 風格與 FormSwitchDelegate 風格一致</li>
           <li>Improve move dialog design</li>
           <li xml:lang="ar">تحسين تصميم حوار النقل</li>
           <li xml:lang="ca">Millora el disseny del diàleg de moure</li>
@@ -783,6 +789,7 @@
           <li xml:lang="sv">Förbättra design av dialogrutan Flytta</li>
           <li xml:lang="tr">Taşıma iletişim kutusu tasarımı iyileştirildi.</li>
           <li xml:lang="uk">Удосконалено дизайн вікна пересування</li>
+          <li xml:lang="zh-TW">改善移動對話框設計</li>
           <li>Add cheatsheet entries for extending syntax</li>
           <li xml:lang="ar">إضافة مدخلات ورقة المساعدة لتوسيع الصيغة</li>
           <li xml:lang="ca">Afegeix entrades de full de trucs per a ampliar la sintaxi</li>
@@ -802,6 +809,7 @@
           <li xml:lang="sv">Lägg till fusklappsposter för utökad syntax</li>
           <li xml:lang="tr">Genişleyen sözdizimi için kopya kâğıdı girdileri eklendi.</li>
           <li xml:lang="uk">Додано записи підказки для розширення синтаксису</li>
+          <li xml:lang="zh-TW">在備忘表加入擴張語法的項目</li>
           <li>Update md4qt</li>
           <li xml:lang="ar">تحديث md4qt</li>
           <li xml:lang="ca">Actualitza «md4qt»</li>
@@ -869,6 +877,7 @@
           <li xml:lang="sv">Ta bort kravet på lagringsnamnet (behöver inte längre vara "klevernotes")</li>
           <li xml:lang="tr">Depolama adı için “klevernotes” zorunluluğu kaldırıldı.</li>
           <li xml:lang="uk">Вилучено вимогу щодо назви сховища (ним більше не обов'язково є «klevernotes»)</li>
+          <li xml:lang="zh-TW">不再限制儲存庫名稱必須是 "klevernotes"</li>
           <li>Fix code block rendering issue with HTML tag</li>
           <li xml:lang="ar">إصلاح مشكلة صيرورة كتلة الكود مع وسوم HTML</li>
           <li xml:lang="ca">Corregeix el problema de renderització de blocs de codi amb etiqueta HTML</li>
@@ -888,6 +897,7 @@
           <li xml:lang="sv">Rätta problem med återgivning av kodblock med HTML-tagg</li>
           <li xml:lang="tr">HTML künyesiyle olan kod görüntüleme sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено проблему із обробкою блоку коду з теґом HTML</li>
+          <li xml:lang="zh-TW">修正程式碼區塊有 HTML 標籤時會繪製錯誤的問題</li>
           <li>Fix todos saving</li>
           <li xml:lang="ar">إصلاح حفظ المهام</li>
           <li xml:lang="ca">Corregeix el desament de les tasques pendents</li>
@@ -927,6 +937,7 @@
           <li xml:lang="sv">Tillåt att objekt flyttas till lagringens rot</li>
           <li xml:lang="tr">Ögelerin depolama kök düzeyine taşınmasına artık izin veriliyor.</li>
           <li xml:lang="uk">Уможливлено пересування записів до кореневої теки сховища</li>
+          <li xml:lang="zh-TW">讓項目可以移動到儲存庫的根</li>
         </ul>
       </description>
     </release>
@@ -973,6 +984,7 @@
           <li xml:lang="sv">Ny filstruktur som perfekt återspeglar det du ser i sidoraden. Och möjligheten att ändra färg och ikon för varje objekt.</li>
           <li xml:lang="tr">New file structure that perfectly reflects what you see in the sidebar. And the possibility to change the color and icon of each items.</li>
           <li xml:lang="uk">Нова структура файлів, яка ідеально відповідає тому, що ви бачите на бічній панелі. І можливість змінити колір та піктограму для кожного запису.</li>
+          <li xml:lang="zh-TW">新的檔案結構，現在它完全符合您在側邊欄所看到的結構。另外也新增改變各個項目的色彩與圖示的功能。</li>
           <li>New drawing page with more features</li>
           <li xml:lang="ar">صفحة رسم جديدة بميزات أكثر</li>
           <li xml:lang="ca">Pàgina de dibuix nova amb més funcionalitats</li>
@@ -992,6 +1004,7 @@
           <li xml:lang="sv">Ny teckningssida med fler funktioner</li>
           <li xml:lang="tr">New drawing page with more features</li>
           <li xml:lang="uk">Нова сторінка малювання з додатковими можливостями</li>
+          <li xml:lang="zh-TW">功能更多的新繪圖頁面</li>
           <li>Copy button inside block of code</li>
           <li xml:lang="ar">زر نسخ داخل كتلة الكود</li>
           <li xml:lang="ca">Botó de còpia dins del bloc de codi</li>
@@ -1011,6 +1024,7 @@
           <li xml:lang="sv">Kopiera knapp inne i kodblock</li>
           <li xml:lang="tr">Copy button inside block of code</li>
           <li xml:lang="uk">Кнопка копіювання у блоці коду</li>
+          <li xml:lang="zh-TW">程式碼區塊裡提供複製按鈕</li>
           <li>New bottom bar to switch between note and todos</li>
           <li xml:lang="ar">شريط سفلي جديد للتبديل بين الملاحظات والمهام</li>
           <li xml:lang="ca">Barra inferior nova per a canviar entre la nota i les tasques pendents</li>
@@ -1030,6 +1044,7 @@
           <li xml:lang="sv">Ny nedre rad för att byta mellan anteckning och uppgift</li>
           <li xml:lang="tr">New bottom bar to switch between note and todos</li>
           <li xml:lang="uk">Нова нижня панель для перемикання між нотатками та завданнями</li>
+          <li xml:lang="zh-TW">新的底部列，提供筆記與待辦事項的切換</li>
           <li>Improved page switching animation</li>
           <li xml:lang="ar">تحسين رسوم تبديل الصفحات المتحركة</li>
           <li xml:lang="ca">Millora de l'animació de canvi de pàgina</li>
@@ -1049,6 +1064,7 @@
           <li xml:lang="sv">Förbättrad animering av sidbyten</li>
           <li xml:lang="tr">Improved page switching animation</li>
           <li xml:lang="uk">Удосконалено анімацію перемикання сторінок</li>
+          <li xml:lang="zh-TW">改善頁面切換動態效果</li>
         </ul>
         <p>Bug fixes including but not limited to:</p>
         <p xml:lang="ar">إصلاحات للعلل تشمل ولا تقتصر على:</p>
@@ -1070,6 +1086,7 @@
         <p xml:lang="sv">Felrättningar inklusive men inte begränsat till:</p>
         <p xml:lang="tr">Bug fixes including but not limited to:</p>
         <p xml:lang="uk">Виправлення вад, серед яких:</p>
+        <p xml:lang="zh-TW">錯誤修正：</p>
         <ul>
           <li>Pressing V without any modifier while having an image in the clipboard do nothing (as it should)</li>
           <li xml:lang="ar">الضغط على V بدون مفتاح تعديل عند وجود صورة في الحافظة لا يؤدي لشيء (كما يجب)</li>
@@ -1090,6 +1107,7 @@
           <li xml:lang="sv">Att trycka på V utan någon väljartangent medan en bild finns på klippbordet gör ingenting (som det borde)</li>
           <li xml:lang="tr">Pressing V without any modifier while having an image in the clipboard do nothing (as it should)</li>
           <li xml:lang="uk">Натискання V без клавіші-модифікатор, коли у буфері обміну даними є зображення, не призводило ні до яких наслідків (але мало призводити)</li>
+          <li xml:lang="zh-TW">修正剪貼簿裡有影像時按下 V（無修飾鍵）會有不合理的動作的問題</li>
           <li>Prevent naming item with a '/' since it would create a directory</li>
           <li xml:lang="ar">منع تسمية العناصر بالرمز '/' لتجنب إنشاء مجلدات</li>
           <li xml:lang="ca">Evita anomenar elements amb un «/», ja que crearia un directori</li>
@@ -1109,6 +1127,7 @@
           <li xml:lang="sv">Förhindra att objekt namnges med ett '/' eftersom det skulle skapa en katalog</li>
           <li xml:lang="tr">Prevent naming item with a '/' since it would create a directory</li>
           <li xml:lang="uk">Реалізовано запобігання назвам запису з «/», оскільки це призводило б до створення каталогу</li>
+          <li xml:lang="zh-TW">防止在項目名稱裡包含 '/'，因為那會變成建立目錄</li>
           <li>Various rendering issues</li>
           <li xml:lang="ar">مشكلات صيرورة متنوعة</li>
           <li xml:lang="ca">Problemes diversos de renderització</li>
@@ -1129,6 +1148,7 @@
           <li xml:lang="sv">Diverse återgivningsproblem</li>
           <li xml:lang="tr">Çeşitli sunma sorunları düzeltmeleri</li>
           <li xml:lang="uk">Різноманітні вади обробки</li>
+          <li xml:lang="zh-TW">一些算繪問題</li>
         </ul>
       </description>
     </release>
@@ -1158,6 +1178,7 @@
         <p xml:lang="sv">KleverNotes 1.1.0 är äntligen tillgänglig! KleverNotes är anteckningsprogrammet med Markdown från KDE. Jag arbetat hårt i tre månader med att lägga till nya funktioner samtidigt som jag förbättrat programmet och åtgärdat några fel.</p>
         <p xml:lang="tr">KleverNotes 1.1.0 is finally available! KleverNotes is the Markdown note-taking app from KDE. For 3 months, I have been working hard to add new features while improving the app and fixing some bugs.</p>
         <p xml:lang="uk">Нарешті випущено KleverNotes 1.1.0! KleverNotes — це програма для створення нотаток у форматі Markdown від KDE. Протягом 3 місяців я наполегливо працював над додаванням нових функцій, одночасно покращуючи програму та виправляючи деякі помилки.</p>
+        <p xml:lang="zh-TW">KleverNotes 1.1.0 終於釋出了！KleverNotes 是來自 KDE 的 Markdown 筆記本應用程式。這三個月以來，我加入了新功能、改善了 KleverNotes，也修正了一些問題。</p>
         <p>KleverNotes parser has been switched to md4qt:</p>
         <p xml:lang="ar">حُوّل معالج ملاحظات ذكية إلى md4qt:</p>
         <p xml:lang="ca">L'analitzador del KleverNotes s'ha canviat a «md4qt»:</p>
@@ -1177,6 +1198,7 @@
         <p xml:lang="sv">KleverNotes tolk har ändrats till md4qt:</p>
         <p xml:lang="tr">KleverNotes parser has been switched to md4qt:</p>
         <p xml:lang="uk">Здійснено перехід KleverNotes на обробник md4qt:</p>
+        <p xml:lang="zh-TW">KleverNotes 剖析器已改為使用 md4qt：</p>
         <p>md4qt is a header-only C++ library for parsing Markdown.</p>
         <p xml:lang="ar">md4qt هي مكتبة C++ مقتصرة على الترويسات لمعالجة مارك داون.</p>
         <p xml:lang="ca">«md4qt» és una biblioteca C++ només de capçalera per a analitzar Markdown.</p>
@@ -1196,6 +1218,7 @@
         <p xml:lang="sv">md4qt är ett C++ bibliotek med bara deklarationsfiler för att tolka Markdown.</p>
         <p xml:lang="tr">md4qt is a header-only C++ library for parsing Markdown.</p>
         <p xml:lang="uk">md4qt — бібліотека C++ для обробки коду Markdown, яка складається лише з заголовків.</p>
+        <p xml:lang="zh-TW">md4qt 是一個剖析 Markdown 語法用的 header-only（只有 .h 標頭檔案）C++ 函式庫。</p>
         <p>
           md4qt supports CommonMark 0.31.2 Spec, and some GitHub extensions, 
           such as tables, footnotes, tasks lists, strikethroughs, 
@@ -1219,6 +1242,7 @@
         <p xml:lang="sv">md4qt stöder specifikationen CommonMark 0.31.2, och några GitHub-utökningar, såsom tabeller, fotnoter, uppgiftslistor, överstrykningar, injicering av LaTeX-matematik, GitHub automatiska länkar.</p>
         <p xml:lang="tr">md4qt supports CommonMark 0.31.2 Spec, and some GitHub extensions, such as tables, footnotes, tasks lists, strikethroughs, LaTeX Math injections, GitHub's autolinks.</p>
         <p xml:lang="uk">У md4qt передбачено підтримку специфікації CommonMark 0.31.2 та деякі розширення GitHub, такі як таблиці, виноски, списки завдань, закреслення, ін'єкції математичних елементів LaTeX, автоматичні посилання GitHub.</p>
+        <p xml:lang="zh-TW">md4qt 支援 CommonMark 0.31.2 規範以及一些 GitHub 的語法延伸，像是表格、註腳、工作清單、刪除線、LaTeX 數學插入與 GitHub 風格的自動連結。</p>
         <p>It is fast, repliable, customizable and easy to use. A perfect match !</p>
         <p xml:lang="ar">إنه سريع، وموثوق، وقابل للتخصيص، وسهل الاستخدام. إنه التوافق الأمثل!</p>
         <p xml:lang="ca">És ràpid, repetible, personalitzable i fàcil d'utilitzar. Una combinació perfecta!</p>
@@ -1238,6 +1262,7 @@
         <p xml:lang="sv">Den är snabb, pålitlig, anpassningsbar och lätt att använda. En perfekt matchning!</p>
         <p xml:lang="tr">It is fast, repliable, customizable and easy to use. A perfect match !</p>
         <p xml:lang="uk">Вона швидка, надійна, придатна до налаштовування та проста у користуванні. Чудова річ!</p>
+        <p xml:lang="zh-TW">它速度快、可靠、可自訂且好用，很符合 KleverNotes 的目標！</p>
         <p>The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
         <p xml:lang="ar">أصبح شريط الأدوات الآن أكثر دقة في إزالة وسوم مارك داون المحددة وأيضًا في تطبيقها.</p>
         <p xml:lang="ca">La barra d'eines ara és més precisa en eliminar etiquetes específiques del Markdown, però també en aplicar-les.</p>
