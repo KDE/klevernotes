@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-08 00:44+0000\n"
-"PO-Revision-Date: 2026-05-31 18:55-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -28,7 +28,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:dialog, Confirmation for deletion of a folder"
 msgid "Confirm Folder Deletion"
-msgstr ""
+msgstr "قىسقۇچ ئۆچۈرۈشنى جەزملە"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:29
 #, kde-kuit-format
@@ -522,7 +522,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:ApplicationWindow"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr ""
 
 #: contents/ui/pages/MainPage.qml:23
 #, kde-format
@@ -1020,7 +1020,7 @@ msgstr ""
 #, kde-format
 msgctxt "@combobox:entry, As in 'dark skin tone' (for an emoji), see '🫶🏿'"
 msgid "Dark"
-msgstr ""
+msgstr "قاراڭغۇ"
 
 #: contents/ui/settings/PluginsTab.qml:185
 #, kde-format
@@ -1832,7 +1832,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "KleverNotes"
-msgstr "KleverNotes"
+msgstr ""
 
 #: main.cpp:50
 #, kde-format
