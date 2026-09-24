@@ -90,6 +90,10 @@ void EmojiItem::setEndDelim(const MD::WithPosition &pos)
 {
     m_endDelim = pos;
 }
+
+void EmojiItem::write(QTextStream &, MD::SerialiseHelper *) const
+{
+}
 // !EmojiItem
 
 static const QChar s_colon = QLatin1Char(':');

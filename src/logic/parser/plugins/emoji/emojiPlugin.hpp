@@ -98,6 +98,9 @@ public:
      */
     void setEndDelim(const MD::WithPosition &pos);
 
+protected:
+    void write(QTextStream &, MD::SerialiseHelper *) const override;
+
 private:
     QString m_emoji;
     MD::WithPosition m_emojiNamePos = {};
