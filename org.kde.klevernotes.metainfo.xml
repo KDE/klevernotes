@@ -265,6 +265,7 @@
         <p xml:lang="cs">Aktualizace md4qt na verzi 5.0.15: Igor Mironchik, autor programu md4qt.</p>
         <p xml:lang="de">„md4qt“ auf Version 5.0.15 aktualisiert: Igor Mironchik, Autor von „md4qt“.</p>
         <p xml:lang="es">Se ha actualizado md4qt a la versión 5.0.15: Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="fi">md4qt:n päivitys versioon 5.0.15: Igor Mironchik, md4qt:n tekijä.</p>
         <p xml:lang="fr">Mettre à jour le logiciel « md4qt » vers la version 5.0.15 : logiciel « md4qt » créé par Igor Mironchik.</p>
         <p xml:lang="he">עדכון של md4qt לגרסה 5.0.15: איגור מירוצ׳ניק, היוצר של md4qt.</p>
         <p xml:lang="ia">actualisa md4qt a version 5.0.15: Igor Mironchik, creator de md4qt.</p>
@@ -288,6 +289,7 @@
         <p xml:lang="ca-valencia">La versió 5.0.0 de md4qt s'ha integrat en KleverNotes, aportant millores importants: gràcies a Igor Mironchik, creador de md4qt.</p>
         <p xml:lang="cs">Do aplikace KleverNotes byla přidána verze 5.0.0 nástroje md4qt, která přináší významná vylepšení: Děkujeme Igoru Mironchikovi, tvůrci nástroje md4qt.</p>
         <p xml:lang="es">Se ha introducido md4qt en KleverNotes, que proporciona mejoras importantes: gracias a Igor Mironchik, creador de md4qt.</p>
+        <p xml:lang="fi">md4qt versio 5.0.0 on tuotu Klevernotesiin ja sen mukana suuria parannuksia: kiitokset Igor Mironchikille, md4qt:n tekijälle</p>
         <p xml:lang="fr">La version 5.0.0 de la bibliothèque « md4qt » a été introduite dans KleverNotes, apportant des améliorations majeures : merci à Igor Mironchik, créateur de cette bibliothèque.</p>
         <p xml:lang="he">החל שימוש ב־md4qt גרסה 5.0.0 ב־KleverNotes, ואיתו שיפורים רבים: תודה רבה לאיגור מירוצ׳ניק, היוצר של md4qt.</p>
         <p xml:lang="ia">md4qt version 5.0.0 ha essite introducite in KleverNotes, apportante major meliorationes: Gratias a Igor Mironchik, creator de md4qt.</p>
@@ -307,6 +309,7 @@
         <p xml:lang="ca-valencia">Possibilitat d'ordenar les notes per la data d'última modificació: gràcies a Akash Kumar</p>
         <p xml:lang="cs">Možnost seřadit poznámky podle data poslední úpravy: Děkujeme Akashovi Kumarovi</p>
         <p xml:lang="es">Posibilidad de ordenar las notas por la fecha de última modificación: gracias a Akash Kumar.</p>
+        <p xml:lang="fi">Mahdollisuus lajitella muistiinpanot viimeisimmän muutospäivän mukaan: kiitos Akash Kumarille</p>
         <p xml:lang="fr">Possibilité de trier les notes par date de dernière modification : merci à Akash Kumar</p>
         <p xml:lang="he">אפשרות לסדר פתקיות לפי מועד השינוי האחרון שלהן: תודה רבה לאקאש קומאר</p>
         <p xml:lang="ia">Possibilitate de ordinar notas per data de ultime modification:  Gratias a Akash Kumar</p>
@@ -326,6 +329,7 @@
         <p xml:lang="ca-valencia">Possibilitat de dibuixar cercles i quadrats perfectes: gràcies a Akash Kumar</p>
         <p xml:lang="cs">Možnost nakreslit dokonalý kruh a čtverec: Díky Akashovi Kumarovi</p>
         <p xml:lang="es">Posibilidad de dibujar círculos y cuadrados perfectos: gracias a Akash Kumar.</p>
+        <p xml:lang="fi">Mahdollisuus piirtää täydellinen ympyrä ja neliö: kiitokset Akash Kumarille</p>
         <p xml:lang="fr">Possibilité de dessiner un cercle et un carré parfaits : merci à Akash Kumar</p>
         <p xml:lang="he">אפשרות לצייר עיגולים וריבועים מושלמים: תודה רבה לאקאש קומאר</p>
         <p xml:lang="ia">Possibilitate de trahar un circulo e un quadrato perfecte:  Gratias a Akash Kumar.</p>
@@ -346,6 +350,7 @@
         <p xml:lang="cs">Různé drobné opravy chyb a vylepšení.</p>
         <p xml:lang="de">Verschiedene kleine Fehlerbehebungen und Verbesserungen.</p>
         <p xml:lang="es">Diversas correcciones de pequeños fallos y mejoras.</p>
+        <p xml:lang="fi">Sekalaisia pieniä viankorjauksia ja parannuksia.</p>
         <p xml:lang="fr">Diverses petites corrections de bogues et améliorations</p>
         <p xml:lang="he">מגוון תיקוני תקלות ושיפורים קטנטנים.</p>
         <p xml:lang="ia">Varie correctiones de parve faltas e melioramentos.</p>
@@ -1389,6 +1394,7 @@
         <p xml:lang="ca-valencia">L'editor ara té la capacitat de ser «WYSIWYG».</p>
         <p xml:lang="cs">Editor nyní podporuje režim "WYSIWYG".</p>
         <p xml:lang="es">El editor tiene ahora la capacidad de ser «WYSIWYG».</p>
+        <p xml:lang="fi">Muokkaimella on nyt kyky olla ”WYSIWYG”.</p>
         <p xml:lang="fr">L'éditeur a maintenant la capacité d'être « WYSIWYG ».</p>
         <p xml:lang="he">העורך יכול מעתה לעבוד בתצורת „WYSIWYG” (המחשה חזותית בזמן העריכה).</p>
         <p xml:lang="ia">Le editor ora ha le habilitate a esser "WYSIWYG".</p>
