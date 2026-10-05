@@ -1,18 +1,18 @@
-# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2023-2026 Xavier Besnard <xavier.besnard@kde.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: klevernotes\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-08 00:44+0000\n"
-"PO-Revision-Date: 2026-02-12 21:20+0100\n"
+"PO-Revision-Date: 2026-10-03 18:11+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: \n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: contents/ui/dialogs/DeleteConfirmationDialog.qml:22
 #, kde-format
@@ -342,7 +342,7 @@ msgid ""
 "structure (this should not be a destructive operation)."
 msgstr ""
 "Par un appui sur le bouton « Appliquer », vous acceptez de convertir "
-"l'emplacement d'enregistrement  vers la nouvelle structure (Cela ne devrait "
+"l'emplacement d'enregistrement vers la nouvelle structure (Cela ne devrait "
 "pas être une opération destructrice)."
 
 #: contents/ui/dialogs/StorageConversionDialog.qml:23
@@ -370,7 +370,7 @@ msgstr ""
 msgctxt "@subtitle:dialog"
 msgid "Simply remove '/Images' from their path to make them reappear."
 msgstr ""
-"Veuillez simplement supprimer le dossier « /Images » de leur chemin d'accès "
+"Veuillez simplement supprimer le dossier « /Images » de leur emplacement "
 "pour les faire ré-apparaitre."
 
 #: contents/ui/dialogs/StorageDialog.qml:16
