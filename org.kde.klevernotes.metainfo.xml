@@ -721,7 +721,7 @@
           <li xml:lang="cs">Opraven problém s cestou při přesouvání poznámky</li>
           <li xml:lang="es">Se ha corregido un problema de ruta al mover notas.</li>
           <li xml:lang="fi">korjattu polkuongelma muistiinpanoa siirrettäessä</li>
-          <li xml:lang="fr">Correction du problème de chemin lors du déplacement d'une note</li>
+          <li xml:lang="fr">Correction du problème d'emplacement lors du déplacement d'une note</li>
           <li xml:lang="he">תוקנה בעיית נתיב בעת העברת פתקית</li>
           <li xml:lang="ia">Corrige problema de percurso quando movente nota</li>
           <li xml:lang="it">Corregge il problema del percorso durante lo spostamento di una nota</li>
@@ -929,7 +929,7 @@
           <li xml:lang="cs">Povolen přesun položek do kořenového adresáře úložiště</li>
           <li xml:lang="es">Se permite mover elementos a la raíz del almacenamiento.</li>
           <li xml:lang="fi">sallitaan siirtäminen talletustilan juureen</li>
-          <li xml:lang="fr">Autoriser le déplacement des éléments vers la racine du media</li>
+          <li xml:lang="fr">Autoriser le déplacement des éléments vers la racine du média</li>
           <li xml:lang="he">לאפשר העברת פריטים לתיקיית בסיס האחסון</li>
           <li xml:lang="ia">Permitte que elementos sia movite al radice de immagazinage</li>
           <li xml:lang="it">Consente lo spostamento degli elementi nella radice di archiviazione</li>
@@ -1317,7 +1317,7 @@
         <p xml:lang="cs">Editor byl také obohacen o několik zajímavých funkcí. Podpora seskupování a oddělování bloků a automatické přidávání položek do seznamu nyní fungují spolehlivěji, ale navíc máte nyní možnost vložit před nový řádek oddělovač HTML pomocí klávesové zkratky `Shift + Enter` nebo vodorovnou čáru pomocí klávesové zkratky `Alt + Enter`.</p>
         <p xml:lang="es">El editor también ha ganado algunas funciones interesantes. La función de poner/quitar tabulación de bloques y la adición automática de elementos de lista son ahora más fiables. También se puede añadir un salto de línea HTML antes de una nueva línea con `Mayúsculas + Intro` o una línea horizontal con `Alt + Intro`.</p>
         <p xml:lang="fi">Muokkaimeen on myös tullut kiinnostavia ominaisuuksia. Lohkon sisennys ja luettelokohtien automaattinen lisääminen ovat nyt luotettavampia, mutta nyt voit myös lisätä HTML-rivinkatkaisun Vaihto+Enterillä tai vaakaviivan Alt+Enterillä.</p>
-        <p xml:lang="fr">L'éditeur a également reçu quelques fonctionnalités intéressantes. La prise en charge du tabulation / dé-tabulation des blocs et l'ajout automatique d'éléments de liste sont maintenant plus fiables. Mais, vous avez désormais aussi la possibilité d'ajouter un saut « HTML » avant une nouvelle ligne avec `Maj + Entrée` ou une règle horizontale de repères en utilisant `ALT + Entrée`.</p>
+        <p xml:lang="fr">L'éditeur a également reçu quelques fonctionnalités intéressantes. La prise en charge du tabulation / dé-tabulation des blocs et l'ajout automatique d'éléments de liste sont maintenant plus fiables. Mais, vous avez désormais aussi la possibilité d'ajouter un saut « HTML » avant une nouvelle ligne avec « Maj » + « Entrée » ou une règle horizontale de repères en utilisant « ALT » + « Entrée ».</p>
         <p xml:lang="he">גם לעורך נוספו כמה יכולות מעניינות. תמיכה בהגדלת/הקטנת כניסת מקטע בטאב והוספה אוטומטית של פריטי רשימה היא אמינה יותר מעתה, אבל מעכשיו יש גם יכולת להוסיף הפוגת html לפני שורה חדשה עם `Shift + Enter` או סרגל אופקי עם `Alt + Enter`.</p>
         <p xml:lang="ia">Le editor ha ganiate tamben alcun characteristicas interessante. Supporto de tab/untab de bloco e addition automatic de elementos de lista es nunc plus confidente, ma tu ora ha anque le habilitate a adder un interruption de html ante un nove linea con `Shift + Enter` o un regula horizontal usante Alt + Enter`. </p>
         <p xml:lang="it">L'editor ha anche acquisito alcune interessanti funzionalità. Il supporto la riduzione o l'aumento del rientro dei blocchi e l'aggiunta automatica di elementi di elenco sono ora più affidabili, ma ora è anche possibile aggiungere un'interruzione HTML prima di una nuova riga con `Maiusc + Invio` o un righello orizzontale con `Alt + Invio`.</p>
@@ -1375,7 +1375,7 @@
           <li xml:lang="cs">Použitím panelu nástrojů nyní přidáte nebo odstraníte text v rámci jediného bloku zpětných kroků, takže už nebudete muset stisknout dvakrát či třikrát klávesovou zkratku `Ctrl+Z`, abyste se vrátili do předchozího stavu.</li>
           <li xml:lang="es">Ahora, al usar la barra de herramientas, podrá añadir o eliminar texto en un solo bloque de deshacer, sin necesidad de pulsar dos o tres veces `Ctrl+Z` para volver al estado anterior.</li>
           <li xml:lang="fi">Työkalupalkista voi nyt lisätä tai poistaa tekstiä yhtenä kumoamislohkona: ei enää moninkertaista Ctrl+Z:aa päästäksesi edelliseen tilaan.</li>
-          <li xml:lang="fr">L'utilisation de la barre d'outils ajoutera ou supprimera désormais du texte dans un seul bloc d'annulation, plus besoin d'appuyer deux ou trois fois sur `CTRL + Z` pour revenir à votre état précédent.</li>
+          <li xml:lang="fr">L'utilisation de la barre d'outils ajoutera ou supprimera désormais du texte dans un seul bloc d'annulation, plus besoin d'appuyer deux ou trois fois sur « CTRL » + «  Z » pour revenir à votre état précédent.</li>
           <li xml:lang="he">שימוש בסרגל הכלים יוסיף או יסיר מעתה טקסט במקטע הסגה יחיד, לא צריך יותר `Ctrl+Z` כפול או משולש כדי לחזור למצב הקודם שלך.</li>
           <li xml:lang="ia">Usar le barra de instrumento ora addera o removera texto in un singule bloco de annular, non plus duple/triple `Ctrl+Z` per vader retro a tu previe stato.</li>
           <li xml:lang="it">Utilizzando la barra degli strumenti ora è possibile aggiungere o rimuovere testo in un unico blocco di annullamento, senza più bisogno di premere due o tre volte «Ctrl+Z» per tornare allo stato precedente.</li>
