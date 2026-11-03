@@ -786,11 +786,7 @@ msgid "Tag scale"
 msgstr "Axuste de etiquetas"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:82
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the rest of the sentence is 'italic text and its tags', the "
-#| "second part is provided by another string"
-#| msgid "A title with a preview of"
+#, kde-format
 msgctxt ""
 "@example, the rest of the sentence is 'italic text and its tags', the second "
 "part is provided by another string"
@@ -798,11 +794,7 @@ msgid "A title with a preview of"
 msgstr "Un título cunha vista previa de"
 
 #: contents/ui/settings/EditorHighlightPreview.qml:106
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@exemple, the first part of the sentence is 'A title with a preview of ', "
-#| "the first part is provided by another string"
-#| msgid "italic text and its tags"
+#, kde-format
 msgctxt ""
 "@example, the first part of the sentence is 'A title with a preview of ', "
 "the first part is provided by another string"
@@ -1019,9 +1011,7 @@ msgid "Quickly write emoji using the following syntax"
 msgstr "Escribir rapidamente expresións mediante a seguinte sintaxe:"
 
 #: contents/ui/settings/PluginsTab.qml:151
-#, fuzzy, kde-format
-#| msgctxt "@exemple, something representing a possible emoji short name"
-#| msgid "emoji_name"
+#, kde-format
 msgctxt "@example, something representing a possible emoji short name"
 msgid "emoji_name"
 msgstr "nome_da_expresion"
@@ -1413,9 +1403,7 @@ msgid "Heading"
 msgstr "Cabeceira"
 
 #: contents/ui/textEditor/CheatSheet.qml:53
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Heading1"
+#, kde-format
 msgctxt "example"
 msgid "Heading1"
 msgstr "Cabeceira 1"
@@ -1426,9 +1414,7 @@ msgid "Bold"
 msgstr "Grosa"
 
 #: contents/ui/textEditor/CheatSheet.qml:59
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Bold text"
+#, kde-format
 msgctxt "example"
 msgid "Bold text"
 msgstr "Letra grosa"
@@ -1439,9 +1425,7 @@ msgid "Italic"
 msgstr "Cursiva"
 
 #: contents/ui/textEditor/CheatSheet.qml:65
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Italic text"
+#, kde-format
 msgctxt "example"
 msgid "Italic text"
 msgstr "Letra cursiva"
@@ -1466,18 +1450,14 @@ msgstr "Lista ordenada"
 
 #: contents/ui/textEditor/CheatSheet.qml:77
 #: contents/ui/textEditor/CheatSheet.qml:84
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "First item"
+#, kde-format
 msgctxt "example"
 msgid "First item"
 msgstr "Primeiro elemento"
 
 #: contents/ui/textEditor/CheatSheet.qml:78
 #: contents/ui/textEditor/CheatSheet.qml:85
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Second item"
+#, kde-format
 msgctxt "example"
 msgid "Second item"
 msgstr "Segundo elemento"
@@ -1493,9 +1473,7 @@ msgid "Code"
 msgstr "Código"
 
 #: contents/ui/textEditor/CheatSheet.qml:91
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Inline code"
+#, kde-format
 msgctxt "example"
 msgid "Inline code"
 msgstr "Código in situ"
@@ -1512,17 +1490,13 @@ msgid "Link"
 msgstr "Ligazón"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "title"
+#, kde-format
 msgctxt "example"
 msgid "title"
 msgstr "título"
 
 #: contents/ui/textEditor/CheatSheet.qml:103
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "https://www.example.com"
+#, kde-format
 msgctxt "example"
 msgid "https://www.example.com"
 msgstr "https://www.example.com"
@@ -1533,17 +1507,13 @@ msgid "Image"
 msgstr "Imaxe"
 
 #: contents/ui/textEditor/CheatSheet.qml:109
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "alt text"
+#, kde-format
 msgctxt "example"
 msgid "alt text"
 msgstr "texto alternativo"
 
 #: contents/ui/textEditor/CheatSheet.qml:109
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "image"
+#, kde-format
 msgctxt "example"
 msgid "image"
 msgstr "imaxe"
@@ -1578,25 +1548,19 @@ msgid "Right"
 msgstr "Dereita"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 1"
+#, kde-format
 msgctxt "example"
 msgid "Cell 1"
 msgstr "Cela 1"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 2"
+#, kde-format
 msgctxt "example"
 msgid "Cell 2"
 msgstr "Cela 2"
 
 #: contents/ui/textEditor/CheatSheet.qml:126
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Cell 3"
+#, kde-format
 msgctxt "example"
 msgid "Cell 3"
 msgstr "Cela 3"
@@ -1607,9 +1571,7 @@ msgid "Fenced code block"
 msgstr "Bloque de código encadrado"
 
 #: contents/ui/textEditor/CheatSheet.qml:133
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Sample text here..."
+#, kde-format
 msgctxt "example"
 msgid "Sample text here..."
 msgstr "Texto de exemplo…"
@@ -1620,9 +1582,7 @@ msgid "Strikethrough"
 msgstr "Riscar"
 
 #: contents/ui/textEditor/CheatSheet.qml:140
-#, fuzzy, kde-format
-#| msgctxt "exemple, something wrong"
-#| msgid "The world is flat."
+#, kde-format
 msgctxt "example, something wrong"
 msgid "The world is flat."
 msgstr "A Terra é plana."
@@ -1633,17 +1593,13 @@ msgid "Task list"
 msgstr "Lista de tarefas"
 
 #: contents/ui/textEditor/CheatSheet.qml:146
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more foo"
+#, kde-format
 msgctxt "example"
 msgid "Make more foo"
 msgstr "Facer máis a"
 
 #: contents/ui/textEditor/CheatSheet.qml:147
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "Make more bar"
+#, kde-format
 msgctxt "example"
 msgid "Make more bar"
 msgstr "Facer máis b"
@@ -1654,9 +1610,7 @@ msgid "Highlight"
 msgstr "Realzar"
 
 #: contents/ui/textEditor/CheatSheet.qml:153
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "highlighted text"
+#, kde-format
 msgctxt "example"
 msgid "highlighted text"
 msgstr "texto realzado"
@@ -1667,9 +1621,7 @@ msgid "Subscript"
 msgstr "Subíndice"
 
 #: contents/ui/textEditor/CheatSheet.qml:159
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "subscript text"
+#, kde-format
 msgctxt "example"
 msgid "subscript text"
 msgstr "texto de subíndice"
@@ -1680,9 +1632,7 @@ msgid "Superscript"
 msgstr "Superíndice"
 
 #: contents/ui/textEditor/CheatSheet.qml:165
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "superscript text"
+#, kde-format
 msgctxt "example"
 msgid "superscript text"
 msgstr "texto de superíndice"
@@ -1699,9 +1649,7 @@ msgid "Note link"
 msgstr "Ligazón de nota"
 
 #: contents/ui/textEditor/CheatSheet.qml:183
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "<path to note>/<note name>"
+#, kde-format
 msgctxt ""
 "example, These are placeholders, not XML tags. Please translate to your "
 "language"
@@ -1710,9 +1658,7 @@ msgstr "<ruta da nota>/<nome da nota>"
 
 #. i18nc("example", "header")
 #: contents/ui/textEditor/CheatSheet.qml:186
-#, fuzzy, kde-format
-#| msgctxt "exemple"
-#| msgid "displayed name"
+#, kde-format
 msgctxt "example"
 msgid "displayed name"
 msgstr "nome amosado"
