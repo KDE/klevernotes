@@ -1341,6 +1341,7 @@
         <p xml:lang="sv">Verktygsfältet är nu mer precist för att ta bort specifika Markdown-taggar men även för att använda dem.</p>
         <p xml:lang="tr">The toolbar is now more precise for removing specific Markdown tags but also to apply them.</p>
         <p xml:lang="uk">Панель інструментів тепер точніша як для вилучення певних теґів Markdown, так і для їхнього застосування.</p>
+        <p xml:lang="zh-TW">工具列對於移除與套用特定 Markdown 標籤更加精準。</p>
         <p>On top of that, the toolbar now shows you which tags are already applied on the text under the cursor or the selected text.</p>
         <p xml:lang="ar">علاوة على ذلك، يظهر شريط الأدوات الآن الوسوم المطبقة بالفعل على النص الموجود تحت المؤشر أو النص المحدد.</p>
         <p xml:lang="ca">A més d'això, la barra d'eines ara mostra quines etiquetes ja s'apliquen al text sota el cursor o el text seleccionat.</p>
@@ -1361,6 +1362,7 @@
         <p xml:lang="sv">Dessutom visar verktygsraden nu vilka taggar som redan har används i texten under markören eller den markerade texten.</p>
         <p xml:lang="tr">On top of that, the toolbar now shows you which tags are already applied on the text under the cursor or the selected text.</p>
         <p xml:lang="uk">Крім того, панель інструментів нової версії показує, які теґи вже застосовано до тексту під курсором або до позначеного тексту.</p>
+        <p xml:lang="zh-TW">另外，工具列現在會顯示游標下或已選取文字已套用了哪些標籤。</p>
         <p>
           The editor has also gained some interesting features. Block tab/untab support 
           and automatic addition of list items are now more reliable, but you now also have 
