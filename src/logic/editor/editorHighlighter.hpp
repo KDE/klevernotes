@@ -125,7 +125,7 @@ protected:
     void onImage(MD::Image *i) override;
     void onFootnoteRef(MD::FootnoteRef *ref) override;
     void onFootnote(MD::Footnote *f) override;
-    void onListItem(MD::ListItem *l, bool first, bool skipOpeningWrap) override;
+    void onListItem(MD::ListItem *l, bool first, bool skipOpeningWrap = false, MD::ListLooseness looseness = MD::ListLooseness::Unknown) override;
     void onUserDefined(MD::Item *item) override;
 
 private:

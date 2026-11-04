@@ -132,7 +132,7 @@ void Renderer::onImage(MD::Image *i)
     }
 }
 
-void Renderer::onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap)
+void Renderer::onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap, MD::ListLooseness looseness)
 {
     const bool hasTask = i->isTaskList();
     const bool isChecked = i->isChecked();
@@ -143,7 +143,7 @@ void Renderer::onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap)
     }
 
     // Add the text
-    Visitor::onListItem(i, first, skipOpeningWrap);
+    Visitor::onListItem(i, first, skipOpeningWrap, looseness);
 
     if (!m_justCollectFootnoteRefs) {
         m_html.push_back(closeListItem(hasTask));

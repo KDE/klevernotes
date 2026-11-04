@@ -418,9 +418,9 @@ void EditorHighlighter::onBlockquote(MD::Blockquote *b)
     }
 }
 
-void EditorHighlighter::onListItem(MD::ListItem *l, bool first, bool skipOpeningWrap)
+void EditorHighlighter::onListItem(MD::ListItem *l, bool first, bool skipOpeningWrap, MD::ListLooseness looseness)
 {
-    MD::PosCache::onListItem(l, first, skipOpeningWrap);
+    MD::PosCache::onListItem(l, first, skipOpeningWrap, looseness);
     if (m_highlightEnabled) {
         QTextCharFormat special;
         special.setForeground(d->colors.highlightColor);

@@ -85,7 +85,7 @@ public:
     void onImage(MD::Image *i) override;
     using Base::onImage;
 
-    void onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap) override;
+    void onListItem(MD::ListItem *i, bool first, bool skipOpeningWrap = false, MD::ListLooseness looseness = MD::ListLooseness::Unknown) override;
     using Base::onListItem;
 
     void onCode(MD::Code *c) override;
