@@ -802,7 +802,7 @@
           <li xml:lang="sk">Zosúladenie štýlu ExpandingFormSwitch so štýlom FormSwitchDelegate</li>
           <li xml:lang="sl">Poravnava sloga ExpandingFormSwitch s slogom FormSwitchDelegate</li>
           <li xml:lang="sv">Justera stilen ExpandingFormSwitch till stilen FormSwitchDelegate</li>
-          <li xml:lang="tr">ExpandingFormSwitch biçemini FormSwitchDelegate olarak değiştir</li>
+          <li xml:lang="tr">ExpandingFormSwitch stilini FormSwitchDelegate olarak değiştir</li>
           <li xml:lang="uk">Вирівняно стиль ExpandingFormSwitch за стилем FormSwitchDelegate</li>
           <li xml:lang="zh-TW">讓 ExpandingFormSwitch 風格與 FormSwitchDelegate 風格一致</li>
           <li>Improve move dialog design</li>
@@ -1484,7 +1484,7 @@
         <p xml:lang="ka">ნაგულისხმევად Markdown-ის ჭდეები დანარჩენ ტექსტზე 50%-ით პატარაა და ამისი შეცვლა რა თქმა უნდა, მორგების ფანჯრიდან შეგიძლიათ.</p>
         <p xml:lang="nl">Standaard zijn de markdown-tags 50% kleiner dan de rest van de tekst. Dit kan uiteraard worden aangepast in de instellingen.</p>
         <p xml:lang="pt-BR">Por padrão, as tags Markdown serão 50% menores que o restante do texto, mas isso pode ser ajustado nas configurações.</p>
-        <p xml:lang="ru">По умолчанию теги Markdown на 50 % меньше остального текста, это, разумеется, можно изменить в параметрах.</p>
+        <p xml:lang="ru">По умолчанию теги Markdown на 50 % меньше остального текста, это, разумеется, можно изменить в параметрах.</p>
         <p xml:lang="sk">By default, the markdown tags will be smaller than the rest of text by 50%, this can of course be tweaked in the settings.</p>
         <p xml:lang="sl">Privzeto bodo oznake Markdown za 50% manjše od preostalega besedila, kar je seveda mogoče prilagoditi v nastavitvah.</p>
         <p xml:lang="sv">Normalt är markdown-taggarna 50 % mindre än resten av texten, det kan naturligtvis justeras i inställningarna.</p>
