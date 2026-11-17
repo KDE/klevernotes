@@ -119,7 +119,7 @@
     <p xml:lang="sk">KleverNotes is a note taking and management application for your mobile and desktop devices. It uses markdown and allow you to preview your content.</p>
     <p xml:lang="sl">KleverNotes je aplikacija za vnos opomb in upravljanje za vaše mobilne in namizne naprave. Uporablja markdown in dovoljuje predogled vaše vsebine.</p>
     <p xml:lang="sv">KleverNotes är ett antecknings- och hanteringsprogram för mobil och skrivbord. Det använder Markdown och låter dig förhandsgranska innehållet.</p>
-    <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi önizlemenize izin verir.</p>
+    <p xml:lang="tr">Akıllı Notlar, taşınabilir ve masaüstü uygulamalarınız için bir not alımı ve yönetimi uygulamasıdır. Markdown kullanır ve içeriğinizi ön izlemenize izin verir.</p>
     <p xml:lang="uk">KleverNotes — програма для створення нотаток та керування ними для ваших мобільних пристроїв та робочих станцій. У ній використано мову markdown та передбачено можливість попереднього перегляду результатів.</p>
     <p xml:lang="zh-CN">KleverNotes 是您移动设备和桌面设备的记录和管理笔记应用程序。它使用Markdown并允许您预览您的内容。</p>
     <p xml:lang="zh-TW">KleverNotes 是一個桌面與行動裝置用的筆記記錄與管理應用程式。它利用 Markdown 格式，並讓您能夠預覽您的內容。</p>
@@ -442,7 +442,7 @@
           <li xml:lang="sk">Oprava čierneho náhľadu pri strate fokusu aplikácie</li>
           <li xml:lang="sl">Odpravljena težava s črnim predogledom, ko aplikacija izgubi fokus</li>
           <li xml:lang="sv">Rätta att förhandsgranskningen blir svart när programmet förlorar fokus</li>
-          <li xml:lang="tr">Uygulama odağı kaybettiğinde önizlemenin kararması sorunu giderildi.</li>
+          <li xml:lang="tr">Uygulama odağı kaybettiğinde ön izlemenin kararması sorunu giderildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що попередній перегляд чорнів, якщо програма втрачала фокус</li>
           <li xml:lang="zh-TW">修正應用程式喪失焦點時預覽會變黑的問題</li>
           <li>Tweak the auto indent</li>
